@@ -13,19 +13,17 @@ Summary
 ~~~~~~~
 Constants
 #########
-=============================================================================================================== ======================================================================
+=============================================================================================================== ================================================================
 :bro:id:`DNS::ANY`: :bro:type:`count`                                                                           A QTYPE value describing a request for all records.
 :bro:id:`DNS::EDNS`: :bro:type:`count`                                                                          An OPT RR TYPE value described by EDNS.
 :bro:id:`DNS::PTR`: :bro:type:`count`                                                                           RR TYPE value for a domain name pointer.
-:bro:id:`DNS::algorithms`: :bro:type:`table` :bro:attr:`&default` = :bro:type:`function` :bro:attr:`&optional`  Possible values of the algorithms used in DNSKEY, DS and RRSIG records
 :bro:id:`DNS::base_errors`: :bro:type:`table` :bro:attr:`&default` = :bro:type:`function` :bro:attr:`&optional` Errors used for non-TSIG/EDNS types.
 :bro:id:`DNS::classes`: :bro:type:`table` :bro:attr:`&default` = :bro:type:`function` :bro:attr:`&optional`     Possible values of the CLASS field in resource records or QCLASS
                                                                                                                 field in query messages.
-:bro:id:`DNS::digests`: :bro:type:`table` :bro:attr:`&default` = :bro:type:`function` :bro:attr:`&optional`     Possible digest types used in DNSSEC.
 :bro:id:`DNS::edns_zfield`: :bro:type:`table` :bro:attr:`&default` = ``"?"`` :bro:attr:`&optional`              This deciphers EDNS Z field values.
 :bro:id:`DNS::query_types`: :bro:type:`table` :bro:attr:`&default` = :bro:type:`function` :bro:attr:`&optional` Mapping of DNS query type codes to human readable string
                                                                                                                 representation.
-=============================================================================================================== ======================================================================
+=============================================================================================================== ================================================================
 
 
 Detailed Interface
@@ -52,38 +50,6 @@ Constants
    :Default: ``12``
 
    RR TYPE value for a domain name pointer.
-
-.. bro:id:: DNS::algorithms
-
-   :Type: :bro:type:`table` [:bro:type:`count`] of :bro:type:`string`
-   :Attributes: :bro:attr:`&default` = :bro:type:`function` :bro:attr:`&optional`
-   :Default:
-
-   ::
-
-      {
-         [2] = "Diffie_Hellman",
-         [6] = "DSA_NSEC3_SHA1",
-         [14] = "ECDSA_curveP384withSHA384",
-         [4] = "Elliptic_Curve",
-         [1] = "RSA_MD5",
-         [8] = "RSA_SHA256",
-         [7] = "RSA_SHA1_NSEC3_SHA1",
-         [15] = "Ed25519",
-         [252] = "Indirect",
-         [254] = "PrivateOID",
-         [255] = "reserved255",
-         [5] = "RSA_SHA1",
-         [10] = "RSA_SHA512",
-         [253] = "PrivateDNS",
-         [0] = "reserved0",
-         [3] = "DSA_SHA1",
-         [12] = "GOST_R_34_10_2001",
-         [13] = "ECDSA_curveP256withSHA256",
-         [16] = "Ed448"
-      }
-
-   Possible values of the algorithms used in DNSKEY, DS and RRSIG records
 
 .. bro:id:: DNS::base_errors
 
@@ -141,24 +107,6 @@ Constants
 
    Possible values of the CLASS field in resource records or QCLASS
    field in query messages.
-
-.. bro:id:: DNS::digests
-
-   :Type: :bro:type:`table` [:bro:type:`count`] of :bro:type:`string`
-   :Attributes: :bro:attr:`&default` = :bro:type:`function` :bro:attr:`&optional`
-   :Default:
-
-   ::
-
-      {
-         [2] = "SHA256",
-         [4] = "SHA384",
-         [1] = "SHA1",
-         [0] = "reserved0",
-         [3] = "GOST_R_34_11_94"
-      }
-
-   Possible digest types used in DNSSEC.
 
 .. bro:id:: DNS::edns_zfield
 

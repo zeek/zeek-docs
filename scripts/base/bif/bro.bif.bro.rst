@@ -2410,7 +2410,7 @@ Functions
    and its default value (if specified).
    
 
-   :rec: The record value or type to inspect.
+   :rec: The record to inspect.
    
 
    :returns: A table that describes the fields of a record.

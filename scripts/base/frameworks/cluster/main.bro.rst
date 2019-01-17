@@ -383,7 +383,7 @@ Types
       .. bro:enum:: Cluster::TIME_MACHINE Cluster::NodeType
 
          A node acting as a traffic recorder using the
-         `Time Machine <https://www.zeek.org/community/time-machine.html>`_
+         `Time Machine <http://bro.org/community/time-machine.html>`_
          software.
 
    Types of nodes that are allowed to participate in the cluster

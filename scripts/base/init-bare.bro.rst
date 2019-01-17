@@ -101,7 +101,6 @@ Redefinable Options
 :bro:id:`cmd_line_bpf_filter`: :bro:type:`string` :bro:attr:`&redef`                    BPF filter the user has set via the -f command line options.
 :bro:id:`detect_filtered_trace`: :bro:type:`bool` :bro:attr:`&redef`                    Whether to attempt to automatically detect SYN/FIN/RST-filtered trace
                                                                                         and not report missing segments for such connections.
-:bro:id:`dns_resolver`: :bro:type:`addr` :bro:attr:`&redef`                             The address of the DNS resolver to use.
 :bro:id:`dns_session_timeout`: :bro:type:`interval` :bro:attr:`&redef`                  Time to wait before timing out a DNS request.
 :bro:id:`dpd_buffer_size`: :bro:type:`count` :bro:attr:`&redef`                         Size of per-connection buffer used for dynamic protocol detection.
 :bro:id:`dpd_ignore_ports`: :bro:type:`bool` :bro:attr:`&redef`                         If true, don't consider any ports for deciding which protocol analyzer to
@@ -541,13 +540,9 @@ Types
 :bro:type:`connection`: :bro:type:`record`                                 A connection.
 :bro:type:`count_set`: :bro:type:`set`                                     A set of counts.
 :bro:type:`dns_answer`: :bro:type:`record`                                 The general part of a DNS reply.
-:bro:type:`dns_dnskey_rr`: :bro:type:`record`                              A DNSSEC DNSKEY record.
-:bro:type:`dns_ds_rr`: :bro:type:`record`                                  A DNSSEC DS record.
 :bro:type:`dns_edns_additional`: :bro:type:`record`                        An additional DNS EDNS record.
 :bro:type:`dns_mapping`: :bro:type:`record`                                
 :bro:type:`dns_msg`: :bro:type:`record`                                    A DNS message.
-:bro:type:`dns_nsec3_rr`: :bro:type:`record`                               A DNSSEC NSEC3 record.
-:bro:type:`dns_rrsig_rr`: :bro:type:`record`                               A DNSSEC RRSIG record.
 :bro:type:`dns_soa`: :bro:type:`record`                                    A DNS SOA record.
 :bro:type:`dns_tsig_additional`: :bro:type:`record`                        An additional DNS TSIG record.
 :bro:type:`endpoint`: :bro:type:`record`                                   Statistics about a :bro:type:`connection` endpoint.
@@ -1065,17 +1060,6 @@ Redefinable Options
    and not report missing segments for such connections.
    If this is enabled, then missing data at the end of connections may not
    be reported via :bro:see:`content_gap`.
-
-.. bro:id:: dns_resolver
-
-   :Type: :bro:type:`addr`
-   :Attributes: :bro:attr:`&redef`
-   :Default: ``::``
-
-   The address of the DNS resolver to use.  If not changed from the
-   unspecified address, ``[::]``, the first nameserver from /etc/resolv.conf
-   gets used (IPv6 is currently only supported if set via this option, not
-   when parsed from the file).
 
 .. bro:id:: dns_session_timeout
 
@@ -6700,64 +6684,6 @@ Types
       dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply
       dns_TXT_reply dns_WKS_reply
 
-.. bro:type:: dns_dnskey_rr
-
-   :Type: :bro:type:`record`
-
-      query: :bro:type:`string`
-         Query.
-
-      answer_type: :bro:type:`count`
-         Ans type.
-
-      flags: :bro:type:`count`
-         flags filed.
-
-      protocol: :bro:type:`count`
-         Protocol, should be always 3 for DNSSEC.
-
-      algorithm: :bro:type:`count`
-         Algorithm for Public Key.
-
-      public_key: :bro:type:`string`
-         Public Key
-
-      is_query: :bro:type:`count`
-         The RR is a query/Response.
-
-   A DNSSEC DNSKEY record.
-   
-   .. bro:see:: dns_DNSKEY
-
-.. bro:type:: dns_ds_rr
-
-   :Type: :bro:type:`record`
-
-      query: :bro:type:`string`
-         Query.
-
-      answer_type: :bro:type:`count`
-         Ans type.
-
-      key_tag: :bro:type:`count`
-         flags filed.
-
-      algorithm: :bro:type:`count`
-         Algorithm for Public Key.
-
-      digest_type: :bro:type:`count`
-         Digest Type.
-
-      digest_val: :bro:type:`string`
-         Digest Value.
-
-      is_query: :bro:type:`count`
-         The RR is a query/Response.
-
-   A DNSSEC DS record.
-   
-   .. bro:see:: dns_DS
-
 .. bro:type:: dns_edns_additional
 
    :Type: :bro:type:`record`
@@ -6871,91 +6797,6 @@ Types
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
       dns_SRV_reply dns_TSIG_addl dns_TXT_reply dns_WKS_reply dns_end
       dns_message dns_query_reply dns_rejected dns_request
-
-.. bro:type:: dns_nsec3_rr
-
-   :Type: :bro:type:`record`
-
-      query: :bro:type:`string`
-         Query.
-
-      answer_type: :bro:type:`count`
-         Ans type.
-
-      nsec_flags: :bro:type:`count`
-         flags field.
-
-      nsec_hash_algo: :bro:type:`count`
-         Hash algorithm.
-
-      nsec_iter: :bro:type:`count`
-         Iterations.
-
-      nsec_salt_len: :bro:type:`count`
-         Salt length.
-
-      nsec_salt: :bro:type:`string`
-         Salt value
-
-      nsec_hlen: :bro:type:`count`
-         Hash length.
-
-      nsec_hash: :bro:type:`string`
-         Hash value.
-
-      bitmaps: :bro:type:`string_vec`
-         Type Bit Maps.
-
-      is_query: :bro:type:`count`
-         The RR is a query/Response.
-
-   A DNSSEC NSEC3 record.
-   
-   .. bro:see:: dns_NSEC3
-
-.. bro:type:: dns_rrsig_rr
-
-   :Type: :bro:type:`record`
-
-      query: :bro:type:`string`
-         Query.
-
-      answer_type: :bro:type:`count`
-         Ans type.
-
-      type_covered: :bro:type:`count`
-         qtype covered by RRSIG RR.
-
-      algorithm: :bro:type:`count`
-         Algorithm.
-
-      labels: :bro:type:`count`
-         Labels in the owner's name.
-
-      orig_ttl: :bro:type:`interval`
-         Original TTL.
-
-      sig_exp: :bro:type:`time`
-         Time when signed RR expires.
-
-      sig_incep: :bro:type:`time`
-         Time when signed.
-
-      key_tag: :bro:type:`count`
-         Key tag value.
-
-      signer_name: :bro:type:`string`
-         Signature.
-
-      signature: :bro:type:`string`
-         Hash of the RRDATA.
-
-      is_query: :bro:type:`count`
-         The RR is a query/Response.
-
-   A DNSSEC RRSIG record.
-   
-   .. bro:see:: dns_RRSIG
 
 .. bro:type:: dns_soa
 

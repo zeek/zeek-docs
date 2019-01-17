@@ -42,12 +42,27 @@ Constants
 .. bro:id:: Version::info
 
    :Type: :bro:type:`Version::VersionDescription`
+   :Default:
+
+   ::
+
+      {
+         version_number=20601
+         major=2
+         minor=6
+         patch=1
+         commit=0
+         beta=F
+         debug=F
+         version_string="2.6.1"
+      }
 
    `VersionDescription` record pertaining to the currently running version of Bro.
 
 .. bro:id:: Version::number
 
    :Type: :bro:type:`count`
+   :Default: ``20601``
 
    version number of the currently running version of Bro as a numeric representation.
    The format of the number is ABBCC with A being the major version,

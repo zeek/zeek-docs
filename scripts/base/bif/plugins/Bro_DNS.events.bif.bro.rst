@@ -17,16 +17,11 @@ Events
 :bro:id:`dns_A_reply`: :bro:type:`event`       Generated for DNS replies of type *A*.
 :bro:id:`dns_CAA_reply`: :bro:type:`event`     Generated for DNS replies of type *CAA* (Certification Authority Authorization).
 :bro:id:`dns_CNAME_reply`: :bro:type:`event`   Generated for DNS replies of type *CNAME*.
-:bro:id:`dns_DNSKEY`: :bro:type:`event`        Generated for DNS replies of type *DNSKEY*.
-:bro:id:`dns_DS`: :bro:type:`event`            Generated for DNS replies of type *DS*.
 :bro:id:`dns_EDNS_addl`: :bro:type:`event`     Generated for DNS replies of type *EDNS*.
 :bro:id:`dns_HINFO_reply`: :bro:type:`event`   Generated for DNS replies of type *HINFO*.
 :bro:id:`dns_MX_reply`: :bro:type:`event`      Generated for DNS replies of type *MX*.
-:bro:id:`dns_NSEC`: :bro:type:`event`          Generated for DNS replies of type *NSEC*.
-:bro:id:`dns_NSEC3`: :bro:type:`event`         Generated for DNS replies of type *NSEC3*.
 :bro:id:`dns_NS_reply`: :bro:type:`event`      Generated for DNS replies of type *NS*.
 :bro:id:`dns_PTR_reply`: :bro:type:`event`     Generated for DNS replies of type *PTR*.
-:bro:id:`dns_RRSIG`: :bro:type:`event`         Generated for DNS replies of type *RRSIG*.
 :bro:id:`dns_SOA_reply`: :bro:type:`event`     Generated for DNS replies of type *CNAME*.
 :bro:id:`dns_SRV_reply`: :bro:type:`event`     Generated for DNS replies of type *SRV*.
 :bro:id:`dns_TSIG_addl`: :bro:type:`event`     Generated for DNS replies of type *TSIG*.
@@ -204,46 +199,6 @@ Events
       non_dns_request dns_max_queries dns_session_timeout dns_skip_addl
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
-.. bro:id:: dns_DNSKEY
-
-   :Type: :bro:type:`event` (c: :bro:type:`connection`, msg: :bro:type:`dns_msg`, ans: :bro:type:`dns_answer`, dnskey: :bro:type:`dns_dnskey_rr`)
-
-   Generated for DNS replies of type *DNSKEY*. For replies with multiple answers,
-   an individual event of the corresponding type is raised for each.
-   
-
-   :c: The connection, which may be UDP or TCP depending on the type of the
-      transport-layer session being analyzed.
-   
-
-   :msg: The parsed DNS message header.
-   
-
-   :ans: The type-independent part of the parsed answer record.
-   
-
-   :dnskey: The parsed DNSKEY record.
-
-.. bro:id:: dns_DS
-
-   :Type: :bro:type:`event` (c: :bro:type:`connection`, msg: :bro:type:`dns_msg`, ans: :bro:type:`dns_answer`, ds: :bro:type:`dns_ds_rr`)
-
-   Generated for DNS replies of type *DS*. For replies with multiple answers,
-   an individual event of the corresponding type is raised for each.
-   
-
-   :c: The connection, which may be UDP or TCP depending on the type of the
-      transport-layer session being analyzed.
-   
-
-   :msg: The parsed DNS message header.
-   
-
-   :ans: The type-independent part of the parsed answer record.
-   
-
-   :ds: The parsed RDATA of DS record.
-
 .. bro:id:: dns_EDNS_addl
 
    :Type: :bro:type:`event` (c: :bro:type:`connection`, msg: :bro:type:`dns_msg`, ans: :bro:type:`dns_edns_additional`)
@@ -337,49 +292,6 @@ Events
       dns_rejected dns_request non_dns_request dns_max_queries dns_session_timeout
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
-.. bro:id:: dns_NSEC
-
-   :Type: :bro:type:`event` (c: :bro:type:`connection`, msg: :bro:type:`dns_msg`, ans: :bro:type:`dns_answer`, next_name: :bro:type:`string`, bitmaps: :bro:type:`string_vec`)
-
-   Generated for DNS replies of type *NSEC*. For replies with multiple answers,
-   an individual event of the corresponding type is raised for each.
-   
-
-   :c: The connection, which may be UDP or TCP depending on the type of the
-      transport-layer session being analyzed.
-   
-
-   :msg: The parsed DNS message header.
-   
-
-   :ans: The type-independent part of the parsed answer record.
-   
-
-   :next_name: The parsed next secure domain name.
-   
-
-   :bitmaps: vector of strings in hex for the bit maps present.
-
-.. bro:id:: dns_NSEC3
-
-   :Type: :bro:type:`event` (c: :bro:type:`connection`, msg: :bro:type:`dns_msg`, ans: :bro:type:`dns_answer`, nsec3: :bro:type:`dns_nsec3_rr`)
-
-   Generated for DNS replies of type *NSEC3*. For replies with multiple answers,
-   an individual event of the corresponding type is raised for each.
-   
-
-   :c: The connection, which may be UDP or TCP depending on the type of the
-      transport-layer session being analyzed.
-   
-
-   :msg: The parsed DNS message header.
-   
-
-   :ans: The type-independent part of the parsed answer record.
-   
-
-   :nsec3: The parsed RDATA of Nsec3 record.
-
 .. bro:id:: dns_NS_reply
 
    :Type: :bro:type:`event` (c: :bro:type:`connection`, msg: :bro:type:`dns_msg`, ans: :bro:type:`dns_answer`, name: :bro:type:`string`)
@@ -443,26 +355,6 @@ Events
       dns_mapping_unverified dns_mapping_valid dns_message dns_query_reply
       dns_rejected dns_request non_dns_request dns_max_queries dns_session_timeout
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
-
-.. bro:id:: dns_RRSIG
-
-   :Type: :bro:type:`event` (c: :bro:type:`connection`, msg: :bro:type:`dns_msg`, ans: :bro:type:`dns_answer`, rrsig: :bro:type:`dns_rrsig_rr`)
-
-   Generated for DNS replies of type *RRSIG*. For replies with multiple answers,
-   an individual event of the corresponding type is raised for each.
-   
-
-   :c: The connection, which may be UDP or TCP depending on the type of the
-      transport-layer session being analyzed.
-   
-
-   :msg: The parsed DNS message header.
-   
-
-   :ans: The type-independent part of the parsed answer record.
-   
-
-   :rrsig: The parsed RRSIG record.
 
 .. bro:id:: dns_SOA_reply
 

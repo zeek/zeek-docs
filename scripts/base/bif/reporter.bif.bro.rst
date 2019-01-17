@@ -25,8 +25,6 @@ Functions
 :bro:id:`Reporter::error`: :bro:type:`function`                        Generates a non-fatal error indicative of a definite problem that should
                                                                        be addressed.
 :bro:id:`Reporter::fatal`: :bro:type:`function`                        Generates a fatal error on stderr and terminates program execution.
-:bro:id:`Reporter::fatal_error_with_core`: :bro:type:`function`        Generates a fatal error on stderr and terminates program execution
-                                                                       after dumping a core file
 :bro:id:`Reporter::flow_weird`: :bro:type:`function`                   Generates a "flow" weird.
 :bro:id:`Reporter::get_weird_sampling_duration`: :bro:type:`function`  Gets the current weird sampling duration.
 :bro:id:`Reporter::get_weird_sampling_rate`: :bro:type:`function`      Gets the current weird sampling rate.
@@ -84,19 +82,6 @@ Functions
    :Type: :bro:type:`function` (msg: :bro:type:`string`) : :bro:type:`bool`
 
    Generates a fatal error on stderr and terminates program execution.
-   
-
-   :msg: The error message to report.
-   
-
-   :returns: Always true.
-
-.. bro:id:: Reporter::fatal_error_with_core
-
-   :Type: :bro:type:`function` (msg: :bro:type:`string`) : :bro:type:`bool`
-
-   Generates a fatal error on stderr and terminates program execution
-   after dumping a core file
    
 
    :msg: The error message to report.
