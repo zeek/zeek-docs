@@ -119,7 +119,7 @@ Functions
 #########
 .. bro:id:: ProtocolDetector::found_protocol
 
-   :Type: :bro:type:`function` (c: :bro:type:`connection`, atype: :bro:type:`Analyzer::Tag`, protocol: :bro:type:`string`) : :bro:type:`void`
+   :Type: :bro:type:`function` (c: :bro:type:`connection`, analyzer: :bro:type:`Analyzer::Tag`, protocol: :bro:type:`string`) : :bro:type:`void`
 
 
 

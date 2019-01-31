@@ -447,7 +447,7 @@ Functions
 
 .. bro:id:: SumStats::observe
 
-   :Type: :bro:type:`function` (id: :bro:type:`string`, orig_key: :bro:type:`SumStats::Key`, obs: :bro:type:`SumStats::Observation`) : :bro:type:`void`
+   :Type: :bro:type:`function` (id: :bro:type:`string`, key: :bro:type:`SumStats::Key`, obs: :bro:type:`SumStats::Observation`) : :bro:type:`void`
 
    Add data into an observation stream. This should be
    called when a script has measured some point value.

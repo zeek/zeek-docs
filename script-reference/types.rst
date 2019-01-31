@@ -794,9 +794,9 @@ Here is a more detailed description of each type:
     .. sourcecode:: bro
 
         event my_event(r: bool, s: string)
-        {
+            {
             print "my_event", r, s;
-        }
+            }
 
     Instead of directly calling an event handler from a script, event
     handler bodies are executed when they are invoked by one of three
@@ -833,6 +833,26 @@ Here is a more detailed description of each type:
     Multiple event handler bodies can be defined for the same event handler
     identifier and the body of each will be executed in turn.  Ordering
     of execution can be influenced with :bro:attr:`&priority`.
+
+    Event handler parameter lists may be any subset of the first declaration's
+    full parameter list.  An empty list is even fine.  For example:
+
+    .. sourcecode:: bro
+
+        global my_event: event(r: bool, s: string);
+
+    One may use a handler like:
+
+    .. sourcecode:: bro
+
+        event my_event(s: string)
+            { print "my_event", s; }
+
+    Parameters match most strongly by name (so they may be re-reordered),
+    but handlers still also support custom parameter names that differ
+    from the original.  However, custom names require using a strict
+    parameter order:  the list must start from the first parameter in
+    the original declaration and then go up to however many are required.
 
 .. bro:type:: hook
 
@@ -914,6 +934,10 @@ Here is a more detailed description of each type:
     executed and ``F`` meaning that only some of the handlers may have
     executed due to one handler body exiting as a result of a ``break``
     statement.
+
+    Hook handler parameter lists may be any subset of the first declaration's
+    full parameter list and follow the same parameter matching/type-checking
+    rules as described for an :bro:type:`event`.
 
 .. bro:type:: file
 

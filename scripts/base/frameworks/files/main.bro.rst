@@ -466,7 +466,7 @@ Functions
 
 .. bro:id:: Files::register_for_mime_types
 
-   :Type: :bro:type:`function` (tag: :bro:type:`Files::Tag`, mime_types: :bro:type:`set` [:bro:type:`string`]) : :bro:type:`bool`
+   :Type: :bro:type:`function` (tag: :bro:type:`Files::Tag`, mts: :bro:type:`set` [:bro:type:`string`]) : :bro:type:`bool`
 
    Registers a set of MIME types for an analyzer. If a future connection on one of
    these types is seen, the analyzer will be automatically assigned to parsing it.

@@ -157,7 +157,7 @@ Functions
 
 .. bro:id:: Analyzer::name
 
-   :Type: :bro:type:`function` (atype: :bro:type:`Analyzer::Tag`) : :bro:type:`string`
+   :Type: :bro:type:`function` (tag: :bro:type:`Analyzer::Tag`) : :bro:type:`string`
 
    Translates an analyzer type to a string with the analyzer's name.
    

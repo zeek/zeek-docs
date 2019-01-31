@@ -27,6 +27,29 @@ New Functionality
   patch number.  For those that want to keep the unit test, simply adapt
   the unit test/baseline to include the new plugin patch number.
 
+- Added support for event/hook handlers to under-specify their parameter lists.
+
+  This allows users to pick the particular parameters they actually
+  want to use.  For example::
+
+        global my_event: event(a: count, b: string);
+
+  One can use a handler like::
+
+        event my_event(b: string)
+            { print "my_event", b; }
+
+  The parameter list for handlers may be any subset of the first
+  declaration's full parameter list (an empty list is even fine).
+
+  Parameters match most strongly by name (so they may be re-reordered),
+  but handlers still also support custom parameter names that differ
+  from the original.  However, custom names require using a strict
+  parameter order:  the list must start from the first parameter in
+  the original declaration and then go up to however many are required.
+
+  Type-checking still catches mistakes/ambiguities in handler parameters.
+
 Changed Functionality
 ---------------------
 
@@ -34,6 +57,12 @@ Changed Functionality
   'int' to 'count' type.  It's unlikely this would alter/break any
   script behavior unless they were explicitly inspecting the variable's
   type (and there's typically no reason to do that).
+
+- A warning is now emitted for ``&default`` attributes used on
+  function/event/hook parameters that are not part of the initial
+  declaration of that function.  That is, only the initial declaration's
+  use of ``&default`` parameters has any effect, so the warning helps users
+  detect potential ambiguities or mistakes.
 
 Removed Functionality
 ---------------------
