@@ -69,7 +69,6 @@ except:
         for tag in tags:
             if re.match('v\d+\.\d+(\.\d+)?', tag):
                 version = tag
-                break
 
     except:
         pass
