@@ -194,6 +194,7 @@ Here is a more detailed explanation of each attribute:
 
     Specifies a creation expiration timeout for container elements. That
     is, the element expires after the given amount of time since it has
+    been inserted into the container, regardless of any reads or writes.
 
 .. zeek:attr:: &on_change
 
