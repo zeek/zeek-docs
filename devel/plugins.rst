@@ -61,6 +61,14 @@ layout is described later. For now, all we need is
 there as follows::
 
     # cat src/rot13.bif
+    %%{
+    #include <cstring>
+    #include <cctype>
+    #include "util.h"
+    #include "BroString.h"
+    #include "Val.h"
+    %%}
+
     module Demo;
 
     function rot13%(s: string%) : string
