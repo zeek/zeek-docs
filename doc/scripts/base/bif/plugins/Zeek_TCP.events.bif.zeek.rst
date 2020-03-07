@@ -509,7 +509,7 @@ Events
 
    :flags: A string with the packet's TCP flags. In the string, each character
           corresponds to one set flag, as follows: ``S`` -> SYN; ``F`` -> FIN;
-          ``R`` -> RST; ``A`` -> ACK; ``P`` -> PUSH.
+          ``R`` -> RST; ``A`` -> ACK; ``P`` -> PUSH; ``U`` -> URGENT.
    
 
    :seq: The packet's relative TCP sequence number.

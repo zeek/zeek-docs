@@ -1037,8 +1037,9 @@ Events
    :tcp_flags: A string with the TCP flags of the packet triggering the
               inconsistency. In the string, each character corresponds to one
               set flag, as follows: ``S`` -> SYN; ``F`` -> FIN; ``R`` -> RST;
-              ``A`` -> ACK; ``P`` -> PUSH. This string will not always be set,
-              only if the information is available; it's "best effort".
+              ``A`` -> ACK; ``P`` -> PUSH; ``U`` -> URGENT. This string will
+              not always be set, only if the information is available; it's
+              "best effort".
    
    .. zeek:see:: tcp_rexmit tcp_contents
 
