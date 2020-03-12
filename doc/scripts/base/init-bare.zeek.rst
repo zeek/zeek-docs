@@ -660,6 +660,8 @@ Types
 :zeek:type:`script_id`: :zeek:type:`record`                                   Meta-information about a script-level identifier.
 :zeek:type:`signature_and_hashalgorithm_vec`: :zeek:type:`vector`             A vector of Signature and Hash Algorithms.
 :zeek:type:`signature_state`: :zeek:type:`record`                             Description of a signature match.
+:zeek:type:`string_any_file_hook`: :zeek:type:`hook`                          A hook taking a fa_file, an any, and a string.
+:zeek:type:`string_any_table`: :zeek:type:`table`                             A string-table of any.
 :zeek:type:`string_array`: :zeek:type:`table`                                 An ordered array of strings.
 :zeek:type:`string_set`: :zeek:type:`set`                                     A set of strings.
 :zeek:type:`string_vec`: :zeek:type:`vector`                                  A vector of strings.
@@ -9278,6 +9280,26 @@ Types
    Description of a signature match.
    
    .. zeek:see:: signature_match
+
+.. zeek:type:: string_any_file_hook
+
+   :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`, e: :zeek:type:`any`, str: :zeek:type:`string`) : :zeek:type:`bool`
+
+   A hook taking a fa_file, an any, and a string. Used by the X509 analyzer as callback.
+   
+   .. todo:: We need this type definition only for declaring builtin functions
+      via ``bifcl``. We should extend ``bifcl`` to understand composite types
+      directly and then remove this alias.
+
+.. zeek:type:: string_any_table
+
+   :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`any`
+
+   A string-table of any.
+   
+   .. todo:: We need this type definition only for declaring builtin functions
+      via ``bifcl``. We should extend ``bifcl`` to understand composite types
+      directly and then remove this alias.
 
 .. zeek:type:: string_array
 
