@@ -11,17 +11,20 @@ Summary
 ~~~~~~~
 Functions
 #########
-============================================================= =============================================================================
-:zeek:id:`sct_verify`: :zeek:type:`function`                  Verifies a Signed Certificate Timestamp as used for Certificate Transparency.
-:zeek:id:`x509_from_der`: :zeek:type:`function`               Constructs an opaque of X509 from a der-formatted string.
-:zeek:id:`x509_get_certificate_string`: :zeek:type:`function` Returns the string form of a certificate.
-:zeek:id:`x509_issuer_name_hash`: :zeek:type:`function`       Get the hash of the issuer's distinguished name.
-:zeek:id:`x509_ocsp_verify`: :zeek:type:`function`            Verifies an OCSP reply.
-:zeek:id:`x509_parse`: :zeek:type:`function`                  Parses a certificate into an X509::Certificate structure.
-:zeek:id:`x509_spki_hash`: :zeek:type:`function`              Get the hash of the Subject Public Key Information of the certificate.
-:zeek:id:`x509_subject_name_hash`: :zeek:type:`function`      Get the hash of the subject's distinguished name.
-:zeek:id:`x509_verify`: :zeek:type:`function`                 Verifies a certificate.
-============================================================= =============================================================================
+========================================================================= ================================================================================================
+:zeek:id:`sct_verify`: :zeek:type:`function`                              Verifies a Signed Certificate Timestamp as used for Certificate Transparency.
+:zeek:id:`x509_from_der`: :zeek:type:`function`                           Constructs an opaque of X509 from a der-formatted string.
+:zeek:id:`x509_get_certificate_string`: :zeek:type:`function`             Returns the string form of a certificate.
+:zeek:id:`x509_issuer_name_hash`: :zeek:type:`function`                   Get the hash of the issuer's distinguished name.
+:zeek:id:`x509_ocsp_verify`: :zeek:type:`function`                        Verifies an OCSP reply.
+:zeek:id:`x509_parse`: :zeek:type:`function`                              Parses a certificate into an X509::Certificate structure.
+:zeek:id:`x509_set_certificate_cache`: :zeek:type:`function`              This function can be used to set up certificate caching.
+:zeek:id:`x509_set_certificate_cache_hit_callback`: :zeek:type:`function` This function sets up the callback that is called when an entry is matched against the table set
+                                                                          by :zeek:id:`x509_set_certificate_cache`.
+:zeek:id:`x509_spki_hash`: :zeek:type:`function`                          Get the hash of the Subject Public Key Information of the certificate.
+:zeek:id:`x509_subject_name_hash`: :zeek:type:`function`                  Get the hash of the subject's distinguished name.
+:zeek:id:`x509_verify`: :zeek:type:`function`                             Verifies a certificate.
+========================================================================= ================================================================================================
 
 
 Detailed Interface
@@ -156,6 +159,48 @@ Functions
    .. zeek:see:: x509_certificate x509_extension x509_ext_basic_constraints
                 x509_ext_subject_alternative_name x509_verify
                 x509_get_certificate_string
+
+.. zeek:id:: x509_set_certificate_cache
+
+   :Type: :zeek:type:`function` (tbl: :zeek:type:`string_any_table`) : :zeek:type:`bool`
+
+   This function can be used to set up certificate caching. It has to be passed a table[string] which
+   can contain any type.
+   
+   After this is set up, for each certificate encountered, the X509 analyzer will check if the entry
+   tbl[sha256 of certificate] is set. If this is the case, the X509 analyzer will skip all further
+   processing, and instead just call the callback that is set with
+
+   :zeek:id:`x509_set_certificate_cache_hit_callback`.
+   
+
+   :tbl: Table to use as the certificate cache.
+   
+
+   :returns: Always returns true.
+   
+   .. note:: The base scripts use this function to set up certificate caching. You should only change the
+             cache table if you are sure you will not conflict with the base scripts.
+   
+   .. zeek:see:: x509_set_certificate_cache_hit_callback
+
+.. zeek:id:: x509_set_certificate_cache_hit_callback
+
+   :Type: :zeek:type:`function` (f: :zeek:type:`string_any_file_hook`) : :zeek:type:`bool`
+
+   This function sets up the callback that is called when an entry is matched against the table set
+   by :zeek:id:`x509_set_certificate_cache`.
+   
+
+   :f: The callback that will be called when encountering a certificate in the cache table.
+   
+
+   :returns: Always returns true.
+   
+   .. note:: The base scripts use this function to set up certificate caching. You should only change the
+             callback function if you are sure you will not conflict with the base scripts.
+   
+   .. zeek:see:: x509_set_certificate_cache
 
 .. zeek:id:: x509_spki_hash
 
