@@ -101,7 +101,7 @@ State Variables
             duration=0 secs
             client_chaddr=<uninitialized>
             last_message_ts=<uninitialized>
-            msg_orig=<uninitialized>
+            msg_orig=[]
             client_software=<uninitialized>
             server_software=<uninitialized>
             circuit_id=<uninitialized>
