@@ -9450,8 +9450,11 @@ Types
       dl: :zeek:type:`count`
          data length (xxx: not in original tcphdr!)
 
+      reserved: :zeek:type:`count`
+         The "reserved" 4 bits after the "data offset" field.
+
       flags: :zeek:type:`count`
-         flags
+         The 8 bits of flags after the "reserved" field.
 
       win: :zeek:type:`count`
          window
