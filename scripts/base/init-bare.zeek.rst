@@ -1416,7 +1416,7 @@ Redefinable Options
 
       ``+=``::
 
-         RDP::ports
+         RDP::rdp_ports, RDP::rdpeudp_ports
 
    :Redefinition: from :doc:`/scripts/base/protocols/sip/main.zeek`
 

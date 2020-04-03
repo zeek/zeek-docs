@@ -11,7 +11,7 @@ Summary
 ~~~~~~~
 Events
 ######
-============================================================= ============================================================
+============================================================= =================================================================================
 :zeek:id:`rdp_begin_encryption`: :zeek:type:`event`           Generated when an RDP session becomes encrypted.
 :zeek:id:`rdp_client_cluster_data`: :zeek:type:`event`        Generated for client cluster data packets.
 :zeek:id:`rdp_client_core_data`: :zeek:type:`event`           Generated for MCS client requests.
@@ -24,7 +24,11 @@ Events
 :zeek:id:`rdp_negotiation_response`: :zeek:type:`event`       Generated for RDP Negotiation Response messages.
 :zeek:id:`rdp_server_certificate`: :zeek:type:`event`         Generated for a server certificate section.
 :zeek:id:`rdp_server_security`: :zeek:type:`event`            Generated for MCS server responses.
-============================================================= ============================================================
+:zeek:id:`rdpeudp_data`: :zeek:type:`event`                   Generated when for data messages exchanged after a RDPEUDP connection establishes
+:zeek:id:`rdpeudp_established`: :zeek:type:`event`            Generated when RDPEUDP connections are established (both sides SYN)
+:zeek:id:`rdpeudp_syn`: :zeek:type:`event`                    Generated for RDPEUDP SYN UDP Datagram
+:zeek:id:`rdpeudp_synack`: :zeek:type:`event`                 Generated for RDPEUDP SYNACK UDP Datagram
+============================================================= =================================================================================
 
 
 Detailed Interface
@@ -185,5 +189,53 @@ Events
    
 
    :encryption_level: The 32-bit integer representing the encryption level used in the connection.
+
+.. zeek:id:: rdpeudp_data
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, data: :zeek:type:`string`)
+
+   Generated when for data messages exchanged after a RDPEUDP connection establishes
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
+   
+
+   :is_orig: Whether the data was sent by the originator or responder of the connection.
+   
+
+   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+   
+
+   :data: The payload of the packet. This is probably very non-performant.
+
+.. zeek:id:: rdpeudp_established
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`)
+
+   Generated when RDPEUDP connections are established (both sides SYN)
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
+   
+
+   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+
+.. zeek:id:: rdpeudp_syn
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated for RDPEUDP SYN UDP Datagram
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
+
+.. zeek:id:: rdpeudp_synack
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated for RDPEUDP SYNACK UDP Datagram
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
 
 
