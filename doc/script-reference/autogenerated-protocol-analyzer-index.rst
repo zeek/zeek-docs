@@ -97,6 +97,8 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_RDP Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_RDPEUDP Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_RFB Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_CONTENTS_NFS Analyzer::Tag
@@ -8507,6 +8509,8 @@ Components
 
 :zeek:enum:`Analyzer::ANALYZER_RDP`
 
+:zeek:enum:`Analyzer::ANALYZER_RDPEUDP`
+
 Types
 +++++
 
@@ -8684,6 +8688,54 @@ Types
 
 Events
 ++++++
+
+.. zeek:id:: rdpeudp_syn
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated for RDPEUDP SYN UDP Datagram
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
+
+.. zeek:id:: rdpeudp_synack
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated for RDPEUDP SYNACK UDP Datagram
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
+
+.. zeek:id:: rdpeudp_established
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`)
+
+   Generated when RDPEUDP connections are established (both sides SYN)
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
+   
+
+   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+
+.. zeek:id:: rdpeudp_data
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, data: :zeek:type:`string`)
+
+   Generated when for data messages exchanged after a RDPEUDP connection establishes
+   
+
+   :c: The connection record for the underlying transport-layer session/flow.
+   
+
+   :is_orig: Whether the data was sent by the originator or responder of the connection.
+   
+
+   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+   
+
+   :data: The payload of the packet. This is probably very non-performant.
 
 .. zeek:id:: rdp_native_encrypted_data
 
