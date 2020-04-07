@@ -42,20 +42,27 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-=================================================================================== ======================================================================
-:zeek:id:`MQTT::max_payload_size`: :zeek:type:`count` :zeek:attr:`&redef`           The maximum payload size to allocate for the purpose of
-                                                                                    payload information in :zeek:see:`mqtt_publish` events (and the
-                                                                                    default MQTT logs generated from that).
-:zeek:id:`Weird::sampling_duration`: :zeek:type:`interval` :zeek:attr:`&redef`      How long a weird of a given type is allowed to keep state/counters in
-                                                                                    memory.
-:zeek:id:`Weird::sampling_rate`: :zeek:type:`count` :zeek:attr:`&redef`             The rate-limiting sampling rate.
-:zeek:id:`Weird::sampling_threshold`: :zeek:type:`count` :zeek:attr:`&redef`        How many weirds of a given type to tolerate before sampling begins.
-:zeek:id:`Weird::sampling_whitelist`: :zeek:type:`set` :zeek:attr:`&redef`          Prevents rate-limiting sampling of any weirds named in the table.
-:zeek:id:`default_file_bof_buffer_size`: :zeek:type:`count` :zeek:attr:`&redef`     Default amount of bytes that file analysis will buffer in order to use
-                                                                                    for mime type matching.
-:zeek:id:`default_file_timeout_interval`: :zeek:type:`interval` :zeek:attr:`&redef` Default amount of time a file can be inactive before the file analysis
-                                                                                    gives up and discards any internal state related to the file.
-=================================================================================== ======================================================================
+===================================================================================== ======================================================================
+:zeek:id:`MQTT::max_payload_size`: :zeek:type:`count` :zeek:attr:`&redef`             The maximum payload size to allocate for the purpose of
+                                                                                      payload information in :zeek:see:`mqtt_publish` events (and the
+                                                                                      default MQTT logs generated from that).
+:zeek:id:`Weird::sampling_duration`: :zeek:type:`interval` :zeek:attr:`&redef`        How long a weird of a given type is allowed to keep state/counters in
+                                                                                      memory.
+:zeek:id:`Weird::sampling_rate`: :zeek:type:`count` :zeek:attr:`&redef`               The rate-limiting sampling rate.
+:zeek:id:`Weird::sampling_threshold`: :zeek:type:`count` :zeek:attr:`&redef`          How many weirds of a given type to tolerate before sampling begins.
+:zeek:id:`Weird::sampling_whitelist`: :zeek:type:`set` :zeek:attr:`&redef`            Prevents rate-limiting sampling of any weirds named in the table.
+:zeek:id:`default_file_bof_buffer_size`: :zeek:type:`count` :zeek:attr:`&redef`       Default amount of bytes that file analysis will buffer in order to use
+                                                                                      for mime type matching.
+:zeek:id:`default_file_timeout_interval`: :zeek:type:`interval` :zeek:attr:`&redef`   Default amount of time a file can be inactive before the file analysis
+                                                                                      gives up and discards any internal state related to the file.
+:zeek:id:`udp_content_delivery_ports_use_resp`: :zeek:type:`bool` :zeek:attr:`&redef` Whether ports given in :zeek:see:`udp_content_delivery_ports_orig`
+                                                                                      and :zeek:see:`udp_content_delivery_ports_resp` are in terms of
+                                                                                      UDP packet's destination port or the UDP connection's "responder"
+                                                                                      port.
+:zeek:id:`udp_content_ports`: :zeek:type:`set` :zeek:attr:`&redef`                    Defines UDP ports (source or destination) for which the contents of
+                                                                                      either originator or responder streams should be delivered via
+                                                                                      :zeek:see:`udp_contents`.
+===================================================================================== ======================================================================
 
 Redefinable Options
 ###################
@@ -780,6 +787,33 @@ Runtime Options
 
    Default amount of time a file can be inactive before the file analysis
    gives up and discards any internal state related to the file.
+
+.. zeek:id:: udp_content_delivery_ports_use_resp
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+   Whether ports given in :zeek:see:`udp_content_delivery_ports_orig`
+   and :zeek:see:`udp_content_delivery_ports_resp` are in terms of
+   UDP packet's destination port or the UDP connection's "responder"
+   port.
+
+.. zeek:id:: udp_content_ports
+
+   :Type: :zeek:type:`set` [:zeek:type:`port`]
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``{}``
+
+   Defines UDP ports (source or destination) for which the contents of
+   either originator or responder streams should be delivered via
+   :zeek:see:`udp_contents`.
+   
+   .. zeek:see:: tcp_content_delivery_ports_orig
+      tcp_content_delivery_ports_resp tcp_content_deliver_all_orig
+      tcp_content_deliver_all_resp udp_content_delivery_ports_orig
+      udp_content_deliver_all_orig udp_content_deliver_all_resp udp_contents
+      udp_content_delivery_ports_use_resp udp_content_delivery_ports_resp
 
 Redefinable Options
 ###################
@@ -1981,6 +2015,7 @@ Redefinable Options
       tcp_content_delivery_ports_orig udp_content_delivery_ports_orig
       udp_content_delivery_ports_resp  udp_content_deliver_all_resp
       udp_contents
+      udp_content_delivery_ports_use_resp
 
 .. zeek:id:: udp_content_deliver_all_resp
 
@@ -1996,6 +2031,7 @@ Redefinable Options
       tcp_content_delivery_ports_orig udp_content_delivery_ports_orig
       udp_content_delivery_ports_resp  udp_content_deliver_all_orig
       udp_contents
+      udp_content_delivery_ports_use_resp
 
 .. zeek:id:: udp_content_delivery_ports_orig
 
@@ -2011,6 +2047,7 @@ Redefinable Options
       tcp_content_deliver_all_orig tcp_content_deliver_all_resp
       udp_content_delivery_ports_resp  udp_content_deliver_all_orig
       udp_content_deliver_all_resp  udp_contents
+      udp_content_delivery_ports_use_resp udp_content_ports
 
 .. zeek:id:: udp_content_delivery_ports_resp
 
@@ -2025,6 +2062,7 @@ Redefinable Options
       tcp_content_delivery_ports_resp tcp_content_deliver_all_orig
       tcp_content_deliver_all_resp udp_content_delivery_ports_orig
       udp_content_deliver_all_orig udp_content_deliver_all_resp udp_contents
+      udp_content_delivery_ports_use_resp udp_content_ports
 
 .. zeek:id:: udp_inactivity_timeout
 
