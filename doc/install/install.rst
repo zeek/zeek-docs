@@ -4,7 +4,7 @@
 .. _MacPorts: http://www.macports.org
 .. _Fink: http://www.finkproject.org
 .. _Homebrew: http://brew.sh
-.. _downloads page: https://www.zeek.org/download/index.html
+.. _downloads page: https://zeek.org/get-zeek
 .. _devtoolset: https://developers.redhat.com/products/developertoolset/hello-world
 
 .. _installing-zeek:
