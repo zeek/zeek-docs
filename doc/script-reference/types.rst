@@ -904,11 +904,11 @@ Here is a more detailed description of each type:
     of execution can be influenced with :zeek:attr:`&priority`.
 
     Multiple alternate event prototype declarations are allowed, but the
-    alternates must be some subset of the canonical prototype (the one
-    that's first declared).  This allows users to define handlers for any
-    such prototype they may find convenient or for the core set of handlers
-    to be extended, changed, or deprecated without breaking existing handlers
-    a user may have written.  Example:
+    alternates must be some subset of the first, canonical prototype and
+    arguments must match by name and type.  This allows users to define
+    handlers for any such prototype they may find convenient or for the core
+    set of handlers to be extended, changed, or deprecated without breaking
+    existing handlers a user may have written.  Example:
 
     .. sourcecode:: zeek
 
@@ -934,8 +934,12 @@ Here is a more detailed description of each type:
             }
 
     By using alternate event prototypes, handlers are allowed to consume a
-    subset of the full argument list (given by the first declaration) or even
-    re-order them.
+    subset of the full argument list as given by the first prototype
+    declaration.  It also even allows arguments to be ordered differently
+    from the canonical prototype.
+
+    To use :zeek:attr:`&default` on event arguments, it must appear on the
+    first, canonical prototype.
 
 .. zeek:type:: hook
 
