@@ -863,9 +863,9 @@ Here is a more detailed description of each type:
     .. sourcecode:: zeek
 
         event my_event(r: bool, s: string)
-        {
+            {
             print "my_event", r, s;
-        }
+            }
 
     Instead of directly calling an event handler from a script, event
     handler bodies are executed when they are invoked by one of three
@@ -902,6 +902,44 @@ Here is a more detailed description of each type:
     Multiple event handler bodies can be defined for the same event handler
     identifier and the body of each will be executed in turn.  Ordering
     of execution can be influenced with :zeek:attr:`&priority`.
+
+    Multiple alternate event prototype declarations are allowed, but the
+    alternates must be some subset of the first, canonical prototype and
+    arguments must match by name and type.  This allows users to define
+    handlers for any such prototype they may find convenient or for the core
+    set of handlers to be extended, changed, or deprecated without breaking
+    existing handlers a user may have written.  Example:
+
+    .. sourcecode:: zeek
+
+        # Event Prototype Declarations
+        global my_event: event(s: string, c: count);
+        global my_event: event(c: count);
+        global my_event: event();
+
+        # Event Handler Definitions
+        event my_event(s: string, c: count)
+            {
+            print "my event", s, c;
+            }
+
+        event my_event(c: count)
+            {
+            print "my event", c;
+            }
+
+        event my_event()
+            {
+            print "my event";
+            }
+
+    By using alternate event prototypes, handlers are allowed to consume a
+    subset of the full argument list as given by the first prototype
+    declaration.  It also even allows arguments to be ordered differently
+    from the canonical prototype.
+
+    To use :zeek:attr:`&default` on event arguments, it must appear on the
+    first, canonical prototype.
 
 .. zeek:type:: hook
 
@@ -983,6 +1021,9 @@ Here is a more detailed description of each type:
     executed and ``F`` meaning that only some of the handlers may have
     executed due to one handler body exiting as a result of a ``break``
     statement.
+
+    Hooks are also allowed to have multple/alternate prototype declarations,
+    just like an :zeek:see:`event`.
 
 .. zeek:type:: file
 
