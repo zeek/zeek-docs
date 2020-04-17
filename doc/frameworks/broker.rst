@@ -500,7 +500,7 @@ connected to all workers.  The manager or a proxy satisfies that requirement:
     @if ( Cluster::local_node_type() == Cluster::MANAGER ||
           Cluster::local_node_type() == Cluster::PROXY )
             Broker::publish(Cluster::worker_topic, worker_to_workers,
-                            worker_name)
+                            worker_name);
     @else
             print "got event from worker", worker_name;
     @endif
