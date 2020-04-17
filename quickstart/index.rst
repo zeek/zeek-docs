@@ -27,6 +27,11 @@ ZeekControl, see the `ZeekControl documentation`_.
 For instructions on how to configure a Zeek cluster,
 see the :doc:`Cluster Configuration <../configuration/index>` documentation.
 
+.. note:: Using the standalone / single process mode of Zeek is not
+          suitable for setups with significant amounts of traffic. In
+          these cases one will almost certainly want to make use of a
+          Zeek cluster.
+
 A Minimal Starting Configuration
 --------------------------------
 
