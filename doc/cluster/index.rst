@@ -126,7 +126,7 @@ same interface.  This allows you to easily take advantage of multiple
 cores in a single physical host because Zeek's main event loop is single
 threaded and can't natively utilize all of the cores.  If you want to use
 PF_RING, see the documentation on `how to configure Zeek with PF_RING
-<https://www.zeek.org/documentation/load-balancing.html>`_.
+<https://docs.zeek.org/en/master/configuration/index.html#pf-ring-cluster-configuration>`_.
 
 Netmap
 ^^^^^^
