@@ -14906,7 +14906,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_state_remove connection_status_update connection_timeout
@@ -14926,7 +14926,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_established
-      connection_external connection_finished connection_first_ACK
+      connection_finished connection_first_ACK
       connection_half_finished connection_partial_close connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -14949,7 +14949,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_external connection_finished connection_first_ACK
+      connection_finished connection_first_ACK
       connection_half_finished connection_partial_close connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -14969,7 +14969,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_state_remove connection_status_update connection_timeout
@@ -14990,7 +14990,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -15007,7 +15007,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_first_ACK
+      connection_established connection_first_ACK
       connection_half_finished connection_partial_close connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -15025,7 +15025,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK  connection_partial_close connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -15043,7 +15043,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending  connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -15068,7 +15068,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected  connection_reused
       connection_state_remove connection_status_update connection_timeout
@@ -15085,7 +15085,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -15105,7 +15105,7 @@ Events
    :pkt: Information extracted from the SYN packet.
    
    .. zeek:see:: connection_EOF  connection_attempt connection_established
-      connection_external connection_finished connection_first_ACK
+      connection_finished connection_first_ACK
       connection_half_finished connection_partial_close connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -15130,7 +15130,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_half_finished connection_partial_close connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -15155,7 +15155,7 @@ Events
    :is_orig: True if the event is raised for the originator side.
    
    .. zeek:see::  connection_SYN_packet connection_attempt connection_established
-      connection_external connection_finished connection_first_ACK
+      connection_finished connection_first_ACK
       connection_half_finished connection_partial_close connection_pending
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
