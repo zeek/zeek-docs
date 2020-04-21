@@ -23,7 +23,6 @@ Events
 :zeek:id:`conn_stats`: :zeek:type:`event`                                   Generated when a TCP connection terminated, passing on statistics about the
                                                                             two endpoints.
 :zeek:id:`conn_weird`: :zeek:type:`event`                                   Generated for unexpected activity related to a specific connection.
-:zeek:id:`connection_external`: :zeek:type:`event`                          Generated for a new connection received from the communication subsystem.
 :zeek:id:`connection_flow_label_changed`: :zeek:type:`event`                Generated for a connection over IPv6 when one direction has changed
                                                                             the flow label that it's using.
 :zeek:id:`connection_reused`: :zeek:type:`event`                            Generated when a connection 4-tuple is reused.
@@ -163,21 +162,6 @@ Events
       violation could be an attack attempt, it's much more likely that an
       endpoint's implementation interprets an RFC quite liberally.
 
-.. zeek:id:: connection_external
-
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, tag: :zeek:type:`string`)
-
-   Generated for a new connection received from the communication subsystem.
-   Remote peers can inject packets into Zeek's packet loop, for example via
-   Broccoli.  The communication system
-   raises this event with the first packet of a connection coming in this way.
-   
-
-   :c: The connection.
-   
-
-   :tag: TODO.
-
 .. zeek:id:: connection_flow_label_changed
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, old_label: :zeek:type:`count`, new_label: :zeek:type:`count`)
@@ -211,7 +195,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -232,7 +216,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -252,7 +236,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_state_remove  connection_timeout scheduled_analyzer_applied
@@ -275,7 +259,7 @@ Events
    :c: The new connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_status_update connection_timeout scheduled_analyzer_applied
@@ -296,7 +280,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_state_remove connection_status_update
@@ -745,7 +729,7 @@ Events
    :c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_state_remove connection_status_update connection_timeout
@@ -1063,7 +1047,7 @@ Events
       ``count`` is one of the ``ANALYZER_*`` constants, e.g., ``ANALYZER_HTTP``.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_state_remove connection_status_update connection_timeout
@@ -1112,7 +1096,7 @@ Events
    :c: The connection being removed
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
-      connection_established connection_external connection_finished
+      connection_established connection_finished
       connection_first_ACK connection_half_finished connection_partial_close
       connection_pending connection_rejected connection_reset connection_reused
       connection_status_update connection_timeout scheduled_analyzer_applied
