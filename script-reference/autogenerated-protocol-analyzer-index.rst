@@ -3161,6 +3161,7 @@ Events
 
 .. zeek:id:: http_header
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, original_name: :zeek:type:`string`, name: :zeek:type:`string`, value: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, name: :zeek:type:`string`, value: :zeek:type:`string`)
 
    Generated for HTTP headers. Zeek supports persistent and pipelined HTTP
@@ -3177,7 +3178,10 @@ Events
    :is_orig: True if the header was sent by the originator of the TCP connection.
    
 
-   :name: The name of the header.
+   :original_name: The name of the header (unaltered).
+   
+
+   :name: The name of the header (converted to all uppercase).
    
 
    :value: The value of the header.

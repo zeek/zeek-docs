@@ -9003,8 +9003,11 @@ Types
 
    :Type: :zeek:type:`record`
 
+      original_name: :zeek:type:`string`
+         The header name (unaltered).
+
       name: :zeek:type:`string`
-         The header name.
+         The header name (converted to all upper-case).
 
       value: :zeek:type:`string`
          The header value.
