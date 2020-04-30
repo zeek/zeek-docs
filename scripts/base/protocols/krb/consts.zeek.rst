@@ -11,10 +11,10 @@ Summary
 ~~~~~~~
 Constants
 #########
-=============================================== =
-:zeek:id:`KRB::cipher_name`: :zeek:type:`table` 
-:zeek:id:`KRB::error_msg`: :zeek:type:`table`   
-=============================================== =
+============================================================================================= =
+:zeek:id:`KRB::cipher_name`: :zeek:type:`table` :zeek:attr:`&default` = :zeek:type:`function` 
+:zeek:id:`KRB::error_msg`: :zeek:type:`table` :zeek:attr:`&default` = :zeek:type:`function`   
+============================================================================================= =
 
 
 Detailed Interface
@@ -24,6 +24,7 @@ Constants
 .. zeek:id:: KRB::cipher_name
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
+   :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
    :Default:
 
       ::
@@ -56,6 +57,7 @@ Constants
 .. zeek:id:: KRB::error_msg
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
+   :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
    :Default:
 
       ::
