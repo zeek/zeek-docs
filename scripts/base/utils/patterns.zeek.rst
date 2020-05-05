@@ -23,7 +23,7 @@ Functions
                                                 a :zeek:type:`PatternMatchResult` record.
 :zeek:id:`set_to_regex`: :zeek:type:`function`  Given a pattern as a string with two tildes (~~) contained in it, it will
                                                 return a pattern with string set's elements OR'd together where the
-                                                double-tilde was given (this function only works at or before init time).
+                                                double-tilde was given.
 =============================================== =========================================================================
 
 
@@ -73,7 +73,7 @@ Functions
 
    Given a pattern as a string with two tildes (~~) contained in it, it will
    return a pattern with string set's elements OR'd together where the
-   double-tilde was given (this function only works at or before init time).
+   double-tilde was given.
    
 
    :ss: a set of strings to OR together.
