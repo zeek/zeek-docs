@@ -549,7 +549,7 @@ Redefinable Options
             ["e1af8308-5d1f-11c9-91a4-08002b14a0fa", 2] = "ept_lookup",
             ["82273fdc-e32a-18c3-3f78-827929dc23ea", 21] = "ElfrWriteClusterEvents",
             ["8d9f4e40-a03d-11ce-8f69-08003e30051b", 74] = "PNP_DeleteServiceDevices",
-            ["12345678-1234-abcd-ef00-01234567cffb", 45] = "NetrLogonSameLogonWithFlags",
+            ["12345678-1234-abcd-ef00-01234567cffb", 45] = "NetrLogonSamLogonWithFlags",
             ["82273fdc-e32a-18c3-3f78-827929dc23ea", 19] = "ElfrRegisterClusterSvc",
             ["86d35949-83c9-4044-b424-db363231fd0c", 12] = "SchRpcRun",
             ["e3514235-4b06-11d1-ab04-00c04fc2dcd2", 1] = "DRSUnbind",
