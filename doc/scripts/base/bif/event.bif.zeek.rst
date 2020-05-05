@@ -68,6 +68,7 @@ Events
 :zeek:id:`mobile_ipv6_message`: :zeek:type:`event`                          Generated for any packet using a Mobile IPv6 Mobility Header.
 :zeek:id:`net_weird`: :zeek:type:`event`                                    Generated for unexpected activity that is not tied to a specific connection
                                                                             or pair of hosts.
+:zeek:id:`network_time_init`: :zeek:type:`event`                            Generated when network time is initialized.
 :zeek:id:`new_connection`: :zeek:type:`event`                               Generated for every new connection.
 :zeek:id:`new_event`: :zeek:type:`event`                                    A meta event generated for events that Zeek raises.
 :zeek:id:`new_packet`: :zeek:type:`event`                                   Generated for all packets that make it into Zeek's connection processing.
@@ -716,6 +717,17 @@ Events
       violation could be an attack attempt, it's much more likely that an
       endpoint's implementation interprets an RFC quite liberally.
 
+.. zeek:id:: network_time_init
+
+   :Type: :zeek:type:`event` ()
+
+   Generated when network time is initialized. The event engine generates this
+   event after the network time has been determined but before processing of
+   packets is started.
+   
+   .. zeek:see:: zeek_init network_time
+   
+
 .. zeek:id:: new_connection
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
@@ -1162,7 +1174,7 @@ Events
    one-time initialization code at startup. At the time a handler runs, Zeek will
    have executed any global initializations and statements.
    
-   .. zeek:see:: zeek_done
+   .. zeek:see:: zeek_done network_time_init
    
    .. note::
    
