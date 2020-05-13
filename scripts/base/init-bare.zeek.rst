@@ -123,6 +123,7 @@ Redefinable Options
 :zeek:id:`cmd_line_bpf_filter`: :zeek:type:`string` :zeek:attr:`&redef`                    BPF filter the user has set via the -f command line options.
 :zeek:id:`detect_filtered_trace`: :zeek:type:`bool` :zeek:attr:`&redef`                    Whether to attempt to automatically detect SYN/FIN/RST-filtered trace
                                                                                            and not report missing segments for such connections.
+:zeek:id:`digest_salt`: :zeek:type:`string` :zeek:attr:`&redef`                            This salt value is used for several message digests in Zeek.
 :zeek:id:`dns_session_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                  Time to wait before timing out a DNS request.
 :zeek:id:`dpd_buffer_size`: :zeek:type:`count` :zeek:attr:`&redef`                         Size of per-connection buffer used for dynamic protocol detection.
 :zeek:id:`dpd_ignore_ports`: :zeek:type:`bool` :zeek:attr:`&redef`                         If true, don't consider any ports for deciding which protocol analyzer to
@@ -1158,6 +1159,19 @@ Redefinable Options
    and not report missing segments for such connections.
    If this is enabled, then missing data at the end of connections may not
    be reported via :zeek:see:`content_gap`.
+
+.. zeek:id:: digest_salt
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``"Please change this value."``
+
+   This salt value is used for several message digests in Zeek. We
+   use a salt to help mitigate the possibility of an attacker
+   manipulating source data to, e.g., mount complexity attacks or
+   cause ID collisions.
+   This salt is, for example, used by :zeek:see:`get_file_handle`
+   to generate installation-unique file IDs (the *id* field of :zeek:see:`fa_file`).
 
 .. zeek:id:: dns_session_timeout
 
