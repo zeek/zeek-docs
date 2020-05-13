@@ -42,10 +42,13 @@ Redefinable Options
 
       ::
 
-         /^?(^([a-zA-Z\-]{3,5})(:\/\/[^\/?#"'\r\n><]*)([^?#"'\r\n><]*)([^[:blank:]\r\n"'><]*|\??[^"'\r\n><]*))$?/
+         /^?(^([a-zA-Z\-]{3,5}):\/\/(-\.)?([^[:blank:]\/?\.#-]+\.?)+(\/[^[:blank:]]*)?)$?/
 
 
    A regular expression for matching and extracting URLs.
+   This is the @imme_emosol regex from https://mathiasbynens.be/demo/url-regex, adapted for Zeek. It's
+   not perfect for all of their test cases, but it's one of the shorter ones that covers most of the
+   test cases.
 
 Types
 #####
