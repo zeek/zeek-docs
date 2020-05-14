@@ -37,6 +37,8 @@ Events
                                                                             the past.
 :zeek:id:`dns_mapping_lost_name`: :zeek:type:`event`                        Generated when an internal DNS lookup returned zero answers even though it
                                                                             had succeeded in the past.
+:zeek:id:`dns_mapping_name_changed`: :zeek:type:`event`                     Generated when an internal DNS lookup returns a different host name than
+                                                                            in the past.
 :zeek:id:`dns_mapping_new_name`: :zeek:type:`event`                         Generated when an internal DNS lookup succeeded but an earlier attempt
                                                                             did not.
 :zeek:id:`dns_mapping_unverified`: :zeek:type:`event`                       Generated when an internal DNS lookup got no answer even though it had
@@ -66,6 +68,8 @@ Events
 :zeek:id:`ipv6_ext_headers`: :zeek:type:`event`                             Generated for every IPv6 packet that contains extension headers.
 :zeek:id:`load_sample`: :zeek:type:`event`                                  Generated regularly for the purpose of profiling Zeek's processing.
 :zeek:id:`mobile_ipv6_message`: :zeek:type:`event`                          Generated for any packet using a Mobile IPv6 Mobility Header.
+:zeek:id:`net_done`: :zeek:type:`event`                                     Generated as one of the first steps of Zeek's main-loop termination, just
+                                                                            before it starts to flush any remaining events/timers/state.
 :zeek:id:`net_weird`: :zeek:type:`event`                                    Generated for unexpected activity that is not tied to a specific connection
                                                                             or pair of hosts.
 :zeek:id:`network_time_init`: :zeek:type:`event`                            Generated when network time is initialized.
@@ -361,6 +365,24 @@ Events
    
 
    :dm: A record describing the old resolver result.
+   
+   .. zeek:see:: dns_mapping_altered dns_mapping_new_name dns_mapping_unverified
+      dns_mapping_valid
+
+.. zeek:id:: dns_mapping_name_changed
+
+   :Type: :zeek:type:`event` (prev: :zeek:type:`dns_mapping`, latest: :zeek:type:`dns_mapping`)
+
+   Generated when an internal DNS lookup returns a different host name than
+   in the past.  Zeek keeps an internal DNS cache for host names
+   and IP addresses it has already resolved. This event is generated when
+   on a subsequent lookup we receive an answer that has a different host
+   string than we already have in the cache.
+   
+
+   :prev: A record describing the old resolver result.
+
+   :latest: A record describing the new resolver result.
    
    .. zeek:see:: dns_mapping_altered dns_mapping_new_name dns_mapping_unverified
       dns_mapping_valid
@@ -691,6 +713,28 @@ Events
    :p: Information from the header of the packet that triggered the event.
    
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
+
+.. zeek:id:: net_done
+
+   :Type: :zeek:type:`event` (t: :zeek:type:`time`)
+
+   Generated as one of the first steps of Zeek's main-loop termination, just
+   before it starts to flush any remaining events/timers/state. The event
+   engine generates this event when Zeek is about to terminate, either due to
+   having exhausted reading its input trace file(s), receiving a termination
+   signal, or because Zeek was run without a network input source and has
+   finished executing any global statements.  This event comes before
+   :zeek:see:`zeek_init`.
+   
+
+   :t: The time at with the Zeek-termination process started.
+   
+   .. zeek:see:: zeek_init zeek_done
+   
+   .. note::
+   
+      If Zeek terminates due to an invocation of :zeek:id:`exit`, then this event
+      is not generated.
 
 .. zeek:id:: net_weird
 
