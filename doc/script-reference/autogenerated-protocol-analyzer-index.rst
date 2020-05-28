@@ -8758,6 +8758,7 @@ Events
 
 .. zeek:id:: rdp_connect_request
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cookie: :zeek:type:`string`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cookie: :zeek:type:`string`)
 
    Generated for X.224 client requests.
@@ -8767,9 +8768,13 @@ Events
    
 
    :cookie: The cookie included in the request.
+   
+
+   :flags: The flags set by the client.
 
 .. zeek:id:: rdp_negotiation_response
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`)
 
    Generated for RDP Negotiation Response messages.
@@ -8779,9 +8784,13 @@ Events
    
 
    :security_protocol: The security protocol selected by the server.
+   
+
+   :flags: The flags set by the server.
 
 .. zeek:id:: rdp_negotiation_failure
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, failure_code: :zeek:type:`count`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, failure_code: :zeek:type:`count`)
 
    Generated for RDP Negotiation Failure messages.
@@ -8791,6 +8800,9 @@ Events
    
 
    :failure_code: The failure code sent by the server.
+   
+
+   :flags: The flags set by the server.
 
 .. zeek:id:: rdp_client_core_data
 
