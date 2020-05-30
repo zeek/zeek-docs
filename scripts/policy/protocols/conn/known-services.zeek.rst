@@ -4,10 +4,13 @@ policy/protocols/conn/known-services.zeek
 =========================================
 .. zeek:namespace:: Known
 
-This script logs and tracks services.  In the case of this script, a service
-is defined as an IP address and port which has responded to and fully 
-completed a TCP handshake with another host.  If a protocol is detected
-during the session, the protocol will also be logged.
+This script logs and tracks active services.  For this script, an active
+service is defined as an IP address and port of a server for which
+a TCP handshake (SYN+ACK) is observed, assumed to have been done in the
+past (started seeing packets mid-connection, but the server is actively
+sending data), or sent at least one UDP packet.
+If a protocol name is found/known for service, that will be logged,
+but services whose names can't be determined are also still logged.
 
 :Namespace: Known
 :Imports: :doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`, :doc:`base/utils/directions-and-hosts.zeek </scripts/base/utils/directions-and-hosts.zeek>`
@@ -16,11 +19,12 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-================================================================================== ======================================================
-:zeek:id:`Known::service_store_timeout`: :zeek:type:`interval` :zeek:attr:`&redef` The timeout interval to use for operations against
-                                                                                   :zeek:see:`Known::service_store`.
-:zeek:id:`Known::service_tracking`: :zeek:type:`Host` :zeek:attr:`&redef`          The hosts whose services should be tracked and logged.
-================================================================================== ======================================================
+====================================================================================== ========================================================================
+:zeek:id:`Known::service_store_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`     The timeout interval to use for operations against
+                                                                                       :zeek:see:`Known::service_store`.
+:zeek:id:`Known::service_tracking`: :zeek:type:`Host` :zeek:attr:`&redef`              The hosts whose services should be tracked and logged.
+:zeek:id:`Known::service_udp_requires_response`: :zeek:type:`bool` :zeek:attr:`&redef` Require UDP server to respond before considering it an "active service".
+====================================================================================== ========================================================================
 
 Redefinable Options
 ###################
@@ -89,6 +93,14 @@ Runtime Options
 
    The hosts whose services should be tracked and logged.
    See :zeek:type:`Host` for possible choices.
+
+.. zeek:id:: Known::service_udp_requires_response
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   Require UDP server to respond before considering it an "active service".
 
 Redefinable Options
 ###################
