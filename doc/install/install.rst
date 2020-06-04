@@ -197,12 +197,12 @@ OpenBSD users, please see our `FAQ
 problems installing Zeek.
 
 Depending on the Zeek package you downloaded, there may be auxiliary
-tools and libraries available in the ``aux/`` directory. Some of them
+tools and libraries available in the ``auxil/`` directory. Some of them
 will be automatically built and installed along with Zeek. There are
 ``--disable-*`` options that can be given to the configure script to
 turn off unwanted auxiliary projects that would otherwise be installed
 automatically.  Finally, use ``make install-aux`` to install some of
-the other programs that are in the ``aux/zeek-aux`` directory.
+the other programs that are in the ``auxil/zeek-aux`` directory.
 
 Finally, if you want to build the Zeek documentation (not required, because
 all of the documentation for the latest Zeek release is available on the
