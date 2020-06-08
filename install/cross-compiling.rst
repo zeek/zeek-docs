@@ -32,7 +32,7 @@ Next configure Zeek to use your cross-compilation toolchain:
 
 .. sourcecode:: console
 
-   ./configure --toolchain=/home/jon/x-tools/RaspberryPi-toolchain.cmake --with-binpac=$(pwd)/../zeek-buildtools/aux/binpac/src/binpac --with-bifcl=$(pwd)/../zeek-buildtools/src/bifcl
+   ./configure --toolchain=/home/jon/x-tools/RaspberryPi-toolchain.cmake --with-binpac=$(pwd)/../zeek-buildtools/auxil/binpac/src/binpac --with-bifcl=$(pwd)/../zeek-buildtools/src/bifcl
 
 Here, the toolchain file a `CMake toolchain`_ file.  It might look
 something the following (using a Raspberry Pi as target system)::
