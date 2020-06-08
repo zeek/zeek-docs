@@ -39,7 +39,7 @@ in a string by 13 places.
 
 Generally, a plugin comes in the form of a directory following a
 certain structure. To get started, Zeek's distribution provides a
-helper script ``aux/zeek-aux/plugin-support/init-plugin`` that creates
+helper script ``auxil/zeek-aux/plugin-support/init-plugin`` that creates
 a skeleton plugin that can then be customized. Let's use that::
 
     # init-plugin ./rot13-plugin Demo Rot13
