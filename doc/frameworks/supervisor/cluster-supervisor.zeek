@@ -16,8 +16,6 @@ event zeek_init()
 		local sn = Supervisor::NodeConfig($name=n);
 		sn$cluster = cluster;
 		sn$directory = n;
-		sn$stdout_file = ".stdout";
-		sn$stderr_file = ".stderr";
 
 		if ( ep?$interface )
 			sn$interface = ep$interface;

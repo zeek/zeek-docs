@@ -77,7 +77,9 @@ following script:
 This script now spawns four nodes: a cluster manager, logger, worker, and
 proxy.  It also configures each node to use a separate working directory
 corresponding to the node's name within the current working directory of the
-Supervisor process and redirects stdout and stderr to files inside.
+Supervisor process.  Any stdout/stderr output of the nodes is automatically
+redirected through the Supervisor process and prefixes with relevant
+information, like the node name that the output came from.
 
 The Supervisor process also listens on a port of its own for further
 instructions from other external/remote processes via
