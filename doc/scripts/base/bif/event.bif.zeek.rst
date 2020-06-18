@@ -47,6 +47,8 @@ Events
 :zeek:id:`esp_packet`: :zeek:type:`event`                                   Generated for any packets using the IPv6 Encapsulating Security Payload (ESP)
                                                                             extension header.
 :zeek:id:`event_queue_flush_point`: :zeek:type:`event`                      Marks a point in the event stream at which the event queue started flushing.
+:zeek:id:`expired_conn_weird`: :zeek:type:`event`                           Generated for unexpected activity related to a specific connection whose
+                                                                            internal state has already been expired.
 :zeek:id:`file_gap`: :zeek:type:`event`                                     Indicates that a chunk of the file is missing.
 :zeek:id:`file_new`: :zeek:type:`event`                                     Indicates that an analysis of a new file has begun.
 :zeek:id:`file_opened`: :zeek:type:`event`                                  Generated each time Zeek's script interpreter opens a file.
@@ -160,7 +162,7 @@ Events
 
    :addl: Optional additional context further describing the situation.
    
-   .. zeek:see:: flow_weird net_weird file_weird
+   .. zeek:see:: flow_weird net_weird file_weird expired_conn_weird
    
    .. note:: "Weird" activity is much more common in real-world network traffic
       than one would intuitively expect. While in principle, any protocol
@@ -451,6 +453,42 @@ Events
 
    Marks a point in the event stream at which the event queue started flushing.
 
+.. zeek:id:: expired_conn_weird
+
+   :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`)
+
+   Generated for unexpected activity related to a specific connection whose
+   internal state has already been expired.  That is to say,
+   :zeek:see:`Reporter::conn_weird` may have been called from a script, but
+   the internal connection object/state was expired and so the full
+   :zeek:see:`connection` record is no longer available, just the UID
+   and :zeek:see:`conn_id`.
+   When Zeek's packet analysis encounters activity that does not conform to a
+   protocol's specification, it raises one of the ``*_weird`` events to report
+   that. This event is raised if the activity is tied directly to a specific
+   connection.
+   
+
+   :name: A unique name for the specific type of "weird" situation. Zeek's default
+         scripts use this name in filtering policies that specify which
+         "weirds" are worth reporting.
+   
+
+   :id: The tuple associated with a previously-expired connection.
+   
+
+   :uid: The UID string associated with a previously-expired connection.
+   
+
+   :addl: Optional additional context further describing the situation.
+   
+   .. zeek:see:: flow_weird net_weird file_weird conn_weird
+   
+   .. note:: "Weird" activity is much more common in real-world network traffic
+      than one would intuitively expect. While in principle, any protocol
+      violation could be an attack attempt, it's much more likely that an
+      endpoint's implementation interprets an RFC quite liberally.
+
 .. zeek:id:: file_gap
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, offset: :zeek:type:`count`, len: :zeek:type:`count`)
@@ -606,7 +644,7 @@ Events
 
    :addl: Additional information related to the weird.
    
-   .. zeek:see:: flow_weird net_weird conn_weird
+   .. zeek:see:: flow_weird net_weird conn_weird expired_conn_weird
    
    .. note:: "Weird" activity is much more common in real-world network traffic
       than one would intuitively expect. While in principle, any protocol
@@ -638,7 +676,7 @@ Events
 
    :addl: Optional additional context further describing the situation.
    
-   .. zeek:see:: conn_weird net_weird file_weird
+   .. zeek:see:: conn_weird net_weird file_weird expired_conn_weird
    
    .. note:: "Weird" activity is much more common in real-world network traffic
       than one would intuitively expect. While in principle, any protocol
@@ -754,7 +792,7 @@ Events
 
    :addl: Optional additional context further describing the situation.
    
-   .. zeek:see:: flow_weird file_weird
+   .. zeek:see:: flow_weird file_weird conn_weird expired_conn_weird
    
    .. note:: "Weird" activity is much more common in real-world network traffic
       than one would intuitively expect. While in principle, any protocol
