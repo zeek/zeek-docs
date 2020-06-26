@@ -192,6 +192,11 @@ Types
 
          Additional responses for the query.
 
+      original_query: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/protocols/dns/log-original-query-case.zeek` is loaded)
+
+         Query with original letter casing
+
    The record type which contains the column fields of the DNS log.
 
 .. zeek:type:: DNS::PendingMessages
