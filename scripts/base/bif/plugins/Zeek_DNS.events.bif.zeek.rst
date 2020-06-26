@@ -722,6 +722,7 @@ Events
 
 .. zeek:id:: dns_query_reply
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`, original_query: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`)
 
    Generated for each entry in the Question section of a DNS reply.
@@ -746,6 +747,9 @@ Events
 
    :qclass: The queried resource record class.
    
+
+   :original_query: The queried name, with the original case kept intact
+   
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
       dns_SRV_reply dns_TSIG_addl dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end
@@ -756,6 +760,7 @@ Events
 
 .. zeek:id:: dns_rejected
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`, original_query: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`)
 
    Generated for DNS replies that reject a query. This event is raised if a DNS
@@ -775,13 +780,16 @@ Events
    :msg: The parsed DNS message header.
    
 
-   :query: The queried name.
+   :query: The queried name (normalized to all lowercase).
    
 
    :qtype: The queried resource record type.
    
 
    :qclass: The queried resource record class.
+   
+
+   :original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -793,6 +801,7 @@ Events
 
 .. zeek:id:: dns_request
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`, original_query: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`)
 
    Generated for DNS requests. For requests with multiple queries, this event
@@ -810,13 +819,16 @@ Events
    :msg: The parsed DNS message header.
    
 
-   :query: The queried name.
+   :query: The queried name (normalized to all lowercase).
    
 
    :qtype: The queried resource record type.
    
 
    :qclass: The queried resource record class.
+   
+
+   :original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply

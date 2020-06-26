@@ -436,6 +436,7 @@
    policy/protocols/dhcp/sub-opts.zeek </scripts/policy/protocols/dhcp/sub-opts.zeek>
    policy/protocols/dns/auth-addl.zeek </scripts/policy/protocols/dns/auth-addl.zeek>
    policy/protocols/dns/detect-external-names.zeek </scripts/policy/protocols/dns/detect-external-names.zeek>
+   policy/protocols/dns/log-original-query-case.zeek </scripts/policy/protocols/dns/log-original-query-case.zeek>
    policy/protocols/ftp/detect-bruteforcing.zeek </scripts/policy/protocols/ftp/detect-bruteforcing.zeek>
    policy/protocols/ftp/detect.zeek </scripts/policy/protocols/ftp/detect.zeek>
    policy/protocols/ftp/software.zeek </scripts/policy/protocols/ftp/software.zeek>
