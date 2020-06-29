@@ -797,7 +797,7 @@ Types
    :Type: :zeek:type:`record`
 
       ts: :zeek:type:`time` :zeek:attr:`&log`
-         Current timestamp.
+         The network time at which the print statement was executed.
 
       vals: :zeek:type:`string_vec` :zeek:attr:`&log`
          Set of strings passed to the print statement.
