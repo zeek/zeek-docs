@@ -41,8 +41,8 @@ Functions
 
    :x: The element to add.
    
-   .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2 
-      bloomfilter_counting_init bloomfilter_lookup bloomfilter_clear 
+   .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2
+      bloomfilter_counting_init bloomfilter_lookup bloomfilter_clear
       bloomfilter_merge
 
 .. zeek:id:: bloomfilter_basic_init
