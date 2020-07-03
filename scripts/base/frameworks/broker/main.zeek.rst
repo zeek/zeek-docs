@@ -446,7 +446,7 @@ Types
 
          Catch-all for a CAF-level problem.
 
-   Enumerates the possible error types. 
+   Enumerates the possible error types.
 
 .. zeek:type:: Broker::Event
 
