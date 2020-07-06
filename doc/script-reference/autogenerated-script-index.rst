@@ -184,6 +184,7 @@
    base/utils/active-http.zeek </scripts/base/utils/active-http.zeek>
    base/utils/exec.zeek </scripts/base/utils/exec.zeek>
    base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>
+   base/utils/backtrace.zeek </scripts/base/utils/backtrace.zeek>
    base/utils/conn-ids.zeek </scripts/base/utils/conn-ids.zeek>
    base/utils/dir.zeek </scripts/base/utils/dir.zeek>
    base/frameworks/reporter/__load__.zeek </scripts/base/frameworks/reporter/__load__.zeek>

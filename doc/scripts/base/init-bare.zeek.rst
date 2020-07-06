@@ -346,6 +346,8 @@ State Variables
 Types
 #####
 ============================================================================= =======================================================================================================================
+:zeek:type:`Backtrace`: :zeek:type:`vector`                                   A representation of a Zeek script's call stack.
+:zeek:type:`BacktraceElement`: :zeek:type:`record`                            A representation of an element in a Zeek script's call stack.
 :zeek:type:`BrokerStats`: :zeek:type:`record`                                 Statistics about Broker communication.
 :zeek:type:`Cluster::Pool`: :zeek:type:`record`                               A pool used for distributing data/work among a set of cluster nodes.
 :zeek:type:`ConnStats`: :zeek:type:`record`                                   
@@ -2894,6 +2896,34 @@ State Variables
 
 Types
 #####
+.. zeek:type:: Backtrace
+
+   :Type: :zeek:type:`vector` of :zeek:type:`BacktraceElement`
+
+   A representation of a Zeek script's call stack.
+   
+   .. zeek:see:: backtrace print_backtrace
+
+.. zeek:type:: BacktraceElement
+
+   :Type: :zeek:type:`record`
+
+      function_name: :zeek:type:`string`
+         The name of the function being called at this point in the call stack.
+
+      function_args: :zeek:type:`call_argument_vector`
+         The arguments passed to the function being called.
+
+      file_location: :zeek:type:`string` :zeek:attr:`&optional`
+         The file in which the function call is being made.
+
+      line_location: :zeek:type:`count` :zeek:attr:`&optional`
+         The line number at which the function call is being made.
+
+   A representation of an element in a Zeek script's call stack.
+   
+   .. zeek:see:: backtrace print_backtrace
+
 .. zeek:type:: BrokerStats
 
    :Type: :zeek:type:`record`
@@ -6971,7 +7001,7 @@ Types
 
    Meta-information about a parameter to a function/event.
    
-   .. zeek:see:: call_argument_vector new_event
+   .. zeek:see:: call_argument_vector new_event backtrace print_backtrace
 
 .. zeek:type:: call_argument_vector
 
@@ -6979,7 +7009,7 @@ Types
 
    Vector type used to capture parameters of a function/event call.
    
-   .. zeek:see:: call_argument new_event
+   .. zeek:see:: call_argument new_event backtrace print_backtrace
 
 .. zeek:type:: conn_id
 
