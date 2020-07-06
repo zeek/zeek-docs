@@ -29,6 +29,8 @@ Functions
 :zeek:id:`anonymize_addr`: :zeek:type:`function`            Anonymizes an IP address.
 :zeek:id:`any_set`: :zeek:type:`function`                   Tests whether a boolean vector (``vector of bool``) has *any* true
                                                             element.
+:zeek:id:`backtrace`: :zeek:type:`function`                 Returns a representation of the call stack as a vector of call stack
+                                                            elements, each containing call location information.
 :zeek:id:`bytestring_to_count`: :zeek:type:`function`       Converts a string of bytes to a :zeek:type:`count`.
 :zeek:id:`bytestring_to_double`: :zeek:type:`function`      Converts a string of bytes (in network byte order) to a :zeek:type:`double`.
 :zeek:id:`bytestring_to_hexstr`: :zeek:type:`function`      Converts a string of bytes into its hexadecimal representation.
@@ -348,6 +350,17 @@ Functions
    :returns: True if any element in *v* is true.
    
    .. zeek:see:: all_set
+
+.. zeek:id:: backtrace
+
+   :Type: :zeek:type:`function` () : :zeek:type:`Backtrace`
+
+   Returns a representation of the call stack as a vector of call stack
+   elements, each containing call location information.
+   
+
+   :returns: the call stack information, including function, file, and line
+            location information.
 
 .. zeek:id:: bytestring_to_count
 
