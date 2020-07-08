@@ -24,6 +24,13 @@ Types
 :zeek:type:`Supervisor::Status`: :zeek:type:`record`          The current status of a set of supervised nodes.
 ============================================================= ========================================================================
 
+Hooks
+#####
+===================================================== =====================================================================
+:zeek:id:`Supervisor::stderr_hook`: :zeek:type:`hook` Hooks intercepted stderr stream for all supervisor's child processes.
+:zeek:id:`Supervisor::stdout_hook`: :zeek:type:`hook` Hooks intercepted stdout stream for all supervisor's child processes.
+===================================================== =====================================================================
+
 Functions
 #########
 =========================================================== =============================================================
@@ -136,6 +143,42 @@ Types
          The status of supervised nodes, keyed by node names.
 
    The current status of a set of supervised nodes.
+
+Hooks
+#####
+.. zeek:id:: Supervisor::stderr_hook
+
+   :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Hooks intercepted stderr stream for all supervisor's child processes.
+   
+
+   :node: the name of a previously created node via
+         :zeek:see:`Supervisor::create` indicating to which
+         child process the stdout line is associated.
+         A empty value is used to indicate the message
+         came from the internal supervisor stem process.
+         (this should typically never happen).
+   
+
+   :msg: line-buffered contents from the stderr of a child process.
+
+.. zeek:id:: Supervisor::stdout_hook
+
+   :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Hooks intercepted stdout stream for all supervisor's child processes.
+   
+
+   :node: the name of a previously created node via
+         :zeek:see:`Supervisor::create` indicating to which
+         child process the stdout line is associated.
+         An empty value is used to indicate the message
+         came from the internal supervisor stem process
+         (this should typically never happen).
+   
+
+   :msg: line-buffered contents from the stdout of a child process.
 
 Functions
 #########
