@@ -14,6 +14,14 @@ logging framework.
 
 Summary
 ~~~~~~~
+Runtime Options
+###############
+============================================================================= ========================================================
+:zeek:id:`Log::default_rotation_dir`: :zeek:type:`string` :zeek:attr:`&redef` Default rotation directory to use for the *dir* field of
+                                                                              :zeek:see:`Log::RotationPath` during calls to
+                                                                              :zeek:see:`Log::rotation_format_func`.
+============================================================================= ========================================================
+
 Redefinable Options
 ###################
 =========================================================================================== =====================================================================
@@ -56,16 +64,27 @@ State Variables
 
 Types
 #####
-=================================================== ==============================================================================
-:zeek:type:`Log::Filter`: :zeek:type:`record`       A filter type describes how to customize logging streams.
-:zeek:type:`Log::ID`: :zeek:type:`enum`             Type that defines an ID unique to each log stream.
-:zeek:type:`Log::PrintLogInfo`: :zeek:type:`record` If :zeek:see:`Log::print_to_log` is set to redirect, ``print`` statements will
-                                                    automatically populate log entries with the fields contained in this record.
-:zeek:type:`Log::PrintLogType`: :zeek:type:`enum`   Configurations for :zeek:see:`Log::print_to_log`
-:zeek:type:`Log::RotationInfo`: :zeek:type:`record` Information passed into rotation callback functions.
-:zeek:type:`Log::Stream`: :zeek:type:`record`       Type defining the content of a logging stream.
-:zeek:type:`Log::Writer`: :zeek:type:`enum`         
-=================================================== ==============================================================================
+================================================================== ==============================================================================
+:zeek:type:`Log::Filter`: :zeek:type:`record`                      A filter type describes how to customize logging streams.
+:zeek:type:`Log::ID`: :zeek:type:`enum`                            Type that defines an ID unique to each log stream.
+:zeek:type:`Log::PrintLogInfo`: :zeek:type:`record`                If :zeek:see:`Log::print_to_log` is set to redirect, ``print`` statements will
+                                                                   automatically populate log entries with the fields contained in this record.
+:zeek:type:`Log::PrintLogType`: :zeek:type:`enum`                  Configurations for :zeek:see:`Log::print_to_log`
+:zeek:type:`Log::RotationFmtInfo`: :zeek:type:`record`             Information passed into rotation format callback function given by
+                                                                   :zeek:see:`Log::rotation_format_func`.
+:zeek:type:`Log::RotationInfo`: :zeek:type:`record`                Information passed into rotation callback functions.
+:zeek:type:`Log::RotationPath`: :zeek:type:`record`                A log file rotation path specification that's returned by the
+                                                                   user-customizable :zeek:see:`Log::rotation_format_func`.
+:zeek:type:`Log::RotationPostProcessorFunc`: :zeek:type:`function` The function type for log rotation post processors.
+:zeek:type:`Log::Stream`: :zeek:type:`record`                      Type defining the content of a logging stream.
+:zeek:type:`Log::Writer`: :zeek:type:`enum`                        
+================================================================== ==============================================================================
+
+Redefinitions
+#############
+======================================================================================= =
+:zeek:id:`Log::default_rotation_postprocessors`: :zeek:type:`table` :zeek:attr:`&redef` 
+======================================================================================= =
 
 Events
 ######
@@ -75,35 +94,49 @@ Events
 
 Functions
 #########
-============================================================================ ==========================================================================
-:zeek:id:`Log::add_default_filter`: :zeek:type:`function`                    Adds a default :zeek:type:`Log::Filter` record with ``name`` field
-                                                                             set as "default" to a given logging stream.
-:zeek:id:`Log::add_filter`: :zeek:type:`function`                            Adds a custom filter to an existing logging stream.
-:zeek:id:`Log::create_stream`: :zeek:type:`function`                         Creates a new logging stream with the default filter.
-:zeek:id:`Log::default_ext_func`: :zeek:type:`function` :zeek:attr:`&redef`  Default log extension function in the case that you would like to
-                                                                             apply the same extensions to all logs.
-:zeek:id:`Log::default_path_func`: :zeek:type:`function` :zeek:attr:`&redef` Builds the default path values for log filters if not otherwise
-                                                                             specified by a filter.
-:zeek:id:`Log::disable_stream`: :zeek:type:`function`                        Disables a currently enabled logging stream.
-:zeek:id:`Log::enable_stream`: :zeek:type:`function`                         Enables a previously disabled logging stream.
-:zeek:id:`Log::flush`: :zeek:type:`function`                                 Flushes any currently buffered output for all the writers of a given
-                                                                             logging stream.
-:zeek:id:`Log::get_filter`: :zeek:type:`function`                            Gets a filter associated with an existing logging stream.
-:zeek:id:`Log::get_filter_names`: :zeek:type:`function`                      Gets the names of all filters associated with an existing
-                                                                             logging stream.
-:zeek:id:`Log::remove_default_filter`: :zeek:type:`function`                 Removes the :zeek:type:`Log::Filter` with ``name`` field equal to
-                                                                             "default".
-:zeek:id:`Log::remove_filter`: :zeek:type:`function`                         Removes a filter from an existing logging stream.
-:zeek:id:`Log::remove_stream`: :zeek:type:`function`                         Removes a logging stream completely, stopping all the threads.
-:zeek:id:`Log::run_rotation_postprocessor_cmd`: :zeek:type:`function`        Runs a command given by :zeek:id:`Log::default_rotation_postprocessor_cmd`
-                                                                             on a rotated file.
-:zeek:id:`Log::set_buf`: :zeek:type:`function`                               Sets the buffering status for all the writers of a given logging stream.
-:zeek:id:`Log::write`: :zeek:type:`function`                                 Writes a new log line/entry to a logging stream.
-============================================================================ ==========================================================================
+=============================================================================== ==========================================================================
+:zeek:id:`Log::add_default_filter`: :zeek:type:`function`                       Adds a default :zeek:type:`Log::Filter` record with ``name`` field
+                                                                                set as "default" to a given logging stream.
+:zeek:id:`Log::add_filter`: :zeek:type:`function`                               Adds a custom filter to an existing logging stream.
+:zeek:id:`Log::create_stream`: :zeek:type:`function`                            Creates a new logging stream with the default filter.
+:zeek:id:`Log::default_ext_func`: :zeek:type:`function` :zeek:attr:`&redef`     Default log extension function in the case that you would like to
+                                                                                apply the same extensions to all logs.
+:zeek:id:`Log::default_path_func`: :zeek:type:`function` :zeek:attr:`&redef`    Builds the default path values for log filters if not otherwise
+                                                                                specified by a filter.
+:zeek:id:`Log::disable_stream`: :zeek:type:`function`                           Disables a currently enabled logging stream.
+:zeek:id:`Log::enable_stream`: :zeek:type:`function`                            Enables a previously disabled logging stream.
+:zeek:id:`Log::flush`: :zeek:type:`function`                                    Flushes any currently buffered output for all the writers of a given
+                                                                                logging stream.
+:zeek:id:`Log::get_filter`: :zeek:type:`function`                               Gets a filter associated with an existing logging stream.
+:zeek:id:`Log::get_filter_names`: :zeek:type:`function`                         Gets the names of all filters associated with an existing
+                                                                                logging stream.
+:zeek:id:`Log::remove_default_filter`: :zeek:type:`function`                    Removes the :zeek:type:`Log::Filter` with ``name`` field equal to
+                                                                                "default".
+:zeek:id:`Log::remove_filter`: :zeek:type:`function`                            Removes a filter from an existing logging stream.
+:zeek:id:`Log::remove_stream`: :zeek:type:`function`                            Removes a logging stream completely, stopping all the threads.
+:zeek:id:`Log::rotation_format_func`: :zeek:type:`function` :zeek:attr:`&redef` A function that one may use to customize log file rotation paths.
+:zeek:id:`Log::run_rotation_postprocessor_cmd`: :zeek:type:`function`           Runs a command given by :zeek:id:`Log::default_rotation_postprocessor_cmd`
+                                                                                on a rotated file.
+:zeek:id:`Log::set_buf`: :zeek:type:`function`                                  Sets the buffering status for all the writers of a given logging stream.
+:zeek:id:`Log::write`: :zeek:type:`function`                                    Writes a new log line/entry to a logging stream.
+=============================================================================== ==========================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Runtime Options
+###############
+.. zeek:id:: Log::default_rotation_dir
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``""``
+
+   Default rotation directory to use for the *dir* field of
+   :zeek:see:`Log::RotationPath` during calls to
+   :zeek:see:`Log::rotation_format_func`.  An empty string implies
+   using the current working directory;
+
 Redefinable Options
 ###################
 .. zeek:id:: Log::default_ext_prefix
@@ -172,11 +205,11 @@ Redefinable Options
    :Type: :zeek:type:`table` [:zeek:type:`Log::Writer`] of :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``{}``
-   :Redefinition: from :doc:`/scripts/base/frameworks/logging/writers/ascii.zeek`
+   :Redefinition: from :doc:`/scripts/base/frameworks/logging/main.zeek`
 
       ``+=``::
 
-         Log::WRITER_ASCII = LogAscii::default_rotation_postprocessor_func
+         Log::WRITER_ASCII = Log::default_ascii_rotation_postprocessor_func
 
    :Redefinition: from :doc:`/scripts/base/frameworks/logging/writers/none.zeek`
 
@@ -824,6 +857,31 @@ Types
 
    Configurations for :zeek:see:`Log::print_to_log`
 
+.. zeek:type:: Log::RotationFmtInfo
+
+   :Type: :zeek:type:`record`
+
+      writer: :zeek:type:`Log::Writer`
+         The log writer being used.
+
+      path: :zeek:type:`string`
+         Original path value.
+
+      open: :zeek:type:`time`
+         Time when opened.
+
+      close: :zeek:type:`time`
+         Time when closed.
+
+      terminating: :zeek:type:`bool`
+         True if rotation occurred due to Zeek shutting down.
+
+      postprocessor: :zeek:type:`Log::RotationPostProcessorFunc` :zeek:attr:`&optional`
+         The postprocessor function that will be called after rotation.
+
+   Information passed into rotation format callback function given by
+   :zeek:see:`Log::rotation_format_func`.
+
 .. zeek:type:: Log::RotationInfo
 
    :Type: :zeek:type:`record`
@@ -847,6 +905,37 @@ Types
          True if rotation occured due to Zeek shutting down.
 
    Information passed into rotation callback functions.
+
+.. zeek:type:: Log::RotationPath
+
+   :Type: :zeek:type:`record`
+
+      dir: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_rotation_dir` :zeek:attr:`&optional`
+         A directory to rotate the log to.  This directory is created
+         just-in-time, as the log rotation is about to happen.  If it
+         cannot be created, an error is emitted and the rotation process
+         tries to proceed with rotation inside the working directory.  When
+         setting this field, beware that renaming files across file systems
+         will generally fail.
+
+      file_basename: :zeek:type:`string`
+         A base name to use for the the rotated log.  Log writers may later
+         append a file extension of their choosing to this user-chosen
+         base (e.g. if using the default ASCII writer and you want
+         rotated files of the format "foo-<date>.log", then this basename
+         can be set to "foo-<date>" and the ".log" is added later (there's
+         also generally means of customizing the file extension, too,
+         like the ``ZEEK_LOG_SUFFIX`` environment variable or
+         writer-dependent configuration options.
+
+   A log file rotation path specification that's returned by the
+   user-customizable :zeek:see:`Log::rotation_format_func`.
+
+.. zeek:type:: Log::RotationPostProcessorFunc
+
+   :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
+
+   The function type for log rotation post processors.
 
 .. zeek:type:: Log::Stream
 
@@ -1124,6 +1213,16 @@ Functions
    :returns: True if the stream was successfully removed.
    
    .. zeek:see:: Log::create_stream
+
+.. zeek:id:: Log::rotation_format_func
+
+   :Type: :zeek:type:`function` (ri: :zeek:type:`Log::RotationFmtInfo`) : :zeek:type:`Log::RotationPath`
+   :Attributes: :zeek:attr:`&redef`
+
+   A function that one may use to customize log file rotation paths.
+   Note that the "fname" field of the *ri* argument is always an
+   empty string for the purpose of this function call (i.e. the full
+   file name is not determined yet).
 
 .. zeek:id:: Log::run_rotation_postprocessor_cmd
 
