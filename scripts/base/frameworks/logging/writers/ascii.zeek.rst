@@ -44,12 +44,6 @@ Redefinable Options
 :zeek:id:`LogAscii::use_json`: :zeek:type:`bool` :zeek:attr:`&redef`                         If true, the default will be to write logs in a JSON format.
 ============================================================================================ =====================================================================
 
-Redefinitions
-#############
-======================================================================================= =
-:zeek:id:`Log::default_rotation_postprocessors`: :zeek:type:`table` :zeek:attr:`&redef` 
-======================================================================================= =
-
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
