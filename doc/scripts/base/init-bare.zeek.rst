@@ -617,6 +617,7 @@ Types
 :zeek:type:`icmp_conn`: :zeek:type:`record`                                   Specifics about an ICMP conversation.
 :zeek:type:`icmp_context`: :zeek:type:`record`                                Packet context part of an ICMP message.
 :zeek:type:`icmp_hdr`: :zeek:type:`record`                                    Values extracted from an ICMP header.
+:zeek:type:`icmp_info`: :zeek:type:`record`                                   Specifics about an ICMP conversation/packet.
 :zeek:type:`id_table`: :zeek:type:`table`                                     Table type used to map script-level identifiers to meta-information
                                                                               describing them.
 :zeek:type:`index_vec`: :zeek:type:`vector`                                   A vector of counts, used by some builtin functions to store a list of indices.
@@ -8459,6 +8460,31 @@ Types
    Values extracted from an ICMP header.
    
    .. zeek:see:: pkt_hdr discarder_check_icmp
+
+.. zeek:type:: icmp_info
+
+   :Type: :zeek:type:`record`
+
+      v6: :zeek:type:`bool`
+         True if it's an ICMPv6 packet.
+
+      itype: :zeek:type:`count`
+         The ICMP type of the current packet.
+
+      icode: :zeek:type:`count`
+         The ICMP code of the current packet.
+
+      len: :zeek:type:`count`
+         The length of the ICMP payload.
+
+      ttl: :zeek:type:`count`
+         The encapsulating IP header's TTL (IPv4) or Hop Limit (IPv6).
+
+   Specifics about an ICMP conversation/packet.
+   ICMP events typically pass this in addition to :zeek:type:`conn_id`.
+   
+   .. zeek:see:: icmp_echo_reply icmp_echo_request icmp_redirect icmp_sent
+      icmp_time_exceeded icmp_unreachable
 
 .. zeek:type:: id_table
 
