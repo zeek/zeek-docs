@@ -390,6 +390,11 @@ Types
 
    :Type: :zeek:type:`enum`
 
+      .. zeek:enum:: Broker::NO_ERROR Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
+
       .. zeek:enum:: Broker::UNSPECIFIED Broker::ErrorCode
 
          The unspecified default error code.
@@ -405,6 +410,11 @@ Types
       .. zeek:enum:: Broker::PEER_UNAVAILABLE Broker::ErrorCode
 
          Remote peer not listening.
+
+      .. zeek:enum:: Broker::PEER_DISCONNECT_DURING_HANDSHAKE Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
 
       .. zeek:enum:: Broker::PEER_TIMEOUT Broker::ErrorCode
 
@@ -441,6 +451,36 @@ Types
       .. zeek:enum:: Broker::STALE_DATA Broker::ErrorCode
 
          The storage backend failed to execute the operation.
+
+      .. zeek:enum:: Broker::CANNOT_OPEN_FILE Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
+
+      .. zeek:enum:: Broker::CANNOT_WRITE_FILE Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
+
+      .. zeek:enum:: Broker::INVALID_TOPIC_KEY Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
+
+      .. zeek:enum:: Broker::END_OF_FILE Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
+
+      .. zeek:enum:: Broker::INVALID_TAG Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
+
+      .. zeek:enum:: Broker::INVALID_STATUS Broker::ErrorCode
+
+         (present if :doc:`/scripts/base/bif/comm.bif.zeek` is loaded)
+
 
       .. zeek:enum:: Broker::CAF_ERROR Broker::ErrorCode
 
