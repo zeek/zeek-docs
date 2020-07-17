@@ -296,16 +296,16 @@ Here is a more detailed explanation of each attribute:
 
     Used for persisting tables/sets and/or synchronizing them over a cluster.
 
-    This attribute binds a table to a broker store. Changes to the table
-    are sent to the broker store and changes to the broker store are applied
+    This attribute binds a table to a Broker store. Changes to the table
+    are sent to the Broker store and changes to the Broker store are applied
     back to the table.
 
-    Since broker stores are synchronized over a cluster this, in effect, sends
-    table changes to all other nodes in the cluster. When using a persistent broker
+    Since Broker stores are synchronized over a cluster this, in effect, sends
+    table changes to all other nodes in the cluster. When using a persistent Broker
     store backend, tables/sets will be loaded on startup.
 
     This attribute expects the type of backend you want to use for the table. For
-    example, to bind a table to a memory-backed broker store, use:
+    example, to bind a table to a memory-backed Broker store, use:
 
     .. sourcecode:: zeek
 
@@ -319,11 +319,11 @@ Here is a more detailed explanation of each attribute:
 .. zeek:attr:: &broker_store
 
     This attribute is similar to :zeek:attr:`&backend` and allows to bind a zeek
-    table to a broker store. In difference to :zeek:attr:`&backend` this attribute
-    allows you to specify the name of a broker store you want to bind to without
+    table to a Broker store. In difference to :zeek:attr:`&backend` this attribute
+    allows you to specify the name of a Broker store you want to bind to without
     creating it.
 
-    You can use this is you want to bind a table to a broker store with special options.
+    You can use this is you want to bind a table to a Broker store with special options.
 
     Example:
 
@@ -345,16 +345,16 @@ Here is a more detailed explanation of each attribute:
 
 .. zeek:attr:: &broker_allow_complex_type
 
-    By default only tables containing atomic types can be bound to broker stores.
+    By default only tables containing atomic types can be bound to Broker stores.
     Specifying this attribute before :zeek:attr:`&backend` or :zeek:attr:`&broker_store`
-    disables this safety feature and allows complex types to be stored in a broker backed
+    disables this safety feature and allows complex types to be stored in a Broker backed
     table.
 
     .. warning::
 
-        Note that storing complex types in broker backed store comes with severe restrictions.
+        Note that storing complex types in Broker backed store comes with severe restrictions.
         When you modify a stored complex type after inserting it into a table, this change
-        will *not propagate* to broker and hence not be persisted/synchronized over the cluster.
+        will *not propagate* to Broker and hence not be persisted/synchronized over the cluster.
 
         To send out the new value, you will have to re-insert the complex type into the zeek table.
 
@@ -372,7 +372,7 @@ Here is a more detailed explanation of each attribute:
                     {
                     local rec = testrec($a=5);
                     t["test"] = rec;
-                    rec$a = 6; # This will not propagate to broker! You have to re-insert.
+                    rec$a = 6; # This will not propagate to Broker! You have to re-insert.
                     # Propagate new value to Broker:
                     t["test"] = rec;
                     }
