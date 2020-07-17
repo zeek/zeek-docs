@@ -558,8 +558,8 @@ Broker Store backed Zeek tables for data synchronization and persistence
 ========================================================================
 
 Starting with Zeek 3.2, it is possible to "bind" a Zeek table to a backing
-broker store. Changes to the zeek table are sent to the broker store. Similarly,
-changes of the broker store are applied to the Zeek table.
+Broker store. Changes to the Zeek table are sent to the Broker store. Similarly,
+changes of the Broker store are applied to the Zeek table.
 
 .. note::
 
@@ -568,7 +568,7 @@ changes of the broker store are applied to the Zeek table.
 
 
 This feature allows the easy distribution of table contents via a cluster.
-It also offers persistence for tables (when using a persistent broker store
+It also offers persistence for tables (when using a persistent Broker store
 backend like SQLite).
 
 To give a short example - to distribute a table over a cluster, you can use
@@ -581,11 +581,11 @@ the :zeek:attr:`&backend` attribute.
 The :zeek:attr:`&backend` attribute create a master data store on the manager
 and a clone data store on all other node on the cluster. This in essence means
 that the table exists twice in each Zeek process: one copy of the table is contained
-in a broker data store (either a master or a clone depending on the node). The broker
+in a Broker data store (either a master or a clone depending on the node). The Broker
 data store distributes the data across the cluster - and, depending on the backend,
 might also make the data persistent.
 
-Since broker data stores are only accessible via asynchronous operations, and accessing
+Since Broker data stores are only accessible via asynchronous operations, and accessing
 them might not always be immediate, a second copy of the table, which is immediately accessible,
 is held inside the Zeek core. This is the copy that you see and interact with on the Zeek side.
 
