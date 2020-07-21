@@ -13,7 +13,7 @@ Summary
 ~~~~~~~
 Redefinable Options
 ###################
-==================================================================================================== =======================================================================
+==================================================================================================== ==========================================================================
 :zeek:id:`Broker::default_clone_mutation_buffer_interval`: :zeek:type:`interval` :zeek:attr:`&redef` The maximum amount of time that a disconnected clone will
                                                                                                      buffer data store mutation commands.
 :zeek:id:`Broker::default_clone_resync_interval`: :zeek:type:`interval` :zeek:attr:`&redef`          The default frequency at which clones will attempt to
@@ -21,7 +21,11 @@ Redefinable Options
                                                                                                      disconnected.
 :zeek:id:`Broker::default_clone_stale_interval`: :zeek:type:`interval` :zeek:attr:`&redef`           The duration after which a clone that is disconnected from its master
                                                                                                      will begin to treat its local cache as stale.
-==================================================================================================== =======================================================================
+:zeek:id:`Broker::table_store_db_directory`: :zeek:type:`string` :zeek:attr:`&redef`                 The directory used for storing persistent database files when using Broker
+                                                                                                     store backed Zeek tables.
+:zeek:id:`Broker::table_store_master`: :zeek:type:`bool` :zeek:attr:`&redef`                         If set to true, the current node is the master node for Broker stores
+                                                                                                     backing Zeek tables.
+==================================================================================================== ==========================================================================
 
 Types
 #####
@@ -142,6 +146,26 @@ Redefinable Options
    will begin to treat its local cache as stale.  In the stale state,
    queries to the cache will timeout.  A negative value indicates that
    the local cache is never treated as stale.
+
+.. zeek:id:: Broker::table_store_db_directory
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``"."``
+
+   The directory used for storing persistent database files when using Broker
+   store backed Zeek tables.
+
+.. zeek:id:: Broker::table_store_master
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   If set to true, the current node is the master node for Broker stores
+   backing Zeek tables. By default this value will be automatically set to
+   true in standalone mode, and on the manager node of a cluster. This value
+   should not typically be changed manually.
 
 Types
 #####
@@ -347,7 +371,7 @@ Functions
    
 
    :returns: The data type associated with the communication data.
-            Note that broker represents records in the same way as
+            Note that Broker represents records in the same way as
             vectors, so there is no "record" type.
 
 .. zeek:id:: Broker::decrement
@@ -365,7 +389,7 @@ Functions
       already exist.
    
 
-   :amount: the amount to decrement the value by. 
+   :amount: the amount to decrement the value by.
    
 
    :e: the new expiration interval of the modified key. If null, the current
@@ -456,7 +480,7 @@ Functions
       already exist.
    
 
-   :a: the amount to increment the value by. 
+   :a: the amount to increment the value by.
    
 
    :e: the new expiration interval of the modified key. If null, the

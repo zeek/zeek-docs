@@ -3,42 +3,48 @@ Attributes
 
 The Zeek scripting language supports the following attributes.
 
-+------------------------------+-----------------------------------------------+
-| Name                         | Description                                   |
-+==============================+===============================================+
-| :zeek:attr:`&redef`          |Redefine a global constant or extend a type.   |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&priority`       |Specify priority for event handler or hook.    |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&log`            |Mark a record field as to be written to a log. |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&optional`       |Allow a record field value to be missing.      |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&default`        |Specify a default value.                       |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&add_func`       |Specify a function to call for each "redef +=".|
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&delete_func`    |Same as "&add_func", except for "redef -=".    |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&expire_func`    |Specify a function to call when container      |
-|                              |element expires.                               |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&read_expire`    |Specify a read timeout interval.               |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&write_expire`   |Specify a write timeout interval.              |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&create_expire`  |Specify a creation timeout interval.           |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&on_change`      |Specify a function to call on set/table changes|
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&raw_output`     |Open file in raw mode (chars. are not escaped).|
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&error_handler`  |Used internally for reporter framework events. |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&type_column`    |Used by input framework for "port" type.       |
-+------------------------------+-----------------------------------------------+
-| :zeek:attr:`&deprecated`     |Marks an identifier as deprecated.             |
-+------------------------------+-----------------------------------------------+
++------------------------------------------+-----------------------------------------------+
+| Name                                     | Description                                   |
++==========================================+===============================================+
+| :zeek:attr:`&redef`                      |Redefine a global constant or extend a type.   |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&priority`                   |Specify priority for event handler or hook.    |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&log`                        |Mark a record field as to be written to a log. |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&optional`                   |Allow a record field value to be missing.      |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&default`                    |Specify a default value.                       |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&add_func`                   |Specify a function to call for each "redef +=".|
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&delete_func`                |Same as "&add_func", except for "redef -=".    |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&expire_func`                |Specify a function to call when container      |
+|                                          |element expires.                               |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&read_expire`                |Specify a read timeout interval.               |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&write_expire`               |Specify a write timeout interval.              |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&create_expire`              |Specify a creation timeout interval.           |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&on_change`                  |Specify a function to call on set/table changes|
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&raw_output`                 |Open file in raw mode (chars. are not escaped).|
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&error_handler`              |Used internally for reporter framework events. |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&type_column`                |Used by input framework for "port" type.       |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&backend`                    |Used for table persistence/synchronization.    |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&broker_store`               |Used for table persistence/synchronization.    |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&broker_allow_complex_type`  |Used for table persistence/synchronization.    |
++------------------------------------------+-----------------------------------------------+
+| :zeek:attr:`&deprecated`                 |Marks an identifier as deprecated.             |
++------------------------------------------+-----------------------------------------------+
 
 .. _attribute-propagation-pitfalls:
 
@@ -285,6 +291,96 @@ Here is a more detailed explanation of each attribute:
             srcp: port &type_column = "proto";
             msg: string;
         };
+
+.. zeek:attr:: &backend
+
+    Used for persisting tables/sets and/or synchronizing them over a cluster.
+
+    This attribute binds a table to a Broker store. Changes to the table
+    are sent to the Broker store, and changes to the Broker store are applied
+    back to the table.
+
+    Since Broker stores are synchronized over a cluster, this sends
+    table changes to all other nodes in the cluster. When using a persistent Broker
+    store backend, the content of the tables/sets will be restored on startup.
+
+    This attribute expects the type of backend you want to use for the table. For
+    example, to bind a table to a memory-backed Broker store, use:
+
+    .. sourcecode:: zeek
+
+        global t: table[string] of count &backend=Broker::MEMORY;
+
+    .. note::
+
+        This feature is experimental and can change in future versions without
+        prior deprecation/backwards compatibility.
+
+.. zeek:attr:: &broker_store
+
+    This attribute is similar to :zeek:attr:`&backend` and allows to bind a zeek
+    table to a Broker store. In difference to :zeek:attr:`&backend` this attribute
+    allows you to specify the name of a Broker store you want to bind to without
+    creating it.
+
+    You can use this is you want to bind a table to a Broker store with special options.
+
+    Example:
+
+    .. sourcecode:: zeek
+
+         global teststore: opaque of Broker::Store;
+
+         global t: table[string] of count &broker_store="teststore";
+
+         event zeek_init()
+             {
+             teststore = Broker::create_master("teststore");
+             }
+
+    .. note::
+
+        This feature is experimental and can change in future versions without
+        prior deprecation/backwards compatibility.
+
+.. zeek:attr:: &broker_allow_complex_type
+
+    By default only tables containing atomic types can be bound to Broker stores.
+    Specifying this attribute before :zeek:attr:`&backend` or :zeek:attr:`&broker_store`
+    disables this safety feature and allows complex types to be stored in a Broker backed
+    table.
+
+    .. warning::
+
+        Storing complex types in Broker backed store comes with severe restrictions.
+        When you modify a stored complex type after inserting it into a table, this change
+        will *not propagate* to Broker and hence not be persisted/synchronized over the cluster.
+
+        To send out the new value, you will have to re-insert the complex type into the zeek table.
+
+        For example:
+
+        .. sourcecode:: zeek
+
+                type testrec: record {
+                    a: count;
+                }
+
+                global t: table[string] of testrec &backend=Broker::MEMORY;
+
+                event zeek_init()
+                    {
+                    local rec = testrec($a=5);
+                    t["test"] = rec;
+                    rec$a = 6; # This will not propagate to Broker! You have to re-insert.
+                    # Propagate new value to Broker:
+                    t["test"] = rec;
+                    }
+
+    .. note::
+
+        This feature is experimental and can change in future versions without
+        prior deprecation/backwards compatibility.
 
 .. zeek:attr:: &deprecated
 

@@ -9355,6 +9355,9 @@ Types
       redefinable: :zeek:type:`bool`
          True if the identifier is declared with the :zeek:attr:`&redef` attribute.
 
+      broker_backend: :zeek:type:`bool`
+         True if the identifier has a Broker backend defined using the :zeek:attr:`&backend` attribute.
+
       value: :zeek:type:`any` :zeek:attr:`&optional`
          The current value of the identifier.
 
