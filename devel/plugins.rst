@@ -64,9 +64,9 @@ there as follows::
     %%{
     #include <cstring>
     #include <cctype>
-    #include "util.h"
-    #include "BroString.h"
-    #include "Val.h"
+    #include "zeek/util.h"
+    #include "zeek/ZeekString.h"
+    #include "zeek/Val.h"
     %%}
 
     module Demo;
@@ -81,9 +81,9 @@ there as follows::
             *p  = (*p - b + 13) % 26 + b;
             }
 
-        BroString* bs = new BroString(1, reinterpret_cast<byte_vec>(rot13),
-                                      strlen(rot13));
-        return new StringVal(bs);
+        zeek::String* zs = new zeek::String(1, reinterpret_cast<byte_vec>(rot13),
+                                            strlen(rot13));
+        return make_intrusive<StringVal>(zs);
         %}
 
 The syntax of this file is just like any other ``*.bif`` file; we
