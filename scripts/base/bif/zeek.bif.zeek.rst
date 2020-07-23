@@ -41,6 +41,8 @@ Functions
 :zeek:id:`check_subnet`: :zeek:type:`function`                                        Checks if a specific subnet is a member of a set/table[subnet].
 :zeek:id:`clear_table`: :zeek:type:`function`                                         Removes all elements from a set or table.
 :zeek:id:`close`: :zeek:type:`function`                                               Closes an open file and flushes any buffered content.
+:zeek:id:`compress_path`: :zeek:type:`function`                                       Compresses a given path by removing '..'s and the parent directory it
+                                                                                      references and also removing dual '/'s and extraneous '/./'s.
 :zeek:id:`connection_exists`: :zeek:type:`function`                                   Checks whether a connection is (still) active.
 :zeek:id:`continue_processing`: :zeek:type:`function`                                 Resumes Zeek's packet processing.
 :zeek:id:`convert_for_pattern`: :zeek:type:`function`                                 Escapes a string so that it becomes a valid :zeek:type:`pattern` and can be
@@ -507,6 +509,19 @@ Functions
    .. zeek:see:: active_file open open_for_append write_file
                 get_file_name set_buf flush_all mkdir enable_raw_output
                 rmdir unlink rename
+
+.. zeek:id:: compress_path
+
+   :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
+
+   Compresses a given path by removing '..'s and the parent directory it
+   references and also removing dual '/'s and extraneous '/./'s.
+   
+
+   :dir: a path string, either relative or absolute.
+   
+
+   :returns: a compressed version of the input path.
 
 .. zeek:id:: connection_exists
 
