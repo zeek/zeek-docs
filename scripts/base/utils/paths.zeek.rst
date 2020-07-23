@@ -19,8 +19,6 @@ Functions
 ======================================================= ======================================================================
 :zeek:id:`build_path`: :zeek:type:`function`            Constructs a path to a file given a directory and a file name.
 :zeek:id:`build_path_compressed`: :zeek:type:`function` Returns a compressed path to a file given a directory and file name.
-:zeek:id:`compress_path`: :zeek:type:`function`         Compresses a given path by removing '..'s and the parent directory it
-                                                        references and also removing dual '/'s and extraneous '/./'s.
 :zeek:id:`extract_path`: :zeek:type:`function`          Given an arbitrary string, extracts a single, absolute path (directory
                                                         with filename).
 ======================================================= ======================================================================
@@ -65,19 +63,6 @@ Functions
 
    Returns a compressed path to a file given a directory and file name.
    See :zeek:id:`build_path` and :zeek:id:`compress_path`.
-
-.. zeek:id:: compress_path
-
-   :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
-
-   Compresses a given path by removing '..'s and the parent directory it
-   references and also removing dual '/'s and extraneous '/./'s.
-   
-
-   :dir: a path string, either relative or absolute.
-   
-
-   :returns: a compressed version of the input path.
 
 .. zeek:id:: extract_path
 
