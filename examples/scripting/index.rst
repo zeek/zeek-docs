@@ -110,7 +110,7 @@ appropriate DNS lookup, parsing the response, and generating a notice if appropr
 
    event file_hash(f: fa_file, kind: string, hash: string)
        {
-       if ( kind == "sha1" && f?$info && f$info?$mime_type && 
+       if ( kind == "sha1" && f?$info && f$info?$mime_type &&
             match_file_types in f$info$mime_type )
            do_mhr_lookup(hash, Notice::create_file_info(f));
        }
@@ -131,7 +131,7 @@ script and much more in following sections.
    @load base/frameworks/notice
    @load frameworks/files/hash-all-files
 
-The first part of the script consists of ``@load`` directives which 
+The first part of the script consists of ``@load`` directives which
 process the ``__load__.zeek`` script in the
 respective directories being loaded.  The ``@load`` directives are
 often considered good practice or even just good manners when writing
@@ -228,7 +228,7 @@ a given event.
 
    event file_hash(f: fa_file, kind: string, hash: string)
        {
-       if ( kind == "sha1" && f?$info && f$info?$mime_type && 
+       if ( kind == "sha1" && f?$info && f$info?$mime_type &&
             match_file_types in f$info$mime_type )
            do_mhr_lookup(hash, Notice::create_file_info(f));
 
@@ -423,7 +423,7 @@ As you can see from the output, the connection record is something of
 a jumble when printed on its own.  Regularly taking a peek at a
 populated connection record helps to understand the relationship
 between its fields as well as allowing an opportunity to build a frame
-of reference for accessing data in a script.  
+of reference for accessing data in a script.
 
 Zeek makes extensive use of nested data structures to store state and
 information gleaned from the analysis of a connection as a complete
@@ -435,13 +435,13 @@ a member of the data structure referred to as ``c`` that was passed
 into the event handler. Given that the responder port
 ``c$id$resp_p`` is ``80/tcp``, it's likely that Zeek's base HTTP scripts
 can further populate the connection record.  Let's load the
-``base/protocols/http`` scripts and check the output of our script. 
+``base/protocols/http`` scripts and check the output of our script.
 
 Zeek uses the dollar sign as its field delimiter and a direct
 correlation exists between the output of the connection record and the
 proper format of a dereferenced variable in scripts. In the output of
 the script above, groups of information are collected between
-brackets, which would correspond to the ``$``-delimiter in a Zeek script.  
+brackets, which would correspond to the ``$``-delimiter in a Zeek script.
 
 .. literalinclude:: connection_record_02.zeek
    :caption:
@@ -472,7 +472,7 @@ As mentioned above, including the appropriate ``@load`` statements is
 not only good practice, but can also help to indicate which
 functionalities are being used in a script.  Take a second to run the
 script without the ``-b`` flag and check the output when all of Zeek's
-functionality is applied to the trace file.  
+functionality is applied to the trace file.
 
 Data Types and Data Structures
 ==============================
@@ -488,7 +488,7 @@ forms.  Variables can be declared with or without a definition in the
 form ``SCOPE name: TYPE`` or ``SCOPE name = EXPRESSION`` respectively;
 each of which produce the same result if ``EXPRESSION`` evaluates to the
 same type as ``TYPE``.  The decision as to which type of declaration to
-use is likely to be dictated by personal preference and readability. 
+use is likely to be dictated by personal preference and readability.
 
 .. literalinclude:: data_type_declaration.zeek
    :caption:
@@ -603,7 +603,7 @@ scope and no longer exists while the value ``12`` still in use and
 stored in the locally scoped variable ``test``.  When Zeek finishes
 processing the ``zeek_init`` function, the variable called ``test`` is
 no longer in scope and, since there exist no other references to the
-value ``12``, the value is also deleted.  
+value ``12``, the value is also deleted.
 
 
 Data Structures
@@ -624,7 +624,7 @@ while the remaining six are less common in other languages. It should
 come as no surprise that a scripting language for a Network Security
 Monitoring platform has a fairly robust set of network-centric data
 types and taking note of them here may well save you a late night of
-reinventing the wheel.  
+reinventing the wheel.
 
 +-----------+-------------------------------------+
 | Data Type | Description                         |
@@ -677,7 +677,7 @@ the set, it's likely that you'll need to either iterate over that set
 or test for membership within the set, both of which are covered by
 the ``in`` operator.  In the case of iterating over a set, combining the
 ``for`` statement and the ``in`` operator will allow you to sequentially
-process each element of the set as seen below.  
+process each element of the set as seen below.
 
 .. literalinclude:: data_struct_set_declaration.zeek
    :caption:
@@ -692,7 +692,7 @@ each element in the temporary variable ``i``.  With each iteration of
 the ``for`` loop, the next element is chosen.  Since sets are not an
 ordered data type, you cannot guarantee the order of the elements as
 the ``for`` loop processes.
-   
+
 To test for membership in a set the ``in`` statement can be combined
 with an ``if`` statement to return a true or false value.  If the
 exact element in the condition is already in the set, the condition
@@ -702,7 +702,7 @@ While we could rewrite the corresponding line below as ``if ( !(
 587/tcp in ssl_ports ))`` try to avoid using this construct; instead,
 negate the in operator itself.  While the functionality is the same,
 using the ``!in`` is more efficient as well as a more natural construct
-which will aid in the readability of your script. 
+which will aid in the readability of your script.
 
 .. literalinclude:: data_struct_set_declaration.zeek
    :caption:
@@ -766,7 +766,7 @@ membership among the set of keys and return a true or false value.
 The example shows how to check if ``SMTPS`` is not in the set
 of keys for the ``ssl_services`` table and if the condition holds true,
 we add the key-yield pair to the table.  Finally, the example shows how
-to use a ``for`` statement to iterate over each key currently in the table.  
+to use a ``for`` statement to iterate over each key currently in the table.
 
 Simple examples aside, tables can become extremely complex as the keys
 and values for the table become more intricate.  Tables can have keys
@@ -818,7 +818,7 @@ same type, in Zeek you should reach for a vector.  Vectors are a
 collection of objects, all of which are of the same data type, to
 which elements can be dynamically added or removed.  Since Vectors use
 contiguous storage for their elements, the contents of a vector can be
-accessed through a zero-indexed numerical offset.  
+accessed through a zero-indexed numerical offset.
 
 The format for the declaration of a Vector follows the pattern of
 other declarations, namely, ``SCOPE v: vector of T`` where ``v`` is
@@ -851,7 +851,7 @@ addresses and for each IP address, masks that address with 18 bits.
 The ``for`` keyword is used to generate a locally scoped variable
 called ``i`` which will hold the index of the current element in the
 vector. Using ``i`` as an index to addr_vector we can access the
-current item in the vector with ``addr_vector[i]``.  
+current item in the vector with ``addr_vector[i]``.
 
 .. literalinclude:: data_struct_vector_iter.zeek
    :caption:
@@ -910,12 +910,12 @@ example ``65535/tcp`` is smaller than ``0/udp``.
 subnet
 ~~~~~~
 
-Zeek has full support for CIDR notation subnets as a base data type. 
+Zeek has full support for CIDR notation subnets as a base data type.
 There is no need to manage the IP and the subnet mask as two separate
 entities when you can provide the same information in CIDR notation in
 your scripts.  The following example below uses a Zeek script to
 determine if a series of IP addresses are within a set of subnets
-using a 20 bit subnet mask. 
+using a 20 bit subnet mask.
 
 .. literalinclude:: data_type_subnets.zeek
    :caption:
@@ -962,7 +962,7 @@ use of the :zeek:id:`connection_established` event handler to generate text
 every time a SYN/ACK packet is seen responding to a SYN packet as part
 of a TCP handshake.  The text generated, is in the format of a
 timestamp and an indication of who the originator and responder were.
-We use the ``strftime`` format string of ``%Y%M%d %H:%m:%S`` to
+We use the ``strftime`` format string of ``%Y%m%d %H:%M:%S`` to
 produce a common date time formatted time stamp.
 
 .. literalinclude:: data_type_time.zeek
@@ -972,7 +972,7 @@ produce a common date time formatted time stamp.
    :tab-width: 4
 
 When the script is executed we get an output showing the details of
-established connections.  
+established connections.
 
 .. sourcecode:: console
 
@@ -994,7 +994,7 @@ The interval data type is another area in Zeek where rational
 application of abstraction makes perfect sense.  As a data type, the
 interval represents a relative time as denoted by a numeric constant
 followed by a unit of time.  For example, 2.2 seconds would be
-``2.2sec`` and thirty-one days would be represented by ``31days``. 
+``2.2sec`` and thirty-one days would be represented by ``31days``.
 Zeek supports ``usec``, ``msec``, ``sec``, ``min``, ``hr``, or ``day`` which represent
 microseconds, milliseconds, seconds, minutes, hours, and days
 respectively.  In fact, the interval data type allows for a surprising
@@ -1023,7 +1023,7 @@ establishment report.
 
 This time, when we execute the script we see an additional line in the
 output to display the time delta since the last fully established
-connection.  
+connection.
 
 .. sourcecode:: console
 
@@ -1093,7 +1093,7 @@ respectively. When used in this manner however, the string must match
 entirely to resolve to true.  For example, the script below uses two
 ternary conditional statements to illustrate the use of the ``==``
 operator with patterns.  The output is altered based
-on the result of the comparison between the pattern and the string.  
+on the result of the comparison between the pattern and the string.
 
 .. literalinclude:: data_type_pattern_02.zeek
    :caption:
@@ -1166,7 +1166,7 @@ functionality of working with records.  The definitions of the DNS and
 HTTP services are both done in-line using squared brackets before being
 passed to the ``print_service`` function.  The ``print_service``
 function makes use of the ``$`` dereference operator to access the
-fields within the newly defined Service record type.  
+fields within the newly defined Service record type.
 
 As you saw in the definition for the ``Conn::Info`` record, other
 records are even valid as fields within another record.  We can extend
@@ -1193,7 +1193,7 @@ record.
 The example above includes a second record type in which a field is
 used as the data type for a set.  Records can be repeatedly nested
 within other records, their fields reachable through repeated chains
-of the ``$`` dereference operator.  
+of the ``$`` dereference operator.
 
 It's also common to see a ``type`` used to simply alias a data
 structure to a more descriptive name.  The example below shows an
@@ -1211,7 +1211,7 @@ name.  Functionally, the operations are the same, however, each of the
 types above are named such that their function is instantly
 identifiable.  This is another place in Zeek scripting where
 consideration can lead to better readability of your code and thus
-easier maintainability in the future.  
+easier maintainability in the future.
 
 
 Custom Logging
@@ -1220,7 +1220,7 @@ Custom Logging
 Armed with a decent understanding of the data types and data
 structures in Zeek, exploring the various frameworks available is a
 much more rewarding effort.  The framework with which most users are
-likely to have the most interaction is the Logging Framework. 
+likely to have the most interaction is the Logging Framework.
 Designed in such a way to so as to abstract much of the process of
 creating a file and appending ordered and organized data into it, the
 Logging Framework makes use of some potentially unfamiliar
@@ -1230,7 +1230,7 @@ incoming logs while maintaining full operability.  If you've seen Zeek
 employed in an environment with a large number of connections, you
 know that logs are produced incredibly quickly; the ability to process
 a large set of data and write it to disk is due to the design of the
-Logging Framework.  
+Logging Framework.
 
 Data is written to a Log Stream based on decision making processes in
 Zeek's scriptland.  Log Streams correspond to a single log as defined
@@ -1240,7 +1240,7 @@ by default, are set to log everything.  Filters can be used to break
 log files into subsets or duplicate that information to another
 output.  The final output of the data is defined by the writer.  Zeek's
 default writer is simple tab separated ASCII files but Zeek also
-includes support for `DataSeries <https://github.com/dataseries>`_ 
+includes support for `DataSeries <https://github.com/dataseries>`_
 and `Elasticsearch <http://www.elasticsearch.org>`_ outputs as well as
 additional writers currently in development.  While these new terms
 and ideas may give the impression that the Logging Framework is
@@ -1250,13 +1250,13 @@ Framework makes it such that a vast majority of scripts needs not go
 past the basics.  In effect, writing to a log file is as simple as
 defining the format of your data, letting Zeek know that you wish to
 create a new log, and then calling the :zeek:id:`Log::write` method to
-output log records.  
+output log records.
 
 The Logging Framework is an area in Zeek where, the more you see it
 used and the more you use it yourself, the more second nature the
 boilerplate parts of the code will become.  As such, let's work
 through a contrived example of simply logging the digits 1 through 10
-and their corresponding factorial to the default ASCII log writer. 
+and their corresponding factorial to the default ASCII log writer.
 It's always best to work through the problem once, simulating the
 desired output with ``print`` and ``fmt`` before attempting to dive
 into the Logging Framework.
@@ -1318,7 +1318,7 @@ record as its arguments.  In this example, we call the
 ``Log::create_stream`` method and pass ``Factor::LOG`` and the
 ``Factor::Info`` record as arguments. From here on out, if we issue
 the ``Log::write`` command with the correct ``Log::ID`` and a properly
-formatted ``Factor::Info`` record, a log entry will be generated.  
+formatted ``Factor::Info`` record, a log entry will be generated.
 
 Now, if we run this script, instead of generating
 logging information to stdout, no output is created.  Instead the
@@ -1353,7 +1353,7 @@ demonstrate the small pieces of script code that need to be in place in
 order to generate logs.  For example, it's common to call
 ``Log::create_stream`` in :zeek:id:`zeek_init` and while in a live
 example, determining when to call ``Log::write`` would likely be
-done in an event handler, in this case we use :zeek:id:`zeek_done` .  
+done in an event handler, in this case we use :zeek:id:`zeek_done` .
 
 If you've already spent time with a deployment of Zeek, you've likely
 had the opportunity to view, search through, or manipulate the logs
@@ -1372,7 +1372,7 @@ when created, is given a default filter called, not surprisingly,
 with the ``&log`` attribute is written to a single file.  For the
 example we've been using, let's extend it so as to write any factorial
 which is a factor of 5 to an alternate file, while writing the
-remaining logs to factor.log.  
+remaining logs to factor.log.
 
 .. literalinclude:: framework_logging_factorial_03.zeek
    :caption:
@@ -1397,7 +1397,7 @@ filter for ``Factor::LOG``.  Had we not removed the ``default`` filter,
 we'd have ended up with three log files: ``factor-mod5.log`` with all the
 factorials that are a factors of 5, ``factor-non5.log`` with the
 factorials that are not factors of 5, and ``factor.log`` which would have
-included all factorials.  
+included all factorials.
 
 .. sourcecode:: console
 
@@ -1485,7 +1485,7 @@ If the ``$conn`` variable is supplied the Notice Framework will
 auto-populate the ``$id`` and ``$src`` fields as well.  Other fields
 that are commonly included, ``$identifier`` and ``$suppress_for`` are
 built around the automated suppression feature of the Notice Framework
-which we will cover shortly.  
+which we will cover shortly.
 
 One of the default policy scripts raises a notice when an SSH login
 has been heuristically detected and the originating hostname is one
@@ -1496,7 +1496,7 @@ accomplish this, the script adheres to the separation of detection
 and reporting by detecting a behavior and raising a notice.  Whether
 or not that notice is acted upon is decided by the local Notice
 Policy, but the script attempts to supply as much information as
-possible while staying concise.  
+possible while staying concise.
 
 .. sourcecode:: zeek
    :caption: scripts/policy/protocols/ssh/interesting-hostnames.zeek
@@ -1609,10 +1609,10 @@ variable with the particulars of the notice as the body of the email.
 The last action, :zeek:enum:`Notice::ACTION_ALARM` sends the notice to
 the :zeek:enum:`Notice::ALARM_LOG` logging stream which is then rotated
 hourly and its contents emailed in readable ASCII to the addresses in
-``Notice::mail_dest``.  
+``Notice::mail_dest``.
 
 +--------------+-----------------------------------------------------+
-| ACTION_NONE  | Take no action                                      | 
+| ACTION_NONE  | Take no action                                      |
 +--------------+-----------------------------------------------------+
 | ACTION_LOG   | Send the notice to the Notice::LOG logging stream.  |
 +--------------+-----------------------------------------------------+
@@ -1628,7 +1628,7 @@ suppression is a means through which notices can be ignored after they
 are initially raised if the author of the script has set an
 identifier.  An identifier is a unique string of information collected
 from the connection relative to the behavior that has been observed by
-Zeek.  
+Zeek.
 
 .. sourcecode:: zeek
    :caption: scripts/policy/protocols/ssl/expiring-certs.zeek
@@ -1659,14 +1659,14 @@ will again set the ``1day`` suppression time.  Suppressing for a
 specific amount of time has benefits beyond simply not filling up an
 analyst's email inbox; keeping the notice alerts timely and succinct
 helps avoid a case where an analyst might see the notice and, due to
-over exposure, ignore it.  
+over exposure, ignore it.
 
 The ``$suppress_for`` variable can also be altered in a
 ``Notice::policy`` hook, allowing a deployment to better suit the
 environment in which it is be run.  Using the example of
 ``expiring-certs.zeek``, we can write a ``Notice::policy`` hook for
 ``SSL::Certificate_Expires_Soon`` to configure the ``$suppress_for``
-variable to a shorter time.  
+variable to a shorter time.
 
 .. literalinclude:: framework_notice_hook_suppression_01.zeek
    :caption:
@@ -1692,14 +1692,14 @@ set dynamically.
 
 +------------------------------------+-----------------------------------------------------+-------------------------------------+
 | Name                               | Description                                         | Data Type                           |
-+====================================+=====================================================+=====================================+ 
++====================================+=====================================================+=====================================+
 | Notice::ignored_types              | Ignore the Notice::Type entirely                    | set[Notice::Type]                   |
 +------------------------------------+-----------------------------------------------------+-------------------------------------+
 | Notice::emailed_types              | Set Notice::ACTION_EMAIL to this Notice::Type       | set[Notice::Type]                   |
 +------------------------------------+-----------------------------------------------------+-------------------------------------+
-| Notice::alarmed_types              | Set Notice::ACTION_ALARM to this Notice::Type       | set[Notice::Type]                   | 
+| Notice::alarmed_types              | Set Notice::ACTION_ALARM to this Notice::Type       | set[Notice::Type]                   |
 +------------------------------------+-----------------------------------------------------+-------------------------------------+
-| Notice::not_suppressed_types       | Remove suppression from this Notice::Type           | set[Notice::Type]                   | 
+| Notice::not_suppressed_types       | Remove suppression from this Notice::Type           | set[Notice::Type]                   |
 +------------------------------------+-----------------------------------------------------+-------------------------------------+
 | Notice::type_suppression_intervals | Alter the $suppress_for value for this Notice::Type | table[Notice::Type] of interval     |
 +------------------------------------+-----------------------------------------------------+-------------------------------------+
