@@ -559,6 +559,7 @@ Types
 :zeek:type:`dns_dnskey_rr`: :zeek:type:`record`                               A DNSSEC DNSKEY record.
 :zeek:type:`dns_ds_rr`: :zeek:type:`record`                                   A DNSSEC DS record.
 :zeek:type:`dns_edns_additional`: :zeek:type:`record`                         An additional DNS EDNS record.
+:zeek:type:`dns_edns_ecs`: :zeek:type:`record`                                An DNS EDNS Client Subnet (ECS) record.
 :zeek:type:`dns_mapping`: :zeek:type:`record`                                 
 :zeek:type:`dns_msg`: :zeek:type:`record`                                     A DNS message.
 :zeek:type:`dns_nsec3_rr`: :zeek:type:`record`                                A DNSSEC NSEC3 record.
@@ -7386,6 +7387,26 @@ Types
    An additional DNS EDNS record.
    
    .. zeek:see:: dns_EDNS_addl
+
+.. zeek:type:: dns_edns_ecs
+
+   :Type: :zeek:type:`record`
+
+      family: :zeek:type:`string`
+         IP Family
+
+      source_prefix_len: :zeek:type:`count`
+         Source Prefix Length.
+
+      scope_prefix_len: :zeek:type:`count`
+         Scope Prefix Length.
+
+      address: :zeek:type:`string`
+         Client Subnet Address.
+
+   An DNS EDNS Client Subnet (ECS) record.
+   
+   .. zeek:see:: dns_EDNS_ecs
 
 .. zeek:type:: dns_mapping
 

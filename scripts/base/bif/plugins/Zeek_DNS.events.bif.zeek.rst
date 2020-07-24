@@ -20,6 +20,7 @@ Events
 :zeek:id:`dns_DNSKEY`: :zeek:type:`event`        Generated for DNS replies of type *DNSKEY*.
 :zeek:id:`dns_DS`: :zeek:type:`event`            Generated for DNS replies of type *DS*.
 :zeek:id:`dns_EDNS_addl`: :zeek:type:`event`     Generated for DNS replies of type *EDNS*.
+:zeek:id:`dns_EDNS_ecs`: :zeek:type:`event`      Generated for DNS replies of type *EDNS*.
 :zeek:id:`dns_HINFO_reply`: :zeek:type:`event`   Generated for DNS replies of type *HINFO*.
 :zeek:id:`dns_MX_reply`: :zeek:type:`event`      Generated for DNS replies of type *MX*.
 :zeek:id:`dns_NSEC`: :zeek:type:`event`          Generated for DNS replies of type *NSEC*.
@@ -263,6 +264,35 @@ Events
    
 
    :ans: The parsed EDNS reply.
+   
+   .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
+      dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
+      dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end dns_mapping_altered
+      dns_mapping_lost_name dns_mapping_new_name dns_mapping_unverified
+      dns_mapping_valid dns_message dns_query_reply dns_rejected dns_request
+      dns_max_queries dns_session_timeout dns_skip_addl
+      dns_skip_all_addl dns_skip_all_auth dns_skip_auth
+
+.. zeek:id:: dns_EDNS_ecs
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_ecs`)
+
+   Generated for DNS replies of type *EDNS*. For replies with multiple options,
+   an individual event is raised for each.
+   
+   See `Wikipedia <http://en.wikipedia.org/wiki/Domain_Name_System>`__ for more
+   information about the DNS protocol. Zeek analyzes both UDP and TCP DNS
+   sessions.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :opt: The parsed EDNS option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
