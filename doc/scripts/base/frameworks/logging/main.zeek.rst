@@ -571,14 +571,10 @@ Types
          (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
 
 
-      .. zeek:enum:: NetControl::DROP Log::ID
+      .. zeek:enum:: NetControl::DROP_LOG Log::ID
 
-         (present if :doc:`/scripts/base/frameworks/netcontrol/types.zeek` is loaded)
+         (present if :doc:`/scripts/base/frameworks/netcontrol/drop.zeek` is loaded)
 
-
-         Stop forwarding all packets matching the entity.
-         
-         No additional arguments.
 
       .. zeek:enum:: NetControl::SHUNT Log::ID
 

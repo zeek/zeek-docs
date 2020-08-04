@@ -149,18 +149,12 @@ Types
          of catch-and-release). Catch and release did not add a new rule, but is now
          watching the IP address and will add a new rule after the current rule expires.
 
-      .. zeek:enum:: NetControl::DROP NetControl::CatchReleaseActions
+      .. zeek:enum:: NetControl::DROP_REQUESTED NetControl::CatchReleaseActions
 
-         (present if :doc:`/scripts/base/frameworks/netcontrol/types.zeek` is loaded)
-
-
-         Stop forwarding all packets matching the entity.
-         
-         No additional arguments.
+         A drop was requested by catch and release.
 
       .. zeek:enum:: NetControl::DROPPED NetControl::CatchReleaseActions
 
-         A drop was requested by catch and release.
          An address was successfully blocked by catch and release.
 
       .. zeek:enum:: NetControl::UNBLOCK NetControl::CatchReleaseActions
