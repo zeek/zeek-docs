@@ -267,7 +267,7 @@ Endian" you could use a format string of: ``%d-%m-%YT%H:%M:%S%z``
    18-03-2011T19:06:08+0000  CtxTCR2Yer0FR1tIBg      upload.wikimedia.org    /wikipedia/commons/thumb/8/8a/Wikinews-logo.png/35px-Wikinews-logo.png
    [...]
 
-See ``man strfime`` for more options for the format string.
+See ``man strftime`` for more options for the format string.
 
 Using UIDs
 ----------
