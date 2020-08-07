@@ -37,10 +37,10 @@ Constants
       ::
 
          {
-            [91] = "general SOCKS server failure",
-            [93] = "request failed because client's identd could not confirm the user ID string in the request",
             [92] = "request failed because client is not running identd",
-            [90] = "succeeded"
+            [93] = "request failed because client's identd could not confirm the user ID string in the request",
+            [90] = "succeeded",
+            [91] = "general SOCKS server failure"
          }
 
 
@@ -55,14 +55,14 @@ Constants
 
          {
             [2] = "Username/Password",
-            [6] = "Secure Sockets Layer",
-            [1] = "GSSAPI",
             [8] = "Multi-Authentication Framework",
             [7] = "NDS Authentication",
-            [255] = "No Acceptable Methods",
             [5] = "Challenge-Response Authentication Method",
+            [3] = "Challenge-Handshake Authentication Protocol",
             [0] = "No Authentication Required",
-            [3] = "Challenge-Handshake Authentication Protocol"
+            [6] = "Secure Sockets Layer",
+            [255] = "No Acceptable Methods",
+            [1] = "GSSAPI"
          }
 
 
@@ -77,14 +77,14 @@ Constants
 
          {
             [2] = "connection not allowed by ruleset",
+            [8] = "Address type not supported",
+            [5] = "Connection refused",
+            [7] = "Command not supported",
+            [3] = "Network unreachable",
+            [0] = "succeeded",
             [6] = "TTL expired",
             [4] = "Host unreachable",
-            [1] = "general SOCKS server failure",
-            [8] = "Address type not supported",
-            [7] = "Command not supported",
-            [5] = "Connection refused",
-            [0] = "succeeded",
-            [3] = "Network unreachable"
+            [1] = "general SOCKS server failure"
          }
 
 

@@ -31,31 +31,31 @@ Constants
       ::
 
          {
-            [2] = "MAIL",
-            [9] = "CRON",
-            [17] = "LOCAL1",
-            [6] = "LPR",
-            [11] = "FTP",
-            [14] = "ALERT",
-            [4] = "AUTH",
-            [22] = "LOCAL6",
-            [1] = "USER",
-            [8] = "UUCP",
-            [7] = "NEWS",
-            [15] = "CLOCK",
-            [23] = "LOCAL7",
-            [5] = "SYSLOG",
             [19] = "LOCAL3",
+            [2] = "MAIL",
+            [20] = "LOCAL4",
+            [14] = "ALERT",
+            [15] = "CLOCK",
+            [6] = "LPR",
+            [16] = "LOCAL0",
+            [8] = "UUCP",
+            [23] = "LOCAL7",
+            [9] = "CRON",
+            [1] = "USER",
+            [11] = "FTP",
+            [999] = "UNSPECIFIED",
+            [5] = "SYSLOG",
+            [7] = "NEWS",
+            [21] = "LOCAL5",
             [10] = "AUTHPRIV",
-            [0] = "KERN",
-            [3] = "DAEMON",
+            [22] = "LOCAL6",
+            [4] = "AUTH",
             [12] = "NTP",
             [13] = "AUDIT",
             [18] = "LOCAL2",
-            [21] = "LOCAL5",
-            [999] = "UNSPECIFIED",
-            [16] = "LOCAL0",
-            [20] = "LOCAL4"
+            [3] = "DAEMON",
+            [17] = "LOCAL1",
+            [0] = "KERN"
          }
 
 
@@ -71,14 +71,14 @@ Constants
 
          {
             [2] = "CRIT",
+            [999] = "UNSPECIFIED",
+            [5] = "NOTICE",
+            [7] = "DEBUG",
+            [3] = "ERR",
+            [0] = "EMERG",
             [6] = "INFO",
             [4] = "WARNING",
-            [1] = "ALERT",
-            [7] = "DEBUG",
-            [5] = "NOTICE",
-            [0] = "EMERG",
-            [3] = "ERR",
-            [999] = "UNSPECIFIED"
+            [1] = "ALERT"
          }
 
 

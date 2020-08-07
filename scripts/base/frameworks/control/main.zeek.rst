@@ -83,11 +83,11 @@ Redefinable Options
       ::
 
          {
-            "shutdown",
+            "peer_status",
             "id_value",
             "net_stats",
-            "peer_status",
-            "configuration_update"
+            "configuration_update",
+            "shutdown"
          }
 
 

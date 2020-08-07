@@ -33,8 +33,8 @@ Runtime Options
       ::
 
          {
-            [Analyzer::ANALYZER_FTP] = 1.0 hr,
-            [Analyzer::ANALYZER_SSH] = 1.0 hr
+            [Analyzer::ANALYZER_SSH] = 1.0 hr,
+            [Analyzer::ANALYZER_FTP] = 1.0 hr
          }
 
 
@@ -50,10 +50,10 @@ Runtime Options
       ::
 
          {
-            [22/tcp] = 1.0 hr,
             [513/tcp] = 1.0 hr,
             [21/tcp] = 1.0 hr,
-            [23/tcp] = 1.0 hr
+            [23/tcp] = 1.0 hr,
+            [22/tcp] = 1.0 hr
          }
 
 
