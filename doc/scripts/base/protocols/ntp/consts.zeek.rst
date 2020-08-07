@@ -31,12 +31,12 @@ Redefinable Options
 
          {
             [2] = "symmetric passive",
+            [5] = "broadcast server",
+            [3] = "client",
+            [7] = "reserved",
             [6] = "broadcast client",
             [4] = "server",
-            [1] = "symmetric active",
-            [7] = "reserved",
-            [5] = "broadcast server",
-            [3] = "client"
+            [1] = "symmetric active"
          }
 
 

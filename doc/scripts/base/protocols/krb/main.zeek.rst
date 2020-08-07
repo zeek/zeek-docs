@@ -53,8 +53,8 @@ Runtime Options
       ::
 
          {
-            "Need to use PA-ENC-TIMESTAMP/PA-PK-AS-REQ",
-            "NEEDED_PREAUTH"
+            "NEEDED_PREAUTH",
+            "Need to use PA-ENC-TIMESTAMP/PA-PK-AS-REQ"
          }
 
 

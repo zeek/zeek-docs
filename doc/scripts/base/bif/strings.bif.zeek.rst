@@ -19,6 +19,7 @@ Functions
                                                                              "backspace character" (usually ``\x08`` for backspace or ``\x7f`` for DEL).
 :zeek:id:`escape_string`: :zeek:type:`function`                              Replaces non-printable characters in a string with escaped sequences.
 :zeek:id:`find_all`: :zeek:type:`function`                                   Finds all occurrences of a pattern in a string.
+:zeek:id:`find_all_ordered`: :zeek:type:`function`                           Finds all occurrences of a pattern in a string.
 :zeek:id:`find_last`: :zeek:type:`function`                                  Finds the last occurrence of a pattern in a string.
 :zeek:id:`gsub`: :zeek:type:`function`                                       Substitutes a given replacement string for all occurrences of a pattern
                                                                              in a given string.
@@ -148,7 +149,26 @@ Functions
 
    :returns: The set of strings in *str* that match *re*, or the empty set.
    
-   .. zeek:see: find_last strstr
+   .. zeek:see: find_all_ordered find_last strstr
+
+.. zeek:id:: find_all_ordered
+
+   :Type: :zeek:type:`function` (str: :zeek:type:`string`, re: :zeek:type:`pattern`) : :zeek:type:`string_vec`
+
+   Finds all occurrences of a pattern in a string.  The order in which
+   occurrences are found is preverved and the return value may contain
+   duplicate elements.
+   
+
+   :str: The string to inspect.
+   
+
+   :re: The pattern to look for in *str*.
+   
+
+   :returns: All strings in *str* that match *re*, or an empty vector.
+   
+   .. zeek:see: find_all find_last strstr
 
 .. zeek:id:: find_last
 
@@ -168,7 +188,7 @@ Functions
 
    :returns: The last string in *str* that matches *re*, or the empty string.
    
-   .. zeek:see: find_all strstr
+   .. zeek:see: find_all find_all_ordered strstr
 
 .. zeek:id:: gsub
 

@@ -57,9 +57,9 @@ Runtime Options
       ::
 
          {
-            SMB::FILE_OPEN,
             SMB::PRINT_CLOSE,
             SMB::FILE_DELETE,
+            SMB::FILE_OPEN,
             SMB::FILE_RENAME,
             SMB::PRINT_OPEN
          }

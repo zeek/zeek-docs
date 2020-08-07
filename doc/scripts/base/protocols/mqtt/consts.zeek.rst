@@ -34,19 +34,19 @@ Constants
 
          {
             [2] = "connack",
-            [9] = "suback",
-            [6] = "pubrel",
             [11] = "unsuback",
+            [5] = "pubrec",
+            [7] = "pubcomp",
+            [6] = "pubrel",
+            [10] = "unsubscribe",
             [14] = "disconnect",
             [4] = "puback",
-            [1] = "connect",
-            [8] = "subscribe",
-            [7] = "pubcomp",
-            [5] = "pubrec",
-            [10] = "unsubscribe",
-            [3] = "publish",
+            [13] = "pingresp",
             [12] = "pingreq",
-            [13] = "pingresp"
+            [8] = "subscribe",
+            [3] = "publish",
+            [9] = "suback",
+            [1] = "connect"
          }
 
 
@@ -60,9 +60,9 @@ Constants
       ::
 
          {
+            [0] = "at most once",
             [2] = "exactly once",
-            [1] = "at least once",
-            [0] = "at most once"
+            [1] = "at least once"
          }
 
 
@@ -77,11 +77,11 @@ Constants
 
          {
             [2] = "Refused: identifier rejected",
-            [4] = "Refused: bad user name or password",
-            [1] = "Refused: unacceptable protocol version",
+            [3] = "Refused: server unavailable",
             [5] = "Refused: not authorized",
             [0] = "Connection Accepted",
-            [3] = "Refused: server unavailable"
+            [4] = "Refused: bad user name or password",
+            [1] = "Refused: unacceptable protocol version"
          }
 
 
@@ -96,8 +96,8 @@ Constants
 
          {
             [4] = "3.1.1",
-            [5] = "5.0",
-            [3] = "3.1"
+            [3] = "3.1",
+            [5] = "5.0"
          }
 
 
