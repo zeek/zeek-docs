@@ -300,6 +300,7 @@ Other operators
 |                                |                   |expression. The types of|
 |                                |                   |the second and third    |
 |                                |                   |operands must be        |
-|                                |                   |compatible.             |
+|                                |                   |compatible.  Known as   |
+|                                |                   |the ternary operator.   |
 +--------------------------------+-------------------+------------------------+
 
