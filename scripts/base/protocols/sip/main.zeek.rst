@@ -55,14 +55,14 @@ Runtime Options
       ::
 
          {
-            "NOTIFY",
-            "ACK",
+            "BYE",
             "SUBSCRIBE",
-            "CANCEL",
-            "OPTIONS",
+            "NOTIFY",
             "REGISTER",
             "INVITE",
-            "BYE"
+            "CANCEL",
+            "OPTIONS",
+            "ACK"
          }
 
 

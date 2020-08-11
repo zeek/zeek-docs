@@ -48,22 +48,22 @@ Runtime Options
       ::
 
          {
-            ["winreg"] = {
-               "BaseRegOpenKey",
-               "BaseRegEnumKey",
-               "OpenClassesRoot",
-               "BaseRegCloseKey",
-               "OpenLocalMachine",
-               "BaseRegQueryValue",
-               "BaseRegDeleteKeyEx",
-               "BaseRegGetVersion"
-            },
             ["spoolss"] = {
                "RpcSplOpenPrinter",
                "RpcClosePrinter"
             },
             ["wkssvc"] = {
                "NetrWkstaGetInfo"
+            },
+            ["winreg"] = {
+               "BaseRegCloseKey",
+               "BaseRegGetVersion",
+               "BaseRegOpenKey",
+               "BaseRegDeleteKeyEx",
+               "BaseRegEnumKey",
+               "OpenLocalMachine",
+               "BaseRegQueryValue",
+               "OpenClassesRoot"
             }
          }
 
