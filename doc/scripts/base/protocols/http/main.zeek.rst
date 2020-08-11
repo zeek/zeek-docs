@@ -69,26 +69,26 @@ Runtime Options
       ::
 
          {
-            "MKCOL",
-            "MOVE",
-            "LOCK",
-            "SUBSCRIBE",
-            "REPORT",
-            "PROPPATCH",
-            "UNLOCK",
-            "OPTIONS",
-            "CONNECT",
-            "DELETE",
-            "TRACE",
-            "SEARCH",
-            "HEAD",
-            "COPY",
-            "BMOVE",
-            "GET",
-            "PUT",
             "POST",
-            "PROPFIND",
-            "POLL"
+            "PUT",
+            "CONNECT",
+            "BMOVE",
+            "SEARCH",
+            "TRACE",
+            "LOCK",
+            "PROPPATCH",
+            "HEAD",
+            "OPTIONS",
+            "POLL",
+            "REPORT",
+            "SUBSCRIBE",
+            "MOVE",
+            "GET",
+            "UNLOCK",
+            "DELETE",
+            "COPY",
+            "MKCOL",
+            "PROPFIND"
          }
 
 
@@ -105,13 +105,13 @@ Runtime Options
       ::
 
          {
-            "X-FORWARDED-FOR",
             "CLIENT-IP",
-            "XROXY-CONNECTION",
             "X-FORWARDED-FROM",
-            "FORWARDED",
+            "VIA",
+            "XROXY-CONNECTION",
             "PROXY-CONNECTION",
-            "VIA"
+            "X-FORWARDED-FOR",
+            "FORWARDED"
          }
 
 

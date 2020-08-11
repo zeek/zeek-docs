@@ -63,8 +63,8 @@ Runtime Options
       ::
 
          {
-            "zlib",
-            "zlib@openssh.com"
+            "zlib@openssh.com",
+            "zlib"
          }
 
 

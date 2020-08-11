@@ -62,10 +62,10 @@ Runtime Options
       ::
 
          {
-            "ftpuser",
-            "ftp",
             "guest",
-            "anonymous"
+            "anonymous",
+            "ftpuser",
+            "ftp"
          }
 
 
@@ -80,16 +80,16 @@ Runtime Options
       ::
 
          {
-            "RETR",
-            "EPSV",
-            "EPRT",
+            "ACCT",
             "DELE",
-            "PORT",
-            "PASV",
-            "STOR",
             "APPE",
+            "RETR",
+            "PORT",
+            "STOR",
+            "EPRT",
+            "PASV",
             "STOU",
-            "ACCT"
+            "EPSV"
          }
 
 

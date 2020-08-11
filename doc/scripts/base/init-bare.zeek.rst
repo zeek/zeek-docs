@@ -2391,14 +2391,14 @@ Constants
 
          {
             [RPC_PROG_MISMATCH] = "mismatch",
+            [RPC_AUTH_ERROR] = "auth error",
+            [RPC_SYSTEM_ERR] = "system err",
+            [RPC_PROC_UNAVAIL] = "proc unavail",
+            [RPC_SUCCESS] = "ok",
             [RPC_UNKNOWN_ERROR] = "unknown",
             [RPC_TIMEOUT] = "timeout",
             [RPC_GARBAGE_ARGS] = "garbage args",
-            [RPC_PROG_UNAVAIL] = "prog unavail",
-            [RPC_AUTH_ERROR] = "auth error",
-            [RPC_SYSTEM_ERR] = "system err",
-            [RPC_SUCCESS] = "ok",
-            [RPC_PROC_UNAVAIL] = "proc unavail"
+            [RPC_PROG_UNAVAIL] = "prog unavail"
          }
 
 
