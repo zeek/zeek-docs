@@ -242,6 +242,12 @@ Types
          ASCII version of the alarm log is emailed in bulk to the
          address(es) configured in :zeek:id:`Notice::mail_dest`.
 
+      .. zeek:enum:: Notice::ACTION_DROP Notice::Action
+
+         Indicates that the notice should result in a drop action.
+         The exact action taken depends on loaded policy scripts;
+         see e.g. :zeek:see:`NetControl::acld_rule_policy`.
+
       .. zeek:enum:: Notice::ACTION_EMAIL_ADMIN Notice::Action
 
          (present if :doc:`/scripts/base/frameworks/notice/actions/email_admin.zeek` is loaded)
@@ -269,13 +275,6 @@ Types
          Indicates that the notice should have geodata added for the
          "remote" host.  :zeek:id:`Site::local_nets` must be defined
          in order for this to work.
-
-      .. zeek:enum:: Notice::ACTION_DROP Notice::Action
-
-         (present if :doc:`/scripts/policy/frameworks/notice/actions/drop.zeek` is loaded)
-
-
-         Drops the address via :zeek:see:`NetControl::drop_address_catch_release`.
 
    These are values representing actions that can be taken with notices.
 

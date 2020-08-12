@@ -15,7 +15,6 @@ Summary
 Redefinitions
 #############
 ============================================== =
-:zeek:type:`Notice::Action`: :zeek:type:`enum` 
 :zeek:type:`Notice::Info`: :zeek:type:`record` 
 ============================================== =
 
