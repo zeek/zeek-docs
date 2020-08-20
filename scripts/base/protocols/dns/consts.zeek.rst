@@ -104,6 +104,7 @@ Constants
             [6] = "YXDOMAIN",
             [16] = "BADVERS",
             [8] = "NXRRSet",
+            [23] = "BADCOOKIE",
             [9] = "NOTAUTH",
             [1] = "FORMERR",
             [11] = "unassigned-11",

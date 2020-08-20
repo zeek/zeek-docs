@@ -559,7 +559,9 @@ Types
 :zeek:type:`dns_dnskey_rr`: :zeek:type:`record`                               A DNSSEC DNSKEY record.
 :zeek:type:`dns_ds_rr`: :zeek:type:`record`                                   A DNSSEC DS record.
 :zeek:type:`dns_edns_additional`: :zeek:type:`record`                         An additional DNS EDNS record.
+:zeek:type:`dns_edns_cookie`: :zeek:type:`record`                             An DNS EDNS COOKIE (COOKIE) record.
 :zeek:type:`dns_edns_ecs`: :zeek:type:`record`                                An DNS EDNS Client Subnet (ECS) record.
+:zeek:type:`dns_edns_tcp_keepalive`: :zeek:type:`record`                      An DNS EDNS TCP KEEPALIVE (TCP KEEPALIVE) record.
 :zeek:type:`dns_mapping`: :zeek:type:`record`                                 
 :zeek:type:`dns_msg`: :zeek:type:`record`                                     A DNS message.
 :zeek:type:`dns_nsec3_rr`: :zeek:type:`record`                                A DNSSEC NSEC3 record.
@@ -7388,6 +7390,20 @@ Types
    
    .. zeek:see:: dns_EDNS_addl
 
+.. zeek:type:: dns_edns_cookie
+
+   :Type: :zeek:type:`record`
+
+      client_cookie: :zeek:type:`string`
+         Cookie from the client (fixed 8 bytes).
+
+      server_cookie: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+         Cookie from the server (0 bytes if missing, or 8 to 32 bytes).
+
+   An DNS EDNS COOKIE (COOKIE) record.
+   
+   .. zeek:see:: dns_EDNS_cookie
+
 .. zeek:type:: dns_edns_ecs
 
    :Type: :zeek:type:`record`
@@ -7407,6 +7423,20 @@ Types
    An DNS EDNS Client Subnet (ECS) record.
    
    .. zeek:see:: dns_EDNS_ecs
+
+.. zeek:type:: dns_edns_tcp_keepalive
+
+   :Type: :zeek:type:`record`
+
+      keepalive_timeout_omitted: :zeek:type:`bool`
+         Whether timeout value is omitted.
+
+      keepalive_timeout: :zeek:type:`count`
+         Timeout value, in 100ms.
+
+   An DNS EDNS TCP KEEPALIVE (TCP KEEPALIVE) record.
+   
+   .. zeek:see:: dns_EDNS_tcp_keepalive
 
 .. zeek:type:: dns_mapping
 

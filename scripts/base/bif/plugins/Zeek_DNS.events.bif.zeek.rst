@@ -11,37 +11,41 @@ Summary
 ~~~~~~~
 Events
 ######
-================================================ ================================================================================
-:zeek:id:`dns_A6_reply`: :zeek:type:`event`      Generated for DNS replies of type *A6*.
-:zeek:id:`dns_AAAA_reply`: :zeek:type:`event`    Generated for DNS replies of type *AAAA*.
-:zeek:id:`dns_A_reply`: :zeek:type:`event`       Generated for DNS replies of type *A*.
-:zeek:id:`dns_CAA_reply`: :zeek:type:`event`     Generated for DNS replies of type *CAA* (Certification Authority Authorization).
-:zeek:id:`dns_CNAME_reply`: :zeek:type:`event`   Generated for DNS replies of type *CNAME*.
-:zeek:id:`dns_DNSKEY`: :zeek:type:`event`        Generated for DNS replies of type *DNSKEY*.
-:zeek:id:`dns_DS`: :zeek:type:`event`            Generated for DNS replies of type *DS*.
-:zeek:id:`dns_EDNS_addl`: :zeek:type:`event`     Generated for DNS replies of type *EDNS*.
-:zeek:id:`dns_EDNS_ecs`: :zeek:type:`event`      Generated for DNS replies of type *EDNS*.
-:zeek:id:`dns_HINFO_reply`: :zeek:type:`event`   Generated for DNS replies of type *HINFO*.
-:zeek:id:`dns_MX_reply`: :zeek:type:`event`      Generated for DNS replies of type *MX*.
-:zeek:id:`dns_NSEC`: :zeek:type:`event`          Generated for DNS replies of type *NSEC*.
-:zeek:id:`dns_NSEC3`: :zeek:type:`event`         Generated for DNS replies of type *NSEC3*.
-:zeek:id:`dns_NS_reply`: :zeek:type:`event`      Generated for DNS replies of type *NS*.
-:zeek:id:`dns_PTR_reply`: :zeek:type:`event`     Generated for DNS replies of type *PTR*.
-:zeek:id:`dns_RRSIG`: :zeek:type:`event`         Generated for DNS replies of type *RRSIG*.
-:zeek:id:`dns_SOA_reply`: :zeek:type:`event`     Generated for DNS replies of type *CNAME*.
-:zeek:id:`dns_SPF_reply`: :zeek:type:`event`     Generated for DNS replies of type *SPF*.
-:zeek:id:`dns_SRV_reply`: :zeek:type:`event`     Generated for DNS replies of type *SRV*.
-:zeek:id:`dns_TSIG_addl`: :zeek:type:`event`     Generated for DNS replies of type *TSIG*.
-:zeek:id:`dns_TXT_reply`: :zeek:type:`event`     Generated for DNS replies of type *TXT*.
-:zeek:id:`dns_WKS_reply`: :zeek:type:`event`     Generated for DNS replies of type *WKS*.
-:zeek:id:`dns_end`: :zeek:type:`event`           Generated at the end of processing a DNS packet.
-:zeek:id:`dns_message`: :zeek:type:`event`       Generated for all DNS messages.
-:zeek:id:`dns_query_reply`: :zeek:type:`event`   Generated for each entry in the Question section of a DNS reply.
-:zeek:id:`dns_rejected`: :zeek:type:`event`      Generated for DNS replies that reject a query.
-:zeek:id:`dns_request`: :zeek:type:`event`       Generated for DNS requests.
-:zeek:id:`dns_unknown_reply`: :zeek:type:`event` Generated on DNS reply resource records when the type of record is not one
-                                                 that Zeek knows how to parse and generate another more specific event.
-================================================ ================================================================================
+===================================================== =======================================================================================
+:zeek:id:`dns_A6_reply`: :zeek:type:`event`           Generated for DNS replies of type *A6*.
+:zeek:id:`dns_AAAA_reply`: :zeek:type:`event`         Generated for DNS replies of type *AAAA*.
+:zeek:id:`dns_A_reply`: :zeek:type:`event`            Generated for DNS replies of type *A*.
+:zeek:id:`dns_CAA_reply`: :zeek:type:`event`          Generated for DNS replies of type *CAA* (Certification Authority Authorization).
+:zeek:id:`dns_CNAME_reply`: :zeek:type:`event`        Generated for DNS replies of type *CNAME*.
+:zeek:id:`dns_DNSKEY`: :zeek:type:`event`             Generated for DNS replies of type *DNSKEY*.
+:zeek:id:`dns_DS`: :zeek:type:`event`                 Generated for DNS replies of type *DS*.
+:zeek:id:`dns_EDNS_addl`: :zeek:type:`event`          Generated for DNS replies of type *EDNS*.
+:zeek:id:`dns_EDNS_cookie`: :zeek:type:`event`        Generated for DNS replies of type *EDNS*, and an option field in this *EDNS* record has
+                                                      an opt-type of 10.
+:zeek:id:`dns_EDNS_ecs`: :zeek:type:`event`           Generated for DNS replies of type *EDNS*.
+:zeek:id:`dns_EDNS_tcp_keepalive`: :zeek:type:`event` Generated for DNS replies of type *EDNS*, and an option field in this *EDNS* record has
+                                                      an opt-type of 11.
+:zeek:id:`dns_HINFO_reply`: :zeek:type:`event`        Generated for DNS replies of type *HINFO*.
+:zeek:id:`dns_MX_reply`: :zeek:type:`event`           Generated for DNS replies of type *MX*.
+:zeek:id:`dns_NSEC`: :zeek:type:`event`               Generated for DNS replies of type *NSEC*.
+:zeek:id:`dns_NSEC3`: :zeek:type:`event`              Generated for DNS replies of type *NSEC3*.
+:zeek:id:`dns_NS_reply`: :zeek:type:`event`           Generated for DNS replies of type *NS*.
+:zeek:id:`dns_PTR_reply`: :zeek:type:`event`          Generated for DNS replies of type *PTR*.
+:zeek:id:`dns_RRSIG`: :zeek:type:`event`              Generated for DNS replies of type *RRSIG*.
+:zeek:id:`dns_SOA_reply`: :zeek:type:`event`          Generated for DNS replies of type *CNAME*.
+:zeek:id:`dns_SPF_reply`: :zeek:type:`event`          Generated for DNS replies of type *SPF*.
+:zeek:id:`dns_SRV_reply`: :zeek:type:`event`          Generated for DNS replies of type *SRV*.
+:zeek:id:`dns_TSIG_addl`: :zeek:type:`event`          Generated for DNS replies of type *TSIG*.
+:zeek:id:`dns_TXT_reply`: :zeek:type:`event`          Generated for DNS replies of type *TXT*.
+:zeek:id:`dns_WKS_reply`: :zeek:type:`event`          Generated for DNS replies of type *WKS*.
+:zeek:id:`dns_end`: :zeek:type:`event`                Generated at the end of processing a DNS packet.
+:zeek:id:`dns_message`: :zeek:type:`event`            Generated for all DNS messages.
+:zeek:id:`dns_query_reply`: :zeek:type:`event`        Generated for each entry in the Question section of a DNS reply.
+:zeek:id:`dns_rejected`: :zeek:type:`event`           Generated for DNS replies that reject a query.
+:zeek:id:`dns_request`: :zeek:type:`event`            Generated for DNS requests.
+:zeek:id:`dns_unknown_reply`: :zeek:type:`event`      Generated on DNS reply resource records when the type of record is not one
+                                                      that Zeek knows how to parse and generate another more specific event.
+===================================================== =======================================================================================
 
 
 Detailed Interface
@@ -273,6 +277,37 @@ Events
       dns_max_queries dns_session_timeout dns_skip_addl
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
+.. zeek:id:: dns_EDNS_cookie
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_cookie`)
+
+   Generated for DNS replies of type *EDNS*, and an option field in this *EDNS* record has
+   an opt-type of 10. For replies with multiple options fields, an individual event
+   is raised for each.
+   
+   See `Wikipedia <http://en.wikipedia.org/wiki/Domain_Name_System>`__ for more
+   information about the DNS protocol. See `RFC7873 <https://tools.ietf.org/html/rfc7873>`__ for
+   more information about EDNS0 cookie. Zeek analyzes both UDP and TCP DNS
+   sessions.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :opt: The parsed EDNS Cookie option.
+   
+   .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
+      dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
+      dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end dns_mapping_altered
+      dns_mapping_lost_name dns_mapping_new_name dns_mapping_unverified
+      dns_mapping_valid dns_message dns_query_reply dns_rejected dns_request
+      dns_max_queries dns_session_timeout dns_skip_addl
+      dns_skip_all_addl dns_skip_all_auth dns_skip_auth
+
 .. zeek:id:: dns_EDNS_ecs
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_ecs`)
@@ -293,6 +328,37 @@ Events
    
 
    :opt: The parsed EDNS option.
+   
+   .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
+      dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
+      dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end dns_mapping_altered
+      dns_mapping_lost_name dns_mapping_new_name dns_mapping_unverified
+      dns_mapping_valid dns_message dns_query_reply dns_rejected dns_request
+      dns_max_queries dns_session_timeout dns_skip_addl
+      dns_skip_all_addl dns_skip_all_auth dns_skip_auth
+
+.. zeek:id:: dns_EDNS_tcp_keepalive
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_tcp_keepalive`)
+
+   Generated for DNS replies of type *EDNS*, and an option field in this *EDNS* record has
+   an opt-type of 11. For replies with multiple option fields, an individual event is
+   raised for each.
+   
+   See `Wikipedia <http://en.wikipedia.org/wiki/Domain_Name_System>`__ for more
+   information about the DNS protocol. See `RFC7828 <https://tools.ietf.org/html/rfc7828>`__ for
+   more information about EDNS0 TCP keepalive. Zeek analyzes both UDP and TCP DNS
+   sessions.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :opt: The parsed EDNS Keepalive option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
