@@ -149,7 +149,7 @@ Change handlers
 ---------------
 
 A change handler is a user-defined function that is called automatically
-each time an option value changes.  This example shows how to register a
+each time an option value changes.  This registers a
 change handler for an option that has a data type of "addr" (for other
 data types, the return type and 2nd parameter data type must be adjusted
 accordingly):
@@ -192,7 +192,28 @@ the pathname of the config file.  When the Config::set_value function triggers
 a change, then the third argument of the change handler is the value passed
 to the optional third argument of the Config::set_value function.
 
-Note that change handlers are also used internally by the
+Note that in some cases change handlers will be called even when the underlying option value already
+has the same value as an incoming change. Change handlers have to be aware that this situation
+will occur and that they will be called repeatedly with the same value.
+
+Usually this happens when values are set by the configuration reader. The
+config reader is running in a thread and does not have direct access to the
+internal Zeek data structures; thus it has to send changes whenever it thinks
+that a data structure might have changes. Specifically this means:
+
+* change handlers will always be called for all values in a config file when
+  it is read for the first time, even if the underlying script-level
+  option is already set to the same value.
+
+* after a config file is read for the first time, change handlers will be
+  called whenever the ascii representation of a line in the config file changes.
+  This is true even if this does not change the value of the Zeek script-leven
+  datastructure.
+
+* change handlers will be called whenever any zeek script calls the ``Config::set_value``
+  function, even if the option is already set to the same value
+
+Change handlers are also used internally by the
 configuration framework. If you look at the script level source code of
 the config framework, you can see that change handlers are used for
 logging the option changes to config.log.
