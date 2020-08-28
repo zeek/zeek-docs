@@ -337,7 +337,7 @@ to optimize the speed of the input framework. It can generate arbitrary
 amounts of semi-random data in all Zeek data types supported by the input
 framework.
 
-Currently, Zeek supports the following readers in addition to the 
+Currently, Zeek supports the following readers in addition to the
 aforementioned ones:
 
 .. toctree::
@@ -352,7 +352,7 @@ Reading Data to Events
 The second supported mode of the input framework is reading data to Zeek
 events instead of reading them to a table.
 
-Event streams work very similarly to table streams that were already
+Event streams work similarly to table streams that were already
 discussed in much detail. To read the blacklist of the previous example
 into an event stream, the :zeek:id:`Input::add_event` function is used.
 For example:
@@ -376,10 +376,18 @@ For example:
                                   $fields=Val, $ev=blacklistentry]);
         }
 
-
 The main difference in the declaration of the event stream is, that an event
 stream needs no separate index and value declarations -- instead, all source
 data types are provided in a single record definition.
+
+Another difference to table streams is, that event streams do not track changes
+like table streams. Hence, every change will raise a event of type ``Input::EVENT_NEW``,
+with the new line content. No event will be raised when a line is removed.
+
+Note that, due to this, reading data to events has a lower overhead than reading
+data into sets/tables. When reading to events, the input framework has to keep only minimal
+internal state, whereas when reading to tables the input framework has to keep state about
+every input line to determine changes.
 
 Apart from this, event streams work exactly the same as table streams and
 support most of the options that are also supported for table streams.
