@@ -34,14 +34,17 @@ Functions
 :zeek:id:`join_string_vec`: :zeek:type:`function`                            Joins all values in the given vector of strings with a separator placed
                                                                              between each element.
 :zeek:id:`levenshtein_distance`: :zeek:type:`function`                       Calculates the Levenshtein distance between the two strings.
-:zeek:id:`ljust`: :zeek:type:`function`                                      Returns a left-justified version of the string, padded to a specific length with a specified character.
+:zeek:id:`ljust`: :zeek:type:`function`                                      Returns a left-justified version of the string, padded to a specific length
+                                                                             with a specified character.
 :zeek:id:`lstrip`: :zeek:type:`function`                                     Removes all combinations of characters in the *chars* argument
                                                                              starting at the beginning of the string until first mismatch.
 :zeek:id:`remove_prefix`: :zeek:type:`function`                              Similar to lstrip(), except does the removal repeatedly if the pattern repeats at the start of the string.
 :zeek:id:`remove_suffix`: :zeek:type:`function`                              Similar to rstrip(), except does the removal repeatedly if the pattern repeats at the end of the string.
 :zeek:id:`reverse`: :zeek:type:`function`                                    Returns a reversed copy of the string
-:zeek:id:`rfind_str`: :zeek:type:`function`                                  The same as find(), but returns the highest index matching the substring instead of the smallest.
-:zeek:id:`rjust`: :zeek:type:`function`                                      Returns a right-justified version of the string, padded to a specific length with a specified character.
+:zeek:id:`rfind_str`: :zeek:type:`function`                                  The same as find(), but returns the highest index matching the substring
+                                                                             instead of the smallest.
+:zeek:id:`rjust`: :zeek:type:`function`                                      Returns a right-justified version of the string, padded to a specific length
+                                                                             with a specified character.
 :zeek:id:`rstrip`: :zeek:type:`function`                                     Removes all combinations of characters in the *chars* argument
                                                                              starting at the end of the string until first mismatch.
 :zeek:id:`safe_shell_quote`: :zeek:type:`function`                           Takes a string and escapes characters that would allow execution of
@@ -231,9 +234,10 @@ Functions
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
-   Finds a string within another string, starting from the beginning. This works by taking a substring within
-   the provided indexes and searching for the sub argument. This means that ranges shorter than the string in
-   the sub argument will always return a failure.
+   Finds a string within another string, starting from the beginning. This works
+   by taking a substring within the provided indexes and searching for the sub
+   argument. This means that ranges shorter than the string in the sub argument
+   will always return a failure.
    
 
    :str: The string to search in.
@@ -242,13 +246,14 @@ Functions
 
    :start: An optional position for the start of the substring.
 
-   :end: An optional position for the end of the substring. A value less than zero (such as the default -1)
-        means a search until the end of the string.
+   :end: An optional position for the end of the substring. A value less than
+        zero (such as the default -1) means a search until the end of the
+        string.
    
 
-   :returns: The position of the substring. Returns -1 if the string wasn't found. Prints an error if the
-   starting position is after the ending position.
-   
+   :returns: The position of the substring. Returns -1 if the string wasn't
+            found. Prints an error if the starting position is after the ending
+            position.
 
 .. zeek:id:: gsub
 
@@ -367,19 +372,22 @@ Functions
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`, fill: :zeek:type:`string` :zeek:attr:`&default` = ``" "`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
-   Returns a left-justified version of the string, padded to a specific length with a specified character.
+   Returns a left-justified version of the string, padded to a specific length
+   with a specified character.
    
 
    :str: The string to left-justify.
 
-   :count: The length of the returned string. If this value is less than or equal to the length of str, a
-   copy of str is returned.
+   :count: The length of the returned string. If this value is less than or
+          equal to the length of str, a copy of str is returned.
 
-   :fill: The character used to fill in any extra characters in the resulting string. If a string longer than
-   one character is passed, an error is reported. This defaults to the space character.
+   :fill: The character used to fill in any extra characters in the resulting
+         string. If a string longer than one character is passed, an error is
+         reported. This defaults to the space character.
    
 
-   :returns: A left-justified version of a string, padded with characters to a specific length.
+   :returns: A left-justified version of a string, padded with characters to a
+            specific length.
    
 
 .. zeek:id:: lstrip
@@ -431,7 +439,8 @@ Functions
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
-   The same as find(), but returns the highest index matching the substring instead of the smallest.
+   The same as find(), but returns the highest index matching the substring
+   instead of the smallest.
    
 
    :str: The string to search in.
@@ -440,31 +449,34 @@ Functions
 
    :start: An optional position for the start of the substring.
 
-   :end: An optional position for the end of the substring. A value less than zero (such as the default -1)
-        means a search from the end of the string.
+   :end: An optional position for the end of the substring. A value less than
+        zero (such as the default -1) means a search from the end of the string.
    
 
-   :returns: The position of the substring. Returns -1 if the string wasn't found. Prints an error if the
-   starting position is after the ending position.
-   
+   :returns: The position of the substring. Returns -1 if the string wasn't
+            found. Prints an error if the starting position is after the ending
+            position.
 
 .. zeek:id:: rjust
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`, fill: :zeek:type:`string` :zeek:attr:`&default` = ``" "`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
-   Returns a right-justified version of the string, padded to a specific length with a specified character.
+   Returns a right-justified version of the string, padded to a specific length
+   with a specified character.
    
 
    :str: The string to right-justify.
 
-   :count: The length of the returned string. If this value is less than or equal to the length of str, a
-   copy of str is returned.
+   :count: The length of the returned string. If this value is less than or
+          equal to the length of str, a copy of str is returned.
 
-   :fill: The character used to fill in any extra characters in the resulting string. If a string longer than
-   one character is passed, an error is reported. This defaults to the space character.
+   :fill: The character used to fill in any extra characters in the resulting
+         string. If a string longer than one character is passed, an error is
+         reported. This defaults to the space character.
    
 
-   :returns: A right-justified version of a string, padded with characters to a specific length.
+   :returns: A right-justified version of a string, padded with characters to a
+            specific length.
    
 
 .. zeek:id:: rstrip
