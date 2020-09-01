@@ -205,6 +205,10 @@ that a data structure might have changes. Specifically this means:
   it is read for the first time, even if the underlying script-level
   option is already set to the same value.
 
+* if there is no line for an optin in the config file(s), the change handler
+  for the option will not be invoked at all. If your code needs a change handler
+  to run at least once to function, you will need to call it yourself.
+
 * after a config file is read for the first time, change handlers will be
   called whenever the ascii representation of a line in the config file changes.
   This is true even if this does not change the value of the Zeek script-leven
