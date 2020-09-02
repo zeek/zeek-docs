@@ -41,8 +41,8 @@ Functions
 :zeek:id:`remove_prefix`: :zeek:type:`function`                              Similar to lstrip(), except does the removal repeatedly if the pattern repeats at the start of the string.
 :zeek:id:`remove_suffix`: :zeek:type:`function`                              Similar to rstrip(), except does the removal repeatedly if the pattern repeats at the end of the string.
 :zeek:id:`reverse`: :zeek:type:`function`                                    Returns a reversed copy of the string
-:zeek:id:`rfind_str`: :zeek:type:`function`                                  The same as find(), but returns the highest index matching the substring
-                                                                             instead of the smallest.
+:zeek:id:`rfind_str`: :zeek:type:`function`                                  The same as :zeek:see:`find_str`, but returns the highest index matching
+                                                                             the substring instead of the smallest.
 :zeek:id:`rjust`: :zeek:type:`function`                                      Returns a right-justified version of the string, padded to a specific length
                                                                              with a specified character.
 :zeek:id:`rstrip`: :zeek:type:`function`                                     Removes all combinations of characters in the *chars* argument
@@ -439,8 +439,8 @@ Functions
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
-   The same as find(), but returns the highest index matching the substring
-   instead of the smallest.
+   The same as :zeek:see:`find_str`, but returns the highest index matching
+   the substring instead of the smallest.
    
 
    :str: The string to search in.
