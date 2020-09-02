@@ -336,9 +336,8 @@ Here are the statements that the Zeek scripting language supports.
 
 .. zeek:keyword:: fallthrough
 
-    The "fallthrough" statement can be used as the last statement in a
-    "case" block to indicate that execution should continue into the
-    next "case" or "default" label.
+    The "fallthrough" statement can be used within a "case" block to indicate
+    that execution should continue at the next "case" or "default" label.
 
     For an example, see the :zeek:keyword:`switch` statement.
 
