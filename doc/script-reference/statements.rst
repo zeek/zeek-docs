@@ -619,6 +619,10 @@ Here are the statements that the Zeek scripting language supports.
     error if any cast in any "case" is an unsupported cast (see the
     documentation of the type casting operator "as").
 
+    A type-casting ``case`` block is also not allowed to use a
+    :zeek:keyword:`fallthrough` statement since that could generally mean
+    entering another type-casting block. That is, the switched-upon value could
+    get cast to at least two different types, which is not a valid possibility.
 
 .. zeek:keyword:: when
 
