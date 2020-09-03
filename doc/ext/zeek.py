@@ -186,8 +186,55 @@ class ZeekIdentifier(ZeekGeneric):
         return name
 
 class ZeekKeyword(ZeekGeneric):
+    def add_target_and_index(self, name, sig, signode):
+        targetname = self.objtype + '-' + name
+
+        if targetname not in self.state.document.ids:
+            objects = self.env.domaindata['zeek']['objects']
+            key = (self.objtype, name)
+            if ( key in objects and self.objtype != "id" and
+                 self.objtype != "type" ):
+                logger.warning('%s: duplicate description of %s %s, ' %
+                        (self.env.docname, self.objtype, name) +
+                        'other instance in ' +
+                        self.env.doc2path(objects[key]),
+                        self.lineno)
+            objects[key] = self.env.docname
+            self.update_type_map(name)
+
+        indextext = self.get_index_text(self.objtype, name)
+        if indextext:
+            self.indexnode['entries'].append(make_index_tuple('single',
+                                             indextext, targetname,
+                                             targetname))
+
+    def handle_signature(self, sig, signode):
+        # The run() method is overriden to drop signode anyway in favor of
+        # simply adding the index and a target nodes and leaving up
+        # to the .rst document to explicitly add things that need to
+        # be presented in the final rendering (e.g. a section header)
+
+        # signode += addnodes.desc_name("", sig)
+        self.keyword_name = sig
+        return sig
+
     def get_index_text(self, objectname, name):
-        return name
+        if name and name[0] == '@':
+            return _('%s (directive)') % (name)
+        else:
+            return _('%s (keyword)') % (name)
+
+    def run(self):
+        ns = super().run()
+        index_node = ns[0]
+        desc_sig_node = ns[1]
+
+        target_id = 'keyword-' + self.keyword_name
+        target_node = nodes.target('', '', ids=[target_id])
+        self.state.document.note_explicit_target(target_node)
+
+        # Replace the description node from Sphinx with a simple target node
+        return [index_node, target_node]
 
 class ZeekAttribute(ZeekGeneric):
     def get_index_text(self, objectname, name):
