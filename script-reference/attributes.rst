@@ -74,324 +74,400 @@ The Zeek scripting language supports the following attributes.
 
 Here is a more detailed explanation of each attribute:
 
+
 .. zeek:attr:: &redef
 
-    Allows use of a :zeek:keyword:`redef` to redefine initial values of
-    global variables (i.e., variables declared either :zeek:keyword:`global`
-    or :zeek:keyword:`const`).  Example:
+&redef
+------
 
-    .. code-block:: zeek
+Allows use of a :zeek:keyword:`redef` to redefine initial values of
+global variables (i.e., variables declared either :zeek:keyword:`global`
+or :zeek:keyword:`const`).  Example:
 
-        const clever = T &redef;
-        global cache_size = 256 &redef;
+.. code-block:: zeek
 
-    Note that a variable declared "global" can also have its value changed
-    with assignment statements (doesn't matter if it has the "&redef"
-    attribute or not).
+    const clever = T &redef;
+    global cache_size = 256 &redef;
+
+Note that a variable declared "global" can also have its value changed
+with assignment statements (doesn't matter if it has the "&redef"
+attribute or not).
+
 
 .. zeek:attr:: &priority
 
-    Specifies the execution priority (as a signed integer) of a hook or
-    event handler. Higher values are executed before lower ones. The
-    default value is 0.  Example:
+&priority
+---------
 
-    .. code-block:: zeek
+Specifies the execution priority (as a signed integer) of a hook or
+event handler. Higher values are executed before lower ones. The
+default value is 0.  Example:
 
-        event zeek_init() &priority=10
-            {
-            print "high priority";
-            }
+.. code-block:: zeek
+
+    event zeek_init() &priority=10
+        {
+        print "high priority";
+        }
+
 
 .. zeek:attr:: &log
 
-    Writes a :zeek:type:`record` field to the associated log stream.
+&log
+----
+
+Writes a :zeek:type:`record` field to the associated log stream.
+
 
 .. zeek:attr:: &optional
 
-    Allows a record field value to be missing (i.e., neither initialized nor
-    ever assigned a value).
+&optional
+---------
 
-    In this example, the record could be instantiated with either
-    "myrec($a=127.0.0.1)" or "myrec($a=127.0.0.1, $b=80/tcp)":
+Allows a record field value to be missing (i.e., neither initialized nor
+ever assigned a value).
 
-    .. code-block:: zeek
+In this example, the record could be instantiated with either
+"myrec($a=127.0.0.1)" or "myrec($a=127.0.0.1, $b=80/tcp)":
 
-        type myrec: record { a: addr; b: port &optional; };
+.. code-block:: zeek
 
-    The ``?$`` operator can be used to check if a record field has a value or
-    not (it returns a ``bool`` value of ``T`` if the field has a value,
-    and ``F`` if not).
+    type myrec: record { a: addr; b: port &optional; };
+
+The ``?$`` operator can be used to check if a record field has a value or
+not (it returns a ``bool`` value of ``T`` if the field has a value,
+and ``F`` if not).
+
 
 .. zeek:attr:: &default
 
-    Specifies a default value for a record field, container element, or a
-    function/hook/event parameter.
+&default
+--------
 
-    In this example, the record could be instantiated with either
-    "myrec($a=5, $c=3.14)" or "myrec($a=5, $b=53/udp, $c=3.14)":
+Specifies a default value for a record field, container element, or a
+function/hook/event parameter.
 
-    .. code-block:: zeek
+In this example, the record could be instantiated with either
+"myrec($a=5, $c=3.14)" or "myrec($a=5, $b=53/udp, $c=3.14)":
 
-        type myrec: record { a: count; b: port &default=80/tcp; c: double; };
+.. code-block:: zeek
 
-    In this example, the table will return the string ``"foo"`` for any
-    attempted access to a non-existing index:
+    type myrec: record { a: count; b: port &default=80/tcp; c: double; };
 
-    .. code-block:: zeek
+In this example, the table will return the string ``"foo"`` for any
+attempted access to a non-existing index:
 
-        global mytable: table[count] of string &default="foo";
+.. code-block:: zeek
 
-    When used with function/hook/event parameters, all of the parameters
-    with the "&default" attribute must come after all other parameters.
-    For example, the following function could be called either as "myfunc(5)"
-    or as "myfunc(5, 53/udp)":
+    global mytable: table[count] of string &default="foo";
 
-    .. code-block:: zeek
+When used with function/hook/event parameters, all of the parameters
+with the "&default" attribute must come after all other parameters.
+For example, the following function could be called either as "myfunc(5)"
+or as "myfunc(5, 53/udp)":
 
-        function myfunc(a: count, b: port &default=80/tcp)
-            {
-            print a, b;
-            }
+.. code-block:: zeek
+
+    function myfunc(a: count, b: port &default=80/tcp)
+        {
+        print a, b;
+        }
+
 
 .. zeek:attr:: &add_func
 
-    Can be applied to an identifier with &redef to specify a function to
-    be called any time a "redef <id> += ..." declaration is parsed.  The
-    function takes two arguments of the same type as the identifier, the first
-    being the old value of the variable and the second being the new
-    value given after the "+=" operator in the "redef" declaration.  The
-    return value of the function will be the actual new value of the
-    variable after the "redef" declaration is parsed.
+&add_func
+---------
+
+Can be applied to an identifier with &redef to specify a function to
+be called any time a "redef <id> += ..." declaration is parsed.  The
+function takes two arguments of the same type as the identifier, the first
+being the old value of the variable and the second being the new
+value given after the "+=" operator in the "redef" declaration.  The
+return value of the function will be the actual new value of the
+variable after the "redef" declaration is parsed.
+
 
 .. zeek:attr:: &delete_func
 
-    Same as :zeek:attr:`&add_func`, except for :zeek:keyword:`redef` declarations
-    that use the "-=" operator.
+&delete_func
+------------
+
+Same as :zeek:attr:`&add_func`, except for :zeek:keyword:`redef` declarations
+that use the "-=" operator.
+
 
 .. zeek:attr:: &expire_func
 
-    Called right before a container element expires. The function's first
-    argument is of the same type as the container it is associated with.
-    The function then takes a variable number of arguments equal to the
-    number of indexes in the container. For example, for a
-    ``table[string,string] of count`` the expire function signature is:
+&expire_func
+------------
 
-    .. code-block:: zeek
+Called right before a container element expires. The function's first
+argument is of the same type as the container it is associated with.
+The function then takes a variable number of arguments equal to the
+number of indexes in the container. For example, for a
+``table[string,string] of count`` the expire function signature is:
 
-        function(t: table[string, string] of count, s: string, s2: string): interval
+.. code-block:: zeek
 
-    The return value is an :zeek:type:`interval` indicating the amount of
-    additional time to wait before expiring the container element at the
-    given index (which will trigger another execution of this function).
+    function(t: table[string, string] of count, s: string, s2: string): interval
+
+The return value is an :zeek:type:`interval` indicating the amount of
+additional time to wait before expiring the container element at the
+given index (which will trigger another execution of this function).
+
 
 .. zeek:attr:: &read_expire
 
-    Specifies a read expiration timeout for container elements. That is,
-    the element expires after the given amount of time since the last
-    time it has been read. Note that a write also counts as a read.
+&read_expire
+------------
+
+Specifies a read expiration timeout for container elements. That is,
+the element expires after the given amount of time since the last
+time it has been read. Note that a write also counts as a read.
+
 
 .. zeek:attr:: &write_expire
 
-    Specifies a write expiration timeout for container elements. That
-    is, the element expires after the given amount of time since the
-    last time it has been written.
+&write_expire
+-------------
+
+Specifies a write expiration timeout for container elements. That
+is, the element expires after the given amount of time since the
+last time it has been written.
+
 
 .. zeek:attr:: &create_expire
 
-    Specifies a creation expiration timeout for container elements. That
-    is, the element expires after the given amount of time since it has
-    been inserted into the container, regardless of any reads or writes.
+&create_expire
+--------------
+
+Specifies a creation expiration timeout for container elements. That
+is, the element expires after the given amount of time since it has
+been inserted into the container, regardless of any reads or writes.
+
 
 .. zeek:attr:: &on_change
 
-    Called right after a change has been applied to a container. The
-    function's first argument is of the same type as the container it is
-    associated with, followed by a :zeek:see:`TableChange` record which specifies the
-    type of change that happened. The function then takes a variable number
-    of arguments equal to the number of indexes in the container, followed by an
-    argument for the value of the container (if the container has a value)
-    For example, for a ``table[string,string] of count`` the on_change
-    function signature is:
+&on_change
+----------
 
-    .. code-block:: zeek
+Called right after a change has been applied to a container. The
+function's first argument is of the same type as the container it is
+associated with, followed by a :zeek:see:`TableChange` record which specifies the
+type of change that happened. The function then takes a variable number
+of arguments equal to the number of indexes in the container, followed by an
+argument for the value of the container (if the container has a value)
+For example, for a ``table[string,string] of count`` the on_change
+function signature is:
 
-        function(t: table[string, string] of count, tpe: TableChange, s: string, s2: string, val: count)
+.. code-block:: zeek
 
-    For a ``set[count]`` the function signature is:
+    function(t: table[string, string] of count, tpe: TableChange, s: string, s2: string, val: count)
 
-    .. code-block:: zeek
+For a ``set[count]`` the function signature is:
 
-        function(s: set[count], tpe: TableChange, c: count)
+.. code-block:: zeek
 
-    The passed value specifies the state of a value before the change, where this makes
-    sense. In case a element is changed, removed, or expired, the passed value will be
-    the value before the change, removal, or expiration. When an element is added, the
-    passed value will be the value of the added element (since no old element existed).
+    function(s: set[count], tpe: TableChange, c: count)
 
-    Note that the on_change function is only changed when the container itself
-    is modified (due to an assignment, delete operation, or expiry). When
-    a container contains a complex element (like a record, set, or vector),
-    changes to these complex elements are not propagated back to the parent.
-    For example, in this example the ``change_function`` for the table will only
-    be called once, when ``s`` is inserted - but it will not be called when ``s`` is
-    changed:
+The passed value specifies the state of a value before the change, where this makes
+sense. In case a element is changed, removed, or expired, the passed value will be
+the value before the change, removal, or expiration. When an element is added, the
+passed value will be the value of the added element (since no old element existed).
 
-    .. code-block:: zeek
+Note that the on_change function is only changed when the container itself
+is modified (due to an assignment, delete operation, or expiry). When
+a container contains a complex element (like a record, set, or vector),
+changes to these complex elements are not propagated back to the parent.
+For example, in this example the ``change_function`` for the table will only
+be called once, when ``s`` is inserted - but it will not be called when ``s`` is
+changed:
 
-        local t: table[string] of set[string] &on_change=change_function;
-        local s: set[string] = set();
-        t["s"] = s; # change_function of t is called
-        add s["a"]; # change_function of t is _not_ called.
+.. code-block:: zeek
 
-    Also note that the on_change function of a container will not be called
-    when the container is already handling on_change_function. Thus, writing
-    a on_change function like this is supported and will not lead to a infinite
-    loop :
+    local t: table[string] of set[string] &on_change=change_function;
+    local s: set[string] = set();
+    t["s"] = s; # change_function of t is called
+    add s["a"]; # change_function of t is _not_ called.
 
-    .. code-block:: zeek
+Also note that the on_change function of a container will not be called
+when the container is already handling on_change_function. Thus, writing
+a on_change function like this is supported and will not lead to a infinite
+loop :
 
-        local t: table[string] of set[string] &on_change=hange_function;
-        function change_function(t: table[string, int] of count, tpe: TableChange, idxa: string, idxb: int, val: count)
-          {
-          t[idxa, idxb] = val+1;
-          }
+.. code-block:: zeek
+
+    local t: table[string] of set[string] &on_change=hange_function;
+    function change_function(t: table[string, int] of count, tpe: TableChange, idxa: string, idxb: int, val: count)
+      {
+      t[idxa, idxb] = val+1;
+      }
+
 
 .. zeek:attr:: &raw_output
 
-    Opens a file in raw mode, i.e., non-ASCII characters are not
-    escaped.
+&raw_output
+-----------
+
+Opens a file in raw mode, i.e., non-ASCII characters are not
+escaped.
+
 
 .. zeek:attr:: &error_handler
 
-    Internally set on the events that are associated with the reporter
-    framework: :zeek:id:`reporter_info`, :zeek:id:`reporter_warning`, and
-    :zeek:id:`reporter_error`.  It prevents any handlers of those events
-    from being able to generate reporter messages that go through any of
-    those events (i.e., it prevents an infinite event recursion).  Instead,
-    such nested reporter messages are output to stderr.
+&error_handler
+--------------
+
+Internally set on the events that are associated with the reporter
+framework: :zeek:id:`reporter_info`, :zeek:id:`reporter_warning`, and
+:zeek:id:`reporter_error`.  It prevents any handlers of those events
+from being able to generate reporter messages that go through any of
+those events (i.e., it prevents an infinite event recursion).  Instead,
+such nested reporter messages are output to stderr.
+
 
 .. zeek:attr:: &type_column
 
-    Used by the input framework. It can be used on columns of type
-    :zeek:type:`port` (such a column only contains the port number) and
-    specifies the name of an additional column in
-    the input file which specifies the protocol of the port (tcp/udp/icmp).
+&type_column
+------------
 
-    In the following example, the input file would contain four columns
-    named "ip", "srcp", "proto", and "msg":
+Used by the input framework. It can be used on columns of type
+:zeek:type:`port` (such a column only contains the port number) and
+specifies the name of an additional column in
+the input file which specifies the protocol of the port (tcp/udp/icmp).
 
-    .. code-block:: zeek
+In the following example, the input file would contain four columns
+named "ip", "srcp", "proto", and "msg":
 
-        type Idx: record {
-            ip: addr;
-        };
+.. code-block:: zeek
+
+    type Idx: record {
+        ip: addr;
+    };
 
 
-        type Val: record {
-            srcp: port &type_column = "proto";
-            msg: string;
-        };
+    type Val: record {
+        srcp: port &type_column = "proto";
+        msg: string;
+    };
+
 
 .. zeek:attr:: &backend
 
-    Used for persisting tables/sets and/or synchronizing them over a cluster.
+&backend
+--------
 
-    This attribute binds a table to a Broker store. Changes to the table
-    are sent to the Broker store, and changes to the Broker store are applied
-    back to the table.
+Used for persisting tables/sets and/or synchronizing them over a cluster.
 
-    Since Broker stores are synchronized over a cluster, this sends
-    table changes to all other nodes in the cluster. When using a persistent Broker
-    store backend, the content of the tables/sets will be restored on startup.
+This attribute binds a table to a Broker store. Changes to the table
+are sent to the Broker store, and changes to the Broker store are applied
+back to the table.
 
-    This attribute expects the type of backend you want to use for the table. For
-    example, to bind a table to a memory-backed Broker store, use:
+Since Broker stores are synchronized over a cluster, this sends
+table changes to all other nodes in the cluster. When using a persistent Broker
+store backend, the content of the tables/sets will be restored on startup.
 
-    .. code-block:: zeek
+This attribute expects the type of backend you want to use for the table. For
+example, to bind a table to a memory-backed Broker store, use:
 
-        global t: table[string] of count &backend=Broker::MEMORY;
+.. code-block:: zeek
 
-    .. note::
+    global t: table[string] of count &backend=Broker::MEMORY;
 
-        This feature is experimental and can change in future versions without
-        prior deprecation/backwards compatibility.
+.. note::
+
+    This feature is experimental and can change in future versions without
+    prior deprecation/backwards compatibility.
+
 
 .. zeek:attr:: &broker_store
 
-    This attribute is similar to :zeek:attr:`&backend` and allows to bind a zeek
-    table to a Broker store. In difference to :zeek:attr:`&backend` this attribute
-    allows you to specify the name of a Broker store you want to bind to without
-    creating it.
+&broker_store
+-------------
 
-    You can use this is you want to bind a table to a Broker store with special options.
+This attribute is similar to :zeek:attr:`&backend` and allows to bind a zeek
+table to a Broker store. In difference to :zeek:attr:`&backend` this attribute
+allows you to specify the name of a Broker store you want to bind to without
+creating it.
 
-    Example:
+You can use this is you want to bind a table to a Broker store with special options.
 
-    .. code-block:: zeek
+Example:
 
-         global teststore: opaque of Broker::Store;
+.. code-block:: zeek
 
-         global t: table[string] of count &broker_store="teststore";
+     global teststore: opaque of Broker::Store;
 
-         event zeek_init()
-             {
-             teststore = Broker::create_master("teststore");
-             }
+     global t: table[string] of count &broker_store="teststore";
 
-    .. note::
+     event zeek_init()
+         {
+         teststore = Broker::create_master("teststore");
+         }
 
-        This feature is experimental and can change in future versions without
-        prior deprecation/backwards compatibility.
+.. note::
+
+    This feature is experimental and can change in future versions without
+    prior deprecation/backwards compatibility.
+
 
 .. zeek:attr:: &broker_allow_complex_type
 
-    By default only tables containing atomic types can be bound to Broker stores.
-    Specifying this attribute before :zeek:attr:`&backend` or :zeek:attr:`&broker_store`
-    disables this safety feature and allows complex types to be stored in a Broker backed
-    table.
+&broker_allow_complex_type
+--------------------------
 
-    .. warning::
+By default only tables containing atomic types can be bound to Broker stores.
+Specifying this attribute before :zeek:attr:`&backend` or :zeek:attr:`&broker_store`
+disables this safety feature and allows complex types to be stored in a Broker backed
+table.
 
-        Storing complex types in Broker backed store comes with severe restrictions.
-        When you modify a stored complex type after inserting it into a table, this change
-        will *not propagate* to Broker and hence not be persisted/synchronized over the cluster.
+.. warning::
 
-        To send out the new value, you will have to re-insert the complex type into the zeek table.
+    Storing complex types in Broker backed store comes with severe restrictions.
+    When you modify a stored complex type after inserting it into a table, this change
+    will *not propagate* to Broker and hence not be persisted/synchronized over the cluster.
 
-        For example:
+    To send out the new value, you will have to re-insert the complex type into the zeek table.
 
-        .. code-block:: zeek
-
-                type testrec: record {
-                    a: count;
-                }
-
-                global t: table[string] of testrec &backend=Broker::MEMORY;
-
-                event zeek_init()
-                    {
-                    local rec = testrec($a=5);
-                    t["test"] = rec;
-                    rec$a = 6; # This will not propagate to Broker! You have to re-insert.
-                    # Propagate new value to Broker:
-                    t["test"] = rec;
-                    }
-
-    .. note::
-
-        This feature is experimental and can change in future versions without
-        prior deprecation/backwards compatibility.
-
-.. zeek:attr:: &deprecated
-
-    The associated identifier is marked as deprecated and will be
-    removed in a future version of Zeek.  Look in the NEWS file for more
-    instructions to migrate code that uses deprecated functionality.
-    This attribute can be assigned an optional string literal value to
-    print along with the deprecation warning. The preferred format of
-    this warning message should include the version number in which
-    the identifier will be removed:
+    For example:
 
     .. code-block:: zeek
 
-        type warned: string &deprecated="This type is deprecated. Removed in x.y.z.";
+            type testrec: record {
+                a: count;
+            }
+
+            global t: table[string] of testrec &backend=Broker::MEMORY;
+
+            event zeek_init()
+                {
+                local rec = testrec($a=5);
+                t["test"] = rec;
+                rec$a = 6; # This will not propagate to Broker! You have to re-insert.
+                # Propagate new value to Broker:
+                t["test"] = rec;
+                }
+
+.. note::
+
+    This feature is experimental and can change in future versions without
+    prior deprecation/backwards compatibility.
+
+
+.. zeek:attr:: &deprecated
+
+&deprecated
+-----------
+
+The associated identifier is marked as deprecated and will be
+removed in a future version of Zeek.  Look in the NEWS file for more
+instructions to migrate code that uses deprecated functionality.
+This attribute can be assigned an optional string literal value to
+print along with the deprecation warning. The preferred format of
+this warning message should include the version number in which
+the identifier will be removed:
+
+.. code-block:: zeek
+
+    type warned: string &deprecated="This type is deprecated. Removed in x.y.z.";
