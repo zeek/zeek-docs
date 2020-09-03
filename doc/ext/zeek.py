@@ -226,7 +226,7 @@ class ZeekKeyword(ZeekNative):
         else:
             return _('%s (keyword)') % (name)
 
-class ZeekAttribute(ZeekGeneric):
+class ZeekAttribute(ZeekNative):
     def get_index_text(self, name):
         return _('%s (attribute)') % (name)
 
