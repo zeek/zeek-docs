@@ -39,7 +39,7 @@ script :doc:`/scripts/policy/frameworks/files/detect-MHR.zeek`
 that is responsible for generating the
 appropriate DNS lookup, parsing the response, and generating a notice if appropriate.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-MHR.zeek
 
    ##! Detect file downloads that have hash values matching files in Team
@@ -124,7 +124,7 @@ specific event (``event file_hash``).  Don't get discouraged if you don't
 understand every section of the script; we'll cover the basics of the
 script and much more in following sections.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-MHR.zeek
 
    @load base/frameworks/files
@@ -143,7 +143,7 @@ this level of granularity might not be entirely necessary.  The ``@load`` direct
 are ensuring the Files framework, the Notice framework and the script to hash all files has
 been loaded by Zeek.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-MHR.zeek
 
    export {
@@ -194,7 +194,7 @@ Up until this point, the script has merely done some basic setup.  With
 the next section, the script starts to define instructions to take in
 a given event.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-MHR.zeek
 
    function do_mhr_lookup(hash: string, fi: Notice::FileInfo)
@@ -322,7 +322,7 @@ This effort resulted in built-in-function files organized such that
 each entry contains a descriptive event name, the arguments passed to
 the event, and a concise explanation of the functions use.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
    ## Generated for DNS requests. For requests with multiple queries, this event
    ## is raised once for each.
@@ -412,7 +412,7 @@ more layers of information about a connection.  This will give us a
 chance to see the contents of the connection record without it being
 overly populated.
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -b -r http/get.trace connection_record_01.zeek
    [id=[orig_h=141.142.228.5, orig_p=59856/tcp, resp_h=192.150.187.43, resp_p=80/tcp], orig=[size=136, state=5, num_pkts=7, num_bytes_ip=512, flow_label=0, l2_addr=c8:bc:c8:96:d2:a0], resp=[size=5007, state=5, num_pkts=7, num_bytes_ip=5379, flow_label=0, l2_addr=00:10:db:88:d2:ef], start_time=1362692526.869344, duration=0.211484, service={
@@ -449,7 +449,7 @@ brackets, which would correspond to the ``$``-delimiter in a Zeek script.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -b -r http/get.trace connection_record_02.zeek
    [id=[orig_h=141.142.228.5, orig_p=59856/tcp, resp_h=192.150.187.43, resp_p=80/tcp], orig=[size=136, state=5, num_pkts=7, num_bytes_ip=512, flow_label=0, l2_addr=c8:bc:c8:96:d2:a0], resp=[size=5007, state=5, num_pkts=7, num_bytes_ip=5379, flow_label=0, l2_addr=00:10:db:88:d2:ef], start_time=1362692526.869344, duration=0.211484, service={
@@ -566,7 +566,7 @@ would fail.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -b data_type_const.zeek
    {
@@ -720,7 +720,7 @@ You can see the full script and its output below.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_struct_set_declaration.zeek
    SSL Port: 22/tcp
@@ -745,7 +745,7 @@ to preserve a one-to-one mapping of keys to values.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_struct_table_declaration.zeek
    Service Name:  SSH - Common Port: 22/tcp
@@ -782,7 +782,7 @@ security platform.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -b data_struct_table_complex.zeek
    Harakiri was released in 1962 by Shochiku Eiga studios, directed by Masaki Kobayashi and starring Tatsuya Nakadai
@@ -836,7 +836,7 @@ lengths.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_struct_vector_declaration.zeek
    contents of v1: [1, 2, 3, 4]
@@ -859,7 +859,7 @@ current item in the vector with ``addr_vector[i]``.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -b data_struct_vector_iter.zeek
    1.2.0.0/18
@@ -937,7 +937,7 @@ For example, ``10.0.0.1 in 10.0.0.0/8`` would return true while
 script, we get the output listing the IP address and the subnet in
 which it belongs.
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_type_subnets.zeek
    172.16.4.56 belongs to subnet 172.16.0.0/20
@@ -974,7 +974,7 @@ produce a common date time formatted time stamp.
 When the script is executed we get an output showing the details of
 established connections.
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r wikipedia.trace data_type_time.zeek
    2011/06/18 19:03:08:  New connection established from 141.142.220.118 to 208.80.152.118\x0a
@@ -1025,7 +1025,7 @@ This time, when we execute the script we see an additional line in the
 output to display the time delta since the last fully established
 connection.
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r wikipedia.trace data_type_interval.zeek
    2011/06/18 19:03:08:  New connection established from 141.142.220.118 to 208.80.152.118
@@ -1080,7 +1080,7 @@ segments before and after any matches against the pattern but
 excluding the actual matches.  In this case, our pattern matches
 twice resulting in a vector with three elements.
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_type_pattern_01.zeek
    The
@@ -1101,7 +1101,7 @@ on the result of the comparison between the pattern and the string.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_type_pattern_02.zeek
    equality and /^?(equal)$?/ are not equal
@@ -1148,7 +1148,7 @@ field is unique.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_struct_record_01.zeek
    Service: dns(RFC1035)
@@ -1179,7 +1179,7 @@ record.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek data_struct_record_02.zeek
    System: morlock
@@ -1199,7 +1199,7 @@ It's also common to see a ``type`` used to simply alias a data
 structure to a more descriptive name.  The example below shows an
 example of this from Zeek's own type definitions file.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: init-bare.zeek
 
    type string_array: table[count] of string;
@@ -1267,7 +1267,7 @@ into the Logging Framework.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek framework_logging_factorial_01.zeek
    1
@@ -1324,7 +1324,7 @@ Now, if we run this script, instead of generating
 logging information to stdout, no output is created.  Instead the
 output is all in ``factor.log``, properly formatted and organized.
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek framework_logging_factorial_02.zeek
    $ cat factor.log
@@ -1399,7 +1399,7 @@ factorials that are a factors of 5, ``factor-non5.log`` with the
 factorials that are not factors of 5, and ``factor.log`` which would have
 included all factorials.
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek framework_logging_factorial_03.zeek
    $ cat factor-mod5.log
@@ -1498,7 +1498,7 @@ or not that notice is acted upon is decided by the local Notice
 Policy, but the script attempts to supply as much information as
 possible while staying concise.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: scripts/policy/protocols/ssh/interesting-hostnames.zeek
 
    ##! This script will generate a notice if an apparent SSH login originates
@@ -1630,7 +1630,7 @@ identifier.  An identifier is a unique string of information collected
 from the connection relative to the behavior that has been observed by
 Zeek.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: scripts/policy/protocols/ssl/expiring-certs.zeek
 
    NOTICE([$note=Certificate_Expires_Soon,

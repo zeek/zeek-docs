@@ -24,19 +24,19 @@ Before building Zeek, you need to install libmaxminddb.
 
 * RPM/RedHat-based Linux:
 
-  .. sourcecode:: console
+  .. code-block:: console
 
       sudo yum install libmaxminddb-devel
 
 * DEB/Debian-based Linux:
 
-  .. sourcecode:: console
+  .. code-block:: console
 
       sudo apt-get install libmaxminddb-dev
 
 * FreeBSD:
 
-  .. sourcecode:: console
+  .. code-block:: console
 
       sudo pkg install libmaxminddb
 
@@ -64,8 +64,8 @@ to the GeoIP database directory.  This directory might already exist
 and will vary depending on which platform and package you are using.  For
 FreeBSD, use ``/usr/local/share/GeoIP``.  For Linux, use ``/usr/share/GeoIP``
 or ``/var/lib/GeoIP`` (choose whichever one already exists).
-    
-.. sourcecode:: console
+
+.. code-block:: console
 
     mv <extracted subdir>/GeoLite2-City.mmdb <path_to_database_dir>/GeoLite2-City.mmdb
 
@@ -77,7 +77,7 @@ everything is setup correctly.  After installing libmaxminddb and the GeoIP
 city database, and building Zeek, you can quickly check if the GeoIP
 functionality works by running a command like this:
 
-.. sourcecode:: console
+.. code-block:: console
 
     zeek -e "print lookup_location(8.8.8.8);"
 
@@ -109,7 +109,7 @@ Usage
 
 There is a built-in function that provides the GeoIP functionality:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     function lookup_location(a:addr): geo_location
 
@@ -126,7 +126,7 @@ Example
 
 To show every ftp connection from hosts in Ohio, this is now very easy:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event ftp_reply(c: connection, code: count, msg: string, cont_resp: bool)
     {

@@ -26,7 +26,7 @@ rejected usernames and passwords occurring from a single address.  We
 start by defining a threshold for the number of attempts, a monitoring
 interval (in minutes), and a new notice type.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-bruteforcing.zeek
 
    module FTP;
@@ -55,7 +55,7 @@ function to break down the reply code and check if the first digit is a
 "5" or not. If true, we then use the :ref:`Summary Statistics Framework
 <sumstats-framework>` to keep track of the number of failed attempts.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-bruteforcing.zeek
 
    event ftp_reply(c: connection, code: count, msg: string, cont_resp: bool)
@@ -72,7 +72,7 @@ Next, we use the SumStats framework to raise a notice of the attack when
 the number of failed attempts exceeds the specified threshold during the
 measuring interval.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-bruteforcing.zeek
 
    event zeek_init()
@@ -101,7 +101,7 @@ measuring interval.
 
 Below is the final code for our script.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
    :caption: detect-bruteforcing.zeek
 
    ##! FTP brute-forcing detector, triggering when too many rejected usernames or
@@ -165,7 +165,7 @@ Below is the final code for our script.
            }
        }
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r ftp/bruteforce.pcap protocols/ftp/detect-bruteforcing.zeek
    $ cat notice.log

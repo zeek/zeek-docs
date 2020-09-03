@@ -15,7 +15,7 @@ Expands to the directory pathname where the current script is located.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     print "Directory:", @DIR;
 
@@ -29,7 +29,7 @@ Expands to the filename of the current script.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     print "File:", @FILENAME;
 
@@ -45,7 +45,7 @@ You can also supply additional comments.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @deprecated "Use '@load foo' instead"
 
@@ -65,7 +65,7 @@ In this example, Zeek will try to load a script
 search path (the file search path can be changed by setting the ``ZEEKPATH``
 environment variable):
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @load policy/misc/capture-loss
 
@@ -76,7 +76,7 @@ Zeek will try to load a file in that directory called ``__load__.zeek``
 In this example, Zeek will try to load a file ``tuning/defaults/__load__.zeek``
 by looking in each directory in the file search path:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @load tuning/defaults
 
@@ -96,7 +96,7 @@ for that script are ignored).
 Activate a dynamic plugin with the specified plugin name.  The specified
 plugin must be located in Zeek's plugin search path.  Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @load-plugin Demo::Rot13
 
@@ -124,7 +124,7 @@ whitespace.
 In this example, Zeek will try to load a signature file
 ``base/protocols/ssl/dpd.sig``
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @load-sigs base/protocols/ssl/dpd
 
@@ -145,7 +145,7 @@ has no affect.
 In the following example, if the ``policy/misc/capture-loss.zeek`` script
 has not been loaded yet, then Zeek will not load it:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @unload policy/misc/capture-loss
 
@@ -161,14 +161,14 @@ to load automatically.  The prefix cannot contain any whitespace.
 In the following example, the prefix ``cluster`` is used and all prefixes
 that were previously specified are not used:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @prefixes = cluster
 
 In the following example, the prefix ``cluster-manager`` is used in
 addition to any previously-specified prefixes:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @prefixes += cluster-manager
 
@@ -200,7 +200,7 @@ or ``@endif``) are available to be executed.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @if ( ver == 2 )
         print "version 2 detected";
@@ -217,7 +217,7 @@ identifier is defined.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @ifdef ( pi )
         print "pi is defined";
@@ -234,7 +234,7 @@ specified identifier is not defined.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @ifndef ( pi )
         print "pi is not defined";
@@ -251,7 +251,7 @@ This directive is optional after an ``@if``, ``@ifdef``, or
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     @ifdef ( pi )
         print "pi is defined";

@@ -75,7 +75,7 @@ Functions
    return a pattern with string set's elements OR'd together where the
    double-tilde was given.  Examples:
    
-     .. sourcecode:: zeek
+     .. code-block:: zeek
    
        global r1 = set_to_regex(set("a", "b", "c"), "~~");
        # r1 = /^?(a|b|c)$?/

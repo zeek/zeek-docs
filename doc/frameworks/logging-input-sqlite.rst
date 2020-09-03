@@ -67,7 +67,7 @@ same fields that are present in the ASCII log files::
 Note that the ASCII ``conn.log`` will still be created. To prevent this file
 from being created, you can remove the default filter:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     Log::remove_filter(Conn::LOG, "default");
 

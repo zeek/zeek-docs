@@ -5,7 +5,7 @@ Signature Framework
 
 .. rst-class:: opening
 
-    Zeek relies primarily on its extensive scripting language for 
+    Zeek relies primarily on its extensive scripting language for
     defining and analyzing detection policies. In addition, however,
     Zeek also provides an independent *signature language* for doing
     low-level, Snort-style pattern matching. While signatures are
@@ -25,16 +25,15 @@ Let's look at an example signature first::
         payload /.*root/
         event "Found root!"
     }
-    
 
 This signature asks Zeek to match the regular expression ``.*root`` on
 all TCP connections going to port 80. When the signature triggers, Zeek
 will raise an event :zeek:id:`signature_match` of the form:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event signature_match(state: signature_state, msg: string, data: string)
-    
+
 Here, ``state`` contains more information on the connection that
 triggered the match, ``msg`` is the string specified by the
 signature's event statement (``Found root!``), and data is the last
@@ -262,7 +261,7 @@ two actions defined:
     Raises a :zeek:id:`signature_match` event. The event handler has the
     following type:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         event signature_match(state: signature_state, msg: string, data: string)
 

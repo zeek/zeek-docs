@@ -365,7 +365,7 @@ should always use the fully-qualified event name.
 
 For example, this will likely not work as expected:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     module MyModule;
 
@@ -389,7 +389,7 @@ will never be called and also not any remote handlers either, even if
 :zeek:see:`Broker::auto_publish` was used elsewhere for it.  Instead, at
 minimum you would need change the ``zeek_init()`` handler:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event zeek_init()
         {
@@ -400,7 +400,7 @@ minimum you would need change the ``zeek_init()`` handler:
 Though, an easy rule of thumb to remember would be to always use the
 explicit module namespace scoping and you can't go wrong:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     module MyModule;
 
@@ -429,7 +429,7 @@ Manager Sending Events To Workers
 This is fairly straightforward, we just need a topic name which we know
 all workers are subscribed combined with the event we want to send them.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event manager_to_workers(s: string)
         {
@@ -472,7 +472,7 @@ This should look almost identical to the previous case of sending an event
 from the manager to workers, except it simply changes the topic name to
 one which the manager is subscribed.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event worker_to_manager(worker_name: string)
         {
@@ -493,7 +493,7 @@ topology, this type of communication is a bit different than what we
 did before since we have to manually relay the event via some node that *is*
 connected to all workers.  The manager or a proxy satisfies that requirement:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event worker_to_workers(worker_name: string)
         {
@@ -532,7 +532,7 @@ we can make use of a `Highest Random Weight (HRW) hashing
 <https://en.wikipedia.org/wiki/Rendezvous_hashing>`_ distribution strategy
 to uniformly map an arbitrary key space across all available proxies.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event worker_to_proxies(worker_name: string)
         {
@@ -573,7 +573,7 @@ backend like SQLite).
 To give a short example, to distribute a table over a cluster you can use
 the :zeek:attr:`&backend` attribute.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     global t: table[string] of count &backend=Broker::MEMORY;
 

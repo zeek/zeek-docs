@@ -86,7 +86,7 @@ final code for our script.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r http/zeek.org.pcap mimestats.zeek
    #separator \x09

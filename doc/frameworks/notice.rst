@@ -95,7 +95,7 @@ the server at 192.168.56.103:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r ssh/sshguess.pcap notice_ssh_guesser.zeek
    $ cat notice.log
@@ -120,7 +120,7 @@ Hooks can also have priorities applied to order their execution like events
 with a default priority of 0.  Greater values are executed first.  Setting
 a hook body to run before default hook bodies might look like this:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     hook Notice::policy(n: Notice::Info) &priority=5
         {
@@ -190,7 +190,7 @@ SSH analysis scripts sees enough failed logins to a given host, it
 raises a notice of the type :zeek:see:`SSH::Password_Guessing`.  The code
 in the base SSH analysis script which raises the notice looks like this:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     NOTICE([$note=Password_Guessing,
             $msg=fmt("%s appears to be guessing SSH passwords (seen in %d connections).", key$host, r$num),
@@ -301,7 +301,7 @@ for session negotiations where the certificate or certificate chain did
 not validate successfully against the available certificate authority
 certificates.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     NOTICE([$note=SSL::Invalid_Server_Cert,
             $msg=fmt("SSL certificate validation failed with (%s)", c$ssl$validation_status),
@@ -347,7 +347,7 @@ There is a field in the :zeek:see:`Notice::Info` record named
 sent. An example of including some information from an HTTP request is
 included below.
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     hook Notice::policy(n: Notice::Info)
       {
