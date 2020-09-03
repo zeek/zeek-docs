@@ -305,7 +305,7 @@ Here is a more detailed description of each type:
     of an address gives the size in bits (32 for IPv4, and 128 for IPv6).
     Addresses can also be masked with ``/`` to produce a :zeek:type:`subnet`:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local a: addr = 192.168.1.100;
         local s: subnet = 192.168.0.0/16;
@@ -315,7 +315,7 @@ Here is a more detailed description of each type:
     And checked for inclusion within a :zeek:type:`subnet` using ``in``
     or ``!in``:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local a: addr = 192.168.1.100;
         local s: subnet = 192.168.0.0/16;
@@ -329,7 +329,7 @@ Here is a more detailed description of each type:
     correspond to multiple IP addresses, the type of such a variable is
     "set[addr]". For example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local a = www.google.com;
 
@@ -349,7 +349,7 @@ Here is a more detailed description of each type:
     A type allowing the specification of a set of related values that
     have no further structure.  An example declaration:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type color: enum { Red, White, Blue, };
 
@@ -379,13 +379,13 @@ Here is a more detailed description of each type:
     Here is an example of declaring a table indexed by "count" values
     and yielding "string" values:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global a: table[count] of string;
 
     The yield type can also be more complex:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global a: table[count] of table[addr, port] of string;
 
@@ -396,7 +396,7 @@ Here is a more detailed description of each type:
     One way to initialize a table is by enclosing a set of initializers within
     braces, for example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global t: table[count] of string = {
             [11] = "eleven",
@@ -405,7 +405,7 @@ Here is a more detailed description of each type:
 
     A table constructor can also be used to create a table:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global t2 = table(
             [192.168.0.2, 22/tcp] = "ssh",
@@ -416,7 +416,7 @@ Here is a more detailed description of each type:
     useful when a more complex index type could otherwise be
     ambiguous:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type MyRec: record {
             a: count &optional;
@@ -430,13 +430,13 @@ Here is a more detailed description of each type:
     Accessing table elements is provided by enclosing index values within
     square brackets (``[]``), for example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         print t[11];
 
     And membership can be tested with ``in`` or ``!in``:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         if ( 13 in t )
             ...
@@ -445,13 +445,13 @@ Here is a more detailed description of each type:
 
     Add or overwrite individual table elements by assignment:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         t[13] = "thirteen";
 
     Remove individual table elements with :zeek:keyword:`delete`:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         delete t[13];
 
@@ -461,7 +461,7 @@ Here is a more detailed description of each type:
     The number of elements in a table can be obtained by placing the table
     identifier between vertical pipe characters:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         |t|
 
@@ -488,7 +488,7 @@ Here is a more detailed description of each type:
 
     Sets can be initialized by listing elements enclosed by curly braces:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global s: set[port] = { 21/tcp, 23/tcp, 80/tcp, 443/tcp };
         global s2: set[port, string] = { [21/tcp, "ftp"], [23/tcp, "telnet"] };
@@ -496,7 +496,7 @@ Here is a more detailed description of each type:
     A set constructor (equivalent to above example) can also be used to
     create a set:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global s3 = set(21/tcp, 23/tcp, 80/tcp, 443/tcp);
 
@@ -504,7 +504,7 @@ Here is a more detailed description of each type:
     useful when a more complex index type could otherwise be
     ambiguous:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type MyRec: record {
             a: count &optional;
@@ -517,7 +517,7 @@ Here is a more detailed description of each type:
 
     Set membership is tested with ``in`` or ``!in``:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         if ( 21/tcp in s )
             ...
@@ -527,7 +527,7 @@ Here is a more detailed description of each type:
 
     Elements are added with :zeek:keyword:`add`:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         add s[22/tcp];
 
@@ -536,7 +536,7 @@ Here is a more detailed description of each type:
 
     And removed with :zeek:keyword:`delete`:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         delete s[21/tcp];
 
@@ -546,7 +546,7 @@ Here is a more detailed description of each type:
     The number of elements in a set can be obtained by placing the set
     identifier between vertical pipe characters:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         |s|
 
@@ -568,13 +568,13 @@ Here is a more detailed description of each type:
     A vector is like a :zeek:type:`table`, except its indices are non-negative
     integers, starting from zero.  A vector is declared like:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global v: vector of string;
 
     And can be initialized with the vector constructor:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local v = vector("one", "two", "three");
 
@@ -582,7 +582,7 @@ Here is a more detailed description of each type:
     is useful for when a more complex yield type could otherwise be
     ambiguous.
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type MyRec: record {
             a: count &optional;
@@ -596,7 +596,7 @@ Here is a more detailed description of each type:
     Access individual vector elements by enclosing index values within
     square brackets (``[]``), for example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         print v[2];
 
@@ -604,7 +604,7 @@ Here is a more detailed description of each type:
     delimited by a colon, within square brackets (``[x:y]``).  For example,
     this will print a vector containing the first and second elements:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         print v[0:2];
 
@@ -614,13 +614,13 @@ Here is a more detailed description of each type:
     An element can be added to a vector by assigning the value (a value
     that already exists at that index will be overwritten):
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         v[3] = "four";
 
     A range of elements can be *replaced* by assigning to a vector slice:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         # Note that the number of elements in the slice being replaced
         # may differ from the number of elements being inserted.  This
@@ -631,21 +631,21 @@ Here is a more detailed description of each type:
     is normally equal to the number of elements in the vector) can be obtained
     by placing the vector identifier between vertical pipe characters:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         |v|
 
     A particularly common operation on a vector is to append an element
     to its end.  You can do so using:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         v += e;
 
     where if e's type is ``X``, v's type is ``vector of X``.  Note that
     this expression is equivalent to:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         v[|v|] = e;
 
@@ -685,7 +685,7 @@ Here is a more detailed description of each type:
     same as local or global variables).  An example record type
     definition:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type MyRecordType: record {
             c: count;
@@ -697,27 +697,27 @@ Here is a more detailed description of each type:
     :zeek:attr:`&optional` or have a :zeek:attr:`&default` attribute must
     be specified.  First, there's a constructor syntax:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local r: MyRecordType = record($c = 7);
 
     And the constructor can be explicitly named by type, too, which
     is arguably more readable:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local r = MyRecordType($c = 42);
 
     And the third way is like this:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local r: MyRecordType = [$c = 13, $s = "thirteen"];
 
     Access to a record field uses the dollar sign (``$``) operator, and
     record fields can be assigned with this:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local r: MyRecordType;
         r$c = 13;
@@ -726,7 +726,7 @@ Here is a more detailed description of each type:
     value, use the ``?$`` operator (it returns a :zeek:type:`bool` value of
     ``T`` if the field has been assigned a value, or ``F`` if not):
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         if ( r ?$ s )
             ...
@@ -740,7 +740,7 @@ Here is a more detailed description of each type:
     where *argument* is a (possibly empty) comma-separated list of
     arguments, and *type* is an optional return type.  For example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global greeting: function(name: string): string;
 
@@ -749,7 +749,7 @@ Here is a more detailed description of each type:
     have different function body values at different times.  To define
     a function including a body value, the syntax is like:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         function greeting(name: string): string
             {
@@ -764,7 +764,7 @@ Here is a more detailed description of each type:
     Here is an example function that takes no parameters and does not
     return a value:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         function my_func()
             {
@@ -773,13 +773,13 @@ Here is a more detailed description of each type:
 
     Function types don't need to have a name and can be assigned anonymously:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         greeting = function(name: string): string { return "Hi, " + name; };
 
     And finally, the function can be called like:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         print greeting("Dave");
 
@@ -788,7 +788,7 @@ Here is a more detailed description of each type:
     creation. Here is an example of a simple anonymous function that captures its
     closure in Zeek:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local make_adder = function(n: count): function(m: count): count
             {
@@ -808,7 +808,7 @@ Here is a more detailed description of each type:
     Anonymous functions capture their closures by reference. This means that they
     can modify the variables in their closures. For example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local n = 3;
         local f = function() { n += 1; };
@@ -829,7 +829,7 @@ Here is a more detailed description of each type:
     Function parameters may specify default values as long as they appear
     last in the parameter list:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global foo: function(s: string, t: string &default="abc", u: count &default=0);
 
@@ -838,7 +838,7 @@ Here is a more detailed description of each type:
     body and they will still be used for function calls that lack those
     arguments.
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         function foo(s: string, t: string, u: count)
             {
@@ -847,7 +847,7 @@ Here is a more detailed description of each type:
 
     And calls to the function may omit the defaults from the argument list:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         foo("test");
 
@@ -860,7 +860,7 @@ Here is a more detailed description of each type:
 
     Example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         event my_event(r: bool, s: string)
             {
@@ -883,7 +883,7 @@ Here is a more detailed description of each type:
 
         Immediately queuing invocation of an event handler occurs like:
 
-        .. sourcecode:: zeek
+        .. code-block:: zeek
 
             event password_exposed(user, password);
 
@@ -895,7 +895,7 @@ Here is a more detailed description of each type:
         This delays the invocation of event handlers until some time in
         the future.  For example:
 
-        .. sourcecode:: zeek
+        .. code-block:: zeek
 
             schedule 5 secs { password_exposed(user, password) };
 
@@ -910,7 +910,7 @@ Here is a more detailed description of each type:
     set of handlers to be extended, changed, or deprecated without breaking
     existing handlers a user may have written.  Example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         # Event Prototype Declarations
         global my_event: event(s: string, c: count);
@@ -962,7 +962,7 @@ Here is a more detailed description of each type:
     where *argument* is a (possibly empty) comma-separated list of
     arguments.  For example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global myhook: hook(s: string)
 
@@ -970,7 +970,7 @@ Here is a more detailed description of each type:
     bodies have been defined for it yet.  To define some hook handler
     bodies the syntax looks like:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         hook myhook(s: string) &priority=10
             {
@@ -997,13 +997,13 @@ Here is a more detailed description of each type:
     are called similarly to a function, except preceded by the ``hook``
     keyword:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         hook myhook("hi");
 
     or
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         if ( hook myhook("hi") )
             print "all handlers ran";
@@ -1034,7 +1034,7 @@ Here is a more detailed description of each type:
     function.  For example, declare, open, and write to a file and finally
     close it like:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local f = open("myfile");
         print f, "hello, world";
@@ -1054,7 +1054,7 @@ Here is a more detailed description of each type:
     An example use of this type is the set of built-in functions which
     perform hashing:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local handle = md5_hash_init();
         # Explicitly -> local handle : opaque of md5 = ...
@@ -1090,7 +1090,7 @@ Here is a more detailed description of each type:
       pattern set when there is time for the paraglob to compile. Subsequent get
       operations run very quickly though, even for very large pattern sets.
 
-      .. sourcecode:: zeek
+      .. code-block:: zeek
 
         local v = vector("*", "d?g", "*og", "d?", "d[!wl]g");
         local p : opaque of paraglob = paraglob_init(v);

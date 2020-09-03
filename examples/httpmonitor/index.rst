@@ -90,7 +90,7 @@ detect a reply for a ``GET http://`` request.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r http/proxy.pcap http_proxy_01.zeek
    A local server is acting as an open proxy: 192.168.56.101
@@ -106,7 +106,7 @@ will extend our basic script to also consider the additional codes.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r http/proxy.pcap http_proxy_02.zeek
    A local server is acting as an open proxy: 192.168.56.101
@@ -120,7 +120,7 @@ network.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r http/proxy.pcap http_proxy_03.zeek
    A local server is acting as an open proxy: 192.168.56.101
@@ -144,7 +144,7 @@ Below is the complete script.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r http/proxy.pcap http_proxy_04.zeek
    $ cat notice.log
@@ -182,7 +182,7 @@ using the :ref:`File Analysis Framework <file-analysis-framework>`:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r zeek.org.pcap file_extraction.zeek
    Extracting file HTTP-FiIpIB2hRQSDBOSJRg.html

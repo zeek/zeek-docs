@@ -53,7 +53,7 @@ The Zeek scripting language supports the following attributes.
     A confusing pitfall can be mistaking that attributes bind to a *variable*
     or a *type*, where in reality they bind to a *value*.  Example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global my_table: table[count] of string &create_expire=1sec;
 
@@ -68,7 +68,7 @@ The Zeek scripting language supports the following attributes.
     from ``my_table``.  The alternate way of re-assignment that creates a new
     table *value* with the expected attribute would be:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         my_table = table() &create_expire=1sec;
 
@@ -80,7 +80,7 @@ Here is a more detailed explanation of each attribute:
     global variables (i.e., variables declared either :zeek:keyword:`global`
     or :zeek:keyword:`const`).  Example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         const clever = T &redef;
         global cache_size = 256 &redef;
@@ -95,7 +95,7 @@ Here is a more detailed explanation of each attribute:
     event handler. Higher values are executed before lower ones. The
     default value is 0.  Example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         event zeek_init() &priority=10
             {
@@ -114,7 +114,7 @@ Here is a more detailed explanation of each attribute:
     In this example, the record could be instantiated with either
     "myrec($a=127.0.0.1)" or "myrec($a=127.0.0.1, $b=80/tcp)":
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type myrec: record { a: addr; b: port &optional; };
 
@@ -130,14 +130,14 @@ Here is a more detailed explanation of each attribute:
     In this example, the record could be instantiated with either
     "myrec($a=5, $c=3.14)" or "myrec($a=5, $b=53/udp, $c=3.14)":
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type myrec: record { a: count; b: port &default=80/tcp; c: double; };
 
     In this example, the table will return the string ``"foo"`` for any
     attempted access to a non-existing index:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global mytable: table[count] of string &default="foo";
 
@@ -146,7 +146,7 @@ Here is a more detailed explanation of each attribute:
     For example, the following function could be called either as "myfunc(5)"
     or as "myfunc(5, 53/udp)":
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         function myfunc(a: count, b: port &default=80/tcp)
             {
@@ -176,7 +176,7 @@ Here is a more detailed explanation of each attribute:
     number of indexes in the container. For example, for a
     ``table[string,string] of count`` the expire function signature is:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         function(t: table[string, string] of count, s: string, s2: string): interval
 
@@ -213,13 +213,13 @@ Here is a more detailed explanation of each attribute:
     For example, for a ``table[string,string] of count`` the on_change
     function signature is:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         function(t: table[string, string] of count, tpe: TableChange, s: string, s2: string, val: count)
 
     For a ``set[count]`` the function signature is:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         function(s: set[count], tpe: TableChange, c: count)
 
@@ -236,7 +236,7 @@ Here is a more detailed explanation of each attribute:
     be called once, when ``s`` is inserted - but it will not be called when ``s`` is
     changed:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local t: table[string] of set[string] &on_change=change_function;
         local s: set[string] = set();
@@ -248,7 +248,7 @@ Here is a more detailed explanation of each attribute:
     a on_change function like this is supported and will not lead to a infinite
     loop :
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         local t: table[string] of set[string] &on_change=hange_function;
         function change_function(t: table[string, int] of count, tpe: TableChange, idxa: string, idxb: int, val: count)
@@ -280,7 +280,7 @@ Here is a more detailed explanation of each attribute:
     In the following example, the input file would contain four columns
     named "ip", "srcp", "proto", and "msg":
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type Idx: record {
             ip: addr;
@@ -307,7 +307,7 @@ Here is a more detailed explanation of each attribute:
     This attribute expects the type of backend you want to use for the table. For
     example, to bind a table to a memory-backed Broker store, use:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         global t: table[string] of count &backend=Broker::MEMORY;
 
@@ -327,7 +327,7 @@ Here is a more detailed explanation of each attribute:
 
     Example:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
          global teststore: opaque of Broker::Store;
 
@@ -360,7 +360,7 @@ Here is a more detailed explanation of each attribute:
 
         For example:
 
-        .. sourcecode:: zeek
+        .. code-block:: zeek
 
                 type testrec: record {
                     a: count;
@@ -392,6 +392,6 @@ Here is a more detailed explanation of each attribute:
     this warning message should include the version number in which
     the identifier will be removed:
 
-    .. sourcecode:: zeek
+    .. code-block:: zeek
 
         type warned: string &deprecated="This type is deprecated. Removed in x.y.z.";

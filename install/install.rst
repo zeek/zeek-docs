@@ -49,7 +49,7 @@ To install the required dependencies, you can use:
 
 * RPM/RedHat-based Linux:
 
-  .. sourcecode:: console
+  .. code-block:: console
 
      sudo yum install cmake make gcc gcc-c++ flex bison libpcap-devel openssl-devel python-devel swig zlib-devel
 
@@ -57,14 +57,14 @@ To install the required dependencies, you can use:
   to recent GCC versions. You will also have to install and activate CMake 3.
   For example:
 
-  .. sourcecode:: console
+  .. code-block:: console
 
      sudo yum install cmake3 devtoolset-7
      scl enable devtoolset-7 bash
 
 * DEB/Debian-based Linux:
 
-  .. sourcecode:: console
+  .. code-block:: console
 
      sudo apt-get install cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev
 
@@ -77,7 +77,7 @@ To install the required dependencies, you can use:
   Most required dependencies should come with a minimal FreeBSD install
   except for the following.
 
-  .. sourcecode:: console
+  .. code-block:: console
 
       sudo pkg install bash cmake swig30 bison python py27-sqlite3 py27-ipaddress
 
@@ -162,7 +162,7 @@ hosted at https://github.com/zeek.  See our `git development documentation
 information on Zeek's use of git revision control, but the short story
 for downloading the full source code experience for Zeek via git is:
 
-.. sourcecode:: console
+.. code-block:: console
 
     git clone --recursive https://github.com/zeek/zeek
 
@@ -173,7 +173,7 @@ for downloading the full source code experience for Zeek via git is:
 The typical way to build and install from source is (for more options,
 run ``./configure --help``):
 
-.. sourcecode:: console
+.. code-block:: console
 
     ./configure
     make
@@ -224,13 +224,13 @@ according to the platform/shell/package you're using.  For example:
 
 Bourne-Shell Syntax:
 
-.. sourcecode:: console
+.. code-block:: console
 
    export PATH=/usr/local/zeek/bin:$PATH
 
 C-Shell Syntax:
 
-.. sourcecode:: console
+.. code-block:: console
 
    setenv PATH /usr/local/zeek/bin:$PATH
 

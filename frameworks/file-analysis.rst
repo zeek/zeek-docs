@@ -40,7 +40,7 @@ Here's a simple example:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r http/get.trace file_analysis_01.zeek
    file_state_remove
@@ -88,7 +88,7 @@ calculate the MD5 of plain text files:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -r http/get.trace file_analysis_02.zeek
    new file, FakNcS1Jfe01uljb3
@@ -97,7 +97,7 @@ calculate the MD5 of plain text files:
 Some file analyzers might have tunable parameters that need to be
 specified in the call to :zeek:see:`Files::add_analyzer`:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event file_new(f: fa_file)
         {
@@ -138,7 +138,7 @@ the input framework uses to uniquely identify an input stream.
 
 Example output of the above script may be:
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ echo "Hello world" > myfile
    $ zeek file_analysis_03.zeek

@@ -48,7 +48,7 @@ affects the scope of any subsequently declared global identifiers.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     module mymodule;
 
@@ -79,7 +79,7 @@ detailed explanation.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     export {
         redef enum Log::ID += { LOG };
@@ -110,7 +110,7 @@ then the type must be specified.  In some cases, when the type cannot
 be correctly inferred, the type must be specified even when an
 initializer is present.  Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     global pi = 3.14;
     global hosts: set[addr];
@@ -141,7 +141,7 @@ Variables declared as constant are required to be initialized at the
 time of declaration.  Normally, the type is inferred from the initializer,
 but the type can be explicitly specified.  Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     const pi = 3.14;
     const ssh_port: port = 22/tcp;
@@ -170,7 +170,7 @@ Options are required to be initialized at the
 time of declaration.  Normally, the type is inferred from the initializer,
 but the type can be explicitly specified.  Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     option hostname = "host-1";
     option peers: set[addr] = {};
@@ -202,7 +202,7 @@ dealing with more complex types.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
    type mytype: table[count] of table[addr, port] of string;
    global myvar: mytype;
@@ -235,7 +235,7 @@ then you must use the ``=`` operator.
 
 Examples:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     redef pi = 3.14;
     redef set_of_ports += { 22/tcp, 53/udp };
@@ -249,7 +249,7 @@ attribute).
 
 Examples:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     redef enum color += { Blue, Red };
     redef record MyRecord += { n2:int &optional; s2:string &optional; };
@@ -262,7 +262,7 @@ the presence of the ``redef`` keyword.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     redef event myevent(s:string) { print "Redefined", s; }
 
@@ -335,7 +335,7 @@ Nothing happens if the specified element already exists in the set.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     local myset: set[string];
     add myset["test"];
@@ -365,7 +365,7 @@ nothing happens if that field doesn't have a value.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     local myset = set("this", "test");
     local mytable = table(["key1"] = 80/tcp, ["key2"] = 53/udp);
@@ -387,7 +387,7 @@ The ``event`` statement immediately queues invocation of an event handler.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     event myevent("test", 5);
 
@@ -443,7 +443,7 @@ iteration.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     local myset = set(80/tcp, 81/tcp);
     local mytable = table([10.0.0.1, 80/tcp]="s1", [10.0.0.2, 81/tcp]="s2");
@@ -470,14 +470,14 @@ Evaluates a given expression, which must yield a :zeek:type:`bool` value.
 If true, then a specified statement is executed.  If false, then
 the statement is not executed.  Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     if ( x == 2 ) print "x is 2";
 
 However, if the expression evaluates to false and if an ``else`` is
 provided, then the statement following the ``else`` is executed.  Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     if ( x == 2 )
         print "x is 2";
@@ -497,7 +497,7 @@ type must be specified.
 
 Examples:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     local x1 = 5.7;
     local x2: double;
@@ -537,7 +537,7 @@ a comma in the output.
 
 Examples:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     print 3.14;
     print "Results", x, y;
@@ -567,7 +567,7 @@ return types.
 
 Examples:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     function my_func(): string
         {
@@ -594,7 +594,7 @@ returns the value that the ``timeout`` block returns).
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
   global X: table[string] of count;
 
@@ -632,7 +632,7 @@ specified parameters at a later time specified as an :zeek:type:`interval`.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     schedule 30sec { myevent(x, y, z) };
 
@@ -658,7 +658,7 @@ execution jumps out of the ``switch`` block.
 Here is an example (assuming that ``get_day_of_week`` is a
 function that returns a string):
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     switch get_day_of_week() {
         case "Sa", "Su":
@@ -705,7 +705,7 @@ keyword must be repeated for each type in the list).
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     function example(v: any)
         {
@@ -745,7 +745,7 @@ and if the result is true, then a specified statement is executed.
 In the following example, if the expression evaluates to true, then
 the ``print`` statement is executed:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     when ( (local x = foo()) && x == 42 )
         {
@@ -756,7 +756,7 @@ However, if a timeout is specified, and if the expression does not
 evaluate to true within the specified timeout interval, then the
 statement following the ``timeout`` keyword is executed:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     when ( (local x = foo()) && x == 42 )
         {
@@ -801,7 +801,7 @@ used to skip to the next loop iteration.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     local i = 0;
 
@@ -836,7 +836,7 @@ statement in the body of a :zeek:keyword:`for`, :zeek:keyword:`while`,
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     if ( x == 2 )
         {
@@ -861,7 +861,7 @@ otherwise.
 
 Example:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
     if ( x == 2 )
         ;

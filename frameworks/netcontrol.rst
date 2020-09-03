@@ -63,7 +63,7 @@ Backends should be initialized in the :zeek:see:`NetControl::init` event, callin
 the :zeek:see:`NetControl::activate` function after the plugin instance has been
 initialized. The debug plugin can be initialized as follows:
 
-.. sourcecode:: zeek
+.. code-block:: zeek
 
   event NetControl::init()
     {
@@ -142,7 +142,7 @@ plugin to print one line to the standard output, which contains information
 about the rule that was added. It will also cause creation of `netcontrol.log`,
 which contains information about all actions that are taken by NetControl:
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r tls/ecdhe.pcap netcontrol-1-drop-with-debug.zeek
    netcontrol debug (Debug-All): init
@@ -178,7 +178,7 @@ additional log called `netcontrol_drop.log`. This log file is much more succinct
 only contains information that is specific to drops that are enacted by
 NetControl:
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ cat netcontrol_drop.log
    #separator \x09
@@ -203,7 +203,7 @@ following code automatically blocks a recognized SSH guesser:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r ssh/sshguess.pcap netcontrol-2-ssh-guesser.zeek
    netcontrol debug (Debug-All): init
@@ -234,7 +234,7 @@ the :zeek:see:`Notice::ACTION_DROP` action of the notice framework:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r ssh/sshguess.pcap netcontrol-3-ssh-guesser.zeek
    netcontrol debug (Debug-All): init
@@ -260,7 +260,7 @@ Using the :zeek:see:`Notice::ACTION_DROP` action of the notice framework also
 will cause the `dropped` column in `notice.log` to be set to true each time that
 the NetControl framework enacts a block:
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ cat notice.log
    #separator \x09
@@ -328,7 +328,7 @@ drops all connections on the network:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r tls/ecdhe.pcap netcontrol-4-drop.zeek
    netcontrol debug (Debug-All): init
@@ -389,7 +389,7 @@ originating from the 192.168.* network:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r tls/ecdhe.pcap netcontrol-5-hook.zeek
    netcontrol debug (Debug-All): init
@@ -469,7 +469,7 @@ address is already blocked in the second connection.
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r tls/google-duplicate.trace netcontrol-6-find.zeek
    netcontrol debug (Debug-All): init
@@ -524,7 +524,7 @@ Using catch and release in your scripts is easy; just use
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r tls/ecdhe.pcap netcontrol-7-catch-release.zeek
    netcontrol debug (Debug-All): init
@@ -540,7 +540,7 @@ first 10 minutes, it is blocked for 1 hour and then monitored for 24 hours, etc.
 Catch and release adds its own new logfile in addition to the already existing
 ones (netcontrol_catch_release.log):
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ cat netcontrol_catch_release.log
    #separator \x09
@@ -670,7 +670,7 @@ plugin. We manually block a few addresses in the
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek netcontrol-8-multiple.zeek
    netcontrol debug (Debug-All): init
@@ -681,7 +681,7 @@ output to the command line. The other two lines are handled by the OpenFlow
 plugin. We can verify this by looking at netcontrol.log. The plugin column shows
 which plugin handled a rule and reveals that two rules were handled by OpenFlow:
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ cat netcontrol.log
    #separator \x09
@@ -708,7 +708,7 @@ which plugin handled a rule and reveals that two rules were handled by OpenFlow:
 Furthermore, openflow.log also shows the two added rules, converted to OpenFlow
 flow mods:
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ cat openflow.log
    #separator \x09
@@ -795,7 +795,7 @@ to our very first example:
    :linenos:
    :tab-width: 4
 
-.. sourcecode:: console
+.. code-block:: console
 
    $ zeek -C -r tls/ecdhe.pcap netcontrol-10-use-skeleton.zeek
    add, [ty=NetControl::DROP, target=NetControl::FORWARD, entity=[ty=NetControl::CONNECTION, conn=[orig_h=192.168.18.50, orig_p=56981/tcp, resp_h=74.125.239.97, resp_p=443/tcp], flow=<uninitialized>, ip=<uninitialized>, mac=<uninitialized>], expire=20.0 secs, priority=0, location=, out_port=<uninitialized>, mod=<uninitialized>, id=2, cid=2, _plugin_ids={

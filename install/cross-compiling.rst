@@ -23,14 +23,14 @@ You first need to compile a few build tools native to the host system
 for use during the later cross-compile build.  In the root of your
 Zeek source tree:
 
-.. sourcecode:: console
+.. code-block:: console
 
    ./configure --builddir=../zeek-buildtools
    ( cd ../zeek-buildtools && make binpac bifcl )
 
 Next configure Zeek to use your cross-compilation toolchain:
 
-.. sourcecode:: console
+.. code-block:: console
 
    ./configure --toolchain=/home/jon/x-tools/RaspberryPi-toolchain.cmake --with-binpac=$(pwd)/../zeek-buildtools/auxil/binpac/src/binpac --with-bifcl=$(pwd)/../zeek-buildtools/src/bifcl
 
@@ -69,13 +69,13 @@ something the following (using a Raspberry Pi as target system)::
 
 If that configuration succeeds you are ready to build:
 
-.. sourcecode:: console
+.. code-block:: console
 
    make
 
 And if that works, install on your host system:
 
-.. sourcecode:: console
+.. code-block:: console
 
    make install
 

@@ -19,7 +19,7 @@ Simple Example
 A simple example of using the Supervisor to monitor one Zeek process
 sniffing packets from an interface looks like the following:
 
-.. sourcecode:: console
+.. code-block:: console
 
   $ zeek -j simple-supervisor.zeek
 
@@ -46,7 +46,7 @@ If you happened to be running this locally on an interface with checksum
 offloading and want Zeek to ignore checksums, instead simply run with the
 ``-C`` command-line argument like:
 
-.. sourcecode:: console
+.. code-block:: console
 
   $ zeek -j -C simple-supervisor.zeek
 
@@ -64,7 +64,7 @@ Supervised Cluster Example
 To run a full Zeek cluster similar to what you may already know, try the
 following script:
 
-.. sourcecode:: console
+.. code-block:: console
 
   $ zeek -j cluster-supervisor.zeek
 
@@ -87,7 +87,7 @@ instructions from other external/remote processes via
 tell the Supervisor to restart all processes, perhaps to re-load Zeek scripts
 you've changed in the meantime:
 
-.. sourcecode:: console
+.. code-block:: console
 
   $ zeek supervisor-control.zeek
 
