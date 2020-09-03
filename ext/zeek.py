@@ -77,39 +77,49 @@ def process_see_nodes(app, doctree, fromdocname):
         node.replace_self(content)
 
 class ZeekGeneric(ObjectDescription):
+    def get_obj_name(self):
+        return self.objtype
+
     def update_type_map(self, idname):
         if 'idtypes' not in self.env.domaindata['zeek']:
             self.env.domaindata['zeek']['idtypes'] = {}
-        self.env.domaindata['zeek']['idtypes'][idname] = self.objtype
+        self.env.domaindata['zeek']['idtypes'][idname] = self.get_obj_name()
+
+    def process_signode(self, name, sig, signode, targetname):
+        signode['names'].append(targetname)
+        signode['ids'].append(targetname)
+        signode['first'] = (not self.names)
+        self.state.document.note_explicit_target(signode)
 
     def add_target_and_index(self, name, sig, signode):
-        targetname = self.objtype + '-' + name
+        targetname = self.get_obj_name() + '-' + name
+
         if targetname not in self.state.document.ids:
-            signode['names'].append(targetname)
-            signode['ids'].append(targetname)
-            signode['first'] = (not self.names)
-            self.state.document.note_explicit_target(signode)
+            self.process_signode(name, sig, signode, targetname)
 
             objects = self.env.domaindata['zeek']['objects']
-            key = (self.objtype, name)
-            if ( key in objects and self.objtype != "id" and
-                 self.objtype != "type" ):
+            key = (self.get_obj_name(), name)
+
+            if ( key in objects and self.get_obj_name() != "id" and
+                 self.get_obj_name() != "type" ):
                 logger.warning('%s: duplicate description of %s %s, ' %
-                        (self.env.docname, self.objtype, name) +
+                        (self.env.docname, self.get_obj_name(), name) +
                         'other instance in ' +
                         self.env.doc2path(objects[key]),
                         self.lineno)
+
             objects[key] = self.env.docname
             self.update_type_map(name)
 
-        indextext = self.get_index_text(self.objtype, name)
+        indextext = self.get_index_text(name)
+
         if indextext:
             self.indexnode['entries'].append(make_index_tuple('single',
                                              indextext, targetname,
                                              targetname))
 
-    def get_index_text(self, objectname, name):
-        return _('%s (%s)') % (name, self.objtype)
+    def get_index_text(self, name):
+        return _('%s (%s)') % (name, self.get_obj_name())
 
     def handle_signature(self, sig, signode):
         signode += addnodes.desc_name("", sig)
@@ -117,7 +127,8 @@ class ZeekGeneric(ObjectDescription):
 
 class ZeekNamespace(ZeekGeneric):
     def add_target_and_index(self, name, sig, signode):
-        targetname = self.objtype + '-' + name
+        targetname = self.get_obj_name() + '-' + name
+
         if targetname not in self.state.document.ids:
             signode['names'].append(targetname)
             signode['ids'].append(targetname)
@@ -125,18 +136,18 @@ class ZeekNamespace(ZeekGeneric):
             self.state.document.note_explicit_target(signode)
 
             objects = self.env.domaindata['zeek']['objects']
-            key = (self.objtype, name)
+            key = (self.get_obj_name(), name)
             objects[key] = self.env.docname
             self.update_type_map(name)
 
-        indextext = self.get_index_text(self.objtype, name)
+        indextext = self.get_index_text(name)
         self.indexnode['entries'].append(make_index_tuple('single', indextext,
                                           targetname, targetname))
         self.indexnode['entries'].append(make_index_tuple('single',
                                           "namespaces; %s" % (sig),
                                           targetname, targetname))
 
-    def get_index_text(self, objectname, name):
+    def get_index_text(self, name):
         return _('%s (namespace); %s') % (name, self.env.docname)
 
     def handle_signature(self, sig, signode):
@@ -145,19 +156,17 @@ class ZeekNamespace(ZeekGeneric):
 
 class ZeekEnum(ZeekGeneric):
     def add_target_and_index(self, name, sig, signode):
-        targetname = self.objtype + '-' + name
+        targetname = self.get_obj_name() + '-' + name
+
         if targetname not in self.state.document.ids:
-            signode['names'].append(targetname)
-            signode['ids'].append(targetname)
-            signode['first'] = (not self.names)
-            self.state.document.note_explicit_target(signode)
+            self.process_signode(name, sig, signode, targetname)
 
             objects = self.env.domaindata['zeek']['objects']
-            key = (self.objtype, name)
+            key = (self.get_obj_name(), name)
             objects[key] = self.env.docname
             self.update_type_map(name)
 
-        indextext = self.get_index_text(self.objtype, name)
+        indextext = self.get_index_text(name)
         #self.indexnode['entries'].append(make_index_tuple('single', indextext,
         #                                  targetname, targetname))
         m = sig.split()
@@ -171,6 +180,7 @@ class ZeekEnum(ZeekGeneric):
                 self.env.domaindata['zeek']['notices'] = []
             self.env.domaindata['zeek']['notices'].append(
                                 (m[0], self.env.docname, targetname))
+
         self.indexnode['entries'].append(make_index_tuple('single',
                                           "%s (enum values); %s" % (m[1], m[0]),
                                           targetname, targetname))
@@ -182,63 +192,48 @@ class ZeekEnum(ZeekGeneric):
         return name
 
 class ZeekIdentifier(ZeekGeneric):
-    def get_index_text(self, objectname, name):
+    def get_index_text(self, name):
         return name
 
-class ZeekKeyword(ZeekGeneric):
-    def add_target_and_index(self, name, sig, signode):
-        targetname = self.objtype + '-' + name
-
-        if targetname not in self.state.document.ids:
-            objects = self.env.domaindata['zeek']['objects']
-            key = (self.objtype, name)
-            if ( key in objects and self.objtype != "id" and
-                 self.objtype != "type" ):
-                logger.warning('%s: duplicate description of %s %s, ' %
-                        (self.env.docname, self.objtype, name) +
-                        'other instance in ' +
-                        self.env.doc2path(objects[key]),
-                        self.lineno)
-            objects[key] = self.env.docname
-            self.update_type_map(name)
-
-        indextext = self.get_index_text(self.objtype, name)
-        if indextext:
-            self.indexnode['entries'].append(make_index_tuple('single',
-                                             indextext, targetname,
-                                             targetname))
-
+class ZeekNative(ZeekGeneric):
     def handle_signature(self, sig, signode):
         # The run() method is overriden to drop signode anyway in favor of
         # simply adding the index and a target nodes and leaving up
         # to the .rst document to explicitly add things that need to
         # be presented in the final rendering (e.g. a section header)
-
-        # signode += addnodes.desc_name("", sig)
-        self.keyword_name = sig
+        self.native_name = sig
         return sig
 
-    def get_index_text(self, objectname, name):
-        if name and name[0] == '@':
-            return _('%s (directive)') % (name)
-        else:
-            return _('%s (keyword)') % (name)
+    def process_signode(self, name, sig, signode, targetname):
+        pass
 
     def run(self):
         ns = super().run()
         index_node = ns[0]
         desc_sig_node = ns[1]
 
-        target_id = 'keyword-' + self.keyword_name
+        target_id = self.get_obj_name() + '-' + self.native_name
         target_node = nodes.target('', '', ids=[target_id])
         self.state.document.note_explicit_target(target_node)
 
         # Replace the description node from Sphinx with a simple target node
         return [index_node, target_node]
 
+class ZeekKeyword(ZeekNative):
+    def get_index_text(self, name):
+        if name and name[0] == '@':
+            return _('%s (directive)') % (name)
+        else:
+            return _('%s (keyword)') % (name)
+
 class ZeekAttribute(ZeekGeneric):
-    def get_index_text(self, objectname, name):
+    def get_index_text(self, name):
         return _('%s (attribute)') % (name)
+
+class ZeekNativeType(ZeekNative):
+    def get_obj_name(self):
+        # As opposed to using 'native-type', just imitate 'type'.
+        return 'type'
 
 class ZeekNotices(Index):
     """
@@ -271,6 +266,7 @@ class ZeekDomain(Domain):
 
     object_types = {
         'type':             ObjType(_('type'),             'type'),
+        'native-type':      ObjType(_('type'),             'type'),
         'namespace':        ObjType(_('namespace'),        'namespace'),
         'id':               ObjType(_('id'),               'id'),
         'keyword':          ObjType(_('keyword'),          'keyword'),
@@ -280,6 +276,7 @@ class ZeekDomain(Domain):
 
     directives = {
         'type':             ZeekGeneric,
+        'native-type':      ZeekNativeType,
         'namespace':        ZeekNamespace,
         'id':               ZeekIdentifier,
         'keyword':          ZeekKeyword,
@@ -318,6 +315,7 @@ class ZeekDomain(Domain):
     def resolve_xref(self, env, fromdocname, builder, typ, target, node,
                      contnode):
         objects = self.data['objects']
+
         if typ == "see":
             if target not in self.data['idtypes']:
                 logger.warning('%s: unknown target for ":zeek:see:`%s`"', fromdocname, target)
@@ -329,6 +327,7 @@ class ZeekDomain(Domain):
                                         contnode, target + ' ' + objtype)
         else:
             objtypes = self.objtypes_for_role(typ)
+
             for objtype in objtypes:
                 if (objtype, target) in objects:
                     return make_refnode(builder, fromdocname,
