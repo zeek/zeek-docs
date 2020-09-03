@@ -37,206 +37,234 @@ all loaded Zeek scripts.
 |                            | handler, or hook            |
 +----------------------------+-----------------------------+
 
+
 .. zeek:keyword:: module
 
-    The ``module`` keyword is used to change the current module.  This
-    affects the scope of any subsequently declared global identifiers.
+module
+~~~~~~
 
-    Example:
+The ``module`` keyword is used to change the current module.  This
+affects the scope of any subsequently declared global identifiers.
 
-    .. sourcecode:: zeek
+Example:
 
-        module mymodule;
+.. sourcecode:: zeek
 
-    If a global identifier is declared after a ``module`` declaration,
-    then its scope ends at the end of the current Zeek script or at the
-    next ``module`` declaration, whichever comes first.  However, if a
-    global identifier is declared after a ``module`` declaration, but inside
-    an :zeek:keyword:`export` block, then its scope ends at the end of the
-    last loaded Zeek script, but it must be referenced using the namespace
-    operator (``::``) in other modules.
+    module mymodule;
 
-    There can be any number of ``module`` declarations in a Zeek script.
-    The same ``module`` declaration can appear in any number of different
-    Zeek scripts.
+If a global identifier is declared after a ``module`` declaration,
+then its scope ends at the end of the current Zeek script or at the
+next ``module`` declaration, whichever comes first.  However, if a
+global identifier is declared after a ``module`` declaration, but inside
+an :zeek:keyword:`export` block, then its scope ends at the end of the
+last loaded Zeek script, but it must be referenced using the namespace
+operator (``::``) in other modules.
+
+There can be any number of ``module`` declarations in a Zeek script.
+The same ``module`` declaration can appear in any number of different
+Zeek scripts.
+
 
 .. zeek:keyword:: export
 
-    An ``export`` block contains one or more declarations
-    (no statements are allowed in an ``export`` block) that the current
-    module is exporting.  This enables these global identifiers to be visible
-    in other modules (but not prior to their declaration) via the namespace
-    operator (``::``).  See the :zeek:keyword:`module` keyword for a more
-    detailed explanation.
+export
+~~~~~~
 
-    Example:
+An ``export`` block contains one or more declarations
+(no statements are allowed in an ``export`` block) that the current
+module is exporting.  This enables these global identifiers to be visible
+in other modules (but not prior to their declaration) via the namespace
+operator (``::``).  See the :zeek:keyword:`module` keyword for a more
+detailed explanation.
 
-    .. sourcecode:: zeek
+Example:
 
-        export {
-            redef enum Log::ID += { LOG };
+.. sourcecode:: zeek
 
-            type Info: record {
-                ts: time &log;
-                uid: string &log;
-            };
+    export {
+        redef enum Log::ID += { LOG };
 
-            const conntime = 30sec &redef;
-        }
+        type Info: record {
+            ts: time &log;
+            uid: string &log;
+        };
 
-    Note that the braces in an ``export`` block are always required
-    (they do not indicate a compound statement).  Also, no semicolon is
-    needed to terminate an ``export`` block.
+        const conntime = 30sec &redef;
+    }
+
+Note that the braces in an ``export`` block are always required
+(they do not indicate a compound statement).  Also, no semicolon is
+needed to terminate an ``export`` block.
+
 
 .. zeek:keyword:: global
 
-    Variables declared with the ``global`` keyword will have global scope.
+global
+~~~~~~
 
-    If a type is not specified, then an initializer is required so that
-    the type can be inferred.  Likewise, if an initializer is not supplied,
-    then the type must be specified.  In some cases, when the type cannot
-    be correctly inferred, the type must be specified even when an
-    initializer is present.  Example:
+Variables declared with the ``global`` keyword will have global scope.
 
-    .. sourcecode:: zeek
+If a type is not specified, then an initializer is required so that
+the type can be inferred.  Likewise, if an initializer is not supplied,
+then the type must be specified.  In some cases, when the type cannot
+be correctly inferred, the type must be specified even when an
+initializer is present.  Example:
 
-        global pi = 3.14;
-        global hosts: set[addr];
-        global ciphers: table[string] of string = table();
+.. sourcecode:: zeek
 
-    Variable declarations outside of any function, hook, or event handler are
-    required to use this keyword (unless they are declared with the
-    :zeek:keyword:`const` keyword instead).
+    global pi = 3.14;
+    global hosts: set[addr];
+    global ciphers: table[string] of string = table();
 
-    Definitions of functions, hooks, and event handlers are not allowed
-    to use the ``global`` keyword.  However, function declarations (i.e., no
-    function body is provided) can use the ``global`` keyword.
+Variable declarations outside of any function, hook, or event handler are
+required to use this keyword (unless they are declared with the
+:zeek:keyword:`const` keyword instead).
 
-    The scope of a global variable begins where the declaration is located,
-    and extends through all remaining Zeek scripts that are loaded (however,
-    see the :zeek:keyword:`module` keyword for an explanation of how modules
-    change the visibility of global identifiers).
+Definitions of functions, hooks, and event handlers are not allowed
+to use the ``global`` keyword.  However, function declarations (i.e., no
+function body is provided) can use the ``global`` keyword.
+
+The scope of a global variable begins where the declaration is located,
+and extends through all remaining Zeek scripts that are loaded (however,
+see the :zeek:keyword:`module` keyword for an explanation of how modules
+change the visibility of global identifiers).
+
 
 .. zeek:keyword:: const
 
-    A variable declared with the ``const`` keyword will be constant.
+const
+~~~~~
 
-    Variables declared as constant are required to be initialized at the
-    time of declaration.  Normally, the type is inferred from the initializer,
-    but the type can be explicitly specified.  Example:
+A variable declared with the ``const`` keyword will be constant.
 
-    .. sourcecode:: zeek
+Variables declared as constant are required to be initialized at the
+time of declaration.  Normally, the type is inferred from the initializer,
+but the type can be explicitly specified.  Example:
 
-        const pi = 3.14;
-        const ssh_port: port = 22/tcp;
+.. sourcecode:: zeek
 
-    The value of a constant cannot be changed.  The only exception is if the
-    variable is a global constant and has the :zeek:attr:`&redef`
-    attribute, but even then its value can be changed only with a
-    :zeek:keyword:`redef`.
+    const pi = 3.14;
+    const ssh_port: port = 22/tcp;
 
-    The scope of a constant is local if the declaration is in a
-    function, hook, or event handler, and global otherwise.
+The value of a constant cannot be changed.  The only exception is if the
+variable is a global constant and has the :zeek:attr:`&redef`
+attribute, but even then its value can be changed only with a
+:zeek:keyword:`redef`.
 
-    Note that the ``const`` keyword cannot be used with either the ``local``
-    or ``global`` keywords (i.e., ``const`` is an alternative to either
-    ``local`` or ``global``).
+The scope of a constant is local if the declaration is in a
+function, hook, or event handler, and global otherwise.
+
+Note that the ``const`` keyword cannot be used with either the ``local``
+or ``global`` keywords (i.e., ``const`` is an alternative to either
+``local`` or ``global``).
+
 
 .. zeek:keyword:: option
 
-    A variable declared with the ``option`` keyword is a configuration option.
+option
+~~~~~~
 
-    Options are required to be initialized at the
-    time of declaration.  Normally, the type is inferred from the initializer,
-    but the type can be explicitly specified.  Example:
+A variable declared with the ``option`` keyword is a configuration option.
 
-    .. sourcecode:: zeek
+Options are required to be initialized at the
+time of declaration.  Normally, the type is inferred from the initializer,
+but the type can be explicitly specified.  Example:
 
-        option hostname = "host-1";
-        option peers: set[addr] = {};
+.. sourcecode:: zeek
 
-    The initial value can be redefined with a :zeek:keyword:`redef`.
+    option hostname = "host-1";
+    option peers: set[addr] = {};
 
-    The value of an option cannot be changed by an assignment statement, but
-    it can be changed by either the :zeek:id:`Config::set_value` function or
-    by changing a config file specified in :zeek:id:`Config::config_files`.
+The initial value can be redefined with a :zeek:keyword:`redef`.
 
-    The scope of an option is global.
+The value of an option cannot be changed by an assignment statement, but
+it can be changed by either the :zeek:id:`Config::set_value` function or
+by changing a config file specified in :zeek:id:`Config::config_files`.
 
-    Note that an ``option`` declaration cannot also use the ``local``,
-    ``global``, or ``const`` keywords.
+The scope of an option is global.
+
+Note that an ``option`` declaration cannot also use the ``local``,
+``global``, or ``const`` keywords.
+
 
 .. zeek:keyword:: type
 
-   The ``type`` keyword is used to declare a user-defined type.  The name
-   of this new type has global scope and can be used anywhere a built-in
-   type name can occur.
+type
+~~~~
 
-   The ``type`` keyword is most commonly used when defining a
-   :zeek:type:`record` or an :zeek:type:`enum`, but is also useful when
-   dealing with more complex types.
+The ``type`` keyword is used to declare a user-defined type.  The name
+of this new type has global scope and can be used anywhere a built-in
+type name can occur.
 
-   Example:
+The ``type`` keyword is most commonly used when defining a
+:zeek:type:`record` or an :zeek:type:`enum`, but is also useful when
+dealing with more complex types.
 
-    .. sourcecode:: zeek
+Example:
 
-       type mytype: table[count] of table[addr, port] of string;
-       global myvar: mytype;
+.. sourcecode:: zeek
+
+   type mytype: table[count] of table[addr, port] of string;
+   global myvar: mytype;
+
 
 .. zeek:keyword:: redef
 
-    There are several ways that ``redef`` can be used:  to redefine the initial
-    value of a global variable or runtime option, to extend a record type or
-    enum type, or to specify a new event handler body that replaces all those
-    that were previously defined.
+redef
+~~~~~
 
-    If you're using ``redef`` to redefine the initial value of a global variable
-    (defined using either :zeek:keyword:`const` or :zeek:keyword:`global`), then
-    the variable that you want to change must have the :zeek:attr:`&redef`
-    attribute.  You can use ``redef`` to redefine the initial value of a
-    runtime option (defined using :zeek:keyword:`option`) even if it doesn't
-    have the :zeek:attr:`&redef` attribute.
+There are several ways that ``redef`` can be used:  to redefine the initial
+value of a global variable or runtime option, to extend a record type or
+enum type, or to specify a new event handler body that replaces all those
+that were previously defined.
 
-    If the variable you're changing is a table, set, vector, or pattern, you can
-    use ``+=`` to add new elements, or you can use ``=`` to specify a new value
-    (all previous contents of the object are removed).  If the variable you're
-    changing is a set or table, then you can use the ``-=`` operator to remove
-    the specified elements (nothing happens for specified elements that don't
-    exist).  If the variable you are changing is not a table, set, or pattern,
-    then you must use the ``=`` operator.
+If you're using ``redef`` to redefine the initial value of a global variable
+(defined using either :zeek:keyword:`const` or :zeek:keyword:`global`), then
+the variable that you want to change must have the :zeek:attr:`&redef`
+attribute.  You can use ``redef`` to redefine the initial value of a
+runtime option (defined using :zeek:keyword:`option`) even if it doesn't
+have the :zeek:attr:`&redef` attribute.
 
-    Examples:
+If the variable you're changing is a table, set, vector, or pattern, you can
+use ``+=`` to add new elements, or you can use ``=`` to specify a new value
+(all previous contents of the object are removed).  If the variable you're
+changing is a set or table, then you can use the ``-=`` operator to remove
+the specified elements (nothing happens for specified elements that don't
+exist).  If the variable you are changing is not a table, set, or pattern,
+then you must use the ``=`` operator.
 
-    .. sourcecode:: zeek
+Examples:
 
-        redef pi = 3.14;
-        redef set_of_ports += { 22/tcp, 53/udp };
+.. sourcecode:: zeek
 
-    If you're using ``redef`` to extend a record or enum, then you must
-    use the ``+=`` assignment operator.
-    For an enum, you can add more enumeration constants, and for a record
-    you can add more record fields (however, each record field in the ``redef``
-    must have either the :zeek:attr:`&optional` or :zeek:attr:`&default`
-    attribute).
+    redef pi = 3.14;
+    redef set_of_ports += { 22/tcp, 53/udp };
 
-    Examples:
+If you're using ``redef`` to extend a record or enum, then you must
+use the ``+=`` assignment operator.
+For an enum, you can add more enumeration constants, and for a record
+you can add more record fields (however, each record field in the ``redef``
+must have either the :zeek:attr:`&optional` or :zeek:attr:`&default`
+attribute).
 
-    .. sourcecode:: zeek
+Examples:
 
-        redef enum color += { Blue, Red };
-        redef record MyRecord += { n2:int &optional; s2:string &optional; };
+.. sourcecode:: zeek
 
-    If you're using ``redef`` to specify a new event handler body that
-    replaces all those that were previously defined (i.e., any subsequently
-    defined event handler body will not be affected by this ``redef``), then
-    the syntax is the same as a regular event handler definition except for
-    the presence of the ``redef`` keyword.
+    redef enum color += { Blue, Red };
+    redef record MyRecord += { n2:int &optional; s2:string &optional; };
 
-    Example:
+If you're using ``redef`` to specify a new event handler body that
+replaces all those that were previously defined (i.e., any subsequently
+defined event handler body will not be affected by this ``redef``), then
+the syntax is the same as a regular event handler definition except for
+the presence of the ``redef`` keyword.
 
-    .. sourcecode:: zeek
+Example:
 
-        redef event myevent(s:string) { print "Redefined", s; }
+.. sourcecode:: zeek
+
+    redef event myevent(s:string) { print "Redefined", s; }
 
 
 .. _function/event/hook:
@@ -296,447 +324,507 @@ Here are the statements that the Zeek scripting language supports.
 |                            | hook, or event handler |
 +----------------------------+------------------------+
 
+
 .. zeek:keyword:: add
 
-    The ``add`` statement is used to add an element to a :zeek:type:`set`.
-    Nothing happens if the specified element already exists in the set.
+add
+~~~
 
-    Example:
+The ``add`` statement is used to add an element to a :zeek:type:`set`.
+Nothing happens if the specified element already exists in the set.
 
-    .. sourcecode:: zeek
+Example:
 
-        local myset: set[string];
-        add myset["test"];
+.. sourcecode:: zeek
+
+    local myset: set[string];
+    add myset["test"];
+
 
 .. zeek:keyword:: break
 
-    The ``break`` statement is used to break out of a :zeek:keyword:`switch`,
-    :zeek:keyword:`for`, or :zeek:keyword:`while` statement.
+break
+~~~~~
+
+The ``break`` statement is used to break out of a :zeek:keyword:`switch`,
+:zeek:keyword:`for`, or :zeek:keyword:`while` statement.
+
 
 .. zeek:keyword:: delete
 
-    The ``delete`` statement is used to remove an element from a
-    :zeek:type:`set` or :zeek:type:`table`, or to remove a value from
-    a :zeek:type:`record` field that has the :zeek:attr:`&optional` attribute.
-    When attempting to remove an element from a set or table,
-    nothing happens if the specified index does not exist.
-    When attempting to remove a value from an ``&optional`` record field,
-    nothing happens if that field doesn't have a value.
+delete
+~~~~~~
 
-    Example:
+The ``delete`` statement is used to remove an element from a
+:zeek:type:`set` or :zeek:type:`table`, or to remove a value from
+a :zeek:type:`record` field that has the :zeek:attr:`&optional` attribute.
+When attempting to remove an element from a set or table,
+nothing happens if the specified index does not exist.
+When attempting to remove a value from an ``&optional`` record field,
+nothing happens if that field doesn't have a value.
 
-    .. sourcecode:: zeek
+Example:
 
-        local myset = set("this", "test");
-        local mytable = table(["key1"] = 80/tcp, ["key2"] = 53/udp);
-        local myrec = MyRecordType($a = 1, $b = 2);
+.. sourcecode:: zeek
 
-        delete myset["test"];
-        delete mytable["key1"];
+    local myset = set("this", "test");
+    local mytable = table(["key1"] = 80/tcp, ["key2"] = 53/udp);
+    local myrec = MyRecordType($a = 1, $b = 2);
 
-        # In this example, "b" must have the "&optional" attribute
-        delete myrec$b;
+    delete myset["test"];
+    delete mytable["key1"];
+
+    # In this example, "b" must have the "&optional" attribute
+    delete myrec$b;
+
 
 .. zeek:keyword:: event
 
-    The ``event`` statement immediately queues invocation of an event handler.
+event
+~~~~~
 
-    Example:
+The ``event`` statement immediately queues invocation of an event handler.
 
-    .. sourcecode:: zeek
+Example:
 
-        event myevent("test", 5);
+.. sourcecode:: zeek
+
+    event myevent("test", 5);
+
 
 .. zeek:keyword:: fallthrough
 
-    The ``fallthrough`` statement can be used within a ``case`` block to
-    indicate that execution should continue at the next ``case`` or ``default``
-    label.
+fallthrough
+~~~~~~~~~~~
 
-    For an example, see the :zeek:keyword:`switch` statement.
+The ``fallthrough`` statement can be used within a ``case`` block to
+indicate that execution should continue at the next ``case`` or ``default``
+label.
+
+For an example, see the :zeek:keyword:`switch` statement.
 
 .. zeek:keyword:: for
 
-    A ``for`` loop iterates over each element in a string, set, vector, or
-    table and executes a statement for each iteration (note that the order
-    in which the loop iterates over the elements in a set or a table is
-    nondeterministic).  However, no loop iterations occur if the string,
-    set, vector, or table is empty.
+for
+~~~
 
-    For each iteration of the loop, a loop variable will be assigned to an
-    element if the expression evaluates to a string or set, or an index if
-    the expression evaluates to a vector or table.  Then the statement
-    is executed.
+A ``for`` loop iterates over each element in a string, set, vector, or
+table and executes a statement for each iteration (note that the order
+in which the loop iterates over the elements in a set or a table is
+nondeterministic).  However, no loop iterations occur if the string,
+set, vector, or table is empty.
 
-    If the expression is a table or a set with more than one index, then the
-    loop variable must be specified as a comma-separated list of different
-    loop variables (one for each index), enclosed in brackets.
+For each iteration of the loop, a loop variable will be assigned to an
+element if the expression evaluates to a string or set, or an index if
+the expression evaluates to a vector or table.  Then the statement
+is executed.
 
-    If the expression is a table, keys and values can be iterated over at the
-    same time by specifying a key and value variable. The core exposes value
-    variables for free, so this should be preferred to accessing the values in
-    a separate lookup inside the loop.
+If the expression is a table or a set with more than one index, then the
+loop variable must be specified as a comma-separated list of different
+loop variables (one for each index), enclosed in brackets.
 
-    Note that the loop variable in a ``for`` statement is not allowed to be
-    a global variable, and it does not need to be declared prior to the ``for``
-    statement.  The type will be inferred from the elements of the
-    expression.
+If the expression is a table, keys and values can be iterated over at the
+same time by specifying a key and value variable. The core exposes value
+variables for free, so this should be preferred to accessing the values in
+a separate lookup inside the loop.
 
-    Currently, modifying a container's membership while iterating over it may
-    result in undefined behavior, so do not add or remove elements
-    inside the loop.
+Note that the loop variable in a ``for`` statement is not allowed to be
+a global variable, and it does not need to be declared prior to the ``for``
+statement.  The type will be inferred from the elements of the
+expression.
 
-    A :zeek:keyword:`break` statement will immediately terminate the ``for``
-    loop, and a :zeek:keyword:`next` statement will skip to the next loop
-    iteration.
+Currently, modifying a container's membership while iterating over it may
+result in undefined behavior, so do not add or remove elements
+inside the loop.
 
-    Example:
+A :zeek:keyword:`break` statement will immediately terminate the ``for``
+loop, and a :zeek:keyword:`next` statement will skip to the next loop
+iteration.
 
-    .. sourcecode:: zeek
+Example:
 
-        local myset = set(80/tcp, 81/tcp);
-        local mytable = table([10.0.0.1, 80/tcp]="s1", [10.0.0.2, 81/tcp]="s2");
+.. sourcecode:: zeek
 
-        for ( p in myset )
-            print p;
+    local myset = set(80/tcp, 81/tcp);
+    local mytable = table([10.0.0.1, 80/tcp]="s1", [10.0.0.2, 81/tcp]="s2");
 
-        for ( [i,j], val in mytable )
-            {
-            if (val == "done")
-                break;
-            if (val == "skip")
-                next;
-            print i,j;
-            }
+    for ( p in myset )
+        print p;
+
+    for ( [i,j], val in mytable )
+        {
+        if (val == "done")
+            break;
+        if (val == "skip")
+            next;
+        print i,j;
+        }
+
 
 .. zeek:keyword:: if
 
-    Evaluates a given expression, which must yield a :zeek:type:`bool` value.
-    If true, then a specified statement is executed.  If false, then
-    the statement is not executed.  Example:
+if
+~~
 
-    .. sourcecode:: zeek
+Evaluates a given expression, which must yield a :zeek:type:`bool` value.
+If true, then a specified statement is executed.  If false, then
+the statement is not executed.  Example:
 
-        if ( x == 2 ) print "x is 2";
+.. sourcecode:: zeek
 
-    However, if the expression evaluates to false and if an ``else`` is
-    provided, then the statement following the ``else`` is executed.  Example:
+    if ( x == 2 ) print "x is 2";
 
-    .. sourcecode:: zeek
+However, if the expression evaluates to false and if an ``else`` is
+provided, then the statement following the ``else`` is executed.  Example:
 
-        if ( x == 2 )
-            print "x is 2";
-        else
-            print "x is not 2";
+.. sourcecode:: zeek
+
+    if ( x == 2 )
+        print "x is 2";
+    else
+        print "x is not 2";
+
 
 .. zeek:keyword:: local
 
-    A variable declared with the ``local`` keyword will be local.  If a type
-    is not specified, then an initializer is required so that the type can
-    be inferred.  Likewise, if an initializer is not supplied, then the
-    type must be specified.
+local
+~~~~~
 
-    Examples:
+A variable declared with the ``local`` keyword will be local.  If a type
+is not specified, then an initializer is required so that the type can
+be inferred.  Likewise, if an initializer is not supplied, then the
+type must be specified.
 
-    .. sourcecode:: zeek
+Examples:
 
-        local x1 = 5.7;
-        local x2: double;
-        local x3: double = 5.7;
+.. sourcecode:: zeek
 
-    Variable declarations inside a function, hook, or event handler are
-    required to use this keyword (the only two exceptions are variables
-    declared with :zeek:keyword:`const`, and variables implicitly declared in a
-    :zeek:keyword:`for` statement).
+    local x1 = 5.7;
+    local x2: double;
+    local x3: double = 5.7;
 
-    The scope of a local variable starts at the location where it is declared
-    and persists to the end of the function, hook,
-    or event handler in which it is declared (this is true even if the
-    local variable was declared within a `compound statement`_ or is the loop
-    variable in a ``for`` statement).
+Variable declarations inside a function, hook, or event handler are
+required to use this keyword (the only two exceptions are variables
+declared with :zeek:keyword:`const`, and variables implicitly declared in a
+:zeek:keyword:`for` statement).
+
+The scope of a local variable starts at the location where it is declared
+and persists to the end of the function, hook,
+or event handler in which it is declared (this is true even if the
+local variable was declared within a `compound statement`_ or is the loop
+variable in a ``for`` statement).
 
 
 .. zeek:keyword:: next
 
-    The ``next`` statement can only appear within a :zeek:keyword:`for` or
-    :zeek:keyword:`while` loop.  It causes execution to skip to the next
-    iteration.
+next
+~~~~
+
+The ``next`` statement can only appear within a :zeek:keyword:`for` or
+:zeek:keyword:`while` loop.  It causes execution to skip to the next
+iteration.
+
 
 .. zeek:keyword:: print
 
-    The ``print`` statement takes a comma-separated list of one or more
-    expressions.  Each expression in the list is evaluated and then converted
-    to a string.  Then each string is printed, with each string separated by
-    a comma in the output.
+print
+~~~~~
 
-    Examples:
+The ``print`` statement takes a comma-separated list of one or more
+expressions.  Each expression in the list is evaluated and then converted
+to a string.  Then each string is printed, with each string separated by
+a comma in the output.
 
-    .. sourcecode:: zeek
+Examples:
 
-        print 3.14;
-        print "Results", x, y;
+.. sourcecode:: zeek
 
-    By default, the ``print`` statement writes to the standard
-    output (stdout).  However, if the first expression is of type
-    :zeek:type:`file`, then ``print`` writes to that file.
+    print 3.14;
+    print "Results", x, y;
 
-    If a string contains non-printable characters (i.e., byte values that are
-    not in the range 32 - 126), then the ``print`` statement converts each
-    non-printable character to an escape sequence before it is printed.
+By default, the ``print`` statement writes to the standard
+output (stdout).  However, if the first expression is of type
+:zeek:type:`file`, then ``print`` writes to that file.
 
-    For more control over how the strings are formatted, see the :zeek:id:`fmt`
-    function.
+If a string contains non-printable characters (i.e., byte values that are
+not in the range 32 - 126), then the ``print`` statement converts each
+non-printable character to an escape sequence before it is printed.
+
+For more control over how the strings are formatted, see the :zeek:id:`fmt`
+function.
+
 
 .. zeek:keyword:: return
 
-    The ``return`` statement immediately exits the current function, hook, or
-    event handler.  For a function, the specified expression (if any) is
-    evaluated and returned.  A ``return`` statement in a hook or event handler
-    cannot return a value because event handlers and hooks do not have
-    return types.
+return
+~~~~~~
 
-    Examples:
+The ``return`` statement immediately exits the current function, hook, or
+event handler.  For a function, the specified expression (if any) is
+evaluated and returned.  A ``return`` statement in a hook or event handler
+cannot return a value because event handlers and hooks do not have
+return types.
 
-    .. sourcecode:: zeek
+Examples:
 
-        function my_func(): string
-            {
-            return "done";
-            }
+.. sourcecode:: zeek
 
-        event my_event(n: count)
-            {
-            if ( n == 0 ) return;
+    function my_func(): string
+        {
+        return "done";
+        }
 
-            print n;
-            }
+    event my_event(n: count)
+        {
+        if ( n == 0 ) return;
 
-    There is a special form of the ``return`` statement that is only allowed
-    in functions.  Syntactically, it looks like a :zeek:keyword:`when` statement
-    immediately preceded by the ``return`` keyword.  This form of the ``return``
-    statement is used to specify a function that delays its result (such a
-    function can only be called in the expression of a :zeek:keyword:`when`
-    statement).  The function returns at the time the ``when``
-    statement's condition becomes true, and the function returns the value
-    that the ``when`` statement's body returns (or if the condition does
-    not become true within the specified timeout interval, then the function
-    returns the value that the ``timeout`` block returns).
+        print n;
+        }
 
-    Example:
+There is a special form of the ``return`` statement that is only allowed
+in functions.  Syntactically, it looks like a :zeek:keyword:`when` statement
+immediately preceded by the ``return`` keyword.  This form of the ``return``
+statement is used to specify a function that delays its result (such a
+function can only be called in the expression of a :zeek:keyword:`when`
+statement).  The function returns at the time the ``when``
+statement's condition becomes true, and the function returns the value
+that the ``when`` statement's body returns (or if the condition does
+not become true within the specified timeout interval, then the function
+returns the value that the ``timeout`` block returns).
 
-    .. sourcecode:: zeek
+Example:
 
-      global X: table[string] of count;
+.. sourcecode:: zeek
 
-      function a() : count
-            {
-            # This delays until condition becomes true.
-            return when ( "a" in X )
-                  {
-                  return X["a"];
-                  }
-            timeout 30 sec
-                  {
-                  return 0;
-                  }
-            }
+  global X: table[string] of count;
 
-      event zeek_init()
-            {
-            # Installs a trigger which fires if a() returns 42.
-            when ( a() == 42 )
-                print "expected result";
+  function a() : count
+        {
+        # This delays until condition becomes true.
+        return when ( "a" in X )
+              {
+              return X["a"];
+              }
+        timeout 30 sec
+              {
+              return 0;
+              }
+        }
 
-            print "Waiting for a() to return...";
-            X["a"] = 42;
-            }
+  event zeek_init()
+        {
+        # Installs a trigger which fires if a() returns 42.
+        when ( a() == 42 )
+            print "expected result";
+
+        print "Waiting for a() to return...";
+        X["a"] = 42;
+        }
+
 
 .. zeek:keyword:: schedule
 
-    The ``schedule`` statement is used to raise a specified event with
-    specified parameters at a later time specified as an :zeek:type:`interval`.
+schedule
+~~~~~~~~
 
-    Example:
+The ``schedule`` statement is used to raise a specified event with
+specified parameters at a later time specified as an :zeek:type:`interval`.
 
-    .. sourcecode:: zeek
+Example:
 
-        schedule 30sec { myevent(x, y, z) };
+.. sourcecode:: zeek
 
-    Note that the braces are always required (they do not indicate a
-    `compound statement`_).
+    schedule 30sec { myevent(x, y, z) };
 
-    Note that ``schedule`` is actually an expression that returns a value
-    of type ``timer``, but in practice the return value is not used.
+Note that the braces are always required (they do not indicate a
+`compound statement`_).
+
+Note that ``schedule`` is actually an expression that returns a value
+of type ``timer``, but in practice the return value is not used.
+
 
 .. zeek:keyword:: switch
 
-    A ``switch`` statement evaluates a given expression and jumps to
-    the first ``case`` label which contains a matching value (the result of the
-    expression must be type-compatible with all of the values in all of the
-    ``case`` labels).  If there is no matching value, then execution jumps to
-    the ``default`` label instead, and if there is no ``default`` label then
-    execution jumps out of the ``switch`` block.
+switch
+~~~~~~
 
-    Here is an example (assuming that ``get_day_of_week`` is a
-    function that returns a string):
+A ``switch`` statement evaluates a given expression and jumps to
+the first ``case`` label which contains a matching value (the result of the
+expression must be type-compatible with all of the values in all of the
+``case`` labels).  If there is no matching value, then execution jumps to
+the ``default`` label instead, and if there is no ``default`` label then
+execution jumps out of the ``switch`` block.
 
-    .. sourcecode:: zeek
+Here is an example (assuming that ``get_day_of_week`` is a
+function that returns a string):
 
-        switch get_day_of_week() {
-            case "Sa", "Su":
-                print "weekend";
-                fallthrough;
-            case "Mo", "Tu", "We", "Th", "Fr":
-                print "valid result";
+.. sourcecode:: zeek
+
+    switch get_day_of_week() {
+        case "Sa", "Su":
+            print "weekend";
+            fallthrough;
+        case "Mo", "Tu", "We", "Th", "Fr":
+            print "valid result";
+            break;
+        default:
+            print "invalid result";
+            break;
+    }
+
+A ``switch`` block can have any number of ``case`` labels, and one
+optional ``default`` label.
+
+A ``case`` label can have a comma-separated list of
+more than one value.  A value in a ``case`` label can be an expression,
+but it must be a constant expression (i.e., the expression can consist
+only of constants).
+
+Each ``case`` and the ``default`` block must
+end with either a :zeek:keyword:`break`, :zeek:keyword:`fallthrough`, or
+:zeek:keyword:`return` statement (although ``return`` is allowed only
+if the ``switch`` statement is inside a function, hook, or event handler).
+
+Note that the braces in a ``switch`` statement are always required (these
+do not indicate the presence of a `compound statement`_), and that no
+semicolon is needed at the end of a ``switch`` statement.
+
+There is an alternative form of the switch statement that supports
+switching by type rather than value.  This form of the switch statement
+uses type-based versions of ``case``:
+
+- ``case type t: ...``: Take branch if the value of the switch expression
+  could be casted to type ``t`` (where ``t`` is the name of a Zeek script
+  type, either built-in or user-defined).
+
+- ``case type t as x: ...``: Same as above, but the casted value is
+  available through ID ``x``.
+
+Multiple types can be listed per branch, separated by commas (the ``type``
+keyword must be repeated for each type in the list).
+
+Example:
+
+.. sourcecode:: zeek
+
+    function example(v: any)
+        {
+        switch (v) {
+        case type count as c:
+                print "It's a count", c;
                 break;
-            default:
-                print "invalid result";
+
+        case type bool, type addr:
+                print "It's a bool or address";
                 break;
         }
+        }
 
-    A ``switch`` block can have any number of ``case`` labels, and one
-    optional ``default`` label.
+Note that a single switch statement switches either by type or by value,
+but not both.
 
-    A ``case`` label can have a comma-separated list of
-    more than one value.  A value in a ``case`` label can be an expression,
-    but it must be a constant expression (i.e., the expression can consist
-    only of constants).
+Also note that the type-based switch statement will trigger a runtime
+error if any cast in any ``case`` is an unsupported cast (see the
+documentation of the type casting operator ``as``).
 
-    Each ``case`` and the ``default`` block must
-    end with either a :zeek:keyword:`break`, :zeek:keyword:`fallthrough`, or
-    :zeek:keyword:`return` statement (although ``return`` is allowed only
-    if the ``switch`` statement is inside a function, hook, or event handler).
+A type-casting ``case`` block is also not allowed to use a
+:zeek:keyword:`fallthrough` statement since that could generally mean
+entering another type-casting block. That is, the switched-upon value could
+get cast to at least two different types, which is not a valid possibility.
 
-    Note that the braces in a ``switch`` statement are always required (these
-    do not indicate the presence of a `compound statement`_), and that no
-    semicolon is needed at the end of a ``switch`` statement.
-
-    There is an alternative form of the switch statement that supports
-    switching by type rather than value.  This form of the switch statement
-    uses type-based versions of ``case``:
-
-    - ``case type t: ...``: Take branch if the value of the switch expression
-      could be casted to type ``t`` (where ``t`` is the name of a Zeek script
-      type, either built-in or user-defined).
-
-    - ``case type t as x: ...``: Same as above, but the casted value is
-      available through ID ``x``.
-
-    Multiple types can be listed per branch, separated by commas (the ``type``
-    keyword must be repeated for each type in the list).
-
-    Example:
-
-    .. sourcecode:: zeek
-
-        function example(v: any)
-            {
-            switch (v) {
-            case type count as c:
-                    print "It's a count", c;
-                    break;
-
-            case type bool, type addr:
-                    print "It's a bool or address";
-                    break;
-            }
-            }
-
-    Note that a single switch statement switches either by type or by value,
-    but not both.
-
-    Also note that the type-based switch statement will trigger a runtime
-    error if any cast in any ``case`` is an unsupported cast (see the
-    documentation of the type casting operator ``as``).
-
-    A type-casting ``case`` block is also not allowed to use a
-    :zeek:keyword:`fallthrough` statement since that could generally mean
-    entering another type-casting block. That is, the switched-upon value could
-    get cast to at least two different types, which is not a valid possibility.
 
 .. zeek:keyword:: when
 
-    Evaluates a given expression, which must result in a value of type
-    :zeek:type:`bool`.  When the value of the expression becomes available
-    and if the result is true, then a specified statement is executed.
+when
+~~~~
 
-    In the following example, if the expression evaluates to true, then
-    the ``print`` statement is executed:
+Evaluates a given expression, which must result in a value of type
+:zeek:type:`bool`.  When the value of the expression becomes available
+and if the result is true, then a specified statement is executed.
 
-    .. sourcecode:: zeek
+In the following example, if the expression evaluates to true, then
+the ``print`` statement is executed:
 
-        when ( (local x = foo()) && x == 42 )
-            {
-            print x;
-            }
+.. sourcecode:: zeek
 
-    However, if a timeout is specified, and if the expression does not
-    evaluate to true within the specified timeout interval, then the
-    statement following the ``timeout`` keyword is executed:
+    when ( (local x = foo()) && x == 42 )
+        {
+        print x;
+        }
 
-    .. sourcecode:: zeek
+However, if a timeout is specified, and if the expression does not
+evaluate to true within the specified timeout interval, then the
+statement following the ``timeout`` keyword is executed:
 
-        when ( (local x = foo()) && x == 42 )
-            {
-            print x;
-            }
-        timeout 5sec
-            {
-            print "timeout";
-            }
+.. sourcecode:: zeek
 
-    Note that when a timeout is specified the braces are
-    always required (these do not indicate a `compound statement`_).
+    when ( (local x = foo()) && x == 42 )
+        {
+        print x;
+        }
+    timeout 5sec
+        {
+        print "timeout";
+        }
 
-    The expression in a ``when`` statement can contain a declaration of a local
-    variable but only if the declaration is written in the form
-    ``local *var* = *init*`` (example: ``local x = myfunction()``).  This form
-    of a local declaration is actually an expression, the result of which
-    is always a boolean true value.
+Note that when a timeout is specified the braces are
+always required (these do not indicate a `compound statement`_).
 
-    The expression in a ``when`` statement can contain an asynchronous function
-    call such as :zeek:id:`lookup_hostname` (in fact, this is the only place
-    such a function can be called), but it can also contain an ordinary
-    function call.  When an asynchronous function call is in the expression,
-    then Zeek will continue processing statements in the script following
-    the ``when`` statement, and when the result of the function call is available
-    Zeek will finish evaluating the expression in the ``when`` statement.
-    See the :zeek:keyword:`return` statement for an explanation of how to
-    create an asynchronous function in a Zeek script.
+The expression in a ``when`` statement can contain a declaration of a local
+variable but only if the declaration is written in the form
+``local *var* = *init*`` (example: ``local x = myfunction()``).  This form
+of a local declaration is actually an expression, the result of which
+is always a boolean true value.
+
+The expression in a ``when`` statement can contain an asynchronous function
+call such as :zeek:id:`lookup_hostname` (in fact, this is the only place
+such a function can be called), but it can also contain an ordinary
+function call.  When an asynchronous function call is in the expression,
+then Zeek will continue processing statements in the script following
+the ``when`` statement, and when the result of the function call is available
+Zeek will finish evaluating the expression in the ``when`` statement.
+See the :zeek:keyword:`return` statement for an explanation of how to
+create an asynchronous function in a Zeek script.
+
 
 .. zeek:keyword:: while
 
-    A ``while`` loop iterates over a body statement as long as a given
-    condition remains true.
+while
+~~~~~
 
-    A :zeek:keyword:`break` statement can be used at any time to immediately
-    terminate the ``while`` loop, and a :zeek:keyword:`next` statement can be
-    used to skip to the next loop iteration.
+A ``while`` loop iterates over a body statement as long as a given
+condition remains true.
 
-    Example:
+A :zeek:keyword:`break` statement can be used at any time to immediately
+terminate the ``while`` loop, and a :zeek:keyword:`next` statement can be
+used to skip to the next loop iteration.
 
-    .. sourcecode:: zeek
+Example:
 
-        local i = 0;
+.. sourcecode:: zeek
 
-        while ( i < 5 )
-            print ++i;
+    local i = 0;
 
-        while ( some_cond() )
-            {
-            local finish_up = F;
+    while ( i < 5 )
+        print ++i;
 
-            if ( skip_ahead() )
-                next;
+    while ( some_cond() )
+        {
+        local finish_up = F;
 
-            if ( finish_up )
-                break;
-            }
+        if ( skip_ahead() )
+            next;
+
+        if ( finish_up )
+            break;
+        }
+
 
 .. _compound statement:
 
 Compound Statement
 ~~~~~~~~~~~~~~~~~~
+
 A compound statement is created by wrapping zero or more statements in
 braces ``{ }``.  Individual statements inside the braces need to be
 terminated by a semicolon, but a semicolon is not needed at the end
@@ -759,6 +847,7 @@ Example:
 Note that there are other places in the Zeek scripting language that use
 braces, but that do not indicate the presence of a compound
 statement (these are noted in the documentation).
+
 
 .. _null statement:
 
