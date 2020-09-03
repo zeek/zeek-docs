@@ -1,11 +1,17 @@
 Declarations and Statements
 ===========================
 
-The Zeek scripting language supports the following declarations and
-statements.
+The Zeek scripting language supports the following declarations_ and
+statements_.
 
 Declarations
-~~~~~~~~~~~~
+------------
+
+Declarations cannot occur within a function, hook, or event handler.
+
+Declarations must appear before any statements (except those statements
+that are in a function, hook, or event handler) in the concatenation of
+all loaded Zeek scripts.
 
 +----------------------------+-----------------------------+
 | Name                       | Description                 |
@@ -31,54 +37,6 @@ Declarations
 |                            | handler, or hook            |
 +----------------------------+-----------------------------+
 
-Statements
-~~~~~~~~~~
-
-+----------------------------+------------------------+
-| Name                       | Description            |
-+============================+========================+
-| :zeek:keyword:`local`      | Declare a local        |
-|                            | variable               |
-+----------------------------+------------------------+
-| :zeek:keyword:`add`,       | Add or delete          |
-| :zeek:keyword:`delete`     | elements               |
-+----------------------------+------------------------+
-| :zeek:keyword:`print`      | Print to stdout or a   |
-|                            | file                   |
-+----------------------------+------------------------+
-| :zeek:keyword:`for`,       | Loop over each         |
-| :zeek:keyword:`while`,     | element in a container |
-| :zeek:keyword:`next`,      | object (``for``), or   |
-| :zeek:keyword:`break`      | as long as a condition |
-|                            | evaluates to true      |
-|                            | (``while``).           |
-+----------------------------+------------------------+
-| :zeek:keyword:`if`         | Evaluate boolean       |
-|                            | expression and if true,|
-|                            | execute a statement    |
-+----------------------------+------------------------+
-| :zeek:keyword:`switch`,    | Evaluate expression    |
-| :zeek:keyword:`break`,     | and execute statement  |
-| :zeek:keyword:`fallthrough`| with a matching value  |
-+----------------------------+------------------------+
-| :zeek:keyword:`when`       | Asynchronous execution |
-+----------------------------+------------------------+
-| :zeek:keyword:`event`,     | Invoke or schedule     |
-| :zeek:keyword:`schedule`   | an event handler       |
-+----------------------------+------------------------+
-| :zeek:keyword:`return`     | Return from function,  |
-|                            | hook, or event handler |
-+----------------------------+------------------------+
-
-Declarations
-------------
-
-Declarations cannot occur within a function, hook, or event handler.
-
-Declarations must appear before any statements (except those statements
-that are in a function, hook, or event handler) in the concatenation of
-all loaded Zeek scripts.
-
 .. zeek:keyword:: module
 
     The ``module`` keyword is used to change the current module.  This
@@ -101,7 +59,6 @@ all loaded Zeek scripts.
     There can be any number of ``module`` declarations in a Zeek script.
     The same ``module`` declaration can appear in any number of different
     Zeek scripts.
-
 
 .. zeek:keyword:: export
 
@@ -284,11 +241,11 @@ all loaded Zeek scripts.
 
 .. _function/event/hook:
 
-**function/event/hook**
-    For details on how to declare a :zeek:type:`function`,
-    :zeek:type:`event` handler, or :zeek:type:`hook`,
-    see the documentation for those types.
+Function Flavors
+~~~~~~~~~~~~~~~~
 
+For details on how to declare a :zeek:type:`function`, :zeek:type:`event`
+handler, or :zeek:type:`hook`, see the documentation for those types.
 
 Statements
 ----------
@@ -302,6 +259,42 @@ few exceptions noted below).  An individual statement can span multiple
 lines.
 
 Here are the statements that the Zeek scripting language supports.
+
++----------------------------+------------------------+
+| Name                       | Description            |
++============================+========================+
+| :zeek:keyword:`local`      | Declare a local        |
+|                            | variable               |
++----------------------------+------------------------+
+| :zeek:keyword:`add`,       | Add or delete          |
+| :zeek:keyword:`delete`     | elements               |
++----------------------------+------------------------+
+| :zeek:keyword:`print`      | Print to stdout or a   |
+|                            | file                   |
++----------------------------+------------------------+
+| :zeek:keyword:`for`,       | Loop over each         |
+| :zeek:keyword:`while`,     | element in a container |
+| :zeek:keyword:`next`,      | object (``for``), or   |
+| :zeek:keyword:`break`      | as long as a condition |
+|                            | evaluates to true      |
+|                            | (``while``).           |
++----------------------------+------------------------+
+| :zeek:keyword:`if`         | Evaluate boolean       |
+|                            | expression and if true,|
+|                            | execute a statement    |
++----------------------------+------------------------+
+| :zeek:keyword:`switch`,    | Evaluate expression    |
+| :zeek:keyword:`break`,     | and execute statement  |
+| :zeek:keyword:`fallthrough`| with a matching value  |
++----------------------------+------------------------+
+| :zeek:keyword:`when`       | Asynchronous execution |
++----------------------------+------------------------+
+| :zeek:keyword:`event`,     | Invoke or schedule     |
+| :zeek:keyword:`schedule`   | an event handler       |
++----------------------------+------------------------+
+| :zeek:keyword:`return`     | Return from function,  |
+|                            | hook, or event handler |
++----------------------------+------------------------+
 
 .. zeek:keyword:: add
 
@@ -742,41 +735,44 @@ Here are the statements that the Zeek scripting language supports.
 
 .. _compound statement:
 
-**compound statement**
-    A compound statement is created by wrapping zero or more statements in
-    braces ``{ }``.  Individual statements inside the braces need to be
-    terminated by a semicolon, but a semicolon is not needed at the end
-    (outside of the braces) of a compound statement.
+Compound Statement
+~~~~~~~~~~~~~~~~~~
+A compound statement is created by wrapping zero or more statements in
+braces ``{ }``.  Individual statements inside the braces need to be
+terminated by a semicolon, but a semicolon is not needed at the end
+(outside of the braces) of a compound statement.
 
-    A compound statement is required in order to execute more than one
-    statement in the body of a :zeek:keyword:`for`, :zeek:keyword:`while`,
-    :zeek:keyword:`if`, or :zeek:keyword:`when` statement.
+A compound statement is required in order to execute more than one
+statement in the body of a :zeek:keyword:`for`, :zeek:keyword:`while`,
+:zeek:keyword:`if`, or :zeek:keyword:`when` statement.
 
-    Example:
+Example:
 
-    .. sourcecode:: zeek
+.. sourcecode:: zeek
 
-        if ( x == 2 )
-            {
-            print "x is 2";
-            ++x;
-            }
+    if ( x == 2 )
+        {
+        print "x is 2";
+        ++x;
+        }
 
-    Note that there are other places in the Zeek scripting language that use
-    braces, but that do not indicate the presence of a compound
-    statement (these are noted in the documentation).
+Note that there are other places in the Zeek scripting language that use
+braces, but that do not indicate the presence of a compound
+statement (these are noted in the documentation).
 
-.. _null:
+.. _null statement:
 
-**null statement**
-    The null statement (executing it has no effect) consists of just a
-    semicolon.  This might be useful during testing or debugging a Zeek script
-    in places where a statement is required, but it is probably not useful
-    otherwise.
+Null Statement
+~~~~~~~~~~~~~~
 
-    Example:
+The null statement (executing it has no effect) consists of just a
+semicolon.  This might be useful during testing or debugging a Zeek script
+in places where a statement is required, but it is probably not useful
+otherwise.
 
-    .. sourcecode:: zeek
+Example:
 
-        if ( x == 2 )
-            ;
+.. sourcecode:: zeek
+
+    if ( x == 2 )
+        ;
