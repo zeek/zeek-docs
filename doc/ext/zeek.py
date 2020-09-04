@@ -64,7 +64,7 @@ def process_see_nodes(app, doctree, fromdocname):
                 todocname = app.env.domaindata['zeek']['objects'][(typ, name)]
 
                 newnode = nodes.reference('', '')
-                innernode = nodes.literal(_(name), _(name))
+                innernode = nodes.literal(_(name), _(name), classes=['xref'])
                 newnode['refdocname'] = todocname
                 newnode['refuri'] = app.builder.get_relative_uri(
                     fromdocname, todocname)
