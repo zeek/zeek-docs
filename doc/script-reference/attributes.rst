@@ -89,8 +89,8 @@ or :zeek:keyword:`const`).  Example:
     const clever = T &redef;
     global cache_size = 256 &redef;
 
-Note that a variable declared "global" can also have its value changed
-with assignment statements (doesn't matter if it has the "&redef"
+Note that a variable declared ``global`` can also have its value changed
+with assignment statements (doesn't matter if it has the :zeek:attr:`&redef`
 attribute or not).
 
 
@@ -101,7 +101,7 @@ attribute or not).
 
 Specifies the execution priority (as a signed integer) of a hook or
 event handler. Higher values are executed before lower ones. The
-default value is 0.  Example:
+default value is ``0``.  Example:
 
 .. code-block:: zeek
 
@@ -128,7 +128,7 @@ Allows a record field value to be missing (i.e., neither initialized nor
 ever assigned a value).
 
 In this example, the record could be instantiated with either
-"myrec($a=127.0.0.1)" or "myrec($a=127.0.0.1, $b=80/tcp)":
+``myrec($a=127.0.0.1)`` or ``myrec($a=127.0.0.1, $b=80/tcp)``:
 
 .. code-block:: zeek
 
@@ -148,7 +148,7 @@ Specifies a default value for a record field, container element, or a
 function/hook/event parameter.
 
 In this example, the record could be instantiated with either
-"myrec($a=5, $c=3.14)" or "myrec($a=5, $b=53/udp, $c=3.14)":
+``myrec($a=5, $c=3.14)`` or ``myrec($a=5, $b=53/udp, $c=3.14)``:
 
 .. code-block:: zeek
 
@@ -162,9 +162,9 @@ attempted access to a non-existing index:
     global mytable: table[count] of string &default="foo";
 
 When used with function/hook/event parameters, all of the parameters
-with the "&default" attribute must come after all other parameters.
-For example, the following function could be called either as "myfunc(5)"
-or as "myfunc(5, 53/udp)":
+with the :zeek:attr:`&default` attribute must come after all other parameters.
+For example, the following function could be called either as ``myfunc(5)``
+or as ``myfunc(5, 53/udp)``:
 
 .. code-block:: zeek
 
@@ -180,10 +180,10 @@ or as "myfunc(5, 53/udp)":
 ---------
 
 Can be applied to an identifier with &redef to specify a function to
-be called any time a "redef <id> += ..." declaration is parsed.  The
+be called any time a ``redef <id> += ...`` declaration is parsed.  The
 function takes two arguments of the same type as the identifier, the first
 being the old value of the variable and the second being the new
-value given after the "+=" operator in the "redef" declaration.  The
+value given after the ``+=`` operator in the :zeek:keyword:`redef` declaration.  The
 return value of the function will be the actual new value of the
 variable after the "redef" declaration is parsed.
 
@@ -194,7 +194,7 @@ variable after the "redef" declaration is parsed.
 ------------
 
 Same as :zeek:attr:`&add_func`, except for :zeek:keyword:`redef` declarations
-that use the "-=" operator.
+that use the ``-=`` operator.
 
 
 .. zeek:attr:: &expire_func
@@ -461,7 +461,7 @@ table.
 -----------
 
 The associated identifier is marked as deprecated and will be
-removed in a future version of Zeek.  Look in the NEWS file for more
+removed in a future version of Zeek.  Look in the :file:`NEWS` file for more
 instructions to migrate code that uses deprecated functionality.
 This attribute can be assigned an optional string literal value to
 print along with the deprecation warning. The preferred format of
@@ -470,4 +470,4 @@ the identifier will be removed:
 
 .. code-block:: zeek
 
-    type warned: string &deprecated="This type is deprecated. Removed in x.y.z.";
+    type warned: string &deprecated="Remove in vX.Y.  This type is deprecated because of reasons, use 'foo' instead.";
