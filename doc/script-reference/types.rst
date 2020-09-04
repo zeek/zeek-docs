@@ -56,12 +56,12 @@ bool
 ----
 
 Reflects a value with one of two meanings: true or false.  The two
-"bool" constants are ``T`` and ``F``.
+``bool`` constants are ``T`` and ``F``.
 
-The "bool" type supports the following operators: equality/inequality
+The ``bool`` type supports the following operators: equality/inequality
 (``==``, ``!=``), logical and/or (``&&``, ``||``), logical
-negation (``!``), and absolute value (where ``|T|`` is 1, and ``|F|`` is 0,
-and in both cases the result type is :zeek:type:`count`).
+negation (``!``), and absolute value (where ``|T|`` is ``1``, and ``|F|`` is
+``0``, and in both cases the result type is :zeek:type:`count`).
 
 
 .. zeek:native-type:: int
@@ -69,24 +69,24 @@ and in both cases the result type is :zeek:type:`count`).
 int
 ---
 
-A numeric type representing a 64-bit signed integer.  An "int" constant
-is a string of digits preceded by a "+" or "-" sign, e.g.
-``-42`` or ``+5`` (the "+" sign is optional but see note about type
-inferencing below).  An "int" constant can also be written in
-hexadecimal notation (in which case "0x" must be between the sign and
+A numeric type representing a 64-bit signed integer.  An ``int`` constant
+is a string of digits preceded by a ``+`` or ``-`` sign, e.g.
+``-42`` or ``+5`` (the ``+`` sign is optional but see note about type
+inferencing below).  An ``int`` constant can also be written in
+hexadecimal notation (in which case ``0x`` must be between the sign and
 the hex digits), e.g. ``-0xFF`` or ``+0xabc123``.
 
-The "int" type supports the following operators:  arithmetic
+The ``int`` type supports the following operators:  arithmetic
 operators (``+``, ``-``, ``*``, ``/``, ``%``), comparison operators
 (``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), assignment operators
 (``=``, ``+=``, ``-=``), pre-increment (``++``), pre-decrement
 (``--``), unary plus and minus (``+``, ``-``), and absolute value
 (e.g., ``|-3|`` is 3, but the result type is :zeek:type:`count`).
 
-When using type inferencing use care so that the
-intended type is inferred, e.g. "local size_difference = 0" will
-infer ":zeek:type:`count`", while "local size_difference = +0"
-will infer "int".
+When using type inferencing, use care so that the
+intended type is inferred, e.g. ``local size_difference = 0`` will
+infer :zeek:type:`count`, while ``local size_difference = +0``
+will infer ``int``.
 
 
 .. zeek:native-type:: count
@@ -94,16 +94,16 @@ will infer "int".
 count
 -----
 
-A numeric type representing a 64-bit unsigned integer.  A "count"
-constant is a string of digits, e.g. ``1234`` or ``0``.  A "count"
-can also be written in hexadecimal notation (in which case "0x" must
+A numeric type representing a 64-bit unsigned integer.  A ``count``
+constant is a string of digits, e.g. ``1234`` or ``0``.  A ``count``
+can also be written in hexadecimal notation (in which case ``0x`` must
 precede the hex digits), e.g. ``0xff`` or ``0xABC123``.
 
-The "count" type supports the same operators as the :zeek:type:`int`
-type, but a unary plus or minus applied to a "count" results in an
-"int".
+The ``count`` type supports the same operators as the :zeek:type:`int`
+type, but a unary plus or minus applied to a ``count`` results in an
+:zeek:type:`int`.
 
-In addition, "count" types support bitwise operations.  You can use
+In addition, ``count`` types support bitwise operations.  You can use
 ``&``, ``|``, and ``^`` for bitwise ``and``, ``or``, and ``xor``.  You
 can also use ``~`` for bitwise (one's) complement.
 
@@ -116,19 +116,19 @@ double
 A numeric type representing a double-precision floating-point
 number.  Floating-point constants are written as a string of digits
 with an optional decimal point, optional scale-factor in scientific
-notation, and optional "+" or "-" sign.  Examples are ``-1234``,
+notation, and optional ``+`` or ``-`` sign.  Examples are ``-1234``,
 ``-1234e0``, ``3.14159``, and ``.003E-23``.
 
-The "double" type supports the following operators:  arithmetic
+The ``double`` type supports the following operators:  arithmetic
 operators (``+``, ``-``, ``*``, ``/``), comparison operators
 (``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), assignment operators
 (``=``, ``+=``, ``-=``), unary plus and minus (``+``, ``-``), and
 absolute value (e.g., ``|-3.14|`` is 3.14).
 
 When using type inferencing use care so that the
-intended type is inferred, e.g. "local size_difference = 5" will
-infer ":zeek:type:`count`", while "local size_difference = 5.0"
-will infer "double".
+intended type is inferred, e.g. ``local size_difference = 5`` will
+infer :zeek:type:`count`, while ``local size_difference = 5.0``
+will infer ``double``.
 
 
 .. zeek:native-type:: time
@@ -159,7 +159,7 @@ constant can be written as a numeric constant followed by a time
 unit where the time unit is one of ``usec``, ``msec``, ``sec``, ``min``,
 ``hr``, or ``day`` which respectively represent microseconds, milliseconds,
 seconds, minutes, hours, and days.  Whitespace between the numeric
-constant and time unit is optional.  Appending the letter "s" to the
+constant and time unit is optional.  Appending the letter ``s`` to the
 time unit in order to pluralize it is also optional (to no semantic
 effect).  Examples of ``interval`` constants are ``3.5 min`` and
 ``3.5mins``.  An ``interval`` can also be negated, for example
@@ -186,20 +186,20 @@ A type used to hold bytes which represent text and also can hold
 arbitrary binary data.
 
 String constants are created by enclosing text within a pair of double
-quotes (").  A string constant cannot span multiple lines in a Zeek script.
+quotes (``"``).  A string constant cannot span multiple lines in a Zeek script.
 The backslash character (\\) introduces escape sequences. Zeek recognizes
 the following escape sequences: ``\\``, ``\n``, ``\t``, ``\v``, ``\b``,
 ``\r``, ``\f``, ``\a``, ``\ooo`` (where each 'o' is an octal digit),
 ``\xhh`` (where each 'h' is a hexadecimal digit).  If Zeek does not
 recognize an escape sequence, Zeek will ignore the backslash
-("\\g" becomes "g").
+(``\\g`` becomes ``g``).
 
 Strings support concatenation (``+``), and assignment (``=``, ``+=``).
 Strings also support the comparison operators (``==``, ``!=``, ``<``,
 ``<=``, ``>``, ``>=``).  The number of characters in a string can be
 found by enclosing the string within pipe characters (e.g., ``|"abc"|``
-is 3).  Substring searching can be performed using the "in" or "!in"
-operators (e.g., "bar" in "foobar" yields true).
+is 3).  Substring searching can be performed using the ``in`` or ``!in``
+operators (e.g., ``"bar" in "foobar"`` yields true).
 
 The subscript operator can extract a substring of a string.  To do this,
 specify the starting index to extract (if the starting index is omitted,
@@ -209,7 +209,9 @@ then the extracted substring will go to the end of the original string).
 However, if both the colon and last index are omitted, then a string of
 length one is extracted.  String indexing is zero-based, but an index
 of -1 refers to the last character in the string, and -2 refers to the
-second-to-last character, etc.  Here are a few examples::
+second-to-last character, etc.  Here are a few examples:
+
+.. code-block:: zeek
 
     local orig = "0123456789";
     local second_char = orig[1];         # "1"
@@ -240,60 +242,72 @@ size of the patterns.  Patterns support two types of matching, exact
 and embedded.
 
 In exact matching the ``==`` equality relational operator is used
-with one "pattern" operand and one ":zeek:type:`string`"
+with one ``pattern`` operand and one :zeek:type:`string`
 operand (order of operands does not matter) to check whether the full
 string exactly matches the pattern.  In exact matching, the ``^``
 beginning-of-line and ``$`` end-of-line anchors are redundant since
 the pattern is implicitly anchored to the beginning and end of the
-line to facilitate an exact match.  For example::
+line to facilitate an exact match.  For example:
+
+.. code-block:: zeek
 
     /foo|bar/ == "foo"
 
-yields true, while::
+yields true, while:
+
+.. code-block:: zeek
 
     /foo|bar/ == "foobar"
 
 yields false.  The ``!=`` operator would yield the negation of ``==``.
 
 In embedded matching the ``in`` operator is used with one
-"pattern" operand (which must be on the left-hand side) and
-one ":zeek:type:`string`" operand, but tests whether the pattern
-appears anywhere within the given string.  For example::
+``pattern`` operand (which must be on the left-hand side) and
+one :zeek:type:`string` operand, but tests whether the pattern
+appears anywhere within the given string.  For example:
+
+.. code-block:: zeek
 
     /foo|bar/ in "foobar"
 
-yields true, while::
+yields true, while:
+
+.. code-block:: zeek
 
     /^oob/ in "foobar"
 
-is false since "oob" does not appear at the start of "foobar".  The
+is false since ``"oob"`` does not appear at the start of ``"foobar"``.  The
 ``!in`` operator would yield the negation of ``in``.
 
 You can create a disjunction (either-or) of two patterns
-using the ``|`` operator.  For example::
+using the ``|`` operator.  For example:
 
-/foo/ | /bar/ in "foobar"
+.. code-block:: zeek
+
+    /foo/ | /bar/ in "foobar"
 
 yields true, like in the similar example above.  You can also
 create the conjunction (concatenation) of patterns using the ``&``
-operator.  For example::
+operator.  For example:
 
-/foo/ & /bar/ in "foobar"
+.. code-block:: zeek
 
-will yield true because the pattern /(foo)(bar)/ appears in
-the string "foobar".
+    /foo/ & /bar/ in "foobar"
+
+will yield true because the pattern ``/(foo)(bar)/`` appears in
+the string ``"foobar"``.
 
 When specifying a pattern, you can add a final ``i`` specifier to
 mark it as case-insensitive.  For example, ``/foo|bar/i`` will match
-"foo", "Foo", "BaR", etc.
+``"foo"``, ``"Foo"``, ``"BaR"``, etc.
 
 You can also introduce a case-insensitive sub-pattern by enclosing it
 in ``(?i:<pattern>)``.  So, for example, ``/foo|(?i:bar)/`` will
-match "foo" and "BaR", but *not* "Foo".
+match ``"foo"`` and ``"BaR"``, but *not* ``"Foo"``.
 
 For both ways of specifying case-insensitivity, characters enclosed
 in double quotes maintain their case-sensitivity.  So for example
-/"foo"/i will not match "Foo", but it will match "foo".
+``/"foo"/i`` will not match ``"Foo"``, but it will match ``"foo"``.
 
 
 .. zeek:native-type:: port
@@ -302,7 +316,7 @@ port
 ----
 
 A type representing transport-level port numbers (besides TCP and
-UDP ports, there is a concept of an ICMP "port" where the source
+UDP ports, there is a concept of an ICMP ``port`` where the source
 port is the ICMP message type and the destination port the ICMP
 message code).  A ``port`` constant is written as an unsigned integer
 followed by one of ``/tcp``, ``/udp``, ``/icmp``, or ``/unknown``.
@@ -349,6 +363,7 @@ Addresses can also be masked with ``/`` to produce a :zeek:type:`subnet`:
 
     local a: addr = 192.168.1.100;
     local s: subnet = 192.168.0.0/16;
+
     if ( a/16 == s )
         print "true";
 
@@ -359,6 +374,7 @@ or ``!in``:
 
     local a: addr = 192.168.1.100;
     local s: subnet = 192.168.0.0/16;
+
     if ( a in s )
         print "true";
 
@@ -367,7 +383,7 @@ the :zeek:id:`is_v4_addr` and :zeek:id:`is_v6_addr` built-in functions.
 
 Note that hostname constants can also be used, but since a hostname can
 correspond to multiple IP addresses, the type of such a variable is
-"set[addr]". For example:
+``set[addr]``. For example:
 
 .. code-block:: zeek
 
@@ -381,11 +397,11 @@ subnet
 
 A type representing a block of IP addresses in CIDR notation.  A
 ``subnet`` constant is written as an :zeek:type:`addr` followed by a
-slash (/) and then the network prefix size specified as a decimal
+slash (``/``) and then the network prefix size specified as a decimal
 number.  For example, ``192.168.0.0/16`` or ``[fe80::]/64``.
 
 Subnets can be compared for equality (``==``, ``!=``).  An
-"addr" can be checked for inclusion in a subnet using
+:zeek:type:`addr` can be checked for inclusion in a subnet using
 the ``in`` or ``!in`` operators.
 
 
@@ -425,11 +441,12 @@ The table declaration syntax is::
     table [ type^+ ] of type
 
 where *type^+* is one or more types, separated by commas.  The
-index type cannot be any of the following types:  pattern, table, set,
-vector, file, opaque, any.
+index type cannot be any of the following types:  :zeek:type:`pattern`,
+:zeek:type:`table`, :zeek:type:`set`, :zeek:type:`vector`, :zeek:type:`file`,
+:zeek:type:`opaque`, :zeek:type:`any`.
 
-Here is an example of declaring a table indexed by "count" values
-and yielding "string" values:
+Here is an example of declaring a table indexed by :zeek:type:`count` values
+and yielding :zeek:type:`string` values:
 
 .. code-block:: zeek
 
@@ -441,9 +458,9 @@ The yield type can also be more complex:
 
     global a: table[count] of table[addr, port] of string;
 
-which declares a table indexed by "count" and yielding
-another "table" which is indexed by an "addr"
-and "port" to yield a "string".
+which declares a table indexed by :zeek:type:`count` and yielding
+another ``table`` which is indexed by an :zeek:type:`addr`
+and :zeek:type:`port` to yield a :zeek:type:`string`.
 
 One way to initialize a table is by enclosing a set of initializers within
 braces, for example:
@@ -538,9 +555,10 @@ syntax::
 
     set [ type^+ ]
 
-where *type^+* is one or more types separated by commas.  The
-index type cannot be any of the following types:  pattern, table, set,
-vector, file, opaque, any.
+where *type^+* is one or more types separated by commas.  The index type
+cannot be any of the following types:  :zeek:type:`pattern`,
+:zeek:type:`table`, :zeek:type:`set`, :zeek:type:`vector`, :zeek:type:`file`,
+:zeek:type:`opaque`, :zeek:type:`any`.
 
 Sets can be initialized by listing elements enclosed by curly braces:
 
@@ -702,14 +720,14 @@ to its end.  You can do so using:
 
     v += e;
 
-where if e's type is ``X``, v's type is ``vector of X``.  Note that
+where if *e*'s type is ``X``, *v*'s type is ``vector of X``.  Note that
 this expression is equivalent to:
 
 .. code-block:: zeek
 
     v[|v|] = e;
 
-The "in" operator can be used to check if a value has been assigned at a
+The ``in`` operator can be used to check if a value has been assigned at a
 specified index value in the vector.  For example, if a vector has size 4,
 then the expression ``3 in v`` would yield true and ``4 in v`` would yield
 false.
@@ -742,7 +760,7 @@ the elements in a vector.
 record
 ------
 
-A "record" is a collection of values.  Each value has a field name
+A ``record`` is a collection of values.  Each value has a field name
 and a type.  Values do not need to have the same type and the types
 have no restrictions.  Field names must follow the same syntax as
 regular variable names (except that field names are allowed to be the
