@@ -20,6 +20,7 @@ Summary
 Functions
 #########
 =========================================================== ===============================================================================
+:zeek:id:`__init_secondary_bifs`: :zeek:type:`function`     An internal function that helps initialize BIFs.
 :zeek:id:`active_file`: :zeek:type:`function`               Checks whether a given file is open.
 :zeek:id:`addr_to_counts`: :zeek:type:`function`            Converts an :zeek:type:`addr` to an :zeek:type:`index_vec`.
 :zeek:id:`addr_to_ptr_name`: :zeek:type:`function`          Converts an IP address to a reverse pointer name.
@@ -236,6 +237,12 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Functions
 #########
+.. zeek:id:: __init_secondary_bifs
+
+   :Type: :zeek:type:`function` () : :zeek:type:`bool`
+
+   An internal function that helps initialize BIFs.
+
 .. zeek:id:: active_file
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`) : :zeek:type:`bool`
