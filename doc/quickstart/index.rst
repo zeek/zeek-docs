@@ -397,10 +397,10 @@ These prefix paths can be used to load scripts like this:
 
 .. code-block:: console
 
-   zeek -r mypackets.trace frameworks/files/extract-all
+   zeek -r mypackets.trace frameworks/files/extract-all-files
 
 This will load the 
-``<prefix>/share/zeek/policy/frameworks/files/extract-all.zeek`` script which will
+``<prefix>/share/zeek/policy/frameworks/files/extract-all-files.zeek`` script which will
 cause Zeek to extract all of the files it discovers in the PCAP.
 
 .. note:: If one wants Zeek to be able to load scripts that live outside the
