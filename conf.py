@@ -64,11 +64,21 @@ except:
 
         repo = git.Repo(os.path.abspath('.'))
         version = u"git/master"
-        tags = [str(t) for t in repo.tags if t.commit == repo.head.commit]
 
-        for tag in tags:
-            if re.match('v\d+\.\d+(\.\d+)?', tag):
-                version = tag
+        version_tag_re = 'v\d+\.\d+(\.\d+)?'
+        version_tags = [t for t in repo.tags if
+                t.commit == repo.head.commit and
+                re.match(version_tag_re, str(t))
+                ]
+        # Note: sorting by tag date doesn't necessarily give correct
+        # order in terms of version numbers, but doubtful that will ever be
+        # a problem (if we ever do re-tag an old version number on a given
+        # commit such that it is incorrectly found as the most recent version,
+        # we can just re-tag all the other version numbers on that same commit)
+        version_tags = sorted(version_tags, key=lambda t: t.tag.tagged_date)
+
+        if version_tags:
+            version = str(version_tags[-1])
 
     except:
         pass
