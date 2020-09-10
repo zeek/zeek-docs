@@ -20,27 +20,29 @@ Summary
 ~~~~~~~
 Functions
 #########
-======================================================================== ========================================================================
-:zeek:id:`Reporter::conn_weird`: :zeek:type:`function`                   Generates a "conn" weird.
-:zeek:id:`Reporter::error`: :zeek:type:`function`                        Generates a non-fatal error indicative of a definite problem that should
-                                                                         be addressed.
-:zeek:id:`Reporter::fatal`: :zeek:type:`function`                        Generates a fatal error on stderr and terminates program execution.
-:zeek:id:`Reporter::fatal_error_with_core`: :zeek:type:`function`        Generates a fatal error on stderr and terminates program execution
-                                                                         after dumping a core file
-:zeek:id:`Reporter::file_weird`: :zeek:type:`function`                   Generates a "file" weird.
-:zeek:id:`Reporter::flow_weird`: :zeek:type:`function`                   Generates a "flow" weird.
-:zeek:id:`Reporter::get_weird_sampling_duration`: :zeek:type:`function`  Gets the current weird sampling duration.
-:zeek:id:`Reporter::get_weird_sampling_rate`: :zeek:type:`function`      Gets the current weird sampling rate.
-:zeek:id:`Reporter::get_weird_sampling_threshold`: :zeek:type:`function` Gets the current weird sampling threshold
-:zeek:id:`Reporter::get_weird_sampling_whitelist`: :zeek:type:`function` Gets the weird sampling whitelist
-:zeek:id:`Reporter::info`: :zeek:type:`function`                         Generates an informational message.
-:zeek:id:`Reporter::net_weird`: :zeek:type:`function`                    Generates a "net" weird.
-:zeek:id:`Reporter::set_weird_sampling_duration`: :zeek:type:`function`  Sets the current weird sampling duration.
-:zeek:id:`Reporter::set_weird_sampling_rate`: :zeek:type:`function`      Sets the weird sampling rate.
-:zeek:id:`Reporter::set_weird_sampling_threshold`: :zeek:type:`function` Sets the current weird sampling threshold
-:zeek:id:`Reporter::set_weird_sampling_whitelist`: :zeek:type:`function` Sets the weird sampling whitelist
-:zeek:id:`Reporter::warning`: :zeek:type:`function`                      Generates a message that warns of a potential problem.
-======================================================================== ========================================================================
+========================================================================== ========================================================================
+:zeek:id:`Reporter::conn_weird`: :zeek:type:`function`                     Generates a "conn" weird.
+:zeek:id:`Reporter::error`: :zeek:type:`function`                          Generates a non-fatal error indicative of a definite problem that should
+                                                                           be addressed.
+:zeek:id:`Reporter::fatal`: :zeek:type:`function`                          Generates a fatal error on stderr and terminates program execution.
+:zeek:id:`Reporter::fatal_error_with_core`: :zeek:type:`function`          Generates a fatal error on stderr and terminates program execution
+                                                                           after dumping a core file
+:zeek:id:`Reporter::file_weird`: :zeek:type:`function`                     Generates a "file" weird.
+:zeek:id:`Reporter::flow_weird`: :zeek:type:`function`                     Generates a "flow" weird.
+:zeek:id:`Reporter::get_weird_sampling_duration`: :zeek:type:`function`    Gets the current weird sampling duration.
+:zeek:id:`Reporter::get_weird_sampling_global_list`: :zeek:type:`function` Gets the weird sampling global list
+:zeek:id:`Reporter::get_weird_sampling_rate`: :zeek:type:`function`        Gets the current weird sampling rate.
+:zeek:id:`Reporter::get_weird_sampling_threshold`: :zeek:type:`function`   Gets the current weird sampling threshold
+:zeek:id:`Reporter::get_weird_sampling_whitelist`: :zeek:type:`function`   Gets the weird sampling whitelist
+:zeek:id:`Reporter::info`: :zeek:type:`function`                           Generates an informational message.
+:zeek:id:`Reporter::net_weird`: :zeek:type:`function`                      Generates a "net" weird.
+:zeek:id:`Reporter::set_weird_sampling_duration`: :zeek:type:`function`    Sets the current weird sampling duration.
+:zeek:id:`Reporter::set_weird_sampling_global_list`: :zeek:type:`function` Sets the weird sampling global list
+:zeek:id:`Reporter::set_weird_sampling_rate`: :zeek:type:`function`        Sets the weird sampling rate.
+:zeek:id:`Reporter::set_weird_sampling_threshold`: :zeek:type:`function`   Sets the current weird sampling threshold
+:zeek:id:`Reporter::set_weird_sampling_whitelist`: :zeek:type:`function`   Sets the weird sampling whitelist
+:zeek:id:`Reporter::warning`: :zeek:type:`function`                        Generates a message that warns of a potential problem.
+========================================================================== ========================================================================
 
 
 Detailed Interface
@@ -150,6 +152,15 @@ Functions
 
    :returns: weird sampling duration.
 
+.. zeek:id:: Reporter::get_weird_sampling_global_list
+
+   :Type: :zeek:type:`function` () : :zeek:type:`string_set`
+
+   Gets the weird sampling global list
+   
+
+   :returns: Current weird sampling global list
+
 .. zeek:id:: Reporter::get_weird_sampling_rate
 
    :Type: :zeek:type:`function` () : :zeek:type:`count`
@@ -215,6 +226,18 @@ Functions
    
 
    :returns: always returns True
+
+.. zeek:id:: Reporter::set_weird_sampling_global_list
+
+   :Type: :zeek:type:`function` (weird_sampling_global_list: :zeek:type:`string_set`) : :zeek:type:`bool`
+
+   Sets the weird sampling global list
+   
+
+   :global_list: New weird sampling rate.
+   
+
+   :returns: Always true.
 
 .. zeek:id:: Reporter::set_weird_sampling_rate
 

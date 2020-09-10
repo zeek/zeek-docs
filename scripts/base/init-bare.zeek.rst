@@ -42,12 +42,13 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-===================================================================================== ======================================================================
+===================================================================================== =============================================================================
 :zeek:id:`MQTT::max_payload_size`: :zeek:type:`count` :zeek:attr:`&redef`             The maximum payload size to allocate for the purpose of
                                                                                       payload information in :zeek:see:`mqtt_publish` events (and the
                                                                                       default MQTT logs generated from that).
 :zeek:id:`Weird::sampling_duration`: :zeek:type:`interval` :zeek:attr:`&redef`        How long a weird of a given type is allowed to keep state/counters in
                                                                                       memory.
+:zeek:id:`Weird::sampling_global_list`: :zeek:type:`set` :zeek:attr:`&redef`          Rate-limits weird names in the table globally instead of per connection/flow.
 :zeek:id:`Weird::sampling_rate`: :zeek:type:`count` :zeek:attr:`&redef`               The rate-limiting sampling rate.
 :zeek:id:`Weird::sampling_threshold`: :zeek:type:`count` :zeek:attr:`&redef`          How many weirds of a given type to tolerate before sampling begins.
 :zeek:id:`Weird::sampling_whitelist`: :zeek:type:`set` :zeek:attr:`&redef`            Prevents rate-limiting sampling of any weirds named in the table.
@@ -62,7 +63,7 @@ Runtime Options
 :zeek:id:`udp_content_ports`: :zeek:type:`set` :zeek:attr:`&redef`                    Defines UDP ports (source or destination) for which the contents of
                                                                                       either originator or responder streams should be delivered via
                                                                                       :zeek:see:`udp_contents`.
-===================================================================================== ======================================================================
+===================================================================================== =============================================================================
 
 Redefinable Options
 ###################
@@ -746,6 +747,14 @@ Runtime Options
    begins for "foo" and upon triggering will reset the counter for "foo"
    and unthrottle its rate-limiting until it once again exceeds the
    threshold.
+
+.. zeek:id:: Weird::sampling_global_list
+
+   :Type: :zeek:type:`set` [:zeek:type:`string`]
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``{}``
+
+   Rate-limits weird names in the table globally instead of per connection/flow.
 
 .. zeek:id:: Weird::sampling_rate
 
