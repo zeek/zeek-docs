@@ -331,7 +331,7 @@ at the same time.
     writing such functionality for Zeek. The best way to get started
     right now is to look at existing code implementing similar
     functionality, either as a plugin or inside Zeek proper. Also, for
-    each component type there's a unit test in
+    each component type there's an integration test in
     ``testing/btest/plugins`` creating a basic plugin skeleton with a
     corresponding component.
 
