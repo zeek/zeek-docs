@@ -13,7 +13,7 @@ respective GitHub repositories or documentation:
 * `Zeek-Aux <https://github.com/zeek/zeek-aux>`__
   - Small auxiliary tools for Zeek
 * `BTest <https://github.com/zeek/btest>`__
-  - A unit testing framework
+  - A system testing framework
 * `Capstats <https://github.com/zeek/capstats>`__
   - Command-line packet statistic tool
 * `PySubnetTree <https://github.com/zeek/pysubnettree>`__
