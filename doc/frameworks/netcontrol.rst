@@ -15,7 +15,7 @@ NetControl Framework
   scripts. This document gives an overview of how to use the NetControl
   framework in different scenarios; to get a better understanding of how
   it can be used in practice, it might be worthwhile to take a look at
-  the unit tests.
+  the integration tests.
 
 NetControl Architecture
 =======================
