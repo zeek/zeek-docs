@@ -12,7 +12,7 @@ Input Framework
    converted to events which can then be handled by scripts.
    This document gives an overview of how to use the input framework
    with some examples. For more complex scenarios it is
-   worthwhile to take a look at the unit tests in
+   worthwhile to take a look at the integration tests in
    ``testing/btest/scripts/base/frameworks/input/``.
 
 Reading Data into Tables
