@@ -15134,7 +15134,6 @@ Events
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
       new_connection new_connection_contents partial_connection
-      connection_successful successful_connection_remove
 
 .. zeek:id:: connection_established
 
@@ -15157,7 +15156,6 @@ Events
       connection_rejected connection_reset connection_reused connection_state_remove
       connection_status_update connection_timeout scheduled_analyzer_applied
       new_connection new_connection_contents partial_connection
-      connection_successful successful_connection_remove
 
 .. zeek:id:: partial_connection
 

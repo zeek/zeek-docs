@@ -8,7 +8,7 @@ Base DNS analysis script which tracks and logs DNS queries along with
 their responses.
 
 :Namespace: DNS
-:Imports: :doc:`base/protocols/dns/consts.zeek </scripts/base/protocols/dns/consts.zeek>`, :doc:`base/utils/queue.zeek </scripts/base/utils/queue.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/dns/consts.zeek </scripts/base/protocols/dns/consts.zeek>`, :doc:`base/utils/queue.zeek </scripts/base/utils/queue.zeek>`
 
 Summary
 ~~~~~~~
@@ -52,13 +52,14 @@ Events
 
 Hooks
 #####
-============================================== =================================================================
-:zeek:id:`DNS::do_reply`: :zeek:type:`hook`    This is called by the specific dns_*_reply events with a "reply"
-                                               which may not represent the full data available from the resource
-                                               record, but it's generally considered a summarization of the
-                                               responses.
-:zeek:id:`DNS::set_session`: :zeek:type:`hook` A hook that is called whenever a session is being set.
-============================================== =================================================================
+============================================================ =================================================================
+:zeek:id:`DNS::do_reply`: :zeek:type:`hook`                  This is called by the specific dns_*_reply events with a "reply"
+                                                             which may not represent the full data available from the resource
+                                                             record, but it's generally considered a summarization of the
+                                                             responses.
+:zeek:id:`DNS::finalize_dns`: :zeek:type:`Conn::RemovalHook` DNS finalization hook.
+:zeek:id:`DNS::set_session`: :zeek:type:`hook`               A hook that is called whenever a session is being set.
+============================================================ =================================================================
 
 
 Detailed Interface
@@ -259,6 +260,12 @@ Hooks
    
 
    :reply: The specific response information according to RR type/class.
+
+.. zeek:id:: DNS::finalize_dns
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   DNS finalization hook.  Remaining DNS info may get logged when it's called.
 
 .. zeek:id:: DNS::set_session
 

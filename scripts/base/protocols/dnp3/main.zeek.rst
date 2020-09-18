@@ -7,7 +7,7 @@ base/protocols/dnp3/main.zeek
 A very basic DNP3 analysis script that just logs requests and replies.
 
 :Namespace: DNP3
-:Imports: :doc:`base/protocols/dnp3/consts.zeek </scripts/base/protocols/dnp3/consts.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/dnp3/consts.zeek </scripts/base/protocols/dnp3/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -31,6 +31,12 @@ Events
 :zeek:id:`DNP3::log_dnp3`: :zeek:type:`event` Event that can be handled to access the DNP3 record as it is sent on
                                               to the logging framework.
 ============================================= ====================================================================
+
+Hooks
+#####
+============================================================== =======================
+:zeek:id:`DNP3::finalize_dnp3`: :zeek:type:`Conn::RemovalHook` DNP3 finalization hook.
+============================================================== =======================
 
 
 Detailed Interface
@@ -68,5 +74,13 @@ Events
 
    Event that can be handled to access the DNP3 record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: DNP3::finalize_dnp3
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   DNP3 finalization hook.  Remaining DNP3 info may get logged when it's called.
 
 

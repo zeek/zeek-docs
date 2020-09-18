@@ -110,8 +110,8 @@ Types
          * SHR: Responder sent a SYN ACK followed by a FIN, we never saw a
            SYN from the originator.
          
-         * OTH: No SYN seen, just midstream traffic (a "partial connection"
-           that was not later closed).
+         * OTH: No SYN seen, just midstream traffic (one example of this
+           is a "partial connection" that was not later closed).
 
       local_orig: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
          If the connection is originated locally, this value will be T.

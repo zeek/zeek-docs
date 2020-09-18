@@ -8,7 +8,7 @@ Implements base functionality for KRB analysis. Generates the kerberos.log
 file.
 
 :Namespace: KRB
-:Imports: :doc:`base/protocols/krb/consts.zeek </scripts/base/protocols/krb/consts.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/krb/consts.zeek </scripts/base/protocols/krb/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -38,6 +38,12 @@ Events
 :zeek:id:`KRB::log_krb`: :zeek:type:`event` Event that can be handled to access the KRB record as it is sent on
                                             to the logging framework.
 =========================================== ===================================================================
+
+Hooks
+#####
+============================================================ ===========================
+:zeek:id:`KRB::finalize_krb`: :zeek:type:`Conn::RemovalHook` Kerberos finalization hook.
+============================================================ ===========================
 
 
 Detailed Interface
@@ -161,5 +167,13 @@ Events
 
    Event that can be handled to access the KRB record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: KRB::finalize_krb
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   Kerberos finalization hook.  Remaining Kerberos info may get logged when it's called.
 
 

@@ -8,7 +8,7 @@ base/protocols/ssh/main.zeek
 Implements base functionality for SSH analysis. Generates the ssh.log file.
 
 :Namespaces: GLOBAL, SSH
-:Imports: :doc:`base/utils/directions-and-hosts.zeek </scripts/base/utils/directions-and-hosts.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/utils/directions-and-hosts.zeek </scripts/base/utils/directions-and-hosts.zeek>`
 
 Summary
 ~~~~~~~
@@ -48,6 +48,12 @@ Events
 :zeek:id:`ssh_server_host_key`: :zeek:type:`event` Event that can be handled when the analyzer sees an SSH server host
                                                    key.
 ================================================== ===================================================================
+
+Hooks
+#####
+============================================================ ======================
+:zeek:id:`SSH::finalize_ssh`: :zeek:type:`Conn::RemovalHook` SSH finalization hook.
+============================================================ ======================
 
 
 Detailed Interface
@@ -225,5 +231,13 @@ Events
       ssh_auth_attempted ssh_capabilities ssh2_server_host_key
       ssh1_server_host_key ssh_encrypted_packet ssh2_dh_server_params
       ssh2_gss_error ssh2_ecc_key
+
+Hooks
+#####
+.. zeek:id:: SSH::finalize_ssh
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   SSH finalization hook.  Remaining SSH info may get logged when it's called.
 
 

@@ -12,6 +12,7 @@ encapsulating tunnels is also found in the *tunnel* field of
 :zeek:type:`connection`.
 
 :Namespace: Tunnel
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`
 
 Summary
 ~~~~~~~
@@ -41,6 +42,12 @@ Redefinitions
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              The tunnel logging stream identifier.
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
 ==================================================================== =====================================
+
+Hooks
+#####
+================================================================== =========================
+:zeek:id:`Tunnel::finalize_tunnel`: :zeek:type:`Conn::RemovalHook` Tunnel finalization hook.
+================================================================== =========================
 
 Functions
 #########
@@ -130,6 +137,14 @@ Types
          The type of activity that occurred.
 
    The record type which contains column fields of the tunnel log.
+
+Hooks
+#####
+.. zeek:id:: Tunnel::finalize_tunnel
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   Tunnel finalization hook.  Remaining Tunnel info may get logged when it's called.
 
 Functions
 #########

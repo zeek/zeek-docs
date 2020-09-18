@@ -9,7 +9,7 @@ to log request/response pairs and all relevant metadata together in
 a single record.
 
 :Namespace: SIP
-:Imports: :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>`
 
 Summary
 ~~~~~~~
@@ -40,6 +40,12 @@ Events
 :zeek:id:`SIP::log_sip`: :zeek:type:`event` Event that can be handled to access the SIP record as it is sent on
                                             to the logging framework.
 =========================================== ===================================================================
+
+Hooks
+#####
+============================================================ ======================
+:zeek:id:`SIP::finalize_sip`: :zeek:type:`Conn::RemovalHook` SIP finalization hook.
+============================================================ ======================
 
 
 Detailed Interface
@@ -177,5 +183,13 @@ Events
 
    Event that can be handled to access the SIP record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: SIP::finalize_sip
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   SIP finalization hook.  Remaining SIP info may get logged when it's called.
 
 

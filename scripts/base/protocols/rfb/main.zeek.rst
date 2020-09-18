@@ -6,6 +6,7 @@ base/protocols/rfb/main.zeek
 
 
 :Namespace: RFB
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`
 
 Summary
 ~~~~~~~
@@ -27,6 +28,12 @@ Events
 =========================================== =
 :zeek:id:`RFB::log_rfb`: :zeek:type:`event` 
 =========================================== =
+
+Hooks
+#####
+============================================================ ======================
+:zeek:id:`RFB::finalize_rfb`: :zeek:type:`Conn::RemovalHook` RFB finalization hook.
+============================================================ ======================
 
 
 Detailed Interface
@@ -88,5 +95,13 @@ Events
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`RFB::Info`)
 
+
+Hooks
+#####
+.. zeek:id:: RFB::finalize_rfb
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   RFB finalization hook.  Remaining RFB info may get logged when it's called.
 
 

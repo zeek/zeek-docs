@@ -7,7 +7,7 @@ base/protocols/rdp/main.zeek
 Implements base functionality for RDP analysis. Generates the rdp.log file.
 
 :Namespace: RDP
-:Imports: :doc:`base/protocols/rdp/consts.zeek </scripts/base/protocols/rdp/consts.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/rdp/consts.zeek </scripts/base/protocols/rdp/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -41,6 +41,12 @@ Events
 :zeek:id:`RDP::log_rdp`: :zeek:type:`event` Event that can be handled to access the rdp record as it is sent on
                                             to the logging framework.
 =========================================== ===================================================================
+
+Hooks
+#####
+============================================================ ======================
+:zeek:id:`RDP::finalize_rdp`: :zeek:type:`Conn::RemovalHook` RDP finalization hook.
+============================================================ ======================
 
 
 Detailed Interface
@@ -158,5 +164,13 @@ Events
 
    Event that can be handled to access the rdp record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: RDP::finalize_rdp
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   RDP finalization hook.  Remaining RDP info may get logged when it's called.
 
 

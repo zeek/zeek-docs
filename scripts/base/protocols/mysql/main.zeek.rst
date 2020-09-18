@@ -7,7 +7,7 @@ base/protocols/mysql/main.zeek
 Implements base functionality for MySQL analysis. Generates the mysql.log file.
 
 :Namespace: MySQL
-:Imports: :doc:`base/protocols/mysql/consts.zeek </scripts/base/protocols/mysql/consts.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/mysql/consts.zeek </scripts/base/protocols/mysql/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -30,6 +30,12 @@ Events
 :zeek:id:`MySQL::log_mysql`: :zeek:type:`event` Event that can be handled to access the MySQL record as it is sent on
                                                 to the logging framework.
 =============================================== =====================================================================
+
+Hooks
+#####
+================================================================ ========================
+:zeek:id:`MySQL::finalize_mysql`: :zeek:type:`Conn::RemovalHook` MySQL finalization hook.
+================================================================ ========================
 
 
 Detailed Interface
@@ -73,5 +79,13 @@ Events
 
    Event that can be handled to access the MySQL record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: MySQL::finalize_mysql
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   MySQL finalization hook.  Remaining MySQL info may get logged when it's called.
 
 

@@ -7,7 +7,7 @@ policy/frameworks/dpd/detect-protocols.zeek
 Finds connections with protocols on non-standard ports with DPD.
 
 :Namespace: ProtocolDetector
-:Imports: :doc:`base/frameworks/notice </scripts/base/frameworks/notice/index>`, :doc:`base/utils/conn-ids.zeek </scripts/base/utils/conn-ids.zeek>`, :doc:`base/utils/site.zeek </scripts/base/utils/site.zeek>`
+:Imports: :doc:`base/frameworks/notice </scripts/base/frameworks/notice/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/utils/conn-ids.zeek </scripts/base/utils/conn-ids.zeek>`, :doc:`base/utils/site.zeek </scripts/base/utils/site.zeek>`
 
 Summary
 ~~~~~~~
@@ -43,6 +43,12 @@ Redefinitions
 ============================================ =
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
 ============================================ =
+
+Hooks
+#####
+======================================================================================== =======================================================
+:zeek:id:`ProtocolDetector::finalize_protocol_detection`: :zeek:type:`Conn::RemovalHook` Non-standard protocol port detection finalization hook.
+======================================================================================== =======================================================
 
 Functions
 #########
@@ -114,6 +120,14 @@ Types
 
       .. zeek:enum:: ProtocolDetector::BOTH ProtocolDetector::dir
 
+
+Hooks
+#####
+.. zeek:id:: ProtocolDetector::finalize_protocol_detection
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   Non-standard protocol port detection finalization hook.
 
 Functions
 #########

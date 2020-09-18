@@ -6,7 +6,7 @@ base/protocols/socks/main.zeek
 
 
 :Namespace: SOCKS
-:Imports: :doc:`base/frameworks/tunnels </scripts/base/frameworks/tunnels/index>`, :doc:`base/protocols/socks/consts.zeek </scripts/base/protocols/socks/consts.zeek>`
+:Imports: :doc:`base/frameworks/tunnels </scripts/base/frameworks/tunnels/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/socks/consts.zeek </scripts/base/protocols/socks/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -36,6 +36,12 @@ Events
 :zeek:id:`SOCKS::log_socks`: :zeek:type:`event` Event that can be handled to access the SOCKS
                                                 record as it is sent on to the logging framework.
 =============================================== =================================================
+
+Hooks
+#####
+================================================================ ========================
+:zeek:id:`SOCKS::finalize_socks`: :zeek:type:`Conn::RemovalHook` SOCKS finalization hook.
+================================================================ ========================
 
 
 Detailed Interface
@@ -104,5 +110,13 @@ Events
 
    Event that can be handled to access the SOCKS
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: SOCKS::finalize_socks
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   SOCKS finalization hook.  Remaining SOCKS info may get logged when it's called.
 
 
