@@ -6,7 +6,7 @@ base/protocols/dce-rpc/main.zeek
 
 
 :Namespace: DCE_RPC
-:Imports: :doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`, :doc:`base/protocols/dce-rpc/consts.zeek </scripts/base/protocols/dce-rpc/consts.zeek>`
+:Imports: :doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/dce-rpc/consts.zeek </scripts/base/protocols/dce-rpc/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -33,6 +33,12 @@ Redefinitions
 :zeek:type:`connection`: :zeek:type:`record`                            
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef`    
 ======================================================================= =
+
+Hooks
+#####
+==================================================================== ==========================
+:zeek:id:`DCE_RPC::finalize_dce_rpc`: :zeek:type:`Conn::RemovalHook` DCE_RPC finalization hook.
+==================================================================== ==========================
 
 
 Detailed Interface
@@ -120,5 +126,13 @@ Types
 
       ctx_to_uuid: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
 
+
+Hooks
+#####
+.. zeek:id:: DCE_RPC::finalize_dce_rpc
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   DCE_RPC finalization hook.  Remaining DCE_RPC info may get logged when it's called.
 
 

@@ -8,7 +8,7 @@ Base SSL analysis script.  This script logs information about the SSL/TLS
 handshaking and encryption establishment process.
 
 :Namespace: SSL
-:Imports: :doc:`base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>`, :doc:`base/protocols/ssl/consts.zeek </scripts/base/protocols/ssl/consts.zeek>`
+:Imports: :doc:`base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/ssl/consts.zeek </scripts/base/protocols/ssl/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -52,9 +52,10 @@ Events
 
 Hooks
 #####
-================================================ =
-:zeek:id:`SSL::ssl_finishing`: :zeek:type:`hook` 
-================================================ =
+============================================================ ======================
+:zeek:id:`SSL::finalize_ssl`: :zeek:type:`Conn::RemovalHook` SSL finalization hook.
+:zeek:id:`SSL::ssl_finishing`: :zeek:type:`hook`             
+============================================================ ======================
 
 Functions
 #########
@@ -379,6 +380,16 @@ Events
 
 Hooks
 #####
+.. zeek:id:: SSL::finalize_ssl
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   SSL finalization hook.  Remaining SSL info may get logged when it's called.
+   The :zeek:see:`SSL::ssl_finishing` hook may either
+   be called before this finalization hook for established SSL connections
+   or during this finalization hook for SSL connections may have info still
+   left to log.
+
 .. zeek:id:: SSL::ssl_finishing
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`

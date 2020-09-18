@@ -5,6 +5,17 @@ Package: base/protocols/conn
 
 Support for connection (TCP, UDP, or ICMP) analysis.
 
+:doc:`/scripts/base/protocols/conn/removal-hooks.zeek`
+
+   Adds a framework for registering "connection removal hooks".
+   All registered hooks for a given connection get run within the
+   :zeek:see:`connection_state_remove` event for that connection.
+   This functionality is useful from a performance/scaling concern:
+   if every new protocol-analysis script uses
+   :zeek:see:`connection_state_remove` to implement its finalization/cleanup
+   logic, then all connections take the performance hit of dispatching that
+   event, even if they aren't related to that specific protocol.
+
 :doc:`/scripts/base/protocols/conn/__load__.zeek`
 
 

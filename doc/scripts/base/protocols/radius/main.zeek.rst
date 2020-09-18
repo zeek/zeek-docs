@@ -7,7 +7,7 @@ base/protocols/radius/main.zeek
 Implements base functionality for RADIUS analysis. Generates the radius.log file.
 
 :Namespace: RADIUS
-:Imports: :doc:`base/protocols/radius/consts.zeek </scripts/base/protocols/radius/consts.zeek>`, :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/radius/consts.zeek </scripts/base/protocols/radius/consts.zeek>`, :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`
 
 Summary
 ~~~~~~~
@@ -31,6 +31,12 @@ Events
 :zeek:id:`RADIUS::log_radius`: :zeek:type:`event` Event that can be handled to access the RADIUS record as it is sent on
                                                   to the logging framework.
 ================================================= ======================================================================
+
+Hooks
+#####
+================================================================== =========================
+:zeek:id:`RADIUS::finalize_radius`: :zeek:type:`Conn::RemovalHook` RADIUS finalization hook.
+================================================================== =========================
 
 
 Detailed Interface
@@ -95,5 +101,13 @@ Events
 
    Event that can be handled to access the RADIUS record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: RADIUS::finalize_radius
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   RADIUS finalization hook.  Remaining RADIUS info may get logged when it's called.
 
 

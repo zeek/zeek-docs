@@ -247,6 +247,7 @@
    base/frameworks/sumstats/non-cluster.zeek </scripts/base/frameworks/sumstats/non-cluster.zeek>
    base/frameworks/tunnels/__load__.zeek </scripts/base/frameworks/tunnels/__load__.zeek>
    base/frameworks/tunnels/main.zeek </scripts/base/frameworks/tunnels/main.zeek>
+   base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>
    base/frameworks/openflow/__load__.zeek </scripts/base/frameworks/openflow/__load__.zeek>
    base/frameworks/openflow/consts.zeek </scripts/base/frameworks/openflow/consts.zeek>
    base/frameworks/openflow/types.zeek </scripts/base/frameworks/openflow/types.zeek>

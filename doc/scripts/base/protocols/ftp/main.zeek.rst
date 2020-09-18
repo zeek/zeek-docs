@@ -10,7 +10,7 @@ will take on the full path that the client is at along with the requested
 file name.
 
 :Namespace: FTP
-:Imports: :doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`, :doc:`base/protocols/ftp/info.zeek </scripts/base/protocols/ftp/info.zeek>`, :doc:`base/protocols/ftp/utils-commands.zeek </scripts/base/protocols/ftp/utils-commands.zeek>`, :doc:`base/protocols/ftp/utils.zeek </scripts/base/protocols/ftp/utils.zeek>`, :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`, :doc:`base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>`, :doc:`base/utils/paths.zeek </scripts/base/utils/paths.zeek>`
+:Imports: :doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/ftp/info.zeek </scripts/base/protocols/ftp/info.zeek>`, :doc:`base/protocols/ftp/utils-commands.zeek </scripts/base/protocols/ftp/utils-commands.zeek>`, :doc:`base/protocols/ftp/utils.zeek </scripts/base/protocols/ftp/utils.zeek>`, :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`, :doc:`base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>`, :doc:`base/utils/paths.zeek </scripts/base/utils/paths.zeek>`
 
 Summary
 ~~~~~~~
@@ -41,6 +41,13 @@ Events
 :zeek:id:`FTP::log_ftp`: :zeek:type:`event` Event that can be handled to access the :zeek:type:`FTP::Info`
                                             record as it is sent on to the logging framework.
 =========================================== ==============================================================
+
+Hooks
+#####
+============================================================ ===========================
+:zeek:id:`FTP::finalize_ftp`: :zeek:type:`Conn::RemovalHook` FTP finalization hook.
+:zeek:id:`FTP::finalize_ftp_data`: :zeek:type:`hook`         FTP data finalization hook.
+============================================================ ===========================
 
 Functions
 #########
@@ -118,6 +125,21 @@ Events
 
    Event that can be handled to access the :zeek:type:`FTP::Info`
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: FTP::finalize_ftp
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   FTP finalization hook.  Remaining FTP info may get logged when it's called.
+
+.. zeek:id:: FTP::finalize_ftp_data
+
+   :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
+
+   FTP data finalization hook.  Expected FTP data channel state may
+   get purged when called.
 
 Functions
 #########

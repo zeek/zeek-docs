@@ -7099,17 +7099,16 @@ Types
       inner_vlan: :zeek:type:`int` :zeek:attr:`&optional`
          The inner VLAN, if applicable for this connection.
 
-      successful: :zeek:type:`bool`
-         Flag that will be true if :zeek:see:`connection_successful` has
-         already been generated for the connection. See the documentation of
-         that event for a definition of what makes a connection "succesful".
-
       dpd: :zeek:type:`DPD::Info` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/frameworks/dpd/main.zeek` is loaded)
 
 
       dpd_state: :zeek:type:`DPD::State` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/frameworks/dpd/main.zeek` is loaded)
+
+
+      removal_hooks: :zeek:type:`set` [:zeek:type:`Conn::RemovalHook`] :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
 
 
       conn: :zeek:type:`Conn::Info` :zeek:attr:`&optional`

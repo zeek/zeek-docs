@@ -13,7 +13,7 @@ analyzed on a different worker.
 
 
 :Namespace: IRC
-:Imports: :doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`, :doc:`base/protocols/irc/main.zeek </scripts/base/protocols/irc/main.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`
+:Imports: :doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/irc/main.zeek </scripts/base/protocols/irc/main.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`
 
 Summary
 ~~~~~~~
@@ -23,7 +23,22 @@ Redefinitions
 :zeek:type:`IRC::Info`: :zeek:type:`record` 
 =========================================== =
 
+Hooks
+#####
+================================================================= ===============================
+:zeek:id:`IRC::finalize_irc_data`: :zeek:type:`Conn::RemovalHook` IRC DCC data finalization hook.
+================================================================= ===============================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Hooks
+#####
+.. zeek:id:: IRC::finalize_irc_data
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   IRC DCC data finalization hook.  Remaining expected IRC DCC state may be
+   purged when it's called.
+
 

@@ -6,7 +6,7 @@ base/protocols/ntlm/main.zeek
 
 
 :Namespace: NTLM
-:Imports: :doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`
+:Imports: :doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`
 
 Summary
 ~~~~~~~
@@ -23,6 +23,12 @@ Redefinitions
 :zeek:type:`Log::ID`: :zeek:type:`enum`                                 
 :zeek:type:`connection`: :zeek:type:`record`                            
 ======================================================================= =
+
+Hooks
+#####
+============================================================== =======================
+:zeek:id:`NTLM::finalize_ntlm`: :zeek:type:`Conn::RemovalHook` NTLM finalization hook.
+============================================================== =======================
 
 
 Detailed Interface
@@ -67,5 +73,13 @@ Types
          Internally used field to indicate if the login attempt 
          has already been logged.
 
+
+Hooks
+#####
+.. zeek:id:: NTLM::finalize_ntlm
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   NTLM finalization hook.  Remaining NTLM info may get logged when it's called.
 
 

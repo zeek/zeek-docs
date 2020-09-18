@@ -6,7 +6,7 @@ base/protocols/smtp/main.zeek
 
 
 :Namespace: SMTP
-:Imports: :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`, :doc:`base/utils/directions-and-hosts.zeek </scripts/base/utils/directions-and-hosts.zeek>`, :doc:`base/utils/email.zeek </scripts/base/utils/email.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`, :doc:`base/utils/directions-and-hosts.zeek </scripts/base/utils/directions-and-hosts.zeek>`, :doc:`base/utils/email.zeek </scripts/base/utils/email.zeek>`
 
 Summary
 ~~~~~~~
@@ -36,6 +36,12 @@ Events
 ============================================= =
 :zeek:id:`SMTP::log_smtp`: :zeek:type:`event` 
 ============================================= =
+
+Hooks
+#####
+============================================================== =======================
+:zeek:id:`SMTP::finalize_smtp`: :zeek:type:`Conn::RemovalHook` SMTP finalization hook.
+============================================================== =======================
 
 Functions
 #########
@@ -184,6 +190,14 @@ Events
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SMTP::Info`)
 
+
+Hooks
+#####
+.. zeek:id:: SMTP::finalize_smtp
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   SMTP finalization hook.  Remaining SMTP info may get logged when it's called.
 
 Functions
 #########

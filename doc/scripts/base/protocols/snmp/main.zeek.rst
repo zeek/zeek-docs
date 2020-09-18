@@ -7,6 +7,7 @@ base/protocols/snmp/main.zeek
 Enables analysis and logging of SNMP datagrams.
 
 :Namespace: SNMP
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`
 
 Summary
 ~~~~~~~
@@ -36,6 +37,12 @@ Events
 :zeek:id:`SNMP::log_snmp`: :zeek:type:`event` Event that can be handled to access the SNMP record as it is sent on
                                               to the logging framework.
 ============================================= ====================================================================
+
+Hooks
+#####
+============================================================== =======================
+:zeek:id:`SNMP::finalize_snmp`: :zeek:type:`Conn::RemovalHook` SNMP finalization hook.
+============================================================== =======================
 
 
 Detailed Interface
@@ -120,5 +127,13 @@ Events
 
    Event that can be handled to access the SNMP record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: SNMP::finalize_snmp
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   SNMP finalization hook.  Remaining SNMP info may get logged when it's called.
 
 

@@ -9,7 +9,7 @@ to log request/response pairs and all relevant metadata together in
 a single record.
 
 :Namespace: HTTP
-:Imports: :doc:`base/frameworks/tunnels </scripts/base/frameworks/tunnels/index>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>`
+:Imports: :doc:`base/frameworks/tunnels </scripts/base/frameworks/tunnels/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>`
 
 Summary
 ~~~~~~~
@@ -45,6 +45,12 @@ Events
 :zeek:id:`HTTP::log_http`: :zeek:type:`event` Event that can be handled to access the HTTP record as it is sent on
                                               to the logging framework.
 ============================================= ====================================================================
+
+Hooks
+#####
+============================================================== =======================
+:zeek:id:`HTTP::finalize_http`: :zeek:type:`Conn::RemovalHook` HTTP finalization hook.
+============================================================== =======================
 
 
 Detailed Interface
@@ -349,5 +355,13 @@ Events
 
    Event that can be handled to access the HTTP record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: HTTP::finalize_http
+
+   :Type: :zeek:type:`Conn::RemovalHook`
+
+   HTTP finalization hook.  Remaining HTTP info may get logged when it's called.
 
 
