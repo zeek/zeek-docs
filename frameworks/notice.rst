@@ -359,11 +359,17 @@ included below.
 Cluster Considerations
 ----------------------
 
-As a user/developer of Zeek, the main cluster concern with the notice framework
-is understanding what runs where. When a notice is generated on a worker, the
-worker checks to see if the notice should be suppressed based on information
-locally maintained in the worker process. If it's not being
-suppressed, the worker forwards the notice directly to the manager and does no more
-local processing. The manager then runs the :zeek:see:`Notice::policy` hook and
-executes all of the actions determined to be run.
+When running Zeek in a cluster, most of the information above stays
+the same. Notices are generated, the :zeek:see:`Notice::policy` hook
+is evaluated, and any actions are run on the node which generated the
+notice (most often a worker node). Of note to users/developers of Zeek
+is that any files or access needed to run the notice actions must be
+available to the respective node(s).
+
+The role of the manager is to receive and distribute notice
+suppression information, so that duplicate notices do not get
+generated. Bear in mind that there is some amount of latency intrinsic
+in this synchronization, so it's possible that rapidly-generating
+notices will be repeated (and in this case, any actions would be
+executed multiple times, once by each notice-generating worker).
 
