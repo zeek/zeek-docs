@@ -386,12 +386,11 @@ example, to bind a table to a memory-backed Broker store, use:
 &broker_store
 -------------
 
-This attribute is similar to :zeek:attr:`&backend` and allows to bind a zeek
-table to a Broker store. In difference to :zeek:attr:`&backend` this attribute
-allows you to specify the name of a Broker store you want to bind to without
-creating it.
+This attribute is similar to :zeek:attr:`&backend` in allowing a zeek table to 
+bind to a Broker store. It differs from :zeek:attr:`&backend` as this attribute
+allows you to specify the Broker store you want to bind, without creating it.
 
-You can use this is you want to bind a table to a Broker store with special options.
+Use this if you want to bind a table to a Broker store with special options.
 
 Example:
 
@@ -425,10 +424,9 @@ table.
 .. warning::
 
     Storing complex types in Broker backed store comes with severe restrictions.
-    When you modify a stored complex type after inserting it into a table, this change
-    will *not propagate* to Broker and hence not be persisted/synchronized over the cluster.
-
-    To send out the new value, you will have to re-insert the complex type into the zeek table.
+    When you modify a stored complex type after inserting it into a table, that change in a stored complex type 
+    will *not propagate* to Broker. Hence to send out the new value, so that it will be persisted/synchronized
+    over the cluster, you will have to re-insert the complex type into the local zeek table.
 
     For example:
 
@@ -436,9 +434,9 @@ table.
 
             type testrec: record {
                 a: count;
-            }
+            };
 
-            global t: table[string] of testrec &backend=Broker::MEMORY;
+            global t: table[string] of testrec &broker_allow_complex_type &backend=Broker::MEMORY;
 
             event zeek_init()
                 {
