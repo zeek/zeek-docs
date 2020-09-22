@@ -1178,7 +1178,7 @@ add an entire new type to the scripting language.
 
 .. zeek:type:: paraglob
 
-  An opqaue type for creating and using paraglob data structures inside of
+  An opaque type for creating and using paraglob data structures inside of
   Zeek. A paraglob is a data structure for fast string matching against a
   large set of glob style patterns. It can be loaded with a vector of
   patterns, and then queried with input strings. Note that these patterns are
