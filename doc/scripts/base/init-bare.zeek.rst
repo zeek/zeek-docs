@@ -572,8 +572,8 @@ Types
 :zeek:type:`endpoint`: :zeek:type:`record`                                    Statistics about a :zeek:type:`connection` endpoint.
 :zeek:type:`endpoint_stats`: :zeek:type:`record`                              Statistics about what a TCP endpoint sent.
 :zeek:type:`entropy_test_result`: :zeek:type:`record`                         Computed entropy values.
-:zeek:type:`fa_file`: :zeek:type:`record` :zeek:attr:`&redef`                 A file that Zeek is analyzing.
-:zeek:type:`fa_metadata`: :zeek:type:`record`                                 Metadata that's been inferred about a particular file.
+:zeek:type:`fa_file`: :zeek:type:`record` :zeek:attr:`&redef`                 File Analysis handle for a file that Zeek is analyzing.
+:zeek:type:`fa_metadata`: :zeek:type:`record`                                 File Analysis metadata that's been inferred about a particular file.
 :zeek:type:`files_tag_set`: :zeek:type:`set`                                  A set of file analyzer tags.
 :zeek:type:`flow_id`: :zeek:type:`record` :zeek:attr:`&log`                   The identifying 4-tuple of a uni-directional flow.
 :zeek:type:`ftp_port`: :zeek:type:`record`                                    A parsed host/port combination describing server endpoint for an upcoming
@@ -7770,7 +7770,7 @@ Types
    :Type: :zeek:type:`record`
 
       id: :zeek:type:`string`
-         An identifier associated with a single file.
+         A hash serving as the identifier associated with a single file.
 
       parent_id: :zeek:type:`string` :zeek:attr:`&optional`
          Identifier associated with a container file from which this one was
@@ -7779,8 +7779,9 @@ Types
       source: :zeek:type:`string`
          An identification of the source of the file data. E.g. it may be
          a network protocol over which it was transferred, or a local file
-         path which was read, or some other input source.
-         Examples are: "HTTP", "SMTP", "IRC_DATA", or the file path.
+         path including filename which was read, or some other input source.
+         Examples are: "HTTP", "SMTP", "IRC_DATA", or the filename, or even
+         the full path and filename.
 
       is_orig: :zeek:type:`bool` :zeek:attr:`&optional`
          If the source of this file is a network connection, this field
@@ -7851,10 +7852,11 @@ Types
 
    :Attributes: :zeek:attr:`&redef`
 
-   A file that Zeek is analyzing.  This is Zeek's type for describing the basic
-   internal metadata collected about a "file", which is essentially just a
-   byte stream that is e.g. pulled from a network connection or possibly
-   some other input source.
+   File Analysis handle for a file that Zeek is analyzing. This holds
+   information about, but not the content of, a conceptual "file";
+   essentially any byte stream that is e.g. pulled from a network connection
+   or possibly some other input source. Note that fa_file is also used in
+   cases where there isn't a filename to be had.
 
 .. zeek:type:: fa_metadata
 
@@ -7870,7 +7872,7 @@ Types
          Specifies whether the MIME type was inferred using signatures,
          or provided directly by the protocol the file appeared in.
 
-   Metadata that's been inferred about a particular file.
+   File Analysis metadata that's been inferred about a particular file.
 
 .. zeek:type:: files_tag_set
 
