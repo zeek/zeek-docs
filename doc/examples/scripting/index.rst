@@ -259,8 +259,8 @@ in the local variable ``MHR_result``.  Effectively, processing for
 this event continues and upon receipt of the values returned by
 :zeek:id:`lookup_hostname_txt`, the ``when`` block is executed.  The
 ``when`` block splits the string returned into a portion for the date on which
-the malware was first detected and the detection rate by splitting on an text space
-and storing the values returned in a local table variable.
+the malware was first detected, and the detection rate, by splitting the text
+on space and storing the values returned in a local table variable.
 In the ``do_mhr_lookup`` function, if the table
 returned by ``split1`` has two entries, indicating a successful split, we
 store the detection
@@ -962,7 +962,7 @@ use of the :zeek:id:`connection_established` event handler to generate text
 every time a SYN/ACK packet is seen responding to a SYN packet as part
 of a TCP handshake.  The text generated, is in the format of a
 timestamp and an indication of who the originator and responder were.
-We use the ``strftime`` format string of ``%Y%m%d %H:%M:%S`` to
+We use the ``strftime`` format string of ``%Y-%m-%d %H:%M:%S`` to
 produce a common date time formatted time stamp.
 
 .. literalinclude:: data_type_time.zeek
@@ -990,14 +990,14 @@ established connections.
 interval
 ~~~~~~~~
 
-The interval data type is another area in Zeek where rational
+The ``interval`` data type is another area in Zeek where rational
 application of abstraction makes perfect sense.  As a data type, the
-interval represents a relative time as denoted by a numeric constant
+``interval`` represents a relative time as denoted by a numeric constant
 followed by a unit of time.  For example, 2.2 seconds would be
 ``2.2sec`` and thirty-one days would be represented by ``31days``.
 Zeek supports ``usec``, ``msec``, ``sec``, ``min``, ``hr``, or ``day`` which represent
 microseconds, milliseconds, seconds, minutes, hours, and days
-respectively.  In fact, the interval data type allows for a surprising
+respectively.  In fact, the ``interval`` data type allows for a surprising
 amount of variation in its definitions.  There can be a space between
 the numeric constant or they can be crammed together like a temporal
 portmanteau.  The time unit can be either singular or plural.  All of
@@ -1010,7 +1010,7 @@ Intervals can even be negated, allowing for ``- 10mins`` to represent
 Intervals in Zeek can have mathematical operations performed against
 them allowing the user to perform addition, subtraction,
 multiplication, division, and comparison operations. As well, Zeek
-returns an interval when comparing two ``time`` values using the ``-``
+returns an ``interval`` when differencing two ``time`` values using the ``-``
 operator.  The script below amends the script started in the section
 above to include a time delta value printed along with the connection
 establishment report.
@@ -1021,8 +1021,8 @@ establishment report.
    :linenos:
    :tab-width: 4
 
-This time, when we execute the script we see an additional line in the
-output to display the time delta since the last fully established
+When we re-execute the script we see an additional line in the
+output, displaying the time delta since the last fully established
 connection.
 
 .. code-block:: console
