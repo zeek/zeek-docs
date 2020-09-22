@@ -179,9 +179,9 @@ type of notice we will generate with the Notice framework.  Zeek
 allows for re-definable constants, which at first, might seem
 counter-intuitive.  We'll get more in-depth with constants in a later
 chapter, for now, think of them as variables that can only be altered
-before Zeek starts running.  The notice type listed allows for the use
-of the :zeek:id:`NOTICE` function to generate notices of type
-``TeamCymruMalwareHashRegistry::Match`` as done in the next section.  Notices
+before Zeek starts running.  By extending the Notice::Type as shown, this
+allows for the NOTICE function to generate notices with a $note field set
+as TeamCymruMalwareHashRegistry::Match.  Notices
 allow Zeek to generate some kind of extra notification beyond its
 default log types.  Often times, this extra notification comes in the
 form of an email generated and sent to a preconfigured address, but can
