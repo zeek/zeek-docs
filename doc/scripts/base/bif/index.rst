@@ -125,9 +125,6 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/__load__.zeek`
 
 
-:doc:`/scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek`
-
-
 :doc:`/scripts/base/bif/plugins/Zeek_BitTorrent.events.bif.zeek`
 
 
@@ -420,6 +417,9 @@ Package: base/bif
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek`
