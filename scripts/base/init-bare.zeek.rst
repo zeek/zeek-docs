@@ -16,6 +16,7 @@ base/init-bare.zeek
 .. zeek:namespace:: NTLM
 .. zeek:namespace:: NTP
 .. zeek:namespace:: PE
+.. zeek:namespace:: PacketAnalyzer
 .. zeek:namespace:: Pcap
 .. zeek:namespace:: RADIUS
 .. zeek:namespace:: RDP
@@ -35,8 +36,8 @@ base/init-bare.zeek
 .. zeek:namespace:: X509
 
 
-:Namespaces: BinPAC, Cluster, DCE_RPC, DHCP, GLOBAL, JSON, KRB, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SNMP, SOCKS, SSH, SSL, TCP, Threading, Tunnel, Unified2, Weird, X509
-:Imports: :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`
+:Namespaces: BinPAC, Cluster, DCE_RPC, DHCP, GLOBAL, JSON, KRB, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, PacketAnalyzer, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SNMP, SOCKS, SSH, SSL, TCP, Threading, Tunnel, Unified2, Weird, X509
+:Imports: :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`, :doc:`base/packet-protocols </scripts/base/packet-protocols/index>`
 
 Summary
 ~~~~~~~
@@ -134,8 +135,6 @@ Redefinable Options
                                                                                            reached.
 :zeek:id:`dpd_reassemble_first_packets`: :zeek:type:`bool` :zeek:attr:`&redef`             Reassemble the beginning of all TCP connections before doing
                                                                                            signature matching.
-:zeek:id:`encap_hdr_size`: :zeek:type:`count` :zeek:attr:`&redef`                          If positive, indicates the encapsulation header size that should
-                                                                                           be skipped.
 :zeek:id:`exit_only_after_terminate`: :zeek:type:`bool` :zeek:attr:`&redef`                Flag to prevent Zeek from exiting automatically when input is exhausted.
 :zeek:id:`expensive_profiling_multiple`: :zeek:type:`count` :zeek:attr:`&redef`            Multiples of :zeek:see:`profiling_interval` at which (more expensive) memory
                                                                                            profiling is done (0 disables).
@@ -441,6 +440,9 @@ Types
 :zeek:type:`PE::FileHeader`: :zeek:type:`record`                              
 :zeek:type:`PE::OptionalHeader`: :zeek:type:`record`                          
 :zeek:type:`PE::SectionHeader`: :zeek:type:`record`                           Record for Portable Executable (PE) section headers.
+:zeek:type:`PacketAnalyzer::DispatchEntry`: :zeek:type:`record`               
+:zeek:type:`PacketAnalyzer::DispatchMap`: :zeek:type:`table`                  A packet analyzer may extract a numeric identifier, which can be found in the
+                                                                              packet data and denotes the encapsulated protocol.
 :zeek:type:`PacketSource`: :zeek:type:`record`                                Properties of an I/O packet source being read by Zeek.
 :zeek:type:`PcapFilterID`: :zeek:type:`enum`                                  Enum type identifying dynamic BPF filters.
 :zeek:type:`ProcStats`: :zeek:type:`record`                                   Statistics about Zeek's process.
@@ -1284,15 +1286,6 @@ Redefinable Options
    
    .. note:: Despite the name, this option affects *all* signature matching, not
       only signatures used for dynamic protocol detection.
-
-.. zeek:id:: encap_hdr_size
-
-   :Type: :zeek:type:`count`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``0``
-
-   If positive, indicates the encapsulation header size that should
-   be skipped. This applies to all packets.
 
 .. zeek:id:: exit_only_after_terminate
 
@@ -5056,6 +5049,22 @@ Types
          Bit-flags that describe the characteristics of the section.
 
    Record for Portable Executable (PE) section headers.
+
+.. zeek:type:: PacketAnalyzer::DispatchEntry
+
+   :Type: :zeek:type:`record`
+
+      analyzer: :zeek:type:`PacketAnalyzer::Tag`
+         The analyzer to dispatch.
+
+
+.. zeek:type:: PacketAnalyzer::DispatchMap
+
+   :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`PacketAnalyzer::DispatchEntry`
+
+   A packet analyzer may extract a numeric identifier, which can be found in the
+   packet data and denotes the encapsulated protocol. A DispatchMap allows to map
+   the identifier to a child analyzer, which is defined using a DispatchEntry.
 
 .. zeek:type:: PacketSource
 
