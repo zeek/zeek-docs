@@ -14,6 +14,35 @@
    base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>
    base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>
    base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>
+   base/packet-protocols/__load__.zeek </scripts/base/packet-protocols/__load__.zeek>
+   base/packet-protocols/root/__load__.zeek </scripts/base/packet-protocols/root/__load__.zeek>
+   base/packet-protocols/root/main.zeek </scripts/base/packet-protocols/root/main.zeek>
+   base/packet-protocols/ip/__load__.zeek </scripts/base/packet-protocols/ip/__load__.zeek>
+   base/packet-protocols/ip/main.zeek </scripts/base/packet-protocols/ip/main.zeek>
+   base/packet-protocols/skip/__load__.zeek </scripts/base/packet-protocols/skip/__load__.zeek>
+   base/packet-protocols/skip/main.zeek </scripts/base/packet-protocols/skip/main.zeek>
+   base/packet-protocols/ethernet/__load__.zeek </scripts/base/packet-protocols/ethernet/__load__.zeek>
+   base/packet-protocols/ethernet/main.zeek </scripts/base/packet-protocols/ethernet/main.zeek>
+   base/packet-protocols/fddi/__load__.zeek </scripts/base/packet-protocols/fddi/__load__.zeek>
+   base/packet-protocols/fddi/main.zeek </scripts/base/packet-protocols/fddi/main.zeek>
+   base/packet-protocols/ieee802_11/__load__.zeek </scripts/base/packet-protocols/ieee802_11/__load__.zeek>
+   base/packet-protocols/ieee802_11/main.zeek </scripts/base/packet-protocols/ieee802_11/main.zeek>
+   base/packet-protocols/ieee802_11_radio/__load__.zeek </scripts/base/packet-protocols/ieee802_11_radio/__load__.zeek>
+   base/packet-protocols/ieee802_11_radio/main.zeek </scripts/base/packet-protocols/ieee802_11_radio/main.zeek>
+   base/packet-protocols/linux_sll/__load__.zeek </scripts/base/packet-protocols/linux_sll/__load__.zeek>
+   base/packet-protocols/linux_sll/main.zeek </scripts/base/packet-protocols/linux_sll/main.zeek>
+   base/packet-protocols/nflog/__load__.zeek </scripts/base/packet-protocols/nflog/__load__.zeek>
+   base/packet-protocols/nflog/main.zeek </scripts/base/packet-protocols/nflog/main.zeek>
+   base/packet-protocols/null/__load__.zeek </scripts/base/packet-protocols/null/__load__.zeek>
+   base/packet-protocols/null/main.zeek </scripts/base/packet-protocols/null/main.zeek>
+   base/packet-protocols/ppp_serial/__load__.zeek </scripts/base/packet-protocols/ppp_serial/__load__.zeek>
+   base/packet-protocols/ppp_serial/main.zeek </scripts/base/packet-protocols/ppp_serial/main.zeek>
+   base/packet-protocols/pppoe/__load__.zeek </scripts/base/packet-protocols/pppoe/__load__.zeek>
+   base/packet-protocols/pppoe/main.zeek </scripts/base/packet-protocols/pppoe/main.zeek>
+   base/packet-protocols/vlan/__load__.zeek </scripts/base/packet-protocols/vlan/__load__.zeek>
+   base/packet-protocols/vlan/main.zeek </scripts/base/packet-protocols/vlan/main.zeek>
+   base/packet-protocols/mpls/__load__.zeek </scripts/base/packet-protocols/mpls/__load__.zeek>
+   base/packet-protocols/mpls/main.zeek </scripts/base/packet-protocols/mpls/main.zeek>
    base/init-frameworks-and-bifs.zeek </scripts/base/init-frameworks-and-bifs.zeek>
    base/frameworks/logging/__load__.zeek </scripts/base/frameworks/logging/__load__.zeek>
    base/frameworks/logging/main.zeek </scripts/base/frameworks/logging/main.zeek>
@@ -61,7 +90,6 @@
    base/bif/cardinality-counter.bif.zeek </scripts/base/bif/cardinality-counter.bif.zeek>
    base/bif/top-k.bif.zeek </scripts/base/bif/top-k.bif.zeek>
    base/bif/plugins/__load__.zeek </scripts/base/bif/plugins/__load__.zeek>
-   base/bif/plugins/Zeek_ARP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek>
    base/bif/plugins/Zeek_BitTorrent.events.bif.zeek </scripts/base/bif/plugins/Zeek_BitTorrent.events.bif.zeek>
    base/bif/plugins/Zeek_ConnSize.events.bif.zeek </scripts/base/bif/plugins/Zeek_ConnSize.events.bif.zeek>
    base/bif/plugins/Zeek_ConnSize.functions.bif.zeek </scripts/base/bif/plugins/Zeek_ConnSize.functions.bif.zeek>
@@ -160,6 +188,7 @@
    base/bif/plugins/Zeek_UDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek>
    base/bif/plugins/Zeek_VXLAN.events.bif.zeek </scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek>
    base/bif/plugins/Zeek_XMPP.events.bif.zeek </scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek>
+   base/bif/plugins/Zeek_ARP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek>
    base/bif/plugins/Zeek_FileEntropy.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek>
    base/bif/plugins/Zeek_FileExtract.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.events.bif.zeek>
    base/bif/plugins/Zeek_FileExtract.functions.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.functions.bif.zeek>

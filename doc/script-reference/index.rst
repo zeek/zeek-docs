@@ -12,6 +12,7 @@ Script Reference
    directives
    log-files
    notices
+   packet-analyzers
    proto-analyzers
    file-analyzers
    packages
