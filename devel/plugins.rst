@@ -73,7 +73,7 @@ there as follows::
 
     function rot13%(s: string%) : string
         %{
-        char* rot13 = copy_string(s->CheckString());
+        char* rot13 = util::copy_string(s->CheckString());
 
         for ( char* p = rot13; *p; p++ )
             {
