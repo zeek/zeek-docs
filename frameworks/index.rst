@@ -14,6 +14,7 @@ Frameworks
    logging
    netcontrol
    notice
+   packet-analysis
    signatures
    sumstats
    broker
