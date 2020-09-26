@@ -18,7 +18,9 @@ Events
 :zeek:id:`dce_rpc_bind_ack`: :zeek:type:`event`           Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` bind request ack message.
 :zeek:id:`dce_rpc_message`: :zeek:type:`event`            Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` message.
 :zeek:id:`dce_rpc_request`: :zeek:type:`event`            Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` request message.
+:zeek:id:`dce_rpc_request_stub`: :zeek:type:`event`       Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` request message.
 :zeek:id:`dce_rpc_response`: :zeek:type:`event`           Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` response message.
+:zeek:id:`dce_rpc_response_stub`: :zeek:type:`event`      Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` response message.
 ========================================================= ==============================================================================================================================
 
 
@@ -169,7 +171,32 @@ Events
 
    :stub_len: Length of the data for the request.
    
-   .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response
+   .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response dce_rpc_request_stub
+
+.. zeek:id:: dce_rpc_request_stub
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub: :zeek:type:`string`)
+
+   Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` request message.
+   
+
+   :c: The connection.
+   
+
+   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+        message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
+        not transported over a pipe.
+   
+
+   :ctx_id: The context identifier of the data representation.
+   
+
+   :opnum: Number of the RPC operation.
+   
+
+   :stub: The data for the request.
+   
+   .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response_stub dce_rpc_request
 
 .. zeek:id:: dce_rpc_response
 
@@ -193,6 +220,30 @@ Events
 
    :stub_len: Length of the data for the response.
    
-   .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request
+   .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response_stub
+
+.. zeek:id:: dce_rpc_response_stub
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub: :zeek:type:`string`)
+
+   Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` response message.
+   
+
+   :c: The connection.
+   
+
+   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+        message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
+        not transported over a pipe.
+   
+
+   :ctx_id: The context identifier of the data representation.
+
+   :opnum: Number of the RPC operation.
+   
+
+   :stub: The data for the response.
+   
+   .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request_stub dce_rpc_response
 
 
