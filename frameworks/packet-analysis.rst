@@ -34,10 +34,11 @@ the packet analysis and processed layer by layer.
 At the lower layers, Protocol Data Units (PDUs) typically consist of a header
 and a payload, where the payload is the next layer's PDU and the header carries
 a numeric identifier that determines the encapsulated protocol (see figure
-above).
+above, where "ID" denotes the location of such a numeric protocol identifier
+within the header).
 
 Each packet analyzer parses the packet's header according to the implemented
-protocol, determines a suitable analyzer for encapsulated protocol and hands its
+protocol, determines a suitable analyzer for the encapsulated protocol and hands its
 payload to that next analyzer. Once the IP layer is reached, packet analysis is
 finished and Zeek continues by contructing a session for the observed
 connection. After session analysis, which includes processing of TCP and UDP,
