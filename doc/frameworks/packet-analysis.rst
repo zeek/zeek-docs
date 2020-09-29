@@ -37,7 +37,7 @@ a numeric identifier that determines the encapsulated protocol (see figure
 above).
 
 Each packet analyzer parses the packet's header according to the implemented
-protocol, determines a suitable analyzer for encapsulated protocol and hands its
+protocol, determines a suitable analyzer for the encapsulated protocol and hands its
 payload to that next analyzer. Once the IP layer is reached, packet analysis is
 finished and Zeek continues by contructing a session for the observed
 connection. After session analysis, which includes processing of TCP and UDP,
