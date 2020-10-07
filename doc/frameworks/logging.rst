@@ -69,7 +69,8 @@ a new log stream.
 
     export {
         # Create an ID for our new stream. By convention, this is
-        # called "LOG".
+        # called "LOG". If you require multiple streams in your module
+        # use "<prefix>_LOG", with a prefix suitably labeling the stream.
         redef enum Log::ID += { LOG };
 
         # Define the record type that will contain the data to log.
@@ -105,6 +106,12 @@ the log output. Also notice one field has the :zeek:attr:`&optional` attribute.
 This indicates that the field might not be assigned any value before the
 log record is written.  Finally, a field with the :zeek:attr:`&default`
 attribute has a default value assigned to it automatically.
+
+The second argument to the :zeek:id:`Log::create_stream` function
+defines properties of the log stream. The ``columns`` field is
+mandatory. The ``path`` field defines the default name of the
+log. This name gets inherited to all filters. Log streams can specify
+additional fields that we'll cover below.
 
 At this point, the only thing missing is a call to the :zeek:id:`Log::write`
 function to send data to the logging framework.  The actual event handler
@@ -428,9 +435,132 @@ containing an ``id: conn_id`` field.
 Filter Log Records
 ------------------
 
-We have seen how to customize the columns being logged, but
-you can also control which records are written out by providing a
-predicate that will be called for each log record:
+We have seen how to customize the logged columns, but you can also
+control which records Zeek writes out. This relies on Zeek's
+:zeek:type:`hook` mechanism, as follows. Log streams and log filters
+feature an optional "policy" hook whose handlers can veto the writing
+of a log entry via a ``break`` statement. Anyone can attach handlers
+to these hooks, which look as follows:
+
+.. code-block:: zeek
+
+    type Log::PolicyHook: hook(rec: any, id: ID, filter: Filter);
+
+The ``rec`` argument is an instance of the stream's ``columns`` record
+type, containing the log entry to be logged. ``id`` identifies the log
+stream, and ``filter`` is the log filter instance governing the
+log-write under consideration. You can pass arbitrary state through
+these arguments, for example by extending streams or filters via a
+``redef``, or at runtime via the ``config`` table included in the
+filter. The framework automatically inherits any policy hook defined
+on a stream to its attached filters. Filters can override this hook,
+including no use of a hook, as desired.
+
+To support hooks on your log streams, you should always define a
+default hook when creating new streams, as follows:
+
+.. code-block:: zeek
+
+    module Foo;
+
+    export {
+        ## The logging stream identifier.
+        redef enum Log::ID += { LOG };
+
+        ## A default logging policy hook for the stream.
+        log_policy: Log::PolicyHook;
+
+        # Define the record type that will contain the data to log.
+        type Info: record {
+            ts: time        &log;
+            id: conn_id     &log;
+            service: string &log &optional;
+            missed_bytes: count &log &default=0;
+        };
+    }
+
+    event zeek_init() &priority=5
+        {
+        # Create the stream, adding the default policy hook:
+        Log::create_stream(Foo::LOG, [$columns=Info, $path="foo", $policy=log_policy]);
+        }
+
+With this hook in place, it's now easy to add a filtering predicate
+from anywhere:
+
+.. code-block:: zeek
+
+    hook Foo::log_policy(rec: Foo::Info, id: Log::ID, filter: Log::Filter)
+        {
+        # Let's only log complete information:
+        if ( rec$missed_bytes > 0 )
+            break;
+        }
+
+The Zeek distribution features default hooks for all of its
+streams. Here's a more realistic example, using HTTP:
+
+.. code-block:: zeek
+
+    hook HTTP::log_policy(rec: HTTP::Info, id: Log::ID, filter: Log::Filter)
+        {
+        # Record only connections with successfully analyzed HTTP traffic
+        if ( ! rec?$service || rec$service != "http" )
+            break;
+        }
+
+To override a hook selectively in a new filter, set the hook when
+adding the filter to a stream:
+
+.. code-block:: zeek
+
+    hook my_policy(rec: Foo::Info, id: Log::ID, filter: Log::Filter)
+        {
+        # Let's only log incomplete flows:
+        if ( rec$missed_bytes == 0 )
+            break;
+        }
+
+    event zeek_init()
+        {
+        local filter: Log::Filter = [$name="incomplete-only", $path="foo-incomplete",
+                                     $policy=my_policy];
+        Log::add_filter(Foo::LOG, filter);
+        }
+
+To change an existing filter first retrieve it, then update it, and
+re-establish it:
+
+.. code-block:: zeek
+
+    hook my_policy(rec: Foo::Info, id: Log::ID, filter: Log::Filter)
+        {
+        # Let's only log incomplete flows:
+        if ( rec$missed_bytes == 0 )
+            break;
+        }
+
+    event zeek_init()
+        {
+        local f = Log::get_filter(Foo::LOG, "default");
+        f$policy = my_policy;
+        Log::add_filter(Foo::LOG, f);
+        }
+
+.. note:: Policy hooks can also modify the log records, but with
+   subtle implications. The logging framework applies all of a
+   stream's log filters sequentially to the same log record, so
+   modifications made in a hook handler will persist not only into
+   subsequent handlers in the same hook, but also into any in filters
+   processed subsequently. In contrast to hook priorities, filters
+   provide no control over their processing order.
+
+Policy hooks provide a more powerful implementation of the logging
+predicates that the framework has always supported. Those older
+predicates are harder to augment and more difficult to pass state
+into, and are now deprecated. They will get removed in Zeek 4.1, so if
+you're using predicate functions, make sure to migrate them to
+hooks. For reference, here's an example of the old mechanism:
 
 .. code-block:: zeek
 
