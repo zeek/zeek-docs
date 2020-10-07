@@ -26,6 +26,8 @@ Redefinable Options
 ###################
 ============================================================================================ =====================================================================
 :zeek:id:`LogAscii::empty_field`: :zeek:type:`string` :zeek:attr:`&redef`                    String to use for empty fields.
+:zeek:id:`LogAscii::enable_leftover_log_rotation`: :zeek:type:`bool` :zeek:attr:`&redef`     If true, detect log files that did not get properly rotated
+                                                                                             by a previous Zeek process (e.g.
 :zeek:id:`LogAscii::enable_utf_8`: :zeek:type:`bool` :zeek:attr:`&redef`                     If true, valid UTF-8 sequences will pass through unescaped and be
                                                                                              written into logs.
 :zeek:id:`LogAscii::gzip_file_extension`: :zeek:type:`string` :zeek:attr:`&redef`            Define the file extension used when compressing log files when
@@ -59,6 +61,19 @@ Redefinable Options
    *unset_field* to make the output unambiguous.
    
    This option is also available as a per-filter ``$config`` option.
+
+.. zeek:id:: LogAscii::enable_leftover_log_rotation
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+   If true, detect log files that did not get properly rotated
+   by a previous Zeek process (e.g. due to crash) and rotate them.
+   
+   This requires a positive rotation interval to be configured
+   to have an effect.  E.g. via :zeek:see:`Log::default_rotation_interval`
+   or the *interv* field of a :zeek:see:`Log::Filter`.
 
 .. zeek:id:: LogAscii::enable_utf_8
 
