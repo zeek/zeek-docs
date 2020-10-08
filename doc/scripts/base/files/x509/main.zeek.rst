@@ -45,6 +45,7 @@ Events
 Hooks
 #####
 ================================================================= ===================================================================
+:zeek:id:`X509::log_policy`: :zeek:type:`Log::PolicyHook`         
 :zeek:id:`X509::x509_certificate_cache_replay`: :zeek:type:`hook` This hook performs event-replays in case a certificate that already
                                                                   is in the cache is encountered.
 ================================================================= ===================================================================
@@ -166,6 +167,11 @@ Events
 
 Hooks
 #####
+.. zeek:id:: X509::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+
 .. zeek:id:: X509::x509_certificate_cache_replay
 
    :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`, e: :zeek:type:`X509::Info`, sha256: :zeek:type:`string`) : :zeek:type:`bool`

@@ -54,6 +54,7 @@ Hooks
 #####
 ============================================================ ======================
 :zeek:id:`SSL::finalize_ssl`: :zeek:type:`Conn::RemovalHook` SSL finalization hook.
+:zeek:id:`SSL::log_policy`: :zeek:type:`Log::PolicyHook`     
 :zeek:id:`SSL::ssl_finishing`: :zeek:type:`hook`             
 ============================================================ ======================
 
@@ -389,6 +390,11 @@ Hooks
    be called before this finalization hook for established SSL connections
    or during this finalization hook for SSL connections may have info still
    left to log.
+
+.. zeek:id:: SSL::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 .. zeek:id:: SSL::ssl_finishing
 

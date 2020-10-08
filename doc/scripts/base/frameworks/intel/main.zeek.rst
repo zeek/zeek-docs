@@ -49,13 +49,14 @@ Events
 
 Hooks
 #####
-================================================= =======================================================================
-:zeek:id:`Intel::extend_match`: :zeek:type:`hook` This hook can be used to influence the logging of intelligence hits
-                                                  (e.g.
-:zeek:id:`Intel::filter_item`: :zeek:type:`hook`  This hook can be used to filter intelligence items that are about to be
-                                                  inserted into the internal data store.
-:zeek:id:`Intel::item_expired`: :zeek:type:`hook` This hook can be used to handle expiration of intelligence items.
-================================================= =======================================================================
+========================================================== =======================================================================
+:zeek:id:`Intel::extend_match`: :zeek:type:`hook`          This hook can be used to influence the logging of intelligence hits
+                                                           (e.g.
+:zeek:id:`Intel::filter_item`: :zeek:type:`hook`           This hook can be used to filter intelligence items that are about to be
+                                                           inserted into the internal data store.
+:zeek:id:`Intel::item_expired`: :zeek:type:`hook`          This hook can be used to handle expiration of intelligence items.
+:zeek:id:`Intel::log_policy`: :zeek:type:`Log::PolicyHook` 
+========================================================== =======================================================================
 
 Functions
 #########
@@ -551,6 +552,11 @@ Hooks
    If all hook handlers are executed, the expiration timeout will be reset.
    Otherwise, if one of the handlers terminates using break, the item will
    be removed.
+
+.. zeek:id:: Intel::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

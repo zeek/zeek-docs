@@ -59,10 +59,11 @@ Events
 
 Hooks
 #####
-===================================================== =========================================================================
-:zeek:id:`NetControl::rule_policy`: :zeek:type:`hook` Hook that allows the modification of rules passed to add_rule before they
-                                                      are passed on to the plugins.
-===================================================== =========================================================================
+=============================================================== =========================================================================
+:zeek:id:`NetControl::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+:zeek:id:`NetControl::rule_policy`: :zeek:type:`hook`           Hook that allows the modification of rules passed to add_rule before they
+                                                                are passed on to the plugins.
+=============================================================== =========================================================================
 
 Functions
 #########
@@ -322,6 +323,12 @@ Events
 
 Hooks
 #####
+.. zeek:id:: NetControl::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
+
 .. zeek:id:: NetControl::rule_policy
 
    :Type: :zeek:type:`hook` (r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool`

@@ -36,6 +36,12 @@ Events
 :zeek:id:`WeirdStats::log_weird_stats`: :zeek:type:`event` 
 ========================================================== =
 
+Hooks
+#####
+=============================================================== =
+:zeek:id:`WeirdStats::log_policy`: :zeek:type:`Log::PolicyHook` 
+=============================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -70,6 +76,13 @@ Events
 .. zeek:id:: WeirdStats::log_weird_stats
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`WeirdStats::Info`)
+
+
+Hooks
+#####
+.. zeek:id:: WeirdStats::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
 
 
 

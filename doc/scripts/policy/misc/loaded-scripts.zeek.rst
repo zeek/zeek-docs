@@ -23,6 +23,12 @@ Redefinitions
 :zeek:type:`Log::ID`: :zeek:type:`enum` 
 ======================================= =
 
+Hooks
+#####
+================================================================== =
+:zeek:id:`LoadedScripts::log_policy`: :zeek:type:`Log::PolicyHook` 
+================================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -36,6 +42,13 @@ Types
          Name of the script loaded potentially with spaces included
          before the file name to indicate load depth.  The convention
          is two spaces per level of depth.
+
+
+Hooks
+#####
+.. zeek:id:: LoadedScripts::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
 
 
 

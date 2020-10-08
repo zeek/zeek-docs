@@ -32,10 +32,11 @@ Events
 
 Hooks
 #####
-========================================================== =======================================================================
-:zeek:id:`NetControl::drop_rule_policy`: :zeek:type:`hook` Hook that allows the modification of rules passed to drop_* before they
-                                                           are passed on.
-========================================================== =======================================================================
+==================================================================== =======================================================================
+:zeek:id:`NetControl::drop_rule_policy`: :zeek:type:`hook`           Hook that allows the modification of rules passed to drop_* before they
+                                                                     are passed on.
+:zeek:id:`NetControl::log_policy_drop`: :zeek:type:`Log::PolicyHook` 
+==================================================================== =======================================================================
 
 Functions
 #########
@@ -98,6 +99,11 @@ Hooks
    
 
    :r: The rule to be added.
+
+.. zeek:id:: NetControl::log_policy_drop
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

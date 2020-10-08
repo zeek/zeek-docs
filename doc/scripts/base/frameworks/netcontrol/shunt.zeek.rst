@@ -30,6 +30,12 @@ Events
                                                                 record as it is sent on to the logging framework.
 =============================================================== ==========================================================================
 
+Hooks
+#####
+===================================================================== =
+:zeek:id:`NetControl::log_policy_shunt`: :zeek:type:`Log::PolicyHook` 
+===================================================================== =
+
 Functions
 #########
 ======================================================== ==========================================================
@@ -69,6 +75,13 @@ Events
 
    Event that can be handled to access the :zeek:type:`NetControl::ShuntInfo`
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: NetControl::log_policy_shunt
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

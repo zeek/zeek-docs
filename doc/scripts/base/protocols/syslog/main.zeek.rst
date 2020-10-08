@@ -26,6 +26,12 @@ Redefinitions
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
 ==================================================================== =
 
+Hooks
+#####
+=========================================================== =
+:zeek:id:`Syslog::log_policy`: :zeek:type:`Log::PolicyHook` 
+=========================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -57,5 +63,12 @@ Types
          The plain text message.
 
    The record type which contains the fields of the syslog log.
+
+Hooks
+#####
+.. zeek:id:: Syslog::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

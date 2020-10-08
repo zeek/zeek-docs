@@ -46,6 +46,7 @@ Hooks
 #####
 ============================================================ ======================
 :zeek:id:`RDP::finalize_rdp`: :zeek:type:`Conn::RemovalHook` RDP finalization hook.
+:zeek:id:`RDP::log_policy`: :zeek:type:`Log::PolicyHook`     
 ============================================================ ======================
 
 
@@ -172,5 +173,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    RDP finalization hook.  Remaining RDP info may get logged when it's called.
+
+.. zeek:id:: RDP::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

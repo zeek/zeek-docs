@@ -45,9 +45,10 @@ Redefinitions
 
 Hooks
 #####
-================================================================== =========================
+================================================================== =============================================
 :zeek:id:`Tunnel::finalize_tunnel`: :zeek:type:`Conn::RemovalHook` Tunnel finalization hook.
-================================================================== =========================
+:zeek:id:`Tunnel::log_policy`: :zeek:type:`Log::PolicyHook`        A default logging policy hook for the stream.
+================================================================== =============================================
 
 Functions
 #########
@@ -145,6 +146,12 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    Tunnel finalization hook.  Remaining Tunnel info may get logged when it's called.
+
+.. zeek:id:: Tunnel::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 Functions
 #########

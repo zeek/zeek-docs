@@ -50,6 +50,7 @@ Hooks
 #####
 ============================================================== =======================
 :zeek:id:`HTTP::finalize_http`: :zeek:type:`Conn::RemovalHook` HTTP finalization hook.
+:zeek:id:`HTTP::log_policy`: :zeek:type:`Log::PolicyHook`      
 ============================================================== =======================
 
 
@@ -363,5 +364,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    HTTP finalization hook.  Remaining HTTP info may get logged when it's called.
+
+.. zeek:id:: HTTP::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

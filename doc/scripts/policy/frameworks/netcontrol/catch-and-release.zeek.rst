@@ -58,6 +58,12 @@ Events
                                                                         record as it is sent on to the logging framework.
 ======================================================================= ===================================================================================
 
+Hooks
+#####
+============================================================================= =
+:zeek:id:`NetControl::log_policy_catch_release`: :zeek:type:`Log::PolicyHook` 
+============================================================================= =
+
 Functions
 #########
 =========================================================================== =======================================================================================================
@@ -257,6 +263,13 @@ Events
 
    Event that can be handled to access the :zeek:type:`NetControl::CatchReleaseInfo`
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: NetControl::log_policy_catch_release
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

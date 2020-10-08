@@ -31,9 +31,10 @@ Events
 
 Hooks
 #####
-========================================== ====================================================
-:zeek:id:`PE::set_file`: :zeek:type:`hook` A hook that gets called when we first see a PE file.
-========================================== ====================================================
+======================================================= ====================================================
+:zeek:id:`PE::log_policy`: :zeek:type:`Log::PolicyHook` 
+:zeek:id:`PE::set_file`: :zeek:type:`hook`              A hook that gets called when we first see a PE file.
+======================================================= ====================================================
 
 
 Detailed Interface
@@ -106,6 +107,11 @@ Events
 
 Hooks
 #####
+.. zeek:id:: PE::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+
 .. zeek:id:: PE::set_file
 
    :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`) : :zeek:type:`bool`

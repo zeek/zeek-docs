@@ -91,6 +91,12 @@ Events
                                                   locally whenever a cluster node connects or reconnects.
 ================================================= =======================================================================
 
+Hooks
+#####
+============================================================ =============================================
+:zeek:id:`Cluster::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+============================================================ =============================================
+
 Functions
 #########
 ========================================================== ===================================================================
@@ -450,6 +456,14 @@ Events
 
    When using broker-enabled cluster framework, this event will be emitted
    locally whenever a cluster node connects or reconnects.
+
+Hooks
+#####
+.. zeek:id:: Cluster::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 Functions
 #########

@@ -47,6 +47,12 @@ Events
 :zeek:id:`Traceroute::log_traceroute`: :zeek:type:`event` 
 ========================================================= =
 
+Hooks
+#####
+=============================================================== =
+:zeek:id:`Traceroute::log_policy`: :zeek:type:`Log::PolicyHook` 
+=============================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -109,6 +115,13 @@ Events
 .. zeek:id:: Traceroute::log_traceroute
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Traceroute::Info`)
+
+
+Hooks
+#####
+.. zeek:id:: Traceroute::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
 
 
 

@@ -41,6 +41,7 @@ Hooks
 #####
 ================================================================ ========================
 :zeek:id:`SOCKS::finalize_socks`: :zeek:type:`Conn::RemovalHook` SOCKS finalization hook.
+:zeek:id:`SOCKS::log_policy`: :zeek:type:`Log::PolicyHook`       
 ================================================================ ========================
 
 
@@ -118,5 +119,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SOCKS finalization hook.  Remaining SOCKS info may get logged when it's called.
+
+.. zeek:id:: SOCKS::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

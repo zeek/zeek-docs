@@ -33,6 +33,12 @@ Redefinitions
 :zeek:type:`connection`: :zeek:type:`record` 
 ============================================ ======================================
 
+Hooks
+#####
+======================================================== =============================================
+:zeek:id:`DPD::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+======================================================== =============================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -115,5 +121,13 @@ Types
          Current number of protocol violations seen per analyzer instance.
 
    Ongoing DPD state tracking information.
+
+Hooks
+#####
+.. zeek:id:: DPD::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

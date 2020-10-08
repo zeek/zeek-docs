@@ -36,6 +36,13 @@ Redefinitions
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
 ==================================================================== ============================================================
 
+Hooks
+#####
+================================================================ =
+:zeek:id:`SMB::log_policy_files`: :zeek:type:`Log::PolicyHook`   
+:zeek:id:`SMB::log_policy_mapping`: :zeek:type:`Log::PolicyHook` 
+================================================================ =
+
 Functions
 #########
 =========================================================================== ====================================
@@ -270,6 +277,18 @@ Types
          the type of share will be deduced and included as well.
 
    This record is for the smb_mapping.log
+
+Hooks
+#####
+.. zeek:id:: SMB::log_policy_files
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+
+.. zeek:id:: SMB::log_policy_mapping
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

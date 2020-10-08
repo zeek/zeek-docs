@@ -36,6 +36,12 @@ Events
                                               record as it is sent on to the logging framework.
 ============================================= ===============================================================
 
+Hooks
+#####
+========================================================= =============================================
+:zeek:id:`Conn::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+========================================================= =============================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -225,5 +231,13 @@ Events
 
    Event that can be handled to access the :zeek:type:`Conn::Info`
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: Conn::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

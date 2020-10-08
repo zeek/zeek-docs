@@ -58,6 +58,7 @@ Hooks
                                                              record, but it's generally considered a summarization of the
                                                              responses.
 :zeek:id:`DNS::finalize_dns`: :zeek:type:`Conn::RemovalHook` DNS finalization hook.
+:zeek:id:`DNS::log_policy`: :zeek:type:`Log::PolicyHook`     A default logging policy hook for the stream.
 :zeek:id:`DNS::set_session`: :zeek:type:`hook`               A hook that is called whenever a session is being set.
 ============================================================ =================================================================
 
@@ -266,6 +267,12 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    DNS finalization hook.  Remaining DNS info may get logged when it's called.
+
+.. zeek:id:: DNS::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 .. zeek:id:: DNS::set_session
 

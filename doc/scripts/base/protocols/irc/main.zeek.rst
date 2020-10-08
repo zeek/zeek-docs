@@ -33,6 +33,12 @@ Events
                                             to the logging framework.
 =========================================== ====================================================================
 
+Hooks
+#####
+======================================================== =
+:zeek:id:`IRC::log_policy`: :zeek:type:`Log::PolicyHook` 
+======================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -95,5 +101,12 @@ Events
 
    Event that can be handled to access the IRC record as it is sent on 
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: IRC::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

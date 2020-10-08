@@ -57,6 +57,12 @@ Events
                                                       record as it is sent on to the logging framework.
 ===================================================== ========================================================================
 
+Hooks
+#####
+================================================================ =============================================
+:zeek:id:`Known::log_policy_hosts`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+================================================================ =============================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -179,5 +185,13 @@ Events
 
    An event that can be handled to access the :zeek:type:`Known::HostsInfo`
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: Known::log_policy_hosts
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

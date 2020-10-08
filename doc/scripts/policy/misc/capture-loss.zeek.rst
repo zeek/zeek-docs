@@ -40,6 +40,12 @@ Redefinitions
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
 ============================================ =
 
+Hooks
+#####
+================================================================ =
+:zeek:id:`CaptureLoss::log_policy`: :zeek:type:`Log::PolicyHook` 
+================================================================ =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -89,6 +95,13 @@ Types
 
       percent_lost: :zeek:type:`double` :zeek:attr:`&log`
          Percentage of ACKs seen where the data being ACKed wasn't seen.
+
+
+Hooks
+#####
+.. zeek:id:: CaptureLoss::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
 
 
 

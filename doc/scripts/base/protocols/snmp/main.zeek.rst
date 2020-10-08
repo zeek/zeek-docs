@@ -42,6 +42,7 @@ Hooks
 #####
 ============================================================== =======================
 :zeek:id:`SNMP::finalize_snmp`: :zeek:type:`Conn::RemovalHook` SNMP finalization hook.
+:zeek:id:`SNMP::log_policy`: :zeek:type:`Log::PolicyHook`      
 ============================================================== =======================
 
 
@@ -135,5 +136,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SNMP finalization hook.  Remaining SNMP info may get logged when it's called.
+
+.. zeek:id:: SNMP::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

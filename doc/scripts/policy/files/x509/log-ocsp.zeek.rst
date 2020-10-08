@@ -29,6 +29,12 @@ Events
                                               as it is sent to the logging framework.
 ============================================= ===================================================
 
+Hooks
+#####
+========================================================= =
+:zeek:id:`OCSP::log_policy`: :zeek:type:`Log::PolicyHook` 
+========================================================= =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -81,5 +87,12 @@ Events
 
    Event that can be handled to access the OCSP record
    as it is sent to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: OCSP::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

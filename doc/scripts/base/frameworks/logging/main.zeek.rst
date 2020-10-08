@@ -67,6 +67,7 @@ Types
 ================================================================== ==============================================================================
 :zeek:type:`Log::Filter`: :zeek:type:`record`                      A filter type describes how to customize logging streams.
 :zeek:type:`Log::ID`: :zeek:type:`enum`                            Type that defines an ID unique to each log stream.
+:zeek:type:`Log::PolicyHook`: :zeek:type:`hook`                    A hook type to implement filtering policy.
 :zeek:type:`Log::PrintLogInfo`: :zeek:type:`record`                If :zeek:see:`Log::print_to_log` is set to redirect, ``print`` statements will
                                                                    automatically populate log entries with the fields contained in this record.
 :zeek:type:`Log::PrintLogType`: :zeek:type:`enum`                  Configurations for :zeek:see:`Log::print_to_log`
@@ -83,6 +84,7 @@ Types
 Redefinitions
 #############
 ======================================================================================= =
+:zeek:type:`Log::Filter`: :zeek:type:`record`                                           
 :zeek:id:`Log::default_rotation_postprocessors`: :zeek:type:`table` :zeek:attr:`&redef` 
 ======================================================================================= =
 
@@ -341,6 +343,7 @@ Constants
             config={
 
             }
+            policy=<uninitialized>
          }
 
 
@@ -369,7 +372,7 @@ Types
       writer: :zeek:type:`Log::Writer` :zeek:attr:`&default` = :zeek:see:`Log::default_writer` :zeek:attr:`&optional`
          The logging writer implementation to use.
 
-      pred: :zeek:type:`function` (rec: :zeek:type:`any`) : :zeek:type:`bool` :zeek:attr:`&optional`
+      pred: :zeek:type:`function` (rec: :zeek:type:`any`) : :zeek:type:`bool` :zeek:attr:`&optional` :zeek:attr:`&deprecated` = *"Remove in 4.1. PolicyHooks will replace the $pred function."*
          Indicates whether a log entry should be recorded.
          If not given, all entries are recorded.
          
@@ -470,6 +473,15 @@ Types
          A key/value table that will be passed on to the writer.
          Interpretation of the values is left to the writer, but
          usually they will be used for configuration purposes.
+
+      policy: :zeek:type:`Log::PolicyHook` :zeek:attr:`&optional`
+         Policy hooks can adjust log entry values and veto
+         the writing of a log entry for the record passed
+         into it. Any hook that breaks from its body signals
+         that Zeek won't log the entry passed into it.
+         
+         When no policy hook is defined, the filter inherits
+         the hook from the stream it's associated with.
 
    A filter type describes how to customize logging streams.
 
@@ -821,6 +833,27 @@ Types
    The log ID implicitly determines the default name of the generated log
    file.
 
+.. zeek:type:: Log::PolicyHook
+
+   :Type: :zeek:type:`hook` (rec: :zeek:type:`any`, id: :zeek:type:`Log::ID`, filter: :zeek:type:`Log::Filter`) : :zeek:type:`bool`
+
+   A hook type to implement filtering policy. Hook handlers can
+   veto the logging of a record or alter it prior to logging.
+   You can pass arbitrary state into the hook via the
+   filter argument and its config member.
+   
+
+   :rec: An instance of the stream's ``columns`` type with its
+        fields set to the values to be logged.
+   
+
+   :id: The ID associated with the logging stream the filter
+       belongs to.
+   
+
+   :filter: The :zeek:type:`Log::Filter` instance that controls
+           the fate of the given log record.
+
 .. zeek:type:: Log::PrintLogInfo
 
    :Type: :zeek:type:`record`
@@ -948,6 +981,16 @@ Types
       path: :zeek:type:`string` :zeek:attr:`&optional`
          A path that will be inherited by any filters added to the
          stream which do not already specify their own path.
+
+      policy: :zeek:type:`Log::PolicyHook` :zeek:attr:`&optional`
+         Policy hooks can adjust log records and veto their
+         writing. Any hook handler that breaks from its body
+         signals that Zeek won't log the entry passed into
+         it. You can pass arbitrary state into the hook via
+         the filter instance and its config table.
+         
+         New Filters created for this stream will inherit
+         this policy hook, unless they provide their own.
 
    Type defining the content of a logging stream.
 
