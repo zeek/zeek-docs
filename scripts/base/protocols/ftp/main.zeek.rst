@@ -44,10 +44,11 @@ Events
 
 Hooks
 #####
-============================================================ ===========================
+============================================================ =============================================
 :zeek:id:`FTP::finalize_ftp`: :zeek:type:`Conn::RemovalHook` FTP finalization hook.
 :zeek:id:`FTP::finalize_ftp_data`: :zeek:type:`hook`         FTP data finalization hook.
-============================================================ ===========================
+:zeek:id:`FTP::log_policy`: :zeek:type:`Log::PolicyHook`     A default logging policy hook for the stream.
+============================================================ =============================================
 
 Functions
 #########
@@ -140,6 +141,12 @@ Hooks
 
    FTP data finalization hook.  Expected FTP data channel state may
    get purged when called.
+
+.. zeek:id:: FTP::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 Functions
 #########

@@ -24,6 +24,12 @@ Redefinitions
 :zeek:type:`Log::ID`: :zeek:type:`enum` 
 ======================================= =
 
+Hooks
+#####
+======================================================== =
+:zeek:id:`SMB::log_policy`: :zeek:type:`Log::PolicyHook` 
+======================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -43,5 +49,12 @@ Runtime Options
 
 
    The server response statuses which are *not* logged.
+
+Hooks
+#####
+.. zeek:id:: SMB::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

@@ -25,6 +25,12 @@ Redefinitions
 :zeek:type:`Log::ID`: :zeek:type:`enum` 
 ======================================= =
 
+Hooks
+#####
+============================================================== =
+:zeek:id:`Barnyard2::log_policy`: :zeek:type:`Log::PolicyHook` 
+============================================================== =
+
 Functions
 #########
 ==================================================== ======================================================================
@@ -50,6 +56,13 @@ Types
 
       alert: :zeek:type:`Barnyard2::AlertData` :zeek:attr:`&log`
          Associated alert data.
+
+
+Hooks
+#####
+.. zeek:id:: Barnyard2::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
 
 
 Functions

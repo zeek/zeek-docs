@@ -33,6 +33,12 @@ Redefinitions
 :zeek:type:`Log::ID`: :zeek:type:`enum` The reporter logging stream identifier.
 ======================================= =======================================
 
+Hooks
+#####
+============================================================= =============================================
+:zeek:id:`Reporter::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+============================================================= =============================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -60,5 +66,13 @@ Types
          Not all reporter messages will have locations in them though.
 
    The record type which contains the column fields of the reporter log.
+
+Hooks
+#####
+.. zeek:id:: Reporter::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

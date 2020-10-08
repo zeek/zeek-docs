@@ -33,6 +33,12 @@ Events
                                                       record as it is sent on to the logging framework.
 ===================================================== ===================================================================
 
+Hooks
+#####
+============================================================= =
+:zeek:id:`OpenFlow::log_policy`: :zeek:type:`Log::PolicyHook` 
+============================================================= =
+
 Functions
 #########
 =================================================== ===========================
@@ -70,6 +76,13 @@ Events
 
    Event that can be handled to access the :zeek:type:`OpenFlow::Info`
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: OpenFlow::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

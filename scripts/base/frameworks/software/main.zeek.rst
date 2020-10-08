@@ -57,6 +57,12 @@ Events
                                                         version is found to have changed.
 ======================================================= ======================================================================
 
+Hooks
+#####
+============================================================= =============================================
+:zeek:id:`Software::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+============================================================= =============================================
+
 Functions
 #########
 ======================================================== ==================================================================
@@ -334,6 +340,14 @@ Events
 
    This event can be handled to access software information whenever it's
    version is found to have changed.
+
+Hooks
+#####
+.. zeek:id:: Software::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 Functions
 #########

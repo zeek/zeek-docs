@@ -52,6 +52,12 @@ Redefinitions
 :zeek:type:`PcapFilterID`: :zeek:type:`enum` 
 ============================================ =================================================
 
+Hooks
+#####
+================================================================= =============================================
+:zeek:id:`PacketFilter::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+================================================================= =============================================
+
 Functions
 #########
 ====================================================================== ======================================================================
@@ -163,6 +169,14 @@ Types
 
    The record type defining columns to be logged in the packet filter
    logging stream.
+
+Hooks
+#####
+.. zeek:id:: PacketFilter::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 Functions
 #########

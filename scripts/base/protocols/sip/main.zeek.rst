@@ -45,6 +45,7 @@ Hooks
 #####
 ============================================================ ======================
 :zeek:id:`SIP::finalize_sip`: :zeek:type:`Conn::RemovalHook` SIP finalization hook.
+:zeek:id:`SIP::log_policy`: :zeek:type:`Log::PolicyHook`     
 ============================================================ ======================
 
 
@@ -191,5 +192,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SIP finalization hook.  Remaining SIP info may get logged when it's called.
+
+.. zeek:id:: SIP::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

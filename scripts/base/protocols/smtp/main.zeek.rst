@@ -41,6 +41,7 @@ Hooks
 #####
 ============================================================== =======================
 :zeek:id:`SMTP::finalize_smtp`: :zeek:type:`Conn::RemovalHook` SMTP finalization hook.
+:zeek:id:`SMTP::log_policy`: :zeek:type:`Log::PolicyHook`      
 ============================================================== =======================
 
 Functions
@@ -198,6 +199,11 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SMTP finalization hook.  Remaining SMTP info may get logged when it's called.
+
+.. zeek:id:: SMTP::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

@@ -51,9 +51,10 @@ Events
 
 Hooks
 #####
-============================================================ ======================
+============================================================ =============================================
 :zeek:id:`SSH::finalize_ssh`: :zeek:type:`Conn::RemovalHook` SSH finalization hook.
-============================================================ ======================
+:zeek:id:`SSH::log_policy`: :zeek:type:`Log::PolicyHook`     A default logging policy hook for the stream.
+============================================================ =============================================
 
 
 Detailed Interface
@@ -239,5 +240,11 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SSH finalization hook.  Remaining SSH info may get logged when it's called.
+
+.. zeek:id:: SSH::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

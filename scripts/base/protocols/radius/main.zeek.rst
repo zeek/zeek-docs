@@ -36,6 +36,7 @@ Hooks
 #####
 ================================================================== =========================
 :zeek:id:`RADIUS::finalize_radius`: :zeek:type:`Conn::RemovalHook` RADIUS finalization hook.
+:zeek:id:`RADIUS::log_policy`: :zeek:type:`Log::PolicyHook`        
 ================================================================== =========================
 
 
@@ -109,5 +110,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    RADIUS finalization hook.  Remaining RADIUS info may get logged when it's called.
+
+.. zeek:id:: RADIUS::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

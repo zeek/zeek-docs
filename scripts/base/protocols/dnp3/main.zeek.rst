@@ -36,6 +36,7 @@ Hooks
 #####
 ============================================================== =======================
 :zeek:id:`DNP3::finalize_dnp3`: :zeek:type:`Conn::RemovalHook` DNP3 finalization hook.
+:zeek:id:`DNP3::log_policy`: :zeek:type:`Log::PolicyHook`      
 ============================================================== =======================
 
 
@@ -82,5 +83,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    DNP3 finalization hook.  Remaining DNP3 info may get logged when it's called.
+
+.. zeek:id:: DNP3::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

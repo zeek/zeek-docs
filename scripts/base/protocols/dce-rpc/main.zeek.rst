@@ -38,6 +38,7 @@ Hooks
 #####
 ==================================================================== ==========================
 :zeek:id:`DCE_RPC::finalize_dce_rpc`: :zeek:type:`Conn::RemovalHook` DCE_RPC finalization hook.
+:zeek:id:`DCE_RPC::log_policy`: :zeek:type:`Log::PolicyHook`         
 ==================================================================== ==========================
 
 
@@ -134,5 +135,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    DCE_RPC finalization hook.  Remaining DCE_RPC info may get logged when it's called.
+
+.. zeek:id:: DCE_RPC::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

@@ -33,6 +33,7 @@ Hooks
 #####
 ============================================================ ======================
 :zeek:id:`RFB::finalize_rfb`: :zeek:type:`Conn::RemovalHook` RFB finalization hook.
+:zeek:id:`RFB::log_policy`: :zeek:type:`Log::PolicyHook`     
 ============================================================ ======================
 
 
@@ -103,5 +104,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    RFB finalization hook.  Remaining RFB info may get logged when it's called.
+
+.. zeek:id:: RFB::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

@@ -37,6 +37,14 @@ Events
                                               to the logging framework.
 ============================================= ====================================================================
 
+Hooks
+#####
+=================================================================== =
+:zeek:id:`MQTT::log_policy_connect`: :zeek:type:`Log::PolicyHook`   
+:zeek:id:`MQTT::log_policy_publish`: :zeek:type:`Log::PolicyHook`   
+:zeek:id:`MQTT::log_policy_subscribe`: :zeek:type:`Log::PolicyHook` 
+=================================================================== =
+
 Functions
 #########
 ======================================================== ==========================================================================
@@ -198,6 +206,23 @@ Events
 
    Event that can be handled to access the MQTT record as it is sent on
    to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: MQTT::log_policy_connect
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+
+.. zeek:id:: MQTT::log_policy_publish
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+
+.. zeek:id:: MQTT::log_policy_subscribe
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 Functions
 #########

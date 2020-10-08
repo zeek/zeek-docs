@@ -65,6 +65,12 @@ Events
                                                          record as it is sent on to the logging framework.
 ======================================================== ========================================================================
 
+Hooks
+#####
+=================================================================== =============================================
+:zeek:id:`Known::log_policy_services`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+=================================================================== =============================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -216,5 +222,13 @@ Events
 
    Event that can be handled to access the :zeek:type:`Known::ServicesInfo`
    record as it is sent on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: Known::log_policy_services
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

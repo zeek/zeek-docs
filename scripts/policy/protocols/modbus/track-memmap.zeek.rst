@@ -48,6 +48,12 @@ Events
                                                         than it was previously seen to be.
 ======================================================= =====================================================================
 
+Hooks
+#####
+=========================================================================== =
+:zeek:id:`Modbus::log_policy_register_change`: :zeek:type:`Log::PolicyHook` 
+=========================================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -122,5 +128,12 @@ Events
 
    This event is generated every time a register is seen to be different
    than it was previously seen to be.
+
+Hooks
+#####
+.. zeek:id:: Modbus::log_policy_register_change
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

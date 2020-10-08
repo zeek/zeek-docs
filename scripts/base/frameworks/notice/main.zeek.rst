@@ -75,11 +75,13 @@ Events
 
 Hooks
 #####
-============================================ ==========================================================
-:zeek:id:`Notice::notice`: :zeek:type:`hook` This is the event that is called as the entry point to the
-                                             notice framework by the global :zeek:id:`NOTICE` function.
-:zeek:id:`Notice::policy`: :zeek:type:`hook` The hook to modify notice handling.
-============================================ ==========================================================
+================================================================= ==========================================================
+:zeek:id:`Notice::log_policy`: :zeek:type:`Log::PolicyHook`       Default logging policy hooks for the streams.
+:zeek:id:`Notice::log_policy_alarm`: :zeek:type:`Log::PolicyHook` 
+:zeek:id:`Notice::notice`: :zeek:type:`hook`                      This is the event that is called as the entry point to the
+                                                                  notice framework by the global :zeek:id:`NOTICE` function.
+:zeek:id:`Notice::policy`: :zeek:type:`hook`                      The hook to modify notice handling.
+================================================================= ==========================================================
 
 Functions
 #########
@@ -938,6 +940,17 @@ Events
 
 Hooks
 #####
+.. zeek:id:: Notice::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   Default logging policy hooks for the streams.
+
+.. zeek:id:: Notice::log_policy_alarm
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+
 .. zeek:id:: Notice::notice
 
    :Type: :zeek:type:`hook` (n: :zeek:type:`Notice::Info`) : :zeek:type:`bool`

@@ -41,6 +41,12 @@ Events
                                                        on to the logging framework.
 ====================================================== =====================================================================
 
+Hooks
+#####
+================================================================= =
+:zeek:id:`Known::log_policy_modbus`: :zeek:type:`Log::PolicyHook` 
+================================================================= =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -87,5 +93,12 @@ Events
 
    Event that can be handled to access the loggable record as it is sent
    on to the logging framework.
+
+Hooks
+#####
+.. zeek:id:: Known::log_policy_modbus
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

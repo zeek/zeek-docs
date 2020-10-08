@@ -28,6 +28,7 @@ Hooks
 #####
 ============================================================== =======================
 :zeek:id:`NTLM::finalize_ntlm`: :zeek:type:`Conn::RemovalHook` NTLM finalization hook.
+:zeek:id:`NTLM::log_policy`: :zeek:type:`Log::PolicyHook`      
 ============================================================== =======================
 
 
@@ -81,5 +82,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    NTLM finalization hook.  Remaining NTLM info may get logged when it's called.
+
+.. zeek:id:: NTLM::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

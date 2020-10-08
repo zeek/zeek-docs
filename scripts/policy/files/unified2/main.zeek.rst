@@ -42,6 +42,12 @@ Events
 :zeek:id:`Unified2::log_unified2`: :zeek:type:`event` The event for accessing logged records.
 ===================================================== ===================================================
 
+Hooks
+#####
+============================================================= =
+:zeek:id:`Unified2::log_policy`: :zeek:type:`Log::PolicyHook` 
+============================================================= =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -162,5 +168,12 @@ Events
    :Type: :zeek:type:`event` (rec: :zeek:type:`Unified2::Info`)
 
    The event for accessing logged records.
+
+Hooks
+#####
+.. zeek:id:: Unified2::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

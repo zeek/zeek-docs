@@ -43,6 +43,7 @@ Hooks
 #####
 ============================================================ ===========================
 :zeek:id:`KRB::finalize_krb`: :zeek:type:`Conn::RemovalHook` Kerberos finalization hook.
+:zeek:id:`KRB::log_policy`: :zeek:type:`Log::PolicyHook`     
 ============================================================ ===========================
 
 
@@ -175,5 +176,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    Kerberos finalization hook.  Remaining Kerberos info may get logged when it's called.
+
+.. zeek:id:: KRB::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

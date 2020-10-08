@@ -23,6 +23,12 @@ Redefinitions
 :zeek:type:`Log::ID`: :zeek:type:`enum` The Broker logging stream identifier.
 ======================================= =====================================
 
+Hooks
+#####
+=========================================================== =============================================
+:zeek:id:`Broker::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+=========================================================== =============================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -63,5 +69,13 @@ Types
          An error situation.
 
    The type of a Broker activity being logged.
+
+Hooks
+#####
+.. zeek:id:: Broker::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

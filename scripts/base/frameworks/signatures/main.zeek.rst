@@ -54,6 +54,12 @@ Events
                                                          to the signature logging stream.
 ======================================================== =================================================================
 
+Hooks
+#####
+=============================================================== =============================================
+:zeek:id:`Signatures::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+=============================================================== =============================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -285,5 +291,13 @@ Events
    
 
    :rec: The record of signature data about to be logged.
+
+Hooks
+#####
+.. zeek:id:: Signatures::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 

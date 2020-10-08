@@ -35,6 +35,7 @@ Hooks
 #####
 ================================================================ ========================
 :zeek:id:`MySQL::finalize_mysql`: :zeek:type:`Conn::RemovalHook` MySQL finalization hook.
+:zeek:id:`MySQL::log_policy`: :zeek:type:`Log::PolicyHook`       
 ================================================================ ========================
 
 
@@ -87,5 +88,10 @@ Hooks
    :Type: :zeek:type:`Conn::RemovalHook`
 
    MySQL finalization hook.  Remaining MySQL info may get logged when it's called.
+
+.. zeek:id:: MySQL::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 

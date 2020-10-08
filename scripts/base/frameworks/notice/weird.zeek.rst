@@ -64,6 +64,12 @@ Events
                                                 logging stream before the data is actually written.
 =============================================== ==============================================================
 
+Hooks
+#####
+========================================================== =============================================
+:zeek:id:`Weird::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+========================================================== =============================================
+
 Functions
 #########
 ============================================== =
@@ -403,6 +409,14 @@ Events
    
 
    :rec: The weird columns about to be logged to the weird stream.
+
+Hooks
+#####
+.. zeek:id:: Weird::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
+   A default logging policy hook for the stream.
 
 Functions
 #########

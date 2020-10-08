@@ -35,6 +35,12 @@ Events
 :zeek:id:`Stats::log_stats`: :zeek:type:`event` Event to catch stats as they are written to the logging stream.
 =============================================== ===============================================================
 
+Hooks
+#####
+========================================================== =
+:zeek:id:`Stats::log_policy`: :zeek:type:`Log::PolicyHook` 
+========================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -145,5 +151,12 @@ Events
    :Type: :zeek:type:`event` (rec: :zeek:type:`Stats::Info`)
 
    Event to catch stats as they are written to the logging stream.
+
+Hooks
+#####
+.. zeek:id:: Stats::log_policy
+
+   :Type: :zeek:type:`Log::PolicyHook`
+
 
 
