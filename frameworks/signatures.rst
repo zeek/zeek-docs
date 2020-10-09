@@ -250,6 +250,13 @@ matched. The following context conditions are defined:
     originator of the connection), and ``responder`` (the current data
     is send by the responder of the connection).
 
+``udp-state <state-list>``
+    Imposes restrictions on which UDP flow direction to match.  ``state-list``
+    is a comma-separated list of either ``originator`` (the current data is
+    send by the originator of the connection) or ``responder`` (the current
+    data is send by the responder of the connection).  The ``established``
+    state is rejected as an error in the signature since it does not have a
+    useful meaning like it does for TCP.
 
 Actions
 -------
