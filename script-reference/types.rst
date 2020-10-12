@@ -706,7 +706,7 @@ A range of elements can be *replaced* by assigning to a vector slice:
     v[0:2] = vector("five", "six", "seven");
 
 The size of a vector (this is one greater than the highest index value, and
-is normally equal to the number of elements in the vector) can be obtained
+is equal to the number of elements in the vector) can be obtained
 by placing the vector identifier between vertical pipe characters:
 
 .. code-block:: zeek
@@ -730,7 +730,8 @@ this expression is equivalent to:
 The ``in`` operator can be used to check if a value has been assigned at a
 specified index value in the vector.  For example, if a vector has size 4,
 then the expression ``3 in v`` would yield true and ``4 in v`` would yield
-false.
+false.  The result of accessing a vector index that is not "in" the vector
+is undefined.
 
 Vectors of integral types (``int`` or ``count``) support the pre-increment
 (``++``) and pre-decrement operators (``--``), which will increment or
@@ -750,6 +751,11 @@ each element of the operand vectors.
 
 Vectors of type ``count`` can also be operands for the bitwise and/or/xor
 operators, ``&``, ``|`` and ``^``.
+
+Vectors of type ``any`` can hold values of any Zeek type, but the values
+must be *homogeneous*.  If you want to intermingle values of different types,
+you can instead use ``table[count] of any``, which does not require
+homogeneous values.
 
 See the :zeek:keyword:`for` statement for info on how to iterate over
 the elements in a vector.
