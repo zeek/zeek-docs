@@ -1209,10 +1209,10 @@ Events
    
       When a ``zeek_init`` handler executes, Zeek has not yet seen any input
       packets and therefore :zeek:id:`network_time` is not initialized yet. An
-      artifact of that is that any timer installed in a ``zeek_init`` handler
-      will fire immediately with the first packet. The standard way to work
-      around that is to ignore the first time the timer fires and immediately
-      reschedule.
+      artifact of that is that any timer installed in a ``zeek_init`` handler,
+      like with :zeek:keyword:`schedule`, will fire immediately with the first
+      packet. The standard way to work around that is to ignore the first time
+      the timer fires and immediately reschedule.
    
 
 .. zeek:id:: zeek_script_loaded
