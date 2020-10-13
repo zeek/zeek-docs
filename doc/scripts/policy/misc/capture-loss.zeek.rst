@@ -5,12 +5,12 @@ policy/misc/capture-loss.zeek
 .. zeek:namespace:: CaptureLoss
 
 This script logs evidence regarding the degree to which the packet
-capture process suffers from measurement loss.  
-The loss could be due to overload on the host or NIC performing 
-the packet capture or it could even be beyond the host.  If you are 
-capturing from a switch with a SPAN port, it's very possible that 
+capture process suffers from measurement loss.
+The loss could be due to overload on the host or NIC performing
+the packet capture or it could even be beyond the host.  If you are
+capturing from a switch with a SPAN port, it's very possible that
 the switch itself could be overloaded and dropping packets.
-Reported loss is computed in terms of the number of "gap events" (ACKs 
+Reported loss is computed in terms of the number of "gap events" (ACKs
 for a sequence number that's above a gap).
 
 :Namespace: CaptureLoss
@@ -20,12 +20,17 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-================================================================================= =================================================================
-:zeek:id:`CaptureLoss::too_much_loss`: :zeek:type:`double` :zeek:attr:`&redef`    The percentage of missed data that is considered "too much" 
-                                                                                  when the :zeek:enum:`CaptureLoss::Too_Much_Loss` notice should be
-                                                                                  generated.
-:zeek:id:`CaptureLoss::watch_interval`: :zeek:type:`interval` :zeek:attr:`&redef` The interval at which capture loss reports are created.
-================================================================================= =================================================================
+========================================================================================= =================================================================
+:zeek:id:`CaptureLoss::initial_watch_interval`: :zeek:type:`interval` :zeek:attr:`&redef` For faster feedback on cluster health, the first capture loss
+                                                                                          report is generated this many minutes after startup.
+:zeek:id:`CaptureLoss::minimum_acks`: :zeek:type:`count` :zeek:attr:`&redef`              The minimum number of ACKs expected for a single peer in a
+                                                                                          watch interval.
+:zeek:id:`CaptureLoss::too_much_loss`: :zeek:type:`double` :zeek:attr:`&redef`            The percentage of missed data that is considered "too much"
+                                                                                          when the :zeek:enum:`CaptureLoss::Too_Much_Loss` notice should be
+                                                                                          generated.
+:zeek:id:`CaptureLoss::watch_interval`: :zeek:type:`interval` :zeek:attr:`&redef`         The interval at which capture loss reports are created in a
+                                                                                          running cluster (that is, after the first report).
+========================================================================================= =================================================================
 
 Types
 #####
@@ -51,13 +56,32 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Runtime Options
 ###############
+.. zeek:id:: CaptureLoss::initial_watch_interval
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``1.0 min``
+
+   For faster feedback on cluster health, the first capture loss
+   report is generated this many minutes after startup.
+
+.. zeek:id:: CaptureLoss::minimum_acks
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``1``
+
+   The minimum number of ACKs expected for a single peer in a
+   watch interval. If the number seen is less than this,
+   :zeek:enum:`CaptureLoss::Too_Little_Traffic` is raised.
+
 .. zeek:id:: CaptureLoss::too_much_loss
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``0.1``
 
-   The percentage of missed data that is considered "too much" 
+   The percentage of missed data that is considered "too much"
    when the :zeek:enum:`CaptureLoss::Too_Much_Loss` notice should be
    generated. The value is expressed as a double between 0 and 1 with 1
    being 100%.
@@ -68,7 +92,8 @@ Runtime Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``15.0 mins``
 
-   The interval at which capture loss reports are created.
+   The interval at which capture loss reports are created in a
+   running cluster (that is, after the first report).
 
 Types
 #####
