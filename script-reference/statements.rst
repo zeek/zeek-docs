@@ -649,7 +649,8 @@ of type ``timer``, but in practice the return value is not used.
   the scheduled event may be dispatched upon processing the first network
   packet since that will update network-time from zero to the time associated
   with capturing that packet.  A typical workaround is to ignore the first
-  time such an event is dispatched and simply re-schedule it.
+  time such an event is dispatched and simply re-schedule it or to instead
+  schedule the first event from within the :zeek:see:`network_time_init` event.
 
 .. zeek:keyword:: switch
 
