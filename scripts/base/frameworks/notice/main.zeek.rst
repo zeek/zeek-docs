@@ -603,7 +603,15 @@ Types
 
 
          Report if the detected capture loss exceeds the percentage
-         threshold.
+         threshold defined in :zeek:id:`CaptureLoss::too_much_loss`.
+
+      .. zeek:enum:: CaptureLoss::Too_Little_Traffic Notice::Type
+
+         (present if :doc:`/scripts/policy/misc/capture-loss.zeek` is loaded)
+
+
+         Report if the traffic seen by a peer within a given watch
+         interval is less than :zeek:id:`CaptureLoss::minimum_acks`.
 
       .. zeek:enum:: Traceroute::Detected Notice::Type
 
