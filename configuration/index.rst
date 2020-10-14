@@ -141,6 +141,7 @@ Installing PF_RING
      make install
 
      cd ../../kernel
+     make
      make install
 
      modprobe pf_ring enable_tx_capture=0 min_num_slots=32768
