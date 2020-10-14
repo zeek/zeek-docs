@@ -14,6 +14,7 @@ Functions
 #########
 ============================================================== =============================================================
 :zeek:id:`Pcap::error`: :zeek:type:`function`                  Returns a string representation of the last PCAP error.
+:zeek:id:`Pcap::findalldevs`: :zeek:type:`function`            
 :zeek:id:`Pcap::install_pcap_filter`: :zeek:type:`function`    Installs a PCAP filter that has been precompiled with
                                                                :zeek:id:`Pcap::precompile_pcap_filter`.
 :zeek:id:`Pcap::precompile_pcap_filter`: :zeek:type:`function` Precompiles a PCAP filter and binds it to a given identifier.
@@ -43,6 +44,11 @@ Functions
                 install_dst_net_filter
                 uninstall_dst_addr_filter
                 uninstall_dst_net_filter
+
+.. zeek:id:: Pcap::findalldevs
+
+   :Type: :zeek:type:`function` () : :zeek:type:`Pcap::Interfaces`
+
 
 .. zeek:id:: Pcap::install_pcap_filter
 

@@ -329,8 +329,9 @@ Types
          If the *ip* field is a non-global IPv6 address, this field
          can specify a particular :rfc:`4007` ``zone_id``.
 
-      p: :zeek:type:`port`
+      p: :zeek:type:`port` :zeek:attr:`&default` = ``0/unknown`` :zeek:attr:`&optional`
          The port that this node will listen on for peer connections.
+         A value of ``0/unknown`` means the node is not pre-configured to listen.
 
       interface: :zeek:type:`string` :zeek:attr:`&optional`
          Identifier for the interface a worker is sniffing.

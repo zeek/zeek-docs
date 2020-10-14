@@ -303,6 +303,7 @@ Constants
 :zeek:id:`UDP_ACTIVE`: :zeek:type:`count`                   Endpoint has sent something.
 :zeek:id:`UDP_INACTIVE`: :zeek:type:`count`                 Endpoint is still inactive.
 :zeek:id:`trace_output_file`: :zeek:type:`string`           Holds the filename of the trace file given with ``-w`` (empty if none).
+:zeek:id:`zeek_script_args`: :zeek:type:`vector`            Arguments given to Zeek from the command line.
 =========================================================== =======================================================================
 
 State Variables
@@ -444,6 +445,8 @@ Types
 :zeek:type:`PacketAnalyzer::DispatchMap`: :zeek:type:`table`                  A packet analyzer may extract a numeric identifier, which can be found in the
                                                                               packet data and denotes the encapsulated protocol.
 :zeek:type:`PacketSource`: :zeek:type:`record`                                Properties of an I/O packet source being read by Zeek.
+:zeek:type:`Pcap::Interface`: :zeek:type:`record`                             The definition of a "pcap interface".
+:zeek:type:`Pcap::Interfaces`: :zeek:type:`set`                               
 :zeek:type:`PcapFilterID`: :zeek:type:`enum`                                  Enum type identifying dynamic BPF filters.
 :zeek:type:`ProcStats`: :zeek:type:`record`                                   Statistics about Zeek's process.
 :zeek:type:`RADIUS::AttributeList`: :zeek:type:`vector`                       
@@ -2622,6 +2625,27 @@ Constants
    Holds the filename of the trace file given with ``-w`` (empty if none).
    
    .. zeek:see:: record_all_packets
+
+.. zeek:id:: zeek_script_args
+
+   :Type: :zeek:type:`vector` of :zeek:type:`string`
+   :Default:
+
+      ::
+
+         []
+
+
+   Arguments given to Zeek from the command line. In order to use this, Zeek
+   must use a ``--`` command line argument immediately followed by a script
+   file and additional arguments after that. For example::
+   
+     zeek --bare-mode -- myscript.zeek -a -b -c
+   
+   To use Zeek as an executable interpreter, include a line at the top of a script
+   like the following and make the script executable::
+   
+     #!/usr/local/zeek/bin/zeek --
 
 State Variables
 ###############
@@ -5084,6 +5108,36 @@ Types
          The netmask assoicated with the source or ``NETMASK_UNKNOWN``.
 
    Properties of an I/O packet source being read by Zeek.
+
+.. zeek:type:: Pcap::Interface
+
+   :Type: :zeek:type:`record`
+
+      name: :zeek:type:`string`
+         The interface/device name.
+
+      description: :zeek:type:`string` :zeek:attr:`&optional`
+         A human-readable description of the device.
+
+      addrs: :zeek:type:`set` [:zeek:type:`addr`]
+         The network addresses associated with the device.
+
+      is_loopback: :zeek:type:`bool`
+         Whether the device is a loopback interface.  E.g. addresses
+         of ``127.0.0.1`` or ``[::1]`` are used by loopback interfaces.
+
+      is_up: :zeek:type:`bool` :zeek:attr:`&optional`
+         Whether the device is up.  Not set when that info is unavailable.
+
+      is_running: :zeek:type:`bool` :zeek:attr:`&optional`
+         Whether the device is running.  Not set when that info is unavailable.
+
+   The definition of a "pcap interface".
+
+.. zeek:type:: Pcap::Interfaces
+
+   :Type: :zeek:type:`set` [:zeek:type:`Pcap::Interface`]
+
 
 .. zeek:type:: PcapFilterID
 
