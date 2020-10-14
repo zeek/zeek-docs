@@ -274,4 +274,7 @@ This directive is required to terminate each ``@if``, ``@ifdef``, or
 @DEBUG
 ------
 
-TODO
+This directive is not meant to be used directly from user scripts.  Internally,
+it's used by interactive-debugger features (``zeek -d``) that allow arbitrary
+expressions to be parsed and evaluated on their own rather than incorporated
+into the usual Zeek syntax-tree formed from parsing script files.
