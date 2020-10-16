@@ -35,7 +35,7 @@ Redefinable Options
 
       ``+=``::
 
-         4 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV4] to record { analyzer:enum; }), 6 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV6] to record { analyzer:enum; })
+         4 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPTUNNEL] to record { analyzer:enum; }), 41 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPTUNNEL] to record { analyzer:enum; }), 47 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_GRE] to record { analyzer:enum; })
 
 
    Identifier mappings based on IP version (4 or 6)

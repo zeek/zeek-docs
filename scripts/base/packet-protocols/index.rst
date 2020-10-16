@@ -91,3 +91,15 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/mpls/main.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/gre/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/gre/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/iptunnel/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/iptunnel/main.zeek`
+
+

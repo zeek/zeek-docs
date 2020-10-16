@@ -35,7 +35,7 @@ Redefinable Options
 
       ``+=``::
 
-         34887 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_MPLS] to record { analyzer:enum; }), 2048 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV4] to record { analyzer:enum; }), 34525 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV6] to record { analyzer:enum; }), 2054 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_ARP] to record { analyzer:enum; }), 32821 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_ARP] to record { analyzer:enum; }), 33024 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_VLAN] to record { analyzer:enum; }), 34916 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_PPPOE] to record { analyzer:enum; })
+         34887 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_MPLS] to record { analyzer:enum; }), 2048 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), 34525 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), 2054 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_ARP] to record { analyzer:enum; }), 32821 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_ARP] to record { analyzer:enum; }), 33024 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_VLAN] to record { analyzer:enum; }), 34916 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_PPPOE] to record { analyzer:enum; })
 
 
    Identifier mappings based on EtherType

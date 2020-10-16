@@ -11,15 +11,15 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_FDDI PacketAnalyzer::Tag
 
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_GRE PacketAnalyzer::Tag
+
       .. zeek:enum:: PacketAnalyzer::ANALYZER_IEEE802_11 PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_IEEE802_11_RADIO PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_IP PacketAnalyzer::Tag
 
-      .. zeek:enum:: PacketAnalyzer::ANALYZER_IPV4 PacketAnalyzer::Tag
-
-      .. zeek:enum:: PacketAnalyzer::ANALYZER_IPV6 PacketAnalyzer::Tag
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_IPTUNNEL PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_LINUXSLL PacketAnalyzer::Tag
 
@@ -160,6 +160,16 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_FDDI`
 
+Zeek::GRE
+---------
+
+GRE packet analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_GRE`
+
 Zeek::IEEE802_11
 ----------------
 
@@ -190,25 +200,15 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_IP`
 
-Zeek::IPv4
-----------
+Zeek::IPTunnel
+--------------
 
-IPv4 packet analyzer
-
-Components
-++++++++++
-
-:zeek:enum:`PacketAnalyzer::ANALYZER_IPV4`
-
-Zeek::IPv6
-----------
-
-IPv6 packet analyzer
+IPTunnel packet analyzer
 
 Components
 ++++++++++
 
-:zeek:enum:`PacketAnalyzer::ANALYZER_IPV6`
+:zeek:enum:`PacketAnalyzer::ANALYZER_IPTUNNEL`
 
 Zeek::LinuxSLL
 --------------
