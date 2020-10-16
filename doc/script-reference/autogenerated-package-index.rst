@@ -43,6 +43,12 @@
 :doc:`base/packet-protocols/mpls </scripts/base/packet-protocols/mpls/index>`
 
 
+:doc:`base/packet-protocols/gre </scripts/base/packet-protocols/gre/index>`
+
+
+:doc:`base/packet-protocols/iptunnel </scripts/base/packet-protocols/iptunnel/index>`
+
+
 :doc:`base/frameworks/logging </scripts/base/frameworks/logging/index>`
 
    The logging framework provides a flexible key-value based logging interface.

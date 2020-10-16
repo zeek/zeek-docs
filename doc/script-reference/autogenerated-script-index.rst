@@ -43,6 +43,10 @@
    base/packet-protocols/vlan/main.zeek </scripts/base/packet-protocols/vlan/main.zeek>
    base/packet-protocols/mpls/__load__.zeek </scripts/base/packet-protocols/mpls/__load__.zeek>
    base/packet-protocols/mpls/main.zeek </scripts/base/packet-protocols/mpls/main.zeek>
+   base/packet-protocols/gre/__load__.zeek </scripts/base/packet-protocols/gre/__load__.zeek>
+   base/packet-protocols/gre/main.zeek </scripts/base/packet-protocols/gre/main.zeek>
+   base/packet-protocols/iptunnel/__load__.zeek </scripts/base/packet-protocols/iptunnel/__load__.zeek>
+   base/packet-protocols/iptunnel/main.zeek </scripts/base/packet-protocols/iptunnel/main.zeek>
    base/init-frameworks-and-bifs.zeek </scripts/base/init-frameworks-and-bifs.zeek>
    base/frameworks/logging/__load__.zeek </scripts/base/frameworks/logging/__load__.zeek>
    base/frameworks/logging/main.zeek </scripts/base/frameworks/logging/main.zeek>

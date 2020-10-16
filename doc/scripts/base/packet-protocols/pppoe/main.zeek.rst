@@ -35,7 +35,7 @@ Redefinable Options
 
       ``+=``::
 
-         33 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV4] to record { analyzer:enum; }), 87 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV6] to record { analyzer:enum; })
+         33 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), 87 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; })
 
 
    Identifier mappings

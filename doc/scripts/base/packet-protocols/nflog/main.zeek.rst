@@ -35,7 +35,7 @@ Redefinable Options
 
       ``+=``::
 
-         PacketAnalyzer::NFLOG::AF_INET = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV4] to record { analyzer:enum; }), PacketAnalyzer::NFLOG::AF_INET6 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IPV6] to record { analyzer:enum; })
+         PacketAnalyzer::NFLOG::AF_INET = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), PacketAnalyzer::NFLOG::AF_INET6 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; })
 
 
    Identifier mappings
