@@ -84,6 +84,8 @@ Functions
 :zeek:id:`flush_all`: :zeek:type:`function`                 Flushes all open files to disk.
 :zeek:id:`fmt`: :zeek:type:`function`                       Produces a formatted string à la ``printf``.
 :zeek:id:`fnv1a32`: :zeek:type:`function`                   Returns 32-bit digest of arbitrary input values using FNV-1a hash algorithm.
+:zeek:id:`generate_all_events`: :zeek:type:`function`       By default, zeek does not generate (raise) events that have not handled by
+                                                            any scripts.
 :zeek:id:`get_conn_transport_proto`: :zeek:type:`function`  Extracts the transport protocol from a connection.
 :zeek:id:`get_current_packet`: :zeek:type:`function`        Returns the currently processed PCAP packet.
 :zeek:id:`get_current_packet_header`: :zeek:type:`function` Function to get the raw headers of the currently processed packet.
@@ -1109,6 +1111,17 @@ Functions
    :returns: The hashed value.
    
    .. zeek:see:: hrw_weight
+
+.. zeek:id:: generate_all_events
+
+   :Type: :zeek:type:`function` () : :zeek:type:`bool`
+
+   By default, zeek does not generate (raise) events that have not handled by
+   any scripts. This means that these events will be invisible to a lot of other
+   event handlers - and will not raise :zeek:id:`new_event`.
+   
+   Calling this function will cause all event handlers to be raised. This is, likely,
+   only useful for debugging and causes reduced performance.
 
 .. zeek:id:: get_conn_transport_proto
 

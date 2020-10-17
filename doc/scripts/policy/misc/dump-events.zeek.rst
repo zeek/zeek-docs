@@ -20,6 +20,12 @@ Runtime Options
 :zeek:id:`DumpEvents::include_args`: :zeek:type:`bool` :zeek:attr:`&redef` If true, include event arguments in output.
 ========================================================================== ===========================================================
 
+Redefinable Options
+###################
+============================================================================= ================================================================
+:zeek:id:`DumpEvents::dump_all_events`: :zeek:type:`bool` :zeek:attr:`&redef` By default, only events that are handled in a script are dumped.
+============================================================================= ================================================================
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
@@ -46,5 +52,16 @@ Runtime Options
    :Default: ``T``
 
    If true, include event arguments in output.
+
+Redefinable Options
+###################
+.. zeek:id:: DumpEvents::dump_all_events
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+   By default, only events that are handled in a script are dumped. Setting this option to true
+   will cause unhandled events to be dumped too.
 
 
