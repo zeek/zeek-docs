@@ -57,6 +57,8 @@ Runtime Options
                                                                                       for mime type matching.
 :zeek:id:`default_file_timeout_interval`: :zeek:type:`interval` :zeek:attr:`&redef`   Default amount of time a file can be inactive before the file analysis
                                                                                       gives up and discards any internal state related to the file.
+:zeek:id:`ignore_checksums_nets`: :zeek:type:`set` :zeek:attr:`&redef`                Checksums are ignored for all packets with a src address within this set of
+                                                                                      networks.
 :zeek:id:`udp_content_delivery_ports_use_resp`: :zeek:type:`bool` :zeek:attr:`&redef` Whether ports given in :zeek:see:`udp_content_delivery_ports_orig`
                                                                                       and :zeek:see:`udp_content_delivery_ports_resp` are in terms of
                                                                                       UDP packet's destination port or the UDP connection's "responder"
@@ -808,6 +810,18 @@ Runtime Options
 
    Default amount of time a file can be inactive before the file analysis
    gives up and discards any internal state related to the file.
+
+.. zeek:id:: ignore_checksums_nets
+
+   :Type: :zeek:type:`set` [:zeek:type:`subnet`]
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``{}``
+
+   Checksums are ignored for all packets with a src address within this set of
+   networks. Useful for cases where a host might be seeing packets collected 
+   from local hosts before checksums were applied by hardware. This frequently 
+   manifests when sniffing a local management interface on a host and Zeek sees
+   packets before the hardware has had a chance to apply the checksums.
 
 .. zeek:id:: udp_content_delivery_ports_use_resp
 
