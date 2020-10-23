@@ -88,6 +88,15 @@ intended type is inferred, e.g. ``local size_difference = 0`` will
 infer :zeek:type:`count`, while ``local size_difference = +0``
 will infer ``int``.
 
+For signed-integer arithmetic involving ``int`` types that cause overflows
+(results that exceed the numeric limits of representable values in either
+direction), Zeek's behavior is generally undefined  and one should not rely on
+any observed behavior being consistent across compilers, platforms, time, etc.
+The reason for this is that the C++ standard also deems this as undefined
+behavior and Zeek does not currently attempt to detect such overflows within
+its underlying C++ implementation (some limited cases may try to statically
+determine at parse-time that an overflow will definitely occur and reject them
+an error, but don't rely on that).
 
 .. zeek:native-type:: count
 
@@ -107,6 +116,19 @@ In addition, ``count`` types support bitwise operations.  You can use
 ``&``, ``|``, and ``^`` for bitwise ``and``, ``or``, and ``xor``.  You
 can also use ``~`` for bitwise (one's) complement.
 
+For unsigned arithmetic involving ``count`` types that cause overflows
+(results that exceed the numeric limits of representable value in either
+direction), Zeek's behavior is to wrap the result modulo 2^64 back into
+the range of representable values (the same behavior as defined by C++).
+
+.. note::
+
+   Integer literals in Zeek that are not preceded by a unary ``+`` or ``-``
+   are treated as the unsigned ``count`` type.  This can cause unintentional
+   surprises is some situations, like for an absolute-value operation of
+   ``|5 - 9|`` that results in an unsigned-integer overflow to the large number
+   of ``18446744073709551612`` where ``|+5 - +9|`` results in signed-integer
+   arithmetic and (likely) more expected result of ``4``.
 
 .. zeek:native-type:: double
 
