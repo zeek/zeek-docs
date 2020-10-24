@@ -752,11 +752,6 @@ each element of the operand vectors.
 Vectors of type ``count`` can also be operands for the bitwise and/or/xor
 operators, ``&``, ``|`` and ``^``.
 
-Vectors of type ``any`` can hold values of any Zeek type, but the values
-must be *homogeneous*.  If you want to intermingle values of different types,
-you can instead use ``table[count] of any``, which does not require
-homogeneous values.
-
 See the :zeek:keyword:`for` statement for info on how to iterate over
 the elements in a vector.
 
