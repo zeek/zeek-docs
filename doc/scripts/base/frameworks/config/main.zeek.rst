@@ -23,6 +23,8 @@ Redefinitions
 #############
 ======================================= =====================================
 :zeek:type:`Log::ID`: :zeek:type:`enum` The config logging stream identifier.
+                                        
+                                        * :zeek:enum:`Config::LOG`
 ======================================= =====================================
 
 Events

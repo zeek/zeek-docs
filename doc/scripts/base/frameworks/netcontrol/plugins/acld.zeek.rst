@@ -20,9 +20,16 @@ Types
 
 Redefinitions
 #############
-========================================================= =
+========================================================= =========================================================================
 :zeek:type:`NetControl::PluginState`: :zeek:type:`record` 
-========================================================= =
+                                                          
+                                                          :New Fields: :zeek:type:`NetControl::PluginState`
+                                                          
+                                                            acld_config: :zeek:type:`NetControl::AcldConfig` :zeek:attr:`&optional`
+                                                          
+                                                            acld_id: :zeek:type:`count` :zeek:attr:`&optional`
+                                                              The ID of this acld instance - for the mapping to PluginStates.
+========================================================= =========================================================================
 
 Events
 ######

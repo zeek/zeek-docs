@@ -25,10 +25,30 @@ Redefinable Options
 
 Redefinitions
 #############
-========================================================================= =
+========================================================================= =========================================================================================================================
 :zeek:type:`Files::AnalyzerArgs`: :zeek:type:`record` :zeek:attr:`&redef` 
+                                                                          
+                                                                          :New Fields: :zeek:type:`Files::AnalyzerArgs`
+                                                                          
+                                                                            extract_filename: :zeek:type:`string` :zeek:attr:`&optional`
+                                                                              The local filename to which to write an extracted file.
+                                                                          
+                                                                            extract_limit: :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit` :zeek:attr:`&optional`
+                                                                              The maximum allowed file size in bytes of *extract_filename*.
 :zeek:type:`Files::Info`: :zeek:type:`record` :zeek:attr:`&redef`         
-========================================================================= =
+                                                                          
+                                                                          :New Fields: :zeek:type:`Files::Info`
+                                                                          
+                                                                            extracted: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+                                                                              Local filename of extracted file.
+                                                                          
+                                                                            extracted_cutoff: :zeek:type:`bool` :zeek:attr:`&optional` :zeek:attr:`&log`
+                                                                              Set to true if the file being extracted was cut off
+                                                                              so the whole file was not logged.
+                                                                          
+                                                                            extracted_size: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+                                                                              The number of bytes extracted to disk.
+========================================================================= =========================================================================================================================
 
 Functions
 #########

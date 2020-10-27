@@ -24,10 +24,27 @@ State Variables
 
 Redefinitions
 #############
-============================================ =
+============================================ ========================================================================================
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
+                                             
+                                             * :zeek:enum:`SSL::Invalid_Server_Cert`:
+                                               This notice indicates that the result of validating the
+                                               certificate along with its full certificate chain was
+                                               invalid.
 :zeek:type:`SSL::Info`: :zeek:type:`record`  
-============================================ =
+                                             
+                                             :New Fields: :zeek:type:`SSL::Info`
+                                             
+                                               validation_status: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+                                                 Result of certificate validation for this connection.
+                                             
+                                               validation_code: :zeek:type:`int` :zeek:attr:`&optional`
+                                                 Result of certificate validation for this connection, given
+                                                 as OpenSSL validation code.
+                                             
+                                               valid_chain: :zeek:type:`vector` of :zeek:type:`opaque` of x509 :zeek:attr:`&optional`
+                                                 Ordered chain of validated certificate, if validation succeeded.
+============================================ ========================================================================================
 
 Events
 ######

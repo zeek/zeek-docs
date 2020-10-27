@@ -26,9 +26,18 @@ Runtime Options
 
 Redefinitions
 #############
-============================================ =
+============================================ ===============================================================
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`SSL::Old_Version`:
+                                               Indicates that a server is using a potentially unsafe version
+                                             
+                                             * :zeek:enum:`SSL::Weak_Cipher`:
+                                               Indicates that a server is using a potentially unsafe cipher
+                                             
+                                             * :zeek:enum:`SSL::Weak_Key`:
+                                               Indicates that a server is using a potentially unsafe key.
+============================================ ===============================================================
 
 
 Detailed Interface

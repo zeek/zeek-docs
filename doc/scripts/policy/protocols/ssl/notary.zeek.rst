@@ -24,9 +24,14 @@ Types
 
 Redefinitions
 #############
-=========================================== =
+=========================================== ====================================================================================
 :zeek:type:`SSL::Info`: :zeek:type:`record` 
-=========================================== =
+                                            
+                                            :New Fields: :zeek:type:`SSL::Info`
+                                            
+                                              notary: :zeek:type:`CertNotary::Response` :zeek:attr:`&log` :zeek:attr:`&optional`
+                                                A response from the ICSI certificate notary.
+=========================================== ====================================================================================
 
 
 Detailed Interface

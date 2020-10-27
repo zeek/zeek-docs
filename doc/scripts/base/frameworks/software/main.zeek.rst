@@ -44,6 +44,8 @@ Redefinitions
 #############
 ======================================= =======================================
 :zeek:type:`Log::ID`: :zeek:type:`enum` The software logging stream identifier.
+                                        
+                                        * :zeek:enum:`Software::LOG`
 ======================================= =======================================
 
 Events

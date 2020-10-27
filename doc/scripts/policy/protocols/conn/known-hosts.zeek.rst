@@ -48,6 +48,8 @@ Redefinitions
 #############
 ======================================= ==========================================
 :zeek:type:`Log::ID`: :zeek:type:`enum` The known-hosts logging stream identifier.
+                                        
+                                        * :zeek:enum:`Known::HOSTS_LOG`
 ======================================= ==========================================
 
 Events

@@ -28,12 +28,27 @@ Types
 
 Redefinitions
 #############
-==================================================================== =
+==================================================================== ==============================================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`RDP::LOG`
 :zeek:type:`RDP::Info`: :zeek:type:`record`                          
+                                                                     
+                                                                     :New Fields: :zeek:type:`RDP::Info`
+                                                                     
+                                                                       analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
+                                                                         The analyzer ID used for the analyzer instance attached
+                                                                         to each connection.
+                                                                     
+                                                                       done: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+                                                                         Track status of logging RDP connections.
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       rdp: :zeek:type:`RDP::Info` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== =
+==================================================================== ==============================================================================
 
 Events
 ######

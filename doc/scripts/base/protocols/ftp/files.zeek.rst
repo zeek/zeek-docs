@@ -12,10 +12,19 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-============================================================= =
+============================================================= ====================================================================
 :zeek:type:`FTP::Info`: :zeek:type:`record`                   
+                                                              
+                                                              :New Fields: :zeek:type:`FTP::Info`
+                                                              
+                                                                fuid: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+                                                                  File unique ID.
 :zeek:type:`fa_file`: :zeek:type:`record` :zeek:attr:`&redef` 
-============================================================= =
+                                                              
+                                                              :New Fields: :zeek:type:`fa_file`
+                                                              
+                                                                ftp: :zeek:type:`FTP::Info` :zeek:attr:`&optional`
+============================================================= ====================================================================
 
 Functions
 #########

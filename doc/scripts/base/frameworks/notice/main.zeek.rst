@@ -57,9 +57,15 @@ Types
 
 Redefinitions
 #############
-======================================= =
+======================================= =================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum` 
-======================================= =
+                                        
+                                        * :zeek:enum:`Notice::ALARM_LOG`:
+                                          This is the alarm stream.
+                                        
+                                        * :zeek:enum:`Notice::LOG`:
+                                          This is the primary logging stream for notices.
+======================================= =================================================
 
 Events
 ######

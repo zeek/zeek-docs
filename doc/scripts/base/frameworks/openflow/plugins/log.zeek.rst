@@ -20,11 +20,23 @@ Types
 
 Redefinitions
 #############
-=============================================================================== =
+=============================================================================== =============================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                                         
+                                                                                
+                                                                                * :zeek:enum:`OpenFlow::LOG`
 :zeek:type:`OpenFlow::ControllerState`: :zeek:type:`record` :zeek:attr:`&redef` 
+                                                                                
+                                                                                :New Fields: :zeek:type:`OpenFlow::ControllerState`
+                                                                                
+                                                                                  log_dpid: :zeek:type:`count` :zeek:attr:`&optional`
+                                                                                    OpenFlow switch datapath id.
+                                                                                
+                                                                                  log_success_event: :zeek:type:`bool` :zeek:attr:`&optional`
+                                                                                    Raise or do not raise success event.
 :zeek:type:`OpenFlow::Plugin`: :zeek:type:`enum`                                
-=============================================================================== =
+                                                                                
+                                                                                * :zeek:enum:`OpenFlow::OFLOG`
+=============================================================================== =============================================================
 
 Events
 ######

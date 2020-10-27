@@ -46,11 +46,26 @@ Types
 
 Redefinitions
 #############
-============================================ =================================================
+============================================ =================================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`      Add the packet filter logging stream.
+                                             
+                                             * :zeek:enum:`PacketFilter::LOG`
 :zeek:type:`Notice::Type`: :zeek:type:`enum` Add notice types related to packet filter errors.
+                                             
+                                             * :zeek:enum:`PacketFilter::Compile_Failure`:
+                                               This notice is generated if a packet filter cannot be compiled.
+                                             
+                                             * :zeek:enum:`PacketFilter::Install_Failure`:
+                                               Generated if a packet filter fails to install.
+                                             
+                                             * :zeek:enum:`PacketFilter::Too_Long_To_Compile_Filter`:
+                                               Generated when a notice takes too long to compile.
 :zeek:type:`PcapFilterID`: :zeek:type:`enum` 
-============================================ =================================================
+                                             
+                                             * :zeek:enum:`PacketFilter::DefaultPcapFilter`
+                                             
+                                             * :zeek:enum:`PacketFilter::FilterTester`
+============================================ =================================================================
 
 Hooks
 #####

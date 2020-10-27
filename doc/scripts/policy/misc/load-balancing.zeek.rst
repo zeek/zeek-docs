@@ -26,9 +26,15 @@ Types
 
 Redefinitions
 #############
-=============================================== =
+=============================================== ===============================================================
 :zeek:type:`Cluster::Node`: :zeek:type:`record` 
-=============================================== =
+                                                
+                                                :New Fields: :zeek:type:`Cluster::Node`
+                                                
+                                                  lb_filter: :zeek:type:`string` :zeek:attr:`&optional`
+                                                    A BPF filter for load balancing traffic sniffed on a single
+                                                    interface across a number of processes.
+=============================================== ===============================================================
 
 
 Detailed Interface

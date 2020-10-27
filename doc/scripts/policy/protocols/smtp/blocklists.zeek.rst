@@ -19,9 +19,15 @@ Runtime Options
 
 Redefinitions
 #############
-============================================ =
+============================================ ===================================================================
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`SMTP::Blocklist_Blocked_Host`:
+                                               The originator's address is seen in the block list error message.
+                                             
+                                             * :zeek:enum:`SMTP::Blocklist_Error_Message`:
+                                               An SMTP server sent a reply mentioning an SMTP block list.
+============================================ ===================================================================
 
 
 Detailed Interface

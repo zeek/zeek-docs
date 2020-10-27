@@ -23,9 +23,15 @@ Runtime Options
 
 Redefinitions
 #############
-=========================================== =
+=========================================== ==============================================================================
 :zeek:type:`DPD::Info`: :zeek:type:`record` 
-=========================================== =
+                                            
+                                            :New Fields: :zeek:type:`DPD::Info`
+                                            
+                                              packet_segment: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+                                                A chunk of the payload that most likely resulted in the
+                                                protocol violation.
+=========================================== ==============================================================================
 
 
 Detailed Interface

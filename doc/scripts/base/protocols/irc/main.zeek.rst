@@ -20,11 +20,18 @@ Types
 
 Redefinitions
 #############
-==================================================================== =
+==================================================================== ====================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`IRC::LOG`
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       irc: :zeek:type:`IRC::Info` :zeek:attr:`&optional`
+                                                                         IRC session information.
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== =
+==================================================================== ====================================================
 
 Events
 ######

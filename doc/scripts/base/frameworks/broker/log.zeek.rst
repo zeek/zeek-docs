@@ -21,6 +21,8 @@ Redefinitions
 #############
 ======================================= =====================================
 :zeek:type:`Log::ID`: :zeek:type:`enum` The Broker logging stream identifier.
+                                        
+                                        * :zeek:enum:`Broker::LOG`
 ======================================= =====================================
 
 Hooks

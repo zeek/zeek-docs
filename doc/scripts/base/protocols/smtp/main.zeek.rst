@@ -25,11 +25,19 @@ Types
 
 Redefinitions
 #############
-==================================================================== =
+==================================================================== =============================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`SMTP::LOG`
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       smtp: :zeek:type:`SMTP::Info` :zeek:attr:`&optional`
+                                                                     
+                                                                       smtp_state: :zeek:type:`SMTP::State` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== =
+==================================================================== =============================================================
 
 Events
 ######

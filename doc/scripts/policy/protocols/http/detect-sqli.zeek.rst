@@ -26,10 +26,27 @@ Redefinable Options
 
 Redefinitions
 #############
-============================================ =
+============================================ ==============================================================
 :zeek:type:`HTTP::Tags`: :zeek:type:`enum`   
+                                             
+                                             * :zeek:enum:`HTTP::COOKIE_SQLI`:
+                                               Indicator of a cookie based SQL injection attack.
+                                             
+                                             * :zeek:enum:`HTTP::POST_SQLI`:
+                                               Indicator of client body based SQL injection attack.
+                                             
+                                             * :zeek:enum:`HTTP::URI_SQLI`:
+                                               Indicator of a URI based SQL injection attack.
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`HTTP::SQL_Injection_Attacker`:
+                                               Indicates that a host performing SQL injection attacks was
+                                               detected.
+                                             
+                                             * :zeek:enum:`HTTP::SQL_Injection_Victim`:
+                                               Indicates that a host was seen to have SQL injection attacks
+                                               against it.
+============================================ ==============================================================
 
 Hooks
 #####

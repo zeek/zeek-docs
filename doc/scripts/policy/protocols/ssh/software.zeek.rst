@@ -14,9 +14,15 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-============================================== =
+============================================== =======================================================
 :zeek:type:`Software::Type`: :zeek:type:`enum` 
-============================================== =
+                                               
+                                               * :zeek:enum:`SSH::CLIENT`:
+                                                 Identifier for SSH servers in the software framework.
+                                               
+                                               * :zeek:enum:`SSH::SERVER`:
+                                                 Identifier for SSH clients in the software framework.
+============================================== =======================================================
 
 
 Detailed Interface

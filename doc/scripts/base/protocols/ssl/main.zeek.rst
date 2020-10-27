@@ -36,12 +36,22 @@ Types
 
 Redefinitions
 #############
-==================================================================== =
+==================================================================== =============================================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`SSL::LOG`
 :zeek:type:`SSL::Info`: :zeek:type:`record`                          
+                                                                     
+                                                                     :New Fields: :zeek:type:`SSL::Info`
+                                                                     
+                                                                       delay_tokens: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       ssl: :zeek:type:`SSL::Info` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== =
+==================================================================== =============================================================================
 
 Events
 ######

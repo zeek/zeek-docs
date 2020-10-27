@@ -13,10 +13,26 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-=============================================================================== =
+=============================================================================== ==========================================================
 :zeek:type:`OpenFlow::ControllerState`: :zeek:type:`record` :zeek:attr:`&redef` 
+                                                                                
+                                                                                :New Fields: :zeek:type:`OpenFlow::ControllerState`
+                                                                                
+                                                                                  broker_host: :zeek:type:`addr` :zeek:attr:`&optional`
+                                                                                    Controller ip.
+                                                                                
+                                                                                  broker_port: :zeek:type:`port` :zeek:attr:`&optional`
+                                                                                    Controller listen port.
+                                                                                
+                                                                                  broker_dpid: :zeek:type:`count` :zeek:attr:`&optional`
+                                                                                    OpenFlow switch datapath id.
+                                                                                
+                                                                                  broker_topic: :zeek:type:`string` :zeek:attr:`&optional`
+                                                                                    Topic to send events for this controller to.
 :zeek:type:`OpenFlow::Plugin`: :zeek:type:`enum`                                
-=============================================================================== =
+                                                                                
+                                                                                * :zeek:enum:`OpenFlow::BROKER`
+=============================================================================== ==========================================================
 
 Events
 ######

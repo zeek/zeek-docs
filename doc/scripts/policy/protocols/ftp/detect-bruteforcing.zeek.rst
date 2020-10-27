@@ -23,9 +23,13 @@ Redefinable Options
 
 Redefinitions
 #############
-============================================ =
+============================================ ==============================================================
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`FTP::Bruteforcing`:
+                                               Indicates a host bruteforcing FTP logins by watching for too
+                                               many rejected usernames or failed passwords.
+============================================ ==============================================================
 
 
 Detailed Interface

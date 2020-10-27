@@ -40,6 +40,8 @@ Redefinitions
 #############
 ==================================================================== =====================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              The tunnel logging stream identifier.
+                                                                     
+                                                                     * :zeek:enum:`Tunnel::LOG`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
 ==================================================================== =====================================
 

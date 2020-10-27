@@ -21,9 +21,17 @@ Types
 
 Redefinitions
 #############
-========================================================= =
+========================================================= =============================================================================
 :zeek:type:`NetControl::PluginState`: :zeek:type:`record` 
-========================================================= =
+                                                          
+                                                          :New Fields: :zeek:type:`NetControl::PluginState`
+                                                          
+                                                            broker_config: :zeek:type:`NetControl::BrokerConfig` :zeek:attr:`&optional`
+                                                              OpenFlow controller for NetControl Broker plugin.
+                                                          
+                                                            broker_id: :zeek:type:`count` :zeek:attr:`&optional`
+                                                              The ID of this broker instance - for the mapping to PluginStates.
+========================================================= =============================================================================
 
 Events
 ######

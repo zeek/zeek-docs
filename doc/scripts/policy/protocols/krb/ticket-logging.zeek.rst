@@ -13,9 +13,17 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-=========================================== =
+=========================================== ===========================================================================
 :zeek:type:`KRB::Info`: :zeek:type:`record` 
-=========================================== =
+                                            
+                                            :New Fields: :zeek:type:`KRB::Info`
+                                            
+                                              auth_ticket: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+                                                Hash of ticket used to authorize request/transaction
+                                            
+                                              new_ticket: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+                                                Hash of ticket returned by the KDC
+=========================================== ===========================================================================
 
 
 Detailed Interface

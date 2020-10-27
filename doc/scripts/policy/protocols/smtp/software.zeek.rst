@@ -30,10 +30,22 @@ Runtime Options
 
 Redefinitions
 #############
-============================================== =
+============================================== ======================================================================================================
 :zeek:type:`SMTP::Info`: :zeek:type:`record`   
+                                               
+                                               :New Fields: :zeek:type:`SMTP::Info`
+                                               
+                                                 is_webmail: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+                                                   Boolean indicator of if the message was sent through a
+                                                   webmail interface.
 :zeek:type:`Software::Type`: :zeek:type:`enum` 
-============================================== =
+                                               
+                                               * :zeek:enum:`SMTP::MAIL_CLIENT`
+                                               
+                                               * :zeek:enum:`SMTP::MAIL_SERVER`
+                                               
+                                               * :zeek:enum:`SMTP::WEBMAIL_SERVER`
+============================================== ======================================================================================================
 
 
 Detailed Interface
