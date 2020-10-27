@@ -20,9 +20,14 @@ Runtime Options
 
 Redefinitions
 #############
-============================================== =
+============================================== =============================================================
 :zeek:type:`Notice::Action`: :zeek:type:`enum` 
-============================================== =
+                                               
+                                               * :zeek:enum:`Notice::ACTION_PAGE`:
+                                                 Indicates that the notice should be sent to the pager email
+                                                 address configured in the :zeek:id:`Notice::mail_page_dest`
+                                                 variable.
+============================================== =============================================================
 
 
 Detailed Interface

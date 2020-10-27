@@ -19,9 +19,23 @@ Types
 
 Redefinitions
 #############
-============================================== =
+============================================== ==========================================================================================
 :zeek:type:`Queue::Queue`: :zeek:type:`record` 
-============================================== =
+                                               
+                                               :New Fields: :zeek:type:`Queue::Queue`
+                                               
+                                                 initialized: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+                                               
+                                                 vals: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`any` :zeek:attr:`&optional`
+                                               
+                                                 settings: :zeek:type:`Queue::Settings` :zeek:attr:`&optional`
+                                               
+                                                 top: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+                                               
+                                                 bottom: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+                                               
+                                                 size: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+============================================== ==========================================================================================
 
 Functions
 #########

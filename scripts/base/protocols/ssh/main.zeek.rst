@@ -28,12 +28,27 @@ Types
 
 Redefinitions
 #############
-==================================================================== ===========================================
+==================================================================== ================================================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              The SSH protocol logging stream identifier.
+                                                                     
+                                                                     * :zeek:enum:`SSH::LOG`
 :zeek:type:`SSH::Info`: :zeek:type:`record`                          
+                                                                     
+                                                                     :New Fields: :zeek:type:`SSH::Info`
+                                                                     
+                                                                       logged: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+                                                                     
+                                                                       capabilities: :zeek:type:`SSH::Capabilities` :zeek:attr:`&optional`
+                                                                     
+                                                                       analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
+                                                                         Analzyer ID
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       ssh: :zeek:type:`SSH::Info` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== ===========================================
+==================================================================== ================================================================================
 
 Events
 ######

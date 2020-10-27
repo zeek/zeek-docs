@@ -28,11 +28,19 @@ Types
 
 Redefinitions
 #############
-==================================================================== =
+==================================================================== ===========================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`SIP::LOG`
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       sip: :zeek:type:`SIP::Info` :zeek:attr:`&optional`
+                                                                     
+                                                                       sip_state: :zeek:type:`SIP::State` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== =
+==================================================================== ===========================================================
 
 Events
 ######

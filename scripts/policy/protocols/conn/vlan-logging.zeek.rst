@@ -13,9 +13,17 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-============================================ =
+============================================ =======================================================================
 :zeek:type:`Conn::Info`: :zeek:type:`record` 
-============================================ =
+                                             
+                                             :New Fields: :zeek:type:`Conn::Info`
+                                             
+                                               vlan: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
+                                                 The outer VLAN for this connection, if applicable.
+                                             
+                                               inner_vlan: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
+                                                 The inner VLAN for this connection, if applicable.
+============================================ =======================================================================
 
 
 Detailed Interface

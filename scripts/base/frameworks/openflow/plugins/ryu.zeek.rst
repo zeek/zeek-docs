@@ -13,10 +13,26 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-=============================================================================== =
+=============================================================================== ===================================================================================
 :zeek:type:`OpenFlow::ControllerState`: :zeek:type:`record` :zeek:attr:`&redef` 
+                                                                                
+                                                                                :New Fields: :zeek:type:`OpenFlow::ControllerState`
+                                                                                
+                                                                                  ryu_host: :zeek:type:`addr` :zeek:attr:`&optional`
+                                                                                    Controller ip.
+                                                                                
+                                                                                  ryu_port: :zeek:type:`count` :zeek:attr:`&optional`
+                                                                                    Controller listen port.
+                                                                                
+                                                                                  ryu_dpid: :zeek:type:`count` :zeek:attr:`&optional`
+                                                                                    OpenFlow switch datapath id.
+                                                                                
+                                                                                  ryu_debug: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+                                                                                    Enable debug mode - output JSON to stdout; do not perform actions.
 :zeek:type:`OpenFlow::Plugin`: :zeek:type:`enum`                                
-=============================================================================== =
+                                                                                
+                                                                                * :zeek:enum:`OpenFlow::RYU`
+=============================================================================== ===================================================================================
 
 Functions
 #########

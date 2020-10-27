@@ -26,9 +26,17 @@ Redefinable Options
 
 Redefinitions
 #############
-============================================ =
+============================================ ==============================================================
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`Scan::Address_Scan`:
+                                               Address scans detect that a host appears to be scanning some
+                                               number of destinations on a single port.
+                                             
+                                             * :zeek:enum:`Scan::Port_Scan`:
+                                               Port scans detect that an attacking host appears to be
+                                               scanning a single victim host on several ports.
+============================================ ==============================================================
 
 Hooks
 #####

@@ -27,12 +27,22 @@ Types
 
 Redefinitions
 #############
-======================================================================= =
+======================================================================= =======================================================================================================================
 :zeek:id:`DPD::ignore_violations`: :zeek:type:`set` :zeek:attr:`&redef` 
 :zeek:type:`Log::ID`: :zeek:type:`enum`                                 
+                                                                        
+                                                                        * :zeek:enum:`DCE_RPC::LOG`
 :zeek:type:`connection`: :zeek:type:`record`                            
+                                                                        
+                                                                        :New Fields: :zeek:type:`connection`
+                                                                        
+                                                                          dce_rpc: :zeek:type:`DCE_RPC::Info` :zeek:attr:`&optional`
+                                                                        
+                                                                          dce_rpc_state: :zeek:type:`DCE_RPC::State` :zeek:attr:`&optional`
+                                                                        
+                                                                          dce_rpc_backing: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`DCE_RPC::BackingState` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef`    
-======================================================================= =
+======================================================================= =======================================================================================================================
 
 Hooks
 #####

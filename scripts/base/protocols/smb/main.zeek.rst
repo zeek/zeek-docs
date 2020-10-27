@@ -31,8 +31,26 @@ Redefinitions
 #############
 ==================================================================== ============================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`SMB::AUTH_LOG`
+                                                                     
+                                                                     * :zeek:enum:`SMB::FILES_LOG`
+                                                                     
+                                                                     * :zeek:enum:`SMB::MAPPING_LOG`
 :zeek:type:`SMB::FileInfo`: :zeek:type:`record`                      
+                                                                     
+                                                                     :New Fields: :zeek:type:`SMB::FileInfo`
+                                                                     
+                                                                       fid: :zeek:type:`count` :zeek:attr:`&optional`
+                                                                         ID referencing this file.
+                                                                     
+                                                                       uuid: :zeek:type:`string` :zeek:attr:`&optional`
+                                                                         UUID referencing this file if DCE/RPC.
 :zeek:type:`connection`: :zeek:type:`record`                         Everything below here is used internally in the SMB scripts.
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       smb_state: :zeek:type:`SMB::State` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
 ==================================================================== ============================================================
 

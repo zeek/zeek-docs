@@ -31,6 +31,8 @@ Redefinitions
 #############
 ======================================= =======================================
 :zeek:type:`Log::ID`: :zeek:type:`enum` The reporter logging stream identifier.
+                                        
+                                        * :zeek:enum:`Reporter::LOG`
 ======================================= =======================================
 
 Hooks

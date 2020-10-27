@@ -83,10 +83,17 @@ Types
 
 Redefinitions
 #############
-======================================================================================= =
+======================================================================================= =============================================================
 :zeek:type:`Log::Filter`: :zeek:type:`record`                                           
+                                                                                        
+                                                                                        :New Fields: :zeek:type:`Log::Filter`
+                                                                                        
+                                                                                          policy: :zeek:type:`Log::PolicyHook` :zeek:attr:`&optional`
+                                                                                            Policy hooks can adjust log entry values and veto
+                                                                                            the writing of a log entry for the record passed
+                                                                                            into it.
 :zeek:id:`Log::default_rotation_postprocessors`: :zeek:type:`table` :zeek:attr:`&redef` 
-======================================================================================= =
+======================================================================================= =============================================================
 
 Events
 ######

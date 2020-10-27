@@ -16,9 +16,15 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-============================================== =
+============================================== ===============================================================
 :zeek:type:`Notice::Action`: :zeek:type:`enum` 
-============================================== =
+                                               
+                                               * :zeek:enum:`Notice::ACTION_EMAIL_ADMIN`:
+                                                 Indicate that the generated email should be addressed to the 
+                                                 appropriate email addresses as found by the
+                                                 :zeek:id:`Site::get_emails` function based on the relevant 
+                                                 address or addresses indicated in the notice.
+============================================== ===============================================================
 
 
 Detailed Interface

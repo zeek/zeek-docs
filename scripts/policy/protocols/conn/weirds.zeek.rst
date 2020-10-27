@@ -17,9 +17,15 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-============================================ =
+============================================ ===================================================
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`Conn::Content_Gap`:
+                                               Data has sequence hole; perhaps due to filtering.
+                                             
+                                             * :zeek:enum:`Conn::Retransmission_Inconsistency`:
+                                               Possible evasion; usually just chud.
+============================================ ===================================================
 
 
 Detailed Interface

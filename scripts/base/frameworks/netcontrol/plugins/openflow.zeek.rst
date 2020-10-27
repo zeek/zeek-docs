@@ -28,9 +28,17 @@ Types
 
 Redefinitions
 #############
-========================================================= =
+========================================================= =========================================================================
 :zeek:type:`NetControl::PluginState`: :zeek:type:`record` 
-========================================================= =
+                                                          
+                                                          :New Fields: :zeek:type:`NetControl::PluginState`
+                                                          
+                                                            of_controller: :zeek:type:`OpenFlow::Controller` :zeek:attr:`&optional`
+                                                              OpenFlow controller for NetControl OpenFlow plugin.
+                                                          
+                                                            of_config: :zeek:type:`NetControl::OfConfig` :zeek:attr:`&optional`
+                                                              OpenFlow configuration record that is passed on initialization.
+========================================================= =========================================================================
 
 Functions
 #########

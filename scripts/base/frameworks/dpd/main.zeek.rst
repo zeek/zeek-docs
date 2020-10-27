@@ -28,10 +28,18 @@ Types
 
 Redefinitions
 #############
-============================================ ======================================
+============================================ ===========================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`      Add the DPD logging stream identifier.
+                                             
+                                             * :zeek:enum:`DPD::LOG`
 :zeek:type:`connection`: :zeek:type:`record` 
-============================================ ======================================
+                                             
+                                             :New Fields: :zeek:type:`connection`
+                                             
+                                               dpd: :zeek:type:`DPD::Info` :zeek:attr:`&optional`
+                                             
+                                               dpd_state: :zeek:type:`DPD::State` :zeek:attr:`&optional`
+============================================ ===========================================================
 
 Hooks
 #####

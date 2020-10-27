@@ -24,11 +24,23 @@ Types
 
 Redefinitions
 #############
-==================================================================== =
+==================================================================== =============================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`MQTT::CONNECT_LOG`
+                                                                     
+                                                                     * :zeek:enum:`MQTT::PUBLISH_LOG`
+                                                                     
+                                                                     * :zeek:enum:`MQTT::SUBSCRIBE_LOG`
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       mqtt: :zeek:type:`MQTT::ConnectInfo` :zeek:attr:`&optional`
+                                                                     
+                                                                       mqtt_state: :zeek:type:`MQTT::State` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== =
+==================================================================== =============================================================
 
 Events
 ######

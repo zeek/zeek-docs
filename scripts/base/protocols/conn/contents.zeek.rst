@@ -33,9 +33,15 @@ Runtime Options
 
 Redefinitions
 #############
-============================================ =
+============================================ ==================================================================================================================
 :zeek:type:`connection`: :zeek:type:`record` 
-============================================ =
+                                             
+                                             :New Fields: :zeek:type:`connection`
+                                             
+                                               extract_orig: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Conn::default_extract` :zeek:attr:`&optional`
+                                             
+                                               extract_resp: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Conn::default_extract` :zeek:attr:`&optional`
+============================================ ==================================================================================================================
 
 
 Detailed Interface

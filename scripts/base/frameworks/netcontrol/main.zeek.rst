@@ -31,10 +31,26 @@ Types
 
 Redefinitions
 #############
-================================================== ==========================================
+================================================== ===================================================================================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`            The framework's logging stream identifier.
+                                                   
+                                                   * :zeek:enum:`NetControl::LOG`
 :zeek:type:`NetControl::Rule`: :zeek:type:`record` 
-================================================== ==========================================
+                                                   
+                                                   :New Fields: :zeek:type:`NetControl::Rule`
+                                                   
+                                                     _plugin_ids: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+                                                       Internally set to the plugins handling the rule.
+                                                   
+                                                     _active_plugin_ids: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+                                                       Internally set to the plugins on which the rule is currently active.
+                                                   
+                                                     _no_expire_plugins: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+                                                       Internally set to plugins where the rule should not be removed upon timeout.
+                                                   
+                                                     _added: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+                                                       Track if the rule was added successfully by all responsible plugins.
+================================================== ===================================================================================================================
 
 Events
 ######

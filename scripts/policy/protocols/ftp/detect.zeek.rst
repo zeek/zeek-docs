@@ -13,9 +13,13 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-============================================ =
+============================================ ========================================================
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`FTP::Site_Exec_Success`:
+                                               Indicates that a successful response to a "SITE EXEC" 
+                                               command/arg pair was seen.
+============================================ ========================================================
 
 
 Detailed Interface

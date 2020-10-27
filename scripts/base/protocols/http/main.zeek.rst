@@ -33,11 +33,19 @@ Types
 
 Redefinitions
 #############
-==================================================================== =
+==================================================================== =============================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
+                                                                     
+                                                                     * :zeek:enum:`HTTP::LOG`
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       http: :zeek:type:`HTTP::Info` :zeek:attr:`&optional`
+                                                                     
+                                                                       http_state: :zeek:type:`HTTP::State` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== =
+==================================================================== =============================================================
 
 Events
 ######

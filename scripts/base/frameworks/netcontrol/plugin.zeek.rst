@@ -22,6 +22,11 @@ Redefinitions
 #############
 ========================================================= ========================================================================
 :zeek:type:`NetControl::PluginState`: :zeek:type:`record` Table for a plugin to store instance-specific configuration information.
+                                                          
+                                                          :New Fields: :zeek:type:`NetControl::PluginState`
+                                                          
+                                                            plugin: :zeek:type:`NetControl::Plugin` :zeek:attr:`&optional`
+                                                              The plugin that the state belongs to.
 ========================================================= ========================================================================
 
 

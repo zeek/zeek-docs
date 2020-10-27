@@ -40,10 +40,20 @@ Types
 
 Redefinitions
 #############
-============================================ =
+============================================ =============================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`      
+                                             
+                                             * :zeek:enum:`CaptureLoss::LOG`
 :zeek:type:`Notice::Type`: :zeek:type:`enum` 
-============================================ =
+                                             
+                                             * :zeek:enum:`CaptureLoss::Too_Little_Traffic`:
+                                               Report if the traffic seen by a peer within a given watch
+                                               interval is less than :zeek:id:`CaptureLoss::minimum_acks`.
+                                             
+                                             * :zeek:enum:`CaptureLoss::Too_Much_Loss`:
+                                               Report if the detected capture loss exceeds the percentage
+                                               threshold defined in :zeek:id:`CaptureLoss::too_much_loss`.
+============================================ =============================================================
 
 Hooks
 #####

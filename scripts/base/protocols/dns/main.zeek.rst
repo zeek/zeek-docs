@@ -37,11 +37,19 @@ Types
 
 Redefinitions
 #############
-==================================================================== ==================================
+==================================================================== ===========================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              The DNS logging stream identifier.
+                                                                     
+                                                                     * :zeek:enum:`DNS::LOG`
 :zeek:type:`connection`: :zeek:type:`record`                         
+                                                                     
+                                                                     :New Fields: :zeek:type:`connection`
+                                                                     
+                                                                       dns: :zeek:type:`DNS::Info` :zeek:attr:`&optional`
+                                                                     
+                                                                       dns_state: :zeek:type:`DNS::State` :zeek:attr:`&optional`
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef` 
-==================================================================== ==================================
+==================================================================== ===========================================================
 
 Events
 ######

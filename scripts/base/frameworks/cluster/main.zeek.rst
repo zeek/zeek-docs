@@ -77,6 +77,8 @@ Redefinitions
 #############
 ======================================= ======================================
 :zeek:type:`Log::ID`: :zeek:type:`enum` The cluster logging stream identifier.
+                                        
+                                        * :zeek:enum:`Cluster::LOG`
 ======================================= ======================================
 
 Events

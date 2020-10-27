@@ -23,10 +23,20 @@ Runtime Options
 
 Redefinitions
 #############
-============================================== =
+============================================== =====================================================================================
 :zeek:type:`Notice::Action`: :zeek:type:`enum` 
+                                               
+                                               * :zeek:enum:`Notice::ACTION_ADD_GEODATA`:
+                                                 Indicates that the notice should have geodata added for the
+                                                 "remote" host.
 :zeek:type:`Notice::Info`: :zeek:type:`record` 
-============================================== =
+                                               
+                                               :New Fields: :zeek:type:`Notice::Info`
+                                               
+                                                 remote_location: :zeek:type:`geo_location` :zeek:attr:`&log` :zeek:attr:`&optional`
+                                                   If GeoIP support is built in, notices can have geographic
+                                                   information attached to them.
+============================================== =====================================================================================
 
 
 Detailed Interface
