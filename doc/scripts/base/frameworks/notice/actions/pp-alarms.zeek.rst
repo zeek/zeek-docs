@@ -4,7 +4,7 @@ base/frameworks/notice/actions/pp-alarms.zeek
 =============================================
 .. zeek:namespace:: Notice
 
-Notice extension that mails out a pretty-printed version of alarm.log
+Notice extension that mails out a pretty-printed version of notice_alarm.log
 in regular intervals, formatted for better human readability. If activated,
 that replaces the default summary mail having the raw log output.
 

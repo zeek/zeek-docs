@@ -247,8 +247,8 @@ Types
       .. zeek:enum:: Notice::ACTION_ALARM Notice::Action
 
          Indicates that the notice should be alarmed.  A readable
-         ASCII version of the alarm log is emailed in bulk to the
-         address(es) configured in :zeek:id:`Notice::mail_dest`.
+         ASCII version is saved in notice_alarm log, and emailed
+         in bulk to the address(es) configured in :zeek:id:`Notice::mail_dest`.
 
       .. zeek:enum:: Notice::ACTION_DROP Notice::Action
 
