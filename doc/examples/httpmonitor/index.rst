@@ -36,7 +36,7 @@ example, the columns on the line below (shortened for brevity) show a
 request to the root of Zeek website::
 
     # method   host         uri  referrer  user_agent
-    GET        zeek.org  /    -         <...>Chrome/12.0.742.122<...>
+    GET        zeek.org     /    -         <...>Chrome/12.0.742.122<...>
 
 Network administrators and security engineers, for instance, can use the
 information in this log to understand the HTTP activity on the network
