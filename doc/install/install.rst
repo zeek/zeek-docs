@@ -1,9 +1,9 @@
-.. _CMake: http://www.cmake.org
+.. _CMake: https://www.cmake.org
 .. _SWIG: http://www.swig.org
 .. _Xcode: https://developer.apple.com/xcode/
 .. _MacPorts: http://www.macports.org
 .. _Fink: http://www.finkproject.org
-.. _Homebrew: http://brew.sh
+.. _Homebrew: https://brew.sh
 .. _downloads page: https://zeek.org/get-zeek
 .. _devtoolset: https://developers.redhat.com/products/developertoolset/hello-world
 
@@ -26,7 +26,7 @@ Zeek requires the following libraries and tools to be installed
 before you begin:
 
     * Libpcap                           (http://www.tcpdump.org)
-    * OpenSSL libraries                 (http://www.openssl.org)
+    * OpenSSL libraries                 (https://www.openssl.org)
     * BIND8 library
     * Libz
     * Bash (for ZeekControl)
@@ -34,7 +34,7 @@ before you begin:
 
 To build Zeek from source, the following additional dependencies are required:
 
-    * CMake 3.0 or greater              (http://www.cmake.org)
+    * CMake 3.0 or greater              (https://www.cmake.org)
     * Make
     * C/C++ compiler with C++17 support (GCC 7+ or Clang 4+)
     * SWIG                              (http://www.swig.org)
