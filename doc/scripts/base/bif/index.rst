@@ -53,6 +53,9 @@ Package: base/bif
 
    The BIFs that define the Zeek supervisor control interface.
 
+:doc:`/scripts/base/bif/packet_analysis.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek`
 
 

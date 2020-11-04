@@ -16,7 +16,6 @@ base/init-bare.zeek
 .. zeek:namespace:: NTLM
 .. zeek:namespace:: NTP
 .. zeek:namespace:: PE
-.. zeek:namespace:: PacketAnalyzer
 .. zeek:namespace:: Pcap
 .. zeek:namespace:: RADIUS
 .. zeek:namespace:: RDP
@@ -36,8 +35,8 @@ base/init-bare.zeek
 .. zeek:namespace:: X509
 
 
-:Namespaces: BinPAC, Cluster, DCE_RPC, DHCP, GLOBAL, JSON, KRB, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, PacketAnalyzer, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SNMP, SOCKS, SSH, SSL, TCP, Threading, Tunnel, Unified2, Weird, X509
-:Imports: :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`, :doc:`base/packet-protocols </scripts/base/packet-protocols/index>`
+:Namespaces: BinPAC, Cluster, DCE_RPC, DHCP, GLOBAL, JSON, KRB, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SNMP, SOCKS, SSH, SSL, TCP, Threading, Tunnel, Unified2, Weird, X509
+:Imports: :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/packet_analysis.bif.zeek </scripts/base/bif/packet_analysis.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`, :doc:`base/packet-protocols </scripts/base/packet-protocols/index>`
 
 Summary
 ~~~~~~~
@@ -443,9 +442,6 @@ Types
 :zeek:type:`PE::FileHeader`: :zeek:type:`record`                              
 :zeek:type:`PE::OptionalHeader`: :zeek:type:`record`                          
 :zeek:type:`PE::SectionHeader`: :zeek:type:`record`                           Record for Portable Executable (PE) section headers.
-:zeek:type:`PacketAnalyzer::DispatchEntry`: :zeek:type:`record`               
-:zeek:type:`PacketAnalyzer::DispatchMap`: :zeek:type:`table`                  A packet analyzer may extract a numeric identifier, which can be found in the
-                                                                              packet data and denotes the encapsulated protocol.
 :zeek:type:`PacketSource`: :zeek:type:`record`                                Properties of an I/O packet source being read by Zeek.
 :zeek:type:`Pcap::Interface`: :zeek:type:`record`                             The definition of a "pcap interface".
 :zeek:type:`Pcap::Interfaces`: :zeek:type:`set`                               
@@ -818,8 +814,8 @@ Runtime Options
    :Default: ``{}``
 
    Checksums are ignored for all packets with a src address within this set of
-   networks. Useful for cases where a host might be seeing packets collected 
-   from local hosts before checksums were applied by hardware. This frequently 
+   networks. Useful for cases where a host might be seeing packets collected
+   from local hosts before checksums were applied by hardware. This frequently
    manifests when sniffing a local management interface on a host and Zeek sees
    packets before the hardware has had a chance to apply the checksums.
 
@@ -5087,22 +5083,6 @@ Types
          Bit-flags that describe the characteristics of the section.
 
    Record for Portable Executable (PE) section headers.
-
-.. zeek:type:: PacketAnalyzer::DispatchEntry
-
-   :Type: :zeek:type:`record`
-
-      analyzer: :zeek:type:`PacketAnalyzer::Tag`
-         The analyzer to dispatch.
-
-
-.. zeek:type:: PacketAnalyzer::DispatchMap
-
-   :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`PacketAnalyzer::DispatchEntry`
-
-   A packet analyzer may extract a numeric identifier, which can be found in the
-   packet data and denotes the encapsulated protocol. A DispatchMap allows to map
-   the identifier to a child analyzer, which is defined using a DispatchEntry.
 
 .. zeek:type:: PacketSource
 

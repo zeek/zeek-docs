@@ -9,35 +9,7 @@ base/packet-protocols/pppoe/main.zeek
 
 Summary
 ~~~~~~~
-Redefinable Options
-###################
-============================================================================================================ ===================
-:zeek:id:`PacketAnalyzer::PPPOE::dispatch_map`: :zeek:type:`PacketAnalyzer::DispatchMap` :zeek:attr:`&redef` Identifier mappings
-============================================================================================================ ===================
-
-Redefinitions
-#############
-============================================================================================================ =
-:zeek:id:`PacketAnalyzer::PPPOE::dispatch_map`: :zeek:type:`PacketAnalyzer::DispatchMap` :zeek:attr:`&redef` 
-============================================================================================================ =
-
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
-Redefinable Options
-###################
-.. zeek:id:: PacketAnalyzer::PPPOE::dispatch_map
-
-   :Type: :zeek:type:`PacketAnalyzer::DispatchMap`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``{}``
-   :Redefinition: from :doc:`/scripts/base/packet-protocols/pppoe/main.zeek`
-
-      ``+=``::
-
-         33 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), 87 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; })
-
-
-   Identifier mappings
-
 

@@ -9,35 +9,7 @@ base/packet-protocols/linux_sll/main.zeek
 
 Summary
 ~~~~~~~
-Redefinable Options
-###################
-=============================================================================================================== ======================================
-:zeek:id:`PacketAnalyzer::LINUXSLL::dispatch_map`: :zeek:type:`PacketAnalyzer::DispatchMap` :zeek:attr:`&redef` Identifier mappings based on EtherType
-=============================================================================================================== ======================================
-
-Redefinitions
-#############
-=============================================================================================================== =
-:zeek:id:`PacketAnalyzer::LINUXSLL::dispatch_map`: :zeek:type:`PacketAnalyzer::DispatchMap` :zeek:attr:`&redef` 
-=============================================================================================================== =
-
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
-Redefinable Options
-###################
-.. zeek:id:: PacketAnalyzer::LINUXSLL::dispatch_map
-
-   :Type: :zeek:type:`PacketAnalyzer::DispatchMap`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``{}``
-   :Redefinition: from :doc:`/scripts/base/packet-protocols/linux_sll/main.zeek`
-
-      ``+=``::
-
-         2048 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), 34525 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), 2054 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_ARP] to record { analyzer:enum; }), 32821 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_ARP] to record { analyzer:enum; })
-
-
-   Identifier mappings based on EtherType
-
 
