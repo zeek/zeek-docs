@@ -9,35 +9,7 @@ base/packet-protocols/nflog/main.zeek
 
 Summary
 ~~~~~~~
-Redefinable Options
-###################
-============================================================================================================ ===================
-:zeek:id:`PacketAnalyzer::NFLOG::dispatch_map`: :zeek:type:`PacketAnalyzer::DispatchMap` :zeek:attr:`&redef` Identifier mappings
-============================================================================================================ ===================
-
-Redefinitions
-#############
-============================================================================================================ =
-:zeek:id:`PacketAnalyzer::NFLOG::dispatch_map`: :zeek:type:`PacketAnalyzer::DispatchMap` :zeek:attr:`&redef` 
-============================================================================================================ =
-
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
-Redefinable Options
-###################
-.. zeek:id:: PacketAnalyzer::NFLOG::dispatch_map
-
-   :Type: :zeek:type:`PacketAnalyzer::DispatchMap`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``{}``
-   :Redefinition: from :doc:`/scripts/base/packet-protocols/nflog/main.zeek`
-
-      ``+=``::
-
-         PacketAnalyzer::NFLOG::AF_INET = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; }), PacketAnalyzer::NFLOG::AF_INET6 = (coerce [$analyzer=PacketAnalyzer::ANALYZER_IP] to record { analyzer:enum; })
-
-
-   Identifier mappings
-
 

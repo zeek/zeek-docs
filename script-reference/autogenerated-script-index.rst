@@ -11,6 +11,7 @@
    base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>
    base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>
    base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>
+   base/bif/packet_analysis.bif.zeek </scripts/base/bif/packet_analysis.bif.zeek>
    base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>
    base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>
    base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>
