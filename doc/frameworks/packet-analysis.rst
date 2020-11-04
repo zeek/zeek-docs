@@ -49,8 +49,8 @@ protocol and continue the analysis.
 Packet Analyzer Configuration
 =============================
 
-Packet analyzers can be configured using script-land constants. The following
-script shows configuration of the Ethernet packet analyzer:
+The following script shows an example configuration of the Ethernet packet
+analyzer:
 
 .. literalinclude:: packet-analysis-1-ethernet.zeek
    :caption:
@@ -58,9 +58,10 @@ script shows configuration of the Ethernet packet analyzer:
    :linenos:
    :tab-width: 4
 
-The ``dispatch_map`` of type :zeek:see:`PacketAnalyzer::DispatchMap`
-is defined with mappings from EtherTypes to packet analyzers. For example, for
-EtherType ``0x8864``, the packet's payload is passed to the PPPoE analyzer.
+Within :zeek:see:`zeek_init`, various EtherType-to-PacketAnalyzer mappings are
+registered by using :zeek:see:`PacketAnalyzer::register_packet_analyzer`.  For
+example, for EtherType ``0x8864``, the packet's payload is passed to the PPPoE
+analyzer.
 
 The ``default_analyzer`` analyzer specifies which packet analyzer to use if
 none of the mappings matched. In case of Ethernet, we try to fall back to IP.
@@ -69,7 +70,7 @@ Furthermore, Ethernet needs to handle different types of frames, with three of
 them identified using the first payload bytes (see `Wikipedia
 <https://en.wikipedia.org/wiki/Ethernet_frame#Types>`_).
 As the EtherType needs to be interpreted with respect to the frame type in these
-cases, the Ethernet analyzer provides three additional constants,
+cases, the Ethernet analyzer provides three additional configuration parameters,
 ``snap_analyzer``, ``novell_raw_analyzer``, and ``llc_analyzer``.
 to configure analyzers that handle the different frame types.
 
@@ -78,17 +79,16 @@ to configure analyzers that handle the different frame types.
   There are a few conventions involved here:
 
   * The name of the module is expected to be ``PacketAnalyzer::<analyzer's canonical name>``.
-  * The map for dispatching is expected to be named ``dispatch_map``.
   * The default analyzer is expected to be named ``default_analyzer``.
 
 Packet analysis starts at a root analyzer that dispatches based on the link
 types obtained from the ``IOSource``. Accordingly
 :doc:`/scripts/base/packet-protocols/root/main.zeek` contains the following
-line to integrate the Ethernet analyzer:
+call to integrate the Ethernet analyzer:
 
 .. code-block:: zeek
 
-  [DLT_EN10MB] = PacketAnalyzer::DispatchEntry($analyzer=PacketAnalyzer::ANALYZER_ETHERNET)
+  PacketAnalyzer::register_packet_analyzer(PacketAnalyzer::ANALYZER_ROOT, DLT_EN10MB, PacketAnalyzer::ANALYZER_ETHERNET);
 
 Packet Analyzer API
 ===================
@@ -123,7 +123,8 @@ separate ``.bif`` file:
 Before we can expect the event to be generated, we need to integrate the
 analyzer. The configuration might be included in the scripts that are shipped
 with the packet analyzer. For example, one could add a new EtherType by
-adding a mapping to :zeek:see:`PacketAnalyzer::ETHERNET::dispatch_map`.
+adding a call to :zeek:see:`PacketAnalyzer::register_packet_analyzer` from
+within a :zeek:see:`zeek_init` event handler.
 For the LLC example we redefine one of the additional constants:
 
 .. code-block:: zeek
@@ -135,9 +136,11 @@ LLC analyzer. The ``ForwardPacket()`` method can be used to pass data to another
 packet analyzer. The method takes a pointer to the beginning of the data to
 process (usually the start of the payload in the current context), the length of
 the data to process, a pointer to the ``Packet`` object and an identifier. The
-identifier would be used to lookup the next analyzer based on the LLC analyzer's
-``dispatch_map``. If there is no match, it will fall back to the
-``default_analyzer`` if available.
+identifier would be used to lookup the next analyzer based on which other
+analyzers were previously associated with LLC as a parent analyzer in a call to
+:zeek:see:`PacketAnalyzer::register_packet_analyzer`.  If there is no
+previously-registered analyzer that matches the identifier, it will fall back
+to the ``default_analyzer`` if available.
 
 In case a packet analyzer requires initialization, e.g., reading additional
 configuration values from script-land, this can be implemented by overriding
