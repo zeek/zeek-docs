@@ -560,15 +560,18 @@ Types
 :zeek:type:`connection`: :zeek:type:`record`                                  A connection.
 :zeek:type:`count_set`: :zeek:type:`set`                                      A set of counts.
 :zeek:type:`dns_answer`: :zeek:type:`record`                                  The general part of a DNS reply.
+:zeek:type:`dns_binds_rr`: :zeek:type:`record`                                A Private RR type BINDS record.
 :zeek:type:`dns_dnskey_rr`: :zeek:type:`record`                               A DNSSEC DNSKEY record.
 :zeek:type:`dns_ds_rr`: :zeek:type:`record`                                   A DNSSEC DS record.
 :zeek:type:`dns_edns_additional`: :zeek:type:`record`                         An additional DNS EDNS record.
 :zeek:type:`dns_edns_cookie`: :zeek:type:`record`                             An DNS EDNS COOKIE (COOKIE) record.
 :zeek:type:`dns_edns_ecs`: :zeek:type:`record`                                An DNS EDNS Client Subnet (ECS) record.
 :zeek:type:`dns_edns_tcp_keepalive`: :zeek:type:`record`                      An DNS EDNS TCP KEEPALIVE (TCP KEEPALIVE) record.
+:zeek:type:`dns_loc_rr`: :zeek:type:`record`                                  A Private RR type LOC record.
 :zeek:type:`dns_mapping`: :zeek:type:`record`                                 
 :zeek:type:`dns_msg`: :zeek:type:`record`                                     A DNS message.
 :zeek:type:`dns_nsec3_rr`: :zeek:type:`record`                                A DNSSEC NSEC3 record.
+:zeek:type:`dns_nsec3param_rr`: :zeek:type:`record`                           A DNSSEC NSEC3PARAM record.
 :zeek:type:`dns_rrsig_rr`: :zeek:type:`record`                                A DNSSEC RRSIG record.
 :zeek:type:`dns_soa`: :zeek:type:`record`                                     A DNS SOA record.
 :zeek:type:`dns_tsig_additional`: :zeek:type:`record`                         An additional DNS TSIG record.
@@ -7362,6 +7365,35 @@ Types
       dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply
       dns_TXT_reply dns_WKS_reply
 
+.. zeek:type:: dns_binds_rr
+
+   :Type: :zeek:type:`record`
+
+      query: :zeek:type:`string`
+         Query.
+
+      answer_type: :zeek:type:`count`
+         Ans type.
+
+      algorithm: :zeek:type:`count`
+         Algorithm for Public Key.
+
+      key_id: :zeek:type:`count`
+         key tag.
+
+      removal_flag: :zeek:type:`count`
+         rm flag.
+
+      complte_flag: :zeek:type:`string`
+         complete flag.
+
+      is_query: :zeek:type:`count`
+         The RR is a query/Response.
+
+   A Private RR type BINDS record.
+   
+   .. zeek:see:: dns_BINDS
+
 .. zeek:type:: dns_dnskey_rr
 
    :Type: :zeek:type:`record`
@@ -7503,6 +7535,44 @@ Types
    
    .. zeek:see:: dns_EDNS_tcp_keepalive
 
+.. zeek:type:: dns_loc_rr
+
+   :Type: :zeek:type:`record`
+
+      query: :zeek:type:`string`
+         Query.
+
+      answer_type: :zeek:type:`count`
+         Ans type.
+
+      version: :zeek:type:`count`
+         version number of the representation.
+
+      size: :zeek:type:`count`
+         Diameter of a sphere enclosing the entity.
+
+      horiz_pre: :zeek:type:`count`
+         The horizontal precision of the data, in centimeters.
+
+      vert_pre: :zeek:type:`count`
+         The vertical precision of the data, in centimeters.
+
+      latitude: :zeek:type:`count`
+         The latitude of the center of the sphere.
+
+      longitude: :zeek:type:`count`
+         The longitude of the center of the sphere.
+
+      altitude: :zeek:type:`count`
+         The altitude of the center of the sphere. 
+
+      is_query: :zeek:type:`count`
+         The RR is a query/Response.
+
+   A Private RR type LOC record.
+   
+   .. zeek:see:: dns_LOC
+
 .. zeek:type:: dns_mapping
 
    :Type: :zeek:type:`record`
@@ -7622,6 +7692,38 @@ Types
    A DNSSEC NSEC3 record.
    
    .. zeek:see:: dns_NSEC3
+
+.. zeek:type:: dns_nsec3param_rr
+
+   :Type: :zeek:type:`record`
+
+      query: :zeek:type:`string`
+         Query.
+
+      answer_type: :zeek:type:`count`
+         Ans type.
+
+      nsec_flags: :zeek:type:`count`
+         flags field.
+
+      nsec_hash_algo: :zeek:type:`count`
+         Hash algorithm.
+
+      nsec_iter: :zeek:type:`count`
+         Iterations.
+
+      nsec_salt_len: :zeek:type:`count`
+         Salt length.
+
+      nsec_salt: :zeek:type:`string`
+         Salt value
+
+      is_query: :zeek:type:`count`
+         The RR is a query/Response.
+
+   A DNSSEC NSEC3PARAM record.
+   
+   .. zeek:see:: dns_NSEC3PARAM
 
 .. zeek:type:: dns_rrsig_rr
 

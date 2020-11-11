@@ -2551,6 +2551,26 @@ Events
 
    :nsec3: The parsed RDATA of Nsec3 record.
 
+.. zeek:id:: dns_NSEC3PARAM
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, nsec3param: :zeek:type:`dns_nsec3param_rr`)
+
+   Generated for DNS replies of type *NSEC3PARAM*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :nsec3param: The parsed RDATA of NSEC3PARAM record.
+
 .. zeek:id:: dns_DS
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, ds: :zeek:type:`dns_ds_rr`)
@@ -2570,6 +2590,66 @@ Events
    
 
    :ds: The parsed RDATA of DS record.
+
+.. zeek:id:: dns_BINDS
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, binds: :zeek:type:`dns_binds_rr`)
+
+   Generated for DNS replies of type *BINDS*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :binds: The parsed RDATA of BIND-Signeing state record.
+
+.. zeek:id:: dns_SSHFP
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, algo: :zeek:type:`count`, fptype: :zeek:type:`count`, fingerprint: :zeek:type:`string`)
+
+   Generated for DNS replies of type *BINDS*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :binds: The parsed RDATA of BIND-Signeing state record.
+
+.. zeek:id:: dns_LOC
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, loc: :zeek:type:`dns_loc_rr`)
+
+   Generated for DNS replies of type *LOC*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :loc: The parsed RDATA of LOC type record.
 
 .. zeek:id:: dns_end
 

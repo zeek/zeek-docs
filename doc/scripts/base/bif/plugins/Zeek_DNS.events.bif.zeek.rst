@@ -15,6 +15,7 @@ Events
 :zeek:id:`dns_A6_reply`: :zeek:type:`event`           Generated for DNS replies of type *A6*.
 :zeek:id:`dns_AAAA_reply`: :zeek:type:`event`         Generated for DNS replies of type *AAAA*.
 :zeek:id:`dns_A_reply`: :zeek:type:`event`            Generated for DNS replies of type *A*.
+:zeek:id:`dns_BINDS`: :zeek:type:`event`              Generated for DNS replies of type *BINDS*.
 :zeek:id:`dns_CAA_reply`: :zeek:type:`event`          Generated for DNS replies of type *CAA* (Certification Authority Authorization).
 :zeek:id:`dns_CNAME_reply`: :zeek:type:`event`        Generated for DNS replies of type *CNAME*.
 :zeek:id:`dns_DNSKEY`: :zeek:type:`event`             Generated for DNS replies of type *DNSKEY*.
@@ -26,15 +27,18 @@ Events
 :zeek:id:`dns_EDNS_tcp_keepalive`: :zeek:type:`event` Generated for DNS replies of type *EDNS*, and an option field in this *EDNS* record has
                                                       an opt-type of 11.
 :zeek:id:`dns_HINFO_reply`: :zeek:type:`event`        Generated for DNS replies of type *HINFO*.
+:zeek:id:`dns_LOC`: :zeek:type:`event`                Generated for DNS replies of type *LOC*.
 :zeek:id:`dns_MX_reply`: :zeek:type:`event`           Generated for DNS replies of type *MX*.
 :zeek:id:`dns_NSEC`: :zeek:type:`event`               Generated for DNS replies of type *NSEC*.
 :zeek:id:`dns_NSEC3`: :zeek:type:`event`              Generated for DNS replies of type *NSEC3*.
+:zeek:id:`dns_NSEC3PARAM`: :zeek:type:`event`         Generated for DNS replies of type *NSEC3PARAM*.
 :zeek:id:`dns_NS_reply`: :zeek:type:`event`           Generated for DNS replies of type *NS*.
 :zeek:id:`dns_PTR_reply`: :zeek:type:`event`          Generated for DNS replies of type *PTR*.
 :zeek:id:`dns_RRSIG`: :zeek:type:`event`              Generated for DNS replies of type *RRSIG*.
 :zeek:id:`dns_SOA_reply`: :zeek:type:`event`          Generated for DNS replies of type *CNAME*.
 :zeek:id:`dns_SPF_reply`: :zeek:type:`event`          Generated for DNS replies of type *SPF*.
 :zeek:id:`dns_SRV_reply`: :zeek:type:`event`          Generated for DNS replies of type *SRV*.
+:zeek:id:`dns_SSHFP`: :zeek:type:`event`              Generated for DNS replies of type *BINDS*.
 :zeek:id:`dns_TSIG_addl`: :zeek:type:`event`          Generated for DNS replies of type *TSIG*.
 :zeek:id:`dns_TXT_reply`: :zeek:type:`event`          Generated for DNS replies of type *TXT*.
 :zeek:id:`dns_WKS_reply`: :zeek:type:`event`          Generated for DNS replies of type *WKS*.
@@ -147,6 +151,26 @@ Events
       dns_mapping_unverified dns_mapping_valid dns_message dns_query_reply
       dns_rejected dns_request dns_max_queries dns_session_timeout
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
+
+.. zeek:id:: dns_BINDS
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, binds: :zeek:type:`dns_binds_rr`)
+
+   Generated for DNS replies of type *BINDS*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :binds: The parsed RDATA of BIND-Signeing state record.
 
 .. zeek:id:: dns_CAA_reply
 
@@ -397,6 +421,26 @@ Events
       dns_max_queries dns_session_timeout dns_skip_addl
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
+.. zeek:id:: dns_LOC
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, loc: :zeek:type:`dns_loc_rr`)
+
+   Generated for DNS replies of type *LOC*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :loc: The parsed RDATA of LOC type record.
+
 .. zeek:id:: dns_MX_reply
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`, preference: :zeek:type:`count`)
@@ -474,6 +518,26 @@ Events
    
 
    :nsec3: The parsed RDATA of Nsec3 record.
+
+.. zeek:id:: dns_NSEC3PARAM
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, nsec3param: :zeek:type:`dns_nsec3param_rr`)
+
+   Generated for DNS replies of type *NSEC3PARAM*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :nsec3param: The parsed RDATA of NSEC3PARAM record.
 
 .. zeek:id:: dns_NS_reply
 
@@ -667,6 +731,26 @@ Events
       dns_mapping_unverified dns_mapping_valid dns_message dns_query_reply
       dns_rejected dns_request dns_max_queries dns_session_timeout
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
+
+.. zeek:id:: dns_SSHFP
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, algo: :zeek:type:`count`, fptype: :zeek:type:`count`, fingerprint: :zeek:type:`string`)
+
+   Generated for DNS replies of type *BINDS*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :binds: The parsed RDATA of BIND-Signeing state record.
 
 .. zeek:id:: dns_TSIG_addl
 
