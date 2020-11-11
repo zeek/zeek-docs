@@ -462,6 +462,7 @@
    policy/misc/stats.zeek </scripts/policy/misc/stats.zeek>
    policy/misc/weird-stats.zeek </scripts/policy/misc/weird-stats.zeek>
    policy/misc/trim-trace-file.zeek </scripts/policy/misc/trim-trace-file.zeek>
+   policy/misc/unknown-protocols.zeek </scripts/policy/misc/unknown-protocols.zeek>
    policy/protocols/conn/known-hosts.zeek </scripts/policy/protocols/conn/known-hosts.zeek>
    policy/protocols/conn/known-services.zeek </scripts/policy/protocols/conn/known-services.zeek>
    policy/protocols/conn/mac-logging.zeek </scripts/policy/protocols/conn/mac-logging.zeek>
