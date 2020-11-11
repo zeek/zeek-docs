@@ -17,7 +17,7 @@ Summary
 ~~~~~~~
 Events
 ######
-=========================================================================== =============================================================================
+=========================================================================== ===============================================================================
 :zeek:id:`Pcap::file_done`: :zeek:type:`event`                              An event that signals a pcap file is done being processed.
 :zeek:id:`anonymization_mapping`: :zeek:type:`event`                        Shows an IP address anonymization mapping.
 :zeek:id:`conn_stats`: :zeek:type:`event`                                   Generated when a TCP connection terminated, passing on statistics about the
@@ -93,10 +93,12 @@ Events
 :zeek:id:`signature_match`: :zeek:type:`event`                              Generated when a signature matches.
 :zeek:id:`tunnel_changed`: :zeek:type:`event`                               Generated for a connection whose tunneling has changed.
 :zeek:id:`udp_session_done`: :zeek:type:`event`                             Generated when a UDP session for a supported protocol has finished.
+:zeek:id:`unknown_protocol`: :zeek:type:`event`                             Generated when a packet analyzer attempts to forward a protocol that it doesn't
+                                                                            know how to handle.
 :zeek:id:`zeek_done`: :zeek:type:`event`                                    Generated at Zeek termination time.
 :zeek:id:`zeek_init`: :zeek:type:`event`                                    Generated at Zeek initialization time.
 :zeek:id:`zeek_script_loaded`: :zeek:type:`event`                           Raised for each policy script loaded by the script interpreter.
-=========================================================================== =============================================================================
+=========================================================================== ===============================================================================
 
 
 Detailed Interface
@@ -1177,6 +1179,24 @@ Events
    :u: The connection record for the corresponding UDP flow.
    
    .. zeek:see:: udp_contents udp_reply udp_request
+
+.. zeek:id:: unknown_protocol
+
+   :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`)
+
+   Generated when a packet analyzer attempts to forward a protocol that it doesn't
+   know how to handle.
+   
+
+   :analzyer_name: The string name of the analyzer attempting to forward the protocol
+   
+
+   :protocol: The identifier of the protocol being forwarded
+   
+
+   :first_bytes: A certain number of bytes at the start of the unknown protocol's header.
+   
+   .. zeek:see:: UnknownProtocol::first_bytes_count
 
 .. zeek:id:: zeek_done
 

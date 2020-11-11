@@ -785,6 +785,11 @@ Types
          (present if :doc:`/scripts/policy/misc/weird-stats.zeek` is loaded)
 
 
+      .. zeek:enum:: UnknownProtocol::LOG Log::ID
+
+         (present if :doc:`/scripts/policy/misc/unknown-protocols.zeek` is loaded)
+
+
       .. zeek:enum:: Known::HOSTS_LOG Log::ID
 
          (present if :doc:`/scripts/policy/protocols/conn/known-hosts.zeek` is loaded)
