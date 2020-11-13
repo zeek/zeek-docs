@@ -70,6 +70,7 @@ Functions
 :zeek:id:`entropy_test_add`: :zeek:type:`function`          Adds data to an incremental entropy calculation.
 :zeek:id:`entropy_test_finish`: :zeek:type:`function`       Finishes an incremental entropy calculation.
 :zeek:id:`entropy_test_init`: :zeek:type:`function`         Initializes data structures for incremental entropy calculation.
+:zeek:id:`enum_names`: :zeek:type:`function`                Returns all value names associated with an enum type.
 :zeek:id:`enum_to_int`: :zeek:type:`function`               Converts an :zeek:type:`enum` to an :zeek:type:`int`.
 :zeek:id:`exit`: :zeek:type:`function`                      Shuts down the Zeek process immediately.
 :zeek:id:`exp`: :zeek:type:`function`                       Computes the exponential function.
@@ -218,6 +219,7 @@ Functions
 :zeek:id:`to_json`: :zeek:type:`function`                   A function to convert arbitrary Zeek data into a JSON string.
 :zeek:id:`to_port`: :zeek:type:`function`                   Converts a :zeek:type:`string` to a :zeek:type:`port`.
 :zeek:id:`to_subnet`: :zeek:type:`function`                 Converts a :zeek:type:`string` to a :zeek:type:`subnet`.
+:zeek:id:`type_aliases`: :zeek:type:`function`              Returns all type name aliases of a value or type.
 :zeek:id:`type_name`: :zeek:type:`function`                 Returns the type name of an arbitrary Zeek variable.
 :zeek:id:`uninstall_dst_addr_filter`: :zeek:type:`function` Removes a destination address filter.
 :zeek:id:`uninstall_dst_net_filter`: :zeek:type:`function`  Removes a destination subnet filter.
@@ -883,6 +885,19 @@ Functions
    :returns: An opaque handle to be used in subsequent operations.
    
    .. zeek:see:: find_entropy entropy_test_add entropy_test_finish
+
+.. zeek:id:: enum_names
+
+   :Type: :zeek:type:`function` (et: :zeek:type:`any`) : :zeek:type:`string_set`
+
+   Returns all value names associated with an enum type.
+   
+
+   :et: An enum type.
+   
+
+   :returns: All enum value names associated with enum type *et*.
+            If *et* is not an enum type, an empty set is returned.
 
 .. zeek:id:: enum_to_int
 
@@ -2963,6 +2978,29 @@ Functions
    
    .. zeek:see:: to_count to_int to_port count_to_v4_addr raw_bytes_to_v4_addr
       to_addr
+
+.. zeek:id:: type_aliases
+
+   :Type: :zeek:type:`function` (x: :zeek:type:`any`) : :zeek:type:`string_set`
+
+   Returns all type name aliases of a value or type.
+   
+
+   :x: An arbitrary value or type.
+   
+
+   :returns: The set of all type name aliases of *x* (or the type of *x*
+            if it's a value instead of a type).  For primitive values
+            and types like :zeek:type:`string` or :zeek:type:`count`,
+            this returns an empty set.  For types with user-defined
+            names like :zeek:type:`record` or :zeek:type:`enum`, the
+            returned set contains the original user-defined name for the
+            type along with all aliases.  For other compound types, like
+            :zeek:type:`table`, the returned set is empty unless
+            explicitly requesting aliases for a user-defined type alias
+            or a value that was explicitly created using a type alias
+            (as opposed to originating from an "anonymous" constructor
+            or initializer for that compound type).
 
 .. zeek:id:: type_name
 

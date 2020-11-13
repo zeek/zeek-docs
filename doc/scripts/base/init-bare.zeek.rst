@@ -31,11 +31,12 @@ base/init-bare.zeek
 .. zeek:namespace:: Threading
 .. zeek:namespace:: Tunnel
 .. zeek:namespace:: Unified2
+.. zeek:namespace:: UnknownProtocol
 .. zeek:namespace:: Weird
 .. zeek:namespace:: X509
 
 
-:Namespaces: BinPAC, Cluster, DCE_RPC, DHCP, GLOBAL, JSON, KRB, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SNMP, SOCKS, SSH, SSL, TCP, Threading, Tunnel, Unified2, Weird, X509
+:Namespaces: BinPAC, Cluster, DCE_RPC, DHCP, GLOBAL, JSON, KRB, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SNMP, SOCKS, SSH, SSL, TCP, Threading, Tunnel, Unified2, UnknownProtocol, Weird, X509
 :Imports: :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/packet_analysis.bif.zeek </scripts/base/bif/packet_analysis.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`, :doc:`base/packet-protocols </scripts/base/packet-protocols/index>`
 
 Summary
@@ -120,6 +121,13 @@ Redefinable Options
 :zeek:id:`Tunnel::validate_vxlan_checksums`: :zeek:type:`bool` :zeek:attr:`&redef`         Whether to validate the checksum supplied in the outer UDP header
                                                                                            of a VXLAN encapsulation.
 :zeek:id:`Tunnel::vxlan_ports`: :zeek:type:`set` :zeek:attr:`&redef`                       The set of UDP ports used for VXLAN traffic.
+:zeek:id:`UnknownProtocol::first_bytes_count`: :zeek:type:`count` :zeek:attr:`&redef`      The number of bytes to extract from the next header and log in the
+                                                                                           first bytes field.
+:zeek:id:`UnknownProtocol::sampling_duration`: :zeek:type:`interval` :zeek:attr:`&redef`   How long an analyzer/protocol pair is allowed to keep state/counters in
+                                                                                           in memory.
+:zeek:id:`UnknownProtocol::sampling_rate`: :zeek:type:`count` :zeek:attr:`&redef`          The rate-limiting sampling rate.
+:zeek:id:`UnknownProtocol::sampling_threshold`: :zeek:type:`count` :zeek:attr:`&redef`     How many reports for an analyzer/protocol pair will be allowed to
+                                                                                           raise events before becoming rate-limited.
 :zeek:id:`bits_per_uid`: :zeek:type:`count` :zeek:attr:`&redef`                            Number of bits in UIDs that are generated to identify connections and
                                                                                            files.
 :zeek:id:`check_for_unused_event_handlers`: :zeek:type:`bool` :zeek:attr:`&redef`          If true, warns about unused event handlers at startup.
@@ -1155,6 +1163,45 @@ Redefinable Options
    UDP destination port will attempt to be decapsulated.  Note that if
    if you customize this, you may still want to manually ensure that
    :zeek:see:`likely_server_ports` also gets populated accordingly.
+
+.. zeek:id:: UnknownProtocol::first_bytes_count
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``10``
+
+   The number of bytes to extract from the next header and log in the
+   first bytes field.
+
+.. zeek:id:: UnknownProtocol::sampling_duration
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``1.0 hr``
+
+   How long an analyzer/protocol pair is allowed to keep state/counters in
+   in memory. Once the threshold has been hit, this is the amount of time
+   before the rate-limiting for a pair expires and is reset.
+
+.. zeek:id:: UnknownProtocol::sampling_rate
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``100000``
+
+   The rate-limiting sampling rate. One out of every of this number of
+   rate-limited pairs of a given type will be allowed to raise events
+   for further script-layer handling. Setting the sampling rate to 0
+   will disable all output of rate-limited pairs.
+
+.. zeek:id:: UnknownProtocol::sampling_threshold
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``3``
+
+   How many reports for an analyzer/protocol pair will be allowed to
+   raise events before becoming rate-limited.
 
 .. zeek:id:: bits_per_uid
 
