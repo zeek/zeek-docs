@@ -51,7 +51,7 @@ Functions
 #########
 .. zeek:id:: Reporter::conn_weird
 
-   :Type: :zeek:type:`function` (name: :zeek:type:`string`, c: :zeek:type:`connection`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`, c: :zeek:type:`connection`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
    Generates a "conn" weird.
    
@@ -109,7 +109,7 @@ Functions
 
 .. zeek:id:: Reporter::file_weird
 
-   :Type: :zeek:type:`function` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
    Generates a "file" weird.
    
@@ -127,7 +127,7 @@ Functions
 
 .. zeek:id:: Reporter::flow_weird
 
-   :Type: :zeek:type:`function` (name: :zeek:type:`string`, orig: :zeek:type:`addr`, resp: :zeek:type:`addr`) : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`, orig: :zeek:type:`addr`, resp: :zeek:type:`addr`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
    Generates a "flow" weird.
    
@@ -204,7 +204,7 @@ Functions
 
 .. zeek:id:: Reporter::net_weird
 
-   :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
    Generates a "net" weird.
    

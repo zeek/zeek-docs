@@ -141,6 +141,7 @@ Events
 
 .. zeek:id:: conn_weird
 
+   :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`, addl: :zeek:type:`string`)
 
    Generated for unexpected activity related to a specific connection.  When
@@ -159,6 +160,10 @@ Events
    
 
    :addl: Optional additional context further describing the situation.
+   
+
+   :source: Optional source for the weird. When called by analyzers, this should
+           be filled in with the name of the analyzer.
    
    .. zeek:see:: flow_weird net_weird file_weird expired_conn_weird
    
@@ -427,6 +432,7 @@ Events
 
 .. zeek:id:: expired_conn_weird
 
+   :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`)
 
    Generated for unexpected activity related to a specific connection whose
@@ -453,6 +459,10 @@ Events
    
 
    :addl: Optional additional context further describing the situation.
+   
+
+   :source: Optional source for the weird. When called by analyzers, this should
+           be filled in with the name of the analyzer.
    
    .. zeek:see:: flow_weird net_weird file_weird conn_weird
    
@@ -598,6 +608,7 @@ Events
 
 .. zeek:id:: file_weird
 
+   :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`)
 
    Generated for unexpected activity that is tied to a file.
@@ -616,6 +627,9 @@ Events
 
    :addl: Additional information related to the weird.
    
+
+   :source: The name of the file analyzer that generated the weird.
+   
    .. zeek:see:: flow_weird net_weird conn_weird expired_conn_weird
    
    .. note:: "Weird" activity is much more common in real-world network traffic
@@ -625,6 +639,7 @@ Events
 
 .. zeek:id:: flow_weird
 
+   :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`)
 
    Generated for unexpected activity related to a pair of hosts, but independent
@@ -647,6 +662,10 @@ Events
    
 
    :addl: Optional additional context further describing the situation.
+   
+
+   :source: Optional source for the weird. When called by analyzers, this should
+           be filled in with the name of the analyzer.
    
    .. zeek:see:: conn_weird net_weird file_weird expired_conn_weird
    
@@ -748,6 +767,7 @@ Events
 
 .. zeek:id:: net_weird
 
+   :Type: :zeek:type:`event` (name: :zeek:type:`string`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, addl: :zeek:type:`string`)
 
    Generated for unexpected activity that is not tied to a specific connection
@@ -763,6 +783,10 @@ Events
    
 
    :addl: Optional additional context further describing the situation.
+   
+
+   :source: Optional source for the weird. When called by analyzers, this should
+           be filled in with the name of the analyzer.
    
    .. zeek:see:: flow_weird file_weird conn_weird expired_conn_weird
    
