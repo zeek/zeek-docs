@@ -311,7 +311,7 @@ State Variables
 
    This table is used to track identifier and name pairs that should be
    temporarily ignored because the problem has already been reported.
-   This helps reduce the volume of high volume weirds by only allowing 
+   This helps reduce the volume of high volume weirds by only allowing
    a unique weird every ``create_expire`` interval.
 
 Types
@@ -393,6 +393,10 @@ Types
          The peer that originated this weird.  This is helpful in
          cluster deployments if a particular cluster node is having
          trouble to help identify which node is having trouble.
+
+      source: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         The source of the weird. When reported by an analyzer, this
+         should be the name of the analyzer.
 
       identifier: :zeek:type:`string` :zeek:attr:`&optional`
          This field is to be provided when a weird is generated for
