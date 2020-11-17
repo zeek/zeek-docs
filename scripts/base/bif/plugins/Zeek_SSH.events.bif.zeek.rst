@@ -36,6 +36,8 @@ Events
                                                      from the client.
 :zeek:id:`ssh_encrypted_packet`: :zeek:type:`event`  This event is generated when an :abbr:`SSH (Secure Shell)`
                                                      encrypted packet is seen.
+:zeek:id:`ssh_server_host_key`: :zeek:type:`event`   During the :abbr:`SSH (Secure Shell)` key exchange, the server
+                                                     supplies its public host key.
 :zeek:id:`ssh_server_version`: :zeek:type:`event`    An :abbr:`SSH (Secure Shell)` Protocol Version Exchange message
                                                      from the server.
 ==================================================== ==================================================================
@@ -47,6 +49,8 @@ Events
 ######
 .. zeek:id:: ssh1_server_host_key
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, e: :zeek:type:`string` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, modulus: :zeek:type:`string`, exponent: :zeek:type:`string`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, modulus: :zeek:type:`string`, exponent: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string`, e: :zeek:type:`string`)
 
    During the :abbr:`SSH (Secure Shell)` key exchange, the server
@@ -58,10 +62,20 @@ Events
       connection took place.
    
 
-   :p: The prime for the server's public host key.
+   :p: The exponent for the server's public host key (note this parameter
+      is truly the exponent even though named *p* and the *exponent* parameter
+      will eventually replace it).
    
 
-   :e: The exponent for the serer's public host key.
+   :e: The prime modulus for the server's public host key (note this parameter
+      is truly the modulus even though named *e* and the *modulus* parameter
+      will eventually replace it).
+   
+
+   :modulus: The prime modulus of the server's public host key.
+   
+
+   :exponent: The exponent of the server's public host key.
    
    .. zeek:see:: ssh_server_version ssh_client_version
       ssh_auth_successful ssh_auth_failed ssh_auth_result
@@ -304,6 +318,39 @@ Events
       ssh_auth_successful ssh_auth_failed ssh_auth_result
       ssh_auth_attempted ssh_capabilities ssh2_server_host_key
       ssh1_server_host_key ssh_server_host_key ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key
+
+.. zeek:id:: ssh_server_host_key
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hash: :zeek:type:`string`)
+
+   During the :abbr:`SSH (Secure Shell)` key exchange, the server
+   supplies its public host key. This event is generated when the
+   appropriate key exchange message is seen for SSH1 or SSH2 and provides
+   a fingerprint of the server's host key.
+   
+
+   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+      connection took place.
+   
+
+   :hash: an MD5 hash fingerprint associated with the server's host key.
+         For SSH2, this is the hash of the "server public host key" string as
+         seen on the wire in the Diffie-Hellman key exchange reply message
+         (the string itself, excluding the 4-byte length associated with it),
+         which is also the *key* parameter of :zeek:see:`ssh2_server_host_key`
+         For SSH1, this is the hash of the combined multiprecision integer
+         strings representing the RSA1 key's prime modulus and public exponent
+         (concatenated in that order) as seen on the wire,
+         which are also the parameters of :zeek:see:`ssh1_server_host_key`.
+         In either case, the hash is the same "fingerprint" string as presented
+         by other traditional tools, ``ssh``, ``ssh-keygen``, etc, and is the
+         hexadecimal representation of all 16 MD5 hash bytes delimited by colons.
+   
+   .. zeek:see:: ssh_server_version ssh_client_version
+      ssh_auth_successful ssh_auth_failed ssh_auth_result
+      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
+      ssh1_server_host_key ssh_encrypted_packet ssh2_dh_server_params
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh_server_version

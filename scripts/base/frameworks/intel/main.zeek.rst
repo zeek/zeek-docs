@@ -314,7 +314,8 @@ Types
 
       .. zeek:enum:: Intel::PUBKEY_HASH Intel::Type
 
-         Public key MD5 hash. (SSH server host keys are a good example.)
+         Public key MD5 hash, formatted as hexadecimal digits delimited by colons.
+         (SSH server host keys are a good example.)
 
       .. zeek:enum:: Intel::FILE_HASH Intel::Type
 

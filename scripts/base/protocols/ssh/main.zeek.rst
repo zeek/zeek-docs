@@ -52,17 +52,15 @@ Redefinitions
 
 Events
 ######
-================================================== ===================================================================
-:zeek:id:`SSH::log_ssh`: :zeek:type:`event`        Event that can be handled to access the SSH record as it is sent on
-                                                   to the logging framework.
-:zeek:id:`ssh_auth_failed`: :zeek:type:`event`     This event is generated when an :abbr:`SSH (Secure Shell)`
-                                                   connection was determined to have had a failed authentication.
-:zeek:id:`ssh_auth_result`: :zeek:type:`event`     This event is generated when a determination has been made about
-                                                   the final authentication result of an :abbr:`SSH (Secure Shell)`
-                                                   connection.
-:zeek:id:`ssh_server_host_key`: :zeek:type:`event` Event that can be handled when the analyzer sees an SSH server host
-                                                   key.
-================================================== ===================================================================
+============================================== ===================================================================
+:zeek:id:`SSH::log_ssh`: :zeek:type:`event`    Event that can be handled to access the SSH record as it is sent on
+                                               to the logging framework.
+:zeek:id:`ssh_auth_failed`: :zeek:type:`event` This event is generated when an :abbr:`SSH (Secure Shell)`
+                                               connection was determined to have had a failed authentication.
+:zeek:id:`ssh_auth_result`: :zeek:type:`event` This event is generated when a determination has been made about
+                                               the final authentication result of an :abbr:`SSH (Secure Shell)`
+                                               connection.
+============================================== ===================================================================
 
 Hooks
 #####
@@ -232,20 +230,6 @@ Events
       ssh_auth_successful ssh_auth_failed ssh_auth_attempted
       ssh_capabilities ssh2_server_host_key ssh1_server_host_key
       ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
-      ssh2_gss_error ssh2_ecc_key
-
-.. zeek:id:: ssh_server_host_key
-
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hash: :zeek:type:`string`)
-
-   Event that can be handled when the analyzer sees an SSH server host
-   key. This abstracts :zeek:id:`ssh1_server_host_key` and
-   :zeek:id:`ssh2_server_host_key`.
-   
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
-      ssh1_server_host_key ssh_encrypted_packet ssh2_dh_server_params
       ssh2_gss_error ssh2_ecc_key
 
 Hooks
