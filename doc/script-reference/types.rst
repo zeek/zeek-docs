@@ -1218,7 +1218,7 @@ add an entire new type to the scripting language.
 
     local v = vector("*", "d?g", "*og", "d?", "d[!wl]g");
     local p : opaque of paraglob = paraglob_init(v);
-    print paraglob_match(p1, "dog");
+    print paraglob_match(p, "dog");
     # out: [*, *og, d?g, d[!wl]g]
 
   For more documentation on paraglob see :doc:`/components/index`.
