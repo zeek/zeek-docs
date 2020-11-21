@@ -31,7 +31,7 @@ Functions
    :str: A string potentially containing email addresses.
    
 
-   :returns: A set of extracted email addresses.  An empty set is returned 
+   :returns: A set of extracted email addresses.  An empty set is returned
             if no email addresses are discovered.
 
 .. zeek:id:: extract_email_addrs_vec
