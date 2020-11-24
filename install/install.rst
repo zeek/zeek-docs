@@ -30,7 +30,7 @@ before you begin:
     * BIND8 library
     * Libz
     * Bash (for ZeekControl)
-    * Python 2.6 or greater (for ZeekControl)
+    * Python 3.5 or greater
 
 To build Zeek from source, the following additional dependencies are required:
 
@@ -51,9 +51,9 @@ To install the required dependencies, you can use:
 
   .. code-block:: console
 
-     sudo yum install cmake make gcc gcc-c++ flex bison libpcap-devel openssl-devel python-devel swig zlib-devel
+     sudo yum install cmake make gcc gcc-c++ flex bison libpcap-devel openssl-devel python3 python3-devel swig zlib-devel
 
-  On RHEL/CentOS 6/7, you can install and activate a devtoolset_ to get access
+  On RHEL/CentOS 7, you can install and activate a devtoolset_ to get access
   to recent GCC versions. You will also have to install and activate CMake 3.
   For example:
 
@@ -66,11 +66,7 @@ To install the required dependencies, you can use:
 
   .. code-block:: console
 
-     sudo apt-get install cmake make gcc g++ flex bison libpcap-dev libssl-dev python-dev swig zlib1g-dev
-
-  If your system uses Python 2.7, then you will also need to install the
-  "python-ipaddress" package. If you are running Debian 8 (jessie), install
-  clang-4.0 instead of GCC.
+     sudo apt-get install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
 
 * FreeBSD:
 
@@ -79,7 +75,9 @@ To install the required dependencies, you can use:
 
   .. code-block:: console
 
-      sudo pkg install bash cmake swig30 bison python py27-sqlite3 py27-ipaddress
+      sudo pkg install -y bash git cmake swig bison python3 base64
+      pyver=`python3 -c 'import sys; print(f"py{sys.version_info[0]}{sys.version_info[1]}")'`
+      sudo pkg install -y $pyver-sqlite3
 
 * Mac OS X:
 
