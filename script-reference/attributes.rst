@@ -298,7 +298,7 @@ loop :
 
 .. code-block:: zeek
 
-    local t: table[string] of set[string] &on_change=hange_function;
+    local t: table[string] of set[string] &on_change=change_function;
     function change_function(t: table[string, int] of count, tpe: TableChange, idxa: string, idxb: int, val: count)
       {
       t[idxa, idxb] = val+1;
