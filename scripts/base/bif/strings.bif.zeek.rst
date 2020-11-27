@@ -884,7 +884,7 @@ Functions
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string`
 
    Converts a string to Title Case. This changes the first character of each sequence of non-space characters
-   in the string to be capitalized. See https://docs.python.org/2/library/stdtypes.html#str.title for more info.
+   in the string to be capitalized. See https://docs.python.org/3/library/stdtypes.html#str.title for more info.
    
 
    :str: The string to convert.
