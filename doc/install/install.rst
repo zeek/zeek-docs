@@ -30,7 +30,7 @@ before you begin:
     * BIND8 library
     * Libz
     * Bash (for ZeekControl)
-    * Python 3.5 or greater
+    * Python 3.5 or greater             (https://www.python.org/)
 
 To build Zeek from source, the following additional dependencies are required:
 
@@ -43,7 +43,7 @@ To build Zeek from source, the following additional dependencies are required:
     * Libpcap headers                   (http://www.tcpdump.org)
     * OpenSSL headers                   (http://www.openssl.org)
     * zlib headers                      (https://zlib.net/)
-    * Python                            (https://www.python.org/)
+    * Python 3.5 or greater             (https://www.python.org/)
 
 To install the required dependencies, you can use:
 
