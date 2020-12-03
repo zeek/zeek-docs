@@ -48,6 +48,7 @@ Functions
 :zeek:id:`continue_processing`: :zeek:type:`function`       Resumes Zeek's packet processing.
 :zeek:id:`convert_for_pattern`: :zeek:type:`function`       Escapes a string so that it becomes a valid :zeek:type:`pattern` and can be
                                                             used with the :zeek:id:`string_to_pattern`.
+:zeek:id:`count_to_double`: :zeek:type:`function`           Converts a :zeek:type:`count` to a :zeek:type:`double`.
 :zeek:id:`count_to_port`: :zeek:type:`function`             Converts a :zeek:type:`count` and ``transport_proto`` to a :zeek:type:`port`.
 :zeek:id:`count_to_v4_addr`: :zeek:type:`function`          Converts a :zeek:type:`count` to an :zeek:type:`addr`.
 :zeek:id:`counts_to_addr`: :zeek:type:`function`            Converts an :zeek:type:`index_vec` to an :zeek:type:`addr`.
@@ -112,6 +113,7 @@ Functions
 :zeek:id:`install_src_net_filter`: :zeek:type:`function`    Installs a filter to drop packets originating from a given subnet with
                                                             a certain probability if none of a given set of TCP flags are set.
 :zeek:id:`int_to_count`: :zeek:type:`function`              Converts a (positive) :zeek:type:`int` to a :zeek:type:`count`.
+:zeek:id:`int_to_double`: :zeek:type:`function`             Converts an :zeek:type:`int` to a :zeek:type:`double`.
 :zeek:id:`interval_to_double`: :zeek:type:`function`        Converts an :zeek:type:`interval` to a :zeek:type:`double`.
 :zeek:id:`is_icmp_port`: :zeek:type:`function`              Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
 :zeek:id:`is_local_interface`: :zeek:type:`function`        Checks whether a given IP address belongs to a local interface.
@@ -561,6 +563,20 @@ Functions
    
    .. zeek:see:: string_to_pattern
    
+
+.. zeek:id:: count_to_double
+
+   :Type: :zeek:type:`function` (c: :zeek:type:`count`) : :zeek:type:`double`
+
+   Converts a :zeek:type:`count` to a :zeek:type:`double`.
+   
+
+   :c: The :zeek:type:`count` to convert.
+   
+
+   :returns: The :zeek:type:`count` *c* as :zeek:type:`double`.
+   
+   .. zeek:see:: int_to_double double_to_count
 
 .. zeek:id:: count_to_port
 
@@ -1499,6 +1515,20 @@ Functions
    
 
    :returns: The :zeek:type:`int` *n* as unsigned integer, or 0 if *n* < 0.
+
+.. zeek:id:: int_to_double
+
+   :Type: :zeek:type:`function` (i: :zeek:type:`int`) : :zeek:type:`double`
+
+   Converts an :zeek:type:`int` to a :zeek:type:`double`.
+   
+
+   :i: The :zeek:type:`int` to convert.
+   
+
+   :returns: The :zeek:type:`int` *i* as :zeek:type:`double`.
+   
+   .. zeek:see:: count_to_double double_to_count
 
 .. zeek:id:: interval_to_double
 
