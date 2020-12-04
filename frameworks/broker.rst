@@ -561,11 +561,6 @@ Starting with Zeek 3.2, it is possible to "bind" a Zeek table to a backing
 Broker store. Changes to the Zeek table are sent to the Broker store. Similarly,
 changes of the Broker store are applied to the Zeek table.
 
-.. note::
-
-    This feature is experimental and can change in future versions without
-    prior deprecation/backwards compatibility.
-
 This feature allows easy distribution of table contents across a cluster.
 It also offers persistence for tables (when using a persistent Broker store
 backend like SQLite).

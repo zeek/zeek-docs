@@ -375,12 +375,6 @@ example, to bind a table to a memory-backed Broker store, use:
 
     global t: table[string] of count &backend=Broker::MEMORY;
 
-.. note::
-
-    This feature is experimental and can change in future versions without
-    prior deprecation/backwards compatibility.
-
-
 .. zeek:attr:: &broker_store
 
 &broker_store
@@ -404,12 +398,6 @@ Example:
          {
          teststore = Broker::create_master("teststore");
          }
-
-.. note::
-
-    This feature is experimental and can change in future versions without
-    prior deprecation/backwards compatibility.
-
 
 .. zeek:attr:: &broker_allow_complex_type
 
@@ -446,12 +434,6 @@ table.
                 # Propagate new value to Broker:
                 t["test"] = rec;
                 }
-
-.. note::
-
-    This feature is experimental and can change in future versions without
-    prior deprecation/backwards compatibility.
-
 
 .. zeek:attr:: &deprecated
 
