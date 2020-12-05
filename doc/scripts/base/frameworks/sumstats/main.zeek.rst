@@ -47,6 +47,7 @@ Functions
 :zeek:id:`SumStats::create`: :zeek:type:`function`      Create a summary statistic.
 :zeek:id:`SumStats::key2str`: :zeek:type:`function`     Helper function to represent a :zeek:type:`SumStats::Key` value as
                                                         a simple string.
+:zeek:id:`SumStats::next_epoch`: :zeek:type:`function`  Manually end the current epoch for a sumstat.
 :zeek:id:`SumStats::observe`: :zeek:type:`function`     Add data into an observation stream.
 :zeek:id:`SumStats::request_key`: :zeek:type:`function` Dynamically request a sumstat key.
 ======================================================= ==================================================================
@@ -370,16 +371,20 @@ Types
    :Type: :zeek:type:`record`
 
       name: :zeek:type:`string`
-         An arbitrary name for the sumstat so that it can 
+         An arbitrary name for the sumstat so that it can
          be referred to later.
 
       epoch: :zeek:type:`interval`
-         The interval at which this filter should be "broken"
-         and the *epoch_result* callback called.  The
+         The interval at which this sumstat should be "broken"
+         and the *epoch_result* callback called. The
          results are also reset at this time so any threshold
          based detection needs to be set to a
          value that should be expected to happen within
          this epoch.
+         
+         Passing an epoch of zero (e.g. ``0 secs``) causes this
+         sumstat to be set to manual epochs. You will have to manually
+         end the epoch by calling :zeek:see:`SumStats::next_epoch`.
 
       reducers: :zeek:type:`set` [:zeek:type:`SumStats::Reducer`]
          The reducers for the SumStat.
@@ -410,12 +415,12 @@ Types
 
       epoch_result: :zeek:type:`function` (ts: :zeek:type:`time`, key: :zeek:type:`SumStats::Key`, result: :zeek:type:`SumStats::Result`) : :zeek:type:`void` :zeek:attr:`&optional`
          A callback that receives each of the results at the
-         end of the analysis epoch.  The function will be 
+         end of the analysis epoch.  The function will be
          called once for each key.
 
       epoch_finished: :zeek:type:`function` (ts: :zeek:type:`time`) : :zeek:type:`void` :zeek:attr:`&optional`
-         A callback that will be called when a single collection 
-         interval is completed.  The *ts* value will be the time of 
+         A callback that will be called when a single collection
+         interval is completed.  The *ts* value will be the time of
          when the collection started.
 
    Represents a SumStat, which consists of an aggregation of reducers along
@@ -451,6 +456,28 @@ Functions
 
    :returns: A string representation of the metric key.
 
+.. zeek:id:: SumStats::next_epoch
+
+   :Type: :zeek:type:`function` (ss_name: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Manually end the current epoch for a sumstat. Calling this function will
+   cause the end of the epoch processing of sumstats to start. Note that the
+   epoch will not end immediately - especially in a cluster settings, a number
+   of messages need to be exchanged between the cluster nodes.
+   
+   Note that this function only can be called if the sumstat was created with
+   an epoch time of zero (manual epochs).
+   
+   In a cluster, this function must be called on the manager; it will not have
+   any effect when called on workers.
+   
+
+   :ss_name: SumStat name.
+   
+
+   :returns: true on success, false on failure. Failures can be: sumstat not found,
+            or sumstat not created for manual epochs.
+
 .. zeek:id:: SumStats::observe
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`, orig_key: :zeek:type:`SumStats::Key`, obs: :zeek:type:`SumStats::Observation`) : :zeek:type:`void`
@@ -473,8 +500,8 @@ Functions
    :Type: :zeek:type:`function` (ss_name: :zeek:type:`string`, key: :zeek:type:`SumStats::Key`) : :zeek:type:`SumStats::Result`
 
    Dynamically request a sumstat key.  This function should be
-   used sparingly and not as a replacement for the callbacks 
-   from the :zeek:see:`SumStats::SumStat` record.  The function is only
+   used sparingly and not as a replacement for the callbacks
+   from the :zeek:see:`SumStats::SumStat` record. The function is only
    available for use within "when" statements as an asynchronous
    function.
    
