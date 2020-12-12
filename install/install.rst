@@ -123,6 +123,27 @@ on most platforms by following the instructions for :ref:`installing
 the GeoIP library and database
 <geolocation>`.
 
+The zkg package manager, included in the Zeek installation, requires
+two external Python modules:
+
+    * GitPython: https://pypi.org/project/GitPython/
+    * semantic-version: https://pypi.org/project/semantic-version/
+
+These install easily via pip (``pip3 install GitPython
+semantic-version``) and ship with some distributions:
+
+* RPM/RedHat-based Linux:
+
+  .. code-block:: console
+
+     sudo yum install python3-GitPython python3-semantic_version
+
+* DEB/Debian-based Linux:
+
+  .. code-block:: console
+
+     sudo apt-get install python3-git python3-semantic-version
+
 
 Installing Zeek
 ===============
