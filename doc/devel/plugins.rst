@@ -3,8 +3,8 @@
 Writing Plugins
 ===============
 
-Zeek internally provides a plugin API that enables extending
-the system dynamically, without modifying the core code base. That way
+Zeek provides a plugin API that enables extending
+the system dynamically, without modifying the core code base. That way,
 custom code remains self-contained and can be maintained, compiled,
 and installed independently. Currently, plugins can add the following
 functionality to Zeek:
@@ -32,8 +32,8 @@ Quick Start
 ===========
 
 Writing a basic plugin is quite straight-forward as long as one
-follows a few conventions. In the following we create a simple example
-plugin that adds a new built-in function (bif) to Zeek: we'll add
+follows a few conventions. In the following, we create a simple example
+plugin that adds a new Built-In Function (BIF) to Zeek: we'll add
 ``rot13(s: string) : string``, a function that rotates every character
 in a string by 13 places.
 
@@ -57,7 +57,7 @@ our example, the plugin will be called ``Demo::Rot13``.
 
 The ``init-plugin`` script puts a number of files in place. The full
 layout is described later. For now, all we need is
-``src/rot13.bif``. It's initially empty, but we'll add our new bif
+``src/rot13.bif``. It's initially empty, but we'll add our new BIF
 there as follows::
 
     # cat src/rot13.bif
@@ -89,9 +89,24 @@ there as follows::
 The syntax of this file is just like any other ``*.bif`` file; we
 won't go into it here.
 
-Now we can already compile our plugin, we just need to tell the
-configure script (that ``init-plugin`` created) where the Zeek
-source tree is located (Zeek needs to have been built there first)::
+Now we are ready to compile our plugin.  The configure script will just
+need to be able to find the location of either a Zeek installation-tree or
+a Zeek source-tree.
+
+When building a plugin against a Zeek installation-tree, simply have the
+installation's associated ``zeek-config`` in your :envvar:`PATH` and the
+configure script will detect it and use it to obtain all the information
+it needs::
+
+    # which zeek-config
+    /usr/local/zeek/bin/zeek-config
+    # cd rot13-plugin
+    # ./configure && make
+    [... cmake output ...]
+
+When building a plugin against a Zeek source-tree (which itself needs
+to have first been built), the configure script has to explicitly be
+told its location::
 
     # cd rot13-plugin
     # ./configure --zeek-dist=/path/to/zeek/dist && make
@@ -220,18 +235,18 @@ directory. With the skeleton, ``<base>`` corresponds to ``build/``.
 
 ``scripts``/__load__.zeek
     A Zeek script that will be loaded when the plugin gets activated.
-    When this script executes, any BiF elements that the plugin
+    When this script executes, any BIF elements that the plugin
     defines will already be available. See below for more information
     on activating plugins.
 
 ``scripts``/__preload__.zeek
     A Zeek script that will be loaded when the plugin gets activated,
-    but before any BiF elements become available. See below for more
+    but before any BIF elements become available. See below for more
     information on activating plugins.
 
 ``lib/bif/``
     Directory with auto-generated Zeek scripts that declare the plugin's
-    bif elements. The files here are produced by ``bifcl``.
+    BIF elements. The files here are produced by ``bifcl``.
 
 Any other files in ``<base>`` are ignored by Zeek.
 
@@ -294,10 +309,10 @@ A plugin needs to be *activated* to make it available to the user.
 Activating a plugin will:
 
     1. Load the dynamic module
-    2. Make any bif items available
+    2. Make any BIF items available
     3. Add the ``scripts/`` directory to ``ZEEKPATH``
     4. Load ``scripts/__preload__.zeek``
-    5. Make BiF elements available to scripts.
+    5. Make BIF elements available to scripts.
     6. Load ``scripts/__load__.zeek``
 
 By default, Zeek will automatically activate all dynamic plugins found
@@ -308,7 +323,7 @@ user can selectively enable individual plugins in scriptland using the
 ``@load-plugin Demo::Rot13``). Alternatively, one can activate a
 plugin from the command-line by specifying its full name
 (``Demo::Rot13``), or set the environment variable
-``ZEEK_PLUGIN_ACTIVATE`` to a list of comma(!)-separated names of
+``ZEEK_PLUGIN_ACTIVATE`` to a list of comma-separated names of
 plugins to unconditionally activate, even in bare mode.
 
 ``zeek -N`` shows activated plugins separately from found but not yet
@@ -318,76 +333,22 @@ always activated, and hence show up as such even in bare mode.
 Plugin Components
 =================
 
-The following subsections detail providing individual types of
-functionality via plugins. Note that a single plugin can provide more
-than one component type. For example, a plugin could provide multiple
-protocol analyzers at once; or both a logging backend and input reader
-at the same time.
+It's easy for a plugin to provide custom scripts: just put them into
+``scripts/``, as described above.  The CMake infrastructure will automatically
+install them, as well include them into the source and binary plugin
+distributions.
 
-.. todo::
+Any number or combination of other components can be provided by a single
+plugin.  For example a plugin can provide multiple different protocol
+analyzers, or both a log writer and input reader.
 
-    These subsections are mostly missing right now, as much of their
-    content isn't actually plugin-specific, but concerns generally
-    writing such functionality for Zeek. The best way to get started
-    right now is to look at existing code implementing similar
-    functionality, either as a plugin or inside Zeek proper. Also, for
-    each component type there's an integration test in
-    ``testing/btest/plugins`` creating a basic plugin skeleton with a
-    corresponding component.
+The best place to look for examples or templates for a specific type of plugin
+component are the source code of Zeek itself since every one of its components
+uses the same API as any external plugin.
 
-Zeek Scripts
-------------
-
-Scripts are easy: just put them into ``scripts/``, as described above.
-The CMake infrastructure will automatically install them, as well
-include them into the source and binary plugin distributions.
-
-Builtin Language Elements
--------------------------
-
-Functions
-    TODO
-
-Events
-    TODO
-
-Types
-    TODO
-
-Protocol Analyzers
-------------------
-
-TODO.
-
-File Analyzers
---------------
-
-TODO.
-
-Logging Writer
---------------
-
-TODO.
-
-Input Reader
-------------
-
-TODO.
-
-Packet Sources
---------------
-
-TODO.
-
-Packet Dumpers
---------------
-
-TODO.
-
-Hooks
-=====
-
-TODO.
+Each component type also has a simple integration test, found
+in the Zeek source-tree's ``testing/btest/plugins/`` directory,
+that can serve useful for creating basic plugin skeletons.
 
 Testing Plugins
 ===============
@@ -422,8 +383,7 @@ let's get that in place::
     all 1 tests successful
     make[1]: Leaving directory `tests'
 
-Now let's add a custom test that ensures that our bif works
-correctly::
+Now let's add a custom test that ensures that our BIF works correctly::
 
     # cd tests
     # cat >rot13/bif-rot13.zeek
@@ -470,7 +430,7 @@ can help illuminate what's going on. To enable, recompile Zeek
 with debugging support (``./configure --enable-debug``), and
 afterwards rebuild your plugin as well. If you then run Zeek with ``-B
 plugins``, it will produce a file ``debug.log`` that records details
-about the process for searching, loading, and activating plugins. 
+about the process for searching, loading, and activating plugins.
 
 To generate your own debugging output from inside your plugin, you can
 add a custom debug stream by using the ``PLUGIN_DBG_LOG(<plugin>,
@@ -485,13 +445,3 @@ replaced with a simple dash. Example: If the plugin is called
 ``Demo::Rot13``, use ``-B plugin-Demo-Rot13``. As usual, the debugging
 output will be recorded to ``debug.log`` if Zeek's compiled in debug
 mode.
-
-Documenting Plugins
-===================
-
-.. todo::
-
-    Integrate all this with Zeekygen.
-
-
-
