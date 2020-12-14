@@ -6,8 +6,8 @@ Signature Framework
 .. rst-class:: opening
 
     Zeek relies primarily on its extensive scripting language for
-    defining and analyzing detection policies. In addition, however,
-    Zeek also provides an independent *signature language* for doing
+    defining and analyzing detection policies, but it also
+    provides an independent *signature language* for doing
     low-level, Snort-style pattern matching. While signatures are
     *not* Zeek's preferred detection tool, they sometimes come in handy
     and are closer to what many people are familiar with from using
@@ -45,7 +45,7 @@ This script contains a default event handler that raises
 :zeek:enum:`Signatures::Sensitive_Signature` :doc:`Notices <notice>`
 (as well as others; see the beginning of the script).
 
-As signatures are independent of Zeek's policy scripts, they are put into
+As signatures are independent of Zeek's scripts, they are put into
 their own file(s). There are three ways to specify which files contain
 signatures: By using the ``-s`` flag when you invoke Zeek, or by
 extending the Zeek variable :zeek:id:`signature_files` using the ``+=``
@@ -62,7 +62,7 @@ Signature Language for Network Traffic
 ======================================
 
 Let's look at the format of a signature more closely. Each individual
-signature has the format ``signature <id> { <attributes> }``. ``<id>``
+signature has the format ``signature <id> { <attributes> }``, where ``<id>``
 is a unique label for the signature. There are two types of
 attributes: *conditions* and *actions*. The conditions define when the
 signature matches, while the actions declare what to do in the case of
@@ -391,27 +391,29 @@ Options
 
 The following options control details of Zeek's matching process:
 
-``dpd_reassemble_first_packets: bool`` (default: ``T``)
+* :zeek:see:`dpd_reassemble_first_packets`
+
     If true, Zeek reassembles the beginning of every TCP connection (of
-    up to ``dpd_buffer_size`` bytes, see below), to facilitate
+    up to :zeek:see:`dpd_buffer_size` bytes, see below also), to facilitate
     reliable matching across packet boundaries. If false, only
     connections are reassembled for which an application-layer
     analyzer gets activated (e.g., by Zeek's dynamic protocol
     detection).
 
-``dpd_match_only_beginning : bool`` (default: ``T``)
-    If true, Zeek performs packet matching only within the initial
-    payload window of ``dpd_buffer_size``. If false, it keeps matching
+* :zeek:see:`dpd_match_only_beginning`
+
+    If true, Zeek performs packet matching only within the initial payload
+    window of :zeek:see:`dpd_buffer_size`. If false, it keeps matching
     on subsequent payload as well.
 
-``dpd_buffer_size: count`` (default: ``1024``)
+* :zeek:see:`dpd_buffer_size`
+
     Defines the buffer size for the two preceding options. In
     addition, this value determines the amount of bytes Zeek buffers
     for each connection in order to activate application analyzers
     even after parts of the payload have already passed through. This
     is needed by the dynamic protocol detection capability to defer
-    the decision which analyzers to use.
-
+    the decision of which analyzers to use.
 
 So, how about using Snort signatures with Zeek?
 ===============================================
