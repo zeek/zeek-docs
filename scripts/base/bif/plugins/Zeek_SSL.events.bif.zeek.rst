@@ -43,6 +43,8 @@ Events
                                                                                     encryption starts.
 :zeek:id:`ssl_plaintext_data`: :zeek:type:`event`                                   Generated for SSL/TLS messages that are sent before full session encryption
                                                                                     starts.
+:zeek:id:`ssl_probable_encrypted_handshake_message`: :zeek:type:`event`             This event is generated for application data records of TLS 1.3 connections of which
+                                                                                    we suspect that they contain handshake messages.
 :zeek:id:`ssl_rsa_client_pms`: :zeek:type:`event`                                   Generated if a client uses RSA key exchange.
 :zeek:id:`ssl_server_hello`: :zeek:type:`event`                                     Generated for an SSL/TLS server's initial *hello* message.
 :zeek:id:`ssl_server_signature`: :zeek:type:`event`                                 Generated if a server uses a non-anonymous DHE or ECDHE cipher suite.
@@ -264,7 +266,7 @@ Events
    :length: length of the entire message.
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_extension ssl_server_hello
-      ssl_alert ssl_heartbeat
+      ssl_alert ssl_heartbeat ssl_probable_encrypted_handshake_message
 
 .. zeek:id:: ssl_established
 
@@ -707,6 +709,45 @@ Events
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_extension ssl_server_hello
       ssl_alert ssl_heartbeat
+
+.. zeek:id:: ssl_probable_encrypted_handshake_message
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`)
+
+   This event is generated for application data records of TLS 1.3 connections of which
+   we suspect that they contain handshake messages.
+   
+   In TLS 1.3, large parts of the handshake are encrypted; the only cleartext packets
+   typically exchanged are the client hello and the server hello. The first few packets
+   after the client and server hello, however, are a continuation of the handshake and
+   still include handshake data.
+   
+   This event is raised for these packets of which we suspect that they are handshake records,
+   including the finished record.
+   
+   The heuristic for this is: all application data record after the server hello are
+   handshake records until at least one application data record has been received
+   from both the server and the client. Typically, the server will send more records
+   before the client sends the first application data record; and the first application
+   data record of the client will typically include the finished message.
+   
+   Given the encrypted nature of the protocol, in some cases this determination is
+   not correct; the client can send more handshake packets before the finished message, e.g.,
+   when client certificates are used.
+   
+   Note that :zeek:see::ssl_encrypted_data is also raised for these messages.
+   
+
+   :c: The connection.
+   
+
+   :is_orig: True if event is raised for originator side of the connection.
+   
+
+   :length: length of the entire message.
+   
+   .. zeek:see::  ssl_client_hello ssl_established ssl_server_hello
+      ssl_encrypted_data
 
 .. zeek:id:: ssl_rsa_client_pms
 

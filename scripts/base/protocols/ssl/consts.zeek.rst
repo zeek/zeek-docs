@@ -36,6 +36,49 @@ Constants
 :zeek:id:`SSL::SERVER_HELLO_DONE`: :zeek:type:`count`                                                  
 :zeek:id:`SSL::SERVER_KEY_EXCHANGE`: :zeek:type:`count`                                                
 :zeek:id:`SSL::SESSION_TICKET`: :zeek:type:`count`                                                     
+:zeek:id:`SSL::SSL_EXTENSION_APPLICATION_LAYER_PROTOCOL_NEGOTIATION`: :zeek:type:`count`               
+:zeek:id:`SSL::SSL_EXTENSION_CACHED_INFO`: :zeek:type:`count`                                          
+:zeek:id:`SSL::SSL_EXTENSION_CERTIFICATE_AUTHORITIES`: :zeek:type:`count`                              
+:zeek:id:`SSL::SSL_EXTENSION_CERT_TYPE`: :zeek:type:`count`                                            
+:zeek:id:`SSL::SSL_EXTENSION_CHANNEL_ID`: :zeek:type:`count`                                           
+:zeek:id:`SSL::SSL_EXTENSION_CHANNEL_ID_NEW`: :zeek:type:`count`                                       
+:zeek:id:`SSL::SSL_EXTENSION_CLIENT_AUTHZ`: :zeek:type:`count`                                         
+:zeek:id:`SSL::SSL_EXTENSION_CLIENT_CERTIFICATE_TYPE`: :zeek:type:`count`                              
+:zeek:id:`SSL::SSL_EXTENSION_CLIENT_CERTIFICATE_URL`: :zeek:type:`count`                               
+:zeek:id:`SSL::SSL_EXTENSION_COOKIE`: :zeek:type:`count`                                               
+:zeek:id:`SSL::SSL_EXTENSION_EARLY_DATA`: :zeek:type:`count`                                           
+:zeek:id:`SSL::SSL_EXTENSION_EC_POINT_FORMATS`: :zeek:type:`count`                                     
+:zeek:id:`SSL::SSL_EXTENSION_ENCRYPTED_CLIENT_CERTIFICATES`: :zeek:type:`count`                        
+:zeek:id:`SSL::SSL_EXTENSION_ENCRYPT_THEN_MAC`: :zeek:type:`count`                                     
+:zeek:id:`SSL::SSL_EXTENSION_EXTENDED_MASTER_SECRET`: :zeek:type:`count`                               
+:zeek:id:`SSL::SSL_EXTENSION_HEARTBEAT`: :zeek:type:`count`                                            
+:zeek:id:`SSL::SSL_EXTENSION_KEY_SHARE`: :zeek:type:`count`                                            
+:zeek:id:`SSL::SSL_EXTENSION_MAX_FRAGMENT_LENGTH`: :zeek:type:`count`                                  
+:zeek:id:`SSL::SSL_EXTENSION_NEXT_PROTOCOL_NEGOTIATION`: :zeek:type:`count`                            
+:zeek:id:`SSL::SSL_EXTENSION_OID_FILTERS`: :zeek:type:`count`                                          
+:zeek:id:`SSL::SSL_EXTENSION_ORIGIN_BOUND_CERTIFICATES`: :zeek:type:`count`                            
+:zeek:id:`SSL::SSL_EXTENSION_PADDING`: :zeek:type:`count`                                              
+:zeek:id:`SSL::SSL_EXTENSION_PADDING_TEMP`: :zeek:type:`count`                                         
+:zeek:id:`SSL::SSL_EXTENSION_PRE_SHARED_KEY`: :zeek:type:`count`                                       
+:zeek:id:`SSL::SSL_EXTENSION_PSK_KEY_EXCHANGE_MODES`: :zeek:type:`count`                               
+:zeek:id:`SSL::SSL_EXTENSION_RENEGOTIATION_INFO`: :zeek:type:`count`                                   
+:zeek:id:`SSL::SSL_EXTENSION_SERVER_AUTHZ`: :zeek:type:`count`                                         
+:zeek:id:`SSL::SSL_EXTENSION_SERVER_CERTIFICATE_TYPE`: :zeek:type:`count`                              
+:zeek:id:`SSL::SSL_EXTENSION_SERVER_NAME`: :zeek:type:`count`                                          
+:zeek:id:`SSL::SSL_EXTENSION_SESSIONTICKET_TLS`: :zeek:type:`count`                                    
+:zeek:id:`SSL::SSL_EXTENSION_SIGNATURE_ALGORITHMS`: :zeek:type:`count`                                 
+:zeek:id:`SSL::SSL_EXTENSION_SIGNED_CERTIFICATE_TIMESTAMP`: :zeek:type:`count`                         
+:zeek:id:`SSL::SSL_EXTENSION_SRP`: :zeek:type:`count`                                                  
+:zeek:id:`SSL::SSL_EXTENSION_STATUS_REQUEST`: :zeek:type:`count`                                       
+:zeek:id:`SSL::SSL_EXTENSION_STATUS_REQUEST_V2`: :zeek:type:`count`                                    
+:zeek:id:`SSL::SSL_EXTENSION_SUPPORTED_GROUPS`: :zeek:type:`count`                                     
+:zeek:id:`SSL::SSL_EXTENSION_SUPPORTED_VERSIONS`: :zeek:type:`count`                                   
+:zeek:id:`SSL::SSL_EXTENSION_TICKETEARLYDATAINFO`: :zeek:type:`count`                                  
+:zeek:id:`SSL::SSL_EXTENSION_TOKEN_BINDING`: :zeek:type:`count`                                        
+:zeek:id:`SSL::SSL_EXTENSION_TRUNCATED_HMAC`: :zeek:type:`count`                                       
+:zeek:id:`SSL::SSL_EXTENSION_TRUSTED_CA_KEYS`: :zeek:type:`count`                                      
+:zeek:id:`SSL::SSL_EXTENSION_USER_MAPPING`: :zeek:type:`count`                                         
+:zeek:id:`SSL::SSL_EXTENSION_USE_SRTP`: :zeek:type:`count`                                             
 :zeek:id:`SSL::SSL_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA`: :zeek:type:`count`                             
 :zeek:id:`SSL::SSL_FORTEZZA_KEA_WITH_NULL_SHA`: :zeek:type:`count`                                     
 :zeek:id:`SSL::SSL_RSA_FIPS_WITH_3DES_EDE_CBC_SHA`: :zeek:type:`count`                                 
@@ -586,6 +629,264 @@ Constants
 
    :Type: :zeek:type:`count`
    :Default: ``4``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_APPLICATION_LAYER_PROTOCOL_NEGOTIATION
+
+   :Type: :zeek:type:`count`
+   :Default: ``16``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CACHED_INFO
+
+   :Type: :zeek:type:`count`
+   :Default: ``25``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CERTIFICATE_AUTHORITIES
+
+   :Type: :zeek:type:`count`
+   :Default: ``47``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CERT_TYPE
+
+   :Type: :zeek:type:`count`
+   :Default: ``9``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CHANNEL_ID
+
+   :Type: :zeek:type:`count`
+   :Default: ``30031``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CHANNEL_ID_NEW
+
+   :Type: :zeek:type:`count`
+   :Default: ``30032``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CLIENT_AUTHZ
+
+   :Type: :zeek:type:`count`
+   :Default: ``7``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CLIENT_CERTIFICATE_TYPE
+
+   :Type: :zeek:type:`count`
+   :Default: ``19``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_CLIENT_CERTIFICATE_URL
+
+   :Type: :zeek:type:`count`
+   :Default: ``2``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_COOKIE
+
+   :Type: :zeek:type:`count`
+   :Default: ``44``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_EARLY_DATA
+
+   :Type: :zeek:type:`count`
+   :Default: ``42``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_EC_POINT_FORMATS
+
+   :Type: :zeek:type:`count`
+   :Default: ``11``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_ENCRYPTED_CLIENT_CERTIFICATES
+
+   :Type: :zeek:type:`count`
+   :Default: ``13180``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_ENCRYPT_THEN_MAC
+
+   :Type: :zeek:type:`count`
+   :Default: ``22``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_EXTENDED_MASTER_SECRET
+
+   :Type: :zeek:type:`count`
+   :Default: ``23``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_HEARTBEAT
+
+   :Type: :zeek:type:`count`
+   :Default: ``15``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_KEY_SHARE
+
+   :Type: :zeek:type:`count`
+   :Default: ``40``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_MAX_FRAGMENT_LENGTH
+
+   :Type: :zeek:type:`count`
+   :Default: ``1``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_NEXT_PROTOCOL_NEGOTIATION
+
+   :Type: :zeek:type:`count`
+   :Default: ``13172``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_OID_FILTERS
+
+   :Type: :zeek:type:`count`
+   :Default: ``48``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_ORIGIN_BOUND_CERTIFICATES
+
+   :Type: :zeek:type:`count`
+   :Default: ``13175``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_PADDING
+
+   :Type: :zeek:type:`count`
+   :Default: ``21``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_PADDING_TEMP
+
+   :Type: :zeek:type:`count`
+   :Default: ``35655``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_PRE_SHARED_KEY
+
+   :Type: :zeek:type:`count`
+   :Default: ``41``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_PSK_KEY_EXCHANGE_MODES
+
+   :Type: :zeek:type:`count`
+   :Default: ``45``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_RENEGOTIATION_INFO
+
+   :Type: :zeek:type:`count`
+   :Default: ``65281``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SERVER_AUTHZ
+
+   :Type: :zeek:type:`count`
+   :Default: ``8``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SERVER_CERTIFICATE_TYPE
+
+   :Type: :zeek:type:`count`
+   :Default: ``20``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SERVER_NAME
+
+   :Type: :zeek:type:`count`
+   :Default: ``0``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SESSIONTICKET_TLS
+
+   :Type: :zeek:type:`count`
+   :Default: ``35``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SIGNATURE_ALGORITHMS
+
+   :Type: :zeek:type:`count`
+   :Default: ``13``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SIGNED_CERTIFICATE_TIMESTAMP
+
+   :Type: :zeek:type:`count`
+   :Default: ``18``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SRP
+
+   :Type: :zeek:type:`count`
+   :Default: ``12``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_STATUS_REQUEST
+
+   :Type: :zeek:type:`count`
+   :Default: ``5``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_STATUS_REQUEST_V2
+
+   :Type: :zeek:type:`count`
+   :Default: ``17``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SUPPORTED_GROUPS
+
+   :Type: :zeek:type:`count`
+   :Default: ``10``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SUPPORTED_VERSIONS
+
+   :Type: :zeek:type:`count`
+   :Default: ``43``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_TICKETEARLYDATAINFO
+
+   :Type: :zeek:type:`count`
+   :Default: ``46``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_TOKEN_BINDING
+
+   :Type: :zeek:type:`count`
+   :Default: ``24``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_TRUNCATED_HMAC
+
+   :Type: :zeek:type:`count`
+   :Default: ``4``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_TRUSTED_CA_KEYS
+
+   :Type: :zeek:type:`count`
+   :Default: ``3``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_USER_MAPPING
+
+   :Type: :zeek:type:`count`
+   :Default: ``6``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_USE_SRTP
+
+   :Type: :zeek:type:`count`
+   :Default: ``14``
 
 
 .. zeek:id:: SSL::SSL_FORTEZZA_KEA_WITH_FORTEZZA_CBC_SHA
