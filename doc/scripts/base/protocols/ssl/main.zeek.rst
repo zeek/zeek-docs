@@ -203,13 +203,10 @@ Types
          by the client. This value is used to determine if a session
          is being resumed. It's not logged.
 
-      server_appdata: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Count to track if the server already sent an application data
-         packet for TLS 1.3. Used to track when a session was established.
-
-      client_appdata: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Flag to track if the client already sent an application data
-         packet for TLS 1.3. Used to track when a session was established.
+      client_psk_seen: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         Track if the client sent a pre-shared-key extension.
+         Used to determine if a TLS 1.3 session is being resumed.
+         Not logged.
 
       last_alert: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          Last alert that was seen during the connection.
