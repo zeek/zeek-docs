@@ -892,9 +892,13 @@ And finally, the function can be called like:
     print greeting("Dave");
 
 Anonymously defined functions capture their closures. This means that they
-can use and modify variables from their enclosing scope at the time of their
-creation. Here is an example of a simple anonymous function that captures its
-closure in Zeek:
+can use variables from their enclosing scope at the time of their
+creation.  In older-style deprecated functionality (capture by "reference"),
+closure-capture happens automatically.  The current style
+(capture by "copy") requires explicitly listing the captured variables.
+
+Here is an example of a simple anonymous function that automatically
+captures its closure in Zeek (deprecated functionality):
 
 .. code-block:: zeek
 
@@ -912,25 +916,112 @@ closure in Zeek:
     print three(5); # prints 8
 
 Here `make_adder` is generating a function that captures `n` in its closure.
+The same, but in current (non-deprecated, closure-by-copy) form:
 
-Anonymous functions capture their closures by reference. This means that they
-can modify the variables in their closures. For example:
+.. code-block:: zeek
+
+    local make_adder = function(n: count): function(m: count): count
+        {
+        return function [n] (m: count): count
+            {
+            return n + m;
+            };
+        };
+
+    print make_adder(3)(5); # prints 8
+
+    local three = make_adder(3);
+    print three(5); # prints 8
+
+The only difference is that the inner anonymous function explicitly
+declares that `n` is captured, by listing all of the captured variables
+in `[...]` after the `function` keyword.  It is a compile-time error
+to fail to list a captured variable (or to list the same variable more than
+once, or to list a global variable).
+
+Old-style capture-by-reference closure semantics means that those
+anonymous functions can modify the variables in their closures. For example:
 
 .. code-block:: zeek
 
     local n = 3;
-    local f = function() { n += 1; };
-    f();
+    local f = function() { n += 1; print n; };
+    f();     # prints 4
     print n; # prints 4
+    n = 0;
+    f();     # prints 1, since n is shared between outer and inner functions
+    print n; # prints 1
+
+The same in capture-by-copy, however, yields different results:
+
+.. code-block:: zeek
+
+    local n = 3;
+    local f = function [n] () { n += 1; print n; };
+    f();     # prints 4
+    print n; # prints 3, since n is not shared
+    n = 0;
+    f();     # prints 5, since n persists for f
+    print n; # prints 0
+
+With capture-by-copy, by default variables are captured using the equivalent
+of `=` assignments.  In Zeek, variable assignments use "shallow" copy,
+meaning that assignments of aggregates share the same aggregate rather
+than fully duplicating all of its members.  These semantics allow you to
+get the equivalent of the original "reference" semantics by using record
+fields rather than variables for the sharing.  For example:
+
+.. code-block:: zeek
+
+    type r: record { n: count; };
+    ...
+    local var = r($n=3);
+    local f = function [var] () { var$n += 1; print var$n; };
+    f();         # prints 4
+    print var$n; # prints 4
+    var$n = 0;
+    f();         # prints 1, since n is shared between outer and inner functions
+    print var$n; # prints 1
+
+You can specify that a given variable should instead be captured using
+a *deep* copy by preceding it with the `copy` keyword:
+
+.. code-block:: zeek
+
+    type r: record { n: count; };
+    ...
+    local var = r($n=3);
+    local f = function [copy var] () { var$n += 1; print var$n; };
+    f();         # prints 4
+    print var$n; # prints 3, since the var aggregate is not shared
+    var$n = 0;
+    f();         # prints 5, since the function has its own deep copy of var
+    print var$n; # prints 0
+
+Finally, you can intermingle both shallow and deep copying, as shown in
+this fragment:
+
+.. code-block:: zeek
+
+    type r: record { n: count; };
+    ...
+    local var1 = r($n=3);
+    local var2 = r($n=7);
+    local f = function [copy var1, var2] () { ...
+
+where `var1` will be captured via deep-copy and `var2` via the normal
+shallow-copy.
 
 When anonymous functions are serialized over Broker they keep their closures,
-but they will not continue to mutate the values from the sending script. At
-the time of serialization they create a copy of their closure. Anonymous
-function's do not capture global variables in their closures though and will
-use the receivers global variables.
+but they will not continue to mutate the values from the sending script (either
+directly, for reference semantics, or for shallow-copy aggregates, for
+copy semantics).  At
+the time of serialization they create a copy of their closure. Also, anonymous
+functions do not capture global variables in their closures and thus will
+use the receiver's global variables.
 
 In order to serialize an anonymous function, that function must have been
-already declared on the receivers end because Zeek will not serialize the
+already declared on the receiver's end, because Zeek does not serialize the
 function's source code. See `testing/btest/language/closure-sending.zeek` for
 an example of how to serialize anonymous functions over Broker.
 
