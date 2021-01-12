@@ -34,7 +34,6 @@ Types
 :zeek:type:`Broker::BackendType`: :zeek:type:`enum`      Enumerates the possible storage backends.
 :zeek:type:`Broker::QueryResult`: :zeek:type:`record`    The result of a data store query.
 :zeek:type:`Broker::QueryStatus`: :zeek:type:`enum`      Whether a data store query could be completed or not.
-:zeek:type:`Broker::RocksDBOptions`: :zeek:type:`record` Options to tune the RocksDB storage backend.
 :zeek:type:`Broker::SQLiteOptions`: :zeek:type:`record`  Options to tune the SQLite storage backend.
 ======================================================== =====================================================
 
@@ -175,8 +174,6 @@ Types
 
       sqlite: :zeek:type:`Broker::SQLiteOptions` :zeek:attr:`&default` = ``[path=]`` :zeek:attr:`&optional`
 
-      rocksdb: :zeek:type:`Broker::RocksDBOptions` :zeek:attr:`&default` = ``[path=]`` :zeek:attr:`&optional`
-
    Options to tune the particular storage backends.
 
 .. zeek:type:: Broker::BackendType
@@ -186,8 +183,6 @@ Types
       .. zeek:enum:: Broker::MEMORY Broker::BackendType
 
       .. zeek:enum:: Broker::SQLITE Broker::BackendType
-
-      .. zeek:enum:: Broker::ROCKSDB Broker::BackendType
 
    Enumerates the possible storage backends.
 
@@ -214,17 +209,6 @@ Types
       .. zeek:enum:: Broker::FAILURE Broker::QueryStatus
 
    Whether a data store query could be completed or not.
-
-.. zeek:type:: Broker::RocksDBOptions
-
-   :Type: :zeek:type:`record`
-
-      path: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         File system path of the database.
-         If left empty, will be derived from the name of the store,
-         and use the '.rocksdb' file suffix.
-
-   Options to tune the RocksDB storage backend.
 
 .. zeek:type:: Broker::SQLiteOptions
 
@@ -326,7 +310,7 @@ Functions
 
 .. zeek:id:: Broker::create_master
 
-   :Type: :zeek:type:`function` (name: :zeek:type:`string`, b: :zeek:type:`Broker::BackendType` :zeek:attr:`&default` = ``Broker::MEMORY`` :zeek:attr:`&optional`, options: :zeek:type:`Broker::BackendOptions` :zeek:attr:`&default` = *[sqlite=[path=], rocksdb=[path=]]* :zeek:attr:`&optional`) : :zeek:type:`opaque` of Broker::Store
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`, b: :zeek:type:`Broker::BackendType` :zeek:attr:`&default` = ``Broker::MEMORY`` :zeek:attr:`&optional`, options: :zeek:type:`Broker::BackendOptions` :zeek:attr:`&default` = ``[sqlite=[path=]]`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of Broker::Store
 
    Create a master data store which contains key-value pairs.
    
