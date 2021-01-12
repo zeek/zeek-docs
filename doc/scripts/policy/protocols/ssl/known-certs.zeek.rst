@@ -138,7 +138,7 @@ State Variables
             master_node=""
             master=F
             backend=Broker::MEMORY
-            options=[sqlite=[path=""], rocksdb=[path=""]]
+            options=[sqlite=[path=""]]
             clone_resync_interval=10.0 secs
             clone_stale_interval=5.0 mins
             clone_mutation_buffer_interval=2.0 mins
