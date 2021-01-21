@@ -1,62 +1,44 @@
 
-===========
-Zeek Manual
-===========
+.. image:: /images/zeek-logo.png
+   :align: center
+   :scale: 50%
+
+==================
+Zeek Documentation
+==================
 
 .. note::
 
-    There's three primary versions of this manual that track latest
-    releases and development:
+    The Zeek codebase has three primary branches of interest to users and
+    this document is also maintained as three different versions, one
+    associated with each branch of Zeek.  The default version of
+    `docs.zeek.org <https://docs.zeek.org>`_ tracks the latest Zeek release:
 
-    * Current Feature Release: https://docs.zeek.org/en/current
-    * Long-Term Support Release: https://docs.zeek.org/en/lts
-    * Git *master* Branch: https://docs.zeek.org/en/master
+      * Current Feature Release: https://docs.zeek.org/en/current
 
-Introduction
-============
+    If you instead use a Zeek Long-Term Support (LTS) release or
+    Git *master* branch, these are the appropriate starting points:
 
-.. toctree::
-   :maxdepth: 2
+      * Long-Term Support Release: https://docs.zeek.org/en/lts
+      * Git *master* Branch: https://docs.zeek.org/en/master
 
-   intro/index.rst
-   cluster/index.rst
-   install/index.rst
-   quickstart/index.rst
-   configuration/index.rst
-
-.. _using-zeek:
-
-Examples and Use Cases
-======================
-
-.. toctree::
-   :maxdepth: 3
-
-   examples/index.rst
-
-Reference
-=========
+    To help clarify which release you are using, the version numbering
+    scheme for the two release branches is described in the `Release
+    Cadence <https://github.com/zeek/zeek/wiki/Release-Cadence>`_ policy.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Table of Contents
 
-   frameworks/index.rst
-   script-reference/index.rst
-
-Development
-===========
-
-.. toctree::
-   :maxdepth: 2
-
-   devel/index.rst
-
-Related Tools/Software
-======================
-
-.. toctree::
-   :maxdepth: 2
-
-   components/index.rst
+   about
+   monitoring
+   get-started
+   clusters
+   log-formats
+   logs/index
+   frameworks/index
+   script-reference/index
+   devel/index
+   components/index
 
 :ref:`General Index <genindex>`
