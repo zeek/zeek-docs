@@ -1,4 +1,6 @@
 
+.. TODO: port/sync from google doc
+
 ===============
 Writing Plugins
 ===============

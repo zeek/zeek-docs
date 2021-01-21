@@ -1,3 +1,4 @@
+.. TODO: port/sync all these from google docs
 
 ==========
 Frameworks
