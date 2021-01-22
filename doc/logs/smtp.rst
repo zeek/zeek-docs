@@ -27,13 +27,13 @@ The following is a capture of an SMTP session retrieved from an online packet
 capture database. I have reconstructed the session using :program:`tcpflow` and
 edited it to remove material not necessary to make my point.
 
-::
+.. literal-emph::
 
   SMTP server: 220-xc90.websitewelcome.com ESMTP Exim 4.69 #1 Mon, 05 Oct 2009 01:05:54 -0500
   220-We do not authorize the use of this system to transport unsolicited,
   220 and/or bulk e-mail.
 
-  SMTP client: EHLO GP
+  SMTP client: **EHLO GP**
 
   SMTP server: 250-xc90.websitewelcome.com Hello GP [122.162.143.157]
   250-SIZE 52428800
@@ -42,245 +42,245 @@ edited it to remove material not necessary to make my point.
   250-STARTTLS
   250 HELP
 
-  SMTP client: AUTH LOGIN
+  SMTP client: **AUTH LOGIN**
 
   SMTP server: 334 VXNlcm5hbWU6
 
-  SMTP client: Z3VycGFydGFwQHBhdHJpb3RzLmlu
+  SMTP client: **Z3VycGFydGFwQHBhdHJpb3RzLmlu**
 
   SMTP server: 334 UGFzc3dvcmQ6
 
-  SMTP client: cHVuamFiQDEyMw==
+  SMTP client: **cHVuamFiQDEyMw==**
 
   SMTP server: 235 Authentication succeeded
 
-  SMTP client: MAIL FROM: <gurpartap@patriots.in>
+  SMTP client: **MAIL FROM: <gurpartap@patriots.in>**
 
   SMTP server: 250 OK
 
-  SMTP client: RCPT TO: <raj_deol2002in@yahoo.co.in>
+  SMTP client: **RCPT TO: <raj_deol2002in@yahoo.co.in>**
 
   SMTP server: 250 Accepted
 
-  SMTP client: DATA
+  SMTP client: **DATA**
 
   SMTP server: 354 Enter message, ending with "." on a line by itself
 
-  SMTP client: From: "Gurpartap Singh" <gurpartap@patriots.in>
-  To: <raj_deol2002in@yahoo.co.in>
-  Subject: SMTP
-  Date: Mon, 5 Oct 2009 11:36:07 +0530
-  Message-ID: <000301ca4581$ef9e57f0$cedb07d0$@in>
-  MIME-Version: 1.0
-  Content-Type: multipart/mixed;
-  .boundary="----=_NextPart_000_0004_01CA45B0.095693F0"
-  X-Mailer: Microsoft Office Outlook 12.0
-  Thread-Index: AcpFgem9BvjjZEDeR1Kh8i+hUyVo0A==
-  Content-Language: en-us
-  x-cr-hashedpuzzle: SeA= AAR2 ADaH BpiO C4G1 D1gW FNB1 FPkR Fn+W HFCP HnYJ JO7s Kum6 KytW LFcI LjUt;1;cgBhAGoAXwBkAGUAbwBsADIAMAAwADIAaQBuAEAAeQBhAGgAbwBvAC4AYwBvAC4AaQBuAA==;Sosha1_v1;7;{CAA37F59-1850-45C7-8540-AA27696B5398};ZwB1AHIAcABhAHIAdABhAHAAQABwAGEAdAByAGkAbwB0AHMALgBpAG4A;Mon, 05 Oct 2009 06:06:01 GMT;UwBNAFQAUAA=
-  x-cr-puzzleid: {CAA37F59-1850-45C7-8540-AA27696B5398}
+  SMTP client: **From: "Gurpartap Singh" <gurpartap@patriots.in>**
+  **To: <raj_deol2002in@yahoo.co.in>**
+  **Subject: SMTP**
+  **Date: Mon, 5 Oct 2009 11:36:07 +0530**
+  **Message-ID: <000301ca4581$ef9e57f0$cedb07d0$@in>**
+  **MIME-Version: 1.0**
+  **Content-Type: multipart/mixed;**
+  **.boundary="----=_NextPart_000_0004_01CA45B0.095693F0"**
+  **X-Mailer: Microsoft Office Outlook 12.0**
+  **Thread-Index: AcpFgem9BvjjZEDeR1Kh8i+hUyVo0A==**
+  **Content-Language: en-us**
+  **x-cr-hashedpuzzle: SeA= AAR2 ADaH BpiO C4G1 D1gW FNB1 FPkR Fn+W HFCP HnYJ JO7s Kum6 KytW LFcI LjUt;1;cgBhAGoAXwBkAGUAbwBsADIAMAAwADIAaQBuAEAAeQBhAGgAbwBvAC4AYwBvAC4AaQBuAA==;Sosha1_v1;7;{CAA37F59-1850-45C7-8540-AA27696B5398};ZwB1AHIAcABhAHIAdABhAHAAQABwAGEAdAByAGkAbwB0AHMALgBpAG4A;Mon, 05 Oct 2009 06:06:01 GMT;UwBNAFQAUAA=**
+  **x-cr-puzzleid: {CAA37F59-1850-45C7-8540-AA27696B5398}**
 
-  This is a multipart message in MIME format.
+  **This is a multipart message in MIME format.**
 
-  ------=_NextPart_000_0004_01CA45B0.095693F0
-  Content-Type: multipart/alternative;
-  .boundary="----=_NextPart_001_0005_01CA45B0.095693F0"
-
-
-  ------=_NextPart_001_0005_01CA45B0.095693F0
-  Content-Type: text/plain;
-  .charset="us-ascii"
-  Content-Transfer-Encoding: 7bit
-
-  Hello
+  **------=_NextPart_000_0004_01CA45B0.095693F0**
+  **Content-Type: multipart/alternative;**
+  **.boundary="----=_NextPart_001_0005_01CA45B0.095693F0"**
 
 
+  **------=_NextPart_001_0005_01CA45B0.095693F0**
+  **Content-Type: text/plain;**
+  **.charset="us-ascii"**
+  **Content-Transfer-Encoding: 7bit**
 
-  I send u smtp pcap file
-
-  Find the attachment
+  **Hello**
 
 
 
-  GPS
+  **I send u smtp pcap file**
+
+  **Find the attachment**
 
 
-  ------=_NextPart_001_0005_01CA45B0.095693F0
-  Content-Type: text/html;
-  .charset="us-ascii"
-  Content-Transfer-Encoding: quoted-printable
 
-  <html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
-  xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
-  xmlns:w=3D"urn:schemas-microso
-  SMTP client: ft-com:office:word" =
-  xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
-  xmlns=3D"http://www.w3.org/TR/REC-html40">
+  **GPS**
 
-  <head>
-  <META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
-  charset=3Dus-ascii">
-  <meta name=3DGenerator content=3D"Microsoft Word 12 (filtered medium)">
-  <style>
-  <!--
-   /* Font Definitions */
-   @font-face
-  ...edited...
-    <o:idmap v:ext=3D"edit" data=3D"1" />
-   </o:shapelayout></xml><![endif]-->
-  </head>
 
-  <body lang=3DEN-US link=3Dblue vlink=3Dpurple>
+  **------=_NextPart_001_0005_01CA45B0.095693F0**
+  **Content-Type: text/html;**
+  **.charset="us-ascii"**
+  **Content-Transfer-Encoding: quoted-printable**
 
-  <div class=3DSection1>
+  **<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =**
+  **xmlns:o=3D"urn:schemas-microsoft-com:office:office" =**
+  **xmlns:w=3D"urn:schemas-microso**
+  **SMTP client: ft-com:office:word" =**
+  **xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =**
+  **xmlns=3D"http://www.w3.org/TR/REC-html40">**
+
+  **<head>**
+  **<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =**
+  **charset=3Dus-ascii">**
+  **<meta name=3DGenerator content=3D"Microsoft Word 12 (filtered medium)">**
+  **<style>**
+  **<!--**
+  ** /* Font Definitions */**
+  ** @font-face**
+  **...edited...**
+  **  <o:idmap v:ext=3D"edit" data=3D"1" />**
+  ** </o:shapelayout></xml><![endif]-->**
+  **</head>**
+
+  **<body lang=3DEN-US link=3Dblue vlink=3Dpurple>**
+
+  **<div class=3DSection1>**
   SMTP client:
 
-  <p class=3DMsoNormal>Hello<o:p></o:p></p>
+  **<p class=3DMsoNormal>Hello<o:p></o:p></p>**
 
-  <p class=3DMsoNormal><o:p>&nbsp;</o:p></p>
+  **<p class=3DMsoNormal><o:p>&nbsp;</o:p></p>**
 
-  <p class=3DMsoNormal>I send u smtp pcap file <o:p></o:p></p>
+  **<p class=3DMsoNormal>I send u smtp pcap file <o:p></o:p></p>**
 
-  <p class=3DMsoNormal>Find the attachment<o:p></o:p></p>
+  **<p class=3DMsoNormal>Find the attachment<o:p></o:p></p>**
 
-  <p class=3DMsoNormal><o:p>&nbsp;</o:p></p>
+  **<p class=3DMsoNormal><o:p>&nbsp;</o:p></p>**
 
-  <p class=3DMsoNormal>GPS<o:p></o:p></p>
+  **<p class=3DMsoNormal>GPS<o:p></o:p></p>**
 
-  </div>
+  **</div>**
 
-  </body>
+  **</body>**
 
-  </html>
+  **</html>**
 
-  ------=_NextPart_001_0005_01CA45B0.095693F0--
+  **------=_NextPart_001_0005_01CA45B0.095693F0--**
 
-  ------=_NextPart_000_0004_01CA45B0.095693F0
-  Content-Type: text/plain;
-  .name="NEWS.txt"
-  Content-Transfer-Encoding: quoted-printable
-  Content-Disposition: attachment;
-  .filename="NEWS.txt"
+  **------=_NextPart_000_0004_01CA45B0.095693F0**
+  **Content-Type: text/plain;**
+  **.name="NEWS.txt"**
+  **Content-Transfer-Encoding: quoted-printable**
+  **Content-Disposition: attachment;**
+  **.filename="NEWS.txt"**
 
-  Version 4.9.9.1
-  * Many bug fixes
-  * Improved editor
-  ...edited...
-  SMTP client: From: "Gurpartap Singh" <gurpartap@patriots.in>
-  To: <raj_deol2002in@yahoo.co.in>
-  Subject: SMTP
-  Date: Mon, 5 Oct 2009 11:36:07 +0530
-  Message-ID: <000301ca4581$ef9e57f0$cedb07d0$@in>
-  MIME-Version: 1.0
-  Content-Type: multipart/mixed;
-  .boundary="----=_NextPart_000_0004_01CA45B0.095693F0"
-  X-Mailer: Microsoft Office Outlook 12.0
-  Thread-Index: AcpFgem9BvjjZEDeR1Kh8i+hUyVo0A==
-  Content-Language: en-us
-  x-cr-hashedpuzzle: SeA= AAR2 ADaH BpiO C4G1 D1gW FNB1 FPkR Fn+W HFCP HnYJ JO7s Kum6 KytW LFcI LjUt;1;cgBhAGoAXwBkAGUAbwBsADIAMAAwADIAaQBuAEAAeQBhAGgAbwBvAC4AYwBvAC4AaQBuAA==;Sosha1_v1;7;{CAA37F59-1850-45C7-8540-AA27696B5398};ZwB1AHIAcABhAHIAdABhAHAAQABwAGEAdAByAGkAbwB0AHMALgBpAG4A;Mon, 05 Oct 2009 06:06:01 GMT;UwBNAFQAUAA=
-  x-cr-puzzleid: {CAA37F59-1850-45C7-8540-AA27696B5398}
+  **Version 4.9.9.1**
+  *** Many bug fixes**
+  *** Improved editor**
+  **...edited...**
+  SMTP client: **From: "Gurpartap Singh" <gurpartap@patriots.in>**
+  **To: <raj_deol2002in@yahoo.co.in>**
+  **Subject: SMTP**
+  **Date: Mon, 5 Oct 2009 11:36:07 +0530**
+  **Message-ID: <000301ca4581$ef9e57f0$cedb07d0$@in>**
+  **MIME-Version: 1.0**
+  **Content-Type: multipart/mixed;**
+  **.boundary="----=_NextPart_000_0004_01CA45B0.095693F0"**
+  **X-Mailer: Microsoft Office Outlook 12.0**
+  **Thread-Index: AcpFgem9BvjjZEDeR1Kh8i+hUyVo0A==**
+  **Content-Language: en-us**
+  **x-cr-hashedpuzzle: SeA= AAR2 ADaH BpiO C4G1 D1gW FNB1 FPkR Fn+W HFCP HnYJ JO7s Kum6 KytW LFcI LjUt;1;cgBhAGoAXwBkAGUAbwBsADIAMAAwADIAaQBuAEAAeQBhAGgAbwBvAC4AYwBvAC4AaQBuAA==;Sosha1_v1;7;{CAA37F59-1850-45C7-8540-AA27696B5398};ZwB1AHIAcABhAHIAdABhAHAAQABwAGEAdAByAGkAbwB0AHMALgBpAG4A;Mon, 05 Oct 2009 06:06:01 GMT;UwBNAFQAUAA=**
+  **x-cr-puzzleid: {CAA37F59-1850-45C7-8540-AA27696B5398}**
 
-  This is a multipart message in MIME format.
+  **This is a multipart message in MIME format.**
 
-  ------=_NextPart_000_0004_01CA45B0.095693F0
-  Content-Type: multipart/alternative;
-  .boundary="----=_NextPart_001_0005_01CA45B0.095693F0"
-
-
-  ------=_NextPart_001_0005_01CA45B0.095693F0
-  Content-Type: text/plain;
-  .charset="us-ascii"
-  Content-Transfer-Encoding: 7bit
-
-  Hello
+  **------=_NextPart_000_0004_01CA45B0.095693F0**
+  **Content-Type: multipart/alternative;**
+  **.boundary="----=_NextPart_001_0005_01CA45B0.095693F0"**
 
 
+  **------=_NextPart_001_0005_01CA45B0.095693F0**
+  **Content-Type: text/plain;**
+  **.charset="us-ascii"**
+  **Content-Transfer-Encoding: 7bit**
 
-  I send u smtp pcap file
-
-  Find the attachment
+  **Hello**
 
 
 
-  GPS
+  **I send u smtp pcap file**
+
+  **Find the attachment**
 
 
-  ------=_NextPart_001_0005_01CA45B0.095693F0
-  Content-Type: text/html;
-  .charset="us-ascii"
-  Content-Transfer-Encoding: quoted-printable
 
-  <html xmlns:v=3D"urn:schemas-microsoft-com:vml" =
-  xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
-  xmlns:w=3D"urn:schemas
-  SMTP client: -microsoft-com:office:word" =
-  xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =
-  xmlns=3D"http://www.w3.org/TR/REC-html40">
+  **GPS**
 
-  <head>
-  <META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
-  charset=3Dus-ascii">
-  <meta name=3DGenerator content=3D"Microsoft Word 12 (filtered medium)">
-  <style>
-  ...edited...
-    <o:idmap v:ext=3D"edit" data=3D"1" />
-   </o:shapelayout></xml><![endif]-->
-  </head>
 
-  <body lang=3DEN-US link=3Dblue vlink=3Dpurple>
+  **------=_NextPart_001_0005_01CA45B0.095693F0**
+  **Content-Type: text/html;**
+  **.charset="us-ascii"**
+  **Content-Transfer-Encoding: quoted-printable**
 
-  <div cl
-  SMTP client: ass=3DSection1>
+  **<html xmlns:v=3D"urn:schemas-microsoft-com:vml" =**
+  **xmlns:o=3D"urn:schemas-microsoft-com:office:office" =**
+  **xmlns:w=3D"urn:schemas**
+  **SMTP client: -microsoft-com:office:word" =**
+  **xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" =**
+  **xmlns=3D"http://www.w3.org/TR/REC-html40">**
 
-  <p class=3DMsoNormal>Hello<o:p></o:p></p>
+  **<head>**
+  **<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =**
+  **charset=3Dus-ascii">**
+  **<meta name=3DGenerator content=3D"Microsoft Word 12 (filtered medium)">**
+  **<style>**
+  **...edited...**
+  **  <o:idmap v:ext=3D"edit" data=3D"1" />**
+  ** </o:shapelayout></xml><![endif]-->**
+  **</head>**
 
-  <p class=3DMsoNormal><o:p>&nbsp;</o:p></p>
+  **<body lang=3DEN-US link=3Dblue vlink=3Dpurple>**
 
-  <p class=3DMsoNormal>I send u smtp pcap file <o:p></o:p></p>
+  **<div cl**
+  SMTP client: **ass=3DSection1>**
 
-  <p class=3DMsoNormal>Find the attachment<o:p></o:p></p>
+  **<p class=3DMsoNormal>Hello<o:p></o:p></p>**
 
-  <p class=3DMsoNormal><o:p>&nbsp;</o:p></p>
+  **<p class=3DMsoNormal><o:p>&nbsp;</o:p></p>**
 
-  <p class=3DMsoNormal>GPS<o:p></o:p></p>
+  **<p class=3DMsoNormal>I send u smtp pcap file <o:p></o:p></p>**
 
-  </div>
+  **<p class=3DMsoNormal>Find the attachment<o:p></o:p></p>**
 
-  </body>
+  **<p class=3DMsoNormal><o:p>&nbsp;</o:p></p>**
 
-  </html>
+  **<p class=3DMsoNormal>GPS<o:p></o:p></p>**
 
-  ------=_NextPart_001_0005_01CA45B0.095693F0--
+  **</div>**
 
-  ------=_NextPart_000_0004_01CA45B0.095693F0
-  Content-Type: text/plain;
-  .name="NEWS.txt"
-  Content-Transfer-Encoding: quoted-printable
-  Content-Disposition: attachment;
-  .filename="NEWS.txt"
+  **</body>**
 
-  Version 4.9.9.1
-  * Many bug fixes
-  * Improved editor
-  ...edited...
-  * Allow user to specify an alternate configuration file in Environment =
-  Options=20
-  ...edited...
-  Version 4.9.4.1 (5.0 beta 4.1):
+  **</html>**
 
-  * back to gcc 2.95.3
-  * Profiling support
-  * new update/packages checker (vUpdate)
-  * Lots of bugfixes
+  **------=_NextPart_001_0005_01CA45B0.095693F0--**
 
-  ------=_NextPart_000_00
-  SMTP client: 04_01CA45B0.095693F0--
+  **------=_NextPart_000_0004_01CA45B0.095693F0**
+  **Content-Type: text/plain;**
+  **.name="NEWS.txt"**
+  **Content-Transfer-Encoding: quoted-printable**
+  **Content-Disposition: attachment;**
+  **.filename="NEWS.txt"**
+
+  **Version 4.9.9.1**
+  *** Many bug fixes**
+  *** Improved editor**
+  **...edited...**
+  *** Allow user to specify an alternate configuration file in Environment =**
+  **Options=20**
+  **...edited...**
+  **Version 4.9.4.1 (5.0 beta 4.1):**
+
+  *** back to gcc 2.95.3**
+  *** Profiling support**
+  *** new update/packages checker (vUpdate)**
+  *** Lots of bugfixes**
+
+  **------=_NextPart_000_00**
+  SMTP client: **04_01CA45B0.095693F0--**
 
   .
 
   SMTP server: 250 OK id=1Mugho-0003Dg-Un
 
-  SMTP client: QUIT
+  SMTP client: **QUIT**
 
   SMTP server: 221 xc90.websitewelcome.com closing connection
 
@@ -417,7 +417,7 @@ Zeek produced the following logs.
 
 First is a :file:`conn.log` entry, where SSL is seen as the service:
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-08-15T13:14:33.101858Z",
@@ -425,9 +425,9 @@ First is a :file:`conn.log` entry, where SSL is seen as the service:
     "id.orig_h": "192.168.4.43",
     "id.orig_p": 61329,
     "id.resp_h": "74.125.192.108",
-    "id.resp_p": 465,
+    **"id.resp_p": 465,**
     "proto": "tcp",
-    "service": "ssl",
+    **"service": "ssl",**
     "duration": 0.08411312103271484,
     "orig_bytes": 348,
     "resp_bytes": 3257,
@@ -445,7 +445,7 @@ First is a :file:`conn.log` entry, where SSL is seen as the service:
 
 Zeek created two :file:`files.log` entries for observed x509 certificates:
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-08-15T13:14:33.157292Z",
@@ -466,7 +466,7 @@ Zeek created two :file:`files.log` entries for observed x509 certificates:
       "MD5",
       "SHA1"
     ],
-    "mime_type": "application/x-x509-user-cert",
+    **"mime_type": "application/x-x509-user-cert",**
     "duration": 0,
     "local_orig": false,
     "is_orig": false,
@@ -497,7 +497,7 @@ Zeek created two :file:`files.log` entries for observed x509 certificates:
       "MD5",
       "SHA1"
     ],
-    "mime_type": "application/x-x509-ca-cert",
+    **"mime_type": "application/x-x509-ca-cert",**
     "duration": 0,
     "local_orig": false,
     "is_orig": false,
@@ -510,7 +510,9 @@ Zeek created two :file:`files.log` entries for observed x509 certificates:
   }
 
 Finally Zeek created a :file:`ssl.log` entry with a ``server_name`` field that
-helps us see that the encrypted traffic was probably SMTP::
+helps us see that the encrypted traffic was probably SMTP:
+
+.. literal-emph::
 
   {
     "ts": "2020-08-15T13:14:33.157292Z",
@@ -522,7 +524,7 @@ helps us see that the encrypted traffic was probably SMTP::
     "version": "TLSv12",
     "cipher": "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
     "curve": "x25519",
-    "server_name": "smtp.gmail.com",
+    **"server_name": "smtp.gmail.com",**
     "resumed": false,
     "established": true,
     "cert_chain_fuids": [
@@ -543,17 +545,17 @@ the following logs.
 
 First is a :file:`conn.log` entry, where SSL and SMTP are seen as the services:
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-08-09T23:31:46.626484Z",
     "uid": "CCqmLfIrqQeWvXol4",
     "id.orig_h": "192.168.4.41",
     "id.orig_p": 49334,
-    "id.resp_h": "17.42.251.41",
+    **"id.resp_h": "17.42.251.41",**
     "id.resp_p": 587,
     "proto": "tcp",
-    "service": "ssl,smtp",
+    "**service": "ssl,smtp",**
     "duration": 61.12906002998352,
     "orig_bytes": 1659,
     "resp_bytes": 7198,
@@ -573,7 +575,7 @@ Note that is different from the port 465 TCP session, where only SSL was noted.
 
 Next are three :file:`files.log` entries for x509 certificates.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-08-09T23:31:46.800843Z",
@@ -594,7 +596,7 @@ Next are three :file:`files.log` entries for x509 certificates.
       "SHA1",
       "MD5"
     ],
-    "mime_type": "application/x-x509-user-cert",
+    **"mime_type": "application/x-x509-user-cert",**
     "duration": 0,
     "local_orig": false,
     "is_orig": false,
@@ -624,7 +626,7 @@ Next are three :file:`files.log` entries for x509 certificates.
       "SHA1",
       "MD5"
     ],
-    "mime_type": "application/x-x509-ca-cert",
+    **"mime_type": "application/x-x509-ca-cert",**
     "duration": 0,
     "local_orig": false,
     "is_orig": false,
@@ -654,7 +656,7 @@ Next are three :file:`files.log` entries for x509 certificates.
       "SHA1",
       "MD5"
     ],
-    "mime_type": "application/x-x509-ca-cert",
+    **"mime_type": "application/x-x509-ca-cert",**
     "duration": 0,
     "local_orig": false,
     "is_orig": false,
@@ -669,7 +671,7 @@ Next are three :file:`files.log` entries for x509 certificates.
 Next we have a :file:`smtp.log` entry that shows the clear text fields Zeek
 could extract prior to the negotiation of encryption:
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-08-09T23:31:46.696892Z",
@@ -677,10 +679,10 @@ could extract prior to the negotiation of encryption:
     "id.orig_h": "192.168.4.41",
     "id.orig_p": 49334,
     "id.resp_h": "17.42.251.41",
-    "id.resp_p": 587,
+    **"id.resp_p": 587,**
     "trans_depth": 1,
-    "helo": "[192.168.4.41]",
-    "last_reply": "220 2.0.0 Ready to start TLS",
+    **"helo": "[192.168.4.41]",**
+    **"last_reply": "220 2.0.0 Ready to start TLS",**
     "path": [
       "17.42.251.41",
       "192.168.4.41"
@@ -693,7 +695,7 @@ could extract prior to the negotiation of encryption:
 Finally we have a :file:`ssl.log` entry with a helpful ``server_name`` implying
 that this SMTP traffic.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-08-09T23:31:46.800843Z",
@@ -701,11 +703,11 @@ that this SMTP traffic.
     "id.orig_h": "192.168.4.41",
     "id.orig_p": 49334,
     "id.resp_h": "17.42.251.41",
-    "id.resp_p": 587,
+    **"id.resp_p": 587,**
     "version": "TLSv12",
     "cipher": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
     "curve": "secp256r1",
-    "server_name": "p71-smtp.mail.me.com",
+    **"server_name": "p71-smtp.mail.me.com",**
     "resumed": false,
     "established": true,
     "cert_chain_fuids": [
@@ -738,7 +740,9 @@ The following example shows what Zeek sees when IMAP over TLS is active on port
 993 TCP.
 
 Zeek creates a :file:`conn.log` entry, as per usual, with the next service
-identified as SSL::
+identified as SSL:
+
+.. literal-emph::
 
   {
     "ts": "2020-08-17T03:01:16.752745Z",
@@ -746,9 +750,9 @@ identified as SSL::
     "id.orig_h": "192.168.4.23",
     "id.orig_p": 61579,
     "id.resp_h": "172.253.122.108",
-    "id.resp_p": 993,
+    **"id.resp_p": 993,**
     "proto": "tcp",
-    "service": "ssl",
+    **"service": "ssl",**
     "duration": 0.8354301452636719,
     "orig_bytes": 1582,
     "resp_bytes": 2499,
@@ -767,7 +771,7 @@ identified as SSL::
 The ``server_name`` in the :file:`ssl.log` entry indicates that this is a IMAP
 session.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-08-17T03:01:16.865252Z",
@@ -775,11 +779,11 @@ session.
     "id.orig_h": "192.168.4.23",
     "id.orig_p": 61579,
     "id.resp_h": "172.253.122.108",
-    "id.resp_p": 993,
-    "version": "TLSv13",
+    **"id.resp_p": 993,**
+    **"version": "TLSv13",**
     "cipher": "TLS_AES_128_GCM_SHA256",
     "curve": "x25519",
-    "server_name": "imap.gmail.com",
+    **"server_name": "imap.gmail.com",**
     "resumed": true,
     "established": true
   }
@@ -802,7 +806,9 @@ The following example shows what Zeek sees when POP over TLS is active on port
 995 TCP.
 
 Zeek creates a :file:`conn.log` entry, as per usual, with the next service
-identified as SSL::
+identified as SSL:
+
+.. literal-emph::
 
   {
     "ts": "2020-07-02T21:19:34.048427Z",
@@ -810,9 +816,9 @@ identified as SSL::
     "id.orig_h": "192.168.4.42",
     "id.orig_p": 50938,
     "id.resp_h": "142.250.31.109",
-    "id.resp_p": 995,
+    **"id.resp_p": 995,**
     "proto": "tcp",
-    "service": "ssl",
+    **"service": "ssl",**
     "duration": 11.121870994567871,
     "orig_bytes": 2056,
     "resp_bytes": 1034478,
@@ -831,7 +837,7 @@ identified as SSL::
 The ``server_name`` in the :file:`ssl.log` entry indicates that this is a IMAP
 session.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-07-02T21:19:34.067004Z",
@@ -839,11 +845,11 @@ session.
     "id.orig_h": "192.168.4.42",
     "id.orig_p": 50938,
     "id.resp_h": "142.250.31.109",
-    "id.resp_p": 995,
-    "version": "TLSv13",
+    **"id.resp_p": 995,**
+    **"version": "TLSv13",**
     "cipher": "TLS_AES_128_GCM_SHA256",
     "curve": "x25519",
-    "server_name": "pop.gmail.com",
+    **"server_name": "pop.gmail.com",**
     "resumed": true,
     "established": true
   }

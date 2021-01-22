@@ -372,7 +372,7 @@ to the :file:`ssl.log` as follows.
 In the first example, a Web client (curl) connects to the Google Web site using
 TLS 1.3. The :file:`ssl.log` shows the following entry.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-16T14:01:26.194646Z",
@@ -387,15 +387,15 @@ TLS 1.3. The :file:`ssl.log` shows the following entry.
     "server_name": "www.google.com",
     "resumed": true,
     "established": true,
-    "ja3": "3830b2a4fbcea64e74db382e467f5b3b",
-    "ja3s": "907bf3ecef1c987c889946b737b43de8"
+    **"ja3": "3830b2a4fbcea64e74db382e467f5b3b",**
+    **"ja3s": "907bf3ecef1c987c889946b737b43de8"**
   }
 
 Zeek computes the JA3 (client) and JA3S (server) hashes as shown.
 
 In the second example, the same Web client connects to the Corelight Web site.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-16T13:58:21.878466Z",
@@ -410,8 +410,8 @@ In the second example, the same Web client connects to the Corelight Web site.
     "server_name": "www.corelight.com",
     "resumed": true,
     "established": true,
-    "ja3": "3830b2a4fbcea64e74db382e467f5b3b",
-    "ja3s": "f4febc55ea12b31ae17cfb7e614afda8"
+    **"ja3": "3830b2a4fbcea64e74db382e467f5b3b",**
+    **"ja3s": "f4febc55ea12b31ae17cfb7e614afda8"**
   }
 
 The JA3 (client) hash has stayed the same, but the JA3S (server) hash has
@@ -419,7 +419,7 @@ changed.
 
 In the third example, the same Web client connects to the TaoSecurity Web site.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-16T13:54:57.033503Z",
@@ -434,8 +434,8 @@ In the third example, the same Web client connects to the TaoSecurity Web site.
     "server_name": "www.taosecurity.com",
     "resumed": true,
     "established": true,
-    "ja3": "0bae189478c11bed9d6259ae0ffc9493",
-    "ja3s": "f4febc55ea12b31ae17cfb7e614afda8"
+    **"ja3": "0bae189478c11bed9d6259ae0ffc9493",**
+    **"ja3s": "f4febc55ea12b31ae17cfb7e614afda8"**
   }
 
 This is an odd result. The JA3 (client) hash has changed, but the JA3S (server)

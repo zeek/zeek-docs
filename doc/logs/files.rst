@@ -37,17 +37,17 @@ Inspecting the :file:`conn.log`
 The log with which we begin our analysis for this case is the :file:`conn.log`.
 It contains the following entry of interest.
 
-::
+.. literal-emph::
 
   {
     "ts": 1596820191.94147,
-    "uid": "CzoFRWTQ6YIzfFXHk",
-    "id.orig_h": "192.168.4.37",
+    **"uid": "CzoFRWTQ6YIzfFXHk"**,
+    **"id.orig_h": "192.168.4.37",**
     "id.orig_p": 58264,
-    "id.resp_h": "23.195.64.241",
-    "id.resp_p": 80,
+    **"id.resp_h": "23.195.64.241",**
+    **"id.resp_p": 80,**
     "proto": "tcp",
-    "service": "http",
+    **"service": "http",**
     "duration": 0.050640106201171875,
     "orig_bytes": 211,
     "resp_bytes": 179604,
@@ -77,31 +77,31 @@ Inspecting the :file:`http.log`
 We search our :file:`http.log` files for samples containing the UID of interest
 and find the following entry:
 
-::
+.. literal-emph::
 
   {
     "ts": 1596820191.94812,
-    "uid": "CzoFRWTQ6YIzfFXHk",
+    **"uid": "CzoFRWTQ6YIzfFXHk",**
     "id.orig_h": "192.168.4.37",
     "id.orig_p": 58264,
     "id.resp_h": "23.195.64.241",
     "id.resp_p": 80,
     "trans_depth": 1,
-    "method": "GET",
-    "host": "download.microsoft.com",
-    "uri": "/download/d/e/5/de5351d6-4463-4cc3-a27c-3e2274263c43/wfetch.exe",
+    **"method": "GET",**
+    **"host": "download.microsoft.com",**
+    **"uri": "/download/d/e/5/de5351d6-4463-4cc3-a27c-3e2274263c43/wfetch.exe",**
     "version": "1.1",
-    "user_agent": "Wget/1.19.4 (linux-gnu)",
+    **"user_agent": "Wget/1.19.4 (linux-gnu)",**
     "request_body_len": 0,
     "response_body_len": 179272,
-    "status_code": 200,
-    "status_msg": "OK",
+    **"status_code": 200,**
+    **"status_msg": "OK",**
     "tags": [],
     "resp_fuids": [
-      "FBbQxG1GXLXgmWhbk9"
+      **"FBbQxG1GXLXgmWhbk9"**
     ],
     "resp_mime_types": [
-      "application/x-dosexec"
+      **"application/x-dosexec"**
     ]
   }
 
@@ -154,11 +154,13 @@ Inspecting the :file:`files.log`
 
 Armed with the file identifier value, we can search any of our
 :file:`files.log` repositories for matching values. By searching for the FUID
-of ``FBbQxG1GXLXgmWhbk9`` we find the following entry::
+of ``FBbQxG1GXLXgmWhbk9`` we find the following entry.
+
+.. literal-emph::
 
   {
     "ts": 1596820191.969902,
-    "fuid": "FBbQxG1GXLXgmWhbk9",
+    **"fuid": "FBbQxG1GXLXgmWhbk9",**
     "tx_hosts": [
       "23.195.64.241"
     ],
@@ -174,7 +176,7 @@ of ``FBbQxG1GXLXgmWhbk9`` we find the following entry::
       "EXTRACT",
       "PE"
     ],
-    "mime_type": "application/x-dosexec",
+    **"mime_type": "application/x-dosexec",**
     "duration": 0.015498876571655273,
     "is_orig": false,
     "seen_bytes": 179272,
@@ -182,7 +184,7 @@ of ``FBbQxG1GXLXgmWhbk9`` we find the following entry::
     "missing_bytes": 0,
     "overflow_bytes": 0,
     "timedout": false,
-    "extracted": "HTTP-FBbQxG1GXLXgmWhbk9.exe",
+    **"extracted": "HTTP-FBbQxG1GXLXgmWhbk9.exe",**
     "extracted_cutoff": false
   }
 
