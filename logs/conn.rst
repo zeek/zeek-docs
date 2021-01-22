@@ -153,8 +153,7 @@ line version of Wireshark, to do so.
 
   zeek@zeek:~zeek-test/json$ tshark -V -r ../../tmi1.pcap http and ip.src==192.168.4.76
 
-.. code-block::
-  :emphasize-lines: 25,42-46,48,83,88,90,98-101
+.. literal-emph::
 
   Frame 21: 143 bytes on wire (1144 bits), 143 bytes captured (1144 bits)
       Encapsulation type: Ethernet (1)
@@ -180,7 +179,7 @@ line version of Wireshark, to do so.
           .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
           .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
       Type: IPv4 (0x0800)
-  Internet Protocol Version 4, Src: 192.168.4.76, Dst: 31.3.245.133
+  Internet Protocol Version 4, **Src: 192.168.4.76, Dst: 31.3.245.133**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -197,13 +196,13 @@ line version of Wireshark, to do so.
       Protocol: TCP (6)
       Header checksum: 0x6308 [validation disabled]
       [Header checksum status: Unverified]
-      Source: 192.168.4.76
-      Destination: 31.3.245.133
-  Transmission Control Protocol, Src Port: 46378, Dst Port: 80, Seq: 1, Ack: 1, Len: 77
-      Source Port: 46378
-      Destination Port: 80
+      **Source: 192.168.4.76**
+      **Destination: 31.3.245.133**
+  Transmission Control Protocol, **Src Port: 46378, Dst Port: 80**, Seq: 1, Ack: 1, **Len: 77**
+      **Source Port: 46378**
+      **Destination Port: 80**
       [Stream index: 0]
-      [TCP Segment Len: 77]
+      **[TCP Segment Len: 77]**
       Sequence number: 1    (relative sequence number)
       [Next sequence number: 78    (relative sequence number)]
       Acknowledgment number: 1    (relative ack number)
@@ -238,14 +237,14 @@ line version of Wireshark, to do so.
               Timestamp echo reply: 346747623
       [SEQ/ACK analysis]
           [iRTT: 0.082118000 seconds]
-          [Bytes in flight: 77]
+          **[Bytes in flight: 77]**
           [Bytes sent since last PSH flag: 77]
       [Timestamps]
           [Time since first frame in this TCP stream: 0.082427000 seconds]
           [Time since previous frame in this TCP stream: 0.000309000 seconds]
-      TCP payload (77 bytes)
+      **TCP payload (77 bytes)**
   Hypertext Transfer Protocol
-      GET / HTTP/1.1\r\n
+      **GET / HTTP/1.1\r\n**
           [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
               [GET / HTTP/1.1\r\n]
               [Severity level: Chat]
@@ -253,10 +252,10 @@ line version of Wireshark, to do so.
           Request Method: GET
           Request URI: /
           Request Version: HTTP/1.1
-      Host: testmyids.com\r\n
-      User-Agent: curl/7.47.0\r\n
-      Accept: */*\r\n
-      \r\n
+      **Host: testmyids.com\r\n**
+      **User-Agent: curl/7.47.0\r\n**
+      **Accept: */*\r\n**
+      **\r\n**
       [Full request URI: http://testmyids.com/]
       [HTTP request 1/1]
 
@@ -271,24 +270,21 @@ different :program:`tshark` option, as shown below.
 
   zeek@zeek:~zeek-test/json$ tshark -x -r ../../tmi1.pcap http and ip.src==192.168.4.76
 
-.. code-block::
-  :emphasize-lines: 5-9
+.. literal-emph::
 
   0000  fc ec da 49 e0 10 08 00 27 97 99 0d 08 00 45 00   ...I....'.....E.
   0010  00 81 fd f1 40 00 40 06 63 08 c0 a8 04 4c 1f 03   ....@.@.c....L..
   0020  f5 85 b5 2a 00 50 dd e8 f3 47 b2 71 7e 69 80 18   ...*.P...G.q~i..
   0030  00 20 d9 f0 00 00 01 01 08 0a bb 09 c1 fe 14 aa   . ..............
-  0040  f2 e7 47 45 54 20 2f 20 48 54 54 50 2f 31 2e 31   ..GET / HTTP/1.1
-  0050  0d 0a 48 6f 73 74 3a 20 74 65 73 74 6d 79 69 64   ..Host: testmyid
-  0060  73 2e 63 6f 6d 0d 0a 55 73 65 72 2d 41 67 65 6e   s.com..User-Agen
-  0070  74 3a 20 63 75 72 6c 2f 37 2e 34 37 2e 30 0d 0a   t: curl/7.47.0..
-  0080  41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 0d 0a      Accept: */*....
+  0040  f2 e7 **47 45 54 20 2f 20 48 54 54 50 2f 31 2e 31   ..GET / HTTP/1.1**
+  0050  **0d 0a 48 6f 73 74 3a 20 74 65 73 74 6d 79 69 64   ..Host: testmyid**
+  0060  **73 2e 63 6f 6d 0d 0a 55 73 65 72 2d 41 67 65 6e   s.com..User-Agen**
+  0070  **74 3a 20 63 75 72 6c 2f 37 2e 34 37 2e 30 0d 0a   t: curl/7.47.0..**
+  0080  **41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 0d 0a      Accept: */***....
 
 The hexadecimal values appear on the left, and the ASCII decode appears on the
-right. The highlighted lines have bytes associated with the application layer
-data carried by TCP.  There are 14 associated bytes in the first highlighted
-line, 16 bytes in the next three, and 15 bytes in the last.  Adding those
-together: 14 + 16 + 16 + 16 + 15 = 77 total bytes.
+right. If you count the highlighted hex values, you will find 77 of them, hence
+the 77 bytes of application layer data carried by TCP.
 
 The connection state field, ``conn_state``, showed that the connection
 terminated normally, as depicted by the ``SF`` entry. This means that, for this

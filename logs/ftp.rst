@@ -125,7 +125,7 @@ be sure I reconstruct traffic involving that connection, which was the source
 port for the FTP client. (If I chose something like 21 TCP instead, I could
 have reconstructed numerous FTP sessions beyond the one in question here.)
 
-In this example, ``196.216.2.24`` is the FTP server, and ``192.168.4.76```` is
+In this example, ``196.216.2.24`` is the FTP server, and ``192.168.4.76`` is
 the FTP client.
 
 After the first two entries, I have manually edited the output for readability.
@@ -134,11 +134,11 @@ After the first two entries, I have manually edited the output for readability.
 
   $ tcpflow -c -r snort.log.1597554100-196.216.2.24.pcap port 53380
 
-::
+.. literal-emph::
 
-  196.216.002.024.00021-192.168.004.076.53380 [server to client]: 220 ::::: Welcome to the AFRINIC FTP service ::::::
+  196.216.002.024.00021-192.168.004.076.53380 [**server** to client]: 220 ::::: Welcome to the AFRINIC FTP service ::::::
 
-  192.168.004.076.53380-196.216.002.024.00021 [client to server]: USER anonymous
+  192.168.004.076.53380-196.216.002.024.00021 [**client** to server]: USER anonymous
 
   server: 331 Please specify the password.
 

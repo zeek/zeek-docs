@@ -207,11 +207,11 @@ The end result shows more information for the first :file:`dns.log` entry:
 
   zeek@zeek:~/zeek-test/json2$ cat dns.log | head -1
 
-::
+.. literal-emph::
 
-  {"ts":1591367999.306059,"uid":"CQsafSKqmlOyqrgC6","id.orig_h":"192.168.4.76","id.orig_p":36844,"id.resp_h":"192.168.4.1","id.resp_p":53,"proto":"udp","trans_id":8555,"query":"testmyids.com","qclass":1,"qclass_name":"C_INTERNET","qtype":28,"qtype_name":"AAAA","rcode":0,"rcode_name":"NOERROR","AA":false,"TC":false,"RD":true,"RA":false,"Z":0,"rejected":false,"auth":["ns59.1and1.co.uk"]}
+  {"ts":1591367999.306059,"uid":"CQsafSKqmlOyqrgC6","id.orig_h":"192.168.4.76","id.orig_p":36844,"id.resp_h":"192.168.4.1","id.resp_p":53,"proto":"udp","trans_id":8555,"query":"testmyids.com","qclass":1,"qclass_name":"C_INTERNET","qtype":28,"qtype_name":"AAAA","rcode":0,"rcode_name":"NOERROR","AA":false,"TC":false,"RD":true,"RA":false,"Z":0,"rejected":false,**"auth":["ns59.1and1.co.uk"]**}
 
-The ``auth`` item in the log entry shows that ``ns59.1and1.co.uk`` is the
+The bolded ``auth`` item in the log entry shows that ``ns59.1and1.co.uk`` is the
 authoritative name server that is designated to answer questions about the AAAA
 record for ``testmyids.com``.
 
