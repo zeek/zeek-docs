@@ -34,7 +34,7 @@ Quick Start
 Writing a basic plugin is quite straight-forward as long as one
 follows a few conventions. In the following, we create a simple example
 plugin that adds a new Built-In Function (BIF) to Zeek: we'll add
-``rot13(s: string) : string``, a function that rotates every character
+``rot13(s: string) : string``, a function that rotates every letter
 in a string by 13 places.
 
 Generally, a plugin comes in the form of a directory following a
@@ -78,7 +78,10 @@ there as follows::
         for ( char* p = rot13; *p; p++ )
             {
             char b = islower(*p) ? 'a' : 'A';
-            *p  = (*p - b + 13) % 26 + b;
+            char d = *p - b + 13;
+
+            if ( d >= 13 && d <= 38 )
+                *p  = d % 26 + b;
             }
 
         zeek::String* zs = new zeek::String(1, reinterpret_cast<byte_vec>(rot13),
@@ -136,7 +139,7 @@ is about.  We do this by editing the ``config.description`` line in
         {
         plugin::Configuration config;
         config.name = "Demo::Rot13";
-        config.description = "Caesar cipher rotating a string's characters by 13 places.";
+        config.description = "Caesar cipher rotating a string's letters by 13 places.";
         config.version.major = 0;
         config.version.minor = 1;
         config.version.patch = 0;
@@ -149,14 +152,14 @@ Now rebuild and verify that the description is visible::
     # make
     [...]
     # zeek -N | grep Rot13
-    Demo::Rot13 - Caesar cipher rotating a string's characters by 13 places. (dynamic, version 0.1.0)
+    Demo::Rot13 - Caesar cipher rotating a string's letters by 13 places. (dynamic, version 0.1.0)
 
 Zeek can also show us what exactly the plugin provides with the
 more verbose option ``-NN``::
 
     # zeek -NN
     [...]
-    Demo::Rot13 - Caesar cipher rotating a string's characters by 13 places. (dynamic, version 0.1.0)
+    Demo::Rot13 - Caesar cipher rotating a string's letters by 13 places. (dynamic, version 0.1.0)
         [Function] Demo::rot13
     [...]
 
@@ -366,7 +369,7 @@ let's get that in place::
     % 'btest-diff output' failed unexpectedly (exit code 100)
     % cat .diag
     == File ===============================
-    Demo::Rot13 - Caesar cipher rotating a string's characters by 13 places. (dynamic, version 0.1.0)
+    Demo::Rot13 - Caesar cipher rotating a string's letters by 13 places. (dynamic, version 0.1.0)
         [Function] Demo::rot13
 
     == Error ===============================
