@@ -17,17 +17,17 @@ This example starts with the :file:`conn.log`. It’s not strictly necessary to
 explain the :file:`pe.log`, although I wanted to include a very recent example
 of a modern application conducting activities via HTTP.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-23T00:24:31.210053Z",
     "uid": "Cq2b9jR12c4lqZafg",
-    "id.orig_h": "192.168.4.152",
+    **"id.orig_h": "192.168.4.152",**
     "id.orig_p": 59125,
-    "id.resp_h": "63.88.73.83",
-    "id.resp_p": 80,
+    **"id.resp_h": "63.88.73.83",**
+    **"id.resp_p": 80,**
     "proto": "tcp",
-    "service": "http",
+    **"service": "http",**
     "duration": 25.614583015441895,
     "orig_bytes": 5753,
     "resp_bytes": 1975717,
@@ -53,25 +53,25 @@ The :file:`http.log` entries associated with UID ``Cq2b9jR12c4lqZafg`` are
 fascinating. There are multiple entries. I have reproduced a sample of them
 below.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-23T00:24:31.235201Z",
     "uid": "Cq2b9jR12c4lqZafg",
-    "id.orig_h": "192.168.4.152",
+    **"id.orig_h": "192.168.4.152",**
     "id.orig_p": 59125,
-    "id.resp_h": "63.88.73.83",
-    "id.resp_p": 80,
+    **"id.resp_h": "63.88.73.83",**
+    **"id.resp_p": 80,**
     "trans_depth": 1,
-    "method": "HEAD",
-    "host": "r8---sn-8xgp1vo-p5ql.gvt1.com",
-    "uri": "/edgedl/release2/chrome/SAWXCyZhLAbPfxC5kv_Fkw_85.0.4183.121/85.0.4183.121_85.0.4183.102_chrome_updater.exe?cms_redirect=yes&mh=t-&mip=-public-ip-edited-&mm=28&mn=sn-8xgp1vo-p5ql&ms=nvh&mt=1600820539&mv=m&mvi=8&pl=19&shardbypass=yes",
+    **"method": "HEAD",**
+    **"host": "r8---sn-8xgp1vo-p5ql.gvt1.com",**
+    **"uri": "/edgedl/release2/chrome/SAWXCyZhLAbPfxC5kv_Fkw_85.0.4183.121/85.0.4183.121_85.0.4183.102_chrome_updater.exe?cms_redirect=yes&mh=t-&mip=-public-ip-edited-&mm=28&mn=sn-8xgp1vo-p5ql&ms=nvh&mt=1600820539&mv=m&mvi=8&pl=19&shardbypass=yes",**
     "version": "1.1",
-    "user_agent": "Microsoft BITS/7.8",
+    **"user_agent": "Microsoft BITS/7.8",**
     "request_body_len": 0,
     "response_body_len": 0,
-    "status_code": 200,
-    "status_msg": "OK",
+    **"status_code": 200,**
+    **"status_msg": "OK",**
     "tags": []
   }
 
@@ -109,28 +109,28 @@ following:
 
 Let’s look at the next :file:`http.log` entry.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-23T00:24:31.334435Z",
     "uid": "Cq2b9jR12c4lqZafg",
-    "id.orig_h": "192.168.4.152",
+    **"id.orig_h": "192.168.4.152",**
     "id.orig_p": 59125,
-    "id.resp_h": "63.88.73.83",
-    "id.resp_p": 80,
+    **"id.resp_h": "63.88.73.83",**
+    **"id.resp_p": 80,**
     "trans_depth": 2,
-    "method": "GET",
-    "host": "r8---sn-8xgp1vo-p5ql.gvt1.com",
-    "uri": "/edgedl/release2/chrome/SAWXCyZhLAbPfxC5kv_Fkw_85.0.4183.121/85.0.4183.121_85.0.4183.102_chrome_updater.exe?cms_redirect=yes&mh=t-&mip=-public-ip-edited-&mm=28&mn=sn-8xgp1vo-p5ql&ms=nvh&mt=1600820539&mv=m&mvi=8&pl=19&shardbypass=yes",
+    **"method": "GET",**
+    **"host": "r8---sn-8xgp1vo-p5ql.gvt1.com",**
+    **"uri": "/edgedl/release2/chrome/SAWXCyZhLAbPfxC5kv_Fkw_85.0.4183.121/85.0.4183.121_85.0.4183.102_chrome_updater.exe?cms_redirect=yes&mh=t-&mip=-public-ip-edited-&mm=28&mn=sn-8xgp1vo-p5ql&ms=nvh&mt=1600820539&mv=m&mvi=8&pl=19&shardbypass=yes",**
     "version": "1.1",
-    "user_agent": "Microsoft BITS/7.8",
+    **"user_agent": "Microsoft BITS/7.8",**
     "request_body_len": 0,
     "response_body_len": 1392,
-    "status_code": 206,
-    "status_msg": "Partial Content",
+    **"status_code": 206,**
+    **"status_msg": "Partial Content",**
     "tags": [],
     "resp_fuids": [
-      "FGYKX64SkXc4OcvlFf"
+      **"FGYKX64SkXc4OcvlFf"**
     ]
   }
 
@@ -144,7 +144,7 @@ Also note we now have a file UID present in the :file:`http.log`:
 The next :file:`http.log` entry is similar, although the amount of data sent is
 different.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-23T00:24:35.247333Z",
@@ -160,7 +160,7 @@ different.
     "version": "1.1",
     "user_agent": "Microsoft BITS/7.8",
     "request_body_len": 0,
-    "response_body_len": 1995,
+    **"response_body_len": 1995,**
     "status_code": 206,
     "status_msg": "Partial Content",
     "tags": []
@@ -171,7 +171,7 @@ similar to the preceding entries. I include the last one for reference. It is
 similar to the previous entries, although the response body length shows much
 more data was sent.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-23T00:24:46.547359Z",
@@ -187,7 +187,7 @@ more data was sent.
     "version": "1.1",
     "user_agent": "Microsoft BITS/7.8",
     "request_body_len": 0,
-    "response_body_len": 652148,
+    **"response_body_len": 652148,**
     "status_code": 206,
     "status_msg": "Partial Content",
     "tags": []
@@ -201,7 +201,7 @@ Continuing with :file:`files.log`
 
 The relevant :file:`files.log` entry contains the following:
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-23T00:24:31.334435Z",
@@ -215,15 +215,15 @@ The relevant :file:`files.log` entry contains the following:
     "conn_uids": [
       "Cq2b9jR12c4lqZafg"
     ],
-    "source": "HTTP",
+    **"source": "HTTP",**
     "depth": 0,
     "analyzers": [
       "MD5",
-      "PE",
+      **"PE",**
       "SHA1",
       "EXTRACT"
     ],
-    "mime_type": "application/x-dosexec",
+    **"mime_type": "application/x-dosexec",**
     "duration": 15.468528032302856,
     "local_orig": false,
     "is_orig": false,
@@ -232,9 +232,9 @@ The relevant :file:`files.log` entry contains the following:
     "missing_bytes": 0,
     "overflow_bytes": 0,
     "timedout": false,
-    "md5": "a5843bd951f148e99b7265e5bd159fb7",
+    **"md5": "a5843bd951f148e99b7265e5bd159fb7",**
     "sha1": "fc8b8deb5b34fec1f3f094e579667b2bddee0b21",
-    "extracted": "/nsm/zeek/extracted/HTTP-FGYKX64SkXc4OcvlFf.exe",
+    **"extracted": "/nsm/zeek/extracted/HTTP-FGYKX64SkXc4OcvlFf.exe",**
     "extracted_cutoff": false
   }
 
@@ -254,11 +254,13 @@ Do you remember a similar entry from the Zeek documentation on
 
 In that example, we have active extract and PE analyzers.
 
-In the current :file:`files.log`, we have additional analyzers present::
+In the current :file:`files.log`, we have additional analyzers present:
+
+.. literal-emph::
 
   "analyzers": [
     "MD5",
-    "PE",
+    **"PE",**
     "SHA1",
     "EXTRACT"
   ],
@@ -272,17 +274,17 @@ Continuing with :file:`pe.log`
 Finally we come to the :file:`pe.log`. We are able to connect it with the
 appropriate activity using the file UID ``FGYKX64SkXc4OcvlFf``.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-23T00:24:36.395445Z",
-    "id": "FGYKX64SkXc4OcvlFf",
+    **"id": "FGYKX64SkXc4OcvlFf",**
     "machine": "AMD64",
-    "compile_ts": "2020-09-19T00:10:08.000000Z",
-    "os": "Windows XP x64 or Server 2003",
-    "subsystem": "WINDOWS_GUI",
-    "is_exe": true,
-    "is_64bit": true,
+    **"compile_ts": "2020-09-19T00:10:08.000000Z",**
+    **"os": "Windows XP x64 or Server 2003",**
+    **"subsystem": "WINDOWS_GUI",**
+    **"is_exe": true,**
+    **"is_64bit": true,**
     "uses_aslr": true,
     "uses_dep": true,
     "uses_code_integrity": false,
@@ -345,14 +347,14 @@ The output is edited for readability.
 
   $ vt file a5843bd951f148e99b7265e5bd159fb7
 
-::
+.. literal-emph::
 
   - _id: "14a1b9947b77174244a6f6bfd2cd7e1b1c860a09b3b5d74f07b81e45b5548de4"
     _type: "file"
     authentihash: "a4a6a1011bb3e33af37a1dce19bd41b72d5360dc4175d570ec7260d1d9815747"
-    creation_date: 1600474208  # 2020-09-19 00:10:08 +0000 UTC
-    first_submission_date: 1600711798  # 2020-09-21 18:09:58 +0000 UTC
-    last_analysis_date: 1600840562  # 2020-09-23 05:56:02 +0000 UTC
+    **creation_date: 1600474208  # 2020-09-19 00:10:08 +0000 UTC**
+    **first_submission_date: 1600711798  # 2020-09-21 18:09:58 +0000 UTC**
+    **last_analysis_date: 1600840562  # 2020-09-23 05:56:02 +0000 UTC**
     last_analysis_results:
       ALYac:
         category: "undetected"
@@ -379,11 +381,11 @@ The output is edited for readability.
     last_submission_date: 1600830769  # 2020-09-23 03:12:49 +0000 UTC
     magic: "PE32+ executable for MS Windows (GUI) Mono/.Net assembly"
     md5: "a5843bd951f148e99b7265e5bd159fb7"
-    meaningful_name: "mini_installer"
+    **meaningful_name: "mini_installer"**
     names:
-    - "85.0.4183.121_85.0.4183.102_chrome_updater.exe"
+    **- "85.0.4183.121_85.0.4183.102_chrome_updater.exe"**
     - "mini_installer"
-    - "HTTP-FjcOYuaXbbQFV1cJj.exe"
+    **- "HTTP-FjcOYuaXbbQFV1cJj.exe"**
     pe_info:
       entry_point: 4096
       imphash: "ec06ab323a50409817b4a6a54b98f157"
@@ -448,10 +450,10 @@ The output is edited for readability.
         valid from: "12:00 AM 11/10/2006"
         valid to: "12:00 AM 11/10/2031"
         valid usage: "Client Auth, Code Signing, Email Protection, Server Auth, Timestamp Signing"
-      description: "Google Chrome Installer"
-      file version: "85.0.4183.121"
-      internal name: "mini_installer"
-      product: "Google Chrome Installer"
+      **description: "Google Chrome Installer"**
+      **file version: "85.0.4183.121"**
+      **internal name: "mini_installer"**
+      **product: "Google Chrome Installer"**
       signers: "Google LLC; DigiCert SHA2 Assured ID Code Signing CA; DigiCert"
       signers details:
       - algorithm: "sha256RSA"
@@ -484,11 +486,11 @@ The output is edited for readability.
       probability: 33.1
     - file_type: "DOS Executable Generic"
       probability: 33.1
-    trusted_verdict:
-      filename: "85.0.4183.121_85.0.4183.102_chrome_updater.exe"
-      link: "https://dl.google.com/dl/release2/chrome/SAWXCyZhLAbPfxC5kv_Fkw_85.0.4183.121/85.0.4183.121_85.0.4183.102_chrome_updater.exe"
-      organization: "Google"
-      verdict: "goodware"
+    **trusted_verdict:**
+      **filename: "85.0.4183.121_85.0.4183.102_chrome_updater.exe"**
+      **link: "https://dl.google.com/dl/release2/chrome/SAWXCyZhLAbPfxC5kv_Fkw_85.0.4183.121/85.0.4183.121_85.0.4183.102_chrome_updater.exe"**
+      **organization: "Google"**
+      **verdict: "goodware"**
     type_description: "Win32 EXE"
     type_tag: "peexe"
     unique_sources: 2

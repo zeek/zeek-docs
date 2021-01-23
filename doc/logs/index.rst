@@ -23,6 +23,6 @@ Zeek Logs
    traceroute
    tunnel
    dpd
-   weird-and-notice
    known-and-software
+   weird-and-notice
    capture-loss-and-reporter

@@ -40,7 +40,9 @@ Here is :program:`tshark` output for the traffic in question::
 Notice that :program:`tshark` shows frames 2 and 3 as IPv6, whereas
 :program:`tcpdump` shows them as IPv4.
 
-Let’s take a closer look at frame 2 to see the encapsulation in detail::
+Let’s take a closer look at frame 2 to see the encapsulation in detail:
+
+.. literal-emph::
 
   Frame 2: 103 bytes on wire (824 bits), 103 bytes captured (824 bits)
       Encapsulation type: Ethernet (1)
@@ -66,7 +68,7 @@ Let’s take a closer look at frame 2 to see the encapsulation in detail::
           .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
           .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
       Type: IPv4 (0x0800)
-  Internet Protocol Version 4, Src: 192.168.4.31, Dst: 40.84.25.61
+  **Internet Protocol Version 4, Src: 192.168.4.31, Dst: 40.84.25.61**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -85,21 +87,21 @@ Let’s take a closer look at frame 2 to see the encapsulation in detail::
       [Header checksum status: Unverified]
       Source: 192.168.4.31
       Destination: 40.84.25.61
-  User Datagram Protocol, Src Port: 3074, Dst Port: 3544
+  **User Datagram Protocol, Src Port: 3074, Dst Port: 3544**
       Source Port: 3074
       Destination Port: 3544
       Length: 69
       Checksum: 0x7fdc [unverified]
       [Checksum Status: Unverified]
       [Stream index: 1]
-  Teredo IPv6 over UDP tunneling
+  **Teredo IPv6 over UDP tunneling**
       Teredo Authentication header
           Client identifier length: 0
           Authentication value length: 0
           Nonce value: 6aeec3b128884291
           Confirmation byte: 00
-  Internet Protocol Version 6, Src: fe80::ffff:ffff:fffe, Dst: ff02::2
-      0110 .... = Version: 6
+  **Internet Protocol Version 6, Src: fe80::ffff:ffff:fffe, Dst: ff02::2**
+      **0110 .... = Version: 6**
       .... 0000 0000 .... .... .... .... .... = Traffic Class: 0x00 (DSCP: CS0, ECN: Not-ECT)
           .... 0000 00.. .... .... .... .... .... = Differentiated Services Codepoint: Default (0)
           .... .... ..00 .... .... .... .... .... = Explicit Congestion Notification: Not ECN-Capable Transport (0)
@@ -109,7 +111,7 @@ Let’s take a closer look at frame 2 to see the encapsulation in detail::
       Hop Limit: 255
       Source: fe80::ffff:ffff:fffe
       Destination: ff02::2
-  Internet Control Message Protocol v6
+  **Internet Control Message Protocol v6**
       Type: Router Solicitation (133)
       Code: 0
       Checksum: 0x7d38 [correct]
@@ -122,17 +124,19 @@ datagram, inside a IPv4 packet. Frame 3 is similar.
 :file:`conn.log`
 ----------------
 
-The :file:`conn.log` for this traffic contains the following::
+The :file:`conn.log` for this traffic contains the following:
+
+.. literal-emph::
 
   {
     "ts": 1607993759.321945,
-    "uid": "CO9T0A3FPac5ig4hud",
-    "id.orig_h": "192.168.4.31",
+    **"uid": "CO9T0A3FPac5ig4hud",**
+    **"id.orig_h": "192.168.4.31",**
     "id.orig_p": 3074,
-    "id.resp_h": "40.84.25.61",
-    "id.resp_p": 3544,
-    "proto": "udp",
-    "service": "teredo",
+    **"id.resp_h": "40.84.25.61",**
+    **"id.resp_p": 3544,**
+    **"proto": "udp",**
+    **"service": "teredo",**
     "duration": 0.015377998352050781,
     "orig_bytes": 61,
     "resp_bytes": 109,
@@ -152,16 +156,16 @@ UDP appears to be associated with Teredo per Microsoft’s documentation. Port
 due to NAT traversal. Note the ``uid`` field. It will appear again
 shortly.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607993758.290539,
-    "uid": "CUqiKk4m6VpWwcaJ4l",
-    "id.orig_h": "192.168.4.31",
+    **"uid": "CUqiKk4m6VpWwcaJ4l",**
+    **"id.orig_h": "192.168.4.31",**
     "id.orig_p": 3074,
-    "id.resp_h": "40.84.25.61",
-    "id.resp_p": 65444,
-    "proto": "udp",
+    **"id.resp_h": "40.84.25.61",**
+    **"id.resp_p": 65444,**
+    **"proto": "udp",**
     "conn_state": "S0",
     "missed_bytes": 0,
     "history": "D",
@@ -174,16 +178,16 @@ shortly.
 This second :file:`conn.log` entry refers to frame 1 in the packet capture.
 Note the ``uid`` field. It will appear again shortly as well.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607993759.321945,
     "uid": "CoiibpW4Ov0n1xvj",
-    "id.orig_h": "fe80::ffff:ffff:fffe",
+    **"id.orig_h": "fe80::ffff:ffff:fffe",**
     "id.orig_p": 133,
-    "id.resp_h": "ff02::2",
+    **"id.resp_h": "ff02::2",**
     "id.resp_p": 134,
-    "proto": "icmp",
+    **"proto": "icmp",**
     "conn_state": "OTH",
     "missed_bytes": 0,
     "orig_pkts": 1,
@@ -191,7 +195,7 @@ Note the ``uid`` field. It will appear again shortly as well.
     "resp_pkts": 0,
     "resp_ip_bytes": 0,
     "tunnel_parents": [
-      "CO9T0A3FPac5ig4hud"
+      **"CO9T0A3FPac5ig4hud"**
     ]
   }
 
@@ -200,16 +204,16 @@ carried within a tunnel. The UID of the original connection carrying this
 traffic appears in the ``tunnel_parents`` field. It refers to the first entry
 in the :file:`conn.log`.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607993758.290539,
     "uid": "C6Gikx4eC6wXR3xOqg",
-    "id.orig_h": "fe80::8000:ffff:ffff:fffe",
+    **"id.orig_h": "fe80::8000:ffff:ffff:fffe",**
     "id.orig_p": 133,
-    "id.resp_h": "ff02::2",
+    **"id.resp_h": "ff02::2",**
     "id.resp_p": 134,
-    "proto": "icmp",
+    **"proto": "icmp",**
     "conn_state": "OTH",
     "missed_bytes": 0,
     "orig_pkts": 1,
@@ -224,16 +228,16 @@ in the :file:`conn.log`.
 Similar to the previous :file:`conn.log` entry, here is another tunneled ICMPv6
 message. This corresponds to the second :file:`conn.log` entry reviewed earlier.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607993759.337323,
     "uid": "C8h2gZ3EjWUW5xKh2",
-    "id.orig_h": "fe80::8000:f227:d7ab:e6c3",
+    **"id.orig_h": "fe80::8000:f227:d7ab:e6c3",**
     "id.orig_p": 134,
-    "id.resp_h": "fe80::ffff:ffff:fffe",
+    **"id.resp_h": "fe80::ffff:ffff:fffe",**
     "id.resp_p": 133,
-    "proto": "icmp",
+    **"proto": "icmp",**
     "conn_state": "OTH",
     "missed_bytes": 0,
     "orig_pkts": 1,
@@ -241,7 +245,7 @@ message. This corresponds to the second :file:`conn.log` entry reviewed earlier.
     "resp_pkts": 0,
     "resp_ip_bytes": 0,
     "tunnel_parents": [
-      "CO9T0A3FPac5ig4hud"
+      **"CO9T0A3FPac5ig4hud"**
     ]
   }
 
@@ -255,7 +259,7 @@ corresponds to the first :file:`conn.log` entry by virtue of its
 Zeek’s :file:`tunnel.log` offers the following entries for this encapsulated
 traffic.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607993758.290539,
@@ -264,8 +268,8 @@ traffic.
     "id.orig_p": 3074,
     "id.resp_h": "40.84.25.61",
     "id.resp_p": 65444,
-    "tunnel_type": "Tunnel::TEREDO",
-    "action": "Tunnel::DISCOVER"
+    **"tunnel_type": "Tunnel::TEREDO",**
+    **"action": "Tunnel::DISCOVER"**
   }
   {
     "ts": 1607993759.321945,
@@ -274,8 +278,8 @@ traffic.
     "id.orig_p": 3074,
     "id.resp_h": "40.84.25.61",
     "id.resp_p": 3544,
-    "tunnel_type": "Tunnel::TEREDO",
-    "action": "Tunnel::DISCOVER"
+    **"tunnel_type": "Tunnel::TEREDO",**
+    **"action": "Tunnel::DISCOVER"**
   }
   {
     "ts": 1607993759.337323,
@@ -284,8 +288,8 @@ traffic.
     "id.orig_p": 3074,
     "id.resp_h": "40.84.25.61",
     "id.resp_p": 3544,
-    "tunnel_type": "Tunnel::TEREDO",
-    "action": "Tunnel::CLOSE"
+    **"tunnel_type": "Tunnel::TEREDO",**
+    **"action": "Tunnel::CLOSE"**
   }
   {
     "ts": 1607993759.337323,
@@ -294,8 +298,8 @@ traffic.
     "id.orig_p": 3074,
     "id.resp_h": "40.84.25.61",
     "id.resp_p": 65444,
-    "tunnel_type": "Tunnel::TEREDO",
-    "action": "Tunnel::CLOSE"
+    **"tunnel_type": "Tunnel::TEREDO",**
+    **"action": "Tunnel::CLOSE"**
   }
 
 The ``action`` messages indicate how Zeek is tracking the connections. When it
@@ -324,10 +328,12 @@ or network administrator, assuming it is not authorized for use.
 :program:`tcpdump` and :program:`tshark`
 ----------------------------------------
 
-Here is :program:`tcpdump`’s view of the sample traffic::
+Here is :program:`tcpdump`’s view of the sample traffic:
 
-  12:12:06.059907 IP 10.0.0.1 > 10.0.0.2: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 4, seq 0, length 80 (ipip-proto-4)
-  12:12:06.067958 IP 10.0.0.2 > 10.0.0.1: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply, id 4, seq 0, length 80 (ipip-proto-4)
+.. literal-emph::
+
+  12:12:06.059907 **IP 10.0.0.1 > 10.0.0.2: IP 1.1.1.1 > 2.2.2.2: ICMP echo request**, id 4, seq 0, length 80 (ipip-proto-4)
+  12:12:06.067958 **IP 10.0.0.2 > 10.0.0.1: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply**, id 4, seq 0, length 80 (ipip-proto-4)
   12:12:06.075906 IP 10.0.0.1 > 10.0.0.2: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 4, seq 1, length 80 (ipip-proto-4)
   12:12:06.083920 IP 10.0.0.2 > 10.0.0.1: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply, id 4, seq 1, length 80 (ipip-proto-4)
   12:12:06.091909 IP 10.0.0.1 > 10.0.0.2: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 4, seq 2, length 80 (ipip-proto-4)
@@ -337,7 +343,9 @@ Here is :program:`tcpdump`’s view of the sample traffic::
   12:12:06.123910 IP 10.0.0.1 > 10.0.0.2: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 4, seq 4, length 80 (ipip-proto-4)
   12:12:06.131919 IP 10.0.0.2 > 10.0.0.1: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply, id 4, seq 4, length 80 (ipip-proto-4)
 
-Here is :program:`tshark`’s view of the first packet::
+Here is :program:`tshark`’s view of the first packet:
+
+.. literal-emph::
 
   Frame 1: 134 bytes on wire (1072 bits), 134 bytes captured (1072 bits)
       Encapsulation type: Ethernet (1)
@@ -363,7 +371,7 @@ Here is :program:`tshark`’s view of the first packet::
           .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
           .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
       Type: IPv4 (0x0800)
-  Internet Protocol Version 4, Src: 10.0.0.1, Dst: 10.0.0.2
+  **Internet Protocol Version 4, Src: 10.0.0.1, Dst: 10.0.0.2**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -382,7 +390,7 @@ Here is :program:`tshark`’s view of the first packet::
       [Header checksum status: Unverified]
       Source: 10.0.0.1
       Destination: 10.0.0.2
-  Internet Protocol Version 4, Src: 1.1.1.1, Dst: 2.2.2.2
+  **Internet Protocol Version 4, Src: 1.1.1.1, Dst: 2.2.2.2**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -396,12 +404,12 @@ Here is :program:`tshark`’s view of the first packet::
           ..0. .... .... .... = More fragments: Not set
           ...0 0000 0000 0000 = Fragment offset: 0
       Time to live: 255
-      Protocol: ICMP (1)
+      **Protocol: ICMP (1)**
       Header checksum: 0xb57f [validation disabled]
       [Header checksum status: Unverified]
       Source: 1.1.1.1
       Destination: 2.2.2.2
-  Internet Control Message Protocol
+  **Internet Control Message Protocol**
       Type: 8 (Echo (ping) request)
       Code: 0
       Checksum: 0x4305 [correct]
@@ -428,16 +436,16 @@ well as the encapsulated ICMP traffic.
 
 Zeek creates a single :file:`conn.log` entry for this traffic.
 
-::
+.. literal-emph::
 
   {
     "ts": 1214050326.059907,
     "uid": "CaG4lb2HwGhNGLo1d2",
-    "id.orig_h": "1.1.1.1",
+    **"id.orig_h": "1.1.1.1",**
     "id.orig_p": 8,
-    "id.resp_h": "2.2.2.2",
+    **"id.resp_h": "2.2.2.2",**
     "id.resp_p": 0,
-    "proto": "icmp",
+    **"proto": "icmp",**
     "duration": 0.07201194763183594,
     "orig_bytes": 360,
     "resp_bytes": 360,
@@ -447,8 +455,8 @@ Zeek creates a single :file:`conn.log` entry for this traffic.
     "orig_ip_bytes": 500,
     "resp_pkts": 5,
     "resp_ip_bytes": 500,
-    "tunnel_parents": [
-      "CllZAw139PBBVBawlj"
+    **"tunnel_parents": [**
+      **"CllZAw139PBBVBawlj"**
     ]
   }
 
@@ -460,17 +468,19 @@ connection in the :file:`tunnel.log`.
 :file:`tunnel.log`
 ------------------
 
-The :file:`tunnel.log` also contains a single entry::
+The :file:`tunnel.log` also contains a single entry:
+
+.. literal-emph::
 
   {
     "ts": 1214050326.059907,
     "uid": "CllZAw139PBBVBawlj",
-    "id.orig_h": "10.0.0.1",
+    **"id.orig_h": "10.0.0.1",**
     "id.orig_p": 0,
-    "id.resp_h": "10.0.0.2",
+    **"id.resp_h": "10.0.0.2",**
     "id.resp_p": 0,
-    "tunnel_type": "Tunnel::IP",
-    "action": "Tunnel::DISCOVER"
+    **"tunnel_type": "Tunnel::IP",**
+    **"action": "Tunnel::DISCOVER"**
   }
 
 Here we learn that the outer IP addresses are ``10.0.0.1`` and ``10.0.0.2``.
@@ -486,10 +496,12 @@ Routing Encapsulation, or GRE.
 :program:`tcpdump` and :program:`tshark`
 ----------------------------------------
 
-Here is :program:`tcpdump`’s view of the traffic::
+Here is :program:`tcpdump`’s view of the traffic:
 
-  12:06:06.434897 IP 10.0.0.1 > 10.0.0.2: GREv0, length 104: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 2, seq 0, length 80
-  12:06:06.442931 IP 10.0.0.2 > 10.0.0.1: GREv0, length 104: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply, id 2, seq 0, length 80
+.. literal-emph::
+
+  12:06:06.434897 **IP 10.0.0.1 > 10.0.0.2: GREv0, length 104: IP 1.1.1.1 > 2.2.2.2: ICMP echo request**, id 2, seq 0, length 80
+  12:06:06.442931 **IP 10.0.0.2 > 10.0.0.1: GREv0, length 104: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply**, id 2, seq 0, length 80
   12:06:06.450900 IP 10.0.0.1 > 10.0.0.2: GREv0, length 104: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 2, seq 1, length 80
   12:06:06.498938 IP 10.0.0.2 > 10.0.0.1: GREv0, length 104: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply, id 2, seq 1, length 80
   12:06:06.506904 IP 10.0.0.1 > 10.0.0.2: GREv0, length 104: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 2, seq 2, length 80
@@ -499,7 +511,9 @@ Here is :program:`tcpdump`’s view of the traffic::
   12:06:06.578905 IP 10.0.0.1 > 10.0.0.2: GREv0, length 104: IP 1.1.1.1 > 2.2.2.2: ICMP echo request, id 2, seq 4, length 80
   12:06:06.586923 IP 10.0.0.2 > 10.0.0.1: GREv0, length 104: IP 2.2.2.2 > 1.1.1.1: ICMP echo reply, id 2, seq 4, length 80
 
-Here is :program:`tshark`’s view of the first packet::
+Here is :program:`tshark`’s view of the first packet:
+
+.. literal-emph::
 
   Frame 1: 138 bytes on wire (1104 bits), 138 bytes captured (1104 bits)
       Encapsulation type: Ethernet (1)
@@ -525,7 +539,7 @@ Here is :program:`tshark`’s view of the first packet::
           .... ..1. .... .... .... .... = LG bit: Locally administered address (this is NOT the factory default)
           .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
       Type: IPv4 (0x0800)
-  Internet Protocol Version 4, Src: 10.0.0.1, Dst: 10.0.0.2
+  **Internet Protocol Version 4, Src: 10.0.0.1, Dst: 10.0.0.2**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -544,7 +558,7 @@ Here is :program:`tshark`’s view of the first packet::
       [Header checksum status: Unverified]
       Source: 10.0.0.1
       Destination: 10.0.0.2
-  Generic Routing Encapsulation (IP)
+  **Generic Routing Encapsulation (IP)**
       Flags and Version: 0x0000
           0... .... .... .... = Checksum Bit: No
           .0.. .... .... .... = Routing Bit: No
@@ -555,7 +569,7 @@ Here is :program:`tshark`’s view of the first packet::
           .... .... 0000 0... = Flags (Reserved): 0
           .... .... .... .000 = Version: GRE (0)
       Protocol Type: IP (0x0800)
-  Internet Protocol Version 4, Src: 1.1.1.1, Dst: 2.2.2.2
+  **Internet Protocol Version 4, Src: 1.1.1.1, Dst: 2.2.2.2**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -574,7 +588,7 @@ Here is :program:`tshark`’s view of the first packet::
       [Header checksum status: Unverified]
       Source: 1.1.1.1
       Destination: 2.2.2.2
-  Internet Control Message Protocol
+  **Internet Control Message Protocol**
       Type: 8 (Echo (ping) request)
       Code: 0
       Checksum: 0xbfd4 [correct]
@@ -600,16 +614,18 @@ example, the inner traffic follows a GRE header.
 :file:`conn.log`
 ----------------
 
-Zeek creates a single :file:`conn.log` entry for this traffic::
+Zeek creates a single :file:`conn.log` entry for this traffic:
+
+.. literal-emph::
 
   {
     "ts": 1214049966.434897,
     "uid": "Cxg76d2N73I9DhmZ5l",
-    "id.orig_h": "1.1.1.1",
+    **"id.orig_h": "1.1.1.1",**
     "id.orig_p": 8,
-    "id.resp_h": "2.2.2.2",
+    **"id.resp_h": "2.2.2.2",**
     "id.resp_p": 0,
-    "proto": "icmp",
+    **"proto": "icmp",**
     "duration": 0.15202593803405762,
     "orig_bytes": 360,
     "resp_bytes": 360,
@@ -620,7 +636,7 @@ Zeek creates a single :file:`conn.log` entry for this traffic::
     "resp_pkts": 5,
     "resp_ip_bytes": 500,
     "tunnel_parents": [
-      "C2ELkSIprfG0oMEae"
+      **"C2ELkSIprfG0oMEae"**
     ]
   }
 
@@ -632,17 +648,19 @@ source and destination IP addresses for the traffic, i.e., ``1.1.1.1`` and
 :file:`tunnel.log`
 ------------------
 
-The :file:`tunnel.log` also contains a single entry::
+The :file:`tunnel.log` also contains a single entry:
+
+.. literal-emph::
 
   {
     "ts": 1214049966.434897,
     "uid": "C2ELkSIprfG0oMEae",
-    "id.orig_h": "10.0.0.1",
+    **"id.orig_h": "10.0.0.1",**
     "id.orig_p": 0,
-    "id.resp_h": "10.0.0.2",
+    **"id.resp_h": "10.0.0.2",**
     "id.resp_p": 0,
-    "tunnel_type": "Tunnel::GRE",
-    "action": "Tunnel::DISCOVER"
+    **"tunnel_type": "Tunnel::GRE",**
+    **"action": "Tunnel::DISCOVER"**
   }
 
 We see again that the outer IP addresses are ``10.0.0.1`` and ``10.0.0.2``. The
@@ -679,7 +697,9 @@ Here is :program:`tcpdump`’s view of the sample traffic::
 
   03:35:04.035791 IP6 2607:fcd0:100:2300::b108:2a6b > 2402:f000:1:8e01::5555: IP 192.52.166.154 > 16.0.0.200: GREv1, call 17, seq 539320, length 190: IP 8.8.8.8.53 > 172.16.44.3.40768: 42540 NXDomain 0/1/0 (146)
 
-Here is :program:`tshark`’s view of the first packet::
+Here is :program:`tshark`’s view of the first packet:
+
+.. literal-emph::
 
   Frame 1: 197 bytes on wire (1576 bits), 197 bytes captured (1576 bits)
       Encapsulation type: Ethernet (1)
@@ -695,7 +715,7 @@ Here is :program:`tshark`’s view of the first packet::
       [Frame is marked: False]
       [Frame is ignored: False]
       [Protocols in frame: eth:ethertype:vlan:ethertype:ipv6:ip:gre:ppp:ip:udp:dns]
-  Ethernet II, Src: 00:12:1e:f2:61:3d, Dst: c5:00:00:00:82:c4
+  **Ethernet II, Src: 00:12:1e:f2:61:3d, Dst: c5:00:00:00:82:c4**
       Destination: c5:00:00:00:82:c4
           Address: c5:00:00:00:82:c4
           .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
@@ -705,12 +725,12 @@ Here is :program:`tshark`’s view of the first packet::
           .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
           .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
       Type: 802.1Q Virtual LAN (0x8100)
-  802.1Q Virtual LAN, PRI: 0, DEI: 0, ID: 100
+  **802.1Q Virtual LAN, PRI: 0, DEI: 0, ID: 100**
       000. .... .... .... = Priority: Best Effort (default) (0)
       ...0 .... .... .... = DEI: Ineligible
       .... 0000 0110 0100 = ID: 100
       Type: IPv6 (0x86dd)
-  Internet Protocol Version 6, Src: 2402:f000:1:8e01::5555, Dst: 2607:fcd0:100:2300::b108:2a6b
+  **Internet Protocol Version 6, Src: 2402:f000:1:8e01::5555, Dst: 2607:fcd0:100:2300::b108:2a6b**
       0110 .... = Version: 6
       .... 0000 0000 .... .... .... .... .... = Traffic Class: 0x00 (DSCP: CS0, ECN: Not-ECT)
           .... 0000 00.. .... .... .... .... .... = Differentiated Services Codepoint: Default (0)
@@ -721,7 +741,7 @@ Here is :program:`tshark`’s view of the first packet::
       Hop Limit: 246
       Source: 2402:f000:1:8e01::5555
       Destination: 2607:fcd0:100:2300::b108:2a6b
-  Internet Protocol Version 4, Src: 16.0.0.200, Dst: 192.52.166.154
+  **Internet Protocol Version 4, Src: 16.0.0.200, Dst: 192.52.166.154**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -735,7 +755,7 @@ Here is :program:`tshark`’s view of the first packet::
           ..0. .... .... .... = More fragments: Not set
           ...0 0000 0000 0000 = Fragment offset: 0
       Time to live: 64
-      Protocol: Generic Routing Encapsulation (47)
+      **Protocol: Generic Routing Encapsulation (47)**
       Header checksum: 0x75fe [validation disabled]
       [Header checksum status: Unverified]
       Source: 16.0.0.200
@@ -756,11 +776,11 @@ Here is :program:`tshark`’s view of the first packet::
       Call ID: 6016
       Sequence Number: 430001
       Acknowledgment Number: 539254
-  Point-to-Point Protocol
+  **Point-to-Point Protocol**
       Address: 0xff
       Control: 0x03
       Protocol: Internet Protocol version 4 (0x0021)
-  Internet Protocol Version 4, Src: 172.16.44.3, Dst: 8.8.8.8
+  **Internet Protocol Version 4, Src: 172.16.44.3, Dst: 8.8.8.8**
       0100 .... = Version: 4
       .... 0101 = Header Length: 20 bytes (5)
       Differentiated Services Field: 0x00 (DSCP: CS0, ECN: Not-ECT)
@@ -779,14 +799,14 @@ Here is :program:`tshark`’s view of the first packet::
       [Header checksum status: Unverified]
       Source: 172.16.44.3
       Destination: 8.8.8.8
-  User Datagram Protocol, Src Port: 40768, Dst Port: 53
+  **User Datagram Protocol, Src Port: 40768, Dst Port: 53**
       Source Port: 40768
       Destination Port: 53
       Length: 79
       Checksum: 0x2d23 [unverified]
       [Checksum Status: Unverified]
       [Stream index: 0]
-  Domain Name System (query)
+  **Domain Name System (query)**
       Transaction ID: 0xa62c
       Flags: 0x0100 Standard query
           0... .... .... .... = Response: Message is a query
@@ -815,14 +835,14 @@ addresses used in this complicated frame.
 
 Let’s see what Zeek makes of this complicated exchange.
 
-::
+.. literal-emph::
 
   {
     "ts": 1417577703.821897,
     "uid": "CiJXLc43tlknoHbXH9",
-    "id.orig_h": "172.16.44.3",
+    **"id.orig_h": "172.16.44.3",**
     "id.orig_p": 40768,
-    "id.resp_h": "8.8.8.8",
+    **"id.resp_h": "8.8.8.8",**
     "id.resp_p": 53,
     "proto": "udp",
     "service": "dns",
@@ -836,8 +856,8 @@ Let’s see what Zeek makes of this complicated exchange.
     "orig_ip_bytes": 99,
     "resp_pkts": 1,
     "resp_ip_bytes": 174,
-    "tunnel_parents": [
-      "CBvCtfO5sjjyQb2V4"
+    **"tunnel_parents": [**
+      **"CBvCtfO5sjjyQb2V4"**
     ]
   }
 
@@ -849,27 +869,27 @@ We see Zeek has burrowed all the way down to the innermost IP address,
 
 Zeek’s :file:`tunnel.log` contains two entries for this session.
 
-::
+.. literal-emph::
 
   {
     "ts": 1417577703.821897,
     "uid": "CPnYZx2edh7O2ueTm4",
-    "id.orig_h": "2402:f000:1:8e01::5555",
+    **"id.orig_h": "2402:f000:1:8e01::5555",**
     "id.orig_p": 0,
-    "id.resp_h": "2607:fcd0:100:2300::b108:2a6b",
+    **"id.resp_h": "2607:fcd0:100:2300::b108:2a6b",**
     "id.resp_p": 0,
-    "tunnel_type": "Tunnel::IP",
-    "action": "Tunnel::DISCOVER"
+    **"tunnel_type": "Tunnel::IP",**
+    **"action": "Tunnel::DISCOVER"**
   }
   {
     "ts": 1417577703.821897,
     "uid": "CBvCtfO5sjjyQb2V4",
-    "id.orig_h": "16.0.0.200",
+    **"id.orig_h": "16.0.0.200",**
     "id.orig_p": 0,
-    "id.resp_h": "192.52.166.154",
+    **"id.resp_h": "192.52.166.154",**
     "id.resp_p": 0,
-    "tunnel_type": "Tunnel::GRE",
-    "action": "Tunnel::DISCOVER"
+    **"tunnel_type": "Tunnel::GRE",**
+    **"action": "Tunnel::DISCOVER"**
   }
 
 Zeek displays the two outer IP addresses, and ties them to the inner address
@@ -882,22 +902,22 @@ the :file:`conn.log`.
 For completeness, let’s take a look at the :file:`dns.log` Zeek created for
 this activity.
 
-::
+.. literal-emph::
 
   {
     "ts": 1417577703.821897,
     "uid": "CiJXLc43tlknoHbXH9",
-    "id.orig_h": "172.16.44.3",
+    **"id.orig_h": "172.16.44.3",**
     "id.orig_p": 40768,
-    "id.resp_h": "8.8.8.8",
-    "id.resp_p": 53,
+    **"id.resp_h": "8.8.8.8",**
+    **"id.resp_p": 53,**
     "proto": "udp",
     "trans_id": 42540,
     "query": "xqt-detect-mode2-97712e88-167a-45b9-93ee-913140e76678",
     "qclass": 1,
     "qclass_name": "C_INTERNET",
     "qtype": 28,
-    "qtype_name": "AAAA",
+    **"qtype_name": "AAAA",**
     "rcode": 3,
     "rcode_name": "NXDOMAIN",
     "AA": false,

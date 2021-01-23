@@ -19,7 +19,7 @@ In the first example we will look at lateral movement. This term refers to a
 connection between two systems on the same subnet, or at least within the same
 network or organization.
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-09-16T13:39:18.425492Z",
@@ -29,8 +29,8 @@ network or organization.
     "id.resp_h": "192.168.4.1",
     "id.resp_p": 22,
     "version": 2,
-    "auth_success": true,
-    "auth_attempts": 1,
+    **"auth_success": true,**
+    **"auth_attempts": 1,**
     "client": "SSH-2.0-SecureBlackbox",
     "server": "SSH-2.0-OpenSSH_6.6.1p1 Debian-4~bpo70+1",
     "cipher_alg": "aes128-ctr",
@@ -76,12 +76,14 @@ entered a wrong password, then hit the return key twice.
 
   Welcome to MyServer
 
-  me@192.168.4.1's password: [wrong password entered]
-  me@192.168.4.1's password: [no password, return]
-  me@192.168.4.1's password: [no password, return]
+  me@192.168.4.1's password: **[wrong password entered]**
+  me@192.168.4.1's password: **[no password, return]**
+  me@192.168.4.1's password: **[no password, return]**
   Permission denied (publickey,password).
 
-Zeek produced the following log::
+Zeek produced the following log:
+
+.. literal-emph::
 
   {
     "ts": "2020-09-16T14:23:41.005323Z",
@@ -91,7 +93,7 @@ Zeek produced the following log::
     "id.resp_h": "192.168.4.1",
     "id.resp_p": 22,
     "version": 2,
-    "auth_attempts": 0,
+    **"auth_attempts": 0,**
     "client": "SSH-2.0-OpenSSH_7.5",
     "server": "SSH-2.0-OpenSSH_6.6.1p1 Debian-4~bpo70+1",
     "cipher_alg": "aes128-ctr",
@@ -126,19 +128,21 @@ Outbound Movement
 One aspect of Zeek’s :file:`ssh.log` that I find useful is the determination if
 the SSH login was “inbound” or “outbound”. In the following example, we see a
 login from the enterprise using the ``192.168.4.0/24`` network, to a host on the
-Internet::
+Internet:
+
+.. literal-emph::
 
   {
     "ts": "2020-09-16T13:08:58.933098Z",
     "uid": "Cjmfpo49s3lei7CBla",
-    "id.orig_h": "192.168.4.49",
+    **"id.orig_h": "192.168.4.49",**
     "id.orig_p": 39550,
-    "id.resp_h": "205.166.94.16",
-    "id.resp_p": 22,
+    **"id.resp_h": "205.166.94.16",**
+    **"id.resp_p": 22,**
     "version": 2,
-    "auth_success": true,
+    **"auth_success": true,**
     "auth_attempts": 2,
-    "direction": "OUTBOUND",
+    **"direction": "OUTBOUND",**
     "client": "SSH-2.0-OpenSSH_7.4p1 Raspbian-10+deb9u7",
     "server": "SSH-2.0-OpenSSH_8.0",
     "cipher_alg": "chacha20-poly1305@openssh.com",
@@ -162,19 +166,21 @@ are responsible are connecting to SSH servers outside their organization.
 Inbound Movement
 ================
 
-In the following example, Zeek notices an inbound SSH connection::
+In the following example, Zeek notices an inbound SSH connection:
+
+.. literal-emph::
 
   {
     "ts": "2020-09-16T13:29:23.245216Z",
     "uid": "CzEmsljW9ooL0WnBd",
-    "id.orig_h": "35.196.195.158",
+    **"id.orig_h": "35.196.195.158",**
     "id.orig_p": 53160,
-    "id.resp_h": "192.168.4.37",
-    "id.resp_p": 22,
+    **"id.resp_h": "192.168.4.37",**
+    **"id.resp_p": 22,**
     "version": 2,
-    "auth_success": true,
+    **"auth_success": true,**
     "auth_attempts": 1,
-    "direction": "INBOUND",
+    **"direction": "INBOUND",**
     "client": "SSH-2.0-OpenSSH_7.9p1 Debian-10+deb10u2",
     "server": "SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3",
     "cipher_alg": "chacha20-poly1305@openssh.com",
@@ -198,18 +204,20 @@ problem.
 Failed Movement
 ===============
 
-In the following example, we see something a bit different::
+In the following example, we see something a bit different:
+
+.. literal-emph::
 
   {
     "ts": "2020-09-16T13:29:08.560780Z",
     "uid": "CFb8DZ1DLzStfZaERb",
-    "id.orig_h": "205.166.94.9",
+    **"id.orig_h": "205.166.94.9",**
     "id.orig_p": 55699,
-    "id.resp_h": "192.168.4.37",
-    "id.resp_p": 22,
-    "auth_attempts": 0,
-    "direction": "INBOUND",
-    "server": "SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3"
+    **"id.resp_h": "192.168.4.37",**
+    **"id.resp_p": 22,**
+    **"auth_attempts": 0,**
+    **"direction": "INBOUND",**
+    **"server": "SSH-2.0-OpenSSH_7.6p1 Ubuntu-4ubuntu0.3"**
   }
 
 Notice that there is no successful authentication message. There is also no

@@ -43,20 +43,22 @@ bytes. That could indicate a successful connection. Port 3389 TCP is the
 destination, but remember that any TCP port could host a RDP server. Also note
 Zeek reports the service as SSL, because this RDP session is encrypted by TLS.
 
-The second set of :file:`conn.log` entries contains the following session::
+The second set of :file:`conn.log` entries contains the following session:
+
+.. literal-emph::
 
   {
     "ts": 1607353272.790635,
     "uid": "CFdEZNjN5MtPzGMS8",
-    "id.orig_h": "192.168.4.160",
+    **"id.orig_h": "192.168.4.160",**
     "id.orig_p": 59758,
-    "id.resp_h": "192.168.4.161",
-    "id.resp_p": 3389,
+    **"id.resp_h": "192.168.4.161",**
+    **"id.resp_p": 3389,**
     "proto": "tcp",
-    "service": "ssl",
+    **"service": "ssl",**
     "duration": 109.49137687683105,
-    "orig_bytes": 66747,
-    "resp_bytes": 1823511,
+    **"orig_bytes": 66747,**
+    **"resp_bytes": 1823511,**
     "conn_state": "RSTR",
     "missed_bytes": 0,
     "history": "ShADdaFr",
@@ -87,15 +89,17 @@ There is nothing in these logs to indicate whether the session was successful
 or not. However, Zeek was able to determine that RDP was in use, based on its
 recognition of the protocol.
 
-Here is the entire :file:`rdp.log` entry for the interactive RDP session::
+Here is the entire :file:`rdp.log` entry for the interactive RDP session:
+
+.. literal-emph::
 
   {
     "ts": 1607353272.791158,
     "uid": "CFdEZNjN5MtPzGMS8",
-    "id.orig_h": "192.168.4.160",
+    **"id.orig_h": "192.168.4.160",**
     "id.orig_p": 59758,
-    "id.resp_h": "192.168.4.161",
-    "id.resp_p": 3389,
+    **"id.resp_h": "192.168.4.161",**
+    **"id.resp_p": 3389,**
     "cookie": "test",
     "result": "encrypted",
     "security_protocol": "HYBRID",
@@ -108,26 +112,28 @@ As before, there is nothing stating that this is an interactive session.
 ====================================
 
 The Zeek logs associated with TLS-encrypted sessions might tell us a bit about
-the RDP server. Here is a :file:`ssl.log` entry for the interactive session::
+the RDP server. Here is a :file:`ssl.log` entry for the interactive session:
+
+.. literal-emph::
 
   {
     "ts": 1607353272.79572,
     "uid": "CFdEZNjN5MtPzGMS8",
-    "id.orig_h": "192.168.4.160",
+    **"id.orig_h": "192.168.4.160",**
     "id.orig_p": 59758,
-    "id.resp_h": "192.168.4.161",
-    "id.resp_p": 3389,
-    "version": "TLSv12",
-    "cipher": "TLS_RSA_WITH_AES_256_GCM_SHA384",
-    "server_name": "192.168.4.161",
+    **"id.resp_h": "192.168.4.161",**
+    **"id.resp_p": 3389,**
+    **"version": "TLSv12",**
+    **"cipher": "TLS_RSA_WITH_AES_256_GCM_SHA384",**
+    **"server_name": "192.168.4.161",**
     "resumed": false,
     "established": true,
     "cert_chain_fuids": [
-      "FWesoX2H43hXhuqoGb"
+      **"FWesoX2H43hXhuqoGb"**
     ],
     "client_cert_chain_fuids": [],
-    "subject": "CN=WinDev2010Eval",
-    "issuer": "CN=WinDev2010Eval"
+    **"subject": "CN=WinDev2010Eval",**
+    **"issuer": "CN=WinDev2010Eval"**
   }
 
 From this information it looks like the target is a Windows development server.
@@ -135,15 +141,15 @@ From this information it looks like the target is a Windows development server.
 Here is the corresponding :file:`x509.log` entry. We match it to the preceding
 :file:`ssl.log` entry using the ``id`` field.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607353272.79572,
-    "id": "FWesoX2H43hXhuqoGb",
+    **"id": "FWesoX2H43hXhuqoGb",**
     "certificate.version": 3,
     "certificate.serial": "5578FF9983F26AA6442533AB6AD54C72",
-    "certificate.subject": "CN=WinDev2010Eval",
-    "certificate.issuer": "CN=WinDev2010Eval",
+    **"certificate.subject": "CN=WinDev2010Eval",**
+    **"certificate.issuer": "CN=WinDev2010Eval",**
     "certificate.not_valid_before": 1602434171,
     "certificate.not_valid_after": 1618245371,
     "certificate.key_alg": "rsaEncryption",
@@ -166,7 +172,7 @@ share how I conducted this experiment.
 
   $ hydra -t 1 -V -f -l test -P wordlist.txt rdp://192.168.4.161
 
-::
+.. literal-emph::
 
   Hydra v9.1 (c) 2020 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
@@ -180,10 +186,10 @@ share how I conducted this experiment.
   [ATTEMPT] target 192.168.4.161 - login "test" - pass "password" - 4 of 4999 [child 0] (0/0)
   ...edited...
   [ATTEMPT] target 192.168.4.161 - login "test" - pass "liverpool" - 38 of 4999 [child 0] (0/0)
-  [ATTEMPT] target 192.168.4.161 - login "test" - pass "football" - 39 of 4999 [child 0] (0/0)
-  [3389][rdp] host: 192.168.4.161   login: test   password: football
+  **[ATTEMPT] target 192.168.4.161 - login "test" - pass "football" - 39 of 4999 [child 0] (0/0)**
+  **[3389][rdp] host: 192.168.4.161   login: test   password: football**
   [STATUS] attack finished for 192.168.4.161 (valid pair found)
-  1 of 1 target successfully completed, 1 valid password found
+  **1 of 1 target successfully completed, 1 valid password found**
   Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2020-12-07 09:46:53
 
 I used the reconnaissance tool THC-Hydra by van Hauser/THC & David Maciejak. I
