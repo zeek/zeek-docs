@@ -45,28 +45,35 @@ Constants
 :zeek:id:`SSL::SSL_EXTENSION_CLIENT_AUTHZ`: :zeek:type:`count`                                         
 :zeek:id:`SSL::SSL_EXTENSION_CLIENT_CERTIFICATE_TYPE`: :zeek:type:`count`                              
 :zeek:id:`SSL::SSL_EXTENSION_CLIENT_CERTIFICATE_URL`: :zeek:type:`count`                               
+:zeek:id:`SSL::SSL_EXTENSION_CONNECTION_ID`: :zeek:type:`count`                                        
 :zeek:id:`SSL::SSL_EXTENSION_COOKIE`: :zeek:type:`count`                                               
 :zeek:id:`SSL::SSL_EXTENSION_EARLY_DATA`: :zeek:type:`count`                                           
 :zeek:id:`SSL::SSL_EXTENSION_EC_POINT_FORMATS`: :zeek:type:`count`                                     
 :zeek:id:`SSL::SSL_EXTENSION_ENCRYPTED_CLIENT_CERTIFICATES`: :zeek:type:`count`                        
 :zeek:id:`SSL::SSL_EXTENSION_ENCRYPT_THEN_MAC`: :zeek:type:`count`                                     
 :zeek:id:`SSL::SSL_EXTENSION_EXTENDED_MASTER_SECRET`: :zeek:type:`count`                               
+:zeek:id:`SSL::SSL_EXTENSION_EXTERNAL_ID_HASH`: :zeek:type:`count`                                     
+:zeek:id:`SSL::SSL_EXTENSION_EXTERNAL_SESSION_ID`: :zeek:type:`count`                                  
 :zeek:id:`SSL::SSL_EXTENSION_HEARTBEAT`: :zeek:type:`count`                                            
 :zeek:id:`SSL::SSL_EXTENSION_KEY_SHARE`: :zeek:type:`count`                                            
+:zeek:id:`SSL::SSL_EXTENSION_KEY_SHARE_OLD`: :zeek:type:`count`                                        
 :zeek:id:`SSL::SSL_EXTENSION_MAX_FRAGMENT_LENGTH`: :zeek:type:`count`                                  
 :zeek:id:`SSL::SSL_EXTENSION_NEXT_PROTOCOL_NEGOTIATION`: :zeek:type:`count`                            
 :zeek:id:`SSL::SSL_EXTENSION_OID_FILTERS`: :zeek:type:`count`                                          
 :zeek:id:`SSL::SSL_EXTENSION_ORIGIN_BOUND_CERTIFICATES`: :zeek:type:`count`                            
 :zeek:id:`SSL::SSL_EXTENSION_PADDING`: :zeek:type:`count`                                              
 :zeek:id:`SSL::SSL_EXTENSION_PADDING_TEMP`: :zeek:type:`count`                                         
+:zeek:id:`SSL::SSL_EXTENSION_POST_HANDSHAKE_AUTH`: :zeek:type:`count`                                  
 :zeek:id:`SSL::SSL_EXTENSION_PRE_SHARED_KEY`: :zeek:type:`count`                                       
 :zeek:id:`SSL::SSL_EXTENSION_PSK_KEY_EXCHANGE_MODES`: :zeek:type:`count`                               
+:zeek:id:`SSL::SSL_EXTENSION_QUIC_TRANSPORT_PARAMETERS`: :zeek:type:`count`                            
 :zeek:id:`SSL::SSL_EXTENSION_RENEGOTIATION_INFO`: :zeek:type:`count`                                   
 :zeek:id:`SSL::SSL_EXTENSION_SERVER_AUTHZ`: :zeek:type:`count`                                         
 :zeek:id:`SSL::SSL_EXTENSION_SERVER_CERTIFICATE_TYPE`: :zeek:type:`count`                              
 :zeek:id:`SSL::SSL_EXTENSION_SERVER_NAME`: :zeek:type:`count`                                          
 :zeek:id:`SSL::SSL_EXTENSION_SESSIONTICKET_TLS`: :zeek:type:`count`                                    
 :zeek:id:`SSL::SSL_EXTENSION_SIGNATURE_ALGORITHMS`: :zeek:type:`count`                                 
+:zeek:id:`SSL::SSL_EXTENSION_SIGNATURE_ALGORITHMS_CERT`: :zeek:type:`count`                            
 :zeek:id:`SSL::SSL_EXTENSION_SIGNED_CERTIFICATE_TIMESTAMP`: :zeek:type:`count`                         
 :zeek:id:`SSL::SSL_EXTENSION_SRP`: :zeek:type:`count`                                                  
 :zeek:id:`SSL::SSL_EXTENSION_STATUS_REQUEST`: :zeek:type:`count`                                       
@@ -75,6 +82,7 @@ Constants
 :zeek:id:`SSL::SSL_EXTENSION_SUPPORTED_VERSIONS`: :zeek:type:`count`                                   
 :zeek:id:`SSL::SSL_EXTENSION_TICKETEARLYDATAINFO`: :zeek:type:`count`                                  
 :zeek:id:`SSL::SSL_EXTENSION_TOKEN_BINDING`: :zeek:type:`count`                                        
+:zeek:id:`SSL::SSL_EXTENSION_TRANSPARENCY_INFO`: :zeek:type:`count`                                    
 :zeek:id:`SSL::SSL_EXTENSION_TRUNCATED_HMAC`: :zeek:type:`count`                                       
 :zeek:id:`SSL::SSL_EXTENSION_TRUSTED_CA_KEYS`: :zeek:type:`count`                                      
 :zeek:id:`SSL::SSL_EXTENSION_USER_MAPPING`: :zeek:type:`count`                                         
@@ -685,6 +693,12 @@ Constants
    :Default: ``2``
 
 
+.. zeek:id:: SSL::SSL_EXTENSION_CONNECTION_ID
+
+   :Type: :zeek:type:`count`
+   :Default: ``53``
+
+
 .. zeek:id:: SSL::SSL_EXTENSION_COOKIE
 
    :Type: :zeek:type:`count`
@@ -721,6 +735,18 @@ Constants
    :Default: ``23``
 
 
+.. zeek:id:: SSL::SSL_EXTENSION_EXTERNAL_ID_HASH
+
+   :Type: :zeek:type:`count`
+   :Default: ``55``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_EXTERNAL_SESSION_ID
+
+   :Type: :zeek:type:`count`
+   :Default: ``56``
+
+
 .. zeek:id:: SSL::SSL_EXTENSION_HEARTBEAT
 
    :Type: :zeek:type:`count`
@@ -728,6 +754,12 @@ Constants
 
 
 .. zeek:id:: SSL::SSL_EXTENSION_KEY_SHARE
+
+   :Type: :zeek:type:`count`
+   :Default: ``51``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_KEY_SHARE_OLD
 
    :Type: :zeek:type:`count`
    :Default: ``40``
@@ -769,6 +801,12 @@ Constants
    :Default: ``35655``
 
 
+.. zeek:id:: SSL::SSL_EXTENSION_POST_HANDSHAKE_AUTH
+
+   :Type: :zeek:type:`count`
+   :Default: ``49``
+
+
 .. zeek:id:: SSL::SSL_EXTENSION_PRE_SHARED_KEY
 
    :Type: :zeek:type:`count`
@@ -779,6 +817,12 @@ Constants
 
    :Type: :zeek:type:`count`
    :Default: ``45``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_QUIC_TRANSPORT_PARAMETERS
+
+   :Type: :zeek:type:`count`
+   :Default: ``57``
 
 
 .. zeek:id:: SSL::SSL_EXTENSION_RENEGOTIATION_INFO
@@ -815,6 +859,12 @@ Constants
 
    :Type: :zeek:type:`count`
    :Default: ``13``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_SIGNATURE_ALGORITHMS_CERT
+
+   :Type: :zeek:type:`count`
+   :Default: ``50``
 
 
 .. zeek:id:: SSL::SSL_EXTENSION_SIGNED_CERTIFICATE_TIMESTAMP
@@ -863,6 +913,12 @@ Constants
 
    :Type: :zeek:type:`count`
    :Default: ``24``
+
+
+.. zeek:id:: SSL::SSL_EXTENSION_TRANSPARENCY_INFO
+
+   :Type: :zeek:type:`count`
+   :Default: ``52``
 
 
 .. zeek:id:: SSL::SSL_EXTENSION_TRUNCATED_HMAC
@@ -3744,7 +3800,7 @@ Constants
       ::
 
          {
-            [40] = "key_share",
+            [40] = "key_share_old",
             [45] = "psk_key_exchange_modes",
             [19] = "client_certificate_type",
             [20] = "server_certificate_type",
@@ -3756,33 +3812,41 @@ Constants
             [23] = "extended_master_secret",
             [35655] = "padding",
             [9] = "cert_type",
+            [53] = "connection_id",
+            [55] = "external_id_hash",
+            [56] = "external_session_id",
             [13172] = "next_protocol_negotiation",
             [7] = "client_authz",
-            [10] = "supported_groups",
+            [52] = "transparency_info",
             [21] = "padding",
+            [10] = "supported_groups",
             [4] = "truncated_hmac",
-            [12] = "srp",
             [13] = "signature_algorithms",
+            [12] = "srp",
             [30031] = "channel_id",
             [41] = "pre_shared_key",
             [13180] = "encrypted_client_certificates",
             [17] = "status_request_v2",
             [47] = "certificate_authorities",
             [13175] = "origin_bound_certificates",
+            [50] = "signature_algorithms_cert",
             [30032] = "channel_id_new",
-            [25] = "cached_info",
             [2] = "client_certificate_url",
+            [25] = "cached_info",
             [65281] = "renegotiation_info",
             [16] = "application_layer_protocol_negotiation",
             [24] = "token_binding",
             [48] = "oid_filters",
             [42] = "early_data",
+            [49] = "post_handshake_auth",
+            [57] = "quic_transport_parameters",
             [1] = "max_fragment_length",
             [11] = "ec_point_formats",
             [35] = "SessionTicket TLS",
             [5] = "status_request",
             [22] = "encrypt_then_mac",
             [43] = "supported_versions",
+            [51] = "key_share",
             [18] = "signed_certificate_timestamp",
             [3] = "trusted_ca_keys",
             [0] = "server_name",
