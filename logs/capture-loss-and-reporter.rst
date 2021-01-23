@@ -18,7 +18,9 @@ and :zeek:see:`Reporter::Info`.
 :file:`capture_loss.log`
 ========================
 
-The following is an example of entries in a :file:`capture_loss.log`::
+The following is an example of entries in a :file:`capture_loss.log`:
+
+.. literal-emph::
 
   {
     "ts": "2021-01-04T00:04:24.688236Z",
@@ -26,7 +28,7 @@ The following is an example of entries in a :file:`capture_loss.log`::
     "peer": "so16-enp0s8-1",
     "gaps": 41,
     "acks": 9944,
-    "percent_lost": 0.412308930008045
+    **"percent_lost": 0.412308930008045**
   }
   {
     "ts": "2021-01-04T00:19:24.688265Z",
@@ -34,7 +36,7 @@ The following is an example of entries in a :file:`capture_loss.log`::
     "peer": "so16-enp0s8-1",
     "gaps": 9,
     "acks": 8530,
-    "percent_lost": 0.10550996483001172
+    **"percent_lost": 0.10550996483001172**
   }
   {
     "ts": "2021-01-04T00:34:24.688449Z",
@@ -42,7 +44,7 @@ The following is an example of entries in a :file:`capture_loss.log`::
     "peer": "so16-enp0s8-1",
     "gaps": 0,
     "acks": 52019,
-    "percent_lost": 0
+    **"percent_lost": 0**
   }
   {
     "ts": "2021-01-04T00:49:24.688552Z",
@@ -50,7 +52,7 @@ The following is an example of entries in a :file:`capture_loss.log`::
     "peer": "so16-enp0s8-1",
     "gaps": 0,
     "acks": 108863,
-    "percent_lost": 0
+    **"percent_lost": 0**
   }
 
 In these logs, capture loss never exceeded 1%. For example, when Zeek reports
@@ -61,24 +63,26 @@ monitors (a small amount of loss is tolerable).
 :file:`reporter.log`
 ====================
 
-The following is an example entries in the :file:`reporter.log`::
+The following is an example entries in the :file:`reporter.log`:
+
+.. literal-emph::
 
   {
     "ts": "2021-01-04T01:15:02.622164Z",
     "level": "Reporter::INFO",
-    "message": "received termination signal",
+    **"message": "received termination signal",**
     "location": ""
   }
   {
     "ts": "2021-01-04T01:19:15.713689Z",
     "level": "Reporter::INFO",
-    "message": "BPFConf filename set: /etc/nsm/so16-enp0s8/bpf-bro.conf (logger)",
+    **"message": "BPFConf filename set: /etc/nsm/so16-enp0s8/bpf-bro.conf (logger)",**
     "location": "/opt/bro/share/zeek/securityonion/./bpfconf.zeek, line 81"
   }
   {
     "ts": "2021-01-04T01:19:22.786812Z",
     "level": "Reporter::INFO",
-    "message": "BPFConf filename set: /etc/nsm/so16-enp0s8/bpf-bro.conf (proxy)",
+    **"message": "BPFConf filename set: /etc/nsm/so16-enp0s8/bpf-bro.conf (proxy)",**
     "location": "/opt/bro/share/zeek/securityonion/./bpfconf.zeek, line 81"
   }
 

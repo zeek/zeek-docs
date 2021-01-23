@@ -30,19 +30,19 @@ activity using the Hexchat IRC client.
 I have edited the transcript to focus on essential items. Text in bold was sent
 by the IRC client. The server sent the remaining text.
 
-::
+.. literal-emph::
 
-  CAP LS 302
+  **CAP LS 302**
   :barjavel.freenode.net NOTICE * :*** Looking up your hostname...
-  NICK zeektest
-  USER zeektest 0 * :realname
+  **NICK zeektest**
+  **USER zeektest 0 * :realname**
   :barjavel.freenode.net NOTICE * :*** Checking Ident
   :barjavel.freenode.net NOTICE * :*** Found your hostname
   :barjavel.freenode.net NOTICE * :*** No Ident response
   :barjavel.freenode.net CAP * LS :account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix sasl tls
-  CAP REQ :account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix
-  :barjavel.freenode.net CAP zeektest ACK :account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix 
-  CAP END
+  **CAP REQ :account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix**
+  **:barjavel.freenode.net CAP zeektest ACK :account-notify away-notify cap-notify chghost extended-join identify-msg multi-prefix **
+  **CAP END**
   :barjavel.freenode.net 001 zeektest :Welcome to the freenode Internet Relay Chat Network zeektest
   :barjavel.freenode.net 002 zeektest :Your host is barjavel.freenode.net[195.154.200.232/6667], running version ircd-seven-1.1.9
   :barjavel.freenode.net 003 zeektest :This server was created Thu Dec 19 2019 at 20:10:02 UTC
@@ -64,22 +64,22 @@ by the IRC client. The server sent the remaining text.
   :barjavel.freenode.net 372 zeektest :- Thank you for using freenode!
   :barjavel.freenode.net 376 zeektest :End of /MOTD command.
   :zeektest MODE zeektest :+i
-  JOIN #freenode
+  **JOIN #freenode**
   :zeektest!~zeektest@pool-XX-XXX-XXX-XX.washdc.fios.verizon.net JOIN #freenode * :realname
   :barjavel.freenode.net 332 zeektest #freenode :Welcome to #freenode | Don't copy/paste spam | No politics. | Feel free to message staff at any time. You can find us using /stats p (shows immediately-available staff) or /who freenode/staff/* (shows all staff)
   :barjavel.freenode.net 333 zeektest #freenode deadk 1604191950
   ...edited…
   :ChanServ!ChanServ@services. NOTICE zeektest :+[#freenode] Please read the topic.
   :services. 328 zeektest #freenode :https://freenode.net/
-  WHO #freenode %chtsunfra,152
+  **WHO #freenode %chtsunfra,152**
   :barjavel.freenode.net 324 zeektest #freenode +CLPcntjf 5:10 #freenode-overflow
   ...edited…
-  PING LAG641756037
+  **PING LAG641756037**
   :barjavel.freenode.net PONG barjavel.freenode.net :LAG641756037
   :willcl_ark!~quassel@cpc123780-trow7-2-0-cust177.18-1.cable.virginm.net AWAY :Away
   :EGH!~EGH@79.142.76.202 JOIN #freenode EGH :Erik
-  PRIVMSG #freenode :One more test... thanks everyone.
-  QUIT :Leaving
+  **PRIVMSG #freenode :One more test... thanks everyone.**
+  **QUIT :Leaving**
   :zeektest!~zeektest@pool-XX-XXX-XXX-XX.washdc.fios.verizon.net QUIT :Client Quit
   ERROR :Closing Link: pool-XX-XXX-XXX-XX.washdc.fios.verizon.net (Client Quit)
 
@@ -98,7 +98,7 @@ Port 6667 :file:`conn.log`
 
 Zeek generated the following :file:`conn.log` entry for the example traffic.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607009493.558305,
@@ -106,9 +106,9 @@ Zeek generated the following :file:`conn.log` entry for the example traffic.
     "id.orig_h": "192.168.4.142",
     "id.orig_p": 52856,
     "id.resp_h": "195.154.200.232",
-    "id.resp_p": 6667,
-    "proto": "tcp",
-    "service": "irc",
+    **"id.resp_p": 6667,**
+    **"proto": "tcp",**
+    **"service": "irc",**
     "duration": 55.26594305038452,
     "orig_bytes": 311,
     "resp_bytes": 239330,
@@ -127,7 +127,9 @@ an :file:`irc.log` entry.
 Port 6667 :file:`irc.log`
 =========================
 
-Zeek generated the following three :file:`irc.log` entries::
+Zeek generated the following three :file:`irc.log` entries:
+
+.. literal-emph::
 
   {
     "ts": 1607009493.733304,
@@ -136,8 +138,8 @@ Zeek generated the following three :file:`irc.log` entries::
     "id.orig_p": 52856,
     "id.resp_h": "195.154.200.232",
     "id.resp_p": 6667,
-    "command": "NICK",
-    "value": "zeektest"
+    **"command": "NICK",**
+    **"value": "zeektest"**
   }
   {
     "ts": 1607009493.733304,
@@ -146,9 +148,9 @@ Zeek generated the following three :file:`irc.log` entries::
     "id.orig_p": 52856,
     "id.resp_h": "195.154.200.232",
     "id.resp_p": 6667,
-    "nick": "zeektest",
-    "command": "USER",
-    "value": "zeektest",
+    **"nick": "zeektest",**
+    **"command": "USER",**
+    **"value": "zeektest",**
     "addl": "0 * realname"
   }
   {
@@ -158,10 +160,10 @@ Zeek generated the following three :file:`irc.log` entries::
     "id.orig_p": 52856,
     "id.resp_h": "195.154.200.232",
     "id.resp_p": 6667,
-    "nick": "zeektest",
-    "user": "zeektest",
-    "command": "JOIN",
-    "value": "#freenode",
+    **"nick": "zeektest",**
+    **"user": "zeektest",**
+    **"command": "JOIN",**
+    **"value": "#freenode",**
     "addl": ""
   }
 
@@ -181,7 +183,7 @@ Port 6697 :file:`conn.log`
 Running Zeek against a capture of IRC over TLS, Zeek produces the following
 :file:`conn.log` entry.
 
-::
+.. literal-emph::
 
   {
     "ts": 1607009173.307125,
@@ -189,9 +191,9 @@ Running Zeek against a capture of IRC over TLS, Zeek produces the following
     "id.orig_h": "192.168.4.142",
     "id.orig_p": 59423,
     "id.resp_h": "185.30.166.38",
-    "id.resp_p": 6697,
-    "proto": "tcp",
-    "service": "ssl",
+    **"id.resp_p": 6697,**
+    **"proto": "tcp",**
+    **"service": "ssl",**
     "duration": 80.66936779022217,
     "orig_bytes": 1162,
     "resp_bytes": 251941,
@@ -212,7 +214,9 @@ Port 6697 :file:`ssl.log` and :file:`x509.log`
 Because this traffic is encrypted via TLS, Zeek produced :file:`ssl.log` and
 :file:`x509.log` entries.
 
-First, let’s look at :file:`ssl.log`::
+First, let’s look at :file:`ssl.log`:
+
+.. literal-emph::
 
   {
     "ts": 1607009173.826036,
@@ -224,7 +228,7 @@ First, let’s look at :file:`ssl.log`::
     "version": "TLSv12",
     "cipher": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
     "curve": "secp256r1",
-    "server_name": "chat.freenode.net",
+    **"server_name": "chat.freenode.net",**
     "resumed": false,
     "established": true,
     "cert_chain_fuids": [
@@ -232,14 +236,16 @@ First, let’s look at :file:`ssl.log`::
       "F1JGJ81fmUN17LOYnk"
     ],
     "client_cert_chain_fuids": [],
-    "subject": "CN=verne.freenode.net",
+    **"subject": "CN=verne.freenode.net",**
     "issuer": "CN=Let's Encrypt Authority X3,O=Let's Encrypt,C=US"
   }
 
 The references to Freenode and ``chat`` can help clue an analyst to the
 likelihood that the client is engaging in IRC sessions.
 
-Now let’s look at the :file:`x509.log`::
+Now let’s look at the :file:`x509.log`:
+
+.. literal-emph::
 
   {
     "ts": 1607009173.828159,
@@ -256,45 +262,45 @@ Now let’s look at the :file:`x509.log`::
     "certificate.key_length": 4096,
     "certificate.exponent": "65537",
     "san.dns": [
-      "chat.au.freenode.com",
-      "chat.au.freenode.net",
-      "chat.au.freenode.org",
-      "chat.eu.freenode.com",
-      "chat.eu.freenode.net",
-      "chat.eu.freenode.org",
-      "chat.freenode.com",
-      "chat.freenode.net",
-      "chat.freenode.org",
-      "chat.ipv4.freenode.com",
-      "chat.ipv4.freenode.net",
-      "chat.ipv4.freenode.org",
-      "chat.ipv6.freenode.com",
-      "chat.ipv6.freenode.net",
-      "chat.ipv6.freenode.org",
-      "chat.us.freenode.com",
-      "chat.us.freenode.net",
-      "chat.us.freenode.org",
-      "ipv6.chat.freenode.net",
-      "ipv6.irc.freenode.net",
-      "irc.au.freenode.com",
-      "irc.au.freenode.net",
-      "irc.au.freenode.org",
-      "irc.eu.freenode.com",
-      "irc.eu.freenode.net",
-      "irc.eu.freenode.org",
-      "irc.freenode.com",
-      "irc.freenode.net",
-      "irc.freenode.org",
-      "irc.ipv4.freenode.com",
-      "irc.ipv4.freenode.net",
-      "irc.ipv4.freenode.org",
-      "irc.ipv6.freenode.com",
-      "irc.ipv6.freenode.net",
-      "irc.ipv6.freenode.org",
-      "irc.us.freenode.com",
-      "irc.us.freenode.net",
-      "irc.us.freenode.org",
-      "verne.freenode.net"
+      **"chat.au.freenode.com",**
+      **"chat.au.freenode.net",**
+      **"chat.au.freenode.org",**
+      **"chat.eu.freenode.com",**
+      **"chat.eu.freenode.net",**
+      **"chat.eu.freenode.org",**
+      **"chat.freenode.com",**
+      **"chat.freenode.net",**
+      **"chat.freenode.org",**
+      **"chat.ipv4.freenode.com",**
+      **"chat.ipv4.freenode.net",**
+      **"chat.ipv4.freenode.org",**
+      **"chat.ipv6.freenode.com",**
+      **"chat.ipv6.freenode.net",**
+      **"chat.ipv6.freenode.org",**
+      **"chat.us.freenode.com",**
+      **"chat.us.freenode.net",**
+      **"chat.us.freenode.org",**
+      **"ipv6.chat.freenode.net",**
+      **"ipv6.irc.freenode.net",**
+      **"irc.au.freenode.com",**
+      **"irc.au.freenode.net",**
+      **"irc.au.freenode.org",**
+      **"irc.eu.freenode.com",**
+      **"irc.eu.freenode.net",**
+      **"irc.eu.freenode.org",**
+      **"irc.freenode.com",**
+      **"irc.freenode.net",**
+      **"irc.freenode.org",**
+      **"irc.ipv4.freenode.com",**
+      **"irc.ipv4.freenode.net",**
+      **"irc.ipv4.freenode.org",**
+      **"irc.ipv6.freenode.com",**
+      **"irc.ipv6.freenode.net",**
+      **"irc.ipv6.freenode.org",**
+      **"irc.us.freenode.com",**
+      **"irc.us.freenode.net",**
+      **"irc.us.freenode.org",**
+      **"verne.freenode.net"**
     ],
     "basic_constraints.ca": false
   }
@@ -327,7 +333,7 @@ connections. Zeek produced three :file:`conn.log` entries, involving clients
 with IP addresses of ``10.240.0.3``, ``10.240.0.4``, and ``10.240.0.5``. Here
 is an entry for the client ``10.240.0.5``.
 
-::
+.. literal-emph::
 
   {
     "ts": 1461774814.057057,
@@ -335,9 +341,9 @@ is an entry for the client ``10.240.0.5``.
     "id.orig_h": "10.240.0.5",
     "id.orig_p": 42277,
     "id.resp_h": "10.240.0.2",
-    "id.resp_p": 31337,
-    "proto": "tcp",
-    "service": "irc",
+    **"id.resp_p": 31337,**
+    **"proto": "tcp",**
+    **"service": "irc",**
     "duration": 787.9501581192017,
     "orig_bytes": 1026,
     "resp_bytes": 10425,
@@ -444,12 +450,14 @@ botnet client.
   ["192.168.2.5","54.39.23.28","A5|1|5358668|black-pe",null,"USER","muhstik","localhost localhost muhstik-11052018"]
   ["192.168.2.5","54.39.23.28","A5|1|5358668|black-pe","muhstik","JOIN","#a925d765"," with channel key: ':8974'"]
 
-Here is an example transcript for one of the IRC sessions::
+Here is an example transcript for one of the IRC sessions:
 
-  NICK A5|1|5358668|black-pe
-  USER muhstik localhost localhost :muhstik-11052018
+.. literal-emph::
+
+  **NICK A5|1|5358668|black-pe**
+  **USER muhstik localhost localhost :muhstik-11052018**
   PING :A2A5630
-  PONG :A2A5630
+  **PONG :A2A5630**
   :x4.tipu 010 A5|1|5358668|black-pe x4.tipu 0
   :x4.tipu 010 A5|1|5358668|black-pe pomf 6667
   ERROR :Closing Link: A5|1|5358668|black-pe[109.81.208.168] (This server is full.)

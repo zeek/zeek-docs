@@ -47,14 +47,16 @@ The following is an example of traffic that generated a :file:`dpd.log` entry.
 On the face of it, there does not appear to be anything unusual about this
 traffic. It appears to be a brief session to TCP port 443.
 
-:program:`tshark` reports the traffic as follows::
+:program:`tshark` reports the traffic as follows:
+
+.. literal-emph::
 
     2 192.168.4.142 50540 184.168.176.1 443 TCP 66 50540 → 443 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 WS=256 SACK_PERM=1
     4 184.168.176.1 443 192.168.4.142 50540 TCP 62 443 → 50540 [SYN, ACK] Seq=0 Ack=1 Win=14600 Len=0 MSS=1460 WS=256
     6 192.168.4.142 50540 184.168.176.1 443 TCP 60 50540 → 443 [ACK] Seq=1 Ack=1 Win=131328 Len=0
     7 192.168.4.142 50540 184.168.176.1 443 TLSv1 571 Client Hello
     9 184.168.176.1 443 192.168.4.142 50540 TCP 60 443 → 50540 [ACK] Seq=1 Ack=518 Win=15872 Len=0
-   10 184.168.176.1 443 192.168.4.142 50540 HTTP 521 HTTP/1.1 400 Bad Request  (text/html)
+   **10 184.168.176.1 443 192.168.4.142 50540 HTTP 521 HTTP/1.1 400 Bad Request  (text/html)**
    11 184.168.176.1 443 192.168.4.142 50540 TCP 60 443 → 50540 [FIN, ACK] Seq=468 Ack=518 Win=15872 Len=0
    13 192.168.4.142 50540 184.168.176.1 443 TCP 60 50540 → 443 [ACK] Seq=518 Ack=469 Win=130816 Len=0
    14 192.168.4.142 50540 184.168.176.1 443 TCP 61 50540 → 443 [PSH, ACK] Seq=518 Ack=469 Win=130816 Len=7
@@ -69,7 +71,7 @@ appear to complete, as there is no response to the TLS client hello message.
 Here is frame 10 in detail. I passed :program:`tshark` the ``-x`` switch to
 provide a hex and ASCII output at the end.
 
-::
+.. literal-emph::
 
   Frame 10: 521 bytes on wire (4168 bits), 521 bytes captured (4168 bits)
       Encapsulation type: Ethernet (1)
@@ -149,12 +151,12 @@ provide a hex and ASCII output at the end.
           [Time since first frame in this TCP stream: 0.136112000 seconds]
           [Time since previous frame in this TCP stream: 0.003142000 seconds]
       TCP payload (467 bytes)
-  Hypertext Transfer Protocol
-      [Expert Info (Warning/Security): Unencrypted HTTP protocol detected over encrypted port, could indicate a dangerous misconfiguration.]
-          [Unencrypted HTTP protocol detected over encrypted port, could indicate a dangerous misconfiguration.]
-          [Severity level: Warning]
-          [Group: Security]
-      HTTP/1.1 400 Bad Request\r\n
+  **Hypertext Transfer Protocol**
+      **[Expert Info (Warning/Security): Unencrypted HTTP protocol detected over encrypted port, could indicate a dangerous misconfiguration.]**
+          **[Unencrypted HTTP protocol detected over encrypted port, could indicate a dangerous misconfiguration.]**
+          **[Severity level: Warning]**
+          **[Group: Security]**
+      **HTTP/1.1 400 Bad Request\r\n**
           [Expert Info (Chat/Sequence): HTTP/1.1 400 Bad Request\r\n]
               [HTTP/1.1 400 Bad Request\r\n]
               [Severity level: Chat]
@@ -187,7 +189,7 @@ provide a hex and ASCII output at the end.
   0000  60 f2 62 3c 9c 68 fc ec da 49 e0 10 08 00 45 00   `.b<.h...I....E.
   0010  01 fb cc 4e 40 00 37 06 47 ce b8 a8 b0 01 c0 a8   ...N@.7.G.......
   0020  04 8e 01 bb c5 6c e8 a2 c2 eb 09 bd 1e 64 50 18   .....l.......dP.
-  0030  00 3e de 95 00 00 48 54 54 50 2f 31 2e 31 20 34   .>....HTTP/1.1 4
+  0030  00 3e de 95 00 00 **48 54 54** 50 2f 31 2e 31 20 34   .>....**HTT**P/1.1 4
   0040  30 30 20 42 61 64 20 52 65 71 75 65 73 74 0d 0a   00 Bad Request..
   0050  44 61 74 65 3a 20 54 68 75 2c 20 31 30 20 44 65   Date: Thu, 10 De
   0060  63 20 32 30 32 30 20 30 32 3a 34 34 3a 32 34 20   c 2020 02:44:24
@@ -219,17 +221,19 @@ provide a hex and ASCII output at the end.
   0200  3e 3c 2f 68 74 6d 6c 3e 0a                        ></html>.
 
 You can see the HTTP headers and page content in the payload of this frame. I
-bolded the hex and ASCII output for the “HTT” part of the HTTP header in the
+bolded the hex and ASCII output for the ``HTT`` part of the HTTP header in the
 payload. :program:`tshark` reports a warning as seen in the bolded output.
 
 :file:`conn.log`
 ----------------
 
-Here is the :file:`conn.log` that Zeek generated for this activity::
+Here is the :file:`conn.log` that Zeek generated for this activity:
+
+.. literal-emph::
 
   {
     "ts": 1607568264.274569,
-    "uid": "C8blOJ21azairPrWf8",
+    **"uid": "C8blOJ21azairPrWf8",**
     "id.orig_h": "192.168.4.142",
     "id.orig_p": 50540,
     "id.resp_h": "184.168.176.1",
@@ -252,7 +256,9 @@ The :file:`conn.log` entry is fairly normal.
 :file:`ssl.log`
 ---------------
 
-Here is the :file:`ssl.log` that Zeek generated for this activity::
+Here is the :file:`ssl.log` that Zeek generated for this activity:
+
+.. literal-emph::
 
   {
     "ts": 1607568264.340668,
@@ -263,7 +269,7 @@ Here is the :file:`ssl.log` that Zeek generated for this activity::
     "id.resp_p": 443,
     "server_name": "usafaikidonews.com",
     "resumed": false,
-    "established": false
+    **"established": false**
   }
 
 The :file:`ssl.log` shows that a TLS encrypted session was not established.
@@ -271,7 +277,9 @@ The :file:`ssl.log` shows that a TLS encrypted session was not established.
 :file:`dpd.log`
 ---------------
 
-Here is the :file:`dpd.log` that Zeek generated for this activity::
+Here is the :file:`dpd.log` that Zeek generated for this activity:
+
+.. literal-emph::
 
   {
     "ts": 1607568264.410681,
@@ -281,8 +289,8 @@ Here is the :file:`dpd.log` that Zeek generated for this activity::
     "id.resp_h": "184.168.176.1",
     "id.resp_p": 443,
     "proto": "tcp",
-    "analyzer": "SSL",
-    "failure_reason": "Invalid version late in TLS connection. Packet reported version: 21588"
+    **"analyzer": "SSL",**
+    **"failure_reason": "Invalid version late in TLS connection. Packet reported version: 21588"**
   }
 
 Here we see that DPD and the SSL analyzer report an error in the TLS
@@ -292,24 +300,26 @@ refer?
 Decoding 21588
 ==============
 
-Let’s take a look at part of frame 9, which is the TLS client hello::
+Let’s take a look at part of frame 9, which is the TLS client hello:
+
+.. literal-emph::
 
   Secure Sockets Layer
       TLSv1 Record Layer: Handshake Protocol: Client Hello
-          Content Type: Handshake (22)
-          Version: TLS 1.0 (0x0301)
+          **Content Type: Handshake (22)**
+          **Version: TLS 1.0 (0x0301)**
           Length: 512
           Handshake Protocol: Client Hello
               Handshake Type: Client Hello (1)
               Length: 508
-              Version: TLS 1.2 (0x0303)
+              **Version: TLS 1.2 (0x0303)**
   ...truncated...
 
   0000  fc ec da 49 e0 10 60 f2 62 3c 9c 68 08 00 45 00   ...I..`.b<.h..E.
   0010  02 2d 97 6c 40 00 80 06 33 7e c0 a8 04 8e b8 a8   .-.l@...3~......
   0020  b0 01 c5 6c 01 bb 09 bd 1c 5f e8 a2 c2 eb 50 18   ...l....._....P.
-  0030  02 01 6e 33 00 00 16 03 01 02 00 01 00 01 fc 03   ..n3............
-  0040  03 97 16 82 4f e0 ff e3 3e 6f d8 33 28 9a 97 b8   ....O...>o.3(...
+  0030  02 01 6e 33 00 00 **16 03 01** 02 00 01 00 01 fc **03**   ..n3............
+  0040  **03** 97 16 82 4f e0 ff e3 3e 6f d8 33 28 9a 97 b8   ....O...>o.3(...
   0050  1a f0 73 6b 12 98 af 25 e2 a5 bc 6c 2e aa b1 69   ..sk...%...l...i
   0060  be 20 bf d4 27 c5 22 bf 0d 90 83 24 80 36 ad 11   . ..'."....$.6..
   0070  17 8a 2d a2 a1 42 1d ef 6b 1f ef ce cf 9a e2 f5   ..-..B..k.......
@@ -325,12 +335,14 @@ attempt at a TLS 1.0 connection, however, as the second bolded hex value of
 ``0x0303`` shows TLS 1.2 in play.
 
 Now, compare this output with what appeared in the odd “HTTP” frame shown
-earlier::
+earlier:
+
+.. literal-emph::
 
   0000  60 f2 62 3c 9c 68 fc ec da 49 e0 10 08 00 45 00   `.b<.h...I....E.
   0010  01 fb cc 4e 40 00 37 06 47 ce b8 a8 b0 01 c0 a8   ...N@.7.G.......
   0020  04 8e 01 bb c5 6c e8 a2 c2 eb 09 bd 1e 64 50 18   .....l.......dP.
-  0030  00 3e de 95 00 00 48 54 54 50 2f 31 2e 31 20 34   .>....HTTP/1.1 4
+  0030  00 3e de 95 00 00 **48 54 54** 50 2f 31 2e 31 20 34   .>....**HTT**P/1.1 4
   0040  30 30 20 42 61 64 20 52 65 71 75 65 73 74 0d 0a   00 Bad Request..
 
 The ``0x48`` value is in the location where a TLS content type message would

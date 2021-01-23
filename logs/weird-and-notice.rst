@@ -81,33 +81,37 @@ Investigating a :file:`weird.log` and :file:`notice.log` Entry
 ==============================================================
 
 Taking a look at two entries in the :file:`weird.log`, we see they reference
-the same connection::
+the same connection:
+
+.. literal-emph::
 
   {
     "ts": "2021-01-04T04:59:21.582639Z",
-    "uid": "CxdbSa2KGTlMl3PPB2",
+    "uid": "**CxdbSa2KGTlMl3PPB2**",
     "id.orig_h": "192.168.4.129",
     "id.orig_p": 51020,
     "id.resp_h": "40.71.25.43",
     "id.resp_p": 8080,
-    "name": "bad_HTTP_request",
+    **"name": "bad_HTTP_request",**
     "notice": false,
     "peer": "so16-enp0s8-1"
   }
   {
     "ts": "2021-01-04T04:59:21.582639Z",
-    "uid": "CxdbSa2KGTlMl3PPB2",
+    "uid": "**CxdbSa2KGTlMl3PPB2**",
     "id.orig_h": "192.168.4.129",
     "id.orig_p": 51020,
     "id.resp_h": "40.71.25.43",
     "id.resp_p": 8080,
-    "name": "line_terminated_with_single_CR",
+    **"name": "line_terminated_with_single_CR",**
     "notice": false,
     "peer": "so16-enp0s8-1"
   }
 
 We see a ``bad_HTTP_request`` and a ``line_terminated_with_single_CR``. We
-happen to also have an entry for this connection in the :file:`notice.log`::
+happen to also have an entry for this connection in the :file:`notice.log`:
+
+.. literal-emph::
 
   {
     "ts": "2021-01-04T04:59:23.038713Z",
@@ -118,8 +122,8 @@ happen to also have an entry for this connection in the :file:`notice.log`::
     "id.resp_p": 8080,
     "fuid": "FtEE2txjFBxLDbffi",
     "proto": "tcp",
-    "note": "SSL::Invalid_Server_Cert",
-    "msg": "SSL certificate validation failed with (unable to get local issuer certificate)",
+    **"note": "SSL::Invalid_Server_Cert",**
+    **"msg": "SSL certificate validation failed with (unable to get local issuer certificate)",**
     "sub": "CN=*.cloudapp.net,OU=Smart Controller Development,O=GTO Access Systems\\, LLC,DC=smartcontroller,DC=local",
     "src": "192.168.4.129",
     "dst": "40.71.25.43",

@@ -178,14 +178,14 @@ Let’s look at :program:`tshark`’s decode for the NTP-specific data, to see i
 It does not appear that :program:`tshark` reveals any details that
 :program:`tcpdump` did not. One difference is that for the client reference,
 origin, and receive timestamps, Tshark renders the 0 values as the Unix epoch,
-i.e., `Jan  1, 1970 00:00:00.000000000 UTC`.
+i.e., ``Jan  1, 1970 00:00:00.000000000 UTC``.
 
 NTP via Zeek
 ============
 
 Here is how Zeek summarizes this NTP activity:
 
-::
+.. literal-emph::
 
   {
     "ts": "2020-10-08T00:29:07.977170Z",
@@ -195,7 +195,7 @@ Here is how Zeek summarizes this NTP activity:
     "id.resp_h": "208.79.89.249",
     "id.resp_p": 123,
     "version": 4,
-    "mode": 3,
+    **"mode": 3,**
     "stratum": 0,
     "poll": 1,
     "precision": 1,
@@ -217,7 +217,7 @@ Here is how Zeek summarizes this NTP activity:
     "id.resp_h": "208.79.89.249",
     "id.resp_p": 123,
     "version": 4,
-    "mode": 4,
+    **"mode": 4,**
     "stratum": 2,
     "poll": 8,
     "precision": 5.960464477539063e-08,

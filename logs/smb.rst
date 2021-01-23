@@ -90,15 +90,15 @@ If we process the packet capture with Zeek and BZAR, the following files appear:
 Let’s look at the :file:`conn.log` first to get a general overview of the
 traffic.
 
-::
+.. literal-emph::
 
   {
     "ts": 1507562478.10937,
     "uid": "CzgIrZ31Lh5vCHioWi",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49282,
-    "id.resp_h": "192.168.10.10",
-    "id.resp_p": 445,
+    **"id.resp_h": "192.168.10.10",**
+    **"id.resp_p": 445,**
     "proto": "tcp",
     "service": "gssapi,smb,dce_rpc,krb",
     "duration": 0.22932004928588867,
@@ -133,12 +133,12 @@ likely create a :file:`kerberos.log` entry.
 
 Let’s see what the :file:`notice.log` has to say about this activity.
 
-::
+.. literal-emph::
 
   {
     "ts": 1507562478.117387,
-    "note": "ATTACK::Discovery",
-    "msg": "Detected activity from host 192.168.10.31, total attempts 5 within timeframe 5.0 mins",
+    **"note": "ATTACK::Discovery",**
+    **"msg": "Detected activity from host 192.168.10.31, total attempts 5 within timeframe 5.0 mins",**
     "actions": [
       "Notice::ACTION_LOG"
     ],
@@ -146,8 +146,8 @@ Let’s see what the :file:`notice.log` has to say about this activity.
   }
   {
     "ts": 1507562478.124176,
-    "note": "ATTACK::Discovery",
-    "msg": "Detected activity from host 192.168.10.31, total attempts 10 within timeframe 5.0 mins",
+    **"note": "ATTACK::Discovery",**
+    **"msg": "Detected activity from host 192.168.10.31, total attempts 10 within timeframe 5.0 mins",**
     "actions": [
       "Notice::ACTION_LOG"
     ],
@@ -155,8 +155,8 @@ Let’s see what the :file:`notice.log` has to say about this activity.
   }
   {
     "ts": 1507562478.138992,
-    "note": "ATTACK::Discovery",
-    "msg": "Detected activity from host 192.168.10.31, total attempts 15 within timeframe 5.0 mins",
+    **"note": "ATTACK::Discovery",**
+    **"msg": "Detected activity from host 192.168.10.31, total attempts 15 within timeframe 5.0 mins",**
     "actions": [
       "Notice::ACTION_LOG"
     ],
@@ -178,19 +178,19 @@ is happening?
 
 Let’s look at the first entry in :file:`dce_rpc.log`.
 
-::
+.. literal-emph::
 
   {
     "ts": 1507562478.112879,
     "uid": "CzgIrZ31Lh5vCHioWi",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49282,
-    "id.resp_h": "192.168.10.10",
-    "id.resp_p": 445,
+    **"id.resp_h": "192.168.10.10",**
+    **"id.resp_p": 445,**
     "rtt": 0.0003020763397216797,
-    "named_pipe": "\\pipe\\lsass",
-    "endpoint": "samr",
-    "operation": "SamrConnect5"
+    **"named_pipe": "\\pipe\\lsass",**
+    **"endpoint": "samr",**
+    **"operation": "SamrConnect5"**
   }
 
 This entry shows that ``192.168.10.31`` connected to ``192.168.10.10`` via a
@@ -228,17 +228,17 @@ and pipe the output through uniq to only show unique outputs:
 
   $ jq -c '[."named_pipe", ."endpoint", ."operation"]' dce_rpc.log | uniq
 
-::
+.. literal-emph::
 
   ["\\pipe\\lsass","samr","SamrConnect5"]
-  ["\\pipe\\lsass","samr","SamrEnumerateDomainsInSamServer"]
+  ["\\pipe\\lsass","samr","**SamrEnumerateDomainsInSamServer**"]
   ["\\pipe\\lsass","samr","SamrLookupDomainInSamServer"]
   ["\\pipe\\lsass","samr","SamrOpenDomain"]
-  ["\\pipe\\lsass","samr","SamrLookupNamesInDomain"]
+  ["\\pipe\\lsass","samr","**SamrLookupNamesInDomain**"]
   ["\\pipe\\lsass","samr","SamrOpenUser"]
-  ["\\pipe\\lsass","samr","SamrQueryInformationUser"]
+  ["\\pipe\\lsass","samr","**SamrQueryInformationUser**"]
   ["\\pipe\\lsass","samr","SamrQuerySecurityObject"]
-  ["\\pipe\\lsass","samr","SamrGetGroupsForUser"]
+  ["\\pipe\\lsass","samr","**SamrGetGroupsForUser**"]
   ["\\pipe\\lsass","samr","SamrGetAliasMembership"]
   ["\\pipe\\lsass","samr","SamrCloseHandle"]
   ["\\pipe\\lsass","samr","SamrConnect5"]
@@ -277,15 +277,15 @@ exactly what all of this means, but if there is no reason from
 Let’s see if the :file:`kerberos.log` has anything new to add to our
 investigation.
 
-::
+.. literal-emph::
 
   {
     "ts": 1507562478.110863,
     "uid": "CzgIrZ31Lh5vCHioWi",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49282,
-    "id.resp_h": "192.168.10.10",
-    "id.resp_p": 445
+    **"id.resp_h": "192.168.10.10",**
+    **"id.resp_p": 445**
   }
 
 These are the same details we found through the :file:`conn.log`, but it
@@ -293,7 +293,7 @@ confirms that Zeek identified Kerberos authentication in use.
 
 The :file:`smb_mapping.log` offers one entry as well:
 
-::
+.. literal-emph::
 
   {
     "ts": 1507562478.111677,
@@ -302,7 +302,7 @@ The :file:`smb_mapping.log` offers one entry as well:
     "id.orig_p": 49282,
     "id.resp_h": "192.168.10.10",
     "id.resp_p": 445,
-    "path": "\\\\DC1.contoso.local\\IPC$",
+    **"path": "\\\\DC1.contoso.local\\IPC$",**
     "share_type": "PIPE"
   }
 
@@ -348,17 +348,17 @@ traffic.
 
 The :file:`conn.log` has two entries:
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565438.203425,
     "uid": "CR7Vww4LuLkMzi4jMd",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49238,
-    "id.resp_h": "192.168.10.30",
-    "id.resp_p": 445,
+    **"id.resp_h": "192.168.10.30",**
+    **"id.resp_p": 445,**
     "proto": "tcp",
-    "service": "krb,smb,gssapi",
+    **"service": "krb,smb,gssapi",**
     "duration": 1.1398930549621582,
     "orig_bytes": 814051,
     "resp_bytes": 11657,
@@ -375,8 +375,8 @@ The :file:`conn.log` has two entries:
     "uid": "CyeWAg1QrRKQL0HHMi",
     "id.orig_h": "192.168.10.30",
     "id.orig_p": 138,
-    "id.resp_h": "192.168.10.255",
-    "id.resp_p": 138,
+    **"id.resp_h": "192.168.10.255",**
+    **"id.resp_p": 138,**
     "proto": "udp",
     "conn_state": "S0",
     "missed_bytes": 0,
@@ -405,21 +405,21 @@ Let’s next turn to the :file:`notice.log`.
 I have selected examples of the two unique log types appearing in
 :file:`notice.log`.
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565439.130425,
-    "uid": "CR7Vww4LuLkMzi4jMd",
-    "id.orig_h": "192.168.10.31",
+    **"uid": "CR7Vww4LuLkMzi4jMd",**
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49238,
-    "id.resp_h": "192.168.10.30",
+    **"id.resp_h": "192.168.10.30",**
     "id.resp_p": 445,
     "proto": "tcp",
-    "note": "ATTACK::Lateral_Movement",
-    "msg": "Detected SMB::FILE_WRITE to admin file share '\\\\admin-pc\\c$temp\\mimikatz.exe'",
-    "sub": "T1021.002 Remote Services: SMB/Windows Admin Shares + T1570 Lateral Tool Transfer",
-    "src": "192.168.10.31",
-    "dst": "192.168.10.30",
+    **"note": "ATTACK::Lateral_Movement",**
+    **"msg": "Detected SMB::FILE_WRITE to admin file share '\\\\admin-pc\\c$temp\\mimikatz.exe'",**
+    **"sub": "T1021.002 Remote Services: SMB/Windows Admin Shares + T1570 Lateral Tool Transfer",**
+    **"src": "192.168.10.31",**
+    **"dst": "192.168.10.30",**
     "p": 445,
     "actions": [
       "Notice::ACTION_LOG"
@@ -438,11 +438,11 @@ I have selected examples of the two unique log types appearing in
     "file_mime_type": "application/x-dosexec",
     "file_desc": "temp",
     "proto": "tcp",
-    "note": "ATTACK::Lateral_Movement_Extracted_File",
-    "msg": "Saved a copy of the file written to SMB admin file share",
-    "sub": "CR7Vww4LuLkMzi4jMd_FwVZpk12AKBjE11UNg__admin-pc_c$temp_mimikatz.exe",
-    "src": "192.168.10.31",
-    "dst": "192.168.10.30",
+    **"note": "ATTACK::Lateral_Movement_Extracted_File",**
+    **"msg": "Saved a copy of the file written to SMB admin file share",**
+    **"sub": "CR7Vww4LuLkMzi4jMd_FwVZpk12AKBjE11UNg__admin-pc_c$temp_mimikatz.exe",**
+    **"src": "192.168.10.31",**
+    **"dst": "192.168.10.30",**
     "p": 445,
     "actions": [
       "Notice::ACTION_LOG"
@@ -515,7 +515,7 @@ command to get some details:
 As we learned in the :file:`files.log` documentation, we can look in that data
 for similar information on extracted files:
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565439.130425,
@@ -538,15 +538,15 @@ for similar information on extracted files:
       "MD5",
       "EXTRACT"
     ],
-    "mime_type": "application/x-dosexec",
-    "filename": "temp\\mimikatz.exe",
+    **"mime_type": "application/x-dosexec",**
+    **"filename": "temp\\mimikatz.exe",**
     "duration": 0.0034439563751220703,
     "is_orig": true,
     "seen_bytes": 804352,
     "missing_bytes": 0,
     "overflow_bytes": 0,
     "timedout": true,
-    "md5": "2c527d980eb30daa789492283f9bf69e",
+    **"md5": "2c527d980eb30daa789492283f9bf69e",**
     "sha1": "d007f64dae6bc5fdfe4ff30fe7be9b7d62238012",
     "sha256": "fb55414848281f804858ce188c3dc659d129e283bd62d58d34f6e6f568feab37",
     "extracted": "CR7Vww4LuLkMzi4jMd_FwVZpk12AKBjE11UNg__admin-pc_c$temp_mimikatz.exe",
@@ -558,13 +558,13 @@ filename, which includes a directory.
 
 Let’s take a quick look at the :file:`pe.log` entry:
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565439.130425,
     "id": "FwVZpk12AKBjE11UNg",
     "machine": "AMD64",
-    "compile_ts": 1502638084,
+    **"compile_ts": 1502638084,**
     "os": "Windows XP x64 or Server 2003",
     "subsystem": "WINDOWS_CUI",
     "is_exe": true,
@@ -672,7 +672,7 @@ role in this connection.
 
 The :file:`smb_mapping.log` also has a single short entry:
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565438.205583,
@@ -681,7 +681,7 @@ The :file:`smb_mapping.log` also has a single short entry:
     "id.orig_p": 49238,
     "id.resp_h": "192.168.10.30",
     "id.resp_p": 445,
-    "path": "\\\\admin-pc\\c$",
+    **"path": "\\\\admin-pc\\c$",**
     "share_type": "DISK"
   }
 
@@ -690,7 +690,7 @@ We see evidence of connecting to the administrative file share on
 
 The :file:`smb_files.log` has many entries. The first looks like this:
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565438.205868,
@@ -699,9 +699,9 @@ The :file:`smb_files.log` has many entries. The first looks like this:
     "id.orig_p": 49238,
     "id.resp_h": "192.168.10.30",
     "id.resp_p": 445,
-    "action": "SMB::FILE_OPEN",
-    "path": "\\\\admin-pc\\c$",
-    "name": "<share_root>",
+    **"action": "SMB::FILE_OPEN",**
+    **"path": "\\\\admin-pc\\c$",**
+    **"name": "<share_root>",**
     "size": 4096,
     "times.modified": 1507316839.5820882,
     "times.accessed": 1507316839.5820882,
@@ -766,15 +766,15 @@ We’ll start with the :file:`conn.log` as we did with the previous case.
 
 The :file:`conn.log` for this case has only one entry:
 
-::
+.. literal-emph::
 
   {
     "ts": 1512585460.295445,
     "uid": "C4j5Ds3VyExc2ZAOh9",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 1112,
-    "id.resp_h": "192.168.10.30",
-    "id.resp_p": 445,
+    **"id.resp_h": "192.168.10.30",**
+    **"id.resp_p": 445,**
     "proto": "tcp",
     "service": "krb,gssapi,smb",
     "duration": 13.435487985610962,
@@ -806,17 +806,17 @@ Now let’s look at the :file:`files.log` and :file:`pe.log`, as we do not have 
 
 We see one entry in :file:`files.log`:
 
-::
+.. literal-emph::
 
   {
     "ts": 1512585460.300969,
     "fuid": "FNMweB3f2OvTZ4UZLe",
-    "tx_hosts": [
-      "192.168.10.30"
-    ],
-    "rx_hosts": [
-      "192.168.10.31"
-    ],
+    **"tx_hosts": [**
+      **"192.168.10.30"**
+    **],**
+    **"rx_hosts": [**
+      **"192.168.10.31"**
+    **],**
     "conn_uids": [
       "C4j5Ds3VyExc2ZAOh9"
     ],
@@ -826,7 +826,7 @@ We see one entry in :file:`files.log`:
       "PE"
     ],
     "mime_type": "application/x-dosexec",
-    "filename": "temp\\mimikatz.exe",
+    **"filename": "temp\\mimikatz.exe",**
     "duration": 0.010069131851196289,
     "is_orig": false,
     "seen_bytes": 804352,
@@ -849,13 +849,13 @@ This is the reverse of the previous case.
 
 Here is the :file:`pe.log`:
 
-::
+.. literal-emph::
 
   {
     "ts": 1512585460.300969,
     "id": "FNMweB3f2OvTZ4UZLe",
     "machine": "AMD64",
-    "compile_ts": 1502638084,
+    **"compile_ts": 1502638084,**
     "os": "Windows XP x64 or Server 2003",
     "subsystem": "WINDOWS_CUI",
     "is_exe": true,
@@ -1004,17 +1004,19 @@ This is a short set of logs to analyze. We will start with the :file:`conn.log`.
 :file:`conn.log`
 ----------------
 
-Looking at the :file:`conn.log`, we see one entry::
+Looking at the :file:`conn.log`, we see one entry:
+
+.. literal-emph::
 
   {
     "ts": 1508525002.992213,
     "uid": "Cirxt14nybZjVhpOAk",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49266,
-    "id.resp_h": "192.168.10.30",
-    "id.resp_p": 445,
+    **"id.resp_h": "192.168.10.30",**
+    **"id.resp_p": 445,**
     "proto": "tcp",
-    "service": "dce_rpc,smb",
+    **"service": "dce_rpc,smb",**
     "duration": 12.397327899932861,
     "orig_bytes": 1155,
     "resp_bytes": 1037,
@@ -1037,7 +1039,7 @@ reason Zeek did not create a :file:`dce_rpc.log` for this activity.
 The :file:`smb_files.log` holds the next clue to this activity. It contains
 three entries:
 
-::
+.. literal-emph::
 
   {
     "ts": 1508525002.992213,
@@ -1046,8 +1048,8 @@ three entries:
     "id.orig_p": 49266,
     "id.resp_h": "192.168.10.30",
     "id.resp_p": 445,
-    "action": "SMB::FILE_OPEN",
-    "name": "atsvc",
+    **"action": "SMB::FILE_OPEN",**
+    **"name": "atsvc",**
     "size": 0
   }
   {
@@ -1057,8 +1059,8 @@ three entries:
     "id.orig_p": 49266,
     "id.resp_h": "192.168.10.30",
     "id.resp_p": 445,
-    "action": "SMB::FILE_WRITE",
-    "name": "atsvc",
+    **"action": "SMB::FILE_WRITE",**
+    **"name": "atsvc",**
     "size": 0,
     "data_offset_req": 0,
     "data_len_req": 160
@@ -1070,9 +1072,9 @@ three entries:
     "id.orig_p": 49266,
     "id.resp_h": "192.168.10.30",
     "id.resp_p": 445,
-    "fuid": "Fw42Pp34N0CC79C5Ua",
-    "action": "SMB::FILE_WRITE",
-    "name": "atsvc",
+    **"fuid": "Fw42Pp34N0CC79C5Ua",**
+    **"action": "SMB::FILE_WRITE",**
+    **"name": "atsvc",**
     "size": 0,
     "data_offset_req": 0,
     "data_len_req": 160
@@ -1089,7 +1091,7 @@ service as a “file,” even though it is a service offered by Windows.
 An odd result of Windows providing the At service as a “file” is that Zeek
 creates a :file:`files.log` entry for it. Here is that entry:
 
-::
+.. literal-emph::
 
   {
     "ts": 1508525002.992817,
@@ -1103,10 +1105,10 @@ creates a :file:`files.log` entry for it. Here is that entry:
     "conn_uids": [
       "Cirxt14nybZjVhpOAk"
     ],
-    "source": "SMB",
+    **"source": "SMB",**
     "depth": 0,
     "analyzers": [],
-    "filename": "atsvc",
+    **"filename": "atsvc",**
     "duration": 0.00038909912109375,
     "is_orig": true,
     "seen_bytes": 160,
@@ -1136,9 +1138,9 @@ also specified that it look at SMB version 2 traffic.
 
   $ tshark -r 20171220_smb_at_schedule.pcap -T fields -e _ws.col.No. -e _ws.col.Source -e _ws.col.Protocol -e _ws.col.Info -Y smb2
 
-::
+.. literal-emph::
 
-  1       192.168.10.31   SMB2    Create Request File: atsvc
+  **1       192.168.10.31   SMB2    Create Request File: atsvc**
   2       192.168.10.30   SMB2    Create Response File: atsvc
   3       192.168.10.31   SMB2    GetInfo Request FILE_INFO/SMB2_FILE_STANDARD_INFO File: atsvc
   4       192.168.10.30   SMB2    GetInfo Response
@@ -1146,7 +1148,7 @@ also specified that it look at SMB version 2 traffic.
   6       192.168.10.30   SMB2    Write Response
   7       192.168.10.31   SMB2    Read Request Len:1024 Off:0 File: atsvc
   8       192.168.10.30   DCERPC  Bind_ack: call_id: 2, Fragment: Single, max_xmit: 4280 max_recv: 4280, 3 results: Provider rejection, Acceptance, Negotiate ACK
-  9       192.168.10.31   ATSVC   JobAdd request
+  **9       192.168.10.31   ATSVC   JobAdd request**
   10      192.168.10.30   SMB2    Ioctl Response, Error: STATUS_PENDING
   11      192.168.10.30   ATSVC   JobAdd response
   13      192.168.10.31   SMB2    Close Request File: atsvc
@@ -1166,7 +1168,7 @@ layer of the decode we want to see.
 
   $ tshark -r 20171220_smb_at_schedule.pcap -V -Y frame.number==9 -O atsvc
 
-::
+.. literal-emph::
 
   Frame 9: 338 bytes on wire (2704 bits), 338 bytes captured (2704 bits)
   Ethernet II, Src: 08:00:27:7f:b5:8b, Dst: 08:00:27:a1:27:e8
@@ -1232,12 +1234,12 @@ layer of the decode we want to see.
                   .... .0.. = JOB RUNS TODAY: JOB_RUNS_TODAY is NOT SET
                   .... 0... = JOB ADD CURRENT DATE: JOB_ADD_CURRENT_DATE is NOT SET
                   ...0 .... = JOB NONINTERACTIVE: JOB_NONINTERACTIVE is NOT SET
-              Pointer to Command (uint16): c:\mimikatz.exe
-                  Referent ID: 0x0000000000020000
-                  Max Count: 16
-                  Offset: 0
-                  Actual Count: 16
-                  Command: c:\mimikatz.exe
+              **Pointer to Command (uint16): c:\mimikatz.exe**
+                  **Referent ID: 0x0000000000020000**
+                  **Max Count: 16**
+                  **Offset: 0**
+                  **Actual Count: 16**
+                  **Command: c:\mimikatz.exe**
 
 Once you get past the spelling errors in the “Days of Month” section, we see in
 the “Pointer to Command” section a reference to :file:`c:\mimikatz.exe`. This
@@ -1251,7 +1253,7 @@ We can look to see if the command succeeded by reviewing the details of frame
 
   $ tshark -r 20171220_smb_at_schedule.pcap -V -Y frame.number==11 -O atsvc
 
-::
+.. literal-emph::
 
   Frame 11: 202 bytes on wire (1616 bits), 202 bytes captured (1616 bits)
   Ethernet II, Src: 08:00:27:a1:27:e8, Dst: 08:00:27:7f:b5:8b
@@ -1265,7 +1267,7 @@ We can look to see if the command succeeded by reviewing the details of frame
       [Request in frame: 9]
       Pointer to Job Id (uint32)
           Job Id: 2
-      NT Error: STATUS_SUCCESS (0x00000000)
+      **NT Error: STATUS_SUCCESS (0x00000000)**
 
 The ``NT Error`` message shows ``STATUS_SUCCESS``, which indicates that the job
 was scheduled via the At service.
@@ -1355,17 +1357,17 @@ BZAR.
 
   $ jq -c '[."uid", ."note", ."msg", ."sub", ."src", ."dst"]' notice.log | uniq
 
-::
+.. literal-emph::
 
-  ["C6HQVsDf8VCu0XTJe","ATTACK::Lateral_Movement","Detected SMB::FILE_WRITE to admin file share '\\\\admin-pc\\ADMIN$PSEXESVC.exe'","T1021.002 Remote Services: SMB/Windows Admin Shares + T1570 Lateral Tool Transfer","192.168.10.31","192.168.10.30"]
+  ["C6HQVsDf8VCu0XTJe","ATTACK::Lateral_Movement","Detected SMB::FILE_WRITE to admin file share '\\\\admin-pc\\ADMIN$PSEXESVC.exe'","T1021.002 Remote Services: SMB/Windows Admin Shares + **T1570 Lateral Tool Transfer**","192.168.10.31","192.168.10.30"]
 
-  ["C6HQVsDf8VCu0XTJe","ATTACK::Lateral_Movement_Extracted_File","Saved a copy of the file written to SMB admin file share","C6HQVsDf8VCu0XTJe_FtIFnm3ZqI1s96P74l__admin-pc_ADMIN$PSEXESVC.exe","192.168.10.31","192.168.10.30"]
+  ["C6HQVsDf8VCu0XTJe","ATTACK::Lateral_Movement_Extracted_File","**Saved a copy of the file written to SMB admin file share**","C6HQVsDf8VCu0XTJe_FtIFnm3ZqI1s96P74l__admin-pc_ADMIN$**PSEXESVC.exe**","192.168.10.31","192.168.10.30"]
 
-  ["CqgZIa4KYnX4cNHJo8","ATTACK::Execution","svcctl::CreateServiceWOW64W","T1569.002 System Services: Service Execution","192.168.10.31","192.168.10.30"]
+  ["CqgZIa4KYnX4cNHJo8","ATTACK::Execution","svcctl::CreateServiceWOW64W","T1569.002 **System Services: Service Execution**","192.168.10.31","192.168.10.30"]
 
-  [null,"ATTACK::Lateral_Movement_and_Execution","Detected activity against host 192.168.10.30, total score 1004 within timeframe 10.0 mins",null,null,null]
+  [null,"ATTACK::Lateral_Movement_and_Execution","**Detected activity against host 192.168.10.30**, total score 1004 within timeframe 10.0 mins",null,null,null]
 
-  ["CqgZIa4KYnX4cNHJo8","ATTACK::Execution","svcctl::StartServiceW","T1569.002 System Services: Service Execution","192.168.10.31","192.168.10.30"]
+  ["CqgZIa4KYnX4cNHJo8","ATTACK::Execution","svcctl::StartServiceW","T1569.002 System Services: **Service Execution**","192.168.10.31","192.168.10.30"]
 
 The highlighted fields indicate suspicious or malicious activity. We see
 evidence of lateral tool transfer to ``192.168.10.30`` via SMB of a file named
@@ -1378,18 +1380,18 @@ Let’s see if the :file:`dce_rpc.log` adds any useful details. We saw earlier
 that this log has 20 entries. The first two shows us the pattern that occupies
 all 20 entries.
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565599.588936,
     "uid": "CBFaLB1HJivXnb9Jw2",
     "id.orig_h": "192.168.10.31",
     "id.orig_p": 49240,
-    "id.resp_h": "192.168.10.30",
-    "id.resp_p": 135,
+    **"id.resp_h": "192.168.10.30",**
+    **"id.resp_p": 135,**
     "rtt": 0.0002448558807373047,
     "named_pipe": "135",
-    "endpoint": "epmapper",
+    **"endpoint": "epmapper",**
     "operation": "ept_map"
   }
 
@@ -1398,8 +1400,8 @@ all 20 entries.
     "uid": "CqgZIa4KYnX4cNHJo8",
     "id.orig_h": "192.168.10.31",
     "id.orig_p": 49241,
-    "id.resp_h": "192.168.10.30",
-    "id.resp_p": 49155,
+    **"id.resp_h": "192.168.10.30",**
+    **"id.resp_p": 49155,**
     "rtt": 0.0003237724304199219,
     "named_pipe": "49155",
     "endpoint": "svcctl",
@@ -1448,7 +1450,7 @@ Incidentally, we can’t see much more using a protocol analyzer like
 
   $ tshark -r 20171220_smb_psexec_mimikatz_ticket_dump.pcap -V -Y frame.number==76 -O svcctl
 
-::
+.. literal-emph::
 
   Frame 76: 258 bytes on wire (2064 bits), 258 bytes captured (2064 bits)
   Ethernet II, Src: 08:00:27:7f:b5:8b, Dst: 08:00:27:a1:27:e8
@@ -1457,7 +1459,7 @@ Incidentally, we can’t see much more using a protocol analyzer like
   Distributed Computing Environment / Remote Procedure Call (DCE/RPC) Request, Fragment: Single, FragLen: 204, Call: 2, Ctx: 0
   Microsoft Service Control, OpenSCManagerW
       Operation: OpenSCManagerW (15)
-      Encrypted stub data: 02353eb074e7e350b9632e05b550f725c99d41d419165110...
+      **Encrypted stub data: 02353eb074e7e350b9632e05b550f725c99d41d419165110...**
 
 As Mr. Marx notes in his paper, the content of these exchanges are encrypted
 within the Microsoft Service Control layer.
@@ -1467,18 +1469,18 @@ within the Microsoft Service Control layer.
 
 The :file:`kerberos.log` contains two entries:
 
-::
+.. literal-emph::
 
   {
     "ts": 1507565599.590346,
     "uid": "CT7qITytKtae83Tyi",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49242,
-    "id.resp_h": "192.168.10.10",
-    "id.resp_p": 88,
+    **"id.resp_h": "192.168.10.10",**
+    **"id.resp_p": 88,**
     "request_type": "TGS",
-    "client": "RonHD/CONTOSO.LOCAL",
-    "service": "HOST/admin-pc",
+    **"client": "RonHD/CONTOSO.LOCAL",**
+    **"service": "HOST/admin-pc",**
     "success": true,
     "till": 2136422885,
     "cipher": "aes256-cts-hmac-sha1-96",
@@ -1490,7 +1492,7 @@ The :file:`kerberos.log` contains two entries:
     "uid": "C6HQVsDf8VCu0XTJe",
     "id.orig_h": "192.168.10.31",
     "id.orig_p": 49239,
-    "id.resp_h": "192.168.10.30",
+    **"id.resp_h": "192.168.10.30",**
     "id.resp_p": 445
   }
 
@@ -1505,7 +1507,9 @@ authenticate to the target ``192.168.10.30``.
 :file:`smb_mapping.log`
 -----------------------
 
-The :file:`smb_mapping.log` contains two entries::
+The :file:`smb_mapping.log` contains two entries:
+
+.. literal-emph::
 
   {
     "ts": 1507565599.576613,
@@ -1514,7 +1518,7 @@ The :file:`smb_mapping.log` contains two entries::
     "id.orig_p": 49239,
     "id.resp_h": "192.168.10.30",
     "id.resp_p": 445,
-    "path": "\\\\admin-pc\\ADMIN$",
+    **"path": "\\\\admin-pc\\ADMIN$",**
     "share_type": "DISK"
   }
   {
@@ -1524,7 +1528,7 @@ The :file:`smb_mapping.log` contains two entries::
     "id.orig_p": 49239,
     "id.resp_h": "192.168.10.30",
     "id.resp_p": 445,
-    "path": "\\\\admin-pc\\IPC$",
+    **"path": "\\\\admin-pc\\IPC$",**
     "share_type": "PIPE"
   }
 
@@ -1535,18 +1539,20 @@ target system are suspicious or malicious if they are not already authorized.
 ---------------------
 
 There are many entries in the :file:`smb_files.log`. The first looks like
-this::
+this:
+
+.. literal-emph::
 
   {
     "ts": 1507565599.576942,
     "uid": "C6HQVsDf8VCu0XTJe",
-    "id.orig_h": "192.168.10.31",
+    **"id.orig_h": "192.168.10.31",**
     "id.orig_p": 49239,
-    "id.resp_h": "192.168.10.30",
-    "id.resp_p": 445,
+    **"id.resp_h": "192.168.10.30",**
+    **"id.resp_p": 445,**
     "action": "SMB::FILE_OPEN",
     "path": "\\\\admin-pc\\ADMIN$",
-    "name": "PSEXESVC.exe",
+    **"name": "PSEXESVC.exe",**
     "size": 0,
     "times.modified": 1507565599.607777,
     "times.accessed": 1507565599.607777,
@@ -1585,7 +1591,9 @@ The :file:`extract_files/` directory contains one executable file::
 
   extract_files/C6HQVsDf8VCu0XTJe_FtIFnm3ZqI1s96P74l__admin-pc_ADMIN$PSEXESVC.exe: PE32 executable (console) Intel 80386, for MS Windows
 
-Zeek’s :file:`files.log` says the following about it::
+Zeek’s :file:`files.log` says the following about it:
+
+.. literal-emph::
 
   {
     "ts": 1507565599.578328,
@@ -1609,7 +1617,7 @@ Zeek’s :file:`files.log` says the following about it::
       "SHA256"
     ],
     "mime_type": "application/x-dosexec",
-    "filename": "PSEXESVC.exe",
+    **"filename": "PSEXESVC.exe",**
     "duration": 0.0006651878356933594,
     "is_orig": true,
     "seen_bytes": 145568,
@@ -1623,13 +1631,15 @@ Zeek’s :file:`files.log` says the following about it::
     "extracted_cutoff": false
   }
 
-Zeek’s :file:`pe.log` says the following::
+Zeek’s :file:`pe.log` says the following:
+
+.. literal-emph::
 
   {
     "ts": 1507565599.578328,
     "id": "FtIFnm3ZqI1s96P74l",
     "machine": "I386",
-    "compile_ts": 1467139314,
+    **"compile_ts": 1467139314,**
     "os": "Windows XP",
     "subsystem": "WINDOWS_CUI",
     "is_exe": true,
@@ -1667,15 +1677,15 @@ We can also check VirusTotal using the MD5 hash:
 
   $ vt file "75b55bb34dac9d02740b9ad6b6820360"
 
-::
+.. literal-emph::
 
   - _id: "141b2190f51397dbd0dfde0e3904b264c91b6f81febc823ff0c33da980b69944"
     _type: "file"
     authentihash: "62287971b29db5858ceaf92e9db310862e9082608f9dd3ac7f5ed3f71c7cfc38"
-    creation_date: 1467139314  # 2016-06-28 18:41:54 +0000 UTC
-    first_seen_itw_date: 1463443155  # 2016-05-16 23:59:15 +0000 UTC
-    first_submission_date: 1467293310  # 2016-06-30 13:28:30 +0000 UTC
-    last_analysis_date: 1606108041  # 2020-11-23 05:07:21 +0000 UTC
+    **creation_date: 1467139314  # 2016-06-28 18:41:54 +0000 UTC**
+    **first_seen_itw_date: 1463443155  # 2016-05-16 23:59:15 +0000 UTC**
+    **first_submission_date: 1467293310  # 2016-06-30 13:28:30 +0000 UTC**
+    **last_analysis_date: 1606108041  # 2020-11-23 05:07:21 +0000 UTC**
     last_analysis_results:
       ALYac:
         category: "undetected"
@@ -1709,7 +1719,7 @@ project produces a :file:`ntlm.log` when Zeek processes it.
 
 Ref: https://wiki.wireshark.org/SMB2
 
-::
+.. literal-emph::
 
   {
     "ts": 1476605364.033848,
@@ -1721,7 +1731,7 @@ Ref: https://wiki.wireshark.org/SMB2
     "hostname": "DESKTOP-V1FA0UQ",
     "server_nb_computer_name": "SCV",
     "server_dns_computer_name": "SCV",
-    "success": true
+    **"success": true**
   }
   {
     "ts": 1476605590.442053,
@@ -1800,7 +1810,7 @@ Ref: https://wiki.wireshark.org/SMB2
     "domainname": "DESKTOP-2AEFM7G",
     "server_nb_computer_name": "DESKTOP-V1FA0UQ",
     "server_dns_computer_name": "DESKTOP-V1FA0UQ",
-    "success": true
+    **"success": true**
   }
 
 This pcap produces a lot of Zeek logs, so I wanted to only show these entries.
