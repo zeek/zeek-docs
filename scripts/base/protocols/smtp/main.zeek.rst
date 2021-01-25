@@ -155,6 +155,11 @@ Types
       has_client_activity: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          Indicates if client activity has been seen, but not yet logged.
 
+      process_smtp_headers: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+         Indicates if the SMTP headers should still be processed.
+
+      entity_count: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
       entity: :zeek:type:`SMTP::Entity` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/smtp/entities.zeek` is loaded)
 
