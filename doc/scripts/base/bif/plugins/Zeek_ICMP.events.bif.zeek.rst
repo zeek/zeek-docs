@@ -37,9 +37,7 @@ Events
 ######
 .. zeek:id:: icmp_echo_reply
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
 
    Generated for ICMP *echo reply* messages.
    
@@ -72,9 +70,7 @@ Events
 
 .. zeek:id:: icmp_echo_request
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
 
    Generated for ICMP *echo request* messages.
    
@@ -107,9 +103,7 @@ Events
 
 .. zeek:id:: icmp_error_message
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
    Generated for all ICMPv6 error messages that are not handled
    separately with dedicated events. Zeek's ICMP analyzer handles a number
@@ -143,9 +137,7 @@ Events
 
 .. zeek:id:: icmp_neighbor_advertisement
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, router: :zeek:type:`bool`, solicited: :zeek:type:`bool`, override: :zeek:type:`bool`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, router: :zeek:type:`bool`, solicited: :zeek:type:`bool`, override: :zeek:type:`bool`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, router: :zeek:type:`bool`, solicited: :zeek:type:`bool`, override: :zeek:type:`bool`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
    Generated for ICMP *neighbor advertisement* messages.
    
@@ -185,9 +177,7 @@ Events
 
 .. zeek:id:: icmp_neighbor_solicitation
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
    Generated for ICMP *neighbor solicitation* messages.
    
@@ -217,9 +207,7 @@ Events
 
 .. zeek:id:: icmp_packet_too_big
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
    Generated for ICMPv6 *packet too big* messages.
    
@@ -254,9 +242,7 @@ Events
 
 .. zeek:id:: icmp_parameter_problem
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
    Generated for ICMPv6 *parameter problem* messages.
    
@@ -291,9 +277,7 @@ Events
 
 .. zeek:id:: icmp_redirect
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, dest: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, dest: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, tgt: :zeek:type:`addr`, dest: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
    Generated for ICMP *redirect* messages.
    
@@ -327,9 +311,7 @@ Events
 
 .. zeek:id:: icmp_router_advertisement
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, cur_hop_limit: :zeek:type:`count`, managed: :zeek:type:`bool`, other: :zeek:type:`bool`, home_agent: :zeek:type:`bool`, pref: :zeek:type:`count`, proxy: :zeek:type:`bool`, rsv: :zeek:type:`count`, router_lifetime: :zeek:type:`interval`, reachable_time: :zeek:type:`interval`, retrans_timer: :zeek:type:`interval`, options: :zeek:type:`icmp6_nd_options`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, cur_hop_limit: :zeek:type:`count`, managed: :zeek:type:`bool`, other: :zeek:type:`bool`, home_agent: :zeek:type:`bool`, pref: :zeek:type:`count`, proxy: :zeek:type:`bool`, rsv: :zeek:type:`count`, router_lifetime: :zeek:type:`interval`, reachable_time: :zeek:type:`interval`, retrans_timer: :zeek:type:`interval`, options: :zeek:type:`icmp6_nd_options`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, cur_hop_limit: :zeek:type:`count`, managed: :zeek:type:`bool`, other: :zeek:type:`bool`, home_agent: :zeek:type:`bool`, pref: :zeek:type:`count`, proxy: :zeek:type:`bool`, rsv: :zeek:type:`count`, router_lifetime: :zeek:type:`interval`, reachable_time: :zeek:type:`interval`, retrans_timer: :zeek:type:`interval`, options: :zeek:type:`icmp6_nd_options`)
 
    Generated for ICMP *router advertisement* messages.
    
@@ -387,9 +369,7 @@ Events
 
 .. zeek:id:: icmp_router_solicitation
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, options: :zeek:type:`icmp6_nd_options`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, options: :zeek:type:`icmp6_nd_options`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, options: :zeek:type:`icmp6_nd_options`)
 
    Generated for ICMP *router solicitation* messages.
    
@@ -416,9 +396,7 @@ Events
 
 .. zeek:id:: icmp_sent
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`)
 
    Generated for all ICMP messages that are not handled separately with
    dedicated ICMP events. Zeek's ICMP analyzer handles a number of ICMP messages
@@ -444,9 +422,7 @@ Events
 
 .. zeek:id:: icmp_sent_payload
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, payload: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, payload: :zeek:type:`string`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, payload: :zeek:type:`string`)
 
    The same as :zeek:see:`icmp_sent` except containing the ICMP payload.
    
@@ -468,9 +444,7 @@ Events
 
 .. zeek:id:: icmp_time_exceeded
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
    Generated for ICMP *time exceeded* messages.
    
@@ -505,9 +479,7 @@ Events
 
 .. zeek:id:: icmp_unreachable
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, icmp: :zeek:type:`icmp_conn`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
    Generated for ICMP *destination unreachable* messages.
    

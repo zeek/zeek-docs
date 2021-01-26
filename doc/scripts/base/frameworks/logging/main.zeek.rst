@@ -331,7 +331,6 @@ Constants
          {
             name="<not found>"
             writer=Log::WRITER_ASCII
-            pred=<uninitialized>
             path=<uninitialized>
             path_func=<uninitialized>
             include=<uninitialized>
@@ -378,17 +377,6 @@ Types
 
       writer: :zeek:type:`Log::Writer` :zeek:attr:`&default` = :zeek:see:`Log::default_writer` :zeek:attr:`&optional`
          The logging writer implementation to use.
-
-      pred: :zeek:type:`function` (rec: :zeek:type:`any`) : :zeek:type:`bool` :zeek:attr:`&optional` :zeek:attr:`&deprecated` = *"Remove in 4.1. PolicyHooks will replace the $pred function."*
-         Indicates whether a log entry should be recorded.
-         If not given, all entries are recorded.
-         
-
-         :rec: An instance of the stream's ``columns`` type with its
-              fields set to the values to be logged.
-         
-
-         :returns: True if the entry is to be recorded.
 
       path: :zeek:type:`string` :zeek:attr:`&optional`
          Output path for recording entries matching this
