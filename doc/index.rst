@@ -36,6 +36,7 @@ Zeek Documentation
    clusters
    log-formats
    logs/index
+   scripting/index
    frameworks/index
    script-reference/index
    devel/index
