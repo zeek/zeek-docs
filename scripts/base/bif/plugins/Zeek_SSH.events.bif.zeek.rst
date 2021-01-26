@@ -49,9 +49,7 @@ Events
 ######
 .. zeek:id:: ssh1_server_host_key
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, e: :zeek:type:`string` :zeek:attr:`&deprecated` = ``"Remove in v4.1"``, modulus: :zeek:type:`string`, exponent: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, modulus: :zeek:type:`string`, exponent: :zeek:type:`string`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string`, e: :zeek:type:`string`)
 
    During the :abbr:`SSH (Secure Shell)` key exchange, the server
    supplies its public host key. This event is generated when the
