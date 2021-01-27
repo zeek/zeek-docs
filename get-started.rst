@@ -6,5 +6,4 @@ Get Started
    :maxdepth: 2
 
    install
-   upgrade
    quickstart
