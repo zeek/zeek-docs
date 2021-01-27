@@ -11,3 +11,22 @@
       overflow: visible !important;
    }
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #294488;
+  font-family: 'Open Sans',Helvetica,Arial,Lucida,sans-serif!important;
+}
+
+a {
+  color: #2ea3f2;
+}
+
+body {
+  font-family: "Open Sans",Arial,sans-serif;
+  color: #666;
+}
+
+div.highlight pre strong {
+  font-weight: 800;
+  background-color: #ffffcc;
+}
