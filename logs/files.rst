@@ -29,7 +29,7 @@ every element of the :file:`files.log` should refer to :zeek:see:`Files::Info`.
 
 Throughout the sections that follow, we will inspect Zeek logs in JSON format.
 As we have shown how to access logs like this previously using the command
-line, we will only shown the log entries themselves.
+line, we will only show the log entries themselves.
 
 Inspecting the :file:`conn.log`
 ===============================
