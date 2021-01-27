@@ -1,7 +1,7 @@
 
-.. image:: /images/zeek-logo.png
+.. image:: /images/zeek-logo-text.png
    :align: center
-   :scale: 50%
+   :scale: 100%
 
 ==================
 Zeek Documentation
