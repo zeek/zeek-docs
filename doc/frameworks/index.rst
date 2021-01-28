@@ -22,6 +22,7 @@ few sections cover them in detail.
    input
    configuration
    intel
+   logging
    signatures
    broker
    supervisor
@@ -29,7 +30,6 @@ few sections cover them in detail.
 .. TODO: port/sync all frameworks from google docs
      file-analysis
      geoip
-     logging
      netcontrol
      notice
      packet-analysis
