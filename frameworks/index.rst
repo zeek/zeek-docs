@@ -21,14 +21,14 @@ few sections cover them in detail.
 
    input
    configuration
-   broker
+   intel
    signatures
+   broker
    supervisor
 
 .. TODO: port/sync all frameworks from google docs
      file-analysis
      geoip
-     intel
      logging
      netcontrol
      notice
