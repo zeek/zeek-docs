@@ -20,12 +20,12 @@ few sections cover them in detail.
    :maxdepth: 1
 
    input
+   configuration
    broker
    signatures
    supervisor
 
 .. TODO: port/sync all frameworks from google docs
-     configuration
      file-analysis
      geoip
      intel
