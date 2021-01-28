@@ -23,6 +23,7 @@ few sections cover them in detail.
    configuration
    intel
    logging
+   notice
    signatures
    broker
    supervisor
@@ -31,6 +32,5 @@ few sections cover them in detail.
      file-analysis
      geoip
      netcontrol
-     notice
      packet-analysis
      sumstats
