@@ -41,5 +41,6 @@ Zeek Documentation
    script-reference/index
    devel/index
    components/index
+   acknowledgements
 
 :ref:`General Index <genindex>`
