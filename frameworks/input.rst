@@ -420,6 +420,8 @@ returned line-by-line as strings; it can, for example, be used to read
 configuration files and the like and is probably only useful in the event mode
 and not for reading data to tables.
 
+.. _input-sqlite-reader:
+
 The SQLite Reader
 -----------------
 
