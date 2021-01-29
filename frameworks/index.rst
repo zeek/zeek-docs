@@ -7,8 +7,8 @@ Zeek includes several software frameworks that provide commonly used
 functionality to the scripting layer. Among other things, these frameworks
 enhance Zeek’s ability to ingest data, structure and filter its outputs, adapt
 settings at runtime, and interact with other components in your network. Most
-frameworks include functionality implemented in Zeek’s core, with corresponding
-data structures and APIs exposed to the script layer.
+frameworks include functionality implemented in Zeek’s core, with
+corresponding data structures and APIs exposed to the script layer.
 
 Some frameworks target relatively specific use cases, while others run in
 nearly every Zeek installation. The logging framework, for example, provides
@@ -19,17 +19,17 @@ few sections cover them in detail.
 .. toctree::
    :maxdepth: 1
 
+   logging
+   notice
    input
    configuration
-   file-analysis
-   cluster
-   geoip
    intel
-   logging
-   netcontrol
-   notice
-   signatures
-   sumstats
+   cluster
    broker
    supervisor
+   geoip
+   file-analysis
+   signatures
+   sumstats
+   netcontrol
    packet-analysis
