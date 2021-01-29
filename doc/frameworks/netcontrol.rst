@@ -5,6 +5,8 @@
 NetControl Framework
 ====================
 
+.. TODO: integrate BoZ revisions
+
 .. rst-class:: opening
 
   Zeek can connect with network devices like, for example, switches

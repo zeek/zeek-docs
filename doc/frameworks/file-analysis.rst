@@ -5,6 +5,8 @@
 File Analysis
 =============
 
+.. TODO: integrate BoZ revisions
+
 .. rst-class:: opening
 
     In the past, writing Zeek scripts with the intent of analyzing file

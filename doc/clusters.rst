@@ -5,402 +5,402 @@
 Zeek Cluster Setup
 ==================
 
-TODO: port/sync google doc
+.. TODO: integrate BoZ revisions
 
-..
-  A *Zeek Cluster* is a set of systems jointly analyzing the traffic of
-  a network link in a coordinated fashion.  You can operate such a setup from
-  a central manager system easily using ZeekControl because it
-  hides much of the complexity of the multi-machine installation.
+A *Zeek Cluster* is a set of systems jointly analyzing the traffic of
+a network link in a coordinated fashion.  You can operate such a setup from
+a central manager system easily using ZeekControl because it
+hides much of the complexity of the multi-machine installation.
 
-  Cluster Architecture
-  ====================
+Cluster Architecture
+====================
 
-  Zeek is not multithreaded, so once the limitations of a single processor core
-  are reached the only option currently is to spread the workload across many
-  cores, or even many physical computers. The cluster deployment scenario for
-  Zeek is the current solution to build these larger systems. The tools and
-  scripts that accompany Zeek provide the structure to easily manage many Zeek
-  processes examining packets and doing correlation activities but acting as
-  a singular, cohesive entity.  This document describes the Zeek cluster
-  architecture.  For information on how to configure a Zeek cluster,
-  see the documentation for `ZeekControl <https://github.com/zeek/zeekctl>`_.
+Zeek is not multithreaded, so once the limitations of a single processor core
+are reached the only option currently is to spread the workload across many
+cores, or even many physical computers. The cluster deployment scenario for
+Zeek is the current solution to build these larger systems. The tools and
+scripts that accompany Zeek provide the structure to easily manage many Zeek
+processes examining packets and doing correlation activities but acting as
+a singular, cohesive entity.  This document describes the Zeek cluster
+architecture.  For information on how to configure a Zeek cluster,
+see the documentation for `ZeekControl <https://github.com/zeek/zeekctl>`_.
 
-  Architecture
-  ------------
+Architecture
+------------
 
-  The figure below illustrates the main components of a Zeek cluster.
+The figure below illustrates the main components of a Zeek cluster.
 
-  .. image:: /images/deployment.png
+.. image:: /images/deployment.png
 
-  For more specific information on the way Zeek processes are connected,
-  how they function, and how they communicate with each other, see the
-  :ref:`Broker Framework Documentation <brokercomm-framework>`.
+For more specific information on the way Zeek processes are connected,
+how they function, and how they communicate with each other, see the
+:ref:`Broker Framework Documentation <brokercomm-framework>`.
 
-  Tap
-  ***
-  The tap is a mechanism that splits the packet stream in order to make a copy
-  available for inspection. Examples include the monitoring port on a switch
-  and an optical splitter on fiber networks.
+Tap
+***
+The tap is a mechanism that splits the packet stream in order to make a copy
+available for inspection. Examples include the monitoring port on a switch
+and an optical splitter on fiber networks.
 
-  Frontend
-  ********
-  The frontend is a discrete hardware device or on-host technique that splits
-  traffic into many streams or flows. The Zeek binary does not do this job.
-  There are numerous ways to accomplish this task, some of which are described
-  below in `Frontend Options`_.
+Frontend
+********
+The frontend is a discrete hardware device or on-host technique that splits
+traffic into many streams or flows. The Zeek binary does not do this job.
+There are numerous ways to accomplish this task, some of which are described
+below in `Frontend Options`_.
 
-  Manager
-  *******
-  The manager is a Zeek process that has two primary jobs.  It receives log
-  messages and notices from the rest of the nodes in the cluster using the Zeek
-  communications protocol (note that if you use a separate logger node, then the
-  logger receives all logs instead of the manager).  The result
-  is a single log instead of many discrete logs that you have to
-  combine in some manner with post-processing.
-  The manager also supports other functionality and analysis which
-  requires a centralized, global view of events or data.
+Manager
+*******
+The manager is a Zeek process that has two primary jobs.  It receives log
+messages and notices from the rest of the nodes in the cluster using the Zeek
+communications protocol (note that if you use a separate logger node, then the
+logger receives all logs instead of the manager).  The result
+is a single log instead of many discrete logs that you have to
+combine in some manner with post-processing.
+The manager also supports other functionality and analysis which
+requires a centralized, global view of events or data.
 
-  Logger
-  ******
-  A logger is an optional Zeek process that receives log messages from the
-  rest of the nodes in the cluster using the Zeek communications protocol.
-  The purpose of having a logger receive logs instead of the manager is
-  to reduce the load on the manager.  If no logger is needed, then the
-  manager will receive logs instead.
+Logger
+******
+A logger is an optional Zeek process that receives log messages from the
+rest of the nodes in the cluster using the Zeek communications protocol.
+The purpose of having a logger receive logs instead of the manager is
+to reduce the load on the manager.  If no logger is needed, then the
+manager will receive logs instead.
 
-  Proxy
-  *****
-  A proxy is a Zeek process that may be used to offload data storage or
-  any arbitrary workload.  A cluster may contain multiple proxy nodes.
-  The default scripts that come with Zeek make minimal use of proxies, so
-  a single one may be sufficient, but customized use of them to partition
-  data or workloads provides greater cluster scalability potential than
-  just doing similar tasks on a single, centralized Manager node.
+Proxy
+*****
+A proxy is a Zeek process that may be used to offload data storage or
+any arbitrary workload.  A cluster may contain multiple proxy nodes.
+The default scripts that come with Zeek make minimal use of proxies, so
+a single one may be sufficient, but customized use of them to partition
+data or workloads provides greater cluster scalability potential than
+just doing similar tasks on a single, centralized Manager node.
 
-  Zeek processes acting as proxies don't tend to be extremely hard on CPU
-  or memory and users frequently run proxy processes on the same physical
-  host as the manager.
+Zeek processes acting as proxies don't tend to be extremely hard on CPU
+or memory and users frequently run proxy processes on the same physical
+host as the manager.
 
-  Worker
-  ******
-  The worker is the Zeek process that sniffs network traffic and does protocol
-  analysis on the reassembled traffic streams.  Most of the work of an active
-  cluster takes place on the workers and as such, the workers typically
-  represent the bulk of the Zeek processes that are running in a cluster.
-  The fastest memory and CPU core speed you can afford is recommended
-  since all of the protocol parsing and most analysis will take place here.
-  There are no particular requirements for the disks in workers since almost all
-  logging is done remotely to the manager, and normally very little is written
-  to disk.
+Worker
+******
+The worker is the Zeek process that sniffs network traffic and does protocol
+analysis on the reassembled traffic streams.  Most of the work of an active
+cluster takes place on the workers and as such, the workers typically
+represent the bulk of the Zeek processes that are running in a cluster.
+The fastest memory and CPU core speed you can afford is recommended
+since all of the protocol parsing and most analysis will take place here.
+There are no particular requirements for the disks in workers since almost all
+logging is done remotely to the manager, and normally very little is written
+to disk.
 
-  Frontend Options
-  ----------------
+Frontend Options
+----------------
 
-  There are many options for setting up a frontend flow distributor.  In many
-  cases it is beneficial to do multiple stages of flow distribution
-  on the network and on the host.
+There are many options for setting up a frontend flow distributor.  In many
+cases it is beneficial to do multiple stages of flow distribution
+on the network and on the host.
 
-  Discrete hardware flow balancers
-  ********************************
+Discrete hardware flow balancers
+********************************
 
-  cPacket
-  ^^^^^^^
+cPacket
+^^^^^^^
 
-  If you are monitoring one or more 10G physical interfaces, the recommended
-  solution is to use either a cFlow or cVu device from cPacket because they
-  are used successfully at a number of sites.  These devices will perform
-  layer-2 load balancing by rewriting the destination Ethernet MAC address
-  to cause each packet associated with a particular flow to have the same
-  destination MAC.  The packets can then be passed directly to a monitoring
-  host where each worker has a BPF filter to limit its visibility to only that
-  stream of flows, or onward to a commodity switch to split the traffic out to
-  multiple 1G interfaces for the workers.  This greatly reduces
-  costs since workers can use relatively inexpensive 1G interfaces.
+If you are monitoring one or more 10G physical interfaces, the recommended
+solution is to use either a cFlow or cVu device from cPacket because they
+are used successfully at a number of sites.  These devices will perform
+layer-2 load balancing by rewriting the destination Ethernet MAC address
+to cause each packet associated with a particular flow to have the same
+destination MAC.  The packets can then be passed directly to a monitoring
+host where each worker has a BPF filter to limit its visibility to only that
+stream of flows, or onward to a commodity switch to split the traffic out to
+multiple 1G interfaces for the workers.  This greatly reduces
+costs since workers can use relatively inexpensive 1G interfaces.
 
-  OpenFlow Switches
-  ^^^^^^^^^^^^^^^^^
+OpenFlow Switches
+^^^^^^^^^^^^^^^^^
 
-  We are currently exploring the use of OpenFlow based switches to do flow-based
-  load balancing directly on the switch, which greatly reduces frontend
-  costs for many users.  This document will be updated when we have more
-  information.
+We are currently exploring the use of OpenFlow based switches to do flow-based
+load balancing directly on the switch, which greatly reduces frontend
+costs for many users.  This document will be updated when we have more
+information.
 
-  On host flow balancing
-  **********************
+On host flow balancing
+**********************
 
-  PF_RING
-  ^^^^^^^
+PF_RING
+^^^^^^^
 
-  The PF_RING software for Linux has a "clustering" feature which will do
-  flow-based load balancing across a number of processes that are sniffing the
-  same interface.  This allows you to easily take advantage of multiple
-  cores in a single physical host because Zeek's main event loop is single
-  threaded and can't natively utilize all of the cores.  If you want to use
-  PF_RING, see the documentation on `how to configure Zeek with PF_RING
-  <https://docs.zeek.org/en/master/configuration/index.html#pf-ring-cluster-configuration>`_.
+The PF_RING software for Linux has a "clustering" feature which will do
+flow-based load balancing across a number of processes that are sniffing the
+same interface.  This allows you to easily take advantage of multiple
+cores in a single physical host because Zeek's main event loop is single
+threaded and can't natively utilize all of the cores.  If you want to use
+PF_RING, see the documentation on :ref:`how to configure Zeek with PF_RING
+<pf-ring-config>`.
 
-  Netmap
-  ^^^^^^
+Netmap
+^^^^^^
 
-  FreeBSD has an in-progress project named Netmap which will enable flow-based
-  load balancing as well.  When it becomes viable for real world use, this
-  document will be updated.
+FreeBSD has an in-progress project named Netmap which will enable flow-based
+load balancing as well.  When it becomes viable for real world use, this
+document will be updated.
 
-  Click! Software Router
-  ^^^^^^^^^^^^^^^^^^^^^^
+Click! Software Router
+^^^^^^^^^^^^^^^^^^^^^^
 
-  Click! can be used for flow based load balancing with a simple configuration.
-  This solution is not recommended on
-  Linux due to Zeek's PF_RING support and only as a last resort on other
-  operating systems since it causes a lot of overhead due to context switching
-  back and forth between kernel and userland several times per packet.
+Click! can be used for flow based load balancing with a simple configuration.
+This solution is not recommended on
+Linux due to Zeek's PF_RING support and only as a last resort on other
+operating systems since it causes a lot of overhead due to context switching
+back and forth between kernel and userland several times per packet.
 
-  Cluster Configuration
-  =====================
+Cluster Configuration
+=====================
 
-  A *Zeek Cluster* is a set of systems jointly analyzing the traffic of
-  a network link in a coordinated fashion.  You can operate such a setup from
-  a central manager system easily using ZeekControl because it
-  hides much of the complexity of the multi-machine installation.
+A *Zeek Cluster* is a set of systems jointly analyzing the traffic of
+a network link in a coordinated fashion.  You can operate such a setup from
+a central manager system easily using ZeekControl because it
+hides much of the complexity of the multi-machine installation.
 
-  This section gives examples of how to setup common cluster configurations
-  using ZeekControl.  For a full reference on ZeekControl, see the
+This section gives examples of how to setup common cluster configurations
+using ZeekControl.  For a full reference on ZeekControl, see the
+`ZeekControl documentation`_.
+
+Preparing to Setup a Cluster
+----------------------------
+
+In this document we refer to the user account used to set up the cluster
+as the "Zeek user".  When setting up a cluster the Zeek user must be set up
+on all hosts, and this user must have ssh access from the manager to all
+machines in the cluster, and it must work without being prompted for a
+password/passphrase (for example, using ssh public key authentication).
+Also, on the worker nodes this user must have access to the target
+network interface in promiscuous mode.
+
+Additional storage must be available on all hosts under the same path,
+which we will call the cluster's prefix path.  We refer to this directory
+as ``<prefix>``.  If you build Zeek from source, then ``<prefix>`` is
+the directory specified with the ``--prefix`` configure option,
+or ``/usr/local/zeek`` by default.  The Zeek user must be able to either
+create this directory or, where it already exists, must have write
+permission inside this directory on all hosts.
+
+When trying to decide how to configure the Zeek nodes, keep in mind that
+there can be multiple Zeek instances running on the same host.  For example,
+it's possible to run a proxy and the manager on the same host.  However, it is
+recommended to run workers on a different machine than the manager because
+workers can consume a lot of CPU resources.  The maximum recommended
+number of workers to run on a machine should be one or two less than
+the number of CPU cores available on that machine.  Using a load-balancing
+method (such as PF_RING) along with CPU pinning can decrease the load on
+the worker machines.  Also, in order to reduce the load on the manager
+process, it is recommended to have a logger in your configuration.  If a
+logger is defined in your cluster configuration, then it will receive logs
+instead of the manager process.
+
+Basic Cluster Configuration
+---------------------------
+
+With all prerequisites in place, perform the following steps to setup
+a Zeek cluster (do this as the Zeek user on the manager host only):
+
+- Edit the ZeekControl configuration file, ``<prefix>/etc/zeekctl.cfg``,
+  and change the value of any options to be more suitable for
+  your environment.  You will most likely want to change the value of
+  the ``MailTo`` and ``LogRotationInterval`` options.  A complete
+  reference of all ZeekControl options can be found in the
   `ZeekControl documentation`_.
 
-  Preparing to Setup a Cluster
-  ----------------------------
+- Edit the ZeekControl node configuration file, ``<prefix>/etc/node.cfg``
+  to define where logger, manager, proxies, and workers are to run.  For a
+  cluster configuration, you must comment-out (or remove) the standalone node
+  in that file, and either uncomment or add node entries for each node
+  in your cluster (logger, manager, proxy, and workers).  For example, if you
+  wanted to run five Zeek nodes (two workers, one proxy, a logger, and a
+  manager) on a cluster consisting of three machines, your cluster
+  configuration would look like this::
 
-  In this document we refer to the user account used to set up the cluster
-  as the "Zeek user".  When setting up a cluster the Zeek user must be set up
-  on all hosts, and this user must have ssh access from the manager to all
-  machines in the cluster, and it must work without being prompted for a
-  password/passphrase (for example, using ssh public key authentication).
-  Also, on the worker nodes this user must have access to the target
-  network interface in promiscuous mode.
+    [logger]
+    type=logger
+    host=10.0.0.10
 
-  Additional storage must be available on all hosts under the same path,
-  which we will call the cluster's prefix path.  We refer to this directory
-  as ``<prefix>``.  If you build Zeek from source, then ``<prefix>`` is
-  the directory specified with the ``--prefix`` configure option,
-  or ``/usr/local/zeek`` by default.  The Zeek user must be able to either
-  create this directory or, where it already exists, must have write
-  permission inside this directory on all hosts.
+    [manager]
+    type=manager
+    host=10.0.0.10
 
-  When trying to decide how to configure the Zeek nodes, keep in mind that
-  there can be multiple Zeek instances running on the same host.  For example,
-  it's possible to run a proxy and the manager on the same host.  However, it is
-  recommended to run workers on a different machine than the manager because
-  workers can consume a lot of CPU resources.  The maximum recommended
-  number of workers to run on a machine should be one or two less than
-  the number of CPU cores available on that machine.  Using a load-balancing
-  method (such as PF_RING) along with CPU pinning can decrease the load on
-  the worker machines.  Also, in order to reduce the load on the manager
-  process, it is recommended to have a logger in your configuration.  If a
-  logger is defined in your cluster configuration, then it will receive logs
-  instead of the manager process.
+    [proxy-1]
+    type=proxy
+    host=10.0.0.10
 
-  Basic Cluster Configuration
-  ---------------------------
+    [worker-1]
+    type=worker
+    host=10.0.0.11
+    interface=eth0
 
-  With all prerequisites in place, perform the following steps to setup
-  a Zeek cluster (do this as the Zeek user on the manager host only):
+    [worker-2]
+    type=worker
+    host=10.0.0.12
+    interface=eth0
 
-  - Edit the ZeekControl configuration file, ``<prefix>/etc/zeekctl.cfg``,
-    and change the value of any options to be more suitable for
-    your environment.  You will most likely want to change the value of
-    the ``MailTo`` and ``LogRotationInterval`` options.  A complete
-    reference of all ZeekControl options can be found in the
-    `ZeekControl documentation`_.
+  For a complete reference of all options that are allowed in the ``node.cfg``
+  file, see the `ZeekControl documentation`_.
 
-  - Edit the ZeekControl node configuration file, ``<prefix>/etc/node.cfg``
-    to define where logger, manager, proxies, and workers are to run.  For a
-    cluster configuration, you must comment-out (or remove) the standalone node
-    in that file, and either uncomment or add node entries for each node
-    in your cluster (logger, manager, proxy, and workers).  For example, if you
-    wanted to run five Zeek nodes (two workers, one proxy, a logger, and a
-    manager) on a cluster consisting of three machines, your cluster
-    configuration would look like this::
+- Edit the network configuration file ``<prefix>/etc/networks.cfg``.  This
+  file lists all of the networks which the cluster should consider as local
+  to the monitored environment.
 
-      [logger]
-      type=logger
-      host=10.0.0.10
+- Install Zeek on all machines in the cluster using ZeekControl::
 
-      [manager]
-      type=manager
-      host=10.0.0.10
+    > zeekctl install
 
-      [proxy-1]
-      type=proxy
-      host=10.0.0.10
+- See the `ZeekControl documentation`_
+  for information on setting up a cron job on the manager host that can
+  monitor the cluster.
 
-      [worker-1]
-      type=worker
-      host=10.0.0.11
-      interface=eth0
+.. _pf-ring-config:
 
-      [worker-2]
-      type=worker
-      host=10.0.0.12
-      interface=eth0
+PF_RING Cluster Configuration
+-----------------------------
 
-    For a complete reference of all options that are allowed in the ``node.cfg``
-    file, see the `ZeekControl documentation`_.
+`PF_RING <http://www.ntop.org/products/pf_ring/>`_ allows speeding up the
+packet capture process by installing a new type of socket in Linux systems.
+It supports 10Gbit hardware packet filtering using standard network adapters,
+and user-space DNA (Direct NIC Access) for fast packet capture/transmission.
 
-  - Edit the network configuration file ``<prefix>/etc/networks.cfg``.  This
-    file lists all of the networks which the cluster should consider as local
-    to the monitored environment.
+Installing PF_RING
+******************
 
-  - Install Zeek on all machines in the cluster using ZeekControl::
+1. Download and install PF_RING for your system following the instructions
+   `here <http://www.ntop.org/get-started/download/#PF_RING>`_.  The following
+   commands will install the PF_RING libraries and kernel module (replace
+   the version number 5.6.2 in this example with the version that you
+   downloaded)::
 
-      > zeekctl install
+     cd /usr/src
+     tar xvzf PF_RING-5.6.2.tar.gz
+     cd PF_RING-5.6.2/userland/lib
+     ./configure --prefix=/opt/pfring
+     make install
 
-  - See the `ZeekControl documentation`_
-    for information on setting up a cron job on the manager host that can
-    monitor the cluster.
+     cd ../libpcap
+     ./configure --prefix=/opt/pfring
+     make install
 
+     cd ../tcpdump-4.1.1
+     ./configure --prefix=/opt/pfring
+     make install
 
-  PF_RING Cluster Configuration
-  -----------------------------
+     cd ../../kernel
+     make
+     make install
 
-  `PF_RING <http://www.ntop.org/products/pf_ring/>`_ allows speeding up the
-  packet capture process by installing a new type of socket in Linux systems.
-  It supports 10Gbit hardware packet filtering using standard network adapters,
-  and user-space DNA (Direct NIC Access) for fast packet capture/transmission.
+     modprobe pf_ring enable_tx_capture=0 min_num_slots=32768
 
-  Installing PF_RING
-  ******************
+   Refer to the documentation for your Linux distribution on how to load the
+   pf_ring module at boot time.  You will need to install the PF_RING
+   library files and kernel module on all of the workers in your cluster.
 
-  1. Download and install PF_RING for your system following the instructions
-     `here <http://www.ntop.org/get-started/download/#PF_RING>`_.  The following
-     commands will install the PF_RING libraries and kernel module (replace
-     the version number 5.6.2 in this example with the version that you
-     downloaded)::
+2. Download the Zeek source code.
 
-       cd /usr/src
-       tar xvzf PF_RING-5.6.2.tar.gz
-       cd PF_RING-5.6.2/userland/lib
-       ./configure --prefix=/opt/pfring
-       make install
+3. Configure and install Zeek using the following commands::
 
-       cd ../libpcap
-       ./configure --prefix=/opt/pfring
-       make install
+     ./configure --with-pcap=/opt/pfring
+     make
+     make install
 
-       cd ../tcpdump-4.1.1
-       ./configure --prefix=/opt/pfring
-       make install
+4. Make sure Zeek is correctly linked to the PF_RING libpcap libraries::
 
-       cd ../../kernel
-       make
-       make install
+     ldd /usr/local/zeek/bin/zeek | grep pcap
+           libpcap.so.1 => /opt/pfring/lib/libpcap.so.1 (0x00007fa6d7d24000)
 
-       modprobe pf_ring enable_tx_capture=0 min_num_slots=32768
+5. Configure ZeekControl to use PF_RING (explained below).
 
-     Refer to the documentation for your Linux distribution on how to load the
-     pf_ring module at boot time.  You will need to install the PF_RING
-     library files and kernel module on all of the workers in your cluster.
+6. Run "zeekctl install" on the manager.  This command will install Zeek and
+   required scripts to all machines in your cluster.
 
-  2. Download the Zeek source code.
+Using PF_RING
+*************
 
-  3. Configure and install Zeek using the following commands::
+In order to use PF_RING, you need to specify the correct configuration
+options for your worker nodes in ZeekControl's node configuration file.
+Edit the ``node.cfg`` file and specify ``lb_method=pf_ring`` for each of
+your worker nodes.  Next, use the ``lb_procs`` node option to specify how
+many Zeek processes you'd like that worker node to run, and optionally pin
+those processes to certain CPU cores with the ``pin_cpus`` option (CPU
+numbering starts at zero).  The correct ``pin_cpus`` setting to use is
+dependent on your CPU architecture (Intel and AMD systems enumerate
+processors in different ways).  Using the wrong ``pin_cpus`` setting
+can cause poor performance.  Here is what a worker node entry should
+look like when using PF_RING and CPU pinning::
 
-       ./configure --with-pcap=/opt/pfring
-       make
-       make install
-
-  4. Make sure Zeek is correctly linked to the PF_RING libpcap libraries::
-
-       ldd /usr/local/zeek/bin/zeek | grep pcap
-             libpcap.so.1 => /opt/pfring/lib/libpcap.so.1 (0x00007fa6d7d24000)
-
-  5. Configure ZeekControl to use PF_RING (explained below).
-
-  6. Run "zeekctl install" on the manager.  This command will install Zeek and
-     required scripts to all machines in your cluster.
-
-  Using PF_RING
-  *************
-
-  In order to use PF_RING, you need to specify the correct configuration
-  options for your worker nodes in ZeekControl's node configuration file.
-  Edit the ``node.cfg`` file and specify ``lb_method=pf_ring`` for each of
-  your worker nodes.  Next, use the ``lb_procs`` node option to specify how
-  many Zeek processes you'd like that worker node to run, and optionally pin
-  those processes to certain CPU cores with the ``pin_cpus`` option (CPU
-  numbering starts at zero).  The correct ``pin_cpus`` setting to use is
-  dependent on your CPU architecture (Intel and AMD systems enumerate
-  processors in different ways).  Using the wrong ``pin_cpus`` setting
-  can cause poor performance.  Here is what a worker node entry should
-  look like when using PF_RING and CPU pinning::
-
-     [worker-1]
-     type=worker
-     host=10.0.0.50
-     interface=eth0
-     lb_method=pf_ring
-     lb_procs=10
-     pin_cpus=2,3,4,5,6,7,8,9,10,11
+   [worker-1]
+   type=worker
+   host=10.0.0.50
+   interface=eth0
+   lb_method=pf_ring
+   lb_procs=10
+   pin_cpus=2,3,4,5,6,7,8,9,10,11
 
 
-  Using PF_RING+DNA with symmetric RSS
-  ************************************
+Using PF_RING+DNA with symmetric RSS
+************************************
 
-  You must have a PF_RING+DNA license in order to do this.  You can sniff
-  each packet only once.
+You must have a PF_RING+DNA license in order to do this.  You can sniff
+each packet only once.
 
-  1. Load the DNA NIC driver (i.e. ixgbe) on each worker host.
+1. Load the DNA NIC driver (i.e. ixgbe) on each worker host.
 
-  2. Run "ethtool -L dna0 combined 10" (this will establish 10 RSS queues
-     on your NIC) on each worker host.  You must make sure that you set the
-     number of RSS queues to the same as the number you specify for the
-     lb_procs option in the node.cfg file.
+2. Run "ethtool -L dna0 combined 10" (this will establish 10 RSS queues
+   on your NIC) on each worker host.  You must make sure that you set the
+   number of RSS queues to the same as the number you specify for the
+   lb_procs option in the node.cfg file.
 
-  3. On the manager, configure your worker(s) in node.cfg::
+3. On the manager, configure your worker(s) in node.cfg::
 
-         [worker-1]
-         type=worker
-         host=10.0.0.50
-         interface=dna0
-         lb_method=pf_ring
-         lb_procs=10
+       [worker-1]
+       type=worker
+       host=10.0.0.50
+       interface=dna0
+       lb_method=pf_ring
+       lb_procs=10
 
 
-  Using PF_RING+DNA with pfdnacluster_master
-  ******************************************
+Using PF_RING+DNA with pfdnacluster_master
+******************************************
 
-  You must have a PF_RING+DNA license and a libzero license in order to do
-  this.  You can load balance between multiple applications and sniff the
-  same packets multiple times with different tools.
+You must have a PF_RING+DNA license and a libzero license in order to do
+this.  You can load balance between multiple applications and sniff the
+same packets multiple times with different tools.
 
-  1. Load the DNA NIC driver (i.e. ixgbe) on each worker host.
+1. Load the DNA NIC driver (i.e. ixgbe) on each worker host.
 
-  2. Run "ethtool -L dna0 1" (this will establish 1 RSS queues on your NIC)
-     on each worker host.
+2. Run "ethtool -L dna0 1" (this will establish 1 RSS queues on your NIC)
+   on each worker host.
 
-  3. Run the pfdnacluster_master command on each worker host.  For example::
+3. Run the pfdnacluster_master command on each worker host.  For example::
 
-         pfdnacluster_master -c 21 -i dna0 -n 10
+       pfdnacluster_master -c 21 -i dna0 -n 10
 
-     Make sure that your cluster ID (21 in this example) matches the interface
-     name you specify in the node.cfg file.  Also make sure that the number
-     of processes you're balancing across (10 in this example) matches
-     the lb_procs option in the node.cfg file.
+   Make sure that your cluster ID (21 in this example) matches the interface
+   name you specify in the node.cfg file.  Also make sure that the number
+   of processes you're balancing across (10 in this example) matches
+   the lb_procs option in the node.cfg file.
 
-  4. If you are load balancing to other processes, you can use the
-     pfringfirstappinstance variable in zeekctl.cfg to set the first
-     application instance that Zeek should use.  For example, if you are running
-     pfdnacluster_master with "-n 10,4" you would set
-     pfringfirstappinstance=4.  Unfortunately that's still a global setting
-     in zeekctl.cfg at the moment but we may change that to something you can
-     set in node.cfg eventually.
+4. If you are load balancing to other processes, you can use the
+   pfringfirstappinstance variable in zeekctl.cfg to set the first
+   application instance that Zeek should use.  For example, if you are running
+   pfdnacluster_master with "-n 10,4" you would set
+   pfringfirstappinstance=4.  Unfortunately that's still a global setting
+   in zeekctl.cfg at the moment but we may change that to something you can
+   set in node.cfg eventually.
 
-  5. On the manager, configure your worker(s) in node.cfg::
+5. On the manager, configure your worker(s) in node.cfg::
 
-         [worker-1]
-         type=worker
-         host=10.0.0.50
-         interface=dnacluster:21
-         lb_method=pf_ring
-         lb_procs=10
+       [worker-1]
+       type=worker
+       host=10.0.0.50
+       interface=dnacluster:21
+       lb_method=pf_ring
+       lb_procs=10
 

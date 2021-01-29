@@ -5,6 +5,8 @@
 GeoLocation
 ===========
 
+.. TODO: integrate BoZ revisions
+
 .. rst-class:: opening
 
     During the process of creating policy scripts the need may arise

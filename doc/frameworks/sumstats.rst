@@ -5,6 +5,8 @@
 Summary Statistics
 ==================
 
+.. TODO: integrate BoZ revisions
+
 .. rst-class:: opening
 
     Measuring aspects of network traffic is an extremely common task in Zeek.
