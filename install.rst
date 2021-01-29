@@ -118,7 +118,7 @@ build time:
     * curl (used by a Zeek script that implements active HTTP)
     * gperftools (tcmalloc is used to improve memory and CPU usage)
     * jemalloc (https://github.com/jemalloc/jemalloc)
-    * PF_RING (Linux only, see :doc:`clusters`)
+    * PF_RING (Linux only, see :ref:`pf-ring-config`)
     * krb5 libraries and headers
     * ipsumdump (for trace-summary; https://github.com/kohler/ipsumdump)
 

@@ -7,3 +7,4 @@ Get Started
 
    install
    quickstart
+   cluster-setup

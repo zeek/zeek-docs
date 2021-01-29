@@ -23,8 +23,8 @@ installations on a single system or even across multiple systems in a
 traffic-monitoring cluster. This section explains how to use ZeekControl to
 manage a stand-alone Zeek installation. For a complete reference on
 ZeekControl, see the `ZeekControl documentation`_.
-For instructions on how to configure a Zeek cluster, see the :doc:`clusters`
-documentation.
+For instructions on how to configure a Zeek cluster, see the
+:doc:`cluster-setup` documentation.
 
 .. note:: Using the standalone / single process mode of Zeek is not suitable
           for setups with significant amounts of traffic. In these cases one
