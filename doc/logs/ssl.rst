@@ -305,8 +305,9 @@ plain text. The mechanics of this process are less important than the effects
 on Zeek :file:`ssl.log` entries.
 
 To generate traffic for this example, I used a modern version of Firefox,
-configured to support ESNI, and visited a Web site, https://only.esni.defo.ie/,
-that only accepts connections from systems supporting ESNI.
+configured to support ESNI, and visited a Web site,
+``https://only.esni.defo.ie/``, that only accepts connections from systems
+supporting ESNI.
 
 After processing the traffic with Zeek, I had the following logs.
 
@@ -348,7 +349,7 @@ Second, I had two :file:`ssl.log` entries::
 As you can see, there is no identifying information in the :file:`ssl.log`
 here. There are no certificate identifier entries either, although we will talk
 about that log type in the next section. As the visit to
-https://only.esni.defo.ie/ also used DNS over HTTPs (DoH), there is no DNS
+``https://only.esni.defo.ie/`` also used DNS over HTTPs (DoH), there is no DNS
 record showing the identity of the remote server, as might be revealed in a
 conventional DNS request and response.
 

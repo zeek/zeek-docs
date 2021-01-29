@@ -3,7 +3,7 @@ Operators
 
 The Zeek scripting language supports the following operators.  Note that
 each data type only supports a subset of these operators.  For more
-details, see the documentation about the `data types <types.html>`_.
+details, see the documentation about the :doc:`data types <types>`.
 
 Relational operators
 --------------------

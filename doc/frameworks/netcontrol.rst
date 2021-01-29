@@ -744,7 +744,7 @@ then take action depending on these events.
 
 The following figure shows this architecture with the example of the OpenFlow
 plugin. The OpenFlow plugin uses Broker to send events to an external Python
-script, which uses the `Ryu SDN controller <https://osrg.github.io/ryu/>`_ to
+script, which uses the `Ryu SDN controller <https://ryu-sdn.org/>`_ to
 communicate with the Switch.
 
 .. figure:: netcontrol-openflow.png
