@@ -127,8 +127,7 @@ types and their value representations:
 
   * - :zeek:see:`count`
     - ``42``
-    - Plain, nonnegative integer. Negative values are silently interpreted as
-      unsigned values, be careful.
+    - Plain, nonnegative integer.
 
   * - :zeek:see:`double`
     - ``-42.5``
