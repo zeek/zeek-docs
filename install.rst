@@ -117,10 +117,10 @@ build time:
     * sendmail (enables Zeek and ZeekControl to send mail)
     * curl (used by a Zeek script that implements active HTTP)
     * gperftools (tcmalloc is used to improve memory and CPU usage)
-    * jemalloc (http://www.canonware.com/jemalloc/)
+    * jemalloc (https://github.com/jemalloc/jemalloc)
     * PF_RING (Linux only, see :doc:`clusters`)
     * krb5 libraries and headers
-    * ipsumdump (for trace-summary; http://www.cs.ucla.edu/~kohler/ipsumdump)
+    * ipsumdump (for trace-summary; https://github.com/kohler/ipsumdump)
 
 Geolocation is probably the most interesting and can be installed
 on most platforms by following the instructions for :ref:`installing
