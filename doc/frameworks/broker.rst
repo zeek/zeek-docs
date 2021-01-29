@@ -1,10 +1,10 @@
 .. _CAF: https://github.com/actor-framework/actor-framework
 
-.. _brokercomm-framework:
+.. _broker-framework:
 
-==============================================
-Broker-Enabled Communication/Cluster Framework
-==============================================
+==============================
+Broker Communication Framework
+==============================
 
 .. rst-class:: opening
 
@@ -354,6 +354,8 @@ Cluster Framework Examples
 This section contains a few brief examples of how various communication
 patterns one might use when developing Zeek scripts that are to operate in
 the context of a cluster.
+
+.. _event-namespacing-pitfall:
 
 A Reminder About Events and Module Namespaces
 ---------------------------------------------

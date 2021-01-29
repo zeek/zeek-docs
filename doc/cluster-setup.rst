@@ -34,7 +34,7 @@ The figure below illustrates the main components of a Zeek cluster.
 
 For more specific information on the way Zeek processes are connected,
 how they function, and how they communicate with each other, see the
-:ref:`Broker Framework Documentation <brokercomm-framework>`.
+:ref:`Broker Framework Documentation <broker-framework>`.
 
 Tap
 ***
@@ -154,6 +154,8 @@ This solution is not recommended on
 Linux due to Zeek's PF_RING support and only as a last resort on other
 operating systems since it causes a lot of overhead due to context switching
 back and forth between kernel and userland several times per packet.
+
+.. _cluster-configuration:
 
 Cluster Configuration
 =====================

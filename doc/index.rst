@@ -33,7 +33,6 @@ Zeek Documentation
    about
    monitoring
    get-started
-   clusters
    log-formats
    logs/index
    scripting/index
