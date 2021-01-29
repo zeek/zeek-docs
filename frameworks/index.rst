@@ -21,16 +21,14 @@ few sections cover them in detail.
 
    input
    configuration
+   file-analysis
+   geoip
    intel
    logging
+   netcontrol
    notice
    signatures
+   sumstats
    broker
    supervisor
-
-.. TODO: port/sync all frameworks from google docs
-     file-analysis
-     geoip
-     netcontrol
-     packet-analysis
-     sumstats
+   packet-analysis

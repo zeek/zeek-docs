@@ -846,6 +846,8 @@ of the :file:`conn.log` only:
       Log::add_filter(Conn::LOG, f);
       }
 
+.. _logging-sqlite-writer:
+
 SQLite Writer
 -------------
 
