@@ -7893,7 +7893,7 @@ Functions
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
-   Decode a NetBIOS name.  See http://support.microsoft.com/kb/194203.
+   Decode a NetBIOS name.  See https://jeffpar.github.io/kbarchive/kb/194/Q194203/.
    
 
    :name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
@@ -7908,7 +7908,7 @@ Functions
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`count`
 
    Converts a NetBIOS name type to its corresponding numeric value.
-   See http://support.microsoft.com/kb/163409.
+   See https://en.wikipedia.org/wiki/NetBIOS#NetBIOS_Suffixes.
    
 
    :name: The NetBIOS name type.
@@ -8345,11 +8345,11 @@ Types
 
    NTP mode 7 message. Note that this is not defined in any RFC and is
    implementation dependent. We used the official implementation from the
-   `NTP official project <www.ntp.org>`_.  A mode 7 packet is used
+   `NTP official project <https://www.ntp.org>`_.  A mode 7 packet is used
    exchanging data between an NTP server and a client for purposes other
    than time synchronization, e.g.  monitoring, statistics gathering and
    configuration.  For details see the documentation from the `NTP official
-   project <www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
+   project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
 
@@ -8381,7 +8381,7 @@ Types
          If mode 7, the fields for extra operations are here.
          Note that this is not defined in any RFC
          and is implementation dependent. We used the official implementation
-         from the `NTP official project <www.ntp.org>`_.
+         from the `NTP official project <https://www.ntp.org>`_.
          A mode 7 packet is used exchanging data between an NTP server
          and a client for purposes other than time synchronization, e.g.
          monitoring, statistics gathering and configuration.
