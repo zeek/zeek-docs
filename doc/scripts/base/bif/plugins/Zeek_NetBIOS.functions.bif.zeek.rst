@@ -25,7 +25,7 @@ Functions
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
-   Decode a NetBIOS name.  See http://support.microsoft.com/kb/194203.
+   Decode a NetBIOS name.  See https://jeffpar.github.io/kbarchive/kb/194/Q194203/.
    
 
    :name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
@@ -40,7 +40,7 @@ Functions
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`count`
 
    Converts a NetBIOS name type to its corresponding numeric value.
-   See http://support.microsoft.com/kb/163409.
+   See https://en.wikipedia.org/wiki/NetBIOS#NetBIOS_Suffixes.
    
 
    :name: The NetBIOS name type.

@@ -555,31 +555,6 @@ re-establish it:
    processed subsequently. In contrast to hook priorities, filters
    provide no control over their processing order.
 
-Policy hooks provide a more powerful implementation of the logging
-predicates that the framework has always supported. Those older
-predicates are harder to augment and more difficult to pass state
-into, and are now deprecated. They will get removed in Zeek 4.1, so if
-you're using predicate functions, make sure to migrate them to
-hooks. For reference, here's an example of the old mechanism:
-
-.. code-block:: zeek
-
-    function http_only(rec: Conn::Info) : bool
-        {
-        # Record only connections with successfully analyzed HTTP traffic
-        return rec?$service && rec$service == "http";
-        }
-
-    event zeek_init()
-        {
-        local filter: Log::Filter = [$name="http-only", $path="conn-http",
-                                     $pred=http_only];
-        Log::add_filter(Conn::LOG, filter);
-        }
-
-This will result in a new log file ``conn-http.log`` that contains only
-the log records from ``conn.log`` that are analyzed as HTTP traffic.
-
 Rotation
 --------
 
