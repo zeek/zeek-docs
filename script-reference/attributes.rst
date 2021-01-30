@@ -338,7 +338,7 @@ specifies the name of an additional column in
 the input file which specifies the protocol of the port (tcp/udp/icmp).
 
 In the following example, the input file would contain four columns
-named "ip", "srcp", "proto", and "msg":
+named ``ip``, ``srcp``, ``proto``, and ``msg``:
 
 .. code-block:: zeek
 

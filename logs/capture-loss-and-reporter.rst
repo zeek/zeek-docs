@@ -56,9 +56,9 @@ The following is an example of entries in a :file:`capture_loss.log`:
   }
 
 In these logs, capture loss never exceeded 1%. For example, when Zeek reports
-0.412308930008045, that means .4123% capture loss, not 41.23% capture loss. In
-other words, this sensor is doing well capturing the traffic on the link it
-monitors (a small amount of loss is tolerable).
+``0.412308930008045``, that means 0.4123% capture loss, not 41.23% capture
+loss.  In other words, this sensor is doing well capturing the traffic on the
+link it monitors (a small amount of loss is tolerable).
 
 :file:`reporter.log`
 ====================
