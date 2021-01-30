@@ -217,7 +217,9 @@ Only the following kinds of type casts are supported currently:
 - A value of declared type "any" can be casted to its actual underlying type.
 - All values can be casted to their declared types (i.e., this is a no-op).
 
-The function in this example tries to cast a value to a string::
+The function in this example tries to cast a value to a string:
+
+.. code-block:: zeek
 
     function example(a: any)
         {

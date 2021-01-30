@@ -14,7 +14,7 @@ Working with a Sample Trace
 
 For the examples that follow, we will use Zeek on a Linux system to process
 network traffic captured and stored to disk. We saved this trace file earlier
-in packet capture (PCAP) format as tm1t.pcap. The command line protocol
+in packet capture (PCAP) format as :file:`tm1t.pcap`. The command line protocol
 analyzer Tcpdump, which ships with most Unix-like distributions, summarizes the
 contents of this file.
 

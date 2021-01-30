@@ -214,7 +214,7 @@ Installing from Source
 
 Zeek releases are bundled into source packages for convenience and are
 available on the `downloads page`_. The source code can be manually downloaded
-from the link in the *tar.gz* format to the target system for installation.
+from the link in the ``.tar.gz`` format to the target system for installation.
 
 If you plan to `contribute`_ to Zeek or just want to try out the latest
 features under development, you should obtain Zeek's source code through its

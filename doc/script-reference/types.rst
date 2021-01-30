@@ -1338,6 +1338,6 @@ taking :zeek:type:`any` as an argument and casting it to a vector.
 void
 ----
 
-An internal Zeek type (i.e., "void" is not a reserved keyword in the Zeek
+An internal Zeek type (i.e., ``void`` is not a reserved keyword in the Zeek
 scripting language) representing the absence of a return type for a
 function.

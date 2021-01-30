@@ -174,21 +174,20 @@ been loaded by Zeek.
        option notice_threshold = 10;
    }
 
-The export section redefines an enumerable constant that describes the
-type of notice we will generate with the Notice framework.  Zeek
-allows for re-definable constants, which at first, might seem
-counter-intuitive.  We'll get more in-depth with constants in a later
-chapter, for now, think of them as variables that can only be altered
-before Zeek starts running.  By extending the Notice::Type as shown, this
-allows for the NOTICE function to generate notices with a $note field set
-as TeamCymruMalwareHashRegistry::Match.  Notices
-allow Zeek to generate some kind of extra notification beyond its
-default log types.  Often times, this extra notification comes in the
-form of an email generated and sent to a preconfigured address, but can
-be altered depending on the needs of the deployment.  The export section
-is finished off with the definition of a few constants that list the kind
-of files we want to match against and the minimum percentage of
-detection threshold in which we are interested.
+The export section redefines an enumerable constant that describes the type of
+notice we will generate with the Notice framework.  Zeek allows for
+re-definable constants, which at first, might seem counter-intuitive.  We'll
+get more in-depth with constants in a later chapter, for now, think of them as
+variables that can only be altered before Zeek starts running.  By extending
+the :zeek:see:`Notice::Type` as shown, this allows for the :zeek:see:`NOTICE`
+function to generate notices with a ``$note`` field set as
+``TeamCymruMalwareHashRegistry::Match``.  Notices allow Zeek to generate some
+kind of extra notification beyond its default log types.  Often times, this
+extra notification comes in the form of an email generated and sent to a
+preconfigured address, but can be altered depending on the needs of the
+deployment.  The export section is finished off with the definition of a few
+constants that list the kind of files we want to match against and the minimum
+percentage of detection threshold in which we are interested.
 
 Up until this point, the script has merely done some basic setup.  With
 the next section, the script starts to define instructions to take in
@@ -626,29 +625,41 @@ Monitoring platform has a fairly robust set of network-centric data
 types and taking note of them here may well save you a late night of
 reinventing the wheel.
 
-+-----------+-------------------------------------+
-| Data Type | Description                         |
-+===========+=====================================+
-| int       | 64 bit signed integer               |
-+-----------+-------------------------------------+
-| count     | 64 bit unsigned integer             |
-+-----------+-------------------------------------+
-| double    | double precision floating precision |
-+-----------+-------------------------------------+
-| bool      | boolean (T/F)                       |
-+-----------+-------------------------------------+
-| addr      | IP address, IPv4 and IPv6           |
-+-----------+-------------------------------------+
-| port      | transport layer port                |
-+-----------+-------------------------------------+
-| subnet    | CIDR subnet mask                    |
-+-----------+-------------------------------------+
-| time      | absolute epoch time                 |
-+-----------+-------------------------------------+
-| interval  | a time interval                     |
-+-----------+-------------------------------------+
-| pattern   | regular expression                  |
-+-----------+-------------------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Data Type
+    - Description
+
+  * - :zeek:see:`int`
+    - 64 bit signed integer
+
+  * - :zeek:see:`count`
+    - 64 bit unsigned integer
+
+  * - :zeek:see:`double`
+    - double precision floating precision
+
+  * - :zeek:see:`bool`
+    - boolean (T/F)
+
+  * - :zeek:see:`addr`
+    - IP address, IPv4 and IPv6
+
+  * - :zeek:see:`port`
+    - transport layer port
+
+  * - :zeek:see:`subnet`
+    - CIDR subnet mask
+
+  * - :zeek:see:`time`
+    - absolute epoch time
+
+  * - :zeek:see:`interval`
+    - a time interval
+
+  * - :zeek:see:`pattern`
+    - regular expression
 
 Sets
 ~~~~
@@ -1611,15 +1622,16 @@ the :zeek:enum:`Notice::ALARM_LOG` logging stream which is then rotated
 hourly and its contents emailed in readable ASCII to the addresses in
 ``Notice::mail_dest``.
 
-+--------------+-----------------------------------------------------+
-| ACTION_NONE  | Take no action                                      |
-+--------------+-----------------------------------------------------+
-| ACTION_LOG   | Send the notice to the Notice::LOG logging stream.  |
-+--------------+-----------------------------------------------------+
-| ACTION_EMAIL | Send an email with the notice in the body.          |
-+--------------+-----------------------------------------------------+
-| ACTION_ALARM | Send the notice to the Notice::Alarm_LOG stream.    |
-+--------------+-----------------------------------------------------+
+.. list-table::
+
+  * - :zeek:see:`Notice::ACTION_NONE`
+    - Take no action
+  * - :zeek:see:`Notice::ACTION_LOG`
+    - Send the notice to the Notice::LOG logging stream.
+  * - :zeek:see:`Notice::ACTION_EMAIL`
+    - Send an email with the notice in the body.
+  * - :zeek:see:`Notice::ACTION_ALARM`
+    - Send the notice to the Notice::Alarm_LOG stream.
 
 While actions like the ``Notice::ACTION_EMAIL`` action have appeal for
 quick alerts and response, a caveat of its use is to make sure the
