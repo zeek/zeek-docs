@@ -392,7 +392,7 @@ Types
       .. zeek:enum:: Cluster::TIME_MACHINE Cluster::NodeType
 
          A node acting as a traffic recorder using the
-         `Time Machine <https://www.zeek.org/community/time-machine.html>`_
+         `Time Machine <https://github.com/zeek/time-machine>`_
          software.
 
    Types of nodes that are allowed to participate in the cluster
