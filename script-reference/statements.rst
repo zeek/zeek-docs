@@ -13,29 +13,35 @@ Declarations must appear before any statements (except those statements
 that are in a function, hook, or event handler) in the concatenation of
 all loaded Zeek scripts.
 
-+----------------------------+-----------------------------+
-| Name                       | Description                 |
-+============================+=============================+
-| :zeek:keyword:`module`     | Change the current module   |
-+----------------------------+-----------------------------+
-| :zeek:keyword:`export`     | Export identifiers from the |
-|                            | current module              |
-+----------------------------+-----------------------------+
-| :zeek:keyword:`global`     | Declare a global variable   |
-+----------------------------+-----------------------------+
-| :zeek:keyword:`const`      | Declare a constant          |
-+----------------------------+-----------------------------+
-| :zeek:keyword:`option`     | Declare a configuration     |
-|                            | option                      |
-+----------------------------+-----------------------------+
-| :zeek:keyword:`type`       | Declare a user-defined type |
-+----------------------------+-----------------------------+
-| :zeek:keyword:`redef`      | Redefine a global value or  |
-|                            | extend a user-defined type  |
-+----------------------------+-----------------------------+
-| `function/event/hook`_     | Declare a function, event   |
-|                            | handler, or hook            |
-+----------------------------+-----------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Name
+    - Description
+
+  * - :zeek:keyword:`module`
+    - Change the current module
+
+  * - :zeek:keyword:`export`
+    - Export identifiers from the current module
+
+  * - :zeek:keyword:`global`
+    - Declare a global variable
+
+  * - :zeek:keyword:`const`
+    - Declare a constant
+
+  * - :zeek:keyword:`option`
+    - Declare a configuration option
+
+  * - :zeek:keyword:`type`
+    - Declare a user-defined type
+
+  * - :zeek:keyword:`redef`
+    - Redefine a global value or extend a user-defined type
+
+  * - `function/event/hook`_
+    - Declare a function, event handler, or hook
 
 
 .. zeek:keyword:: module
@@ -288,41 +294,40 @@ lines.
 
 Here are the statements that the Zeek scripting language supports.
 
-+----------------------------+------------------------+
-| Name                       | Description            |
-+============================+========================+
-| :zeek:keyword:`local`      | Declare a local        |
-|                            | variable               |
-+----------------------------+------------------------+
-| :zeek:keyword:`add`,       | Add or delete          |
-| :zeek:keyword:`delete`     | elements               |
-+----------------------------+------------------------+
-| :zeek:keyword:`print`      | Print to stdout or a   |
-|                            | file                   |
-+----------------------------+------------------------+
-| :zeek:keyword:`for`,       | Loop over each         |
-| :zeek:keyword:`while`,     | element in a container |
-| :zeek:keyword:`next`,      | object (``for``), or   |
-| :zeek:keyword:`break`      | as long as a condition |
-|                            | evaluates to true      |
-|                            | (``while``).           |
-+----------------------------+------------------------+
-| :zeek:keyword:`if`         | Evaluate boolean       |
-|                            | expression and if true,|
-|                            | execute a statement    |
-+----------------------------+------------------------+
-| :zeek:keyword:`switch`,    | Evaluate expression    |
-| :zeek:keyword:`break`,     | and execute statement  |
-| :zeek:keyword:`fallthrough`| with a matching value  |
-+----------------------------+------------------------+
-| :zeek:keyword:`when`       | Asynchronous execution |
-+----------------------------+------------------------+
-| :zeek:keyword:`event`,     | Invoke or schedule     |
-| :zeek:keyword:`schedule`   | an event handler       |
-+----------------------------+------------------------+
-| :zeek:keyword:`return`     | Return from function,  |
-|                            | hook, or event handler |
-+----------------------------+------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Name
+    - Description
+
+  * - :zeek:keyword:`local`
+    - Declare a local variable
+
+  * - :zeek:keyword:`add`, :zeek:keyword:`delete`
+    - Add or delete elements
+
+  * - :zeek:keyword:`print`
+    - Print to stdout or a file
+
+  * - :zeek:keyword:`for`, :zeek:keyword:`while`,
+      :zeek:keyword:`next`, :zeek:keyword:`break`
+    - Loop over each element in a container object (``for``), or as long as a
+      condition evaluates to true (``while``).
+
+  * - :zeek:keyword:`if`
+    - Evaluate boolean and if true, execute a statement
+
+  * - :zeek:keyword:`switch`, :zeek:keyword:`break`, :zeek:keyword:`fallthrough`
+    - Evaluate expression and execute statement with a matching value
+
+  * - :zeek:keyword:`when`
+    - Asynchronous execution
+
+  * - :zeek:keyword:`event`, :zeek:keyword:`schedule`
+    - Invoke or schedule an event handler
+
+  * - :zeek:keyword:`return`
+    - Return from function, hook, or event handler
 
 
 .. zeek:keyword:: add
