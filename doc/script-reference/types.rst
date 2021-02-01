@@ -3,52 +3,51 @@ Types
 
 The Zeek scripting language supports the following built-in types:
 
-+-----------------------+--------------------+
-| Name                  | Description        |
-+=======================+====================+
-| :zeek:type:`bool`     | Boolean            |
-+-----------------------+--------------------+
-| :zeek:type:`count`,   | Numeric types      |
-| :zeek:type:`int`,     |                    |
-| :zeek:type:`double`   |                    |
-+-----------------------+--------------------+
-| :zeek:type:`time`,    | Time types         |
-| :zeek:type:`interval` |                    |
-+-----------------------+--------------------+
-| :zeek:type:`string`   | String             |
-+-----------------------+--------------------+
-| :zeek:type:`pattern`  | Regular expression |
-+-----------------------+--------------------+
-| :zeek:type:`port`,    | Network types      |
-| :zeek:type:`addr`,    |                    |
-| :zeek:type:`subnet`   |                    |
-+-----------------------+--------------------+
-| :zeek:type:`enum`     | Enumeration        |
-|                       | (user-defined type)|
-+-----------------------+--------------------+
-| :zeek:type:`table`,   | Container types    |
-| :zeek:type:`set`,     |                    |
-| :zeek:type:`vector`,  |                    |
-| :zeek:type:`record`   |                    |
-+-----------------------+--------------------+
-| :zeek:type:`function`,| Executable types   |
-| :zeek:type:`event`,   |                    |
-| :zeek:type:`hook`     |                    |
-+-----------------------+--------------------+
-| :zeek:type:`file`     | File type (only    |
-|                       | for writing)       |
-+-----------------------+--------------------+
-| :zeek:type:`opaque`   | Opaque type (for   |
-|                       | some built-in      |
-|                       | functions)         |
-+-----------------------+--------------------+
-| :zeek:type:`any`      | Any type (for      |
-|                       | functions or       |
-|                       | containers)        |
-+-----------------------+--------------------+
+.. list-table::
+  :header-rows: 1
+
+
+  * - Name(s)
+    - Description
+
+  * - :zeek:type:`bool`
+    - Boolean
+
+  * - :zeek:type:`count`, :zeek:type:`int`, :zeek:type:`double`
+    - Numeric types
+
+  * - :zeek:type:`time`, :zeek:type:`interval`
+    - Time types
+
+  * - :zeek:type:`string`
+    - String
+
+  * - :zeek:type:`pattern`
+    - Regular expression
+
+  * - :zeek:type:`port`, :zeek:type:`addr`, :zeek:type:`subnet`
+    - Network types
+
+  * - :zeek:type:`enum`
+    - Enumeration (user-defined type)
+
+  * - :zeek:type:`table`, :zeek:type:`set`, :zeek:type:`vector`,
+      :zeek:type:`record`
+    - Container types
+
+  * - :zeek:type:`function`, :zeek:type:`event`, :zeek:type:`hook`
+    - Executable types
+
+  * - :zeek:type:`file`
+    - File type (only for writing)
+
+  * - :zeek:type:`opaque`
+    - Opaque type (for  some built-in  functions)
+
+  * - :zeek:type:`any`
+    - Any type (for functions or containers)
 
 Here is a more detailed description of each type:
-
 
 .. zeek:native-type:: bool
 
@@ -362,7 +361,7 @@ addr
 A type representing an IP address.
 
 IPv4 address constants are written in "dotted quad" format,
-``A1.A2.A3.A4``, where Ai all lie between 0 and 255.
+``A1.A2.A3.A4``, where ``A1``-``A4`` all lie between 0 and 255.
 
 IPv6 address constants are written as colon-separated hexadecimal form
 as described by :rfc:`2373` (including the mixed notation with embedded
@@ -462,7 +461,7 @@ The table declaration syntax is::
 
     table [ type^+ ] of type
 
-where *type^+* is one or more types, separated by commas.  The
+where ``type^+`` is one or more types, separated by commas.  The
 index type cannot be any of the following types:  :zeek:type:`pattern`,
 :zeek:type:`table`, :zeek:type:`set`, :zeek:type:`vector`, :zeek:type:`file`,
 :zeek:type:`opaque`, :zeek:type:`any`.
@@ -577,7 +576,7 @@ syntax::
 
     set [ type^+ ]
 
-where *type^+* is one or more types separated by commas.  The index type
+where ``type^+`` is one or more types separated by commas.  The index type
 cannot be any of the following types:  :zeek:type:`pattern`,
 :zeek:type:`table`, :zeek:type:`set`, :zeek:type:`vector`, :zeek:type:`file`,
 :zeek:type:`opaque`, :zeek:type:`any`.
@@ -845,8 +844,8 @@ Function types in Zeek are declared using::
 
     function( argument*  ): type
 
-where *argument* is a (possibly empty) comma-separated list of
-arguments, and *type* is an optional return type.  For example:
+where ``argument*`` is a (possibly empty) comma-separated list of
+arguments, and ``type`` is an optional return type.  For example:
 
 .. code-block:: zeek
 
@@ -915,8 +914,8 @@ captures its closure in Zeek (deprecated functionality):
     local three = make_adder(3);
     print three(5); # prints 8
 
-Here `make_adder` is generating a function that captures `n` in its closure.
-The same, but in current (non-deprecated, closure-by-copy) form:
+Here ``make_adder`` is generating a function that captures ``n`` in its
+closure.  The same, but in current (non-deprecated, closure-by-copy) form:
 
 .. code-block:: zeek
 
@@ -933,11 +932,11 @@ The same, but in current (non-deprecated, closure-by-copy) form:
     local three = make_adder(3);
     print three(5); # prints 8
 
-The only difference is that the inner anonymous function explicitly
-declares that `n` is captured, by listing all of the captured variables
-in `[...]` after the `function` keyword.  It is a compile-time error
-to fail to list a captured variable (or to list the same variable more than
-once, or to list a global variable).
+The only difference is that the inner anonymous function explicitly declares
+that ``n`` is captured, by listing all of the captured variables in ``[...]``
+after the :zeek:type:`function` keyword.  It is a compile-time error to fail to
+list a captured variable (or to list the same variable more than once, or to
+list a global variable).
 
 Old-style capture-by-reference closure semantics means that those
 anonymous functions can modify the variables in their closures. For example:
@@ -965,7 +964,7 @@ The same in capture-by-copy, however, yields different results:
     print n; # prints 0
 
 With capture-by-copy, by default variables are captured using the equivalent
-of `=` assignments.  In Zeek, variable assignments use "shallow" copy,
+of ``=`` assignments.  In Zeek, variable assignments use "shallow" copy,
 meaning that assignments of aggregates share the same aggregate rather
 than fully duplicating all of its members.  These semantics allow you to
 get the equivalent of the original "reference" semantics by using record
@@ -984,7 +983,7 @@ fields rather than variables for the sharing.  For example:
     print var$n; # prints 1
 
 You can specify that a given variable should instead be captured using
-a *deep* copy by preceding it with the `copy` keyword:
+a *deep* copy by preceding it with the ``copy`` keyword:
 
 .. code-block:: zeek
 
@@ -1009,21 +1008,20 @@ this fragment:
     local var2 = r($n=7);
     local f = function [copy var1, var2] () { ...
 
-where `var1` will be captured via deep-copy and `var2` via the normal
+where ``var1`` will be captured via deep-copy and ``var2`` via the normal
 shallow-copy.
 
 When anonymous functions are serialized over Broker they keep their closures,
 but they will not continue to mutate the values from the sending script (either
-directly, for reference semantics, or for shallow-copy aggregates, for
-copy semantics).  At
-the time of serialization they create a copy of their closure. Also, anonymous
-functions do not capture global variables in their closures and thus will
-use the receiver's global variables.
+directly, for reference semantics, or for shallow-copy aggregates, for copy
+semantics).  At the time of serialization they create a copy of their closure.
+Also, anonymous functions do not capture global variables in their closures and
+thus will use the receiver's global variables.
 
 In order to serialize an anonymous function, that function must have been
 already declared on the receiver's end, because Zeek does not serialize the
-function's source code. See `testing/btest/language/closure-sending.zeek` for
-an example of how to serialize anonymous functions over Broker.
+function's source code. See :file:`testing/btest/language/closure-sending.zeek`
+for an example of how to serialize anonymous functions over Broker.
 
 Function parameters may specify default values as long as they appear
 last in the parameter list:
@@ -1166,7 +1164,7 @@ A hook type is declared like::
 
     hook( argument* )
 
-where *argument* is a (possibly empty) comma-separated list of
+where ``argument*`` is a (possibly empty) comma-separated list of
 arguments.  For example:
 
 .. code-block:: zeek
@@ -1264,7 +1262,7 @@ A data type whose actual representation/implementation is
 intentionally hidden, but whose values may be passed to certain
 built-in functions that can actually access the internal/hidden resources.
 Opaque types are differentiated from each other by qualifying them
-like "opaque of md5" or "opaque of sha1".
+like ``opaque of md5`` or ``opaque of sha1``.
 
 An example use of this type is the set of built-in functions which
 perform hashing:

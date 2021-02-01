@@ -398,10 +398,10 @@ for a single connection.
    :tab-width: 4
 
 Again, we start with ``@load``, this time importing the
-:doc:`/scripts/base/protocols/conn/index` scripts which supply the tracking
-and logging of general information and state of connections.  We
-handle the :zeek:id:`connection_state_remove` event and simply print
-the contents of the argument passed to it.  For this example we're
+:doc:`base/protocols/conn </scripts/base/protocols/conn/index>` scripts which
+supply the tracking and logging of general information and state of
+connections.  We handle the :zeek:id:`connection_state_remove` event and simply
+print the contents of the argument passed to it.  For this example we're
 going to run Zeek in "bare mode" which loads only the minimum number of
 scripts to retain operability and leaves the burden of loading
 required scripts to the script being run.  While bare mode is a low

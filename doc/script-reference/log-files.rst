@@ -9,187 +9,332 @@ type.
 Network Protocols
 -----------------
 
-+----------------------------+---------------------------------------+---------------------------------+
-| Log File                   | Description                           | Field Descriptions              |
-+============================+=======================================+=================================+
-| conn.log                   | TCP/UDP/ICMP connections              | :zeek:type:`Conn::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
-| dce_rpc.log                | Distributed Computing Environment/RPC | :zeek:type:`DCE_RPC::Info`      |
-+----------------------------+---------------------------------------+---------------------------------+
-| dhcp.log                   | DHCP leases                           | :zeek:type:`DHCP::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
-| dnp3.log                   | DNP3 requests and replies             | :zeek:type:`DNP3::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
-| dns.log                    | DNS activity                          | :zeek:type:`DNS::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| ftp.log                    | FTP activity                          | :zeek:type:`FTP::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| http.log                   | HTTP requests and replies             | :zeek:type:`HTTP::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
-| irc.log                    | IRC commands and responses            | :zeek:type:`IRC::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| kerberos.log               | Kerberos                              | :zeek:type:`KRB::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| modbus.log                 | Modbus commands and responses         | :zeek:type:`Modbus::Info`       |
-+----------------------------+---------------------------------------+---------------------------------+
-| modbus_register_change.log | Tracks changes to Modbus holding      | :zeek:type:`Modbus::MemmapInfo` |
-|                            | registers                             |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
-| mysql.log                  | MySQL                                 | :zeek:type:`MySQL::Info`        |
-+----------------------------+---------------------------------------+---------------------------------+
-| ntlm.log                   | NT LAN Manager (NTLM)                 | :zeek:type:`NTLM::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
-| ntp.log                    | Network Time Protocol                 | :zeek:type:`NTP::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| radius.log                 | RADIUS authentication attempts        | :zeek:type:`RADIUS::Info`       |
-+----------------------------+---------------------------------------+---------------------------------+
-| rdp.log                    | RDP                                   | :zeek:type:`RDP::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| rfb.log                    | Remote Framebuffer (RFB)              | :zeek:type:`RFB::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| sip.log                    | SIP                                   | :zeek:type:`SIP::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| smb_cmd.log                | SMB commands                          | :zeek:type:`SMB::CmdInfo`       |
-+----------------------------+---------------------------------------+---------------------------------+
-| smb_files.log              | SMB files                             | :zeek:type:`SMB::FileInfo`      |
-+----------------------------+---------------------------------------+---------------------------------+
-| smb_mapping.log            | SMB trees                             | :zeek:type:`SMB::TreeInfo`      |
-+----------------------------+---------------------------------------+---------------------------------+
-| smtp.log                   | SMTP transactions                     | :zeek:type:`SMTP::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
-| snmp.log                   | SNMP messages                         | :zeek:type:`SNMP::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
-| socks.log                  | SOCKS proxy requests                  | :zeek:type:`SOCKS::Info`        |
-+----------------------------+---------------------------------------+---------------------------------+
-| ssh.log                    | SSH connections                       | :zeek:type:`SSH::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| ssl.log                    | SSL/TLS handshake info                | :zeek:type:`SSL::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| syslog.log                 | Syslog messages                       | :zeek:type:`Syslog::Info`       |
-+----------------------------+---------------------------------------+---------------------------------+
-| tunnel.log                 | Tunneling protocol events             | :zeek:type:`Tunnel::Info`       |
-+----------------------------+---------------------------------------+---------------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Log File
+    - Description
+    - Field Descriptions
+
+  * - :file:`conn.log`
+    - TCP/UDP/ICMP connections
+    - :zeek:type:`Conn::Info`
+
+  * - :file:`dce_rpc.log`
+    - Distributed Computing Environment/RPC
+    - :zeek:type:`DCE_RPC::Info`
+
+  * - :file:`dhcp.log`
+    - DHCP leases
+    - :zeek:type:`DHCP::Info`
+
+  * - :file:`dnp3.log`
+    - DNP3 requests and replies
+    - :zeek:type:`DNP3::Info`
+
+  * - :file:`dns.log`
+    - DNS activity
+    - :zeek:type:`DNS::Info`
+
+  * - :file:`ftp.log`
+    - FTP activity
+    - :zeek:type:`FTP::Info`
+
+  * - :file:`http.log`
+    - HTTP requests and replies
+    - :zeek:type:`HTTP::Info`
+
+  * - :file:`irc.log`
+    - IRC commands and responses
+    - :zeek:type:`IRC::Info`
+
+  * - :file:`kerberos.log`
+    - Kerberos
+    - :zeek:type:`KRB::Info`
+
+  * - :file:`modbus.log`
+    - Modbus commands and responses
+    - :zeek:type:`Modbus::Info`
+
+  * - :file:`modbus_register_change.log`
+    - Tracks changes to Modbus holding registers
+    - :zeek:type:`Modbus::MemmapInfo`
+
+  * - :file:`mysql.log`
+    - MySQL
+    - :zeek:type:`MySQL::Info`
+
+  * - :file:`ntlm.log`
+    - NT LAN Manager (NTLM)
+    - :zeek:type:`NTLM::Info`
+
+  * - :file:`ntp.log`
+    - Network Time Protocol
+    - :zeek:type:`NTP::Info`
+
+  * - :file:`radius.log`
+    - RADIUS authentication attempts
+    - :zeek:type:`RADIUS::Info`
+
+  * - :file:`rdp.log`
+    - RDP
+    - :zeek:type:`RDP::Info`
+
+  * - :file:`rfb.log`
+    - Remote Framebuffer (RFB)
+    - :zeek:type:`RFB::Info`
+
+  * - :file:`sip.log`
+    - SIP
+    - :zeek:type:`SIP::Info`
+
+  * - :file:`smb_cmd.log`
+    - SMB commands
+    - :zeek:type:`SMB::CmdInfo`
+
+  * - :file:`smb_files.log`
+    - SMB files
+    - :zeek:type:`SMB::FileInfo`
+
+  * - :file:`smb_mapping.log`
+    - SMB trees
+    - :zeek:type:`SMB::TreeInfo`
+
+  * - :file:`smtp.log`
+    - SMTP transactions
+    - :zeek:type:`SMTP::Info`
+
+  * - :file:`snmp.log`
+    - SNMP messages
+    - :zeek:type:`SNMP::Info`
+
+  * - :file:`socks.log`
+    - SOCKS proxy requests
+    - :zeek:type:`SOCKS::Info`
+
+  * - :file:`ssh.log`
+    - SSH connections
+    - :zeek:type:`SSH::Info`
+
+  * - :file:`ssl.log`
+    - SSL/TLS handshake info
+    - :zeek:type:`SSL::Info`
+
+  * - :file:`syslog.log`
+    - Syslog messages
+    - :zeek:type:`Syslog::Info`
+
+  * - :file:`tunnel.log`
+    - Tunneling protocol events
+    - :zeek:type:`Tunnel::Info`
+
 
 Files
 -----
 
-+----------------------------+---------------------------------------+---------------------------------+
-| Log File                   | Description                           | Field Descriptions              |
-+============================+=======================================+=================================+
-| files.log                  | File analysis results                 | :zeek:type:`Files::Info`        |
-+----------------------------+---------------------------------------+---------------------------------+
-| ocsp.log                   | Online Certificate Status Protocol    | :zeek:type:`OCSP::Info`         |
-|                            | (OCSP). Only created if policy script |                                 |
-|                            | is loaded.                            |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
-| pe.log                     | Portable Executable (PE)              | :zeek:type:`PE::Info`           |
-+----------------------------+---------------------------------------+---------------------------------+
-| x509.log                   | X.509 certificate info                | :zeek:type:`X509::Info`         |
-+----------------------------+---------------------------------------+---------------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Log File
+    - Description
+    - Field Descriptions
+
+  * - :file:`files.log`
+    - File analysis results
+    - :zeek:type:`Files::Info`
+
+  * - :file:`ocsp.log`
+    - Online Certificate Status Protocol (OCSP). Only created if policy script is loaded.
+    - :zeek:type:`OCSP::Info`
+
+  * - :file:`pe.log`
+    - Portable Executable (PE)
+    - :zeek:type:`PE::Info`
+
+  * - :file:`x509.log`
+    - X.509 certificate info
+    - :zeek:type:`X509::Info`
+
 
 NetControl
 ----------
 
-+------------------------------+---------------------------------------+------------------------------------------+
-| Log File                     | Description                           | Field Descriptions                       |
-+==============================+=======================================+==========================================+
-| netcontrol.log               | NetControl actions                    | :zeek:type:`NetControl::Info`            |
-+------------------------------+---------------------------------------+------------------------------------------+
-| netcontrol_drop.log          | NetControl actions                    | :zeek:type:`NetControl::DropInfo`        |
-+------------------------------+---------------------------------------+------------------------------------------+
-| netcontrol_shunt.log         | NetControl shunt actions              | :zeek:type:`NetControl::ShuntInfo`       |
-+------------------------------+---------------------------------------+------------------------------------------+
-| netcontrol_catch_release.log | NetControl catch and release actions  | :zeek:type:`NetControl::CatchReleaseInfo`|
-+------------------------------+---------------------------------------+------------------------------------------+
-| openflow.log                 | OpenFlow debug log                    | :zeek:type:`OpenFlow::Info`              |
-+------------------------------+---------------------------------------+------------------------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Log File
+    - Description
+    - Field Descriptions
+
+  * - :file:`netcontrol.log`
+    - NetControl actions
+    - :zeek:type:`NetControl::Info`
+
+  * - :file:`netcontrol_drop.log`
+    - NetControl actions
+    - :zeek:type:`NetControl::DropInfo`
+
+  * - :file:`netcontrol_shunt.log`
+    - NetControl shunt actions
+    - :zeek:type:`NetControl::ShuntInfo`
+
+  * - :file:`netcontrol_catch_release.log`
+    - NetControl catch and release actions
+    - :zeek:type:`NetControl::CatchReleaseInfo`
+
+  * - :file:`openflow.log`
+    - OpenFlow debug log
+    - :zeek:type:`OpenFlow::Info`
+
 
 Detection
 ---------
 
-+----------------------------+---------------------------------------+---------------------------------+
-| Log File                   | Description                           | Field Descriptions              |
-+============================+=======================================+=================================+
-| intel.log                  | Intelligence data matches             | :zeek:type:`Intel::Info`        |
-+----------------------------+---------------------------------------+---------------------------------+
-| notice.log                 | Zeek notices                          | :zeek:type:`Notice::Info`       |
-+----------------------------+---------------------------------------+---------------------------------+
-| notice_alarm.log           | The alarm stream                      | :zeek:type:`Notice::Info`       |
-+----------------------------+---------------------------------------+---------------------------------+
-| signatures.log             | Signature matches                     | :zeek:type:`Signatures::Info`   |
-+----------------------------+---------------------------------------+---------------------------------+
-| traceroute.log             | Traceroute detection                  | :zeek:type:`Traceroute::Info`   |
-+----------------------------+---------------------------------------+---------------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Log File
+    - Description
+    - Field Descriptions
+
+  * - :file:`intel.log`
+    - Intelligence data matches
+    - :zeek:type:`Intel::Info`
+
+  * - :file:`notice.log`
+    - Zeek notices
+    - :zeek:type:`Notice::Info`
+
+  * - :file:`notice_alarm.log`
+    - The alarm stream
+    - :zeek:type:`Notice::Info`
+
+  * - :file:`signatures.log`
+    - Signature matches
+    - :zeek:type:`Signatures::Info`
+
+  * - :file:`traceroute.log`
+    - Traceroute detection
+    - :zeek:type:`Traceroute::Info`
 
 
 Network Observations
 --------------------
 
-+----------------------------+---------------------------------------+---------------------------------+
-| Log File                   | Description                           | Field Descriptions              |
-+============================+=======================================+=================================+
-| known_certs.log            | SSL certificates                      | :zeek:type:`Known::CertsInfo`   |
-+----------------------------+---------------------------------------+---------------------------------+
-| known_hosts.log            | Hosts that have completed TCP         | :zeek:type:`Known::HostsInfo`   |
-|                            | handshakes                            |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
-| known_modbus.log           | Modbus masters and slaves             | :zeek:type:`Known::ModbusInfo`  |
-+----------------------------+---------------------------------------+---------------------------------+
-| known_services.log         | Services running on hosts             | :zeek:type:`Known::ServicesInfo`|
-+----------------------------+---------------------------------------+---------------------------------+
-| software.log               | Software being used on the network    | :zeek:type:`Software::Info`     |
-+----------------------------+---------------------------------------+---------------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Log File
+    - Description
+    - Field Descriptions
+
+  * - :file:`known_certs.log`
+    - SSL certificates
+    - :zeek:type:`Known::CertsInfo`
+
+  * - :file:`known_hosts.log`
+    - Hosts that have completed TCP handshakes
+    - :zeek:type:`Known::HostsInfo`
+
+  * - :file:`known_modbus.log`
+    - Modbus masters and slaves
+    - :zeek:type:`Known::ModbusInfo`
+
+  * - :file:`known_services.log`
+    - Services running on hosts
+    - :zeek:type:`Known::ServicesInfo`
+
+  * - :file:`software.log`
+    - Software being used on the network
+    - :zeek:type:`Software::Info`
+
 
 Miscellaneous
 -------------
 
-+----------------------------+---------------------------------------+---------------------------------+
-| Log File                   | Description                           | Field Descriptions              |
-+============================+=======================================+=================================+
-| barnyard2.log              | Alerts received from Barnyard2        | :zeek:type:`Barnyard2::Info`    |
-+----------------------------+---------------------------------------+---------------------------------+
-| dpd.log                    | Dynamic protocol detection failures   | :zeek:type:`DPD::Info`          |
-+----------------------------+---------------------------------------+---------------------------------+
-| unified2.log               | Interprets Snort's unified output     | :zeek:type:`Unified2::Info`     |
-+----------------------------+---------------------------------------+---------------------------------+
-| weird.log                  | Unexpected network-level activity     | :zeek:type:`Weird::Info`        |
-+----------------------------+---------------------------------------+---------------------------------+
-| weird_stats.log            | Statistics about unexpected activity  | :zeek:type:`WeirdStats::Info`   |
-+----------------------------+---------------------------------------+---------------------------------+
+.. list-table::
+  :header-rows: 1
+
+  * - Log File
+    - Description
+    - Field Descriptions
+
+  * - :file:`barnyard2.log`
+    - Alerts received from Barnyard2
+    - :zeek:type:`Barnyard2::Info`
+
+  * - :file:`dpd.log`
+    - Dynamic protocol detection failures
+    - :zeek:type:`DPD::Info`
+
+  * - :file:`unified2.log`
+    - Interprets Snort's unified output
+    - :zeek:type:`Unified2::Info`
+
+  * - :file:`weird.log`
+    - Unexpected network-level activity
+    - :zeek:type:`Weird::Info`
+
+  * - :file:`weird_stats.log`
+    - Statistics about unexpected activity
+    - :zeek:type:`WeirdStats::Info`
+
 
 Zeek Diagnostics
 ----------------
 
-+----------------------------+---------------------------------------+---------------------------------+
-| Log File                   | Description                           | Field Descriptions              |
-+============================+=======================================+=================================+
-| broker.log                 | Peering status events between Zeek or | :zeek:type:`Broker::Info`       |
-|                            | Broker-enabled processes              |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
-| capture_loss.log           | Packet loss rate                      | :zeek:type:`CaptureLoss::Info`  |
-+----------------------------+---------------------------------------+---------------------------------+
-| cluster.log                | Zeek cluster messages                 | :zeek:type:`Cluster::Info`      |
-+----------------------------+---------------------------------------+---------------------------------+
-| config.log                 | Configuration option changes          | :zeek:type:`Config::Info`       |
-+----------------------------+---------------------------------------+---------------------------------+
-| loaded_scripts.log         | Shows all scripts loaded by Zeek      | :zeek:type:`LoadedScripts::Info`|
-+----------------------------+---------------------------------------+---------------------------------+
-| packet_filter.log          | List packet filters that were applied | :zeek:type:`PacketFilter::Info` |
-+----------------------------+---------------------------------------+---------------------------------+
-| print.log                  | Print statements that were redirected | :zeek:type:`Log::PrintLogInfo`  |
-|                            | to a log stream.                      |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
-| prof.log                   | Profiling statistics (to create this  | N/A                             |
-|                            | log, load policy/misc/profiling.zeek  |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
-| reporter.log               | Internal error/warning/info messages  | :zeek:type:`Reporter::Info`     |
-+----------------------------+---------------------------------------+---------------------------------+
-| stats.log                  | Memory/event/packet/lag statistics    | :zeek:type:`Stats::Info`        |
-+----------------------------+---------------------------------------+---------------------------------+
-| stderr.log                 | Captures standard error when Zeek is  | N/A                             |
-|                            | started from ZeekControl              |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
-| stdout.log                 | Captures standard output when Zeek is | N/A                             |
-|                            | started from ZeekControl              |                                 |
-+----------------------------+---------------------------------------+---------------------------------+
+.. list-table::
+  :header-rows: 1
 
+  * - Log File
+    - Description
+    - Field Descriptions
+
+  * - :file:`broker.log`
+    - Peering status events between Zeek or Broker-enabled processes
+    - :zeek:type:`Broker::Info`
+
+  * - :file:`capture_loss.log`
+    - Packet loss rate
+    - :zeek:type:`CaptureLoss::Info`
+
+  * - :file:`cluster.log`
+    - Zeek cluster messages
+    - :zeek:type:`Cluster::Info`
+
+  * - :file:`config.log`
+    - Configuration option changes
+    - :zeek:type:`Config::Info`
+
+  * - :file:`loaded_scripts.log`
+    - Shows all scripts loaded by Zeek
+    - :zeek:type:`LoadedScripts::Info`
+
+  * - :file:`packet_filter.log`
+    - List packet filters that were applied
+    - :zeek:type:`PacketFilter::Info`
+
+  * - :file:`print.log`
+    - Print statements that were redirected to a log stream.
+    - :zeek:type:`Log::PrintLogInfo`
+
+  * - :file:`prof.log`
+    - Profiling statistics (to create this log, load
+      :doc:`/scripts/policy/misc/profiling.zeek`)
+    - N/A
+
+  * - :file:`reporter.log`
+    - Internal error/warning/info messages
+    - :zeek:type:`Reporter::Info`
+
+  * - :file:`stats.log`
+    - Memory/event/packet/lag statistics
+    - :zeek:type:`Stats::Info`
+
+  * - :file:`stderr.log`
+    - Captures standard error when Zeek is started from ZeekControl
+    - N/A
+
+  * - :file:`stdout.log`
+    - Captures standard output when Zeek is started from ZeekControl
+    - N/A
