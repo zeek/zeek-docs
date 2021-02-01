@@ -271,6 +271,10 @@ Miscellaneous
     - Interprets Snort's unified output
     - :zeek:type:`Unified2::Info`
 
+  * - :file:`unknown_protocols.log`
+    - Information about packet protocols that Zeek doesn't know how to process
+    - :zeek:type:`UnknownProtocol::Info`
+
   * - :file:`weird.log`
     - Unexpected network-level activity
     - :zeek:type:`Weird::Info`
