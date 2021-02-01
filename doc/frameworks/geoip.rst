@@ -5,6 +5,8 @@
 GeoLocation
 ===========
 
+.. TODO: integrate BoZ revisions
+
 .. rst-class:: opening
 
     During the process of creating policy scripts the need may arise
@@ -59,11 +61,11 @@ Then, you can
 `download <https://www.maxmind.com/en/accounts/current/geoip/downloads>`__
 databases.  For example, download the GeoLite2-City database and decompress it.
 
-Next, the file "GeoLite2-City_YYYYMMDD/GeoLite2-City.mmdb" needs to be moved
-to the GeoIP database directory.  This directory might already exist
-and will vary depending on which platform and package you are using.  For
-FreeBSD, use ``/usr/local/share/GeoIP``.  For Linux, use ``/usr/share/GeoIP``
-or ``/var/lib/GeoIP`` (choose whichever one already exists).
+Next, the file :samp:`GeoLite2-City_{YYYYMMDD}/GeoLite2-City.mmdb` needs to be
+moved to the GeoIP database directory.  This directory might already exist and
+will vary depending on which platform and package you are using.  For FreeBSD,
+use ``/usr/local/share/GeoIP``.  For Linux, use ``/usr/share/GeoIP`` or
+``/var/lib/GeoIP`` (choose whichever one already exists).
 
 .. code-block:: console
 
