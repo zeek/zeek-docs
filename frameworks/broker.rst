@@ -1,10 +1,10 @@
 .. _CAF: https://github.com/actor-framework/actor-framework
 
-.. _brokercomm-framework:
+.. _broker-framework:
 
-==============================================
-Broker-Enabled Communication/Cluster Framework
-==============================================
+==============================
+Broker Communication Framework
+==============================
 
 .. rst-class:: opening
 
@@ -185,10 +185,10 @@ the subscription matching is purely a byte-per-byte prefix comparison.
 However, Zeek scripts generally will follow a topic naming hierarchy and
 any given script will make the topic names it uses apparent via some
 redef'able constant in its export section.  Generally topics that Zeek
-scripts use will be along the lines of "zeek/<namespace>/<specifics>"
-with "<namespace>" being the script's module name (in all-undercase).
-For example, you might expect an imaginary "Pretend" framework to
-publish/subscribe using topic names like "zeek/pretend/my_cool_event".
+scripts use will be along the lines of :samp:`zeek/{<namespace>}/{<specifics>}`
+with :samp:`{<namespace>}` being the script's module name (in all-undercase).
+For example, you might expect an imaginary ``Pretend`` framework to
+publish/subscribe using topic names like ``zeek/pretend/my_cool_event``.
 For scripts that use Broker as a means of cluster-aware analysis,
 it's usually sufficient for them to make use of the topics declared
 by the cluster framework.  For scripts that are meant to establish
@@ -209,7 +209,7 @@ processes, logs get published to the topic indicated by
 
 For those writing their own scripts which need new topic names, a
 suggestion would be to avoid prefixing any new topics/prefixes with
-"zeek/" as any changes in scripts shipping with Zeek will use that prefix
+``zeek/`` as any changes in scripts shipping with Zeek will use that prefix
 and it's better to not risk unintended conflicts.  Again, it's
 often less confusing to just re-use existing topic names instead
 of introducing new topic names.  The typical use case is writing
@@ -278,8 +278,9 @@ in addition to sending the event to any subscribed peers.
    :tab-width: 4
 
 Note that the subscription model is prefix-based, meaning that if you subscribe
-to the "zeek/events" topic prefix you would receive events that are published
-to topic names  "zeek/events/foo" and "zeek/events/bar" but not "zeek/misc".
+to the ``zeek/events`` topic prefix you would receive events that are published
+to topic names ``zeek/events/foo`` and ``zeek/events/bar`` but not
+``zeek/misc``.
 
 Remote Logging
 --------------
@@ -354,6 +355,8 @@ Cluster Framework Examples
 This section contains a few brief examples of how various communication
 patterns one might use when developing Zeek scripts that are to operate in
 the context of a cluster.
+
+.. _event-namespacing-pitfall:
 
 A Reminder About Events and Module Namespaces
 ---------------------------------------------
@@ -583,65 +586,3 @@ via asynchronous operations, and accessing them might not always be
 immediate, a second copy of the table, which is immediately
 accessible, is held inside the Zeek core. This is the copy that you
 see and interact with on the Zeek side.
-
-Tips for Porting Bro 2.5 and earlier
-====================================
-
-Review and use the points below as a guide to port your own scripts
-to Bro 2.6 or later version of Zeek, which uses the new cluster and Broker
-communication framework.
-
-General Porting Tips
---------------------
-
-- ``@load policy/frameworks/communication/listen`` and
-  ``@load base/frameworks/communication`` indicates use of the
-  old communication framework, consider porting to
-  ``@load base/frameworks/broker`` and using the Broker API:
-  :doc:`/scripts/base/frameworks/broker/main.zeek`
-
-- The ``&synchronized`` and ``&persistent`` attributes are deprecated,
-  consider using `Data Stores`_ instead.
-
-- Usages of the old communications system features are all deprecated,
-  however, they also do not work in the default Zeek configuration unless
-  you manually take action to set up the old communication system.
-  To aid in porting, such usages will default to raising a fatal error
-  unless you explicitly acknowledge that such usages of the old system
-  are ok.  Set the ``old_comm_usage_is_ok`` flag in this case.
-
-- Instead of using e.g. ``Cluster::manager2worker_events`` (and all
-  permutations for every node type), what you'd now use is either
-  :zeek:see:`Broker::publish` or :zeek:see:`Broker::auto_publish` with
-  either the topic associated with a specific node or class of nodes,
-  like :zeek:see:`Cluster::node_topic` or
-  :zeek:see:`Cluster::worker_topic`.
-
-- Instead of using the ``send_id`` BIF, use :zeek:see:`Broker::publish_id`.
-
-- Use :zeek:see:`terminate` instead of ``terminate_communication``.
-  The latter refers to the old communication system and no longer affects
-  the new Broker-based system.
-
-- For replacing ``remote_connection_established`` and
-  ``remote_connection_closed``, consider :zeek:see:`Broker::peer_added`
-  or :zeek:see:`Broker::peer_lost`.  There's also :zeek:see:`Cluster::node_up`
-  and :zeek:see:`Cluster::node_down`.
-
-- The general toplogogy of a cluster has changed: namely proxy nodes do not
-  connect to each other anymore.
-
-Notable / Specific Script API Changes
--------------------------------------
-
-- :zeek:see:`Software::tracked` is now partitioned among proxy nodes
-  instead of synchronized in its entirety to all nodes.
-
-- ``Known::known_hosts`` is renamed to :zeek:see:`Known::host_store` and
-  implemented via the new Broker data store interface.
-
-- ``Known::known_services`` is renamed to :zeek:see:`Known::service_store`
-  and implemented via the new Broker data store interface.
-
-- ``Known::certs`` is renamed to :zeek:see:`Known::cert_store`
-  and implemented via the new Broker data store interface.

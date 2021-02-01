@@ -129,7 +129,7 @@ In this example, Zeek will try to load a signature file
     @load-sigs base/protocols/ssl/dpd
 
 The format for a signature file is explained in the documentation for the
-`Signature Framework <../frameworks/signatures.html>`_.
+:doc:`Signature Framework </frameworks/signatures>`.
 
 
 .. zeek:keyword:: @unload

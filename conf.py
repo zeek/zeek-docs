@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.abspath('ext'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions += ['zeek', 'sphinx.ext.todo', 'zeek_pygments']
+extensions += ['zeek', 'sphinx.ext.todo', 'zeek_pygments', 'literal-emph']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -42,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Zeek'
-copyright = u'2019, The Zeek Project'
+copyright = u'2019-2021, The Zeek Project'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -151,7 +151,7 @@ html_theme_options = {
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> Documentation".
-html_title = u'Zeek User Manual ' + release
+html_title = u'Book of Zeek ' + release
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
