@@ -1,7 +1,6 @@
 
 .. image:: /images/zeek-logo-text.png
    :align: center
-   :scale: 100%
 
 ==================
 Zeek Documentation
@@ -46,18 +45,18 @@ Documentation Versioning
 
 .. attention::
 
-  The Zeek codebase has three primary branches of interest to users and
-  this document is also maintained as three different versions, one
-  associated with each branch of Zeek.  The default version of
-  `docs.zeek.org <https://docs.zeek.org>`_ tracks the latest Zeek release:
+  The Zeek codebase has three primary branches of interest to users so this
+  document is also maintained as three different versions, one associated with
+  each branch of Zeek.  The default version of `docs.zeek.org
+  <https://docs.zeek.org>`_ tracks Zeek's latest Git development:
 
-    * Current Feature Release: https://docs.zeek.org/en/current
+    * Git *master* branch: https://docs.zeek.org/en/master
 
-  If you instead use a Zeek Long-Term Support (LTS) release or
-  Git *master* branch, these are the appropriate starting points:
+  If you instead use a Zeek Long-Term Support (LTS) or Feature release these
+  are the appropriate starting points:
 
     * Long-Term Support Release: https://docs.zeek.org/en/lts
-    * Git *master* Branch: https://docs.zeek.org/en/master
+    * Current Feature Release: https://docs.zeek.org/en/current
 
   To help clarify which release you are using, the version numbering
   scheme for the two release branches is described in the `Release
