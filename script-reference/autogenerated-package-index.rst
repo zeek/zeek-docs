@@ -49,6 +49,9 @@
 :doc:`base/packet-protocols/iptunnel </scripts/base/packet-protocols/iptunnel/index>`
 
 
+:doc:`base/packet-protocols/vntag </scripts/base/packet-protocols/vntag/index>`
+
+
 :doc:`base/frameworks/logging </scripts/base/frameworks/logging/index>`
 
    The logging framework provides a flexible key-value based logging interface.

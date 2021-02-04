@@ -103,3 +103,9 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/iptunnel/main.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/vntag/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/vntag/main.zeek`
+
+
