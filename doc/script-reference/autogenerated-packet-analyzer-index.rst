@@ -39,6 +39,8 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_VLAN PacketAnalyzer::Tag
 
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_VNTAG PacketAnalyzer::Tag
+
 Zeek::ARP
 ---------
 
@@ -299,4 +301,14 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_VLAN`
+
+Zeek::VNTag
+-----------
+
+VNTag packet analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_VNTAG`
 
