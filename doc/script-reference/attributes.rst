@@ -66,6 +66,9 @@ The Zeek scripting language supports the following attributes.
   * - :zeek:attr:`&deprecated`
     - Marks an identifier as deprecated.
 
+  * - :zeek:attr:`&is_assigned`
+    - Suppress "used before defined" warnings from ``zeek -u`` analysis.
+
 .. _attribute-propagation-pitfalls:
 
 .. warning::
@@ -472,3 +475,62 @@ the identifier will be removed:
 .. code-block:: zeek
 
     type warned: string &deprecated="Remove in vX.Y.  This type is deprecated because of reasons, use 'foo' instead.";
+
+.. zeek:attr:: &is_assigned
+
+&is_assigned
+------------
+
+Zeek has static analysis capabilities when using the ``-u`` or ``-uu``
+command-line flags to detect locations in a script that attempt to use a
+variable/value before it is necessarily defined/assigned.  The ``-u`` generates
+warnings for instances where that occurs for local variables and ``-uu`` turns
+on additional (and more expensive) analysis to report instances where record
+fields might be used without having previously been set.
+
+However the static analysis still lacks sufficient power to tell that some
+values are being used safely (guaranteed to have been assigned).  In order to
+enable users to employ ``-u``/``-uu`` on their own scripts without being
+distracted by these false-positives, the ``&is_assigned`` attribute can be
+associated with a variable or a record field to inform Zeek's analysis that the
+script writer asserts the value will be set, suppressing the associated
+warnings.
+
+.. code-block:: zeek
+  :caption: test1.zeek
+  :linenos:
+
+    event zeek_init()
+	      {
+	      local a: count;
+	      print a;
+	      }
+
+.. code-block:: console
+
+  $ zeek -b -u test1.zeek
+
+::
+
+  warning in ./test.zeek, line 4: possibly used without definition (a)
+  expression error in ./test.zeek, line 4: value used but not set (a)
+
+.. code-block:: zeek
+  :caption: test2.zeek
+  :linenos:
+
+    event zeek_init()
+	      {
+	      # Note this is not a real place to want to use &is_assigned since it's
+	      # clearly a bug, but it demonstrates suppression of warning.
+	      local a: count &is_assigned;
+	      print a;
+	      }
+
+.. code-block:: console
+
+  $ zeek -b -u test2.zeek
+
+::
+
+  expression error in ./test.zeek, line 6: value used but not set (a)
