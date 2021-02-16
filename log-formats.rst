@@ -400,8 +400,7 @@ files.
 
   zeek@zeek:~/zeek-test/default$ cd ../json/
 
-Next we tell Zeek to output logs in JSON format using the ``-e`` switch and the
-command as shown.
+Next we tell Zeek to output logs in JSON format using the command as shown.
 
 .. code-block:: console
 
