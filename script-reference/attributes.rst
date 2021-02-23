@@ -501,10 +501,10 @@ warnings.
   :linenos:
 
     event zeek_init()
-	      {
-	      local a: count;
-	      print a;
-	      }
+        {
+        local a: count;
+        print a;
+        }
 
 .. code-block:: console
 
@@ -512,20 +512,20 @@ warnings.
 
 ::
 
-  warning in ./test.zeek, line 4: possibly used without definition (a)
-  expression error in ./test.zeek, line 4: value used but not set (a)
+  warning in ./test1.zeek, line 4: possibly used without definition (a)
+  expression error in ./test1.zeek, line 4: value used but not set (a)
 
 .. code-block:: zeek
   :caption: test2.zeek
   :linenos:
 
     event zeek_init()
-	      {
-	      # Note this is not a real place to want to use &is_assigned since it's
-	      # clearly a bug, but it demonstrates suppression of warning.
-	      local a: count &is_assigned;
-	      print a;
-	      }
+        {
+        # Note this is not a real place to want to use &is_assigned since it's
+        # clearly a bug, but it demonstrates suppression of warning.
+        local a: count &is_assigned;
+        print a;
+        }
 
 .. code-block:: console
 
@@ -533,4 +533,4 @@ warnings.
 
 ::
 
-  expression error in ./test.zeek, line 6: value used but not set (a)
+  expression error in ./test2.zeek, line 6: value used but not set (a)
