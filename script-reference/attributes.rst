@@ -69,6 +69,9 @@ The Zeek scripting language supports the following attributes.
   * - :zeek:attr:`&is_assigned`
     - Suppress "used before defined" warnings from ``zeek -u`` analysis.
 
+  * - :zeek:attr:`&is_used`
+    - Suppress "unused assignment" warnings from ``zeek -u`` analysis.
+
 .. _attribute-propagation-pitfalls:
 
 .. warning::
@@ -534,3 +537,32 @@ warnings.
 ::
 
   expression error in ./test2.zeek, line 6: value used but not set (a)
+
+.. zeek:attr:: &is_used
+
+&is_used
+--------
+
+Zeek has static analysis capabilities when using the ``-u`` or ``-uu``
+command-line flags to detect locations in a script that have been assigned-to,
+but not subsequently used (i.e. "dead code").  For cases where it's desirable
+to suppress the warning, the ``&is_used`` attribute may be applied, for
+example:
+
+.. code-block:: zeek
+  :caption: test.zeek
+  :linenos:
+
+    event zeek_init()
+        {
+        local please_warn: string = "test";
+        local please_no_warning: string = "test" &is_used;
+        }
+
+.. code-block:: console
+
+  $ zeek -a -b -u test.zeek
+
+::
+
+  warning: please_warn assignment unused: please_warn = test; ./test.zeek, line 3
