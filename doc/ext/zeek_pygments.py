@@ -57,7 +57,7 @@ class ZeekLexer(RegexLexer):
                     'delete_func', 'expire_func', 'read_expire', 'write_expire',
                     'create_expire', 'synchronized', 'persistent', 'rotate_interval',
                     'rotate_size', 'encrypt', 'raw_output', 'mergeable', 'error_handler',
-                    'broker_allow_complex_type', 'is_assigned',
+                    'broker_allow_complex_type', 'is_assigned', 'is_used',
                     'type_column', 'deprecated', 'on_change', 'backend', 'broker_store'),
                 prefix=r'&', suffix=r'\b'),
              Keyword.Pseudo),
