@@ -7,3 +7,8 @@
     {% set current_version = current_version ~ " (" ~ version ~ ")" %}
   {% endif %}
 {% endif %}
+
+{% block menu %}
+  {{ super() }}
+  <a href="genindex.html">Index</a>
+{% endblock %}

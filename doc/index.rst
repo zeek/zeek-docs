@@ -36,7 +36,7 @@ to connect with the community.
    components/index
    acknowledgements
 
-:ref:`General Index <genindex>`
+* :ref:`Index <genindex>`
 
 .. _documentation-versioning:
 
