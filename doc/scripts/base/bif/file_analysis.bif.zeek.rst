@@ -15,8 +15,11 @@ Functions
 #########
 ================================================================ ====================================================================
 :zeek:id:`Files::__add_analyzer`: :zeek:type:`function`          :zeek:see:`Files::add_analyzer`.
+:zeek:id:`Files::__analyzer_enabled`: :zeek:type:`function`      :zeek:see:`Files::analyzer_enabled`.
 :zeek:id:`Files::__analyzer_name`: :zeek:type:`function`         :zeek:see:`Files::analyzer_name`.
+:zeek:id:`Files::__disable_analyzer`: :zeek:type:`function`      :zeek:see:`Files::disable_analyzer`.
 :zeek:id:`Files::__disable_reassembly`: :zeek:type:`function`    :zeek:see:`Files::disable_reassembly`.
+:zeek:id:`Files::__enable_analyzer`: :zeek:type:`function`       :zeek:see:`Files::enable_analyzer`.
 :zeek:id:`Files::__enable_reassembly`: :zeek:type:`function`     :zeek:see:`Files::enable_reassembly`.
 :zeek:id:`Files::__file_exists`: :zeek:type:`function`           :zeek:see:`Files::file_exists`.
 :zeek:id:`Files::__lookup_file`: :zeek:type:`function`           :zeek:see:`Files::lookup_file`.
@@ -40,17 +43,35 @@ Functions
 
    :zeek:see:`Files::add_analyzer`.
 
+.. zeek:id:: Files::__analyzer_enabled
+
+   :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
+
+   :zeek:see:`Files::analyzer_enabled`.
+
 .. zeek:id:: Files::__analyzer_name
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`string`
 
    :zeek:see:`Files::analyzer_name`.
 
+.. zeek:id:: Files::__disable_analyzer
+
+   :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
+
+   :zeek:see:`Files::disable_analyzer`.
+
 .. zeek:id:: Files::__disable_reassembly
 
    :Type: :zeek:type:`function` (file_id: :zeek:type:`string`) : :zeek:type:`bool`
 
    :zeek:see:`Files::disable_reassembly`.
+
+.. zeek:id:: Files::__enable_analyzer
+
+   :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
+
+   :zeek:see:`Files::enable_analyzer`.
 
 .. zeek:id:: Files::__enable_reassembly
 
