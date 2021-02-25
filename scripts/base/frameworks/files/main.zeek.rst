@@ -68,10 +68,13 @@ Functions
 ======================================================================= =============================================================================
 :zeek:id:`Files::add_analyzer`: :zeek:type:`function`                   Adds an analyzer to the analysis of a given file.
 :zeek:id:`Files::all_registered_mime_types`: :zeek:type:`function`      Returns a table of all MIME-type-to-analyzer mappings currently registered.
+:zeek:id:`Files::analyzer_enabled`: :zeek:type:`function`               Checks whether a file analyzer is generally enabled.
 :zeek:id:`Files::analyzer_name`: :zeek:type:`function`                  Translates a file analyzer enum value to a string with the
                                                                         analyzer's name.
 :zeek:id:`Files::describe`: :zeek:type:`function`                       Provides a text description regarding metadata of the file.
+:zeek:id:`Files::disable_analyzer`: :zeek:type:`function`               Disables a file analyzer.
 :zeek:id:`Files::disable_reassembly`: :zeek:type:`function`             Disables the file reassembler on this file.
+:zeek:id:`Files::enable_analyzer`: :zeek:type:`function`                Enables a file analyzer.
 :zeek:id:`Files::enable_reassembly`: :zeek:type:`function`              Allows the file reassembler to be used if it's necessary because the
                                                                         file is transferred out of order.
 :zeek:id:`Files::file_exists`: :zeek:type:`function`                    Lookup to see if a particular file id exists and is still valid.
@@ -367,6 +370,18 @@ Functions
    :returns: A table mapping each analyzer to the set of MIME types
             registered for it.
 
+.. zeek:id:: Files::analyzer_enabled
+
+   :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
+
+   Checks whether a file analyzer is generally enabled.
+   
+
+   :tag: the analyzer type to check.
+   
+
+   :returns: true if the analyzer is generally enabled, else false.
+
 .. zeek:id:: Files::analyzer_name
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`string`
@@ -393,6 +408,18 @@ Functions
 
    :returns: a text description regarding metadata of the file.
 
+.. zeek:id:: Files::disable_analyzer
+
+   :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
+
+   Disables a file analyzer.
+   
+
+   :tag: the analyzer type to disable.
+   
+
+   :returns: false if the analyzer tag could not be found, else true.
+
 .. zeek:id:: Files::disable_reassembly
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`void`
@@ -402,6 +429,18 @@ Functions
    
 
    :f: the file.
+
+.. zeek:id:: Files::enable_analyzer
+
+   :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
+
+   Enables a file analyzer.
+   
+
+   :tag: the analyzer type to enable.
+   
+
+   :returns: false if the analyzer tag could not be found, else true.
 
 .. zeek:id:: Files::enable_reassembly
 
