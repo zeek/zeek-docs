@@ -77,6 +77,25 @@ def process_see_nodes(app, doctree, fromdocname):
         node.replace_self(content)
 
 class ZeekGeneric(ObjectDescription):
+    option_spec = {
+        'source-code': directives.unchanged
+    }
+
+    def __init__(self, *args, **kwargs):
+        super(ObjectDescription, self).__init__(*args, **kwargs)
+        options = args[2]
+        self.code_url = None
+
+        if 'source-code' in options and 'zeek-code-url' in self.env.config:
+            base_url = self.env.config['zeek-code-url']
+            path, start, end = options['source-code'].split()
+            path_parts = path.split('/')
+            file_name = path_parts[-1]
+
+            # Don't have anything to link to for BIFs
+            if not file_name.endswith('.bif.zeek'):
+                self.code_url = f'{base_url}/scripts/{path}#L{start}-L{end}'
+
     def get_obj_name(self):
         return self.objtype
 
@@ -122,7 +141,34 @@ class ZeekGeneric(ObjectDescription):
         return _('%s (%s)') % (name, self.get_obj_name())
 
     def handle_signature(self, sig, signode):
-        signode += addnodes.desc_name("", sig)
+        if self.code_url:
+            signode += nodes.reference(sig, sig,
+                                       refuri=self.code_url,
+                                       reftitle='View Source Code')
+
+            # Could embed snippets directly, but would probably want to clean
+            # up how it's done: don't use an external script, figure out why
+            # tab/indentation is broken, toggle snippet visibility on mouse
+            # hover or other explicit button/link, fix the colors/theming...
+            # But for now, leaving this commented out as an example and quick
+            # way of checking that the code ranges that Zeekygen outputs are
+            # sensible.
+
+            # import urllib
+            # snippet_target = urllib.parse.quote(self.code_url, '')
+            # snippet_url = 'https://emgithub.com/embed.js'
+            # snippet_url += f'?target={snippet_target}'
+            # snippet_url += '&style=github'
+            # snippet_url += '&showLineNumbers=on'
+            # snippet_url += '&showBorder=on'
+            # snippet_url += '&ts=4'
+            # rawnode = nodes.raw('', f'<script src="{snippet_url}"></script>',
+            #                     format='html')
+            # signode += rawnode
+
+        else:
+            signode += addnodes.desc_name("", sig)
+
         return sig
 
 class ZeekNamespace(ZeekGeneric):
