@@ -23,6 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ident_error
+   :source-code: base/bif/plugins/Zeek_Ident.events.bif.zeek 67 67
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, lport: :zeek:type:`port`, rport: :zeek:type:`port`, line: :zeek:type:`string`)
 
@@ -51,6 +52,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: ident_reply
+   :source-code: base/bif/plugins/Zeek_Ident.events.bif.zeek 45 45
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, lport: :zeek:type:`port`, rport: :zeek:type:`port`, user_id: :zeek:type:`string`, system: :zeek:type:`string`)
 
@@ -82,6 +84,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: ident_request
+   :source-code: base/bif/plugins/Zeek_Ident.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, lport: :zeek:type:`port`, rport: :zeek:type:`port`)
 

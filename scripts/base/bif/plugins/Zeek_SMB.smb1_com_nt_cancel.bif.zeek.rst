@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_nt_cancel_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_nt_cancel.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 

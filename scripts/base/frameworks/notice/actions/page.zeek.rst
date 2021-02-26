@@ -35,6 +35,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Notice::mail_page_dest
+   :source-code: base/frameworks/notice/actions/page.zeek 17 17
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`

@@ -57,6 +57,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: SNMP::version_map
+   :source-code: base/protocols/snmp/main.zeek 52 52
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = ``"unknown"``
@@ -76,6 +77,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: SNMP::Info
+   :source-code: base/protocols/snmp/main.zeek 13 49
 
    :Type: :zeek:type:`record`
 
@@ -129,6 +131,7 @@ Types
 Events
 ######
 .. zeek:id:: SNMP::log_snmp
+   :source-code: base/protocols/snmp/main.zeek 60 60
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SNMP::Info`)
 
@@ -138,12 +141,14 @@ Events
 Hooks
 #####
 .. zeek:id:: SNMP::finalize_snmp
+   :source-code: base/protocols/snmp/main.zeek 103 107
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SNMP finalization hook.  Remaining SNMP info may get logged when it's called.
 
 .. zeek:id:: SNMP::log_policy
+   :source-code: base/protocols/snmp/main.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 

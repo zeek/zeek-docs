@@ -24,6 +24,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: NetControl::create_debug
+   :source-code: base/frameworks/netcontrol/plugins/debug.zeek 76 85
 
    :Type: :zeek:type:`function` (do_something: :zeek:type:`bool`) : :zeek:type:`NetControl::PluginState`
 

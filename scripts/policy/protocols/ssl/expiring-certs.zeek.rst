@@ -46,6 +46,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSL::notify_certs_expiration
+   :source-code: policy/protocols/ssl/expiring-certs.zeek 30 30
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -58,6 +59,7 @@ Runtime Options
    Choices are: LOCAL_HOSTS, REMOTE_HOSTS, ALL_HOSTS, NO_HOSTS
 
 .. zeek:id:: SSL::notify_when_cert_expiring_in
+   :source-code: policy/protocols/ssl/expiring-certs.zeek 34 34
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`

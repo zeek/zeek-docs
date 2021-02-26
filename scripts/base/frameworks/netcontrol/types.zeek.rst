@@ -47,6 +47,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: NetControl::default_priority
+   :source-code: base/frameworks/netcontrol/types.zeek 10 10
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -57,6 +58,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: NetControl::whitelist_priority
+   :source-code: base/frameworks/netcontrol/types.zeek 18 18
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -72,6 +74,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: NetControl::Entity
+   :source-code: base/frameworks/netcontrol/types.zeek 42 48
 
    :Type: :zeek:type:`record`
 
@@ -93,6 +96,7 @@ Types
    Type defining the entity a rule is operating on.
 
 .. zeek:type:: NetControl::EntityType
+   :source-code: base/frameworks/netcontrol/types.zeek 21 27
 
    :Type: :zeek:type:`enum`
 
@@ -115,6 +119,7 @@ Types
    Type defining the entity that a rule applies to.
 
 .. zeek:type:: NetControl::Flow
+   :source-code: base/frameworks/netcontrol/types.zeek 32 39
 
    :Type: :zeek:type:`record`
 
@@ -142,6 +147,7 @@ Types
    If optional fields are not set, they are interpreted as wildcarded.
 
 .. zeek:type:: NetControl::FlowInfo
+   :source-code: base/frameworks/netcontrol/types.zeek 122 126
 
    :Type: :zeek:type:`record`
 
@@ -160,6 +166,7 @@ Types
    can expect to be available.
 
 .. zeek:type:: NetControl::FlowMod
+   :source-code: base/frameworks/netcontrol/types.zeek 90 98
 
    :Type: :zeek:type:`record`
 
@@ -186,6 +193,7 @@ Types
    Type for defining a flow modification action.
 
 .. zeek:type:: NetControl::Rule
+   :source-code: base/frameworks/netcontrol/types.zeek 103 116
 
    :Type: :zeek:type:`record`
 
@@ -244,6 +252,7 @@ Types
    further rules will be ignored.
 
 .. zeek:type:: NetControl::RuleType
+   :source-code: base/frameworks/netcontrol/types.zeek 65 88
 
    :Type: :zeek:type:`enum`
 
@@ -279,6 +288,7 @@ Types
    Plugins may extend this type to define their own.
 
 .. zeek:type:: NetControl::TargetType
+   :source-code: base/frameworks/netcontrol/types.zeek 56 60
 
    :Type: :zeek:type:`enum`
 

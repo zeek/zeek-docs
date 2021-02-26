@@ -40,12 +40,14 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: Version::info
+   :source-code: base/misc/version.zeek 113 113
 
    :Type: :zeek:type:`Version::VersionDescription`
 
    `VersionDescription` record pertaining to the currently running version of Zeek.
 
 .. zeek:id:: Version::number
+   :source-code: base/misc/version.zeek 119 119
 
    :Type: :zeek:type:`count`
 
@@ -57,6 +59,7 @@ Constants
 Types
 #####
 .. zeek:type:: Version::VersionDescription
+   :source-code: base/misc/version.zeek 12 39
 
    :Type: :zeek:type:`record`
 
@@ -99,6 +102,7 @@ Types
 Functions
 #########
 .. zeek:id:: Version::at_least
+   :source-code: base/misc/version.zeek 122 125
 
    :Type: :zeek:type:`function` (version_string: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -112,6 +116,7 @@ Functions
    :returns: True if running version greater or equal to the given version.
 
 .. zeek:id:: Version::parse
+   :source-code: base/misc/version.zeek 57 109
 
    :Type: :zeek:type:`function` (version_string: :zeek:type:`string`) : :zeek:type:`Version::VersionDescription`
 

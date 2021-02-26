@@ -54,6 +54,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::Info
+   :source-code: base/protocols/conn/main.zeek 20 151
 
    :Type: :zeek:type:`record`
 
@@ -232,6 +233,7 @@ Types
 Events
 ######
 .. zeek:id:: Conn::log_conn
+   :source-code: base/protocols/conn/main.zeek 155 155
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Conn::Info`)
 
@@ -241,6 +243,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Conn::log_policy
+   :source-code: base/protocols/conn/main.zeek 17 17
 
    :Type: :zeek:type:`Log::PolicyHook`
 

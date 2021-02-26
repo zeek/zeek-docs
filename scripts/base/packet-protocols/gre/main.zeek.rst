@@ -21,6 +21,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: PacketAnalyzer::GRE::default_analyzer
+   :source-code: base/packet-protocols/gre/main.zeek 4 4
 
    :Type: :zeek:type:`PacketAnalyzer::Tag`
    :Attributes: :zeek:attr:`&redef`

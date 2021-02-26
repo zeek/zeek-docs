@@ -49,6 +49,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Stats::report_interval
+   :source-code: policy/misc/stats.zeek 13 13
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -59,6 +60,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: Stats::Info
+   :source-code: policy/misc/stats.zeek 15 81
 
    :Type: :zeek:type:`record`
 
@@ -149,6 +151,7 @@ Types
 Events
 ######
 .. zeek:id:: Stats::log_stats
+   :source-code: policy/misc/stats.zeek 84 84
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Stats::Info`)
 
@@ -157,6 +160,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Stats::log_policy
+   :source-code: policy/misc/stats.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 

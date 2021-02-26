@@ -49,12 +49,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: KRB::describe_file
+   :source-code: base/protocols/krb/files.zeek 38 63
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
    Default file describer for KRB.
 
 .. zeek:id:: KRB::get_file_handle
+   :source-code: base/protocols/krb/files.zeek 32 36
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 

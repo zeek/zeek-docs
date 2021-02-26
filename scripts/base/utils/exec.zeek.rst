@@ -31,6 +31,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Exec::Command
+   :source-code: base/utils/exec.zeek 8 20
 
    :Type: :zeek:type:`record`
 
@@ -51,6 +52,7 @@ Types
 
 
 .. zeek:type:: Exec::Result
+   :source-code: base/utils/exec.zeek 22 34
 
    :Type: :zeek:type:`record`
 
@@ -74,6 +76,7 @@ Types
 Functions
 #########
 .. zeek:id:: Exec::run
+   :source-code: base/utils/exec.zeek 153 188
 
    :Type: :zeek:type:`function` (cmd: :zeek:type:`Exec::Command`) : :zeek:type:`Exec::Result`
 

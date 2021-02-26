@@ -40,6 +40,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: MOUNT3::auth_flavor_t
+   :source-code: base/bif/types.bif.zeek 49 49
 
    :Type: :zeek:type:`enum`
 
@@ -53,6 +54,7 @@ Types
 
 
 .. zeek:type:: MOUNT3::proc_t
+   :source-code: base/bif/types.bif.zeek 23 23
 
    :Type: :zeek:type:`enum`
 
@@ -72,6 +74,7 @@ Types
 
 
 .. zeek:type:: MOUNT3::status_t
+   :source-code: base/bif/types.bif.zeek 34 34
 
    :Type: :zeek:type:`enum`
 
@@ -99,6 +102,7 @@ Types
 
 
 .. zeek:type:: NFS3::createmode_t
+   :source-code: base/bif/types.bif.zeek 151 151
 
    :Type: :zeek:type:`enum`
 
@@ -110,6 +114,7 @@ Types
 
 
 .. zeek:type:: NFS3::file_type_t
+   :source-code: base/bif/types.bif.zeek 132 132
 
    :Type: :zeek:type:`enum`
 
@@ -129,6 +134,7 @@ Types
 
 
 .. zeek:type:: NFS3::proc_t
+   :source-code: base/bif/types.bif.zeek 64 64
 
    :Type: :zeek:type:`enum`
 
@@ -180,6 +186,7 @@ Types
 
 
 .. zeek:type:: NFS3::stable_how_t
+   :source-code: base/bif/types.bif.zeek 144 144
 
    :Type: :zeek:type:`enum`
 
@@ -191,6 +198,7 @@ Types
 
 
 .. zeek:type:: NFS3::status_t
+   :source-code: base/bif/types.bif.zeek 91 91
 
    :Type: :zeek:type:`enum`
 
@@ -256,6 +264,7 @@ Types
 
 
 .. zeek:type:: NFS3::time_how_t
+   :source-code: base/bif/types.bif.zeek 125 125
 
    :Type: :zeek:type:`enum`
 
@@ -267,6 +276,7 @@ Types
 
 
 .. zeek:type:: Reporter::Level
+   :source-code: base/bif/types.bif.zeek 260 260
 
    :Type: :zeek:type:`enum`
 
@@ -278,6 +288,7 @@ Types
 
 
 .. zeek:type:: TableChange
+   :source-code: base/bif/types.bif.zeek 249 249
 
    :Type: :zeek:type:`enum`
 
@@ -291,6 +302,7 @@ Types
 
 
 .. zeek:type:: Tunnel::Type
+   :source-code: base/bif/types.bif.zeek 203 203
 
    :Type: :zeek:type:`enum`
 
@@ -314,6 +326,7 @@ Types
 
 
 .. zeek:type:: layer3_proto
+   :source-code: base/bif/types.bif.zeek 227 227
 
    :Type: :zeek:type:`enum`
 
@@ -327,6 +340,7 @@ Types
 
 
 .. zeek:type:: link_encap
+   :source-code: base/bif/types.bif.zeek 221 221
 
    :Type: :zeek:type:`enum`
 
@@ -336,6 +350,7 @@ Types
 
 
 .. zeek:type:: rpc_status
+   :source-code: base/bif/types.bif.zeek 6 6
 
    :Type: :zeek:type:`enum`
 

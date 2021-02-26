@@ -77,6 +77,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DHCP::max_txid_watch_time
+   :source-code: base/protocols/dhcp/main.zeek 92 92
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -89,6 +90,7 @@ Runtime Options
 State Variables
 ###############
 .. zeek:id:: DHCP::log_info
+   :source-code: base/protocols/dhcp/main.zeek 104 104
 
    :Type: :zeek:type:`DHCP::Info`
    :Default:
@@ -134,6 +136,7 @@ State Variables
 Types
 #####
 .. zeek:type:: DHCP::Info
+   :source-code: base/protocols/dhcp/main.zeek 18 87
 
    :Type: :zeek:type:`record`
 
@@ -259,6 +262,7 @@ Types
 Events
 ######
 .. zeek:id:: DHCP::aggregate_msgs
+   :source-code: base/protocols/dhcp/main.zeek 98 98
 
    :Type: :zeek:type:`event` (ts: :zeek:type:`time`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`DHCP::Msg`, options: :zeek:type:`DHCP::Options`)
 
@@ -268,6 +272,7 @@ Events
    :zeek:see:`DHCP::log_info`.
 
 .. zeek:id:: DHCP::log_dhcp
+   :source-code: policy/protocols/dhcp/software.zeek 40 64
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`DHCP::Info`)
 
@@ -277,6 +282,7 @@ Events
 Hooks
 #####
 .. zeek:id:: DHCP::log_policy
+   :source-code: base/protocols/dhcp/main.zeek 15 15
 
    :Type: :zeek:type:`Log::PolicyHook`
 

@@ -21,6 +21,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: skip_smtp_data
+   :source-code: base/bif/plugins/Zeek_SMTP.functions.bif.zeek 12 12
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`any`
 

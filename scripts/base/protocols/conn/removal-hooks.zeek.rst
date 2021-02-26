@@ -50,6 +50,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::RemovalHook
+   :source-code: base/protocols/conn/removal-hooks.zeek 17 17
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
@@ -61,6 +62,7 @@ Types
 Functions
 #########
 .. zeek:id:: Conn::register_removal_hook
+   :source-code: base/protocols/conn/removal-hooks.zeek 47 60
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, hk: :zeek:type:`Conn::RemovalHook`) : :zeek:type:`bool`
 
@@ -78,6 +80,7 @@ Functions
    :returns: false if the provided hook was previously registered, else true.
 
 .. zeek:id:: Conn::unregister_removal_hook
+   :source-code: base/protocols/conn/removal-hooks.zeek 62 72
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, hk: :zeek:type:`Conn::RemovalHook`) : :zeek:type:`bool`
 

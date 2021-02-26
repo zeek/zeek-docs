@@ -31,6 +31,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: FTP::default_capture_password
+   :source-code: base/protocols/ftp/info.zeek 11 11
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -42,6 +43,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: FTP::ExpectedDataChannel
+   :source-code: base/protocols/ftp/info.zeek 14 24
 
    :Type: :zeek:type:`record`
 
@@ -61,6 +63,7 @@ Types
    The expected endpoints of an FTP data channel.
 
 .. zeek:type:: FTP::Info
+   :source-code: base/protocols/ftp/info.zeek 26 72
 
    :Type: :zeek:type:`record`
 

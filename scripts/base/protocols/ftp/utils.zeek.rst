@@ -25,6 +25,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: FTP::build_url
+   :source-code: base/protocols/ftp/utils.zeek 28 38
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`FTP::Info`) : :zeek:type:`string`
 
@@ -37,6 +38,7 @@ Functions
    :returns: A URL, not prefixed by ``"ftp://"``.
 
 .. zeek:id:: FTP::build_url_ftp
+   :source-code: base/protocols/ftp/utils.zeek 40 43
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`FTP::Info`) : :zeek:type:`string`
 
@@ -49,6 +51,7 @@ Functions
    :returns: A URL prefixed with ``"ftp://"``.
 
 .. zeek:id:: FTP::describe
+   :source-code: base/protocols/ftp/utils.zeek 45 48
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`FTP::Info`) : :zeek:type:`string`
 

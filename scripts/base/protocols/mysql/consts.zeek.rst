@@ -21,6 +21,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: MySQL::commands
+   :source-code: base/protocols/mysql/consts.zeek 4 4
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`

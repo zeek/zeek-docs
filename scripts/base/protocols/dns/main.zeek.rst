@@ -76,6 +76,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DNS::max_pending_msgs
+   :source-code: base/protocols/dns/main.zeek 125 125
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +89,7 @@ Runtime Options
    response is ongoing).
 
 .. zeek:id:: DNS::max_pending_query_ids
+   :source-code: base/protocols/dns/main.zeek 130 130
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -100,6 +102,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: DNS::Info
+   :source-code: base/protocols/dns/main.zeek 18 85
 
    :Type: :zeek:type:`record`
 
@@ -210,6 +213,7 @@ Types
    The record type which contains the column fields of the DNS log.
 
 .. zeek:type:: DNS::PendingMessages
+   :source-code: base/protocols/dns/main.zeek 118 118
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`Queue::Queue`
 
@@ -217,6 +221,7 @@ Types
    DNS message query/transaction ID.
 
 .. zeek:type:: DNS::State
+   :source-code: base/protocols/dns/main.zeek 134 149
 
    :Type: :zeek:type:`record`
 
@@ -241,6 +246,7 @@ Types
 Events
 ######
 .. zeek:id:: DNS::log_dns
+   :source-code: base/protocols/dns/main.zeek 89 89
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`DNS::Info`)
 
@@ -250,6 +256,7 @@ Events
 Hooks
 #####
 .. zeek:id:: DNS::do_reply
+   :source-code: base/protocols/dns/main.zeek 103 103
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, reply: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -271,18 +278,21 @@ Hooks
    :reply: The specific response information according to RR type/class.
 
 .. zeek:id:: DNS::finalize_dns
+   :source-code: base/protocols/dns/main.zeek 617 632
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    DNS finalization hook.  Remaining DNS info may get logged when it's called.
 
 .. zeek:id:: DNS::log_policy
+   :source-code: base/protocols/dns/main.zeek 15 15
 
    :Type: :zeek:type:`Log::PolicyHook`
 
    A default logging policy hook for the stream.
 
 .. zeek:id:: DNS::set_session
+   :source-code: base/protocols/dns/main.zeek 237 346
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, is_query: :zeek:type:`bool`) : :zeek:type:`bool`
 

@@ -52,6 +52,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: LogAscii::empty_field
+   :source-code: base/frameworks/logging/writers/ascii.zeek 90 90
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -63,6 +64,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::enable_leftover_log_rotation
+   :source-code: base/frameworks/logging/writers/ascii.zeek 35 35
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -76,6 +78,7 @@ Redefinable Options
    or the *interv* field of a :zeek:see:`Log::Filter`.
 
 .. zeek:id:: LogAscii::enable_utf_8
+   :source-code: base/frameworks/logging/writers/ascii.zeek 41 41
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -87,6 +90,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::gzip_file_extension
+   :source-code: base/frameworks/logging/writers/ascii.zeek 55 55
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -98,6 +102,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::gzip_level
+   :source-code: base/frameworks/logging/writers/ascii.zeek 49 49
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -111,6 +116,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::include_meta
+   :source-code: base/frameworks/logging/writers/ascii.zeek 69 69
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -123,6 +129,7 @@ Redefinable Options
    If writing in JSON format, this is implicitly disabled.
 
 .. zeek:id:: LogAscii::json_timestamps
+   :source-code: base/frameworks/logging/writers/ascii.zeek 62 62
 
    :Type: :zeek:type:`JSON::TimestampFormat`
    :Attributes: :zeek:attr:`&redef`
@@ -135,6 +142,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::meta_prefix
+   :source-code: base/frameworks/logging/writers/ascii.zeek 74 74
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -145,6 +153,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::output_to_stdout
+   :source-code: base/frameworks/logging/writers/ascii.zeek 22 22
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -156,6 +165,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::separator
+   :source-code: base/frameworks/logging/writers/ascii.zeek 79 79
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -166,6 +176,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::set_separator
+   :source-code: base/frameworks/logging/writers/ascii.zeek 84 84
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -176,6 +187,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::unset_field
+   :source-code: base/frameworks/logging/writers/ascii.zeek 95 95
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -186,6 +198,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::use_json
+   :source-code: base/frameworks/logging/writers/ascii.zeek 27 27
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`

@@ -21,6 +21,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: dhcp_message
+   :source-code: base/protocols/dhcp/main.zeek 275 278
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`DHCP::Msg`, options: :zeek:type:`DHCP::Options`)
 

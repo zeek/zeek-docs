@@ -27,6 +27,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: ChecksumOffloading::check_interval
+   :source-code: base/misc/find-checksum-offloading.zeek 13 13
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`

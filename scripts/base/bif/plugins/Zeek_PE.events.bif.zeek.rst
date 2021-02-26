@@ -25,6 +25,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: pe_dos_code
+   :source-code: base/bif/plugins/Zeek_PE.events.bif.zeek 25 25
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, code: :zeek:type:`string`)
 
@@ -41,6 +42,7 @@ Events
    .. zeek:see:: pe_dos_header pe_file_header pe_optional_header pe_section_header
 
 .. zeek:id:: pe_dos_header
+   :source-code: base/files/pe/main.zeek 72 75
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::DOSHeader`)
 
@@ -57,6 +59,7 @@ Events
    .. zeek:see:: pe_dos_code pe_file_header pe_optional_header pe_section_header
 
 .. zeek:id:: pe_file_header
+   :source-code: base/files/pe/main.zeek 77 91
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::FileHeader`)
 
@@ -74,6 +77,7 @@ Events
    .. zeek:see:: pe_dos_header pe_dos_code pe_optional_header pe_section_header
 
 .. zeek:id:: pe_optional_header
+   :source-code: base/files/pe/main.zeek 92 120
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::OptionalHeader`)
 
@@ -92,6 +96,7 @@ Events
    .. zeek:see:: pe_dos_header pe_dos_code pe_file_header pe_section_header
 
 .. zeek:id:: pe_section_header
+   :source-code: base/files/pe/main.zeek 121 132
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::SectionHeader`)
 

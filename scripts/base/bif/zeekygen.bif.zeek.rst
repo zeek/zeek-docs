@@ -27,6 +27,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: get_identifier_comments
+   :source-code: base/bif/zeekygen.bif.zeek 17 17
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -41,6 +42,7 @@ Functions
             identifier, an empty string is returned.
 
 .. zeek:id:: get_package_readme
+   :source-code: base/bif/zeekygen.bif.zeek 39 39
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -55,6 +57,7 @@ Functions
             package, an empty string is returned.
 
 .. zeek:id:: get_record_field_comments
+   :source-code: base/bif/zeekygen.bif.zeek 50 50
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -70,6 +73,7 @@ Functions
             type, an empty string is returned.
 
 .. zeek:id:: get_script_comments
+   :source-code: base/bif/zeekygen.bif.zeek 29 29
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 

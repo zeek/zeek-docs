@@ -25,6 +25,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: ConnPolling::watch
+   :source-code: base/protocols/conn/polling.zeek 47 51
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, callback: :zeek:type:`function` (c: :zeek:type:`connection`, cnt: :zeek:type:`count`) : :zeek:type:`interval`, cnt: :zeek:type:`count`, i: :zeek:type:`interval`) : :zeek:type:`void`
 

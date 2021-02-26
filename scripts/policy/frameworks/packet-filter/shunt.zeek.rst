@@ -52,6 +52,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: PacketFilter::max_bpf_shunts
+   :source-code: policy/frameworks/packet-filter/shunt.zeek 8 8
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -62,18 +63,21 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: PacketFilter::current_shunted_conns
+   :source-code: policy/frameworks/packet-filter/shunt.zeek 86 89
 
    :Type: :zeek:type:`function` () : :zeek:type:`set` [:zeek:type:`conn_id`]
 
    Retrieve the currently shunted connections.
 
 .. zeek:id:: PacketFilter::current_shunted_host_pairs
+   :source-code: policy/frameworks/packet-filter/shunt.zeek 91 94
 
    :Type: :zeek:type:`function` () : :zeek:type:`set` [:zeek:type:`conn_id`]
 
    Retrieve the currently shunted host pairs.
 
 .. zeek:id:: PacketFilter::force_unshunt_host_pair
+   :source-code: policy/frameworks/packet-filter/shunt.zeek 133 142
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
@@ -81,6 +85,7 @@ Functions
    function, but it forces an immediate filter update.
 
 .. zeek:id:: PacketFilter::shunt_conn
+   :source-code: policy/frameworks/packet-filter/shunt.zeek 144 162
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
@@ -90,6 +95,7 @@ Functions
    the connection and it can stop shunting once the connection ends.
 
 .. zeek:id:: PacketFilter::shunt_host_pair
+   :source-code: policy/frameworks/packet-filter/shunt.zeek 108 118
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
@@ -98,6 +104,7 @@ Functions
    exposed to Zeek's traffic processing.
 
 .. zeek:id:: PacketFilter::unshunt_host_pair
+   :source-code: policy/frameworks/packet-filter/shunt.zeek 120 131
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`bool`
 

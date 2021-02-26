@@ -32,6 +32,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DumpEvents::include
+   :source-code: policy/misc/dump-events.zeek 18 18
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`
@@ -46,6 +47,7 @@ Runtime Options
    pattern matches all events.
 
 .. zeek:id:: DumpEvents::include_args
+   :source-code: policy/misc/dump-events.zeek 10 10
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -56,6 +58,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: DumpEvents::dump_all_events
+   :source-code: policy/misc/dump-events.zeek 14 14
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`

@@ -58,6 +58,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Log::sftp_rotation_date_format
+   :source-code: base/frameworks/logging/postprocessors/sftp.zeek 55 55
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -69,6 +70,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Log::sftp_destinations
+   :source-code: base/frameworks/logging/postprocessors/sftp.zeek 51 51
 
    :Type: :zeek:type:`table` [:zeek:type:`Log::Writer`, :zeek:type:`string`] of :zeek:type:`set` [:zeek:type:`Log::SFTPDestination`]
    :Default: ``{}``
@@ -82,6 +84,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Log::SFTPDestination
+   :source-code: base/frameworks/logging/postprocessors/sftp.zeek 34 44
 
    :Type: :zeek:type:`record`
 
@@ -104,6 +107,7 @@ Types
 Functions
 #########
 .. zeek:id:: Log::sftp_postprocessor
+   :source-code: base/frameworks/logging/postprocessors/sftp.zeek 58 76
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
 

@@ -23,6 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: conn_bytes_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 320 337
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`)
 
@@ -44,6 +45,7 @@ Events
                  set_current_conn_duration_threshold get_current_conn_duration_threshold
 
 .. zeek:id:: conn_duration_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 358 370
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`interval`, is_orig: :zeek:type:`bool`)
 
@@ -69,6 +71,7 @@ Events
                  set_current_conn_duration_threshold get_current_conn_duration_threshold
 
 .. zeek:id:: conn_packets_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 339 356
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`)
 

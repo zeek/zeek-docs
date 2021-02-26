@@ -31,6 +31,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Barnyard2::AlertData
+   :source-code: policy/integration/barnyard2/types.zeek 7 17
 
    :Type: :zeek:type:`record`
 
@@ -64,6 +65,7 @@ Types
 
 
 .. zeek:type:: Barnyard2::PacketID
+   :source-code: policy/integration/barnyard2/types.zeek 19 24
 
    :Type: :zeek:type:`record`
 
@@ -80,6 +82,7 @@ Types
 Events
 ######
 .. zeek:id:: Barnyard2::barnyard_alert
+   :source-code: policy/integration/barnyard2/main.zeek 40 43
 
    :Type: :zeek:type:`event` (id: :zeek:type:`Barnyard2::PacketID`, alert: :zeek:type:`Barnyard2::AlertData`, msg: :zeek:type:`string`, data: :zeek:type:`string`)
 

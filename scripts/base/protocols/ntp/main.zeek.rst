@@ -48,6 +48,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NTP::Info
+   :source-code: base/protocols/ntp/main.zeek 8 47
 
    :Type: :zeek:type:`record`
 
@@ -109,6 +110,7 @@ Types
 Events
 ######
 .. zeek:id:: NTP::log_ntp
+   :source-code: base/protocols/ntp/main.zeek 51 51
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`NTP::Info`)
 
@@ -118,6 +120,7 @@ Events
 Hooks
 #####
 .. zeek:id:: NTP::log_policy
+   :source-code: base/protocols/ntp/main.zeek 6 6
 
    :Type: :zeek:type:`Log::PolicyHook`
 

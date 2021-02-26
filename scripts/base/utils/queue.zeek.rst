@@ -55,6 +55,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Queue::Queue
+   :source-code: base/utils/queue.zeek 15 16
 
    :Type: :zeek:type:`record`
 
@@ -73,6 +74,7 @@ Types
    The internal data structure for the queue.
 
 .. zeek:type:: Queue::Settings
+   :source-code: base/utils/queue.zeek 7 12
 
    :Type: :zeek:type:`record`
 
@@ -86,6 +88,7 @@ Types
 Functions
 #########
 .. zeek:id:: Queue::get
+   :source-code: base/utils/queue.zeek 105 111
 
    :Type: :zeek:type:`function` (q: :zeek:type:`Queue::Queue`) : :zeek:type:`any`
 
@@ -98,6 +101,7 @@ Functions
    :returns: The value gotten from the queue.
 
 .. zeek:id:: Queue::get_vector
+   :source-code: base/utils/queue.zeek 140 156
 
    :Type: :zeek:type:`function` (q: :zeek:type:`Queue::Queue`, ret: :zeek:type:`vector` of :zeek:type:`any`) : :zeek:type:`void`
 
@@ -111,6 +115,7 @@ Functions
         as the type of ret.
 
 .. zeek:id:: Queue::init
+   :source-code: base/utils/queue.zeek 88 96
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Queue::Settings` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`) : :zeek:type:`Queue::Queue`
 
@@ -123,6 +128,7 @@ Functions
    :returns: An opaque queue record.
 
 .. zeek:id:: Queue::len
+   :source-code: base/utils/queue.zeek 135 138
 
    :Type: :zeek:type:`function` (q: :zeek:type:`Queue::Queue`) : :zeek:type:`count`
 
@@ -135,6 +141,7 @@ Functions
    :returns: The length of the queue.
 
 .. zeek:id:: Queue::merge
+   :source-code: base/utils/queue.zeek 118 134
 
    :Type: :zeek:type:`function` (q1: :zeek:type:`Queue::Queue`, q2: :zeek:type:`Queue::Queue`) : :zeek:type:`Queue::Queue`
 
@@ -152,6 +159,7 @@ Functions
    :returns: A new queue from merging the other two together.
 
 .. zeek:id:: Queue::peek
+   :source-code: base/utils/queue.zeek 113 116
 
    :Type: :zeek:type:`function` (q: :zeek:type:`Queue::Queue`) : :zeek:type:`any`
 
@@ -164,6 +172,7 @@ Functions
    :returns: The value at the end of the queue.
 
 .. zeek:id:: Queue::put
+   :source-code: base/utils/queue.zeek 97 103
 
    :Type: :zeek:type:`function` (q: :zeek:type:`Queue::Queue`, val: :zeek:type:`any`) : :zeek:type:`void`
 

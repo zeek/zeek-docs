@@ -70,6 +70,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: RDP::disable_analyzer_after_detection
+   :source-code: base/protocols/rdp/main.zeek 66 66
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -79,6 +80,7 @@ Runtime Options
    continuing to process encrypted traffic.
 
 .. zeek:id:: RDP::rdp_check_interval
+   :source-code: base/protocols/rdp/main.zeek 70 70
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -90,6 +92,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: RDP::Info
+   :source-code: base/protocols/rdp/main.zeek 13 62
 
    :Type: :zeek:type:`record`
 
@@ -175,6 +178,7 @@ Types
 Events
 ######
 .. zeek:id:: RDP::log_rdp
+   :source-code: base/protocols/rdp/main.zeek 74 74
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`RDP::Info`)
 
@@ -184,12 +188,14 @@ Events
 Hooks
 #####
 .. zeek:id:: RDP::finalize_rdp
+   :source-code: base/protocols/rdp/main.zeek 284 291
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    RDP finalization hook.  Remaining RDP info may get logged when it's called.
 
 .. zeek:id:: RDP::log_policy
+   :source-code: base/protocols/rdp/main.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

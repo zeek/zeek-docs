@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ncp_reply
+   :source-code: base/bif/plugins/Zeek_NCP.events.bif.zeek 49 49
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, frame_type: :zeek:type:`count`, length: :zeek:type:`count`, req_frame: :zeek:type:`count`, req_func: :zeek:type:`count`, completion_code: :zeek:type:`count`)
 
@@ -56,6 +57,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: ncp_request
+   :source-code: base/bif/plugins/Zeek_NCP.events.bif.zeek 23 23
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, frame_type: :zeek:type:`count`, length: :zeek:type:`count`, func: :zeek:type:`count`)
 

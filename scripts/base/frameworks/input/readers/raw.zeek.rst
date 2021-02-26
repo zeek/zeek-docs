@@ -28,6 +28,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: InputRaw::record_separator
+   :source-code: base/frameworks/input/readers/raw.zeek 8 8
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -39,6 +40,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: InputRaw::process_finished
+   :source-code: base/utils/exec.zeek 129 152
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, source: :zeek:type:`string`, exit_code: :zeek:type:`count`, signal_exit: :zeek:type:`bool`)
 

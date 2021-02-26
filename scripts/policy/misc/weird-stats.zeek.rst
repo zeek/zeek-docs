@@ -50,6 +50,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: WeirdStats::weird_stat_interval
+   :source-code: policy/misc/weird-stats.zeek 14 14
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -60,6 +61,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: WeirdStats::Info
+   :source-code: policy/misc/weird-stats.zeek 16 23
 
    :Type: :zeek:type:`record`
 
@@ -76,6 +78,7 @@ Types
 Events
 ######
 .. zeek:id:: WeirdStats::log_weird_stats
+   :source-code: policy/misc/weird-stats.zeek 25 25
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`WeirdStats::Info`)
 
@@ -83,6 +86,7 @@ Events
 Hooks
 #####
 .. zeek:id:: WeirdStats::log_policy
+   :source-code: policy/misc/weird-stats.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

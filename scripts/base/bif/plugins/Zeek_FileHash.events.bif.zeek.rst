@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: file_hash
+   :source-code: base/bif/plugins/Zeek_FileHash.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, kind: :zeek:type:`string`, hash: :zeek:type:`string`)
 

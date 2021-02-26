@@ -75,6 +75,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Intel::item_expiration
+   :source-code: base/frameworks/intel/main.zeek 164 164
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -94,6 +95,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Intel::Info
+   :source-code: base/frameworks/intel/main.zeek 104 121
 
    :Type: :zeek:type:`record`
 
@@ -145,6 +147,7 @@ Types
    hit within the intelligence framework.
 
 .. zeek:type:: Intel::Item
+   :source-code: base/frameworks/intel/main.zeek 54 64
 
    :Type: :zeek:type:`record`
 
@@ -161,6 +164,7 @@ Types
    Represents a piece of intelligence.
 
 .. zeek:type:: Intel::MetaData
+   :source-code: base/frameworks/intel/main.zeek 42 51
 
    :Type: :zeek:type:`record`
 
@@ -232,6 +236,7 @@ Types
    Data about an :zeek:type:`Intel::Item`.
 
 .. zeek:type:: Intel::Seen
+   :source-code: base/frameworks/intel/main.zeek 74 100
 
    :Type: :zeek:type:`record`
 
@@ -277,6 +282,7 @@ Types
    Information about a piece of "seen" data.
 
 .. zeek:type:: Intel::Type
+   :source-code: base/frameworks/intel/main.zeek 16 37
 
    :Type: :zeek:type:`enum`
 
@@ -336,12 +342,14 @@ Types
    Enum type to represent various types of intelligence data.
 
 .. zeek:type:: Intel::TypeSet
+   :source-code: base/frameworks/intel/main.zeek 39 39
 
    :Type: :zeek:type:`set` [:zeek:type:`Intel::Type`]
 
    Set of intelligence data types.
 
 .. zeek:type:: Intel::Where
+   :source-code: base/frameworks/intel/main.zeek 68 72
 
    :Type: :zeek:type:`enum`
 
@@ -487,11 +495,13 @@ Types
 Events
 ######
 .. zeek:id:: Intel::log_intel
+   :source-code: base/frameworks/intel/main.zeek 187 187
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Intel::Info`)
 
 
 .. zeek:id:: Intel::match
+   :source-code: base/frameworks/intel/main.zeek 144 144
 
    :Type: :zeek:type:`event` (s: :zeek:type:`Intel::Seen`, items: :zeek:type:`set` [:zeek:type:`Intel::Item`])
 
@@ -506,6 +516,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Intel::extend_match
+   :source-code: base/frameworks/intel/main.zeek 158 158
 
    :Type: :zeek:type:`hook` (info: :zeek:type:`Intel::Info`, s: :zeek:type:`Intel::Seen`, items: :zeek:type:`set` [:zeek:type:`Intel::Item`]) : :zeek:type:`bool`
 
@@ -526,6 +537,7 @@ Hooks
    not be logged.
 
 .. zeek:id:: Intel::filter_item
+   :source-code: policy/frameworks/intel/removal.zeek 14 22
 
    :Type: :zeek:type:`hook` (item: :zeek:type:`Intel::Item`) : :zeek:type:`bool`
 
@@ -538,6 +550,7 @@ Hooks
    :item: The intel item that should be inserted.
 
 .. zeek:id:: Intel::item_expired
+   :source-code: policy/frameworks/intel/do_expire.zeek 10 14
 
    :Type: :zeek:type:`hook` (indicator: :zeek:type:`string`, indicator_type: :zeek:type:`Intel::Type`, metas: :zeek:type:`set` [:zeek:type:`Intel::MetaData`]) : :zeek:type:`bool`
 
@@ -557,6 +570,7 @@ Hooks
    be removed.
 
 .. zeek:id:: Intel::log_policy
+   :source-code: base/frameworks/intel/main.zeek 13 13
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -564,6 +578,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Intel::insert
+   :source-code: base/frameworks/intel/main.zeek 512 519
 
    :Type: :zeek:type:`function` (item: :zeek:type:`Intel::Item`) : :zeek:type:`void`
 
@@ -573,6 +588,7 @@ Functions
    the existing metadata record will be updated.
 
 .. zeek:id:: Intel::remove
+   :source-code: base/frameworks/intel/main.zeek 565 604
 
    :Type: :zeek:type:`function` (item: :zeek:type:`Intel::Item`, purge_indicator: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`void`
 
@@ -580,6 +596,7 @@ Functions
    given metadata is ignored and the indicator is removed completely.
 
 .. zeek:id:: Intel::seen
+   :source-code: base/frameworks/intel/main.zeek 353 378
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Intel::Seen`) : :zeek:type:`void`
 

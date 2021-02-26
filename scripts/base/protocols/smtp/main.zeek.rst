@@ -64,6 +64,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMTP::mail_path_capture
+   :source-code: base/protocols/smtp/main.zeek 85 85
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -78,6 +79,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: SMTP::Info
+   :source-code: base/protocols/smtp/main.zeek 13 68
 
    :Type: :zeek:type:`record`
 
@@ -179,6 +181,7 @@ Types
 
 
 .. zeek:type:: SMTP::State
+   :source-code: base/protocols/smtp/main.zeek 70 78
 
    :Type: :zeek:type:`record`
 
@@ -201,6 +204,7 @@ Types
 Events
 ######
 .. zeek:id:: SMTP::log_smtp
+   :source-code: base/protocols/smtp/main.zeek 90 90
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SMTP::Info`)
 
@@ -208,12 +212,14 @@ Events
 Hooks
 #####
 .. zeek:id:: SMTP::finalize_smtp
+   :source-code: base/protocols/smtp/main.zeek 325 329
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SMTP finalization hook.  Remaining SMTP info may get logged when it's called.
 
 .. zeek:id:: SMTP::log_policy
+   :source-code: base/protocols/smtp/main.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -221,6 +227,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SMTP::describe
+   :source-code: base/protocols/smtp/main.zeek 340 366
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`SMTP::Info`) : :zeek:type:`string`
 

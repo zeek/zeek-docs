@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_close_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_close.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_id: :zeek:type:`count`)
 

@@ -29,6 +29,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: LogNone::debug
+   :source-code: base/frameworks/logging/writers/none.zeek 8 8
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`

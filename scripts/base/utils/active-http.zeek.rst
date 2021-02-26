@@ -39,6 +39,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: ActiveHTTP::default_max_time
+   :source-code: base/utils/active-http.zeek 10 10
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -47,6 +48,7 @@ Runtime Options
    The default timeout for HTTP requests.
 
 .. zeek:id:: ActiveHTTP::default_method
+   :source-code: base/utils/active-http.zeek 13 13
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -57,6 +59,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: ActiveHTTP::Request
+   :source-code: base/utils/active-http.zeek 26 46
 
    :Type: :zeek:type:`record`
 
@@ -81,6 +84,7 @@ Types
 
 
 .. zeek:type:: ActiveHTTP::Response
+   :source-code: base/utils/active-http.zeek 15 24
 
    :Type: :zeek:type:`record`
 
@@ -100,6 +104,7 @@ Types
 Functions
 #########
 .. zeek:id:: ActiveHTTP::request
+   :source-code: base/utils/active-http.zeek 79 128
 
    :Type: :zeek:type:`function` (req: :zeek:type:`ActiveHTTP::Request`) : :zeek:type:`ActiveHTTP::Response`
 

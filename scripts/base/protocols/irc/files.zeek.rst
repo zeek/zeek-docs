@@ -38,6 +38,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: IRC::get_file_handle
+   :source-code: base/protocols/irc/files.zeek 21 24
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 

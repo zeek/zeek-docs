@@ -44,6 +44,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: SumStats::get_last
+   :source-code: base/frameworks/sumstats/plugins/last.zeek 31 49
 
    :Type: :zeek:type:`function` (rv: :zeek:type:`SumStats::ResultVal`) : :zeek:type:`vector` of :zeek:type:`SumStats::Observation`
 

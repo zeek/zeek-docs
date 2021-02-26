@@ -28,6 +28,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: netbios_session_accepted
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -61,6 +62,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_keepalive
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 217 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -94,6 +96,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_message
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, data_len: :zeek:type:`count`)
 
@@ -133,6 +136,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_raw_message
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 157 157
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`)
 
@@ -174,6 +178,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_rejected
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 121 121
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -207,6 +212,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_request
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 63 63
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -240,6 +246,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_ret_arg_resp
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 188 188
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 

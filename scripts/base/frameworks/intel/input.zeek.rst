@@ -34,6 +34,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Intel::path_prefix
+   :source-code: base/frameworks/intel/input.zeek 22 22
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -49,6 +50,7 @@ Redefinable Options
    additionally.
 
 .. zeek:id:: Intel::read_files
+   :source-code: base/frameworks/intel/input.zeek 12 12
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -61,6 +63,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: Intel::read_entry
+   :source-code: base/frameworks/intel/input.zeek 49 52
 
    :Type: :zeek:type:`event` (desc: :zeek:type:`Input::EventDescription`, tpe: :zeek:type:`Input::Event`, item: :zeek:type:`Intel::Item`)
 
@@ -79,6 +82,7 @@ Events
    
 
 .. zeek:id:: Intel::read_error
+   :source-code: base/frameworks/intel/input.zeek 46 46
 
    :Type: :zeek:type:`event` (desc: :zeek:type:`Input::EventDescription`, message: :zeek:type:`string`, level: :zeek:type:`Reporter::Level`)
 

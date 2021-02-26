@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_check_directory_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_check_directory.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, directory_name: :zeek:type:`string`)
 
@@ -45,6 +46,7 @@ Events
    .. zeek:see:: smb1_message smb1_check_directory_response
 
 .. zeek:id:: smb1_check_directory_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_check_directory.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 

@@ -39,6 +39,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DPD::packet_segment_size
+   :source-code: policy/frameworks/dpd/packet-segment-logging.zeek 19 19
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`

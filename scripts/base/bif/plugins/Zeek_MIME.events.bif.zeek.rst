@@ -33,6 +33,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: mime_all_data
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 164 164
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -62,6 +63,7 @@ Events
       sessions, there's no corresponding event for that currently.
 
 .. zeek:id:: mime_all_headers
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 85 85
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hlist: :zeek:type:`mime_header_list`)
 
@@ -89,6 +91,7 @@ Events
       however, it raises :zeek:id:`http_header` instead.
 
 .. zeek:id:: mime_begin_entity
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -112,6 +115,7 @@ Events
       however, it raises :zeek:id:`http_begin_entity` instead.
 
 .. zeek:id:: mime_content_hash
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 207 207
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, content_len: :zeek:type:`count`, hash_value: :zeek:type:`string`)
 
@@ -139,6 +143,7 @@ Events
       sessions, there's no corresponding event for that currently.
 
 .. zeek:id:: mime_end_entity
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 41 41
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -162,6 +167,7 @@ Events
       however, it raises :zeek:id:`http_end_entity` instead.
 
 .. zeek:id:: mime_entity_data
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 140 140
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -193,6 +199,7 @@ Events
       sessions, there's no corresponding event for that currently.
 
 .. zeek:id:: mime_event
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 185 185
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, event_type: :zeek:type:`string`, detail: :zeek:type:`string`)
 
@@ -219,6 +226,7 @@ Events
       however, it raises :zeek:id:`http_event` instead.
 
 .. zeek:id:: mime_one_header
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 62 62
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, h: :zeek:type:`mime_header_rec`)
 
@@ -244,6 +252,7 @@ Events
       however, it raises :zeek:id:`http_header` instead.
 
 .. zeek:id:: mime_segment_data
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 114 114
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 

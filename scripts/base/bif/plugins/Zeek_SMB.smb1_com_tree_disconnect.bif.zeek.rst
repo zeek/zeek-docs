@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_tree_disconnect
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_tree_disconnect.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, is_orig: :zeek:type:`bool`)
 

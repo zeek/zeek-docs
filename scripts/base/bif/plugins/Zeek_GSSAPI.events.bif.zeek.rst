@@ -21,6 +21,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: gssapi_neg_result
+   :source-code: base/bif/plugins/Zeek_GSSAPI.events.bif.zeek 10 10
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, state: :zeek:type:`count`)
 

@@ -36,6 +36,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: rdp_begin_encryption
+   :source-code: base/protocols/rdp/main.zeek 247 257
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`)
 
@@ -48,6 +49,7 @@ Events
    :security_protocol: The security protocol being used for the session.
 
 .. zeek:id:: rdp_client_cluster_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 111 111
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientClusterData`)
 
@@ -60,6 +62,7 @@ Events
    :data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_client_core_data
+   :source-code: base/protocols/rdp/main.zeek 186 201
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientCoreData`)
 
@@ -72,6 +75,7 @@ Events
    :data: The data contained in the client core data structure.
 
 .. zeek:id:: rdp_client_network_data
+   :source-code: base/protocols/rdp/main.zeek 203 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, channels: :zeek:type:`RDP::ClientChannelList`)
 
@@ -84,6 +88,7 @@ Events
    :channels: The channels that were requested
 
 .. zeek:id:: rdp_client_security_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 95 95
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientSecurityData`)
 
@@ -96,6 +101,7 @@ Events
    :data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_connect_request
+   :source-code: base/protocols/rdp/main.zeek 165 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cookie: :zeek:type:`string`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cookie: :zeek:type:`string`)
@@ -112,6 +118,7 @@ Events
    :flags: The flags set by the client.
 
 .. zeek:id:: rdp_gcc_server_create_response
+   :source-code: base/protocols/rdp/main.zeek 218 223
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`count`)
 
@@ -124,6 +131,7 @@ Events
    :result: The 8-bit integer representing the GCC Conference Create Response result.
 
 .. zeek:id:: rdp_native_encrypted_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 43 43
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, len: :zeek:type:`count`)
 
@@ -139,6 +147,7 @@ Events
    :len: The length of the encrypted data.
 
 .. zeek:id:: rdp_negotiation_failure
+   :source-code: base/protocols/rdp/main.zeek 179 184
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, failure_code: :zeek:type:`count`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, failure_code: :zeek:type:`count`)
@@ -155,6 +164,7 @@ Events
    :flags: The flags set by the server.
 
 .. zeek:id:: rdp_negotiation_response
+   :source-code: base/protocols/rdp/main.zeek 172 177
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`)
@@ -171,6 +181,7 @@ Events
    :flags: The flags set by the server.
 
 .. zeek:id:: rdp_server_certificate
+   :source-code: base/protocols/rdp/main.zeek 233 245
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cert_type: :zeek:type:`count`, permanently_issued: :zeek:type:`bool`)
 
@@ -188,6 +199,7 @@ Events
    :permanently_issued: Value will be true is the certificate(s) is permanent on the server.
 
 .. zeek:id:: rdp_server_security
+   :source-code: base/protocols/rdp/main.zeek 225 231
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, encryption_method: :zeek:type:`count`, encryption_level: :zeek:type:`count`)
 
@@ -203,6 +215,7 @@ Events
    :encryption_level: The 32-bit integer representing the encryption level used in the connection.
 
 .. zeek:id:: rdpeudp_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -221,6 +234,7 @@ Events
    :data: The payload of the packet. This is probably very non-performant.
 
 .. zeek:id:: rdpeudp_established
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`)
 
@@ -233,6 +247,7 @@ Events
    :version: Whether the connection is RDPEUDP1 or RDPEUDP2
 
 .. zeek:id:: rdpeudp_syn
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 7 7
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -242,6 +257,7 @@ Events
    :c: The connection record for the underlying transport-layer session/flow.
 
 .. zeek:id:: rdpeudp_synack
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 13 13
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

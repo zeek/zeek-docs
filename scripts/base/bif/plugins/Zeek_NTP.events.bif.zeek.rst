@@ -21,6 +21,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ntp_message
+   :source-code: base/bif/plugins/Zeek_NTP.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`NTP::Message`)
 

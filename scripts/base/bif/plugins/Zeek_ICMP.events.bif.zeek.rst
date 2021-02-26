@@ -36,6 +36,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: icmp_echo_reply
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 88 88
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -69,6 +70,7 @@ Events
    .. zeek:see:: icmp_echo_request
 
 .. zeek:id:: icmp_echo_request
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 63 63
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -102,6 +104,7 @@ Events
    .. zeek:see:: icmp_echo_reply
 
 .. zeek:id:: icmp_error_message
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 115 115
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -136,6 +139,7 @@ Events
       icmp_time_exceeded icmp_parameter_problem
 
 .. zeek:id:: icmp_neighbor_advertisement
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 343 343
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, router: :zeek:type:`bool`, solicited: :zeek:type:`bool`, override: :zeek:type:`bool`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -176,6 +180,7 @@ Events
       icmp_neighbor_solicitation icmp_redirect
 
 .. zeek:id:: icmp_neighbor_solicitation
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 313 313
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -206,6 +211,7 @@ Events
       icmp_neighbor_advertisement icmp_redirect
 
 .. zeek:id:: icmp_packet_too_big
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 171 171
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -241,6 +247,7 @@ Events
       icmp_time_exceeded icmp_parameter_problem
 
 .. zeek:id:: icmp_parameter_problem
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 227 227
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -276,6 +283,7 @@ Events
       icmp_time_exceeded
 
 .. zeek:id:: icmp_redirect
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 369 369
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, dest: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -310,6 +318,7 @@ Events
       icmp_neighbor_solicitation icmp_neighbor_advertisement
 
 .. zeek:id:: icmp_router_advertisement
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 290 290
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, cur_hop_limit: :zeek:type:`count`, managed: :zeek:type:`bool`, other: :zeek:type:`bool`, home_agent: :zeek:type:`bool`, pref: :zeek:type:`count`, proxy: :zeek:type:`bool`, rsv: :zeek:type:`count`, router_lifetime: :zeek:type:`interval`, reachable_time: :zeek:type:`interval`, retrans_timer: :zeek:type:`interval`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -368,6 +377,7 @@ Events
       icmp_neighbor_solicitation icmp_neighbor_advertisement icmp_redirect
 
 .. zeek:id:: icmp_router_solicitation
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 248 248
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -395,6 +405,7 @@ Events
       icmp_neighbor_solicitation icmp_neighbor_advertisement icmp_redirect
 
 .. zeek:id:: icmp_sent
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 22 22
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`)
 
@@ -421,6 +432,7 @@ Events
    .. zeek:see:: icmp_error_message icmp_sent_payload
 
 .. zeek:id:: icmp_sent_payload
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 38 38
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, payload: :zeek:type:`string`)
 
@@ -443,6 +455,7 @@ Events
    .. zeek:see:: icmp_error_message icmp_sent_payload
 
 .. zeek:id:: icmp_time_exceeded
+   :source-code: policy/misc/detect-traceroute/main.zeek 100 103
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -478,6 +491,7 @@ Events
       icmp_parameter_problem
 
 .. zeek:id:: icmp_unreachable
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 143 143
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 

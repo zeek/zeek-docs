@@ -35,6 +35,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMTP::blocklist_error_messages
+   :source-code: policy/protocols/smtp/blocklists.zeek 20 20
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`

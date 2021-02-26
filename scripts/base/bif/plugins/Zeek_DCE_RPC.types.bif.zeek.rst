@@ -23,6 +23,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: DCE_RPC::IfID
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.types.bif.zeek 33 33
 
    :Type: :zeek:type:`enum`
 
@@ -56,6 +57,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::PType
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.types.bif.zeek 8 8
 
    :Type: :zeek:type:`enum`
 

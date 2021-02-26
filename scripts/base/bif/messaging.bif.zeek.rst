@@ -37,41 +37,49 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Broker::__auto_publish
+   :source-code: base/bif/messaging.bif.zeek 43 43
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__auto_unpublish
+   :source-code: base/bif/messaging.bif.zeek 46 46
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__flush_logs
+   :source-code: base/bif/messaging.bif.zeek 37 37
 
    :Type: :zeek:type:`function` () : :zeek:type:`count`
 
 
 .. zeek:id:: Broker::__forward
+   :source-code: base/bif/messaging.bif.zeek 52 52
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__publish_id
+   :source-code: base/bif/messaging.bif.zeek 40 40
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, id: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__subscribe
+   :source-code: base/bif/messaging.bif.zeek 49 49
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__unsubscribe
+   :source-code: base/bif/messaging.bif.zeek 55 55
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::make_event
+   :source-code: base/bif/messaging.bif.zeek 22 22
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`Broker::Event`
 
@@ -87,6 +95,7 @@ Functions
             event.
 
 .. zeek:id:: Broker::publish
+   :source-code: base/bif/messaging.bif.zeek 34 34
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 
@@ -104,6 +113,7 @@ Functions
    :returns: true if the message is sent.
 
 .. zeek:id:: Cluster::publish_hrw
+   :source-code: base/bif/messaging.bif.zeek 94 94
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 
@@ -126,6 +136,7 @@ Functions
    :returns: true if the message is sent.
 
 .. zeek:id:: Cluster::publish_rr
+   :source-code: base/bif/messaging.bif.zeek 77 77
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 

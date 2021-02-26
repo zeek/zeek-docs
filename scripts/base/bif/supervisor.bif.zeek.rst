@@ -31,46 +31,55 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Supervisor::__create
+   :source-code: base/bif/supervisor.bif.zeek 28 28
 
    :Type: :zeek:type:`function` (node: :zeek:type:`Supervisor::NodeConfig`) : :zeek:type:`string`
 
 
 .. zeek:id:: Supervisor::__destroy
+   :source-code: base/bif/supervisor.bif.zeek 31 31
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Supervisor::__init_cluster
+   :source-code: base/bif/supervisor.bif.zeek 37 37
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
 
 .. zeek:id:: Supervisor::__is_supervised
+   :source-code: base/bif/supervisor.bif.zeek 40 40
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
 
 .. zeek:id:: Supervisor::__is_supervisor
+   :source-code: base/bif/supervisor.bif.zeek 46 46
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
 
 .. zeek:id:: Supervisor::__node
+   :source-code: base/bif/supervisor.bif.zeek 43 43
 
    :Type: :zeek:type:`function` () : :zeek:type:`Supervisor::NodeConfig`
 
 
 .. zeek:id:: Supervisor::__restart
+   :source-code: base/bif/supervisor.bif.zeek 34 34
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Supervisor::__status
+   :source-code: base/bif/supervisor.bif.zeek 25 25
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string`) : :zeek:type:`Supervisor::Status`
 
 
 .. zeek:id:: Supervisor::__stem_pid
+   :source-code: base/bif/supervisor.bif.zeek 49 49
 
    :Type: :zeek:type:`function` () : :zeek:type:`int`
 

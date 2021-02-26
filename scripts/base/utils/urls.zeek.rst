@@ -35,6 +35,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: url_regex
+   :source-code: base/utils/urls.zeek 7 7
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`
@@ -53,6 +54,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: URI
+   :source-code: base/utils/urls.zeek 10 29
 
    :Type: :zeek:type:`record`
 
@@ -87,17 +89,20 @@ Types
 Functions
 #########
 .. zeek:id:: decompose_uri
+   :source-code: base/utils/urls.zeek 52 137
 
    :Type: :zeek:type:`function` (uri: :zeek:type:`string`) : :zeek:type:`URI`
 
 
 .. zeek:id:: find_all_urls
+   :source-code: base/utils/urls.zeek 32 35
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`string_set`
 
    Extracts URLs discovered in arbitrary text.
 
 .. zeek:id:: find_all_urls_without_scheme
+   :source-code: base/utils/urls.zeek 39 51
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`string_set`
 

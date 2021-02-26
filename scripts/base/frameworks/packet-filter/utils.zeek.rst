@@ -25,6 +25,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: PacketFilter::combine_filters
+   :source-code: base/frameworks/packet-filter/utils.zeek 40 50
 
    :Type: :zeek:type:`function` (lfilter: :zeek:type:`string`, op: :zeek:type:`string`, rfilter: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -46,6 +47,7 @@ Functions
             still result in a valid filter.
 
 .. zeek:id:: PacketFilter::port_to_bpf
+   :source-code: base/frameworks/packet-filter/utils.zeek 34 38
 
    :Type: :zeek:type:`function` (p: :zeek:type:`port`) : :zeek:type:`string`
 
@@ -59,6 +61,7 @@ Functions
    :returns: A valid BPF filter string for matching the port.
 
 .. zeek:id:: PacketFilter::sampling_filter
+   :source-code: base/frameworks/packet-filter/utils.zeek 52 58
 
    :Type: :zeek:type:`function` (num_parts: :zeek:type:`count`, this_part: :zeek:type:`count`) : :zeek:type:`string`
 

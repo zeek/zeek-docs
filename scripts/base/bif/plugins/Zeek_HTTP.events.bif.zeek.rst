@@ -33,6 +33,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: http_all_headers
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 100 100
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, hlist: :zeek:type:`mime_header_list`)
 
@@ -62,6 +63,7 @@ Events
       entities.
 
 .. zeek:id:: http_begin_entity
+   :source-code: base/protocols/http/entities.zeek 72 82
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -86,6 +88,7 @@ Events
       mime_begin_entity http_connection_upgrade
 
 .. zeek:id:: http_connection_upgrade
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 267 267
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, protocol: :zeek:type:`string`)
 
@@ -104,6 +107,7 @@ Events
       http_request
 
 .. zeek:id:: http_content_type
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 196 196
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, ty: :zeek:type:`string`, subty: :zeek:type:`string`)
 
@@ -136,6 +140,7 @@ Events
       entities.
 
 .. zeek:id:: http_end_entity
+   :source-code: base/protocols/http/entities.zeek 200 204
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -160,6 +165,7 @@ Events
       http_stats mime_end_entity http_connection_upgrade
 
 .. zeek:id:: http_entity_data
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 170 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -196,6 +202,7 @@ Events
       http_connection_upgrade
 
 .. zeek:id:: http_event
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 238 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, event_type: :zeek:type:`string`, detail: :zeek:type:`string`)
 
@@ -219,6 +226,7 @@ Events
       http_stats mime_event http_connection_upgrade
 
 .. zeek:id:: http_header
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 74 74
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, original_name: :zeek:type:`string`, name: :zeek:type:`string`, value: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, name: :zeek:type:`string`, value: :zeek:type:`string`)
@@ -253,6 +261,7 @@ Events
       entities.
 
 .. zeek:id:: http_message_done
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 220 220
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, stat: :zeek:type:`http_message_stat`)
 
@@ -282,6 +291,7 @@ Events
       http_connection_upgrade
 
 .. zeek:id:: http_reply
+   :source-code: base/protocols/http/main.zeek 215 255
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`, code: :zeek:type:`count`, reason: :zeek:type:`string`)
 
@@ -310,6 +320,7 @@ Events
       http_stats http_connection_upgrade
 
 .. zeek:id:: http_request
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 26 26
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, method: :zeek:type:`string`, original_URI: :zeek:type:`string`, unescaped_URI: :zeek:type:`string`, version: :zeek:type:`string`)
 
@@ -341,6 +352,7 @@ Events
       truncate_http_URI http_connection_upgrade
 
 .. zeek:id:: http_stats
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, stats: :zeek:type:`http_stats_rec`)
 

@@ -78,6 +78,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Software::asset_tracking
+   :source-code: base/frameworks/software/main.zeek 74 74
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -95,6 +96,7 @@ Runtime Options
 State Variables
 ###############
 .. zeek:id:: Software::alternate_names
+   :source-code: base/frameworks/software/main.zeek 98 98
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -115,6 +117,7 @@ State Variables
    used for everything.
 
 .. zeek:id:: Software::tracked
+   :source-code: base/frameworks/software/main.zeek 112 112
 
    :Type: :zeek:type:`table` [:zeek:type:`addr`] of :zeek:type:`Software::SoftwareSet`
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day``
@@ -128,6 +131,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Software::Info
+   :source-code: base/frameworks/software/main.zeek 43 70
 
    :Type: :zeek:type:`record`
 
@@ -172,6 +176,7 @@ Types
    The record type that is used for representing and logging software.
 
 .. zeek:type:: Software::SoftwareSet
+   :source-code: base/frameworks/software/main.zeek 106 106
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Software::Info`
 
@@ -181,6 +186,7 @@ Types
    information about the software.
 
 .. zeek:type:: Software::Type
+   :source-code: base/frameworks/software/main.zeek 23 27
 
    :Type: :zeek:type:`enum`
 
@@ -299,6 +305,7 @@ Types
    create :zeek:type:`Software::Info` records.
 
 .. zeek:type:: Software::Version
+   :source-code: base/frameworks/software/main.zeek 29 40
 
    :Type: :zeek:type:`record`
 
@@ -323,6 +330,7 @@ Types
 Events
 ######
 .. zeek:id:: Software::log_software
+   :source-code: policy/frameworks/software/vulnerable.zeek 130 147
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Software::Info`)
 
@@ -330,6 +338,7 @@ Events
    record as it is sent on to the logging framework.
 
 .. zeek:id:: Software::register
+   :source-code: base/frameworks/software/main.zeek 124 124
 
    :Type: :zeek:type:`event` (info: :zeek:type:`Software::Info`)
 
@@ -337,6 +346,7 @@ Events
    tracking in :zeek:see:`Software::tracked`.
 
 .. zeek:id:: Software::version_change
+   :source-code: policy/frameworks/software/version-changes.zeek 25 37
 
    :Type: :zeek:type:`event` (old: :zeek:type:`Software::Info`, new: :zeek:type:`Software::Info`)
 
@@ -346,6 +356,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Software::log_policy
+   :source-code: base/frameworks/software/main.zeek 18 18
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -354,6 +365,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Software::cmp_versions
+   :source-code: base/frameworks/software/main.zeek 367 443
 
    :Type: :zeek:type:`function` (v1: :zeek:type:`Software::Version`, v2: :zeek:type:`Software::Version`) : :zeek:type:`int`
 
@@ -365,6 +377,7 @@ Functions
              is compared lexicographically.
 
 .. zeek:id:: Software::found
+   :source-code: base/frameworks/software/main.zeek 495 533
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`, info: :zeek:type:`Software::Info`) : :zeek:type:`bool`
 

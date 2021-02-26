@@ -44,6 +44,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Syslog::Info
+   :source-code: base/protocols/syslog/main.zeek 14 29
 
    :Type: :zeek:type:`record`
 
@@ -73,6 +74,7 @@ Types
 Hooks
 #####
 .. zeek:id:: Syslog::log_policy
+   :source-code: base/protocols/syslog/main.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

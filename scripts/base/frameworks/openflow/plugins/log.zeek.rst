@@ -63,6 +63,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: OpenFlow::Info
+   :source-code: base/frameworks/openflow/plugins/log.zeek 35 44
 
    :Type: :zeek:type:`record`
 
@@ -83,6 +84,7 @@ Types
 Events
 ######
 .. zeek:id:: OpenFlow::log_openflow
+   :source-code: base/frameworks/openflow/plugins/log.zeek 48 48
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`OpenFlow::Info`)
 
@@ -92,6 +94,7 @@ Events
 Hooks
 #####
 .. zeek:id:: OpenFlow::log_policy
+   :source-code: base/frameworks/openflow/plugins/log.zeek 16 16
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -99,6 +102,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: OpenFlow::log_new
+   :source-code: base/frameworks/openflow/plugins/log.zeek 70 78
 
    :Type: :zeek:type:`function` (dpid: :zeek:type:`count`, success_event: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`) : :zeek:type:`OpenFlow::Controller`
 

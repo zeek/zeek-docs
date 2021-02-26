@@ -29,6 +29,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: dce_rpc_alter_context
+   :source-code: base/protocols/dce-rpc/main.zeek 126 138
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, uuid: :zeek:type:`string`, ver_major: :zeek:type:`count`, ver_minor: :zeek:type:`count`)
 
@@ -59,6 +60,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context_resp
 
 .. zeek:id:: dce_rpc_alter_context_resp
+   :source-code: base/protocols/dce-rpc/main.zeek 151 154
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`)
 
@@ -75,6 +77,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context
 
 .. zeek:id:: dce_rpc_bind
+   :source-code: base/protocols/dce-rpc/main.zeek 112 124
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, uuid: :zeek:type:`string`, ver_major: :zeek:type:`count`, ver_minor: :zeek:type:`count`)
 
@@ -105,6 +108,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_bind_ack
+   :source-code: base/protocols/dce-rpc/main.zeek 140 149
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, sec_addr: :zeek:type:`string`)
 
@@ -124,6 +128,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_message
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, fid: :zeek:type:`count`, ptype_id: :zeek:type:`count`, ptype: :zeek:type:`DCE_RPC::PType`)
 
@@ -149,6 +154,7 @@ Events
    .. zeek:see:: dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_request
+   :source-code: base/protocols/dce-rpc/main.zeek 156 164
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub_len: :zeek:type:`count`)
 
@@ -174,6 +180,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response dce_rpc_request_stub
 
 .. zeek:id:: dce_rpc_request_stub
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 143 143
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub: :zeek:type:`string`)
 
@@ -199,6 +206,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response_stub dce_rpc_request
 
 .. zeek:id:: dce_rpc_response
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 125 125
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub_len: :zeek:type:`count`)
 
@@ -223,6 +231,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response_stub
 
 .. zeek:id:: dce_rpc_response_stub
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 161 161
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub: :zeek:type:`string`)
 

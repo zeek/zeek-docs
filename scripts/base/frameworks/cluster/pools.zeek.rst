@@ -48,6 +48,7 @@ Detailed Interface
 State Variables
 ###############
 .. zeek:id:: Cluster::logger_pool
+   :source-code: base/frameworks/cluster/pools.zeek 89 89
 
    :Type: :zeek:type:`Cluster::Pool`
    :Default:
@@ -75,6 +76,7 @@ State Variables
    maintained by the cluster framework.
 
 .. zeek:id:: Cluster::logger_pool_spec
+   :source-code: base/frameworks/cluster/pools.zeek 72 72
 
    :Type: :zeek:type:`Cluster::PoolSpec`
    :Attributes: :zeek:attr:`&redef`
@@ -93,6 +95,7 @@ State Variables
    The specification for :zeek:see:`Cluster::logger_pool`.
 
 .. zeek:id:: Cluster::proxy_pool
+   :source-code: base/frameworks/cluster/pools.zeek 79 79
 
    :Type: :zeek:type:`Cluster::Pool`
    :Default:
@@ -120,6 +123,7 @@ State Variables
    maintained by the cluster framework.
 
 .. zeek:id:: Cluster::proxy_pool_spec
+   :source-code: base/frameworks/cluster/pools.zeek 62 62
 
    :Type: :zeek:type:`Cluster::PoolSpec`
    :Attributes: :zeek:attr:`&redef`
@@ -138,6 +142,7 @@ State Variables
    The specification for :zeek:see:`Cluster::proxy_pool`.
 
 .. zeek:id:: Cluster::worker_pool
+   :source-code: base/frameworks/cluster/pools.zeek 84 84
 
    :Type: :zeek:type:`Cluster::Pool`
    :Default:
@@ -165,6 +170,7 @@ State Variables
    maintained by the cluster framework.
 
 .. zeek:id:: Cluster::worker_pool_spec
+   :source-code: base/frameworks/cluster/pools.zeek 67 67
 
    :Type: :zeek:type:`Cluster::PoolSpec`
    :Attributes: :zeek:attr:`&redef`
@@ -185,6 +191,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Cluster::PoolNode
+   :source-code: base/frameworks/cluster/pools.zeek 11 21
 
    :Type: :zeek:type:`record`
 
@@ -204,11 +211,13 @@ Types
    Store state of a cluster within the context of a work pool.
 
 .. zeek:type:: Cluster::PoolNodeTable
+   :source-code: base/frameworks/cluster/pools.zeek 40 40
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Cluster::PoolNode`
 
 
 .. zeek:type:: Cluster::PoolSpec
+   :source-code: base/frameworks/cluster/pools.zeek 24 38
 
    :Type: :zeek:type:`record`
 
@@ -232,6 +241,7 @@ Types
    A pool specification.
 
 .. zeek:type:: Cluster::RoundRobinTable
+   :source-code: base/frameworks/cluster/pools.zeek 41 41
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`int`
 
@@ -239,6 +249,7 @@ Types
 Functions
 #########
 .. zeek:id:: Cluster::hrw_topic
+   :source-code: base/frameworks/cluster/pools.zeek 168 176
 
    :Type: :zeek:type:`function` (pool: :zeek:type:`Cluster::Pool`, key: :zeek:type:`any`) : :zeek:type:`string`
 
@@ -257,12 +268,14 @@ Functions
             or an empty string if nothing is alive.
 
 .. zeek:id:: Cluster::register_pool
+   :source-code: base/frameworks/cluster/pools.zeek 161 166
 
    :Type: :zeek:type:`function` (spec: :zeek:type:`Cluster::PoolSpec`) : :zeek:type:`Cluster::Pool`
 
    Registers and initializes a pool.
 
 .. zeek:id:: Cluster::rr_log_topic
+   :source-code: base/frameworks/cluster/pools.zeek 214 223
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, path: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -273,6 +286,7 @@ Functions
    of :zeek:see:`Broker::default_log_topic`.
 
 .. zeek:id:: Cluster::rr_topic
+   :source-code: base/frameworks/cluster/pools.zeek 178 212
 
    :Type: :zeek:type:`function` (pool: :zeek:type:`Cluster::Pool`, key: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`string`
 

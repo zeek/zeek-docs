@@ -58,6 +58,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: KRB::ignored_errors
+   :source-code: base/protocols/krb/main.zeek 54 54
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -76,6 +77,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: KRB::Info
+   :source-code: base/protocols/krb/main.zeek 14 51
 
    :Type: :zeek:type:`record`
 
@@ -169,6 +171,7 @@ Types
 Events
 ######
 .. zeek:id:: KRB::log_krb
+   :source-code: base/protocols/krb/main.zeek 68 68
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`KRB::Info`)
 
@@ -178,12 +181,14 @@ Events
 Hooks
 #####
 .. zeek:id:: KRB::finalize_krb
+   :source-code: base/protocols/krb/main.zeek 71 71
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    Kerberos finalization hook.  Remaining Kerberos info may get logged when it's called.
 
 .. zeek:id:: KRB::log_policy
+   :source-code: base/protocols/krb/main.zeek 12 12
 
    :Type: :zeek:type:`Log::PolicyHook`
 
