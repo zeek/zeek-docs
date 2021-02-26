@@ -53,6 +53,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Config::Info
+   :source-code: base/frameworks/config/main.zeek 17 28
 
    :Type: :zeek:type:`record`
 
@@ -76,6 +77,7 @@ Types
 Events
 ######
 .. zeek:id:: Config::log_config
+   :source-code: base/frameworks/config/main.zeek 32 32
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Config::Info`)
 
@@ -85,6 +87,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Config::log_policy
+   :source-code: base/frameworks/config/main.zeek 14 14
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -93,6 +96,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Config::set_value
+   :source-code: base/frameworks/config/main.zeek 105 108
 
    :Type: :zeek:type:`function` (ID: :zeek:type:`string`, val: :zeek:type:`any`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 

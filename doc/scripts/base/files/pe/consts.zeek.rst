@@ -28,6 +28,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: PE::directories
+   :source-code: base/files/pe/consts.zeek 73 73
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -57,6 +58,7 @@ Constants
 
 
 .. zeek:id:: PE::dll_characteristics
+   :source-code: base/files/pe/consts.zeek 48 48
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -78,6 +80,7 @@ Constants
 
 
 .. zeek:id:: PE::file_characteristics
+   :source-code: base/files/pe/consts.zeek 30 30
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -106,6 +109,7 @@ Constants
 
 
 .. zeek:id:: PE::machine_types
+   :source-code: base/files/pe/consts.zeek 5 5
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -141,6 +145,7 @@ Constants
 
 
 .. zeek:id:: PE::os_versions
+   :source-code: base/files/pe/consts.zeek 129 129
 
    :Type: :zeek:type:`table` [:zeek:type:`count`, :zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -179,6 +184,7 @@ Constants
 
 
 .. zeek:id:: PE::section_characteristics
+   :source-code: base/files/pe/consts.zeek 92 92
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -226,6 +232,7 @@ Constants
 
 
 .. zeek:id:: PE::section_descs
+   :source-code: base/files/pe/consts.zeek 157 157
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -263,6 +270,7 @@ Constants
 
 
 .. zeek:id:: PE::windows_subsystems
+   :source-code: base/files/pe/consts.zeek 59 59
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`

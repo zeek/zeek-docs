@@ -33,6 +33,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: DNS::ANY
+   :source-code: base/protocols/dns/consts.zeek 9 9
 
    :Type: :zeek:type:`count`
    :Default: ``255``
@@ -40,6 +41,7 @@ Constants
    A QTYPE value describing a request for all records.
 
 .. zeek:id:: DNS::EDNS
+   :source-code: base/protocols/dns/consts.zeek 8 8
 
    :Type: :zeek:type:`count`
    :Default: ``41``
@@ -47,6 +49,7 @@ Constants
    An OPT RR TYPE value described by EDNS.
 
 .. zeek:id:: DNS::PTR
+   :source-code: base/protocols/dns/consts.zeek 7 7
 
    :Type: :zeek:type:`count`
    :Default: ``12``
@@ -54,6 +57,7 @@ Constants
    RR TYPE value for a domain name pointer.
 
 .. zeek:id:: DNS::algorithms
+   :source-code: base/protocols/dns/consts.zeek 136 136
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -87,6 +91,7 @@ Constants
    Possible values of the algorithms used in DNSKEY, DS and RRSIG records
 
 .. zeek:id:: DNS::base_errors
+   :source-code: base/protocols/dns/consts.zeek 89 89
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -126,6 +131,7 @@ Constants
    Errors used for non-TSIG/EDNS types.
 
 .. zeek:id:: DNS::classes
+   :source-code: base/protocols/dns/consts.zeek 126 126
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -147,6 +153,7 @@ Constants
    field in query messages.
 
 .. zeek:id:: DNS::digests
+   :source-code: base/protocols/dns/consts.zeek 159 159
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -166,6 +173,7 @@ Constants
    Possible digest types used in DNSSEC.
 
 .. zeek:id:: DNS::edns_zfield
+   :source-code: base/protocols/dns/consts.zeek 119 119
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = ``"?"``
@@ -182,6 +190,7 @@ Constants
    This deciphers EDNS Z field values.
 
 .. zeek:id:: DNS::query_types
+   :source-code: base/protocols/dns/consts.zeek 13 13
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`

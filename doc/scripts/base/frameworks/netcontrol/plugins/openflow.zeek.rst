@@ -52,6 +52,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: NetControl::openflow_flow_timeout
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 76 76
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -62,6 +63,7 @@ Redefinable Options
    buildup for quite a while if keeping this around...
 
 .. zeek:id:: NetControl::openflow_message_timeout
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 71 71
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -73,6 +75,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: NetControl::OfConfig
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 11 51
 
    :Type: :zeek:type:`record`
 
@@ -139,6 +142,7 @@ Types
    This record specifies the configuration that is passed to :zeek:see:`NetControl::create_openflow`.
 
 .. zeek:type:: NetControl::OfTable
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 60 67
 
    :Type: :zeek:type:`record`
 
@@ -158,6 +162,7 @@ Types
 Functions
 #########
 .. zeek:id:: NetControl::create_openflow
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 448 453
 
    :Type: :zeek:type:`function` (controller: :zeek:type:`OpenFlow::Controller`, config: :zeek:type:`NetControl::OfConfig` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`) : :zeek:type:`NetControl::PluginState`
 

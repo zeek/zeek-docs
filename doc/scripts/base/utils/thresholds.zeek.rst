@@ -45,6 +45,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: default_notice_thresholds
+   :source-code: base/utils/thresholds.zeek 22 22
 
    :Type: :zeek:type:`vector` of :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -61,6 +62,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: TrackCount
+   :source-code: base/utils/thresholds.zeek 11 18
 
    :Type: :zeek:type:`record`
 
@@ -76,6 +78,7 @@ Types
 Functions
 #########
 .. zeek:id:: check_threshold
+   :source-code: base/utils/thresholds.zeek 49 57
 
    :Type: :zeek:type:`function` (v: :zeek:type:`vector` of :zeek:type:`count`, tracker: :zeek:type:`TrackCount`) : :zeek:type:`bool`
 
@@ -93,6 +96,7 @@ Functions
    :returns: T if a threshold has been crossed, else F.
 
 .. zeek:id:: default_check_threshold
+   :source-code: base/utils/thresholds.zeek 59 62
 
    :Type: :zeek:type:`function` (tracker: :zeek:type:`TrackCount`) : :zeek:type:`bool`
 
@@ -101,6 +105,7 @@ Functions
    another threshold.
 
 .. zeek:id:: new_track_count
+   :source-code: base/utils/thresholds.zeek 43 48
 
    :Type: :zeek:type:`function` () : :zeek:type:`TrackCount`
 

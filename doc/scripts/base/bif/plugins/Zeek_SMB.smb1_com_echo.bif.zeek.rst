@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_echo_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_echo.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, echo_count: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -48,6 +49,7 @@ Events
    .. zeek:see:: smb1_message smb1_echo_response
 
 .. zeek:id:: smb1_echo_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_echo.bif.zeek 36 36
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, seq_num: :zeek:type:`count`, data: :zeek:type:`string`)
 

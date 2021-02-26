@@ -26,6 +26,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: teredo_authentication
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 30 30
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -45,6 +46,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_bubble
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 60 60
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -64,6 +66,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_origin_indication
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 45 45
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -83,6 +86,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_packet
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 

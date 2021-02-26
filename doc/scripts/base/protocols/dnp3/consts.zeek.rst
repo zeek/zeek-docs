@@ -21,6 +21,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: DNP3::function_codes
+   :source-code: base/protocols/dnp3/consts.zeek 6 6
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function` :zeek:attr:`&redef`

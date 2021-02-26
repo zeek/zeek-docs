@@ -35,6 +35,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NetControl::Plugin
+   :source-code: base/frameworks/netcontrol/plugin.zeek 38 72
 
    :Type: :zeek:type:`record`
 
@@ -87,6 +88,7 @@ Types
    something it thought it could handle.
 
 .. zeek:type:: NetControl::PluginState
+   :source-code: base/frameworks/netcontrol/plugin.zeek 11 23
 
    :Type: :zeek:type:`record`
 

@@ -54,6 +54,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: irc_channel_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 339 339
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, chans: :zeek:type:`count`)
 
@@ -79,6 +80,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_channel_topic
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 534 534
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, channel: :zeek:type:`string`, topic: :zeek:type:`string`)
 
@@ -107,6 +109,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_dcc_message
+   :source-code: base/protocols/irc/dcc-send.zeek 109 123
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, target: :zeek:type:`string`, dcc_type: :zeek:type:`string`, argument: :zeek:type:`string`, address: :zeek:type:`addr`, dest_port: :zeek:type:`count`, size: :zeek:type:`count`)
 
@@ -152,6 +155,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_error_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 655 655
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -182,6 +186,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_global_users
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 512 512
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, msg: :zeek:type:`string`)
 
@@ -211,6 +216,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_invalid_nick
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 271 271
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -233,6 +239,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_invite_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 681 681
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, nickname: :zeek:type:`string`, channel: :zeek:type:`string`)
 
@@ -266,6 +273,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_join_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 205 205
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, info_list: :zeek:type:`irc_join_list`)
 
@@ -292,6 +300,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_kick_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 631 631
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, chans: :zeek:type:`string`, users: :zeek:type:`string`, comment: :zeek:type:`string`)
 
@@ -328,6 +337,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 86 86
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, command: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -365,6 +375,7 @@ Events
       :zeek:id:`irc_request` event instead.
 
 .. zeek:id:: irc_mode_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 705 705
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, params: :zeek:type:`string`)
 
@@ -395,6 +406,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_names_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 400 400
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, c_type: :zeek:type:`string`, channel: :zeek:type:`string`, users: :zeek:type:`string_set`)
 
@@ -426,6 +438,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_network_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 295 295
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, users: :zeek:type:`count`, services: :zeek:type:`count`, servers: :zeek:type:`count`)
 
@@ -457,6 +470,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_nick_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, who: :zeek:type:`string`, newnick: :zeek:type:`string`)
 
@@ -486,6 +500,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_notice_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 159 159
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, source: :zeek:type:`string`, target: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -518,6 +533,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_oper_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 603 603
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, password: :zeek:type:`string`)
 
@@ -547,6 +563,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_oper_response
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 489 489
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, got_oper: :zeek:type:`bool`)
 
@@ -573,6 +590,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_part_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 230 230
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, chans: :zeek:type:`string_set`, message: :zeek:type:`string`)
 
@@ -605,6 +623,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_password_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 813 813
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, password: :zeek:type:`string`)
 
@@ -631,6 +650,7 @@ Events
       irc_part_message
 
 .. zeek:id:: irc_privmsg_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 134 134
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, source: :zeek:type:`string`, target: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -663,6 +683,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_quit_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 109 109
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -692,6 +713,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_reply
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 56 56
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, code: :zeek:type:`count`, params: :zeek:type:`string`)
 
@@ -725,6 +747,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_request
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 30 30
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, command: :zeek:type:`string`, arguments: :zeek:type:`string`)
 
@@ -760,6 +783,7 @@ Events
       the :zeek:id:`irc_message` event instead.
 
 .. zeek:id:: irc_server_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 319 319
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, users: :zeek:type:`count`, services: :zeek:type:`count`, servers: :zeek:type:`count`)
 
@@ -791,6 +815,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_squery_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 184 184
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, source: :zeek:type:`string`, target: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -823,6 +848,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_squit_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 731 731
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, server: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -856,6 +882,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_starttls
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 821 821
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -867,6 +894,7 @@ Events
    :c: The connection.
 
 .. zeek:id:: irc_user_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 792 792
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, host: :zeek:type:`string`, server: :zeek:type:`string`, real_name: :zeek:type:`string`)
 
@@ -902,6 +930,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_who_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 375 375
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, target_nick: :zeek:type:`string`, channel: :zeek:type:`string`, user: :zeek:type:`string`, host: :zeek:type:`string`, server: :zeek:type:`string`, nick: :zeek:type:`string`, params: :zeek:type:`string`, hops: :zeek:type:`count`, real_name: :zeek:type:`string`)
 
@@ -951,6 +980,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_who_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 557 557
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, mask: :zeek:type:`string`, oper: :zeek:type:`bool`)
 
@@ -980,6 +1010,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_whois_channel_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 442 442
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, chans: :zeek:type:`string_set`)
 
@@ -1008,6 +1039,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_whois_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 580 580
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, server: :zeek:type:`string`, users: :zeek:type:`string`)
 
@@ -1037,6 +1069,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_whois_operator_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 420 420
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`)
 
@@ -1062,6 +1095,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_whois_user_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 468 468
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, user: :zeek:type:`string`, host: :zeek:type:`string`, real_name: :zeek:type:`string`)
 

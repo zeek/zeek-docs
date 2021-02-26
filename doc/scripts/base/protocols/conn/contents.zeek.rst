@@ -49,6 +49,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Conn::default_extract
+   :source-code: base/protocols/conn/contents.zeek 25 25
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -58,6 +59,7 @@ Runtime Options
    connections will be extracted.
 
 .. zeek:id:: Conn::extraction_prefix
+   :source-code: base/protocols/conn/contents.zeek 21 21
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`

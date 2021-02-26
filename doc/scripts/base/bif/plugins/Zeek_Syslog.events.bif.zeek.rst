@@ -21,6 +21,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: syslog_message
+   :source-code: base/bif/plugins/Zeek_Syslog.events.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, facility: :zeek:type:`count`, severity: :zeek:type:`count`, msg: :zeek:type:`string`)
 

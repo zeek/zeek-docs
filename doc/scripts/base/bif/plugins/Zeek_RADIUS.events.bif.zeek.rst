@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: radius_attribute
+   :source-code: base/bif/plugins/Zeek_RADIUS.events.bif.zeek 27 27
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, attr_type: :zeek:type:`count`, value: :zeek:type:`string`)
 
@@ -41,6 +42,7 @@ Events
    
 
 .. zeek:id:: radius_message
+   :source-code: base/bif/plugins/Zeek_RADIUS.events.bif.zeek 13 13
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`RADIUS::Message`)
 

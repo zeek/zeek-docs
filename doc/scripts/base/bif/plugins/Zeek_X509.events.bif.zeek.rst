@@ -27,6 +27,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: x509_certificate
+   :source-code: base/bif/plugins/Zeek_X509.events.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, cert_ref: :zeek:type:`opaque` of x509, cert: :zeek:type:`X509::Certificate`)
 
@@ -51,6 +52,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ext_basic_constraints
+   :source-code: base/files/x509/main.zeek 171 178
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::BasicConstraints`)
 
@@ -68,6 +70,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ext_subject_alternative_name
+   :source-code: base/bif/plugins/Zeek_X509.events.bif.zeek 63 63
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::SubjectAlternativeName`)
 
@@ -87,6 +90,7 @@ Events
                 x509_get_certificate_string
 
 .. zeek:id:: x509_extension
+   :source-code: base/files/x509/main.zeek 162 169
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::Extension`)
 
@@ -106,6 +110,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ocsp_ext_signed_certificate_timestamp
+   :source-code: base/bif/plugins/Zeek_X509.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, version: :zeek:type:`count`, logid: :zeek:type:`string`, timestamp: :zeek:type:`count`, hash_algorithm: :zeek:type:`count`, signature_algorithm: :zeek:type:`count`, signature: :zeek:type:`string`)
 

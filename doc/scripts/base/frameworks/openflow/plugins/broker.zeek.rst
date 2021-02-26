@@ -53,11 +53,13 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: OpenFlow::broker_flow_clear
+   :source-code: base/frameworks/openflow/plugins/broker.zeek 38 38
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, dpid: :zeek:type:`count`)
 
 
 .. zeek:id:: OpenFlow::broker_flow_mod
+   :source-code: base/frameworks/openflow/plugins/broker.zeek 37 37
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, dpid: :zeek:type:`count`, match: :zeek:type:`OpenFlow::ofp_match`, flow_mod: :zeek:type:`OpenFlow::ofp_flow_mod`)
 
@@ -65,6 +67,7 @@ Events
 Functions
 #########
 .. zeek:id:: OpenFlow::broker_new
+   :source-code: base/frameworks/openflow/plugins/broker.zeek 82 95
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, host: :zeek:type:`addr`, host_port: :zeek:type:`port`, topic: :zeek:type:`string`, dpid: :zeek:type:`count`) : :zeek:type:`OpenFlow::Controller`
 

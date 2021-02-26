@@ -25,6 +25,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: MQTT::msg_types
+   :source-code: base/protocols/mqtt/consts.zeek 6 6
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -52,6 +53,7 @@ Constants
 
 
 .. zeek:id:: MQTT::qos_levels
+   :source-code: base/protocols/mqtt/consts.zeek 29 29
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -68,6 +70,7 @@ Constants
 
 
 .. zeek:id:: MQTT::return_codes
+   :source-code: base/protocols/mqtt/consts.zeek 35 35
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -87,6 +90,7 @@ Constants
 
 
 .. zeek:id:: MQTT::versions
+   :source-code: base/protocols/mqtt/consts.zeek 23 23
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`

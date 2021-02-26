@@ -58,6 +58,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Control::arg
+   :source-code: base/frameworks/control/main.zeek 30 30
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -66,6 +67,7 @@ Redefinable Options
    This can be used by commands that take an argument.
 
 .. zeek:id:: Control::cmd
+   :source-code: base/frameworks/control/main.zeek 27 27
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -75,6 +77,7 @@ Redefinable Options
    command line.
 
 .. zeek:id:: Control::commands
+   :source-code: base/frameworks/control/main.zeek 34 34
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -95,6 +98,7 @@ Redefinable Options
    remote control.
 
 .. zeek:id:: Control::controllee_listen
+   :source-code: base/frameworks/control/main.zeek 13 13
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -104,6 +108,7 @@ Redefinable Options
    In a cluster, this isn't needed since the setup process calls it.
 
 .. zeek:id:: Control::host
+   :source-code: base/frameworks/control/main.zeek 16 16
 
    :Type: :zeek:type:`addr`
    :Attributes: :zeek:attr:`&redef`
@@ -112,6 +117,7 @@ Redefinable Options
    The address of the host that will be controlled.
 
 .. zeek:id:: Control::host_port
+   :source-code: base/frameworks/control/main.zeek 19 19
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`
@@ -120,6 +126,7 @@ Redefinable Options
    The port of the host that will be controlled.
 
 .. zeek:id:: Control::zone_id
+   :source-code: base/frameworks/control/main.zeek 23 23
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -131,6 +138,7 @@ Redefinable Options
 Constants
 #########
 .. zeek:id:: Control::ignore_ids
+   :source-code: base/frameworks/control/main.zeek 43 43
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Default: ``{}``
@@ -138,6 +146,7 @@ Constants
    Variable IDs that are to be ignored by the update process.
 
 .. zeek:id:: Control::topic_prefix
+   :source-code: base/frameworks/control/main.zeek 9 9
 
    :Type: :zeek:type:`string`
    :Default: ``"zeek/control"``
@@ -147,6 +156,7 @@ Constants
 Events
 ######
 .. zeek:id:: Control::configuration_update
+   :source-code: policy/frameworks/software/vulnerable.zeek 125 128
 
    :Type: :zeek:type:`event` ()
 
@@ -155,6 +165,7 @@ Events
    This event is also a primary hooking point for the control framework.
 
 .. zeek:id:: Control::configuration_update_request
+   :source-code: policy/frameworks/control/controllee.zeek 67 77
 
    :Type: :zeek:type:`event` ()
 
@@ -162,18 +173,21 @@ Events
    updated.
 
 .. zeek:id:: Control::configuration_update_response
+   :source-code: policy/frameworks/control/controller.zeek 45 48
 
    :Type: :zeek:type:`event` ()
 
    Message in response to a configuration update request.
 
 .. zeek:id:: Control::id_value_request
+   :source-code: policy/frameworks/control/controllee.zeek 33 37
 
    :Type: :zeek:type:`event` (id: :zeek:type:`string`)
 
    Event for requesting the value of an ID (a variable).
 
 .. zeek:id:: Control::id_value_response
+   :source-code: policy/frameworks/control/controller.zeek 30 33
 
    :Type: :zeek:type:`event` (id: :zeek:type:`string`, val: :zeek:type:`string`)
 
@@ -181,36 +195,42 @@ Events
    :zeek:id:`Control::id_value_request` event.
 
 .. zeek:id:: Control::net_stats_request
+   :source-code: policy/frameworks/control/controllee.zeek 59 65
 
    :Type: :zeek:type:`event` ()
 
    Requests the current net_stats.
 
 .. zeek:id:: Control::net_stats_response
+   :source-code: policy/frameworks/control/controller.zeek 40 43
 
    :Type: :zeek:type:`event` (s: :zeek:type:`string`)
 
    Returns the current net_stats.
 
 .. zeek:id:: Control::peer_status_request
+   :source-code: policy/frameworks/control/controllee.zeek 39 58
 
    :Type: :zeek:type:`event` ()
 
    Requests the current communication status.
 
 .. zeek:id:: Control::peer_status_response
+   :source-code: policy/frameworks/control/controller.zeek 35 38
 
    :Type: :zeek:type:`event` (s: :zeek:type:`string`)
 
    Returns the current communication status.
 
 .. zeek:id:: Control::shutdown_request
+   :source-code: policy/frameworks/control/controllee.zeek 79 85
 
    :Type: :zeek:type:`event` ()
 
    Requests that the Zeek instance begins shutting down.
 
 .. zeek:id:: Control::shutdown_response
+   :source-code: policy/frameworks/control/controller.zeek 50 53
 
    :Type: :zeek:type:`event` ()
 

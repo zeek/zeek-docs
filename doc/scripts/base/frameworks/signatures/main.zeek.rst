@@ -85,6 +85,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Signatures::ignored_ids
+   :source-code: base/frameworks/signatures/main.zeek 110 110
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`
@@ -110,6 +111,7 @@ Runtime Options
    Signature IDs that should always be ignored.
 
 .. zeek:id:: Signatures::summary_interval
+   :source-code: base/frameworks/signatures/main.zeek 126 126
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -121,6 +123,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Signatures::actions
+   :source-code: base/frameworks/signatures/main.zeek 105 105
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Signatures::Action`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = ``Signatures::SIG_ALARM``
@@ -136,6 +139,7 @@ Redefinable Options
    Actions for a signature.  
 
 .. zeek:id:: Signatures::count_thresholds
+   :source-code: base/frameworks/signatures/main.zeek 122 122
 
    :Type: :zeek:type:`set` [:zeek:type:`count`]
    :Attributes: :zeek:attr:`&redef`
@@ -159,6 +163,7 @@ Redefinable Options
    signature is triggered as often as given by one of these thresholds.
 
 .. zeek:id:: Signatures::horiz_scan_thresholds
+   :source-code: base/frameworks/signatures/main.zeek 114 114
 
    :Type: :zeek:type:`set` [:zeek:type:`count`]
    :Attributes: :zeek:attr:`&redef`
@@ -180,6 +185,7 @@ Redefinable Options
    different responders has reached one of the thresholds.
 
 .. zeek:id:: Signatures::vert_scan_thresholds
+   :source-code: base/frameworks/signatures/main.zeek 118 118
 
    :Type: :zeek:type:`set` [:zeek:type:`count`]
    :Attributes: :zeek:attr:`&redef`
@@ -203,6 +209,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Signatures::Action
+   :source-code: base/frameworks/signatures/main.zeek 44 70
 
    :Type: :zeek:type:`enum`
 
@@ -253,6 +260,7 @@ Types
    declared otherwise.
 
 .. zeek:type:: Signatures::Info
+   :source-code: base/frameworks/signatures/main.zeek 72 102
 
    :Type: :zeek:type:`record`
 
@@ -302,6 +310,7 @@ Types
 Events
 ######
 .. zeek:id:: Signatures::log_signature
+   :source-code: base/frameworks/signatures/main.zeek 132 132
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Signatures::Info`)
 
@@ -314,6 +323,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Signatures::log_policy
+   :source-code: base/frameworks/signatures/main.zeek 39 39
 
    :Type: :zeek:type:`Log::PolicyHook`
 

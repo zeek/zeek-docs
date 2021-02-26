@@ -33,6 +33,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSL::extract_certs_pem
+   :source-code: policy/protocols/ssl/extract-certs-pem.zeek 22 22
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`

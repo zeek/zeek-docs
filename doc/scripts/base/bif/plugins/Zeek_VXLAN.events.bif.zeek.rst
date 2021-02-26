@@ -21,6 +21,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: vxlan_packet
+   :source-code: base/bif/plugins/Zeek_VXLAN.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`pkt_hdr`, vni: :zeek:type:`count`)
 

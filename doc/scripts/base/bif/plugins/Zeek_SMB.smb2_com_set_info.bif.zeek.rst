@@ -48,6 +48,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb2_file_allocation
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 75 75
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, alloc_size: :zeek:type:`int`)
 
@@ -71,6 +72,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_delete
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 38 38
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, delete_pending: :zeek:type:`bool`)
 
@@ -95,6 +97,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_endoffile
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, end_of_file: :zeek:type:`int`)
 
@@ -118,6 +121,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_fscontrol
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 235 235
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, fs_control: :zeek:type:`SMB2::Fscontrol`)
 
@@ -141,6 +145,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_fsobjectid
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 254 254
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, object_id: :zeek:type:`SMB2::GUID`, extended_info: :zeek:type:`string`)
 
@@ -167,6 +172,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link
 
 .. zeek:id:: smb2_file_fullea
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 199 199
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, file_eas: :zeek:type:`SMB2::FileEAs`)
 
@@ -190,6 +196,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_link
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 218 218
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, root_directory: :zeek:type:`count`, file_name: :zeek:type:`string`)
 
@@ -216,6 +223,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_mode
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 110 110
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, mode: :zeek:type:`count`)
 
@@ -239,6 +247,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_pipe
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 130 130
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, read_mode: :zeek:type:`count`, completion_mode: :zeek:type:`count`)
 
@@ -265,6 +274,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_position
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 148 148
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, current_byte_offset: :zeek:type:`int`)
 
@@ -288,6 +298,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_rename
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, dst_filename: :zeek:type:`string`)
 
@@ -311,6 +322,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_sattr
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 58 58
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, times: :zeek:type:`SMB::MACTimes`, attrs: :zeek:type:`SMB2::FileAttrs`)
 
@@ -337,6 +349,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_shortname
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 165 165
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, file_name: :zeek:type:`string`)
 
@@ -360,6 +373,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_validdatalength
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 182 182
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, valid_data_length: :zeek:type:`int`)
 

@@ -29,6 +29,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: absolute_path_pat
+   :source-code: base/utils/paths.zeek 3 3
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -42,6 +43,7 @@ Constants
 Functions
 #########
 .. zeek:id:: build_path
+   :source-code: base/utils/paths.zeek 32 36
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`, file_name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -58,6 +60,7 @@ Functions
             the file name if it's already an absolute path.
 
 .. zeek:id:: build_path_compressed
+   :source-code: base/utils/paths.zeek 40 43
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`, file_name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -65,6 +68,7 @@ Functions
    See :zeek:id:`build_path` and :zeek:id:`compress_path`.
 
 .. zeek:id:: extract_path
+   :source-code: base/utils/paths.zeek 13 22
 
    :Type: :zeek:type:`function` (input: :zeek:type:`string`) : :zeek:type:`string`
 

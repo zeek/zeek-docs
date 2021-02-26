@@ -36,6 +36,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Software::interesting_version_changes
+   :source-code: policy/frameworks/software/version-changes.zeek 22 22
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`

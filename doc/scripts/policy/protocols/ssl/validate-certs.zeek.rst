@@ -61,6 +61,7 @@ Detailed Interface
 State Variables
 ###############
 .. zeek:id:: SSL::recently_validated_certs
+   :source-code: policy/protocols/ssl/validate-certs.zeek 33 33
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`X509::Result`
    :Attributes: :zeek:attr:`&read_expire` = ``5.0 mins`` :zeek:attr:`&redef`
@@ -71,6 +72,7 @@ State Variables
    validation every time the same certificate chain is seen.
 
 .. zeek:id:: SSL::ssl_cache_intermediate_ca
+   :source-code: policy/protocols/ssl/validate-certs.zeek 46 46
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +90,7 @@ State Variables
    that you encounter. Only disable if you want to find misconfigured servers.
 
 .. zeek:id:: SSL::ssl_store_valid_chain
+   :source-code: policy/protocols/ssl/validate-certs.zeek 51 51
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -106,6 +109,7 @@ State Variables
 Events
 ######
 .. zeek:id:: SSL::intermediate_add
+   :source-code: policy/protocols/ssl/validate-certs.zeek 55 55
 
    :Type: :zeek:type:`event` (key: :zeek:type:`string`, value: :zeek:type:`vector` of :zeek:type:`opaque` of x509)
 
@@ -113,6 +117,7 @@ Events
    intermediate.
 
 .. zeek:id:: SSL::new_intermediate
+   :source-code: policy/protocols/ssl/validate-certs.zeek 59 59
 
    :Type: :zeek:type:`event` (key: :zeek:type:`string`, value: :zeek:type:`vector` of :zeek:type:`opaque` of x509)
 

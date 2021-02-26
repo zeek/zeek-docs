@@ -33,6 +33,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: get_broker_stats
+   :source-code: base/bif/stats.bif.zeek 238 238
 
    :Type: :zeek:type:`function` () : :zeek:type:`BrokerStats`
 
@@ -56,6 +57,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_conn_stats
+   :source-code: base/bif/stats.bif.zeek 44 44
 
    :Type: :zeek:type:`function` () : :zeek:type:`ConnStats`
 
@@ -78,6 +80,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_dns_stats
+   :source-code: base/bif/stats.bif.zeek 120 120
 
    :Type: :zeek:type:`function` () : :zeek:type:`DNSStats`
 
@@ -100,6 +103,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_event_stats
+   :source-code: base/bif/stats.bif.zeek 82 82
 
    :Type: :zeek:type:`function` () : :zeek:type:`EventStats`
 
@@ -122,6 +126,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_file_analysis_stats
+   :source-code: base/bif/stats.bif.zeek 158 158
 
    :Type: :zeek:type:`function` () : :zeek:type:`FileAnalysisStats`
 
@@ -144,6 +149,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_gap_stats
+   :source-code: base/bif/stats.bif.zeek 196 196
 
    :Type: :zeek:type:`function` () : :zeek:type:`GapStats`
 
@@ -166,6 +172,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_matcher_stats
+   :source-code: base/bif/stats.bif.zeek 218 218
 
    :Type: :zeek:type:`function` () : :zeek:type:`MatcherStats`
 
@@ -191,6 +198,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_net_stats
+   :source-code: base/bif/stats.bif.zeek 25 25
 
    :Type: :zeek:type:`function` () : :zeek:type:`NetStats`
 
@@ -215,6 +223,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_proc_stats
+   :source-code: base/bif/stats.bif.zeek 63 63
 
    :Type: :zeek:type:`function` () : :zeek:type:`ProcStats`
 
@@ -237,6 +246,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_reassembler_stats
+   :source-code: base/bif/stats.bif.zeek 101 101
 
    :Type: :zeek:type:`function` () : :zeek:type:`ReassemblerStats`
 
@@ -259,6 +269,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_reporter_stats
+   :source-code: base/bif/stats.bif.zeek 257 257
 
    :Type: :zeek:type:`function` () : :zeek:type:`ReporterStats`
 
@@ -281,6 +292,7 @@ Functions
                 get_broker_stats
 
 .. zeek:id:: get_thread_stats
+   :source-code: base/bif/stats.bif.zeek 177 177
 
    :Type: :zeek:type:`function` () : :zeek:type:`ThreadStats`
 
@@ -303,6 +315,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_timer_stats
+   :source-code: base/bif/stats.bif.zeek 139 139
 
    :Type: :zeek:type:`function` () : :zeek:type:`TimerStats`
 

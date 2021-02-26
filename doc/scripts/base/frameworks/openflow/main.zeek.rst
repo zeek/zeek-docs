@@ -52,6 +52,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: OpenFlow::controller_activated
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 433 437
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, controller: :zeek:type:`OpenFlow::Controller`)
 
@@ -64,6 +65,7 @@ Events
    :controller: The controller that finished activation.
 
 .. zeek:id:: OpenFlow::flow_mod_failure
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 383 394
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, match: :zeek:type:`OpenFlow::ofp_match`, flow_mod: :zeek:type:`OpenFlow::ofp_flow_mod`, msg: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
@@ -82,6 +84,7 @@ Events
    :msg: Message to describe the event.
 
 .. zeek:id:: OpenFlow::flow_mod_success
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 356 381
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, match: :zeek:type:`OpenFlow::ofp_match`, flow_mod: :zeek:type:`OpenFlow::ofp_flow_mod`, msg: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
@@ -100,6 +103,7 @@ Events
    :msg: An optional informational message by the plugin.
 
 .. zeek:id:: OpenFlow::flow_removed
+   :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 396 418
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, match: :zeek:type:`OpenFlow::ofp_match`, cookie: :zeek:type:`count`, priority: :zeek:type:`count`, reason: :zeek:type:`count`, duration_sec: :zeek:type:`count`, idle_timeout: :zeek:type:`count`, packet_count: :zeek:type:`count`, byte_count: :zeek:type:`count`)
 
@@ -134,6 +138,7 @@ Events
 Functions
 #########
 .. zeek:id:: OpenFlow::controller_init_done
+   :source-code: base/frameworks/openflow/main.zeek 242 252
 
    :Type: :zeek:type:`function` (controller: :zeek:type:`OpenFlow::Controller`) : :zeek:type:`void`
 
@@ -142,6 +147,7 @@ Functions
    event.
 
 .. zeek:id:: OpenFlow::flow_clear
+   :source-code: base/frameworks/openflow/non-cluster.zeek 17 26
 
    :Type: :zeek:type:`function` (controller: :zeek:type:`OpenFlow::Controller`) : :zeek:type:`bool`
 
@@ -154,6 +160,7 @@ Functions
    :returns: F on error or if the plugin does not support the operation, T when the operation was queued.
 
 .. zeek:id:: OpenFlow::flow_mod
+   :source-code: base/frameworks/openflow/non-cluster.zeek 6 15
 
    :Type: :zeek:type:`function` (controller: :zeek:type:`OpenFlow::Controller`, match: :zeek:type:`OpenFlow::ofp_match`, flow_mod: :zeek:type:`OpenFlow::ofp_flow_mod`) : :zeek:type:`bool`
 
@@ -172,6 +179,7 @@ Functions
    :returns: F on error or if the plugin does not support the operation, T when the operation was queued.
 
 .. zeek:id:: OpenFlow::generate_cookie
+   :source-code: base/frameworks/openflow/main.zeek 199 209
 
    :Type: :zeek:type:`function` (cookie: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`) : :zeek:type:`count`
 
@@ -184,6 +192,7 @@ Functions
    :returns: The cookie group id.
 
 .. zeek:id:: OpenFlow::get_cookie_gid
+   :source-code: base/frameworks/openflow/main.zeek 230 240
 
    :Type: :zeek:type:`function` (cookie: :zeek:type:`count`) : :zeek:type:`count`
 
@@ -196,6 +205,7 @@ Functions
    :returns: The cookie group id.
 
 .. zeek:id:: OpenFlow::get_cookie_uid
+   :source-code: base/frameworks/openflow/main.zeek 222 228
 
    :Type: :zeek:type:`function` (cookie: :zeek:type:`count`) : :zeek:type:`count`
 
@@ -208,6 +218,7 @@ Functions
    :returns: The cookie unique id.
 
 .. zeek:id:: OpenFlow::lookup_controller
+   :source-code: base/frameworks/openflow/non-cluster.zeek 41 44
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`vector` of :zeek:type:`OpenFlow::Controller`
 
@@ -220,6 +231,7 @@ Functions
    :returns: One element vector with controller, if found. Empty vector otherwise.
 
 .. zeek:id:: OpenFlow::match_conn
+   :source-code: base/frameworks/openflow/main.zeek 153 195
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`, reverse: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`OpenFlow::ofp_match`
 
@@ -236,6 +248,7 @@ Functions
    :returns: ofp_match object for the conn_id record.
 
 .. zeek:id:: OpenFlow::register_controller
+   :source-code: base/frameworks/openflow/non-cluster.zeek 28 34
 
    :Type: :zeek:type:`function` (tpe: :zeek:type:`OpenFlow::Plugin`, name: :zeek:type:`string`, controller: :zeek:type:`OpenFlow::Controller`) : :zeek:type:`void`
 
@@ -252,6 +265,7 @@ Functions
    :controller: The controller to register.
 
 .. zeek:id:: OpenFlow::unregister_controller
+   :source-code: base/frameworks/openflow/non-cluster.zeek 36 39
 
    :Type: :zeek:type:`function` (controller: :zeek:type:`OpenFlow::Controller`) : :zeek:type:`void`
 

@@ -62,6 +62,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: FileExtract::default_limit
+   :source-code: base/files/extract/main.zeek 12 12
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -79,6 +80,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: FileExtract::prefix
+   :source-code: base/files/extract/main.zeek 8 8
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -89,6 +91,7 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: FileExtract::set_limit
+   :source-code: base/files/extract/main.zeek 55 58
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, args: :zeek:type:`Files::AnalyzerArgs`, n: :zeek:type:`count`) : :zeek:type:`bool`
 

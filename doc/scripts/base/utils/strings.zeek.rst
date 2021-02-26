@@ -26,6 +26,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: cut_tail
+   :source-code: base/utils/strings.zeek 58 63
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, tail_len: :zeek:type:`count`) : :zeek:type:`string`
 
@@ -41,6 +42,7 @@ Functions
    :returns: the given string with *tail_len* characters removed from the end.
 
 .. zeek:id:: is_string_binary
+   :source-code: base/utils/strings.zeek 7 10
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -48,6 +50,7 @@ Functions
    characters.
 
 .. zeek:id:: join_string_set
+   :source-code: base/utils/strings.zeek 20 34
 
    :Type: :zeek:type:`function` (ss: :zeek:type:`set` [:zeek:type:`string`], j: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -64,6 +67,7 @@ Functions
             joining string.
 
 .. zeek:id:: string_escape
+   :source-code: base/utils/strings.zeek 43 50
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, chars: :zeek:type:`string`) : :zeek:type:`string`
 

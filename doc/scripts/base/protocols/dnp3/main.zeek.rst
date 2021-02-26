@@ -51,6 +51,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: DNP3::Info
+   :source-code: base/protocols/dnp3/main.zeek 13 26
 
    :Type: :zeek:type:`record`
 
@@ -76,6 +77,7 @@ Types
 Events
 ######
 .. zeek:id:: DNP3::log_dnp3
+   :source-code: base/protocols/dnp3/main.zeek 30 30
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`DNP3::Info`)
 
@@ -85,12 +87,14 @@ Events
 Hooks
 #####
 .. zeek:id:: DNP3::finalize_dnp3
+   :source-code: base/protocols/dnp3/main.zeek 78 85
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    DNP3 finalization hook.  Remaining DNP3 info may get logged when it's called.
 
 .. zeek:id:: DNP3::log_policy
+   :source-code: base/protocols/dnp3/main.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

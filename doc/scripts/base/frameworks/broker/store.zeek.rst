@@ -113,6 +113,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Broker::default_clone_mutation_buffer_interval
+   :source-code: base/frameworks/broker/store.zeek 26 26
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -126,6 +127,7 @@ Redefinable Options
    A negative/zero value indicates to never buffer commands.
 
 .. zeek:id:: Broker::default_clone_resync_interval
+   :source-code: base/frameworks/broker/store.zeek 12 12
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -136,6 +138,7 @@ Redefinable Options
    disconnected.
 
 .. zeek:id:: Broker::default_clone_stale_interval
+   :source-code: base/frameworks/broker/store.zeek 18 18
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -147,6 +150,7 @@ Redefinable Options
    the local cache is never treated as stale.
 
 .. zeek:id:: Broker::table_store_db_directory
+   :source-code: base/frameworks/broker/store.zeek 36 36
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -156,6 +160,7 @@ Redefinable Options
    store backed Zeek tables.
 
 .. zeek:id:: Broker::table_store_master
+   :source-code: base/frameworks/broker/store.zeek 32 32
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -169,6 +174,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Broker::BackendOptions
+   :source-code: base/frameworks/broker/store.zeek 69 71
 
    :Type: :zeek:type:`record`
 
@@ -177,6 +183,7 @@ Types
    Options to tune the particular storage backends.
 
 .. zeek:type:: Broker::BackendType
+   :source-code: base/frameworks/broker/store.zeek 55 55
 
    :Type: :zeek:type:`enum`
 
@@ -187,6 +194,7 @@ Types
    Enumerates the possible storage backends.
 
 .. zeek:type:: Broker::QueryResult
+   :source-code: base/frameworks/broker/store.zeek 45 52
 
    :Type: :zeek:type:`record`
 
@@ -201,6 +209,7 @@ Types
    The result of a data store query.
 
 .. zeek:type:: Broker::QueryStatus
+   :source-code: base/frameworks/broker/store.zeek 39 43
 
    :Type: :zeek:type:`enum`
 
@@ -211,6 +220,7 @@ Types
    Whether a data store query could be completed or not.
 
 .. zeek:type:: Broker::SQLiteOptions
+   :source-code: base/frameworks/broker/store.zeek 61 66
 
    :Type: :zeek:type:`record`
 
@@ -224,6 +234,7 @@ Types
 Functions
 #########
 .. zeek:id:: Broker::append
+   :source-code: base/frameworks/broker/store.zeek 799 802
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, s: :zeek:type:`string`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -247,6 +258,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::clear
+   :source-code: base/frameworks/broker/store.zeek 829 832
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store) : :zeek:type:`bool`
 
@@ -256,6 +268,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::close
+   :source-code: base/frameworks/broker/store.zeek 738 741
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store) : :zeek:type:`bool`
 
@@ -269,6 +282,7 @@ Functions
             longer be used for data store operations.
 
 .. zeek:id:: Broker::create_clone
+   :source-code: base/frameworks/broker/store.zeek 732 736
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, resync_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_resync_interval` :zeek:attr:`&optional`, stale_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_stale_interval` :zeek:attr:`&optional`, mutation_buffer_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_mutation_buffer_interval` :zeek:attr:`&optional`) : :zeek:type:`opaque` of Broker::Store
 
@@ -309,6 +323,7 @@ Functions
    :returns: a handle to the data store.
 
 .. zeek:id:: Broker::create_master
+   :source-code: base/frameworks/broker/store.zeek 724 727
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, b: :zeek:type:`Broker::BackendType` :zeek:attr:`&default` = ``Broker::MEMORY`` :zeek:attr:`&optional`, options: :zeek:type:`Broker::BackendOptions` :zeek:attr:`&default` = ``[sqlite=[path=]]`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of Broker::Store
 
@@ -327,6 +342,7 @@ Functions
    :returns: a handle to the data store.
 
 .. zeek:id:: Broker::data
+   :source-code: base/frameworks/broker/store.zeek 839 842
 
    :Type: :zeek:type:`function` (d: :zeek:type:`any`) : :zeek:type:`Broker::Data`
 
@@ -345,6 +361,7 @@ Functions
             returned record's optional field will not be set.
 
 .. zeek:id:: Broker::data_type
+   :source-code: base/frameworks/broker/store.zeek 834 837
 
    :Type: :zeek:type:`function` (d: :zeek:type:`Broker::Data`) : :zeek:type:`Broker::DataType`
 
@@ -359,6 +376,7 @@ Functions
             vectors, so there is no "record" type.
 
 .. zeek:id:: Broker::decrement
+   :source-code: base/frameworks/broker/store.zeek 794 797
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, a: :zeek:type:`any` :zeek:attr:`&default` = ``1`` :zeek:attr:`&optional`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -383,6 +401,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::erase
+   :source-code: base/frameworks/broker/store.zeek 784 787
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -398,6 +417,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::exists
+   :source-code: base/frameworks/broker/store.zeek 753 756
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`) : :zeek:type:`Broker::QueryResult`
 
@@ -413,6 +433,7 @@ Functions
    :returns: True if the key exists in the data store.
 
 .. zeek:id:: Broker::get
+   :source-code: base/frameworks/broker/store.zeek 758 761
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`) : :zeek:type:`Broker::QueryResult`
 
@@ -428,6 +449,7 @@ Functions
    :returns: the result of the query.
 
 .. zeek:id:: Broker::get_index_from_value
+   :source-code: base/frameworks/broker/store.zeek 769 772
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, i: :zeek:type:`any`) : :zeek:type:`Broker::QueryResult`
 
@@ -450,6 +472,7 @@ Functions
             does not exist at all.
 
 .. zeek:id:: Broker::increment
+   :source-code: base/frameworks/broker/store.zeek 789 792
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, a: :zeek:type:`any` :zeek:attr:`&default` = ``1`` :zeek:attr:`&optional`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -474,6 +497,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::insert_into_set
+   :source-code: base/frameworks/broker/store.zeek 804 807
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, i: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -497,6 +521,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::insert_into_table
+   :source-code: base/frameworks/broker/store.zeek 809 812
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, i: :zeek:type:`any`, v: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -523,6 +548,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::is_closed
+   :source-code: base/frameworks/broker/store.zeek 743 746
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store) : :zeek:type:`bool`
 
@@ -532,6 +558,7 @@ Functions
    :returns: true if the store is closed.
 
 .. zeek:id:: Broker::keys
+   :source-code: base/frameworks/broker/store.zeek 774 777
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store) : :zeek:type:`Broker::QueryResult`
 
@@ -546,6 +573,7 @@ Functions
             :zeek:see:`Broker::set_iterator` to iterate over the result.
 
 .. zeek:id:: Broker::pop
+   :source-code: base/frameworks/broker/store.zeek 824 827
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -566,6 +594,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::push
+   :source-code: base/frameworks/broker/store.zeek 819 822
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, v: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -589,6 +618,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::put
+   :source-code: base/frameworks/broker/store.zeek 779 782
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, v: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -610,6 +640,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::put_unique
+   :source-code: base/frameworks/broker/store.zeek 764 767
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, v: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`Broker::QueryResult`
 
@@ -634,6 +665,7 @@ Functions
             due to the key already existing.
 
 .. zeek:id:: Broker::record_assign
+   :source-code: base/frameworks/broker/store.zeek 1014 1017
 
    :Type: :zeek:type:`function` (r: :zeek:type:`Broker::Data`, idx: :zeek:type:`count`, d: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -652,6 +684,7 @@ Functions
    :returns: false if the index was larger than any valid index, else true.
 
 .. zeek:id:: Broker::record_create
+   :source-code: base/frameworks/broker/store.zeek 1004 1007
 
    :Type: :zeek:type:`function` (sz: :zeek:type:`count`) : :zeek:type:`Broker::Data`
 
@@ -664,6 +697,7 @@ Functions
    :returns: record data, with all fields uninitialized.
 
 .. zeek:id:: Broker::record_iterator
+   :source-code: base/frameworks/broker/store.zeek 1024 1027
 
    :Type: :zeek:type:`function` (r: :zeek:type:`Broker::Data`) : :zeek:type:`opaque` of Broker::RecordIterator
 
@@ -677,6 +711,7 @@ Functions
    :returns: an iterator.
 
 .. zeek:id:: Broker::record_iterator_last
+   :source-code: base/frameworks/broker/store.zeek 1029 1032
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::RecordIterator) : :zeek:type:`bool`
 
@@ -690,6 +725,7 @@ Functions
             the iterator is one-past-the-final-element.
 
 .. zeek:id:: Broker::record_iterator_next
+   :source-code: base/frameworks/broker/store.zeek 1034 1037
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::RecordIterator) : :zeek:type:`bool`
 
@@ -704,6 +740,7 @@ Functions
             one-past-the-final-element.
 
 .. zeek:id:: Broker::record_iterator_value
+   :source-code: base/frameworks/broker/store.zeek 1039 1042
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::RecordIterator) : :zeek:type:`Broker::Data`
 
@@ -716,6 +753,7 @@ Functions
    :returns: element in the collection that the iterator currently references.
 
 .. zeek:id:: Broker::record_lookup
+   :source-code: base/frameworks/broker/store.zeek 1019 1022
 
    :Type: :zeek:type:`function` (r: :zeek:type:`Broker::Data`, idx: :zeek:type:`count`) : :zeek:type:`Broker::Data`
 
@@ -733,6 +771,7 @@ Functions
             index was not valid.
 
 .. zeek:id:: Broker::record_size
+   :source-code: base/frameworks/broker/store.zeek 1009 1012
 
    :Type: :zeek:type:`function` (r: :zeek:type:`Broker::Data`) : :zeek:type:`count`
 
@@ -745,6 +784,7 @@ Functions
    :returns: the number of fields in the record.
 
 .. zeek:id:: Broker::remove_from
+   :source-code: base/frameworks/broker/store.zeek 814 817
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, i: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -768,6 +808,7 @@ Functions
    :returns: false if the store handle was not valid.
 
 .. zeek:id:: Broker::set_clear
+   :source-code: base/frameworks/broker/store.zeek 849 852
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Broker::Data`) : :zeek:type:`bool`
 
@@ -780,6 +821,7 @@ Functions
    :returns: always true.
 
 .. zeek:id:: Broker::set_contains
+   :source-code: base/frameworks/broker/store.zeek 859 862
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Broker::Data`, key: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -795,12 +837,14 @@ Functions
    :returns: true if the key exists in the set.
 
 .. zeek:id:: Broker::set_create
+   :source-code: base/frameworks/broker/store.zeek 844 847
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::Data`
 
    Create communication data of type "set".
 
 .. zeek:id:: Broker::set_insert
+   :source-code: base/frameworks/broker/store.zeek 864 867
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Broker::Data`, key: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -816,6 +860,7 @@ Functions
    :returns: true if the key was inserted, or false if it already existed.
 
 .. zeek:id:: Broker::set_iterator
+   :source-code: base/frameworks/broker/store.zeek 874 877
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Broker::Data`) : :zeek:type:`opaque` of Broker::SetIterator
 
@@ -829,6 +874,7 @@ Functions
    :returns: an iterator.
 
 .. zeek:id:: Broker::set_iterator_last
+   :source-code: base/frameworks/broker/store.zeek 879 882
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::SetIterator) : :zeek:type:`bool`
 
@@ -842,6 +888,7 @@ Functions
             the iterator is one-past-the-final-element.
 
 .. zeek:id:: Broker::set_iterator_next
+   :source-code: base/frameworks/broker/store.zeek 884 887
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::SetIterator) : :zeek:type:`bool`
 
@@ -856,6 +903,7 @@ Functions
             one-past-the-final-element.
 
 .. zeek:id:: Broker::set_iterator_value
+   :source-code: base/frameworks/broker/store.zeek 889 892
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::SetIterator) : :zeek:type:`Broker::Data`
 
@@ -868,6 +916,7 @@ Functions
    :returns: element in the collection that the iterator currently references.
 
 .. zeek:id:: Broker::set_remove
+   :source-code: base/frameworks/broker/store.zeek 869 872
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Broker::Data`, key: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -883,6 +932,7 @@ Functions
    :returns: true if the element existed in the set and is now removed.
 
 .. zeek:id:: Broker::set_size
+   :source-code: base/frameworks/broker/store.zeek 854 857
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Broker::Data`) : :zeek:type:`count`
 
@@ -895,6 +945,7 @@ Functions
    :returns: the number of elements in the set.
 
 .. zeek:id:: Broker::store_name
+   :source-code: base/frameworks/broker/store.zeek 748 751
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store) : :zeek:type:`string`
 
@@ -904,6 +955,7 @@ Functions
    :returns: the name of the store.
 
 .. zeek:id:: Broker::table_clear
+   :source-code: base/frameworks/broker/store.zeek 899 902
 
    :Type: :zeek:type:`function` (t: :zeek:type:`Broker::Data`) : :zeek:type:`bool`
 
@@ -916,6 +968,7 @@ Functions
    :returns: always true.
 
 .. zeek:id:: Broker::table_contains
+   :source-code: base/frameworks/broker/store.zeek 909 912
 
    :Type: :zeek:type:`function` (t: :zeek:type:`Broker::Data`, key: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -931,12 +984,14 @@ Functions
    :returns: true if the key exists in the table.
 
 .. zeek:id:: Broker::table_create
+   :source-code: base/frameworks/broker/store.zeek 894 897
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::Data`
 
    Create communication data of type "table".
 
 .. zeek:id:: Broker::table_insert
+   :source-code: base/frameworks/broker/store.zeek 914 917
 
    :Type: :zeek:type:`function` (t: :zeek:type:`Broker::Data`, key: :zeek:type:`any`, val: :zeek:type:`any`) : :zeek:type:`Broker::Data`
 
@@ -956,6 +1011,7 @@ Functions
             already existed in the table.
 
 .. zeek:id:: Broker::table_iterator
+   :source-code: base/frameworks/broker/store.zeek 929 932
 
    :Type: :zeek:type:`function` (t: :zeek:type:`Broker::Data`) : :zeek:type:`opaque` of Broker::TableIterator
 
@@ -969,6 +1025,7 @@ Functions
    :returns: an iterator.
 
 .. zeek:id:: Broker::table_iterator_last
+   :source-code: base/frameworks/broker/store.zeek 934 937
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::TableIterator) : :zeek:type:`bool`
 
@@ -982,6 +1039,7 @@ Functions
             the iterator is one-past-the-final-element.
 
 .. zeek:id:: Broker::table_iterator_next
+   :source-code: base/frameworks/broker/store.zeek 939 942
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::TableIterator) : :zeek:type:`bool`
 
@@ -996,6 +1054,7 @@ Functions
             one-past-the-final-element.
 
 .. zeek:id:: Broker::table_iterator_value
+   :source-code: base/frameworks/broker/store.zeek 944 947
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::TableIterator) : :zeek:type:`Broker::TableItem`
 
@@ -1008,6 +1067,7 @@ Functions
    :returns: element in the collection that the iterator currently references.
 
 .. zeek:id:: Broker::table_lookup
+   :source-code: base/frameworks/broker/store.zeek 924 927
 
    :Type: :zeek:type:`function` (t: :zeek:type:`Broker::Data`, key: :zeek:type:`any`) : :zeek:type:`Broker::Data`
 
@@ -1024,6 +1084,7 @@ Functions
             the optional field of the returned record is not set.
 
 .. zeek:id:: Broker::table_remove
+   :source-code: base/frameworks/broker/store.zeek 919 922
 
    :Type: :zeek:type:`function` (t: :zeek:type:`Broker::Data`, key: :zeek:type:`any`) : :zeek:type:`Broker::Data`
 
@@ -1040,6 +1101,7 @@ Functions
             the optional field of the returned record is not set.
 
 .. zeek:id:: Broker::table_size
+   :source-code: base/frameworks/broker/store.zeek 904 907
 
    :Type: :zeek:type:`function` (t: :zeek:type:`Broker::Data`) : :zeek:type:`count`
 
@@ -1052,6 +1114,7 @@ Functions
    :returns: the number of elements in the table.
 
 .. zeek:id:: Broker::vector_clear
+   :source-code: base/frameworks/broker/store.zeek 954 957
 
    :Type: :zeek:type:`function` (v: :zeek:type:`Broker::Data`) : :zeek:type:`bool`
 
@@ -1064,12 +1127,14 @@ Functions
    :returns: always true.
 
 .. zeek:id:: Broker::vector_create
+   :source-code: base/frameworks/broker/store.zeek 949 952
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::Data`
 
    Create communication data of type "vector".
 
 .. zeek:id:: Broker::vector_insert
+   :source-code: base/frameworks/broker/store.zeek 964 967
 
    :Type: :zeek:type:`function` (v: :zeek:type:`Broker::Data`, idx: :zeek:type:`count`, d: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -1090,6 +1155,7 @@ Functions
    :returns: always true.
 
 .. zeek:id:: Broker::vector_iterator
+   :source-code: base/frameworks/broker/store.zeek 984 987
 
    :Type: :zeek:type:`function` (v: :zeek:type:`Broker::Data`) : :zeek:type:`opaque` of Broker::VectorIterator
 
@@ -1103,6 +1169,7 @@ Functions
    :returns: an iterator.
 
 .. zeek:id:: Broker::vector_iterator_last
+   :source-code: base/frameworks/broker/store.zeek 989 992
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::VectorIterator) : :zeek:type:`bool`
 
@@ -1116,6 +1183,7 @@ Functions
             the iterator is one-past-the-final-element.
 
 .. zeek:id:: Broker::vector_iterator_next
+   :source-code: base/frameworks/broker/store.zeek 994 997
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::VectorIterator) : :zeek:type:`bool`
 
@@ -1130,6 +1198,7 @@ Functions
             one-past-the-final-element.
 
 .. zeek:id:: Broker::vector_iterator_value
+   :source-code: base/frameworks/broker/store.zeek 999 1002
 
    :Type: :zeek:type:`function` (it: :zeek:type:`opaque` of Broker::VectorIterator) : :zeek:type:`Broker::Data`
 
@@ -1142,6 +1211,7 @@ Functions
    :returns: element in the collection that the iterator currently references.
 
 .. zeek:id:: Broker::vector_lookup
+   :source-code: base/frameworks/broker/store.zeek 979 982
 
    :Type: :zeek:type:`function` (v: :zeek:type:`Broker::Data`, idx: :zeek:type:`count`) : :zeek:type:`Broker::Data`
 
@@ -1158,6 +1228,7 @@ Functions
             valid index, the optional field of the returned record is not set.
 
 .. zeek:id:: Broker::vector_remove
+   :source-code: base/frameworks/broker/store.zeek 974 977
 
    :Type: :zeek:type:`function` (v: :zeek:type:`Broker::Data`, idx: :zeek:type:`count`) : :zeek:type:`Broker::Data`
 
@@ -1174,6 +1245,7 @@ Functions
             valid index, the optional field of the returned record is not set.
 
 .. zeek:id:: Broker::vector_replace
+   :source-code: base/frameworks/broker/store.zeek 969 972
 
    :Type: :zeek:type:`function` (v: :zeek:type:`Broker::Data`, idx: :zeek:type:`count`, d: :zeek:type:`any`) : :zeek:type:`Broker::Data`
 
@@ -1193,6 +1265,7 @@ Functions
             valid index, the optional field of the returned record is not set.
 
 .. zeek:id:: Broker::vector_size
+   :source-code: base/frameworks/broker/store.zeek 959 962
 
    :Type: :zeek:type:`function` (v: :zeek:type:`Broker::Data`) : :zeek:type:`count`
 

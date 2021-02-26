@@ -50,6 +50,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Supervisor::ClusterEndpoint
+   :source-code: base/frameworks/supervisor/api.zeek 20 30
 
    :Type: :zeek:type:`record`
 
@@ -70,6 +71,7 @@ Types
    Framework.
 
 .. zeek:type:: Supervisor::ClusterRole
+   :source-code: base/frameworks/supervisor/api.zeek 10 10
 
    :Type: :zeek:type:`enum`
 
@@ -86,6 +88,7 @@ Types
    The role a supervised-node will play in Zeek's Cluster Framework.
 
 .. zeek:type:: Supervisor::NodeConfig
+   :source-code: base/frameworks/supervisor/api.zeek 33 57
 
    :Type: :zeek:type:`record`
 
@@ -123,6 +126,7 @@ Types
    Configuration options that influence behavior of a supervised Zeek node.
 
 .. zeek:type:: Supervisor::NodeStatus
+   :source-code: base/frameworks/supervisor/api.zeek 60 66
 
    :Type: :zeek:type:`record`
 
@@ -136,6 +140,7 @@ Types
    The current status of a supervised node.
 
 .. zeek:type:: Supervisor::Status
+   :source-code: base/frameworks/supervisor/api.zeek 69 72
 
    :Type: :zeek:type:`record`
 
@@ -147,6 +152,7 @@ Types
 Hooks
 #####
 .. zeek:id:: Supervisor::stderr_hook
+   :source-code: base/frameworks/supervisor/api.zeek 147 147
 
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -166,6 +172,7 @@ Hooks
    :msg: line-buffered contents from the stderr of a child process.
 
 .. zeek:id:: Supervisor::stdout_hook
+   :source-code: base/frameworks/supervisor/api.zeek 133 133
 
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -187,6 +194,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Supervisor::create
+   :source-code: base/frameworks/supervisor/main.zeek 13 16
 
    :Type: :zeek:type:`function` (node: :zeek:type:`Supervisor::NodeConfig`) : :zeek:type:`string`
 
@@ -200,6 +208,7 @@ Functions
    :returns: an empty string on success or description of the error/failure.
 
 .. zeek:id:: Supervisor::destroy
+   :source-code: base/frameworks/supervisor/main.zeek 18 21
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -214,6 +223,7 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Supervisor::is_supervised
+   :source-code: base/frameworks/supervisor/main.zeek 33 36
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -221,6 +231,7 @@ Functions
    :returns: true if this is a supervised node process.
 
 .. zeek:id:: Supervisor::is_supervisor
+   :source-code: base/frameworks/supervisor/main.zeek 28 31
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -228,6 +239,7 @@ Functions
    :returns: true if this is the Supervisor process.
 
 .. zeek:id:: Supervisor::node
+   :source-code: base/frameworks/supervisor/main.zeek 38 41
 
    :Type: :zeek:type:`function` () : :zeek:type:`Supervisor::NodeConfig`
 
@@ -237,6 +249,7 @@ Functions
             a supervised one.
 
 .. zeek:id:: Supervisor::restart
+   :source-code: base/frameworks/supervisor/main.zeek 23 26
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -252,6 +265,7 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Supervisor::status
+   :source-code: base/frameworks/supervisor/main.zeek 8 11
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`Supervisor::Status`
 

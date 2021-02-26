@@ -30,6 +30,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: InputConfig::empty_field
+   :source-code: base/frameworks/input/readers/config.zeek 13 13
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -40,6 +41,7 @@ Redefinable Options
    will result in an empty set.
 
 .. zeek:id:: InputConfig::fail_on_file_problem
+   :source-code: base/frameworks/input/readers/config.zeek 28 28
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -60,6 +62,7 @@ Redefinable Options
    the $config table.
 
 .. zeek:id:: InputConfig::set_separator
+   :source-code: base/frameworks/input/readers/config.zeek 8 8
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -71,6 +74,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: InputConfig::new_value
+   :source-code: base/frameworks/config/input.zeek 53 59
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, source: :zeek:type:`string`, id: :zeek:type:`string`, value: :zeek:type:`any`)
 

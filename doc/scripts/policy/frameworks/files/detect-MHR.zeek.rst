@@ -38,6 +38,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: TeamCymruMalwareHashRegistry::match_file_types
+   :source-code: policy/frameworks/files/detect-MHR.zeek 18 18
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`
@@ -51,6 +52,7 @@ Runtime Options
    File types to attempt matching against the Malware Hash Registry.
 
 .. zeek:id:: TeamCymruMalwareHashRegistry::match_sub_url
+   :source-code: policy/frameworks/files/detect-MHR.zeek 29 29
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -61,6 +63,7 @@ Runtime Options
    hash of the file.
 
 .. zeek:id:: TeamCymruMalwareHashRegistry::notice_threshold
+   :source-code: policy/frameworks/files/detect-MHR.zeek 35 35
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`

@@ -67,6 +67,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: CaptureLoss::initial_watch_interval
+   :source-code: policy/misc/capture-loss.zeek 51 51
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -76,6 +77,7 @@ Runtime Options
    report is generated this many minutes after startup.
 
 .. zeek:id:: CaptureLoss::minimum_acks
+   :source-code: policy/misc/capture-loss.zeek 62 62
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -86,6 +88,7 @@ Runtime Options
    :zeek:enum:`CaptureLoss::Too_Little_Traffic` is raised.
 
 .. zeek:id:: CaptureLoss::too_much_loss
+   :source-code: policy/misc/capture-loss.zeek 57 57
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -97,6 +100,7 @@ Runtime Options
    being 100%.
 
 .. zeek:id:: CaptureLoss::watch_interval
+   :source-code: policy/misc/capture-loss.zeek 47 47
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -108,6 +112,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: CaptureLoss::Info
+   :source-code: policy/misc/capture-loss.zeek 28 43
 
    :Type: :zeek:type:`record`
 
@@ -135,6 +140,7 @@ Types
 Hooks
 #####
 .. zeek:id:: CaptureLoss::log_policy
+   :source-code: policy/misc/capture-loss.zeek 17 17
 
    :Type: :zeek:type:`Log::PolicyHook`
 

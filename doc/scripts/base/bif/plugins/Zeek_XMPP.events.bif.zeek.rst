@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: xmpp_starttls
+   :source-code: base/bif/plugins/Zeek_XMPP.events.bif.zeek 8 8
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

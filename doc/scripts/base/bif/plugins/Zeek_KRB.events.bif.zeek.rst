@@ -36,6 +36,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: krb_ap_request
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 90 90
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, ticket: :zeek:type:`KRB::Ticket`, opts: :zeek:type:`KRB::AP_Options`)
 
@@ -60,6 +61,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_ap_response
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 106 106
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -79,6 +81,7 @@ Events
       krb_ap_request krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_as_request
+   :source-code: base/protocols/krb/main.zeek 145 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Request`)
 
@@ -101,6 +104,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_as_response
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 36 36
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Response`)
 
@@ -122,6 +126,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_cred
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 157 157
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, tickets: :zeek:type:`KRB::Ticket_Vector`)
 
@@ -144,6 +149,7 @@ Events
       krb_ap_request krb_ap_response krb_priv krb_safe krb_error
 
 .. zeek:id:: krb_error
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 171 171
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::Error_Msg`)
 
@@ -162,6 +168,7 @@ Events
       krb_ap_request krb_ap_response krb_priv krb_safe krb_cred
 
 .. zeek:id:: krb_priv
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 123 123
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -183,6 +190,7 @@ Events
       krb_ap_request krb_ap_response krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_safe
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 140 140
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`KRB::SAFE_Msg`)
 
@@ -205,6 +213,7 @@ Events
       krb_ap_request krb_ap_response krb_priv krb_cred krb_error
 
 .. zeek:id:: krb_tgs_request
+   :source-code: base/protocols/krb/main.zeek 197 215
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Request`)
 
@@ -227,6 +236,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_tgs_response
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 71 71
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Response`)
 

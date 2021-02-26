@@ -47,6 +47,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Reporter::Info
+   :source-code: base/frameworks/reporter/main.zeek 24 38
 
    :Type: :zeek:type:`record`
 
@@ -72,6 +73,7 @@ Types
 Hooks
 #####
 .. zeek:id:: Reporter::log_policy
+   :source-code: base/frameworks/reporter/main.zeek 21 21
 
    :Type: :zeek:type:`Log::PolicyHook`
 

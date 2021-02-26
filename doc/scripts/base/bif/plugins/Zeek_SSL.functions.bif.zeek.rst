@@ -22,6 +22,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: set_ssl_established
+   :source-code: base/bif/plugins/Zeek_SSL.functions.bif.zeek 11 11
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`any`
 

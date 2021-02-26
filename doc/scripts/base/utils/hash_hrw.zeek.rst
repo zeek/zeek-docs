@@ -35,6 +35,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: HashHRW::Pool
+   :source-code: base/utils/hash_hrw.zeek 22 24
 
    :Type: :zeek:type:`record`
 
@@ -43,6 +44,7 @@ Types
    A collection of sites to distribute keys across.
 
 .. zeek:type:: HashHRW::Site
+   :source-code: base/utils/hash_hrw.zeek 10 16
 
    :Type: :zeek:type:`record`
 
@@ -57,6 +59,7 @@ Types
    to be distributed.
 
 .. zeek:type:: HashHRW::SiteTable
+   :source-code: base/utils/hash_hrw.zeek 19 19
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`HashHRW::Site`
 
@@ -65,6 +68,7 @@ Types
 Functions
 #########
 .. zeek:id:: HashHRW::add_site
+   :source-code: base/utils/hash_hrw.zeek 40 47
 
    :Type: :zeek:type:`function` (pool: :zeek:type:`HashHRW::Pool`, site: :zeek:type:`HashHRW::Site`) : :zeek:type:`bool`
 
@@ -74,6 +78,7 @@ Functions
    :returns: F is the site is already in the pool, else T.
 
 .. zeek:id:: HashHRW::get_site
+   :source-code: base/utils/hash_hrw.zeek 58 77
 
    :Type: :zeek:type:`function` (pool: :zeek:type:`HashHRW::Pool`, key: :zeek:type:`any`) : :zeek:type:`HashHRW::Site`
 
@@ -81,6 +86,7 @@ Functions
    :returns: the site to which the key maps.
 
 .. zeek:id:: HashHRW::rem_site
+   :source-code: base/utils/hash_hrw.zeek 49 56
 
    :Type: :zeek:type:`function` (pool: :zeek:type:`HashHRW::Pool`, site: :zeek:type:`HashHRW::Site`) : :zeek:type:`bool`
 

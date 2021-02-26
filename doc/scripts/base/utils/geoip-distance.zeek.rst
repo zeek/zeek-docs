@@ -21,6 +21,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: haversine_distance_ip
+   :source-code: base/utils/geoip-distance.zeek 14 27
 
    :Type: :zeek:type:`function` (a1: :zeek:type:`addr`, a2: :zeek:type:`addr`) : :zeek:type:`double`
 

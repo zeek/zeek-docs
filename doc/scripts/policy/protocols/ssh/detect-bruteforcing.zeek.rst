@@ -49,6 +49,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: SSH::guessing_timeout
+   :source-code: policy/protocols/ssh/detect-bruteforcing.zeek 34 34
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -58,6 +59,7 @@ Redefinable Options
    build a model of a password guesser.
 
 .. zeek:id:: SSH::ignore_guessers
+   :source-code: policy/protocols/ssh/detect-bruteforcing.zeek 39 39
 
    :Type: :zeek:type:`table` [:zeek:type:`subnet`] of :zeek:type:`subnet`
    :Attributes: :zeek:attr:`&redef`
@@ -68,6 +70,7 @@ Redefinable Options
    client subnets and the yield value represents server subnets.
 
 .. zeek:id:: SSH::password_guesses_limit
+   :source-code: policy/protocols/ssh/detect-bruteforcing.zeek 30 30
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`

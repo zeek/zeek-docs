@@ -27,6 +27,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: HTTP::build_url
+   :source-code: base/protocols/http/utils.zeek 55 66
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`HTTP::Info`) : :zeek:type:`string`
 
@@ -40,6 +41,7 @@ Functions
    :returns: A URL, not prefixed by ``"http://"``.
 
 .. zeek:id:: HTTP::build_url_http
+   :source-code: base/protocols/http/utils.zeek 68 71
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`HTTP::Info`) : :zeek:type:`string`
 
@@ -53,12 +55,14 @@ Functions
    :returns: A URL prefixed with ``"http://"``.
 
 .. zeek:id:: HTTP::describe
+   :source-code: base/protocols/http/utils.zeek 73 76
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`HTTP::Info`) : :zeek:type:`string`
 
    Create an extremely shortened representation of a log line.
 
 .. zeek:id:: HTTP::extract_keys
+   :source-code: base/protocols/http/utils.zeek 41 54
 
    :Type: :zeek:type:`function` (data: :zeek:type:`string`, kv_splitter: :zeek:type:`pattern`) : :zeek:type:`string_vec`
 

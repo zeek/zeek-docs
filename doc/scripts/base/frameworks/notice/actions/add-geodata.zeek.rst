@@ -44,6 +44,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Notice::lookup_location_types
+   :source-code: base/frameworks/notice/actions/add-geodata.zeek 29 29
 
    :Type: :zeek:type:`set` [:zeek:type:`Notice::Type`]
    :Attributes: :zeek:attr:`&redef`

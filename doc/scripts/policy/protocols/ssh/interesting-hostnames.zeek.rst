@@ -38,6 +38,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSH::interesting_hostnames
+   :source-code: policy/protocols/ssh/interesting-hostnames.zeek 20 20
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`

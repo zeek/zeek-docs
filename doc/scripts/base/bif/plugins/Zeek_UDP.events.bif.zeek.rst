@@ -25,6 +25,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: udp_contents
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 43 43
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, contents: :zeek:type:`string`)
 
@@ -52,6 +53,7 @@ Events
       udp_content_delivery_ports_orig udp_content_delivery_ports_resp
 
 .. zeek:id:: udp_multiple_checksum_errors
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 57 57
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -71,6 +73,7 @@ Events
       tcp_multiple_checksum_errors
 
 .. zeek:id:: udp_reply
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`)
 
@@ -84,6 +87,7 @@ Events
    .. zeek:see:: udp_contents  udp_request udp_session_done
 
 .. zeek:id:: udp_request
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 11 11
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`)
 

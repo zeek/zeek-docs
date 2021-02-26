@@ -27,6 +27,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: InputBenchmark::addfactor
+   :source-code: base/frameworks/input/readers/benchmark.zeek 16 16
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -35,6 +36,7 @@ Redefinable Options
    Addition factor for each heartbeat.
 
 .. zeek:id:: InputBenchmark::autospread
+   :source-code: base/frameworks/input/readers/benchmark.zeek 13 13
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -43,6 +45,7 @@ Redefinable Options
    Spreading where usleep = 1000000 / autospread * num_lines
 
 .. zeek:id:: InputBenchmark::factor
+   :source-code: base/frameworks/input/readers/benchmark.zeek 7 7
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -51,6 +54,7 @@ Redefinable Options
    Multiplication factor for each second.
 
 .. zeek:id:: InputBenchmark::spread
+   :source-code: base/frameworks/input/readers/benchmark.zeek 10 10
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -59,6 +63,7 @@ Redefinable Options
    Spread factor between lines.
 
 .. zeek:id:: InputBenchmark::stopspreadat
+   :source-code: base/frameworks/input/readers/benchmark.zeek 19 19
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -67,6 +72,7 @@ Redefinable Options
    Stop spreading at x lines per heartbeat.
 
 .. zeek:id:: InputBenchmark::timedspread
+   :source-code: base/frameworks/input/readers/benchmark.zeek 22 22
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`

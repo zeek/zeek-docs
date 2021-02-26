@@ -32,6 +32,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: InputSQLite::empty_field
+   :source-code: base/frameworks/input/readers/sqlite.zeek 22 22
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -40,6 +41,7 @@ Redefinable Options
    String to use for empty fields.
 
 .. zeek:id:: InputSQLite::set_separator
+   :source-code: base/frameworks/input/readers/sqlite.zeek 16 16
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -49,6 +51,7 @@ Redefinable Options
    Please note that the separator has to be exactly one character long.
 
 .. zeek:id:: InputSQLite::unset_field
+   :source-code: base/frameworks/input/readers/sqlite.zeek 19 19
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`

@@ -57,6 +57,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NetControl::BrokerConfig
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 13 34
 
    :Type: :zeek:type:`record`
 
@@ -92,36 +93,43 @@ Types
 Events
 ######
 .. zeek:id:: NetControl::broker_add_rule
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 46 46
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`)
 
 
 .. zeek:id:: NetControl::broker_remove_rule
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 47 47
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, reason: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::broker_rule_added
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 61 72
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::broker_rule_error
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 100 111
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::broker_rule_exists
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 74 85
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::broker_rule_removed
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 87 98
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::broker_rule_timeout
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 113 124
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, i: :zeek:type:`NetControl::FlowInfo`)
 
@@ -129,6 +137,7 @@ Events
 Functions
 #########
 .. zeek:id:: NetControl::create_broker
+   :source-code: base/frameworks/netcontrol/plugins/broker.zeek 198 220
 
    :Type: :zeek:type:`function` (config: :zeek:type:`NetControl::BrokerConfig`, can_expire: :zeek:type:`bool`) : :zeek:type:`NetControl::PluginState`
 

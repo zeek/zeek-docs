@@ -53,6 +53,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: ip_addr_regex
+   :source-code: base/utils/addrs.zeek 64 64
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -64,6 +65,7 @@ Constants
 
 
 .. zeek:id:: ipv4_addr_regex
+   :source-code: base/utils/addrs.zeek 7 7
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -75,6 +77,7 @@ Constants
 
 
 .. zeek:id:: ipv4_decim
+   :source-code: base/utils/addrs.zeek 5 5
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -86,6 +89,7 @@ Constants
 
 
 .. zeek:id:: ipv6_8hex_regex
+   :source-code: base/utils/addrs.zeek 11 11
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -97,6 +101,7 @@ Constants
 
 
 .. zeek:id:: ipv6_addr_regex
+   :source-code: base/utils/addrs.zeek 59 59
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -108,6 +113,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hex4dec_regex
+   :source-code: base/utils/addrs.zeek 52 52
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -119,6 +125,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hex_regex
+   :source-code: base/utils/addrs.zeek 31 31
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -130,6 +137,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hext4dec_lead_hextets0
+   :source-code: base/utils/addrs.zeek 40 40
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -141,6 +149,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hext4dec_lead_hextets1
+   :source-code: base/utils/addrs.zeek 42 42
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -152,6 +161,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hext4dec_lead_hextets2
+   :source-code: base/utils/addrs.zeek 44 44
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -163,6 +173,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hext4dec_lead_hextets3
+   :source-code: base/utils/addrs.zeek 46 46
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -174,6 +185,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hext4dec_lead_hextets4
+   :source-code: base/utils/addrs.zeek 48 48
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -185,6 +197,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_hext4dec_lead_hextets5
+   :source-code: base/utils/addrs.zeek 50 50
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -196,6 +209,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets0
+   :source-code: base/utils/addrs.zeek 15 15
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -207,6 +221,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets1
+   :source-code: base/utils/addrs.zeek 17 17
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -218,6 +233,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets2
+   :source-code: base/utils/addrs.zeek 19 19
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -229,6 +245,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets3
+   :source-code: base/utils/addrs.zeek 21 21
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -240,6 +257,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets4
+   :source-code: base/utils/addrs.zeek 23 23
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -251,6 +269,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets5
+   :source-code: base/utils/addrs.zeek 25 25
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -262,6 +281,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets6
+   :source-code: base/utils/addrs.zeek 27 27
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -273,6 +293,7 @@ Constants
 
 
 .. zeek:id:: ipv6_compressed_lead_hextets7
+   :source-code: base/utils/addrs.zeek 29 29
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -284,6 +305,7 @@ Constants
 
 
 .. zeek:id:: ipv6_hex4dec_regex
+   :source-code: base/utils/addrs.zeek 13 13
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -295,6 +317,7 @@ Constants
 
 
 .. zeek:id:: ipv6_hextet
+   :source-code: base/utils/addrs.zeek 9 9
 
    :Type: :zeek:type:`pattern`
    :Default:
@@ -308,6 +331,7 @@ Constants
 Functions
 #########
 .. zeek:id:: addr_to_uri
+   :source-code: base/utils/addrs.zeek 107 113
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`string`
 
@@ -322,6 +346,7 @@ Functions
    :returns: the string representation of the address suitable for URI inclusion.
 
 .. zeek:id:: extract_ip_addresses
+   :source-code: base/utils/addrs.zeek 87 99
 
    :Type: :zeek:type:`function` (input: :zeek:type:`string`) : :zeek:type:`string_vec`
 
@@ -334,6 +359,7 @@ Functions
    :returns: an array containing all valid IP address strings found in *input*.
 
 .. zeek:id:: has_valid_octets
+   :source-code: base/utils/addrs.zeek 71 81
 
    :Type: :zeek:type:`function` (octets: :zeek:type:`string_vec`) : :zeek:type:`bool`
 
@@ -346,6 +372,7 @@ Functions
    :returns: T if every element is between 0 and 255, inclusive, else F.
 
 .. zeek:id:: normalize_mac
+   :source-code: base/utils/addrs.zeek 122 141
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`) : :zeek:type:`string`
 
