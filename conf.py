@@ -144,6 +144,7 @@ html_theme_options = {
     'analytics_id': 'UA-144186885-1',
     'collapse_navigation': False,
     'display_version': True,
+    "style_external_links": True,
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
