@@ -38,6 +38,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: HTTP::ignored_user_agents
+   :source-code: policy/protocols/http/software.zeek 18 18
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`

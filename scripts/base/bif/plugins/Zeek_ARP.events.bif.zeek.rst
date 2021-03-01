@@ -23,6 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: arp_reply
+   :source-code: base/bif/plugins/Zeek_ARP.events.bif.zeek 43 43
 
    :Type: :zeek:type:`event` (mac_src: :zeek:type:`string`, mac_dst: :zeek:type:`string`, SPA: :zeek:type:`addr`, SHA: :zeek:type:`string`, TPA: :zeek:type:`addr`, THA: :zeek:type:`string`)
 
@@ -52,6 +53,7 @@ Events
    .. zeek:see::  arp_request bad_arp
 
 .. zeek:id:: arp_request
+   :source-code: base/bif/plugins/Zeek_ARP.events.bif.zeek 22 22
 
    :Type: :zeek:type:`event` (mac_src: :zeek:type:`string`, mac_dst: :zeek:type:`string`, SPA: :zeek:type:`addr`, SHA: :zeek:type:`string`, TPA: :zeek:type:`addr`, THA: :zeek:type:`string`)
 
@@ -81,6 +83,7 @@ Events
    .. zeek:see:: arp_reply  bad_arp
 
 .. zeek:id:: bad_arp
+   :source-code: base/bif/plugins/Zeek_ARP.events.bif.zeek 66 66
 
    :Type: :zeek:type:`event` (SPA: :zeek:type:`addr`, SHA: :zeek:type:`string`, TPA: :zeek:type:`addr`, THA: :zeek:type:`string`, explanation: :zeek:type:`string`)
 

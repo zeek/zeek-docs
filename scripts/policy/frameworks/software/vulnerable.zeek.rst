@@ -51,6 +51,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Software::vulnerable_versions_update_endpoint
+   :source-code: policy/frameworks/software/vulnerable.zeek 32 32
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -60,6 +61,7 @@ Runtime Options
    be loaded from.
 
 .. zeek:id:: Software::vulnerable_versions_update_interval
+   :source-code: policy/frameworks/software/vulnerable.zeek 36 36
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -71,6 +73,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Software::vulnerable_versions
+   :source-code: policy/frameworks/software/vulnerable.zeek 41 41
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`set` [:zeek:type:`Software::VulnerableVersionRange`]
    :Attributes: :zeek:attr:`&redef`
@@ -83,6 +86,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Software::VulnerableVersionRange
+   :source-code: policy/frameworks/software/vulnerable.zeek 17 28
 
    :Type: :zeek:type:`record`
 

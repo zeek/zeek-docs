@@ -30,6 +30,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Config::config_files
+   :source-code: base/frameworks/config/input.zeek 15 15
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -45,6 +46,7 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: Config::read_config
+   :source-code: base/frameworks/config/input.zeek 61 77
 
    :Type: :zeek:type:`function` (filename: :zeek:type:`string`) : :zeek:type:`void`
 

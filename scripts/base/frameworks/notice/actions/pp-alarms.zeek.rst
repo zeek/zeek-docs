@@ -41,6 +41,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Notice::mail_dest_pretty_printed
+   :source-code: base/frameworks/notice/actions/pp-alarms.zeek 18 18
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -52,6 +53,7 @@ Redefinable Options
    Note that this is overridden by the ZeekControl MailAlarmsTo option.
 
 .. zeek:id:: Notice::pretty_print_alarms
+   :source-code: base/frameworks/notice/actions/pp-alarms.zeek 12 12
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -62,6 +64,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Notice::flag_nets
+   :source-code: base/frameworks/notice/actions/pp-alarms.zeek 22 22
 
    :Type: :zeek:type:`set` [:zeek:type:`subnet`]
    :Attributes: :zeek:attr:`&redef`
@@ -72,6 +75,7 @@ State Variables
    then highlight such lines differently.
 
 .. zeek:id:: Notice::force_email_summaries
+   :source-code: base/frameworks/notice/actions/pp-alarms.zeek 29 29
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -83,6 +87,7 @@ State Variables
 Functions
 #########
 .. zeek:id:: Notice::pretty_print_alarm
+   :source-code: base/frameworks/notice/actions/pp-alarms.zeek 152 254
 
    :Type: :zeek:type:`function` (out: :zeek:type:`file`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
    :Attributes: :zeek:attr:`&redef`

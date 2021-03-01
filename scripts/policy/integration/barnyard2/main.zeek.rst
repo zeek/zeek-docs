@@ -47,6 +47,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Barnyard2::Info
+   :source-code: policy/integration/barnyard2/main.zeek 14 21
 
    :Type: :zeek:type:`record`
 
@@ -63,6 +64,7 @@ Types
 Hooks
 #####
 .. zeek:id:: Barnyard2::log_policy
+   :source-code: policy/integration/barnyard2/main.zeek 12 12
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -70,6 +72,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Barnyard2::pid2cid
+   :source-code: policy/integration/barnyard2/main.zeek 35 38
 
    :Type: :zeek:type:`function` (p: :zeek:type:`Barnyard2::PacketID`) : :zeek:type:`conn_id`
 

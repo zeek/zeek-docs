@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb2_close_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_close.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`)
 
@@ -45,6 +46,7 @@ Events
    .. zeek:see:: smb2_message smb2_close_response
 
 .. zeek:id:: smb2_close_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_close.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::CloseResponse`)
 

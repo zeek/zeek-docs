@@ -110,6 +110,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: ZeekygenExample::an_option
+   :source-code: zeekygen/example.zeek 132 132
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -119,6 +120,7 @@ Redefinable Options
    The type/attribute information is all generated automatically.
 
 .. zeek:id:: ZeekygenExample::option_with_init
+   :source-code: zeekygen/example.zeek 135 135
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -130,6 +132,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: ZeekygenExample::a_var
+   :source-code: zeekygen/example.zeek 140 140
 
    :Type: :zeek:type:`bool`
 
@@ -138,6 +141,7 @@ State Variables
    in the generated docs.
 
 .. zeek:id:: ZeekygenExample::summary_test
+   :source-code: zeekygen/example.zeek 148 148
 
    :Type: :zeek:type:`string`
 
@@ -146,6 +150,7 @@ State Variables
    by the table of all identifiers declared by this script.
 
 .. zeek:id:: ZeekygenExample::var_without_explicit_type
+   :source-code: zeekygen/example.zeek 143 143
 
    :Type: :zeek:type:`string`
    :Default: ``"this works"``
@@ -155,6 +160,7 @@ State Variables
 Types
 #####
 .. zeek:type:: ZeekygenExample::ComplexRecord
+   :source-code: zeekygen/example.zeek 110 117
 
    :Type: :zeek:type:`record`
 
@@ -176,6 +182,7 @@ Types
    General documentation for a type "ComplexRecord" goes here.
 
 .. zeek:type:: ZeekygenExample::Info
+   :source-code: zeekygen/example.zeek 124 128
 
    :Type: :zeek:type:`record`
 
@@ -192,6 +199,7 @@ Types
    (provided they are also @load'ed).
 
 .. zeek:type:: ZeekygenExample::SimpleEnum
+   :source-code: zeekygen/example.zeek 78 85
 
    :Type: :zeek:type:`enum`
 
@@ -218,6 +226,7 @@ Types
    It can span multiple lines.
 
 .. zeek:type:: ZeekygenExample::SimpleRecord
+   :source-code: zeekygen/example.zeek 97 101
 
    :Type: :zeek:type:`record`
 
@@ -238,6 +247,7 @@ Types
 Events
 ######
 .. zeek:id:: ZeekygenExample::an_event
+   :source-code: zeekygen/example.zeek 171 171
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`)
 
@@ -254,6 +264,7 @@ Events
 Functions
 #########
 .. zeek:id:: ZeekygenExample::a_function
+   :source-code: zeekygen/example.zeek 161 161
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`string`
 

@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_transaction_request
+   :source-code: base/protocols/smb/smb1-main.zeek 258 261
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, name: :zeek:type:`string`, sub_cmd: :zeek:type:`count`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -56,6 +57,7 @@ Events
    .. zeek:see:: smb1_message smb1_transaction2_request
 
 .. zeek:id:: smb1_transaction_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_transaction.bif.zeek 42 42
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 

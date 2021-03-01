@@ -40,6 +40,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: HTTP::log_client_header_names
+   :source-code: policy/protocols/http/header-names.zeek 21 21
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -48,6 +49,7 @@ Runtime Options
    A boolean value to determine if client header names are to be logged.
 
 .. zeek:id:: HTTP::log_server_header_names
+   :source-code: policy/protocols/http/header-names.zeek 24 24
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`

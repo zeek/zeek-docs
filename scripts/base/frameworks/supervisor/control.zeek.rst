@@ -47,6 +47,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: SupervisorControl::topic_prefix
+   :source-code: base/frameworks/supervisor/control.zeek 16 16
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -60,6 +61,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: SupervisorControl::create_request
+   :source-code: base/frameworks/supervisor/main.zeek 66 74
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`Supervisor::NodeConfig`)
 
@@ -72,6 +74,7 @@ Events
    :node: the desired configuration for the new supervised node process.
 
 .. zeek:id:: SupervisorControl::create_response
+   :source-code: base/frameworks/supervisor/control.zeek 32 32
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`string`)
 
@@ -86,6 +89,7 @@ Events
            :zeek:see:`Supervisor::create`.
 
 .. zeek:id:: SupervisorControl::destroy_request
+   :source-code: base/frameworks/supervisor/main.zeek 76 84
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`string`)
 
@@ -99,6 +103,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::destroy_response
+   :source-code: base/frameworks/supervisor/control.zeek 83 83
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -113,6 +118,7 @@ Events
            :zeek:see:`Supervisor::destroy`.
 
 .. zeek:id:: SupervisorControl::restart_request
+   :source-code: base/frameworks/supervisor/main.zeek 86 94
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`string`)
 
@@ -126,6 +132,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::restart_response
+   :source-code: base/frameworks/supervisor/control.zeek 66 66
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -140,6 +147,7 @@ Events
            :zeek:see:`Supervisor::restart`.
 
 .. zeek:id:: SupervisorControl::status_request
+   :source-code: base/frameworks/supervisor/main.zeek 56 64
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`string`)
 
@@ -153,6 +161,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::status_response
+   :source-code: base/frameworks/supervisor/control.zeek 49 49
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Supervisor::Status`)
 
@@ -167,6 +176,7 @@ Events
            :zeek:see:`Supervisor::status`.
 
 .. zeek:id:: SupervisorControl::stop_request
+   :source-code: base/frameworks/supervisor/main.zeek 48 54
 
    :Type: :zeek:type:`event` ()
 

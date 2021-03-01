@@ -55,6 +55,7 @@ Detailed Interface
 State Variables
 ###############
 .. zeek:id:: Known::modbus_nodes
+   :source-code: policy/protocols/modbus/known-masters-slaves.zeek 31 31
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`Known::ModbusDeviceType`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -65,6 +66,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Known::ModbusDeviceType
+   :source-code: policy/protocols/modbus/known-masters-slaves.zeek 16 20
 
    :Type: :zeek:type:`enum`
 
@@ -74,6 +76,7 @@ Types
 
 
 .. zeek:type:: Known::ModbusInfo
+   :source-code: policy/protocols/modbus/known-masters-slaves.zeek 21 28
 
    :Type: :zeek:type:`record`
 
@@ -90,6 +93,7 @@ Types
 Events
 ######
 .. zeek:id:: Known::log_known_modbus
+   :source-code: policy/protocols/modbus/known-masters-slaves.zeek 35 35
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Known::ModbusInfo`)
 
@@ -99,6 +103,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Known::log_policy_modbus
+   :source-code: policy/protocols/modbus/known-masters-slaves.zeek 14 14
 
    :Type: :zeek:type:`Log::PolicyHook`
 

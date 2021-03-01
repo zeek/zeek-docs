@@ -70,6 +70,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: FTP::guest_ids
+   :source-code: base/protocols/ftp/main.zeek 31 31
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +89,7 @@ Runtime Options
    User IDs that can be considered "anonymous".
 
 .. zeek:id:: FTP::logged_commands
+   :source-code: base/protocols/ftp/main.zeek 25 25
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -114,6 +116,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: FTP::ReplyCode
+   :source-code: base/protocols/ftp/main.zeek 35 39
 
    :Type: :zeek:type:`record`
 
@@ -129,6 +132,7 @@ Types
 Events
 ######
 .. zeek:id:: FTP::log_ftp
+   :source-code: base/protocols/ftp/main.zeek 46 46
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`FTP::Info`)
 
@@ -138,12 +142,14 @@ Events
 Hooks
 #####
 .. zeek:id:: FTP::finalize_ftp
+   :source-code: base/protocols/ftp/main.zeek 368 378
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    FTP finalization hook.  Remaining FTP info may get logged when it's called.
 
 .. zeek:id:: FTP::finalize_ftp_data
+   :source-code: base/protocols/ftp/main.zeek 355 365
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
@@ -151,6 +157,7 @@ Hooks
    get purged when called.
 
 .. zeek:id:: FTP::log_policy
+   :source-code: base/protocols/ftp/main.zeek 22 22
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -159,6 +166,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: FTP::parse_ftp_reply_code
+   :source-code: base/protocols/ftp/main.zeek 117 131
 
    :Type: :zeek:type:`function` (code: :zeek:type:`count`) : :zeek:type:`FTP::ReplyCode`
 

@@ -37,6 +37,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: LoadedScripts::Info
+   :source-code: policy/misc/loaded-scripts.zeek 11 16
 
    :Type: :zeek:type:`record`
 
@@ -49,6 +50,7 @@ Types
 Hooks
 #####
 .. zeek:id:: LoadedScripts::log_policy
+   :source-code: policy/misc/loaded-scripts.zeek 9 9
 
    :Type: :zeek:type:`Log::PolicyHook`
 

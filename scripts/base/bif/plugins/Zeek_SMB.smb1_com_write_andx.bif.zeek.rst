@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_write_andx_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_write_andx.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_id: :zeek:type:`count`, offset: :zeek:type:`count`, data_len: :zeek:type:`count`)
 
@@ -49,6 +50,7 @@ Events
    .. zeek:see:: smb1_message smb1_write_andx_response
 
 .. zeek:id:: smb1_write_andx_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_write_andx.bif.zeek 36 36
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, written_bytes: :zeek:type:`count`)
 

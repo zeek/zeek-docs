@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ftp_reply
+   :source-code: base/bif/plugins/Zeek_FTP.events.bif.zeek 38 38
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, code: :zeek:type:`count`, msg: :zeek:type:`string`, cont_resp: :zeek:type:`bool`)
 
@@ -49,6 +50,7 @@ Events
       parse_ftp_epsv parse_ftp_pasv parse_ftp_port
 
 .. zeek:id:: ftp_request
+   :source-code: base/bif/plugins/Zeek_FTP.events.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 

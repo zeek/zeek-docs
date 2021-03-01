@@ -29,6 +29,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: directed_id_string
+   :source-code: base/utils/conn-ids.zeek 35 38
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 
@@ -36,6 +37,7 @@ Functions
    second argument is T or F, respectively.
 
 .. zeek:id:: id_string
+   :source-code: base/utils/conn-ids.zeek 21 26
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`string`
 
@@ -44,6 +46,7 @@ Functions
    on the left to the responder on the right.
 
 .. zeek:id:: reverse_id_string
+   :source-code: base/utils/conn-ids.zeek 28 33
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`string`
 

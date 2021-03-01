@@ -24,6 +24,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: InputBinary::chunk_size
+   :source-code: base/frameworks/input/readers/binary.zeek 7 7
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -32,6 +33,7 @@ Redefinable Options
    Size of data chunks to read from the input file at a time.
 
 .. zeek:id:: InputBinary::path_prefix
+   :source-code: base/frameworks/input/readers/binary.zeek 13 13
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`

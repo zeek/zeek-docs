@@ -31,6 +31,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: InputAscii::empty_field
+   :source-code: base/frameworks/input/readers/ascii.zeek 17 17
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -39,6 +40,7 @@ Redefinable Options
    String to use for empty fields.
 
 .. zeek:id:: InputAscii::fail_on_file_problem
+   :source-code: base/frameworks/input/readers/ascii.zeek 49 49
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -61,6 +63,7 @@ Redefinable Options
    until Bro 2.6.
 
 .. zeek:id:: InputAscii::fail_on_invalid_lines
+   :source-code: base/frameworks/input/readers/ascii.zeek 32 32
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -78,6 +81,7 @@ Redefinable Options
    until Bro 2.6.
 
 .. zeek:id:: InputAscii::path_prefix
+   :source-code: base/frameworks/input/readers/ascii.zeek 55 55
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -89,6 +93,7 @@ Redefinable Options
    effect if the source already is an absolute path.
 
 .. zeek:id:: InputAscii::separator
+   :source-code: base/frameworks/input/readers/ascii.zeek 10 10
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -98,6 +103,7 @@ Redefinable Options
    Please note that the separator has to be exactly one character long.
 
 .. zeek:id:: InputAscii::set_separator
+   :source-code: base/frameworks/input/readers/ascii.zeek 14 14
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -107,6 +113,7 @@ Redefinable Options
    Please note that the separator has to be exactly one character long.
 
 .. zeek:id:: InputAscii::unset_field
+   :source-code: base/frameworks/input/readers/ascii.zeek 20 20
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`

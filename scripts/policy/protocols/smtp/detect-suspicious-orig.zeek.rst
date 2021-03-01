@@ -32,6 +32,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMTP::suspicious_origination_countries
+   :source-code: policy/protocols/smtp/detect-suspicious-orig.zeek 14 14
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -42,6 +43,7 @@ Runtime Options
    Zeek to be built with GeoIP support.
 
 .. zeek:id:: SMTP::suspicious_origination_networks
+   :source-code: policy/protocols/smtp/detect-suspicious-orig.zeek 15 15
 
    :Type: :zeek:type:`set` [:zeek:type:`subnet`]
    :Attributes: :zeek:attr:`&redef`

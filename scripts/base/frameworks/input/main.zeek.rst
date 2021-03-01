@@ -66,6 +66,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Input::default_mode
+   :source-code: base/frameworks/input/main.zeek 31 31
 
    :Type: :zeek:type:`Input::Mode`
    :Attributes: :zeek:attr:`&redef`
@@ -74,6 +75,7 @@ Runtime Options
    The default reader mode used. Defaults to `MANUAL`.
 
 .. zeek:id:: Input::default_reader
+   :source-code: base/frameworks/input/main.zeek 28 28
 
    :Type: :zeek:type:`Input::Reader`
    :Attributes: :zeek:attr:`&redef`
@@ -84,6 +86,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Input::accept_unsupported_types
+   :source-code: base/frameworks/input/main.zeek 56 56
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -96,6 +99,7 @@ Redefinable Options
    abort. Defaults to false (abort).
 
 .. zeek:id:: Input::empty_field
+   :source-code: base/frameworks/input/main.zeek 45 45
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -105,6 +109,7 @@ Redefinable Options
    Individual readers can use a different value.
 
 .. zeek:id:: Input::separator
+   :source-code: base/frameworks/input/main.zeek 36 36
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -115,6 +120,7 @@ Redefinable Options
    Individual readers can use a different value.
 
 .. zeek:id:: Input::set_separator
+   :source-code: base/frameworks/input/main.zeek 41 41
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -125,6 +131,7 @@ Redefinable Options
    Individual readers can use a different value.
 
 .. zeek:id:: Input::unset_field
+   :source-code: base/frameworks/input/main.zeek 49 49
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -136,6 +143,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Input::AnalysisDescription
+   :source-code: base/frameworks/input/main.zeek 180 204
 
    :Type: :zeek:type:`record`
 
@@ -167,6 +175,7 @@ Types
    file analysis framework.
 
 .. zeek:type:: Input::Event
+   :source-code: base/frameworks/input/main.zeek 8 8
 
    :Type: :zeek:type:`enum`
 
@@ -185,6 +194,7 @@ Types
    Type that describes what kind of change occurred.
 
 .. zeek:type:: Input::EventDescription
+   :source-code: base/frameworks/input/main.zeek 125 176
 
    :Type: :zeek:type:`record`
 
@@ -238,6 +248,7 @@ Types
    An event input stream type used to send input data to a Zeek event.
 
 .. zeek:type:: Input::Mode
+   :source-code: base/frameworks/input/main.zeek 18 26
 
    :Type: :zeek:type:`enum`
 
@@ -256,6 +267,7 @@ Types
    Type that defines the input stream read mode.
 
 .. zeek:type:: Input::TableDescription
+   :source-code: base/frameworks/input/main.zeek 59 122
 
    :Type: :zeek:type:`record`
 
@@ -340,6 +352,7 @@ Types
 Events
 ######
 .. zeek:id:: Input::end_of_data
+   :source-code: base/frameworks/input/main.zeek 249 249
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, source: :zeek:type:`string`)
 
@@ -355,6 +368,7 @@ Events
 Functions
 #########
 .. zeek:id:: Input::add_analysis
+   :source-code: base/frameworks/input/main.zeek 267 270
 
    :Type: :zeek:type:`function` (description: :zeek:type:`Input::AnalysisDescription`) : :zeek:type:`bool`
 
@@ -369,6 +383,7 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Input::add_event
+   :source-code: base/frameworks/input/main.zeek 262 265
 
    :Type: :zeek:type:`function` (description: :zeek:type:`Input::EventDescription`) : :zeek:type:`bool`
 
@@ -381,6 +396,7 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Input::add_table
+   :source-code: base/frameworks/input/main.zeek 257 260
 
    :Type: :zeek:type:`function` (description: :zeek:type:`Input::TableDescription`) : :zeek:type:`bool`
 
@@ -393,6 +409,7 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Input::force_update
+   :source-code: base/frameworks/input/main.zeek 277 280
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -405,6 +422,7 @@ Functions
    :returns: true on success and false if the named stream was not found.
 
 .. zeek:id:: Input::remove
+   :source-code: base/frameworks/input/main.zeek 272 275
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`bool`
 

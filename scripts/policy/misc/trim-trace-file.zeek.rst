@@ -33,6 +33,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: TrimTraceFile::trim_interval
+   :source-code: policy/misc/trim-trace-file.zeek 8 8
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -43,6 +44,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: TrimTraceFile::go
+   :source-code: policy/misc/trim-trace-file.zeek 18 31
 
    :Type: :zeek:type:`event` (first_trim: :zeek:type:`bool`)
 

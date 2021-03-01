@@ -82,6 +82,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: NetControl::catch_release_warn_blocked_ip_encountered
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 146 146
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -93,6 +94,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: NetControl::catch_release_intervals
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 150 150
 
    :Type: :zeek:type:`vector` of :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -107,6 +109,7 @@ Redefinable Options
    effect.
 
 .. zeek:id:: NetControl::watch_connections
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 142 142
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -119,6 +122,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: NetControl::BlockInfo
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 16 29
 
    :Type: :zeek:type:`record`
 
@@ -144,6 +148,7 @@ Types
    part of catch and release.
 
 .. zeek:type:: NetControl::CatchReleaseActions
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 33 51
 
    :Type: :zeek:type:`enum`
 
@@ -181,6 +186,7 @@ Types
    catch and release.
 
 .. zeek:type:: NetControl::CatchReleaseInfo
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 53 76
 
    :Type: :zeek:type:`record`
 
@@ -222,31 +228,37 @@ Types
 Events
 ######
 .. zeek:id:: NetControl::catch_release_add
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 159 159
 
    :Type: :zeek:type:`event` (a: :zeek:type:`addr`, location: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::catch_release_block_delete
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 158 158
 
    :Type: :zeek:type:`event` (a: :zeek:type:`addr`)
 
 
 .. zeek:id:: NetControl::catch_release_block_new
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 157 157
 
    :Type: :zeek:type:`event` (a: :zeek:type:`addr`, b: :zeek:type:`NetControl::BlockInfo`)
 
 
 .. zeek:id:: NetControl::catch_release_delete
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 160 160
 
    :Type: :zeek:type:`event` (a: :zeek:type:`addr`, reason: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::catch_release_encountered
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 161 161
 
    :Type: :zeek:type:`event` (a: :zeek:type:`addr`)
 
 
 .. zeek:id:: NetControl::catch_release_forgotten
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 137 137
 
    :Type: :zeek:type:`event` (a: :zeek:type:`addr`, bi: :zeek:type:`NetControl::BlockInfo`)
 
@@ -260,6 +272,7 @@ Events
    :bi: The :zeek:see:`NetControl::BlockInfo` record containing information about the block.
 
 .. zeek:id:: NetControl::log_netcontrol_catch_release
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 154 154
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`NetControl::CatchReleaseInfo`)
 
@@ -269,6 +282,7 @@ Events
 Hooks
 #####
 .. zeek:id:: NetControl::log_policy_catch_release
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 12 12
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -276,6 +290,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: NetControl::catch_release_seen
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 430 495
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`void`
 
@@ -288,6 +303,7 @@ Functions
    :a: The address that was seen and should be re-dropped if it is being watched.
 
 .. zeek:id:: NetControl::drop_address_catch_release
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 341 404
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`NetControl::BlockInfo`
 
@@ -314,6 +330,7 @@ Functions
             the inserted block.
 
 .. zeek:id:: NetControl::get_catch_release_info
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 333 339
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`NetControl::BlockInfo`
 
@@ -332,6 +349,7 @@ Functions
             the inserted block.
 
 .. zeek:id:: NetControl::unblock_address_catch_release
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 405 428
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, reason: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 

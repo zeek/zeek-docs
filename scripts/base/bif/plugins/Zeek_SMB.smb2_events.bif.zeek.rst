@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb2_message
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_events.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, is_orig: :zeek:type:`bool`)
 

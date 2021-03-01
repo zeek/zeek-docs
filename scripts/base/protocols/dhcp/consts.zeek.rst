@@ -24,6 +24,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: DHCP::message_types
+   :source-code: base/protocols/dhcp/consts.zeek 9 9
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -57,6 +58,7 @@ Constants
    :rfc:`4388`, :rfc:`6926`, and :rfc:`7724`.
 
 .. zeek:id:: DHCP::option_types
+   :source-code: base/protocols/dhcp/consts.zeek 31 31
 
    :Type: :zeek:type:`table` [:zeek:type:`int`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`

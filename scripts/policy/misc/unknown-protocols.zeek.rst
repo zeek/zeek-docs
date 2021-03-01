@@ -40,6 +40,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: UnknownProtocol::Info
+   :source-code: policy/misc/unknown-protocols.zeek 15 28
 
    :Type: :zeek:type:`record`
 
@@ -60,6 +61,7 @@ Types
 Hooks
 #####
 .. zeek:id:: UnknownProtocol::log_policy
+   :source-code: policy/misc/unknown-protocols.zeek 13 13
 
    :Type: :zeek:type:`Log::PolicyHook`
 

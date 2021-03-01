@@ -80,6 +80,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: HTTP::max_files_orig
+   :source-code: base/protocols/http/entities.zeek 19 19
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -90,6 +91,7 @@ Runtime Options
    limit is reached to determine if it's enforced.
 
 .. zeek:id:: HTTP::max_files_resp
+   :source-code: base/protocols/http/entities.zeek 24 24
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -102,6 +104,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: HTTP::Entity
+   :source-code: base/protocols/http/entities.zeek 11 14
 
    :Type: :zeek:type:`record`
 
@@ -112,6 +115,7 @@ Types
 Hooks
 #####
 .. zeek:id:: HTTP::max_files_policy
+   :source-code: base/protocols/http/entities.zeek 30 30
 
    :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 

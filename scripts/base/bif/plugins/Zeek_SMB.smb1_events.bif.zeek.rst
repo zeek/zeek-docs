@@ -25,6 +25,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_empty_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_events.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 
@@ -39,6 +40,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb1_error
+   :source-code: policy/protocols/smb/log-cmds.zeek 49 64
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, is_orig: :zeek:type:`bool`)
 
@@ -59,6 +61,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb1_message
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, is_orig: :zeek:type:`bool`)
 

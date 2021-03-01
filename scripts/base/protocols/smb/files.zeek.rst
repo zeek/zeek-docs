@@ -23,12 +23,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: SMB::describe_file
+   :source-code: base/protocols/smb/files.zeek 35 48
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
    Default file describer for SMB.
 
 .. zeek:id:: SMB::get_file_handle
+   :source-code: base/protocols/smb/files.zeek 14 33
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 

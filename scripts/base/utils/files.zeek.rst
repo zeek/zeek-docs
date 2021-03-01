@@ -23,6 +23,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: extract_filename_from_content_disposition
+   :source-code: base/utils/files.zeek 20 33
 
    :Type: :zeek:type:`function` (data: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -30,6 +31,7 @@ Functions
    the filename.
 
 .. zeek:id:: generate_extraction_filename
+   :source-code: base/utils/files.zeek 5 16
 
    :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, c: :zeek:type:`connection`, suffix: :zeek:type:`string`) : :zeek:type:`string`
 

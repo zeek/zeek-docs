@@ -30,6 +30,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: FTP::cmd_reply_code
+   :source-code: base/protocols/ftp/utils-commands.zeek 21 21
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`count`]
    :Attributes: :zeek:attr:`&redef`
@@ -371,6 +372,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: FTP::CmdArg
+   :source-code: base/protocols/ftp/utils-commands.zeek 4 13
 
    :Type: :zeek:type:`record`
 
@@ -388,6 +390,7 @@ Types
 
 
 .. zeek:type:: FTP::PendingCmds
+   :source-code: base/protocols/ftp/utils-commands.zeek 18 18
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`FTP::CmdArg`
 

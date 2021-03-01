@@ -87,6 +87,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Weird::ignore_hosts
+   :source-code: base/frameworks/notice/weird.zeek 253 253
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -96,6 +97,7 @@ Runtime Options
    and weird name into this set.
 
 .. zeek:id:: Weird::weird_do_not_ignore_repeats
+   :source-code: base/frameworks/notice/weird.zeek 257 257
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -117,6 +119,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Weird::actions
+   :source-code: base/frameworks/notice/weird.zeek 95 95
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Weird::Action`
    :Attributes: :zeek:attr:`&default` = ``Weird::ACTION_LOG`` :zeek:attr:`&redef`
@@ -285,6 +288,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Weird::did_log
+   :source-code: base/frameworks/notice/weird.zeek 271 271
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -295,6 +299,7 @@ State Variables
    could cause overload during storms.
 
 .. zeek:id:: Weird::did_notice
+   :source-code: base/frameworks/notice/weird.zeek 275 275
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -304,6 +309,7 @@ State Variables
    duplicate notices from being raised.
 
 .. zeek:id:: Weird::weird_ignore
+   :source-code: base/frameworks/notice/weird.zeek 266 266
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``10.0 mins`` :zeek:attr:`&redef`
@@ -317,6 +323,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Weird::Action
+   :source-code: base/frameworks/notice/weird.zeek 70 93
 
    :Type: :zeek:type:`enum`
 
@@ -364,6 +371,7 @@ Types
    Types of actions that may be taken when handling weird activity events.
 
 .. zeek:type:: Weird::Info
+   :source-code: base/frameworks/notice/weird.zeek 29 67
 
    :Type: :zeek:type:`record`
 
@@ -410,6 +418,7 @@ Types
 Events
 ######
 .. zeek:id:: Weird::log_weird
+   :source-code: base/frameworks/notice/weird.zeek 281 281
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Weird::Info`)
 
@@ -422,6 +431,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Weird::log_policy
+   :source-code: base/frameworks/notice/weird.zeek 21 21
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -430,6 +440,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Weird::weird
+   :source-code: base/frameworks/notice/weird.zeek 316 405
 
    :Type: :zeek:type:`function` (w: :zeek:type:`Weird::Info`) : :zeek:type:`void`
 

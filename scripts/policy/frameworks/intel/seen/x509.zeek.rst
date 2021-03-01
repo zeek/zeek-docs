@@ -22,6 +22,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Intel::enable_x509_ext_subject_alternative_name
+   :source-code: policy/frameworks/intel/seen/x509.zeek 9 9
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`

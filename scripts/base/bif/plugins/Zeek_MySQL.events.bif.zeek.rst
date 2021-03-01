@@ -27,6 +27,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: mysql_command_request
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 16 16
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, command: :zeek:type:`count`, arg: :zeek:type:`string`)
 
@@ -47,6 +48,7 @@ Events
    .. zeek:see:: mysql_error mysql_ok mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_error
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, code: :zeek:type:`count`, msg: :zeek:type:`string`)
 
@@ -67,6 +69,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_ok mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_handshake
+   :source-code: base/protocols/mysql/main.zeek 52 66
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, username: :zeek:type:`string`)
 
@@ -85,6 +88,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_server_version
 
 .. zeek:id:: mysql_ok
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 44 44
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, affected_rows: :zeek:type:`count`)
 
@@ -102,6 +106,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_result_row
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 57 57
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, row: :zeek:type:`string_vec`)
 
@@ -119,6 +124,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake mysql_ok
 
 .. zeek:id:: mysql_server_version
+   :source-code: policy/protocols/mysql/software.zeek 14 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, ver: :zeek:type:`string`)
 

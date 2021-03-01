@@ -32,6 +32,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: topk_add
+   :source-code: base/bif/top-k.bif.zeek 31 31
 
    :Type: :zeek:type:`function` (handle: :zeek:type:`opaque` of topk, value: :zeek:type:`any`) : :zeek:type:`any`
 
@@ -51,6 +52,7 @@ Functions
       topk_size topk_sum topk_merge topk_merge_prune
 
 .. zeek:id:: topk_count
+   :source-code: base/bif/top-k.bif.zeek 61 61
 
    :Type: :zeek:type:`function` (handle: :zeek:type:`opaque` of topk, value: :zeek:type:`any`) : :zeek:type:`count`
 
@@ -73,6 +75,7 @@ Functions
       topk_size topk_sum topk_merge topk_merge_prune
 
 .. zeek:id:: topk_epsilon
+   :source-code: base/bif/top-k.bif.zeek 77 77
 
    :Type: :zeek:type:`function` (handle: :zeek:type:`opaque` of topk, value: :zeek:type:`any`) : :zeek:type:`count`
 
@@ -94,6 +97,7 @@ Functions
       topk_size topk_sum topk_merge topk_merge_prune
 
 .. zeek:id:: topk_get_top
+   :source-code: base/bif/top-k.bif.zeek 44 44
 
    :Type: :zeek:type:`function` (handle: :zeek:type:`opaque` of topk, k: :zeek:type:`count`) : :zeek:type:`any_vec`
 
@@ -112,6 +116,7 @@ Functions
       topk_size topk_sum topk_merge topk_merge_prune
 
 .. zeek:id:: topk_init
+   :source-code: base/bif/top-k.bif.zeek 16 16
 
    :Type: :zeek:type:`function` (size: :zeek:type:`count`) : :zeek:type:`opaque` of topk
 
@@ -127,6 +132,7 @@ Functions
       topk_size topk_sum topk_merge topk_merge_prune
 
 .. zeek:id:: topk_merge
+   :source-code: base/bif/top-k.bif.zeek 122 122
 
    :Type: :zeek:type:`function` (handle1: :zeek:type:`opaque` of topk, handle2: :zeek:type:`opaque` of topk) : :zeek:type:`any`
 
@@ -145,6 +151,7 @@ Functions
       topk_size topk_sum topk_merge_prune
 
 .. zeek:id:: topk_merge_prune
+   :source-code: base/bif/top-k.bif.zeek 138 138
 
    :Type: :zeek:type:`function` (handle1: :zeek:type:`opaque` of topk, handle2: :zeek:type:`opaque` of topk) : :zeek:type:`any`
 
@@ -165,6 +172,7 @@ Functions
       topk_size topk_sum topk_merge
 
 .. zeek:id:: topk_size
+   :source-code: base/bif/top-k.bif.zeek 92 92
 
    :Type: :zeek:type:`function` (handle: :zeek:type:`opaque` of topk) : :zeek:type:`count`
 
@@ -184,6 +192,7 @@ Functions
       topk_sum topk_merge topk_merge_prune
 
 .. zeek:id:: topk_sum
+   :source-code: base/bif/top-k.bif.zeek 108 108
 
    :Type: :zeek:type:`function` (handle: :zeek:type:`opaque` of topk) : :zeek:type:`count`
 

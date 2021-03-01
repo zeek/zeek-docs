@@ -26,6 +26,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: NetControl::create_packetfilter
+   :source-code: base/frameworks/netcontrol/plugins/packetfilter.zeek 107 112
 
    :Type: :zeek:type:`function` () : :zeek:type:`NetControl::PluginState`
 

@@ -23,6 +23,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: PacketAnalyzer::register_packet_analyzer
+   :source-code: base/bif/packet_analysis.bif.zeek 15 15
 
    :Type: :zeek:type:`function` (parent: :zeek:type:`PacketAnalyzer::Tag`, identifier: :zeek:type:`count`, child: :zeek:type:`PacketAnalyzer::Tag`) : :zeek:type:`bool`
 
@@ -37,6 +38,7 @@ Functions
    
 
 .. zeek:id:: PacketAnalyzer::try_register_packet_analyzer_by_name
+   :source-code: base/bif/packet_analysis.bif.zeek 25 25
 
    :Type: :zeek:type:`function` (parent: :zeek:type:`string`, identifier: :zeek:type:`count`, child: :zeek:type:`string`) : :zeek:type:`bool`
 

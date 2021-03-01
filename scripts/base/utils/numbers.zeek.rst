@@ -19,6 +19,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: extract_count
+   :source-code: base/utils/numbers.zeek 10 26
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, get_first: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`) : :zeek:type:`count`
 

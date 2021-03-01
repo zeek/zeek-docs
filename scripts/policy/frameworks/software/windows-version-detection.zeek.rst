@@ -42,6 +42,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: OS::crypto_api_mapping
+   :source-code: policy/frameworks/software/windows-version-detection.zeek 23 23
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Software::name_and_version`
    :Attributes: :zeek:attr:`&redef`
@@ -82,6 +83,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Software::name_and_version
+   :source-code: policy/frameworks/software/windows-version-detection.zeek 18 21
 
    :Type: :zeek:type:`record`
 

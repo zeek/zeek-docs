@@ -23,12 +23,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: HTTP::describe_file
+   :source-code: base/protocols/http/files.zeek 37 50
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
    Default file describer for HTTP.
 
 .. zeek:id:: HTTP::get_file_handle
+   :source-code: base/protocols/http/files.zeek 17 35
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 

@@ -61,6 +61,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: HTTP::collect_SQLi_samples
+   :source-code: policy/protocols/http/detect-sqli.zeek 45 45
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -71,6 +72,7 @@ Redefinable Options
    sample collection by setting this value to 0.
 
 .. zeek:id:: HTTP::match_sql_injection_uri
+   :source-code: policy/protocols/http/detect-sqli.zeek 48 48
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`
@@ -84,6 +86,7 @@ Redefinable Options
    Regular expression is used to match URI based SQL injections.
 
 .. zeek:id:: HTTP::sqli_requests_interval
+   :source-code: policy/protocols/http/detect-sqli.zeek 40 40
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -94,6 +97,7 @@ Redefinable Options
    At the end of each interval the counter is reset.
 
 .. zeek:id:: HTTP::sqli_requests_threshold
+   :source-code: policy/protocols/http/detect-sqli.zeek 35 35
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -106,6 +110,7 @@ Redefinable Options
 Hooks
 #####
 .. zeek:id:: HTTP::sqli_policy
+   :source-code: policy/protocols/http/detect-sqli.zeek 59 59
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`, method: :zeek:type:`string`, unescaped_URI: :zeek:type:`string`) : :zeek:type:`bool`
 

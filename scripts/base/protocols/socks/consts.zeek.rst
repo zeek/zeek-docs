@@ -29,6 +29,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: SOCKS::v4_status
+   :source-code: base/protocols/socks/consts.zeek 22 22
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -46,6 +47,7 @@ Constants
 
 
 .. zeek:id:: SOCKS::v5_authentication_methods
+   :source-code: base/protocols/socks/consts.zeek 10 10
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -68,6 +70,7 @@ Constants
 
 
 .. zeek:id:: SOCKS::v5_status
+   :source-code: base/protocols/socks/consts.zeek 29 29
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -92,6 +95,7 @@ Constants
 Types
 #####
 .. zeek:type:: SOCKS::RequestType
+   :source-code: base/protocols/socks/consts.zeek 4 9
 
    :Type: :zeek:type:`enum`
 

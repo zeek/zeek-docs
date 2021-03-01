@@ -50,6 +50,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NetControl::ShuntInfo
+   :source-code: base/frameworks/netcontrol/shunt.zeek 23 34
 
    :Type: :zeek:type:`record`
 
@@ -72,6 +73,7 @@ Types
 Events
 ######
 .. zeek:id:: NetControl::log_netcontrol_shunt
+   :source-code: base/frameworks/netcontrol/shunt.zeek 38 38
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`NetControl::ShuntInfo`)
 
@@ -81,6 +83,7 @@ Events
 Hooks
 #####
 .. zeek:id:: NetControl::log_policy_shunt
+   :source-code: base/frameworks/netcontrol/shunt.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -88,6 +91,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: NetControl::shunt_flow
+   :source-code: base/frameworks/netcontrol/shunt.zeek 46 70
 
    :Type: :zeek:type:`function` (f: :zeek:type:`flow_id`, t: :zeek:type:`interval`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`string`
 

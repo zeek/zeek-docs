@@ -20,6 +20,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: duration_to_mins_secs
+   :source-code: base/utils/time.zeek 4 8
 
    :Type: :zeek:type:`function` (dur: :zeek:type:`interval`) : :zeek:type:`string`
 

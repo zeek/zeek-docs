@@ -29,6 +29,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Direction
+   :source-code: base/utils/directions-and-hosts.zeek 3 16
 
    :Type: :zeek:type:`enum`
 
@@ -53,6 +54,7 @@ Types
 
 
 .. zeek:type:: Host
+   :source-code: base/utils/directions-and-hosts.zeek 40 50
 
    :Type: :zeek:type:`enum`
 
@@ -76,6 +78,7 @@ Types
 Functions
 #########
 .. zeek:id:: addr_matches_host
+   :source-code: base/utils/directions-and-hosts.zeek 58 65
 
    :Type: :zeek:type:`function` (ip: :zeek:type:`addr`, h: :zeek:type:`Host`) : :zeek:type:`bool`
 
@@ -91,6 +94,7 @@ Functions
    :returns: T if the given host matches the given type, else F.
 
 .. zeek:id:: id_matches_direction
+   :source-code: base/utils/directions-and-hosts.zeek 25 38
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`, d: :zeek:type:`Direction`) : :zeek:type:`bool`
 

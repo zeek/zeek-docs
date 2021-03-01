@@ -62,6 +62,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SIP::sip_methods
+   :source-code: base/protocols/sip/main.zeek 86 86
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +89,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: SIP::Info
+   :source-code: base/protocols/sip/main.zeek 17 72
 
    :Type: :zeek:type:`record`
 
@@ -171,6 +173,7 @@ Types
    The record type which contains the fields of the SIP log.
 
 .. zeek:type:: SIP::State
+   :source-code: base/protocols/sip/main.zeek 74 81
 
    :Type: :zeek:type:`record`
 
@@ -187,6 +190,7 @@ Types
 Events
 ######
 .. zeek:id:: SIP::log_sip
+   :source-code: base/protocols/sip/main.zeek 92 92
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SIP::Info`)
 
@@ -196,12 +200,14 @@ Events
 Hooks
 #####
 .. zeek:id:: SIP::finalize_sip
+   :source-code: base/protocols/sip/main.zeek 300 310
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SIP finalization hook.  Remaining SIP info may get logged when it's called.
 
 .. zeek:id:: SIP::log_policy
+   :source-code: base/protocols/sip/main.zeek 14 14
 
    :Type: :zeek:type:`Log::PolicyHook`
 

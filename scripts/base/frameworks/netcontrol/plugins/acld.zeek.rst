@@ -60,6 +60,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NetControl::AclRule
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 10 15
 
    :Type: :zeek:type:`record`
 
@@ -73,6 +74,7 @@ Types
 
 
 .. zeek:type:: NetControl::AcldConfig
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 17 37
 
    :Type: :zeek:type:`record`
 
@@ -107,33 +109,39 @@ Types
 Events
 ######
 .. zeek:id:: NetControl::acld_add_rule
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 61 61
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, ar: :zeek:type:`NetControl::AclRule`)
 
    Events that are sent from us to Broker.
 
 .. zeek:id:: NetControl::acld_remove_rule
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 62 62
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, ar: :zeek:type:`NetControl::AclRule`)
 
 
 .. zeek:id:: NetControl::acld_rule_added
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 90 101
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
    Events that are sent from Broker to us.
 
 .. zeek:id:: NetControl::acld_rule_error
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 129 140
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::acld_rule_exists
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 103 114
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
 
 .. zeek:id:: NetControl::acld_rule_removed
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 116 127
 
    :Type: :zeek:type:`event` (id: :zeek:type:`count`, r: :zeek:type:`NetControl::Rule`, msg: :zeek:type:`string`)
 
@@ -141,6 +149,7 @@ Events
 Hooks
 #####
 .. zeek:id:: NetControl::acld_rule_policy
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 58 58
 
    :Type: :zeek:type:`hook` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`, ar: :zeek:type:`NetControl::AclRule`) : :zeek:type:`bool`
 
@@ -161,6 +170,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: NetControl::create_acld
+   :source-code: base/frameworks/netcontrol/plugins/acld.zeek 298 317
 
    :Type: :zeek:type:`function` (config: :zeek:type:`NetControl::AcldConfig`) : :zeek:type:`NetControl::PluginState`
 

@@ -48,6 +48,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: RFB::Info
+   :source-code: base/protocols/rfb/main.zeek 11 45
 
    :Type: :zeek:type:`record`
 
@@ -99,6 +100,7 @@ Types
 Events
 ######
 .. zeek:id:: RFB::log_rfb
+   :source-code: base/protocols/rfb/main.zeek 47 47
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`RFB::Info`)
 
@@ -106,12 +108,14 @@ Events
 Hooks
 #####
 .. zeek:id:: RFB::finalize_rfb
+   :source-code: base/protocols/rfb/main.zeek 162 168
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    RFB finalization hook.  Remaining RFB info may get logged when it's called.
 
 .. zeek:id:: RFB::log_policy
+   :source-code: base/protocols/rfb/main.zeek 8 8
 
    :Type: :zeek:type:`Log::PolicyHook`
 

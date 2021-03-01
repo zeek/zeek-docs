@@ -64,6 +64,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: mount_proc_mnt
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 929 929
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, req: :zeek:type:`MOUNT3::dirmntargs_t`, rep: :zeek:type:`MOUNT3::mnt_reply_t`)
 
@@ -94,6 +95,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_not_implemented
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 990 990
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, proc: :zeek:type:`MOUNT3::proc_t`)
 
@@ -118,6 +120,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 905 905
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`)
 
@@ -141,6 +144,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_umnt
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 950 950
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, req: :zeek:type:`MOUNT3::dirmntargs_t`)
 
@@ -167,6 +171,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_umnt_all
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 971 971
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, req: :zeek:type:`MOUNT3::dirmntargs_t`)
 
@@ -193,6 +198,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_reply_status
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 1007 1007
 
    :Type: :zeek:type:`event` (n: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`)
 
@@ -214,6 +220,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_create
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 287 287
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::newobj_reply_t`)
 
@@ -249,6 +256,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_getattr
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 54 54
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, fh: :zeek:type:`string`, attrs: :zeek:type:`NFS3::fattr_t`)
 
@@ -284,6 +292,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_link
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 228 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::linkargs_t`, rep: :zeek:type:`NFS3::link_reply_t`)
 
@@ -319,6 +328,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_lookup
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 112 112
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::lookup_reply_t`)
 
@@ -354,6 +364,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_mkdir
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 316 316
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::newobj_reply_t`)
 
@@ -389,6 +400,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_not_implemented
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 456 456
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, proc: :zeek:type:`NFS3::proc_t`)
 
@@ -418,6 +430,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 25 25
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`)
 
@@ -446,6 +459,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_read
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 141 141
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::readargs_t`, rep: :zeek:type:`NFS3::read_reply_t`)
 
@@ -481,6 +495,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_readdir
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 432 432
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::readdirargs_t`, rep: :zeek:type:`NFS3::readdir_reply_t`)
 
@@ -516,6 +531,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_readlink
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 170 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, fh: :zeek:type:`string`, rep: :zeek:type:`NFS3::readlink_reply_t`)
 
@@ -551,6 +567,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_remove
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 345 345
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::delobj_reply_t`)
 
@@ -586,6 +603,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_rename
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 403 403
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::renameopargs_t`, rep: :zeek:type:`NFS3::renameobj_reply_t`)
 
@@ -621,6 +639,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_rmdir
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 374 374
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::delobj_reply_t`)
 
@@ -656,6 +675,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_sattr
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 83 83
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::sattrargs_t`, rep: :zeek:type:`NFS3::sattr_reply_t`)
 
@@ -691,6 +711,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_symlink
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 199 199
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::symlinkargs_t`, rep: :zeek:type:`NFS3::newobj_reply_t`)
 
@@ -726,6 +747,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_write
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 258 258
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::writeargs_t`, rep: :zeek:type:`NFS3::write_reply_t`)
 
@@ -762,6 +784,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_reply_status
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 475 475
 
    :Type: :zeek:type:`event` (n: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`)
 
@@ -785,6 +808,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_callit
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 770 770
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, call: :zeek:type:`pm_callit_request`)
 
@@ -816,6 +840,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_dump
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 744 744
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`)
 
@@ -844,6 +869,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_getport
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 720 720
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, pr: :zeek:type:`pm_port_request`)
 
@@ -874,6 +900,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 643 643
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`)
 
@@ -902,6 +929,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_set
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 669 669
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, m: :zeek:type:`pm_mapping`)
 
@@ -933,6 +961,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_unset
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 695 695
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, m: :zeek:type:`pm_mapping`)
 
@@ -964,6 +993,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_bad_port
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 796 796
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, bad_p: :zeek:type:`count`)
 
@@ -994,6 +1024,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_callit
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 619 619
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, call: :zeek:type:`pm_callit_request`, p: :zeek:type:`port`)
 
@@ -1024,6 +1055,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_dump
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 594 594
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, m: :zeek:type:`pm_mappings`)
 
@@ -1051,6 +1083,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_getport
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 571 571
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, pr: :zeek:type:`pm_port_request`, p: :zeek:type:`port`)
 
@@ -1080,6 +1113,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 495 495
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`)
 
@@ -1103,6 +1137,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_set
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 521 521
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, m: :zeek:type:`pm_mapping`, success: :zeek:type:`bool`)
 
@@ -1134,6 +1169,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_unset
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 547 547
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, m: :zeek:type:`pm_mapping`, success: :zeek:type:`bool`)
 
@@ -1165,6 +1201,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: rpc_call
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 861 861
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, xid: :zeek:type:`count`, prog: :zeek:type:`count`, ver: :zeek:type:`count`, proc: :zeek:type:`count`, call_len: :zeek:type:`count`)
 
@@ -1201,6 +1238,7 @@ Events
       signature.
 
 .. zeek:id:: rpc_dialogue
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 833 833
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prog: :zeek:type:`count`, ver: :zeek:type:`count`, proc: :zeek:type:`count`, status: :zeek:type:`rpc_status`, start_time: :zeek:type:`time`, call_len: :zeek:type:`count`, reply_len: :zeek:type:`count`)
 
@@ -1248,6 +1286,7 @@ Events
       signature.
 
 .. zeek:id:: rpc_reply
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 886 886
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, xid: :zeek:type:`count`, status: :zeek:type:`rpc_status`, reply_len: :zeek:type:`count`)
 

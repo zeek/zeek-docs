@@ -46,6 +46,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: OpenFlow::ryu_new
+   :source-code: base/frameworks/openflow/plugins/ryu.zeek 181 189
 
    :Type: :zeek:type:`function` (host: :zeek:type:`addr`, host_port: :zeek:type:`count`, dpid: :zeek:type:`count`) : :zeek:type:`OpenFlow::Controller`
 

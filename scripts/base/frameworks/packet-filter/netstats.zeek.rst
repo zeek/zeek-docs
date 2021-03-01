@@ -34,6 +34,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: PacketFilter::stats_collection_interval
+   :source-code: base/frameworks/packet-filter/netstats.zeek 16 16
 
    :Type: :zeek:type:`interval`
    :Default: ``5.0 mins``

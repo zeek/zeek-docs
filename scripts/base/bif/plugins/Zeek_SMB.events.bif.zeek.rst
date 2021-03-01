@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb_pipe_connect_heuristic
+   :source-code: base/protocols/smb/main.zeek 233 237
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

@@ -75,6 +75,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSH::compression_algorithms
+   :source-code: base/protocols/ssh/main.zeek 57 57
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -92,6 +93,7 @@ Runtime Options
    authentication success or failure when compression is enabled.
 
 .. zeek:id:: SSH::disable_analyzer_after_detection
+   :source-code: base/protocols/ssh/main.zeek 62 62
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -104,6 +106,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: SSH::Info
+   :source-code: base/protocols/ssh/main.zeek 16 53
 
    :Type: :zeek:type:`record`
 
@@ -175,6 +178,7 @@ Types
 Events
 ######
 .. zeek:id:: SSH::log_ssh
+   :source-code: base/protocols/ssh/main.zeek 66 66
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SSH::Info`)
 
@@ -182,6 +186,7 @@ Events
    to the logging framework.
 
 .. zeek:id:: ssh_auth_failed
+   :source-code: base/protocols/ssh/main.zeek 90 90
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -204,6 +209,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh_auth_result
+   :source-code: base/protocols/ssh/main.zeek 113 113
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`bool`, auth_attempts: :zeek:type:`count`)
 
@@ -235,12 +241,14 @@ Events
 Hooks
 #####
 .. zeek:id:: SSH::finalize_ssh
+   :source-code: base/protocols/ssh/main.zeek 291 315
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SSH finalization hook.  Remaining SSH info may get logged when it's called.
 
 .. zeek:id:: SSH::log_policy
+   :source-code: base/protocols/ssh/main.zeek 13 13
 
    :Type: :zeek:type:`Log::PolicyHook`
 

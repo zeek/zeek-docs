@@ -58,6 +58,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: SumStats::Calculation
+   :source-code: base/frameworks/sumstats/main.zeek 10 13
 
    :Type: :zeek:type:`enum`
 
@@ -146,6 +147,7 @@ Types
    are all defined as plugins.
 
 .. zeek:type:: SumStats::Key
+   :source-code: base/frameworks/sumstats/main.zeek 16 30
 
    :Type: :zeek:type:`record`
 
@@ -167,6 +169,7 @@ Types
    results collected for it.
 
 .. zeek:type:: SumStats::Observation
+   :source-code: base/frameworks/sumstats/main.zeek 34 41
 
    :Type: :zeek:type:`record`
 
@@ -183,6 +186,7 @@ Types
    Only supply a single field at a time!
 
 .. zeek:type:: SumStats::Reducer
+   :source-code: base/frameworks/sumstats/main.zeek 44 59
 
    :Type: :zeek:type:`record`
 
@@ -238,6 +242,7 @@ Types
    Represents a reducer.
 
 .. zeek:type:: SumStats::Result
+   :source-code: base/frameworks/sumstats/main.zeek 78 78
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`SumStats::ResultVal`
 
@@ -245,12 +250,14 @@ Types
    observation stream identifier.
 
 .. zeek:type:: SumStats::ResultTable
+   :source-code: base/frameworks/sumstats/main.zeek 81 81
 
    :Type: :zeek:type:`table` [:zeek:type:`SumStats::Key`] of :zeek:type:`SumStats::Result`
 
    Type to store a table of sumstats results indexed by keys.
 
 .. zeek:type:: SumStats::ResultVal
+   :source-code: base/frameworks/sumstats/main.zeek 63 74
 
    :Type: :zeek:type:`record`
 
@@ -367,6 +374,7 @@ Types
    Most of the fields are added by plugins.
 
 .. zeek:type:: SumStats::SumStat
+   :source-code: base/frameworks/sumstats/main.zeek 91 144
 
    :Type: :zeek:type:`record`
 
@@ -435,6 +443,7 @@ Types
 Functions
 #########
 .. zeek:id:: SumStats::create
+   :source-code: base/frameworks/sumstats/main.zeek 392 438
 
    :Type: :zeek:type:`function` (ss: :zeek:type:`SumStats::SumStat`) : :zeek:type:`void`
 
@@ -444,6 +453,7 @@ Functions
    :ss: The SumStat to create.
 
 .. zeek:id:: SumStats::key2str
+   :source-code: base/frameworks/sumstats/main.zeek 285 293
 
    :Type: :zeek:type:`function` (key: :zeek:type:`SumStats::Key`) : :zeek:type:`string`
 
@@ -457,6 +467,7 @@ Functions
    :returns: A string representation of the metric key.
 
 .. zeek:id:: SumStats::next_epoch
+   :source-code: base/frameworks/sumstats/main.zeek 272 283
 
    :Type: :zeek:type:`function` (ss_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -479,6 +490,7 @@ Functions
             or sumstat not created for manual epochs.
 
 .. zeek:id:: SumStats::observe
+   :source-code: base/frameworks/sumstats/main.zeek 439 504
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`, orig_key: :zeek:type:`SumStats::Key`, obs: :zeek:type:`SumStats::Observation`) : :zeek:type:`void`
 
@@ -496,6 +508,7 @@ Functions
    :obs: The data point to send into the stream.
 
 .. zeek:id:: SumStats::request_key
+   :source-code: base/frameworks/sumstats/non-cluster.zeek 86 96
 
    :Type: :zeek:type:`function` (ss_name: :zeek:type:`string`, key: :zeek:type:`SumStats::Key`) : :zeek:type:`SumStats::Result`
 

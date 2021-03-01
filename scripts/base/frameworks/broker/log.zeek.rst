@@ -37,6 +37,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Broker::Info
+   :source-code: base/frameworks/broker/log.zeek 21 33
 
    :Type: :zeek:type:`record`
 
@@ -59,6 +60,7 @@ Types
    A record type containing the column fields of the Broker log.
 
 .. zeek:type:: Broker::Type
+   :source-code: base/frameworks/broker/log.zeek 13 19
 
    :Type: :zeek:type:`enum`
 
@@ -75,6 +77,7 @@ Types
 Hooks
 #####
 .. zeek:id:: Broker::log_policy
+   :source-code: base/frameworks/broker/log.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 

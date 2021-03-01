@@ -45,6 +45,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSL::notify_dh_length_shorter_cert_length
+   :source-code: policy/protocols/ssl/weak-keys.zeek 34 34
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -56,6 +57,7 @@ Runtime Options
    settings (e.g. with old jave clients).
 
 .. zeek:id:: SSL::notify_minimal_key_length
+   :source-code: policy/protocols/ssl/weak-keys.zeek 28 28
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -65,6 +67,7 @@ Runtime Options
    (non-EC) key lengths will trigger a notice.
 
 .. zeek:id:: SSL::notify_weak_keys
+   :source-code: policy/protocols/ssl/weak-keys.zeek 24 24
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -76,6 +79,7 @@ Runtime Options
    generated. Choices are: LOCAL_HOSTS, REMOTE_HOSTS, ALL_HOSTS, NO_HOSTS
 
 .. zeek:id:: SSL::tls_minimum_version
+   :source-code: policy/protocols/ssl/weak-keys.zeek 41 41
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +92,7 @@ Runtime Options
    To disable, set to SSLv20
 
 .. zeek:id:: SSL::unsafe_ciphers_regex
+   :source-code: policy/protocols/ssl/weak-keys.zeek 45 45
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`
