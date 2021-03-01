@@ -24,6 +24,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: DCE_RPC::operations
+   :source-code: base/protocols/dce-rpc/consts.zeek 248 248
 
    :Type: :zeek:type:`table` [:zeek:type:`string`, :zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = :zeek:type:`function`
@@ -2466,6 +2467,7 @@ Redefinable Options
 
 
 .. zeek:id:: DCE_RPC::pipe_name_to_common_uuid
+   :source-code: base/protocols/dce-rpc/consts.zeek 242 242
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -2485,6 +2487,7 @@ Redefinable Options
    where the pipe binding wasn't seen.
 
 .. zeek:id:: DCE_RPC::uuid_endpoint_map
+   :source-code: base/protocols/dce-rpc/consts.zeek 5 5
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = :zeek:type:`function`

@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_transaction2_secondary_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_transaction2_secondary.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, args: :zeek:type:`SMB1::Trans2_Sec_Args`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 

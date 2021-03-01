@@ -114,6 +114,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: dnp3_analog_input_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 173 173
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -121,6 +122,7 @@ Events
    analog input 16 bit with flag
 
 .. zeek:id:: dnp3_analog_input_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 183 183
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, value: :zeek:type:`count`)
 
@@ -128,6 +130,7 @@ Events
    analog input 16 bit without flag
 
 .. zeek:id:: dnp3_analog_input_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 168 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -135,6 +138,7 @@ Events
    analog input 32 bit with flag
 
 .. zeek:id:: dnp3_analog_input_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 178 178
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, value: :zeek:type:`count`)
 
@@ -142,6 +146,7 @@ Events
    analog input 32 bit without flag
 
 .. zeek:id:: dnp3_analog_input_DPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 193 193
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value_low: :zeek:type:`count`, value_high: :zeek:type:`count`)
 
@@ -149,6 +154,7 @@ Events
    analog input double precision, float point with flag
 
 .. zeek:id:: dnp3_analog_input_SPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 188 188
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -156,6 +162,7 @@ Events
    analog input single precision, float point with flag
 
 .. zeek:id:: dnp3_analog_input_event_16wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -163,6 +170,7 @@ Events
    analog input event 16 bit with time
 
 .. zeek:id:: dnp3_analog_input_event_16woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 243 243
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -170,6 +178,7 @@ Events
    analog input event 16 bit without time
 
 .. zeek:id:: dnp3_analog_input_event_32wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 248 248
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -177,6 +186,7 @@ Events
    analog input event 32 bit with time
 
 .. zeek:id:: dnp3_analog_input_event_32woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 238 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -184,6 +194,7 @@ Events
    analog input event 32 bit without time
 
 .. zeek:id:: dnp3_analog_input_event_DPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 273 273
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value_low: :zeek:type:`count`, value_high: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -191,6 +202,7 @@ Events
    analog input event double-precisiion float point with time
 
 .. zeek:id:: dnp3_analog_input_event_DPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 263 263
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value_low: :zeek:type:`count`, value_high: :zeek:type:`count`)
 
@@ -198,6 +210,7 @@ Events
    analog input event double-precision float point without time
 
 .. zeek:id:: dnp3_analog_input_event_SPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 268 268
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -205,6 +218,7 @@ Events
    analog input event single-precision float point with time
 
 .. zeek:id:: dnp3_analog_input_event_SPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 258 258
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -212,6 +226,7 @@ Events
    analog input event single-precision float point without time
 
 .. zeek:id:: dnp3_application_request_header
+   :source-code: base/protocols/dnp3/main.zeek 49 59
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, application: :zeek:type:`count`, fc: :zeek:type:`count`)
 
@@ -228,6 +243,7 @@ Events
    
 
 .. zeek:id:: dnp3_application_response_header
+   :source-code: base/protocols/dnp3/main.zeek 61 76
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, application: :zeek:type:`count`, fc: :zeek:type:`count`, iin: :zeek:type:`count`)
 
@@ -247,12 +263,14 @@ Events
    
 
 .. zeek:id:: dnp3_attribute_common
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 103 103
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data_type_code: :zeek:type:`count`, leng: :zeek:type:`count`, attribute_obj: :zeek:type:`string`)
 
    Generated for DNP3 attributes.
 
 .. zeek:id:: dnp3_counter_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 123 123
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -260,6 +278,7 @@ Events
    counter 16 bit with flag
 
 .. zeek:id:: dnp3_counter_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 133 133
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -267,6 +286,7 @@ Events
    counter 16 bit without flag
 
 .. zeek:id:: dnp3_counter_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 118 118
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -274,6 +294,7 @@ Events
    counter 32 bit with flag
 
 .. zeek:id:: dnp3_counter_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 128 128
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -281,6 +302,7 @@ Events
    counter 32 bit without flag
 
 .. zeek:id:: dnp3_crob
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 108 108
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, control_code: :zeek:type:`count`, count8: :zeek:type:`count`, on_time: :zeek:type:`count`, off_time: :zeek:type:`count`, status_code: :zeek:type:`count`)
 
@@ -289,6 +311,7 @@ Events
    :CROB: control relay output block
 
 .. zeek:id:: dnp3_debug_byte
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 323 323
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, debug: :zeek:type:`string`)
 
@@ -297,12 +320,14 @@ Events
    string to check what caused the malformed network packets.
 
 .. zeek:id:: dnp3_file_transport
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 317 317
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, file_handle: :zeek:type:`count`, block_num: :zeek:type:`count`, file_data: :zeek:type:`string`)
 
    g70
 
 .. zeek:id:: dnp3_frozen_analog_input_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 203 203
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -310,6 +335,7 @@ Events
    frozen analog input 16 bit with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_16wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 213 213
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -317,6 +343,7 @@ Events
    frozen analog input 16 bit with time-of-freeze
 
 .. zeek:id:: dnp3_frozen_analog_input_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 223 223
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, frozen_value: :zeek:type:`count`)
 
@@ -324,6 +351,7 @@ Events
    frozen analog input 16 bit without flag
 
 .. zeek:id:: dnp3_frozen_analog_input_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 198 198
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -331,6 +359,7 @@ Events
    frozen analog input 32 bit with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_32wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 208 208
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -338,6 +367,7 @@ Events
    frozen analog input 32 bit with time-of-freeze
 
 .. zeek:id:: dnp3_frozen_analog_input_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 218 218
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, frozen_value: :zeek:type:`count`)
 
@@ -345,6 +375,7 @@ Events
    frozen analog input 32 bit without flag
 
 .. zeek:id:: dnp3_frozen_analog_input_DPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 233 233
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value_low: :zeek:type:`count`, frozen_value_high: :zeek:type:`count`)
 
@@ -352,6 +383,7 @@ Events
    frozen analog input double-precision, float point with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_SPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 228 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -359,6 +391,7 @@ Events
    frozen analog input single-precision, float point with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_event_16wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 293 293
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -366,6 +399,7 @@ Events
    frozen analog input event 16 bit with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_16woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 283 283
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -373,6 +407,7 @@ Events
    frozen analog input event 16 bit without time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_32wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 288 288
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -380,6 +415,7 @@ Events
    frozen analog input event 32 bit with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_32woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 278 278
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -387,6 +423,7 @@ Events
    frozen analog input event 32 bit without time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_DPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 313 313
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value_low: :zeek:type:`count`, frozen_value_high: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -394,6 +431,7 @@ Events
    frozen analog input event double-precision float point with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_DPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 303 303
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value_low: :zeek:type:`count`, frozen_value_high: :zeek:type:`count`)
 
@@ -401,6 +439,7 @@ Events
    frozen analog input event double-precision float point without time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_SPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 308 308
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -408,6 +447,7 @@ Events
    frozen analog input event single-precision float point with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_SPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 298 298
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -415,6 +455,7 @@ Events
    frozen analog input event single-precision float point without time
 
 .. zeek:id:: dnp3_frozen_counter_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 143 143
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -422,6 +463,7 @@ Events
    frozen counter 16 bit with flag
 
 .. zeek:id:: dnp3_frozen_counter_16wFlagTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 153 153
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -429,6 +471,7 @@ Events
    frozen counter 16 bit with flag and time
 
 .. zeek:id:: dnp3_frozen_counter_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 163 163
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -436,6 +479,7 @@ Events
    frozen counter 16 bit without flag
 
 .. zeek:id:: dnp3_frozen_counter_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 138 138
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -443,6 +487,7 @@ Events
    frozen counter 32 bit with flag
 
 .. zeek:id:: dnp3_frozen_counter_32wFlagTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 148 148
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -450,6 +495,7 @@ Events
    frozen counter 32 bit with flag and time
 
 .. zeek:id:: dnp3_frozen_counter_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 158 158
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -457,6 +503,7 @@ Events
    frozen counter 32 bit without flag
 
 .. zeek:id:: dnp3_header_block
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 82 82
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, len: :zeek:type:`count`, ctrl: :zeek:type:`count`, dest_addr: :zeek:type:`count`, src_addr: :zeek:type:`count`)
 
@@ -485,6 +532,7 @@ Events
    
 
 .. zeek:id:: dnp3_object_header
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 50 50
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, obj_type: :zeek:type:`count`, qua_field: :zeek:type:`count`, number: :zeek:type:`count`, rf_low: :zeek:type:`count`, rf_high: :zeek:type:`count`)
 
@@ -518,6 +566,7 @@ Events
    
 
 .. zeek:id:: dnp3_object_prefix
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 62 62
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix_value: :zeek:type:`count`)
 
@@ -535,6 +584,7 @@ Events
    
 
 .. zeek:id:: dnp3_pcb
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 113 113
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, control_code: :zeek:type:`count`, count8: :zeek:type:`count`, on_time: :zeek:type:`count`, off_time: :zeek:type:`count`, status_code: :zeek:type:`count`)
 
@@ -543,6 +593,7 @@ Events
    :PCB: Pattern Control Block
 
 .. zeek:id:: dnp3_response_data_object
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 99 99
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data_value: :zeek:type:`count`)
 

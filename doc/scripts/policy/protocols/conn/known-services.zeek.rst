@@ -83,6 +83,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Known::service_store_timeout
+   :source-code: policy/protocols/conn/known-services.zeek 69 69
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -92,6 +93,7 @@ Runtime Options
    :zeek:see:`Known::service_store`.
 
 .. zeek:id:: Known::service_tracking
+   :source-code: policy/protocols/conn/known-services.zeek 47 47
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -107,6 +109,7 @@ Runtime Options
    See :zeek:type:`Host` for possible choices.
 
 .. zeek:id:: Known::service_udp_requires_response
+   :source-code: policy/protocols/conn/known-services.zeek 43 43
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -117,6 +120,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Known::service_store_expiry
+   :source-code: policy/protocols/conn/known-services.zeek 65 65
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -126,6 +130,7 @@ Redefinable Options
    This also changes the interval at which services get logged.
 
 .. zeek:id:: Known::service_store_name
+   :source-code: policy/protocols/conn/known-services.zeek 61 61
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -134,6 +139,7 @@ Redefinable Options
    The Broker topic name to use for :zeek:see:`Known::service_store`.
 
 .. zeek:id:: Known::use_service_store
+   :source-code: policy/protocols/conn/known-services.zeek 40 40
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -147,6 +153,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Known::service_store
+   :source-code: policy/protocols/conn/known-services.zeek 58 58
 
    :Type: :zeek:type:`Cluster::StoreInfo`
    :Default:
@@ -171,6 +178,7 @@ State Variables
    always the boolean value of "true".
 
 .. zeek:id:: Known::services
+   :source-code: policy/protocols/conn/known-services.zeek 79 79
 
    :Type: :zeek:type:`table` [:zeek:type:`addr`, :zeek:type:`port`] of :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day``
@@ -188,6 +196,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Known::AddrPortServTriplet
+   :source-code: policy/protocols/conn/known-services.zeek 49 53
 
    :Type: :zeek:type:`record`
 
@@ -199,6 +208,7 @@ Types
 
 
 .. zeek:type:: Known::ServicesInfo
+   :source-code: policy/protocols/conn/known-services.zeek 23 34
 
    :Type: :zeek:type:`record`
 
@@ -223,6 +233,7 @@ Types
 Events
 ######
 .. zeek:id:: Known::log_known_services
+   :source-code: policy/protocols/conn/known-services.zeek 83 83
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Known::ServicesInfo`)
 
@@ -232,6 +243,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Known::log_policy_services
+   :source-code: policy/protocols/conn/known-services.zeek 19 19
 
    :Type: :zeek:type:`Log::PolicyHook`
 

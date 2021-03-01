@@ -22,6 +22,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: KRB::cipher_name
+   :source-code: base/protocols/krb/consts.zeek 76 76
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -55,6 +56,7 @@ Constants
 
 
 .. zeek:id:: KRB::error_msg
+   :source-code: base/protocols/krb/consts.zeek 5 5
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`

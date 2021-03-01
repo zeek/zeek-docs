@@ -49,6 +49,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: modbus_exception
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 22 22
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, code: :zeek:type:`count`)
 
@@ -64,6 +65,7 @@ Events
    :code: The exception code.
 
 .. zeek:id:: modbus_mask_write_register_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 264 264
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -85,6 +87,7 @@ Events
    :or_mask: The value of the logical OR mask to apply to the register.
 
 .. zeek:id:: modbus_mask_write_register_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 278 278
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -106,6 +109,7 @@ Events
    :or_mask: The value of the logical OR mask applied to the register.
 
 .. zeek:id:: modbus_message
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 12 12
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, is_orig: :zeek:type:`bool`)
 
@@ -122,6 +126,7 @@ Events
    :is_orig: True if the event is raised for the originator side.
 
 .. zeek:id:: modbus_read_coils_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -140,6 +145,7 @@ Events
    :quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_coils_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 44 44
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, coils: :zeek:type:`ModbusCoils`)
 
@@ -155,6 +161,7 @@ Events
    :coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_discrete_inputs_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 56 56
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -173,6 +180,7 @@ Events
    :quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_discrete_inputs_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 66 66
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, coils: :zeek:type:`ModbusCoils`)
 
@@ -188,6 +196,7 @@ Events
    :coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_fifo_queue_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 315 315
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`)
 
@@ -203,6 +212,7 @@ Events
    :start_address: The address of the FIFO queue to read.
 
 .. zeek:id:: modbus_read_fifo_queue_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 325 325
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, fifos: :zeek:type:`ModbusRegisters`)
 
@@ -218,6 +228,7 @@ Events
    :fifos: The register values read from the FIFO queue on the device.
 
 .. zeek:id:: modbus_read_file_record_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 217 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -233,6 +244,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_read_file_record_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 228 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -248,6 +260,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_read_holding_registers_request
+   :source-code: policy/protocols/modbus/track-memmap.zeek 62 65
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -266,6 +279,7 @@ Events
    :quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_holding_registers_response
+   :source-code: policy/protocols/modbus/track-memmap.zeek 67 102
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, registers: :zeek:type:`ModbusRegisters`)
 
@@ -281,6 +295,7 @@ Events
    :registers: The register values returned from the device.
 
 .. zeek:id:: modbus_read_input_registers_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 100 100
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -299,6 +314,7 @@ Events
    :quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_input_registers_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 110 110
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, registers: :zeek:type:`ModbusRegisters`)
 
@@ -314,6 +330,7 @@ Events
    :registers: The register values returned from the device.
 
 .. zeek:id:: modbus_read_write_multiple_registers_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 294 294
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, read_start_address: :zeek:type:`count`, read_quantity: :zeek:type:`count`, write_start_address: :zeek:type:`count`, write_registers: :zeek:type:`ModbusRegisters`)
 
@@ -338,6 +355,7 @@ Events
    :write_registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_read_write_multiple_registers_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 305 305
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, written_registers: :zeek:type:`ModbusRegisters`)
 
@@ -354,6 +372,7 @@ Events
                       the request.
 
 .. zeek:id:: modbus_write_file_record_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 239 239
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -369,6 +388,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_write_file_record_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 250 250
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -384,6 +404,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_write_multiple_coils_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 170 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, coils: :zeek:type:`ModbusCoils`)
 
@@ -402,6 +423,7 @@ Events
    :coils: The values to be written to the coils.
 
 .. zeek:id:: modbus_write_multiple_coils_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 182 182
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -420,6 +442,7 @@ Events
    :quantity: The quantity of coils that were written.
 
 .. zeek:id:: modbus_write_multiple_registers_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 194 194
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, registers: :zeek:type:`ModbusRegisters`)
 
@@ -438,6 +461,7 @@ Events
    :registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_write_multiple_registers_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 206 206
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -456,6 +480,7 @@ Events
    :quantity: The quantity of registers that were written.
 
 .. zeek:id:: modbus_write_single_coil_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 122 122
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`bool`)
 
@@ -474,6 +499,7 @@ Events
    :value: The value to be written to the coil.
 
 .. zeek:id:: modbus_write_single_coil_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 134 134
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`bool`)
 
@@ -492,6 +518,7 @@ Events
    :value: The value that was written to the coil.
 
 .. zeek:id:: modbus_write_single_register_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 146 146
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -510,6 +537,7 @@ Events
    :value: The value to be written to the register.
 
 .. zeek:id:: modbus_write_single_register_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 158 158
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`count`)
 

@@ -50,6 +50,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Modbus::Info
+   :source-code: base/protocols/modbus/main.zeek 12 23
 
    :Type: :zeek:type:`record`
 
@@ -76,6 +77,7 @@ Types
 Events
 ######
 .. zeek:id:: Modbus::log_modbus
+   :source-code: base/protocols/modbus/main.zeek 27 27
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Modbus::Info`)
 
@@ -85,6 +87,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Modbus::log_policy
+   :source-code: base/protocols/modbus/main.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 

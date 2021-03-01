@@ -38,6 +38,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMB::ignored_command_statuses
+   :source-code: policy/protocols/smb/log-cmds.zeek 16 16
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -55,6 +56,7 @@ Runtime Options
 Hooks
 #####
 .. zeek:id:: SMB::log_policy
+   :source-code: policy/protocols/smb/log-cmds.zeek 13 13
 
    :Type: :zeek:type:`Log::PolicyHook`
 

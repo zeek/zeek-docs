@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb2_session_setup_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_session_setup.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, request: :zeek:type:`SMB2::SessionSetupRequest`)
 
@@ -46,6 +47,7 @@ Events
    .. zeek:see:: smb2_message smb2_session_setup_response
 
 .. zeek:id:: smb2_session_setup_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_session_setup.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::SessionSetupResponse`)
 

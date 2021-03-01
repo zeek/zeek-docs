@@ -36,6 +36,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMTP::default_entity_excerpt_len
+   :source-code: policy/protocols/smtp/entities-excerpt.zeek 17 17
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`

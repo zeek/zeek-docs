@@ -43,6 +43,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NTLM::Info
+   :source-code: base/protocols/ntlm/main.zeek 11 39
 
    :Type: :zeek:type:`record`
 
@@ -84,12 +85,14 @@ Types
 Hooks
 #####
 .. zeek:id:: NTLM::finalize_ntlm
+   :source-code: base/protocols/ntlm/main.zeek 118 124
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    NTLM finalization hook.  Remaining NTLM info may get logged when it's called.
 
 .. zeek:id:: NTLM::log_policy
+   :source-code: base/protocols/ntlm/main.zeek 9 9
 
    :Type: :zeek:type:`Log::PolicyHook`
 

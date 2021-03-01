@@ -53,6 +53,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMTP::detect_clients_in_messages_from
+   :source-code: policy/protocols/smtp/software.zeek 36 36
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -68,6 +69,7 @@ Runtime Options
    address), set this variable to EXTERNAL_HOSTS or ALL_HOSTS.
 
 .. zeek:id:: SMTP::webmail_user_agents
+   :source-code: policy/protocols/smtp/software.zeek 40 40
 
    :Type: :zeek:type:`pattern`
    :Attributes: :zeek:attr:`&redef`

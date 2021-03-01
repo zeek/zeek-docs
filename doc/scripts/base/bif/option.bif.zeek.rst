@@ -25,6 +25,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Option::set
+   :source-code: base/bif/option.bif.zeek 29 29
 
    :Type: :zeek:type:`function` (ID: :zeek:type:`string`, val: :zeek:type:`any`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -51,6 +52,7 @@ Functions
              lower-level function.
 
 .. zeek:id:: Option::set_change_handler
+   :source-code: base/bif/option.bif.zeek 56 56
 
    :Type: :zeek:type:`function` (ID: :zeek:type:`string`, on_change: :zeek:type:`any`, priority: :zeek:type:`int` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 

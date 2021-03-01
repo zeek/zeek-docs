@@ -28,6 +28,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: OpenFlow::Controller
+   :source-code: base/frameworks/openflow/types.zeek 116 131
 
    :Type: :zeek:type:`record`
 
@@ -55,6 +56,7 @@ Types
    Controller record representing an openflow controller.
 
 .. zeek:type:: OpenFlow::ControllerState
+   :source-code: base/frameworks/openflow/types.zeek 17 24
 
    :Type: :zeek:type:`record`
 
@@ -123,6 +125,7 @@ Types
    add state.
 
 .. zeek:type:: OpenFlow::Plugin
+   :source-code: base/frameworks/openflow/types.zeek 9 13
 
    :Type: :zeek:type:`enum`
 
@@ -148,6 +151,7 @@ Types
    Available openflow plugins.
 
 .. zeek:type:: OpenFlow::ofp_flow_action
+   :source-code: base/frameworks/openflow/types.zeek 62 85
 
    :Type: :zeek:type:`record`
 
@@ -189,6 +193,7 @@ Types
    (Separate record to make ofp_flow_mod less crowded)
 
 .. zeek:type:: OpenFlow::ofp_flow_mod
+   :source-code: base/frameworks/openflow/types.zeek 88 113
 
    :Type: :zeek:type:`record`
 
@@ -227,6 +232,7 @@ Types
    Openflow flow_mod definition, describing the action to perform.
 
 .. zeek:type:: OpenFlow::ofp_match
+   :source-code: base/frameworks/openflow/types.zeek 31 58
 
    :Type: :zeek:type:`record`
 

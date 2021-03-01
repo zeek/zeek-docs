@@ -21,6 +21,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: PacketAnalyzer::ROOT::default_analyzer
+   :source-code: base/packet-protocols/root/main.zeek 5 5
 
    :Type: :zeek:type:`PacketAnalyzer::Tag`
    :Attributes: :zeek:attr:`&redef`

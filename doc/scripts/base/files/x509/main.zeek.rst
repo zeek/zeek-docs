@@ -63,6 +63,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: X509::caching_required_encounters
+   :source-code: base/files/x509/main.zeek 14 14
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -72,6 +73,7 @@ Runtime Options
    caching it. Set to 0 to disable caching of certificates.
 
 .. zeek:id:: X509::caching_required_encounters_interval
+   :source-code: base/files/x509/main.zeek 17 17
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -80,6 +82,7 @@ Runtime Options
    The timespan over which caching_required_encounters has to be reached
 
 .. zeek:id:: X509::certificate_cache_max_entries
+   :source-code: base/files/x509/main.zeek 24 24
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +91,7 @@ Runtime Options
    Maximum size of the certificate cache
 
 .. zeek:id:: X509::certificate_cache_minimum_eviction_interval
+   :source-code: base/files/x509/main.zeek 21 21
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -99,6 +103,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: X509::Info
+   :source-code: base/files/x509/main.zeek 27 47
 
    :Type: :zeek:type:`record`
 
@@ -137,6 +142,7 @@ Types
    The record type which contains the fields of the X.509 log.
 
 .. zeek:type:: X509::SctInfo
+   :source-code: base/files/x509/main.zeek 51 67
 
    :Type: :zeek:type:`record`
 
@@ -167,6 +173,7 @@ Types
 Events
 ######
 .. zeek:id:: X509::log_x509
+   :source-code: base/files/x509/main.zeek 77 77
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`X509::Info`)
 
@@ -175,11 +182,13 @@ Events
 Hooks
 #####
 .. zeek:id:: X509::log_policy
+   :source-code: policy/protocols/ssl/log-hostcerts-only.zeek 29 33
 
    :Type: :zeek:type:`Log::PolicyHook`
 
 
 .. zeek:id:: X509::x509_certificate_cache_replay
+   :source-code: base/files/x509/main.zeek 126 156
 
    :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`, e: :zeek:type:`X509::Info`, sha256: :zeek:type:`string`) : :zeek:type:`bool`
 

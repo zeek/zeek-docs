@@ -43,6 +43,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: OCSP::Info
+   :source-code: policy/files/x509/log-ocsp.zeek 14 37
 
    :Type: :zeek:type:`record`
 
@@ -84,6 +85,7 @@ Types
 Events
 ######
 .. zeek:id:: OCSP::log_ocsp
+   :source-code: policy/files/x509/log-ocsp.zeek 41 41
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`OCSP::Info`)
 
@@ -93,6 +95,7 @@ Events
 Hooks
 #####
 .. zeek:id:: OCSP::log_policy
+   :source-code: policy/files/x509/log-ocsp.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

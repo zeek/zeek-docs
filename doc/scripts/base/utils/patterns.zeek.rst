@@ -32,6 +32,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: PatternMatchResult
+   :source-code: base/utils/patterns.zeek 37 44
 
    :Type: :zeek:type:`record`
 
@@ -48,6 +49,7 @@ Types
 Functions
 #########
 .. zeek:id:: match_pattern
+   :source-code: base/utils/patterns.zeek 58 67
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, p: :zeek:type:`pattern`) : :zeek:type:`PatternMatchResult`
 
@@ -68,6 +70,7 @@ Functions
    :returns: a record indicating the match status.
 
 .. zeek:id:: set_to_regex
+   :source-code: base/utils/patterns.zeek 23 36
 
    :Type: :zeek:type:`function` (ss: :zeek:type:`set` [:zeek:type:`string`], pat: :zeek:type:`string`) : :zeek:type:`pattern`
 

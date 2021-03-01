@@ -51,6 +51,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: RADIUS::Info
+   :source-code: base/protocols/radius/main.zeek 14 49
 
    :Type: :zeek:type:`record`
 
@@ -103,6 +104,7 @@ Types
 Events
 ######
 .. zeek:id:: RADIUS::log_radius
+   :source-code: base/protocols/radius/main.zeek 53 53
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`RADIUS::Info`)
 
@@ -112,12 +114,14 @@ Events
 Hooks
 #####
 .. zeek:id:: RADIUS::finalize_radius
+   :source-code: base/protocols/radius/main.zeek 148 155
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    RADIUS finalization hook.  Remaining RADIUS info may get logged when it's called.
 
 .. zeek:id:: RADIUS::log_policy
+   :source-code: base/protocols/radius/main.zeek 12 12
 
    :Type: :zeek:type:`Log::PolicyHook`
 

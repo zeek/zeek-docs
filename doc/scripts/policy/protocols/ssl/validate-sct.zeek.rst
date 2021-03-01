@@ -53,6 +53,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: SSL::SctInfo
+   :source-code: policy/protocols/ssl/validate-sct.zeek 30 50
 
    :Type: :zeek:type:`record`
 
@@ -87,6 +88,7 @@ Types
    encountered in a SSL connection.
 
 .. zeek:type:: SSL::SctSource
+   :source-code: policy/protocols/ssl/validate-sct.zeek 16 27
 
    :Type: :zeek:type:`enum`
 

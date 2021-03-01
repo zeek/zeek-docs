@@ -52,6 +52,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: connection_EOF
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 226 226
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -73,6 +74,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_SYN_packet
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 191 191
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, pkt: :zeek:type:`SYN_packet`)
 
@@ -101,6 +103,7 @@ Events
       better approach.
 
 .. zeek:id:: connection_attempt
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -121,6 +124,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_established
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 53 53
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -143,6 +147,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_finished
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 101 101
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -160,6 +165,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_first_ACK
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 209 209
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -181,6 +187,7 @@ Events
       This event has quite low-level semantics and should be used only rarely.
 
 .. zeek:id:: connection_half_finished
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 116 116
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -199,6 +206,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_partial_close
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 87 87
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -219,6 +227,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_pending
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 167 167
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -235,6 +244,7 @@ Events
       new_connection new_connection_contents partial_connection zeek_done
 
 .. zeek:id:: connection_rejected
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 138 138
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -260,6 +270,7 @@ Events
       and then :zeek:id:`connection_reset`.
 
 .. zeek:id:: connection_reset
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 154 154
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -279,6 +290,7 @@ Events
       partial_connection
 
 .. zeek:id:: contents_file_write_failure
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 402 402
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`)
 
@@ -296,6 +308,7 @@ Events
    .. zeek:see:: set_contents_file get_contents_file
 
 .. zeek:id:: new_connection_contents
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -314,6 +327,7 @@ Events
       scheduled_analyzer_applied new_connection partial_connection
 
 .. zeek:id:: partial_connection
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 508 512
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -334,6 +348,7 @@ Events
    
 
 .. zeek:id:: tcp_contents
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 319 319
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, seq: :zeek:type:`count`, contents: :zeek:type:`string`)
 
@@ -373,6 +388,7 @@ Events
       network-level effects such as latency, acknowledgements, reordering, etc.
 
 .. zeek:id:: tcp_multiple_checksum_errors
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 351 351
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -392,6 +408,7 @@ Events
       tcp_multiple_zero_windows tcp_multiple_retransmissions tcp_multiple_gap
 
 .. zeek:id:: tcp_multiple_gap
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 390 390
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -410,6 +427,7 @@ Events
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_zero_windows tcp_multiple_retransmissions
 
 .. zeek:id:: tcp_multiple_retransmissions
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 377 377
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -428,6 +446,7 @@ Events
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_zero_windows tcp_multiple_gap
 
 .. zeek:id:: tcp_multiple_zero_windows
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 364 364
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -446,6 +465,7 @@ Events
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_retransmissions tcp_multiple_gap
 
 .. zeek:id:: tcp_option
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 273 273
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, opt: :zeek:type:`count`, optlen: :zeek:type:`count`)
 
@@ -470,6 +490,7 @@ Events
    .. note:: To inspect the actual option values, if any, use :zeek:see:`tcp_options`.
 
 .. zeek:id:: tcp_options
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 286 286
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, options: :zeek:type:`TCP::OptionList`)
 
@@ -488,6 +509,7 @@ Events
    .. zeek:see:: tcp_packet tcp_contents tcp_rexmit tcp_option
 
 .. zeek:id:: tcp_packet
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 255 255
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flags: :zeek:type:`string`, seq: :zeek:type:`count`, ack: :zeek:type:`count`, len: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -526,6 +548,7 @@ Events
    .. zeek:see:: new_packet packet_contents tcp_option tcp_contents tcp_rexmit
 
 .. zeek:id:: tcp_rexmit
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 337 337
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, seq: :zeek:type:`count`, len: :zeek:type:`count`, data_in_flight: :zeek:type:`count`, window: :zeek:type:`count`)
 

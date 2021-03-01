@@ -66,6 +66,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Modbus::track_memmap
+   :source-code: policy/protocols/modbus/track-memmap.zeek 17 17
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -76,6 +77,7 @@ Runtime Options
 State Variables
 ###############
 .. zeek:id:: Modbus::device_registers
+   :source-code: policy/protocols/modbus/track-memmap.zeek 46 46
 
    :Type: :zeek:type:`table` [:zeek:type:`addr`] of :zeek:type:`Modbus::Registers`
    :Default: ``{}``
@@ -85,6 +87,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Modbus::MemmapInfo
+   :source-code: policy/protocols/modbus/track-memmap.zeek 19 35
 
    :Type: :zeek:type:`record`
 
@@ -112,6 +115,7 @@ Types
 
 
 .. zeek:type:: Modbus::RegisterValue
+   :source-code: policy/protocols/modbus/track-memmap.zeek 37 40
 
    :Type: :zeek:type:`record`
 
@@ -121,6 +125,7 @@ Types
 
 
 .. zeek:type:: Modbus::Registers
+   :source-code: policy/protocols/modbus/track-memmap.zeek 43 43
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`Modbus::RegisterValue`
 
@@ -129,6 +134,7 @@ Types
 Events
 ######
 .. zeek:id:: Modbus::changed_register
+   :source-code: policy/protocols/modbus/track-memmap.zeek 103 108
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, register: :zeek:type:`count`, old_val: :zeek:type:`count`, new_val: :zeek:type:`count`, delta: :zeek:type:`interval`)
 
@@ -138,6 +144,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Modbus::log_policy_register_change
+   :source-code: policy/protocols/modbus/track-memmap.zeek 14 14
 
    :Type: :zeek:type:`Log::PolicyHook`
 

@@ -177,6 +177,7 @@ Events
 ++++++
 
 .. zeek:id:: bittorrent_peer_handshake
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 14 14
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, reserved: :zeek:type:`string`, info_hash: :zeek:type:`string`, peer_id: :zeek:type:`string`)
 
@@ -192,6 +193,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_keep_alive
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 27 27
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -207,6 +209,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_choke
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 40 40
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -222,6 +225,7 @@ Events
       bittorrent_peer_unknown bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_unchoke
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 53 53
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -237,6 +241,7 @@ Events
       bittorrent_peer_unknown bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_interested
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 66 66
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -252,6 +257,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_not_interested
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 79 79
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -267,6 +273,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_have
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, piece_index: :zeek:type:`count`)
 
@@ -282,6 +289,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_bitfield
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 105 105
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, bitfield: :zeek:type:`string`)
 
@@ -297,6 +305,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_request
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 118 118
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, index: :zeek:type:`count`, begin: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -312,6 +321,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_piece
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 131 131
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, index: :zeek:type:`count`, begin: :zeek:type:`count`, piece_length: :zeek:type:`count`)
 
@@ -327,6 +337,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_cancel
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 144 144
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, index: :zeek:type:`count`, begin: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -342,6 +353,7 @@ Events
       bittorrent_peer_unknown bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_port
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 157 157
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, listen_port: :zeek:type:`port`)
 
@@ -357,6 +369,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_unknown
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 170 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, message_id: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -372,6 +385,7 @@ Events
       bittorrent_peer_weird
 
 .. zeek:id:: bittorrent_peer_weird
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 183 183
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`)
 
@@ -387,6 +401,7 @@ Events
       bittorrent_peer_unknown
 
 .. zeek:id:: bt_tracker_request
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 196 196
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, uri: :zeek:type:`string`, headers: :zeek:type:`bt_tracker_headers`)
 
@@ -402,6 +417,7 @@ Events
       bittorrent_peer_unknown bittorrent_peer_weird
 
 .. zeek:id:: bt_tracker_response
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 209 209
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, status: :zeek:type:`count`, headers: :zeek:type:`bt_tracker_headers`, peers: :zeek:type:`bittorrent_peer_set`, benc: :zeek:type:`bittorrent_benc_dir`)
 
@@ -417,6 +433,7 @@ Events
       bittorrent_peer_unknown bittorrent_peer_weird
 
 .. zeek:id:: bt_tracker_response_not_ok
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 222 222
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, status: :zeek:type:`count`, headers: :zeek:type:`bt_tracker_headers`)
 
@@ -432,6 +449,7 @@ Events
       bittorrent_peer_unknown bittorrent_peer_weird
 
 .. zeek:id:: bt_tracker_weird
+   :source-code: base/bif/plugins/Zeek_BitTorrent.events.bif.zeek 235 235
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`)
 
@@ -460,6 +478,7 @@ Events
 ++++++
 
 .. zeek:id:: conn_bytes_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 320 337
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`)
 
@@ -481,6 +500,7 @@ Events
                  set_current_conn_duration_threshold get_current_conn_duration_threshold
 
 .. zeek:id:: conn_packets_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 339 356
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`)
 
@@ -502,6 +522,7 @@ Events
                  set_current_conn_duration_threshold get_current_conn_duration_threshold
 
 .. zeek:id:: conn_duration_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 358 370
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`interval`, is_orig: :zeek:type:`bool`)
 
@@ -530,6 +551,7 @@ Functions
 +++++++++
 
 .. zeek:id:: set_current_conn_bytes_threshold
+   :source-code: base/bif/plugins/Zeek_ConnSize.functions.bif.zeek 19 19
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -551,6 +573,7 @@ Functions
                  set_current_conn_duration_threshold get_current_conn_duration_threshold
 
 .. zeek:id:: set_current_conn_packets_threshold
+   :source-code: base/bif/plugins/Zeek_ConnSize.functions.bif.zeek 35 35
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -572,6 +595,7 @@ Functions
                  set_current_conn_duration_threshold get_current_conn_duration_threshold
 
 .. zeek:id:: set_current_conn_duration_threshold
+   :source-code: base/bif/plugins/Zeek_ConnSize.functions.bif.zeek 49 49
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, threshold: :zeek:type:`interval`) : :zeek:type:`bool`
 
@@ -590,6 +614,7 @@ Functions
                  get_current_conn_duration_threshold
 
 .. zeek:id:: get_current_conn_bytes_threshold
+   :source-code: base/bif/plugins/Zeek_ConnSize.functions.bif.zeek 63 63
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, is_orig: :zeek:type:`bool`) : :zeek:type:`count`
 
@@ -608,6 +633,7 @@ Functions
                  get_current_conn_duration_threshold
 
 .. zeek:id:: get_current_conn_packets_threshold
+   :source-code: base/bif/plugins/Zeek_ConnSize.functions.bif.zeek 76 76
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, is_orig: :zeek:type:`bool`) : :zeek:type:`count`
 
@@ -626,6 +652,7 @@ Functions
                  get_current_conn_bytes_threshold set_current_conn_duration_threshold get_current_conn_duration_threshold
 
 .. zeek:id:: get_current_conn_duration_threshold
+   :source-code: base/bif/plugins/Zeek_ConnSize.functions.bif.zeek 87 87
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`interval`
 
@@ -654,6 +681,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
+   :source-code: base/init-bare.zeek 5069 5069
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -664,6 +692,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
+   :source-code: base/init-bare.zeek 5074 5074
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -677,6 +706,7 @@ Types
 +++++
 
 .. zeek:type:: DCE_RPC::PType
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.types.bif.zeek 8 8
 
    :Type: :zeek:type:`enum`
 
@@ -724,6 +754,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::IfID
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.types.bif.zeek 33 33
 
    :Type: :zeek:type:`enum`
 
@@ -760,6 +791,7 @@ Events
 ++++++
 
 .. zeek:id:: dce_rpc_message
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, fid: :zeek:type:`count`, ptype_id: :zeek:type:`count`, ptype: :zeek:type:`DCE_RPC::PType`)
 
@@ -785,6 +817,7 @@ Events
    .. zeek:see:: dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_bind
+   :source-code: base/protocols/dce-rpc/main.zeek 112 124
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, uuid: :zeek:type:`string`, ver_major: :zeek:type:`count`, ver_minor: :zeek:type:`count`)
 
@@ -815,6 +848,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_alter_context
+   :source-code: base/protocols/dce-rpc/main.zeek 126 138
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, uuid: :zeek:type:`string`, ver_major: :zeek:type:`count`, ver_minor: :zeek:type:`count`)
 
@@ -845,6 +879,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context_resp
 
 .. zeek:id:: dce_rpc_bind_ack
+   :source-code: base/protocols/dce-rpc/main.zeek 140 149
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, sec_addr: :zeek:type:`string`)
 
@@ -864,6 +899,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_alter_context_resp
+   :source-code: base/protocols/dce-rpc/main.zeek 151 154
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`)
 
@@ -880,6 +916,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context
 
 .. zeek:id:: dce_rpc_request
+   :source-code: base/protocols/dce-rpc/main.zeek 156 164
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub_len: :zeek:type:`count`)
 
@@ -905,6 +942,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response dce_rpc_request_stub
 
 .. zeek:id:: dce_rpc_response
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 125 125
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub_len: :zeek:type:`count`)
 
@@ -929,6 +967,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response_stub
 
 .. zeek:id:: dce_rpc_request_stub
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 143 143
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub: :zeek:type:`string`)
 
@@ -954,6 +993,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response_stub dce_rpc_request
 
 .. zeek:id:: dce_rpc_response_stub
+   :source-code: base/bif/plugins/Zeek_DCE_RPC.events.bif.zeek 161 161
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub: :zeek:type:`string`)
 
@@ -991,6 +1031,7 @@ Types
 +++++
 
 .. zeek:type:: DHCP::Msg
+   :source-code: base/init-bare.zeek 3505 3520
 
    :Type: :zeek:type:`record`
 
@@ -1034,6 +1075,7 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::Addrs
+   :source-code: base/init-bare.zeek 3501 3501
 
    :Type: :zeek:type:`vector` of :zeek:type:`addr`
 
@@ -1043,6 +1085,7 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::SubOpt
+   :source-code: base/init-bare.zeek 3544 3547
 
    :Type: :zeek:type:`record`
 
@@ -1054,11 +1097,13 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::SubOpts
+   :source-code: base/init-bare.zeek 3549 3549
 
    :Type: :zeek:type:`vector` of :zeek:type:`DHCP::SubOpt`
 
 
 .. zeek:type:: DHCP::ClientFQDN
+   :source-code: base/init-bare.zeek 3530 3540
 
    :Type: :zeek:type:`record`
 
@@ -1078,6 +1123,7 @@ Types
    DHCP Client FQDN Option information (Option 81)
 
 .. zeek:type:: DHCP::ClientID
+   :source-code: base/init-bare.zeek 3524 3527
 
    :Type: :zeek:type:`record`
 
@@ -1089,6 +1135,7 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::Options
+   :source-code: base/init-bare.zeek 3551 3649
 
    :Type: :zeek:type:`record`
 
@@ -1195,6 +1242,7 @@ Events
 ++++++
 
 .. zeek:id:: dhcp_message
+   :source-code: base/protocols/dhcp/main.zeek 275 278
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`DHCP::Msg`, options: :zeek:type:`DHCP::Options`)
 
@@ -1230,6 +1278,7 @@ Events
 ++++++
 
 .. zeek:id:: dnp3_application_request_header
+   :source-code: base/protocols/dnp3/main.zeek 49 59
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, application: :zeek:type:`count`, fc: :zeek:type:`count`)
 
@@ -1246,6 +1295,7 @@ Events
    
 
 .. zeek:id:: dnp3_application_response_header
+   :source-code: base/protocols/dnp3/main.zeek 61 76
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, application: :zeek:type:`count`, fc: :zeek:type:`count`, iin: :zeek:type:`count`)
 
@@ -1265,6 +1315,7 @@ Events
    
 
 .. zeek:id:: dnp3_object_header
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 50 50
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, obj_type: :zeek:type:`count`, qua_field: :zeek:type:`count`, number: :zeek:type:`count`, rf_low: :zeek:type:`count`, rf_high: :zeek:type:`count`)
 
@@ -1298,6 +1349,7 @@ Events
    
 
 .. zeek:id:: dnp3_object_prefix
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 62 62
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix_value: :zeek:type:`count`)
 
@@ -1315,6 +1367,7 @@ Events
    
 
 .. zeek:id:: dnp3_header_block
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 82 82
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, len: :zeek:type:`count`, ctrl: :zeek:type:`count`, dest_addr: :zeek:type:`count`, src_addr: :zeek:type:`count`)
 
@@ -1343,6 +1396,7 @@ Events
    
 
 .. zeek:id:: dnp3_response_data_object
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 99 99
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data_value: :zeek:type:`count`)
 
@@ -1365,12 +1419,14 @@ Events
    
 
 .. zeek:id:: dnp3_attribute_common
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 103 103
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data_type_code: :zeek:type:`count`, leng: :zeek:type:`count`, attribute_obj: :zeek:type:`string`)
 
    Generated for DNP3 attributes.
 
 .. zeek:id:: dnp3_crob
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 108 108
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, control_code: :zeek:type:`count`, count8: :zeek:type:`count`, on_time: :zeek:type:`count`, off_time: :zeek:type:`count`, status_code: :zeek:type:`count`)
 
@@ -1379,6 +1435,7 @@ Events
    :CROB: control relay output block
 
 .. zeek:id:: dnp3_pcb
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 113 113
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, control_code: :zeek:type:`count`, count8: :zeek:type:`count`, on_time: :zeek:type:`count`, off_time: :zeek:type:`count`, status_code: :zeek:type:`count`)
 
@@ -1387,6 +1444,7 @@ Events
    :PCB: Pattern Control Block
 
 .. zeek:id:: dnp3_counter_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 118 118
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -1394,6 +1452,7 @@ Events
    counter 32 bit with flag
 
 .. zeek:id:: dnp3_counter_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 123 123
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -1401,6 +1460,7 @@ Events
    counter 16 bit with flag
 
 .. zeek:id:: dnp3_counter_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 128 128
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -1408,6 +1468,7 @@ Events
    counter 32 bit without flag
 
 .. zeek:id:: dnp3_counter_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 133 133
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -1415,6 +1476,7 @@ Events
    counter 16 bit without flag
 
 .. zeek:id:: dnp3_frozen_counter_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 138 138
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -1422,6 +1484,7 @@ Events
    frozen counter 32 bit with flag
 
 .. zeek:id:: dnp3_frozen_counter_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 143 143
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`)
 
@@ -1429,6 +1492,7 @@ Events
    frozen counter 16 bit with flag
 
 .. zeek:id:: dnp3_frozen_counter_32wFlagTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 148 148
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1436,6 +1500,7 @@ Events
    frozen counter 32 bit with flag and time
 
 .. zeek:id:: dnp3_frozen_counter_16wFlagTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 153 153
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, count_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1443,6 +1508,7 @@ Events
    frozen counter 16 bit with flag and time
 
 .. zeek:id:: dnp3_frozen_counter_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 158 158
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -1450,6 +1516,7 @@ Events
    frozen counter 32 bit without flag
 
 .. zeek:id:: dnp3_frozen_counter_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 163 163
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, count_value: :zeek:type:`count`)
 
@@ -1457,6 +1524,7 @@ Events
    frozen counter 16 bit without flag
 
 .. zeek:id:: dnp3_analog_input_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 168 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -1464,6 +1532,7 @@ Events
    analog input 32 bit with flag
 
 .. zeek:id:: dnp3_analog_input_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 173 173
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -1471,6 +1540,7 @@ Events
    analog input 16 bit with flag
 
 .. zeek:id:: dnp3_analog_input_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 178 178
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, value: :zeek:type:`count`)
 
@@ -1478,6 +1548,7 @@ Events
    analog input 32 bit without flag
 
 .. zeek:id:: dnp3_analog_input_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 183 183
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, value: :zeek:type:`count`)
 
@@ -1485,6 +1556,7 @@ Events
    analog input 16 bit without flag
 
 .. zeek:id:: dnp3_analog_input_SPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 188 188
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -1492,6 +1564,7 @@ Events
    analog input single precision, float point with flag
 
 .. zeek:id:: dnp3_analog_input_DPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 193 193
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value_low: :zeek:type:`count`, value_high: :zeek:type:`count`)
 
@@ -1499,6 +1572,7 @@ Events
    analog input double precision, float point with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_32wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 198 198
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -1506,6 +1580,7 @@ Events
    frozen analog input 32 bit with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_16wFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 203 203
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -1513,6 +1588,7 @@ Events
    frozen analog input 16 bit with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_32wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 208 208
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1520,6 +1596,7 @@ Events
    frozen analog input 32 bit with time-of-freeze
 
 .. zeek:id:: dnp3_frozen_analog_input_16wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 213 213
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1527,6 +1604,7 @@ Events
    frozen analog input 16 bit with time-of-freeze
 
 .. zeek:id:: dnp3_frozen_analog_input_32woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 218 218
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, frozen_value: :zeek:type:`count`)
 
@@ -1534,6 +1612,7 @@ Events
    frozen analog input 32 bit without flag
 
 .. zeek:id:: dnp3_frozen_analog_input_16woFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 223 223
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, frozen_value: :zeek:type:`count`)
 
@@ -1541,6 +1620,7 @@ Events
    frozen analog input 16 bit without flag
 
 .. zeek:id:: dnp3_frozen_analog_input_SPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 228 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -1548,6 +1628,7 @@ Events
    frozen analog input single-precision, float point with flag
 
 .. zeek:id:: dnp3_frozen_analog_input_DPwFlag
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 233 233
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value_low: :zeek:type:`count`, frozen_value_high: :zeek:type:`count`)
 
@@ -1555,6 +1636,7 @@ Events
    frozen analog input double-precision, float point with flag
 
 .. zeek:id:: dnp3_analog_input_event_32woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 238 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -1562,6 +1644,7 @@ Events
    analog input event 32 bit without time
 
 .. zeek:id:: dnp3_analog_input_event_16woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 243 243
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -1569,6 +1652,7 @@ Events
    analog input event 16 bit without time
 
 .. zeek:id:: dnp3_analog_input_event_32wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 248 248
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1576,6 +1660,7 @@ Events
    analog input event 32 bit with time
 
 .. zeek:id:: dnp3_analog_input_event_16wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1583,6 +1668,7 @@ Events
    analog input event 16 bit with time
 
 .. zeek:id:: dnp3_analog_input_event_SPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 258 258
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -1590,6 +1676,7 @@ Events
    analog input event single-precision float point without time
 
 .. zeek:id:: dnp3_analog_input_event_DPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 263 263
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value_low: :zeek:type:`count`, value_high: :zeek:type:`count`)
 
@@ -1597,6 +1684,7 @@ Events
    analog input event double-precision float point without time
 
 .. zeek:id:: dnp3_analog_input_event_SPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 268 268
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1604,6 +1692,7 @@ Events
    analog input event single-precision float point with time
 
 .. zeek:id:: dnp3_analog_input_event_DPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 273 273
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value_low: :zeek:type:`count`, value_high: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1611,6 +1700,7 @@ Events
    analog input event double-precisiion float point with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_32woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 278 278
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -1618,6 +1708,7 @@ Events
    frozen analog input event 32 bit without time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_16woTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 283 283
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -1625,6 +1716,7 @@ Events
    frozen analog input event 16 bit without time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_32wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 288 288
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1632,6 +1724,7 @@ Events
    frozen analog input event 32 bit with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_16wTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 293 293
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1639,6 +1732,7 @@ Events
    frozen analog input event 16 bit with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_SPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 298 298
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`)
 
@@ -1646,6 +1740,7 @@ Events
    frozen analog input event single-precision float point without time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_DPwoTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 303 303
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value_low: :zeek:type:`count`, frozen_value_high: :zeek:type:`count`)
 
@@ -1653,6 +1748,7 @@ Events
    frozen analog input event double-precision float point without time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_SPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 308 308
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1660,6 +1756,7 @@ Events
    frozen analog input event single-precision float point with time
 
 .. zeek:id:: dnp3_frozen_analog_input_event_DPwTime
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 313 313
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, frozen_value_low: :zeek:type:`count`, frozen_value_high: :zeek:type:`count`, time48: :zeek:type:`count`)
 
@@ -1667,12 +1764,14 @@ Events
    frozen analog input event double-precision float point with time
 
 .. zeek:id:: dnp3_file_transport
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 317 317
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, file_handle: :zeek:type:`count`, block_num: :zeek:type:`count`, file_data: :zeek:type:`string`)
 
    g70
 
 .. zeek:id:: dnp3_debug_byte
+   :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 323 323
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, debug: :zeek:type:`string`)
 
@@ -1696,6 +1795,7 @@ Events
 ++++++
 
 .. zeek:id:: dns_message
+   :source-code: base/protocols/dns/main.zeek 347 354
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`dns_msg`, len: :zeek:type:`count`)
 
@@ -1727,6 +1827,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_request
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 56 56
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`, original_query: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`)
@@ -1766,6 +1867,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_rejected
+   :source-code: base/protocols/dns/main.zeek 611 615
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`, original_query: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`)
@@ -1807,6 +1909,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_query_reply
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 121 121
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`, original_query: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`)
@@ -1845,6 +1948,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_A_reply
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 149 149
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, a: :zeek:type:`addr`)
 
@@ -1877,6 +1981,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_AAAA_reply
+   :source-code: base/protocols/dns/main.zeek 489 492
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, a: :zeek:type:`addr`)
 
@@ -1909,6 +2014,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_A6_reply
+   :source-code: base/protocols/dns/main.zeek 494 497
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, a: :zeek:type:`addr`)
 
@@ -1941,6 +2047,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_NS_reply
+   :source-code: base/protocols/dns/main.zeek 499 502
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`)
 
@@ -1973,6 +2080,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_CNAME_reply
+   :source-code: base/protocols/dns/main.zeek 504 507
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`)
 
@@ -2005,6 +2113,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_PTR_reply
+   :source-code: base/protocols/dns/main.zeek 515 518
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`)
 
@@ -2037,6 +2146,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_SOA_reply
+   :source-code: base/protocols/dns/main.zeek 520 523
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, soa: :zeek:type:`dns_soa`)
 
@@ -2069,6 +2179,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_WKS_reply
+   :source-code: base/protocols/dns/main.zeek 525 528
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`)
 
@@ -2098,6 +2209,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_HINFO_reply
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 353 353
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`)
 
@@ -2127,6 +2239,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_MX_reply
+   :source-code: base/protocols/dns/main.zeek 510 513
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`, preference: :zeek:type:`count`)
 
@@ -2162,6 +2275,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_TXT_reply
+   :source-code: base/protocols/dns/main.zeek 459 473
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, strs: :zeek:type:`string_vec`)
 
@@ -2194,6 +2308,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_SPF_reply
+   :source-code: base/protocols/dns/main.zeek 474 488
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, strs: :zeek:type:`string_vec`)
 
@@ -2226,6 +2341,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_CAA_reply
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 453 453
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, flags: :zeek:type:`count`, tag: :zeek:type:`string`, value: :zeek:type:`string`)
 
@@ -2254,6 +2370,7 @@ Events
    :value: The property value of the CAA reply.
 
 .. zeek:id:: dns_SRV_reply
+   :source-code: base/protocols/dns/main.zeek 530 533
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, target: :zeek:type:`string`, priority: :zeek:type:`count`, weight: :zeek:type:`count`, p: :zeek:type:`count`)
 
@@ -2299,6 +2416,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_unknown_reply
+   :source-code: base/protocols/dns/main.zeek 449 452
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`)
 
@@ -2320,6 +2438,7 @@ Events
       dns_TSIG_addl dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_SRV_reply dns_end
 
 .. zeek:id:: dns_EDNS_addl
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 529 529
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_edns_additional`)
 
@@ -2349,6 +2468,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_ecs
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 553 553
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_ecs`)
 
@@ -2378,6 +2498,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_tcp_keepalive
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 579 579
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_tcp_keepalive`)
 
@@ -2409,6 +2530,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_cookie
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 605 605
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_cookie`)
 
@@ -2440,6 +2562,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_TSIG_addl
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 629 629
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_tsig_additional`)
 
@@ -2469,6 +2592,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_RRSIG
+   :source-code: base/protocols/dns/main.zeek 555 562
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, rrsig: :zeek:type:`dns_rrsig_rr`)
 
@@ -2489,6 +2613,7 @@ Events
    :rrsig: The parsed RRSIG record.
 
 .. zeek:id:: dns_DNSKEY
+   :source-code: base/protocols/dns/main.zeek 563 569
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, dnskey: :zeek:type:`dns_dnskey_rr`)
 
@@ -2509,6 +2634,7 @@ Events
    :dnskey: The parsed DNSKEY record.
 
 .. zeek:id:: dns_NSEC
+   :source-code: base/protocols/dns/main.zeek 570 573
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, next_name: :zeek:type:`string`, bitmaps: :zeek:type:`string_vec`)
 
@@ -2532,6 +2658,7 @@ Events
    :bitmaps: vector of strings in hex for the bit maps present.
 
 .. zeek:id:: dns_NSEC3
+   :source-code: base/protocols/dns/main.zeek 575 578
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, nsec3: :zeek:type:`dns_nsec3_rr`)
 
@@ -2552,6 +2679,7 @@ Events
    :nsec3: The parsed RDATA of Nsec3 record.
 
 .. zeek:id:: dns_NSEC3PARAM
+   :source-code: base/protocols/dns/main.zeek 580 583
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, nsec3param: :zeek:type:`dns_nsec3param_rr`)
 
@@ -2572,6 +2700,7 @@ Events
    :nsec3param: The parsed RDATA of NSEC3PARAM record.
 
 .. zeek:id:: dns_DS
+   :source-code: base/protocols/dns/main.zeek 585 591
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, ds: :zeek:type:`dns_ds_rr`)
 
@@ -2592,6 +2721,7 @@ Events
    :ds: The parsed RDATA of DS record.
 
 .. zeek:id:: dns_BINDS
+   :source-code: base/protocols/dns/main.zeek 592 595
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, binds: :zeek:type:`dns_binds_rr`)
 
@@ -2612,6 +2742,7 @@ Events
    :binds: The parsed RDATA of BIND-Signeing state record.
 
 .. zeek:id:: dns_SSHFP
+   :source-code: base/protocols/dns/main.zeek 597 603
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, algo: :zeek:type:`count`, fptype: :zeek:type:`count`, fingerprint: :zeek:type:`string`)
 
@@ -2632,6 +2763,7 @@ Events
    :binds: The parsed RDATA of BIND-Signeing state record.
 
 .. zeek:id:: dns_LOC
+   :source-code: base/protocols/dns/main.zeek 604 610
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, loc: :zeek:type:`dns_loc_rr`)
 
@@ -2652,6 +2784,7 @@ Events
    :loc: The parsed RDATA of LOC type record.
 
 .. zeek:id:: dns_end
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 780 780
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`)
 
@@ -2694,6 +2827,7 @@ Events
 ++++++
 
 .. zeek:id:: file_transferred
+   :source-code: base/protocols/ftp/main.zeek 339 347
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prefix: :zeek:type:`string`, descr: :zeek:type:`string`, mime_type: :zeek:type:`string`)
 
@@ -2727,6 +2861,7 @@ Events
 ++++++
 
 .. zeek:id:: finger_request
+   :source-code: base/bif/plugins/Zeek_Finger.events.bif.zeek 23 23
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, full: :zeek:type:`bool`, username: :zeek:type:`string`, hostname: :zeek:type:`string`)
 
@@ -2755,6 +2890,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: finger_reply
+   :source-code: base/bif/plugins/Zeek_Finger.events.bif.zeek 41 41
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, reply_line: :zeek:type:`string`)
 
@@ -2792,6 +2928,7 @@ Types
 +++++
 
 .. zeek:type:: ftp_port
+   :source-code: base/init-bare.zeek 309 313
 
    :Type: :zeek:type:`record`
 
@@ -2814,6 +2951,7 @@ Events
 ++++++
 
 .. zeek:id:: ftp_request
+   :source-code: base/bif/plugins/Zeek_FTP.events.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -2835,6 +2973,7 @@ Events
       parse_ftp_epsv parse_ftp_pasv parse_ftp_port
 
 .. zeek:id:: ftp_reply
+   :source-code: base/bif/plugins/Zeek_FTP.events.bif.zeek 38 38
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, code: :zeek:type:`count`, msg: :zeek:type:`string`, cont_resp: :zeek:type:`bool`)
 
@@ -2865,6 +3004,7 @@ Functions
 +++++++++
 
 .. zeek:id:: parse_ftp_port
+   :source-code: base/bif/plugins/Zeek_FTP.functions.bif.zeek 17 17
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`ftp_port`
 
@@ -2880,6 +3020,7 @@ Functions
    .. zeek:see:: parse_eftp_port parse_ftp_pasv parse_ftp_epsv fmt_ftp_port
 
 .. zeek:id:: parse_eftp_port
+   :source-code: base/bif/plugins/Zeek_FTP.functions.bif.zeek 30 30
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`ftp_port`
 
@@ -2897,6 +3038,7 @@ Functions
    .. zeek:see:: parse_ftp_port parse_ftp_pasv parse_ftp_epsv fmt_ftp_port
 
 .. zeek:id:: parse_ftp_pasv
+   :source-code: base/bif/plugins/Zeek_FTP.functions.bif.zeek 40 40
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`ftp_port`
 
@@ -2911,6 +3053,7 @@ Functions
    .. zeek:see:: parse_ftp_port parse_eftp_port parse_ftp_epsv fmt_ftp_port
 
 .. zeek:id:: parse_ftp_epsv
+   :source-code: base/bif/plugins/Zeek_FTP.functions.bif.zeek 52 52
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`ftp_port`
 
@@ -2927,6 +3070,7 @@ Functions
    .. zeek:see:: parse_ftp_port parse_eftp_port parse_ftp_pasv fmt_ftp_port
 
 .. zeek:id:: fmt_ftp_port
+   :source-code: base/bif/plugins/Zeek_FTP.functions.bif.zeek 65 65
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, p: :zeek:type:`port`) : :zeek:type:`string`
 
@@ -2958,6 +3102,7 @@ Events
 ++++++
 
 .. zeek:id:: gnutella_text_msg
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, headers: :zeek:type:`string`)
 
@@ -2976,6 +3121,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_binary_msg
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 32 32
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, ttl: :zeek:type:`count`, hops: :zeek:type:`count`, msg_len: :zeek:type:`count`, payload: :zeek:type:`string`, payload_len: :zeek:type:`count`, trunc: :zeek:type:`bool`, complete: :zeek:type:`bool`)
 
@@ -2993,6 +3139,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_partial_binary_msg
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 47 47
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, msg: :zeek:type:`string`, len: :zeek:type:`count`)
 
@@ -3010,6 +3157,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_establish
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 62 62
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -3027,6 +3175,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_not_establish
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 77 77
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -3044,6 +3193,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_http_notify
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -3074,6 +3224,7 @@ Events
 ++++++
 
 .. zeek:id:: gssapi_neg_result
+   :source-code: base/bif/plugins/Zeek_GSSAPI.events.bif.zeek 10 10
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, state: :zeek:type:`count`)
 
@@ -3100,6 +3251,7 @@ Events
 ++++++
 
 .. zeek:id:: gtpv1_message
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 9 9
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`)
 
@@ -3112,6 +3264,7 @@ Events
    :hdr: The GTPv1 header.
 
 .. zeek:id:: gtpv1_g_pdu_packet
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 23 23
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner_gtp: :zeek:type:`gtpv1_hdr`, inner_ip: :zeek:type:`pkt_hdr`)
 
@@ -3131,6 +3284,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: gtpv1_create_pdp_ctx_request
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_create_pdp_ctx_request_elements`)
 
@@ -3146,6 +3300,7 @@ Events
    :elements: The set of Information Elements comprising the message.
 
 .. zeek:id:: gtpv1_create_pdp_ctx_response
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 43 43
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_create_pdp_ctx_response_elements`)
 
@@ -3161,6 +3316,7 @@ Events
    :elements: The set of Information Elements comprising the message.
 
 .. zeek:id:: gtpv1_update_pdp_ctx_request
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 53 53
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_update_pdp_ctx_request_elements`)
 
@@ -3176,6 +3332,7 @@ Events
    :elements: The set of Information Elements comprising the message.
 
 .. zeek:id:: gtpv1_update_pdp_ctx_response
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 63 63
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_update_pdp_ctx_response_elements`)
 
@@ -3191,6 +3348,7 @@ Events
    :elements: The set of Information Elements comprising the message.
 
 .. zeek:id:: gtpv1_delete_pdp_ctx_request
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 73 73
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_delete_pdp_ctx_request_elements`)
 
@@ -3206,6 +3364,7 @@ Events
    :elements: The set of Information Elements comprising the message.
 
 .. zeek:id:: gtpv1_delete_pdp_ctx_response
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 83 83
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_delete_pdp_ctx_response_elements`)
 
@@ -3234,6 +3393,7 @@ Events
 ++++++
 
 .. zeek:id:: http_request
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 26 26
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, method: :zeek:type:`string`, original_URI: :zeek:type:`string`, unescaped_URI: :zeek:type:`string`, version: :zeek:type:`string`)
 
@@ -3265,6 +3425,7 @@ Events
       truncate_http_URI http_connection_upgrade
 
 .. zeek:id:: http_reply
+   :source-code: base/protocols/http/main.zeek 215 255
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`, code: :zeek:type:`count`, reason: :zeek:type:`string`)
 
@@ -3293,6 +3454,7 @@ Events
       http_stats http_connection_upgrade
 
 .. zeek:id:: http_header
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 74 74
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, original_name: :zeek:type:`string`, name: :zeek:type:`string`, value: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, name: :zeek:type:`string`, value: :zeek:type:`string`)
@@ -3327,6 +3489,7 @@ Events
       entities.
 
 .. zeek:id:: http_all_headers
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 100 100
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, hlist: :zeek:type:`mime_header_list`)
 
@@ -3356,6 +3519,7 @@ Events
       entities.
 
 .. zeek:id:: http_begin_entity
+   :source-code: base/protocols/http/entities.zeek 72 82
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -3380,6 +3544,7 @@ Events
       mime_begin_entity http_connection_upgrade
 
 .. zeek:id:: http_end_entity
+   :source-code: base/protocols/http/entities.zeek 200 204
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -3404,6 +3569,7 @@ Events
       http_stats mime_end_entity http_connection_upgrade
 
 .. zeek:id:: http_entity_data
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 170 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -3440,6 +3606,7 @@ Events
       http_connection_upgrade
 
 .. zeek:id:: http_content_type
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 196 196
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, ty: :zeek:type:`string`, subty: :zeek:type:`string`)
 
@@ -3472,6 +3639,7 @@ Events
       entities.
 
 .. zeek:id:: http_message_done
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 220 220
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, stat: :zeek:type:`http_message_stat`)
 
@@ -3501,6 +3669,7 @@ Events
       http_connection_upgrade
 
 .. zeek:id:: http_event
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 238 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, event_type: :zeek:type:`string`, detail: :zeek:type:`string`)
 
@@ -3524,6 +3693,7 @@ Events
       http_stats mime_event http_connection_upgrade
 
 .. zeek:id:: http_stats
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, stats: :zeek:type:`http_stats_rec`)
 
@@ -3543,6 +3713,7 @@ Events
       http_request http_connection_upgrade
 
 .. zeek:id:: http_connection_upgrade
+   :source-code: base/bif/plugins/Zeek_HTTP.events.bif.zeek 267 267
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, protocol: :zeek:type:`string`)
 
@@ -3564,6 +3735,7 @@ Functions
 +++++++++
 
 .. zeek:id:: skip_http_entity_data
+   :source-code: base/bif/plugins/Zeek_HTTP.functions.bif.zeek 14 14
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`any`
 
@@ -3578,6 +3750,7 @@ Functions
    .. zeek:see:: skip_smtp_data
 
 .. zeek:id:: unescape_URI
+   :source-code: base/bif/plugins/Zeek_HTTP.functions.bif.zeek 30 30
 
    :Type: :zeek:type:`function` (URI: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -3611,6 +3784,7 @@ Events
 ++++++
 
 .. zeek:id:: icmp_sent
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 22 22
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`)
 
@@ -3637,6 +3811,7 @@ Events
    .. zeek:see:: icmp_error_message icmp_sent_payload
 
 .. zeek:id:: icmp_sent_payload
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 38 38
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, payload: :zeek:type:`string`)
 
@@ -3659,6 +3834,7 @@ Events
    .. zeek:see:: icmp_error_message icmp_sent_payload
 
 .. zeek:id:: icmp_echo_request
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 63 63
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -3692,6 +3868,7 @@ Events
    .. zeek:see:: icmp_echo_reply
 
 .. zeek:id:: icmp_echo_reply
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 88 88
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, id: :zeek:type:`count`, seq: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -3725,6 +3902,7 @@ Events
    .. zeek:see:: icmp_echo_request
 
 .. zeek:id:: icmp_error_message
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 115 115
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -3759,6 +3937,7 @@ Events
       icmp_time_exceeded icmp_parameter_problem
 
 .. zeek:id:: icmp_unreachable
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 143 143
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -3794,6 +3973,7 @@ Events
       icmp_time_exceeded icmp_parameter_problem
 
 .. zeek:id:: icmp_packet_too_big
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 171 171
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -3829,6 +4009,7 @@ Events
       icmp_time_exceeded icmp_parameter_problem
 
 .. zeek:id:: icmp_time_exceeded
+   :source-code: policy/misc/detect-traceroute/main.zeek 100 103
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -3864,6 +4045,7 @@ Events
       icmp_parameter_problem
 
 .. zeek:id:: icmp_parameter_problem
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 227 227
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, code: :zeek:type:`count`, context: :zeek:type:`icmp_context`)
 
@@ -3899,6 +4081,7 @@ Events
       icmp_time_exceeded
 
 .. zeek:id:: icmp_router_solicitation
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 248 248
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -3926,6 +4109,7 @@ Events
       icmp_neighbor_solicitation icmp_neighbor_advertisement icmp_redirect
 
 .. zeek:id:: icmp_router_advertisement
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 290 290
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, cur_hop_limit: :zeek:type:`count`, managed: :zeek:type:`bool`, other: :zeek:type:`bool`, home_agent: :zeek:type:`bool`, pref: :zeek:type:`count`, proxy: :zeek:type:`bool`, rsv: :zeek:type:`count`, router_lifetime: :zeek:type:`interval`, reachable_time: :zeek:type:`interval`, retrans_timer: :zeek:type:`interval`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -3984,6 +4168,7 @@ Events
       icmp_neighbor_solicitation icmp_neighbor_advertisement icmp_redirect
 
 .. zeek:id:: icmp_neighbor_solicitation
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 313 313
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -4014,6 +4199,7 @@ Events
       icmp_neighbor_advertisement icmp_redirect
 
 .. zeek:id:: icmp_neighbor_advertisement
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 343 343
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, router: :zeek:type:`bool`, solicited: :zeek:type:`bool`, override: :zeek:type:`bool`, tgt: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -4054,6 +4240,7 @@ Events
       icmp_neighbor_solicitation icmp_redirect
 
 .. zeek:id:: icmp_redirect
+   :source-code: base/bif/plugins/Zeek_ICMP.events.bif.zeek 369 369
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`icmp_info`, tgt: :zeek:type:`addr`, dest: :zeek:type:`addr`, options: :zeek:type:`icmp6_nd_options`)
 
@@ -4101,6 +4288,7 @@ Events
 ++++++
 
 .. zeek:id:: ident_request
+   :source-code: base/bif/plugins/Zeek_Ident.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, lport: :zeek:type:`port`, rport: :zeek:type:`port`)
 
@@ -4126,6 +4314,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: ident_reply
+   :source-code: base/bif/plugins/Zeek_Ident.events.bif.zeek 45 45
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, lport: :zeek:type:`port`, rport: :zeek:type:`port`, user_id: :zeek:type:`string`, system: :zeek:type:`string`)
 
@@ -4157,6 +4346,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: ident_error
+   :source-code: base/bif/plugins/Zeek_Ident.events.bif.zeek 67 67
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, lport: :zeek:type:`port`, rport: :zeek:type:`port`, line: :zeek:type:`string`)
 
@@ -4198,6 +4388,7 @@ Events
 ++++++
 
 .. zeek:id:: imap_capabilities
+   :source-code: base/bif/plugins/Zeek_IMAP.events.bif.zeek 10 10
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, capabilities: :zeek:type:`string_vec`)
 
@@ -4211,6 +4402,7 @@ Events
    :capabilities: The list of IMAP capabilities as sent by the server.
 
 .. zeek:id:: imap_starttls
+   :source-code: base/bif/plugins/Zeek_IMAP.events.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -4234,6 +4426,7 @@ Events
 ++++++
 
 .. zeek:id:: irc_request
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 30 30
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, command: :zeek:type:`string`, arguments: :zeek:type:`string`)
 
@@ -4269,6 +4462,7 @@ Events
       the :zeek:id:`irc_message` event instead.
 
 .. zeek:id:: irc_reply
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 56 56
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, code: :zeek:type:`count`, params: :zeek:type:`string`)
 
@@ -4302,6 +4496,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 86 86
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, command: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -4339,6 +4534,7 @@ Events
       :zeek:id:`irc_request` event instead.
 
 .. zeek:id:: irc_quit_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 109 109
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -4368,6 +4564,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_privmsg_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 134 134
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, source: :zeek:type:`string`, target: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -4400,6 +4597,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_notice_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 159 159
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, source: :zeek:type:`string`, target: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -4432,6 +4630,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_squery_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 184 184
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, source: :zeek:type:`string`, target: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -4464,6 +4663,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_join_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 205 205
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, info_list: :zeek:type:`irc_join_list`)
 
@@ -4490,6 +4690,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_part_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 230 230
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, chans: :zeek:type:`string_set`, message: :zeek:type:`string`)
 
@@ -4522,6 +4723,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_nick_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, who: :zeek:type:`string`, newnick: :zeek:type:`string`)
 
@@ -4551,6 +4753,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_invalid_nick
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 271 271
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -4573,6 +4776,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_network_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 295 295
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, users: :zeek:type:`count`, services: :zeek:type:`count`, servers: :zeek:type:`count`)
 
@@ -4604,6 +4808,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_server_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 319 319
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, users: :zeek:type:`count`, services: :zeek:type:`count`, servers: :zeek:type:`count`)
 
@@ -4635,6 +4840,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_channel_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 339 339
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, chans: :zeek:type:`count`)
 
@@ -4660,6 +4866,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_who_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 375 375
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, target_nick: :zeek:type:`string`, channel: :zeek:type:`string`, user: :zeek:type:`string`, host: :zeek:type:`string`, server: :zeek:type:`string`, nick: :zeek:type:`string`, params: :zeek:type:`string`, hops: :zeek:type:`count`, real_name: :zeek:type:`string`)
 
@@ -4709,6 +4916,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_names_info
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 400 400
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, c_type: :zeek:type:`string`, channel: :zeek:type:`string`, users: :zeek:type:`string_set`)
 
@@ -4740,6 +4948,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_whois_operator_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 420 420
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`)
 
@@ -4765,6 +4974,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_whois_channel_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 442 442
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, chans: :zeek:type:`string_set`)
 
@@ -4793,6 +5003,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_whois_user_line
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 468 468
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, nick: :zeek:type:`string`, user: :zeek:type:`string`, host: :zeek:type:`string`, real_name: :zeek:type:`string`)
 
@@ -4827,6 +5038,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_oper_response
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 489 489
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, got_oper: :zeek:type:`bool`)
 
@@ -4853,6 +5065,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_global_users
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 512 512
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, msg: :zeek:type:`string`)
 
@@ -4882,6 +5095,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_channel_topic
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 534 534
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, channel: :zeek:type:`string`, topic: :zeek:type:`string`)
 
@@ -4910,6 +5124,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_who_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 557 557
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, mask: :zeek:type:`string`, oper: :zeek:type:`bool`)
 
@@ -4939,6 +5154,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_whois_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 580 580
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, server: :zeek:type:`string`, users: :zeek:type:`string`)
 
@@ -4968,6 +5184,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_oper_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 603 603
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, password: :zeek:type:`string`)
 
@@ -4997,6 +5214,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_kick_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 631 631
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, chans: :zeek:type:`string`, users: :zeek:type:`string`, comment: :zeek:type:`string`)
 
@@ -5033,6 +5251,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_error_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 655 655
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -5063,6 +5282,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_invite_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 681 681
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, nickname: :zeek:type:`string`, channel: :zeek:type:`string`)
 
@@ -5096,6 +5316,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_mode_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 705 705
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, params: :zeek:type:`string`)
 
@@ -5126,6 +5347,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_squit_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 731 731
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, server: :zeek:type:`string`, message: :zeek:type:`string`)
 
@@ -5159,6 +5381,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_dcc_message
+   :source-code: base/protocols/irc/dcc-send.zeek 109 123
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, target: :zeek:type:`string`, dcc_type: :zeek:type:`string`, argument: :zeek:type:`string`, address: :zeek:type:`addr`, dest_port: :zeek:type:`count`, size: :zeek:type:`count`)
 
@@ -5204,6 +5427,7 @@ Events
       irc_password_message
 
 .. zeek:id:: irc_user_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 792 792
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, host: :zeek:type:`string`, server: :zeek:type:`string`, real_name: :zeek:type:`string`)
 
@@ -5239,6 +5463,7 @@ Events
       irc_part_message irc_password_message
 
 .. zeek:id:: irc_password_message
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 813 813
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, password: :zeek:type:`string`)
 
@@ -5265,6 +5490,7 @@ Events
       irc_part_message
 
 .. zeek:id:: irc_starttls
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 821 821
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -5291,6 +5517,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: KRB::keytab
+   :source-code: base/init-bare.zeek 4567 4567
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -5302,6 +5529,7 @@ Types
 +++++
 
 .. zeek:type:: KRB::Error_Msg
+   :source-code: base/init-bare.zeek 4653 4676
 
    :Type: :zeek:type:`record`
 
@@ -5341,6 +5569,7 @@ Types
    The data from the ERROR_MSG message. See :rfc:`4120`.
 
 .. zeek:type:: KRB::SAFE_Msg
+   :source-code: base/init-bare.zeek 4634 4650
 
    :Type: :zeek:type:`record`
 
@@ -5369,6 +5598,7 @@ Types
    The data from the SAFE message. See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Options
+   :source-code: base/init-bare.zeek 4569 4600
 
    :Type: :zeek:type:`record`
 
@@ -5418,6 +5648,7 @@ Types
    KDC Options. See :rfc:`4120`
 
 .. zeek:type:: KRB::AP_Options
+   :source-code: base/init-bare.zeek 4603 4608
 
    :Type: :zeek:type:`record`
 
@@ -5430,6 +5661,7 @@ Types
    AP Options. See :rfc:`4120`
 
 .. zeek:type:: KRB::Type_Value
+   :source-code: base/init-bare.zeek 4612 4617
 
    :Type: :zeek:type:`record`
 
@@ -5443,6 +5675,7 @@ Types
    that have a type and a string value.
 
 .. zeek:type:: KRB::Ticket
+   :source-code: base/init-bare.zeek 4679 4692
 
    :Type: :zeek:type:`record`
 
@@ -5467,11 +5700,13 @@ Types
    A Kerberos ticket. See :rfc:`4120`.
 
 .. zeek:type:: KRB::Ticket_Vector
+   :source-code: base/init-bare.zeek 4694 4694
 
    :Type: :zeek:type:`vector` of :zeek:type:`KRB::Ticket`
 
 
 .. zeek:type:: KRB::Host_Address
+   :source-code: base/init-bare.zeek 4622 4629
 
    :Type: :zeek:type:`record`
 
@@ -5487,6 +5722,7 @@ Types
    A Kerberos host address See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Request
+   :source-code: base/init-bare.zeek 4697 4728
 
    :Type: :zeek:type:`record`
 
@@ -5535,6 +5771,7 @@ Types
    The data from the AS_REQ and TGS_REQ messages. See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Response
+   :source-code: base/init-bare.zeek 4731 4745
 
    :Type: :zeek:type:`record`
 
@@ -5562,6 +5799,7 @@ Events
 ++++++
 
 .. zeek:id:: krb_as_request
+   :source-code: base/protocols/krb/main.zeek 145 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Request`)
 
@@ -5584,6 +5822,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_as_response
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 36 36
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Response`)
 
@@ -5605,6 +5844,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_tgs_request
+   :source-code: base/protocols/krb/main.zeek 197 215
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Request`)
 
@@ -5627,6 +5867,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_tgs_response
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 71 71
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::KDC_Response`)
 
@@ -5648,6 +5889,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_ap_request
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 90 90
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, ticket: :zeek:type:`KRB::Ticket`, opts: :zeek:type:`KRB::AP_Options`)
 
@@ -5672,6 +5914,7 @@ Events
       krb_ap_response krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_ap_response
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 106 106
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -5691,6 +5934,7 @@ Events
       krb_ap_request krb_priv krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_priv
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 123 123
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -5712,6 +5956,7 @@ Events
       krb_ap_request krb_ap_response krb_safe krb_cred krb_error
 
 .. zeek:id:: krb_safe
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 140 140
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`KRB::SAFE_Msg`)
 
@@ -5734,6 +5979,7 @@ Events
       krb_ap_request krb_ap_response krb_priv krb_cred krb_error
 
 .. zeek:id:: krb_cred
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 157 157
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, tickets: :zeek:type:`KRB::Ticket_Vector`)
 
@@ -5756,6 +6002,7 @@ Events
       krb_ap_request krb_ap_response krb_priv krb_safe krb_error
 
 .. zeek:id:: krb_error
+   :source-code: base/bif/plugins/Zeek_KRB.events.bif.zeek 171 171
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`KRB::Error_Msg`)
 
@@ -5799,6 +6046,7 @@ Events
 ++++++
 
 .. zeek:id:: rsh_request
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, client_user: :zeek:type:`string`, server_user: :zeek:type:`string`, line: :zeek:type:`string`, new_session: :zeek:type:`bool`)
 
@@ -5836,6 +6084,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: rsh_reply
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 59 59
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, client_user: :zeek:type:`string`, server_user: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -5870,6 +6119,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: login_failure
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 95 95
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, user: :zeek:type:`string`, client_user: :zeek:type:`string`, password: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -5913,6 +6163,7 @@ Events
       signature.
 
 .. zeek:id:: login_success
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 131 131
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, user: :zeek:type:`string`, client_user: :zeek:type:`string`, password: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -5956,6 +6207,7 @@ Events
       signature.
 
 .. zeek:id:: login_input_line
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 149 149
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, line: :zeek:type:`string`)
 
@@ -5978,6 +6230,7 @@ Events
       signature.
 
 .. zeek:id:: login_output_line
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 167 167
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, line: :zeek:type:`string`)
 
@@ -6000,6 +6253,7 @@ Events
       signature.
 
 .. zeek:id:: login_confused
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 195 195
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -6033,6 +6287,7 @@ Events
       signature.
 
 .. zeek:id:: login_confused_text
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 217 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, line: :zeek:type:`string`)
 
@@ -6059,6 +6314,7 @@ Events
       signature.
 
 .. zeek:id:: login_terminal
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 235 235
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, terminal: :zeek:type:`string`)
 
@@ -6081,6 +6337,7 @@ Events
       signature.
 
 .. zeek:id:: login_display
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, display: :zeek:type:`string`)
 
@@ -6103,6 +6360,7 @@ Events
       signature.
 
 .. zeek:id:: authentication_accepted
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 279 279
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`)
 
@@ -6133,6 +6391,7 @@ Events
       signature.
 
 .. zeek:id:: authentication_rejected
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 305 305
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`)
 
@@ -6163,6 +6422,7 @@ Events
       signature.
 
 .. zeek:id:: authentication_skipped
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 330 330
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -6191,6 +6451,7 @@ Events
       signature.
 
 .. zeek:id:: login_prompt
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 352 352
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prompt: :zeek:type:`string`)
 
@@ -6217,6 +6478,7 @@ Events
       signature.
 
 .. zeek:id:: activating_encryption
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 367 367
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -6235,6 +6497,7 @@ Events
       login_output_line login_prompt login_success login_terminal
 
 .. zeek:id:: inconsistent_option
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 387 387
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -6258,6 +6521,7 @@ Events
       login_output_line login_prompt login_success login_terminal
 
 .. zeek:id:: bad_option
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 407 407
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -6281,6 +6545,7 @@ Events
       signature.
 
 .. zeek:id:: bad_option_termination
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 427 427
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -6307,6 +6572,7 @@ Functions
 +++++++++
 
 .. zeek:id:: get_login_state
+   :source-code: base/bif/plugins/Zeek_Login.functions.bif.zeek 26 26
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`count`
 
@@ -6333,6 +6599,7 @@ Functions
    .. zeek:see:: set_login_state
 
 .. zeek:id:: set_login_state
+   :source-code: base/bif/plugins/Zeek_Login.functions.bif.zeek 40 40
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, new_state: :zeek:type:`count`) : :zeek:type:`bool`
 
@@ -6363,6 +6630,7 @@ Events
 ++++++
 
 .. zeek:id:: mime_begin_entity
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -6386,6 +6654,7 @@ Events
       however, it raises :zeek:id:`http_begin_entity` instead.
 
 .. zeek:id:: mime_end_entity
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 41 41
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -6409,6 +6678,7 @@ Events
       however, it raises :zeek:id:`http_end_entity` instead.
 
 .. zeek:id:: mime_one_header
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 62 62
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, h: :zeek:type:`mime_header_rec`)
 
@@ -6434,6 +6704,7 @@ Events
       however, it raises :zeek:id:`http_header` instead.
 
 .. zeek:id:: mime_all_headers
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 85 85
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hlist: :zeek:type:`mime_header_list`)
 
@@ -6461,6 +6732,7 @@ Events
       however, it raises :zeek:id:`http_header` instead.
 
 .. zeek:id:: mime_segment_data
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 114 114
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -6495,6 +6767,7 @@ Events
       however, it raises :zeek:id:`http_entity_data` (sic!) instead.
 
 .. zeek:id:: mime_entity_data
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 140 140
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -6526,6 +6799,7 @@ Events
       sessions, there's no corresponding event for that currently.
 
 .. zeek:id:: mime_all_data
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 164 164
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, length: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -6555,6 +6829,7 @@ Events
       sessions, there's no corresponding event for that currently.
 
 .. zeek:id:: mime_event
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 185 185
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, event_type: :zeek:type:`string`, detail: :zeek:type:`string`)
 
@@ -6581,6 +6856,7 @@ Events
       however, it raises :zeek:id:`http_event` instead.
 
 .. zeek:id:: mime_content_hash
+   :source-code: base/bif/plugins/Zeek_MIME.events.bif.zeek 207 207
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, content_len: :zeek:type:`count`, hash_value: :zeek:type:`string`)
 
@@ -6621,6 +6897,7 @@ Events
 ++++++
 
 .. zeek:id:: modbus_message
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 12 12
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, is_orig: :zeek:type:`bool`)
 
@@ -6637,6 +6914,7 @@ Events
    :is_orig: True if the event is raised for the originator side.
 
 .. zeek:id:: modbus_exception
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 22 22
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, code: :zeek:type:`count`)
 
@@ -6652,6 +6930,7 @@ Events
    :code: The exception code.
 
 .. zeek:id:: modbus_read_coils_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -6670,6 +6949,7 @@ Events
    :quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_coils_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 44 44
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, coils: :zeek:type:`ModbusCoils`)
 
@@ -6685,6 +6965,7 @@ Events
    :coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_discrete_inputs_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 56 56
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -6703,6 +6984,7 @@ Events
    :quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_discrete_inputs_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 66 66
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, coils: :zeek:type:`ModbusCoils`)
 
@@ -6718,6 +7000,7 @@ Events
    :coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_holding_registers_request
+   :source-code: policy/protocols/modbus/track-memmap.zeek 62 65
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -6736,6 +7019,7 @@ Events
    :quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_holding_registers_response
+   :source-code: policy/protocols/modbus/track-memmap.zeek 67 102
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, registers: :zeek:type:`ModbusRegisters`)
 
@@ -6751,6 +7035,7 @@ Events
    :registers: The register values returned from the device.
 
 .. zeek:id:: modbus_read_input_registers_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 100 100
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -6769,6 +7054,7 @@ Events
    :quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_input_registers_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 110 110
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, registers: :zeek:type:`ModbusRegisters`)
 
@@ -6784,6 +7070,7 @@ Events
    :registers: The register values returned from the device.
 
 .. zeek:id:: modbus_write_single_coil_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 122 122
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`bool`)
 
@@ -6802,6 +7089,7 @@ Events
    :value: The value to be written to the coil.
 
 .. zeek:id:: modbus_write_single_coil_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 134 134
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`bool`)
 
@@ -6820,6 +7108,7 @@ Events
    :value: The value that was written to the coil.
 
 .. zeek:id:: modbus_write_single_register_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 146 146
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -6838,6 +7127,7 @@ Events
    :value: The value to be written to the register.
 
 .. zeek:id:: modbus_write_single_register_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 158 158
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, value: :zeek:type:`count`)
 
@@ -6856,6 +7146,7 @@ Events
    :value: The value that was written to the register.
 
 .. zeek:id:: modbus_write_multiple_coils_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 170 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, coils: :zeek:type:`ModbusCoils`)
 
@@ -6874,6 +7165,7 @@ Events
    :coils: The values to be written to the coils.
 
 .. zeek:id:: modbus_write_multiple_coils_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 182 182
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -6892,6 +7184,7 @@ Events
    :quantity: The quantity of coils that were written.
 
 .. zeek:id:: modbus_write_multiple_registers_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 194 194
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, registers: :zeek:type:`ModbusRegisters`)
 
@@ -6910,6 +7203,7 @@ Events
    :registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_write_multiple_registers_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 206 206
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`, quantity: :zeek:type:`count`)
 
@@ -6928,6 +7222,7 @@ Events
    :quantity: The quantity of registers that were written.
 
 .. zeek:id:: modbus_read_file_record_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 217 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -6943,6 +7238,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_read_file_record_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 228 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -6958,6 +7254,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_write_file_record_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 239 239
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -6973,6 +7270,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_write_file_record_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 250 250
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
@@ -6988,6 +7286,7 @@ Events
             is not yet passed through to the event.
 
 .. zeek:id:: modbus_mask_write_register_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 264 264
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -7009,6 +7308,7 @@ Events
    :or_mask: The value of the logical OR mask to apply to the register.
 
 .. zeek:id:: modbus_mask_write_register_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 278 278
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -7030,6 +7330,7 @@ Events
    :or_mask: The value of the logical OR mask applied to the register.
 
 .. zeek:id:: modbus_read_write_multiple_registers_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 294 294
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, read_start_address: :zeek:type:`count`, read_quantity: :zeek:type:`count`, write_start_address: :zeek:type:`count`, write_registers: :zeek:type:`ModbusRegisters`)
 
@@ -7054,6 +7355,7 @@ Events
    :write_registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_read_write_multiple_registers_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 305 305
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, written_registers: :zeek:type:`ModbusRegisters`)
 
@@ -7070,6 +7372,7 @@ Events
                       the request.
 
 .. zeek:id:: modbus_read_fifo_queue_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 315 315
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`)
 
@@ -7085,6 +7388,7 @@ Events
    :start_address: The address of the FIFO queue to read.
 
 .. zeek:id:: modbus_read_fifo_queue_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 325 325
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, fifos: :zeek:type:`ModbusRegisters`)
 
@@ -7113,6 +7417,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
+   :source-code: base/init-bare.zeek 5259 5289
 
    :Type: :zeek:type:`record`
 
@@ -7154,6 +7459,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
+   :source-code: base/init-bare.zeek 5291 5300
 
    :Type: :zeek:type:`record`
 
@@ -7168,6 +7474,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
+   :source-code: base/init-bare.zeek 5302 5324
 
    :Type: :zeek:type:`record`
 
@@ -7198,6 +7505,7 @@ Events
 ++++++
 
 .. zeek:id:: mqtt_connect
+   :source-code: policy/protocols/mqtt/main.zeek 177 188
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`MQTT::ConnectMsg`)
 
@@ -7210,6 +7518,7 @@ Events
    :msg: MQTT connect message fields.
 
 .. zeek:id:: mqtt_connack
+   :source-code: policy/protocols/mqtt/main.zeek 190 197
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`MQTT::ConnectAckMsg`)
 
@@ -7222,6 +7531,7 @@ Events
    :msg: MQTT connect ack message fields.
 
 .. zeek:id:: mqtt_publish
+   :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 27 27
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_id: :zeek:type:`count`, msg: :zeek:type:`MQTT::PublishMsg`)
 
@@ -7237,6 +7547,7 @@ Events
    :msg: The MQTT publish message record.
 
 .. zeek:id:: mqtt_puback
+   :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 37 37
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_id: :zeek:type:`count`)
 
@@ -7252,6 +7563,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubrec
+   :source-code: policy/protocols/mqtt/main.zeek 257 266
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_id: :zeek:type:`count`)
 
@@ -7267,6 +7579,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubrel
+   :source-code: policy/protocols/mqtt/main.zeek 268 277
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_id: :zeek:type:`count`)
 
@@ -7282,6 +7595,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubcomp
+   :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 67 67
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_id: :zeek:type:`count`)
 
@@ -7297,6 +7611,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_subscribe
+   :source-code: policy/protocols/mqtt/main.zeek 306 318
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`, topics: :zeek:type:`string_vec`, requested_qos: :zeek:type:`index_vec`)
 
@@ -7318,6 +7633,7 @@ Events
    :requested_qos: The desired QoS option associated with each topic.
 
 .. zeek:id:: mqtt_suback
+   :source-code: policy/protocols/mqtt/main.zeek 320 333
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`, granted_qos: :zeek:type:`count`)
 
@@ -7333,6 +7649,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_unsubscribe
+   :source-code: policy/protocols/mqtt/main.zeek 335 346
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`, topics: :zeek:type:`string_vec`)
 
@@ -7348,6 +7665,7 @@ Events
    :topics: The topics being unsubscribed from
 
 .. zeek:id:: mqtt_unsuback
+   :source-code: policy/protocols/mqtt/main.zeek 348 360
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`)
 
@@ -7360,6 +7678,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pingreq
+   :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 115 115
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -7369,6 +7688,7 @@ Events
    :c: The connection
 
 .. zeek:id:: mqtt_pingresp
+   :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 121 121
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -7378,6 +7698,7 @@ Events
    :c: The connection
 
 .. zeek:id:: mqtt_disconnect
+   :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 127 127
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -7400,6 +7721,7 @@ Events
 ++++++
 
 .. zeek:id:: mysql_command_request
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 16 16
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, command: :zeek:type:`count`, arg: :zeek:type:`string`)
 
@@ -7420,6 +7742,7 @@ Events
    .. zeek:see:: mysql_error mysql_ok mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_error
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, code: :zeek:type:`count`, msg: :zeek:type:`string`)
 
@@ -7440,6 +7763,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_ok mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_ok
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 44 44
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, affected_rows: :zeek:type:`count`)
 
@@ -7457,6 +7781,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_result_row
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 57 57
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, row: :zeek:type:`string_vec`)
 
@@ -7474,6 +7799,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake mysql_ok
 
 .. zeek:id:: mysql_server_version
+   :source-code: policy/protocols/mysql/software.zeek 14 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, ver: :zeek:type:`string`)
 
@@ -7491,6 +7817,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_handshake
 
 .. zeek:id:: mysql_handshake
+   :source-code: base/protocols/mysql/main.zeek 52 66
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, username: :zeek:type:`string`)
 
@@ -7524,6 +7851,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
+   :source-code: base/init-bare.zeek 5080 5080
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -7535,6 +7863,7 @@ Events
 ++++++
 
 .. zeek:id:: ncp_request
+   :source-code: base/bif/plugins/Zeek_NCP.events.bif.zeek 23 23
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, frame_type: :zeek:type:`count`, length: :zeek:type:`count`, func: :zeek:type:`count`)
 
@@ -7563,6 +7892,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: ncp_reply
+   :source-code: base/bif/plugins/Zeek_NCP.events.bif.zeek 49 49
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, frame_type: :zeek:type:`count`, length: :zeek:type:`count`, req_frame: :zeek:type:`count`, req_func: :zeek:type:`count`, completion_code: :zeek:type:`count`)
 
@@ -7612,6 +7942,7 @@ Events
 ++++++
 
 .. zeek:id:: netbios_session_message
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, data_len: :zeek:type:`count`)
 
@@ -7651,6 +7982,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_request
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 63 63
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -7684,6 +8016,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_accepted
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -7717,6 +8050,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_rejected
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 121 121
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -7750,6 +8084,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_raw_message
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 157 157
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`)
 
@@ -7791,6 +8126,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_ret_arg_resp
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 188 188
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -7826,6 +8162,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: netbios_session_keepalive
+   :source-code: base/bif/plugins/Zeek_NetBIOS.events.bif.zeek 217 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`)
 
@@ -7862,6 +8199,7 @@ Functions
 +++++++++
 
 .. zeek:id:: decode_netbios_name
+   :source-code: base/bif/plugins/Zeek_NetBIOS.functions.bif.zeek 13 13
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -7876,6 +8214,7 @@ Functions
    .. zeek:see:: decode_netbios_name_type
 
 .. zeek:id:: decode_netbios_name_type
+   :source-code: base/bif/plugins/Zeek_NetBIOS.functions.bif.zeek 24 24
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`count`
 
@@ -7904,6 +8243,7 @@ Types
 +++++
 
 .. zeek:type:: NTLM::Negotiate
+   :source-code: base/init-bare.zeek 2696 2705
 
    :Type: :zeek:type:`record`
 
@@ -7921,6 +8261,7 @@ Types
 
 
 .. zeek:type:: NTLM::Challenge
+   :source-code: base/init-bare.zeek 2733 2745
 
    :Type: :zeek:type:`record`
 
@@ -7941,6 +8282,7 @@ Types
 
 
 .. zeek:type:: NTLM::Authenticate
+   :source-code: base/init-bare.zeek 2747 2760
 
    :Type: :zeek:type:`record`
 
@@ -7964,6 +8306,7 @@ Types
 
 
 .. zeek:type:: NTLM::NegotiateFlags
+   :source-code: base/init-bare.zeek 2641 2694
 
    :Type: :zeek:type:`record`
 
@@ -8040,6 +8383,7 @@ Types
 
 
 .. zeek:type:: NTLM::Version
+   :source-code: base/init-bare.zeek 2630 2639
 
    :Type: :zeek:type:`record`
 
@@ -8057,6 +8401,7 @@ Types
 
 
 .. zeek:type:: NTLM::AVs
+   :source-code: base/init-bare.zeek 2707 2731
 
    :Type: :zeek:type:`record`
 
@@ -8095,6 +8440,7 @@ Events
 ++++++
 
 .. zeek:id:: ntlm_negotiate
+   :source-code: base/protocols/ntlm/main.zeek 65 68
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, negotiate: :zeek:type:`NTLM::Negotiate`)
 
@@ -8109,6 +8455,7 @@ Events
    .. zeek:see:: ntlm_challenge ntlm_authenticate
 
 .. zeek:id:: ntlm_challenge
+   :source-code: base/protocols/ntlm/main.zeek 70 84
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, challenge: :zeek:type:`NTLM::Challenge`)
 
@@ -8123,6 +8470,7 @@ Events
    .. zeek:see:: ntlm_negotiate ntlm_authenticate
 
 .. zeek:id:: ntlm_authenticate
+   :source-code: base/protocols/ntlm/main.zeek 86 96
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, request: :zeek:type:`NTLM::Authenticate`)
 
@@ -8150,6 +8498,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
+   :source-code: base/init-bare.zeek 5088 5141
 
    :Type: :zeek:type:`record`
 
@@ -8224,6 +8573,7 @@ Types
    for standard syncronization operations.
 
 .. zeek:type:: NTP::ControlMessage
+   :source-code: base/init-bare.zeek 5146 5180
 
    :Type: :zeek:type:`record`
 
@@ -8274,6 +8624,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
+   :source-code: base/init-bare.zeek 5189 5222
 
    :Type: :zeek:type:`record`
 
@@ -8324,6 +8675,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
+   :source-code: base/init-bare.zeek 5227 5254
 
    :Type: :zeek:type:`record`
 
@@ -8366,6 +8718,7 @@ Events
 ++++++
 
 .. zeek:id:: ntp_message
+   :source-code: base/bif/plugins/Zeek_NTP.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`NTP::Message`)
 
@@ -8410,6 +8763,7 @@ Events
 ++++++
 
 .. zeek:id:: pop3_request
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 25 25
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -8440,6 +8794,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_reply
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 52 52
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, cmd: :zeek:type:`string`, msg: :zeek:type:`string`)
 
@@ -8473,6 +8828,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_data
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 76 76
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data: :zeek:type:`string`)
 
@@ -8502,6 +8858,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_unexpected
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 100 100
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`, detail: :zeek:type:`string`)
 
@@ -8532,6 +8889,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_starttls
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 120 120
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -8555,6 +8913,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_login_success
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 144 144
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, password: :zeek:type:`string`)
 
@@ -8585,6 +8944,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_login_failure
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 168 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, password: :zeek:type:`string`)
 
@@ -8628,16 +8988,19 @@ Types
 +++++
 
 .. zeek:type:: RADIUS::AttributeList
+   :source-code: base/init-bare.zeek 4313 4313
 
    :Type: :zeek:type:`vector` of :zeek:type:`string`
 
 
 .. zeek:type:: RADIUS::Attributes
+   :source-code: base/init-bare.zeek 4314 4314
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`RADIUS::AttributeList`
 
 
 .. zeek:type:: RADIUS::Message
+   :source-code: base/init-bare.zeek 4316 4325
 
    :Type: :zeek:type:`record`
 
@@ -8658,6 +9021,7 @@ Events
 ++++++
 
 .. zeek:id:: radius_message
+   :source-code: base/bif/plugins/Zeek_RADIUS.events.bif.zeek 13 13
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`RADIUS::Message`)
 
@@ -8674,6 +9038,7 @@ Events
    
 
 .. zeek:id:: radius_attribute
+   :source-code: base/bif/plugins/Zeek_RADIUS.events.bif.zeek 27 27
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, attr_type: :zeek:type:`count`, value: :zeek:type:`string`)
 
@@ -8708,6 +9073,7 @@ Types
 +++++
 
 .. zeek:type:: RDP::EarlyCapabilityFlags
+   :source-code: base/init-bare.zeek 4330 4340
 
    :Type: :zeek:type:`record`
 
@@ -8731,6 +9097,7 @@ Types
 
 
 .. zeek:type:: RDP::ClientCoreData
+   :source-code: base/init-bare.zeek 4342 4363
 
    :Type: :zeek:type:`record`
 
@@ -8776,6 +9143,7 @@ Types
 
 
 .. zeek:type:: RDP::ClientSecurityData
+   :source-code: base/init-bare.zeek 4367 4379
 
    :Type: :zeek:type:`record`
 
@@ -8796,6 +9164,7 @@ Types
    to advertise client cryptographic support.
 
 .. zeek:type:: RDP::ClientClusterData
+   :source-code: base/init-bare.zeek 4415 4434
 
    :Type: :zeek:type:`record`
 
@@ -8828,12 +9197,14 @@ Types
    or to request a connection to a given session identifier.
 
 .. zeek:type:: RDP::ClientChannelList
+   :source-code: base/init-bare.zeek 4437 4437
 
    :Type: :zeek:type:`vector` of :zeek:type:`RDP::ClientChannelDef`
 
    The list of channels requested by the client.
 
 .. zeek:type:: RDP::ClientChannelDef
+   :source-code: base/init-bare.zeek 4382 4410
 
    :Type: :zeek:type:`record`
 
@@ -8883,6 +9254,7 @@ Events
 ++++++
 
 .. zeek:id:: rdpeudp_syn
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 7 7
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -8892,6 +9264,7 @@ Events
    :c: The connection record for the underlying transport-layer session/flow.
 
 .. zeek:id:: rdpeudp_synack
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 13 13
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -8901,6 +9274,7 @@ Events
    :c: The connection record for the underlying transport-layer session/flow.
 
 .. zeek:id:: rdpeudp_established
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`)
 
@@ -8913,6 +9287,7 @@ Events
    :version: Whether the connection is RDPEUDP1 or RDPEUDP2
 
 .. zeek:id:: rdpeudp_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -8931,6 +9306,7 @@ Events
    :data: The payload of the packet. This is probably very non-performant.
 
 .. zeek:id:: rdp_native_encrypted_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 43 43
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, len: :zeek:type:`count`)
 
@@ -8946,6 +9322,7 @@ Events
    :len: The length of the encrypted data.
 
 .. zeek:id:: rdp_connect_request
+   :source-code: base/protocols/rdp/main.zeek 165 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cookie: :zeek:type:`string`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cookie: :zeek:type:`string`)
@@ -8962,6 +9339,7 @@ Events
    :flags: The flags set by the client.
 
 .. zeek:id:: rdp_negotiation_response
+   :source-code: base/protocols/rdp/main.zeek 172 177
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`)
@@ -8978,6 +9356,7 @@ Events
    :flags: The flags set by the server.
 
 .. zeek:id:: rdp_negotiation_failure
+   :source-code: base/protocols/rdp/main.zeek 179 184
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, failure_code: :zeek:type:`count`, flags: :zeek:type:`count`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, failure_code: :zeek:type:`count`)
@@ -8994,6 +9373,7 @@ Events
    :flags: The flags set by the server.
 
 .. zeek:id:: rdp_client_core_data
+   :source-code: base/protocols/rdp/main.zeek 186 201
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientCoreData`)
 
@@ -9006,6 +9386,7 @@ Events
    :data: The data contained in the client core data structure.
 
 .. zeek:id:: rdp_client_security_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 95 95
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientSecurityData`)
 
@@ -9018,6 +9399,7 @@ Events
    :data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_client_network_data
+   :source-code: base/protocols/rdp/main.zeek 203 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, channels: :zeek:type:`RDP::ClientChannelList`)
 
@@ -9030,6 +9412,7 @@ Events
    :channels: The channels that were requested
 
 .. zeek:id:: rdp_client_cluster_data
+   :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 111 111
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientClusterData`)
 
@@ -9042,6 +9425,7 @@ Events
    :data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_gcc_server_create_response
+   :source-code: base/protocols/rdp/main.zeek 218 223
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`count`)
 
@@ -9054,6 +9438,7 @@ Events
    :result: The 8-bit integer representing the GCC Conference Create Response result.
 
 .. zeek:id:: rdp_server_security
+   :source-code: base/protocols/rdp/main.zeek 225 231
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, encryption_method: :zeek:type:`count`, encryption_level: :zeek:type:`count`)
 
@@ -9069,6 +9454,7 @@ Events
    :encryption_level: The 32-bit integer representing the encryption level used in the connection.
 
 .. zeek:id:: rdp_server_certificate
+   :source-code: base/protocols/rdp/main.zeek 233 245
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cert_type: :zeek:type:`count`, permanently_issued: :zeek:type:`bool`)
 
@@ -9086,6 +9472,7 @@ Events
    :permanently_issued: Value will be true is the certificate(s) is permanent on the server.
 
 .. zeek:id:: rdp_begin_encryption
+   :source-code: base/protocols/rdp/main.zeek 247 257
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`)
 
@@ -9111,6 +9498,7 @@ Events
 ++++++
 
 .. zeek:id:: rfb_authentication_type
+   :source-code: base/protocols/rfb/main.zeek 131 136
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, authtype: :zeek:type:`count`)
 
@@ -9123,6 +9511,7 @@ Events
    :authtype: the value of the chosen authentication mechanism
 
 .. zeek:id:: rfb_auth_result
+   :source-code: base/protocols/rfb/main.zeek 152 155
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`bool`)
 
@@ -9135,6 +9524,7 @@ Events
    :result: whether or not authentication was succesful
 
 .. zeek:id:: rfb_share_flag
+   :source-code: base/protocols/rfb/main.zeek 157 160
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, flag: :zeek:type:`bool`)
 
@@ -9147,6 +9537,7 @@ Events
    :flag: whether or not the share flag was set
 
 .. zeek:id:: rfb_client_version
+   :source-code: base/protocols/rfb/main.zeek 117 122
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, major_version: :zeek:type:`string`, minor_version: :zeek:type:`string`)
 
@@ -9159,6 +9550,7 @@ Events
    :version: of the client's rfb library
 
 .. zeek:id:: rfb_server_version
+   :source-code: base/protocols/rfb/main.zeek 124 129
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, major_version: :zeek:type:`string`, minor_version: :zeek:type:`string`)
 
@@ -9171,6 +9563,7 @@ Events
    :version: of the server's rfb library
 
 .. zeek:id:: rfb_server_parameters
+   :source-code: base/bif/plugins/Zeek_RFB.events.bif.zeek 53 53
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, name: :zeek:type:`string`, width: :zeek:type:`count`, height: :zeek:type:`count`)
 
@@ -9210,6 +9603,7 @@ Events
 ++++++
 
 .. zeek:id:: nfs_proc_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 25 25
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`)
 
@@ -9238,6 +9632,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_getattr
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 54 54
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, fh: :zeek:type:`string`, attrs: :zeek:type:`NFS3::fattr_t`)
 
@@ -9273,6 +9668,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_sattr
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 83 83
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::sattrargs_t`, rep: :zeek:type:`NFS3::sattr_reply_t`)
 
@@ -9308,6 +9704,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_lookup
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 112 112
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::lookup_reply_t`)
 
@@ -9343,6 +9740,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_read
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 141 141
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::readargs_t`, rep: :zeek:type:`NFS3::read_reply_t`)
 
@@ -9378,6 +9776,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_readlink
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 170 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, fh: :zeek:type:`string`, rep: :zeek:type:`NFS3::readlink_reply_t`)
 
@@ -9413,6 +9812,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_symlink
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 199 199
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::symlinkargs_t`, rep: :zeek:type:`NFS3::newobj_reply_t`)
 
@@ -9448,6 +9848,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_link
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 228 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::linkargs_t`, rep: :zeek:type:`NFS3::link_reply_t`)
 
@@ -9483,6 +9884,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_write
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 258 258
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::writeargs_t`, rep: :zeek:type:`NFS3::write_reply_t`)
 
@@ -9519,6 +9921,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_create
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 287 287
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::newobj_reply_t`)
 
@@ -9554,6 +9957,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_mkdir
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 316 316
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::newobj_reply_t`)
 
@@ -9589,6 +9993,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_remove
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 345 345
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::delobj_reply_t`)
 
@@ -9624,6 +10029,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_rmdir
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 374 374
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::diropargs_t`, rep: :zeek:type:`NFS3::delobj_reply_t`)
 
@@ -9659,6 +10065,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_rename
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 403 403
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::renameopargs_t`, rep: :zeek:type:`NFS3::renameobj_reply_t`)
 
@@ -9694,6 +10101,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_readdir
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 432 432
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, req: :zeek:type:`NFS3::readdirargs_t`, rep: :zeek:type:`NFS3::readdir_reply_t`)
 
@@ -9729,6 +10137,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_proc_not_implemented
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 456 456
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`, proc: :zeek:type:`NFS3::proc_t`)
 
@@ -9758,6 +10167,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: nfs_reply_status
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 475 475
 
    :Type: :zeek:type:`event` (n: :zeek:type:`connection`, info: :zeek:type:`NFS3::info_t`)
 
@@ -9781,6 +10191,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 495 495
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`)
 
@@ -9804,6 +10215,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_set
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 521 521
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, m: :zeek:type:`pm_mapping`, success: :zeek:type:`bool`)
 
@@ -9835,6 +10247,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_unset
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 547 547
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, m: :zeek:type:`pm_mapping`, success: :zeek:type:`bool`)
 
@@ -9866,6 +10279,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_getport
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 571 571
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, pr: :zeek:type:`pm_port_request`, p: :zeek:type:`port`)
 
@@ -9895,6 +10309,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_dump
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 594 594
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, m: :zeek:type:`pm_mappings`)
 
@@ -9922,6 +10337,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_request_callit
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 619 619
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, call: :zeek:type:`pm_callit_request`, p: :zeek:type:`port`)
 
@@ -9952,6 +10368,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 643 643
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`)
 
@@ -9980,6 +10397,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_set
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 669 669
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, m: :zeek:type:`pm_mapping`)
 
@@ -10011,6 +10429,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_unset
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 695 695
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, m: :zeek:type:`pm_mapping`)
 
@@ -10042,6 +10461,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_getport
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 720 720
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, pr: :zeek:type:`pm_port_request`)
 
@@ -10072,6 +10492,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_dump
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 744 744
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`)
 
@@ -10100,6 +10521,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_attempt_callit
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 770 770
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, status: :zeek:type:`rpc_status`, call: :zeek:type:`pm_callit_request`)
 
@@ -10131,6 +10553,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pm_bad_port
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 796 796
 
    :Type: :zeek:type:`event` (r: :zeek:type:`connection`, bad_p: :zeek:type:`count`)
 
@@ -10161,6 +10584,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: rpc_dialogue
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 833 833
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prog: :zeek:type:`count`, ver: :zeek:type:`count`, proc: :zeek:type:`count`, status: :zeek:type:`rpc_status`, start_time: :zeek:type:`time`, call_len: :zeek:type:`count`, reply_len: :zeek:type:`count`)
 
@@ -10208,6 +10632,7 @@ Events
       signature.
 
 .. zeek:id:: rpc_call
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 861 861
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, xid: :zeek:type:`count`, prog: :zeek:type:`count`, ver: :zeek:type:`count`, proc: :zeek:type:`count`, call_len: :zeek:type:`count`)
 
@@ -10244,6 +10669,7 @@ Events
       signature.
 
 .. zeek:id:: rpc_reply
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 886 886
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, xid: :zeek:type:`count`, status: :zeek:type:`rpc_status`, reply_len: :zeek:type:`count`)
 
@@ -10275,6 +10701,7 @@ Events
       signature.
 
 .. zeek:id:: mount_proc_null
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 905 905
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`)
 
@@ -10298,6 +10725,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_mnt
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 929 929
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, req: :zeek:type:`MOUNT3::dirmntargs_t`, rep: :zeek:type:`MOUNT3::mnt_reply_t`)
 
@@ -10328,6 +10756,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_umnt
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 950 950
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, req: :zeek:type:`MOUNT3::dirmntargs_t`)
 
@@ -10354,6 +10783,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_umnt_all
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 971 971
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, req: :zeek:type:`MOUNT3::dirmntargs_t`)
 
@@ -10380,6 +10810,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_proc_not_implemented
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 990 990
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`, proc: :zeek:type:`MOUNT3::proc_t`)
 
@@ -10404,6 +10835,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: mount_reply_status
+   :source-code: base/bif/plugins/Zeek_RPC.events.bif.zeek 1007 1007
 
    :Type: :zeek:type:`event` (n: :zeek:type:`connection`, info: :zeek:type:`MOUNT3::info_t`)
 
@@ -10438,6 +10870,7 @@ Events
 ++++++
 
 .. zeek:id:: sip_request
+   :source-code: base/protocols/sip/main.zeek 170 179
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, method: :zeek:type:`string`, original_URI: :zeek:type:`string`, version: :zeek:type:`string`)
 
@@ -10463,6 +10896,7 @@ Events
    .. zeek:see:: sip_reply sip_header sip_all_headers sip_begin_entity sip_end_entity
 
 .. zeek:id:: sip_reply
+   :source-code: base/protocols/sip/main.zeek 181 191
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`, code: :zeek:type:`count`, reason: :zeek:type:`string`)
 
@@ -10488,6 +10922,7 @@ Events
    .. zeek:see:: sip_request sip_header sip_all_headers sip_begin_entity sip_end_entity
 
 .. zeek:id:: sip_header
+   :source-code: base/protocols/sip/main.zeek 193 274
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, name: :zeek:type:`string`, value: :zeek:type:`string`)
 
@@ -10511,6 +10946,7 @@ Events
    .. zeek:see:: sip_request sip_reply sip_all_headers sip_begin_entity sip_end_entity
 
 .. zeek:id:: sip_all_headers
+   :source-code: base/bif/plugins/Zeek_SIP.events.bif.zeek 71 71
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, hlist: :zeek:type:`mime_header_list`)
 
@@ -10531,6 +10967,7 @@ Events
    .. zeek:see:: sip_request sip_reply sip_header sip_begin_entity sip_end_entity
 
 .. zeek:id:: sip_begin_entity
+   :source-code: base/bif/plugins/Zeek_SIP.events.bif.zeek 86 86
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -10550,6 +10987,7 @@ Events
    .. zeek:see:: sip_request sip_reply sip_header sip_all_headers sip_end_entity
 
 .. zeek:id:: sip_end_entity
+   :source-code: base/bif/plugins/Zeek_SIP.events.bif.zeek 99 99
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -10582,6 +11020,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: SMB::pipe_filenames
+   :source-code: base/init-bare.zeek 2787 2787
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -10603,6 +11042,7 @@ Types
 +++++
 
 .. zeek:type:: SMB1::NegotiateResponse
+   :source-code: base/init-bare.zeek 2961 2970
 
    :Type: :zeek:type:`record`
 
@@ -10619,6 +11059,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseCore
+   :source-code: base/init-bare.zeek 2890 2893
 
    :Type: :zeek:type:`record`
 
@@ -10627,6 +11068,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseLANMAN
+   :source-code: base/init-bare.zeek 2895 2921
 
    :Type: :zeek:type:`record`
 
@@ -10666,6 +11108,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseNTLM
+   :source-code: base/init-bare.zeek 2923 2959
 
    :Type: :zeek:type:`record`
 
@@ -10718,6 +11161,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseSecurity
+   :source-code: base/init-bare.zeek 2873 2888
 
    :Type: :zeek:type:`record`
 
@@ -10741,6 +11185,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateRawMode
+   :source-code: base/init-bare.zeek 2822 2827
 
    :Type: :zeek:type:`record`
 
@@ -10752,6 +11197,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateCapabilities
+   :source-code: base/init-bare.zeek 2829 2871
 
    :Type: :zeek:type:`record`
 
@@ -10813,6 +11259,7 @@ Types
 
 
 .. zeek:type:: SMB1::SessionSetupAndXRequest
+   :source-code: base/init-bare.zeek 2988 3030
 
    :Type: :zeek:type:`record`
 
@@ -10871,6 +11318,7 @@ Types
 
 
 .. zeek:type:: SMB1::SessionSetupAndXResponse
+   :source-code: base/init-bare.zeek 3032 3045
 
    :Type: :zeek:type:`record`
 
@@ -10894,6 +11342,7 @@ Types
 
 
 .. zeek:type:: SMB1::SessionSetupAndXCapabilities
+   :source-code: base/init-bare.zeek 2972 2986
 
    :Type: :zeek:type:`record`
 
@@ -10918,6 +11367,7 @@ Types
 
 
 .. zeek:type:: SMB1::Trans_Sec_Args
+   :source-code: base/init-bare.zeek 3074 3091
 
    :Type: :zeek:type:`record`
 
@@ -10947,6 +11397,7 @@ Types
 
 
 .. zeek:type:: SMB1::Find_First2_Request_Args
+   :source-code: base/init-bare.zeek 3114 3128
 
    :Type: :zeek:type:`record`
 
@@ -10971,6 +11422,7 @@ Types
 
 
 .. zeek:type:: SMB1::Find_First2_Response_Args
+   :source-code: base/init-bare.zeek 3130 3140
 
    :Type: :zeek:type:`record`
 
@@ -10989,6 +11441,7 @@ Types
 
 
 .. zeek:type:: SMB1::Trans2_Args
+   :source-code: base/init-bare.zeek 3047 3072
 
    :Type: :zeek:type:`record`
 
@@ -11030,6 +11483,7 @@ Types
 
 
 .. zeek:type:: SMB1::Trans2_Sec_Args
+   :source-code: base/init-bare.zeek 3093 3112
 
    :Type: :zeek:type:`record`
 
@@ -11062,6 +11516,7 @@ Types
 
 
 .. zeek:type:: SMB2::CloseResponse
+   :source-code: base/init-bare.zeek 3255 3264
 
    :Type: :zeek:type:`record`
 
@@ -11085,6 +11540,7 @@ Types
    .. zeek:see:: smb2_close_response
 
 .. zeek:type:: SMB2::CreateRequest
+   :source-code: base/init-bare.zeek 3403 3410
 
    :Type: :zeek:type:`record`
 
@@ -11104,6 +11560,7 @@ Types
    .. zeek:see:: smb2_create_request
 
 .. zeek:type:: SMB2::CreateResponse
+   :source-code: base/init-bare.zeek 3418 3429
 
    :Type: :zeek:type:`record`
 
@@ -11130,6 +11587,7 @@ Types
    .. zeek:see:: smb2_create_response
 
 .. zeek:type:: SMB2::NegotiateResponse
+   :source-code: base/init-bare.zeek 3330 3347
 
    :Type: :zeek:type:`record`
 
@@ -11163,6 +11621,7 @@ Types
    .. zeek:see:: smb2_negotiate_response
 
 .. zeek:type:: SMB2::SessionSetupRequest
+   :source-code: base/init-bare.zeek 3355 3358
 
    :Type: :zeek:type:`record`
 
@@ -11177,6 +11636,7 @@ Types
    .. zeek:see:: smb2_session_setup_request
 
 .. zeek:type:: SMB2::SessionSetupResponse
+   :source-code: base/init-bare.zeek 3382 3385
 
    :Type: :zeek:type:`record`
 
@@ -11192,6 +11652,7 @@ Types
    .. zeek:see:: smb2_session_setup_response
 
 .. zeek:type:: SMB2::SessionSetupFlags
+   :source-code: base/init-bare.zeek 3366 3373
 
    :Type: :zeek:type:`record`
 
@@ -11212,6 +11673,7 @@ Types
    .. zeek:see:: smb2_session_setup_response
 
 .. zeek:type:: SMB2::TreeConnectResponse
+   :source-code: base/init-bare.zeek 3393 3396
 
    :Type: :zeek:type:`record`
 
@@ -11226,6 +11688,7 @@ Types
    .. zeek:see:: smb2_tree_connect_response
 
 .. zeek:type:: SMB2::Transform_header
+   :source-code: base/init-bare.zeek 3478 3489
 
    :Type: :zeek:type:`record`
 
@@ -11257,6 +11720,7 @@ Types
       smb2_write_request
 
 .. zeek:type:: SMB::MACTimes
+   :source-code: base/init-bare.zeek 2771 2780
 
    :Type: :zeek:type:`record`
 
@@ -11280,6 +11744,7 @@ Types
    .. zeek:see:: smb1_nt_create_andx_response smb2_create_response
 
 .. zeek:type:: SMB1::Header
+   :source-code: base/init-bare.zeek 2811 2820
 
    :Type: :zeek:type:`record`
 
@@ -11327,6 +11792,7 @@ Types
       smb1_write_andx_response
 
 .. zeek:type:: SMB2::Header
+   :source-code: base/init-bare.zeek 3159 3184
 
    :Type: :zeek:type:`record`
 
@@ -11377,6 +11843,7 @@ Types
       smb2_write_request
 
 .. zeek:type:: SMB2::GUID
+   :source-code: base/init-bare.zeek 3192 3197
 
    :Type: :zeek:type:`record`
 
@@ -11394,6 +11861,7 @@ Types
       smb2_file_rename smb2_file_delete smb2_write_request
 
 .. zeek:type:: SMB2::FileAttrs
+   :source-code: base/init-bare.zeek 3204 3247
 
    :Type: :zeek:type:`record`
 
@@ -11461,6 +11929,7 @@ Types
    .. zeek:see:: smb2_create_response
 
 .. zeek:type:: SMB2::Fscontrol
+   :source-code: base/init-bare.zeek 3435 3448
 
    :Type: :zeek:type:`record`
 
@@ -11488,6 +11957,7 @@ Types
    
 
 .. zeek:type:: SMB2::FileEA
+   :source-code: base/init-bare.zeek 3454 3459
 
    :Type: :zeek:type:`record`
 
@@ -11503,6 +11973,7 @@ Types
    
 
 .. zeek:type:: SMB2::FileEAs
+   :source-code: base/init-bare.zeek 3465 3465
 
    :Type: :zeek:type:`vector` of :zeek:type:`SMB2::FileEA`
 
@@ -11512,6 +11983,7 @@ Types
    
 
 .. zeek:type:: SMB2::PreAuthIntegrityCapabilities
+   :source-code: base/init-bare.zeek 3270 3279
 
    :Type: :zeek:type:`record`
 
@@ -11533,6 +12005,7 @@ Types
    
 
 .. zeek:type:: SMB2::EncryptionCapabilities
+   :source-code: base/init-bare.zeek 3285 3290
 
    :Type: :zeek:type:`record`
 
@@ -11548,6 +12021,7 @@ Types
    
 
 .. zeek:type:: SMB2::CompressionCapabilities
+   :source-code: base/init-bare.zeek 3296 3301
 
    :Type: :zeek:type:`record`
 
@@ -11563,6 +12037,7 @@ Types
    
 
 .. zeek:type:: SMB2::NegotiateContextValue
+   :source-code: base/init-bare.zeek 3307 3320
 
    :Type: :zeek:type:`record`
 
@@ -11590,6 +12065,7 @@ Types
    
 
 .. zeek:type:: SMB2::NegotiateContextValues
+   :source-code: base/init-bare.zeek 3322 3322
 
    :Type: :zeek:type:`vector` of :zeek:type:`SMB2::NegotiateContextValue`
 
@@ -11598,6 +12074,7 @@ Events
 ++++++
 
 .. zeek:id:: smb1_check_directory_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_check_directory.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, directory_name: :zeek:type:`string`)
 
@@ -11619,6 +12096,7 @@ Events
    .. zeek:see:: smb1_message smb1_check_directory_response
 
 .. zeek:id:: smb1_check_directory_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_check_directory.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 
@@ -11637,6 +12115,7 @@ Events
    .. zeek:see:: smb1_message smb1_check_directory_request
 
 .. zeek:id:: smb1_close_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_close.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_id: :zeek:type:`count`)
 
@@ -11658,6 +12137,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb1_create_directory_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_create_directory.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, directory_name: :zeek:type:`string`)
 
@@ -11680,6 +12160,7 @@ Events
    .. zeek:see:: smb1_message smb1_create_directory_response smb1_transaction2_request
 
 .. zeek:id:: smb1_create_directory_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_create_directory.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 
@@ -11699,6 +12180,7 @@ Events
    .. zeek:see:: smb1_message smb1_create_directory_request smb1_transaction2_request
 
 .. zeek:id:: smb1_echo_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_echo.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, echo_count: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -11723,6 +12205,7 @@ Events
    .. zeek:see:: smb1_message smb1_echo_response
 
 .. zeek:id:: smb1_echo_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_echo.bif.zeek 36 36
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, seq_num: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -11746,6 +12229,7 @@ Events
    .. zeek:see:: smb1_message smb1_echo_request
 
 .. zeek:id:: smb1_logoff_andx
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_logoff_andx.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -11766,6 +12250,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb1_negotiate_request
+   :source-code: base/protocols/smb/smb1-main.zeek 83 86
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, dialects: :zeek:type:`string_vec`)
 
@@ -11788,6 +12273,7 @@ Events
    .. zeek:see:: smb1_message smb1_negotiate_response
 
 .. zeek:id:: smb1_negotiate_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_negotiate.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, response: :zeek:type:`SMB1::NegotiateResponse`)
 
@@ -11809,6 +12295,7 @@ Events
    .. zeek:see:: smb1_message smb1_negotiate_request
 
 .. zeek:id:: smb1_nt_create_andx_request
+   :source-code: base/protocols/smb/smb1-main.zeek 133 142
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
@@ -11831,6 +12318,7 @@ Events
    .. zeek:see:: smb1_message smb1_nt_create_andx_response
 
 .. zeek:id:: smb1_nt_create_andx_response
+   :source-code: base/protocols/smb/smb1-main.zeek 144 161
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_id: :zeek:type:`count`, file_size: :zeek:type:`count`, times: :zeek:type:`SMB::MACTimes`)
 
@@ -11858,6 +12346,7 @@ Events
    .. zeek:see:: smb1_message smb1_nt_create_andx_request
 
 .. zeek:id:: smb1_nt_cancel_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_nt_cancel.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 
@@ -11876,6 +12365,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb1_query_information_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_query_information.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, filename: :zeek:type:`string`)
 
@@ -11898,6 +12388,7 @@ Events
    .. zeek:see:: smb1_message smb1_transaction2_request
 
 .. zeek:id:: smb1_read_andx_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_read_andx.bif.zeek 22 22
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_id: :zeek:type:`count`, offset: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -11926,6 +12417,7 @@ Events
    .. zeek:see:: smb1_message smb1_read_andx_response
 
 .. zeek:id:: smb1_read_andx_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_read_andx.bif.zeek 37 37
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, data_len: :zeek:type:`count`)
 
@@ -11946,6 +12438,7 @@ Events
    .. zeek:see:: smb1_message smb1_read_andx_request
 
 .. zeek:id:: smb1_session_setup_andx_request
+   :source-code: base/protocols/smb/smb1-main.zeek 248 249
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, request: :zeek:type:`SMB1::SessionSetupAndXRequest`)
 
@@ -11966,6 +12459,7 @@ Events
    .. zeek:see:: smb1_message smb1_session_setup_andx_response
 
 .. zeek:id:: smb1_session_setup_andx_response
+   :source-code: base/protocols/smb/smb1-main.zeek 253 254
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, response: :zeek:type:`SMB1::SessionSetupAndXResponse`)
 
@@ -11986,6 +12480,7 @@ Events
    .. zeek:see:: smb1_message smb1_session_setup_andx_request
 
 .. zeek:id:: smb1_transaction_request
+   :source-code: base/protocols/smb/smb1-main.zeek 258 261
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, name: :zeek:type:`string`, sub_cmd: :zeek:type:`count`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -12018,6 +12513,7 @@ Events
    .. zeek:see:: smb1_message smb1_transaction2_request
 
 .. zeek:id:: smb1_transaction_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_transaction.bif.zeek 42 42
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -12041,6 +12537,7 @@ Events
    :data: content of the SMB_Data.Trans_Data field
 
 .. zeek:id:: smb1_transaction_secondary_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_transaction_secondary.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, args: :zeek:type:`SMB1::Trans_Sec_Args`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -12065,6 +12562,7 @@ Events
    
 
 .. zeek:id:: smb1_transaction2_request
+   :source-code: base/protocols/smb/smb1-main.zeek 77 80
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, args: :zeek:type:`SMB1::Trans2_Args`, sub_cmd: :zeek:type:`count`)
 
@@ -12091,6 +12589,7 @@ Events
       smb1_trans2_get_dfs_referral_request smb1_transaction_request
 
 .. zeek:id:: smb1_trans2_find_first2_request
+   :source-code: base/protocols/smb/smb1-main.zeek 243 246
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, args: :zeek:type:`SMB1::Find_First2_Request_Args`)
 
@@ -12113,6 +12612,7 @@ Events
       smb1_trans2_get_dfs_referral_request
 
 .. zeek:id:: smb1_trans2_query_path_info_request
+   :source-code: base/protocols/smb/smb1-main.zeek 238 241
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
@@ -12135,6 +12635,7 @@ Events
       smb1_trans2_get_dfs_referral_request
 
 .. zeek:id:: smb1_trans2_get_dfs_referral_request
+   :source-code: base/protocols/smb/smb1-main.zeek 233 236
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
@@ -12157,6 +12658,7 @@ Events
       smb1_trans2_query_path_info_request
 
 .. zeek:id:: smb1_transaction2_secondary_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_transaction2_secondary.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, args: :zeek:type:`SMB1::Trans2_Sec_Args`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -12182,6 +12684,7 @@ Events
    :data: content of the SMB_Data.Trans_Data field
 
 .. zeek:id:: smb1_tree_connect_andx_request
+   :source-code: base/protocols/smb/smb1-main.zeek 105 111
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, path: :zeek:type:`string`, service: :zeek:type:`string`)
 
@@ -12206,6 +12709,7 @@ Events
    .. zeek:see:: smb1_message smb1_tree_connect_andx_response
 
 .. zeek:id:: smb1_tree_connect_andx_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_tree_connect_andx.bif.zeek 37 37
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, service: :zeek:type:`string`, native_file_system: :zeek:type:`string`)
 
@@ -12230,6 +12734,7 @@ Events
    .. zeek:see:: smb1_message smb1_tree_connect_andx_request
 
 .. zeek:id:: smb1_tree_disconnect
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_tree_disconnect.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, is_orig: :zeek:type:`bool`)
 
@@ -12251,6 +12756,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb1_write_andx_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_write_andx.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_id: :zeek:type:`count`, offset: :zeek:type:`count`, data_len: :zeek:type:`count`)
 
@@ -12276,6 +12782,7 @@ Events
    .. zeek:see:: smb1_message smb1_write_andx_response
 
 .. zeek:id:: smb1_write_andx_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_write_andx.bif.zeek 36 36
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, written_bytes: :zeek:type:`count`)
 
@@ -12297,6 +12804,7 @@ Events
    .. zeek:see:: smb1_message smb1_write_andx_request
 
 .. zeek:id:: smb1_message
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, is_orig: :zeek:type:`bool`)
 
@@ -12322,6 +12830,7 @@ Events
    .. zeek:see:: smb2_message
 
 .. zeek:id:: smb1_empty_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_events.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 
@@ -12336,6 +12845,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb1_error
+   :source-code: policy/protocols/smb/log-cmds.zeek 49 64
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, is_orig: :zeek:type:`bool`)
 
@@ -12356,6 +12866,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb2_close_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_close.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`)
 
@@ -12377,6 +12888,7 @@ Events
    .. zeek:see:: smb2_message smb2_close_response
 
 .. zeek:id:: smb2_close_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_close.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::CloseResponse`)
 
@@ -12398,6 +12910,7 @@ Events
    .. zeek:see:: smb2_message smb2_close_request
 
 .. zeek:id:: smb2_create_request
+   :source-code: base/protocols/smb/smb2-main.zeek 124 146
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, request: :zeek:type:`SMB2::CreateRequest`)
 
@@ -12419,6 +12932,7 @@ Events
    .. zeek:see:: smb2_message smb2_create_response
 
 .. zeek:id:: smb2_create_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_create.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::CreateResponse`)
 
@@ -12440,6 +12954,7 @@ Events
    .. zeek:see:: smb2_message smb2_create_request
 
 .. zeek:id:: smb2_negotiate_request
+   :source-code: base/protocols/smb/smb2-main.zeek 78 81
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, dialects: :zeek:type:`index_vec`)
 
@@ -12461,6 +12976,7 @@ Events
    .. zeek:see:: smb2_message smb2_negotiate_response
 
 .. zeek:id:: smb2_negotiate_response
+   :source-code: base/protocols/smb/smb2-main.zeek 83 98
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::NegotiateResponse`)
 
@@ -12482,6 +12998,7 @@ Events
    .. zeek:see:: smb2_message smb2_negotiate_request
 
 .. zeek:id:: smb2_read_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_read.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, offset: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -12509,6 +13026,7 @@ Events
    .. zeek:see:: smb2_message
 
 .. zeek:id:: smb2_session_setup_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_session_setup.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, request: :zeek:type:`SMB2::SessionSetupRequest`)
 
@@ -12531,6 +13049,7 @@ Events
    .. zeek:see:: smb2_message smb2_session_setup_response
 
 .. zeek:id:: smb2_session_setup_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_session_setup.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::SessionSetupResponse`)
 
@@ -12552,6 +13071,7 @@ Events
    .. zeek:see:: smb2_message smb2_session_setup_request
 
 .. zeek:id:: smb2_file_rename
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, dst_filename: :zeek:type:`string`)
 
@@ -12575,6 +13095,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_delete
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 38 38
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, delete_pending: :zeek:type:`bool`)
 
@@ -12599,6 +13120,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_sattr
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 58 58
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, times: :zeek:type:`SMB::MACTimes`, attrs: :zeek:type:`SMB2::FileAttrs`)
 
@@ -12625,6 +13147,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_allocation
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 75 75
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, alloc_size: :zeek:type:`int`)
 
@@ -12648,6 +13171,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_endoffile
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, end_of_file: :zeek:type:`int`)
 
@@ -12671,6 +13195,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_mode
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 110 110
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, mode: :zeek:type:`count`)
 
@@ -12694,6 +13219,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_pipe
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 130 130
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, read_mode: :zeek:type:`count`, completion_mode: :zeek:type:`count`)
 
@@ -12720,6 +13246,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_position
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 148 148
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, current_byte_offset: :zeek:type:`int`)
 
@@ -12743,6 +13270,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_shortname
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 165 165
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, file_name: :zeek:type:`string`)
 
@@ -12766,6 +13294,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_validdatalength
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 182 182
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, valid_data_length: :zeek:type:`int`)
 
@@ -12789,6 +13318,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_fullea
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 199 199
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, file_eas: :zeek:type:`SMB2::FileEAs`)
 
@@ -12812,6 +13342,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_link
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 218 218
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, root_directory: :zeek:type:`count`, file_name: :zeek:type:`string`)
 
@@ -12838,6 +13369,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_fscontrol
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 235 235
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, fs_control: :zeek:type:`SMB2::Fscontrol`)
 
@@ -12861,6 +13393,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
 .. zeek:id:: smb2_file_fsobjectid
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_set_info.bif.zeek 254 254
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, object_id: :zeek:type:`SMB2::GUID`, extended_info: :zeek:type:`string`)
 
@@ -12887,6 +13420,7 @@ Events
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link
 
 .. zeek:id:: smb2_tree_connect_request
+   :source-code: base/protocols/smb/smb2-main.zeek 99 102
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, path: :zeek:type:`string`)
 
@@ -12908,6 +13442,7 @@ Events
    .. zeek:see:: smb2_message smb2_tree_connect_response
 
 .. zeek:id:: smb2_tree_connect_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_tree_connect.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::TreeConnectResponse`)
 
@@ -12929,6 +13464,7 @@ Events
    .. zeek:see:: smb2_message smb2_tree_connect_request
 
 .. zeek:id:: smb2_tree_disconnect_request
+   :source-code: base/protocols/smb/smb2-main.zeek 114 122
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`)
 
@@ -12945,6 +13481,7 @@ Events
    .. zeek:see:: smb2_message
 
 .. zeek:id:: smb2_tree_disconnect_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_tree_disconnect.bif.zeek 26 26
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`)
 
@@ -12961,6 +13498,7 @@ Events
    .. zeek:see:: smb2_message
 
 .. zeek:id:: smb2_write_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_write.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, file_id: :zeek:type:`SMB2::GUID`, offset: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -12988,6 +13526,7 @@ Events
    .. zeek:see:: smb2_message
 
 .. zeek:id:: smb2_write_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_write.bif.zeek 37 37
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, length: :zeek:type:`count`)
 
@@ -13009,6 +13548,7 @@ Events
    .. zeek:see:: smb2_message
 
 .. zeek:id:: smb2_transform_header
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_transform_header.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Transform_header`)
 
@@ -13027,6 +13567,7 @@ Events
    .. zeek:see:: smb2_message
 
 .. zeek:id:: smb2_message
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_events.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, is_orig: :zeek:type:`bool`)
 
@@ -13051,6 +13592,7 @@ Events
    .. zeek:see:: smb1_message
 
 .. zeek:id:: smb_pipe_connect_heuristic
+   :source-code: base/protocols/smb/main.zeek 233 237
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -13079,6 +13621,7 @@ Events
 ++++++
 
 .. zeek:id:: smtp_request
+   :source-code: base/protocols/smtp/main.zeek 163 200
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -13111,6 +13654,7 @@ Events
    .. note:: Zeek does not support the newer ETRN extension yet.
 
 .. zeek:id:: smtp_reply
+   :source-code: base/bif/plugins/Zeek_SMTP.events.bif.zeek 59 59
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, code: :zeek:type:`count`, cmd: :zeek:type:`string`, msg: :zeek:type:`string`, cont_resp: :zeek:type:`bool`)
 
@@ -13151,6 +13695,7 @@ Events
    .. note:: Zeek doesn't support the newer ETRN extension yet.
 
 .. zeek:id:: smtp_data
+   :source-code: base/bif/plugins/Zeek_SMTP.events.bif.zeek 85 85
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data: :zeek:type:`string`)
 
@@ -13182,6 +13727,7 @@ Events
       provide structured access to their content.
 
 .. zeek:id:: smtp_unexpected
+   :source-code: base/bif/plugins/Zeek_SMTP.events.bif.zeek 106 106
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`, detail: :zeek:type:`string`)
 
@@ -13209,6 +13755,7 @@ Events
    .. zeek:see:: smtp_data  smtp_request smtp_reply
 
 .. zeek:id:: smtp_starttls
+   :source-code: base/protocols/smtp/main.zeek 331 338
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -13224,6 +13771,7 @@ Functions
 +++++++++
 
 .. zeek:id:: skip_smtp_data
+   :source-code: base/bif/plugins/Zeek_SMTP.functions.bif.zeek 12 12
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`any`
 
@@ -13248,6 +13796,7 @@ Types
 +++++
 
 .. zeek:type:: SNMP::Header
+   :source-code: base/init-bare.zeek 4481 4486
 
    :Type: :zeek:type:`record`
 
@@ -13267,6 +13816,7 @@ Types
    determines what header field is initialized.
 
 .. zeek:type:: SNMP::HeaderV1
+   :source-code: base/init-bare.zeek 4446 4448
 
    :Type: :zeek:type:`record`
 
@@ -13276,6 +13826,7 @@ Types
    including the PDU data.  See :rfc:`1157`.
 
 .. zeek:type:: SNMP::HeaderV2
+   :source-code: base/init-bare.zeek 4452 4454
 
    :Type: :zeek:type:`record`
 
@@ -13285,6 +13836,7 @@ Types
    including the PDU data.  See :rfc:`1901`.
 
 .. zeek:type:: SNMP::HeaderV3
+   :source-code: base/init-bare.zeek 4466 4476
 
    :Type: :zeek:type:`record`
 
@@ -13310,6 +13862,7 @@ Types
    including the PDU data.  See :rfc:`3412`.
 
 .. zeek:type:: SNMP::PDU
+   :source-code: base/init-bare.zeek 4536 4541
 
    :Type: :zeek:type:`record`
 
@@ -13324,6 +13877,7 @@ Types
    A ``PDU`` data structure from either :rfc:`1157` or :rfc:`3416`.
 
 .. zeek:type:: SNMP::TrapPDU
+   :source-code: base/init-bare.zeek 4544 4551
 
    :Type: :zeek:type:`record`
 
@@ -13342,6 +13896,7 @@ Types
    A ``Trap-PDU`` data structure from :rfc:`1157`.
 
 .. zeek:type:: SNMP::BulkPDU
+   :source-code: base/init-bare.zeek 4554 4559
 
    :Type: :zeek:type:`record`
 
@@ -13356,6 +13911,7 @@ Types
    A ``BulkPDU`` data structure from :rfc:`3416`.
 
 .. zeek:type:: SNMP::ScopedPDU_Context
+   :source-code: base/init-bare.zeek 4459 4462
 
    :Type: :zeek:type:`record`
 
@@ -13368,6 +13924,7 @@ Types
    See :rfc:`3412`.
 
 .. zeek:type:: SNMP::ObjectValue
+   :source-code: base/init-bare.zeek 4497 4504
 
    :Type: :zeek:type:`record`
 
@@ -13394,6 +13951,7 @@ Types
    values will only have their corresponding tag value set.
 
 .. zeek:type:: SNMP::Binding
+   :source-code: base/init-bare.zeek 4526 4529
 
    :Type: :zeek:type:`record`
 
@@ -13405,6 +13963,7 @@ Types
    :rfc:`3416`, which maps an Object Identifier to a value.
 
 .. zeek:type:: SNMP::Bindings
+   :source-code: base/init-bare.zeek 4533 4533
 
    :Type: :zeek:type:`vector` of :zeek:type:`SNMP::Binding`
 
@@ -13415,6 +13974,7 @@ Events
 ++++++
 
 .. zeek:id:: snmp_get_request
+   :source-code: base/protocols/snmp/main.zeek 109 113
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -13434,6 +13994,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_get_next_request
+   :source-code: base/protocols/snmp/main.zeek 121 125
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -13454,6 +14015,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_response
+   :source-code: base/protocols/snmp/main.zeek 127 145
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -13474,6 +14036,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_set_request
+   :source-code: base/protocols/snmp/main.zeek 146 150
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -13493,6 +14056,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_trap
+   :source-code: base/protocols/snmp/main.zeek 152 155
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::TrapPDU`)
 
@@ -13512,6 +14076,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_get_bulk_request
+   :source-code: base/protocols/snmp/main.zeek 115 119
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::BulkPDU`)
 
@@ -13531,6 +14096,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_inform_request
+   :source-code: base/protocols/snmp/main.zeek 157 160
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -13550,6 +14116,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_trapV2
+   :source-code: base/protocols/snmp/main.zeek 162 165
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -13569,6 +14136,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_report
+   :source-code: base/protocols/snmp/main.zeek 167 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -13588,6 +14156,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_unknown_pdu
+   :source-code: base/protocols/snmp/main.zeek 172 175
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, tag: :zeek:type:`count`)
 
@@ -13607,6 +14176,7 @@ Events
    :tag: The tag of the unknown SNMP PDU.
 
 .. zeek:id:: snmp_unknown_scoped_pdu
+   :source-code: base/protocols/snmp/main.zeek 177 180
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, tag: :zeek:type:`count`)
 
@@ -13627,6 +14197,7 @@ Events
    :tag: The tag of the unknown SNMP PDU scope.
 
 .. zeek:id:: snmp_encrypted_pdu
+   :source-code: base/protocols/snmp/main.zeek 182 185
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`)
 
@@ -13643,6 +14214,7 @@ Events
            SNMP message structure.
 
 .. zeek:id:: snmp_unknown_header_version
+   :source-code: base/bif/plugins/Zeek_SNMP.events.bif.zeek 168 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`)
 
@@ -13671,6 +14243,7 @@ Events
 ++++++
 
 .. zeek:id:: socks_request
+   :source-code: base/protocols/socks/main.zeek 76 89
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`, request_type: :zeek:type:`count`, sa: :zeek:type:`SOCKS::Address`, p: :zeek:type:`port`, user: :zeek:type:`string`)
 
@@ -13696,6 +14269,7 @@ Events
          for SOCKSv5.
 
 .. zeek:id:: socks_reply
+   :source-code: base/protocols/socks/main.zeek 91 102
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`, reply: :zeek:type:`count`, sa: :zeek:type:`SOCKS::Address`, p: :zeek:type:`port`)
 
@@ -13717,6 +14291,7 @@ Events
    :p: The destination port for the proxied traffic.
 
 .. zeek:id:: socks_login_userpass_request
+   :source-code: base/protocols/socks/main.zeek 104 113
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, user: :zeek:type:`string`, password: :zeek:type:`string`)
 
@@ -13732,6 +14307,7 @@ Events
    :password: The given password.
 
 .. zeek:id:: socks_login_userpass_reply
+   :source-code: base/protocols/socks/main.zeek 115 121
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, code: :zeek:type:`count`)
 
@@ -13757,6 +14333,7 @@ Types
 +++++
 
 .. zeek:type:: SSH::Algorithm_Prefs
+   :source-code: base/init-bare.zeek 2597 2602
 
    :Type: :zeek:type:`record`
 
@@ -13770,6 +14347,7 @@ Types
    in each direction.
 
 .. zeek:type:: SSH::Capabilities
+   :source-code: base/init-bare.zeek 2609 2624
 
    :Type: :zeek:type:`record`
 
@@ -13804,6 +14382,7 @@ Events
 ++++++
 
 .. zeek:id:: ssh_server_version
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`)
 
@@ -13825,6 +14404,7 @@ Events
       ssh2_ecc_key
 
 .. zeek:id:: ssh_client_version
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 35 35
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`)
 
@@ -13846,6 +14426,7 @@ Events
       ssh2_ecc_key
 
 .. zeek:id:: ssh_auth_successful
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 57 57
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, auth_method_none: :zeek:type:`bool`)
 
@@ -13872,6 +14453,7 @@ Events
       ssh2_ecc_key
 
 .. zeek:id:: ssh_auth_attempted
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 88 88
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, authenticated: :zeek:type:`bool`)
 
@@ -13907,6 +14489,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh_capabilities
+   :source-code: base/protocols/ssh/main.zeek 266 289
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cookie: :zeek:type:`string`, capabilities: :zeek:type:`SSH::Capabilities`)
 
@@ -13935,6 +14518,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh2_server_host_key
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 129 129
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, key: :zeek:type:`string`)
 
@@ -13957,6 +14541,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh1_server_host_key
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 156 156
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, modulus: :zeek:type:`string`, exponent: :zeek:type:`string`)
 
@@ -13991,6 +14576,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh_server_host_key
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 185 185
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hash: :zeek:type:`string`)
 
@@ -14024,6 +14610,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh_encrypted_packet
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 208 208
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, len: :zeek:type:`count`)
 
@@ -14052,6 +14639,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh2_dh_server_params
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 227 227
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string`, q: :zeek:type:`string`)
 
@@ -14076,6 +14664,7 @@ Events
       ssh2_gss_error ssh2_ecc_key
 
 .. zeek:id:: ssh2_gss_error
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 248 248
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, major_status: :zeek:type:`count`, minor_status: :zeek:type:`count`, err_msg: :zeek:type:`string`)
 
@@ -14103,6 +14692,7 @@ Events
       ssh2_dh_server_params ssh2_ecc_key
 
 .. zeek:id:: ssh2_ecc_key
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 269 269
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, q: :zeek:type:`string`)
 
@@ -14144,6 +14734,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: SSL::dtls_max_version_errors
+   :source-code: base/init-bare.zeek 4232 4232
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -14155,6 +14746,7 @@ Options/Constants
    might be interleaved in the same UDP "connection".
 
 .. zeek:id:: SSL::dtls_max_reported_version_errors
+   :source-code: base/init-bare.zeek 4235 4235
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -14166,6 +14758,7 @@ Types
 +++++
 
 .. zeek:type:: SSL::SignatureAndHashAlgorithm
+   :source-code: base/init-bare.zeek 4218 4221
 
    :Type: :zeek:type:`record`
 
@@ -14177,6 +14770,7 @@ Types
 
 
 .. zeek:type:: SSL::PSKIdentity
+   :source-code: base/init-bare.zeek 4223 4226
 
    :Type: :zeek:type:`record`
 
@@ -14190,6 +14784,7 @@ Events
 ++++++
 
 .. zeek:id:: ssl_client_hello
+   :source-code: base/protocols/ssl/main.zeek 214 224
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`, record_version: :zeek:type:`count`, possible_ts: :zeek:type:`time`, client_random: :zeek:type:`string`, session_id: :zeek:type:`string`, ciphers: :zeek:type:`index_vec`, comp_methods: :zeek:type:`index_vec`)
 
@@ -14240,6 +14835,7 @@ Events
       ssl_rsa_client_pms
 
 .. zeek:id:: ssl_server_hello
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 86 86
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`, record_version: :zeek:type:`count`, possible_ts: :zeek:type:`time`, server_random: :zeek:type:`string`, session_id: :zeek:type:`string`, cipher: :zeek:type:`count`, comp_method: :zeek:type:`count`)
 
@@ -14295,6 +14891,7 @@ Events
       ssl_rsa_client_pms
 
 .. zeek:id:: ssl_extension
+   :source-code: base/protocols/ssl/main.zeek 302 316
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, code: :zeek:type:`count`, val: :zeek:type:`string`)
 
@@ -14327,6 +14924,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_elliptic_curves
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 133 133
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
 
@@ -14353,6 +14951,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_ec_point_formats
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 156 156
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, point_formats: :zeek:type:`index_vec`)
 
@@ -14381,6 +14980,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_signature_algorithm
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 178 178
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`)
 
@@ -14408,6 +15008,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_key_share
+   :source-code: base/protocols/ssl/main.zeek 260 267
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
 
@@ -14434,6 +15035,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_pre_shared_key_client_hello
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 222 222
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, identities: :zeek:type:`psk_identity_vec`, binders: :zeek:type:`string_vec`)
 
@@ -14463,6 +15065,7 @@ Events
       ssl_rsa_client_pms ssl_server_signature ssl_extension_pre_shared_key_server_hello
 
 .. zeek:id:: ssl_extension_pre_shared_key_server_hello
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 241 241
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, selected_identity: :zeek:type:`count`)
 
@@ -14487,6 +15090,7 @@ Events
       ssl_rsa_client_pms ssl_server_signature ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_ecdh_server_params
+   :source-code: base/protocols/ssl/main.zeek 253 258
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, curve: :zeek:type:`count`, point: :zeek:type:`string`)
 
@@ -14508,6 +15112,7 @@ Events
       ssl_dh_client_params ssl_ecdh_client_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_dh_server_params
+   :source-code: policy/protocols/ssl/weak-keys.zeek 103 132
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string`, q: :zeek:type:`string`, Ys: :zeek:type:`string`)
 
@@ -14533,6 +15138,7 @@ Events
       ssl_rsa_client_pms
 
 .. zeek:id:: ssl_server_signature
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 299 299
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, signature_and_hashalgorithm: :zeek:type:`SSL::SignatureAndHashAlgorithm`, signature: :zeek:type:`string`)
 
@@ -14561,6 +15167,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_ecdh_client_params
 
 .. zeek:id:: ssl_ecdh_client_params
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 313 313
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, point: :zeek:type:`string`)
 
@@ -14579,6 +15186,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_dh_client_params
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 327 327
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, Yc: :zeek:type:`string`)
 
@@ -14597,6 +15205,7 @@ Events
       ssl_ecdh_server_params ssl_ecdh_client_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_rsa_client_pms
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 341 341
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, pms: :zeek:type:`string`)
 
@@ -14615,6 +15224,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_ecdh_client_params
 
 .. zeek:id:: ssl_extension_application_layer_protocol_negotiation
+   :source-code: base/protocols/ssl/main.zeek 281 290
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, protocols: :zeek:type:`string_vec`)
 
@@ -14643,6 +15253,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_server_name
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 387 387
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, names: :zeek:type:`string_vec`)
 
@@ -14671,6 +15282,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_signed_certificate_timestamp
+   :source-code: policy/protocols/ssl/validate-sct.zeek 77 80
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, logid: :zeek:type:`string`, timestamp: :zeek:type:`count`, signature_and_hashalgorithm: :zeek:type:`SSL::SignatureAndHashAlgorithm`, signature: :zeek:type:`string`)
 
@@ -14712,6 +15324,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_supported_versions
+   :source-code: base/protocols/ssl/main.zeek 242 251
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, versions: :zeek:type:`index_vec`)
 
@@ -14738,6 +15351,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_psk_key_exchange_modes
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 459 459
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, modes: :zeek:type:`index_vec`)
 
@@ -14762,6 +15376,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_established
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 475 475
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -14781,6 +15396,7 @@ Events
       ssl_session_ticket_handshake x509_certificate
 
 .. zeek:id:: ssl_alert
+   :source-code: base/protocols/ssl/main.zeek 326 331
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, level: :zeek:type:`count`, desc: :zeek:type:`count`)
 
@@ -14811,6 +15427,7 @@ Events
       ssl_session_ticket_handshake
 
 .. zeek:id:: ssl_session_ticket_handshake
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 521 521
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, ticket_lifetime_hint: :zeek:type:`count`, ticket: :zeek:type:`string`)
 
@@ -14838,6 +15455,7 @@ Events
       ssl_alert
 
 .. zeek:id:: ssl_heartbeat
+   :source-code: policy/protocols/ssl/heartbleed.zeek 82 119
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`, heartbeat_type: :zeek:type:`count`, payload_length: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -14869,6 +15487,7 @@ Events
       ssl_alert ssl_encrypted_data
 
 .. zeek:id:: ssl_plaintext_data
+   :source-code: base/protocols/ssl/main.zeek 370 379
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -14900,6 +15519,7 @@ Events
       ssl_alert ssl_heartbeat
 
 .. zeek:id:: ssl_encrypted_data
+   :source-code: policy/protocols/ssl/heartbleed.zeek 226 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -14930,6 +15550,7 @@ Events
       ssl_alert ssl_heartbeat ssl_probable_encrypted_handshake_message
 
 .. zeek:id:: ssl_probable_encrypted_handshake_message
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 625 625
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`)
 
@@ -14969,6 +15590,7 @@ Events
       ssl_encrypted_data
 
 .. zeek:id:: ssl_stapled_ocsp
+   :source-code: policy/protocols/ssl/validate-ocsp.zeek 34 37
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, response: :zeek:type:`string`)
 
@@ -14986,6 +15608,7 @@ Events
    :response: OCSP data.
 
 .. zeek:id:: ssl_handshake_message
+   :source-code: base/protocols/ssl/main.zeek 292 298
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -15008,6 +15631,7 @@ Events
       ssl_change_cipher_spec
 
 .. zeek:id:: ssl_change_cipher_spec
+   :source-code: base/protocols/ssl/main.zeek 318 324
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -15028,6 +15652,7 @@ Functions
 +++++++++
 
 .. zeek:id:: set_ssl_established
+   :source-code: base/bif/plugins/Zeek_SSL.functions.bif.zeek 11 11
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`any`
 
@@ -15051,30 +15676,35 @@ Events
 ++++++
 
 .. zeek:id:: stp_create_endp
+   :source-code: base/bif/plugins/Zeek_SteppingStone.events.bif.zeek 5 5
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, e: :zeek:type:`int`, is_orig: :zeek:type:`bool`)
 
    Deprecated. Will be removed.
 
 .. zeek:id:: stp_resume_endp
+   :source-code: base/bif/plugins/Zeek_SteppingStone.events.bif.zeek 11 11
 
    :Type: :zeek:type:`event` (e: :zeek:type:`int`)
 
    Event internal to the stepping stone detector.
 
 .. zeek:id:: stp_correlate_pair
+   :source-code: base/bif/plugins/Zeek_SteppingStone.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (e1: :zeek:type:`int`, e2: :zeek:type:`int`)
 
    Event internal to the stepping stone detector.
 
 .. zeek:id:: stp_remove_pair
+   :source-code: base/bif/plugins/Zeek_SteppingStone.events.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (e1: :zeek:type:`int`, e2: :zeek:type:`int`)
 
    Event internal to the stepping stone detector.
 
 .. zeek:id:: stp_remove_endp
+   :source-code: base/bif/plugins/Zeek_SteppingStone.events.bif.zeek 23 23
 
    :Type: :zeek:type:`event` (e: :zeek:type:`int`)
 
@@ -15094,6 +15724,7 @@ Events
 ++++++
 
 .. zeek:id:: syslog_message
+   :source-code: base/bif/plugins/Zeek_Syslog.events.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, facility: :zeek:type:`count`, severity: :zeek:type:`count`, msg: :zeek:type:`string`)
 
@@ -15137,6 +15768,7 @@ Types
 +++++
 
 .. zeek:type:: TCP::Option
+   :source-code: base/init-bare.zeek 335 358
 
    :Type: :zeek:type:`record`
 
@@ -15173,6 +15805,7 @@ Types
    A TCP Option field parsed from a TCP header.
 
 .. zeek:type:: TCP::OptionList
+   :source-code: base/init-bare.zeek 361 361
 
    :Type: :zeek:type:`vector` of :zeek:type:`TCP::Option`
 
@@ -15182,6 +15815,7 @@ Events
 ++++++
 
 .. zeek:id:: new_connection_contents
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15200,6 +15834,7 @@ Events
       scheduled_analyzer_applied new_connection partial_connection
 
 .. zeek:id:: connection_attempt
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 34 34
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15220,6 +15855,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_established
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 53 53
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15242,6 +15878,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: partial_connection
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 508 512
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15262,6 +15899,7 @@ Events
    
 
 .. zeek:id:: connection_partial_close
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 87 87
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15282,6 +15920,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_finished
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 101 101
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15299,6 +15938,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_half_finished
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 116 116
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15317,6 +15957,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_rejected
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 138 138
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15342,6 +15983,7 @@ Events
       and then :zeek:id:`connection_reset`.
 
 .. zeek:id:: connection_reset
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 154 154
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15361,6 +16003,7 @@ Events
       partial_connection
 
 .. zeek:id:: connection_pending
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 167 167
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15377,6 +16020,7 @@ Events
       new_connection new_connection_contents partial_connection zeek_done
 
 .. zeek:id:: connection_SYN_packet
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 191 191
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, pkt: :zeek:type:`SYN_packet`)
 
@@ -15405,6 +16049,7 @@ Events
       better approach.
 
 .. zeek:id:: connection_first_ACK
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 209 209
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -15426,6 +16071,7 @@ Events
       This event has quite low-level semantics and should be used only rarely.
 
 .. zeek:id:: connection_EOF
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 226 226
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -15447,6 +16093,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: tcp_packet
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 255 255
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flags: :zeek:type:`string`, seq: :zeek:type:`count`, ack: :zeek:type:`count`, len: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -15485,6 +16132,7 @@ Events
    .. zeek:see:: new_packet packet_contents tcp_option tcp_contents tcp_rexmit
 
 .. zeek:id:: tcp_option
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 273 273
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, opt: :zeek:type:`count`, optlen: :zeek:type:`count`)
 
@@ -15509,6 +16157,7 @@ Events
    .. note:: To inspect the actual option values, if any, use :zeek:see:`tcp_options`.
 
 .. zeek:id:: tcp_options
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 286 286
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, options: :zeek:type:`TCP::OptionList`)
 
@@ -15527,6 +16176,7 @@ Events
    .. zeek:see:: tcp_packet tcp_contents tcp_rexmit tcp_option
 
 .. zeek:id:: tcp_contents
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 319 319
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, seq: :zeek:type:`count`, contents: :zeek:type:`string`)
 
@@ -15566,6 +16216,7 @@ Events
       network-level effects such as latency, acknowledgements, reordering, etc.
 
 .. zeek:id:: tcp_rexmit
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 337 337
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, seq: :zeek:type:`count`, len: :zeek:type:`count`, data_in_flight: :zeek:type:`count`, window: :zeek:type:`count`)
 
@@ -15592,6 +16243,7 @@ Events
    :window: the TCP window size.
 
 .. zeek:id:: tcp_multiple_checksum_errors
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 351 351
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -15611,6 +16263,7 @@ Events
       tcp_multiple_zero_windows tcp_multiple_retransmissions tcp_multiple_gap
 
 .. zeek:id:: tcp_multiple_zero_windows
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 364 364
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -15629,6 +16282,7 @@ Events
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_retransmissions tcp_multiple_gap
 
 .. zeek:id:: tcp_multiple_retransmissions
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 377 377
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -15647,6 +16301,7 @@ Events
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_zero_windows tcp_multiple_gap
 
 .. zeek:id:: tcp_multiple_gap
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 390 390
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -15665,6 +16320,7 @@ Events
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_zero_windows tcp_multiple_retransmissions
 
 .. zeek:id:: contents_file_write_failure
+   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 402 402
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`)
 
@@ -15685,6 +16341,7 @@ Functions
 +++++++++
 
 .. zeek:id:: get_orig_seq
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 17 17
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`count`
 
@@ -15702,6 +16359,7 @@ Functions
    .. zeek:see:: get_resp_seq
 
 .. zeek:id:: get_resp_seq
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 30 30
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`count`
 
@@ -15719,6 +16377,7 @@ Functions
    .. zeek:see:: get_orig_seq
 
 .. zeek:id:: set_contents_file
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 64 64
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, direction: :zeek:type:`count`, f: :zeek:type:`file`) : :zeek:type:`bool`
 
@@ -15759,6 +16418,7 @@ Functions
    .. zeek:see:: get_contents_file set_record_packets contents_file_write_failure
 
 .. zeek:id:: get_contents_file
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 80 80
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, direction: :zeek:type:`count`) : :zeek:type:`file`
 
@@ -15793,6 +16453,7 @@ Events
 ++++++
 
 .. zeek:id:: teredo_packet
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -15811,6 +16472,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_authentication
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 30 30
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -15830,6 +16492,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_origin_indication
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 45 45
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -15849,6 +16512,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_bubble
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 60 60
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -15881,6 +16545,7 @@ Events
 ++++++
 
 .. zeek:id:: udp_request
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 11 11
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`)
 
@@ -15894,6 +16559,7 @@ Events
    .. zeek:see:: udp_contents udp_reply  udp_session_done
 
 .. zeek:id:: udp_reply
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 21 21
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`)
 
@@ -15907,6 +16573,7 @@ Events
    .. zeek:see:: udp_contents  udp_request udp_session_done
 
 .. zeek:id:: udp_contents
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 43 43
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, contents: :zeek:type:`string`)
 
@@ -15934,6 +16601,7 @@ Events
       udp_content_delivery_ports_orig udp_content_delivery_ports_resp
 
 .. zeek:id:: udp_multiple_checksum_errors
+   :source-code: base/bif/plugins/Zeek_UDP.events.bif.zeek 57 57
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, threshold: :zeek:type:`count`)
 
@@ -15966,6 +16634,7 @@ Events
 ++++++
 
 .. zeek:id:: vxlan_packet
+   :source-code: base/bif/plugins/Zeek_VXLAN.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`pkt_hdr`, vni: :zeek:type:`count`)
 
@@ -15998,6 +16667,7 @@ Events
 ++++++
 
 .. zeek:id:: xmpp_starttls
+   :source-code: base/bif/plugins/Zeek_XMPP.events.bif.zeek 8 8
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: finger_reply
+   :source-code: base/bif/plugins/Zeek_Finger.events.bif.zeek 41 41
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, reply_line: :zeek:type:`string`)
 
@@ -44,6 +45,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: finger_request
+   :source-code: base/bif/plugins/Zeek_Finger.events.bif.zeek 23 23
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, full: :zeek:type:`bool`, username: :zeek:type:`string`, hostname: :zeek:type:`string`)
 

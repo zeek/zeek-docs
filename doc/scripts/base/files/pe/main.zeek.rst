@@ -48,6 +48,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: PE::Info
+   :source-code: base/files/pe/main.zeek 10 45
 
    :Type: :zeek:type:`record`
 
@@ -106,6 +107,7 @@ Types
 Events
 ######
 .. zeek:id:: PE::log_pe
+   :source-code: base/files/pe/main.zeek 48 48
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`PE::Info`)
 
@@ -114,11 +116,13 @@ Events
 Hooks
 #####
 .. zeek:id:: PE::log_policy
+   :source-code: base/files/pe/main.zeek 8 8
 
    :Type: :zeek:type:`Log::PolicyHook`
 
 
 .. zeek:id:: PE::set_file
+   :source-code: base/files/pe/main.zeek 66 70
 
    :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`) : :zeek:type:`bool`
 

@@ -22,6 +22,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: PacketAnalyzer::SKIP::default_analyzer
+   :source-code: base/packet-protocols/skip/main.zeek 5 5
 
    :Type: :zeek:type:`PacketAnalyzer::Tag`
    :Attributes: :zeek:attr:`&redef`
@@ -30,6 +31,7 @@ Redefinable Options
    Default analyzer
 
 .. zeek:id:: PacketAnalyzer::SKIP::skip_bytes
+   :source-code: base/packet-protocols/skip/main.zeek 8 8
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`

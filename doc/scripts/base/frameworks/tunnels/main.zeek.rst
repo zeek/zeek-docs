@@ -74,6 +74,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Tunnel::expiration_interval
+   :source-code: base/frameworks/tunnels/main.zeek 82 82
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -85,6 +86,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Tunnel::active
+   :source-code: base/frameworks/tunnels/main.zeek 87 87
 
    :Type: :zeek:type:`table` [:zeek:type:`conn_id`] of :zeek:type:`Tunnel::Info`
    :Attributes: :zeek:attr:`&read_expire` = :zeek:see:`Tunnel::expiration_interval` :zeek:attr:`&expire_func` = :zeek:see:`Tunnel::expire`
@@ -97,6 +99,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Tunnel::Action
+   :source-code: base/frameworks/tunnels/main.zeek 20 29
 
    :Type: :zeek:type:`enum`
 
@@ -116,6 +119,7 @@ Types
    Types of interesting activity that can occur with a tunnel.
 
 .. zeek:type:: Tunnel::Info
+   :source-code: base/frameworks/tunnels/main.zeek 31 47
 
    :Type: :zeek:type:`record`
 
@@ -144,12 +148,14 @@ Types
 Hooks
 #####
 .. zeek:id:: Tunnel::finalize_tunnel
+   :source-code: base/frameworks/tunnels/main.zeek 114 118
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    Tunnel finalization hook.  Remaining Tunnel info may get logged when it's called.
 
 .. zeek:id:: Tunnel::log_policy
+   :source-code: base/frameworks/tunnels/main.zeek 17 17
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -158,6 +164,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Tunnel::close
+   :source-code: base/frameworks/tunnels/main.zeek 140 146
 
    :Type: :zeek:type:`function` (tunnel: :zeek:type:`Tunnel::Info`, action: :zeek:type:`Tunnel::Action`) : :zeek:type:`void`
 
@@ -171,6 +178,7 @@ Functions
    :action: The specific reason for the tunnel ending.
 
 .. zeek:id:: Tunnel::expire
+   :source-code: base/frameworks/tunnels/main.zeek 148 152
 
    :Type: :zeek:type:`function` (t: :zeek:type:`table` [:zeek:type:`conn_id`] of :zeek:type:`Tunnel::Info`, idx: :zeek:type:`conn_id`) : :zeek:type:`interval`
 
@@ -190,6 +198,7 @@ Functions
             *idx* immediately.
 
 .. zeek:id:: Tunnel::register
+   :source-code: base/frameworks/tunnels/main.zeek 120 139
 
    :Type: :zeek:type:`function` (ec: :zeek:type:`Tunnel::EncapsulatingConn`) : :zeek:type:`void`
 
@@ -198,6 +207,7 @@ Functions
    :zeek:id:`Tunnel::active` table and adds it if not.
 
 .. zeek:id:: Tunnel::register_all
+   :source-code: base/frameworks/tunnels/main.zeek 108 113
 
    :Type: :zeek:type:`function` (ecv: :zeek:type:`EncapsulatingConnVector`) : :zeek:type:`void`
 

@@ -26,6 +26,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: gnutella_binary_msg
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 32 32
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, ttl: :zeek:type:`count`, hops: :zeek:type:`count`, msg_len: :zeek:type:`count`, payload: :zeek:type:`string`, payload_len: :zeek:type:`count`, trunc: :zeek:type:`bool`, complete: :zeek:type:`bool`)
 
@@ -43,6 +44,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_establish
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 62 62
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -60,6 +62,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_http_notify
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -77,6 +80,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_not_establish
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 77 77
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -94,6 +98,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_partial_binary_msg
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 47 47
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, msg: :zeek:type:`string`, len: :zeek:type:`count`)
 
@@ -111,6 +116,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: gnutella_text_msg
+   :source-code: base/bif/plugins/Zeek_Gnutella.events.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, headers: :zeek:type:`string`)
 

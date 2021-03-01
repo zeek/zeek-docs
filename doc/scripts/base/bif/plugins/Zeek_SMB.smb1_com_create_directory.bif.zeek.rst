@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_create_directory_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_create_directory.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, directory_name: :zeek:type:`string`)
 
@@ -46,6 +47,7 @@ Events
    .. zeek:see:: smb1_message smb1_create_directory_response smb1_transaction2_request
 
 .. zeek:id:: smb1_create_directory_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_create_directory.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`)
 

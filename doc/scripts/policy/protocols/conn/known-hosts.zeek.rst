@@ -71,6 +71,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Known::host_store_timeout
+   :source-code: policy/protocols/conn/known-hosts.zeek 50 50
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -80,6 +81,7 @@ Runtime Options
    :zeek:see:`Known::host_store`.
 
 .. zeek:id:: Known::host_tracking
+   :source-code: policy/protocols/conn/known-hosts.zeek 35 35
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -97,6 +99,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Known::host_store_expiry
+   :source-code: policy/protocols/conn/known-hosts.zeek 46 46
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -106,6 +109,7 @@ Redefinable Options
    This also changes the interval at which hosts get logged.
 
 .. zeek:id:: Known::host_store_name
+   :source-code: policy/protocols/conn/known-hosts.zeek 42 42
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -114,6 +118,7 @@ Redefinable Options
    The Broker topic name to use for :zeek:see:`Known::host_store`.
 
 .. zeek:id:: Known::use_host_store
+   :source-code: policy/protocols/conn/known-hosts.zeek 31 31
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -127,6 +132,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Known::host_store
+   :source-code: policy/protocols/conn/known-hosts.zeek 39 39
 
    :Type: :zeek:type:`Cluster::StoreInfo`
    :Default:
@@ -150,6 +156,7 @@ State Variables
    and their associated value will always be the "true" boolean.
 
 .. zeek:id:: Known::hosts
+   :source-code: policy/protocols/conn/known-hosts.zeek 60 60
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -167,6 +174,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Known::HostsInfo
+   :source-code: policy/protocols/conn/known-hosts.zeek 19 25
 
    :Type: :zeek:type:`record`
 
@@ -182,6 +190,7 @@ Types
 Events
 ######
 .. zeek:id:: Known::log_known_hosts
+   :source-code: policy/protocols/conn/known-hosts.zeek 64 64
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Known::HostsInfo`)
 
@@ -191,6 +200,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Known::log_policy_hosts
+   :source-code: policy/protocols/conn/known-hosts.zeek 16 16
 
    :Type: :zeek:type:`Log::PolicyHook`
 

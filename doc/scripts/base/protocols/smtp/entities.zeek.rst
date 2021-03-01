@@ -41,6 +41,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: SMTP::Entity
+   :source-code: base/protocols/smtp/entities.zeek 11 14
 
    :Type: :zeek:type:`record`
 

@@ -50,6 +50,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: MySQL::Info
+   :source-code: base/protocols/mysql/main.zeek 13 30
 
    :Type: :zeek:type:`record`
 
@@ -81,6 +82,7 @@ Types
 Events
 ######
 .. zeek:id:: MySQL::log_mysql
+   :source-code: base/protocols/mysql/main.zeek 34 34
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`MySQL::Info`)
 
@@ -90,12 +92,14 @@ Events
 Hooks
 #####
 .. zeek:id:: MySQL::finalize_mysql
+   :source-code: base/protocols/mysql/main.zeek 133 140
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    MySQL finalization hook.  Remaining MySQL info may get logged when it's called.
 
 .. zeek:id:: MySQL::log_policy
+   :source-code: base/protocols/mysql/main.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

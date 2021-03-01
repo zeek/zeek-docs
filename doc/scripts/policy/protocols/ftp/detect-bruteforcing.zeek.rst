@@ -37,6 +37,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: FTP::bruteforce_measurement_interval
+   :source-code: policy/protocols/ftp/detect-bruteforcing.zeek 24 24
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -46,6 +47,7 @@ Redefinable Options
    being reset.
 
 .. zeek:id:: FTP::bruteforce_threshold
+   :source-code: policy/protocols/ftp/detect-bruteforcing.zeek 20 20
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`

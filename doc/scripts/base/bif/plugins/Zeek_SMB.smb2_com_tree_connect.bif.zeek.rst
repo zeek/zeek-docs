@@ -24,6 +24,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb2_tree_connect_request
+   :source-code: base/protocols/smb/smb2-main.zeek 99 102
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, path: :zeek:type:`string`)
 
@@ -45,6 +46,7 @@ Events
    .. zeek:see:: smb2_message smb2_tree_connect_response
 
 .. zeek:id:: smb2_tree_connect_response
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_tree_connect.bif.zeek 33 33
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::TreeConnectResponse`)
 

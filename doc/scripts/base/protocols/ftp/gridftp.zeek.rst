@@ -71,6 +71,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: GridFTP::max_time
+   :source-code: base/protocols/ftp/gridftp.zeek 37 37
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -80,6 +81,7 @@ Runtime Options
    :zeek:see:`GridFTP::size_threshold`.
 
 .. zeek:id:: GridFTP::size_threshold
+   :source-code: base/protocols/ftp/gridftp.zeek 33 33
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -89,6 +91,7 @@ Runtime Options
    GridFTP data channel.
 
 .. zeek:id:: GridFTP::skip_data
+   :source-code: base/protocols/ftp/gridftp.zeek 41 41
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -100,6 +103,7 @@ Runtime Options
 Events
 ######
 .. zeek:id:: GridFTP::data_channel_detected
+   :source-code: base/protocols/ftp/gridftp.zeek 46 46
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -111,6 +115,7 @@ Events
 Functions
 #########
 .. zeek:id:: GridFTP::data_channel_initial_criteria
+   :source-code: base/protocols/ftp/gridftp.zeek 108 112
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`

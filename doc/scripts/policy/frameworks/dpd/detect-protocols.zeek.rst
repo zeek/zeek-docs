@@ -66,6 +66,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: ProtocolDetector::minimum_duration
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 56 56
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -73,6 +74,7 @@ Runtime Options
 
 
 .. zeek:id:: ProtocolDetector::minimum_volume
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 57 57
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -80,6 +82,7 @@ Runtime Options
 
 
 .. zeek:id:: ProtocolDetector::suppress_servers
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 48 48
 
    :Type: :zeek:type:`set` [:zeek:type:`Analyzer::Tag`]
    :Attributes: :zeek:attr:`&redef`
@@ -87,6 +90,7 @@ Runtime Options
 
 
 .. zeek:id:: ProtocolDetector::valids
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 25 25
 
    :Type: :zeek:type:`table` [:zeek:type:`Analyzer::Tag`, :zeek:type:`addr`, :zeek:type:`port`] of :zeek:type:`ProtocolDetector::dir`
    :Attributes: :zeek:attr:`&redef`
@@ -96,6 +100,7 @@ Runtime Options
 Constants
 #########
 .. zeek:id:: ProtocolDetector::check_interval
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 60 60
 
    :Type: :zeek:type:`interval`
    :Default: ``5.0 secs``
@@ -104,6 +109,7 @@ Constants
 State Variables
 ###############
 .. zeek:id:: ProtocolDetector::servers
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 69 69
 
    :Type: :zeek:type:`table` [:zeek:type:`addr`, :zeek:type:`port`, :zeek:type:`string`] of :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&read_expire` = ``14.0 days``
@@ -113,6 +119,7 @@ State Variables
 Types
 #####
 .. zeek:type:: ProtocolDetector::dir
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 23 24
 
    :Type: :zeek:type:`enum`
 
@@ -128,6 +135,7 @@ Types
 Hooks
 #####
 .. zeek:id:: ProtocolDetector::finalize_protocol_detection
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 189 199
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
@@ -136,6 +144,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: ProtocolDetector::found_protocol
+   :source-code: policy/frameworks/dpd/detect-protocols.zeek 222 233
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, atype: :zeek:type:`Analyzer::Tag`, protocol: :zeek:type:`string`) : :zeek:type:`void`
 

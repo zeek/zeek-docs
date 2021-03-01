@@ -30,6 +30,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Dir::polling_interval
+   :source-code: base/utils/dir.zeek 10 10
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -41,6 +42,7 @@ Runtime Options
 Functions
 #########
 .. zeek:id:: Dir::monitor
+   :source-code: base/utils/dir.zeek 60 63
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`, callback: :zeek:type:`function` (fname: :zeek:type:`string`) : :zeek:type:`void`, poll_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Dir::polling_interval` :zeek:attr:`&optional`) : :zeek:type:`void`
 

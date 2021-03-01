@@ -35,12 +35,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: SMTP::describe_file
+   :source-code: base/protocols/smtp/files.zeek 28 40
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
    Default file describer for SMTP.
 
 .. zeek:id:: SMTP::get_file_handle
+   :source-code: base/protocols/smtp/files.zeek 22 26
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 

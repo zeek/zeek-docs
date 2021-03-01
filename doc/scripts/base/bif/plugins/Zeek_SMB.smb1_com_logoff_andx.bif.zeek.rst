@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_logoff_andx
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_logoff_andx.bif.zeek 17 17
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 

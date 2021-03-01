@@ -27,6 +27,7 @@ Detailed Interface
 State Variables
 ###############
 .. zeek:id:: FilteredTraceDetection::enable
+   :source-code: base/misc/find-filtered-trace.zeek 13 13
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`

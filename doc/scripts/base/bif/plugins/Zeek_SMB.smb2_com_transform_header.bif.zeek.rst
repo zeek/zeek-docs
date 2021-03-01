@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb2_transform_header
+   :source-code: base/bif/plugins/Zeek_SMB.smb2_com_transform_header.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Transform_header`)
 

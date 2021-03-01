@@ -42,6 +42,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSH::watched_countries
+   :source-code: policy/protocols/ssh/geo-data.zeek 24 24
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`

@@ -56,6 +56,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SOCKS::default_capture_password
+   :source-code: base/protocols/socks/main.zeek 13 13
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -66,6 +67,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: SOCKS::Info
+   :source-code: base/protocols/socks/main.zeek 16 43
 
    :Type: :zeek:type:`record`
 
@@ -112,6 +114,7 @@ Types
 Events
 ######
 .. zeek:id:: SOCKS::log_socks
+   :source-code: base/protocols/socks/main.zeek 47 47
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SOCKS::Info`)
 
@@ -121,12 +124,14 @@ Events
 Hooks
 #####
 .. zeek:id:: SOCKS::finalize_socks
+   :source-code: base/protocols/socks/main.zeek 123 129
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SOCKS finalization hook.  Remaining SOCKS info may get logged when it's called.
 
 .. zeek:id:: SOCKS::log_policy
+   :source-code: base/protocols/socks/main.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 

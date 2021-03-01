@@ -25,6 +25,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smtp_data
+   :source-code: base/bif/plugins/Zeek_SMTP.events.bif.zeek 85 85
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data: :zeek:type:`string`)
 
@@ -56,6 +57,7 @@ Events
       provide structured access to their content.
 
 .. zeek:id:: smtp_reply
+   :source-code: base/bif/plugins/Zeek_SMTP.events.bif.zeek 59 59
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, code: :zeek:type:`count`, cmd: :zeek:type:`string`, msg: :zeek:type:`string`, cont_resp: :zeek:type:`bool`)
 
@@ -96,6 +98,7 @@ Events
    .. note:: Zeek doesn't support the newer ETRN extension yet.
 
 .. zeek:id:: smtp_request
+   :source-code: base/protocols/smtp/main.zeek 163 200
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -128,6 +131,7 @@ Events
    .. note:: Zeek does not support the newer ETRN extension yet.
 
 .. zeek:id:: smtp_starttls
+   :source-code: base/protocols/smtp/main.zeek 331 338
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -140,6 +144,7 @@ Events
    
 
 .. zeek:id:: smtp_unexpected
+   :source-code: base/bif/plugins/Zeek_SMTP.events.bif.zeek 106 106
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`, detail: :zeek:type:`string`)
 

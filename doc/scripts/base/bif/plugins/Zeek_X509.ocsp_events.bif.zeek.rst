@@ -27,6 +27,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ocsp_extension
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 122 122
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::Extension`, global_resp: :zeek:type:`bool`)
 
@@ -48,6 +49,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_request
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 16 16
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, version: :zeek:type:`count`)
 
@@ -67,6 +69,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_request_certificate
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 37 37
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, hashAlgorithm: :zeek:type:`string`, issuerNameHash: :zeek:type:`string`, issuerKeyHash: :zeek:type:`string`, serialNumber: :zeek:type:`string`)
 
@@ -94,6 +97,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_bytes
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 77 77
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, status: :zeek:type:`string`, version: :zeek:type:`count`, responderId: :zeek:type:`string`, producedAt: :zeek:type:`time`, signatureAlgorithm: :zeek:type:`string`, certs: :zeek:type:`x509_opaque_vector`)
 
@@ -128,6 +132,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_certificate
+   :source-code: policy/files/x509/log-ocsp.zeek 50 64
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, hashAlgorithm: :zeek:type:`string`, issuerNameHash: :zeek:type:`string`, issuerKeyHash: :zeek:type:`string`, serialNumber: :zeek:type:`string`, certStatus: :zeek:type:`string`, revokeTime: :zeek:type:`time`, revokeReason: :zeek:type:`string`, thisUpdate: :zeek:type:`time`, nextUpdate: :zeek:type:`time`)
 
@@ -169,6 +174,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_status
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 52 52
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, status: :zeek:type:`string`)
 

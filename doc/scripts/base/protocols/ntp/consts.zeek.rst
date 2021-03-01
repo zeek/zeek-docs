@@ -22,6 +22,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: NTP::modes
+   :source-code: base/protocols/ntp/consts.zeek 6 6
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function` :zeek:attr:`&redef`

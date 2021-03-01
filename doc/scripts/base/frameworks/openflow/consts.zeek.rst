@@ -89,126 +89,147 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: OpenFlow::ETH_APPLETALK
+   :source-code: base/frameworks/openflow/consts.zeek 38 38
 
    :Type: :zeek:type:`count`
    :Default: ``32923``
 
 
 .. zeek:id:: OpenFlow::ETH_APPLETALK_ARP
+   :source-code: base/frameworks/openflow/consts.zeek 40 40
 
    :Type: :zeek:type:`count`
    :Default: ``33011``
 
 
 .. zeek:id:: OpenFlow::ETH_ARP
+   :source-code: base/frameworks/openflow/consts.zeek 32 32
 
    :Type: :zeek:type:`count`
    :Default: ``2054``
 
 
 .. zeek:id:: OpenFlow::ETH_EAP_OVER_LAN
+   :source-code: base/frameworks/openflow/consts.zeek 62 62
 
    :Type: :zeek:type:`count`
    :Default: ``34958``
 
 
 .. zeek:id:: OpenFlow::ETH_ETHER_FLOW_CONTROL
+   :source-code: base/frameworks/openflow/consts.zeek 50 50
 
    :Type: :zeek:type:`count`
    :Default: ``34824``
 
 
 .. zeek:id:: OpenFlow::ETH_IPX
+   :source-code: base/frameworks/openflow/consts.zeek 46 46
 
    :Type: :zeek:type:`count`
    :Default: ``33080``
 
 
 .. zeek:id:: OpenFlow::ETH_IPX_OLD
+   :source-code: base/frameworks/openflow/consts.zeek 44 44
 
    :Type: :zeek:type:`count`
    :Default: ``33079``
 
 
 .. zeek:id:: OpenFlow::ETH_IPv4
+   :source-code: base/frameworks/openflow/consts.zeek 30 30
 
    :Type: :zeek:type:`count`
    :Default: ``2048``
 
 
 .. zeek:id:: OpenFlow::ETH_IPv6
+   :source-code: base/frameworks/openflow/consts.zeek 48 48
 
    :Type: :zeek:type:`count`
    :Default: ``34525``
 
 
 .. zeek:id:: OpenFlow::ETH_JUMBO_FRAMES
+   :source-code: base/frameworks/openflow/consts.zeek 60 60
 
    :Type: :zeek:type:`count`
    :Default: ``34928``
 
 
 .. zeek:id:: OpenFlow::ETH_MAC_SECURITY
+   :source-code: base/frameworks/openflow/consts.zeek 66 66
 
    :Type: :zeek:type:`count`
    :Default: ``35045``
 
 
 .. zeek:id:: OpenFlow::ETH_MPLS_MULTICAST
+   :source-code: base/frameworks/openflow/consts.zeek 54 54
 
    :Type: :zeek:type:`count`
    :Default: ``34888``
 
 
 .. zeek:id:: OpenFlow::ETH_MPLS_UNICAST
+   :source-code: base/frameworks/openflow/consts.zeek 52 52
 
    :Type: :zeek:type:`count`
    :Default: ``34887``
 
 
 .. zeek:id:: OpenFlow::ETH_PPPOE_DISCOVERY
+   :source-code: base/frameworks/openflow/consts.zeek 56 56
 
    :Type: :zeek:type:`count`
    :Default: ``34915``
 
 
 .. zeek:id:: OpenFlow::ETH_PPPOE_SESSION
+   :source-code: base/frameworks/openflow/consts.zeek 58 58
 
    :Type: :zeek:type:`count`
    :Default: ``34916``
 
 
 .. zeek:id:: OpenFlow::ETH_PROVIDER_BRIDING
+   :source-code: base/frameworks/openflow/consts.zeek 64 64
 
    :Type: :zeek:type:`count`
    :Default: ``34984``
 
 
 .. zeek:id:: OpenFlow::ETH_QINQ
+   :source-code: base/frameworks/openflow/consts.zeek 68 68
 
    :Type: :zeek:type:`count`
    :Default: ``37120``
 
 
 .. zeek:id:: OpenFlow::ETH_RARP
+   :source-code: base/frameworks/openflow/consts.zeek 36 36
 
    :Type: :zeek:type:`count`
    :Default: ``32821``
 
 
 .. zeek:id:: OpenFlow::ETH_VLAN
+   :source-code: base/frameworks/openflow/consts.zeek 42 42
 
    :Type: :zeek:type:`count`
    :Default: ``33024``
 
 
 .. zeek:id:: OpenFlow::ETH_WOL
+   :source-code: base/frameworks/openflow/consts.zeek 34 34
 
    :Type: :zeek:type:`count`
    :Default: ``2114``
 
 
 .. zeek:id:: OpenFlow::INVALID_COOKIE
+   :source-code: base/frameworks/openflow/consts.zeek 126 126
 
    :Type: :zeek:type:`count`
    :Default: ``18446744073709551615``
@@ -218,138 +239,161 @@ Constants
    from the Zeek openflow framework.
 
 .. zeek:id:: OpenFlow::IP_CBT
+   :source-code: base/frameworks/openflow/consts.zeek 89 89
 
    :Type: :zeek:type:`count`
    :Default: ``7``
 
 
 .. zeek:id:: OpenFlow::IP_EGP
+   :source-code: base/frameworks/openflow/consts.zeek 91 91
 
    :Type: :zeek:type:`count`
    :Default: ``8``
 
 
 .. zeek:id:: OpenFlow::IP_ETHERIP
+   :source-code: base/frameworks/openflow/consts.zeek 112 112
 
    :Type: :zeek:type:`count`
    :Default: ``97``
 
 
 .. zeek:id:: OpenFlow::IP_FC
+   :source-code: base/frameworks/openflow/consts.zeek 118 118
 
    :Type: :zeek:type:`count`
    :Default: ``133``
 
 
 .. zeek:id:: OpenFlow::IP_GGP
+   :source-code: base/frameworks/openflow/consts.zeek 81 81
 
    :Type: :zeek:type:`count`
    :Default: ``3``
 
 
 .. zeek:id:: OpenFlow::IP_GRE
+   :source-code: base/frameworks/openflow/consts.zeek 104 104
 
    :Type: :zeek:type:`count`
    :Default: ``47``
 
 
 .. zeek:id:: OpenFlow::IP_HOPOPT
+   :source-code: base/frameworks/openflow/consts.zeek 75 75
 
    :Type: :zeek:type:`count`
    :Default: ``0``
 
 
 .. zeek:id:: OpenFlow::IP_ICMP
+   :source-code: base/frameworks/openflow/consts.zeek 77 77
 
    :Type: :zeek:type:`count`
    :Default: ``1``
 
 
 .. zeek:id:: OpenFlow::IP_IGMP
+   :source-code: base/frameworks/openflow/consts.zeek 79 79
 
    :Type: :zeek:type:`count`
    :Default: ``2``
 
 
 .. zeek:id:: OpenFlow::IP_IGP
+   :source-code: base/frameworks/openflow/consts.zeek 94 94
 
    :Type: :zeek:type:`count`
    :Default: ``9``
 
 
 .. zeek:id:: OpenFlow::IP_IPIP
+   :source-code: base/frameworks/openflow/consts.zeek 83 83
 
    :Type: :zeek:type:`count`
    :Default: ``4``
 
 
 .. zeek:id:: OpenFlow::IP_IPv6
+   :source-code: base/frameworks/openflow/consts.zeek 100 100
 
    :Type: :zeek:type:`count`
    :Default: ``41``
 
 
 .. zeek:id:: OpenFlow::IP_ISIS
+   :source-code: base/frameworks/openflow/consts.zeek 116 116
 
    :Type: :zeek:type:`count`
    :Default: ``124``
 
 
 .. zeek:id:: OpenFlow::IP_L2TP
+   :source-code: base/frameworks/openflow/consts.zeek 114 114
 
    :Type: :zeek:type:`count`
    :Default: ``115``
 
 
 .. zeek:id:: OpenFlow::IP_MPLS
+   :source-code: base/frameworks/openflow/consts.zeek 120 120
 
    :Type: :zeek:type:`count`
    :Default: ``137``
 
 
 .. zeek:id:: OpenFlow::IP_MTP
+   :source-code: base/frameworks/openflow/consts.zeek 108 108
 
    :Type: :zeek:type:`count`
    :Default: ``92``
 
 
 .. zeek:id:: OpenFlow::IP_OSPF
+   :source-code: base/frameworks/openflow/consts.zeek 106 106
 
    :Type: :zeek:type:`count`
    :Default: ``89``
 
 
 .. zeek:id:: OpenFlow::IP_RDP
+   :source-code: base/frameworks/openflow/consts.zeek 98 98
 
    :Type: :zeek:type:`count`
    :Default: ``27``
 
 
 .. zeek:id:: OpenFlow::IP_RSVP
+   :source-code: base/frameworks/openflow/consts.zeek 102 102
 
    :Type: :zeek:type:`count`
    :Default: ``46``
 
 
 .. zeek:id:: OpenFlow::IP_ST
+   :source-code: base/frameworks/openflow/consts.zeek 85 85
 
    :Type: :zeek:type:`count`
    :Default: ``5``
 
 
 .. zeek:id:: OpenFlow::IP_TCP
+   :source-code: base/frameworks/openflow/consts.zeek 87 87
 
    :Type: :zeek:type:`count`
    :Default: ``6``
 
 
 .. zeek:id:: OpenFlow::IP_UDP
+   :source-code: base/frameworks/openflow/consts.zeek 96 96
 
    :Type: :zeek:type:`count`
    :Default: ``17``
 
 
 .. zeek:id:: OpenFlow::OFPFF_CHECK_OVERLAP
+   :source-code: base/frameworks/openflow/consts.zeek 155 155
 
    :Type: :zeek:type:`count`
    :Default: ``2``
@@ -357,6 +401,7 @@ Constants
    Check for overlapping entries first.
 
 .. zeek:id:: OpenFlow::OFPFF_EMERG
+   :source-code: base/frameworks/openflow/consts.zeek 159 159
 
    :Type: :zeek:type:`count`
    :Default: ``4``
@@ -366,6 +411,7 @@ Constants
    when the controller is disconnected.
 
 .. zeek:id:: OpenFlow::OFPFF_SEND_FLOW_REM
+   :source-code: base/frameworks/openflow/consts.zeek 153 153
 
    :Type: :zeek:type:`count`
    :Default: ``1``
@@ -374,6 +420,7 @@ Constants
    expires or is deleted.
 
 .. zeek:id:: OpenFlow::OFPP_ALL
+   :source-code: base/frameworks/openflow/consts.zeek 142 142
 
    :Type: :zeek:type:`count`
    :Default: ``4294967292``
@@ -381,6 +428,7 @@ Constants
    All physical ports except input port.
 
 .. zeek:id:: OpenFlow::OFPP_ANY
+   :source-code: base/frameworks/openflow/consts.zeek 148 148
 
    :Type: :zeek:type:`count`
    :Default: ``4294967295``
@@ -388,6 +436,7 @@ Constants
    Wildcard port used only for flow mod (delete) and flow stats requests.
 
 .. zeek:id:: OpenFlow::OFPP_CONTROLLER
+   :source-code: base/frameworks/openflow/consts.zeek 144 144
 
    :Type: :zeek:type:`count`
    :Default: ``4294967293``
@@ -395,6 +444,7 @@ Constants
    Send to controller.
 
 .. zeek:id:: OpenFlow::OFPP_FLOOD
+   :source-code: base/frameworks/openflow/consts.zeek 140 140
 
    :Type: :zeek:type:`count`
    :Default: ``4294967291``
@@ -403,6 +453,7 @@ Constants
    those disabled by STP.
 
 .. zeek:id:: OpenFlow::OFPP_IN_PORT
+   :source-code: base/frameworks/openflow/consts.zeek 131 131
 
    :Type: :zeek:type:`count`
    :Default: ``4294967288``
@@ -412,6 +463,7 @@ Constants
    order to send back out of the input port.
 
 .. zeek:id:: OpenFlow::OFPP_LOCAL
+   :source-code: base/frameworks/openflow/consts.zeek 146 146
 
    :Type: :zeek:type:`count`
    :Default: ``4294967294``
@@ -419,6 +471,7 @@ Constants
    Local openflow "port".
 
 .. zeek:id:: OpenFlow::OFPP_NORMAL
+   :source-code: base/frameworks/openflow/consts.zeek 137 137
 
    :Type: :zeek:type:`count`
    :Default: ``4294967290``
@@ -426,6 +479,7 @@ Constants
    Process with normal L2/L3 switching.
 
 .. zeek:id:: OpenFlow::OFPP_TABLE
+   :source-code: base/frameworks/openflow/consts.zeek 135 135
 
    :Type: :zeek:type:`count`
    :Default: ``4294967289``
@@ -435,12 +489,14 @@ Constants
    for packet-out messages.
 
 .. zeek:id:: OpenFlow::OFPTT_ALL
+   :source-code: base/frameworks/openflow/consts.zeek 163 163
 
    :Type: :zeek:type:`count`
    :Default: ``255``
 
 
 .. zeek:id:: OpenFlow::OFP_NO_BUFFER
+   :source-code: base/frameworks/openflow/consts.zeek 150 150
 
    :Type: :zeek:type:`count`
    :Default: ``4294967295``
@@ -449,6 +505,7 @@ Constants
 Types
 #####
 .. zeek:type:: OpenFlow::ofp_action_type
+   :source-code: base/frameworks/openflow/consts.zeek 170 198
 
    :Type: :zeek:type:`enum`
 
@@ -511,6 +568,7 @@ Types
    to modify a packet
 
 .. zeek:type:: OpenFlow::ofp_config_flags
+   :source-code: base/frameworks/openflow/consts.zeek 219 228
 
    :Type: :zeek:type:`enum`
 
@@ -533,6 +591,7 @@ Types
    TODO: describe
 
 .. zeek:type:: OpenFlow::ofp_flow_mod_command
+   :source-code: base/frameworks/openflow/consts.zeek 203 215
 
    :Type: :zeek:type:`enum`
 

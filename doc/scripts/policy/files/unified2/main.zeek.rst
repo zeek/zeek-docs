@@ -61,6 +61,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Unified2::classification_config
+   :source-code: policy/files/unified2/main.zeek 25 25
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -69,6 +70,7 @@ Redefinable Options
    The classification.config file you would like to use for your alerts.
 
 .. zeek:id:: Unified2::gen_msg
+   :source-code: policy/files/unified2/main.zeek 22 22
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -77,6 +79,7 @@ Redefinable Options
    The gen-msg.map file you would like to use for your alerts.
 
 .. zeek:id:: Unified2::sid_msg
+   :source-code: policy/files/unified2/main.zeek 19 19
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -85,6 +88,7 @@ Redefinable Options
    The sid-msg.map file you would like to use for your alerts.
 
 .. zeek:id:: Unified2::watch_dir
+   :source-code: policy/files/unified2/main.zeek 16 16
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -93,6 +97,7 @@ Redefinable Options
    Directory to watch for Unified2 records.
 
 .. zeek:id:: Unified2::watch_file
+   :source-code: policy/files/unified2/main.zeek 13 13
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -103,6 +108,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Unified2::Info
+   :source-code: policy/files/unified2/main.zeek 38 65
 
    :Type: :zeek:type:`record`
 
@@ -148,6 +154,7 @@ Types
 
 
 .. zeek:type:: Unified2::PacketID
+   :source-code: policy/files/unified2/main.zeek 31 36
 
    :Type: :zeek:type:`record`
 
@@ -164,6 +171,7 @@ Types
 Events
 ######
 .. zeek:id:: Unified2::alert
+   :source-code: policy/files/unified2/main.zeek 281 286
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ev: :zeek:type:`Unified2::IDSEvent`, pkt: :zeek:type:`Unified2::Packet`)
 
@@ -171,6 +179,7 @@ Events
    and packets.
 
 .. zeek:id:: Unified2::log_unified2
+   :source-code: policy/files/unified2/main.zeek 68 68
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Unified2::Info`)
 
@@ -179,6 +188,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Unified2::log_policy
+   :source-code: policy/files/unified2/main.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 

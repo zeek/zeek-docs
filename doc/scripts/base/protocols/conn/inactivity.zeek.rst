@@ -25,6 +25,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Conn::analyzer_inactivity_timeouts
+   :source-code: base/protocols/conn/inactivity.zeek 9 9
 
    :Type: :zeek:type:`table` [:zeek:type:`Analyzer::Tag`] of :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -42,6 +43,7 @@ Runtime Options
    the connection.
 
 .. zeek:id:: Conn::port_inactivity_timeouts
+   :source-code: base/protocols/conn/inactivity.zeek 15 15
 
    :Type: :zeek:type:`table` [:zeek:type:`port`] of :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`

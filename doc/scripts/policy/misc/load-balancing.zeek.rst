@@ -42,6 +42,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: LoadBalancing::method
+   :source-code: policy/misc/load-balancing.zeek 18 18
 
    :Type: :zeek:type:`LoadBalancing::Method`
    :Attributes: :zeek:attr:`&redef`
@@ -52,6 +53,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: LoadBalancing::Method
+   :source-code: policy/misc/load-balancing.zeek 11 16
 
    :Type: :zeek:type:`enum`
 

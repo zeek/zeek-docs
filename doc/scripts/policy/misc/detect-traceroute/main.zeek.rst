@@ -64,6 +64,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Traceroute::icmp_time_exceeded_interval
+   :source-code: policy/misc/detect-traceroute/main.zeek 41 41
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -74,6 +75,7 @@ Redefinable Options
    crossed.  At the end of each interval the counter is reset.
 
 .. zeek:id:: Traceroute::icmp_time_exceeded_threshold
+   :source-code: policy/misc/detect-traceroute/main.zeek 36 36
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -84,6 +86,7 @@ Redefinable Options
    be sending low TTL packets.
 
 .. zeek:id:: Traceroute::require_low_ttl_packets
+   :source-code: policy/misc/detect-traceroute/main.zeek 31 31
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -98,6 +101,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Traceroute::Info
+   :source-code: policy/misc/detect-traceroute/main.zeek 44 53
 
    :Type: :zeek:type:`record`
 
@@ -118,6 +122,7 @@ Types
 Events
 ######
 .. zeek:id:: Traceroute::log_traceroute
+   :source-code: policy/misc/detect-traceroute/main.zeek 55 55
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Traceroute::Info`)
 
@@ -125,6 +130,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Traceroute::log_policy
+   :source-code: policy/misc/detect-traceroute/main.zeek 17 17
 
    :Type: :zeek:type:`Log::PolicyHook`
 

@@ -53,6 +53,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Intel::CIF
+   :source-code: policy/integration/collective-intel/main.zeek 24 37
 
    :Type: :zeek:type:`record`
 

@@ -118,6 +118,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Cluster::default_backend
+   :source-code: base/frameworks/cluster/main.zeek 54 54
 
    :Type: :zeek:type:`Broker::BackendType`
    :Attributes: :zeek:attr:`&redef`
@@ -127,6 +128,7 @@ Redefinable Options
    no other has already been specified by the user in :zeek:see:`Cluster::stores`.
 
 .. zeek:id:: Cluster::default_master_node
+   :source-code: base/frameworks/cluster/main.zeek 50 50
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -138,6 +140,7 @@ Redefinable Options
    node".
 
 .. zeek:id:: Cluster::default_persistent_backend
+   :source-code: base/frameworks/cluster/main.zeek 60 60
 
    :Type: :zeek:type:`Broker::BackendType`
    :Attributes: :zeek:attr:`&redef`
@@ -149,6 +152,7 @@ Redefinable Options
    :zeek:see:`Cluster::create_store` with the *persistent* argument set true.
 
 .. zeek:id:: Cluster::default_store_dir
+   :source-code: base/frameworks/cluster/main.zeek 66 66
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -160,6 +164,7 @@ Redefinable Options
    the data store.
 
 .. zeek:id:: Cluster::enable_round_robin_logging
+   :source-code: base/frameworks/cluster/main.zeek 16 16
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -168,6 +173,7 @@ Redefinable Options
    Whether to distribute log messages among available logging nodes.
 
 .. zeek:id:: Cluster::logger_topic
+   :source-code: base/frameworks/cluster/main.zeek 20 20
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -177,6 +183,7 @@ Redefinable Options
    logger nodes in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::manager_is_logger
+   :source-code: base/frameworks/cluster/main.zeek 210 210
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -188,6 +195,7 @@ Redefinable Options
    Note that ZeekControl handles this automatically.
 
 .. zeek:id:: Cluster::manager_topic
+   :source-code: base/frameworks/cluster/main.zeek 24 24
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -197,6 +205,7 @@ Redefinable Options
    manager nodes in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::node
+   :source-code: base/frameworks/cluster/main.zeek 214 214
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -206,6 +215,7 @@ Redefinable Options
    of the cluster that is started up.
 
 .. zeek:id:: Cluster::node_topic_prefix
+   :source-code: base/frameworks/cluster/main.zeek 40 40
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -215,6 +225,7 @@ Redefinable Options
    a named node in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::nodeid_topic_prefix
+   :source-code: base/frameworks/cluster/main.zeek 44 44
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -224,6 +235,7 @@ Redefinable Options
    a unique node in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::nodes
+   :source-code: base/frameworks/cluster/main.zeek 204 204
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Cluster::Node`
    :Attributes: :zeek:attr:`&redef`
@@ -237,6 +249,7 @@ Redefinable Options
    or "worker-1").
 
 .. zeek:id:: Cluster::proxy_topic
+   :source-code: base/frameworks/cluster/main.zeek 28 28
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -246,6 +259,7 @@ Redefinable Options
    proxy nodes in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::retry_interval
+   :source-code: base/frameworks/cluster/main.zeek 219 219
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -256,6 +270,7 @@ Redefinable Options
    environment variable overrides this option.
 
 .. zeek:id:: Cluster::time_machine_topic
+   :source-code: base/frameworks/cluster/main.zeek 36 36
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -265,6 +280,7 @@ Redefinable Options
    time machine nodes in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::worker_topic
+   :source-code: base/frameworks/cluster/main.zeek 32 32
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -276,6 +292,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Cluster::stores
+   :source-code: base/frameworks/cluster/main.zeek 101 101
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Cluster::StoreInfo`
    :Attributes: :zeek:attr:`&default` = *[name=<uninitialized>, store=<uninitialized>, master_node=, master=F, backend=Broker::MEMORY, options=[sqlite=[path=]], clone_resync_interval=10.0 secs, clone_stale_interval=5.0 mins, clone_mutation_buffer_interval=2.0 mins]* :zeek:attr:`&redef`
@@ -290,6 +307,7 @@ State Variables
    predefined options there when setting up the store.
 
 .. zeek:id:: Cluster::worker_count
+   :source-code: base/frameworks/cluster/main.zeek 196 196
 
    :Type: :zeek:type:`count`
    :Default: ``0``
@@ -302,6 +320,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Cluster::Info
+   :source-code: base/frameworks/cluster/main.zeek 122 129
 
    :Type: :zeek:type:`record`
 
@@ -318,6 +337,7 @@ Types
    The record type which contains the column fields of the cluster log.
 
 .. zeek:type:: Cluster::Node
+   :source-code: base/frameworks/cluster/main.zeek 156 176
 
    :Type: :zeek:type:`record`
 
@@ -359,6 +379,7 @@ Types
    Record type to indicate a node in a cluster.
 
 .. zeek:type:: Cluster::NodeType
+   :source-code: base/frameworks/cluster/main.zeek 133 154
 
    :Type: :zeek:type:`enum`
 
@@ -399,6 +420,7 @@ Types
    configuration.
 
 .. zeek:type:: Cluster::StoreInfo
+   :source-code: base/frameworks/cluster/main.zeek 69 92
 
    :Type: :zeek:type:`record`
 
@@ -438,6 +460,7 @@ Types
 Events
 ######
 .. zeek:id:: Cluster::hello
+   :source-code: base/frameworks/cluster/main.zeek 313 340
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -447,6 +470,7 @@ Events
    if the node dies and has to reconnect later.
 
 .. zeek:id:: Cluster::node_down
+   :source-code: base/frameworks/cluster/main.zeek 233 233
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -454,6 +478,7 @@ Events
    locally whenever a connected cluster node becomes disconnected.
 
 .. zeek:id:: Cluster::node_up
+   :source-code: base/frameworks/cluster/main.zeek 229 229
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -463,6 +488,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Cluster::log_policy
+   :source-code: base/frameworks/cluster/main.zeek 119 119
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -471,6 +497,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Cluster::create_store
+   :source-code: base/frameworks/cluster/main.zeek 384 459
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, persistent: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`Cluster::StoreInfo`
 
@@ -489,6 +516,7 @@ Functions
             be set until the node containing the master store has connected.
 
 .. zeek:id:: Cluster::is_enabled
+   :source-code: base/frameworks/cluster/main.zeek 287 290
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -499,6 +527,7 @@ Functions
    :returns: True if :zeek:id:`Cluster::node` has been set.
 
 .. zeek:id:: Cluster::local_node_type
+   :source-code: base/frameworks/cluster/main.zeek 292 301
 
    :Type: :zeek:type:`function` () : :zeek:type:`Cluster::NodeType`
 
@@ -511,12 +540,14 @@ Functions
    :returns: The :zeek:type:`Cluster::NodeType` the calling node acts as.
 
 .. zeek:id:: Cluster::log
+   :source-code: base/frameworks/cluster/main.zeek 461 464
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`void`
 
    Write a message to the cluster logging stream.
 
 .. zeek:id:: Cluster::node_topic
+   :source-code: base/frameworks/cluster/main.zeek 303 306
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -530,6 +561,7 @@ Functions
             a given cluster node.
 
 .. zeek:id:: Cluster::nodeid_topic
+   :source-code: base/frameworks/cluster/main.zeek 308 311
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`string`
 

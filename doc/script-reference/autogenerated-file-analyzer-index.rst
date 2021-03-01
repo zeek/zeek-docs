@@ -51,6 +51,7 @@ Events
 ++++++
 
 .. zeek:id:: file_entropy
+   :source-code: policy/frameworks/files/entropy-test-all-files.zeek 17 20
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ent: :zeek:type:`entropy_test_result`)
 
@@ -78,6 +79,7 @@ Events
 ++++++
 
 .. zeek:id:: file_extraction_limit
+   :source-code: base/files/extract/main.zeek 72 76
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, args: :zeek:type:`Files::AnalyzerArgs`, limit: :zeek:type:`count`, len: :zeek:type:`count`)
 
@@ -106,6 +108,7 @@ Functions
 +++++++++
 
 .. zeek:id:: FileExtract::__set_limit
+   :source-code: base/bif/plugins/Zeek_FileExtract.functions.bif.zeek 12 12
 
    :Type: :zeek:type:`function` (file_id: :zeek:type:`string`, args: :zeek:type:`any`, n: :zeek:type:`count`) : :zeek:type:`bool`
 
@@ -129,6 +132,7 @@ Events
 ++++++
 
 .. zeek:id:: file_hash
+   :source-code: base/bif/plugins/Zeek_FileHash.events.bif.zeek 15 15
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, kind: :zeek:type:`string`, hash: :zeek:type:`string`)
 
@@ -161,6 +165,7 @@ Events
 ++++++
 
 .. zeek:id:: pe_dos_header
+   :source-code: base/files/pe/main.zeek 72 75
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::DOSHeader`)
 
@@ -177,6 +182,7 @@ Events
    .. zeek:see:: pe_dos_code pe_file_header pe_optional_header pe_section_header
 
 .. zeek:id:: pe_dos_code
+   :source-code: base/bif/plugins/Zeek_PE.events.bif.zeek 25 25
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, code: :zeek:type:`string`)
 
@@ -193,6 +199,7 @@ Events
    .. zeek:see:: pe_dos_header pe_file_header pe_optional_header pe_section_header
 
 .. zeek:id:: pe_file_header
+   :source-code: base/files/pe/main.zeek 77 91
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::FileHeader`)
 
@@ -210,6 +217,7 @@ Events
    .. zeek:see:: pe_dos_header pe_dos_code pe_optional_header pe_section_header
 
 .. zeek:id:: pe_optional_header
+   :source-code: base/files/pe/main.zeek 92 120
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::OptionalHeader`)
 
@@ -228,6 +236,7 @@ Events
    .. zeek:see:: pe_dos_header pe_dos_code pe_file_header pe_section_header
 
 .. zeek:id:: pe_section_header
+   :source-code: base/files/pe/main.zeek 121 132
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::SectionHeader`)
 
@@ -257,6 +266,7 @@ Types
 +++++
 
 .. zeek:type:: Unified2::IDSEvent
+   :source-code: base/init-bare.zeek 4182 4204
 
    :Type: :zeek:type:`record`
 
@@ -301,6 +311,7 @@ Types
 
 
 .. zeek:type:: Unified2::Packet
+   :source-code: base/init-bare.zeek 4206 4213
 
    :Type: :zeek:type:`record`
 
@@ -321,6 +332,7 @@ Events
 ++++++
 
 .. zeek:id:: unified2_event
+   :source-code: policy/files/unified2/main.zeek 266 269
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ev: :zeek:type:`Unified2::IDSEvent`)
 
@@ -335,6 +347,7 @@ Events
    
 
 .. zeek:id:: unified2_packet
+   :source-code: policy/files/unified2/main.zeek 271 279
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, pkt: :zeek:type:`Unified2::Packet`)
 
@@ -365,6 +378,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
+   :source-code: base/init-bare.zeek 4252 4266
 
    :Type: :zeek:type:`record`
 
@@ -409,6 +423,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
+   :source-code: base/init-bare.zeek 4268 4274
 
    :Type: :zeek:type:`record`
 
@@ -429,6 +444,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
+   :source-code: base/init-bare.zeek 4276 4279
 
    :Type: :zeek:type:`record`
 
@@ -441,6 +457,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
+   :source-code: base/init-bare.zeek 4281 4287
 
    :Type: :zeek:type:`record`
 
@@ -461,6 +478,7 @@ Types
 
 
 .. zeek:type:: X509::Result
+   :source-code: base/init-bare.zeek 4290 4297
 
    :Type: :zeek:type:`record`
 
@@ -479,6 +497,7 @@ Events
 ++++++
 
 .. zeek:id:: x509_certificate
+   :source-code: base/bif/plugins/Zeek_X509.events.bif.zeek 20 20
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, cert_ref: :zeek:type:`opaque` of x509, cert: :zeek:type:`X509::Certificate`)
 
@@ -503,6 +522,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_extension
+   :source-code: base/files/x509/main.zeek 162 169
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::Extension`)
 
@@ -522,6 +542,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ext_basic_constraints
+   :source-code: base/files/x509/main.zeek 171 178
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::BasicConstraints`)
 
@@ -539,6 +560,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ext_subject_alternative_name
+   :source-code: base/bif/plugins/Zeek_X509.events.bif.zeek 63 63
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::SubjectAlternativeName`)
 
@@ -558,6 +580,7 @@ Events
                 x509_get_certificate_string
 
 .. zeek:id:: x509_ocsp_ext_signed_certificate_timestamp
+   :source-code: base/bif/plugins/Zeek_X509.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, version: :zeek:type:`count`, logid: :zeek:type:`string`, timestamp: :zeek:type:`count`, hash_algorithm: :zeek:type:`count`, signature_algorithm: :zeek:type:`count`, signature: :zeek:type:`string`)
 
@@ -595,6 +618,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_request
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 16 16
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, version: :zeek:type:`count`)
 
@@ -614,6 +638,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_request_certificate
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 37 37
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, hashAlgorithm: :zeek:type:`string`, issuerNameHash: :zeek:type:`string`, issuerKeyHash: :zeek:type:`string`, serialNumber: :zeek:type:`string`)
 
@@ -641,6 +666,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_status
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 52 52
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, status: :zeek:type:`string`)
 
@@ -660,6 +686,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_bytes
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 77 77
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, status: :zeek:type:`string`, version: :zeek:type:`count`, responderId: :zeek:type:`string`, producedAt: :zeek:type:`time`, signatureAlgorithm: :zeek:type:`string`, certs: :zeek:type:`x509_opaque_vector`)
 
@@ -694,6 +721,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_certificate
+   :source-code: policy/files/x509/log-ocsp.zeek 50 64
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, hashAlgorithm: :zeek:type:`string`, issuerNameHash: :zeek:type:`string`, issuerKeyHash: :zeek:type:`string`, serialNumber: :zeek:type:`string`, certStatus: :zeek:type:`string`, revokeTime: :zeek:type:`time`, revokeReason: :zeek:type:`string`, thisUpdate: :zeek:type:`time`, nextUpdate: :zeek:type:`time`)
 
@@ -735,6 +763,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_extension
+   :source-code: base/bif/plugins/Zeek_X509.ocsp_events.bif.zeek 122 122
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::Extension`, global_resp: :zeek:type:`bool`)
 
@@ -759,6 +788,7 @@ Functions
 +++++++++
 
 .. zeek:id:: x509_parse
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 15 15
 
    :Type: :zeek:type:`function` (cert: :zeek:type:`opaque` of x509) : :zeek:type:`X509::Certificate`
 
@@ -775,6 +805,7 @@ Functions
                 x509_get_certificate_string
 
 .. zeek:id:: x509_from_der
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 25 25
 
    :Type: :zeek:type:`function` (der: :zeek:type:`string`) : :zeek:type:`opaque` of x509
 
@@ -788,6 +819,7 @@ Functions
                 x509_get_certificate_string x509_parse
 
 .. zeek:id:: x509_get_certificate_string
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 40 40
 
    :Type: :zeek:type:`function` (cert: :zeek:type:`opaque` of x509, pem: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -808,6 +840,7 @@ Functions
                 x509_ext_subject_alternative_name x509_parse x509_verify
 
 .. zeek:id:: x509_ocsp_verify
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 59 59
 
    :Type: :zeek:type:`function` (certs: :zeek:type:`x509_opaque_vector`, ocsp_reply: :zeek:type:`string`, root_certs: :zeek:type:`table_string_of_string`, verify_time: :zeek:type:`time` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`) : :zeek:type:`X509::Result`
 
@@ -834,6 +867,7 @@ Functions
                 x509_get_certificate_string x509_verify
 
 .. zeek:id:: x509_verify
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 79 79
 
    :Type: :zeek:type:`function` (certs: :zeek:type:`x509_opaque_vector`, root_certs: :zeek:type:`table_string_of_string`, verify_time: :zeek:type:`time` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`) : :zeek:type:`X509::Result`
 
@@ -860,6 +894,7 @@ Functions
                 x509_get_certificate_string x509_ocsp_verify sct_verify
 
 .. zeek:id:: sct_verify
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 104 104
 
    :Type: :zeek:type:`function` (cert: :zeek:type:`opaque` of x509, logid: :zeek:type:`string`, log_key: :zeek:type:`string`, signature: :zeek:type:`string`, timestamp: :zeek:type:`count`, hash_algorithm: :zeek:type:`count`, issuer_key_hash: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -894,6 +929,7 @@ Functions
                 x509_verify
 
 .. zeek:id:: x509_subject_name_hash
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 121 121
 
    :Type: :zeek:type:`function` (cert: :zeek:type:`opaque` of x509, hash_alg: :zeek:type:`count`) : :zeek:type:`string`
 
@@ -914,6 +950,7 @@ Functions
                 x509_verify sct_verify
 
 .. zeek:id:: x509_issuer_name_hash
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 135 135
 
    :Type: :zeek:type:`function` (cert: :zeek:type:`opaque` of x509, hash_alg: :zeek:type:`count`) : :zeek:type:`string`
 
@@ -934,6 +971,7 @@ Functions
                 x509_verify sct_verify
 
 .. zeek:id:: x509_spki_hash
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 149 149
 
    :Type: :zeek:type:`function` (cert: :zeek:type:`opaque` of x509, hash_alg: :zeek:type:`count`) : :zeek:type:`string`
 
@@ -954,6 +992,7 @@ Functions
                 x509_verify sct_verify
 
 .. zeek:id:: x509_set_certificate_cache
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 168 168
 
    :Type: :zeek:type:`function` (tbl: :zeek:type:`string_any_table`) : :zeek:type:`bool`
 
@@ -978,6 +1017,7 @@ Functions
    .. zeek:see:: x509_set_certificate_cache_hit_callback
 
 .. zeek:id:: x509_set_certificate_cache_hit_callback
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 182 182
 
    :Type: :zeek:type:`function` (f: :zeek:type:`string_any_file_hook`) : :zeek:type:`bool`
 

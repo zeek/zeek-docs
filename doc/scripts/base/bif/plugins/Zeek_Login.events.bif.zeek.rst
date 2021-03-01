@@ -40,6 +40,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: activating_encryption
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 367 367
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -58,6 +59,7 @@ Events
       login_output_line login_prompt login_success login_terminal
 
 .. zeek:id:: authentication_accepted
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 279 279
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`)
 
@@ -88,6 +90,7 @@ Events
       signature.
 
 .. zeek:id:: authentication_rejected
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 305 305
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`)
 
@@ -118,6 +121,7 @@ Events
       signature.
 
 .. zeek:id:: authentication_skipped
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 330 330
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -146,6 +150,7 @@ Events
       signature.
 
 .. zeek:id:: bad_option
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 407 407
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -169,6 +174,7 @@ Events
       signature.
 
 .. zeek:id:: bad_option_termination
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 427 427
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -192,6 +198,7 @@ Events
       signature.
 
 .. zeek:id:: inconsistent_option
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 387 387
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -215,6 +222,7 @@ Events
       login_output_line login_prompt login_success login_terminal
 
 .. zeek:id:: login_confused
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 195 195
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -248,6 +256,7 @@ Events
       signature.
 
 .. zeek:id:: login_confused_text
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 217 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, line: :zeek:type:`string`)
 
@@ -274,6 +283,7 @@ Events
       signature.
 
 .. zeek:id:: login_display
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 253 253
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, display: :zeek:type:`string`)
 
@@ -296,6 +306,7 @@ Events
       signature.
 
 .. zeek:id:: login_failure
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 95 95
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, user: :zeek:type:`string`, client_user: :zeek:type:`string`, password: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -339,6 +350,7 @@ Events
       signature.
 
 .. zeek:id:: login_input_line
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 149 149
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, line: :zeek:type:`string`)
 
@@ -361,6 +373,7 @@ Events
       signature.
 
 .. zeek:id:: login_output_line
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 167 167
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, line: :zeek:type:`string`)
 
@@ -383,6 +396,7 @@ Events
       signature.
 
 .. zeek:id:: login_prompt
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 352 352
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prompt: :zeek:type:`string`)
 
@@ -409,6 +423,7 @@ Events
       signature.
 
 .. zeek:id:: login_success
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 131 131
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, user: :zeek:type:`string`, client_user: :zeek:type:`string`, password: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -452,6 +467,7 @@ Events
       signature.
 
 .. zeek:id:: login_terminal
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 235 235
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, terminal: :zeek:type:`string`)
 
@@ -474,6 +490,7 @@ Events
       signature.
 
 .. zeek:id:: rsh_reply
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 59 59
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, client_user: :zeek:type:`string`, server_user: :zeek:type:`string`, line: :zeek:type:`string`)
 
@@ -508,6 +525,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: rsh_request
+   :source-code: base/bif/plugins/Zeek_Login.events.bif.zeek 31 31
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, client_user: :zeek:type:`string`, server_user: :zeek:type:`string`, line: :zeek:type:`string`, new_session: :zeek:type:`bool`)
 

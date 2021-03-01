@@ -53,6 +53,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NetControl::DropInfo
+   :source-code: base/frameworks/netcontrol/drop.zeek 34 47
 
    :Type: :zeek:type:`record`
 
@@ -84,6 +85,7 @@ Types
 Events
 ######
 .. zeek:id:: NetControl::log_netcontrol_drop
+   :source-code: base/frameworks/netcontrol/drop.zeek 57 57
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`NetControl::DropInfo`)
 
@@ -93,6 +95,7 @@ Events
 Hooks
 #####
 .. zeek:id:: NetControl::drop_rule_policy
+   :source-code: base/frameworks/netcontrol/drop.zeek 53 53
 
    :Type: :zeek:type:`hook` (r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool`
 
@@ -103,6 +106,7 @@ Hooks
    :r: The rule to be added.
 
 .. zeek:id:: NetControl::log_policy_drop
+   :source-code: base/frameworks/netcontrol/drop.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -110,6 +114,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: NetControl::drop_address
+   :source-code: base/frameworks/netcontrol/drop.zeek 89 111
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, t: :zeek:type:`interval`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -128,6 +133,7 @@ Functions
    :returns: The id of the inserted rule on success and zero on failure.
 
 .. zeek:id:: NetControl::drop_connection
+   :source-code: base/frameworks/netcontrol/drop.zeek 65 87
 
    :Type: :zeek:type:`function` (c: :zeek:type:`conn_id`, t: :zeek:type:`interval`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`string`
 

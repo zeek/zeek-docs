@@ -70,6 +70,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Known::cert_store_expiry
+   :source-code: policy/protocols/ssl/known-certs.zeek 57 57
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -79,6 +80,7 @@ Runtime Options
    This also changes the interval at which certs get logged.
 
 .. zeek:id:: Known::cert_store_timeout
+   :source-code: policy/protocols/ssl/known-certs.zeek 61 61
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +90,7 @@ Runtime Options
    :zeek:see:`Known::cert_store`.
 
 .. zeek:id:: Known::cert_tracking
+   :source-code: policy/protocols/ssl/known-certs.zeek 34 34
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -105,6 +108,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Known::cert_store_name
+   :source-code: policy/protocols/ssl/known-certs.zeek 53 53
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -113,6 +117,7 @@ Redefinable Options
    The Broker topic name to use for :zeek:see:`Known::cert_store`.
 
 .. zeek:id:: Known::use_cert_store
+   :source-code: policy/protocols/ssl/known-certs.zeek 40 40
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -126,6 +131,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Known::cert_store
+   :source-code: policy/protocols/ssl/known-certs.zeek 50 50
 
    :Type: :zeek:type:`Cluster::StoreInfo`
    :Default:
@@ -150,6 +156,7 @@ State Variables
    always the boolean value of "true".
 
 .. zeek:id:: Known::certs
+   :source-code: policy/protocols/ssl/known-certs.zeek 70 70
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -166,6 +173,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Known::AddrCertHashPair
+   :source-code: policy/protocols/ssl/known-certs.zeek 42 45
 
    :Type: :zeek:type:`record`
 
@@ -175,6 +183,7 @@ Types
 
 
 .. zeek:type:: Known::CertsInfo
+   :source-code: policy/protocols/ssl/known-certs.zeek 16 30
 
    :Type: :zeek:type:`record`
 
@@ -201,6 +210,7 @@ Types
 Events
 ######
 .. zeek:id:: Known::log_known_certs
+   :source-code: policy/protocols/ssl/known-certs.zeek 74 74
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Known::CertsInfo`)
 
@@ -210,6 +220,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Known::log_policy_certs
+   :source-code: policy/protocols/ssl/known-certs.zeek 14 14
 
    :Type: :zeek:type:`Log::PolicyHook`
 

@@ -58,6 +58,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Log::scp_rotation_date_format
+   :source-code: base/frameworks/logging/postprocessors/scp.zeek 53 53
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -69,6 +70,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Log::scp_destinations
+   :source-code: base/frameworks/logging/postprocessors/scp.zeek 49 49
 
    :Type: :zeek:type:`table` [:zeek:type:`Log::Writer`, :zeek:type:`string`] of :zeek:type:`set` [:zeek:type:`Log::SCPDestination`]
    :Default: ``{}``
@@ -82,6 +84,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Log::SCPDestination
+   :source-code: base/frameworks/logging/postprocessors/scp.zeek 34 42
 
    :Type: :zeek:type:`record`
 
@@ -101,6 +104,7 @@ Types
 Functions
 #########
 .. zeek:id:: Log::scp_postprocessor
+   :source-code: base/frameworks/logging/postprocessors/scp.zeek 56 73
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
 

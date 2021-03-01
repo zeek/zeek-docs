@@ -60,6 +60,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ssl_alert
+   :source-code: base/protocols/ssl/main.zeek 326 331
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, level: :zeek:type:`count`, desc: :zeek:type:`count`)
 
@@ -90,6 +91,7 @@ Events
       ssl_session_ticket_handshake
 
 .. zeek:id:: ssl_change_cipher_spec
+   :source-code: base/protocols/ssl/main.zeek 318 324
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -107,6 +109,7 @@ Events
       ssl_handshake_message
 
 .. zeek:id:: ssl_client_hello
+   :source-code: base/protocols/ssl/main.zeek 214 224
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`, record_version: :zeek:type:`count`, possible_ts: :zeek:type:`time`, client_random: :zeek:type:`string`, session_id: :zeek:type:`string`, ciphers: :zeek:type:`index_vec`, comp_methods: :zeek:type:`index_vec`)
 
@@ -157,6 +160,7 @@ Events
       ssl_rsa_client_pms
 
 .. zeek:id:: ssl_dh_client_params
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 327 327
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, Yc: :zeek:type:`string`)
 
@@ -175,6 +179,7 @@ Events
       ssl_ecdh_server_params ssl_ecdh_client_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_dh_server_params
+   :source-code: policy/protocols/ssl/weak-keys.zeek 103 132
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string`, q: :zeek:type:`string`, Ys: :zeek:type:`string`)
 
@@ -200,6 +205,7 @@ Events
       ssl_rsa_client_pms
 
 .. zeek:id:: ssl_ecdh_client_params
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 313 313
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, point: :zeek:type:`string`)
 
@@ -218,6 +224,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_ecdh_server_params
+   :source-code: base/protocols/ssl/main.zeek 253 258
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, curve: :zeek:type:`count`, point: :zeek:type:`string`)
 
@@ -239,6 +246,7 @@ Events
       ssl_dh_client_params ssl_ecdh_client_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_encrypted_data
+   :source-code: policy/protocols/ssl/heartbleed.zeek 226 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -269,6 +277,7 @@ Events
       ssl_alert ssl_heartbeat ssl_probable_encrypted_handshake_message
 
 .. zeek:id:: ssl_established
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 475 475
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -288,6 +297,7 @@ Events
       ssl_session_ticket_handshake x509_certificate
 
 .. zeek:id:: ssl_extension
+   :source-code: base/protocols/ssl/main.zeek 302 316
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, code: :zeek:type:`count`, val: :zeek:type:`string`)
 
@@ -320,6 +330,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_application_layer_protocol_negotiation
+   :source-code: base/protocols/ssl/main.zeek 281 290
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, protocols: :zeek:type:`string_vec`)
 
@@ -348,6 +359,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_ec_point_formats
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 156 156
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, point_formats: :zeek:type:`index_vec`)
 
@@ -376,6 +388,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_elliptic_curves
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 133 133
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
 
@@ -402,6 +415,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_key_share
+   :source-code: base/protocols/ssl/main.zeek 260 267
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
 
@@ -428,6 +442,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_pre_shared_key_client_hello
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 222 222
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, identities: :zeek:type:`psk_identity_vec`, binders: :zeek:type:`string_vec`)
 
@@ -457,6 +472,7 @@ Events
       ssl_rsa_client_pms ssl_server_signature ssl_extension_pre_shared_key_server_hello
 
 .. zeek:id:: ssl_extension_pre_shared_key_server_hello
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 241 241
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, selected_identity: :zeek:type:`count`)
 
@@ -481,6 +497,7 @@ Events
       ssl_rsa_client_pms ssl_server_signature ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_psk_key_exchange_modes
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 459 459
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, modes: :zeek:type:`index_vec`)
 
@@ -505,6 +522,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_server_name
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 387 387
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, names: :zeek:type:`string_vec`)
 
@@ -533,6 +551,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_signature_algorithm
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 178 178
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`)
 
@@ -560,6 +579,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_signed_certificate_timestamp
+   :source-code: policy/protocols/ssl/validate-sct.zeek 77 80
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, logid: :zeek:type:`string`, timestamp: :zeek:type:`count`, signature_and_hashalgorithm: :zeek:type:`SSL::SignatureAndHashAlgorithm`, signature: :zeek:type:`string`)
 
@@ -601,6 +621,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_supported_versions
+   :source-code: base/protocols/ssl/main.zeek 242 251
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, versions: :zeek:type:`index_vec`)
 
@@ -627,6 +648,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_handshake_message
+   :source-code: base/protocols/ssl/main.zeek 292 298
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -649,6 +671,7 @@ Events
       ssl_change_cipher_spec
 
 .. zeek:id:: ssl_heartbeat
+   :source-code: policy/protocols/ssl/heartbleed.zeek 82 119
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`, heartbeat_type: :zeek:type:`count`, payload_length: :zeek:type:`count`, payload: :zeek:type:`string`)
 
@@ -680,6 +703,7 @@ Events
       ssl_alert ssl_encrypted_data
 
 .. zeek:id:: ssl_plaintext_data
+   :source-code: base/protocols/ssl/main.zeek 370 379
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -711,6 +735,7 @@ Events
       ssl_alert ssl_heartbeat
 
 .. zeek:id:: ssl_probable_encrypted_handshake_message
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 625 625
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`)
 
@@ -750,6 +775,7 @@ Events
       ssl_encrypted_data
 
 .. zeek:id:: ssl_rsa_client_pms
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 341 341
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, pms: :zeek:type:`string`)
 
@@ -768,6 +794,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_ecdh_client_params
 
 .. zeek:id:: ssl_server_hello
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 86 86
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`count`, record_version: :zeek:type:`count`, possible_ts: :zeek:type:`time`, server_random: :zeek:type:`string`, session_id: :zeek:type:`string`, cipher: :zeek:type:`count`, comp_method: :zeek:type:`count`)
 
@@ -823,6 +850,7 @@ Events
       ssl_rsa_client_pms
 
 .. zeek:id:: ssl_server_signature
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 299 299
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, signature_and_hashalgorithm: :zeek:type:`SSL::SignatureAndHashAlgorithm`, signature: :zeek:type:`string`)
 
@@ -851,6 +879,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_ecdh_client_params
 
 .. zeek:id:: ssl_session_ticket_handshake
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 521 521
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, ticket_lifetime_hint: :zeek:type:`count`, ticket: :zeek:type:`string`)
 
@@ -878,6 +907,7 @@ Events
       ssl_alert
 
 .. zeek:id:: ssl_stapled_ocsp
+   :source-code: policy/protocols/ssl/validate-ocsp.zeek 34 37
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, response: :zeek:type:`string`)
 

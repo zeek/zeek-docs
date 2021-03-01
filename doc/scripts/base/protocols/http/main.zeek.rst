@@ -67,6 +67,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: HTTP::default_capture_password
+   :source-code: base/protocols/http/main.zeek 25 25
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -76,6 +77,7 @@ Runtime Options
    not.
 
 .. zeek:id:: HTTP::http_methods
+   :source-code: base/protocols/http/main.zeek 117 117
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -112,6 +114,7 @@ Runtime Options
    of letters ``[A-Za-z]``.
 
 .. zeek:id:: HTTP::proxy_headers
+   :source-code: base/protocols/http/main.zeek 104 104
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -135,6 +138,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: HTTP::Info
+   :source-code: base/protocols/http/main.zeek 28 86
 
    :Type: :zeek:type:`record`
 
@@ -302,6 +306,7 @@ Types
    The record type which contains the fields of the HTTP log.
 
 .. zeek:type:: HTTP::State
+   :source-code: base/protocols/http/main.zeek 90 101
 
    :Type: :zeek:type:`record`
 
@@ -323,6 +328,7 @@ Types
    requests and responses.
 
 .. zeek:type:: HTTP::Tags
+   :source-code: base/protocols/http/main.zeek 18 22
 
    :Type: :zeek:type:`enum`
 
@@ -359,6 +365,7 @@ Types
 Events
 ######
 .. zeek:id:: HTTP::log_http
+   :source-code: base/protocols/http/main.zeek 129 129
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`HTTP::Info`)
 
@@ -368,12 +375,14 @@ Events
 Hooks
 #####
 .. zeek:id:: HTTP::finalize_http
+   :source-code: base/protocols/http/main.zeek 333 346
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    HTTP finalization hook.  Remaining HTTP info may get logged when it's called.
 
 .. zeek:id:: HTTP::log_policy
+   :source-code: base/protocols/http/main.zeek 15 15
 
    :Type: :zeek:type:`Log::PolicyHook`
 

@@ -57,6 +57,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DCE_RPC::ignored_operations
+   :source-code: base/protocols/dce-rpc/main.zeek 34 34
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -91,6 +92,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: DCE_RPC::BackingState
+   :source-code: base/protocols/dce-rpc/main.zeek 48 51
 
    :Type: :zeek:type:`record`
 
@@ -100,6 +102,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::Info
+   :source-code: base/protocols/dce-rpc/main.zeek 12 30
 
    :Type: :zeek:type:`record`
 
@@ -128,6 +131,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::State
+   :source-code: base/protocols/dce-rpc/main.zeek 40 44
 
    :Type: :zeek:type:`record`
 
@@ -141,12 +145,14 @@ Types
 Hooks
 #####
 .. zeek:id:: DCE_RPC::finalize_dce_rpc
+   :source-code: base/protocols/dce-rpc/main.zeek 220 253
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    DCE_RPC finalization hook.  Remaining DCE_RPC info may get logged when it's called.
 
 .. zeek:id:: DCE_RPC::log_policy
+   :source-code: base/protocols/dce-rpc/main.zeek 10 10
 
    :Type: :zeek:type:`Log::PolicyHook`
 

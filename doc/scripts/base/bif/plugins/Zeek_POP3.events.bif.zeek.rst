@@ -27,6 +27,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: pop3_data
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 76 76
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data: :zeek:type:`string`)
 
@@ -56,6 +57,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_login_failure
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 168 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, password: :zeek:type:`string`)
 
@@ -86,6 +88,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_login_success
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 144 144
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, password: :zeek:type:`string`)
 
@@ -116,6 +119,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_reply
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 52 52
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, cmd: :zeek:type:`string`, msg: :zeek:type:`string`)
 
@@ -149,6 +153,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_request
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 25 25
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -179,6 +184,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_starttls
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 120 120
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -202,6 +208,7 @@ Events
       register a port for it or add a DPD payload signature.
 
 .. zeek:id:: pop3_unexpected
+   :source-code: base/bif/plugins/Zeek_POP3.events.bif.zeek 100 100
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`string`, detail: :zeek:type:`string`)
 

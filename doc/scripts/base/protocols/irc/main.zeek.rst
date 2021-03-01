@@ -52,6 +52,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: IRC::Info
+   :source-code: base/protocols/irc/main.zeek 13 31
 
    :Type: :zeek:type:`record`
 
@@ -103,6 +104,7 @@ Types
 Events
 ######
 .. zeek:id:: IRC::irc_log
+   :source-code: base/protocols/irc/main.zeek 35 35
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`IRC::Info`)
 
@@ -112,6 +114,7 @@ Events
 Hooks
 #####
 .. zeek:id:: IRC::log_policy
+   :source-code: base/protocols/irc/main.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

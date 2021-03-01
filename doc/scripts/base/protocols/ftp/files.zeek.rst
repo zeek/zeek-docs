@@ -39,12 +39,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: FTP::describe_file
+   :source-code: base/protocols/ftp/files.zeek 34 47
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
    Describe the file being transferred.
 
 .. zeek:id:: FTP::get_file_handle
+   :source-code: base/protocols/ftp/files.zeek 26 32
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 

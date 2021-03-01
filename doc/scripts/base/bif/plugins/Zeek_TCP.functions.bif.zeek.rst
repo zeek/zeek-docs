@@ -25,6 +25,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: get_contents_file
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 80 80
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, direction: :zeek:type:`count`) : :zeek:type:`file`
 
@@ -46,6 +47,7 @@ Functions
    .. zeek:see:: set_contents_file set_record_packets contents_file_write_failure
 
 .. zeek:id:: get_orig_seq
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 17 17
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`count`
 
@@ -63,6 +65,7 @@ Functions
    .. zeek:see:: get_resp_seq
 
 .. zeek:id:: get_resp_seq
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 30 30
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`count`
 
@@ -80,6 +83,7 @@ Functions
    .. zeek:see:: get_orig_seq
 
 .. zeek:id:: set_contents_file
+   :source-code: base/bif/plugins/Zeek_TCP.functions.bif.zeek 64 64
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, direction: :zeek:type:`count`, f: :zeek:type:`file`) : :zeek:type:`bool`
 

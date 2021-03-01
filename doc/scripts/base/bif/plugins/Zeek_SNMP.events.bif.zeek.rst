@@ -36,6 +36,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: snmp_encrypted_pdu
+   :source-code: base/protocols/snmp/main.zeek 182 185
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`)
 
@@ -52,6 +53,7 @@ Events
            SNMP message structure.
 
 .. zeek:id:: snmp_get_bulk_request
+   :source-code: base/protocols/snmp/main.zeek 115 119
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::BulkPDU`)
 
@@ -71,6 +73,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_get_next_request
+   :source-code: base/protocols/snmp/main.zeek 121 125
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -91,6 +94,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_get_request
+   :source-code: base/protocols/snmp/main.zeek 109 113
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -110,6 +114,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_inform_request
+   :source-code: base/protocols/snmp/main.zeek 157 160
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -129,6 +134,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_report
+   :source-code: base/protocols/snmp/main.zeek 167 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -148,6 +154,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_response
+   :source-code: base/protocols/snmp/main.zeek 127 145
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -168,6 +175,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_set_request
+   :source-code: base/protocols/snmp/main.zeek 146 150
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -187,6 +195,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_trap
+   :source-code: base/protocols/snmp/main.zeek 152 155
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::TrapPDU`)
 
@@ -206,6 +215,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_trapV2
+   :source-code: base/protocols/snmp/main.zeek 162 165
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -225,6 +235,7 @@ Events
    :pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_unknown_header_version
+   :source-code: base/bif/plugins/Zeek_SNMP.events.bif.zeek 168 168
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`)
 
@@ -240,6 +251,7 @@ Events
    :version: The value of the unknown SNMP version.
 
 .. zeek:id:: snmp_unknown_pdu
+   :source-code: base/protocols/snmp/main.zeek 172 175
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, tag: :zeek:type:`count`)
 
@@ -259,6 +271,7 @@ Events
    :tag: The tag of the unknown SNMP PDU.
 
 .. zeek:id:: snmp_unknown_scoped_pdu
+   :source-code: base/protocols/snmp/main.zeek 177 180
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, tag: :zeek:type:`count`)
 

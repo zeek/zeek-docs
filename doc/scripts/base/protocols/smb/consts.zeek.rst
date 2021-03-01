@@ -52,6 +52,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: SMB::rpc_sub_cmds
+   :source-code: base/protocols/smb/consts.zeek 112 112
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`SMB::rpc_cmd_table`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = :zeek:type:`function`
@@ -138,6 +139,7 @@ Redefinable Options
    The subcommands for RPC endpoints.
 
 .. zeek:id:: SMB::rpc_uuids
+   :source-code: base/protocols/smb/consts.zeek 28 28
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = :zeek:type:`function`
@@ -154,6 +156,7 @@ Redefinable Options
    The UUIDs used by the various RPC endpoints.
 
 .. zeek:id:: SMB::srv_cmds
+   :source-code: base/protocols/smb/consts.zeek 34 34
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = :zeek:type:`function`
@@ -215,6 +218,7 @@ Redefinable Options
    Server service sub commands.
 
 .. zeek:id:: SMB::statuses
+   :source-code: base/protocols/smb/consts.zeek 9 9
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::StatusCode`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = :zeek:type:`function`
@@ -241,6 +245,7 @@ Redefinable Options
 
 
 .. zeek:id:: SMB::wksta_cmds
+   :source-code: base/protocols/smb/consts.zeek 85 85
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef` :zeek:attr:`&default` = :zeek:type:`function`
@@ -278,6 +283,7 @@ Redefinable Options
 Constants
 #########
 .. zeek:id:: SMB1::commands
+   :source-code: base/protocols/smb/consts.zeek 122 122
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -363,6 +369,7 @@ Constants
 
 
 .. zeek:id:: SMB1::trans2_sub_commands
+   :source-code: base/protocols/smb/consts.zeek 197 197
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -393,6 +400,7 @@ Constants
 
 
 .. zeek:id:: SMB1::trans_sub_commands
+   :source-code: base/protocols/smb/consts.zeek 217 217
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -417,6 +425,7 @@ Constants
 
 
 .. zeek:id:: SMB2::commands
+   :source-code: base/protocols/smb/consts.zeek 235 235
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -449,6 +458,7 @@ Constants
 
 
 .. zeek:id:: SMB2::dialects
+   :source-code: base/protocols/smb/consts.zeek 257 257
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -468,6 +478,7 @@ Constants
 
 
 .. zeek:id:: SMB2::share_types
+   :source-code: base/protocols/smb/consts.zeek 266 266
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -486,6 +497,7 @@ Constants
 Types
 #####
 .. zeek:type:: SMB::StatusCode
+   :source-code: base/protocols/smb/consts.zeek 4 7
 
    :Type: :zeek:type:`record`
 
@@ -495,6 +507,7 @@ Types
 
 
 .. zeek:type:: SMB::rpc_cmd_table
+   :source-code: base/protocols/smb/consts.zeek 109 109
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
 

@@ -52,6 +52,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: ConnThreshold::Thresholds
+   :source-code: base/protocols/conn/thresholds.zeek 8 14
 
    :Type: :zeek:type:`record`
 
@@ -74,6 +75,7 @@ Types
 Events
 ######
 .. zeek:id:: ConnThreshold::bytes_threshold_crossed
+   :source-code: base/protocols/ftp/gridftp.zeek 73 86
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`)
 
@@ -89,6 +91,7 @@ Events
    :is_orig: True if the threshold was crossed by the originator of the connection
 
 .. zeek:id:: ConnThreshold::duration_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 109 109
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`interval`, is_orig: :zeek:type:`bool`)
 
@@ -107,6 +110,7 @@ Events
    :is_orig: True if the threshold was crossed by the originator of the connection
 
 .. zeek:id:: ConnThreshold::packets_threshold_crossed
+   :source-code: base/protocols/conn/thresholds.zeek 97 97
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`)
 
@@ -124,6 +128,7 @@ Events
 Functions
 #########
 .. zeek:id:: ConnThreshold::delete_bytes_threshold
+   :source-code: base/protocols/conn/thresholds.zeek 266 284
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -142,6 +147,7 @@ Functions
    :returns: T on success, F on failure.
 
 .. zeek:id:: ConnThreshold::delete_duration_threshold
+   :source-code: base/protocols/conn/thresholds.zeek 306 318
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, threshold: :zeek:type:`interval`) : :zeek:type:`bool`
 
@@ -157,6 +163,7 @@ Functions
    :returns: T on success, F on failure.
 
 .. zeek:id:: ConnThreshold::delete_packets_threshold
+   :source-code: base/protocols/conn/thresholds.zeek 286 304
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -175,6 +182,7 @@ Functions
    :returns: T on success, F on failure.
 
 .. zeek:id:: ConnThreshold::set_bytes_threshold
+   :source-code: base/protocols/conn/thresholds.zeek 224 237
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -194,6 +202,7 @@ Functions
    :returns: T on success, F on failure.
 
 .. zeek:id:: ConnThreshold::set_duration_threshold
+   :source-code: base/protocols/conn/thresholds.zeek 254 264
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, threshold: :zeek:type:`interval`) : :zeek:type:`bool`
 
@@ -210,6 +219,7 @@ Functions
    :returns: T on success, F on failure.
 
 .. zeek:id:: ConnThreshold::set_packets_threshold
+   :source-code: base/protocols/conn/thresholds.zeek 239 252
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 

@@ -22,6 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_query_information_request
+   :source-code: base/bif/plugins/Zeek_SMB.smb1_com_query_information.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, filename: :zeek:type:`string`)
 
