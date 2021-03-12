@@ -137,7 +137,7 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
+      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
          Timestamp of the command request.
 
       uid: :zeek:type:`string` :zeek:attr:`&log`
@@ -197,7 +197,7 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
+      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
          Time when the file was first discovered.
 
       uid: :zeek:type:`string` :zeek:attr:`&log`
@@ -278,7 +278,7 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
          Time when the tree was mapped.
 
       uid: :zeek:type:`string` :zeek:attr:`&log`
