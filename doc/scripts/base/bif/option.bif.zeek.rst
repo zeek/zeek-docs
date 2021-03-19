@@ -14,16 +14,32 @@ Summary
 ~~~~~~~
 Functions
 #########
-============================================================ ===================================
+============================================================ ================================================================
+:zeek:id:`Option::any_set_to_any_vec`: :zeek:type:`function` Helper function that converts a set (of arbitrary index type) to
+                                                             a "vector of any".
 :zeek:id:`Option::set`: :zeek:type:`function`                Set an option to a new value.
 :zeek:id:`Option::set_change_handler`: :zeek:type:`function` Set a change handler for an option.
-============================================================ ===================================
+============================================================ ================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Functions
 #########
+.. zeek:id:: Option::any_set_to_any_vec
+   :source-code: base/bif/option.bif.zeek 65 65
+
+   :Type: :zeek:type:`function` (v: :zeek:type:`any`) : :zeek:type:`any_vec`
+
+   Helper function that converts a set (of arbitrary index type) to
+   a "vector of any".
+   
+
+   :v: an "any" type corresponding to a set.
+   
+
+   :returns: a vector-of-any with one element for each member of v.
+
 .. zeek:id:: Option::set
    :source-code: base/bif/option.bif.zeek 29 29
 
