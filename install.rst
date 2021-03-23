@@ -107,6 +107,16 @@ To install the required dependencies, you can use:
   ``swig``, ``swig-python``, ``openssl``, and ``bison`` packages provide
   the required dependencies.
 
+  Note that MacOS may ship with an outdated version of Bison that may
+  take precedence over the newer version of Bison installed with
+  a package manager. To use the (required) newer version, set
+  ``CMAKE_PREFIX_PATH``; for example:
+
+  .. code-block:: console
+
+     brew install bison cmake swig openssl
+     CMAKE_PREFIX_PATH="$(brew --prefix bison)" ./configure
+
 Optional Dependencies
 ---------------------
 
