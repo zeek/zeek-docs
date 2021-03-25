@@ -9129,7 +9129,7 @@ Types
 
       post_beta2_color_depth: :zeek:type:`count` :zeek:attr:`&optional`
 
-      client_product_id: :zeek:type:`string` :zeek:attr:`&optional`
+      client_product_id: :zeek:type:`count` :zeek:attr:`&optional`
 
       serial_number: :zeek:type:`count` :zeek:attr:`&optional`
 
@@ -11598,7 +11598,7 @@ Types
       security_mode: :zeek:type:`count`
          The security mode field specifies whether SMB signing is enabled, required at the server, or both.
 
-      server_guid: :zeek:type:`string`
+      server_guid: :zeek:type:`SMB2::GUID`
          A globally unique identifier that is generate by the server to uniquely identify the server.
 
       system_time: :zeek:type:`time`
