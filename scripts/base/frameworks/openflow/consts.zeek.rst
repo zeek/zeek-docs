@@ -232,7 +232,7 @@ Constants
    :source-code: base/frameworks/openflow/consts.zeek 126 126
 
    :Type: :zeek:type:`count`
-   :Default: ``18446744073709551615``
+   :Default: ``9223372036854775807``
 
    Return value for a cookie from a flow
    which is not added, modified or deleted
