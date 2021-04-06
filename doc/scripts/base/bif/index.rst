@@ -106,6 +106,10 @@ Package: base/bif
 :doc:`/scripts/base/bif/__load__.zeek`
 
 
+:doc:`/scripts/base/bif/telemetry.bif.zeek`
+
+   Functions for accessing counter metrics from script land.
+
 :doc:`/scripts/base/bif/zeekygen.bif.zeek`
 
    Functions for querying script, package, or variable documentation.
