@@ -361,6 +361,8 @@ In this example, Zeek passes not only the message, the query, query
 type and query class for the DNS request, but also a record used
 for the connection itself.
 
+.. _writing-scripts-connection-record:
+
 The Connection Record Data Type
 ===============================
 
@@ -375,9 +377,28 @@ to get an overview of it.  We will cover data types in more detail
 later.
 
 While Zeek is capable of packet level processing, its strengths lay in
-the context of a connection between an originator and a responder.  As
-such, there are events defined for the primary parts of the connection
-life-cycle such as the following:
+the context of a connection between an *originator* and a *responder*.
+
+.. note::
+
+   Zeek's notions of originator and responder aim to capture the
+   natural roles of connection endpoints given the protocol
+   information observed. They differ from the packet-level concepts of
+   source and destination, as well as from higher-level abstractions
+   such as client and server.
+
+   Zeek's protocol analyzers determine originator and responder when
+   establishing connection state, with the sender of the initial
+   packet usually becoming the originator and the recipient becoming
+   the responder. However, analyzers may subsequently *flip* the roles
+   if protocol semantics suggest it. For example, in the presence of
+   packet loss the first observed packet in a DNS transaction may
+   indicate that it is in fact the response to a missing query. Zeek's
+   DNS analyzer will flip the endpoint roles, making the sender of
+   this packet the connection's responder.
+
+Zeek defines events for the primary parts of the connection life-cycle,
+such as the following:
 
 * :zeek:see:`new_connection`
 * :zeek:see:`connection_timeout`
