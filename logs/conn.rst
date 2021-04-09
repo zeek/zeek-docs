@@ -14,8 +14,9 @@ meaning of each field in the :file:`conn.log` (and other logs). It would be
 duplicative to manually recreate that information in another format here.
 Therefore, this entry seeks to show how an analyst would make use of the
 information in the conn.log. Those interested in getting details on every
-element of the :file:`conn.log` should reference
-:zeek:see:`Conn::Info`.
+element of the :file:`conn.log` should reference :zeek:see:`Conn::Info`.
+For additional explanation, including Zeek's notions of originator and
+responder, see :ref:`writing-scripts-connection-record`.
 
 Throughout the sections that follow, we will inspect Zeek logs in JSON format.
 
