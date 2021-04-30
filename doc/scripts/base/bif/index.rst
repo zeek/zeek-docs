@@ -174,6 +174,9 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_FTP.functions.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_Geneve.events.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_Gnutella.events.bif.zeek`
 
 

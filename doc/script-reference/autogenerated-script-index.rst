@@ -112,6 +112,7 @@
    base/bif/plugins/Zeek_Finger.events.bif.zeek </scripts/base/bif/plugins/Zeek_Finger.events.bif.zeek>
    base/bif/plugins/Zeek_FTP.events.bif.zeek </scripts/base/bif/plugins/Zeek_FTP.events.bif.zeek>
    base/bif/plugins/Zeek_FTP.functions.bif.zeek </scripts/base/bif/plugins/Zeek_FTP.functions.bif.zeek>
+   base/bif/plugins/Zeek_Geneve.events.bif.zeek </scripts/base/bif/plugins/Zeek_Geneve.events.bif.zeek>
    base/bif/plugins/Zeek_Gnutella.events.bif.zeek </scripts/base/bif/plugins/Zeek_Gnutella.events.bif.zeek>
    base/bif/plugins/Zeek_GSSAPI.events.bif.zeek </scripts/base/bif/plugins/Zeek_GSSAPI.events.bif.zeek>
    base/bif/plugins/Zeek_GTPv1.events.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek>

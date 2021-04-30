@@ -276,7 +276,7 @@ Types
 
 
 .. zeek:type:: Reporter::Level
-   :source-code: base/bif/types.bif.zeek 260 260
+   :source-code: base/bif/types.bif.zeek 261 261
 
    :Type: :zeek:type:`enum`
 
@@ -288,7 +288,7 @@ Types
 
 
 .. zeek:type:: TableChange
-   :source-code: base/bif/types.bif.zeek 249 249
+   :source-code: base/bif/types.bif.zeek 250 250
 
    :Type: :zeek:type:`enum`
 
@@ -324,9 +324,11 @@ Types
 
       .. zeek:enum:: Tunnel::VXLAN Tunnel::Type
 
+      .. zeek:enum:: Tunnel::GENEVE Tunnel::Type
+
 
 .. zeek:type:: layer3_proto
-   :source-code: base/bif/types.bif.zeek 227 227
+   :source-code: base/bif/types.bif.zeek 228 228
 
    :Type: :zeek:type:`enum`
 
@@ -340,7 +342,7 @@ Types
 
 
 .. zeek:type:: link_encap
-   :source-code: base/bif/types.bif.zeek 221 221
+   :source-code: base/bif/types.bif.zeek 222 222
 
    :Type: :zeek:type:`enum`
 
