@@ -35,6 +35,8 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_FTP_ADAT Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_GENEVE Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_GNUTELLA Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_GSSAPI Analyzer::Tag
@@ -681,7 +683,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5087 5087
+   :source-code: base/init-bare.zeek 5093 5093
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -692,7 +694,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5092 5092
+   :source-code: base/init-bare.zeek 5098 5098
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -3087,6 +3089,39 @@ Functions
    :returns: The FTP PORT string.
    
    .. zeek:see:: parse_ftp_port parse_eftp_port parse_ftp_pasv parse_ftp_epsv
+
+Zeek::Geneve
+------------
+
+Geneve analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`Analyzer::ANALYZER_GENEVE`
+
+Events
+++++++
+
+.. zeek:id:: geneve_packet
+   :source-code: base/bif/plugins/Zeek_Geneve.events.bif.zeek 15 15
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`pkt_hdr`, vni: :zeek:type:`count`)
+
+   Generated for any packet encapsulated in a Geneve tunnel.
+   See :rfc:`8926` for more information about the VXLAN protocol.
+   
+
+   :outer: The Geneve tunnel connection.
+   
+
+   :inner: The Geneve-encapsulated Ethernet packet header and transport header.
+   
+
+   :vni: Geneve Network Identifier.
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
 
 Zeek::Gnutella
 --------------
@@ -7417,7 +7452,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5277 5307
+   :source-code: base/init-bare.zeek 5283 5313
 
    :Type: :zeek:type:`record`
 
@@ -7459,7 +7494,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5309 5318
+   :source-code: base/init-bare.zeek 5315 5324
 
    :Type: :zeek:type:`record`
 
@@ -7474,7 +7509,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5320 5342
+   :source-code: base/init-bare.zeek 5326 5348
 
    :Type: :zeek:type:`record`
 
@@ -7851,7 +7886,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5098 5098
+   :source-code: base/init-bare.zeek 5104 5104
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8498,7 +8533,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5106 5159
+   :source-code: base/init-bare.zeek 5112 5165
 
    :Type: :zeek:type:`record`
 
@@ -8573,7 +8608,7 @@ Types
    for standard syncronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5164 5198
+   :source-code: base/init-bare.zeek 5170 5204
 
    :Type: :zeek:type:`record`
 
@@ -8624,7 +8659,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5207 5240
+   :source-code: base/init-bare.zeek 5213 5246
 
    :Type: :zeek:type:`record`
 
@@ -8675,7 +8710,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5245 5272
+   :source-code: base/init-bare.zeek 5251 5278
 
    :Type: :zeek:type:`record`
 
