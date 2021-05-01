@@ -1080,7 +1080,7 @@ arguments.  For example:
 
 .. code-block:: zeek
 
-    global myhook: hook(s: string)
+    global myhook: hook(s: string, vs: vector of string);
 
 Here ``myhook`` is the hook type identifier and no hook handler
 bodies have been defined for it yet.  To define some hook handler
@@ -1088,21 +1088,22 @@ bodies the syntax looks like:
 
 .. code-block:: zeek
 
-    hook myhook(s: string) &priority=10
+    hook myhook(s: string, vs: vector of string) &priority=10
         {
-        print "priority 10 myhook handler", s;
+        print "priority 10 myhook handler", s, vs;
         s = "bye";
+        vs += "modified";
         }
 
-    hook myhook(s: string)
+    hook myhook(s: string, vs: vector of string)
         {
-        print "break out of myhook handling", s;
+        print "break out of myhook handling", s, vs;
         break;
         }
 
-    hook myhook(s: string) &priority=-5
+    hook myhook(s: string, vs: vector of string) &priority=-5
         {
-        print "not going to happen", s;
+        print "not going to happen", s, vs;
         }
 
 Note that the first (forward) declaration of ``myhook`` as a hook
@@ -1115,22 +1116,24 @@ keyword:
 
 .. code-block:: zeek
 
-    hook myhook("hi");
+    hook myhook("hi", vector("foo"));
 
 or
 
 .. code-block:: zeek
 
-    if ( hook myhook("hi") )
+    if ( hook myhook("hi", vector("foo")) )
         print "all handlers ran";
 
 And the output would look like::
 
-    priority 10 myhook handler, hi
-    break out of myhook handling, bye
+    priority 10 myhook handler, hi, [foo]
+    break out of myhook handling, hi, [foo, modified]
 
-Note how the modification to arguments can be seen by remaining
-hook handlers.
+Note how the re-assigning of a ``hook`` argument (``s = "bye"`` in the example)
+will not be visible to remaining ``hook`` handlers, but it's still possible
+to modify values of composite/aggregate types like :zeek:type:`vector`,
+:zeek:type:`record`, :zeek:type:`set`, or :zeek:type:`table`.
 
 The return value of a hook call is an implicit :zeek:type:`bool`
 value with ``T`` meaning that all handlers for the hook were
@@ -1138,7 +1141,7 @@ executed and ``F`` meaning that only some of the handlers may have
 executed due to one handler body exiting as a result of a ``break``
 statement.
 
-Hooks are also allowed to have multple/alternate prototype declarations,
+Hooks are also allowed to have multiple/alternate prototype declarations,
 just like an :zeek:see:`event`.
 
 
