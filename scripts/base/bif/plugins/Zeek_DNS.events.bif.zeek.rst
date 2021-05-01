@@ -57,7 +57,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: dns_A6_reply
-   :source-code: base/protocols/dns/main.zeek 494 497
+   :source-code: base/protocols/dns/main.zeek 498 501
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, a: :zeek:type:`addr`)
 
@@ -90,7 +90,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_AAAA_reply
-   :source-code: base/protocols/dns/main.zeek 489 492
+   :source-code: base/protocols/dns/main.zeek 493 496
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, a: :zeek:type:`addr`)
 
@@ -156,7 +156,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_BINDS
-   :source-code: base/protocols/dns/main.zeek 592 595
+   :source-code: base/protocols/dns/main.zeek 596 599
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, binds: :zeek:type:`dns_binds_rr`)
 
@@ -206,7 +206,7 @@ Events
    :value: The property value of the CAA reply.
 
 .. zeek:id:: dns_CNAME_reply
-   :source-code: base/protocols/dns/main.zeek 504 507
+   :source-code: base/protocols/dns/main.zeek 508 511
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`)
 
@@ -239,7 +239,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_DNSKEY
-   :source-code: base/protocols/dns/main.zeek 563 569
+   :source-code: base/protocols/dns/main.zeek 567 573
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, dnskey: :zeek:type:`dns_dnskey_rr`)
 
@@ -260,7 +260,7 @@ Events
    :dnskey: The parsed DNSKEY record.
 
 .. zeek:id:: dns_DS
-   :source-code: base/protocols/dns/main.zeek 585 591
+   :source-code: base/protocols/dns/main.zeek 589 595
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, ds: :zeek:type:`dns_ds_rr`)
 
@@ -435,7 +435,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_LOC
-   :source-code: base/protocols/dns/main.zeek 604 610
+   :source-code: base/protocols/dns/main.zeek 608 614
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, loc: :zeek:type:`dns_loc_rr`)
 
@@ -456,7 +456,7 @@ Events
    :loc: The parsed RDATA of LOC type record.
 
 .. zeek:id:: dns_MX_reply
-   :source-code: base/protocols/dns/main.zeek 510 513
+   :source-code: base/protocols/dns/main.zeek 514 517
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`, preference: :zeek:type:`count`)
 
@@ -492,7 +492,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_NSEC
-   :source-code: base/protocols/dns/main.zeek 570 573
+   :source-code: base/protocols/dns/main.zeek 574 577
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, next_name: :zeek:type:`string`, bitmaps: :zeek:type:`string_vec`)
 
@@ -516,7 +516,7 @@ Events
    :bitmaps: vector of strings in hex for the bit maps present.
 
 .. zeek:id:: dns_NSEC3
-   :source-code: base/protocols/dns/main.zeek 575 578
+   :source-code: base/protocols/dns/main.zeek 579 582
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, nsec3: :zeek:type:`dns_nsec3_rr`)
 
@@ -537,7 +537,7 @@ Events
    :nsec3: The parsed RDATA of Nsec3 record.
 
 .. zeek:id:: dns_NSEC3PARAM
-   :source-code: base/protocols/dns/main.zeek 580 583
+   :source-code: base/protocols/dns/main.zeek 584 587
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, nsec3param: :zeek:type:`dns_nsec3param_rr`)
 
@@ -558,7 +558,7 @@ Events
    :nsec3param: The parsed RDATA of NSEC3PARAM record.
 
 .. zeek:id:: dns_NS_reply
-   :source-code: base/protocols/dns/main.zeek 499 502
+   :source-code: base/protocols/dns/main.zeek 503 506
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`)
 
@@ -591,7 +591,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_PTR_reply
-   :source-code: base/protocols/dns/main.zeek 515 518
+   :source-code: base/protocols/dns/main.zeek 519 522
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, name: :zeek:type:`string`)
 
@@ -624,7 +624,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_RRSIG
-   :source-code: base/protocols/dns/main.zeek 555 562
+   :source-code: base/protocols/dns/main.zeek 559 566
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, rrsig: :zeek:type:`dns_rrsig_rr`)
 
@@ -645,7 +645,7 @@ Events
    :rrsig: The parsed RRSIG record.
 
 .. zeek:id:: dns_SOA_reply
-   :source-code: base/protocols/dns/main.zeek 520 523
+   :source-code: base/protocols/dns/main.zeek 524 527
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, soa: :zeek:type:`dns_soa`)
 
@@ -678,7 +678,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_SPF_reply
-   :source-code: base/protocols/dns/main.zeek 474 488
+   :source-code: base/protocols/dns/main.zeek 478 492
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, strs: :zeek:type:`string_vec`)
 
@@ -711,7 +711,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_SRV_reply
-   :source-code: base/protocols/dns/main.zeek 530 533
+   :source-code: base/protocols/dns/main.zeek 534 537
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, target: :zeek:type:`string`, priority: :zeek:type:`count`, weight: :zeek:type:`count`, p: :zeek:type:`count`)
 
@@ -757,7 +757,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_SSHFP
-   :source-code: base/protocols/dns/main.zeek 597 603
+   :source-code: base/protocols/dns/main.zeek 601 607
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, algo: :zeek:type:`count`, fptype: :zeek:type:`count`, fingerprint: :zeek:type:`string`)
 
@@ -808,7 +808,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_TXT_reply
-   :source-code: base/protocols/dns/main.zeek 459 473
+   :source-code: base/protocols/dns/main.zeek 463 477
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, strs: :zeek:type:`string_vec`)
 
@@ -841,7 +841,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_WKS_reply
-   :source-code: base/protocols/dns/main.zeek 525 528
+   :source-code: base/protocols/dns/main.zeek 529 532
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`)
 
@@ -970,7 +970,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_rejected
-   :source-code: base/protocols/dns/main.zeek 611 615
+   :source-code: base/protocols/dns/main.zeek 615 619
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`, original_query: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, query: :zeek:type:`string`, qtype: :zeek:type:`count`, qclass: :zeek:type:`count`)
@@ -1052,7 +1052,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_unknown_reply
-   :source-code: base/protocols/dns/main.zeek 449 452
+   :source-code: base/protocols/dns/main.zeek 453 456
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`)
 
