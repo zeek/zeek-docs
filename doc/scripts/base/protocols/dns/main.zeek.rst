@@ -278,7 +278,7 @@ Hooks
    :reply: The specific response information according to RR type/class.
 
 .. zeek:id:: DNS::finalize_dns
-   :source-code: base/protocols/dns/main.zeek 617 632
+   :source-code: base/protocols/dns/main.zeek 621 636
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
