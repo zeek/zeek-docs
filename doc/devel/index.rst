@@ -13,5 +13,6 @@ transient, etc. compared to other documentation).
    :maxdepth: 2
 
    plugins
+   Documentation Guide </README.rst>
    contributors
    maintainers
