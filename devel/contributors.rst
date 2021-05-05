@@ -17,6 +17,11 @@ Coding Style and Conventions
 
 See https://github.com/zeek/zeek/wiki/Coding-Style-and-Conventions
 
+General Documentation Structure/Process
+=======================================
+
+See the :doc:`README </README>` file of https://github.com/zeek/zeek-docs
+
 Documentation Style and Conventions
 ===================================
 
