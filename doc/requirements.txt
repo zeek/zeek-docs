@@ -1,3 +1,5 @@
-GitPython
+GitPython==3.1.14
 Sphinx==3.4.3
-sphinx_rtd_theme
+# Note: beware of https://github.com/readthedocs/sphinx_rtd_theme/issues/1115
+# and broken behavior with docutils 0.17
+sphinx_rtd_theme==0.5.2
