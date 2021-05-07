@@ -97,16 +97,36 @@ Hosting
 -------
 
 Documentation is hosted by `Read the Docs`_ (RTD), so you can generally read
-about how it works there.
+about how it works there.  The web-interface is accessible via
+https://readthedocs.org/projects/zeek-docs.
 
 How zeek-docs_ is configured to use RTD is a combination of some custom
 settings in its ``.readthedocs.yml`` file and others only accessible through
-RTD's web-interface (e.g. domain and subproject settings).  There's nothing
-exceptional worth mentioning here and just reading RTD's configuration docs
-should be helpful enough.
+RTD's web-interface (e.g. domain and subproject settings).  Most config
+settings are likely understandable just by browing the web-interface and
+RTD's guides, but a few particular points to mention:
 
-RTD will auto-build any newly-pushed commits to zeek-docs_, but if a tag is
-changed to point somewhere different, you'll typically have to go into the RTD
-web interface, "Edit" the associated version under "Versions", "wipe" the
-existing docs, and then manually trigger a rebuild of that version tag under
-"Builds".
+* There is an associated, always-failing project at
+  https://readthedocs.org/projects/zeek.  It's always-failing because
+  RTD redirects only activate when pages 404 and this project exists so that
+  all attempts to use https://zeek.rtfd.io or https://zeek.readthedocs.io
+  get redirected to https://docs.zeek.org.  Those would have been the project
+  URLs if ownership of the RTD 'zeek' project was had from the start, but
+  it was only obtained later, after documentation already started development
+  in the 'zeek-docs' RTD project slug.
+
+* Over time, page redirects have accrued into ``redirects.yml`` as a way to
+  help document what they are and why they happened and also as a potential
+  way to automate addition/reinstantiation of a large number of redirects,
+  but typically redirects can be manually added via the RTD web interface
+  first and then noted in ``redirects.yml``
+
+* There are RTD subprojects for things like Broker, Package Manager,
+  and Spicy.  The use of subprojects simply allows access to their RTD
+  docs via the custom domain of https://docs.zeek.org
+
+* RTD will auto-build any newly-pushed commits to zeek-docs_ (i.e. a webhook is
+  configured), but if a tag is changed to point somewhere different, you'll
+  typically have to go into the RTD web interface, "Edit" the associated
+  version under "Versions", "wipe" the existing docs, and then manually trigger
+  a rebuild of that version tag under "Builds".
