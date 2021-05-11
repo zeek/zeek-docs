@@ -56,6 +56,11 @@ Package: base/bif
 :doc:`/scripts/base/bif/packet_analysis.bif.zeek`
 
 
+:doc:`/scripts/base/bif/CPP-load.bif.zeek`
+
+   Definitions of built-in functions related to loading compiled-to-C++
+   scripts.
+
 :doc:`/scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek`
 
 

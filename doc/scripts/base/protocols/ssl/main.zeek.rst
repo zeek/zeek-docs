@@ -62,11 +62,12 @@ Events
 
 Hooks
 #####
-============================================================ ======================
+============================================================ ====================================================================
 :zeek:id:`SSL::finalize_ssl`: :zeek:type:`Conn::RemovalHook` SSL finalization hook.
 :zeek:id:`SSL::log_policy`: :zeek:type:`Log::PolicyHook`     
-:zeek:id:`SSL::ssl_finishing`: :zeek:type:`hook`             
-============================================================ ======================
+:zeek:id:`SSL::ssl_finishing`: :zeek:type:`hook`             Hook that can be used to perform actions right before the log record
+                                                             is written.
+============================================================ ====================================================================
 
 Functions
 #########
@@ -416,6 +417,8 @@ Hooks
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
+   Hook that can be used to perform actions right before the log record
+   is written.
 
 Functions
 #########
