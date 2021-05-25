@@ -51,6 +51,12 @@
    base/packet-protocols/iptunnel/main.zeek </scripts/base/packet-protocols/iptunnel/main.zeek>
    base/packet-protocols/vntag/__load__.zeek </scripts/base/packet-protocols/vntag/__load__.zeek>
    base/packet-protocols/vntag/main.zeek </scripts/base/packet-protocols/vntag/main.zeek>
+   base/packet-protocols/udp/__load__.zeek </scripts/base/packet-protocols/udp/__load__.zeek>
+   base/packet-protocols/udp/main.zeek </scripts/base/packet-protocols/udp/main.zeek>
+   base/packet-protocols/tcp/__load__.zeek </scripts/base/packet-protocols/tcp/__load__.zeek>
+   base/packet-protocols/tcp/main.zeek </scripts/base/packet-protocols/tcp/main.zeek>
+   base/packet-protocols/icmp/__load__.zeek </scripts/base/packet-protocols/icmp/__load__.zeek>
+   base/packet-protocols/icmp/main.zeek </scripts/base/packet-protocols/icmp/main.zeek>
    base/init-frameworks-and-bifs.zeek </scripts/base/init-frameworks-and-bifs.zeek>
    base/frameworks/logging/__load__.zeek </scripts/base/frameworks/logging/__load__.zeek>
    base/frameworks/logging/main.zeek </scripts/base/frameworks/logging/main.zeek>
@@ -119,7 +125,6 @@
    base/bif/plugins/Zeek_GTPv1.events.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek>
    base/bif/plugins/Zeek_HTTP.events.bif.zeek </scripts/base/bif/plugins/Zeek_HTTP.events.bif.zeek>
    base/bif/plugins/Zeek_HTTP.functions.bif.zeek </scripts/base/bif/plugins/Zeek_HTTP.functions.bif.zeek>
-   base/bif/plugins/Zeek_ICMP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek>
    base/bif/plugins/Zeek_Ident.events.bif.zeek </scripts/base/bif/plugins/Zeek_Ident.events.bif.zeek>
    base/bif/plugins/Zeek_IMAP.events.bif.zeek </scripts/base/bif/plugins/Zeek_IMAP.events.bif.zeek>
    base/bif/plugins/Zeek_IRC.events.bif.zeek </scripts/base/bif/plugins/Zeek_IRC.events.bif.zeek>
@@ -195,10 +200,11 @@
    base/bif/plugins/Zeek_TCP.types.bif.zeek </scripts/base/bif/plugins/Zeek_TCP.types.bif.zeek>
    base/bif/plugins/Zeek_TCP.functions.bif.zeek </scripts/base/bif/plugins/Zeek_TCP.functions.bif.zeek>
    base/bif/plugins/Zeek_Teredo.events.bif.zeek </scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek>
-   base/bif/plugins/Zeek_UDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek>
    base/bif/plugins/Zeek_VXLAN.events.bif.zeek </scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek>
    base/bif/plugins/Zeek_XMPP.events.bif.zeek </scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek>
    base/bif/plugins/Zeek_ARP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek>
+   base/bif/plugins/Zeek_UDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek>
+   base/bif/plugins/Zeek_ICMP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek>
    base/bif/plugins/Zeek_FileEntropy.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek>
    base/bif/plugins/Zeek_FileExtract.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.events.bif.zeek>
    base/bif/plugins/Zeek_FileExtract.functions.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.functions.bif.zeek>
