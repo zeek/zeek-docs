@@ -197,9 +197,6 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_HTTP.functions.bif.zeek`
 
 
-:doc:`/scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek`
-
-
 :doc:`/scripts/base/bif/plugins/Zeek_Ident.events.bif.zeek`
 
 
@@ -425,9 +422,6 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek`
 
 
-:doc:`/scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek`
-
-
 :doc:`/scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek`
 
 
@@ -435,6 +429,12 @@ Package: base/bif
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek`

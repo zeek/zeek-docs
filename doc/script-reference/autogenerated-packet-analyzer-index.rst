@@ -13,6 +13,8 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_GRE PacketAnalyzer::Tag
 
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_ICMP PacketAnalyzer::Tag
+
       .. zeek:enum:: PacketAnalyzer::ANALYZER_IEEE802_11 PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_IEEE802_11_RADIO PacketAnalyzer::Tag
@@ -36,6 +38,10 @@ Packet Analyzers
       .. zeek:enum:: PacketAnalyzer::ANALYZER_ROOT PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_SKIP PacketAnalyzer::Tag
+
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_TCP PacketAnalyzer::Tag
+
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_UDP PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_VLAN PacketAnalyzer::Tag
 
@@ -294,6 +300,16 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_SKIP`
+
+Zeek::TCP_PKT
+-------------
+
+Packet analyzer for TCP
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_TCP`
 
 Zeek::VLAN
 ----------

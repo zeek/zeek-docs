@@ -52,6 +52,15 @@
 :doc:`base/packet-protocols/vntag </scripts/base/packet-protocols/vntag/index>`
 
 
+:doc:`base/packet-protocols/udp </scripts/base/packet-protocols/udp/index>`
+
+
+:doc:`base/packet-protocols/tcp </scripts/base/packet-protocols/tcp/index>`
+
+
+:doc:`base/packet-protocols/icmp </scripts/base/packet-protocols/icmp/index>`
+
+
 :doc:`base/frameworks/logging </scripts/base/frameworks/logging/index>`
 
    The logging framework provides a flexible key-value based logging interface.

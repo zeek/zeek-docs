@@ -109,3 +109,21 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/vntag/main.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/udp/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/udp/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/tcp/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/tcp/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/icmp/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/icmp/main.zeek`
+
+
