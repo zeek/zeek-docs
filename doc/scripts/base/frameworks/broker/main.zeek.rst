@@ -13,11 +13,15 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-================================================================================= =================================================================
-:zeek:id:`Broker::peer_counts_as_iosource`: :zeek:type:`bool` :zeek:attr:`&redef` Whether calling :zeek:see:`Broker::peer` will register the Broker
-                                                                                  system as an I/O source that will block the process from shutting
-                                                                                  down.
-================================================================================= =================================================================
+======================================================================================== =================================================================
+:zeek:id:`Broker::metrics_export_endpoint_name`: :zeek:type:`string` :zeek:attr:`&redef` ID for the metrics exporter.
+:zeek:id:`Broker::metrics_export_interval`: :zeek:type:`interval` :zeek:attr:`&redef`    Frequency for publishing scraped metrics to the target topic.
+:zeek:id:`Broker::metrics_export_prefixes`: :zeek:type:`vector` :zeek:attr:`&redef`      Selects prefixes from the local metrics.
+:zeek:id:`Broker::metrics_export_topic`: :zeek:type:`string` :zeek:attr:`&redef`         Target topic for the metrics.
+:zeek:id:`Broker::peer_counts_as_iosource`: :zeek:type:`bool` :zeek:attr:`&redef`        Whether calling :zeek:see:`Broker::peer` will register the Broker
+                                                                                         system as an I/O source that will block the process from shutting
+                                                                                         down.
+======================================================================================== =================================================================
 
 Redefinable Options
 ###################
@@ -42,6 +46,7 @@ Redefinable Options
 :zeek:id:`Broker::log_batch_size`: :zeek:type:`count` :zeek:attr:`&redef`            The max number of log entries per log stream to batch together when
                                                                                      sending log messages to a remote logger.
 :zeek:id:`Broker::max_threads`: :zeek:type:`count` :zeek:attr:`&redef`               Max number of threads to use for Broker/CAF functionality.
+:zeek:id:`Broker::metrics_port`: :zeek:type:`port` :zeek:attr:`&redef`               Port for Broker's metric exporter.
 :zeek:id:`Broker::moderate_interval`: :zeek:type:`count` :zeek:attr:`&redef`         Frequency of work-stealing polling attempts for Broker/CAF threads
                                                                                      in "moderate" mode.
 :zeek:id:`Broker::moderate_polls`: :zeek:type:`count` :zeek:attr:`&redef`            Number of work-stealing polling attempts for Broker/CAF threads
@@ -53,7 +58,7 @@ Redefinable Options
 :zeek:id:`Broker::relaxed_sleep`: :zeek:type:`interval` :zeek:attr:`&redef`          Interval of time for under-utilized Broker/CAF threads to sleep
                                                                                      when in "relaxed" mode.
 :zeek:id:`Broker::scheduler_policy`: :zeek:type:`string` :zeek:attr:`&redef`         The CAF scheduling policy to use.
-:zeek:id:`Broker::ssl_cafile`: :zeek:type:`string` :zeek:attr:`&redef`               Path to a file containing concatenated trusted certificates 
+:zeek:id:`Broker::ssl_cafile`: :zeek:type:`string` :zeek:attr:`&redef`               Path to a file containing concatenated trusted certificates
                                                                                      in PEM format.
 :zeek:id:`Broker::ssl_capath`: :zeek:type:`string` :zeek:attr:`&redef`               Path to an OpenSSL-style directory of trusted certificates.
 :zeek:id:`Broker::ssl_certificate`: :zeek:type:`string` :zeek:attr:`&redef`          Path to a file containing a X.509 certificate for this
@@ -109,6 +114,60 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Runtime Options
 ###############
+.. zeek:id:: Broker::metrics_export_endpoint_name
+   :source-code: base/frameworks/broker/main.zeek 149 149
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``""``
+
+   ID for the metrics exporter. When setting a target topic for the
+   exporter, Broker sets this option to the suffix of the new topic *unless*
+   the ID is a non-empty string. Since setting a topic starts the periodic
+   publishing of events, we recommend setting the ID always first or avoid
+   setting it at all if the topic suffix serves as a good-enough ID. Zeek
+   overrides any value provided in zeek_init or earlier at startup if the
+   environment variable BROKER_METRICS_ENDPOINT_NAME is defined.
+
+.. zeek:id:: Broker::metrics_export_interval
+   :source-code: base/frameworks/broker/main.zeek 134 134
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``1.0 sec``
+
+   Frequency for publishing scraped metrics to the target topic. Zeek
+   overrides any value provided in zeek_init or earlier at startup if the
+   environment variable BROKER_METRICS_EXPORT_INTERVAL is defined.
+
+.. zeek:id:: Broker::metrics_export_prefixes
+   :source-code: base/frameworks/broker/main.zeek 154 154
+
+   :Type: :zeek:type:`vector` of :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default:
+
+      ::
+
+         []
+
+
+   Selects prefixes from the local metrics. Only metrics with prefixes
+   listed in this variable are included when publishing local metrics.
+   Setting an empty vector selects *all* metrics.
+
+.. zeek:id:: Broker::metrics_export_topic
+   :source-code: base/frameworks/broker/main.zeek 140 140
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``""``
+
+   Target topic for the metrics. Setting a non-empty string starts the
+   periodic publishing of local metrics. Zeek overrides any value provided in
+   zeek_init or earlier at startup if the environment variable
+   BROKER_METRICS_EXPORT_TOPIC is defined.
+
 .. zeek:id:: Broker::peer_counts_as_iosource
    :source-code: base/frameworks/broker/main.zeek 123 123
 
@@ -192,7 +251,7 @@ Redefinable Options
    any values given to :zeek:see:`Broker::listen`.
 
 .. zeek:id:: Broker::default_log_topic_prefix
-   :source-code: base/frameworks/broker/main.zeek 127 127
+   :source-code: base/frameworks/broker/main.zeek 158 158
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -261,6 +320,18 @@ Redefinable Options
 
    Max number of threads to use for Broker/CAF functionality.  The
    ZEEK_BROKER_MAX_THREADS environment variable overrides this setting.
+
+.. zeek:id:: Broker::metrics_port
+   :source-code: base/frameworks/broker/main.zeek 129 129
+
+   :Type: :zeek:type:`port`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``0/unknown``
+
+   Port for Broker's metric exporter. Setting this to a valid TCP port causes
+   Broker to make metrics available to Prometheus scrapers via HTTP. Zeek
+   overrides any value provided in zeek_init or earlier at startup if the
+   environment variable BROKER_METRICS_PORT is defined.
 
 .. zeek:id:: Broker::moderate_interval
    :source-code: base/frameworks/broker/main.zeek 109 109
@@ -336,7 +407,7 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``""``
 
-   Path to a file containing concatenated trusted certificates 
+   Path to a file containing concatenated trusted certificates
    in PEM format. If set, Zeek will require valid certificates for
    all peers.
 
@@ -387,7 +458,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Broker::Data
-   :source-code: base/frameworks/broker/main.zeek 217 219
+   :source-code: base/frameworks/broker/main.zeek 248 250
 
    :Type: :zeek:type:`record`
 
@@ -396,14 +467,14 @@ Types
    Opaque communication data.
 
 .. zeek:type:: Broker::DataVector
-   :source-code: base/frameworks/broker/main.zeek 222 222
+   :source-code: base/frameworks/broker/main.zeek 253 253
 
    :Type: :zeek:type:`vector` of :zeek:type:`Broker::Data`
 
    Opaque communication data sequence.
 
 .. zeek:type:: Broker::EndpointInfo
-   :source-code: base/frameworks/broker/main.zeek 202 207
+   :source-code: base/frameworks/broker/main.zeek 233 238
 
    :Type: :zeek:type:`record`
 
@@ -415,7 +486,7 @@ Types
 
 
 .. zeek:type:: Broker::ErrorCode
-   :source-code: base/frameworks/broker/main.zeek 148 148
+   :source-code: base/frameworks/broker/main.zeek 179 179
 
    :Type: :zeek:type:`enum`
 
@@ -518,7 +589,7 @@ Types
    Enumerates the possible error types.
 
 .. zeek:type:: Broker::Event
-   :source-code: base/frameworks/broker/main.zeek 225 230
+   :source-code: base/frameworks/broker/main.zeek 256 261
 
    :Type: :zeek:type:`record`
 
@@ -531,7 +602,7 @@ Types
    Opaque event communication data.
 
 .. zeek:type:: Broker::NetworkInfo
-   :source-code: base/frameworks/broker/main.zeek 195 200
+   :source-code: base/frameworks/broker/main.zeek 226 231
 
    :Type: :zeek:type:`record`
 
@@ -543,7 +614,7 @@ Types
 
 
 .. zeek:type:: Broker::PeerInfo
-   :source-code: base/frameworks/broker/main.zeek 209 212
+   :source-code: base/frameworks/broker/main.zeek 240 243
 
    :Type: :zeek:type:`record`
 
@@ -553,13 +624,13 @@ Types
 
 
 .. zeek:type:: Broker::PeerInfos
-   :source-code: base/frameworks/broker/main.zeek 214 214
+   :source-code: base/frameworks/broker/main.zeek 245 245
 
    :Type: :zeek:type:`vector` of :zeek:type:`Broker::PeerInfo`
 
 
 .. zeek:type:: Broker::PeerStatus
-   :source-code: base/frameworks/broker/main.zeek 180 180
+   :source-code: base/frameworks/broker/main.zeek 211 211
 
    :Type: :zeek:type:`enum`
 
@@ -590,7 +661,7 @@ Types
    The possible states of a peer endpoint.
 
 .. zeek:type:: Broker::TableItem
-   :source-code: base/frameworks/broker/main.zeek 234 237
+   :source-code: base/frameworks/broker/main.zeek 265 268
 
    :Type: :zeek:type:`record`
 
@@ -604,7 +675,7 @@ Types
 Functions
 #########
 .. zeek:id:: Broker::auto_publish
-   :source-code: base/frameworks/broker/main.zeek 461 464
+   :source-code: base/frameworks/broker/main.zeek 536 539
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -624,7 +695,7 @@ Functions
    :returns: true if automatic event sending is now enabled.
 
 .. zeek:id:: Broker::auto_unpublish
-   :source-code: base/frameworks/broker/main.zeek 466 469
+   :source-code: base/frameworks/broker/main.zeek 541 544
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
 
@@ -641,14 +712,14 @@ Functions
             pair.
 
 .. zeek:id:: Broker::default_log_topic
-   :source-code: base/frameworks/broker/main.zeek 130 133
+   :source-code: base/frameworks/broker/main.zeek 161 164
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, path: :zeek:type:`string`) : :zeek:type:`string`
 
    The default implementation for :zeek:see:`Broker::log_topic`.
 
 .. zeek:id:: Broker::flush_logs
-   :source-code: base/frameworks/broker/main.zeek 436 439
+   :source-code: base/frameworks/broker/main.zeek 511 514
 
    :Type: :zeek:type:`function` () : :zeek:type:`count`
 
@@ -656,7 +727,7 @@ Functions
    doesn't need to be used except for test cases that are time-sensitive.
 
 .. zeek:id:: Broker::forward
-   :source-code: base/frameworks/broker/main.zeek 451 454
+   :source-code: base/frameworks/broker/main.zeek 526 529
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -676,7 +747,7 @@ Functions
    :returns: true if a new event forwarding/subscription is now registered.
 
 .. zeek:id:: Broker::listen
-   :source-code: base/frameworks/broker/main.zeek 398 414
+   :source-code: base/frameworks/broker/main.zeek 473 489
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Broker::default_listen_address` :zeek:attr:`&optional`, p: :zeek:type:`port` :zeek:attr:`&default` = :zeek:see:`Broker::default_port` :zeek:attr:`&optional`, retry: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_listen_retry` :zeek:attr:`&optional`) : :zeek:type:`port`
 
@@ -702,7 +773,7 @@ Functions
    .. zeek:see:: Broker::status
 
 .. zeek:id:: Broker::log_topic
-   :source-code: base/frameworks/broker/main.zeek 130 133
+   :source-code: base/frameworks/broker/main.zeek 161 164
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, path: :zeek:type:`string`) : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -723,7 +794,7 @@ Functions
             will be sent.
 
 .. zeek:id:: Broker::node_id
-   :source-code: base/frameworks/broker/main.zeek 431 434
+   :source-code: base/frameworks/broker/main.zeek 506 509
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
@@ -733,7 +804,7 @@ Functions
    :returns: a unique identifier for the local broker endpoint.
 
 .. zeek:id:: Broker::peer
-   :source-code: base/frameworks/broker/main.zeek 416 419
+   :source-code: base/frameworks/broker/main.zeek 491 494
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port` :zeek:attr:`&default` = :zeek:see:`Broker::default_port` :zeek:attr:`&optional`, retry: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_connect_retry` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -760,7 +831,7 @@ Functions
    .. zeek:see:: Broker::status
 
 .. zeek:id:: Broker::peers
-   :source-code: base/frameworks/broker/main.zeek 426 429
+   :source-code: base/frameworks/broker/main.zeek 501 504
 
    :Type: :zeek:type:`function` () : :zeek:type:`vector` of :zeek:type:`Broker::PeerInfo`
 
@@ -770,7 +841,7 @@ Functions
    :returns: a list of all peer connections.
 
 .. zeek:id:: Broker::publish_id
-   :source-code: base/frameworks/broker/main.zeek 441 444
+   :source-code: base/frameworks/broker/main.zeek 516 519
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, id: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -787,7 +858,7 @@ Functions
    :returns: true if the message is sent.
 
 .. zeek:id:: Broker::subscribe
-   :source-code: base/frameworks/broker/main.zeek 446 449
+   :source-code: base/frameworks/broker/main.zeek 521 524
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -804,7 +875,7 @@ Functions
    :returns: true if it's a new event subscription and it is now registered.
 
 .. zeek:id:: Broker::unpeer
-   :source-code: base/frameworks/broker/main.zeek 421 424
+   :source-code: base/frameworks/broker/main.zeek 496 499
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
 
@@ -828,7 +899,7 @@ Functions
    :TODO: We do not have a function yet to terminate a connection.
 
 .. zeek:id:: Broker::unsubscribe
-   :source-code: base/frameworks/broker/main.zeek 456 459
+   :source-code: base/frameworks/broker/main.zeek 531 534
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
