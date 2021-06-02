@@ -56,7 +56,7 @@ Runtime Options
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``"https://www.virustotal.com/en/search/?query=%s"``
+   :Default: ``"https://www.virustotal.com/gui/search/%s"``
 
    The Match notice has a sub message with a URL where you can get more
    information about the file. The %s will be replaced with the SHA-1
