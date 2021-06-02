@@ -31,7 +31,10 @@ Functions
    :name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
    
 
-   :returns: The decoded NetBIOS name, e.g., ``"THE NETBIOS NAME"``.
+   :returns: The decoded NetBIOS name, e.g., ``"THE NETBIOS NAM"``.  An empty
+            string is returned if the argument is not a valid NetBIOS encoding
+            (though an encoding that would decode to something that includes
+            only null-bytes or space-characters also yields an empty string).
    
    .. zeek:see:: decode_netbios_name_type
 
@@ -43,10 +46,10 @@ Functions
    See http://support.microsoft.com/kb/163409.
    
 
-   :name: The NetBIOS name type.
+   :name: An encoded NetBIOS name.
    
 
-   :returns: The numeric value of *name*.
+   :returns: The numeric value of *name* or 256 if it's not a valid encoding.
    
    .. zeek:see:: decode_netbios_name
 
