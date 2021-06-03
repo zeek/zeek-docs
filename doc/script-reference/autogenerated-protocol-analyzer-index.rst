@@ -139,9 +139,9 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_CONTENTS Analyzer::Tag
 
-      .. zeek:enum:: Analyzer::ANALYZER_TCP Analyzer::Tag
-
       .. zeek:enum:: Analyzer::ANALYZER_TCPSTATS Analyzer::Tag
+
+      .. zeek:enum:: Analyzer::ANALYZER_TCP Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_TEREDO Analyzer::Tag
 
@@ -15293,8 +15293,6 @@ Components
 :zeek:enum:`Analyzer::ANALYZER_CONTENTLINE`
 
 :zeek:enum:`Analyzer::ANALYZER_CONTENTS`
-
-:zeek:enum:`Analyzer::ANALYZER_TCP`
 
 :zeek:enum:`Analyzer::ANALYZER_TCPSTATS`
 
