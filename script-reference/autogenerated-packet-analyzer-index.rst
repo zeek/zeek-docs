@@ -301,16 +301,6 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_SKIP`
 
-Zeek::TCP_PKT
--------------
-
-Packet analyzer for TCP
-
-Components
-++++++++++
-
-:zeek:enum:`PacketAnalyzer::ANALYZER_TCP`
-
 Zeek::VLAN
 ----------
 
