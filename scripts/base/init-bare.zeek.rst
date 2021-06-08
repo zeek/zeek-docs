@@ -5546,7 +5546,7 @@ Types
          System CPU seconds.
 
       mem: :zeek:type:`count`
-         Maximum memory consumed, in KB.
+         Maximum memory consumed, in bytes.
 
       minor_faults: :zeek:type:`count`
          Page faults not requiring actual I/O.
