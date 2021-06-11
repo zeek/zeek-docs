@@ -335,6 +335,9 @@
 
    Support for extracting files with the file analysis framework.
 
+:doc:`builtin-plugins </scripts/builtin-plugins/index>`
+
+
 :doc:`zeekygen </scripts/zeekygen/index>`
 
    This package is loaded during the process which automatically generates
