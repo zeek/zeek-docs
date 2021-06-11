@@ -37,6 +37,7 @@ Redefinable Options
                                                                                              with types, the values of ASCII logging options that are in use, and
                                                                                              the time when the file was opened and closed (the latter at the end).
 :zeek:id:`LogAscii::json_timestamps`: :zeek:type:`JSON::TimestampFormat` :zeek:attr:`&redef` Format of timestamps when writing out JSON.
+:zeek:id:`LogAscii::logdir`: :zeek:type:`string` :zeek:attr:`&redef`                         Define the default logging directory.
 :zeek:id:`LogAscii::meta_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                    Prefix for lines with meta information.
 :zeek:id:`LogAscii::output_to_stdout`: :zeek:type:`bool` :zeek:attr:`&redef`                 If true, output everything to stdout rather than
                                                                                              into files.
@@ -52,7 +53,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: LogAscii::empty_field
-   :source-code: base/frameworks/logging/writers/ascii.zeek 90 90
+   :source-code: base/frameworks/logging/writers/ascii.zeek 95 95
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -116,7 +117,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::include_meta
-   :source-code: base/frameworks/logging/writers/ascii.zeek 69 69
+   :source-code: base/frameworks/logging/writers/ascii.zeek 74 74
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -129,7 +130,7 @@ Redefinable Options
    If writing in JSON format, this is implicitly disabled.
 
 .. zeek:id:: LogAscii::json_timestamps
-   :source-code: base/frameworks/logging/writers/ascii.zeek 62 62
+   :source-code: base/frameworks/logging/writers/ascii.zeek 67 67
 
    :Type: :zeek:type:`JSON::TimestampFormat`
    :Attributes: :zeek:attr:`&redef`
@@ -141,8 +142,19 @@ Redefinable Options
    
    This option is also available as a per-filter ``$config`` option.
 
+.. zeek:id:: LogAscii::logdir
+   :source-code: base/frameworks/logging/writers/ascii.zeek 60 60
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``""``
+
+   Define the default logging directory. If empty, logs are written
+   to the current working directory.
+   
+
 .. zeek:id:: LogAscii::meta_prefix
-   :source-code: base/frameworks/logging/writers/ascii.zeek 74 74
+   :source-code: base/frameworks/logging/writers/ascii.zeek 79 79
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -165,7 +177,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::separator
-   :source-code: base/frameworks/logging/writers/ascii.zeek 79 79
+   :source-code: base/frameworks/logging/writers/ascii.zeek 84 84
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -176,7 +188,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::set_separator
-   :source-code: base/frameworks/logging/writers/ascii.zeek 84 84
+   :source-code: base/frameworks/logging/writers/ascii.zeek 89 89
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -187,7 +199,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::unset_field
-   :source-code: base/frameworks/logging/writers/ascii.zeek 95 95
+   :source-code: base/frameworks/logging/writers/ascii.zeek 100 100
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
