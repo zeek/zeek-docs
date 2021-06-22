@@ -111,7 +111,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Notice::alarmed_types
-   :source-code: base/frameworks/notice/main.zeek 188 188
+   :source-code: base/frameworks/notice/main.zeek 191 191
 
    :Type: :zeek:type:`set` [:zeek:type:`Notice::Type`]
    :Attributes: :zeek:attr:`&redef`
@@ -132,7 +132,7 @@ Runtime Options
    suppression.
 
 .. zeek:id:: Notice::emailed_types
-   :source-code: base/frameworks/notice/main.zeek 186 186
+   :source-code: base/frameworks/notice/main.zeek 189 189
 
    :Type: :zeek:type:`set` [:zeek:type:`Notice::Type`]
    :Attributes: :zeek:attr:`&redef`
@@ -141,7 +141,7 @@ Runtime Options
    Emailed notice types.
 
 .. zeek:id:: Notice::ignored_types
-   :source-code: base/frameworks/notice/main.zeek 184 184
+   :source-code: base/frameworks/notice/main.zeek 187 187
 
    :Type: :zeek:type:`set` [:zeek:type:`Notice::Type`]
    :Attributes: :zeek:attr:`&redef`
@@ -150,7 +150,7 @@ Runtime Options
    Ignored notice types.
 
 .. zeek:id:: Notice::mail_from
-   :source-code: base/frameworks/notice/main.zeek 212 212
+   :source-code: base/frameworks/notice/main.zeek 215 215
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -161,7 +161,7 @@ Runtime Options
    Note that this is overridden by the ZeekControl MailFrom option.
 
 .. zeek:id:: Notice::mail_subject_prefix
-   :source-code: base/frameworks/notice/main.zeek 219 219
+   :source-code: base/frameworks/notice/main.zeek 222 222
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -173,7 +173,7 @@ Runtime Options
    option.
 
 .. zeek:id:: Notice::not_suppressed_types
-   :source-code: base/frameworks/notice/main.zeek 190 190
+   :source-code: base/frameworks/notice/main.zeek 193 193
 
    :Type: :zeek:type:`set` [:zeek:type:`Notice::Type`]
    :Attributes: :zeek:attr:`&redef`
@@ -182,7 +182,7 @@ Runtime Options
    Types that should be suppressed for the default suppression interval.
 
 .. zeek:id:: Notice::reply_to
-   :source-code: base/frameworks/notice/main.zeek 214 214
+   :source-code: base/frameworks/notice/main.zeek 217 217
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -191,7 +191,7 @@ Runtime Options
    Reply-to address used in outbound email.
 
 .. zeek:id:: Notice::sendmail
-   :source-code: base/frameworks/notice/main.zeek 201 201
+   :source-code: base/frameworks/notice/main.zeek 204 204
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -204,7 +204,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: Notice::mail_dest
-   :source-code: base/frameworks/notice/main.zeek 207 207
+   :source-code: base/frameworks/notice/main.zeek 210 210
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -217,7 +217,7 @@ Redefinable Options
    Note that this is overridden by the ZeekControl MailTo option.
 
 .. zeek:id:: Notice::max_email_delay
-   :source-code: base/frameworks/notice/main.zeek 221 221
+   :source-code: base/frameworks/notice/main.zeek 224 224
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -226,7 +226,7 @@ Redefinable Options
    The maximum amount of time a plugin can delay email from being sent.
 
 .. zeek:id:: Notice::type_suppression_intervals
-   :source-code: base/frameworks/notice/main.zeek 193 193
+   :source-code: base/frameworks/notice/main.zeek 196 196
 
    :Type: :zeek:type:`table` [:zeek:type:`Notice::Type`] of :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -307,7 +307,7 @@ Types
    Type that represents a set of actions.
 
 .. zeek:type:: Notice::FileInfo
-   :source-code: base/frameworks/notice/main.zeek 225 232
+   :source-code: base/frameworks/notice/main.zeek 228 235
 
    :Type: :zeek:type:`record`
 
@@ -331,7 +331,7 @@ Types
    :zeek:see:`Notice::Info`.
 
 .. zeek:type:: Notice::Info
-   :source-code: base/frameworks/notice/main.zeek 67 181
+   :source-code: base/frameworks/notice/main.zeek 67 184
 
    :Type: :zeek:type:`record`
 
@@ -412,6 +412,9 @@ Types
 
       actions: :zeek:type:`Notice::ActionSet` :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          The actions which have been applied to this notice.
+
+      email_dest: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+         The email address(es) where to send this notice
 
       email_body_sections: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
          By adding chunks of text into this element, other scripts
@@ -912,7 +915,7 @@ Types
 Events
 ######
 .. zeek:id:: Notice::begin_suppression
-   :source-code: base/frameworks/notice/main.zeek 536 540
+   :source-code: base/frameworks/notice/main.zeek 546 550
 
    :Type: :zeek:type:`event` (ts: :zeek:type:`time`, suppress_for: :zeek:type:`interval`, note: :zeek:type:`Notice::Type`, identifier: :zeek:type:`string`)
 
@@ -931,7 +934,7 @@ Events
    :identifier: The identifier string of the notice that should be suppressed.
 
 .. zeek:id:: Notice::log_notice
-   :source-code: base/frameworks/notice/main.zeek 335 335
+   :source-code: base/frameworks/notice/main.zeek 338 338
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Notice::Info`)
 
@@ -942,7 +945,7 @@ Events
    :rec: The record containing notice data before it is logged.
 
 .. zeek:id:: Notice::manager_begin_suppression
-   :source-code: base/frameworks/notice/main.zeek 294 294
+   :source-code: base/frameworks/notice/main.zeek 297 297
 
    :Type: :zeek:type:`event` (ts: :zeek:type:`time`, suppress_for: :zeek:type:`interval`, note: :zeek:type:`Notice::Type`, identifier: :zeek:type:`string`)
 
@@ -962,7 +965,7 @@ Events
    :identifier: The identifier string of the notice that should be suppressed.
 
 .. zeek:id:: Notice::suppressed
-   :source-code: base/frameworks/notice/main.zeek 306 306
+   :source-code: base/frameworks/notice/main.zeek 309 309
 
    :Type: :zeek:type:`event` (n: :zeek:type:`Notice::Info`)
 
@@ -989,7 +992,7 @@ Hooks
 
 
 .. zeek:id:: Notice::notice
-   :source-code: base/frameworks/notice/main.zeek 271 271
+   :source-code: base/frameworks/notice/main.zeek 274 274
 
    :Type: :zeek:type:`hook` (n: :zeek:type:`Notice::Info`) : :zeek:type:`bool`
 
@@ -1003,7 +1006,7 @@ Hooks
    :n: The record containing notice data.
 
 .. zeek:id:: Notice::policy
-   :source-code: base/frameworks/notice/main.zeek 196 196
+   :source-code: base/frameworks/notice/main.zeek 199 199
 
    :Type: :zeek:type:`hook` (n: :zeek:type:`Notice::Info`) : :zeek:type:`bool`
 
@@ -1012,20 +1015,20 @@ Hooks
 Functions
 #########
 .. zeek:id:: NOTICE
-   :source-code: base/frameworks/notice/main.zeek 343 353
+   :source-code: base/frameworks/notice/main.zeek 346 356
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
 
 .. zeek:id:: Notice::apply_policy
-   :source-code: base/frameworks/notice/main.zeek 622 683
+   :source-code: base/frameworks/notice/main.zeek 632 693
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
    This is an internal function to populate policy records.
 
 .. zeek:id:: Notice::create_file_info
-   :source-code: base/frameworks/notice/main.zeek 583 600
+   :source-code: base/frameworks/notice/main.zeek 593 610
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`Notice::FileInfo`
 
@@ -1038,7 +1041,7 @@ Functions
    :returns: record containing a subset of fields copied from *f*.
 
 .. zeek:id:: Notice::email_headers
-   :source-code: base/frameworks/notice/main.zeek 407 417
+   :source-code: base/frameworks/notice/main.zeek 410 420
 
    :Type: :zeek:type:`function` (subject_desc: :zeek:type:`string`, dest: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -1056,7 +1059,7 @@ Functions
             appended.
 
 .. zeek:id:: Notice::email_notice_to
-   :source-code: base/frameworks/notice/main.zeek 424 493
+   :source-code: base/frameworks/notice/main.zeek 427 496
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`, dest: :zeek:type:`string`, extend: :zeek:type:`bool`) : :zeek:type:`void`
 
@@ -1075,7 +1078,7 @@ Functions
            ``email_body_sections`` field of *n*.
 
 .. zeek:id:: Notice::is_being_suppressed
-   :source-code: base/frameworks/notice/main.zeek 563 572
+   :source-code: base/frameworks/notice/main.zeek 573 582
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`bool`
 
@@ -1085,7 +1088,7 @@ Functions
    :n: The record containing the notice in question.
 
 .. zeek:id:: Notice::log_mailing_postprocessor
-   :source-code: base/frameworks/notice/main.zeek 377 391
+   :source-code: base/frameworks/notice/main.zeek 380 394
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
 
@@ -1100,7 +1103,7 @@ Functions
    :returns: True.
 
 .. zeek:id:: Notice::populate_file_info
-   :source-code: base/frameworks/notice/main.zeek 601 604
+   :source-code: base/frameworks/notice/main.zeek 611 614
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
@@ -1113,7 +1116,7 @@ Functions
    :n: a notice record that needs file-related fields populated.
 
 .. zeek:id:: Notice::populate_file_info2
-   :source-code: base/frameworks/notice/main.zeek 606 617
+   :source-code: base/frameworks/notice/main.zeek 616 627
 
    :Type: :zeek:type:`function` (fi: :zeek:type:`Notice::FileInfo`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 

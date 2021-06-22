@@ -194,7 +194,6 @@
    base/bif/plugins/Zeek_SSL.events.bif.zeek </scripts/base/bif/plugins/Zeek_SSL.events.bif.zeek>
    base/bif/plugins/Zeek_SSL.functions.bif.zeek </scripts/base/bif/plugins/Zeek_SSL.functions.bif.zeek>
    base/bif/plugins/Zeek_SSL.consts.bif.zeek </scripts/base/bif/plugins/Zeek_SSL.consts.bif.zeek>
-   base/bif/plugins/Zeek_SteppingStone.events.bif.zeek </scripts/base/bif/plugins/Zeek_SteppingStone.events.bif.zeek>
    base/bif/plugins/Zeek_Syslog.events.bif.zeek </scripts/base/bif/plugins/Zeek_Syslog.events.bif.zeek>
    base/bif/plugins/Zeek_TCP.events.bif.zeek </scripts/base/bif/plugins/Zeek_TCP.events.bif.zeek>
    base/bif/plugins/Zeek_TCP.types.bif.zeek </scripts/base/bif/plugins/Zeek_TCP.types.bif.zeek>
