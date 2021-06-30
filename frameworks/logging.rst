@@ -807,6 +807,21 @@ format:
 
   redef LogAscii::use_json = T;
 
+A similar global option is the logdir option specifying a directory as the location for output files.
+
+.. code-block:: zeek
+
+  redef LogAscii::logdir = output_directory;
+
+Both can be used from the command line, alone or together with other scripts:
+
+.. code-block:: zeek
+
+  zeek -r ../test-capture.cap LogAscii::use_json=T
+
+  mkdir output_directory ; zeek -r ../test-capture.cap LogAscii::logdir=output_directory
+
+
 Some writer options are filter-specific (i.e., they affect only the filters
 that explicitly specify the option). For example, to change the output format
 of the :file:`conn.log` only:
