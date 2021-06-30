@@ -466,7 +466,7 @@ when creating new streams, as follows:
       redef enum Log::ID += { LOG };
 
       ## A default logging policy hook for the stream.
-      log_policy: Log::PolicyHook;
+      global log_policy: Log::PolicyHook;
 
       # Define the record type that will contain the data to log.
       type Info: record {
