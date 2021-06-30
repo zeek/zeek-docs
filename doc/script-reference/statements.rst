@@ -278,7 +278,87 @@ Example:
 Function Flavors
 ~~~~~~~~~~~~~~~~
 
-For details on how to declare a :zeek:type:`function`, :zeek:type:`event`
+Functions come in 3 flavors, a :zeek:type:`function`, :zeek:type:`event`
+handler, or :zeek:type:`hook`. Within zeek these are all considered executable types with associated bodies of statements. The following table compares and contrasts these three executable types.
+
+.. list-table::
+  :header-rows: 1
+
+  * - Type
+    - Anonymity
+    - Multiple bodies and priorities
+    - Immediate invocation
+    - Scheduling
+    - Default arguments
+    - Container argument mutability
+    - Alternate declarations
+    - Return values
+    
+  * - :zeek:keyword:`function`
+    - Yes
+    - No
+    - Yes
+    - No
+    - Yes
+    - Yes
+    - No
+    - Yes
+    
+  * - :zeek:keyword:`hook`
+    - No
+    - Yes
+    - Yes
+    - No
+    - Yes
+    - Yes
+    - Yes
+    - Yes
+
+  * - :zeek:keyword:`event`
+    - No
+    - Yes
+    - No
+    - Yes
+    - Yes
+    - Yes
+    - Yes
+    - No
+
+*Anonymity*
+
+While Zeek does support the concept of anonymous, also called lambda, functions, hooks and events cannot be anonymous. They are referenced by their names. As an example, reducer functions in the SumStats framework are often implemented as lambda functions.
+
+*Multiple bodies and priorities*
+
+Functions cannot have multiple bodies, however, hooks and events can. This means that different scripts can add additional bodies to a hook or event associated with a unique name. When an event or hook is executed, Zeek needs a way to order the execution. This is accomplished with priorities. By default, a hook’s or event’s body has a priority of zero but valid values can be from -10 to 10.
+
+*Immediate invocation*
+
+Functions and hook bodies are executed immediately. That means if a script is being interpreted and a line contains a function call, execution flow is immediately passed to that function (or hook). This does not happen for events. Events are pushed onto an event queue within Zeek and are handled as time passes.
+
+*Scheduling*
+
+Functions and hooks cannot be scheduled like events can. Scheduling places an event onto the event queue and is the equivalent to immediately invoking a function or hook. Attempting to schedule a function or a hook results in the same syntax error: “function invoked as an event”.
+
+*Default arguments*
+
+Functions, hooks, and events all support default arguments.
+
+*Container argument mutability*
+
+When argument types are container types, such as records, mutating the arguments within the body (of a function, hook, or event) causes the record to retain that mutation. Essentially, container types are passed by reference while atomic types are passed by value.
+
+*Alternate declarations*
+
+Hooks and events do support alternate prototype declarations. This means that a set or scripts may define a single event (or hook) name multiple times with different argument sets. This is often referred to as overloading in other languages. Functions do not support alternate prototype declarations.
+
+*Return values*
+
+All functions must return a value. However, functions with no explicit return type implicitly return void. This can seem a bit odd as void isn’t a valid Zeek type. 
+A hook body is allowed to return before it breaks. Hooks may return either a boolean type or void, but aren’t required to return any value.
+Events cannot return a value because they are scheduled through the event loop and don’t have a caller to return to.  
+
+For further details on how to declare a :zeek:type:`function`, :zeek:type:`event`
 handler, or :zeek:type:`hook`, see the documentation for those types.
 
 Statements
