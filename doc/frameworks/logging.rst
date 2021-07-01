@@ -435,27 +435,43 @@ This function can be used with all log streams that have records containing an
 Filtering Log Records
 ---------------------
 
-We have seen how to customize the logged columns, but you can also control
-which records Zeek writes out. This relies on Zeek’s :zeek:see:`hook`
-mechanism, as follows. Log streams and log filters feature an optional “policy”
-hook whose handlers can veto the writing of a log entry via a :zeek:see:`break`
-statement. Anyone can attach handlers to these hooks, which look as follows:
+We just saw ways how to customize the logged columns. The logging framework also
+lets you control which records Zeek writes out. It relies on Zeek’s :zeek:see:`hook`
+mechanism to do this, as follows. The framework provides two levels of "policy"
+hooks, a global one and a set of filter-level ones. The hook handlers can
+implement additional processing of a log record, including vetoing the writing
+of the record.  Any handler that uses a :zeek:see:`break` statement to leave the
+hook declares that a record shall not be written out. Anyone can attach handlers
+to these hooks, which look as follows:
 
 .. code-block:: zeek
 
+  type Log::StreamPolicyHook: hook(rec: any, id: ID);
   type Log::PolicyHook: hook(rec: any, id: ID, filter: Filter);
 
-The ``rec`` argument contains the entry to be logged and is an instance of the
-record type associated with the stream’s columns.  ``id`` identifies the log
-stream, and ``filter`` is the log filter instance governing the log-write under
-consideration. You can pass arbitrary state through these arguments, for
-example by extending streams or filters via a :zeek:see:`redef`, or at runtime
-via the config table included in the filter.  The framework automatically
-inherits any policy hook defined on a stream to its attached filters. Filters
-can override this hook, including no use of a hook, as desired.
+For both hook types, the ``rec`` argument contains the entry to be logged and is
+an instance of the record type associated with the stream’s columns, and ``id``
+identifies the log stream.
 
-To support hooks on your log streams, you should always define a default hook
-when creating new streams, as follows:
+The logging framework defines one global hook policy hook: :zeek:see:`Log::log_stream_policy`.
+For every log write, this hook gets invoked first. Any of its handlers may
+decide to veto the log entry. The framework then iterates over the log stream's
+filters. Each filter has a ``filter$policy`` hook of type :zeek:see:`Log::PolicyHook`.
+Its handlers receive the log record, the ID of the log stream, and the filter
+record itself. Each handler can veto the write. After the filter's hook has run,
+any veto (by :zeek:see:`Log::log_stream_policy` or the filter's hook) aborts the
+write via that filter. If no veto has occurred, the filter now steers the log
+record to its output.
+
+You can pass arbitrary state through these hook handlers. For example, you can
+extending streams or filters via a :zeek:see:`redef`, or pass key-value pairs
+via the ``filter$config`` table..
+
+Since you'll often want to use uniform handling for all writes on a given
+stream, log streams offer a default hook, provided when constructing the stream,
+that the stream's filters will use if they don't provide their own. To support
+hooks on your log streams, you should always define a default hook when creating
+new streams, as follows:
 
 .. code-block:: zeek
 
@@ -483,8 +499,8 @@ when creating new streams, as follows:
       Log::create_stream(Foo::LOG, [$columns=Info, $path="foo", $policy=log_policy]);
       }
 
-With this hook in place, it’s now easy to add a filtering predicate from
-anywhere:
+With this hook in place, it’s now easy to add a filtering predicate for the ``Foo``
+log from anywhere:
 
 .. code-block:: zeek
 
@@ -525,6 +541,40 @@ filter to a stream:
                                    $path="foo-incomplete",
                                    $policy=my_policy];
       Log::add_filter(Foo::LOG, filter);
+      }
+
+Note that this approach has subtle implications: the new filter does not use the
+``Foo::log_policy`` hook, and that hook does not get invoked for writes to this
+filter. Any vetos or additional processing implemented in ``Foo::log_policy``
+handlers no longer happens for the new filter. Such hook replacement should
+rarely be necessary; you may find it preferable to narrow the stream's default
+handler to the filter in question:
+
+.. code-block:: zeek
+
+  hook Foo::log_policy(rec: Foo::Info, id: Log::ID, filter: Log::Filter)
+      {
+      if ( filter$name != "incomplete-only" )
+          return;
+
+      # Let's only log incomplete flows:
+      if ( rec$missed_bytes == 0 )
+          break;
+      }
+
+For tasks that need to run once per-write, not once per-write-and-filter,
+use the :zeek:see:`Log::log_stream_policy` instead:
+
+.. code-block:: zeek
+
+  hook Log::log_stream_policy(rec: Foo::Info, id: Log::ID)
+      {
+      # Called once per write
+      }
+
+  hook Foo::log_policy(rec: Foo::Info, id: Log::ID, filter: Log::Filter)
+      {
+      # Called once for each of Foo's filters.
       }
 
 To change an existing filter first retrieve it, then update it, and
