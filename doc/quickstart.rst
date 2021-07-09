@@ -340,7 +340,7 @@ Zeek to perform all the default analysis on the capture:
 
   zeek -r mypackets.trace
 
-Zeek will output log files into the working directory.
+Zeek will output log files into the current working directory. If you want them written into a directory see below.
 
 If no logs are generated for a pcap, try to run the pcap with ``-C`` to tell
 Zeek to ignore invalid IP Checksums:
@@ -363,6 +363,14 @@ behavior in the pcap, run Zeek with following command:
 .. code-block:: console
 
   zeek –r mypackets.trace my-script.zeek
+
+For example you can use the option logdir from the command line to write files into a directory:
+
+.. code-block:: zeek
+
+  mkdir output_directory ; zeek -r mypackets.trace LogAscii::logdir=output_directory
+
+
 
 Telling Zeek Which Scripts to Load
 ----------------------------------
