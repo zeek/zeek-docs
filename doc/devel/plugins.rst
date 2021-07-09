@@ -448,3 +448,20 @@ replaced with a simple dash. Example: If the plugin is called
 ``Demo::Rot13``, use ``-B plugin-Demo-Rot13``. As usual, the debugging
 output will be recorded to ``debug.log`` if Zeek's compiled in debug
 mode.
+
+Building Plugins Statically
+===========================
+
+Plugins can be built statically into a Zeek binary using the
+``--include-plugins`` option passed to ``configure``. This argument
+takes a colon-separated list of paths to plugin source. Building
+plugins in this manner includes them directly into the Zeek binary
+and installation. They are loaded automatically by Zeek at startup
+without needing to install them separately.
+
+Headers for built-in plugins are installed into a subdirectory of
+``<zeek-install-prefix>/include/zeek/builtin-plugins`` specific to
+each plugin. Scripts are installed into a subdirectory of
+``<zeek-install-prefix>/share/zeek/builtin-plugins`` specific to
+each plugin. The scripts directory is also automatically added to
+the default ``ZEEKPATH``.
