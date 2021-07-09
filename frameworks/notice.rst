@@ -54,16 +54,16 @@ notice. Currently, the following actions are defined:
 
   * - :zeek:see:`Notice::ACTION_ALARM`
     - Log into the :zeek:see:`Notice::ALARM_LOG` stream which will rotate
-      hourly and email the contents to the email address or addresses defined
-      in the :zeek:see:`Notice::mail_dest` variable.
+      hourly and email the contents to the email address or addresses in the
+      `email_dest` field of that notice's :zeek:see:`Notice::Info` record.
 
   * - :zeek:see:`Notice::ACTION_EMAIL`
-    - Send the notice in an email to the email address or addresses given in
-      the :zeek:see:`Notice::mail_dest` variable.
+    - Send the notice in an email to the email address or addresses in the
+      `email_dest` field of that notice's :zeek:see:`Notice::Info` record.
 
   * - :zeek:see:`Notice::ACTION_PAGE`
-    - Send an email to the email address or addresses given in the
-      :zeek:see:`Notice::mail_page_dest` variable.
+    - Send an email to the email address or addresses in the
+      `email_dest` field of that notice's :zeek:see:`Notice::Info` record.
 
 How these notice actions are applied to notices is discussed in the
 :ref:`Notice Policy <notice-policy>` and :ref:`Notice Policy Shortcuts
@@ -99,7 +99,10 @@ the server at ``192.168.56.103``:
   hook Notice::policy(n: Notice::Info)
       {
       if ( n$note == SSH::Password_Guessing && /192\.168\.56\.103/ in n$sub )
+          {
           add n$actions[Notice::ACTION_EMAIL];
+          n$email_dest = "ssh_alerts@example.net";
+          }
       }
 
 .. code-block:: console
@@ -115,9 +118,9 @@ the server at ``192.168.56.103``:
   #unset_field      -
   #path     notice
   #open     2018-12-13-22-56-35
-  #fields   ts      uid     id.orig_h       id.orig_p       id.resp_h       id.resp_p       fuid    file_mime_type  file_desc       proto   note    msg     sub     src     dst     p       n       peer_descr      actions suppress_for    dropped remote_location.country_code    remote_location.region  remote_location.city    remote_location.latitude        remote_location.longitude
-  #types    time    string  addr    port    addr    port    string  string  string  enum    enum    string  string  addr    addr    port    count   string  set[enum]       interval        bool    string  string  string  double  double
-  1427726759.303199 -       -       -       -       -       -       -       -       -       SSH::Password_Guessing  192.168.56.1 appears to be guessing SSH passwords (seen in 10 connections).     Sampled servers:  192.168.56.103, 192.168.56.103, 192.168.56.103, 192.168.56.103, 192.168.56.103        192.168.56.1    -       -       -       -       Notice::ACTION_EMAIL,Notice::ACTION_LOG 3600.000000     F       -       -       -       -       -
+  #fields   ts      uid     id.orig_h       id.orig_p       id.resp_h       id.resp_p       fuid    file_mime_type  file_desc       proto   note    msg     sub     src     dst     p       n       peer_descr      actions email-dest   suppress_for    dropped remote_location.country_code    remote_location.region  remote_location.city    remote_location.latitude        remote_location.longitude
+  #types    time    string  addr    port    addr    port    string  string  string  enum    enum    string  string  addr    addr    port    count   string  set[enum]       set[string]   interval        bool    string  string  string  double  double
+  1427726759.303199 -       -       -       -       -       -       -       -       -       SSH::Password_Guessing  192.168.56.1 appears to be guessing SSH passwords (seen in 10 connections).     Sampled servers:  192.168.56.103, 192.168.56.103, 192.168.56.103, 192.168.56.103, 192.168.56.103        192.168.56.1    -       -       -       -       Notice::ACTION_EMAIL,Notice::ACTION_LOG  ssh_alerts@example.net    3600.000000     F       -       -       -       -       -
   #close    2018-12-13-22-56-35
 
 .. note::
@@ -350,8 +353,25 @@ Extending Notice Framework
 There are a couple of mechanisms for extending the notice framework and adding
 new capability.
 
-Extending Notice Emails
------------------------
+Configuring Notice Emails
+-------------------------
+
+If :zeek:see:`Notice::mail_dest` is set, notices with an associated
+e-mail action will be sent to that address. For additional
+customization, users can use the :zeek:see:`Notice::policy` hook to
+modify the `email_dest` field. The following example would result in 3
+separate e-mails:
+
+.. code-block:: zeek
+
+  hook Notice::policy(n: Notice::Info)
+    {
+    n$email_dest = set(
+        "snow.white@example.net",
+        "doc@example.net",
+        "happy@example.net,sleepy@example.net,bashful@example.net"
+    );
+    }
 
 If there is extra information that you would like to add to emails, that is
 possible to add by writing :zeek:see:`Notice::policy` hooks.
