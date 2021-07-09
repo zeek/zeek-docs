@@ -6,28 +6,34 @@ base/files/x509/main.zeek
 
 
 :Namespace: X509
-:Imports: :doc:`base/files/hash </scripts/base/files/hash/index>`, :doc:`base/frameworks/files </scripts/base/frameworks/files/index>`
+:Imports: :doc:`base/files/hash </scripts/base/files/hash/index>`, :doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`, :doc:`base/frameworks/files </scripts/base/frameworks/files/index>`
 
 Summary
 ~~~~~~~
 Runtime Options
 ###############
-======================================================================================================= =====================================================================
-:zeek:id:`X509::caching_required_encounters`: :zeek:type:`count` :zeek:attr:`&redef`                    How often do you have to encounter a certificate before
-                                                                                                        caching it.
-:zeek:id:`X509::caching_required_encounters_interval`: :zeek:type:`interval` :zeek:attr:`&redef`        The timespan over which caching_required_encounters has to be reached
-:zeek:id:`X509::certificate_cache_max_entries`: :zeek:type:`count` :zeek:attr:`&redef`                  Maximum size of the certificate cache
-:zeek:id:`X509::certificate_cache_minimum_eviction_interval`: :zeek:type:`interval` :zeek:attr:`&redef` After a certificate has not been encountered for this time, it
-                                                                                                        may be evicted from the certificate cache.
-======================================================================================================= =====================================================================
+========================================================================================== ===================================================================
+:zeek:id:`X509::known_log_certs_maximum_size`: :zeek:type:`count` :zeek:attr:`&redef`      Maximum size of the known_log_certs table
+:zeek:id:`X509::log_x509_in_files_log`: :zeek:type:`bool` :zeek:attr:`&redef`              This option specifies if X.509 certificates are logged in file.log.
+:zeek:id:`X509::relog_known_certificates_after`: :zeek:type:`interval` :zeek:attr:`&redef` By default, x509 certificates are deduplicated.
+========================================================================================== ===================================================================
+
+State Variables
+###############
+================================================================================================================================= ===========================================================================================
+:zeek:id:`X509::known_log_certs`: :zeek:type:`set` :zeek:attr:`&create_expire` = :zeek:see:`X509::relog_known_certificates_after` The set that stores information about certificates that already have been logged and should
+                                                                                                                                  not be logged again.
+:zeek:id:`X509::known_log_certs_use_broker`: :zeek:type:`bool`                                                                    Use broker stores to deduplicate certificates across the whole cluster.
+================================================================================================================================= ===========================================================================================
 
 Types
 #####
-=============================================== ================================================================
-:zeek:type:`X509::Info`: :zeek:type:`record`    The record type which contains the fields of the X.509 log.
-:zeek:type:`X509::SctInfo`: :zeek:type:`record` This record is used to store information about the SCTs that are
-                                                encountered in Certificates.
-=============================================== ================================================================
+=================================================== ===================================================================================
+:zeek:type:`X509::Info`: :zeek:type:`record`        The record type which contains the fields of the X.509 log.
+:zeek:type:`X509::LogCertHash`: :zeek:type:`record` Type that is used to decide which certificates are duplicates for logging purposes.
+:zeek:type:`X509::SctInfo`: :zeek:type:`record`     This record is used to store information about the SCTs that are
+                                                    encountered in Certificates.
+=================================================== ===================================================================================
 
 Redefinitions
 #############
@@ -51,67 +57,91 @@ Events
 
 Hooks
 #####
-================================================================= ===================================================================
-:zeek:id:`X509::log_policy`: :zeek:type:`Log::PolicyHook`         
-:zeek:id:`X509::x509_certificate_cache_replay`: :zeek:type:`hook` This hook performs event-replays in case a certificate that already
-                                                                  is in the cache is encountered.
-================================================================= ===================================================================
+============================================================== =======================================================================
+:zeek:id:`X509::create_deduplication_index`: :zeek:type:`hook` Hook that is used to create the index value used for log deduplication.
+:zeek:id:`X509::log_policy`: :zeek:type:`Log::PolicyHook`      
+============================================================== =======================================================================
+
+Functions
+#########
+========================================================================= ==============================================
+:zeek:id:`X509::hash_function`: :zeek:type:`function` :zeek:attr:`&redef` The hash function used for certificate hashes.
+========================================================================= ==============================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Runtime Options
 ###############
-.. zeek:id:: X509::caching_required_encounters
-   :source-code: base/files/x509/main.zeek 14 14
+.. zeek:id:: X509::known_log_certs_maximum_size
+   :source-code: base/files/x509/main.zeek 98 98
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``10``
+   :Default: ``1000000``
 
-   How often do you have to encounter a certificate before
-   caching it. Set to 0 to disable caching of certificates.
+   Maximum size of the known_log_certs table
 
-.. zeek:id:: X509::caching_required_encounters_interval
-   :source-code: base/files/x509/main.zeek 17 17
+.. zeek:id:: X509::log_x509_in_files_log
+   :source-code: base/files/x509/main.zeek 20 20
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+   This option specifies if X.509 certificates are logged in file.log. Typically, there
+   is not much value to having the entry in files.log - especially since, by default, the
+   file ID is not present in the X509 log.
+
+.. zeek:id:: X509::relog_known_certificates_after
+   :source-code: base/files/x509/main.zeek 91 91
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``1.0 min 2.0 secs``
+   :Default: ``1.0 day``
 
-   The timespan over which caching_required_encounters has to be reached
+   By default, x509 certificates are deduplicated. This configuration option configures
+   the maximum time after which certificates are re-logged. Note - depending on other configuration
+   options, this setting might only apply on a per-worker basis and you still might see certificates
+   logged several times.
+   
+   To disable deduplication completely, set this to 0secs.
 
-.. zeek:id:: X509::certificate_cache_max_entries
-   :source-code: base/files/x509/main.zeek 24 24
+State Variables
+###############
+.. zeek:id:: X509::known_log_certs
+   :source-code: base/files/x509/main.zeek 95 95
 
-   :Type: :zeek:type:`count`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``10000``
+   :Type: :zeek:type:`set` [:zeek:type:`X509::LogCertHash`]
+   :Attributes: :zeek:attr:`&create_expire` = :zeek:see:`X509::relog_known_certificates_after`
+   :Default: ``{}``
 
-   Maximum size of the certificate cache
+   The set that stores information about certificates that already have been logged and should
+   not be logged again.
 
-.. zeek:id:: X509::certificate_cache_minimum_eviction_interval
-   :source-code: base/files/x509/main.zeek 21 21
+.. zeek:id:: X509::known_log_certs_use_broker
+   :source-code: base/files/x509/main.zeek 104 104
 
-   :Type: :zeek:type:`interval`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``1.0 min 2.0 secs``
+   :Type: :zeek:type:`bool`
+   :Default: ``T``
 
-   After a certificate has not been encountered for this time, it
-   may be evicted from the certificate cache.
+   Use broker stores to deduplicate certificates across the whole cluster. This will cause log-deduplication
+   to work cluster wide, but come at a slightly higher cost of memory and inter-node-communication.
+   
+   This setting is ignored if Zeek is run in standalone mode.
 
 Types
 #####
 .. zeek:type:: X509::Info
-   :source-code: base/files/x509/main.zeek 27 47
+   :source-code: base/files/x509/main.zeek 34 60
 
    :Type: :zeek:type:`record`
 
       ts: :zeek:type:`time` :zeek:attr:`&log`
          Current timestamp.
 
-      id: :zeek:type:`string` :zeek:attr:`&log`
-         File id of this certificate.
+      fingerprint: :zeek:type:`string` :zeek:attr:`&log`
+         Fingerprint of the certificate - uses chosen algorithm.
 
       certificate: :zeek:type:`X509::Certificate` :zeek:attr:`&log`
          Basic information about the certificate.
@@ -134,15 +164,46 @@ Types
          This is used for caching certificates that are commonly
          encountered and should not be relied on in user scripts.
 
-      logcert: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/ssl/log-hostcerts-only.zeek` is loaded)
+      host_cert: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         Indicates if this certificate was a end-host certificate, or sent as part of a chain
 
-         Logging of certificate is suppressed if set to F
+      client_cert: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         Indicates if this certificate was sent from the client
+
+      deduplication_index: :zeek:type:`X509::LogCertHash` :zeek:attr:`&optional`
+         Record that is used to deduplicate log entries.
+
+      always_raise_x509_events: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/files/x509/disable-certificate-events-known-certs.zeek` is loaded)
+
+         Set to true to force certificate events to always be raised for this certificate.
+
+      cert: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/protocols/ssl/log-certs-base64.zeek` is loaded)
+
+         Base64 endoded X.509 certificate.
 
    The record type which contains the fields of the X.509 log.
 
+.. zeek:type:: X509::LogCertHash
+   :source-code: base/files/x509/main.zeek 24 31
+
+   :Type: :zeek:type:`record`
+
+      fingerprint: :zeek:type:`string`
+         Certificate fingerprint
+
+      host_cert: :zeek:type:`bool`
+         Indicates if this certificate was a end-host certificate, or sent as part of a chain
+
+      client_cert: :zeek:type:`bool`
+         Indicates if this certificate was sent from the client
+
+   Type that is used to decide which certificates are duplicates for logging purposes.
+   When adding entries to this, also change the create_deduplication_index to update them.
+
 .. zeek:type:: X509::SctInfo
-   :source-code: base/files/x509/main.zeek 51 67
+   :source-code: base/files/x509/main.zeek 67 83
 
    :Type: :zeek:type:`record`
 
@@ -173,7 +234,7 @@ Types
 Events
 ######
 .. zeek:id:: X509::log_x509
-   :source-code: base/files/x509/main.zeek 77 77
+   :source-code: base/files/x509/main.zeek 107 107
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`X509::Info`)
 
@@ -181,21 +242,28 @@ Events
 
 Hooks
 #####
+.. zeek:id:: X509::create_deduplication_index
+   :source-code: base/files/x509/main.zeek 158 164
+
+   :Type: :zeek:type:`hook` (c: :zeek:type:`X509::Info`) : :zeek:type:`bool`
+
+   Hook that is used to create the index value used for log deduplication.
+
 .. zeek:id:: X509::log_policy
-   :source-code: policy/protocols/ssl/log-hostcerts-only.zeek 29 33
+   :source-code: policy/protocols/ssl/log-hostcerts-only.zeek 9 13
 
    :Type: :zeek:type:`Log::PolicyHook`
 
 
-.. zeek:id:: X509::x509_certificate_cache_replay
-   :source-code: base/files/x509/main.zeek 126 156
+Functions
+#########
+.. zeek:id:: X509::hash_function
+   :source-code: base/files/x509/main.zeek 15 15
 
-   :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`, e: :zeek:type:`X509::Info`, sha256: :zeek:type:`string`) : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (cert: :zeek:type:`string`) : :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
 
-   This hook performs event-replays in case a certificate that already
-   is in the cache is encountered.
-   
-   It is possible to change this behavior/skip sending the events by
-   installing a higher priority hook instead.
+   The hash function used for certificate hashes. By default this is sha256; you can use
+   any other hash function and the hashes will change in ssl.log and in x509.log.
 
 

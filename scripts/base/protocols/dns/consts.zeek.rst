@@ -57,7 +57,7 @@ Constants
    RR TYPE value for a domain name pointer.
 
 .. zeek:id:: DNS::algorithms
-   :source-code: base/protocols/dns/consts.zeek 136 136
+   :source-code: base/protocols/dns/consts.zeek 144 144
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -91,7 +91,7 @@ Constants
    Possible values of the algorithms used in DNSKEY, DS and RRSIG records
 
 .. zeek:id:: DNS::base_errors
-   :source-code: base/protocols/dns/consts.zeek 89 89
+   :source-code: base/protocols/dns/consts.zeek 97 97
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -131,7 +131,7 @@ Constants
    Errors used for non-TSIG/EDNS types.
 
 .. zeek:id:: DNS::classes
-   :source-code: base/protocols/dns/consts.zeek 126 126
+   :source-code: base/protocols/dns/consts.zeek 134 134
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -153,7 +153,7 @@ Constants
    field in query messages.
 
 .. zeek:id:: DNS::digests
-   :source-code: base/protocols/dns/consts.zeek 159 159
+   :source-code: base/protocols/dns/consts.zeek 167 167
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -173,7 +173,7 @@ Constants
    Possible digest types used in DNSSEC.
 
 .. zeek:id:: DNS::edns_zfield
-   :source-code: base/protocols/dns/consts.zeek 119 119
+   :source-code: base/protocols/dns/consts.zeek 127 127
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = ``"?"``
@@ -207,8 +207,10 @@ Constants
             [46] = "RRSIG",
             [15] = "MX",
             [28] = "AAAA",
+            [64] = "SVCB",
             [9] = "MR",
             [253] = "MAILB",
+            [53] = "SMIMEA",
             [55] = "HIP",
             [52] = "TLSA",
             [251] = "IXFR",
@@ -227,15 +229,18 @@ Constants
             [59] = "CDS",
             [38] = "A6",
             [252] = "AXFR",
+            [63] = "ZONEMD",
             [42] = "APL",
             [1] = "A",
             [11] = "WKS",
             [35] = "NAPTR",
+            [108] = "EUI48",
             [22] = "NSAP",
             [256] = "URI",
             [43] = "DS",
             [102] = "GID",
             [257] = "CAA",
+            [65521] = "INTEGRITY",
             [3] = "MD",
             [44] = "SSHFP",
             [34] = "ATMA",
@@ -251,9 +256,11 @@ Constants
             [27] = "GPOS",
             [7] = "MB",
             [10] = "NULL",
+            [26] = "PX",
             [32] = "NB",
             [13] = "HINFO",
-            [26] = "PX",
+            [65] = "HTTPS",
+            [62] = "CSYNC",
             [101] = "UID",
             [47] = "NSEC",
             [50] = "NSEC3",
@@ -262,6 +269,7 @@ Constants
             [24] = "SIG",
             [99] = "SPF",
             [49] = "DHCID",
+            [109] = "EUI64",
             [249] = "TKEY",
             [103] = "UNSPEC",
             [5] = "CNAME",

@@ -67,7 +67,8 @@ Types
 ================================================================== ==============================================================================
 :zeek:type:`Log::Filter`: :zeek:type:`record`                      A filter type describes how to customize logging streams.
 :zeek:type:`Log::ID`: :zeek:type:`enum`                            Type that defines an ID unique to each log stream.
-:zeek:type:`Log::PolicyHook`: :zeek:type:`hook`                    A hook type to implement filtering policy.
+:zeek:type:`Log::PolicyHook`: :zeek:type:`hook`                    A hook type to implement filtering policy at log filter
+                                                                   granularity.
 :zeek:type:`Log::PrintLogInfo`: :zeek:type:`record`                If :zeek:see:`Log::print_to_log` is set to redirect, ``print`` statements will
                                                                    automatically populate log entries with the fields contained in this record.
 :zeek:type:`Log::PrintLogType`: :zeek:type:`enum`                  Configurations for :zeek:see:`Log::print_to_log`
@@ -78,6 +79,7 @@ Types
                                                                    user-customizable :zeek:see:`Log::rotation_format_func`.
 :zeek:type:`Log::RotationPostProcessorFunc`: :zeek:type:`function` The function type for log rotation post processors.
 :zeek:type:`Log::Stream`: :zeek:type:`record`                      Type defining the content of a logging stream.
+:zeek:type:`Log::StreamPolicyHook`: :zeek:type:`hook`              A hook type to implement filtering policy.
 :zeek:type:`Log::Writer`: :zeek:type:`enum`                        
 ================================================================== ==============================================================================
 
@@ -100,6 +102,12 @@ Events
 ============================================= =========================================
 :zeek:id:`Log::log_print`: :zeek:type:`event` Event for accessing logged print records.
 ============================================= =========================================
+
+Hooks
+#####
+===================================================================== ===========================
+:zeek:id:`Log::log_stream_policy`: :zeek:type:`Log::StreamPolicyHook` The global log policy hook.
+===================================================================== ===========================
 
 Functions
 #########
@@ -340,7 +348,7 @@ Redefinable Options
 Constants
 #########
 .. zeek:id:: Log::no_filter
-   :source-code: base/frameworks/logging/main.zeek 356 356
+   :source-code: base/frameworks/logging/main.zeek 371 371
 
    :Type: :zeek:type:`Log::Filter`
    :Default:
@@ -377,7 +385,7 @@ Constants
 State Variables
 ###############
 .. zeek:id:: Log::active_streams
-   :source-code: base/frameworks/logging/main.zeek 553 553
+   :source-code: base/frameworks/logging/main.zeek 568 568
 
    :Type: :zeek:type:`table` [:zeek:type:`Log::ID`] of :zeek:type:`Log::Stream`
    :Default: ``{}``
@@ -650,6 +658,11 @@ Types
          (present if :doc:`/scripts/base/files/x509/main.zeek` is loaded)
 
 
+      .. zeek:enum:: OCSP::LOG Log::ID
+
+         (present if :doc:`/scripts/base/files/x509/log-ocsp.zeek` is loaded)
+
+
       .. zeek:enum:: HTTP::LOG Log::ID
 
          (present if :doc:`/scripts/base/protocols/http/main.zeek` is loaded)
@@ -750,6 +763,11 @@ Types
          (present if :doc:`/scripts/base/files/pe/main.zeek` is loaded)
 
 
+      .. zeek:enum:: ClusterController::Log::LOG Log::ID
+
+         (present if :doc:`/scripts/policy/frameworks/cluster/controller/log.zeek` is loaded)
+
+
       .. zeek:enum:: NetControl::CATCH_RELEASE Log::ID
 
          (present if :doc:`/scripts/policy/frameworks/netcontrol/catch-and-release.zeek` is loaded)
@@ -758,11 +776,6 @@ Types
       .. zeek:enum:: Unified2::LOG Log::ID
 
          (present if :doc:`/scripts/policy/files/unified2/main.zeek` is loaded)
-
-
-      .. zeek:enum:: OCSP::LOG Log::ID
-
-         (present if :doc:`/scripts/policy/files/x509/log-ocsp.zeek` is loaded)
 
 
       .. zeek:enum:: Barnyard2::LOG Log::ID
@@ -856,14 +869,17 @@ Types
    file.
 
 .. zeek:type:: Log::PolicyHook
-   :source-code: base/frameworks/logging/main.zeek 314 314
+   :source-code: base/frameworks/logging/main.zeek 329 329
 
    :Type: :zeek:type:`hook` (rec: :zeek:type:`any`, id: :zeek:type:`Log::ID`, filter: :zeek:type:`Log::Filter`) : :zeek:type:`bool`
 
-   A hook type to implement filtering policy. Hook handlers can
-   veto the logging of a record or alter it prior to logging.
-   You can pass arbitrary state into the hook via the
-   filter argument and its config member.
+   A hook type to implement filtering policy at log filter
+   granularity. Like :zeek:see:`Log::StreamPolicyHook`, these can
+   implement added functionality, alter it prior to logging, or
+   veto the write. These hooks run at log filter granularity,
+   so get a :zeek:see:`Log::Filter` instance as additional
+   argument. You can pass additional state into the hook via the
+   the filter$config table.
    
 
    :rec: An instance of the stream's ``columns`` type with its
@@ -874,8 +890,8 @@ Types
        belongs to.
    
 
-   :filter: The :zeek:type:`Log::Filter` instance that controls
-           the fate of the given log record.
+   :filter: The :zeek:type:`Log::Filter` instance that steers
+           the output of the given log record.
 
 .. zeek:type:: Log::PrintLogInfo
    :source-code: base/frameworks/logging/main.zeek 67 72
@@ -996,7 +1012,7 @@ Types
    The function type for log rotation post processors.
 
 .. zeek:type:: Log::Stream
-   :source-code: base/frameworks/logging/main.zeek 331 353
+   :source-code: base/frameworks/logging/main.zeek 346 368
 
    :Type: :zeek:type:`record`
 
@@ -1024,6 +1040,24 @@ Types
 
    Type defining the content of a logging stream.
 
+.. zeek:type:: Log::StreamPolicyHook
+   :source-code: base/frameworks/logging/main.zeek 311 311
+
+   :Type: :zeek:type:`hook` (rec: :zeek:type:`any`, id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
+
+   A hook type to implement filtering policy. Hook handlers run
+   on each log record. They can implement arbitrary per-record
+   processing, alter the log record, or veto the writing of the
+   given record by breaking from the hook handler.
+   
+
+   :rec: An instance of the stream's ``columns`` type with its
+        fields set to the values to be logged.
+   
+
+   :id: The ID associated with the logging stream the filter
+       belongs to.
+
 .. zeek:type:: Log::Writer
 
    :Type: :zeek:type:`enum`
@@ -1044,10 +1078,23 @@ Events
 
    Event for accessing logged print records.
 
+Hooks
+#####
+.. zeek:id:: Log::log_stream_policy
+   :source-code: base/frameworks/logging/main.zeek 575 575
+
+   :Type: :zeek:type:`Log::StreamPolicyHook`
+
+   The global log policy hook. The framework invokes this hook for any
+   log write, prior to iterating over the stream's associated filters.
+   As with filter-specific hooks, breaking from the hook vetoes writing
+   of the given log record. Note that filter-level policy hooks still get
+   invoked after the global hook vetos, but they cannot "un-veto" the write.
+
 Functions
 #########
 .. zeek:id:: Log::add_default_filter
-   :source-code: base/frameworks/logging/main.zeek 789 792
+   :source-code: base/frameworks/logging/main.zeek 811 814
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1067,7 +1114,7 @@ Functions
       Log::remove_default_filter
 
 .. zeek:id:: Log::add_filter
-   :source-code: base/frameworks/logging/main.zeek 729 746
+   :source-code: base/frameworks/logging/main.zeek 751 768
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, filter: :zeek:type:`Log::Filter`) : :zeek:type:`bool`
 
@@ -1090,7 +1137,7 @@ Functions
       Log::remove_default_filter Log::get_filter Log::get_filter_names
 
 .. zeek:id:: Log::create_stream
-   :source-code: base/frameworks/logging/main.zeek 677 686
+   :source-code: base/frameworks/logging/main.zeek 699 708
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, stream: :zeek:type:`Log::Stream`) : :zeek:type:`bool`
 
@@ -1121,7 +1168,7 @@ Functions
    that no extensions are added.
 
 .. zeek:id:: Log::default_path_func
-   :source-code: base/frameworks/logging/main.zeek 577 613
+   :source-code: base/frameworks/logging/main.zeek 599 635
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, path: :zeek:type:`string`, rec: :zeek:type:`any`) : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1149,7 +1196,7 @@ Functions
    :returns: The path to be used for the filter.
 
 .. zeek:id:: Log::disable_stream
-   :source-code: base/frameworks/logging/main.zeek 703 707
+   :source-code: base/frameworks/logging/main.zeek 725 729
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1166,7 +1213,7 @@ Functions
    .. zeek:see:: Log::enable_stream
 
 .. zeek:id:: Log::enable_stream
-   :source-code: base/frameworks/logging/main.zeek 709 718
+   :source-code: base/frameworks/logging/main.zeek 731 740
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1183,7 +1230,7 @@ Functions
    .. zeek:see:: Log::disable_stream
 
 .. zeek:id:: Log::flush
-   :source-code: base/frameworks/logging/main.zeek 784 787
+   :source-code: base/frameworks/logging/main.zeek 806 809
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1202,7 +1249,7 @@ Functions
    .. zeek:see:: Log::set_buf Log::enable_stream Log::disable_stream
 
 .. zeek:id:: Log::get_filter
-   :source-code: base/frameworks/logging/main.zeek 758 764
+   :source-code: base/frameworks/logging/main.zeek 780 786
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, name: :zeek:type:`string`) : :zeek:type:`Log::Filter`
 
@@ -1225,7 +1272,7 @@ Functions
                 Log::remove_default_filter Log::get_filter_names
 
 .. zeek:id:: Log::get_filter_names
-   :source-code: base/frameworks/logging/main.zeek 766 772
+   :source-code: base/frameworks/logging/main.zeek 788 794
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`set` [:zeek:type:`string`]
 
@@ -1243,7 +1290,7 @@ Functions
      Log::remove_default_filter Log::get_filter
 
 .. zeek:id:: Log::remove_default_filter
-   :source-code: base/frameworks/logging/main.zeek 794 797
+   :source-code: base/frameworks/logging/main.zeek 816 819
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1261,7 +1308,7 @@ Functions
    .. zeek:see:: Log::add_filter Log::remove_filter Log::add_default_filter
 
 .. zeek:id:: Log::remove_filter
-   :source-code: base/frameworks/logging/main.zeek 748 756
+   :source-code: base/frameworks/logging/main.zeek 770 778
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1283,7 +1330,7 @@ Functions
       Log::remove_default_filter Log::get_filter Log::get_filter_names
 
 .. zeek:id:: Log::remove_stream
-   :source-code: base/frameworks/logging/main.zeek 688 702
+   :source-code: base/frameworks/logging/main.zeek 710 724
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1298,7 +1345,7 @@ Functions
    .. zeek:see:: Log::create_stream
 
 .. zeek:id:: Log::rotation_format_func
-   :source-code: base/frameworks/logging/main.zeek 650 676
+   :source-code: base/frameworks/logging/main.zeek 672 698
 
    :Type: :zeek:type:`function` (ri: :zeek:type:`Log::RotationFmtInfo`) : :zeek:type:`Log::RotationPath`
    :Attributes: :zeek:attr:`&redef`
@@ -1309,7 +1356,7 @@ Functions
    file name is not determined yet).
 
 .. zeek:id:: Log::run_rotation_postprocessor_cmd
-   :source-code: base/frameworks/logging/main.zeek 617 636
+   :source-code: base/frameworks/logging/main.zeek 639 658
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`, npath: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1335,7 +1382,7 @@ Functions
       Log::default_rotation_postprocessors
 
 .. zeek:id:: Log::set_buf
-   :source-code: base/frameworks/logging/main.zeek 779 782
+   :source-code: base/frameworks/logging/main.zeek 801 804
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, buffered: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -1357,7 +1404,7 @@ Functions
    .. zeek:see:: Log::flush
 
 .. zeek:id:: Log::write
-   :source-code: base/frameworks/logging/main.zeek 774 777
+   :source-code: base/frameworks/logging/main.zeek 796 799
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, columns: :zeek:type:`any`) : :zeek:type:`bool`
 

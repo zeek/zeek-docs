@@ -341,7 +341,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Files::log_policy
-   :source-code: base/frameworks/files/main.zeek 18 18
+   :source-code: base/files/x509/main.zeek 152 156
 
    :Type: :zeek:type:`Log::PolicyHook`
 

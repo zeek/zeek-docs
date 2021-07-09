@@ -39,7 +39,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: CertNotary::domain
-   :source-code: policy/protocols/ssl/notary.zeek 15 15
+   :source-code: policy/protocols/ssl/notary.zeek 17 17
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -50,7 +50,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: CertNotary::Response
-   :source-code: policy/protocols/ssl/notary.zeek 7 12
+   :source-code: policy/protocols/ssl/notary.zeek 9 14
 
    :Type: :zeek:type:`record`
 

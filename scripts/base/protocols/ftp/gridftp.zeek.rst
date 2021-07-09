@@ -115,7 +115,7 @@ Events
 Functions
 #########
 .. zeek:id:: GridFTP::data_channel_initial_criteria
-   :source-code: base/protocols/ftp/gridftp.zeek 108 112
+   :source-code: base/protocols/ftp/gridftp.zeek 108 113
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
