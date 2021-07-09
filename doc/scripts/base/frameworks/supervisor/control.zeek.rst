@@ -11,13 +11,15 @@ That is, it may change in various incompatible ways without warning or
 deprecation until the stable 4.0.0 release.
 
 :Namespace: SupervisorControl
-:Imports: :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`
+:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`
 
 Summary
 ~~~~~~~
 Redefinable Options
 ###################
 =================================================================================== =================================================================
+:zeek:id:`SupervisorControl::enable_listen`: :zeek:type:`bool` :zeek:attr:`&redef`  When enabled, the Supervisor will listen on the configured Broker
+                                                                                    :zeek:see:`Broker::default_listen_address`.
 :zeek:id:`SupervisorControl::topic_prefix`: :zeek:type:`string` :zeek:attr:`&redef` The Broker topic prefix to use when subscribing to Supervisor API
                                                                                     requests and when publishing Supervisor API responses.
 =================================================================================== =================================================================
@@ -46,8 +48,24 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Redefinable Options
 ###################
+.. zeek:id:: SupervisorControl::enable_listen
+   :source-code: base/frameworks/supervisor/control.zeek 21 21
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+   :Redefinition: from :doc:`/scripts/policy/frameworks/cluster/agent/boot.zeek`
+
+      ``=``::
+
+         T
+
+
+   When enabled, the Supervisor will listen on the configured Broker
+   :zeek:see:`Broker::default_listen_address`.
+
 .. zeek:id:: SupervisorControl::topic_prefix
-   :source-code: base/frameworks/supervisor/control.zeek 16 16
+   :source-code: base/frameworks/supervisor/control.zeek 17 17
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -61,7 +79,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: SupervisorControl::create_request
-   :source-code: base/frameworks/supervisor/main.zeek 66 74
+   :source-code: base/frameworks/supervisor/main.zeek 72 80
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`Supervisor::NodeConfig`)
 
@@ -74,7 +92,7 @@ Events
    :node: the desired configuration for the new supervised node process.
 
 .. zeek:id:: SupervisorControl::create_response
-   :source-code: base/frameworks/supervisor/control.zeek 32 32
+   :source-code: policy/frameworks/cluster/agent/main.zeek 25 41
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`string`)
 
@@ -89,7 +107,7 @@ Events
            :zeek:see:`Supervisor::create`.
 
 .. zeek:id:: SupervisorControl::destroy_request
-   :source-code: base/frameworks/supervisor/main.zeek 76 84
+   :source-code: base/frameworks/supervisor/main.zeek 82 90
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`string`)
 
@@ -103,7 +121,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::destroy_response
-   :source-code: base/frameworks/supervisor/control.zeek 83 83
+   :source-code: policy/frameworks/cluster/agent/main.zeek 43 59
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -118,7 +136,7 @@ Events
            :zeek:see:`Supervisor::destroy`.
 
 .. zeek:id:: SupervisorControl::restart_request
-   :source-code: base/frameworks/supervisor/main.zeek 86 94
+   :source-code: base/frameworks/supervisor/main.zeek 92 100
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`string`)
 
@@ -132,7 +150,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::restart_response
-   :source-code: base/frameworks/supervisor/control.zeek 66 66
+   :source-code: base/frameworks/supervisor/control.zeek 71 71
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -147,7 +165,7 @@ Events
            :zeek:see:`Supervisor::restart`.
 
 .. zeek:id:: SupervisorControl::status_request
-   :source-code: base/frameworks/supervisor/main.zeek 56 64
+   :source-code: base/frameworks/supervisor/main.zeek 62 70
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, node: :zeek:type:`string`)
 
@@ -161,7 +179,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::status_response
-   :source-code: base/frameworks/supervisor/control.zeek 49 49
+   :source-code: base/frameworks/supervisor/control.zeek 54 54
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Supervisor::Status`)
 
@@ -176,7 +194,7 @@ Events
            :zeek:see:`Supervisor::status`.
 
 .. zeek:id:: SupervisorControl::stop_request
-   :source-code: base/frameworks/supervisor/main.zeek 48 54
+   :source-code: base/frameworks/supervisor/main.zeek 54 60
 
    :Type: :zeek:type:`event` ()
 

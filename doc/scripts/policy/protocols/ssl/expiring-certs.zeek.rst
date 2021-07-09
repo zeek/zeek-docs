@@ -16,7 +16,7 @@ Summary
 Runtime Options
 ###############
 ======================================================================================= ======================================================================
-:zeek:id:`SSL::notify_certs_expiration`: :zeek:type:`Host` :zeek:attr:`&redef`          The category of hosts you would like to be notified about which have 
+:zeek:id:`SSL::notify_certs_expiration`: :zeek:type:`Host` :zeek:attr:`&redef`          The category of hosts you would like to be notified about which have
                                                                                         certificates that are going to be expiring soon.
 :zeek:id:`SSL::notify_when_cert_expiring_in`: :zeek:type:`interval` :zeek:attr:`&redef` The time before a certificate is going to expire that you would like
                                                                                         to start receiving :zeek:enum:`SSL::Certificate_Expires_Soon` notices.
@@ -32,7 +32,7 @@ Redefinitions
                                                and the certificate is now invalid.
                                              
                                              * :zeek:enum:`SSL::Certificate_Expires_Soon`:
-                                               Indicates that a certificate is going to expire within 
+                                               Indicates that a certificate is going to expire within
                                                :zeek:id:`SSL::notify_when_cert_expiring_in`.
                                              
                                              * :zeek:enum:`SSL::Certificate_Not_Valid_Yet`:
@@ -52,9 +52,9 @@ Runtime Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``LOCAL_HOSTS``
 
-   The category of hosts you would like to be notified about which have 
-   certificates that are going to be expiring soon.  By default, these 
-   notices will be suppressed by the notice framework for 1 day after 
+   The category of hosts you would like to be notified about which have
+   certificates that are going to be expiring soon.  By default, these
+   notices will be suppressed by the notice framework for 1 day after
    a particular certificate has had a notice generated.
    Choices are: LOCAL_HOSTS, REMOTE_HOSTS, ALL_HOSTS, NO_HOSTS
 

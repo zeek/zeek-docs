@@ -8484,10 +8484,6 @@ Types
 
          Recently received IDS events.  This is primarily used
          for tying together Unified2 events and packets.
-
-      logcert: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/ssl/log-hostcerts-only.zeek` is loaded)
-
    :Attributes: :zeek:attr:`&redef`
 
    File Analysis handle for a file that Zeek is analyzing. This holds

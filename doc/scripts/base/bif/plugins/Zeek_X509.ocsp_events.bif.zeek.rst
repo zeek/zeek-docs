@@ -132,7 +132,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_certificate
-   :source-code: policy/files/x509/log-ocsp.zeek 50 64
+   :source-code: base/files/x509/log-ocsp.zeek 47 61
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, hashAlgorithm: :zeek:type:`string`, issuerNameHash: :zeek:type:`string`, issuerKeyHash: :zeek:type:`string`, serialNumber: :zeek:type:`string`, certStatus: :zeek:type:`string`, revokeTime: :zeek:type:`time`, revokeReason: :zeek:type:`string`, thisUpdate: :zeek:type:`time`, nextUpdate: :zeek:type:`time`)
 

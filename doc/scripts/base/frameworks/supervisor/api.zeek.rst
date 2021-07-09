@@ -88,7 +88,7 @@ Types
    The role a supervised-node will play in Zeek's Cluster Framework.
 
 .. zeek:type:: Supervisor::NodeConfig
-   :source-code: base/frameworks/supervisor/api.zeek 33 57
+   :source-code: base/frameworks/supervisor/api.zeek 33 62
 
    :Type: :zeek:type:`record`
 
@@ -108,8 +108,15 @@ Types
       stderr_file: :zeek:type:`string` :zeek:attr:`&optional`
          The filename/path to which the node's stderr will be redirected.
 
+      bare_mode: :zeek:type:`bool` :zeek:attr:`&optional`
+         Whether to start the node in bare mode. When left out, the node
+         inherits the bare-mode status the supervisor itself runs with.
+
       scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
          Additional script filenames/paths that the node should load.
+
+      env: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+         Environment variables to define in the supervised node.
 
       cpu_affinity: :zeek:type:`int` :zeek:attr:`&optional`
          A cpu/core number to which the node will try to pin itself.
@@ -126,7 +133,7 @@ Types
    Configuration options that influence behavior of a supervised Zeek node.
 
 .. zeek:type:: Supervisor::NodeStatus
-   :source-code: base/frameworks/supervisor/api.zeek 60 66
+   :source-code: base/frameworks/supervisor/api.zeek 65 71
 
    :Type: :zeek:type:`record`
 
@@ -140,7 +147,7 @@ Types
    The current status of a supervised node.
 
 .. zeek:type:: Supervisor::Status
-   :source-code: base/frameworks/supervisor/api.zeek 69 72
+   :source-code: base/frameworks/supervisor/api.zeek 74 77
 
    :Type: :zeek:type:`record`
 
@@ -152,7 +159,7 @@ Types
 Hooks
 #####
 .. zeek:id:: Supervisor::stderr_hook
-   :source-code: base/frameworks/supervisor/api.zeek 147 147
+   :source-code: base/frameworks/supervisor/api.zeek 152 152
 
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -172,7 +179,7 @@ Hooks
    :msg: line-buffered contents from the stderr of a child process.
 
 .. zeek:id:: Supervisor::stdout_hook
-   :source-code: base/frameworks/supervisor/api.zeek 133 133
+   :source-code: base/frameworks/supervisor/api.zeek 138 138
 
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -194,7 +201,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Supervisor::create
-   :source-code: base/frameworks/supervisor/main.zeek 13 16
+   :source-code: base/frameworks/supervisor/main.zeek 12 15
 
    :Type: :zeek:type:`function` (node: :zeek:type:`Supervisor::NodeConfig`) : :zeek:type:`string`
 
@@ -208,7 +215,7 @@ Functions
    :returns: an empty string on success or description of the error/failure.
 
 .. zeek:id:: Supervisor::destroy
-   :source-code: base/frameworks/supervisor/main.zeek 18 21
+   :source-code: base/frameworks/supervisor/main.zeek 17 20
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -223,7 +230,7 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Supervisor::is_supervised
-   :source-code: base/frameworks/supervisor/main.zeek 33 36
+   :source-code: base/frameworks/supervisor/main.zeek 32 35
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -231,7 +238,7 @@ Functions
    :returns: true if this is a supervised node process.
 
 .. zeek:id:: Supervisor::is_supervisor
-   :source-code: base/frameworks/supervisor/main.zeek 28 31
+   :source-code: base/frameworks/supervisor/main.zeek 27 30
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -239,7 +246,7 @@ Functions
    :returns: true if this is the Supervisor process.
 
 .. zeek:id:: Supervisor::node
-   :source-code: base/frameworks/supervisor/main.zeek 38 41
+   :source-code: base/frameworks/supervisor/main.zeek 37 40
 
    :Type: :zeek:type:`function` () : :zeek:type:`Supervisor::NodeConfig`
 
@@ -249,7 +256,7 @@ Functions
             a supervised one.
 
 .. zeek:id:: Supervisor::restart
-   :source-code: base/frameworks/supervisor/main.zeek 23 26
+   :source-code: base/frameworks/supervisor/main.zeek 22 25
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -265,7 +272,7 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Supervisor::status
-   :source-code: base/frameworks/supervisor/main.zeek 8 11
+   :source-code: base/frameworks/supervisor/main.zeek 7 10
 
    :Type: :zeek:type:`function` (node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`Supervisor::Status`
 
