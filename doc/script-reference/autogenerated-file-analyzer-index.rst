@@ -522,7 +522,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_extension
-   :source-code: base/files/x509/main.zeek 162 169
+   :source-code: base/files/x509/main.zeek 177 184
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::Extension`)
 
@@ -542,7 +542,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ext_basic_constraints
-   :source-code: base/files/x509/main.zeek 171 178
+   :source-code: base/files/x509/main.zeek 186 193
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::BasicConstraints`)
 
@@ -721,7 +721,7 @@ Events
                 x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: ocsp_response_certificate
-   :source-code: policy/files/x509/log-ocsp.zeek 50 64
+   :source-code: base/files/x509/log-ocsp.zeek 47 61
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, hashAlgorithm: :zeek:type:`string`, issuerNameHash: :zeek:type:`string`, issuerKeyHash: :zeek:type:`string`, serialNumber: :zeek:type:`string`, certStatus: :zeek:type:`string`, revokeTime: :zeek:type:`time`, revokeReason: :zeek:type:`string`, thisUpdate: :zeek:type:`time`, nextUpdate: :zeek:type:`time`)
 
@@ -1034,4 +1034,50 @@ Functions
              callback function if you are sure you will not conflict with the base scripts.
    
    .. zeek:see:: x509_set_certificate_cache
+
+.. zeek:id:: x509_check_hostname
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 198 198
+
+   :Type: :zeek:type:`function` (hostname: :zeek:type:`string`, certname: :zeek:type:`string`) : :zeek:type:`bool`
+
+   This function checks a hostname against the name given in a certificate subject/SAN, including
+   our interpretation of RFC6128 wildcard expansions. This specifically means that wildcards are
+   only allowed in the leftmost label, wildcards only span one label, the wildcard has to be the
+   last character before the label-separator, but additional characters are allowed before it, and
+   the wildcard has to be at least at the third level (so \*.a.b).
+   
+
+   :hostname: Hostname to test
+   
+
+   :certname: Name given in the CN/SAN of a certificate; wildcards will be expanded
+   
+
+   :returns: True if the hostname matches.
+   
+   .. zeek:see:: x509_check_cert_hostname
+
+.. zeek:id:: x509_check_cert_hostname
+   :source-code: base/bif/plugins/Zeek_X509.functions.bif.zeek 216 216
+
+   :Type: :zeek:type:`function` (cert_opaque: :zeek:type:`opaque` of x509, hostname: :zeek:type:`string`) : :zeek:type:`string`
+
+   This function checks if a hostname matches one of the hostnames given in the certificate.
+   
+   For our matching we adhere to RFC6128 for the labels (see :zeek:id:`x509_check_hostname`).
+   Furthermore we adhere to RFC2818 and check only the names given in the SAN, if a SAN is present,
+   ignoring CNs in the Subject. If no SAN is present, we will use the last CN in the subject
+   for our tests.
+   
+
+   :cert: The X509 certificate opaque handle.
+   
+
+   :hostname: Hostname to check
+   
+
+   :returns: empty string if the hostname does not match; matched name (which can contain wildcards)
+            if it did.
+   
+   .. zeek:see:: x509_check_hostname
 

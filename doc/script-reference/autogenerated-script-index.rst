@@ -349,6 +349,8 @@
    base/files/x509/main.zeek </scripts/base/files/x509/main.zeek>
    base/files/hash/__load__.zeek </scripts/base/files/hash/__load__.zeek>
    base/files/hash/main.zeek </scripts/base/files/hash/main.zeek>
+   base/files/x509/certificate-event-cache.zeek </scripts/base/files/x509/certificate-event-cache.zeek>
+   base/files/x509/log-ocsp.zeek </scripts/base/files/x509/log-ocsp.zeek>
    base/protocols/http/__load__.zeek </scripts/base/protocols/http/__load__.zeek>
    base/protocols/http/main.zeek </scripts/base/protocols/http/main.zeek>
    base/protocols/http/entities.zeek </scripts/base/protocols/http/entities.zeek>
@@ -425,6 +427,17 @@
    builtin-plugins/__load__.zeek </scripts/builtin-plugins/__load__.zeek>
    zeekygen/__load__.zeek </scripts/zeekygen/__load__.zeek>
    test-all-policy.zeek </scripts/test-all-policy.zeek>
+   policy/frameworks/cluster/agent/__load__.zeek </scripts/policy/frameworks/cluster/agent/__load__.zeek>
+   policy/frameworks/cluster/agent/boot.zeek </scripts/policy/frameworks/cluster/agent/boot.zeek>
+   policy/frameworks/cluster/agent/config.zeek </scripts/policy/frameworks/cluster/agent/config.zeek>
+   policy/frameworks/cluster/controller/types.zeek </scripts/policy/frameworks/cluster/controller/types.zeek>
+   policy/frameworks/cluster/agent/api.zeek </scripts/policy/frameworks/cluster/agent/api.zeek>
+   policy/frameworks/cluster/controller/__load__.zeek </scripts/policy/frameworks/cluster/controller/__load__.zeek>
+   policy/frameworks/cluster/controller/boot.zeek </scripts/policy/frameworks/cluster/controller/boot.zeek>
+   policy/frameworks/cluster/controller/config.zeek </scripts/policy/frameworks/cluster/controller/config.zeek>
+   policy/frameworks/cluster/controller/api.zeek </scripts/policy/frameworks/cluster/controller/api.zeek>
+   policy/frameworks/cluster/controller/log.zeek </scripts/policy/frameworks/cluster/controller/log.zeek>
+   policy/frameworks/cluster/controller/request.zeek </scripts/policy/frameworks/cluster/controller/request.zeek>
    policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>
    policy/frameworks/dpd/packet-segment-logging.zeek </scripts/policy/frameworks/dpd/packet-segment-logging.zeek>
    policy/frameworks/intel/do_notice.zeek </scripts/policy/frameworks/intel/do_notice.zeek>
@@ -454,6 +467,7 @@
    policy/frameworks/notice/actions/drop.zeek </scripts/policy/frameworks/notice/actions/drop.zeek>
    policy/files/unified2/__load__.zeek </scripts/policy/files/unified2/__load__.zeek>
    policy/files/unified2/main.zeek </scripts/policy/files/unified2/main.zeek>
+   policy/files/x509/disable-certificate-events-known-certs.zeek </scripts/policy/files/x509/disable-certificate-events-known-certs.zeek>
    policy/files/x509/log-ocsp.zeek </scripts/policy/files/x509/log-ocsp.zeek>
    policy/frameworks/packet-filter/shunt.zeek </scripts/policy/frameworks/packet-filter/shunt.zeek>
    policy/frameworks/software/version-changes.zeek </scripts/policy/frameworks/software/version-changes.zeek>
@@ -513,9 +527,10 @@
    policy/protocols/ssh/interesting-hostnames.zeek </scripts/policy/protocols/ssh/interesting-hostnames.zeek>
    policy/protocols/ssh/software.zeek </scripts/policy/protocols/ssh/software.zeek>
    policy/protocols/ssl/expiring-certs.zeek </scripts/policy/protocols/ssl/expiring-certs.zeek>
-   policy/protocols/ssl/extract-certs-pem.zeek </scripts/policy/protocols/ssl/extract-certs-pem.zeek>
    policy/protocols/ssl/heartbleed.zeek </scripts/policy/protocols/ssl/heartbleed.zeek>
    policy/protocols/ssl/known-certs.zeek </scripts/policy/protocols/ssl/known-certs.zeek>
+   policy/protocols/ssl/log-certs-base64.zeek </scripts/policy/protocols/ssl/log-certs-base64.zeek>
+   policy/protocols/ssl/ssl-log-ext.zeek </scripts/policy/protocols/ssl/ssl-log-ext.zeek>
    policy/protocols/ssl/log-hostcerts-only.zeek </scripts/policy/protocols/ssl/log-hostcerts-only.zeek>
    policy/protocols/ssl/validate-certs.zeek </scripts/policy/protocols/ssl/validate-certs.zeek>
    policy/protocols/ssl/validate-ocsp.zeek </scripts/policy/protocols/ssl/validate-ocsp.zeek>
@@ -531,7 +546,10 @@
    policy/protocols/ssl/notary.zeek </scripts/policy/protocols/ssl/notary.zeek>
    policy/frameworks/control/controllee.zeek </scripts/policy/frameworks/control/controllee.zeek>
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>
+   policy/frameworks/cluster/agent/main.zeek </scripts/policy/frameworks/cluster/agent/main.zeek>
+   policy/frameworks/cluster/controller/main.zeek </scripts/policy/frameworks/cluster/controller/main.zeek>
    policy/frameworks/files/extract-all-files.zeek </scripts/policy/frameworks/files/extract-all-files.zeek>
    policy/misc/dump-events.zeek </scripts/policy/misc/dump-events.zeek>
    policy/protocols/conn/speculative-service.zeek </scripts/policy/protocols/conn/speculative-service.zeek>
+   policy/protocols/ssl/extract-certs-pem.zeek </scripts/policy/protocols/ssl/extract-certs-pem.zeek>
    zeekygen/example.zeek </scripts/zeekygen/example.zeek>

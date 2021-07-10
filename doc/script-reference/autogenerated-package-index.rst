@@ -345,6 +345,12 @@
    purpose is to provide an easy way to load all known Zeek scripts plus any
    extra scripts needed or used by the documentation process.
 
+:doc:`policy/frameworks/cluster/agent </scripts/policy/frameworks/cluster/agent/index>`
+
+
+:doc:`policy/frameworks/cluster/controller </scripts/policy/frameworks/cluster/controller/index>`
+
+
 :doc:`policy/frameworks/intel/seen </scripts/policy/frameworks/intel/seen/index>`
 
    Scripts that send data to the intelligence framework.
