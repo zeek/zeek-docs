@@ -23,7 +23,7 @@ Runtime Options
 :zeek:id:`Site::local_zones`: :zeek:type:`set` :zeek:attr:`&redef`           DNS zones that are considered "local".
 :zeek:id:`Site::neighbor_nets`: :zeek:type:`set` :zeek:attr:`&redef`         Networks that are considered "neighbors".
 :zeek:id:`Site::neighbor_zones`: :zeek:type:`set` :zeek:attr:`&redef`        DNS zones that are considered "neighbors".
-:zeek:id:`Site::private_address_space`: :zeek:type:`set` :zeek:attr:`&redef` Address space that is considered private and unrouted.
+:zeek:id:`Site::private_address_space`: :zeek:type:`set` :zeek:attr:`&redef` A list of subnets that are considered private address space.
 ============================================================================ ======================================================================
 
 State Variables
@@ -57,7 +57,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Site::local_admins
-   :source-code: base/utils/site.zeek 38 38
+   :source-code: base/utils/site.zeek 126 126
 
    :Type: :zeek:type:`table` [:zeek:type:`subnet`] of :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -69,7 +69,7 @@ Runtime Options
    addresses.
 
 .. zeek:id:: Site::local_nets
-   :source-code: base/utils/site.zeek 22 22
+   :source-code: base/utils/site.zeek 110 110
 
    :Type: :zeek:type:`set` [:zeek:type:`subnet`]
    :Attributes: :zeek:attr:`&redef`
@@ -79,7 +79,7 @@ Runtime Options
    this automatically.
 
 .. zeek:id:: Site::local_zones
-   :source-code: base/utils/site.zeek 41 41
+   :source-code: base/utils/site.zeek 129 129
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -88,7 +88,7 @@ Runtime Options
    DNS zones that are considered "local".
 
 .. zeek:id:: Site::neighbor_nets
-   :source-code: base/utils/site.zeek 32 32
+   :source-code: base/utils/site.zeek 120 120
 
    :Type: :zeek:type:`set` [:zeek:type:`subnet`]
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Runtime Options
    Networks that are considered "neighbors".
 
 .. zeek:id:: Site::neighbor_zones
-   :source-code: base/utils/site.zeek 44 44
+   :source-code: base/utils/site.zeek 132 132
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -106,7 +106,7 @@ Runtime Options
    DNS zones that are considered "neighbors".
 
 .. zeek:id:: Site::private_address_space
-   :source-code: base/utils/site.zeek 10 10
+   :source-code: base/utils/site.zeek 14 14
 
    :Type: :zeek:type:`set` [:zeek:type:`subnet`]
    :Attributes: :zeek:attr:`&redef`
@@ -115,23 +115,58 @@ Runtime Options
       ::
 
          {
+            64:ff9b:1::/48,
+            198.18.0.0/15,
+            fc00::/7,
+            100.64.0.0/10,
+            ::/128,
+            2002:ffff:ffff::/48,
             ::1/128,
-            fe80::/10,
-            192.168.0.0/16,
+            2002:cb00:7100::/40,
+            240.0.0.0/4,
+            2002:c633:6400::/40,
+            2002:a00::/24,
+            100::/64,
+            255.255.255.255/32,
+            192.0.0.0/24,
+            0.0.0.0/8,
+            2001:2::/48,
+            2002:c000:200::/40,
             172.16.0.0/12,
+            2002:f000::/20,
+            2002:7f00::/24,
+            2001::/23,
+            2002:6440::/26,
+            2002:c000::/40,
             10.0.0.0/8,
             127.0.0.0/8,
-            100.64.0.0/10
+            192.0.2.0/24,
+            2002:a9fe::/32,
+            192.168.0.0/16,
+            2002:ac10::/28,
+            169.254.0.0/16,
+            2002:c612::/31,
+            2002::/24,
+            fe80::/10,
+            0.0.0.0/0,
+            2001:db8::/32,
+            203.0.113.0/24,
+            2002:c0a8::/32,
+            198.51.100.0/24
          }
 
 
-   Address space that is considered private and unrouted.
-   By default it has RFC defined non-routable IPv4 address space.
+   A list of subnets that are considered private address space.
+   
+   By default, it has address blocks defined by IANA as not being routable over the Internet.
+   
+   See the `IPv4 Special-Purpose Address Registry <https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml>`_
+   and the `IPv6 Special-Purpose Address Registry <https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xhtml>`_
 
 State Variables
 ###############
 .. zeek:id:: Site::local_nets_table
-   :source-code: base/utils/site.zeek 29 29
+   :source-code: base/utils/site.zeek 117 117
 
    :Type: :zeek:type:`table` [:zeek:type:`subnet`] of :zeek:type:`subnet`
    :Default: ``{}``
@@ -145,7 +180,7 @@ State Variables
 Functions
 #########
 .. zeek:id:: Site::get_emails
-   :source-code: base/utils/site.zeek 146 149
+   :source-code: base/utils/site.zeek 234 237
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`string`
 
@@ -155,7 +190,7 @@ Functions
    The function inspects :zeek:id:`Site::local_admins`.
 
 .. zeek:id:: Site::is_local_addr
-   :source-code: base/utils/site.zeek 83 86
+   :source-code: base/utils/site.zeek 171 174
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`bool`
 
@@ -164,7 +199,7 @@ Functions
    The function inspects :zeek:id:`Site::local_nets`.
 
 .. zeek:id:: Site::is_local_name
-   :source-code: base/utils/site.zeek 98 101
+   :source-code: base/utils/site.zeek 186 189
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -173,7 +208,7 @@ Functions
    The function inspects :zeek:id:`Site::local_zones`.
 
 .. zeek:id:: Site::is_neighbor_addr
-   :source-code: base/utils/site.zeek 88 91
+   :source-code: base/utils/site.zeek 176 179
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`bool`
 
@@ -182,7 +217,7 @@ Functions
    The function inspects :zeek:id:`Site::neighbor_nets`.
 
 .. zeek:id:: Site::is_neighbor_name
-   :source-code: base/utils/site.zeek 103 106
+   :source-code: base/utils/site.zeek 191 194
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -191,7 +226,7 @@ Functions
    The function inspects :zeek:id:`Site::neighbor_zones`.
 
 .. zeek:id:: Site::is_private_addr
-   :source-code: base/utils/site.zeek 93 96
+   :source-code: base/utils/site.zeek 181 184
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`bool`
 
