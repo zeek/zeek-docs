@@ -303,7 +303,7 @@ value will be the value before the change, removal, or expiration. When an
 element is added, the passed value will be the value of the added element
 (since no old element existed).
 
-Note that the ``&on_change`` function is only changed when the container itself
+Note that the ``&on_change`` function is only called when the container itself
 is modified (due to an assignment, delete operation, or expiry). When a
 container contains a complex element (like a record, set, or vector), changes
 to these complex elements are not propagated back to the parent.  For example,
