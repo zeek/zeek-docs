@@ -772,6 +772,18 @@ each element of the operand vectors.
 Vectors of type ``count`` can also be operands for the bitwise and/or/xor
 operators, ``&``, ``|`` and ``^``.
 
+Vectors of type ``string`` can be concatenated element-wise through
+the ``+`` operator, yielding a new vector of ``string`` containing the
+resulting values. Both operand vectors must be of the same length. A
+vector of type ``string`` can also be paired with a scalar operand
+using any operator that supports string/scalar operations (i.e.,
+concatenation and comparisions). The resulting vector will contain the
+result of the operator applied to each of the elements. (Note that, as
+a little quirk of the language, for a string vector ``v`` there is a
+difference between ``v = v + "foo"`` and ``v += "foo"``: the former
+extends each element, while the latter appends a new element to the
+vector.)
+
 See the :zeek:keyword:`for` statement for info on how to iterate over
 the elements in a vector.
 
