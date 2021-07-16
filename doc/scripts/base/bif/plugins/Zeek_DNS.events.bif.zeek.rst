@@ -177,7 +177,7 @@ Events
    :binds: The parsed RDATA of BIND-Signeing state record.
 
 .. zeek:id:: dns_CAA_reply
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 453 453
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 455 455
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, flags: :zeek:type:`count`, tag: :zeek:type:`string`, value: :zeek:type:`string`)
 
@@ -281,7 +281,7 @@ Events
    :ds: The parsed RDATA of DS record.
 
 .. zeek:id:: dns_EDNS_addl
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 529 529
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 531 531
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_edns_additional`)
 
@@ -311,7 +311,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_cookie
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 605 605
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 607 607
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_cookie`)
 
@@ -343,7 +343,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_ecs
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 553 553
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 555 555
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_ecs`)
 
@@ -373,7 +373,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_tcp_keepalive
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 579 579
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 581 581
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_tcp_keepalive`)
 
@@ -407,6 +407,7 @@ Events
 .. zeek:id:: dns_HINFO_reply
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 353 353
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, cpu: :zeek:type:`string`, os: :zeek:type:`string`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`)
 
    Generated for DNS replies of type *HINFO*. For replies with multiple answers,
@@ -778,7 +779,7 @@ Events
    :binds: The parsed RDATA of BIND-Signeing state record.
 
 .. zeek:id:: dns_TSIG_addl
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 629 629
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 631 631
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_tsig_additional`)
 
@@ -871,7 +872,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_end
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 780 780
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 782 782
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`)
 
