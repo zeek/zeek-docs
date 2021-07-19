@@ -86,6 +86,24 @@ named “denylist” to read the data into the table. The third line removes the
 input stream again, because we do not need it any more after the data has been
 read.
 
+Note that while the key and content records may use :zeek:attr:`&optional`
+fields, omitting columns (usually via the "-" character) requires care. Since
+the key record's columns expand into a list of values for indexing into the
+receiving table (note how in the above example ``denylist`` is indexed via a
+plain ``addr``) and all of those values must be present for indexing, you cannot
+in practice omit these values. For content records, omitting is meaningful, but
+only permitted for columns with the :zeek:attr:`&optional` attribute. The
+framework skips offending input lines with a warning.
+
+.. note::
+
+  Prior to version 4.1 Zeek accepted such inputs, unsafely. When transitioning
+  from such versions to Zeek 4.1 or newer, users with omitted fields in their
+  input data may observe discrepancies in the loaded data sets.
+
+Asynchronous processing
+-----------------------
+
 Since some data files might be rather large, the input framework works
 asynchronously. A new thread is created for each new input stream. This thread
 opens the input data file, converts the data into an internal format and sends
@@ -313,7 +331,7 @@ same file, so mistakes in large data files do not trigger a message flood.
 Finally, the ASCII reader allows coarse control over the robustness in case of
 problems during data ingestion. Concretely, the
 :zeek:see:`InputAscii::fail_on_invalid_lines` and
-:zeek:see:`InputAscii::fail_on_file_problem` flags indicate whether problms
+:zeek:see:`InputAscii::fail_on_file_problem` flags indicate whether problems
 should merely trigger warnings or lead to processing failure. Both default to
 warnings.
 
