@@ -70,6 +70,11 @@ There can be any number of ``module`` declarations in a Zeek script.
 The same ``module`` declaration can appear in any number of different
 Zeek scripts.
 
+The reserved module name ``GLOBAL`` switches to the default global
+namespace. This comes in handy if you're working in a module context but want to
+define something globally, without the module's namespacing. For example, the
+:ref:`Notice Framework <notice-framework>` uses this approach to define the
+``NOTICE()`` function.
 
 .. zeek:keyword:: export
 
