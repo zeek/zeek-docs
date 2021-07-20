@@ -1,3 +1,4 @@
+.. _zkg package manager: https://docs.zeek.org/projects/package-manager/en/stable/
 
 ===============
 Writing Plugins
@@ -27,6 +28,17 @@ A plugin's functionality is available to the user just as if Zeek had
 the corresponding code built-in. Indeed, internally many of Zeek's
 pieces are structured as plugins as well, they are just statically
 compiled into the binary rather than loaded dynamically at runtime.
+
+.. note::
+
+  Plugins and Zeek packages are related but separate concepts. Both extend
+  Zeek's functionality without modifying Zeek's source code. A plugin achieves
+  this via compiled, native code that Zeek links into its core at runtime. A Zeek
+  package, on the other hand, is a modular addition to Zeek, managed via the
+  `zkg package manager`_, that may or may not include a plugin. More commonly,
+  packages consist of script-layer additions to Zeek's functionality.  Packages
+  also feature more elaborate metadata, enabling dependencies on other packages,
+  Zeek versions, etc.
 
 Quick Start
 ===========
@@ -304,6 +316,17 @@ update ``configure`` in the future when the distribution version
 changes. In ``configure.plugin`` you can use the predefined shell
 function ``append_cache_entry`` to seed values into the CMake cache;
 see the installed skeleton version and existing plugins for examples.
+
+.. note::
+
+  Technically ``init-plugin`` generates a Zeek package layout featuring a
+  plugin, since the generated content includes a functional ``zkg.meta``
+  file. Using ``init-plugin`` to bootstrap Zeek packages is deprecated.  We
+  encourage users wanting to bootstrap new Zeek packages to use ``zkg``'s
+  superior built-in templating functionality, explained in more detail `here
+  <https://docs.zeek.org/projects/package-manager/en/stable/package.html>`_.  We
+  will update ``init-plugin`` in the near future to focus it strictly on plugin
+  generation.
 
 Activating a Plugin
 ===================
