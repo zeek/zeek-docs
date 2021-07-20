@@ -62,6 +62,27 @@ The ``bool`` type supports the following operators: equality/inequality
 negation (``!``), and absolute value (where ``|T|`` is ``1``, and ``|F|`` is
 ``0``, and in both cases the result type is :zeek:type:`count`).
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`count`
+     - Absolute value operator
+     - ``|foo|``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(T)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", F)``
 
 .. zeek:native-type:: int
 
@@ -97,6 +118,52 @@ its underlying C++ implementation (some limited cases may try to statically
 determine at parse-time that an overflow will definitely occur and reject them
 an error, but don't rely on that).
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`bool`
+     - Relational operator
+     - ``foo != 0``
+
+   * - :zeek:see:`count`
+     - Absolute value operator
+     - ``|foo|``
+
+   * - :zeek:see:`count`
+     - :zeek:see:`int_to_count` BIF
+     - ``int_to_count(42)``
+
+   * - :zeek:see:`double`
+     - :zeek:see:`int_to_double` BIF
+     - ``int_to_double(foo)``
+
+   * - :zeek:see:`double`
+     - Addition operator
+     - ``foo + 0.0``
+
+   * - :zeek:see:`double`
+     - Division operator
+     - ``foo / 1.0``
+
+   * - :zeek:see:`double`
+     - Multiplication operator
+     - ``foo * 1.0``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(-10)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", 0)``
+
 .. zeek:native-type:: count
 
 count
@@ -129,6 +196,56 @@ the range of representable values (the same behavior as defined by C++).
    of ``18446744073709551612`` where ``|+5 - +9|`` results in signed-integer
    arithmetic and (likely) more expected result of ``4``.
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`count_to_v4_addr` BIF
+     - ``count_to_v4_addr(2130706433)``
+
+   * - :zeek:see:`bool`
+     - Relational operator
+     - ``foo > 0``
+
+   * - :zeek:see:`double`
+     - :zeek:see:`count_to_double` BIF
+     - ``count_to_double(42)``
+
+   * - :zeek:see:`double`
+     - Addition operator
+     - ``foo + 0.0``
+
+   * - :zeek:see:`double`
+     - Division operator
+     - ``foo / 1.0``
+
+   * - :zeek:see:`double`
+     - Multiplication operator
+     - ``foo * 1.0``
+
+   * - :zeek:see:`double`
+     - Subtraction operator
+     - ``foo - 0.0``
+
+   * - :zeek:see:`port`
+     - :zeek:see:`count_to_port` BIF
+     - ``count_to_port(80, tcp)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%x", 3735928559)``
+
 .. zeek:native-type:: double
 
 double
@@ -151,6 +268,35 @@ intended type is inferred, e.g. ``local size_difference = 5`` will
 infer :zeek:type:`count`, while ``local size_difference = 5.0``
 will infer ``double``.
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`count`
+     - :zeek:see:`double_to_count` BIF
+     - ``double_to_count(1234.0)``
+
+   * - :zeek:see:`interval`
+     - :zeek:see:`double_to_interval` BIF
+     - ``double_to_interval(86400.0)``
+
+   * - :zeek:see:`time`
+     - :zeek:see:`double_to_time` BIF
+     - ``double_to_time(1626723410.4)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%.2f", 3.14159265)``
 
 .. zeek:native-type:: time
 
@@ -169,6 +315,35 @@ another ``time`` value to produce an :zeek:type:`interval` value.  An
 to produce a ``time`` value.  The absolute value of a ``time`` value is
 a :zeek:type:`double` with the same numeric value.
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`double`
+     - :zeek:see:`time_to_double` BIF
+     - ``time_to_double(foo)``
+
+   * - :zeek:see:`double`
+     - Absolute value operator
+     - ``|foo|``
+
+   * - :zeek:see:`interval`
+     - Subtraction operator
+     - ``end_time - start_time``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
 
 .. zeek:native-type:: interval
 
@@ -197,6 +372,39 @@ an ``interval`` value.  The absolute value of an ``interval`` is a
 ``double`` value equal to the number of seconds in the ``interval``
 (e.g., ``|-1 min|`` is 60.0).
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`double`
+     - :zeek:see:`interval_to_double` BIF
+     - ``interval_to_double(5mins)``
+
+   * - :zeek:see:`double`
+     - Absolute value operator
+     - ``|foo|``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+   * - :zeek:see:`time`
+     - Addition operator
+     - ``5 mins + start_time``
+
+   * - :zeek:see:`time`
+     - Subtraction operator
+     - ``start_time - 60 secs``
 
 .. zeek:native-type:: string
 
@@ -247,6 +455,59 @@ second-to-last character, etc.  Here are a few examples:
 Note that the subscript operator cannot be used to modify a string (i.e.,
 it cannot be on the left side of an assignment operator).
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`to_addr` BIF
+     - ``to_addr("127.0.0.1")``
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`raw_bytes_to_v4_addr` BIF
+     - ``raw_bytes_to_v4_addr("\x7f\x0\x0\x1")``
+
+   * - :zeek:see:`bool`
+     - Relational operator
+     - ``foo != ""``
+
+   * - :zeek:see:`count`
+     - :zeek:see:`to_count` BIF
+     - ``to_count("42")``
+
+   * - :zeek:see:`count`
+     - :zeek:see:`bytestring_to_count` BIF
+     - ``bytestring_to_count("\xde\xad\xbe\xef")``
+
+   * - :zeek:see:`double`
+     - :zeek:see:`to_double` BIF
+     - ``to_double("0.001")``
+
+   * - :zeek:see:`double`
+     - :zeek:see:`bytestring_to_double` BIF
+     - ``bytestring_to_double("\x43\x26\x4f\xa0\x71\x30\x80\x00")``
+
+   * - :zeek:see:`int`
+     - :zeek:see:`to_int` BIF
+     - ``to_int("-42")``
+
+   * - :zeek:see:`pattern`
+     - :zeek:see:`string_to_pattern` BIF
+     - ``string_to_pattern("rsh .*", F)``
+
+   * - :zeek:see:`port`
+     - :zeek:see:`to_port` BIF
+     - ``to_port("53/udp")``
+
+   * - :zeek:see:`subnet`
+     - :zeek:see:`to_subnet` BIF
+     - ``to_subnet("::1/128")``
 
 .. zeek:native-type:: pattern
 
@@ -330,6 +591,23 @@ For both ways of specifying case-insensitivity, characters enclosed
 in double quotes maintain their case-sensitivity.  So for example
 ``/"foo"/i`` will not match ``"Foo"``, but it will match ``"foo"``.
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
 
 .. zeek:native-type:: port
 
@@ -352,6 +630,27 @@ with the :zeek:id:`get_port_transport_proto` built-in function, and
 the numeric value of a ``port`` with the :zeek:id:`port_to_count`
 built-in function.
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`count`
+     - :zeek:see:`port_to_count` BIF
+     - ``port_to_count(53/udp)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
 
 .. zeek:native-type:: addr
 
@@ -410,6 +709,27 @@ correspond to multiple IP addresses, the type of such a variable is
 
     local a = www.google.com;
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+   * - :zeek:see:`subnet`
+     - :zeek:see:`addr_to_subnet` BIF
+     - ``addr_to_subnet([::1])``
 
 .. zeek:native-type:: subnet
 
@@ -425,6 +745,31 @@ Subnets can be compared for equality (``==``, ``!=``).  An
 :zeek:type:`addr` can be checked for inclusion in a subnet using
 the ``in`` or ``!in`` operators.
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`subnet_to_addr` BIF
+     - ``subnet_to_addr([::1]/120)``
+
+   * - :zeek:see:`double`
+     - Absolute value operator
+     - ``|1.2.3.0/24|``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
 
 .. zeek:native-type:: enum
 
@@ -445,6 +790,31 @@ Enumerations do not have associated values or ordering.
 The only operations allowed on enumerations are equality comparisons
 (``==``, ``!=``) and assignment (``=``).
 
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`int`
+     - :zeek:see:`enum_to_int` BIF
+     - ``enum_to_int(Intel::ADDR)``
+
+   * - :zeek:see:`int`
+     - Absolute value operator
+     - ``|Intel::ADDR|``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
 
 .. zeek:native-type:: table
 
