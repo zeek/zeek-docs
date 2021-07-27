@@ -1,9 +1,10 @@
 
-===============
-Basic Scripting
-===============
+=========================
+Introduction to Scripting
+=========================
 
 .. toctree::
    :maxdepth: 2
 
-   intro
+   basics
+   usage
