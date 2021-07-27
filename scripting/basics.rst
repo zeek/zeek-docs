@@ -1,9 +1,9 @@
 
 .. _writing-scripts:
 
-=========================
-Introduction to Scripting
-=========================
+==========
+The Basics
+==========
 
 Understanding Scripts
 =====================
