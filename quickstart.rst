@@ -496,3 +496,9 @@ what to explore next:
 * Review the FAQ_.
 * Join the Zeek community Slack channel for interacting with the fellow Zeekers
   and Zeek core developers.
+* Track Zeek code releases by reading the "Release Notes" for each release.
+  The "Get Zeek" web page points to this file for each new version of Zeek.
+  These notes appear as the file NEWS, which summarizes the most important
+  changes in the new version. These same notes are attached to the release
+  page on GitHub for each release. For details on each change, see the
+  separate CHANGES file, also accompanying each release.
