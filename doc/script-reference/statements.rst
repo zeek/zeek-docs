@@ -40,7 +40,7 @@ all loaded Zeek scripts.
   * - :zeek:keyword:`redef`
     - Redefine a global value or extend a user-defined type
 
-  * - `function/event/hook`_
+  * - `Callables`_: :zeek:type:`function`, :zeek:type:`event`, :zeek:type:`hook`
     - Declare a function, event handler, or hook
 
 
@@ -280,96 +280,136 @@ Example:
 
 .. _function/event/hook:
 
-Function Flavors
-~~~~~~~~~~~~~~~~
+Callables
+~~~~~~~~~
 
-Functions come in 3 flavors, a :zeek:type:`function`, :zeek:type:`event`
-handler, or :zeek:type:`hook`. Within zeek these are all considered executable types with associated bodies of statements. The following table compares and contrasts these three executable types.
+Callable types come in three flavors: :zeek:type:`function`, :zeek:type:`event`
+handler, and :zeek:type:`hook`. All come with associated arguments and
+bodies of statements. The following table compares and contrasts:
 
 .. list-table::
   :header-rows: 1
 
-  * - Features
+  * - **Features**
     - :zeek:type:`function`
     - :zeek:type:`hook`
     - :zeek:type:`event`
 
-  * - Anonymity
+  * - **Anonymity**
     - Yes
     - No
     - No
 
-  * - Multiple bodies and priorities
+  * - **Multiple bodies and priorities**
     - No
     - Yes
     - Yes
 
-  * - Immediate invocation
+  * - **Immediate invocation**
     - Yes
     - Yes
     - No
 
-  * - Scheduling
+  * - **Scheduling**
     - No
     - No
     - Yes
 
-  * - Default arguments
+  * - **Default arguments**
     - Yes
     - Yes
     - Yes
 
-  * - Container argument mutability
-    - Yes
+  * - **Container argument mutability**
+    - Yes if synchronous, no if :ref:`asynchronous <asynchronous-return>`
     - Yes
     - Yes
 
-  * - Alternate declarations
+  * - **Alternate declarations**
     - No
     - Yes
     - Yes
 
-  * - Return values
+  * - **Return value**
     - Yes
     - Yes
     - No
 
-*Anonymity*
+Anonymity
+^^^^^^^^^
 
-While Zeek does support the concept of anonymous, also called lambda, functions, hooks and events cannot be anonymous. They are referenced by their names. As an example, reducer functions in the SumStats framework are often implemented as lambda functions.
+While Zeek does support the concept of :ref:`anonymous functions
+<anonymous-function>` (i.e., lambdas), hooks and events cannot be
+anonymous. They are referenced by their names. As an example, reducer functions
+in the :ref:`SumStats framework <sumstats-framework>` are often implemented as
+lambda functions.
 
-*Multiple bodies and priorities*
+Multiple bodies and priorities
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Functions cannot have multiple bodies, however, hooks and events can. This means that different scripts can add additional bodies to a hook or event associated with a unique name. When an event or hook is executed, Zeek needs a way to order the execution. This is accomplished with priorities. By default, a hook’s or event’s body has a priority of zero but valid values can be from -10 to 10.
+Functions cannot have multiple bodies, however, hooks and events can. This means
+that different scripts can add additional bodies to a hook or event associated
+with a unique name. When an event or hook is executed, Zeek needs a way to order
+the execution. This is accomplished with the numerical  :zeek:attr:`&priority`
+attribute: by default, a hook’s or event’s body has a priority of zero, but any
+integer-range value is valid.
 
-*Immediate invocation*
+Immediate invocation
+^^^^^^^^^^^^^^^^^^^^
 
-Functions and hook bodies are executed immediately. That means if a script is being interpreted and a line contains a function call, execution flow is immediately passed to that function (or hook). This does not happen for events. Events are pushed onto an event queue within Zeek and are handled as time passes.
+Functions and hook bodies are executed immediately. That means if a script is
+being interpreted and a line contains a function call, execution flow is
+immediately passed to that function (or hook). This does not happen for
+events. Events are pushed onto an event queue within Zeek and are handled as
+time passes.
 
-*Scheduling*
+Scheduling
+^^^^^^^^^^
 
-Functions and hooks cannot be scheduled like events can. Scheduling places an event onto the event queue and is the equivalent to immediately invoking a function or hook. Attempting to schedule a function or a hook results in the same syntax error: “function invoked as an event”.
+Functions and hooks cannot be scheduled like events can. Scheduling places an
+event onto the event queue and is the equivalent to immediately invoking a
+function or hook. Attempting to schedule a function or a hook results in the
+same syntax error: "function invoked as an event".
 
-*Default arguments*
+Default arguments
+^^^^^^^^^^^^^^^^^
 
-Functions, hooks, and events all support default arguments.
+Functions, hooks, and events all support :ref:`default values <default-values>`
+for their arguments.
 
-*Container argument mutability*
+Container argument mutability
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When argument types are container types, such as records, mutating the arguments within the body (of a function, hook, or event) causes the record to retain that mutation. Essentially, container types are passed by reference while atomic types are passed by value.
+When argument types are container types (such as records or tables), mutating the
+arguments within the body of a function, hook, or event causes the argument to
+retain that mutation: container types are passed by reference while atomic types
+are passed by value.
 
-*Alternate declarations*
+Asynchronous functions are an exception: the evaluation of :zeek:keyword:`when`
+statements invokes such functions with copies of their arguments, causing
+modifications made inside the asynchronous function to be lost. Please refer to
+:ref:`asynchronous return <asynchronous-return>` for possible workarounds.
 
-Hooks and events do support alternate prototype declarations. This means that a set or scripts may define a single event (or hook) name multiple times with different argument sets. This is often referred to as overloading in other languages. Functions do not support alternate prototype declarations.
+Alternate declarations
+^^^^^^^^^^^^^^^^^^^^^^
 
-*Return values*
+Hooks and events do support alternate prototype declarations. This means that a
+set or scripts may define a single event (or hook) name multiple times with
+different argument sets. This is often referred to as overloading in other
+languages. Functions do not support alternate prototype declarations.
 
-All functions must return a value. However, functions with no explicit return type implicitly return void. This can seem a bit odd as void isn’t a valid Zeek type.
-A hook body is allowed to return before it breaks. Hooks may return either a boolean type or void, but aren’t required to return any value.
-Events cannot return a value because they are scheduled through the event loop and don’t have a caller to return to.
+Return value
+^^^^^^^^^^^^
 
-For further details on how to declare a :zeek:type:`function`, :zeek:type:`event`
-handler, or :zeek:type:`hook`, see the documentation for those types.
+All functions must return a value. However, functions with no explicit return
+type implicitly return void. This can seem a bit odd as void isn’t a valid Zeek
+type.  A hook body is allowed to return before it breaks. Hooks may return
+either a boolean type or void, but aren’t required to return any value.  Events
+cannot return a value because they are scheduled through the event loop and
+don’t have a caller to return to.
+
+For further details on how to declare callables, see the  :zeek:type:`function`,
+:zeek:type:`event` handler, and :zeek:type:`hook` documentation.
 
 Statements
 ----------
@@ -676,16 +716,31 @@ Examples:
         print n;
         }
 
+.. _asynchronous-return:
+
+Asynchronous return
+^^^^^^^^^^^^^^^^^^^
+
 There is a special form of the ``return`` statement that is only allowed
 in functions.  Syntactically, it looks like a :zeek:keyword:`when` statement
 immediately preceded by the ``return`` keyword.  This form of the ``return``
-statement is used to specify a function that delays its result (such a
-function can only be called in the expression of a :zeek:keyword:`when`
+statement is used to specify a function that delays its result: an
+*asynchronous function*.
+Such functions can only be called in the expression of a :zeek:keyword:`when`
 statement).  The function returns at the time the ``when``
 statement's condition becomes true, and the function returns the value
 that the ``when`` statement's body returns (or if the condition does
 not become true within the specified timeout interval, then the function
 returns the value that the ``timeout`` block returns).
+
+.. note::
+
+  In contrast to regular functions, asynchronous ones cannot make lasting
+  modifications to non-atomic arguments (records and container types). That's
+  because evaluation of the ``when`` statements invoking such functions involves
+  internal copies of the function arguments. To make modifications to non-atomic
+  arguments available outside the function, return the modified argument(s) from
+  the function, or resort to globals.
 
 Example:
 
@@ -837,6 +892,7 @@ entering another type-casting block. That is, the switched-upon value could
 get cast to at least two different types, which is not a valid possibility.
 
 
+.. _when-statement:
 .. zeek:keyword:: when
 
 when

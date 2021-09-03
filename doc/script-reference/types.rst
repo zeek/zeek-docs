@@ -1147,7 +1147,7 @@ the ``+`` operator, yielding a new vector of ``string`` containing the
 resulting values. Both operand vectors must be of the same length. A
 vector of type ``string`` can also be paired with a scalar operand
 using any operator that supports string/scalar operations (i.e.,
-concatenation and comparisions). The resulting vector will contain the
+concatenation and comparisons). The resulting vector will contain the
 result of the operator applied to each of the elements. (Note that, as
 a little quirk of the language, for a string vector ``v`` there is a
 difference between ``v = v + "foo"`` and ``v += "foo"``: the former
@@ -1272,8 +1272,13 @@ And finally, the function can be called like:
 
     print greeting("Dave");
 
-Anonymously defined functions capture their closures. This means that they
-can use variables from their enclosing scope at the time of their
+.. _anonymous-function:
+
+Anonymous functions and their closures
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Anonymously defined functions (lambdas) capture their closures. This means
+that they can use variables from their enclosing scope at the time of their
 creation.  In older-style deprecated functionality (capture by "reference"),
 closure-capture happens automatically.  The current style
 (capture by "copy") requires explicitly listing the captured variables.
@@ -1405,6 +1410,11 @@ already declared on the receiver's end, because Zeek does not serialize the
 function's source code. See :file:`testing/btest/language/closure-sending.zeek`
 for an example of how to serialize anonymous functions over Broker.
 
+.. _default-values:
+
+Default values
+^^^^^^^^^^^^^^
+
 Function parameters may specify default values as long as they appear
 last in the parameter list:
 
@@ -1430,6 +1440,13 @@ And calls to the function may omit the defaults from the argument list:
 
     foo("test");
 
+Asynchronous functions
+^^^^^^^^^^^^^^^^^^^^^^
+
+Use of the ``return when`` construct renders a function *asynchronous*: it
+will return its result at a later time, when an underlying condition becomes
+fulfilled. See :zeek:keyword:`when` and the description of :ref:`asynchronous
+returns <asynchronous-return>` for details.
 
 .. zeek:native-type:: event
 
