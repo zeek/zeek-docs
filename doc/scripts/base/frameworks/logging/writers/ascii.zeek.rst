@@ -83,7 +83,7 @@ Redefinable Options
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``F``
+   :Default: ``T``
 
    If true, valid UTF-8 sequences will pass through unescaped and be
    written into logs.

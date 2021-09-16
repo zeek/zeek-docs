@@ -331,7 +331,7 @@ Constants
 Functions
 #########
 .. zeek:id:: addr_to_uri
-   :source-code: base/utils/addrs.zeek 107 113
+   :source-code: base/utils/addrs.zeek 126 132
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`string`
 
@@ -346,14 +346,17 @@ Functions
    :returns: the string representation of the address suitable for URI inclusion.
 
 .. zeek:id:: extract_ip_addresses
-   :source-code: base/utils/addrs.zeek 87 99
+   :source-code: base/utils/addrs.zeek 89 118
 
-   :Type: :zeek:type:`function` (input: :zeek:type:`string`) : :zeek:type:`string_vec`
+   :Type: :zeek:type:`function` (input: :zeek:type:`string`, check_wrapping: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`string_vec`
 
    Extracts all IP (v4 or v6) address strings from a given string.
    
 
    :input: a string that may contain an IP address anywhere within it.
+   
+
+   :check_wrapping: if true, will only return IP addresses that are wrapped in matching pairs of spaces, square brackets, curly braces, or parens. This can be used to avoid extracting strings that look like IPs from innocuous strings, such as SMTP headers.
    
 
    :returns: an array containing all valid IP address strings found in *input*.
@@ -372,7 +375,7 @@ Functions
    :returns: T if every element is between 0 and 255, inclusive, else F.
 
 .. zeek:id:: normalize_mac
-   :source-code: base/utils/addrs.zeek 122 141
+   :source-code: base/utils/addrs.zeek 141 160
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`) : :zeek:type:`string`
 
