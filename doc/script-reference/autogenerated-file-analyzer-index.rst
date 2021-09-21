@@ -266,7 +266,7 @@ Types
 +++++
 
 .. zeek:type:: Unified2::IDSEvent
-   :source-code: base/init-bare.zeek 4207 4229
+   :source-code: base/init-bare.zeek 4209 4231
 
    :Type: :zeek:type:`record`
 
@@ -311,7 +311,7 @@ Types
 
 
 .. zeek:type:: Unified2::Packet
-   :source-code: base/init-bare.zeek 4231 4238
+   :source-code: base/init-bare.zeek 4233 4240
 
    :Type: :zeek:type:`record`
 
@@ -378,7 +378,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 4277 4291
+   :source-code: base/init-bare.zeek 4279 4293
 
    :Type: :zeek:type:`record`
 
@@ -423,7 +423,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 4293 4299
+   :source-code: base/init-bare.zeek 4295 4301
 
    :Type: :zeek:type:`record`
 
@@ -444,7 +444,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 4301 4304
+   :source-code: base/init-bare.zeek 4303 4306
 
    :Type: :zeek:type:`record`
 
@@ -457,7 +457,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 4306 4312
+   :source-code: base/init-bare.zeek 4308 4314
 
    :Type: :zeek:type:`record`
 
@@ -478,7 +478,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 4315 4322
+   :source-code: base/init-bare.zeek 4317 4324
 
    :Type: :zeek:type:`record`
 
