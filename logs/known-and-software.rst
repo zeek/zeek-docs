@@ -7,7 +7,7 @@ it monitors. These logs track a few aspects of the local network, such as
 SSL/TLS certificates, host IP addresses, services, and applications.
 
 The sections which follow will present examples of entries in
-:file:`known_certs.log`, :file:`known_hosts,log`, :file:`known_services.log`,
+:file:`known_certs.log`, :file:`known_hosts.log`, :file:`known_services.log`,
 and :file:`software.log` files collected on live networks.
 
 For full details on each field of those log files, see
