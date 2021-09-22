@@ -23,10 +23,3 @@ as they sometimes reflect logic errors.  You can suppress the report by
 adding an ``&is_used`` attribute to the original definition.  If the
 determination is indeed incorrect, that represents a bug in Zeek's analysis,
 so something to report via the Issue Tracker.
-
-You can run the above analysis on not just variables but also record fields
-by specifying ``-uu``.  This takes much longer, and flags points in the
-installed scripts that have potential usage problems.  It can however be
-worth trying, and confining your assessment of what it flags to your own
-scripts rather than the installed ones, as these can represent hard-to-find
-bugs.
