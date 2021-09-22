@@ -142,6 +142,8 @@ Redefinable Options
 :zeek:id:`dpd_late_match_stop`: :zeek:type:`bool` :zeek:attr:`&redef`                      If true, stops signature matching after a late match.
 :zeek:id:`dpd_match_only_beginning`: :zeek:type:`bool` :zeek:attr:`&redef`                 If true, stops signature matching if :zeek:see:`dpd_buffer_size` has been
                                                                                            reached.
+:zeek:id:`dpd_max_packets`: :zeek:type:`count` :zeek:attr:`&redef`                         Maximum number of per-connection packets that will be buffered for dynamic
+                                                                                           protocol detection.
 :zeek:id:`dpd_reassemble_first_packets`: :zeek:type:`bool` :zeek:attr:`&redef`             Reassemble the beginning of all TCP connections before doing
                                                                                            signature matching.
 :zeek:id:`exit_only_after_terminate`: :zeek:type:`bool` :zeek:attr:`&redef`                Flag to prevent Zeek from exiting automatically when input is exhausted.
@@ -1276,7 +1278,7 @@ Redefinable Options
    connections will be able to analyze the session.
    
    .. zeek:see:: dpd_reassemble_first_packets dpd_match_only_beginning
-      dpd_ignore_ports
+      dpd_ignore_ports dpd_max_packets
 
 .. zeek:id:: dpd_ignore_ports
 
@@ -1333,6 +1335,23 @@ Redefinable Options
    
    .. note:: Despite the name, this option affects *all* signature matching, not
       only signatures used for dynamic protocol detection.
+
+.. zeek:id:: dpd_max_packets
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``100``
+
+   Maximum number of per-connection packets that will be buffered for dynamic
+   protocol detection. For each connection, Zeek buffers up to this amount
+   of packets in memory so that complete protocol analysis can start even after
+   the initial packets have already passed through (i.e., when a DPD signature
+   matches only later). However, once the buffer is full, data is deleted and lost
+   to analyzers that are activated afterwards. Then only analyzers that can deal
+   with partial connections will be able to analyze the session.
+   
+   .. zeek:see:: dpd_reassemble_first_packets dpd_match_only_beginning
+      dpd_ignore_ports dpd_buffer_size
 
 .. zeek:id:: dpd_reassemble_first_packets
 

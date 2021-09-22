@@ -954,7 +954,7 @@ Events
           ``Analyzer::ANALYZER_HTTP`` means the HTTP analyzer determined that it's indeed
           parsing an HTTP connection.
    
-   .. zeek:see:: dpd_buffer_size
+   .. zeek:see:: dpd_buffer_size dpd_max_packets
 
 .. zeek:id:: protocol_violation
 
