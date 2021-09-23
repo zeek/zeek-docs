@@ -916,7 +916,7 @@ Types
 Events
 ######
 .. zeek:id:: Notice::begin_suppression
-   :source-code: base/frameworks/notice/main.zeek 547 551
+   :source-code: base/frameworks/notice/main.zeek 548 552
 
    :Type: :zeek:type:`event` (ts: :zeek:type:`time`, suppress_for: :zeek:type:`interval`, note: :zeek:type:`Notice::Type`, identifier: :zeek:type:`string`)
 
@@ -1022,14 +1022,14 @@ Functions
 
 
 .. zeek:id:: Notice::apply_policy
-   :source-code: base/frameworks/notice/main.zeek 633 694
+   :source-code: base/frameworks/notice/main.zeek 634 695
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
    This is an internal function to populate policy records.
 
 .. zeek:id:: Notice::create_file_info
-   :source-code: base/frameworks/notice/main.zeek 594 611
+   :source-code: base/frameworks/notice/main.zeek 595 612
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`Notice::FileInfo`
 
@@ -1042,7 +1042,7 @@ Functions
    :returns: record containing a subset of fields copied from *f*.
 
 .. zeek:id:: Notice::email_headers
-   :source-code: base/frameworks/notice/main.zeek 411 421
+   :source-code: base/frameworks/notice/main.zeek 412 422
 
    :Type: :zeek:type:`function` (subject_desc: :zeek:type:`string`, dest: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -1060,7 +1060,7 @@ Functions
             appended.
 
 .. zeek:id:: Notice::email_notice_to
-   :source-code: base/frameworks/notice/main.zeek 428 497
+   :source-code: base/frameworks/notice/main.zeek 429 498
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`, dest: :zeek:type:`string`, extend: :zeek:type:`bool`) : :zeek:type:`void`
 
@@ -1079,7 +1079,7 @@ Functions
            ``email_body_sections`` field of *n*.
 
 .. zeek:id:: Notice::is_being_suppressed
-   :source-code: base/frameworks/notice/main.zeek 574 583
+   :source-code: base/frameworks/notice/main.zeek 575 584
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`bool`
 
@@ -1089,7 +1089,7 @@ Functions
    :n: The record containing the notice in question.
 
 .. zeek:id:: Notice::log_mailing_postprocessor
-   :source-code: base/frameworks/notice/main.zeek 381 395
+   :source-code: base/frameworks/notice/main.zeek 381 396
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
 
@@ -1104,7 +1104,7 @@ Functions
    :returns: True.
 
 .. zeek:id:: Notice::populate_file_info
-   :source-code: base/frameworks/notice/main.zeek 612 615
+   :source-code: base/frameworks/notice/main.zeek 613 616
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
@@ -1117,7 +1117,7 @@ Functions
    :n: a notice record that needs file-related fields populated.
 
 .. zeek:id:: Notice::populate_file_info2
-   :source-code: base/frameworks/notice/main.zeek 617 628
+   :source-code: base/frameworks/notice/main.zeek 618 629
 
    :Type: :zeek:type:`function` (fi: :zeek:type:`Notice::FileInfo`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
