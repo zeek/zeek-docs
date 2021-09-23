@@ -777,7 +777,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 5466 5468
+   :source-code: base/init-bare.zeek 5478 5480
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
@@ -997,7 +997,7 @@ Events
           ``Analyzer::ANALYZER_HTTP`` means the HTTP analyzer determined that it's indeed
           parsing an HTTP connection.
    
-   .. zeek:see:: dpd_buffer_size
+   .. zeek:see:: dpd_buffer_size dpd_max_packets
 
 .. zeek:id:: protocol_violation
    :source-code: base/bif/event.bif.zeek 453 453
