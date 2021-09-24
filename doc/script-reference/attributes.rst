@@ -484,18 +484,16 @@ the identifier will be removed:
 &is_assigned
 ------------
 
-Zeek has static analysis capabilities when using the ``-u`` or ``-uu``
-command-line flags to detect locations in a script that attempt to use a
-variable/value before it is necessarily defined/assigned.  The ``-u`` generates
-warnings for instances where that occurs for local variables and ``-uu`` turns
-on additional (and more expensive) analysis to report instances where record
-fields might be used without having previously been set.
+Zeek has static analysis capabilities
+for detecting locations in a script that attempt to use a
+local variable before it is necessarily defined/assigned.  You activate
+this using the ``-u`` command-line flag.
 
-However the static analysis still lacks sufficient power to tell that some
+However the static analysis lacks sufficient power to tell that some
 values are being used safely (guaranteed to have been assigned).  In order to
-enable users to employ ``-u``/``-uu`` on their own scripts without being
-distracted by these false-positives, the ``&is_assigned`` attribute can be
-associated with a variable or a record field to inform Zeek's analysis that the
+enable users to employ ``-u`` on their own scripts without being
+distracted by these false positives, the ``&is_assigned`` attribute can be
+associated with a variable to inform Zeek's analysis that the
 script writer asserts the value will be set, suppressing the associated
 warnings.
 
@@ -543,9 +541,10 @@ warnings.
 &is_used
 --------
 
-Zeek has static analysis capabilities when using the ``-u`` or ``-uu``
-command-line flags to detect locations in a script that have been assigned-to,
-but not subsequently used (i.e. "dead code").  For cases where it's desirable
+Zeek has static analysis capabilities
+for detecting locations in a script where local variables are assigned
+values that are not subsequently used (i.e. "dead code").
+For cases where it's desirable
 to suppress the warning, the ``&is_used`` attribute may be applied, for
 example:
 
