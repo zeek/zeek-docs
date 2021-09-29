@@ -57,7 +57,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Site::local_admins
-   :source-code: base/utils/site.zeek 126 126
+   :source-code: base/utils/site.zeek 124 124
 
    :Type: :zeek:type:`table` [:zeek:type:`subnet`] of :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -69,7 +69,7 @@ Runtime Options
    addresses.
 
 .. zeek:id:: Site::local_nets
-   :source-code: base/utils/site.zeek 110 110
+   :source-code: base/utils/site.zeek 108 108
 
    :Type: :zeek:type:`set` [:zeek:type:`subnet`]
    :Attributes: :zeek:attr:`&redef`
@@ -79,7 +79,7 @@ Runtime Options
    this automatically.
 
 .. zeek:id:: Site::local_zones
-   :source-code: base/utils/site.zeek 129 129
+   :source-code: base/utils/site.zeek 127 127
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -88,7 +88,7 @@ Runtime Options
    DNS zones that are considered "local".
 
 .. zeek:id:: Site::neighbor_nets
-   :source-code: base/utils/site.zeek 120 120
+   :source-code: base/utils/site.zeek 118 118
 
    :Type: :zeek:type:`set` [:zeek:type:`subnet`]
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Runtime Options
    Networks that are considered "neighbors".
 
 .. zeek:id:: Site::neighbor_zones
-   :source-code: base/utils/site.zeek 132 132
+   :source-code: base/utils/site.zeek 130 130
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -148,7 +148,6 @@ Runtime Options
             2002:c612::/31,
             2002::/24,
             fe80::/10,
-            0.0.0.0/0,
             2001:db8::/32,
             203.0.113.0/24,
             2002:c0a8::/32,
@@ -166,7 +165,7 @@ Runtime Options
 State Variables
 ###############
 .. zeek:id:: Site::local_nets_table
-   :source-code: base/utils/site.zeek 117 117
+   :source-code: base/utils/site.zeek 115 115
 
    :Type: :zeek:type:`table` [:zeek:type:`subnet`] of :zeek:type:`subnet`
    :Default: ``{}``
@@ -180,7 +179,7 @@ State Variables
 Functions
 #########
 .. zeek:id:: Site::get_emails
-   :source-code: base/utils/site.zeek 234 237
+   :source-code: base/utils/site.zeek 232 235
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`string`
 
@@ -190,7 +189,7 @@ Functions
    The function inspects :zeek:id:`Site::local_admins`.
 
 .. zeek:id:: Site::is_local_addr
-   :source-code: base/utils/site.zeek 171 174
+   :source-code: base/utils/site.zeek 169 172
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`bool`
 
@@ -199,7 +198,7 @@ Functions
    The function inspects :zeek:id:`Site::local_nets`.
 
 .. zeek:id:: Site::is_local_name
-   :source-code: base/utils/site.zeek 186 189
+   :source-code: base/utils/site.zeek 184 187
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -208,7 +207,7 @@ Functions
    The function inspects :zeek:id:`Site::local_zones`.
 
 .. zeek:id:: Site::is_neighbor_addr
-   :source-code: base/utils/site.zeek 176 179
+   :source-code: base/utils/site.zeek 174 177
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`bool`
 
@@ -217,7 +216,7 @@ Functions
    The function inspects :zeek:id:`Site::neighbor_nets`.
 
 .. zeek:id:: Site::is_neighbor_name
-   :source-code: base/utils/site.zeek 191 194
+   :source-code: base/utils/site.zeek 189 192
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -226,7 +225,7 @@ Functions
    The function inspects :zeek:id:`Site::neighbor_zones`.
 
 .. zeek:id:: Site::is_private_addr
-   :source-code: base/utils/site.zeek 181 184
+   :source-code: base/utils/site.zeek 179 182
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`bool`
 
