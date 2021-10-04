@@ -827,13 +827,15 @@ result of the mapping is called the *yield*.  Indexing into tables
 is very efficient, and internally it is just a single hash table
 lookup.
 
+Declaration and initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The table declaration syntax is::
 
     table [ type^+ ] of type
 
 where ``type^+`` is one or more types, separated by commas.  The
-index type cannot be any of the following types:  :zeek:type:`pattern`,
-:zeek:type:`table`, :zeek:type:`set`, :zeek:type:`vector`, :zeek:type:`file`,
+index type cannot be any of the following types:  :zeek:type:`file`,
 :zeek:type:`opaque`, :zeek:type:`any`.
 
 Here is an example of declaring a table indexed by :zeek:type:`count` values
@@ -887,21 +889,8 @@ ambiguous:
 
     global t3 = MyTable([[$b=5]] = "b5", [[$b=7]] = "b7");
 
-Accessing table elements is provided by enclosing index values within
-square brackets (``[]``), for example:
-
-.. code-block:: zeek
-
-    print t[11];
-
-And membership can be tested with ``in`` or ``!in``:
-
-.. code-block:: zeek
-
-    if ( 13 in t )
-        ...
-    if ( [192.168.0.2, 22/tcp] in t2 )
-        ...
+Insertion and removal
+^^^^^^^^^^^^^^^^^^^^^
 
 Add or overwrite individual table elements by assignment:
 
@@ -918,15 +907,56 @@ Remove individual table elements with :zeek:keyword:`delete`:
 Nothing happens if the element with index value ``13`` isn't present in
 the table.
 
+.. note::
+
+   Indexing with complex types (such as records or sets) happens via hashing of
+   the provided index value at the time of table access. Subsequent
+   modifications to the index value do not affect the table. For example:
+
+   .. code-block:: zeek
+
+       local t: table[set[port]] of string = table();
+       local s: set[port] = { 80/tcp, 8000/tcp };
+
+       t[s] = "http";
+
+       add s[8080/tcp];
+
+       print t[set(80/tcp, 8000/tcp)]; # prints "http"
+       print t[s]; # error: no such index
+
+Lookup and iteration
+^^^^^^^^^^^^^^^^^^^^
+
+Accessing table elements is provided by enclosing index values within
+square brackets (``[]``), for example:
+
+.. code-block:: zeek
+
+    print t[11];
+
+Membership can be tested with ``in`` or ``!in``:
+
+.. code-block:: zeek
+
+    if ( 13 in t )
+        ...
+    if ( [192.168.0.2, 22/tcp] in t2 )
+        ...
+
+See the :zeek:keyword:`for` statement for information on how to iterate over
+the elements in a table.
+
+
+Additional operations
+^^^^^^^^^^^^^^^^^^^^^
+
 The number of elements in a table can be obtained by placing the table
 identifier between vertical pipe characters:
 
 .. code-block:: zeek
 
     |t|
-
-See the :zeek:keyword:`for` statement for info on how to iterate over
-the elements in a table.
 
 It's common to extend the behavior of table lookup and membership lifetimes
 via :doc:`attributes <attributes>` but note that it's also a :ref:`confusing
@@ -941,15 +971,18 @@ set
 ---
 
 A set is like a :zeek:type:`table`, but it is a collection of indices
-that do not map to any yield value.  They are declared with the
-syntax::
+that do not map to any yield value.
+
+Declaration and initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sets are declared with the syntax::
 
     set [ type^+ ]
 
 where ``type^+`` is one or more types separated by commas.  The index type
-cannot be any of the following types:  :zeek:type:`pattern`,
-:zeek:type:`table`, :zeek:type:`set`, :zeek:type:`vector`, :zeek:type:`file`,
-:zeek:type:`opaque`, :zeek:type:`any`.
+cannot be any of the following types: :zeek:type:`file`, :zeek:type:`opaque`,
+:zeek:type:`any`.
 
 Sets can be initialized by listing elements enclosed by curly braces:
 
@@ -980,15 +1013,8 @@ ambiguous:
 
     global s4 = MySet([$b=1], [$b=2]);
 
-Set membership is tested with ``in`` or ``!in``:
-
-.. code-block:: zeek
-
-    if ( 21/tcp in s )
-        ...
-
-    if ( [21/tcp, "ftp"] !in s2 )
-        ...
+Insertion and removal
+^^^^^^^^^^^^^^^^^^^^^
 
 Elements are added with :zeek:keyword:`add`:
 
@@ -999,7 +1025,7 @@ Elements are added with :zeek:keyword:`add`:
 Nothing happens if the element with value ``22/tcp`` was already present in
 the set.
 
-And removed with :zeek:keyword:`delete`:
+Elements are removed with :zeek:keyword:`delete`:
 
 .. code-block:: zeek
 
@@ -1008,12 +1034,27 @@ And removed with :zeek:keyword:`delete`:
 Nothing happens if the element with value ``21/tcp`` isn't present in
 the set.
 
-The number of elements in a set can be obtained by placing the set
-identifier between vertical pipe characters:
+Sets behave like tables when it comes to complex member types: indexing happens
+via hashing at access time. See :zeek:type:`table` for details.
+
+Lookup and iteration
+^^^^^^^^^^^^^^^^^^^^
+
+Set membership is tested with ``in`` or ``!in``:
 
 .. code-block:: zeek
 
-    |s|
+    if ( 21/tcp in s )
+        ...
+
+    if ( [21/tcp, "ftp"] !in s2 )
+        ...
+
+See the :zeek:keyword:`for` statement for info on how to iterate over
+the elements in a set.
+
+Set operations
+^^^^^^^^^^^^^^
 
 You can compute the union, intersection, or difference of two sets
 using the ``|``, ``&``, and ``-`` operators.
@@ -1025,8 +1066,15 @@ returns ``T`` if the lefthand operator is a subset (not necessarily proper,
 i.e., it may be equal to the righthand operand).  The operators ``!=``,
 ``>`` and ``>=`` provide the expected complementary operations.
 
-See the :zeek:keyword:`for` statement for info on how to iterate over
-the elements in a set.
+Additional operations
+^^^^^^^^^^^^^^^^^^^^^
+
+The number of elements in a set can be obtained by placing the set
+identifier between vertical pipe characters:
+
+.. code-block:: zeek
+
+    |s|
 
 
 .. zeek:native-type:: vector
@@ -1035,13 +1083,18 @@ vector
 ------
 
 A vector is like a :zeek:type:`table`, except its indices are non-negative
-integers, starting from zero.  A vector is declared like:
+integers, starting from zero.
+
+Declaration and initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A vector is declared as follows:
 
 .. code-block:: zeek
 
     global v: vector of string;
 
-And can be initialized with the vector constructor:
+Vectors can be initialized with the vector constructor:
 
 .. code-block:: zeek
 
@@ -1062,6 +1115,42 @@ ambiguous.
 
     global v2 = MyVec([$b=1], [$b=2], [$b=3]);
 
+Insertion
+^^^^^^^^^
+
+An element can be added to a vector by assigning the value (a value
+that already exists at that index will be overwritten):
+
+.. code-block:: zeek
+
+    v[3] = "four";
+
+A range of elements can be *replaced* by assigning to a vector slice:
+
+.. code-block:: zeek
+
+    # Note that the number of elements in the slice being replaced
+    # may differ from the number of elements being inserted.  This
+    # causes the vector to grow or shrink accordingly.
+    v[0:2] = vector("five", "six", "seven");
+
+A particularly common operation on a vector is to append an element
+to its end.  You can do so using:
+
+.. code-block:: zeek
+
+    v += e;
+
+where if *e*'s type is ``X``, *v*'s type is ``vector of X``.  Note that
+this expression is equivalent to:
+
+.. code-block:: zeek
+
+    v[|v|] = e;
+
+Lookup and iteration
+^^^^^^^^^^^^^^^^^^^^
+
 Access individual vector elements by enclosing index values within
 square brackets (``[]``), for example:
 
@@ -1080,21 +1169,53 @@ this will print a vector containing the first and second elements:
 The slicing notation is the same as what is permitted by the
 :zeek:see:`string` substring extraction operations.
 
-An element can be added to a vector by assigning the value (a value
-that already exists at that index will be overwritten):
+The ``in`` operator can be used to check if a value has been assigned at a
+specified index value in the vector.  For example, if a vector has size 4,
+then the expression ``3 in v`` would yield true and ``4 in v`` would yield
+false.
 
-.. code-block:: zeek
+See the :zeek:keyword:`for` statement for info on how to iterate over
+the elements in a vector.
 
-    v[3] = "four";
+Vectorized operations
+^^^^^^^^^^^^^^^^^^^^^
 
-A range of elements can be *replaced* by assigning to a vector slice:
+Vectors of integral types (:zeek:type:`int` or :zeek:type:`count`) support the pre-increment
+(``++``) and pre-decrement operators (``--``), which will increment or
+decrement each element in the vector.
 
-.. code-block:: zeek
+Vectors of arithmetic types (:zeek:type:`int` or :zeek:type:`count`, or :zeek:type:`double`) can be
+operands of the arithmetic operators (``+``, ``-``, ``*``, ``/``, ``%``),
+but both operands must have the same number of elements (and the modulus
+operator ``%`` cannot be used if either operand is a ``vector of double``).
+The resulting vector contains the result of the operation applied to each
+of the elements in the operand vectors.
 
-    # Note that the number of elements in the slice being replaced
-    # may differ from the number of elements being inserted.  This
-    # causes the vector to grow or shrink accordingly.
-    v[0:2] = vector("five", "six", "seven");
+Vectors of :zeek:type:`bool` can be operands of the logical "and" (``&&``) and logical
+"or" (``||``) operators (both operands must have same number of elements).
+The resulting ``vector of bool`` is the logical "and" (or logical "or") of
+each element of the operand vectors.
+
+Vectors of :zeek:type:`count` can also be operands for the bitwise and/or/xor
+operators, ``&``, ``|`` and ``^``.
+
+Vectors of :zeek:type:`string` can be concatenated element-wise through
+the ``+`` operator, yielding a new ``vector of string`` containing the
+resulting values. Both operand vectors must be of the same length. A
+vector of type :zeek:type:`string` can also be paired with a scalar operand
+using any operator that supports string/scalar operations (i.e.,
+concatenation and comparisons). The resulting vector will contain the
+result of the operator applied to each of the elements.
+
+.. note::
+
+   As a quirk of the language, for a string vector ``v`` there is a
+   difference between ``v = v + "foo"`` and ``v += "foo"``: the former
+   extends each element, while the latter appends a new element to the
+   vector.)
+
+Additional operations
+^^^^^^^^^^^^^^^^^^^^^
 
 The size of a vector (this is one greater than the highest index value, and
 is normally equal to the number of elements in the vector) can be obtained
@@ -1103,59 +1224,6 @@ by placing the vector identifier between vertical pipe characters:
 .. code-block:: zeek
 
     |v|
-
-A particularly common operation on a vector is to append an element
-to its end.  You can do so using:
-
-.. code-block:: zeek
-
-    v += e;
-
-where if *e*'s type is ``X``, *v*'s type is ``vector of X``.  Note that
-this expression is equivalent to:
-
-.. code-block:: zeek
-
-    v[|v|] = e;
-
-The ``in`` operator can be used to check if a value has been assigned at a
-specified index value in the vector.  For example, if a vector has size 4,
-then the expression ``3 in v`` would yield true and ``4 in v`` would yield
-false.
-
-Vectors of integral types (``int`` or ``count``) support the pre-increment
-(``++``) and pre-decrement operators (``--``), which will increment or
-decrement each element in the vector.
-
-Vectors of arithmetic types (``int``, ``count``, or ``double``) can be
-operands of the arithmetic operators (``+``, ``-``, ``*``, ``/``, ``%``),
-but both operands must have the same number of elements (and the modulus
-operator ``%`` cannot be used if either operand is a ``vector of double``).
-The resulting vector contains the result of the operation applied to each
-of the elements in the operand vectors.
-
-Vectors of bool can be operands of the logical "and" (``&&``) and logical
-"or" (``||``) operators (both operands must have same number of elements).
-The resulting vector of bool is the logical "and" (or logical "or") of
-each element of the operand vectors.
-
-Vectors of type ``count`` can also be operands for the bitwise and/or/xor
-operators, ``&``, ``|`` and ``^``.
-
-Vectors of type ``string`` can be concatenated element-wise through
-the ``+`` operator, yielding a new vector of ``string`` containing the
-resulting values. Both operand vectors must be of the same length. A
-vector of type ``string`` can also be paired with a scalar operand
-using any operator that supports string/scalar operations (i.e.,
-concatenation and comparisons). The resulting vector will contain the
-result of the operator applied to each of the elements. (Note that, as
-a little quirk of the language, for a string vector ``v`` there is a
-difference between ``v = v + "foo"`` and ``v += "foo"``: the former
-extends each element, while the latter appends a new element to the
-vector.)
-
-See the :zeek:keyword:`for` statement for info on how to iterate over
-the elements in a vector.
 
 
 .. zeek:native-type:: record
