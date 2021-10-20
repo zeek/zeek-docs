@@ -27,6 +27,7 @@ Events
 :zeek:id:`dns_EDNS_tcp_keepalive`: :zeek:type:`event` Generated for DNS replies of type *EDNS*, and an option field in this *EDNS* record has
                                                       an opt-type of 11.
 :zeek:id:`dns_HINFO_reply`: :zeek:type:`event`        Generated for DNS replies of type *HINFO*.
+:zeek:id:`dns_HTTPS`: :zeek:type:`event`              Generated for DNS replies of type *HTTPS* (HTTPS Specific Service Endpoints).
 :zeek:id:`dns_LOC`: :zeek:type:`event`                Generated for DNS replies of type *LOC*.
 :zeek:id:`dns_MX_reply`: :zeek:type:`event`           Generated for DNS replies of type *MX*.
 :zeek:id:`dns_NSEC`: :zeek:type:`event`               Generated for DNS replies of type *NSEC*.
@@ -39,6 +40,7 @@ Events
 :zeek:id:`dns_SPF_reply`: :zeek:type:`event`          Generated for DNS replies of type *SPF*.
 :zeek:id:`dns_SRV_reply`: :zeek:type:`event`          Generated for DNS replies of type *SRV*.
 :zeek:id:`dns_SSHFP`: :zeek:type:`event`              Generated for DNS replies of type *BINDS*.
+:zeek:id:`dns_SVCB`: :zeek:type:`event`               Generated for DNS replies of type *SVCB* (General Purpose Service Endpoints).
 :zeek:id:`dns_TSIG_addl`: :zeek:type:`event`          Generated for DNS replies of type *TSIG*.
 :zeek:id:`dns_TXT_reply`: :zeek:type:`event`          Generated for DNS replies of type *TXT*.
 :zeek:id:`dns_WKS_reply`: :zeek:type:`event`          Generated for DNS replies of type *WKS*.
@@ -435,6 +437,30 @@ Events
       dns_max_queries dns_session_timeout dns_skip_addl
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
+.. zeek:id:: dns_HTTPS
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 792 792
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, https: :zeek:type:`dns_svcb_rr`)
+
+   Generated for DNS replies of type *HTTPS* (HTTPS Specific Service Endpoints).
+   See `RFC draft for DNS SVCB/HTTPS <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-svcb-https-07>`__
+   for more information about DNS SVCB/HTTPS resource records.
+   Since SVCB and HTTPS records share the same wire format layout, the argument https is dns_svcb_rr. 
+   For replies with multiple answers, an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :https: The parsed RDATA of HTTPS type record.
+
 .. zeek:id:: dns_LOC
    :source-code: base/protocols/dns/main.zeek 608 614
 
@@ -778,6 +804,29 @@ Events
 
    :binds: The parsed RDATA of BIND-Signeing state record.
 
+.. zeek:id:: dns_SVCB
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 775 775
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, svcb: :zeek:type:`dns_svcb_rr`)
+
+   Generated for DNS replies of type *SVCB* (General Purpose Service Endpoints).
+   See `RFC draft for DNS SVCB/HTTPS <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-svcb-https-07>`__
+   for more information about DNS SVCB/HTTPS resource records.
+   For replies with multiple answers, an individual event of the corresponding type is raised for each.
+   
+
+   :c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :msg: The parsed DNS message header.
+   
+
+   :ans: The type-independent part of the parsed answer record.
+   
+
+   :svcb: The parsed RDATA of SVCB type record.
+
 .. zeek:id:: dns_TSIG_addl
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 631 631
 
@@ -872,7 +921,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_end
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 782 782
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 815 815
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`)
 
