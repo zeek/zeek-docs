@@ -5,7 +5,7 @@ policy/protocols/conn/known-hosts.zeek
 .. zeek:namespace:: Known
 
 This script logs hosts that Zeek determines have performed complete TCP
-handshakes and logs the address once per day (by default).  The log that 
+handshakes and logs the address once per day (by default).  The log that
 is output provides an easy way to determine a count of the IP addresses in
 use on a network per day.
 
@@ -32,11 +32,11 @@ Redefinable Options
 
 State Variables
 ###############
-======================================================================================================= =================================================================
+======================================================================================================= ================================================================
 :zeek:id:`Known::host_store`: :zeek:type:`Cluster::StoreInfo`                                           Holds the set of all known hosts.
-:zeek:id:`Known::hosts`: :zeek:type:`set` :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef` The set of all known addresses to store for preventing duplicate 
+:zeek:id:`Known::hosts`: :zeek:type:`set` :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef` The set of all known addresses to store for preventing duplicate
                                                                                                         logging of addresses.
-======================================================================================================= =================================================================
+======================================================================================================= ================================================================
 
 Types
 #####
@@ -162,8 +162,8 @@ State Variables
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
    :Default: ``{}``
 
-   The set of all known addresses to store for preventing duplicate 
-   logging of addresses.  It can also be used from other scripts to 
+   The set of all known addresses to store for preventing duplicate
+   logging of addresses.  It can also be used from other scripts to
    inspect if an address has been seen in use.
    Maintain the list of known hosts for 24 hours so that the existence
    of each individual address is logged each day.

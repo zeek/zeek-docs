@@ -78,7 +78,7 @@ Types
          Indicate whether or not the authentication was successful.
 
       done: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Internally used field to indicate if the login attempt 
+         Internally used field to indicate if the login attempt
          has already been logged.
 
 

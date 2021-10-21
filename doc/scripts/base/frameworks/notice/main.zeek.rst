@@ -275,9 +275,9 @@ Types
          (present if :doc:`/scripts/base/frameworks/notice/actions/email_admin.zeek` is loaded)
 
 
-         Indicate that the generated email should be addressed to the 
+         Indicate that the generated email should be addressed to the
          appropriate email addresses as found by the
-         :zeek:id:`Site::get_emails` function based on the relevant 
+         :zeek:id:`Site::get_emails` function based on the relevant
          address or addresses indicated in the notice.
 
       .. zeek:enum:: Notice::ACTION_PAGE Notice::Action
@@ -708,7 +708,7 @@ Types
          (present if :doc:`/scripts/policy/protocols/ftp/detect.zeek` is loaded)
 
 
-         Indicates that a successful response to a "SITE EXEC" 
+         Indicates that a successful response to a "SITE EXEC"
          command/arg pair was seen.
 
       .. zeek:enum:: HTTP::SQL_Injection_Attacker Notice::Type

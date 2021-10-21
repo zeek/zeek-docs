@@ -11,7 +11,7 @@ Support for Internet Relay Chat (IRC) protocol analysis.
 :doc:`/scripts/base/protocols/irc/main.zeek`
 
    Implements the core IRC analysis support.  The logging model is to log
-   IRC commands along with the associated response and some additional 
+   IRC commands along with the associated response and some additional
    metadata about the connection if it's available.
 
 :doc:`/scripts/base/protocols/irc/dcc-send.zeek`

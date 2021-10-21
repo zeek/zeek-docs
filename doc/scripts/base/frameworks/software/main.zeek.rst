@@ -23,11 +23,11 @@ Runtime Options
 
 State Variables
 ###############
-====================================================================================================== ==========================================================
-:zeek:id:`Software::alternate_names`: :zeek:type:`table` :zeek:attr:`&default` = :zeek:type:`function` Sometimes software will expose itself on the network with 
+====================================================================================================== =========================================================
+:zeek:id:`Software::alternate_names`: :zeek:type:`table` :zeek:attr:`&default` = :zeek:type:`function` Sometimes software will expose itself on the network with
                                                                                                        slight naming variations.
 :zeek:id:`Software::tracked`: :zeek:type:`table` :zeek:attr:`&create_expire` = ``1.0 day``             The set of software associated with an address.
-====================================================================================================== ==========================================================
+====================================================================================================== =========================================================
 
 Types
 #####
@@ -35,7 +35,7 @@ Types
 :zeek:type:`Software::Info`: :zeek:type:`record`                      The record type that is used for representing and logging software.
 :zeek:type:`Software::SoftwareSet`: :zeek:type:`table`                Type to represent a collection of :zeek:type:`Software::Info` records.
 :zeek:type:`Software::Type`: :zeek:type:`enum`                        Scripts detecting new types of software need to redef this enum to add
-                                                                      their own specific software types which would then be used when they 
+                                                                      their own specific software types which would then be used when they
                                                                       create :zeek:type:`Software::Info` records.
 :zeek:type:`Software::Version`: :zeek:type:`record` :zeek:attr:`&log` A structure to represent the numeric version of software.
 ===================================================================== ======================================================================
@@ -109,10 +109,10 @@ State Variables
          }
 
 
-   Sometimes software will expose itself on the network with 
-   slight naming variations.  This table provides a mechanism 
-   for a piece of software to be renamed to a single name 
-   even if it exposes itself with an alternate name.  The 
+   Sometimes software will expose itself on the network with
+   slight naming variations.  This table provides a mechanism
+   for a piece of software to be renamed to a single name
+   even if it exposes itself with an alternate name.  The
    yielded string is the name that will be logged and generally
    used for everything.
 
@@ -124,7 +124,7 @@ State Variables
    :Default: ``{}``
 
    The set of software associated with an address.  Data expires from
-   this table after one day by default so that a detected piece of 
+   this table after one day by default so that a detected piece of
    software will be logged once each day.  In a cluster, this table is
    uniformly distributed among proxy nodes.
 
@@ -161,7 +161,7 @@ Types
 
       force_log: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          This can indicate that this software being detected should
-         definitely be sent onward to the logging framework.  By 
+         definitely be sent onward to the logging framework.  By
          default, only software that is "interesting" due to a change
          in version or it being currently unknown is sent to the
          logging framework.  This can be set to T to force the record
@@ -181,7 +181,7 @@ Types
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Software::Info`
 
    Type to represent a collection of :zeek:type:`Software::Info` records.
-   It's indexed with the name of a piece of software such as "Firefox" 
+   It's indexed with the name of a piece of software such as "Firefox"
    and it yields a :zeek:type:`Software::Info` record with more
    information about the software.
 
@@ -301,7 +301,7 @@ Types
          Identifier for SSH servers in the software framework.
 
    Scripts detecting new types of software need to redef this enum to add
-   their own specific software types which would then be used when they 
+   their own specific software types which would then be used when they
    create :zeek:type:`Software::Info` records.
 
 .. zeek:type:: Software::Version

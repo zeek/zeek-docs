@@ -17,10 +17,10 @@ Summary
 ~~~~~~~
 Redefinable Options
 ###################
-============================================================================= ==========================================================
-:zeek:id:`default_notice_thresholds`: :zeek:type:`vector` :zeek:attr:`&redef` The thresholds you would like to use as defaults with the 
+============================================================================= =========================================================
+:zeek:id:`default_notice_thresholds`: :zeek:type:`vector` :zeek:attr:`&redef` The thresholds you would like to use as defaults with the
                                                                               :zeek:id:`default_check_threshold` function.
-============================================================================= ==========================================================
+============================================================================= =========================================================
 
 Types
 #####
@@ -56,7 +56,7 @@ Redefinable Options
          [30, 100, 1000, 10000, 100000, 1000000, 10000000]
 
 
-   The thresholds you would like to use as defaults with the 
+   The thresholds you would like to use as defaults with the
    :zeek:id:`default_check_threshold` function.
 
 Types

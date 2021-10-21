@@ -51,7 +51,7 @@ Events
 ++++++
 
 .. zeek:id:: file_entropy
-   :source-code: policy/frameworks/files/entropy-test-all-files.zeek 17 20
+   :source-code: policy/frameworks/files/entropy-test-all-files.zeek 16 19
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ent: :zeek:type:`entropy_test_result`)
 
@@ -332,7 +332,7 @@ Events
 ++++++
 
 .. zeek:id:: unified2_event
-   :source-code: policy/files/unified2/main.zeek 266 269
+   :source-code: policy/files/unified2/main.zeek 265 268
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ev: :zeek:type:`Unified2::IDSEvent`)
 
@@ -347,7 +347,7 @@ Events
    
 
 .. zeek:id:: unified2_packet
-   :source-code: policy/files/unified2/main.zeek 271 279
+   :source-code: policy/files/unified2/main.zeek 270 278
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, pkt: :zeek:type:`Unified2::Packet`)
 

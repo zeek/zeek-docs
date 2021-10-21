@@ -5,8 +5,8 @@ base/frameworks/notice/actions/add-geodata.zeek
 .. zeek:namespace:: Notice
 
 This script adds geographic location data to notices for the "remote"
-host in a connection.  It does make the assumption that one of the 
-addresses in a connection is "local" and one is "remote" which is 
+host in a connection.  It does make the assumption that one of the
+addresses in a connection is "local" and one is "remote" which is
 probably a safe assumption to make in most cases.  If both addresses
 are remote, it will use the $src address.
 

@@ -23,7 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: unified2_event
-   :source-code: policy/files/unified2/main.zeek 266 269
+   :source-code: policy/files/unified2/main.zeek 265 268
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ev: :zeek:type:`Unified2::IDSEvent`)
 
@@ -38,7 +38,7 @@ Events
    
 
 .. zeek:id:: unified2_packet
-   :source-code: policy/files/unified2/main.zeek 271 279
+   :source-code: policy/files/unified2/main.zeek 270 278
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, pkt: :zeek:type:`Unified2::Packet`)
 

@@ -117,7 +117,7 @@ Types
 
       rtt: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
          Round trip time from the request to the response.
-         If either the request or response wasn't seen, 
+         If either the request or response wasn't seen,
          this will be null.
 
       named_pipe: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`

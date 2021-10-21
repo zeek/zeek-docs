@@ -20,7 +20,7 @@ Types
 ================================================= ====================================================================
 :zeek:type:`FTP::CmdArg`: :zeek:type:`record`     
 :zeek:type:`FTP::PendingCmds`: :zeek:type:`table` Structure for tracking pending commands in the event that the client
-                                                  sends a large number of commands before the server has a chance to 
+                                                  sends a large number of commands before the server has a chance to
                                                   reply.
 ================================================= ====================================================================
 
@@ -395,7 +395,7 @@ Types
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`FTP::CmdArg`
 
    Structure for tracking pending commands in the event that the client
-   sends a large number of commands before the server has a chance to 
+   sends a large number of commands before the server has a chance to
    reply.
 
 

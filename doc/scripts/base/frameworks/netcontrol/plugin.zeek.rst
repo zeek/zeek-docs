@@ -45,7 +45,7 @@ Types
 
       can_expire: :zeek:type:`bool`
          If true, plugin can expire rules itself. If false, the NetControl
-         framework will manage rule expiration. 
+         framework will manage rule expiration.
 
       init: :zeek:type:`function` (state: :zeek:type:`NetControl::PluginState`) : :zeek:type:`void` :zeek:attr:`&optional`
          One-time initialization function called when plugin gets registered, and

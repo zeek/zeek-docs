@@ -4,7 +4,7 @@ policy/protocols/http/var-extraction-uri.zeek
 =============================================
 .. zeek:namespace:: HTTP
 
-Extracts and logs variables from the requested URI in the default HTTP 
+Extracts and logs variables from the requested URI in the default HTTP
 logging stream.
 
 :Namespace: HTTP

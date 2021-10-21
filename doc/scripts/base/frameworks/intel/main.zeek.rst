@@ -88,8 +88,8 @@ Redefinable Options
 
 
    The expiration timeout for intelligence items. Once an item expires, the
-   :zeek:id:`Intel::item_expired` hook is called. Reinsertion of an item 
-   resets the timeout. A negative value disables expiration of intelligence 
+   :zeek:id:`Intel::item_expired` hook is called. Reinsertion of an item
+   resets the timeout. A negative value disables expiration of intelligence
    items.
 
 Types

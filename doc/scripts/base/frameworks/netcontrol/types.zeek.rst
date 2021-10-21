@@ -7,7 +7,7 @@ base/frameworks/netcontrol/types.zeek
 This file defines the types that are used by the NetControl framework.
 
 The most important type defined in this file is :zeek:see:`NetControl::Rule`,
-which is used to describe all rules that can be expressed by the NetControl framework. 
+which is used to describe all rules that can be expressed by the NetControl framework.
 
 :Namespace: NetControl
 

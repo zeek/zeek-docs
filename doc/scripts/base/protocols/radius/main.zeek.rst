@@ -73,7 +73,7 @@ Types
       framed_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
          The address given to the network access server, if
          present.  This is only a hint from the RADIUS server
-         and the network access server is not required to honor 
+         and the network access server is not required to honor
          the address.
 
       tunnel_client: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
@@ -85,7 +85,7 @@ Types
          Connect info, if present.
 
       reply_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Reply message from the server challenge. This is 
+         Reply message from the server challenge. This is
          frequently shown to the user authenticating.
 
       result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
