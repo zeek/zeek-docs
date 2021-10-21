@@ -4,7 +4,7 @@ base/protocols/syslog/main.zeek
 ===============================
 .. zeek:namespace:: Syslog
 
-Core script support for logging syslog messages.  This script represents 
+Core script support for logging syslog messages.  This script represents
 one syslog message as one logged record.
 
 :Namespace: Syslog

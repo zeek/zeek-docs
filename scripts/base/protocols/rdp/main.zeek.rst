@@ -13,12 +13,12 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-======================================================================================= ===================================================================
+======================================================================================= ==================================================================
 :zeek:id:`RDP::disable_analyzer_after_detection`: :zeek:type:`bool` :zeek:attr:`&redef` If true, detach the RDP analyzer from the connection to prevent
                                                                                         continuing to process encrypted traffic.
-:zeek:id:`RDP::rdp_check_interval`: :zeek:type:`interval` :zeek:attr:`&redef`           The amount of time to monitor an RDP session from when it is first 
+:zeek:id:`RDP::rdp_check_interval`: :zeek:type:`interval` :zeek:attr:`&redef`           The amount of time to monitor an RDP session from when it is first
                                                                                         identified.
-======================================================================================= ===================================================================
+======================================================================================= ==================================================================
 
 Types
 #####
@@ -86,7 +86,7 @@ Runtime Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``10.0 secs``
 
-   The amount of time to monitor an RDP session from when it is first 
+   The amount of time to monitor an RDP session from when it is first
    identified. When this interval is reached, the session is logged.
 
 Types
@@ -139,16 +139,16 @@ Types
          Desktop height of the client machine.
 
       requested_color_depth: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The color depth requested by the client in 
+         The color depth requested by the client in
          the high_color_depth field.
 
       cert_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          If the connection is being encrypted with native
-         RDP encryption, this is the type of cert 
+         RDP encryption, this is the type of cert
          being used.
 
       cert_count: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of certs seen.  X.509 can transfer an 
+         The number of certs seen.  X.509 can transfer an
          entire certificate chain.
 
       cert_permanent: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
@@ -159,7 +159,7 @@ Types
          Encryption level of the connection.
 
       encryption_method: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Encryption method of the connection. 
+         Encryption method of the connection.
 
       analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
          The analyzer ID used for the analyzer instance attached

@@ -4,10 +4,10 @@ policy/protocols/ssh/interesting-hostnames.zeek
 ===============================================
 .. zeek:namespace:: SSH
 
-This script will generate a notice if an apparent SSH login originates 
-or heads to a host with a reverse hostname that looks suspicious.  By 
-default, the regular expression to match "interesting" hostnames includes 
-names that are typically used for infrastructure hosts like nameservers, 
+This script will generate a notice if an apparent SSH login originates
+or heads to a host with a reverse hostname that looks suspicious.  By
+default, the regular expression to match "interesting" hostnames includes
+names that are typically used for infrastructure hosts like nameservers,
 mail servers, web servers and ftp servers.
 
 :Namespace: SSH

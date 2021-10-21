@@ -210,7 +210,7 @@ Types
          The DHCP message types seen by this DHCP transaction
 
       duration: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
-         Duration of the DHCP "session" representing the 
+         Duration of the DHCP "session" representing the
          time from the first message to the last.
 
       client_chaddr: :zeek:type:`string` :zeek:attr:`&optional`

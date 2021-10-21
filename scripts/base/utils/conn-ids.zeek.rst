@@ -12,16 +12,16 @@ Summary
 ~~~~~~~
 Functions
 #########
-==================================================== ====================================================================
+==================================================== ===================================================================
 :zeek:id:`directed_id_string`: :zeek:type:`function` Calls :zeek:id:`id_string` or :zeek:id:`reverse_id_string` if the
                                                      second argument is T or F, respectively.
-:zeek:id:`id_string`: :zeek:type:`function`          Takes a conn_id record and returns a string representation with the 
+:zeek:id:`id_string`: :zeek:type:`function`          Takes a conn_id record and returns a string representation with the
                                                      general data flow appearing to be from the connection originator
                                                      on the left to the responder on the right.
-:zeek:id:`reverse_id_string`: :zeek:type:`function`  Takes a conn_id record and returns a string representation with the 
+:zeek:id:`reverse_id_string`: :zeek:type:`function`  Takes a conn_id record and returns a string representation with the
                                                      general data flow appearing to be from the connection responder
                                                      on the right to the originator on the left.
-==================================================== ====================================================================
+==================================================== ===================================================================
 
 
 Detailed Interface
@@ -41,7 +41,7 @@ Functions
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`string`
 
-   Takes a conn_id record and returns a string representation with the 
+   Takes a conn_id record and returns a string representation with the
    general data flow appearing to be from the connection originator
    on the left to the responder on the right.
 
@@ -50,7 +50,7 @@ Functions
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`string`
 
-   Takes a conn_id record and returns a string representation with the 
+   Takes a conn_id record and returns a string representation with the
    general data flow appearing to be from the connection responder
    on the right to the originator on the left.
 

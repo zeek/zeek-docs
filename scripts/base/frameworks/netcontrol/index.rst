@@ -15,7 +15,7 @@ etc.
    This file defines the types that are used by the NetControl framework.
    
    The most important type defined in this file is :zeek:see:`NetControl::Rule`,
-   which is used to describe all rules that can be expressed by the NetControl framework. 
+   which is used to describe all rules that can be expressed by the NetControl framework.
 
 :doc:`/scripts/base/frameworks/netcontrol/main.zeek`
 
@@ -52,7 +52,7 @@ etc.
    NetControl plugin for the process-level PacketFilter that comes with
    Zeek. Since the PacketFilter in Zeek is quite limited in scope
    and can only add/remove filters for addresses, this is quite
-   limited in scope at the moment. 
+   limited in scope at the moment.
 
 :doc:`/scripts/base/frameworks/netcontrol/plugins/broker.zeek`
 

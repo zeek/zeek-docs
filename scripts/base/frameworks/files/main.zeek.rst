@@ -255,7 +255,7 @@ Types
 
       overflow_bytes: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
          The number of bytes in the file stream that were not delivered to
-         stream file analyzers.  This could be overlapping bytes or 
+         stream file analyzers.  This could be overlapping bytes or
          bytes that couldn't be reassembled.
 
       timedout: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
@@ -305,8 +305,8 @@ Types
       entropy: :zeek:type:`double` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/files/entropy-test-all-files.zeek` is loaded)
 
-         The information density of the contents of the file, 
-         expressed as a number of bits per character. 
+         The information density of the contents of the file,
+         expressed as a number of bits per character.
    :Attributes: :zeek:attr:`&redef`
 
    Contains all metadata related to the analysis of a given file.
@@ -440,7 +440,7 @@ Functions
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`void`
 
-   Disables the file reassembler on this file.  If the file is not 
+   Disables the file reassembler on this file.  If the file is not
    transferred out of order this will have no effect.
    
 
@@ -555,7 +555,7 @@ Functions
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`, reg: :zeek:type:`Files::ProtoRegistration`) : :zeek:type:`bool`
 
    Register callbacks for protocols that work with the Files framework.
-   The callbacks must uniquely identify a file and each protocol can 
+   The callbacks must uniquely identify a file and each protocol can
    only have a single callback registered for it.
    
 

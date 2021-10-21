@@ -14,7 +14,7 @@ Summary
 Runtime Options
 ###############
 =========================================================================================================================== =======================================================================
-:zeek:id:`DPD::ignore_violations`: :zeek:type:`set` :zeek:attr:`&redef`                                                     Analyzers which you don't want to throw 
+:zeek:id:`DPD::ignore_violations`: :zeek:type:`set` :zeek:attr:`&redef`                                                     Analyzers which you don't want to throw
 :zeek:id:`DPD::ignore_violations_after`: :zeek:type:`count` :zeek:attr:`&redef`                                             Ignore violations which go this many bytes into the connection.
 :zeek:id:`DPD::max_violations`: :zeek:type:`table` :zeek:attr:`&default` = ``5`` :zeek:attr:`&optional` :zeek:attr:`&redef` Number of protocol violations to tolerate before disabling an analyzer.
 =========================================================================================================================== =======================================================================
@@ -71,7 +71,7 @@ Runtime Options
          Analyzer::ANALYZER_NTLM
 
 
-   Analyzers which you don't want to throw 
+   Analyzers which you don't want to throw
 
 .. zeek:id:: DPD::ignore_violations_after
    :source-code: base/frameworks/dpd/main.zeek 43 43

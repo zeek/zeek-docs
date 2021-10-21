@@ -61,7 +61,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Unified2::classification_config
-   :source-code: policy/files/unified2/main.zeek 25 25
+   :source-code: policy/files/unified2/main.zeek 24 24
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -70,7 +70,7 @@ Redefinable Options
    The classification.config file you would like to use for your alerts.
 
 .. zeek:id:: Unified2::gen_msg
-   :source-code: policy/files/unified2/main.zeek 22 22
+   :source-code: policy/files/unified2/main.zeek 21 21
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -79,7 +79,7 @@ Redefinable Options
    The gen-msg.map file you would like to use for your alerts.
 
 .. zeek:id:: Unified2::sid_msg
-   :source-code: policy/files/unified2/main.zeek 19 19
+   :source-code: policy/files/unified2/main.zeek 18 18
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -88,7 +88,7 @@ Redefinable Options
    The sid-msg.map file you would like to use for your alerts.
 
 .. zeek:id:: Unified2::watch_dir
-   :source-code: policy/files/unified2/main.zeek 16 16
+   :source-code: policy/files/unified2/main.zeek 15 15
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Redefinable Options
    Directory to watch for Unified2 records.
 
 .. zeek:id:: Unified2::watch_file
-   :source-code: policy/files/unified2/main.zeek 13 13
+   :source-code: policy/files/unified2/main.zeek 12 12
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -108,7 +108,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Unified2::Info
-   :source-code: policy/files/unified2/main.zeek 38 65
+   :source-code: policy/files/unified2/main.zeek 37 64
 
    :Type: :zeek:type:`record`
 
@@ -154,7 +154,7 @@ Types
 
 
 .. zeek:type:: Unified2::PacketID
-   :source-code: policy/files/unified2/main.zeek 31 36
+   :source-code: policy/files/unified2/main.zeek 30 35
 
    :Type: :zeek:type:`record`
 
@@ -171,7 +171,7 @@ Types
 Events
 ######
 .. zeek:id:: Unified2::alert
-   :source-code: policy/files/unified2/main.zeek 281 286
+   :source-code: policy/files/unified2/main.zeek 280 285
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ev: :zeek:type:`Unified2::IDSEvent`, pkt: :zeek:type:`Unified2::Packet`)
 
@@ -179,7 +179,7 @@ Events
    and packets.
 
 .. zeek:id:: Unified2::log_unified2
-   :source-code: policy/files/unified2/main.zeek 68 68
+   :source-code: policy/files/unified2/main.zeek 67 67
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Unified2::Info`)
 
@@ -188,7 +188,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Unified2::log_policy
-   :source-code: policy/files/unified2/main.zeek 10 10
+   :source-code: policy/files/unified2/main.zeek 9 9
 
    :Type: :zeek:type:`Log::PolicyHook`
 

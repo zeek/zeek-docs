@@ -22,7 +22,7 @@ Plugins for the NetControl framework.
    NetControl plugin for the process-level PacketFilter that comes with
    Zeek. Since the PacketFilter in Zeek is quite limited in scope
    and can only add/remove filters for addresses, this is quite
-   limited in scope at the moment. 
+   limited in scope at the moment.
 
 :doc:`/scripts/base/frameworks/netcontrol/plugins/broker.zeek`
 

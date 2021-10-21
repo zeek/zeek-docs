@@ -4,7 +4,7 @@ policy/protocols/ssh/software.zeek
 ==================================
 .. zeek:namespace:: SSH
 
-Extracts SSH client and server information from SSH 
+Extracts SSH client and server information from SSH
 connections and forwards it to the software framework.
 
 :Namespace: SSH

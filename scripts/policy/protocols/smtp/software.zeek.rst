@@ -5,12 +5,12 @@ policy/protocols/smtp/software.zeek
 .. zeek:namespace:: SMTP
 
 This script feeds software detected through email into the software
-framework.  Mail clients and webmail interfaces are the only thing 
+framework.  Mail clients and webmail interfaces are the only thing
 currently detected.
 
 TODO:
 
-* Find some heuristic to determine if email was sent through 
+* Find some heuristic to determine if email was sent through
   a MS Exchange webmail interface as opposed to a desktop client.
 
 :Namespace: SMTP
@@ -24,7 +24,7 @@ Runtime Options
 :zeek:id:`SMTP::detect_clients_in_messages_from`: :zeek:type:`Host` :zeek:attr:`&redef` Assuming that local mail servers are more trustworthy with the
                                                                                         headers they insert into message envelopes, this default makes Zeek
                                                                                         not attempt to detect software in inbound message bodies.
-:zeek:id:`SMTP::webmail_user_agents`: :zeek:type:`pattern` :zeek:attr:`&redef`          A regular expression to match USER-AGENT-like headers to find if a 
+:zeek:id:`SMTP::webmail_user_agents`: :zeek:type:`pattern` :zeek:attr:`&redef`          A regular expression to match USER-AGENT-like headers to find if a
                                                                                         message was sent with a webmail interface.
 ======================================================================================= ===================================================================
 
@@ -80,7 +80,7 @@ Runtime Options
          /^?((^?((^?((^?((^?((^?(^iPlanet Messenger)$?)|(^?(^Sun Java\(tm\) System Messenger Express)$?))$?)|(^?(\(IMP\))$?))$?)|(^?(^SquirrelMail)$?))$?)|(^?(^NeoMail)$?))$?)|(^?(ZimbraWebClient)$?))$?/
 
 
-   A regular expression to match USER-AGENT-like headers to find if a 
+   A regular expression to match USER-AGENT-like headers to find if a
    message was sent with a webmail interface.
 
 

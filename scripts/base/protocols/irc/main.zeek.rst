@@ -5,7 +5,7 @@ base/protocols/irc/main.zeek
 .. zeek:namespace:: IRC
 
 Implements the core IRC analysis support.  The logging model is to log
-IRC commands along with the associated response and some additional 
+IRC commands along with the associated response and some additional
 metadata about the connection if it's available.
 
 :Namespace: IRC
@@ -35,10 +35,10 @@ Redefinitions
 
 Events
 ######
-=========================================== ====================================================================
-:zeek:id:`IRC::irc_log`: :zeek:type:`event` Event that can be handled to access the IRC record as it is sent on 
+=========================================== ===================================================================
+:zeek:id:`IRC::irc_log`: :zeek:type:`event` Event that can be handled to access the IRC record as it is sent on
                                             to the logging framework.
-=========================================== ====================================================================
+=========================================== ===================================================================
 
 Hooks
 #####
@@ -108,7 +108,7 @@ Events
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`IRC::Info`)
 
-   Event that can be handled to access the IRC record as it is sent on 
+   Event that can be handled to access the IRC record as it is sent on
    to the logging framework.
 
 Hooks

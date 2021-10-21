@@ -20,10 +20,10 @@ Types
 
 Events
 ######
-======================================================== ================================================================
-:zeek:id:`Barnyard2::barnyard_alert`: :zeek:type:`event` This is the event that Barnyard2 instances will send if they're 
+======================================================== ===============================================================
+:zeek:id:`Barnyard2::barnyard_alert`: :zeek:type:`event` This is the event that Barnyard2 instances will send if they're
                                                          configured with the bro_alert output plugin.
-======================================================== ================================================================
+======================================================== ===============================================================
 
 
 Detailed Interface
@@ -86,7 +86,7 @@ Events
 
    :Type: :zeek:type:`event` (id: :zeek:type:`Barnyard2::PacketID`, alert: :zeek:type:`Barnyard2::AlertData`, msg: :zeek:type:`string`, data: :zeek:type:`string`)
 
-   This is the event that Barnyard2 instances will send if they're 
+   This is the event that Barnyard2 instances will send if they're
    configured with the bro_alert output plugin.
 
 

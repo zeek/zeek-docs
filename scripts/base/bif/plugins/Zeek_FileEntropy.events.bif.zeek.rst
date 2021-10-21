@@ -22,7 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: file_entropy
-   :source-code: policy/frameworks/files/entropy-test-all-files.zeek 17 20
+   :source-code: policy/frameworks/files/entropy-test-all-files.zeek 16 19
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ent: :zeek:type:`entropy_test_result`)
 

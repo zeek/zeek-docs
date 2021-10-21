@@ -136,7 +136,7 @@ Redefinable Options
          }
 
 
-   Actions for a signature.  
+   Actions for a signature.
 
 .. zeek:id:: Signatures::count_thresholds
    :source-code: base/frameworks/signatures/main.zeek 122 122
@@ -247,7 +247,7 @@ Types
 
       .. zeek:enum:: Signatures::SIG_COUNT_PER_RESP Signatures::Action
 
-         Count signatures per responder host and alarm with the 
+         Count signatures per responder host and alarm with the
          :zeek:enum:`Signatures::Count_Signature` notice if a threshold
          defined by :zeek:id:`Signatures::count_thresholds` is reached.
 

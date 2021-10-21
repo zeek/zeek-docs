@@ -4,7 +4,7 @@ policy/protocols/ssl/expiring-certs.zeek
 ========================================
 .. zeek:namespace:: SSL
 
-Generate notices when X.509 certificates over SSL/TLS are expired or 
+Generate notices when X.509 certificates over SSL/TLS are expired or
 going to expire soon based on the date and time values stored within the
 certificate.
 

@@ -30,11 +30,11 @@ Redefinable Options
 
 State Variables
 ###############
-======================================================================================================= ====================================================================
+======================================================================================================= ===================================================================
 :zeek:id:`Known::cert_store`: :zeek:type:`Cluster::StoreInfo`                                           Holds the set of all known certificates.
-:zeek:id:`Known::certs`: :zeek:type:`set` :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef` The set of all known certificates to store for preventing duplicate 
+:zeek:id:`Known::certs`: :zeek:type:`set` :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef` The set of all known certificates to store for preventing duplicate
                                                                                                         logging.
-======================================================================================================= ====================================================================
+======================================================================================================= ===================================================================
 
 Types
 #####
@@ -162,9 +162,9 @@ State Variables
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
    :Default: ``{}``
 
-   The set of all known certificates to store for preventing duplicate 
-   logging. It can also be used from other scripts to 
-   inspect if a certificate has been seen in use. The string value 
+   The set of all known certificates to store for preventing duplicate
+   logging. It can also be used from other scripts to
+   inspect if a certificate has been seen in use. The string value
    in the set is for storing the DER formatted certificate' SHA1 hash.
    
    In cluster operation, this set is uniformly distributed across
@@ -194,7 +194,7 @@ Types
          The address that offered the certificate.
 
       port_num: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the certificate was handed out by a server, this is the 
+         If the certificate was handed out by a server, this is the
          port that the server was listening on.
 
       subject: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`

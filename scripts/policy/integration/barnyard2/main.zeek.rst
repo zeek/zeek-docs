@@ -35,11 +35,11 @@ Hooks
 
 Functions
 #########
-==================================================== ======================================================================
+==================================================== =====================================================================
 :zeek:id:`Barnyard2::pid2cid`: :zeek:type:`function` This can convert a Barnyard :zeek:type:`Barnyard2::PacketID` value to
-                                                     a :zeek:type:`conn_id` value in the case that you might need to index 
+                                                     a :zeek:type:`conn_id` value in the case that you might need to index
                                                      into an existing data structure elsewhere within Zeek.
-==================================================== ======================================================================
+==================================================== =====================================================================
 
 
 Detailed Interface
@@ -77,7 +77,7 @@ Functions
    :Type: :zeek:type:`function` (p: :zeek:type:`Barnyard2::PacketID`) : :zeek:type:`conn_id`
 
    This can convert a Barnyard :zeek:type:`Barnyard2::PacketID` value to
-   a :zeek:type:`conn_id` value in the case that you might need to index 
+   a :zeek:type:`conn_id` value in the case that you might need to index
    into an existing data structure elsewhere within Zeek.
 
 
