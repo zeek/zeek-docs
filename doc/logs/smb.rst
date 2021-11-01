@@ -1,3 +1,6 @@
+
+.. _zkg package manager: https://docs.zeek.org/projects/package-manager/en/stable/
+
 =======================================
 SMB Logs (plus DCE-RPC, Kerberos, NTLM)
 =======================================
@@ -55,14 +58,19 @@ Leveraging BZAR
 ===============
 
 Before looking at individual logs associated with SMB, it’s helpful to first
-consider adding the BZAR script to your repertoire.
+consider adding the BZAR package to your repertoire.
 
 BZAR stands for Bro/Zeek ATT&CK-based Analytics and Reporting. Mark Fernandez
 and others from MITRE and the Zeek community wrote BZAR to generate
 :file:`notice.log` entries when certain patterns of activity appear in some SMB
 logs.
 
-You can learn more about BZAR here: https://github.com/mitre-attack/bzar
+You can learn more about BZAR at https://github.com/mitre-attack/bzar and install
+it via the `zkg package manager`_ by saying
+
+.. literal-emph::
+
+   zkg install bzar
 
 I suggest using BZAR when one first begins looking at SMB logs. Without BZAR,
 it could be difficult to know what might be worth investigating and what might
