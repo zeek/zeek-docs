@@ -134,7 +134,7 @@ two external Python modules:
     * semantic-version: https://pypi.org/project/semantic-version/
 
 These install easily via pip (``pip3 install GitPython
-semantic-version``) and ship with some distributions:
+semantic-version``) and also ship with some distributions:
 
 * RPM/RedHat-based Linux:
 
@@ -148,6 +148,9 @@ semantic-version``) and ship with some distributions:
 
      sudo apt-get install python3-git python3-semantic-version
 
+``zkg`` also requires a ``git`` installation, which the above system packages
+pull in as a dependency. If you install via pip, remember that you also need
+``git`` itself.
 
 Installing Zeek
 ===============
