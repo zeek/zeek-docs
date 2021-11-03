@@ -307,8 +307,8 @@ first identifies a tunnel, it reports ``DISCOVER``. When it assesses that the
 tunnel is no longer used, Zeek reports ``CLOSE``.
 
 The take-away from this activity is that Zeek has identified Teredo traffic.
-These logs are similar to the assistance provided by Zeek’s BZAR scripts. They
-review somewhat complicated detailed logs and produce results that are a bit
+The :file:`tunnel.log` entries abstract the somewhat complicated detailed logs
+and produce results that are a bit
 friendlier to the analyst. Here we see that the systems involved are opening
 and closing Teredo tunnels. If this is not authorized traffic, it is enough to
 begin a more detailed investigation.
