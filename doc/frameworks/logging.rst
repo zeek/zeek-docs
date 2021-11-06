@@ -741,6 +741,13 @@ A resulting :file:`conn.log`::
   #types  time  string  string  time  string  …
   1071580905.346457  conn  zeek  1071580904.891921  Cod6Wj3YeJFHgkaO8j …
 
+.. note::
+
+   Extension fields remain separate from the original log record. They remain
+   invisible to filters, policy hooks, and log events. *After* filter processing
+   determines that an entry is to be logged, the framework simply tucks the
+   extension's members onto the list of fields to write out.
+
 Field Name Mapping
 ~~~~~~~~~~~~~~~~~~
 
