@@ -149,7 +149,7 @@ Functions
                 strip
 
 .. zeek:id:: ends_with
-   :source-code: base/bif/strings.bif.zeek 532 532
+   :source-code: base/bif/strings.bif.zeek 538 538
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -237,9 +237,9 @@ Functions
    .. zeek:see: find_all find_all_ordered strstr
 
 .. zeek:id:: find_str
-   :source-code: base/bif/strings.bif.zeek 507 507
+   :source-code: base/bif/strings.bif.zeek 510 510
 
-   :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`) : :zeek:type:`int`
+   :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`, case_sensitive: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
    Finds a string within another string, starting from the beginning. This works
    by taking a substring within the provided indexes and searching for the sub
@@ -256,6 +256,10 @@ Functions
    :end: An optional position for the end of the substring. A value less than
         zero (such as the default -1) means a search until the end of the
         string.
+
+   :case_sensitive: Set to false to perform a case-insensitive search.
+                   (default: T). Note that case-insensitive searches use the
+                   ``tolower`` libc function, which is locale-sensitive.
    
 
    :returns: The position of the substring. Returns -1 if the string wasn't
@@ -305,7 +309,7 @@ Functions
    
 
 .. zeek:id:: is_alnum
-   :source-code: base/bif/strings.bif.zeek 547 547
+   :source-code: base/bif/strings.bif.zeek 553 553
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -313,7 +317,7 @@ Functions
    
 
 .. zeek:id:: is_alpha
-   :source-code: base/bif/strings.bif.zeek 542 542
+   :source-code: base/bif/strings.bif.zeek 548 548
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -337,7 +341,7 @@ Functions
    .. zeek:see:: to_upper to_lower
 
 .. zeek:id:: is_num
-   :source-code: base/bif/strings.bif.zeek 537 537
+   :source-code: base/bif/strings.bif.zeek 543 543
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -384,7 +388,7 @@ Functions
    
 
 .. zeek:id:: ljust
-   :source-code: base/bif/strings.bif.zeek 563 563
+   :source-code: base/bif/strings.bif.zeek 569 569
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`, fill: :zeek:type:`string` :zeek:attr:`&default` = ``" "`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -428,14 +432,14 @@ Functions
    .. zeek:see:: sub gsub strip rstrip
 
 .. zeek:id:: remove_prefix
-   :source-code: base/bif/strings.bif.zeek 608 608
+   :source-code: base/bif/strings.bif.zeek 614 614
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`string`
 
    Similar to lstrip(), except does the removal repeatedly if the pattern repeats at the start of the string.
 
 .. zeek:id:: remove_suffix
-   :source-code: base/bif/strings.bif.zeek 612 612
+   :source-code: base/bif/strings.bif.zeek 618 618
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -456,9 +460,9 @@ Functions
    
 
 .. zeek:id:: rfind_str
-   :source-code: base/bif/strings.bif.zeek 522 522
+   :source-code: base/bif/strings.bif.zeek 528 528
 
-   :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`) : :zeek:type:`int`
+   :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`, case_sensitive: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
    The same as :zeek:see:`find_str`, but returns the highest index matching
    the substring instead of the smallest.
@@ -472,6 +476,10 @@ Functions
 
    :end: An optional position for the end of the substring. A value less than
         zero (such as the default -1) means a search from the end of the string.
+
+   :case_sensitive: Set to false to perform a case-insensitive search.
+                   (default: T). Note that case-insensitive searches use the
+                   ``tolower`` libc function, which is locale-sensitive.
    
 
    :returns: The position of the substring. Returns -1 if the string wasn't
@@ -479,7 +487,7 @@ Functions
             position.
 
 .. zeek:id:: rjust
-   :source-code: base/bif/strings.bif.zeek 581 581
+   :source-code: base/bif/strings.bif.zeek 587 587
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`, fill: :zeek:type:`string` :zeek:attr:`&default` = ``" "`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -644,7 +652,7 @@ Functions
    .. zeek:see:: split_string split_string1 split_string_all
 
 .. zeek:id:: starts_with
-   :source-code: base/bif/strings.bif.zeek 527 527
+   :source-code: base/bif/strings.bif.zeek 533 533
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -852,7 +860,7 @@ Functions
    .. zeek:see:: sub gsub
 
 .. zeek:id:: swap_case
-   :source-code: base/bif/strings.bif.zeek 590 590
+   :source-code: base/bif/strings.bif.zeek 596 596
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -903,7 +911,7 @@ Functions
    .. zeek:see:: clean escape_string
 
 .. zeek:id:: to_title
-   :source-code: base/bif/strings.bif.zeek 600 600
+   :source-code: base/bif/strings.bif.zeek 606 606
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -935,7 +943,7 @@ Functions
    .. zeek:see:: to_lower is_ascii
 
 .. zeek:id:: zfill
-   :source-code: base/bif/strings.bif.zeek 604 604
+   :source-code: base/bif/strings.bif.zeek 610 610
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`) : :zeek:type:`string`
 
