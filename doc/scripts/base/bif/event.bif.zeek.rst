@@ -77,6 +77,8 @@ Events
 :zeek:id:`new_event`: :zeek:type:`event`                                    A meta event generated for events that Zeek raises.
 :zeek:id:`new_packet`: :zeek:type:`event`                                   Generated for all packets that make it into Zeek's connection processing.
 :zeek:id:`packet_contents`: :zeek:type:`event`                              Generated for every packet that has a non-empty transport-layer payload.
+:zeek:id:`packet_not_processed`: :zeek:type:`event`                         An event for handling packets that reached the end of processing without
+                                                                            being marked as processed.
 :zeek:id:`profiling_update`: :zeek:type:`event`                             Generated each time Zeek's internal profiling log is updated.
 :zeek:id:`protocol_confirmation`: :zeek:type:`event`                        Generated when a protocol analyzer confirms that a connection is indeed
                                                                             using that protocol.
@@ -926,6 +928,19 @@ Events
    :contents: The raw transport-layer payload.
    
    .. zeek:see:: new_packet tcp_packet
+
+.. zeek:id:: packet_not_processed
+   :source-code: base/bif/event.bif.zeek 982 982
+
+   :Type: :zeek:type:`event` (pkt: :zeek:type:`pcap_packet`)
+
+   An event for handling packets that reached the end of processing without
+   being marked as processed. Note that this event may lead to unpredictable
+   performance spikes, particularly if a network suddenly receives a burst
+   of packets that are unprocessed.
+   
+
+   :pkt: Data for the unprocessed packet
 
 .. zeek:id:: profiling_update
    :source-code: base/bif/event.bif.zeek 661 661
