@@ -288,6 +288,10 @@ their source directory (after ``make`` and setting Zeek's
 ``ZEEK_PLUGIN_PATH``), and when installed alongside Zeek (after ``make
 install``).
 
+Upon completion, ``init-plugin`` initializes a git repository and stages its
+produced files for committing, but does not yet commit the files. This allows
+you to tweak the new plugin as needed prior to the initial commit.
+
 ``make install`` copies over the ``lib`` and ``scripts`` directories,
 as well as the ``__bro_plugin__`` magic file and any further
 distribution files specified in ``CMakeLists.txt`` (e.g., README,
@@ -319,14 +323,12 @@ see the installed skeleton version and existing plugins for examples.
 
 .. note::
 
-  Technically ``init-plugin`` generates a Zeek package layout featuring a
-  plugin, since the generated content includes a functional ``zkg.meta``
-  file. Using ``init-plugin`` to bootstrap Zeek packages is deprecated.  We
-  encourage users wanting to bootstrap new Zeek packages to use ``zkg``'s
-  superior built-in templating functionality, explained in more detail `here
-  <https://docs.zeek.org/projects/package-manager/en/stable/package.html>`_.  We
-  will update ``init-plugin`` in the near future to focus it strictly on plugin
-  generation.
+  In the past ``init-plugin`` also generated a ``zkg.meta`` file, automatically
+  creating a Zeek package containing a plugin. ``init-plugin`` now focuses
+  purely on plugins, as its name suggests. To bootstrap new Zeek packages
+  (possibly containing plugins), use the more featureful templating
+  functionality provided by the ``zkg create`` command, explained `here
+  <https://docs.zeek.org/projects/package-manager/en/stable/package.html>`_.
 
 Activating a Plugin
 ===================
@@ -383,24 +385,14 @@ A plugin should come with a test suite to exercise its functionality.
 The ``init-plugin`` script puts in place a basic
 `BTest <https://github.com/zeek/btest>`_ setup
 to start with. Initially, it comes with a single test that just checks
-that Zeek loads the plugin correctly. It won't have a baseline yet, so
-let's get that in place::
+that Zeek loads the plugin correctly::
 
     # cd tests
-    # btest -d
-    [  0%] rot13.show-plugin ... failed
-    % 'btest-diff output' failed unexpectedly (exit code 100)
-    % cat .diag
-    == File ===============================
-    Demo::Rot13 - Caesar cipher rotating a string's letters by 13 places. (dynamic, version 0.1.0)
-        [Function] Demo::rot13
-
-    == Error ===============================
-    test-diff: no baseline found.
-    =======================================
-
-    # btest -U
+    # btest -A
+    [  0%] rot13.show-plugin ... ok
     all 1 tests successful
+
+You can also run this via the Makefile::
 
     # cd ..
     # make test
