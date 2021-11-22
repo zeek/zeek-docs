@@ -26,7 +26,7 @@ Events
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`pkt_hdr`, vni: :zeek:type:`count`)
 
    Generated for any packet encapsulated in a Geneve tunnel.
-   See :rfc:`8926` for more information about the VXLAN protocol.
+   See :rfc:`8926` for more information about the Geneve protocol.
    
 
    :outer: The Geneve tunnel connection.
