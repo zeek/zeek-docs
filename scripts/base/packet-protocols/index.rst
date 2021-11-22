@@ -7,6 +7,9 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/__load__.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/main.zeek`
+
+
 :doc:`/scripts/base/packet-protocols/root/__load__.zeek`
 
 
@@ -91,18 +94,6 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/mpls/main.zeek`
 
 
-:doc:`/scripts/base/packet-protocols/gre/__load__.zeek`
-
-
-:doc:`/scripts/base/packet-protocols/gre/main.zeek`
-
-
-:doc:`/scripts/base/packet-protocols/iptunnel/__load__.zeek`
-
-
-:doc:`/scripts/base/packet-protocols/iptunnel/main.zeek`
-
-
 :doc:`/scripts/base/packet-protocols/vntag/__load__.zeek`
 
 
@@ -125,5 +116,47 @@ Package: base/packet-protocols
 
 
 :doc:`/scripts/base/packet-protocols/icmp/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/gre/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/gre/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/iptunnel/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/iptunnel/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/ayiya/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/ayiya/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/geneve/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/geneve/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/vxlan/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/vxlan/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/teredo/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/teredo/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/gtpv1/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/gtpv1/main.zeek`
 
 
