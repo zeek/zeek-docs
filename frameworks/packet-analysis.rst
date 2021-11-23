@@ -149,6 +149,21 @@ configuration values from script-land, this can be implemented by overriding
 the ``Initialize()`` method. When overriding this method, always make sure to
 call the base-class version to ensure proper initialization.
 
+With the addition of the transport-layer analyzer to the packet analysis framework,
+it's now possible to register for ports as the identifier. This is natural, given
+that a port number is just another numeric identifier for moving from one
+protocol to another. Packet analyzers should call
+``PacketAnalyzer::register_for_port`` or ``PacketAnalyzer::register_for_ports``
+to ensure that the ports are also stored in the global ``Analyzer::ports`` table for
+use with BPF filters.
+
+The packet analysis framework also provides a ``register_protocol_detection``
+method that is used to register a packet analyzer to use protocol detection
+instead of using a numeric identifier. Analyzers can use this method and then
+override ``Analyzer::DetectProtocol`` to search the packet data for byte strings
+or other markers to detect whether a protocol exists in the data. This is similar
+to how DPD works for non-packet analyzers, but is not limited to pattern matching.
+
 .. note::
 
   When writing your own packet analyzer, take a look into the existing code to

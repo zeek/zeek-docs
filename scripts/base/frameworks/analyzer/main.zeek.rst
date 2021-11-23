@@ -16,6 +16,13 @@ These tags are defined internally by
 the analyzers themselves, and documented in their analyzer-specific
 description along with the events that they generate.
 
+Analyzer tags are also inserted into a global :zeek:type:`AllAnalyzers::Tag` enum
+type. This type contains duplicates of all of the :zeek:type:`Analyzer::Tag`,
+:zeek:type:`PacketAnalyzer::Tag` and :zeek:type:`Files::Tag` enum values
+and can be used for arguments to function/hook/event definitions where they
+need to handle any analyzer type. See :zeek:id:`Analyzer::register_for_ports`
+for an example.
+
 :Namespace: Analyzer
 :Imports: :doc:`base/bif/analyzer.bif.zeek </scripts/base/bif/analyzer.bif.zeek>`, :doc:`base/frameworks/packet-filter/utils.zeek </scripts/base/frameworks/packet-filter/utils.zeek>`
 
@@ -26,6 +33,7 @@ State Variables
 ============================================================================= ===================================================================
 :zeek:id:`Analyzer::disable_all`: :zeek:type:`bool` :zeek:attr:`&redef`       If true, all available analyzers are initially disabled at startup.
 :zeek:id:`Analyzer::disabled_analyzers`: :zeek:type:`set` :zeek:attr:`&redef` A set of analyzers to disable by default at startup.
+:zeek:id:`Analyzer::ports`: :zeek:type:`table`                                A table of ports mapped to analyzers that handle those ports.
 ============================================================================= ===================================================================
 
 Functions
@@ -56,7 +64,7 @@ Detailed Interface
 State Variables
 ###############
 .. zeek:id:: Analyzer::disable_all
-   :source-code: base/frameworks/analyzer/main.zeek 21 21
+   :source-code: base/frameworks/analyzer/main.zeek 28 28
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -67,7 +75,7 @@ State Variables
    :zeek:id:`Analyzer::enable_analyzer`.
 
 .. zeek:id:: Analyzer::disabled_analyzers
-   :source-code: base/frameworks/analyzer/main.zeek 126 126
+   :source-code: base/frameworks/analyzer/main.zeek 133 133
 
    :Type: :zeek:type:`set` [:zeek:type:`Analyzer::Tag`]
    :Attributes: :zeek:attr:`&redef`
@@ -83,12 +91,23 @@ State Variables
    A set of analyzers to disable by default at startup. The default set
    contains legacy analyzers that are no longer supported.
 
+.. zeek:id:: Analyzer::ports
+   :source-code: base/frameworks/analyzer/main.zeek 141 141
+
+   :Type: :zeek:type:`table` [:zeek:type:`AllAnalyzers::Tag`] of :zeek:type:`set` [:zeek:type:`port`]
+   :Default: ``{}``
+
+   A table of ports mapped to analyzers that handle those ports. This is
+   used by BPF filtering and DPD. Session analyzers can add to this using
+   Analyzer::register_for_port(s) and packet analyzers can add to this
+   using PacketAnalyzer::register_for_port(s).
+
 Functions
 #########
 .. zeek:id:: Analyzer::all_registered_ports
-   :source-code: base/frameworks/analyzer/main.zeek 184 187
+   :source-code: base/frameworks/analyzer/main.zeek 195 198
 
-   :Type: :zeek:type:`function` () : :zeek:type:`table` [:zeek:type:`Analyzer::Tag`] of :zeek:type:`set` [:zeek:type:`port`]
+   :Type: :zeek:type:`function` () : :zeek:type:`table` [:zeek:type:`AllAnalyzers::Tag`] of :zeek:type:`set` [:zeek:type:`port`]
 
    Returns a table of all ports-to-analyzer mappings currently registered.
    
@@ -97,7 +116,7 @@ Functions
             registered for it.
 
 .. zeek:id:: Analyzer::analyzer_to_bpf
-   :source-code: base/frameworks/analyzer/main.zeek 205 216
+   :source-code: base/frameworks/analyzer/main.zeek 216 227
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`) : :zeek:type:`string`
 
@@ -112,7 +131,7 @@ Functions
    :returns: BPF filter string.
 
 .. zeek:id:: Analyzer::disable_analyzer
-   :source-code: base/frameworks/analyzer/main.zeek 149 152
+   :source-code: base/frameworks/analyzer/main.zeek 160 163
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`) : :zeek:type:`bool`
 
@@ -126,7 +145,7 @@ Functions
    :returns: True if the analyzer was successfully disabled.
 
 .. zeek:id:: Analyzer::enable_analyzer
-   :source-code: base/frameworks/analyzer/main.zeek 144 147
+   :source-code: base/frameworks/analyzer/main.zeek 155 158
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`) : :zeek:type:`bool`
 
@@ -140,7 +159,7 @@ Functions
    :returns: True if the analyzer was successfully enabled.
 
 .. zeek:id:: Analyzer::get_bpf
-   :source-code: base/frameworks/analyzer/main.zeek 217 226
+   :source-code: base/frameworks/analyzer/main.zeek 228 237
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
@@ -149,9 +168,9 @@ Functions
    for the protocol.
 
 .. zeek:id:: Analyzer::get_tag
-   :source-code: base/frameworks/analyzer/main.zeek 194 197
+   :source-code: base/frameworks/analyzer/main.zeek 205 208
 
-   :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`Analyzer::Tag`
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`AllAnalyzers::Tag`
 
    Translates an analyzer's name to a tag enum value.
    
@@ -162,9 +181,9 @@ Functions
    :returns: The analyzer tag corresponding to the name.
 
 .. zeek:id:: Analyzer::name
-   :source-code: base/frameworks/analyzer/main.zeek 189 192
+   :source-code: base/frameworks/analyzer/main.zeek 200 203
 
-   :Type: :zeek:type:`function` (atype: :zeek:type:`Analyzer::Tag`) : :zeek:type:`string`
+   :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`string`
 
    Translates an analyzer type to a string with the analyzer's name.
    
@@ -175,7 +194,7 @@ Functions
    :returns: The analyzer name corresponding to the tag.
 
 .. zeek:id:: Analyzer::register_for_port
-   :source-code: base/frameworks/analyzer/main.zeek 167 177
+   :source-code: base/frameworks/analyzer/main.zeek 178 188
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`, p: :zeek:type:`port`) : :zeek:type:`bool`
 
@@ -194,7 +213,7 @@ Functions
    :returns: True if the port was successfully registered.
 
 .. zeek:id:: Analyzer::register_for_ports
-   :source-code: base/frameworks/analyzer/main.zeek 154 166
+   :source-code: base/frameworks/analyzer/main.zeek 165 177
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`, ports: :zeek:type:`set` [:zeek:type:`port`]) : :zeek:type:`bool`
 
@@ -213,9 +232,9 @@ Functions
    :returns: True if the ports were successfully registered.
 
 .. zeek:id:: Analyzer::registered_ports
-   :source-code: base/frameworks/analyzer/main.zeek 179 182
+   :source-code: base/frameworks/analyzer/main.zeek 190 193
 
-   :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`) : :zeek:type:`set` [:zeek:type:`port`]
+   :Type: :zeek:type:`function` (tag: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`set` [:zeek:type:`port`]
 
    Returns a set of all well-known ports currently registered for a
    specific analyzer.
@@ -227,7 +246,7 @@ Functions
    :returns: The set of ports.
 
 .. zeek:id:: Analyzer::schedule_analyzer
-   :source-code: base/frameworks/analyzer/main.zeek 200 203
+   :source-code: base/frameworks/analyzer/main.zeek 211 214
 
    :Type: :zeek:type:`function` (orig: :zeek:type:`addr`, resp: :zeek:type:`addr`, resp_p: :zeek:type:`port`, analyzer: :zeek:type:`Analyzer::Tag`, tout: :zeek:type:`interval`) : :zeek:type:`bool`
 
