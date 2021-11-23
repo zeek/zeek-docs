@@ -30,7 +30,7 @@ Redefinitions
                                             
                                               packet_segment: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
                                                 A chunk of the payload that most likely resulted in the
-                                                protocol violation.
+                                                analyzer violation.
 =========================================== ==============================================================================
 
 
