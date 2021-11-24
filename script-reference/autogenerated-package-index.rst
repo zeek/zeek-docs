@@ -43,6 +43,12 @@
 :doc:`base/packet-protocols/mpls </scripts/base/packet-protocols/mpls/index>`
 
 
+:doc:`base/packet-protocols/gre </scripts/base/packet-protocols/gre/index>`
+
+
+:doc:`base/packet-protocols/iptunnel </scripts/base/packet-protocols/iptunnel/index>`
+
+
 :doc:`base/packet-protocols/vntag </scripts/base/packet-protocols/vntag/index>`
 
 
@@ -53,27 +59,6 @@
 
 
 :doc:`base/packet-protocols/icmp </scripts/base/packet-protocols/icmp/index>`
-
-
-:doc:`base/packet-protocols/gre </scripts/base/packet-protocols/gre/index>`
-
-
-:doc:`base/packet-protocols/iptunnel </scripts/base/packet-protocols/iptunnel/index>`
-
-
-:doc:`base/packet-protocols/ayiya </scripts/base/packet-protocols/ayiya/index>`
-
-
-:doc:`base/packet-protocols/geneve </scripts/base/packet-protocols/geneve/index>`
-
-
-:doc:`base/packet-protocols/vxlan </scripts/base/packet-protocols/vxlan/index>`
-
-
-:doc:`base/packet-protocols/teredo </scripts/base/packet-protocols/teredo/index>`
-
-
-:doc:`base/packet-protocols/gtpv1 </scripts/base/packet-protocols/gtpv1/index>`
 
 
 :doc:`base/frameworks/logging </scripts/base/frameworks/logging/index>`
