@@ -84,7 +84,7 @@ Runtime Options
 .. zeek:id:: ProtocolDetector::suppress_servers
    :source-code: policy/frameworks/dpd/detect-protocols.zeek 48 48
 
-   :Type: :zeek:type:`set` [:zeek:type:`AllAnalyzers::Tag`]
+   :Type: :zeek:type:`set` [:zeek:type:`Analyzer::Tag`]
    :Attributes: :zeek:attr:`&redef`
    :Default: ``{}``
 
@@ -92,7 +92,7 @@ Runtime Options
 .. zeek:id:: ProtocolDetector::valids
    :source-code: policy/frameworks/dpd/detect-protocols.zeek 25 25
 
-   :Type: :zeek:type:`table` [:zeek:type:`AllAnalyzers::Tag`, :zeek:type:`addr`, :zeek:type:`port`] of :zeek:type:`ProtocolDetector::dir`
+   :Type: :zeek:type:`table` [:zeek:type:`Analyzer::Tag`, :zeek:type:`addr`, :zeek:type:`port`] of :zeek:type:`ProtocolDetector::dir`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``{}``
 
@@ -146,7 +146,7 @@ Functions
 .. zeek:id:: ProtocolDetector::found_protocol
    :source-code: policy/frameworks/dpd/detect-protocols.zeek 222 233
 
-   :Type: :zeek:type:`function` (c: :zeek:type:`connection`, atype: :zeek:type:`AllAnalyzers::Tag`, protocol: :zeek:type:`string`) : :zeek:type:`void`
+   :Type: :zeek:type:`function` (c: :zeek:type:`connection`, atype: :zeek:type:`Analyzer::Tag`, protocol: :zeek:type:`string`) : :zeek:type:`void`
 
 
 

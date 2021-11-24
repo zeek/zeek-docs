@@ -27,15 +27,15 @@ Runtime Options
 .. zeek:id:: Conn::analyzer_inactivity_timeouts
    :source-code: base/protocols/conn/inactivity.zeek 9 9
 
-   :Type: :zeek:type:`table` [:zeek:type:`AllAnalyzers::Tag`] of :zeek:type:`interval`
+   :Type: :zeek:type:`table` [:zeek:type:`Analyzer::Tag`] of :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
    :Default:
 
       ::
 
          {
-            [AllAnalyzers::ANALYZER_ANALYZER_SSH] = 1.0 hr,
-            [AllAnalyzers::ANALYZER_ANALYZER_FTP] = 1.0 hr
+            [Analyzer::ANALYZER_FTP] = 1.0 hr,
+            [Analyzer::ANALYZER_SSH] = 1.0 hr
          }
 
 

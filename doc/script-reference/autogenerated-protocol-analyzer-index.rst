@@ -5,6 +5,8 @@ Protocol Analyzers
 
    :Type: :zeek:type:`enum`
 
+      .. zeek:enum:: Analyzer::ANALYZER_AYIYA Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_BITTORRENT Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_BITTORRENTTRACKER Analyzer::Tag
@@ -33,9 +35,13 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_FTP_ADAT Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_GENEVE Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_GNUTELLA Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_GSSAPI Analyzer::Tag
+
+      .. zeek:enum:: Analyzer::ANALYZER_GTPV1 Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_HTTP Analyzer::Tag
 
@@ -135,225 +141,25 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_TCP Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_TEREDO Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_UDP Analyzer::Tag
+
+      .. zeek:enum:: Analyzer::ANALYZER_VXLAN Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_XMPP Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_ZIP Analyzer::Tag
 
-.. zeek:type:: AllAnalyzers::Tag
+Zeek::AYIYA
+-----------
 
-   :Type: :zeek:type:`enum`
+AYIYA Analyzer
 
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_ARP AllAnalyzers::Tag
+Components
+++++++++++
 
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_AYIYA AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_BITTORRENT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_BITTORRENTTRACKER AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONNSIZE AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_DCE_RPC AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_DHCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_DNP3_TCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_DNP3_UDP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_DNS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_DNS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_ETHERNET AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_FDDI AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_FTP_DATA AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_IRC_DATA AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_DATA_EVENT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_ENTROPY AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_EXTRACT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_MD5 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_SHA1 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_SHA256 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_FINGER AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_FTP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_FTP_ADAT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_GENEVE AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_GNUTELLA AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_GRE AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_GSSAPI AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_GTPV1 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_HTTP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_ICMP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_ICMP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_IDENT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_IEEE802_11 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_IEEE802_11_RADIO AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_IMAP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_IP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_IPTUNNEL AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_IRC AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_KRB AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_KRB_TCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_LINUXSLL AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_RLOGIN AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_RSH AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LOGIN AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NVT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_RLOGIN AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_RSH AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_TELNET AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_MODBUS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_MPLS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_MQTT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_MYSQL AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_NCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_NETBIOSSSN AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NETBIOSSSN AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_NFLOG AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NTLM AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NTP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_NULL AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_PE AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_PIA_TCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_PIA_UDP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_POP3 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_PPPOE AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_PPPSERIAL AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_RADIUS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_RDP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_RDPEUDP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_RFB AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_ROOT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_NFS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_RPC AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_MOUNT AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NFS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_PORTMAPPER AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SIP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_SKIP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_SMB AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SMB AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SMTP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SNMP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SOCKS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SSH AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_DTLS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SSL AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SYSLOG AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTLINE AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_TCPSTATS AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_TCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_TCP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_TEREDO AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_UDP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_UDP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_UNIFIED2 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_VLAN AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_VNTAG AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_VXLAN AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_OCSP_REPLY AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_OCSP_REQUEST AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_X509 AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_XMPP AllAnalyzers::Tag
-
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_ZIP AllAnalyzers::Tag
+:zeek:enum:`Analyzer::ANALYZER_AYIYA`
 
 Zeek::BitTorrent
 ----------------
@@ -875,7 +681,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5118 5118
+   :source-code: base/init-bare.zeek 5129 5129
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -886,7 +692,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5123 5123
+   :source-code: base/init-bare.zeek 5134 5134
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -3330,6 +3136,39 @@ Functions
    
    .. zeek:see:: parse_ftp_port parse_eftp_port parse_ftp_pasv parse_ftp_epsv
 
+Zeek::Geneve
+------------
+
+Geneve analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`Analyzer::ANALYZER_GENEVE`
+
+Events
+++++++
+
+.. zeek:id:: geneve_packet
+   :source-code: base/bif/plugins/Zeek_Geneve.events.bif.zeek 15 15
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`pkt_hdr`, vni: :zeek:type:`count`)
+
+   Generated for any packet encapsulated in a Geneve tunnel.
+   See :rfc:`8926` for more information about the VXLAN protocol.
+   
+
+   :outer: The Geneve tunnel connection.
+   
+
+   :inner: The Geneve-encapsulated Ethernet packet header and transport header.
+   
+
+   :vni: Geneve Network Identifier.
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
+
 Zeek::Gnutella
 --------------
 
@@ -3478,6 +3317,148 @@ Events
 
    :state: The resulting state of the negotiation.
    
+
+Zeek::GTPv1
+-----------
+
+GTPv1 analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`Analyzer::ANALYZER_GTPV1`
+
+Events
+++++++
+
+.. zeek:id:: gtpv1_message
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 9 9
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`)
+
+   Generated for any GTP message with a GTPv1 header.
+   
+
+   :c: The connection over which the message is sent.
+   
+
+   :hdr: The GTPv1 header.
+
+.. zeek:id:: gtpv1_g_pdu_packet
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 23 23
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner_gtp: :zeek:type:`gtpv1_hdr`, inner_ip: :zeek:type:`pkt_hdr`)
+
+   Generated for GTPv1 G-PDU packets.  That is, packets with a UDP payload
+   that includes a GTP header followed by an IPv4 or IPv6 packet.
+   
+
+   :outer: The GTP outer tunnel connection.
+   
+
+   :inner_gtp: The GTP header.
+   
+
+   :inner_ip: The inner IP and transport layer packet headers.
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
+
+.. zeek:id:: gtpv1_create_pdp_ctx_request
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 33 33
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_create_pdp_ctx_request_elements`)
+
+   Generated for GTPv1-C Create PDP Context Request messages.
+   
+
+   :c: The connection over which the message is sent.
+   
+
+   :hdr: The GTPv1 header.
+   
+
+   :elements: The set of Information Elements comprising the message.
+
+.. zeek:id:: gtpv1_create_pdp_ctx_response
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 43 43
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_create_pdp_ctx_response_elements`)
+
+   Generated for GTPv1-C Create PDP Context Response messages.
+   
+
+   :c: The connection over which the message is sent.
+   
+
+   :hdr: The GTPv1 header.
+   
+
+   :elements: The set of Information Elements comprising the message.
+
+.. zeek:id:: gtpv1_update_pdp_ctx_request
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 53 53
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_update_pdp_ctx_request_elements`)
+
+   Generated for GTPv1-C Update PDP Context Request messages.
+   
+
+   :c: The connection over which the message is sent.
+   
+
+   :hdr: The GTPv1 header.
+   
+
+   :elements: The set of Information Elements comprising the message.
+
+.. zeek:id:: gtpv1_update_pdp_ctx_response
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 63 63
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_update_pdp_ctx_response_elements`)
+
+   Generated for GTPv1-C Update PDP Context Response messages.
+   
+
+   :c: The connection over which the message is sent.
+   
+
+   :hdr: The GTPv1 header.
+   
+
+   :elements: The set of Information Elements comprising the message.
+
+.. zeek:id:: gtpv1_delete_pdp_ctx_request
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 73 73
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_delete_pdp_ctx_request_elements`)
+
+   Generated for GTPv1-C Delete PDP Context Request messages.
+   
+
+   :c: The connection over which the message is sent.
+   
+
+   :hdr: The GTPv1 header.
+   
+
+   :elements: The set of Information Elements comprising the message.
+
+.. zeek:id:: gtpv1_delete_pdp_ctx_response
+   :source-code: base/bif/plugins/Zeek_GTPv1.events.bif.zeek 83 83
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`gtpv1_hdr`, elements: :zeek:type:`gtp_delete_pdp_ctx_response_elements`)
+
+   Generated for GTPv1-C Delete PDP Context Response messages.
+   
+
+   :c: The connection over which the message is sent.
+   
+
+   :hdr: The GTPv1 header.
+   
+
+   :elements: The set of Information Elements comprising the message.
 
 Zeek::HTTP
 ----------
@@ -7013,7 +6994,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5308 5338
+   :source-code: base/init-bare.zeek 5319 5349
 
    :Type: :zeek:type:`record`
 
@@ -7055,7 +7036,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5340 5349
+   :source-code: base/init-bare.zeek 5351 5360
 
    :Type: :zeek:type:`record`
 
@@ -7070,7 +7051,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5351 5373
+   :source-code: base/init-bare.zeek 5362 5384
 
    :Type: :zeek:type:`record`
 
@@ -7447,7 +7428,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5129 5129
+   :source-code: base/init-bare.zeek 5140 5140
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8097,7 +8078,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5137 5190
+   :source-code: base/init-bare.zeek 5148 5201
 
    :Type: :zeek:type:`record`
 
@@ -8172,7 +8153,7 @@ Types
    for standard syncronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5195 5229
+   :source-code: base/init-bare.zeek 5206 5240
 
    :Type: :zeek:type:`record`
 
@@ -8223,7 +8204,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5238 5271
+   :source-code: base/init-bare.zeek 5249 5282
 
    :Type: :zeek:type:`record`
 
@@ -8274,7 +8255,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5276 5303
+   :source-code: base/init-bare.zeek 5287 5314
 
    :Type: :zeek:type:`record`
 
@@ -15998,6 +15979,131 @@ Functions
             generates an error and returns a file handle to ``stderr``.
    
    .. zeek:see:: set_contents_file set_record_packets contents_file_write_failure
+
+Zeek::Teredo
+------------
+
+Teredo analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`Analyzer::ANALYZER_TEREDO`
+
+Events
+++++++
+
+.. zeek:id:: teredo_packet
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 15 15
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
+
+   Generated for any IPv6 packet encapsulated in a Teredo tunnel.
+   See :rfc:`4380` for more information about the Teredo protocol.
+   
+
+   :outer: The Teredo tunnel connection.
+   
+
+   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   
+   .. zeek:see:: teredo_authentication teredo_origin_indication teredo_bubble
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
+
+.. zeek:id:: teredo_authentication
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 30 30
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
+
+   Generated for IPv6 packets encapsulated in a Teredo tunnel that
+   use the Teredo authentication encapsulation method.
+   See :rfc:`4380` for more information about the Teredo protocol.
+   
+
+   :outer: The Teredo tunnel connection.
+   
+
+   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   
+   .. zeek:see:: teredo_packet teredo_origin_indication teredo_bubble
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
+
+.. zeek:id:: teredo_origin_indication
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 45 45
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
+
+   Generated for IPv6 packets encapsulated in a Teredo tunnel that
+   use the Teredo origin indication encapsulation method.
+   See :rfc:`4380` for more information about the Teredo protocol.
+   
+
+   :outer: The Teredo tunnel connection.
+   
+
+   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   
+   .. zeek:see:: teredo_packet teredo_authentication teredo_bubble
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
+
+.. zeek:id:: teredo_bubble
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 60 60
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
+
+   Generated for Teredo bubble packets.  That is, IPv6 packets encapsulated
+   in a Teredo tunnel that have a Next Header value of :zeek:id:`IPPROTO_NONE`.
+   See :rfc:`4380` for more information about the Teredo protocol.
+   
+
+   :outer: The Teredo tunnel connection.
+   
+
+   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   
+   .. zeek:see:: teredo_packet teredo_authentication teredo_origin_indication
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
+
+Zeek::VXLAN
+-----------
+
+VXLAN analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`Analyzer::ANALYZER_VXLAN`
+
+Events
+++++++
+
+.. zeek:id:: vxlan_packet
+   :source-code: base/bif/plugins/Zeek_VXLAN.events.bif.zeek 15 15
+
+   :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`pkt_hdr`, vni: :zeek:type:`count`)
+
+   Generated for any packet encapsulated in a VXLAN tunnel.
+   See :rfc:`7348` for more information about the VXLAN protocol.
+   
+
+   :outer: The VXLAN tunnel connection.
+   
+
+   :inner: The VXLAN-encapsulated Ethernet packet header and transport header.
+   
+
+   :vni: VXLAN Network Identifier.
+   
+   .. note:: Since this event may be raised on a per-packet basis, handling
+      it may become particularly expensive for real-time analysis.
 
 Zeek::XMPP
 ----------
