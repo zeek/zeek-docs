@@ -10,6 +10,12 @@ Package: base/bif/plugins
 :doc:`/scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_Teredo.functions.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_GTPv1.functions.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/__load__.zeek`
 
 
@@ -55,16 +61,10 @@ Package: base/bif/plugins
 :doc:`/scripts/base/bif/plugins/Zeek_FTP.functions.bif.zeek`
 
 
-:doc:`/scripts/base/bif/plugins/Zeek_Geneve.events.bif.zeek`
-
-
 :doc:`/scripts/base/bif/plugins/Zeek_Gnutella.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_GSSAPI.events.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_HTTP.events.bif.zeek`
@@ -292,12 +292,6 @@ Package: base/bif/plugins
 :doc:`/scripts/base/bif/plugins/Zeek_TCP.functions.bif.zeek`
 
 
-:doc:`/scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek`
-
-
 :doc:`/scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek`
 
 
@@ -308,6 +302,18 @@ Package: base/bif/plugins
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_Geneve.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek`

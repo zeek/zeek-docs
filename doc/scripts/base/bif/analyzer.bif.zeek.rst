@@ -49,7 +49,7 @@ Functions
 .. zeek:id:: Analyzer::__name
    :source-code: base/bif/analyzer.bif.zeek 26 26
 
-   :Type: :zeek:type:`function` (atype: :zeek:type:`Analyzer::Tag`) : :zeek:type:`string`
+   :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`string`
 
 
 .. zeek:id:: Analyzer::__register_for_port
@@ -67,7 +67,7 @@ Functions
 .. zeek:id:: Analyzer::__tag
    :source-code: base/bif/analyzer.bif.zeek 29 29
 
-   :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`Analyzer::Tag`
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`AllAnalyzers::Tag`
 
 
 

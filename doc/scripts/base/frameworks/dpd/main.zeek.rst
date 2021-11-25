@@ -121,7 +121,7 @@ Types
          (present if :doc:`/scripts/policy/frameworks/dpd/packet-segment-logging.zeek` is loaded)
 
          A chunk of the payload that most likely resulted in the
-         protocol violation.
+         analyzer violation.
 
    The record type defining the columns to log in the DPD logging stream.
 
