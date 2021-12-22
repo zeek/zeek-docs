@@ -422,6 +422,11 @@ explicit module namespace scoping and you can't go wrong:
         schedule 10sec { MyModule::my_event() };
         }
 
+Event types that reside in the default namespace (such as :zeek:id:`zeek_init` or
+:zeek:id:`connection_established`) require no qualification, even when scheduled from
+inside a module. Don't force qualification of such events by prefixing with
+``GLOBAL::``.
+
 Note that other identifiers in Zeek do not have this inconsistency
 related to module namespacing, it's just events that require
 explicitness.

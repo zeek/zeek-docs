@@ -786,11 +786,24 @@ Example:
 
     schedule 30sec { myevent(x, y, z) };
 
-Note that the braces are always required (they do not indicate a
-`compound statement`_).
+.. note::
 
-Note that ``schedule`` is actually an expression that returns a value
-of type ``timer``, but in practice the return value is not used.
+   The braces are always required here (that is, they do not indicate a
+   `compound statement`_). Also, ``schedule`` is actually an expression that
+   returns a value of type ``timer``, but in practice the return value is not
+   used.
+
+.. note::
+
+  Always specify event names with their full module namespace. For example,
+  if the above ``myevent`` lives in the ``MyModule`` module, then say the
+  following even when working inside the module:
+
+  .. code-block:: zeek
+
+     schedule 30sec { MyModule::myevent(x, y, z) };
+
+  See :ref:`event-namespacing-pitfall` for details.
 
 .. note::
 
