@@ -2,9 +2,11 @@
 
 policy/frameworks/cluster/controller/main.zeek
 ==============================================
+.. zeek:namespace:: ClusterController::Runtime
 
 
-:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`policy/frameworks/cluster/agent/api.zeek </scripts/policy/frameworks/cluster/agent/api.zeek>`, :doc:`policy/frameworks/cluster/agent/config.zeek </scripts/policy/frameworks/cluster/agent/config.zeek>`, :doc:`policy/frameworks/cluster/controller/api.zeek </scripts/policy/frameworks/cluster/controller/api.zeek>`, :doc:`policy/frameworks/cluster/controller/log.zeek </scripts/policy/frameworks/cluster/controller/log.zeek>`, :doc:`policy/frameworks/cluster/controller/request.zeek </scripts/policy/frameworks/cluster/controller/request.zeek>`
+:Namespace: ClusterController::Runtime
+:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`policy/frameworks/cluster/agent/api.zeek </scripts/policy/frameworks/cluster/agent/api.zeek>`, :doc:`policy/frameworks/cluster/agent/config.zeek </scripts/policy/frameworks/cluster/agent/config.zeek>`, :doc:`policy/frameworks/cluster/controller/api.zeek </scripts/policy/frameworks/cluster/controller/api.zeek>`, :doc:`policy/frameworks/cluster/controller/log.zeek </scripts/policy/frameworks/cluster/controller/log.zeek>`, :doc:`policy/frameworks/cluster/controller/request.zeek </scripts/policy/frameworks/cluster/controller/request.zeek>`, :doc:`policy/frameworks/cluster/controller/util.zeek </scripts/policy/frameworks/cluster/controller/util.zeek>`
 
 Summary
 ~~~~~~~

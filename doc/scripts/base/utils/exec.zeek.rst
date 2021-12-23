@@ -47,7 +47,7 @@ Types
          If additional files are required to be read in as part of the
          output of the command they can be defined here.
 
-      uid: :zeek:type:`string` :zeek:attr:`&default` = ``q3FkxySjt2a`` :zeek:attr:`&optional`
+      uid: :zeek:type:`string` :zeek:attr:`&default` = ``Chd8EgFWk2j`` :zeek:attr:`&optional`
          The unique id for tracking executors.
 
 

@@ -15,6 +15,7 @@ Types
 :zeek:type:`ClusterController::Types::Configuration`: :zeek:type:`record` 
 :zeek:type:`ClusterController::Types::Instance`: :zeek:type:`record`      Configuration describing a Zeek instance running a Cluster
                                                                           Agent.
+:zeek:type:`ClusterController::Types::InstanceVec`: :zeek:type:`vector`   
 :zeek:type:`ClusterController::Types::Node`: :zeek:type:`record`          Configuration describing a Cluster Node process.
 :zeek:type:`ClusterController::Types::Option`: :zeek:type:`record`        A Zeek-side option with value.
 :zeek:type:`ClusterController::Types::Result`: :zeek:type:`record`        
@@ -23,23 +24,28 @@ Types
 :zeek:type:`ClusterController::Types::State`: :zeek:type:`enum`           State that a Cluster Node can be in.
 ========================================================================= ==========================================================
 
+Functions
+#########
+============================================================================ =
+:zeek:id:`ClusterController::Types::result_to_string`: :zeek:type:`function` 
+============================================================================ =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Types
 #####
 .. zeek:type:: ClusterController::Types::Configuration
-   :source-code: policy/frameworks/cluster/controller/types.zeek 58 67
+   :source-code: policy/frameworks/cluster/controller/types.zeek 60 68
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string` :zeek:attr:`&default` = ``Chd8EgFWk2j`` :zeek:attr:`&optional`
+      id: :zeek:type:`string` :zeek:attr:`&default` = ``fD0qxAnfwOe`` :zeek:attr:`&optional`
 
-      instances: :zeek:type:`set` [:zeek:type:`ClusterController::Types::Instance`]
+      instances: :zeek:type:`set` [:zeek:type:`ClusterController::Types::Instance`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          The instances in the cluster.
-         XXX we may be able to make this optional
 
-      nodes: :zeek:type:`set` [:zeek:type:`ClusterController::Types::Node`]
+      nodes: :zeek:type:`set` [:zeek:type:`ClusterController::Types::Node`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          The set of nodes in the cluster, as distributed over the instances.
 
 
@@ -58,8 +64,14 @@ Types
    Agent. Normally, there'll be one instance per cluster
    system: a single physical system.
 
+.. zeek:type:: ClusterController::Types::InstanceVec
+   :source-code: policy/frameworks/cluster/controller/types.zeek 33 33
+
+   :Type: :zeek:type:`vector` of :zeek:type:`ClusterController::Types::Instance`
+
+
 .. zeek:type:: ClusterController::Types::Node
-   :source-code: policy/frameworks/cluster/controller/types.zeek 44 55
+   :source-code: policy/frameworks/cluster/controller/types.zeek 46 57
 
    :Type: :zeek:type:`record`
 
@@ -97,13 +109,13 @@ Types
    A Zeek-side option with value.
 
 .. zeek:type:: ClusterController::Types::Result
-   :source-code: policy/frameworks/cluster/controller/types.zeek 70 77
+   :source-code: policy/frameworks/cluster/controller/types.zeek 71 78
 
    :Type: :zeek:type:`record`
 
       reqid: :zeek:type:`string`
 
-      instance: :zeek:type:`string`
+      instance: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
 
       success: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
 
@@ -115,7 +127,7 @@ Types
 
 
 .. zeek:type:: ClusterController::Types::ResultVec
-   :source-code: policy/frameworks/cluster/controller/types.zeek 79 79
+   :source-code: policy/frameworks/cluster/controller/types.zeek 80 80
 
    :Type: :zeek:type:`vector` of :zeek:type:`ClusterController::Types::Result`
 
@@ -136,7 +148,7 @@ Types
    continue to be managed by the cluster framework.
 
 .. zeek:type:: ClusterController::Types::State
-   :source-code: policy/frameworks/cluster/controller/types.zeek 35 42
+   :source-code: policy/frameworks/cluster/controller/types.zeek 37 44
 
    :Type: :zeek:type:`enum`
 
@@ -152,5 +164,13 @@ Types
 
    State that a Cluster Node can be in. State changes trigger an
    API notification (see notify_change()).
+
+Functions
+#########
+.. zeek:id:: ClusterController::Types::result_to_string
+   :source-code: policy/frameworks/cluster/controller/types.zeek 85 110
+
+   :Type: :zeek:type:`function` (res: :zeek:type:`ClusterController::Types::Result`) : :zeek:type:`string`
+
 
 

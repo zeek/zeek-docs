@@ -451,6 +451,7 @@
    policy/frameworks/cluster/controller/api.zeek </scripts/policy/frameworks/cluster/controller/api.zeek>
    policy/frameworks/cluster/controller/log.zeek </scripts/policy/frameworks/cluster/controller/log.zeek>
    policy/frameworks/cluster/controller/request.zeek </scripts/policy/frameworks/cluster/controller/request.zeek>
+   policy/frameworks/cluster/controller/util.zeek </scripts/policy/frameworks/cluster/controller/util.zeek>
    policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>
    policy/frameworks/dpd/packet-segment-logging.zeek </scripts/policy/frameworks/dpd/packet-segment-logging.zeek>
    policy/frameworks/intel/do_notice.zeek </scripts/policy/frameworks/intel/do_notice.zeek>

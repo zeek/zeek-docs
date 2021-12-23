@@ -19,6 +19,10 @@ Constants
 Events
 ######
 ============================================================================ =
+:zeek:id:`ClusterAgent::API::agent_standby_request`: :zeek:type:`event`      
+:zeek:id:`ClusterAgent::API::agent_standby_response`: :zeek:type:`event`     
+:zeek:id:`ClusterAgent::API::agent_welcome_request`: :zeek:type:`event`      
+:zeek:id:`ClusterAgent::API::agent_welcome_response`: :zeek:type:`event`     
 :zeek:id:`ClusterAgent::API::notify_agent_hello`: :zeek:type:`event`         
 :zeek:id:`ClusterAgent::API::notify_change`: :zeek:type:`event`              
 :zeek:id:`ClusterAgent::API::notify_error`: :zeek:type:`event`               
@@ -41,38 +45,62 @@ Constants
 
 Events
 ######
+.. zeek:id:: ClusterAgent::API::agent_standby_request
+   :source-code: policy/frameworks/cluster/agent/main.zeek 180 198
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
+
+
+.. zeek:id:: ClusterAgent::API::agent_standby_response
+   :source-code: policy/frameworks/cluster/agent/api.zeek 32 32
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
+
+
+.. zeek:id:: ClusterAgent::API::agent_welcome_request
+   :source-code: policy/frameworks/cluster/agent/main.zeek 167 178
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
+
+
+.. zeek:id:: ClusterAgent::API::agent_welcome_response
+   :source-code: policy/frameworks/cluster/controller/main.zeek 226 253
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
+
+
 .. zeek:id:: ClusterAgent::API::notify_agent_hello
-   :source-code: policy/frameworks/cluster/controller/main.zeek 12 52
+   :source-code: policy/frameworks/cluster/controller/main.zeek 192 224
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, host: :zeek:type:`addr`, api_version: :zeek:type:`count`)
 
 
 .. zeek:id:: ClusterAgent::API::notify_change
-   :source-code: policy/frameworks/cluster/controller/main.zeek 57 58
+   :source-code: policy/frameworks/cluster/controller/main.zeek 257 258
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, n: :zeek:type:`ClusterController::Types::Node`, old: :zeek:type:`ClusterController::Types::State`, new: :zeek:type:`ClusterController::Types::State`)
 
 
 .. zeek:id:: ClusterAgent::API::notify_error
-   :source-code: policy/frameworks/cluster/controller/main.zeek 62 63
+   :source-code: policy/frameworks/cluster/controller/main.zeek 262 263
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: ClusterAgent::API::notify_log
-   :source-code: policy/frameworks/cluster/controller/main.zeek 67 68
+   :source-code: policy/frameworks/cluster/controller/main.zeek 267 268
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: ClusterAgent::API::set_configuration_request
-   :source-code: policy/frameworks/cluster/agent/main.zeek 77 159
+   :source-code: policy/frameworks/cluster/agent/main.zeek 80 166
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`ClusterController::Types::Configuration`)
 
 
 .. zeek:id:: ClusterAgent::API::set_configuration_response
-   :source-code: policy/frameworks/cluster/controller/main.zeek 72 139
+   :source-code: policy/frameworks/cluster/controller/main.zeek 272 345
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
 
