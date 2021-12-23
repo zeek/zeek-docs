@@ -25,6 +25,9 @@ Package: policy/frameworks/cluster/controller
 :doc:`/scripts/policy/frameworks/cluster/controller/request.zeek`
 
 
+:doc:`/scripts/policy/frameworks/cluster/controller/util.zeek`
+
+
 :doc:`/scripts/policy/frameworks/cluster/controller/main.zeek`
 
 

@@ -6,7 +6,7 @@ policy/frameworks/cluster/controller/request.zeek
 
 
 :Namespace: ClusterController::Request
-:Imports: :doc:`policy/frameworks/cluster/controller/types.zeek </scripts/policy/frameworks/cluster/controller/types.zeek>`
+:Imports: :doc:`policy/frameworks/cluster/controller/config.zeek </scripts/policy/frameworks/cluster/controller/config.zeek>`, :doc:`policy/frameworks/cluster/controller/types.zeek </scripts/policy/frameworks/cluster/controller/types.zeek>`
 
 Summary
 ~~~~~~~
@@ -21,8 +21,8 @@ Types
 =================================================================================== =
 :zeek:type:`ClusterController::Request::Request`: :zeek:type:`record`               
 :zeek:type:`ClusterController::Request::SetConfigurationState`: :zeek:type:`record` 
-:zeek:type:`ClusterController::Request::SetNodesState`: :zeek:type:`record`         
 :zeek:type:`ClusterController::Request::SupervisorState`: :zeek:type:`record`       
+:zeek:type:`ClusterController::Request::TestState`: :zeek:type:`record`             
 =================================================================================== =
 
 Redefinitions
@@ -38,19 +38,26 @@ Redefinitions
                                                                       
                                                                         set_configuration_state: :zeek:type:`ClusterController::Request::SetConfigurationState` :zeek:attr:`&optional`
                                                                       
-                                                                        set_nodes_state: :zeek:type:`ClusterController::Request::SetNodesState` :zeek:attr:`&optional`
-                                                                      
                                                                         supervisor_state: :zeek:type:`ClusterController::Request::SupervisorState` :zeek:attr:`&optional`
+                                                                      
+                                                                        test_state: :zeek:type:`ClusterController::Request::TestState` :zeek:attr:`&optional`
 ===================================================================== =================================================================================================================
+
+Events
+######
+========================================================================== =
+:zeek:id:`ClusterController::Request::request_expired`: :zeek:type:`event` 
+========================================================================== =
 
 Functions
 #########
-===================================================================== =
-:zeek:id:`ClusterController::Request::create`: :zeek:type:`function`  
-:zeek:id:`ClusterController::Request::finish`: :zeek:type:`function`  
-:zeek:id:`ClusterController::Request::is_null`: :zeek:type:`function` 
-:zeek:id:`ClusterController::Request::lookup`: :zeek:type:`function`  
-===================================================================== =
+======================================================================= =
+:zeek:id:`ClusterController::Request::create`: :zeek:type:`function`    
+:zeek:id:`ClusterController::Request::finish`: :zeek:type:`function`    
+:zeek:id:`ClusterController::Request::is_null`: :zeek:type:`function`   
+:zeek:id:`ClusterController::Request::lookup`: :zeek:type:`function`    
+:zeek:id:`ClusterController::Request::to_string`: :zeek:type:`function` 
+======================================================================= =
 
 
 Detailed Interface
@@ -58,7 +65,7 @@ Detailed Interface
 State Variables
 ###############
 .. zeek:id:: ClusterController::Request::null_req
-   :source-code: policy/frameworks/cluster/controller/request.zeek 40 40
+   :source-code: policy/frameworks/cluster/controller/request.zeek 43 43
 
    :Type: :zeek:type:`ClusterController::Request::Request`
    :Default:
@@ -71,8 +78,8 @@ State Variables
             results=[]
             finished=T
             set_configuration_state=<uninitialized>
-            set_nodes_state=<uninitialized>
             supervisor_state=<uninitialized>
+            test_state=<uninitialized>
          }
 
 
@@ -80,7 +87,7 @@ State Variables
 Types
 #####
 .. zeek:type:: ClusterController::Request::Request
-   :source-code: policy/frameworks/cluster/controller/request.zeek 6 9
+   :source-code: policy/frameworks/cluster/controller/request.zeek 7 10
 
    :Type: :zeek:type:`record`
 
@@ -94,59 +101,73 @@ Types
 
       set_configuration_state: :zeek:type:`ClusterController::Request::SetConfigurationState` :zeek:attr:`&optional`
 
-      set_nodes_state: :zeek:type:`ClusterController::Request::SetNodesState` :zeek:attr:`&optional`
-
       supervisor_state: :zeek:type:`ClusterController::Request::SupervisorState` :zeek:attr:`&optional`
+
+      test_state: :zeek:type:`ClusterController::Request::TestState` :zeek:attr:`&optional`
 
 
 .. zeek:type:: ClusterController::Request::SetConfigurationState
-   :source-code: policy/frameworks/cluster/controller/request.zeek 15 17
+   :source-code: policy/frameworks/cluster/controller/request.zeek 18 21
 
    :Type: :zeek:type:`record`
 
-      requests: :zeek:type:`vector` of :zeek:type:`ClusterController::Request::Request` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-
-
-.. zeek:type:: ClusterController::Request::SetNodesState
-   :source-code: policy/frameworks/cluster/controller/request.zeek 20 22
-
-   :Type: :zeek:type:`record`
+      config: :zeek:type:`ClusterController::Types::Configuration`
 
       requests: :zeek:type:`vector` of :zeek:type:`ClusterController::Request::Request` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
 
 
 .. zeek:type:: ClusterController::Request::SupervisorState
-   :source-code: policy/frameworks/cluster/controller/request.zeek 25 27
+   :source-code: policy/frameworks/cluster/controller/request.zeek 24 26
 
    :Type: :zeek:type:`record`
 
       node: :zeek:type:`string`
 
 
+.. zeek:type:: ClusterController::Request::TestState
+   :source-code: policy/frameworks/cluster/controller/request.zeek 29 30
+
+   :Type: :zeek:type:`record`
+
+
+Events
+######
+.. zeek:id:: ClusterController::Request::request_expired
+   :source-code: policy/frameworks/cluster/controller/main.zeek 473 506
+
+   :Type: :zeek:type:`event` (req: :zeek:type:`ClusterController::Request::Request`)
+
+
 Functions
 #########
 .. zeek:id:: ClusterController::Request::create
-   :source-code: policy/frameworks/cluster/controller/request.zeek 52 57
+   :source-code: policy/frameworks/cluster/controller/request.zeek 69 74
 
-   :Type: :zeek:type:`function` (reqid: :zeek:type:`string` :zeek:attr:`&default` = ``fD0qxAnfwOe`` :zeek:attr:`&optional`) : :zeek:type:`ClusterController::Request::Request`
+   :Type: :zeek:type:`function` (reqid: :zeek:type:`string` :zeek:attr:`&default` = ``9Ye7pQPhuMe`` :zeek:attr:`&optional`) : :zeek:type:`ClusterController::Request::Request`
 
 
 .. zeek:id:: ClusterController::Request::finish
-   :source-code: policy/frameworks/cluster/controller/request.zeek 67 78
+   :source-code: policy/frameworks/cluster/controller/request.zeek 84 95
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: ClusterController::Request::is_null
-   :source-code: policy/frameworks/cluster/controller/request.zeek 80 86
+   :source-code: policy/frameworks/cluster/controller/request.zeek 97 103
 
    :Type: :zeek:type:`function` (request: :zeek:type:`ClusterController::Request::Request`) : :zeek:type:`bool`
 
 
 .. zeek:id:: ClusterController::Request::lookup
-   :source-code: policy/frameworks/cluster/controller/request.zeek 59 65
+   :source-code: policy/frameworks/cluster/controller/request.zeek 76 82
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`ClusterController::Request::Request`
+
+
+.. zeek:id:: ClusterController::Request::to_string
+   :source-code: policy/frameworks/cluster/controller/request.zeek 105 124
+
+   :Type: :zeek:type:`function` (request: :zeek:type:`ClusterController::Request::Request`) : :zeek:type:`string`
 
 
 

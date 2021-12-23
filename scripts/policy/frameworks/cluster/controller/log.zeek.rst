@@ -34,6 +34,7 @@ Hooks
 Functions
 #########
 ================================================================= =
+:zeek:id:`ClusterController::Log::debug`: :zeek:type:`function`   
 :zeek:id:`ClusterController::Log::error`: :zeek:type:`function`   
 :zeek:id:`ClusterController::Log::info`: :zeek:type:`function`    
 :zeek:id:`ClusterController::Log::warning`: :zeek:type:`function` 
@@ -92,20 +93,26 @@ Hooks
 
 Functions
 #########
+.. zeek:id:: ClusterController::Log::debug
+   :source-code: policy/frameworks/cluster/controller/log.zeek 56 64
+
+   :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
+
+
 .. zeek:id:: ClusterController::Log::error
-   :source-code: policy/frameworks/cluster/controller/log.zeek 85 93
+   :source-code: policy/frameworks/cluster/controller/log.zeek 86 94
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
 
 .. zeek:id:: ClusterController::Log::info
-   :source-code: policy/frameworks/cluster/controller/log.zeek 65 73
+   :source-code: policy/frameworks/cluster/controller/log.zeek 66 74
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
 
 .. zeek:id:: ClusterController::Log::warning
-   :source-code: policy/frameworks/cluster/controller/log.zeek 75 83
+   :source-code: policy/frameworks/cluster/controller/log.zeek 76 84
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 

@@ -17,10 +17,10 @@ Redefinable Options
 :zeek:id:`ClusterController::default_address`: :zeek:type:`string` :zeek:attr:`&redef`              
 :zeek:id:`ClusterController::default_port`: :zeek:type:`port` :zeek:attr:`&redef`                   
 :zeek:id:`ClusterController::directory`: :zeek:type:`string` :zeek:attr:`&redef`                    
-:zeek:id:`ClusterController::instances`: :zeek:type:`table` :zeek:attr:`&redef`                     
 :zeek:id:`ClusterController::listen_address`: :zeek:type:`string` :zeek:attr:`&redef`               
 :zeek:id:`ClusterController::listen_port`: :zeek:type:`string` :zeek:attr:`&redef`                  
 :zeek:id:`ClusterController::name`: :zeek:type:`string` :zeek:attr:`&redef`                         
+:zeek:id:`ClusterController::request_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`            
 :zeek:id:`ClusterController::role`: :zeek:type:`ClusterController::Types::Role` :zeek:attr:`&redef` 
 :zeek:id:`ClusterController::stderr_file`: :zeek:type:`string` :zeek:attr:`&redef`                  
 :zeek:id:`ClusterController::stdout_file`: :zeek:type:`string` :zeek:attr:`&redef`                  
@@ -64,19 +64,11 @@ Redefinable Options
 
 
 .. zeek:id:: ClusterController::directory
-   :source-code: policy/frameworks/cluster/controller/config.zeek 46 46
+   :source-code: policy/frameworks/cluster/controller/config.zeek 44 44
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``""``
-
-
-.. zeek:id:: ClusterController::instances
-   :source-code: policy/frameworks/cluster/controller/config.zeek 36 36
-
-   :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`ClusterController::Types::Instance`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``{}``
 
 
 .. zeek:id:: ClusterController::listen_address
@@ -103,8 +95,16 @@ Redefinable Options
    :Default: ``""``
 
 
+.. zeek:id:: ClusterController::request_timeout
+   :source-code: policy/frameworks/cluster/controller/config.zeek 38 38
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``10.0 secs``
+
+
 .. zeek:id:: ClusterController::role
-   :source-code: policy/frameworks/cluster/controller/config.zeek 40 40
+   :source-code: policy/frameworks/cluster/controller/config.zeek 33 33
 
    :Type: :zeek:type:`ClusterController::Types::Role`
    :Attributes: :zeek:attr:`&redef`
@@ -150,13 +150,13 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: ClusterController::endpoint_info
-   :source-code: policy/frameworks/cluster/controller/config.zeek 73 86
+   :source-code: policy/frameworks/cluster/controller/config.zeek 71 84
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
 
 .. zeek:id:: ClusterController::network_info
-   :source-code: policy/frameworks/cluster/controller/config.zeek 54 72
+   :source-code: policy/frameworks/cluster/controller/config.zeek 52 70
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::NetworkInfo`
 
