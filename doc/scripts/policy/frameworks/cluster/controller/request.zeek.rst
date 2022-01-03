@@ -4,6 +4,9 @@ policy/frameworks/cluster/controller/request.zeek
 =================================================
 .. zeek:namespace:: ClusterController::Request
 
+This module implements a request state abstraction that both cluster
+controller and agent use to tie responses to received request events and be
+able to time-out such requests.
 
 :Namespace: ClusterController::Request
 :Imports: :doc:`policy/frameworks/cluster/controller/config.zeek </scripts/policy/frameworks/cluster/controller/config.zeek>`, :doc:`policy/frameworks/cluster/controller/types.zeek </scripts/policy/frameworks/cluster/controller/types.zeek>`
@@ -12,18 +15,18 @@ Summary
 ~~~~~~~
 State Variables
 ###############
-================================================================================================= =
-:zeek:id:`ClusterController::Request::null_req`: :zeek:type:`ClusterController::Request::Request` 
-================================================================================================= =
+================================================================================================= ==========================================================
+:zeek:id:`ClusterController::Request::null_req`: :zeek:type:`ClusterController::Request::Request` A token request that serves as a null/nonexistant request.
+================================================================================================= ==========================================================
 
 Types
 #####
-=================================================================================== =
-:zeek:type:`ClusterController::Request::Request`: :zeek:type:`record`               
+=================================================================================== ===========================================
+:zeek:type:`ClusterController::Request::Request`: :zeek:type:`record`               Request records track each request's state.
 :zeek:type:`ClusterController::Request::SetConfigurationState`: :zeek:type:`record` 
 :zeek:type:`ClusterController::Request::SupervisorState`: :zeek:type:`record`       
 :zeek:type:`ClusterController::Request::TestState`: :zeek:type:`record`             
-=================================================================================== =
+=================================================================================== ===========================================
 
 Redefinitions
 #############
@@ -45,19 +48,24 @@ Redefinitions
 
 Events
 ######
-========================================================================== =
-:zeek:id:`ClusterController::Request::request_expired`: :zeek:type:`event` 
-========================================================================== =
+========================================================================== ===================================================================
+:zeek:id:`ClusterController::Request::request_expired`: :zeek:type:`event` This event fires when a request times out (as per the
+                                                                           ClusterController::request_timeout) before it has been finished via
+                                                                           ClusterController::Request::finish().
+========================================================================== ===================================================================
 
 Functions
 #########
-======================================================================= =
-:zeek:id:`ClusterController::Request::create`: :zeek:type:`function`    
-:zeek:id:`ClusterController::Request::finish`: :zeek:type:`function`    
-:zeek:id:`ClusterController::Request::is_null`: :zeek:type:`function`   
-:zeek:id:`ClusterController::Request::lookup`: :zeek:type:`function`    
-:zeek:id:`ClusterController::Request::to_string`: :zeek:type:`function` 
-======================================================================= =
+======================================================================= ========================================================================
+:zeek:id:`ClusterController::Request::create`: :zeek:type:`function`    This function establishes request state.
+:zeek:id:`ClusterController::Request::finish`: :zeek:type:`function`    This function marks a request as complete and causes Zeek to release
+                                                                        its internal state.
+:zeek:id:`ClusterController::Request::is_null`: :zeek:type:`function`   This function is a helper predicate to indicate whether a given
+                                                                        request is null.
+:zeek:id:`ClusterController::Request::lookup`: :zeek:type:`function`    This function looks up the request for a given request ID and returns
+                                                                        it.
+:zeek:id:`ClusterController::Request::to_string`: :zeek:type:`function` For troubleshooting, this function renders a request record to a string.
+======================================================================= ========================================================================
 
 
 Detailed Interface
@@ -65,7 +73,7 @@ Detailed Interface
 State Variables
 ###############
 .. zeek:id:: ClusterController::Request::null_req
-   :source-code: policy/frameworks/cluster/controller/request.zeek 43 43
+   :source-code: policy/frameworks/cluster/controller/request.zeek 55 55
 
    :Type: :zeek:type:`ClusterController::Request::Request`
    :Default:
@@ -83,17 +91,23 @@ State Variables
          }
 
 
+   A token request that serves as a null/nonexistant request.
 
 Types
 #####
 .. zeek:type:: ClusterController::Request::Request
-   :source-code: policy/frameworks/cluster/controller/request.zeek 7 10
+   :source-code: policy/frameworks/cluster/controller/request.zeek 12 21
 
    :Type: :zeek:type:`record`
 
       id: :zeek:type:`string`
+         Each request has a hopfully unique ID provided by the requester.
 
       parent_id: :zeek:type:`string` :zeek:attr:`&optional`
+         For requests that result based upon another request (such as when
+         the controller sends requests to agents based on a request it
+         received by the client), this specifies that original, "parent"
+         request.
 
       results: :zeek:type:`ClusterController::Types::ResultVec` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
 
@@ -105,9 +119,10 @@ Types
 
       test_state: :zeek:type:`ClusterController::Request::TestState` :zeek:attr:`&optional`
 
+   Request records track each request's state.
 
 .. zeek:type:: ClusterController::Request::SetConfigurationState
-   :source-code: policy/frameworks/cluster/controller/request.zeek 18 21
+   :source-code: policy/frameworks/cluster/controller/request.zeek 29 32
 
    :Type: :zeek:type:`record`
 
@@ -117,7 +132,7 @@ Types
 
 
 .. zeek:type:: ClusterController::Request::SupervisorState
-   :source-code: policy/frameworks/cluster/controller/request.zeek 24 26
+   :source-code: policy/frameworks/cluster/controller/request.zeek 35 37
 
    :Type: :zeek:type:`record`
 
@@ -125,7 +140,7 @@ Types
 
 
 .. zeek:type:: ClusterController::Request::TestState
-   :source-code: policy/frameworks/cluster/controller/request.zeek 29 30
+   :source-code: policy/frameworks/cluster/controller/request.zeek 40 41
 
    :Type: :zeek:type:`record`
 
@@ -133,41 +148,80 @@ Types
 Events
 ######
 .. zeek:id:: ClusterController::Request::request_expired
-   :source-code: policy/frameworks/cluster/controller/main.zeek 473 506
+   :source-code: policy/frameworks/cluster/controller/main.zeek 478 511
 
    :Type: :zeek:type:`event` (req: :zeek:type:`ClusterController::Request::Request`)
 
+   This event fires when a request times out (as per the
+   ClusterController::request_timeout) before it has been finished via
+   ClusterController::Request::finish().
+   
+
+   :req: the request state that is expiring.
+   
 
 Functions
 #########
 .. zeek:id:: ClusterController::Request::create
-   :source-code: policy/frameworks/cluster/controller/request.zeek 69 74
+   :source-code: policy/frameworks/cluster/controller/request.zeek 116 121
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string` :zeek:attr:`&default` = ``9Ye7pQPhuMe`` :zeek:attr:`&optional`) : :zeek:type:`ClusterController::Request::Request`
 
+   This function establishes request state.
+   
+
+   :reqid: the identifier to use for the request.
+   
 
 .. zeek:id:: ClusterController::Request::finish
-   :source-code: policy/frameworks/cluster/controller/request.zeek 84 95
+   :source-code: policy/frameworks/cluster/controller/request.zeek 131 142
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`bool`
 
+   This function marks a request as complete and causes Zeek to release
+   its internal state. When the request does not exist, this does
+   nothing.
+   
+
+   :reqid: the ID of the request state to releaase.
+   
 
 .. zeek:id:: ClusterController::Request::is_null
-   :source-code: policy/frameworks/cluster/controller/request.zeek 97 103
+   :source-code: policy/frameworks/cluster/controller/request.zeek 144 150
 
    :Type: :zeek:type:`function` (request: :zeek:type:`ClusterController::Request::Request`) : :zeek:type:`bool`
 
+   This function is a helper predicate to indicate whether a given
+   request is null.
+   
+
+   :request: a Request record to check.
+   
+
+   :returns: T if the given request matches the null_req instance, F otherwise.
+   
 
 .. zeek:id:: ClusterController::Request::lookup
-   :source-code: policy/frameworks/cluster/controller/request.zeek 76 82
+   :source-code: policy/frameworks/cluster/controller/request.zeek 123 129
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`ClusterController::Request::Request`
 
+   This function looks up the request for a given request ID and returns
+   it. When no such request exists, returns ClusterController::Request::null_req.
+   
+
+   :reqid: the ID of the request state to retrieve.
+   
 
 .. zeek:id:: ClusterController::Request::to_string
-   :source-code: policy/frameworks/cluster/controller/request.zeek 105 124
+   :source-code: policy/frameworks/cluster/controller/request.zeek 152 171
 
    :Type: :zeek:type:`function` (request: :zeek:type:`ClusterController::Request::Request`) : :zeek:type:`string`
 
+   For troubleshooting, this function renders a request record to a string.
+   
+
+   :request: the request to render.
+   
 
 
