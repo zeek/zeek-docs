@@ -793,7 +793,7 @@ Functions
 .. zeek:id:: double_to_int
    :source-code: base/bif/zeek.bif.zeek 1145 1145
 
-   :Type: :zeek:type:`function` (d: :zeek:type:`double`) : :zeek:type:`count`
+   :Type: :zeek:type:`function` (d: :zeek:type:`double`) : :zeek:type:`int`
 
    Converts a :zeek:type:`double` to a :zeek:type:`count`.
    
