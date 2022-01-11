@@ -375,7 +375,7 @@ Events
 Hooks
 #####
 .. zeek:id:: HTTP::finalize_http
-   :source-code: base/protocols/http/main.zeek 333 346
+   :source-code: base/protocols/http/main.zeek 334 347
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
