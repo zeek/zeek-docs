@@ -733,14 +733,11 @@ that the ``when`` statement's body returns (or if the condition does
 not become true within the specified timeout interval, then the function
 returns the value that the ``timeout`` block returns).
 
-.. note::
-
-  In contrast to regular functions, asynchronous ones cannot make lasting
-  modifications to non-atomic arguments (records and container types). That's
-  because evaluation of the ``when`` statements invoking such functions involves
-  internal copies of the function arguments. To make modifications to non-atomic
-  arguments available outside the function, return the modified argument(s) from
-  the function, or resort to globals.
+(Note that if you use the deprecated feature of not listing the *captures*
+in your ``return when`` statement, then, in contrast to regular functions, your
+asynchronous functions cannot make lasting modifications to
+arguments that have aggregate types, because those values will be
+deep-copied upon execution of the ``return when``.)
 
 Example:
 
@@ -959,6 +956,56 @@ Zeek will finish evaluating the expression in the ``when`` statement.
 See the :zeek:keyword:`return` statement for an explanation of how to
 create an asynchronous function in a Zeek script.
 
+The elements of a ``when`` statement can include references to the local
+variables of the function/event/hook body in which they appear (as well
+as to global variables).  If they do, then you need to specify the locals
+variables as *captures*, using ``[...]`` in the same manner as done for
+:ref:`anonymous functions <anonymous-function>`.  By default captures are
+done using *shallow-copying*, behaving like an assignment; you can add the
+keyword
+``copy`` to instead make a *deep* copy.
+
+For example:
+
+.. code-block:: zeek
+
+    type r: record { x: int; y: int; };
+    global g = r($x=100, $y=100);
+
+    event zeek_init()
+        {
+        local l = r($x=1, $y=2);
+        local l2 = r($x=3, $y=4);
+
+        when [l, copy l2] ( g$x < 0 )
+            {
+            print l, l2;
+            }
+
+        l$x = 10;
+        l2$x = 20;
+        }
+
+    event zeek_init() &priority=-10
+        {
+        g$x = -999;
+        }
+
+will print ``[x=10, y=2], [x=3, y=4]``, because, as a shallow copy, the
+version of ``l`` inside the ``when`` statement will reflect the changes
+made to its record after execution of the ``when`` statement; while the
+version of ``l2`` will not, since it holds a deep copy of the record
+made upon executing the ``when`` statement.
+
+For the captures you need to list all of local variables used in the
+statement: those in the initial condition, as well as those appearing in
+the body or the ``timeout`` statement.  You do not need to list new
+``local``'s introduce in the expression (such as ``local x = foo()`` in
+the example given earlier above).
+
+It also works, for now, to leave off the captures entirely, but this
+form is deprecated.  It provides old-style semantics, in which every
+local is automatically captured via deep-copy.
 
 .. zeek:keyword:: while
 
