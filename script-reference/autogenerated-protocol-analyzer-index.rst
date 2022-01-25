@@ -7899,7 +7899,10 @@ Functions
    :name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
    
 
-   :returns: The decoded NetBIOS name, e.g., ``"THE NETBIOS NAME"``.
+   :returns: The decoded NetBIOS name, e.g., ``"THE NETBIOS NAM"``.  An empty
+            string is returned if the argument is not a valid NetBIOS encoding
+            (though an encoding that would decode to something that includes
+            only null-bytes or space-characters also yields an empty string).
    
    .. zeek:see:: decode_netbios_name_type
 
@@ -7911,10 +7914,10 @@ Functions
    See http://support.microsoft.com/kb/163409.
    
 
-   :name: The NetBIOS name type.
+   :name: An encoded NetBIOS name.
    
 
-   :returns: The numeric value of *name*.
+   :returns: The numeric value of *name* or 256 if it's not a valid encoding.
    
    .. zeek:see:: decode_netbios_name
 
@@ -15083,30 +15086,35 @@ Events
 .. zeek:id:: stp_create_endp
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, e: :zeek:type:`int`, is_orig: :zeek:type:`bool`)
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v4.1. The stepping-stone analyzer has been unmaintained for a long time and will be removed. See ticket 1573 for details"*
 
    Deprecated. Will be removed.
 
 .. zeek:id:: stp_resume_endp
 
    :Type: :zeek:type:`event` (e: :zeek:type:`int`)
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v4.1. The stepping-stone analyzer has been unmaintained for a long time and will be removed. See ticket 1573 for details"*
 
    Event internal to the stepping stone detector.
 
 .. zeek:id:: stp_correlate_pair
 
    :Type: :zeek:type:`event` (e1: :zeek:type:`int`, e2: :zeek:type:`int`)
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v4.1. The stepping-stone analyzer has been unmaintained for a long time and will be removed. See ticket 1573 for details"*
 
    Event internal to the stepping stone detector.
 
 .. zeek:id:: stp_remove_pair
 
    :Type: :zeek:type:`event` (e1: :zeek:type:`int`, e2: :zeek:type:`int`)
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v4.1. The stepping-stone analyzer has been unmaintained for a long time and will be removed. See ticket 1573 for details"*
 
    Event internal to the stepping stone detector.
 
 .. zeek:id:: stp_remove_endp
 
    :Type: :zeek:type:`event` (e: :zeek:type:`int`)
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v4.1. The stepping-stone analyzer has been unmaintained for a long time and will be removed. See ticket 1573 for details"*
 
    Event internal to the stepping stone detector.
 
