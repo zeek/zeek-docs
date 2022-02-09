@@ -27,6 +27,11 @@ Events
 :zeek:id:`ClusterController::API::get_instances_request`: :zeek:type:`event`      zeek-client sends this event to request a list of the currently
                                                                                   peered agents/instances.
 :zeek:id:`ClusterController::API::get_instances_response`: :zeek:type:`event`     Response to a get_instances_request event.
+:zeek:id:`ClusterController::API::get_nodes_request`: :zeek:type:`event`          zeek-client sends this event to request a list of
+                                                                                  :zeek:see:`ClusterController::Types::NodeStatus` records that capture
+                                                                                  the status of Supervisor-managed nodes running on the cluster's
+                                                                                  instances.
+:zeek:id:`ClusterController::API::get_nodes_response`: :zeek:type:`event`         Response to a get_nodes_request event.
 :zeek:id:`ClusterController::API::notify_agents_ready`: :zeek:type:`event`        The controller triggers this event when the operational cluster
                                                                                   instances align with the ones desired by the cluster
                                                                                   configuration.
@@ -82,8 +87,40 @@ Events
        :zeek:see:`ClusterController::Types::Instance` record.
    
 
+.. zeek:id:: ClusterController::API::get_nodes_request
+   :source-code: policy/frameworks/cluster/controller/main.zeek 523 555
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
+
+   zeek-client sends this event to request a list of
+   :zeek:see:`ClusterController::Types::NodeStatus` records that capture
+   the status of Supervisor-managed nodes running on the cluster's
+   instances.
+   
+
+   :reqid: a request identifier string, echoed in the response event.
+   
+
+.. zeek:id:: ClusterController::API::get_nodes_response
+   :source-code: policy/frameworks/cluster/controller/api.zeek 79 79
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::ResultVec`)
+
+   Response to a get_nodes_request event. The controller sends this
+   back to the client.
+   
+
+   :reqid: the request identifier used in the request event.
+   
+
+   :result: a :zeek:type`vector` of :zeek:see:`ClusterController::Types::Result`
+       records. Each record covers one cluster instance. Each record's data
+       member is a vector of :zeek:see:`ClusterController::Types::NodeStatus`
+       records, covering the nodes at that instance. Results may also indicate
+       failure, with error messages indicating what went wrong.
+
 .. zeek:id:: ClusterController::API::notify_agents_ready
-   :source-code: policy/frameworks/cluster/controller/main.zeek 177 195
+   :source-code: policy/frameworks/cluster/controller/main.zeek 209 227
 
    :Type: :zeek:type:`event` (instances: :zeek:type:`set` [:zeek:type:`string`])
 
@@ -132,7 +169,7 @@ Events
    
 
 .. zeek:id:: ClusterController::API::test_timeout_request
-   :source-code: policy/frameworks/cluster/controller/main.zeek 512 523
+   :source-code: policy/frameworks/cluster/controller/main.zeek 602 613
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, with_state: :zeek:type:`bool`)
 
@@ -151,7 +188,7 @@ Events
    
 
 .. zeek:id:: ClusterController::API::test_timeout_response
-   :source-code: policy/frameworks/cluster/controller/api.zeek 81 81
+   :source-code: policy/frameworks/cluster/controller/api.zeek 104 104
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
 
