@@ -30,6 +30,10 @@ Events
 :zeek:id:`ClusterAgent::API::agent_welcome_request`: :zeek:type:`event`      The controller sends this event to confirm to the agent that it is
                                                                              part of the current cluster topology.
 :zeek:id:`ClusterAgent::API::agent_welcome_response`: :zeek:type:`event`     Response to an agent_welcome_request event.
+:zeek:id:`ClusterAgent::API::get_nodes_request`: :zeek:type:`event`          The controller sends this event to request a list of
+                                                                             :zeek:see:`ClusterController::Types::NodeStatus` records that capture
+                                                                             the status of Supervisor-managed nodes running on this instance.
+:zeek:id:`ClusterAgent::API::get_nodes_response`: :zeek:type:`event`         Response to a get_nodes_request event.
 :zeek:id:`ClusterAgent::API::notify_agent_hello`: :zeek:type:`event`         The agent sends this event upon peering as a "check-in", informing
                                                                              the controller that an agent of the given name is now available to
                                                                              communicate with.
@@ -58,7 +62,7 @@ Constants
 Events
 ######
 .. zeek:id:: ClusterAgent::API::agent_standby_request
-   :source-code: policy/frameworks/cluster/agent/main.zeek 185 203
+   :source-code: policy/frameworks/cluster/agent/main.zeek 295 313
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -75,7 +79,7 @@ Events
    
 
 .. zeek:id:: ClusterAgent::API::agent_standby_response
-   :source-code: policy/frameworks/cluster/agent/api.zeek 83 83
+   :source-code: policy/frameworks/cluster/agent/api.zeek 104 104
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
 
@@ -90,7 +94,7 @@ Events
    
 
 .. zeek:id:: ClusterAgent::API::agent_welcome_request
-   :source-code: policy/frameworks/cluster/agent/main.zeek 172 183
+   :source-code: policy/frameworks/cluster/agent/main.zeek 282 293
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -103,7 +107,7 @@ Events
    
 
 .. zeek:id:: ClusterAgent::API::agent_welcome_response
-   :source-code: policy/frameworks/cluster/controller/main.zeek 231 258
+   :source-code: policy/frameworks/cluster/controller/main.zeek 263 290
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
 
@@ -117,8 +121,40 @@ Events
    :result: the result record.
    
 
+.. zeek:id:: ClusterAgent::API::get_nodes_request
+   :source-code: policy/frameworks/cluster/agent/main.zeek 271 280
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
+
+   The controller sends this event to request a list of
+   :zeek:see:`ClusterController::Types::NodeStatus` records that capture
+   the status of Supervisor-managed nodes running on this instance.
+   instances.
+   
+
+   :reqid: a request identifier string, echoed in the response event.
+   
+
+.. zeek:id:: ClusterAgent::API::get_nodes_response
+   :source-code: policy/frameworks/cluster/controller/main.zeek 478 521
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
+
+   Response to a get_nodes_request event. The agent sends this back to the
+   controller.
+   
+
+   :reqid: the request identifier used in the request event.
+   
+
+   :result: a :zeek:see:`ClusterController::Types::Result` record. Its data
+       member is a vector of :zeek:see:`ClusterController::Types::NodeStatus`
+       records, covering the nodes at this instance. The result may also
+       indicate failure, with error messages indicating what went wrong.
+   
+
 .. zeek:id:: ClusterAgent::API::notify_agent_hello
-   :source-code: policy/frameworks/cluster/controller/main.zeek 197 229
+   :source-code: policy/frameworks/cluster/controller/main.zeek 229 261
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, host: :zeek:type:`addr`, api_version: :zeek:type:`count`)
 
@@ -138,25 +174,25 @@ Events
    
 
 .. zeek:id:: ClusterAgent::API::notify_change
-   :source-code: policy/frameworks/cluster/controller/main.zeek 262 263
+   :source-code: policy/frameworks/cluster/controller/main.zeek 294 295
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, n: :zeek:type:`ClusterController::Types::Node`, old: :zeek:type:`ClusterController::Types::State`, new: :zeek:type:`ClusterController::Types::State`)
 
 
 .. zeek:id:: ClusterAgent::API::notify_error
-   :source-code: policy/frameworks/cluster/controller/main.zeek 267 268
+   :source-code: policy/frameworks/cluster/controller/main.zeek 299 300
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: ClusterAgent::API::notify_log
-   :source-code: policy/frameworks/cluster/controller/main.zeek 272 273
+   :source-code: policy/frameworks/cluster/controller/main.zeek 304 305
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: ClusterAgent::API::set_configuration_request
-   :source-code: policy/frameworks/cluster/agent/main.zeek 85 171
+   :source-code: policy/frameworks/cluster/agent/main.zeek 99 193
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`ClusterController::Types::Configuration`)
 
@@ -176,7 +212,7 @@ Events
    
 
 .. zeek:id:: ClusterAgent::API::set_configuration_response
-   :source-code: policy/frameworks/cluster/controller/main.zeek 277 350
+   :source-code: policy/frameworks/cluster/controller/main.zeek 309 349
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`ClusterController::Types::Result`)
 

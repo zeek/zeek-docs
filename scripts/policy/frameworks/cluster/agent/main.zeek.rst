@@ -14,13 +14,36 @@ supervisor.
 
 Summary
 ~~~~~~~
+Types
+#####
+======================================================================== ==============================================================
+:zeek:type:`ClusterAgent::Runtime::SupervisorState`: :zeek:type:`record` Request state specific to the agent's Supervisor interactions.
+======================================================================== ==============================================================
+
 Redefinitions
 #############
-=================================================================================================== =
+=================================================================================================== ==============================================================================================
+:zeek:type:`ClusterController::Request::Request`: :zeek:type:`record`                               
+                                                                                                    
+                                                                                                    :New Fields: :zeek:type:`ClusterController::Request::Request`
+                                                                                                    
+                                                                                                      supervisor_state: :zeek:type:`ClusterAgent::Runtime::SupervisorState` :zeek:attr:`&optional`
 :zeek:id:`ClusterController::role`: :zeek:type:`ClusterController::Types::Role` :zeek:attr:`&redef` 
-=================================================================================================== =
+=================================================================================================== ==============================================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Types
+#####
+.. zeek:type:: ClusterAgent::Runtime::SupervisorState
+   :source-code: policy/frameworks/cluster/agent/main.zeek 21 23
+
+   :Type: :zeek:type:`record`
+
+      node: :zeek:type:`string`
+         Name of the node the Supervisor is acting on.
+
+   Request state specific to the agent's Supervisor interactions.
+
 
