@@ -276,6 +276,23 @@ Specifies a creation expiration timeout for container elements. That
 is, the element expires after the given amount of time since it has
 been inserted into the container, regardless of any reads or writes.
 
+.. note::
+
+   In order to support expiration timeouts, Zeek associates a timer
+   with each container element. For containers with many members,
+   Zeek needs to keep an eye on the amount of effort spent tracking
+   those timers. It does this via three configurable properties:
+
+   * :zeek:see:`table_expire_interval` specifies how frequently Zeek checks a
+     container's members. The interval establishes an upper bound on how long it
+     may take Zeek to react to an element's expiration.
+
+   * :zeek:see:`table_incremental_step` specifies how many members Zeek
+     checks in one batch.
+
+   * :zeek:see:`table_expire_delay` interval specifies how long Zeek
+     waits until it processes the next batch of members.
+
 
 .. zeek:attr:: &on_change
 
