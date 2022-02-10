@@ -1,7 +1,11 @@
 Attributes
 ==========
 
-The Zeek scripting language supports the following attributes.
+The Zeek scripting language supports customization of many language elements via
+*attributes*. For example, attributes can ensure that a function gets invoked
+whenever you modify a table, automatically expire elements from a set, or tell
+the :ref:`logging framework <framework-logging>` which record fields you'd like
+it to write. Zeek features the following attributes:
 
 .. list-table::
   :header-rows: 1
