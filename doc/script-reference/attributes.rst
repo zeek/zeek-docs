@@ -279,9 +279,9 @@ been inserted into the container, regardless of any reads or writes.
 .. note::
 
    In order to support expiration timeouts, Zeek associates a timer
-   with each container element. For containers with many members,
-   Zeek needs to keep an eye on the amount of effort spent tracking
-   those timers. It does this via three configurable properties:
+   with each container that weeds out stale entries. For containers with many members,
+   Zeek needs to keep an eye on the amount of effort spent expiring
+   elements. It does this via three configurable properties:
 
    * :zeek:see:`table_expire_interval` specifies how frequently Zeek checks a
      container's members. The interval establishes an upper bound on how long it
