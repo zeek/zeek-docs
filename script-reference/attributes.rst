@@ -1,7 +1,11 @@
 Attributes
 ==========
 
-The Zeek scripting language supports the following attributes.
+The Zeek scripting language supports customization of many language elements via
+*attributes*. For example, attributes can ensure that a function gets invoked
+whenever you modify a table, automatically expire elements from a set, or tell
+the :ref:`logging framework <framework-logging>` which record fields you'd like
+it to write. Zeek features the following attributes:
 
 .. list-table::
   :header-rows: 1
@@ -271,6 +275,23 @@ last time it has been written.
 Specifies a creation expiration timeout for container elements. That
 is, the element expires after the given amount of time since it has
 been inserted into the container, regardless of any reads or writes.
+
+.. note::
+
+   In order to support expiration timeouts, Zeek associates a timer
+   with each container that weeds out stale entries. For containers with many members,
+   Zeek needs to keep an eye on the amount of effort spent expiring
+   elements. It does this via three configurable properties:
+
+   * :zeek:see:`table_expire_interval` specifies how frequently Zeek checks a
+     container's members. The interval establishes an upper bound on how long it
+     may take Zeek to react to an element's expiration.
+
+   * :zeek:see:`table_incremental_step` specifies how many members Zeek
+     checks in one batch.
+
+   * :zeek:see:`table_expire_delay` interval specifies how long Zeek
+     waits until it processes the next batch of members.
 
 
 .. zeek:attr:: &on_change
