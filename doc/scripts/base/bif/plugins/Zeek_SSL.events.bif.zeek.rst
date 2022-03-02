@@ -91,7 +91,7 @@ Events
       ssl_session_ticket_handshake
 
 .. zeek:id:: ssl_change_cipher_spec
-   :source-code: base/protocols/ssl/main.zeek 426 433
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 666 666
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 

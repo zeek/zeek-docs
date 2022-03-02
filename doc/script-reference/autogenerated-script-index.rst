@@ -440,18 +440,20 @@
    builtin-plugins/__load__.zeek </scripts/builtin-plugins/__load__.zeek>
    zeekygen/__load__.zeek </scripts/zeekygen/__load__.zeek>
    test-all-policy.zeek </scripts/test-all-policy.zeek>
-   policy/frameworks/cluster/agent/__load__.zeek </scripts/policy/frameworks/cluster/agent/__load__.zeek>
-   policy/frameworks/cluster/agent/boot.zeek </scripts/policy/frameworks/cluster/agent/boot.zeek>
-   policy/frameworks/cluster/agent/config.zeek </scripts/policy/frameworks/cluster/agent/config.zeek>
-   policy/frameworks/cluster/controller/types.zeek </scripts/policy/frameworks/cluster/controller/types.zeek>
-   policy/frameworks/cluster/agent/api.zeek </scripts/policy/frameworks/cluster/agent/api.zeek>
-   policy/frameworks/cluster/controller/__load__.zeek </scripts/policy/frameworks/cluster/controller/__load__.zeek>
-   policy/frameworks/cluster/controller/boot.zeek </scripts/policy/frameworks/cluster/controller/boot.zeek>
-   policy/frameworks/cluster/controller/config.zeek </scripts/policy/frameworks/cluster/controller/config.zeek>
-   policy/frameworks/cluster/controller/api.zeek </scripts/policy/frameworks/cluster/controller/api.zeek>
-   policy/frameworks/cluster/controller/log.zeek </scripts/policy/frameworks/cluster/controller/log.zeek>
-   policy/frameworks/cluster/controller/request.zeek </scripts/policy/frameworks/cluster/controller/request.zeek>
-   policy/frameworks/cluster/controller/util.zeek </scripts/policy/frameworks/cluster/controller/util.zeek>
+   policy/frameworks/management/agent/__load__.zeek </scripts/policy/frameworks/management/agent/__load__.zeek>
+   policy/frameworks/management/agent/boot.zeek </scripts/policy/frameworks/management/agent/boot.zeek>
+   policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>
+   policy/frameworks/management/config.zeek </scripts/policy/frameworks/management/config.zeek>
+   policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>
+   policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>
+   policy/frameworks/management/controller/__load__.zeek </scripts/policy/frameworks/management/controller/__load__.zeek>
+   policy/frameworks/management/controller/boot.zeek </scripts/policy/frameworks/management/controller/boot.zeek>
+   policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>
+   policy/frameworks/management/controller/api.zeek </scripts/policy/frameworks/management/controller/api.zeek>
+   policy/frameworks/management/__load__.zeek </scripts/policy/frameworks/management/__load__.zeek>
+   policy/frameworks/management/log.zeek </scripts/policy/frameworks/management/log.zeek>
+   policy/frameworks/management/request.zeek </scripts/policy/frameworks/management/request.zeek>
+   policy/frameworks/management/util.zeek </scripts/policy/frameworks/management/util.zeek>
    policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>
    policy/frameworks/dpd/packet-segment-logging.zeek </scripts/policy/frameworks/dpd/packet-segment-logging.zeek>
    policy/frameworks/intel/do_notice.zeek </scripts/policy/frameworks/intel/do_notice.zeek>
@@ -540,6 +542,7 @@
    policy/protocols/ssh/geo-data.zeek </scripts/policy/protocols/ssh/geo-data.zeek>
    policy/protocols/ssh/interesting-hostnames.zeek </scripts/policy/protocols/ssh/interesting-hostnames.zeek>
    policy/protocols/ssh/software.zeek </scripts/policy/protocols/ssh/software.zeek>
+   policy/protocols/ssl/decryption.zeek </scripts/policy/protocols/ssl/decryption.zeek>
    policy/protocols/ssl/expiring-certs.zeek </scripts/policy/protocols/ssl/expiring-certs.zeek>
    policy/protocols/ssl/heartbleed.zeek </scripts/policy/protocols/ssl/heartbleed.zeek>
    policy/protocols/ssl/known-certs.zeek </scripts/policy/protocols/ssl/known-certs.zeek>
@@ -560,8 +563,8 @@
    policy/protocols/ssl/notary.zeek </scripts/policy/protocols/ssl/notary.zeek>
    policy/frameworks/control/controllee.zeek </scripts/policy/frameworks/control/controllee.zeek>
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>
-   policy/frameworks/cluster/agent/main.zeek </scripts/policy/frameworks/cluster/agent/main.zeek>
-   policy/frameworks/cluster/controller/main.zeek </scripts/policy/frameworks/cluster/controller/main.zeek>
+   policy/frameworks/management/agent/main.zeek </scripts/policy/frameworks/management/agent/main.zeek>
+   policy/frameworks/management/controller/main.zeek </scripts/policy/frameworks/management/controller/main.zeek>
    policy/frameworks/files/extract-all-files.zeek </scripts/policy/frameworks/files/extract-all-files.zeek>
    policy/misc/dump-events.zeek </scripts/policy/misc/dump-events.zeek>
    policy/protocols/conn/speculative-service.zeek </scripts/policy/protocols/conn/speculative-service.zeek>

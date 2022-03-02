@@ -27,10 +27,10 @@ Functions
 :zeek:id:`gsub`: :zeek:type:`function`                 Substitutes a given replacement string for all occurrences of a pattern
                                                        in a given string.
 :zeek:id:`hexdump`: :zeek:type:`function`              Returns a hex dump for given input data.
-:zeek:id:`is_alnum`: :zeek:type:`function`             Returns whether an entire string is alphanumeric characters
-:zeek:id:`is_alpha`: :zeek:type:`function`             Returns whether an entire string is alphabetic characters.
+:zeek:id:`is_alnum`: :zeek:type:`function`             Returns whether a string consists entirely of alphanumeric characters.
+:zeek:id:`is_alpha`: :zeek:type:`function`             Returns whether a string consists entirely of alphabetic characters.
 :zeek:id:`is_ascii`: :zeek:type:`function`             Determines whether a given string contains only ASCII characters.
-:zeek:id:`is_num`: :zeek:type:`function`               Returns whether an entire string consists only of digits.
+:zeek:id:`is_num`: :zeek:type:`function`               Returns whether a string consists entirely of digits.
 :zeek:id:`join_string_vec`: :zeek:type:`function`      Joins all values in the given vector of strings with a separator placed
                                                        between each element.
 :zeek:id:`levenshtein_distance`: :zeek:type:`function` Calculates the Levenshtein distance between the two strings.
@@ -106,7 +106,7 @@ Functions
    .. zeek:see:: to_string_literal escape_string
 
 .. zeek:id:: count_substr
-   :source-code: base/bif/strings.bif.zeek 487 487
+   :source-code: base/bif/strings.bif.zeek 488 488
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`count`
 
@@ -149,7 +149,7 @@ Functions
                 strip
 
 .. zeek:id:: ends_with
-   :source-code: base/bif/strings.bif.zeek 538 538
+   :source-code: base/bif/strings.bif.zeek 539 539
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -157,7 +157,7 @@ Functions
    
 
 .. zeek:id:: escape_string
-   :source-code: base/bif/strings.bif.zeek 307 307
+   :source-code: base/bif/strings.bif.zeek 308 308
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -178,7 +178,7 @@ Functions
    .. zeek:see:: clean to_string_literal
 
 .. zeek:id:: find_all
-   :source-code: base/bif/strings.bif.zeek 424 424
+   :source-code: base/bif/strings.bif.zeek 425 425
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, re: :zeek:type:`pattern`) : :zeek:type:`string_set`
 
@@ -196,7 +196,7 @@ Functions
    .. zeek:see: find_all_ordered find_last strstr
 
 .. zeek:id:: find_all_ordered
-   :source-code: base/bif/strings.bif.zeek 438 438
+   :source-code: base/bif/strings.bif.zeek 439 439
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, re: :zeek:type:`pattern`) : :zeek:type:`string_vec`
 
@@ -216,7 +216,7 @@ Functions
    .. zeek:see: find_all find_last strstr
 
 .. zeek:id:: find_last
-   :source-code: base/bif/strings.bif.zeek 453 453
+   :source-code: base/bif/strings.bif.zeek 454 454
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, re: :zeek:type:`pattern`) : :zeek:type:`string`
 
@@ -237,7 +237,7 @@ Functions
    .. zeek:see: find_all find_all_ordered strstr
 
 .. zeek:id:: find_str
-   :source-code: base/bif/strings.bif.zeek 510 510
+   :source-code: base/bif/strings.bif.zeek 511 511
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`, case_sensitive: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
@@ -289,7 +289,7 @@ Functions
    .. zeek:see:: sub subst_string
 
 .. zeek:id:: hexdump
-   :source-code: base/bif/strings.bif.zeek 468 468
+   :source-code: base/bif/strings.bif.zeek 469 469
 
    :Type: :zeek:type:`function` (data_str: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -309,27 +309,30 @@ Functions
    
 
 .. zeek:id:: is_alnum
-   :source-code: base/bif/strings.bif.zeek 553 553
+   :source-code: base/bif/strings.bif.zeek 557 557
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`bool`
 
-   Returns whether an entire string is alphanumeric characters
+   Returns whether a string consists entirely of alphanumeric characters.
+   The empty string is not alphanumeric.
    
 
 .. zeek:id:: is_alpha
-   :source-code: base/bif/strings.bif.zeek 548 548
+   :source-code: base/bif/strings.bif.zeek 551 551
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`bool`
 
-   Returns whether an entire string is alphabetic characters.
+   Returns whether a string consists entirely of alphabetic characters.
+   The empty string is not alphabetic.
    
 
 .. zeek:id:: is_ascii
-   :source-code: base/bif/strings.bif.zeek 291 291
+   :source-code: base/bif/strings.bif.zeek 292 292
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`bool`
 
    Determines whether a given string contains only ASCII characters.
+   The empty string is ASCII.
    
 
    :str: The string to examine.
@@ -341,11 +344,12 @@ Functions
    .. zeek:see:: to_upper to_lower
 
 .. zeek:id:: is_num
-   :source-code: base/bif/strings.bif.zeek 543 543
+   :source-code: base/bif/strings.bif.zeek 545 545
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`bool`
 
-   Returns whether an entire string consists only of digits.
+   Returns whether a string consists entirely of digits.
+   The empty string is not numeric.
    
 
 .. zeek:id:: join_string_vec
@@ -388,7 +392,7 @@ Functions
    
 
 .. zeek:id:: ljust
-   :source-code: base/bif/strings.bif.zeek 569 569
+   :source-code: base/bif/strings.bif.zeek 573 573
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`, fill: :zeek:type:`string` :zeek:attr:`&default` = ``" "`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -411,7 +415,7 @@ Functions
    
 
 .. zeek:id:: lstrip
-   :source-code: base/bif/strings.bif.zeek 369 369
+   :source-code: base/bif/strings.bif.zeek 370 370
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, chars: :zeek:type:`string` :zeek:attr:`&default` = ``" \x09\x0a\x0d\x0b\x0c"`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -432,21 +436,21 @@ Functions
    .. zeek:see:: sub gsub strip rstrip
 
 .. zeek:id:: remove_prefix
-   :source-code: base/bif/strings.bif.zeek 614 614
+   :source-code: base/bif/strings.bif.zeek 618 618
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`string`
 
    Similar to lstrip(), except does the removal repeatedly if the pattern repeats at the start of the string.
 
 .. zeek:id:: remove_suffix
-   :source-code: base/bif/strings.bif.zeek 618 618
+   :source-code: base/bif/strings.bif.zeek 622 622
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`string`
 
    Similar to rstrip(), except does the removal repeatedly if the pattern repeats at the end of the string.
 
 .. zeek:id:: reverse
-   :source-code: base/bif/strings.bif.zeek 477 477
+   :source-code: base/bif/strings.bif.zeek 478 478
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -460,7 +464,7 @@ Functions
    
 
 .. zeek:id:: rfind_str
-   :source-code: base/bif/strings.bif.zeek 528 528
+   :source-code: base/bif/strings.bif.zeek 529 529
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`, start: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`, end: :zeek:type:`int` :zeek:attr:`&default` = ``-1`` :zeek:attr:`&optional`, case_sensitive: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
@@ -487,7 +491,7 @@ Functions
             position.
 
 .. zeek:id:: rjust
-   :source-code: base/bif/strings.bif.zeek 587 587
+   :source-code: base/bif/strings.bif.zeek 591 591
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`, fill: :zeek:type:`string` :zeek:attr:`&default` = ``" "`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -510,7 +514,7 @@ Functions
    
 
 .. zeek:id:: rstrip
-   :source-code: base/bif/strings.bif.zeek 384 384
+   :source-code: base/bif/strings.bif.zeek 385 385
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, chars: :zeek:type:`string` :zeek:attr:`&default` = ``" \x09\x0a\x0d\x0b\x0c"`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -531,7 +535,7 @@ Functions
    .. zeek:see:: sub gsub strip lstrip
 
 .. zeek:id:: safe_shell_quote
-   :source-code: base/bif/strings.bif.zeek 412 412
+   :source-code: base/bif/strings.bif.zeek 413 413
 
    :Type: :zeek:type:`function` (source: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -652,7 +656,7 @@ Functions
    .. zeek:see:: split_string split_string1 split_string_all
 
 .. zeek:id:: starts_with
-   :source-code: base/bif/strings.bif.zeek 533 533
+   :source-code: base/bif/strings.bif.zeek 534 534
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, sub: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -660,7 +664,7 @@ Functions
    
 
 .. zeek:id:: str_smith_waterman
-   :source-code: base/bif/strings.bif.zeek 329 329
+   :source-code: base/bif/strings.bif.zeek 330 330
 
    :Type: :zeek:type:`function` (s1: :zeek:type:`string`, s2: :zeek:type:`string`, params: :zeek:type:`sw_params`) : :zeek:type:`sw_substring_vec`
 
@@ -680,7 +684,7 @@ Functions
    :returns: The result of the Smith-Waterman algorithm calculation.
 
 .. zeek:id:: str_split_indices
-   :source-code: base/bif/strings.bif.zeek 342 342
+   :source-code: base/bif/strings.bif.zeek 343 343
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, idx: :zeek:type:`index_vec`) : :zeek:type:`string_vec`
 
@@ -731,7 +735,7 @@ Functions
                 join_string_vec
 
 .. zeek:id:: string_fill
-   :source-code: base/bif/strings.bif.zeek 395 395
+   :source-code: base/bif/strings.bif.zeek 396 396
 
    :Type: :zeek:type:`function` (len: :zeek:type:`int`, source: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -748,7 +752,7 @@ Functions
    :returns: A string of length *len* filled with *source*.
 
 .. zeek:id:: string_to_ascii_hex
-   :source-code: base/bif/strings.bif.zeek 316 316
+   :source-code: base/bif/strings.bif.zeek 317 317
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -762,7 +766,7 @@ Functions
             hex nibble.
 
 .. zeek:id:: strip
-   :source-code: base/bif/strings.bif.zeek 352 352
+   :source-code: base/bif/strings.bif.zeek 353 353
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -860,7 +864,7 @@ Functions
    .. zeek:see:: sub gsub
 
 .. zeek:id:: swap_case
-   :source-code: base/bif/strings.bif.zeek 596 596
+   :source-code: base/bif/strings.bif.zeek 600 600
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -911,7 +915,7 @@ Functions
    .. zeek:see:: clean escape_string
 
 .. zeek:id:: to_title
-   :source-code: base/bif/strings.bif.zeek 606 606
+   :source-code: base/bif/strings.bif.zeek 610 610
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -943,7 +947,7 @@ Functions
    .. zeek:see:: to_lower is_ascii
 
 .. zeek:id:: zfill
-   :source-code: base/bif/strings.bif.zeek 610 610
+   :source-code: base/bif/strings.bif.zeek 614 614
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, width: :zeek:type:`count`) : :zeek:type:`string`
 
