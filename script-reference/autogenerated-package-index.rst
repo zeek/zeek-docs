@@ -360,10 +360,13 @@
    purpose is to provide an easy way to load all known Zeek scripts plus any
    extra scripts needed or used by the documentation process.
 
-:doc:`policy/frameworks/cluster/agent </scripts/policy/frameworks/cluster/agent/index>`
+:doc:`policy/frameworks/management/agent </scripts/policy/frameworks/management/agent/index>`
 
 
-:doc:`policy/frameworks/cluster/controller </scripts/policy/frameworks/cluster/controller/index>`
+:doc:`policy/frameworks/management/controller </scripts/policy/frameworks/management/controller/index>`
+
+
+:doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`
 
 
 :doc:`policy/frameworks/intel/seen </scripts/policy/frameworks/intel/seen/index>`

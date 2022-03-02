@@ -763,9 +763,9 @@ Types
          (present if :doc:`/scripts/base/files/pe/main.zeek` is loaded)
 
 
-      .. zeek:enum:: ClusterController::Log::LOG Log::ID
+      .. zeek:enum:: Management::Log::LOG Log::ID
 
-         (present if :doc:`/scripts/policy/frameworks/cluster/controller/log.zeek` is loaded)
+         (present if :doc:`/scripts/policy/frameworks/management/log.zeek` is loaded)
 
 
       .. zeek:enum:: NetControl::CATCH_RELEASE Log::ID

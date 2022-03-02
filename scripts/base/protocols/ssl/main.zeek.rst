@@ -106,6 +106,12 @@ Runtime Options
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``T``
+   :Redefinition: from :doc:`/scripts/policy/protocols/ssl/decryption.zeek`
+
+      ``=``::
+
+         F
+
    :Redefinition: from :doc:`/scripts/policy/protocols/ssl/heartbleed.zeek`
 
       ``=``::
@@ -333,6 +339,10 @@ Types
          (present if :doc:`/scripts/policy/files/x509/disable-certificate-events-known-certs.zeek` is loaded)
 
          Set to true to force certificate events to always be raised for this connection.
+
+      client_random: :zeek:type:`string` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/protocols/ssl/decryption.zeek` is loaded)
+
 
       last_originator_heartbeat_request_size: :zeek:type:`count` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/ssl/heartbleed.zeek` is loaded)

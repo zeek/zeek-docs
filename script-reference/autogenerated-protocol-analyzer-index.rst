@@ -875,7 +875,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5118 5118
+   :source-code: base/init-bare.zeek 5115 5115
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -886,7 +886,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5123 5123
+   :source-code: base/init-bare.zeek 5120 5120
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -7013,7 +7013,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5308 5338
+   :source-code: base/init-bare.zeek 5305 5335
 
    :Type: :zeek:type:`record`
 
@@ -7055,7 +7055,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5340 5349
+   :source-code: base/init-bare.zeek 5337 5346
 
    :Type: :zeek:type:`record`
 
@@ -7070,7 +7070,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5351 5373
+   :source-code: base/init-bare.zeek 5348 5370
 
    :Type: :zeek:type:`record`
 
@@ -7447,7 +7447,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5129 5129
+   :source-code: base/init-bare.zeek 5126 5126
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8097,7 +8097,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5137 5190
+   :source-code: base/init-bare.zeek 5134 5187
 
    :Type: :zeek:type:`record`
 
@@ -8172,7 +8172,7 @@ Types
    for standard syncronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5195 5229
+   :source-code: base/init-bare.zeek 5192 5226
 
    :Type: :zeek:type:`record`
 
@@ -8223,7 +8223,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5238 5271
+   :source-code: base/init-bare.zeek 5235 5268
 
    :Type: :zeek:type:`record`
 
@@ -8274,7 +8274,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5276 5303
+   :source-code: base/init-bare.zeek 5273 5300
 
    :Type: :zeek:type:`record`
 
@@ -15241,7 +15241,7 @@ Events
       ssl_change_cipher_spec
 
 .. zeek:id:: ssl_change_cipher_spec
-   :source-code: base/protocols/ssl/main.zeek 426 433
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 666 666
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -15262,15 +15262,52 @@ Functions
 +++++++++
 
 .. zeek:id:: set_ssl_established
-   :source-code: base/bif/plugins/Zeek_SSL.functions.bif.zeek 11 11
+   :source-code: base/bif/plugins/Zeek_SSL.functions.bif.zeek 13 13
 
-   :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`any`
+   :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
    Sets if the SSL analyzer should consider the connection established (handshake
    finished succesfully).
    
 
    :c: The SSL connection.
+   
+
+   :returns: T on success, F on failure.
+
+.. zeek:id:: set_secret
+   :source-code: base/bif/plugins/Zeek_SSL.functions.bif.zeek 24 24
+
+   :Type: :zeek:type:`function` (c: :zeek:type:`connection`, secret: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Set the secret that should be used to derive keys for the connection.
+   (For TLS 1.2 this is the pre-master secret).
+   
+
+   :c: The affected connection
+   
+
+   :secret: secret to set
+   
+
+   :returns: T on success, F on failure.
+
+.. zeek:id:: set_keys
+   :source-code: base/bif/plugins/Zeek_SSL.functions.bif.zeek 35 35
+
+   :Type: :zeek:type:`function` (c: :zeek:type:`connection`, keys: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Set the decryption keys that should be used to decrypt
+   TLS application data in the connection.
+   
+
+   :c: The affected connection
+   
+
+   :keys: The key buffer as derived via TLS PRF.
+   
+
+   :returns: T on success, F on failure.
 
 Zeek::Syslog
 ------------

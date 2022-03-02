@@ -54,7 +54,7 @@ Redefinable Options
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``F``
-   :Redefinition: from :doc:`/scripts/policy/frameworks/cluster/agent/boot.zeek`
+   :Redefinition: from :doc:`/scripts/policy/frameworks/management/agent/boot.zeek`
 
       ``=``::
 
@@ -92,7 +92,7 @@ Events
    :node: the desired configuration for the new supervised node process.
 
 .. zeek:id:: SupervisorControl::create_response
-   :source-code: policy/frameworks/cluster/agent/main.zeek 47 63
+   :source-code: policy/frameworks/management/agent/main.zeek 46 62
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`string`)
 
@@ -121,7 +121,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::destroy_response
-   :source-code: policy/frameworks/cluster/agent/main.zeek 65 81
+   :source-code: policy/frameworks/management/agent/main.zeek 64 80
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -179,7 +179,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::status_response
-   :source-code: policy/frameworks/cluster/agent/main.zeek 194 270
+   :source-code: policy/frameworks/management/agent/main.zeek 193 269
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Supervisor::Status`)
 
