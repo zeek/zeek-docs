@@ -182,7 +182,7 @@ As an example, for CentOS:
   .. code-block:: console
 
      cd /etc/yum.repos.d/
-     wget https://download.opensuse.org/repositories/security:zeek/CentOS_8/security:zeek.repo
+     wget https://download.opensuse.org/repositories/security:/zeek/CentOS_8_Stream/security:zeek.repo
      yum install zeek
 
   For CentOS 7 run the following as root:
@@ -190,7 +190,7 @@ As an example, for CentOS:
   .. code-block:: console
 
      cd /etc/yum.repos.d/
-     wget https://download.opensuse.org/repositories/security:zeek/CentOS_7/security:zeek.repo
+     wget https://download.opensuse.org/repositories/security:/zeek/CentOS_7/security:zeek.repo
      yum install zeek
 
 Furthermore, you can download the `packages for the latest LTS release build
