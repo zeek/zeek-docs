@@ -473,6 +473,10 @@ Type Conversions
      - :zeek:see:`raw_bytes_to_v4_addr` BIF
      - ``raw_bytes_to_v4_addr("\x7f\x0\x0\x1")``
 
+   * - :zeek:see:`addr`
+     - :zeek:see:`raw_bytes_to_v6_addr` BIF
+     - ``raw_bytes_to_v6_addr("\xda\xda\xbe\xef\x00\x00AAAAAAAAAA")``
+
    * - :zeek:see:`bool`
      - Relational operator
      - ``foo != ""``
