@@ -60,7 +60,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ssl_alert
-   :source-code: base/protocols/ssl/main.zeek 435 441
+   :source-code: base/protocols/ssl/main.zeek 441 447
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, level: :zeek:type:`count`, desc: :zeek:type:`count`)
 
@@ -224,7 +224,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_ecdh_server_params
-   :source-code: base/protocols/ssl/main.zeek 292 297
+   :source-code: base/protocols/ssl/main.zeek 298 303
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, curve: :zeek:type:`count`, point: :zeek:type:`string`)
 
@@ -648,7 +648,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_handshake_message
-   :source-code: base/protocols/ssl/main.zeek 331 406
+   :source-code: base/protocols/ssl/main.zeek 337 412
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -703,7 +703,7 @@ Events
       ssl_alert ssl_encrypted_data
 
 .. zeek:id:: ssl_plaintext_data
-   :source-code: base/protocols/ssl/main.zeek 486 495
+   :source-code: base/protocols/ssl/main.zeek 492 501
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 

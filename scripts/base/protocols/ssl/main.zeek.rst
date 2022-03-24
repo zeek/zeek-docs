@@ -84,7 +84,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSL::ct_logs
-   :source-code: base/protocols/ssl/main.zeek 125 125
+   :source-code: base/protocols/ssl/main.zeek 131 131
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`SSL::CTInfo`
    :Attributes: :zeek:attr:`&redef`
@@ -101,7 +101,7 @@ Runtime Options
    are indexed by (binary) log-id.
 
 .. zeek:id:: SSL::disable_analyzer_after_detection
-   :source-code: base/protocols/ssl/main.zeek 130 130
+   :source-code: base/protocols/ssl/main.zeek 136 136
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -126,7 +126,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: SSL::root_certs
-   :source-code: base/protocols/ssl/main.zeek 105 105
+   :source-code: base/protocols/ssl/main.zeek 111 111
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -144,7 +144,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: SSL::CTInfo
-   :source-code: base/protocols/ssl/main.zeek 109 120
+   :source-code: base/protocols/ssl/main.zeek 115 126
 
    :Type: :zeek:type:`record`
 
@@ -167,7 +167,7 @@ Types
    Transparency log bundle.
 
 .. zeek:type:: SSL::Info
-   :source-code: base/protocols/ssl/main.zeek 16 101
+   :source-code: base/protocols/ssl/main.zeek 16 107
 
    :Type: :zeek:type:`record`
 
@@ -243,32 +243,38 @@ Types
       ssl_history: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
          SSL history showing which types of packets we received in which order.
          Letters have the following meaning with client-sent letters being capitalized:
-         H  hello_request
-         C  client_hello
-         S  server_hello
-         V  hello_verify_request
-         T  NewSessionTicket
-         X  certificate
-         K  server_key_exchange
-         R  certificate_request
-         N  server_hello_done
-         Y  certificate_verify
-         G  client_key_exchange
-         F  finished
-         W  certificate_url
-         U  certificate_status
-         A  supplemental_data
-         Z  unassigned_handshake_type
-         I  change_cipher_spec
-         B  heartbeat
-         D  application_data
-         E  end_of_early_data
-         O  encrypted_extensions
-         P  key_update
-         M  message_hash
-         J  hello_retry_request
-         L  alert
-         Q  unknown_content_type
+         
+         ======  ====================================================
+         Letter  Meaning
+         ======  ====================================================
+         H       hello_request
+         C       client_hello
+         S       server_hello
+         V       hello_verify_request
+         T       NewSessionTicket
+         X       certificate
+         K       server_key_exchange
+         R       certificate_request
+         N       server_hello_done
+         Y       certificate_verify
+         G       client_key_exchange
+         F       finished
+         W       certificate_url
+         U       certificate_status
+         A       supplemental_data
+         Z       unassigned_handshake_type
+         I       change_cipher_spec
+         B       heartbeat
+         D       application_data
+         E       end_of_early_data
+         O       encrypted_extensions
+         P       key_update
+         M       message_hash
+         J       hello_retry_request
+         L       alert
+         Q       unknown_content_type
+         ======  ====================================================
+         
 
       delay_tokens: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
 
@@ -534,7 +540,7 @@ Types
 Events
 ######
 .. zeek:id:: SSL::log_ssl
-   :source-code: base/protocols/ssl/main.zeek 142 142
+   :source-code: base/protocols/ssl/main.zeek 148 148
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SSL::Info`)
 
@@ -544,7 +550,7 @@ Events
 Hooks
 #####
 .. zeek:id:: SSL::finalize_ssl
-   :source-code: base/protocols/ssl/main.zeek 465 475
+   :source-code: base/protocols/ssl/main.zeek 471 481
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
@@ -561,7 +567,7 @@ Hooks
 
 
 .. zeek:id:: SSL::ssl_finishing
-   :source-code: base/protocols/ssl/main.zeek 146 146
+   :source-code: base/protocols/ssl/main.zeek 152 152
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
@@ -571,7 +577,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SSL::delay_log
-   :source-code: base/protocols/ssl/main.zeek 203 208
+   :source-code: base/protocols/ssl/main.zeek 209 214
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -579,7 +585,7 @@ Functions
    logged as long as the token exists or until 15 seconds elapses.
 
 .. zeek:id:: SSL::undelay_log
-   :source-code: base/protocols/ssl/main.zeek 210 214
+   :source-code: base/protocols/ssl/main.zeek 216 220
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
