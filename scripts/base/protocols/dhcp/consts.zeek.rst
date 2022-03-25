@@ -60,7 +60,7 @@ Constants
 .. zeek:id:: DHCP::option_types
    :source-code: base/protocols/dhcp/consts.zeek 31 31
 
-   :Type: :zeek:type:`table` [:zeek:type:`int`] of :zeek:type:`string`
+   :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
    :Default:
 
