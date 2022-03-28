@@ -159,9 +159,6 @@ Assignment operators
 
 The assignment operators evaluate to the result of the assignment.
 
-The ``+=`` operator can also be used to append an element to the end of a
-vector.  For example, ``v += e`` is equivalent to ``v[|v|] = e``.
-
 .. list-table::
   :header-rows: 1
 
@@ -171,11 +168,67 @@ vector.  For example, ``v += e`` is equivalent to ``v[|v|] = e``.
   * - Assignment
     - ``a = b``
 
-  * - Addition assignment
+  * - Addition assignment (more generally, "add to")
     - ``a += b``
 
-  * - Subtraction assignment
+  * - Subtraction assignment (more generally, "remove from")
     - ``a -= b``
+
+Along with simple arithmetic, the ``+=`` operator supports adding elements to
+:zeek:type:`table`,
+:zeek:type:`set`,
+:zeek:type:`vector`, and
+:zeek:type:`pattern`
+values, providing the righthand operand (RHS) has the same type.
+For :zeek:type:`table` and :zeek:type:`set` values,
+each of the RHS elements are added to the
+table or set.  For :zeek:type:`vector`, the RHS elements are appended to
+the end of the vector.  For :zeek:type:`pattern` values, the pattern is
+modified to include the RHS pattern as an alterantive (regular expression ``|``
+operator).
+
+The ``-=`` operator provides analogous functionality for :zeek:type:`table`
+and :zeek:type:`set` types, removing from the lefthand operand any elements
+it has in common with the RHS value.  (Note that for tables, only the
+indices are used; if the RHS value has an index in common with the lefthand
+operand's value, it's removed even if the "yield" values differ.)
+
+For all assignment operators, you can specify a comma-separated list of
+values within braces (``{`` ... ``}``).  These are treated as *constructor*
+arguments to create a corresponding :zeek:type:`table`, :zeek:type:`set`,
+or :zeek:type:`vector` value, with the type of constructor taken from
+the lefthand operand.  For example:
+
+.. code-block:: zeek
+
+    local t: table[count, string] of double;
+    ...
+    t += { [3, "three"] = 3.0, [9, "nine"] = 9.0 };
+
+will add those two elements to the table ``t``.  For :zeek:type:`table`
+and :zeek:type:`set` constructors, you can embed lists in the constructor
+arguments to produce a cross-product expansion.  For example:
+
+.. code-block:: zeek
+
+    local t: table[count, string] of double;
+    ...
+    t += { [[3, 4], ["three", "four"]] = 3.0, [9, "nine"] = 9.0 };
+
+results in ``t`` having five elements:
+
+.. code-block:: zeek
+
+    [3, three] = 3.0
+    [3, four] = 3.0
+    [4, three] = 3.0
+    [4, four] = 3.0
+    [9, nine] = 9.0
+
+Finally, you can also use the ``+=`` operator to
+append an element to the end of a
+vector.  For example, ``v += e`` is equivalent to ``v[|v|] = e``,
+providing that ``e``'s type corresponds to that of one of ``v``'s elements.
 
 Record field operators
 ----------------------
