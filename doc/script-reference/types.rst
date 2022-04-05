@@ -1063,6 +1063,13 @@ Set operations
 You can compute the union, intersection, or difference of two sets
 using the ``|``, ``&``, and ``-`` operators.
 
+.. note::
+
+   Use ``+=`` instead of ``|`` to grow an existing set. That is,
+   say ``s += new_s`` instead of ``s = s | new_s``. The latter requires
+   copying both input sets and thus quickly deteriorates runtime. See
+   :ref:`assignment-operators` for details.
+
 You can compare sets for equality (they have exactly the same elements)
 using ``==``.  The ``<`` operator returns ``T`` if the lefthand operand
 is a proper subset of the righthand operand.  Similarly, ``<=``

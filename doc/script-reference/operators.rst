@@ -154,6 +154,8 @@ Set operators
   * - Set difference
     - ``s1 - s2``
 
+.. _assignment-operators:
+
 Assignment operators
 --------------------
 
