@@ -77,7 +77,7 @@ Runtime Options
    not.
 
 .. zeek:id:: HTTP::http_methods
-   :source-code: base/protocols/http/main.zeek 117 117
+   :source-code: base/protocols/http/main.zeek 120 120
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -114,7 +114,7 @@ Runtime Options
    of letters ``[A-Za-z]``.
 
 .. zeek:id:: HTTP::proxy_headers
-   :source-code: base/protocols/http/main.zeek 104 104
+   :source-code: base/protocols/http/main.zeek 107 107
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -138,7 +138,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: HTTP::Info
-   :source-code: base/protocols/http/main.zeek 28 86
+   :source-code: base/protocols/http/main.zeek 28 89
 
    :Type: :zeek:type:`record`
 
@@ -167,10 +167,13 @@ Types
       referrer: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          Value of the "referer" header.  The comment is deliberately
          misspelled like the standard declares, but the name used here
-         is "referrer" spelled correctly.
+         is "referrer", spelled correctly.
 
       version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value of the version portion of the request.
+         Value of the version portion of the reply. If you require
+         message-level detail, consider the :zeek:see:`http_request` and
+         :zeek:see:`http_reply` events, which report each message's
+         version string.
 
       user_agent: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          Value of the User-Agent header from the client.
@@ -306,7 +309,7 @@ Types
    The record type which contains the fields of the HTTP log.
 
 .. zeek:type:: HTTP::State
-   :source-code: base/protocols/http/main.zeek 90 101
+   :source-code: base/protocols/http/main.zeek 93 104
 
    :Type: :zeek:type:`record`
 
@@ -365,7 +368,7 @@ Types
 Events
 ######
 .. zeek:id:: HTTP::log_http
-   :source-code: base/protocols/http/main.zeek 129 129
+   :source-code: base/protocols/http/main.zeek 132 132
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`HTTP::Info`)
 
@@ -375,7 +378,7 @@ Events
 Hooks
 #####
 .. zeek:id:: HTTP::finalize_http
-   :source-code: base/protocols/http/main.zeek 334 347
+   :source-code: base/protocols/http/main.zeek 337 350
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
