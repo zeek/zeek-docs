@@ -804,7 +804,7 @@ The only operations allowed on enumerations are equality comparisons (``==``,
 ``!=``) and assignment (``=``). Enumerations do not automatically yield their
 values or provide ordering (neither ``Red == 10`` nor ``Red < White`` works),
 but the :zeek:see:`enum_to_int` BIF lets you retrieve an enumeration's numeric
-values if you require such logic.
+value if you require such logic.
 
 .. note::
 
