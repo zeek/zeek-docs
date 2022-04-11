@@ -788,11 +788,29 @@ have no further structure.  An example declaration:
     type color: enum { Red, White, Blue, };
 
 The last comma after ``Blue`` is optional.  Both the type name ``color``
-and the individual values (``Red``, etc.) have global scope.
+and the individual values (``Red``, etc. -- not ``color::Red``) have
+global scope.
 
-Enumerations do not have associated values or ordering.
-The only operations allowed on enumerations are equality comparisons
-(``==``, ``!=``) and assignment (``=``).
+Enumerations may assign :zeek:type:`count` values explicitly:
+
+.. code-block:: zeek
+
+    type color: enum { Red = 10, White = 20, Blue = 30 };
+
+Without explicit assignment, Zeek numbers enumerations sequentially starting
+from 0. You may not mix explicit and implicit assignment.
+
+The only operations allowed on enumerations are equality comparisons (``==``,
+``!=``) and assignment (``=``). Enumerations do not automatically yield their
+values or provide ordering (neither ``Red == 10`` nor ``Red < White`` works),
+but the :zeek:see:`enum_to_int` BIF lets you retrieve an enumeration's numeric
+values if you require such logic.
+
+.. note::
+
+   We recommend using explicit value assignment when relying on numeric values,
+   since it avoids sensitivity to :zeek:keyword:`@load` sequencing when
+   enumerations are :zeek:keyword:`redef`'d in multiple scripts.
 
 Type Conversions
 ^^^^^^^^^^^^^^^^
