@@ -56,7 +56,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Management::Log::role
-   :source-code: policy/frameworks/management/log.zeek 69 69
+   :source-code: policy/frameworks/management/log.zeek 70 70
 
    :Type: :zeek:type:`Management::Role`
    :Attributes: :zeek:attr:`&redef`
@@ -72,6 +72,12 @@ Redefinable Options
       ``=``::
 
          Management::CONTROLLER
+
+   :Redefinition: from :doc:`/scripts/policy/frameworks/management/node/main.zeek`
+
+      ``=``::
+
+         Management::NODE
 
 
    The role of this process in cluster management. Agent and controller
@@ -129,7 +135,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Management::Log::debug
-   :source-code: policy/frameworks/management/log.zeek 87 95
+   :source-code: policy/frameworks/management/log.zeek 89 97
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -140,7 +146,7 @@ Functions
    
 
 .. zeek:id:: Management::Log::error
-   :source-code: policy/frameworks/management/log.zeek 117 125
+   :source-code: policy/frameworks/management/log.zeek 119 127
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -152,7 +158,7 @@ Functions
    
 
 .. zeek:id:: Management::Log::info
-   :source-code: policy/frameworks/management/log.zeek 97 105
+   :source-code: policy/frameworks/management/log.zeek 99 107
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -163,7 +169,7 @@ Functions
    
 
 .. zeek:id:: Management::Log::warning
-   :source-code: policy/frameworks/management/log.zeek 107 115
+   :source-code: policy/frameworks/management/log.zeek 109 117
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 

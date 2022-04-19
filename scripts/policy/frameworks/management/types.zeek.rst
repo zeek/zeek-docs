@@ -43,7 +43,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Management::Configuration
-   :source-code: policy/frameworks/management/types.zeek 65 72
+   :source-code: policy/frameworks/management/types.zeek 66 73
 
    :Type: :zeek:type:`record`
 
@@ -59,7 +59,7 @@ Types
    Data structure capturing a cluster's complete configuration.
 
 .. zeek:type:: Management::Instance
-   :source-code: policy/frameworks/management/types.zeek 26 33
+   :source-code: policy/frameworks/management/types.zeek 27 34
 
    :Type: :zeek:type:`record`
 
@@ -77,13 +77,13 @@ Types
    system: a single physical system.
 
 .. zeek:type:: Management::InstanceVec
-   :source-code: policy/frameworks/management/types.zeek 35 35
+   :source-code: policy/frameworks/management/types.zeek 36 36
 
    :Type: :zeek:type:`vector` of :zeek:type:`Management::Instance`
 
 
 .. zeek:type:: Management::Node
-   :source-code: policy/frameworks/management/types.zeek 51 62
+   :source-code: policy/frameworks/management/types.zeek 52 63
 
    :Type: :zeek:type:`record`
 
@@ -120,7 +120,7 @@ Types
    Configuration describing a Cluster Node process.
 
 .. zeek:type:: Management::NodeStatus
-   :source-code: policy/frameworks/management/types.zeek 76 90
+   :source-code: policy/frameworks/management/types.zeek 77 91
 
    :Type: :zeek:type:`record`
 
@@ -147,13 +147,13 @@ Types
    a get_nodes_request/get_nodes_response transaction.
 
 .. zeek:type:: Management::NodeStatusVec
-   :source-code: policy/frameworks/management/types.zeek 92 92
+   :source-code: policy/frameworks/management/types.zeek 93 93
 
    :Type: :zeek:type:`vector` of :zeek:type:`Management::NodeStatus`
 
 
 .. zeek:type:: Management::Option
-   :source-code: policy/frameworks/management/types.zeek 18 21
+   :source-code: policy/frameworks/management/types.zeek 19 22
 
    :Type: :zeek:type:`record`
 
@@ -166,7 +166,7 @@ Types
    A Zeek-side option with value.
 
 .. zeek:type:: Management::Result
-   :source-code: policy/frameworks/management/types.zeek 95 102
+   :source-code: policy/frameworks/management/types.zeek 96 103
 
    :Type: :zeek:type:`record`
 
@@ -191,13 +191,13 @@ Types
    Return value for request-response API event pairs
 
 .. zeek:type:: Management::ResultVec
-   :source-code: policy/frameworks/management/types.zeek 104 104
+   :source-code: policy/frameworks/management/types.zeek 105 105
 
    :Type: :zeek:type:`vector` of :zeek:type:`Management::Result`
 
 
 .. zeek:type:: Management::Role
-   :source-code: policy/frameworks/management/types.zeek 11 16
+   :source-code: policy/frameworks/management/types.zeek 11 17
 
    :Type: :zeek:type:`enum`
 
@@ -213,12 +213,16 @@ Types
 
          The cluster's controller.
 
+      .. zeek:enum:: Management::NODE Management::Role
+
+         A managed cluster node (worker, manager, etc).
+
    Management infrastructure node type. This intentionally does not
-   include the data cluster node types (worker, logger, etc) -- those
+   include the managed cluster node types (worker, logger, etc) -- those
    continue to be managed by the cluster framework.
 
 .. zeek:type:: Management::State
-   :source-code: policy/frameworks/management/types.zeek 41 49
+   :source-code: policy/frameworks/management/types.zeek 42 50
 
    :Type: :zeek:type:`enum`
 
@@ -254,7 +258,7 @@ Types
 Functions
 #########
 .. zeek:id:: Management::result_to_string
-   :source-code: policy/frameworks/management/types.zeek 111 136
+   :source-code: policy/frameworks/management/types.zeek 112 137
 
    :Type: :zeek:type:`function` (res: :zeek:type:`Management::Result`) : :zeek:type:`string`
 

@@ -34,6 +34,9 @@ Events
                                                                                   :zeek:see:`Management::NodeStatus` records that capture
                                                                                   the status of Supervisor-managed nodes running on this instance.
 :zeek:id:`Management::Agent::API::get_nodes_response`: :zeek:type:`event`         Response to a get_nodes_request event.
+:zeek:id:`Management::Agent::API::node_dispatch_request`: :zeek:type:`event`      The controller sends this to every agent to request a dispatch (the
+                                                                                  execution of a pre-implemented activity) to all cluster nodes.
+:zeek:id:`Management::Agent::API::node_dispatch_response`: :zeek:type:`event`     Response to a node_dispatch_request event.
 :zeek:id:`Management::Agent::API::notify_agent_hello`: :zeek:type:`event`         The agent sends this event upon peering as a "check-in", informing
                                                                                   the controller that an agent of the given name is now available to
                                                                                   communicate with.
@@ -62,7 +65,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Agent::API::agent_standby_request
-   :source-code: policy/frameworks/management/agent/main.zeek 294 312
+   :source-code: policy/frameworks/management/agent/main.zeek 485 503
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -79,7 +82,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_standby_response
-   :source-code: policy/frameworks/management/agent/api.zeek 104 104
+   :source-code: policy/frameworks/management/agent/api.zeek 137 137
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -94,7 +97,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_request
-   :source-code: policy/frameworks/management/agent/main.zeek 281 292
+   :source-code: policy/frameworks/management/agent/main.zeek 472 483
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -107,7 +110,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_response
-   :source-code: policy/frameworks/management/controller/main.zeek 264 291
+   :source-code: policy/frameworks/management/controller/main.zeek 299 326
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -122,7 +125,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_request
-   :source-code: policy/frameworks/management/agent/main.zeek 270 279
+   :source-code: policy/frameworks/management/agent/main.zeek 301 310
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -136,7 +139,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_response
-   :source-code: policy/frameworks/management/controller/main.zeek 479 522
+   :source-code: policy/frameworks/management/controller/main.zeek 514 557
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -153,8 +156,52 @@ Events
        indicate failure, with error messages indicating what went wrong.
    
 
+.. zeek:id:: Management::Agent::API::node_dispatch_request
+   :source-code: policy/frameworks/management/agent/main.zeek 382 471
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, action: :zeek:type:`vector` of :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
+
+   The controller sends this to every agent to request a dispatch (the
+   execution of a pre-implemented activity) to all cluster nodes.  This
+   is the generic controller-agent "back-end" implementation of explicit
+   client-controller "front-end" interactions, including:
+   
+   - :zeek:see:`Management::Controller::API::get_id_value_request`: two
+     arguments, the first being "get_id_value" and the second the name
+     of the ID to look up.
+   
+
+   :reqid: a request identifier string, echoed in the response event.
+   
+
+   :action: the requested dispatch command, with any arguments.
+   
+
+   :nodes: a set of cluster node names (e.g. "worker-01") to retrieve
+      the values from. An empty set, supplied by default, means
+      retrieval from all nodes managed by the agent.
+
+.. zeek:id:: Management::Agent::API::node_dispatch_response
+   :source-code: policy/frameworks/management/controller/main.zeek 592 656
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
+
+   Response to a node_dispatch_request event. Each agent sends this back
+   to the controller to report the dispatch outcomes on all nodes managed
+   by that agent.
+   
+
+   :reqid: the request identifier used in the request event.
+   
+
+   :result: a :zeek:type:`vector` of :zeek:see:`Management::Result`
+       records. Each record covers one Zeek cluster node managed by this
+       agent. Upon success, each :zeek:see:`Management::Result` record's
+       data member contains the dispatches' response in a data type
+       appropriate for the respective dispatch.
+
 .. zeek:id:: Management::Agent::API::notify_agent_hello
-   :source-code: policy/frameworks/management/controller/main.zeek 230 262
+   :source-code: policy/frameworks/management/controller/main.zeek 265 297
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, host: :zeek:type:`addr`, api_version: :zeek:type:`count`)
 
@@ -174,25 +221,25 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::notify_change
-   :source-code: policy/frameworks/management/controller/main.zeek 295 296
+   :source-code: policy/frameworks/management/controller/main.zeek 330 331
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, n: :zeek:type:`Management::Node`, old: :zeek:type:`Management::State`, new: :zeek:type:`Management::State`)
 
 
 .. zeek:id:: Management::Agent::API::notify_error
-   :source-code: policy/frameworks/management/controller/main.zeek 300 301
+   :source-code: policy/frameworks/management/controller/main.zeek 335 336
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: Management::Agent::API::notify_log
-   :source-code: policy/frameworks/management/controller/main.zeek 305 306
+   :source-code: policy/frameworks/management/controller/main.zeek 340 341
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: Management::Agent::API::set_configuration_request
-   :source-code: policy/frameworks/management/agent/main.zeek 98 192
+   :source-code: policy/frameworks/management/agent/main.zeek 112 212
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`)
 
@@ -212,7 +259,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::set_configuration_response
-   :source-code: policy/frameworks/management/controller/main.zeek 310 350
+   :source-code: policy/frameworks/management/controller/main.zeek 345 385
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 

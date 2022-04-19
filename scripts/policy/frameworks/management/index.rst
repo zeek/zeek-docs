@@ -94,6 +94,16 @@ Package: policy/frameworks/management
    Utility functions for the Management framework, available to agent
    and controller.
 
+:doc:`/scripts/policy/frameworks/management/node/api.zeek`
+
+   The Management event API of cluster nodes. The API consists of request/
+   response event pairs, like elsewhere in the Management, Supervisor, and
+   Control frameworks.
+
+:doc:`/scripts/policy/frameworks/management/node/config.zeek`
+
+   Configuration settings for nodes controlled by the Management framework.
+
 :doc:`/scripts/policy/frameworks/management/agent/main.zeek`
 
    This is the main "runtime" of a cluster agent. Zeek does not load this
@@ -107,4 +117,12 @@ Package: policy/frameworks/management
    does not load this directly; rather, the controller's bootstrapping module
    (in ./boot.zeek) specifies it as the script to run in the node newly created
    by the supervisor.
+
+:doc:`/scripts/policy/frameworks/management/node/__load__.zeek`
+
+
+:doc:`/scripts/policy/frameworks/management/node/main.zeek`
+
+   This module provides Management framework functionality present in every
+   cluster node, to allowing Management agents to interact with the nodes.
 

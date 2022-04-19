@@ -20,6 +20,8 @@ Types
 :zeek:type:`Management::Controller::Runtime::GetNodesState`: :zeek:type:`record`         Request state specific to
                                                                                          :zeek:see:`Management::Controller::API::get_nodes_request` and
                                                                                          :zeek:see:`Management::Controller::API::get_nodes_response`.
+:zeek:type:`Management::Controller::Runtime::NodeDispatchState`: :zeek:type:`record`     Request state for node dispatch requests, to track the requested
+                                                                                         action and received responses.
 :zeek:type:`Management::Controller::Runtime::SetConfigurationState`: :zeek:type:`record` Request state specific to
                                                                                          :zeek:see:`Management::Controller::API::set_configuration_request` and
                                                                                          :zeek:see:`Management::Controller::API::set_configuration_response`.
@@ -34,9 +36,13 @@ Redefinitions
                                                                                     
                                                                                     :New Fields: :zeek:type:`Management::Request::Request`
                                                                                     
+                                                                                      node_dispatch_state: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+                                                                                    
                                                                                       set_configuration_state: :zeek:type:`Management::Controller::Runtime::SetConfigurationState` :zeek:attr:`&optional`
                                                                                     
                                                                                       get_nodes_state: :zeek:type:`Management::Controller::Runtime::GetNodesState` :zeek:attr:`&optional`
+                                                                                    
+                                                                                      node_dispatch_state: :zeek:type:`Management::Controller::Runtime::NodeDispatchState` :zeek:attr:`&optional`
                                                                                     
                                                                                       test_state: :zeek:type:`Management::Controller::Runtime::TestState` :zeek:attr:`&optional`
 =================================================================================== =====================================================================================================================
@@ -58,6 +64,33 @@ Types
    :zeek:see:`Management::Controller::API::get_nodes_request` and
    :zeek:see:`Management::Controller::API::get_nodes_response`.
 
+.. zeek:type:: Management::Controller::Runtime::NodeDispatchState
+   :source-code: policy/frameworks/management/controller/main.zeek 50 60
+
+   :Type: :zeek:type:`record`
+
+      action: :zeek:type:`vector` of :zeek:type:`string`
+         The dispatched action. The first string is a command,
+         any remaining strings its arguments.
+
+      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+         Request state for every controller/agent transaction.
+         The set of strings tracks the node names from which
+         we still expect responses, before we can respond back
+         to the client.
+
+   Request state for node dispatch requests, to track the requested
+   action and received responses. Node dispatches are requests to
+   execute pre-implemented actions on every node in the cluster,
+   and report their outcomes. See
+   :zeek:see:`Management::Agent::API::node_dispatch_request` and
+   :zeek:see:`Management::Agent::API::node_dispatch_response` for the
+   agent/controller interaction, and
+   :zeek:see:`Management::Controller::API::get_id_value_request` and
+   :zeek:see:`Management::Controller::API::get_id_value_response`
+   for an example of a specific API the controller generalizes into
+   a dispatch.
+
 .. zeek:type:: Management::Controller::Runtime::SetConfigurationState
    :source-code: policy/frameworks/management/controller/main.zeek 24 29
 
@@ -74,7 +107,7 @@ Types
    :zeek:see:`Management::Controller::API::set_configuration_response`.
 
 .. zeek:type:: Management::Controller::Runtime::TestState
-   :source-code: policy/frameworks/management/controller/main.zeek 40 41
+   :source-code: policy/frameworks/management/controller/main.zeek 63 64
 
    :Type: :zeek:type:`record`
 

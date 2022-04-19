@@ -454,6 +454,8 @@
    policy/frameworks/management/log.zeek </scripts/policy/frameworks/management/log.zeek>
    policy/frameworks/management/request.zeek </scripts/policy/frameworks/management/request.zeek>
    policy/frameworks/management/util.zeek </scripts/policy/frameworks/management/util.zeek>
+   policy/frameworks/management/node/api.zeek </scripts/policy/frameworks/management/node/api.zeek>
+   policy/frameworks/management/node/config.zeek </scripts/policy/frameworks/management/node/config.zeek>
    policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>
    policy/frameworks/dpd/packet-segment-logging.zeek </scripts/policy/frameworks/dpd/packet-segment-logging.zeek>
    policy/frameworks/intel/do_notice.zeek </scripts/policy/frameworks/intel/do_notice.zeek>
@@ -565,6 +567,8 @@
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>
    policy/frameworks/management/agent/main.zeek </scripts/policy/frameworks/management/agent/main.zeek>
    policy/frameworks/management/controller/main.zeek </scripts/policy/frameworks/management/controller/main.zeek>
+   policy/frameworks/management/node/__load__.zeek </scripts/policy/frameworks/management/node/__load__.zeek>
+   policy/frameworks/management/node/main.zeek </scripts/policy/frameworks/management/node/main.zeek>
    policy/frameworks/files/extract-all-files.zeek </scripts/policy/frameworks/files/extract-all-files.zeek>
    policy/misc/dump-events.zeek </scripts/policy/misc/dump-events.zeek>
    policy/protocols/conn/speculative-service.zeek </scripts/policy/protocols/conn/speculative-service.zeek>
