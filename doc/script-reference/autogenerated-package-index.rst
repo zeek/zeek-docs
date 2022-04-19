@@ -408,3 +408,6 @@
    Sets various defaults, and prints warning messages to stdout under
    certain conditions.
 
+:doc:`policy/frameworks/management/node </scripts/policy/frameworks/management/node/index>`
+
+

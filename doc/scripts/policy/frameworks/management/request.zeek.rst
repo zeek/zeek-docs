@@ -87,8 +87,10 @@ State Variables
             results=[]
             finished=T
             supervisor_state=<uninitialized>
+            node_dispatch_state=<uninitialized>
             set_configuration_state=<uninitialized>
             get_nodes_state=<uninitialized>
+            node_dispatch_state=<uninitialized>
             test_state=<uninitialized>
          }
 
@@ -122,11 +124,19 @@ Types
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
+      node_dispatch_state: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+
+
       set_configuration_state: :zeek:type:`Management::Controller::Runtime::SetConfigurationState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
 
 
       get_nodes_state: :zeek:type:`Management::Controller::Runtime::GetNodesState` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+
+
+      node_dispatch_state: :zeek:type:`Management::Controller::Runtime::NodeDispatchState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
 
 
@@ -144,7 +154,7 @@ Types
 Events
 ######
 .. zeek:id:: Management::Request::request_expired
-   :source-code: policy/frameworks/management/controller/main.zeek 557 602
+   :source-code: policy/frameworks/management/controller/main.zeek 731 785
 
    :Type: :zeek:type:`event` (req: :zeek:type:`Management::Request::Request`)
 
