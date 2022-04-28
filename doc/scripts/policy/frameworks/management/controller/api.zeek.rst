@@ -64,7 +64,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Controller::API::get_id_value_request
-   :source-code: policy/frameworks/management/controller/main.zeek 657 730
+   :source-code: policy/frameworks/management/controller/main.zeek 662 740
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, id: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -105,7 +105,7 @@ Events
        returns).
 
 .. zeek:id:: Management::Controller::API::get_instances_request
-   :source-code: policy/frameworks/management/controller/main.zeek 498 513
+   :source-code: policy/frameworks/management/controller/main.zeek 498 514
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -133,7 +133,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_request
-   :source-code: policy/frameworks/management/controller/main.zeek 559 591
+   :source-code: policy/frameworks/management/controller/main.zeek 561 594
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -165,7 +165,7 @@ Events
        failure, with error messages indicating what went wrong.
 
 .. zeek:id:: Management::Controller::API::notify_agents_ready
-   :source-code: policy/frameworks/management/controller/main.zeek 244 263
+   :source-code: policy/frameworks/management/controller/main.zeek 243 262
 
    :Type: :zeek:type:`event` (instances: :zeek:type:`set` [:zeek:type:`string`])
 
@@ -180,7 +180,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::set_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 387 497
+   :source-code: policy/frameworks/management/controller/main.zeek 386 497
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`)
 
@@ -214,7 +214,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_request
-   :source-code: policy/frameworks/management/controller/main.zeek 787 798
+   :source-code: policy/frameworks/management/controller/main.zeek 802 813
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, with_state: :zeek:type:`bool`)
 
