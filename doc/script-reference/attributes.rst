@@ -154,8 +154,9 @@ Writes a :zeek:type:`record` field to the associated log stream.
 &optional
 ---------
 
-Allows a record field value to be missing (i.e., neither initialized nor
-ever assigned a value).
+Allows a record field value to be missing. Zeek allows such fields to remain
+uninitialized and unassigned, and to have assigned values removed via
+:zeek:keyword:`delete`.
 
 In this example, the record could be instantiated with either
 ``myrec($a=127.0.0.1)`` or ``myrec($a=127.0.0.1, $b=80/tcp)``:
