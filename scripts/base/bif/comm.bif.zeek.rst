@@ -13,13 +13,15 @@ Summary
 ~~~~~~~
 Events
 ######
-=================================================== ==========================================================
-:zeek:id:`Broker::error`: :zeek:type:`event`        Generated when an error occurs in the Broker sub-system.
-:zeek:id:`Broker::peer_added`: :zeek:type:`event`   Generated when a new peering has been established.
-:zeek:id:`Broker::peer_lost`: :zeek:type:`event`    Generated when an existing peering has been lost.
-:zeek:id:`Broker::peer_removed`: :zeek:type:`event` Generated when an existing peer has been removed.
-:zeek:id:`Broker::status`: :zeek:type:`event`       Generated when something changes in the Broker sub-system.
-=================================================== ==========================================================
+=========================================================== ================================================================
+:zeek:id:`Broker::endpoint_discovered`: :zeek:type:`event`  Generated when a new Broker endpoint appeared.
+:zeek:id:`Broker::endpoint_unreachable`: :zeek:type:`event` Generated when the last path to a Broker endpoint has been lost.
+:zeek:id:`Broker::error`: :zeek:type:`event`                Generated when an error occurs in the Broker sub-system.
+:zeek:id:`Broker::peer_added`: :zeek:type:`event`           Generated when a new peering has been established.
+:zeek:id:`Broker::peer_lost`: :zeek:type:`event`            Generated when an existing peering has been lost.
+:zeek:id:`Broker::peer_removed`: :zeek:type:`event`         Generated when an existing peer has been removed.
+:zeek:id:`Broker::status`: :zeek:type:`event`               Generated when something changes in the Broker sub-system.
+=========================================================== ================================================================
 
 Functions
 #########
@@ -40,6 +42,20 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Events
 ######
+.. zeek:id:: Broker::endpoint_discovered
+   :source-code: base/bif/comm.bif.zeek 29 29
+
+   :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
+
+   Generated when a new Broker endpoint appeared.
+
+.. zeek:id:: Broker::endpoint_unreachable
+   :source-code: base/bif/comm.bif.zeek 33 33
+
+   :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
+
+   Generated when the last path to a Broker endpoint has been lost.
+
 .. zeek:id:: Broker::error
    :source-code: base/frameworks/broker/log.zeek 71 84
 
@@ -78,55 +94,55 @@ Events
 Functions
 #########
 .. zeek:id:: Broker::__listen
-   :source-code: base/bif/comm.bif.zeek 69 69
+   :source-code: base/bif/comm.bif.zeek 77 77
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`port`
 
 
 .. zeek:id:: Broker::__node_id
-   :source-code: base/bif/comm.bif.zeek 81 81
+   :source-code: base/bif/comm.bif.zeek 89 89
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
 
 .. zeek:id:: Broker::__peer
-   :source-code: base/bif/comm.bif.zeek 72 72
+   :source-code: base/bif/comm.bif.zeek 80 80
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`, retry: :zeek:type:`interval`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__peers
-   :source-code: base/bif/comm.bif.zeek 78 78
+   :source-code: base/bif/comm.bif.zeek 86 86
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::PeerInfos`
 
 
 .. zeek:id:: Broker::__set_metrics_export_endpoint_name
-   :source-code: base/bif/comm.bif.zeek 90 90
+   :source-code: base/bif/comm.bif.zeek 98 98
 
    :Type: :zeek:type:`function` (value: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__set_metrics_export_interval
-   :source-code: base/bif/comm.bif.zeek 84 84
+   :source-code: base/bif/comm.bif.zeek 92 92
 
    :Type: :zeek:type:`function` (value: :zeek:type:`interval`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__set_metrics_export_prefixes
-   :source-code: base/bif/comm.bif.zeek 93 93
+   :source-code: base/bif/comm.bif.zeek 101 101
 
    :Type: :zeek:type:`function` (filter: :zeek:type:`string_vec`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__set_metrics_export_topic
-   :source-code: base/bif/comm.bif.zeek 87 87
+   :source-code: base/bif/comm.bif.zeek 95 95
 
    :Type: :zeek:type:`function` (value: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__unpeer
-   :source-code: base/bif/comm.bif.zeek 75 75
+   :source-code: base/bif/comm.bif.zeek 83 83
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
 
