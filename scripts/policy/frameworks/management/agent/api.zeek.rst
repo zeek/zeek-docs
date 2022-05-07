@@ -139,7 +139,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_response
-   :source-code: policy/frameworks/management/controller/main.zeek 515 559
+   :source-code: policy/frameworks/management/controller/main.zeek 539 583
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -182,7 +182,7 @@ Events
       retrieval from all nodes managed by the agent.
 
 .. zeek:id:: Management::Agent::API::node_dispatch_response
-   :source-code: policy/frameworks/management/controller/main.zeek 595 661
+   :source-code: policy/frameworks/management/controller/main.zeek 619 685
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
 
