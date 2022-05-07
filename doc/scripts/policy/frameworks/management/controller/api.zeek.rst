@@ -24,6 +24,9 @@ Constants
 Events
 ######
 ====================================================================================== ======================================================================
+:zeek:id:`Management::Controller::API::get_configuration_request`: :zeek:type:`event`  zeek-client sends this event to retrieve the currently deployed
+                                                                                       cluster configuration.
+:zeek:id:`Management::Controller::API::get_configuration_response`: :zeek:type:`event` Response to a get_configuration_request event.
 :zeek:id:`Management::Controller::API::get_id_value_request`: :zeek:type:`event`       zeek-client sends this event to retrieve the current value of a
                                                                                        variable in Zeek's global namespace, referenced by the given
                                                                                        identifier (i.e., variable name).
@@ -63,8 +66,38 @@ Constants
 
 Events
 ######
+.. zeek:id:: Management::Controller::API::get_configuration_request
+   :source-code: policy/frameworks/management/controller/main.zeek 498 520
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
+
+   zeek-client sends this event to retrieve the currently deployed
+   cluster configuration.
+   
+
+   :reqid: a request identifier string, echoed in the response event.
+   
+
+.. zeek:id:: Management::Controller::API::get_configuration_response
+   :source-code: policy/frameworks/management/controller/api.zeek 77 77
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
+
+   Response to a get_configuration_request event. The controller sends
+   this back to the client.
+   
+
+   :reqid: the request identifier used in the request event.
+   
+
+   :result: a :zeek:see:`Management::Result` record with a successful
+       :zeek:see:`Management::Configuration` in the data member, if
+       a configuration is currently deployed. Otherwise, a Result
+       record in error state, with no data value assigned.
+   
+
 .. zeek:id:: Management::Controller::API::get_id_value_request
-   :source-code: policy/frameworks/management/controller/main.zeek 662 740
+   :source-code: policy/frameworks/management/controller/main.zeek 686 764
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, id: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -87,7 +120,7 @@ Events
       retrieval from all current cluster nodes.
 
 .. zeek:id:: Management::Controller::API::get_id_value_response
-   :source-code: policy/frameworks/management/controller/api.zeek 110 110
+   :source-code: policy/frameworks/management/controller/api.zeek 131 131
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
 
@@ -105,7 +138,7 @@ Events
        returns).
 
 .. zeek:id:: Management::Controller::API::get_instances_request
-   :source-code: policy/frameworks/management/controller/main.zeek 498 514
+   :source-code: policy/frameworks/management/controller/main.zeek 522 538
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -133,7 +166,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_request
-   :source-code: policy/frameworks/management/controller/main.zeek 561 594
+   :source-code: policy/frameworks/management/controller/main.zeek 585 618
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -147,7 +180,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_response
-   :source-code: policy/frameworks/management/controller/api.zeek 79 79
+   :source-code: policy/frameworks/management/controller/api.zeek 100 100
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
 
@@ -214,7 +247,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_request
-   :source-code: policy/frameworks/management/controller/main.zeek 802 813
+   :source-code: policy/frameworks/management/controller/main.zeek 826 837
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, with_state: :zeek:type:`bool`)
 
@@ -233,7 +266,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_response
-   :source-code: policy/frameworks/management/controller/api.zeek 134 134
+   :source-code: policy/frameworks/management/controller/api.zeek 155 155
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
