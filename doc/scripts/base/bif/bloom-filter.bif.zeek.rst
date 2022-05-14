@@ -12,17 +12,19 @@ Summary
 ~~~~~~~
 Functions
 #########
-============================================================ ===================================================================
+============================================================ ============================================================================================
 :zeek:id:`bloomfilter_add`: :zeek:type:`function`            Adds an element to a Bloom filter.
 :zeek:id:`bloomfilter_basic_init`: :zeek:type:`function`     Creates a basic Bloom filter.
 :zeek:id:`bloomfilter_basic_init2`: :zeek:type:`function`    Creates a basic Bloom filter.
 :zeek:id:`bloomfilter_clear`: :zeek:type:`function`          Removes all elements from a Bloom filter.
 :zeek:id:`bloomfilter_counting_init`: :zeek:type:`function`  Creates a counting Bloom filter.
+:zeek:id:`bloomfilter_decrement`: :zeek:type:`function`      Decrements the counter for an element that was added to a counting bloom filter in the past.
 :zeek:id:`bloomfilter_internal_state`: :zeek:type:`function` Returns a string with a representation of a Bloom filter's internal
                                                              state.
+:zeek:id:`bloomfilter_intersect`: :zeek:type:`function`      Intersects two Bloom filters.
 :zeek:id:`bloomfilter_lookup`: :zeek:type:`function`         Retrieves the counter for a given element in a Bloom filter.
 :zeek:id:`bloomfilter_merge`: :zeek:type:`function`          Merges two Bloom filters.
-============================================================ ===================================================================
+============================================================ ============================================================================================
 
 
 Detailed Interface
@@ -34,7 +36,7 @@ Functions
 
    :Type: :zeek:type:`function` (bf: :zeek:type:`opaque` of bloomfilter, x: :zeek:type:`any`) : :zeek:type:`any`
 
-   Adds an element to a Bloom filter.
+   Adds an element to a Bloom filter. For counting bloom filters, the counter is incremented.
    
 
    :bf: The Bloom filter handle.
@@ -44,7 +46,7 @@ Functions
    
    .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2
       bloomfilter_counting_init bloomfilter_lookup bloomfilter_clear
-      bloomfilter_merge
+      bloomfilter_merge bloomfilter_decrement
 
 .. zeek:id:: bloomfilter_basic_init
    :source-code: base/bif/bloom-filter.bif.zeek 28 28
@@ -103,7 +105,7 @@ Functions
       bloomfilter_lookup bloomfilter_clear bloomfilter_merge global_hash_seed
 
 .. zeek:id:: bloomfilter_clear
-   :source-code: base/bif/bloom-filter.bif.zeek 114 114
+   :source-code: base/bif/bloom-filter.bif.zeek 137 137
 
    :Type: :zeek:type:`function` (bf: :zeek:type:`opaque` of bloomfilter) : :zeek:type:`any`
 
@@ -152,8 +154,31 @@ Functions
    .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2 bloomfilter_add
       bloomfilter_lookup bloomfilter_clear bloomfilter_merge global_hash_seed
 
+.. zeek:id:: bloomfilter_decrement
+   :source-code: base/bif/bloom-filter.bif.zeek 105 105
+
+   :Type: :zeek:type:`function` (bf: :zeek:type:`opaque` of bloomfilter, x: :zeek:type:`any`) : :zeek:type:`bool`
+
+   Decrements the counter for an element that was added to a counting bloom filter in the past.
+   
+   Note that decrement operations can lead to false negatives if used on a counting bloom-filter
+   that exceeded the width of its counter.
+   
+
+   :bf: The coubting bloom filter handle.
+   
+
+   :x: The element to decrement
+   
+
+   :returns: True on success
+   
+   .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2
+      bloomfilter_counting_init bloomfilter_lookup bloomfilter_clear
+      bloomfilter_merge
+
 .. zeek:id:: bloomfilter_internal_state
-   :source-code: base/bif/bloom-filter.bif.zeek 141 141
+   :source-code: base/bif/bloom-filter.bif.zeek 185 185
 
    :Type: :zeek:type:`function` (bf: :zeek:type:`opaque` of bloomfilter) : :zeek:type:`string`
 
@@ -166,12 +191,48 @@ Functions
 
    :returns: a string with a representation of a Bloom filter's internal state.
 
+.. zeek:id:: bloomfilter_intersect
+   :source-code: base/bif/bloom-filter.bif.zeek 176 176
+
+   :Type: :zeek:type:`function` (bf1: :zeek:type:`opaque` of bloomfilter, bf2: :zeek:type:`opaque` of bloomfilter) : :zeek:type:`opaque` of bloomfilter
+
+   Intersects two Bloom filters.
+   
+   The resulting Bloom filter returns true when queried for elements
+   that were contained in both bloom filters. Note that intersected Bloom
+   filters have a slightly higher probability of false positives than
+   Bloom filters created from scratch.
+   
+   Please note that, while this function works with basic and with counting
+   bloom filters, the result always is a basic bloom filter. So - intersecting
+   two counting bloom filters will result in a basic bloom filter. The reason
+   for this is that there is no reasonable definition of how to handle counters
+   during intersection.
+   
+
+   :bf1: The first Bloom filter handle.
+   
+
+   :bf2: The second Bloom filter handle.
+   
+
+   :returns: The intersection of *bf1* and *bf2*.
+   
+   .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2
+      bloomfilter_counting_init bloomfilter_add bloomfilter_lookup
+      bloomfilter_clear bloomfilter_merge
+
 .. zeek:id:: bloomfilter_lookup
-   :source-code: base/bif/bloom-filter.bif.zeek 102 102
+   :source-code: base/bif/bloom-filter.bif.zeek 125 125
 
    :Type: :zeek:type:`function` (bf: :zeek:type:`opaque` of bloomfilter, x: :zeek:type:`any`) : :zeek:type:`count`
 
    Retrieves the counter for a given element in a Bloom filter.
+   
+   For a basic bloom filter, this is 0 when the element is not part of the bloom filter, or 1
+   if it is part of the bloom filter.
+   
+   For a counting bloom filter, this is the estimate of how often an element was added.
    
 
    :bf: The Bloom filter handle.
@@ -187,15 +248,11 @@ Functions
       bloomfilter_merge
 
 .. zeek:id:: bloomfilter_merge
-   :source-code: base/bif/bloom-filter.bif.zeek 132 132
+   :source-code: base/bif/bloom-filter.bif.zeek 151 151
 
    :Type: :zeek:type:`function` (bf1: :zeek:type:`opaque` of bloomfilter, bf2: :zeek:type:`opaque` of bloomfilter) : :zeek:type:`opaque` of bloomfilter
 
    Merges two Bloom filters.
-   
-   .. note:: Currently Bloom filters created by different Zeek instances cannot
-      be merged. In the future, this will be supported as long as both filters
-      are created with the same name.
    
 
    :bf1: The first Bloom filter handle.
@@ -208,6 +265,6 @@ Functions
    
    .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2
       bloomfilter_counting_init bloomfilter_add bloomfilter_lookup
-      bloomfilter_clear
+      bloomfilter_clear bloomfilter_merge
 
 
