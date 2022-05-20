@@ -43,7 +43,7 @@ Constants
 Functions
 #########
 .. zeek:id:: build_path
-   :source-code: base/utils/paths.zeek 32 36
+   :source-code: base/utils/paths.zeek 32 38
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`, file_name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -57,10 +57,10 @@ Functions
    
 
    :returns: the concatenation of the directory path and file name, or just
-            the file name if it's already an absolute path.
+            the file name if it's already an absolute path or dir is empty.
 
 .. zeek:id:: build_path_compressed
-   :source-code: base/utils/paths.zeek 40 43
+   :source-code: base/utils/paths.zeek 42 45
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`, file_name: :zeek:type:`string`) : :zeek:type:`string`
 
