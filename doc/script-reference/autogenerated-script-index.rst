@@ -435,6 +435,7 @@
    base/files/extract/main.zeek </scripts/base/files/extract/main.zeek>
    base/misc/find-checksum-offloading.zeek </scripts/base/misc/find-checksum-offloading.zeek>
    base/misc/find-filtered-trace.zeek </scripts/base/misc/find-filtered-trace.zeek>
+   base/misc/installation.zeek </scripts/base/misc/installation.zeek>
    base/misc/version.zeek </scripts/base/misc/version.zeek>
    builtin-plugins/__preload__.zeek </scripts/builtin-plugins/__preload__.zeek>
    builtin-plugins/__load__.zeek </scripts/builtin-plugins/__load__.zeek>
