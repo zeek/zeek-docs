@@ -7,24 +7,22 @@ policy/frameworks/management/agent/config.zeek
 Configuration settings for a cluster agent.
 
 :Namespace: Management::Agent
-:Imports: :doc:`policy/frameworks/management/config.zeek </scripts/policy/frameworks/management/config.zeek>`, :doc:`policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>`
+:Imports: :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>`
 
 Summary
 ~~~~~~~
 Redefinable Options
 ###################
 ============================================================================================== =====================================================================================
-:zeek:id:`Management::Agent::cluster_directory`: :zeek:type:`string` :zeek:attr:`&redef`       The working directory for data cluster nodes created by this
-                                                                                               agent.
 :zeek:id:`Management::Agent::controller`: :zeek:type:`Broker::NetworkInfo` :zeek:attr:`&redef` The network coordinates of the controller.
 :zeek:id:`Management::Agent::default_port`: :zeek:type:`port` :zeek:attr:`&redef`              The fallback listen port if :zeek:see:`Management::Agent::listen_port` remains empty.
-:zeek:id:`Management::Agent::directory`: :zeek:type:`string` :zeek:attr:`&redef`               An optional custom output directory for stdout/stderr.
+:zeek:id:`Management::Agent::directory`: :zeek:type:`string` :zeek:attr:`&redef`               An optional working directory for the agent.
 :zeek:id:`Management::Agent::listen_address`: :zeek:type:`string` :zeek:attr:`&redef`          The network address the agent listens on.
 :zeek:id:`Management::Agent::listen_port`: :zeek:type:`string` :zeek:attr:`&redef`             The network port the agent listens on.
 :zeek:id:`Management::Agent::name`: :zeek:type:`string` :zeek:attr:`&redef`                    The name this agent uses to represent the cluster instance it
                                                                                                manages.
-:zeek:id:`Management::Agent::stderr_file_suffix`: :zeek:type:`string` :zeek:attr:`&redef`      Agent stderr log configuration.
-:zeek:id:`Management::Agent::stdout_file_suffix`: :zeek:type:`string` :zeek:attr:`&redef`      Agent stdout log configuration.
+:zeek:id:`Management::Agent::stderr_file`: :zeek:type:`string` :zeek:attr:`&redef`             Agent stderr log configuration.
+:zeek:id:`Management::Agent::stdout_file`: :zeek:type:`string` :zeek:attr:`&redef`             Agent stdout log configuration.
 :zeek:id:`Management::Agent::topic_prefix`: :zeek:type:`string` :zeek:attr:`&redef`            The agent's Broker topic prefix.
 ============================================================================================== =====================================================================================
 
@@ -32,6 +30,7 @@ Functions
 #########
 ================================================================== =====================================================================
 :zeek:id:`Management::Agent::endpoint_info`: :zeek:type:`function` Returns a :zeek:see:`Broker::EndpointInfo` record for this instance.
+:zeek:id:`Management::Agent::get_name`: :zeek:type:`function`      Returns the effective name of this agent.
 :zeek:id:`Management::Agent::instance`: :zeek:type:`function`      Returns a :zeek:see:`Management::Instance` describing this
                                                                    instance (its agent name plus listening address/port, as applicable).
 ================================================================== =====================================================================
@@ -41,20 +40,8 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Redefinable Options
 ###################
-.. zeek:id:: Management::Agent::cluster_directory
-   :source-code: policy/frameworks/management/agent/config.zeek 67 67
-
-   :Type: :zeek:type:`string`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``""``
-
-   The working directory for data cluster nodes created by this
-   agent. If you make this a relative path, note that the path is
-   relative to the agent's working directory, since it creates data
-   cluster nodes.
-
 .. zeek:id:: Management::Agent::controller
-   :source-code: policy/frameworks/management/agent/config.zeek 54 54
+   :source-code: policy/frameworks/management/agent/config.zeek 58 58
 
    :Type: :zeek:type:`Broker::NetworkInfo`
    :Attributes: :zeek:attr:`&redef`
@@ -63,18 +50,21 @@ Redefinable Options
       ::
 
          {
-            address="0.0.0.0"
-            bound_port=0/unknown
+            address="127.0.0.1"
+            bound_port=2150/tcp
          }
 
 
-   The network coordinates of the controller. When defined, the agent
-   peers with (and connects to) the controller; otherwise the controller
-   will peer (and connect to) the agent, listening as defined by
-   :zeek:see:`Management::Agent::listen_address` and :zeek:see:`Management::Agent::listen_port`.
+   The network coordinates of the controller. By default, the agent
+   connects locally to the controller at its default port. Assigning
+   a :zeek:see:`Broker::NetworkInfo` record with IP address "0.0.0.0"
+   means the controller should instead connect to the agent. If you'd
+   like to use that mode, make sure to set
+   :zeek:see:`Management::Agent::listen_address` and
+   :zeek:see:`Management::Agent::listen_port` as needed.
 
 .. zeek:id:: Management::Agent::default_port
-   :source-code: policy/frameworks/management/agent/config.zeek 44 44
+   :source-code: policy/frameworks/management/agent/config.zeek 45 45
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`
@@ -83,19 +73,20 @@ Redefinable Options
    The fallback listen port if :zeek:see:`Management::Agent::listen_port` remains empty.
 
 .. zeek:id:: Management::Agent::directory
-   :source-code: policy/frameworks/management/agent/config.zeek 61 61
+   :source-code: policy/frameworks/management/agent/config.zeek 66 66
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``""``
 
-   An optional custom output directory for stdout/stderr. Agent and
-   controller currently only log locally, not via the data cluster's
-   logger node. This means that if both write to the same log file,
-   output gets garbled.
+   An optional working directory for the agent. Agent and controller
+   currently only log locally, not via the Zeek cluster's logger
+   node. This means that if multiple agents and/or controllers work from
+   the same directory, output may get garbled. When not set, defaults to
+   a directory named after the agent (as per its get_name() result).
 
 .. zeek:id:: Management::Agent::listen_address
-   :source-code: policy/frameworks/management/agent/config.zeek 36 36
+   :source-code: policy/frameworks/management/agent/config.zeek 37 37
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -109,7 +100,7 @@ Redefinable Options
    :zeek:see:`Management::default_address`.
 
 .. zeek:id:: Management::Agent::listen_port
-   :source-code: policy/frameworks/management/agent/config.zeek 41 41
+   :source-code: policy/frameworks/management/agent/config.zeek 42 42
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -120,7 +111,7 @@ Redefinable Options
    environment variable.
 
 .. zeek:id:: Management::Agent::name
-   :source-code: policy/frameworks/management/agent/config.zeek 13 13
+   :source-code: policy/frameworks/management/agent/config.zeek 16 16
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -131,47 +122,45 @@ Redefinable Options
    variable. When that is unset and you don't redef the value,
    the implementation defaults to "agent-<hostname>".
 
-.. zeek:id:: Management::Agent::stderr_file_suffix
-   :source-code: policy/frameworks/management/agent/config.zeek 28 28
+.. zeek:id:: Management::Agent::stderr_file
+   :source-code: policy/frameworks/management/agent/config.zeek 29 29
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``"agent.stderr"``
+   :Default: ``"stderr"``
 
-   Agent stderr log configuration. Like :zeek:see:`Management::Agent::stdout_file_suffix`,
+   Agent stderr log configuration. Like :zeek:see:`Management::Agent::stdout_file`,
    but for the stderr stream.
 
-.. zeek:id:: Management::Agent::stdout_file_suffix
-   :source-code: policy/frameworks/management/agent/config.zeek 24 24
+.. zeek:id:: Management::Agent::stdout_file
+   :source-code: policy/frameworks/management/agent/config.zeek 25 25
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``"agent.stdout"``
+   :Default: ``"stdout"``
 
    Agent stdout log configuration. If the string is non-empty, Zeek will
    produce a free-form log (i.e., not one governed by Zeek's logging
-   framework) in Zeek's working directory. The final log's name is
-   "<name>.<suffix>", where the name is taken from :zeek:see:`Management::Agent::name`,
-   and the suffix is defined by the following variable. If left empty,
-   no such log results.
+   framework) in the agent's working directory. If left empty, no such
+   log results.
    
    Note that the agent also establishes a "proper" Zeek log via the
    :zeek:see:`Management::Log` module.
 
 .. zeek:id:: Management::Agent::topic_prefix
-   :source-code: policy/frameworks/management/agent/config.zeek 48 48
+   :source-code: policy/frameworks/management/agent/config.zeek 49 49
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``"zeek/management/agent"``
 
    The agent's Broker topic prefix. For its own communication, the agent
-   suffixes this with "/<name>", based on :zeek:see:`Management::Agent::name`.
+   suffixes this with "/<name>", based on :zeek:see:`Management::Agent::get_name`.
 
 Functions
 #########
 .. zeek:id:: Management::Agent::endpoint_info
-   :source-code: policy/frameworks/management/agent/config.zeek 87 113
+   :source-code: policy/frameworks/management/agent/config.zeek 97 120
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
@@ -179,8 +168,15 @@ Functions
    Similar to :zeek:see:`Management::Agent::instance`, but with slightly different
    data format.
 
+.. zeek:id:: Management::Agent::get_name
+   :source-code: policy/frameworks/management/agent/config.zeek 81 87
+
+   :Type: :zeek:type:`function` () : :zeek:type:`string`
+
+   Returns the effective name of this agent.
+
 .. zeek:id:: Management::Agent::instance
-   :source-code: policy/frameworks/management/agent/config.zeek 79 85
+   :source-code: policy/frameworks/management/agent/config.zeek 89 95
 
    :Type: :zeek:type:`function` () : :zeek:type:`Management::Instance`
 

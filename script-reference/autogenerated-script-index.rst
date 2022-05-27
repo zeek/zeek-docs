@@ -442,19 +442,20 @@
    zeekygen/__load__.zeek </scripts/zeekygen/__load__.zeek>
    test-all-policy.zeek </scripts/test-all-policy.zeek>
    policy/frameworks/management/agent/__load__.zeek </scripts/policy/frameworks/management/agent/__load__.zeek>
+   policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>
+   policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>
    policy/frameworks/management/agent/boot.zeek </scripts/policy/frameworks/management/agent/boot.zeek>
    policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>
-   policy/frameworks/management/config.zeek </scripts/policy/frameworks/management/config.zeek>
-   policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>
-   policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>
-   policy/frameworks/management/controller/__load__.zeek </scripts/policy/frameworks/management/controller/__load__.zeek>
-   policy/frameworks/management/controller/boot.zeek </scripts/policy/frameworks/management/controller/boot.zeek>
-   policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>
-   policy/frameworks/management/controller/api.zeek </scripts/policy/frameworks/management/controller/api.zeek>
    policy/frameworks/management/__load__.zeek </scripts/policy/frameworks/management/__load__.zeek>
+   policy/frameworks/management/config.zeek </scripts/policy/frameworks/management/config.zeek>
    policy/frameworks/management/log.zeek </scripts/policy/frameworks/management/log.zeek>
+   policy/frameworks/management/persistence.zeek </scripts/policy/frameworks/management/persistence.zeek>
    policy/frameworks/management/request.zeek </scripts/policy/frameworks/management/request.zeek>
    policy/frameworks/management/util.zeek </scripts/policy/frameworks/management/util.zeek>
+   policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>
+   policy/frameworks/management/controller/__load__.zeek </scripts/policy/frameworks/management/controller/__load__.zeek>
+   policy/frameworks/management/controller/api.zeek </scripts/policy/frameworks/management/controller/api.zeek>
+   policy/frameworks/management/controller/boot.zeek </scripts/policy/frameworks/management/controller/boot.zeek>
    policy/frameworks/management/node/api.zeek </scripts/policy/frameworks/management/node/api.zeek>
    policy/frameworks/management/node/config.zeek </scripts/policy/frameworks/management/node/config.zeek>
    policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>

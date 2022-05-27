@@ -10,16 +10,10 @@ supervisor. In this setting Zeek's logging framework operates locally, i.e.,
 this does not involve logger nodes.
 
 :Namespace: Management::Log
-:Imports: :doc:`policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>`
+:Imports: :doc:`policy/frameworks/management/config.zeek </scripts/policy/frameworks/management/config.zeek>`
 
 Summary
 ~~~~~~~
-Redefinable Options
-###################
-=================================================================================== ===============================================
-:zeek:id:`Management::Log::role`: :zeek:type:`Management::Role` :zeek:attr:`&redef` The role of this process in cluster management.
-=================================================================================== ===============================================
-
 Types
 #####
 ========================================================================= =========================================================================
@@ -53,36 +47,6 @@ Functions
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
-Redefinable Options
-###################
-.. zeek:id:: Management::Log::role
-   :source-code: policy/frameworks/management/log.zeek 70 70
-
-   :Type: :zeek:type:`Management::Role`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``Management::NONE``
-   :Redefinition: from :doc:`/scripts/policy/frameworks/management/agent/main.zeek`
-
-      ``=``::
-
-         Management::AGENT
-
-   :Redefinition: from :doc:`/scripts/policy/frameworks/management/controller/main.zeek`
-
-      ``=``::
-
-         Management::CONTROLLER
-
-   :Redefinition: from :doc:`/scripts/policy/frameworks/management/node/main.zeek`
-
-      ``=``::
-
-         Management::NODE
-
-
-   The role of this process in cluster management. Agent and controller
-   both redefine this, and we use it during logging.
-
 Types
 #####
 .. zeek:type:: Management::Log::Info
@@ -135,7 +99,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Management::Log::debug
-   :source-code: policy/frameworks/management/log.zeek 89 97
+   :source-code: policy/frameworks/management/log.zeek 85 93
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -146,7 +110,7 @@ Functions
    
 
 .. zeek:id:: Management::Log::error
-   :source-code: policy/frameworks/management/log.zeek 119 127
+   :source-code: policy/frameworks/management/log.zeek 115 123
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -158,7 +122,7 @@ Functions
    
 
 .. zeek:id:: Management::Log::info
-   :source-code: policy/frameworks/management/log.zeek 99 107
+   :source-code: policy/frameworks/management/log.zeek 95 103
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -169,7 +133,7 @@ Functions
    
 
 .. zeek:id:: Management::Log::warning
-   :source-code: policy/frameworks/management/log.zeek 109 117
+   :source-code: policy/frameworks/management/log.zeek 105 113
 
    :Type: :zeek:type:`function` (message: :zeek:type:`string`) : :zeek:type:`void`
 

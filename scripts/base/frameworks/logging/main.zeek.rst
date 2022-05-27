@@ -149,6 +149,12 @@ Runtime Options
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``""``
+   :Redefinition: from :doc:`/scripts/policy/frameworks/management/persistence.zeek`
+
+      ``=``::
+
+         build_path(Management::get_spool_dir(), log-queue)
+
 
    Default rotation directory to use for the *dir* field of
    :zeek:see:`Log::RotationPath` during calls to

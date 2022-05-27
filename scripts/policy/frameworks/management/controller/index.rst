@@ -4,10 +4,21 @@ Package: policy/frameworks/management/controller
 ================================================
 
 
+:doc:`/scripts/policy/frameworks/management/controller/config.zeek`
+
+   Configuration settings for the cluster controller.
+
 :doc:`/scripts/policy/frameworks/management/controller/__load__.zeek`
 
    The entry point for the Management framework's cluster controller. It runs
-   bootstrap logic for launching the controller process via Zeek's Supervisor.
+   bootstrap logic for launching a controller process via Zeek's Supervisor.
+
+:doc:`/scripts/policy/frameworks/management/controller/api.zeek`
+
+   The event API of cluster controllers. Most endpoints consist of event pairs,
+   where the controller answers a zeek-client request event with a
+   corresponding response event. Such event pairs share the same name prefix
+   and end in "_request" and "_response", respectively.
 
 :doc:`/scripts/policy/frameworks/management/controller/boot.zeek`
 
@@ -17,17 +28,6 @@ Package: policy/frameworks/management/controller
    execute that script.
    
    If the current process is not the Zeek supervisor, this does nothing.
-
-:doc:`/scripts/policy/frameworks/management/controller/config.zeek`
-
-   Configuration settings for the cluster controller.
-
-:doc:`/scripts/policy/frameworks/management/controller/api.zeek`
-
-   The event API of cluster controllers. Most endpoints consist of event pairs,
-   where the controller answers a zeek-client request event with a
-   corresponding response event. Such event pairs share the same name prefix
-   and end in "_request" and "_response", respectively.
 
 :doc:`/scripts/policy/frameworks/management/controller/main.zeek`
 
