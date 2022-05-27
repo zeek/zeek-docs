@@ -7,7 +7,7 @@ policy/frameworks/management/controller/config.zeek
 Configuration settings for the cluster controller.
 
 :Namespace: Management::Controller
-:Imports: :doc:`policy/frameworks/management/config.zeek </scripts/policy/frameworks/management/config.zeek>`, :doc:`policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>`
+:Imports: :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`
 
 Summary
 ~~~~~~~
@@ -29,6 +29,7 @@ Functions
 #########
 ======================================================================= ============================================================================
 :zeek:id:`Management::Controller::endpoint_info`: :zeek:type:`function` Returns a :zeek:see:`Broker::EndpointInfo` record describing the controller.
+:zeek:id:`Management::Controller::get_name`: :zeek:type:`function`      Returns the effective name of the controller.
 :zeek:id:`Management::Controller::network_info`: :zeek:type:`function`  Returns a :zeek:see:`Broker::NetworkInfo` record describing the controller.
 ======================================================================= ============================================================================
 
@@ -38,7 +39,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Management::Controller::default_port
-   :source-code: policy/frameworks/management/controller/config.zeek 41 41
+   :source-code: policy/frameworks/management/controller/config.zeek 40 40
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`
@@ -48,19 +49,19 @@ Redefinable Options
    remains empty.
 
 .. zeek:id:: Management::Controller::directory
-   :source-code: policy/frameworks/management/controller/config.zeek 50 50
+   :source-code: policy/frameworks/management/controller/config.zeek 49 49
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``""``
 
    An optional custom output directory for stdout/stderr. Agent and
-   controller currently only log locally, not via the data cluster's
+   controller currently only log locally, not via the Zeek cluster's
    logger node. This means that if both write to the same log file,
    output gets garbled.
 
 .. zeek:id:: Management::Controller::listen_address
-   :source-code: policy/frameworks/management/controller/config.zeek 32 32
+   :source-code: policy/frameworks/management/controller/config.zeek 31 31
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -72,7 +73,7 @@ Redefinable Options
    falls back to :zeek:see:`Management::default_address`.
 
 .. zeek:id:: Management::Controller::listen_port
-   :source-code: policy/frameworks/management/controller/config.zeek 37 37
+   :source-code: policy/frameworks/management/controller/config.zeek 36 36
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -83,7 +84,7 @@ Redefinable Options
    ZEEK_CONTROLLER_PORT environment variable.
 
 .. zeek:id:: Management::Controller::name
-   :source-code: policy/frameworks/management/controller/config.zeek 13 13
+   :source-code: policy/frameworks/management/controller/config.zeek 12 12
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -95,32 +96,32 @@ Redefinable Options
    "controller-<hostname>".
 
 .. zeek:id:: Management::Controller::stderr_file
-   :source-code: policy/frameworks/management/controller/config.zeek 26 26
+   :source-code: policy/frameworks/management/controller/config.zeek 25 25
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``"controller.stderr"``
+   :Default: ``"stderr"``
 
    The controller's stderr log name. Like :zeek:see:`Management::Controller::stdout_file`,
    but for the stderr stream.
 
 .. zeek:id:: Management::Controller::stdout_file
-   :source-code: policy/frameworks/management/controller/config.zeek 22 22
+   :source-code: policy/frameworks/management/controller/config.zeek 21 21
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``"controller.stdout"``
+   :Default: ``"stdout"``
 
-   The controller's stdout log name. If the string is non-empty, Zeek will
-   produce a free-form log (i.e., not one governed by Zeek's logging
-   framework) in Zeek's working directory. If left empty, no such log
-   results.
+   The controller's stdout log name. If the string is non-empty, Zeek
+   will produce a free-form log (i.e., not one governed by Zeek's
+   logging framework) in the controller's working directory. If left
+   empty, no such log results.
    
    Note that the controller also establishes a "proper" Zeek log via the
    :zeek:see:`Management::Log` module.
 
 .. zeek:id:: Management::Controller::topic
-   :source-code: policy/frameworks/management/controller/config.zeek 44 44
+   :source-code: policy/frameworks/management/controller/config.zeek 43 43
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -131,14 +132,21 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: Management::Controller::endpoint_info
-   :source-code: policy/frameworks/management/controller/config.zeek 78 91
+   :source-code: policy/frameworks/management/controller/config.zeek 88 97
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
    Returns a :zeek:see:`Broker::EndpointInfo` record describing the controller.
 
+.. zeek:id:: Management::Controller::get_name
+   :source-code: policy/frameworks/management/controller/config.zeek 61 67
+
+   :Type: :zeek:type:`function` () : :zeek:type:`string`
+
+   Returns the effective name of the controller.
+
 .. zeek:id:: Management::Controller::network_info
-   :source-code: policy/frameworks/management/controller/config.zeek 59 77
+   :source-code: policy/frameworks/management/controller/config.zeek 69 87
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::NetworkInfo`
 

@@ -10,7 +10,7 @@ specifies it as the script to run in the node newly created via Zeek's
 supervisor.
 
 :Namespace: Mangement::Agent::Runtime
-:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>`, :doc:`policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>`, :doc:`policy/frameworks/management/node/api.zeek </scripts/policy/frameworks/management/node/api.zeek>`, :doc:`policy/frameworks/management/node/config.zeek </scripts/policy/frameworks/management/node/config.zeek>`
+:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`base/utils/paths.zeek </scripts/base/utils/paths.zeek>`, :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>`, :doc:`policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>`, :doc:`policy/frameworks/management/node/api.zeek </scripts/policy/frameworks/management/node/api.zeek>`, :doc:`policy/frameworks/management/node/config.zeek </scripts/policy/frameworks/management/node/config.zeek>`
 
 Summary
 ~~~~~~~
@@ -24,14 +24,14 @@ Types
 
 Redefinitions
 #############
-=================================================================================== ==================================================================================================
-:zeek:id:`Management::Log::role`: :zeek:type:`Management::Role` :zeek:attr:`&redef` 
-:zeek:type:`Management::Request::Request`: :zeek:type:`record`                      
-                                                                                    
-                                                                                    :New Fields: :zeek:type:`Management::Request::Request`
-                                                                                    
-                                                                                      supervisor_state: :zeek:type:`Mangement::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
-=================================================================================== ==================================================================================================
+============================================================================== ==================================================================================================
+:zeek:type:`Management::Request::Request`: :zeek:type:`record`                 
+                                                                               
+                                                                               :New Fields: :zeek:type:`Management::Request::Request`
+                                                                               
+                                                                                 supervisor_state: :zeek:type:`Mangement::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
+:zeek:id:`Management::role`: :zeek:type:`Management::Role` :zeek:attr:`&redef` 
+============================================================================== ==================================================================================================
 
 
 Detailed Interface
@@ -39,7 +39,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Mangement::Agent::Runtime::NodeDispatchState
-   :source-code: policy/frameworks/management/agent/main.zeek 27 34
+   :source-code: policy/frameworks/management/agent/main.zeek 29 36
 
    :Type: :zeek:type:`record`
 
@@ -54,7 +54,7 @@ Types
    as well as received responses.
 
 .. zeek:type:: Mangement::Agent::Runtime::SupervisorState
-   :source-code: policy/frameworks/management/agent/main.zeek 21 23
+   :source-code: policy/frameworks/management/agent/main.zeek 23 25
 
    :Type: :zeek:type:`record`
 

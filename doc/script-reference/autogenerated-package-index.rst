@@ -363,10 +363,10 @@
 :doc:`policy/frameworks/management/agent </scripts/policy/frameworks/management/agent/index>`
 
 
-:doc:`policy/frameworks/management/controller </scripts/policy/frameworks/management/controller/index>`
-
-
 :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`
+
+
+:doc:`policy/frameworks/management/controller </scripts/policy/frameworks/management/controller/index>`
 
 
 :doc:`policy/frameworks/intel/seen </scripts/policy/frameworks/intel/seen/index>`

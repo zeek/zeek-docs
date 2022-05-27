@@ -67,7 +67,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Controller::API::get_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 498 520
+   :source-code: policy/frameworks/management/controller/main.zeek 497 519
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -97,7 +97,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_id_value_request
-   :source-code: policy/frameworks/management/controller/main.zeek 686 764
+   :source-code: policy/frameworks/management/controller/main.zeek 685 763
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, id: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -118,9 +118,10 @@ Events
    :nodes: a set of cluster node names (e.g. "worker-01") to retrieve
       the values from. An empty set, supplied by default, means
       retrieval from all current cluster nodes.
+   
 
 .. zeek:id:: Management::Controller::API::get_id_value_response
-   :source-code: policy/frameworks/management/controller/api.zeek 131 131
+   :source-code: policy/frameworks/management/controller/api.zeek 134 134
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
 
@@ -136,9 +137,10 @@ Events
        data field contains a string with the JSON rendering (as produced
        by :zeek:id:`to_json`, including the error strings it potentially
        returns).
+   
 
 .. zeek:id:: Management::Controller::API::get_instances_request
-   :source-code: policy/frameworks/management/controller/main.zeek 522 538
+   :source-code: policy/frameworks/management/controller/main.zeek 521 537
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -166,7 +168,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_request
-   :source-code: policy/frameworks/management/controller/main.zeek 585 618
+   :source-code: policy/frameworks/management/controller/main.zeek 584 617
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -180,7 +182,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_response
-   :source-code: policy/frameworks/management/controller/api.zeek 100 100
+   :source-code: policy/frameworks/management/controller/api.zeek 101 101
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
 
@@ -196,9 +198,10 @@ Events
        member is a vector of :zeek:see:`Management::NodeStatus`
        records, covering the nodes at that instance. Results may also indicate
        failure, with error messages indicating what went wrong.
+   
 
 .. zeek:id:: Management::Controller::API::notify_agents_ready
-   :source-code: policy/frameworks/management/controller/main.zeek 243 262
+   :source-code: policy/frameworks/management/controller/main.zeek 242 261
 
    :Type: :zeek:type:`event` (instances: :zeek:type:`set` [:zeek:type:`string`])
 
@@ -213,7 +216,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::set_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 386 497
+   :source-code: policy/frameworks/management/controller/main.zeek 385 496
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`)
 
@@ -247,7 +250,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_request
-   :source-code: policy/frameworks/management/controller/main.zeek 826 837
+   :source-code: policy/frameworks/management/controller/main.zeek 825 836
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, with_state: :zeek:type:`bool`)
 
@@ -266,7 +269,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_response
-   :source-code: policy/frameworks/management/controller/api.zeek 155 155
+   :source-code: policy/frameworks/management/controller/api.zeek 158 158
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 

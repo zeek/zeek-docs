@@ -134,7 +134,7 @@ Types
          Role the node plays in cluster management.
 
       cluster_role: :zeek:type:`Supervisor::ClusterRole` :zeek:attr:`&default` = ``Supervisor::NONE`` :zeek:attr:`&optional`
-         Role the node plays in the data cluster.
+         Role the node plays in the Zeek cluster.
 
       pid: :zeek:type:`int` :zeek:attr:`&optional`
          Process ID of the node. This is optional because the Supervisor may not have

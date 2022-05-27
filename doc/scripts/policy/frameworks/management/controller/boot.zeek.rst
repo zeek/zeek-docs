@@ -10,7 +10,7 @@ execute that script.
 
 If the current process is not the Zeek supervisor, this does nothing.
 
-:Imports: :doc:`policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>`
+:Imports: :doc:`base/utils/paths.zeek </scripts/base/utils/paths.zeek>`, :doc:`policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>`
 
 Summary
 ~~~~~~~

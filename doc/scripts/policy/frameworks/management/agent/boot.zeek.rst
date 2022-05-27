@@ -9,7 +9,7 @@ similarly to other frameworks. The new process will execute that script.
 
 If the current process is not the Zeek supervisor, this does nothing.
 
-:Imports: :doc:`policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>`
+:Imports: :doc:`base/utils/paths.zeek </scripts/base/utils/paths.zeek>`, :doc:`policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>`
 
 Summary
 ~~~~~~~

@@ -7,7 +7,14 @@ Package: policy/frameworks/management/agent
 :doc:`/scripts/policy/frameworks/management/agent/__load__.zeek`
 
    The entry point for the Management framework's cluster agent. It runs
-   bootstrap logic for launching the agent process via Zeek's Supervisor.
+   bootstrap logic for launching an agent process via Zeek's Supervisor.
+
+:doc:`/scripts/policy/frameworks/management/agent/api.zeek`
+
+   The event API of cluster agents. Most endpoints consist of event pairs,
+   where the agent answers a request event with a corresponding response
+   event. Such event pairs share the same name prefix and end in "_request" and
+   "_response", respectively.
 
 :doc:`/scripts/policy/frameworks/management/agent/boot.zeek`
 
@@ -20,13 +27,6 @@ Package: policy/frameworks/management/agent
 :doc:`/scripts/policy/frameworks/management/agent/config.zeek`
 
    Configuration settings for a cluster agent.
-
-:doc:`/scripts/policy/frameworks/management/agent/api.zeek`
-
-   The event API of cluster agents. Most endpoints consist of event pairs,
-   where the agent answers a request event with a corresponding response
-   event. Such event pairs share the same name prefix and end in "_request" and
-   "_response", respectively.
 
 :doc:`/scripts/policy/frameworks/management/agent/main.zeek`
 
