@@ -1899,6 +1899,18 @@ Redefinable Options
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``10.0 secs``
+   :Redefinition: from :doc:`/scripts/policy/frameworks/management/agent/main.zeek`
+
+      ``=``::
+
+         2.0 secs
+
+   :Redefinition: from :doc:`/scripts/policy/frameworks/management/controller/main.zeek`
+
+      ``=``::
+
+         2.0 secs
+
 
    Check for expired table entries after this amount of time.
    
