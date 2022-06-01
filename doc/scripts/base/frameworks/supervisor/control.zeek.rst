@@ -33,6 +33,9 @@ Events
 :zeek:id:`SupervisorControl::destroy_request`: :zeek:type:`event`  Send a request to a remote Supervisor process to destroy a node.
 :zeek:id:`SupervisorControl::destroy_response`: :zeek:type:`event` Handle a response from a Supervisor process that received
                                                                    :zeek:see:`SupervisorControl::destroy_request`.
+:zeek:id:`SupervisorControl::node_status`: :zeek:type:`event`      A notification event the Supervisor generates when it receives a
+                                                                   status message update from the stem, indicating node has
+                                                                   (re-)started.
 :zeek:id:`SupervisorControl::restart_request`: :zeek:type:`event`  Send a request to a remote Supervisor process to restart a node.
 :zeek:id:`SupervisorControl::restart_response`: :zeek:type:`event` Handle a response from a Supervisor process that received
                                                                    :zeek:see:`SupervisorControl::restart_request`.
@@ -92,7 +95,7 @@ Events
    :node: the desired configuration for the new supervised node process.
 
 .. zeek:id:: SupervisorControl::create_response
-   :source-code: policy/frameworks/management/agent/main.zeek 68 86
+   :source-code: policy/frameworks/management/agent/main.zeek 151 169
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`string`)
 
@@ -121,7 +124,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::destroy_response
-   :source-code: policy/frameworks/management/agent/main.zeek 88 106
+   :source-code: policy/frameworks/management/agent/main.zeek 171 189
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -134,6 +137,24 @@ Events
 
    :result: the return value of the remote call to
            :zeek:see:`Supervisor::destroy`.
+
+.. zeek:id:: SupervisorControl::node_status
+   :source-code: base/frameworks/supervisor/control.zeek 105 105
+
+   :Type: :zeek:type:`event` (node: :zeek:type:`string`, pid: :zeek:type:`count`)
+
+   A notification event the Supervisor generates when it receives a
+   status message update from the stem, indicating node has
+   (re-)started. This is the remote equivalent of
+   :zeek:see:`Supervisor::node_status`.
+   
+
+   :node: the name of a previously created node via
+         :zeek:see:`Supervisor::create` indicating to which
+         child process the stdout line is associated.
+   
+
+   :pid: the process ID the stem reported for this node.
 
 .. zeek:id:: SupervisorControl::restart_request
    :source-code: base/frameworks/supervisor/main.zeek 93 101
@@ -179,7 +200,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::status_response
-   :source-code: policy/frameworks/management/agent/main.zeek 248 336
+   :source-code: policy/frameworks/management/agent/main.zeek 348 436
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Supervisor::Status`)
 

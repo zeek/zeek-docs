@@ -458,6 +458,10 @@
    policy/frameworks/management/controller/boot.zeek </scripts/policy/frameworks/management/controller/boot.zeek>
    policy/frameworks/management/node/api.zeek </scripts/policy/frameworks/management/node/api.zeek>
    policy/frameworks/management/node/config.zeek </scripts/policy/frameworks/management/node/config.zeek>
+   policy/frameworks/management/supervisor/__load__.zeek </scripts/policy/frameworks/management/supervisor/__load__.zeek>
+   policy/frameworks/management/supervisor/main.zeek </scripts/policy/frameworks/management/supervisor/main.zeek>
+   policy/frameworks/management/supervisor/api.zeek </scripts/policy/frameworks/management/supervisor/api.zeek>
+   policy/frameworks/management/supervisor/config.zeek </scripts/policy/frameworks/management/supervisor/config.zeek>
    policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>
    policy/frameworks/dpd/packet-segment-logging.zeek </scripts/policy/frameworks/dpd/packet-segment-logging.zeek>
    policy/frameworks/intel/do_notice.zeek </scripts/policy/frameworks/intel/do_notice.zeek>

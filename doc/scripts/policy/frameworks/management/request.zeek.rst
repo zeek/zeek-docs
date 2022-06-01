@@ -15,9 +15,9 @@ Summary
 ~~~~~~~
 Redefinable Options
 ###################
-=========================================================================================== ==============================
-:zeek:id:`Management::Request::timeout_interval`: :zeek:type:`interval` :zeek:attr:`&redef` The timeout for request state.
-=========================================================================================== ==============================
+=========================================================================================== =======================================
+:zeek:id:`Management::Request::timeout_interval`: :zeek:type:`interval` :zeek:attr:`&redef` The timeout interval for request state.
+=========================================================================================== =======================================
 
 State Variables
 ###############
@@ -59,22 +59,32 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Management::Request::timeout_interval
-   :source-code: policy/frameworks/management/request.zeek 40 40
+   :source-code: policy/frameworks/management/request.zeek 44 44
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``10.0 secs``
+   :Redefinition: from :doc:`/scripts/policy/frameworks/management/agent/main.zeek`
 
-   The timeout for request state. Such state (see the :zeek:see:`Management::Request`
-   module) ties together request and response event pairs. The timeout causes
-   its cleanup in the absence of a timely response. It applies both to
-   state kept for client requests, as well as state in the agents for
-   requests to the supervisor.
+      ``=``::
+
+         5.0 secs
+
+
+   The timeout interval for request state. Such state (see the
+   :zeek:see:`Management::Request` module) ties together request and
+   response event pairs. A timeout causes cleanup of request state if
+   regular request/response processing hasn't already done so. It
+   applies both to request state kept in the controller and the agent,
+   though the two use different timeout values: agent-side requests time
+   out more quickly. This allows agents to send more meaningful error
+   messages, while the controller's timeouts serve as a last resort to
+   ensure response to the client.
 
 State Variables
 ###############
 .. zeek:id:: Management::Request::null_req
-   :source-code: policy/frameworks/management/request.zeek 43 43
+   :source-code: policy/frameworks/management/request.zeek 47 47
 
    :Type: :zeek:type:`Management::Request::Request`
    :Default:
@@ -86,8 +96,9 @@ State Variables
             parent_id=<uninitialized>
             results=[]
             finished=T
-            supervisor_state=<uninitialized>
-            node_dispatch_state=<uninitialized>
+            supervisor_state_agent=<uninitialized>
+            set_configuration_state_agent=<uninitialized>
+            node_dispatch_state_agent=<uninitialized>
             set_configuration_state=<uninitialized>
             get_nodes_state=<uninitialized>
             node_dispatch_state=<uninitialized>
@@ -120,12 +131,16 @@ Types
       finished: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          An internal flag to track whether a request is complete.
 
-      supervisor_state: :zeek:type:`Mangement::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
+      supervisor_state_agent: :zeek:type:`Mangement::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      node_dispatch_state: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+      set_configuration_state_agent: :zeek:type:`Mangement::Agent::Runtime::SetConfigurationState` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
+
+
+      node_dispatch_state_agent: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
       set_configuration_state: :zeek:type:`Management::Controller::Runtime::SetConfigurationState` :zeek:attr:`&optional`
@@ -154,7 +169,7 @@ Types
 Events
 ######
 .. zeek:id:: Management::Request::request_expired
-   :source-code: policy/frameworks/management/controller/main.zeek 764 823
+   :source-code: policy/frameworks/management/request.zeek 76 76
 
    :Type: :zeek:type:`event` (req: :zeek:type:`Management::Request::Request`)
 
@@ -169,7 +184,7 @@ Events
 Functions
 #########
 .. zeek:id:: Management::Request::create
-   :source-code: policy/frameworks/management/request.zeek 107 112
+   :source-code: policy/frameworks/management/request.zeek 111 116
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string` :zeek:attr:`&default` = ``9Ye7pQPhuMe`` :zeek:attr:`&optional`) : :zeek:type:`Management::Request::Request`
 
@@ -180,7 +195,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::finish
-   :source-code: policy/frameworks/management/request.zeek 122 133
+   :source-code: policy/frameworks/management/request.zeek 126 137
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -193,7 +208,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::is_null
-   :source-code: policy/frameworks/management/request.zeek 135 141
+   :source-code: policy/frameworks/management/request.zeek 139 145
 
    :Type: :zeek:type:`function` (request: :zeek:type:`Management::Request::Request`) : :zeek:type:`bool`
 
@@ -208,7 +223,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::lookup
-   :source-code: policy/frameworks/management/request.zeek 114 120
+   :source-code: policy/frameworks/management/request.zeek 118 124
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`Management::Request::Request`
 
@@ -220,7 +235,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::to_string
-   :source-code: policy/frameworks/management/request.zeek 143 162
+   :source-code: policy/frameworks/management/request.zeek 147 166
 
    :Type: :zeek:type:`function` (request: :zeek:type:`Management::Request::Request`) : :zeek:type:`string`
 

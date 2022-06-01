@@ -14,12 +14,15 @@ Summary
 ~~~~~~~
 Types
 #####
-=========================================================== =====================================================================
+=========================================================== =======================================================================
 :zeek:type:`Management::Configuration`: :zeek:type:`record` Data structure capturing a cluster's complete configuration.
 :zeek:type:`Management::Instance`: :zeek:type:`record`      Configuration describing a Zeek instance running a Cluster
                                                             Agent.
 :zeek:type:`Management::InstanceVec`: :zeek:type:`vector`   
 :zeek:type:`Management::Node`: :zeek:type:`record`          Configuration describing a Cluster Node process.
+:zeek:type:`Management::NodeOutputs`: :zeek:type:`record`   In :zeek:see:`Management::Controller::API::set_configuration_response`,
+                                                            events, each :zeek:see:`Management::Result` indicates the outcome of a
+                                                            requested cluster node.
 :zeek:type:`Management::NodeStatus`: :zeek:type:`record`    The status of a Supervisor-managed node, as reported to the client in
                                                             a get_nodes_request/get_nodes_response transaction.
 :zeek:type:`Management::NodeStatusVec`: :zeek:type:`vector` 
@@ -28,7 +31,7 @@ Types
 :zeek:type:`Management::ResultVec`: :zeek:type:`vector`     
 :zeek:type:`Management::Role`: :zeek:type:`enum`            Management infrastructure node type.
 :zeek:type:`Management::State`: :zeek:type:`enum`           State that a Cluster Node can be in.
-=========================================================== =====================================================================
+=========================================================== =======================================================================
 
 Functions
 #########
@@ -118,6 +121,25 @@ Types
          Custom environment vars
 
    Configuration describing a Cluster Node process.
+
+.. zeek:type:: Management::NodeOutputs
+   :source-code: policy/frameworks/management/types.zeek 114 117
+
+   :Type: :zeek:type:`record`
+
+      stdout: :zeek:type:`string`
+         The stdout stream of a Zeek process
+
+      stderr: :zeek:type:`string`
+         The stderr stream of a Zeek process
+
+   In :zeek:see:`Management::Controller::API::set_configuration_response`,
+   events, each :zeek:see:`Management::Result` indicates the outcome of a
+   requested cluster node. If a node does not launch properly (meaning
+   it doesn't check in with the agent on thee machine it's running on),
+   the result will indicate failure, and its data field will be an
+   instance of this record, capturing the stdout and stderr output of
+   the failing node.
 
 .. zeek:type:: Management::NodeStatus
    :source-code: policy/frameworks/management/types.zeek 77 91
@@ -258,7 +280,7 @@ Types
 Functions
 #########
 .. zeek:id:: Management::result_to_string
-   :source-code: policy/frameworks/management/types.zeek 112 137
+   :source-code: policy/frameworks/management/types.zeek 124 149
 
    :Type: :zeek:type:`function` (res: :zeek:type:`Management::Result`) : :zeek:type:`string`
 

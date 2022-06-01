@@ -35,8 +35,6 @@ Redefinitions
                                                                                
                                                                                :New Fields: :zeek:type:`Management::Request::Request`
                                                                                
-                                                                                 node_dispatch_state: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
-                                                                               
                                                                                  set_configuration_state: :zeek:type:`Management::Controller::Runtime::SetConfigurationState` :zeek:attr:`&optional`
                                                                                
                                                                                  get_nodes_state: :zeek:type:`Management::Controller::Runtime::GetNodesState` :zeek:attr:`&optional`
@@ -45,6 +43,7 @@ Redefinitions
                                                                                
                                                                                  test_state: :zeek:type:`Management::Controller::Runtime::TestState` :zeek:attr:`&optional`
 :zeek:id:`Management::role`: :zeek:type:`Management::Role` :zeek:attr:`&redef` 
+:zeek:id:`table_expire_interval`: :zeek:type:`interval` :zeek:attr:`&redef`    
 ============================================================================== =====================================================================================================================
 
 

@@ -24,6 +24,14 @@ Types
 :zeek:type:`Supervisor::Status`: :zeek:type:`record`          The current status of a set of supervised nodes.
 ============================================================= ========================================================================
 
+Events
+######
+====================================================== ================================================================
+:zeek:id:`Supervisor::node_status`: :zeek:type:`event` A notification event the Supervisor generates when it receives a
+                                                       status message update from the stem, indicating node has
+                                                       (re-)started.
+====================================================== ================================================================
+
 Hooks
 #####
 ===================================================== ==================================================================
@@ -156,10 +164,29 @@ Types
 
    The current status of a set of supervised nodes.
 
+Events
+######
+.. zeek:id:: Supervisor::node_status
+   :source-code: base/frameworks/supervisor/api.zeek 163 163
+
+   :Type: :zeek:type:`event` (node: :zeek:type:`string`, pid: :zeek:type:`count`)
+
+   A notification event the Supervisor generates when it receives a
+   status message update from the stem, indicating node has
+   (re-)started.
+   
+
+   :node: the name of a previously created node via
+         :zeek:see:`Supervisor::create` indicating to which
+         child process the stdout line is associated.
+   
+
+   :pid: the process ID the stem reported for this node.
+
 Hooks
 #####
 .. zeek:id:: Supervisor::stderr_hook
-   :source-code: base/frameworks/supervisor/api.zeek 152 152
+   :source-code: policy/frameworks/management/supervisor/main.zeek 77 92
 
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -179,7 +206,7 @@ Hooks
    :msg: line-buffered contents from the stderr of a child process.
 
 .. zeek:id:: Supervisor::stdout_hook
-   :source-code: base/frameworks/supervisor/api.zeek 138 138
+   :source-code: policy/frameworks/management/supervisor/main.zeek 55 75
 
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 

@@ -369,6 +369,9 @@
 :doc:`policy/frameworks/management/controller </scripts/policy/frameworks/management/controller/index>`
 
 
+:doc:`policy/frameworks/management/supervisor </scripts/policy/frameworks/management/supervisor/index>`
+
+
 :doc:`policy/frameworks/intel/seen </scripts/policy/frameworks/intel/seen/index>`
 
    Scripts that send data to the intelligence framework.

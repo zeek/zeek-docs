@@ -377,7 +377,7 @@ Functions
              is compared lexicographically.
 
 .. zeek:id:: Software::found
-   :source-code: base/frameworks/software/main.zeek 524 553
+   :source-code: base/frameworks/software/main.zeek 525 554
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`, info: :zeek:type:`Software::Info`) : :zeek:type:`bool`
 
