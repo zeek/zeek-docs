@@ -353,9 +353,6 @@
 :doc:`builtin-plugins </scripts/builtin-plugins/index>`
 
 
-:doc:`builtin-plugins/Zeek_Spicy </scripts/builtin-plugins/Zeek_Spicy/index>`
-
-
 :doc:`zeekygen </scripts/zeekygen/index>`
 
    This package is loaded during the process which automatically generates
