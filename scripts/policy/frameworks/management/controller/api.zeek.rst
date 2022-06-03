@@ -67,7 +67,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Controller::API::get_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 517 539
+   :source-code: policy/frameworks/management/controller/main.zeek 575 597
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -97,7 +97,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_id_value_request
-   :source-code: policy/frameworks/management/controller/main.zeek 705 783
+   :source-code: policy/frameworks/management/controller/main.zeek 766 844
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, id: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -140,7 +140,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_instances_request
-   :source-code: policy/frameworks/management/controller/main.zeek 541 557
+   :source-code: policy/frameworks/management/controller/main.zeek 599 621
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -168,7 +168,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_request
-   :source-code: policy/frameworks/management/controller/main.zeek 604 637
+   :source-code: policy/frameworks/management/controller/main.zeek 668 698
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -201,22 +201,22 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::notify_agents_ready
-   :source-code: policy/frameworks/management/controller/main.zeek 248 267
+   :source-code: policy/frameworks/management/controller/main.zeek 280 299
 
    :Type: :zeek:type:`event` (instances: :zeek:type:`set` [:zeek:type:`string`])
 
    The controller triggers this event when the operational cluster
    instances align with the ones desired by the cluster
    configuration. It's essentially a cluster management readiness
-   event. This event is currently only used by the controller and not
-   published to other topics.
+   event. This event is currently only used internally by the controller,
+   and not published to topics.
    
 
    :instances: the set of instance names now ready.
    
 
 .. zeek:id:: Management::Controller::API::set_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 399 516
+   :source-code: policy/frameworks/management/controller/main.zeek 457 574
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`)
 
@@ -250,7 +250,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_request
-   :source-code: policy/frameworks/management/controller/main.zeek 845 856
+   :source-code: policy/frameworks/management/controller/main.zeek 906 917
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, with_state: :zeek:type:`bool`)
 

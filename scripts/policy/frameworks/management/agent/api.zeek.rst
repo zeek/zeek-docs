@@ -110,7 +110,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_response
-   :source-code: policy/frameworks/management/controller/main.zeek 304 331
+   :source-code: policy/frameworks/management/controller/main.zeek 362 389
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -139,7 +139,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_response
-   :source-code: policy/frameworks/management/controller/main.zeek 558 602
+   :source-code: policy/frameworks/management/controller/main.zeek 622 666
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -183,7 +183,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::node_dispatch_response
-   :source-code: policy/frameworks/management/controller/main.zeek 638 704
+   :source-code: policy/frameworks/management/controller/main.zeek 699 765
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
 
@@ -203,40 +203,44 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::notify_agent_hello
-   :source-code: policy/frameworks/management/controller/main.zeek 269 302
+   :source-code: policy/frameworks/management/controller/main.zeek 301 360
 
-   :Type: :zeek:type:`event` (instance: :zeek:type:`string`, host: :zeek:type:`addr`, api_version: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (instance: :zeek:type:`string`, id: :zeek:type:`string`, connecting: :zeek:type:`bool`, api_version: :zeek:type:`count`)
 
    The agent sends this event upon peering as a "check-in", informing
    the controller that an agent of the given name is now available to
    communicate with. It is a controller-level equivalent of
-   `:zeek:see:`Broker::peer_added`.
+   `:zeek:see:`Broker::peer_added` and triggered by it.
    
 
    :instance: an instance name, really the agent's name as per
       :zeek:see:`Management::Agent::get_name`.
    
 
-   :host: the IP address of the agent. (This may change in the future.)
+   :id: the Broker ID of the agent.
+   
+
+   :connecting: true if this agent connected to the controller,
+      false if the controller connected to the agent.
    
 
    :api_version: the API version of this agent.
    
 
 .. zeek:id:: Management::Agent::API::notify_change
-   :source-code: policy/frameworks/management/controller/main.zeek 334 335
+   :source-code: policy/frameworks/management/controller/main.zeek 392 393
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, n: :zeek:type:`Management::Node`, old: :zeek:type:`Management::State`, new: :zeek:type:`Management::State`)
 
 
 .. zeek:id:: Management::Agent::API::notify_error
-   :source-code: policy/frameworks/management/controller/main.zeek 339 340
+   :source-code: policy/frameworks/management/controller/main.zeek 397 398
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: Management::Agent::API::notify_log
-   :source-code: policy/frameworks/management/controller/main.zeek 344 345
+   :source-code: policy/frameworks/management/controller/main.zeek 402 403
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
@@ -262,7 +266,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::set_configuration_response
-   :source-code: policy/frameworks/management/controller/main.zeek 349 398
+   :source-code: policy/frameworks/management/controller/main.zeek 407 456
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
 
