@@ -44,7 +44,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Management::connect_retry
-   :source-code: policy/frameworks/management/config.zeek 28 28
+   :source-code: policy/frameworks/management/config.zeek 27 27
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -54,16 +54,15 @@ Redefinable Options
    aggressive value compared to Broker's 30s.
 
 .. zeek:id:: Management::default_address
-   :source-code: policy/frameworks/management/config.zeek 24 24
+   :source-code: policy/frameworks/management/config.zeek 23 23
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``""``
+   :Default: ``"0.0.0.0"``
 
    The fallback listen address if more specific adddresses, such as
    the controller's :zeek:see:`Management::Controller::listen_address`
-   remains empty. Unless redefined, this uses Broker's own default
-   listen address.
+   remains empty. Unless redefined, this listens on all interfaces.
 
 .. zeek:id:: Management::role
    :source-code: policy/frameworks/management/config.zeek 18 18
@@ -95,7 +94,7 @@ Redefinable Options
    running.
 
 .. zeek:id:: Management::spool_dir
-   :source-code: policy/frameworks/management/config.zeek 34 34
+   :source-code: policy/frameworks/management/config.zeek 33 33
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -107,7 +106,7 @@ Redefinable Options
    :zeek:see:`Management::get_spool_dir` function.
 
 .. zeek:id:: Management::state_dir
-   :source-code: policy/frameworks/management/config.zeek 39 39
+   :source-code: policy/frameworks/management/config.zeek 38 38
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -120,7 +119,7 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: Management::get_spool_dir
-   :source-code: policy/frameworks/management/config.zeek 52 58
+   :source-code: policy/frameworks/management/config.zeek 51 57
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
@@ -129,7 +128,7 @@ Functions
    installation's spool directory.
 
 .. zeek:id:: Management::get_state_dir
-   :source-code: policy/frameworks/management/config.zeek 60 66
+   :source-code: policy/frameworks/management/config.zeek 59 65
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
