@@ -2,50 +2,56 @@
 
 policy/frameworks/management/agent/main.zeek
 ============================================
-.. zeek:namespace:: Mangement::Agent::Runtime
+.. zeek:namespace:: Management::Agent::Runtime
 
 This is the main "runtime" of a cluster agent. Zeek does not load this
 directly; rather, the agent's bootstrapping module (in ./boot.zeek)
 specifies it as the script to run in the node newly created via Zeek's
 supervisor.
 
-:Namespace: Mangement::Agent::Runtime
+:Namespace: Management::Agent::Runtime
 :Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`base/utils/paths.zeek </scripts/base/utils/paths.zeek>`, :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>`, :doc:`policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>`, :doc:`policy/frameworks/management/node/api.zeek </scripts/policy/frameworks/management/node/api.zeek>`, :doc:`policy/frameworks/management/node/config.zeek </scripts/policy/frameworks/management/node/config.zeek>`, :doc:`policy/frameworks/management/supervisor/api.zeek </scripts/policy/frameworks/management/supervisor/api.zeek>`, :doc:`policy/frameworks/management/supervisor/config.zeek </scripts/policy/frameworks/management/supervisor/config.zeek>`
 
 Summary
 ~~~~~~~
 Types
 #####
-================================================================================== ================================================================
-:zeek:type:`Mangement::Agent::Runtime::NodeDispatchState`: :zeek:type:`record`     Request state for node dispatches, tracking the requested action
-                                                                                   as well as received responses.
-:zeek:type:`Mangement::Agent::Runtime::SetConfigurationState`: :zeek:type:`record` Request state for set_configuration requests.
-:zeek:type:`Mangement::Agent::Runtime::SupervisorState`: :zeek:type:`record`       Request state specific to the agent's Supervisor interactions.
-================================================================================== ================================================================
+=================================================================================== ================================================================
+:zeek:type:`Management::Agent::Runtime::NodeDispatchState`: :zeek:type:`record`     Request state for node dispatches, tracking the requested action
+                                                                                    as well as received responses.
+:zeek:type:`Management::Agent::Runtime::SetConfigurationState`: :zeek:type:`record` Request state for set_configuration requests.
+:zeek:type:`Management::Agent::Runtime::SupervisorState`: :zeek:type:`record`       Request state specific to the agent's Supervisor interactions.
+=================================================================================== ================================================================
 
 Redefinitions
 #############
-=========================================================================================== =====================================================================================================================
+=========================================================================================== ======================================================================================================================
 :zeek:type:`Management::Request::Request`: :zeek:type:`record`                              
                                                                                             
                                                                                             :New Fields: :zeek:type:`Management::Request::Request`
                                                                                             
-                                                                                              supervisor_state_agent: :zeek:type:`Mangement::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
+                                                                                              supervisor_state_agent: :zeek:type:`Management::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
                                                                                             
-                                                                                              set_configuration_state_agent: :zeek:type:`Mangement::Agent::Runtime::SetConfigurationState` :zeek:attr:`&optional`
+                                                                                              set_configuration_state_agent: :zeek:type:`Management::Agent::Runtime::SetConfigurationState` :zeek:attr:`&optional`
                                                                                             
-                                                                                              node_dispatch_state_agent: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+                                                                                              node_dispatch_state_agent: :zeek:type:`Management::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
 :zeek:id:`Management::Request::timeout_interval`: :zeek:type:`interval` :zeek:attr:`&redef` 
 :zeek:id:`Management::role`: :zeek:type:`Management::Role` :zeek:attr:`&redef`              
 :zeek:id:`table_expire_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                 
-=========================================================================================== =====================================================================================================================
+=========================================================================================== ======================================================================================================================
+
+Events
+######
+=============================================================================== =
+:zeek:id:`Management::Agent::Runtime::trigger_log_archival`: :zeek:type:`event` 
+=============================================================================== =
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Types
 #####
-.. zeek:type:: Mangement::Agent::Runtime::NodeDispatchState
+.. zeek:type:: Management::Agent::Runtime::NodeDispatchState
    :source-code: policy/frameworks/management/agent/main.zeek 38 45
 
    :Type: :zeek:type:`record`
@@ -60,7 +66,7 @@ Types
    Request state for node dispatches, tracking the requested action
    as well as received responses.
 
-.. zeek:type:: Mangement::Agent::Runtime::SetConfigurationState
+.. zeek:type:: Management::Agent::Runtime::SetConfigurationState
    :source-code: policy/frameworks/management/agent/main.zeek 30 34
 
    :Type: :zeek:type:`record`
@@ -71,7 +77,7 @@ Types
 
    Request state for set_configuration requests.
 
-.. zeek:type:: Mangement::Agent::Runtime::SupervisorState
+.. zeek:type:: Management::Agent::Runtime::SupervisorState
    :source-code: policy/frameworks/management/agent/main.zeek 25 27
 
    :Type: :zeek:type:`record`
@@ -80,5 +86,13 @@ Types
          Name of the node the Supervisor is acting on.
 
    Request state specific to the agent's Supervisor interactions.
+
+Events
+######
+.. zeek:id:: Management::Agent::Runtime::trigger_log_archival
+   :source-code: policy/frameworks/management/agent/main.zeek 156 200
+
+   :Type: :zeek:type:`event` (run_archival: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`)
+
 
 

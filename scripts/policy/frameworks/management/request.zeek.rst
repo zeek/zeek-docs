@@ -131,15 +131,15 @@ Types
       finished: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          An internal flag to track whether a request is complete.
 
-      supervisor_state_agent: :zeek:type:`Mangement::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
+      supervisor_state_agent: :zeek:type:`Management::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      set_configuration_state_agent: :zeek:type:`Mangement::Agent::Runtime::SetConfigurationState` :zeek:attr:`&optional`
+      set_configuration_state_agent: :zeek:type:`Management::Agent::Runtime::SetConfigurationState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      node_dispatch_state_agent: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+      node_dispatch_state_agent: :zeek:type:`Management::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
