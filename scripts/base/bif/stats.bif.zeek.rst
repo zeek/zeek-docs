@@ -33,7 +33,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: get_broker_stats
-   :source-code: base/bif/stats.bif.zeek 238 238
+   :source-code: base/bif/stats.bif.zeek 239 239
 
    :Type: :zeek:type:`function` () : :zeek:type:`BrokerStats`
 
@@ -80,7 +80,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_dns_stats
-   :source-code: base/bif/stats.bif.zeek 120 120
+   :source-code: base/bif/stats.bif.zeek 121 121
 
    :Type: :zeek:type:`function` () : :zeek:type:`DNSStats`
 
@@ -126,7 +126,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_file_analysis_stats
-   :source-code: base/bif/stats.bif.zeek 158 158
+   :source-code: base/bif/stats.bif.zeek 159 159
 
    :Type: :zeek:type:`function` () : :zeek:type:`FileAnalysisStats`
 
@@ -149,7 +149,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_gap_stats
-   :source-code: base/bif/stats.bif.zeek 196 196
+   :source-code: base/bif/stats.bif.zeek 197 197
 
    :Type: :zeek:type:`function` () : :zeek:type:`GapStats`
 
@@ -172,7 +172,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_matcher_stats
-   :source-code: base/bif/stats.bif.zeek 218 218
+   :source-code: base/bif/stats.bif.zeek 219 219
 
    :Type: :zeek:type:`function` () : :zeek:type:`MatcherStats`
 
@@ -246,7 +246,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_reassembler_stats
-   :source-code: base/bif/stats.bif.zeek 101 101
+   :source-code: base/bif/stats.bif.zeek 102 102
 
    :Type: :zeek:type:`function` () : :zeek:type:`ReassemblerStats`
 
@@ -268,8 +268,10 @@ Functions
                 get_broker_stats
                 get_reporter_stats
 
+   :TODO: this should have been deprecated before?
+
 .. zeek:id:: get_reporter_stats
-   :source-code: base/bif/stats.bif.zeek 257 257
+   :source-code: base/bif/stats.bif.zeek 258 258
 
    :Type: :zeek:type:`function` () : :zeek:type:`ReporterStats`
 
@@ -292,7 +294,7 @@ Functions
                 get_broker_stats
 
 .. zeek:id:: get_thread_stats
-   :source-code: base/bif/stats.bif.zeek 177 177
+   :source-code: base/bif/stats.bif.zeek 178 178
 
    :Type: :zeek:type:`function` () : :zeek:type:`ThreadStats`
 
@@ -315,7 +317,7 @@ Functions
                 get_reporter_stats
 
 .. zeek:id:: get_timer_stats
-   :source-code: base/bif/stats.bif.zeek 139 139
+   :source-code: base/bif/stats.bif.zeek 140 140
 
    :Type: :zeek:type:`function` () : :zeek:type:`TimerStats`
 
