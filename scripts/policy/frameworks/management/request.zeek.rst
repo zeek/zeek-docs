@@ -32,6 +32,18 @@ Types
                                                                pair.
 ============================================================== ====================================================================
 
+Redefinitions
+#############
+============================================================== ===========================================================================================================================
+:zeek:type:`Management::Request::Request`: :zeek:type:`record` 
+                                                               
+                                                               :New Fields: :zeek:type:`Management::Request::Request`
+                                                               
+                                                                 finish: :zeek:type:`function` (req: :zeek:type:`Management::Request::Request`) : :zeek:type:`void` :zeek:attr:`&optional`
+                                                                   A callback to invoke when this request is finished via
+                                                                   :zeek:see:`Management::Request::finish`.
+============================================================== ===========================================================================================================================
+
 Events
 ######
 =================================================================== ======================================================================
@@ -59,7 +71,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Management::Request::timeout_interval
-   :source-code: policy/frameworks/management/request.zeek 44 44
+   :source-code: policy/frameworks/management/request.zeek 52 52
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -84,7 +96,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Management::Request::null_req
-   :source-code: policy/frameworks/management/request.zeek 47 47
+   :source-code: policy/frameworks/management/request.zeek 55 55
 
    :Type: :zeek:type:`Management::Request::Request`
    :Default:
@@ -96,12 +108,15 @@ State Variables
             parent_id=<uninitialized>
             results=[]
             finished=T
+            finish=<uninitialized>
             supervisor_state_agent=<uninitialized>
-            set_configuration_state_agent=<uninitialized>
+            deploy_state_agent=<uninitialized>
             node_dispatch_state_agent=<uninitialized>
-            set_configuration_state=<uninitialized>
+            restart_state_agent=<uninitialized>
+            deploy_state=<uninitialized>
             get_nodes_state=<uninitialized>
             node_dispatch_state=<uninitialized>
+            restart_state=<uninitialized>
             test_state=<uninitialized>
          }
 
@@ -131,19 +146,27 @@ Types
       finished: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          An internal flag to track whether a request is complete.
 
-      supervisor_state_agent: :zeek:type:`Mangement::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
+      finish: :zeek:type:`function` (<recursion>) : :zeek:type:`void` :zeek:attr:`&optional`
+         A callback to invoke when this request is finished via
+         :zeek:see:`Management::Request::finish`.
+
+      supervisor_state_agent: :zeek:type:`Management::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      set_configuration_state_agent: :zeek:type:`Mangement::Agent::Runtime::SetConfigurationState` :zeek:attr:`&optional`
+      deploy_state_agent: :zeek:type:`Management::Agent::Runtime::DeployState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      node_dispatch_state_agent: :zeek:type:`Mangement::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+      node_dispatch_state_agent: :zeek:type:`Management::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      set_configuration_state: :zeek:type:`Management::Controller::Runtime::SetConfigurationState` :zeek:attr:`&optional`
+      restart_state_agent: :zeek:type:`Management::Agent::Runtime::RestartState` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
+
+
+      deploy_state: :zeek:type:`Management::Controller::Runtime::DeployState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
 
 
@@ -152,6 +175,10 @@ Types
 
 
       node_dispatch_state: :zeek:type:`Management::Controller::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+
+
+      restart_state: :zeek:type:`Management::Controller::Runtime::RestartState` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
 
 
@@ -169,7 +196,7 @@ Types
 Events
 ######
 .. zeek:id:: Management::Request::request_expired
-   :source-code: policy/frameworks/management/request.zeek 76 76
+   :source-code: policy/frameworks/management/request.zeek 84 84
 
    :Type: :zeek:type:`event` (req: :zeek:type:`Management::Request::Request`)
 
@@ -184,9 +211,9 @@ Events
 Functions
 #########
 .. zeek:id:: Management::Request::create
-   :source-code: policy/frameworks/management/request.zeek 111 116
+   :source-code: policy/frameworks/management/request.zeek 119 124
 
-   :Type: :zeek:type:`function` (reqid: :zeek:type:`string` :zeek:attr:`&default` = ``9Ye7pQPhuMe`` :zeek:attr:`&optional`) : :zeek:type:`Management::Request::Request`
+   :Type: :zeek:type:`function` (reqid: :zeek:type:`string` :zeek:attr:`&default` = ``fD0qxAnfwOe`` :zeek:attr:`&optional`) : :zeek:type:`Management::Request::Request`
 
    This function establishes request state.
    
@@ -195,7 +222,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::finish
-   :source-code: policy/frameworks/management/request.zeek 126 137
+   :source-code: policy/frameworks/management/request.zeek 134 148
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -208,7 +235,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::is_null
-   :source-code: policy/frameworks/management/request.zeek 139 145
+   :source-code: policy/frameworks/management/request.zeek 150 156
 
    :Type: :zeek:type:`function` (request: :zeek:type:`Management::Request::Request`) : :zeek:type:`bool`
 
@@ -223,7 +250,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::lookup
-   :source-code: policy/frameworks/management/request.zeek 118 124
+   :source-code: policy/frameworks/management/request.zeek 126 132
 
    :Type: :zeek:type:`function` (reqid: :zeek:type:`string`) : :zeek:type:`Management::Request::Request`
 
@@ -235,7 +262,7 @@ Functions
    
 
 .. zeek:id:: Management::Request::to_string
-   :source-code: policy/frameworks/management/request.zeek 147 166
+   :source-code: policy/frameworks/management/request.zeek 158 168
 
    :Type: :zeek:type:`function` (request: :zeek:type:`Management::Request::Request`) : :zeek:type:`string`
 

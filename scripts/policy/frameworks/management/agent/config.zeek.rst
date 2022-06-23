@@ -7,13 +7,18 @@ policy/frameworks/management/agent/config.zeek
 Configuration settings for a cluster agent.
 
 :Namespace: Management::Agent
-:Imports: :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>`
+:Imports: :doc:`base/misc/installation.zeek </scripts/base/misc/installation.zeek>`, :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>`
 
 Summary
 ~~~~~~~
 Redefinable Options
 ###################
 ============================================================================================== =====================================================================================
+:zeek:id:`Management::Agent::archive_cmd`: :zeek:type:`string` :zeek:attr:`&redef`             The archival command.
+:zeek:id:`Management::Agent::archive_dir`: :zeek:type:`string` :zeek:attr:`&redef`             The destination interval for archived logs.
+:zeek:id:`Management::Agent::archive_interval`: :zeek:type:`interval` :zeek:attr:`&redef`      The archival interval to use.
+:zeek:id:`Management::Agent::archive_logs`: :zeek:type:`bool` :zeek:attr:`&redef`              Whether the agent should periodically invoke zeek-archiver to
+                                                                                               finalize logs.
 :zeek:id:`Management::Agent::controller`: :zeek:type:`Broker::NetworkInfo` :zeek:attr:`&redef` The network coordinates of the controller.
 :zeek:id:`Management::Agent::default_port`: :zeek:type:`port` :zeek:attr:`&redef`              The fallback listen port if :zeek:see:`Management::Agent::listen_port` remains empty.
 :zeek:id:`Management::Agent::directory`: :zeek:type:`string` :zeek:attr:`&redef`               An optional working directory for the agent.
@@ -40,8 +45,52 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Redefinable Options
 ###################
+.. zeek:id:: Management::Agent::archive_cmd
+   :source-code: policy/frameworks/management/agent/config.zeek 63 63
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``""``
+
+   The archival command. When empty, defaults to the zeek-archiver
+   installed with the Zeek distribution. Whatever the command, the
+   agent will invoke it like zeek-archiver, so take a look at its
+   command-line arguments if you're planning to put in place a
+   substitute. Archival happens from the
+   :zeek:see:`Log::default_rotation_dir` to
+   :zeek:see:`Management::Agent::archive_dir`.
+
+.. zeek:id:: Management::Agent::archive_dir
+   :source-code: policy/frameworks/management/agent/config.zeek 66 66
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``"/usr/local/zeek/logs"``
+
+   The destination interval for archived logs.
+
+.. zeek:id:: Management::Agent::archive_interval
+   :source-code: policy/frameworks/management/agent/config.zeek 54 54
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``0 secs``
+
+   The archival interval to use. When 0, it defaults to the log rotation
+   interval.
+
+.. zeek:id:: Management::Agent::archive_logs
+   :source-code: policy/frameworks/management/agent/config.zeek 50 50
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   Whether the agent should periodically invoke zeek-archiver to
+   finalize logs.
+
 .. zeek:id:: Management::Agent::controller
-   :source-code: policy/frameworks/management/agent/config.zeek 58 58
+   :source-code: policy/frameworks/management/agent/config.zeek 79 79
 
    :Type: :zeek:type:`Broker::NetworkInfo`
    :Attributes: :zeek:attr:`&redef`
@@ -64,7 +113,7 @@ Redefinable Options
    :zeek:see:`Management::Agent::listen_port` as needed.
 
 .. zeek:id:: Management::Agent::default_port
-   :source-code: policy/frameworks/management/agent/config.zeek 45 45
+   :source-code: policy/frameworks/management/agent/config.zeek 46 46
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`
@@ -73,7 +122,7 @@ Redefinable Options
    The fallback listen port if :zeek:see:`Management::Agent::listen_port` remains empty.
 
 .. zeek:id:: Management::Agent::directory
-   :source-code: policy/frameworks/management/agent/config.zeek 66 66
+   :source-code: policy/frameworks/management/agent/config.zeek 87 87
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -86,7 +135,7 @@ Redefinable Options
    a directory named after the agent (as per its get_name() result).
 
 .. zeek:id:: Management::Agent::listen_address
-   :source-code: policy/frameworks/management/agent/config.zeek 37 37
+   :source-code: policy/frameworks/management/agent/config.zeek 38 38
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -100,7 +149,7 @@ Redefinable Options
    :zeek:see:`Management::default_address`.
 
 .. zeek:id:: Management::Agent::listen_port
-   :source-code: policy/frameworks/management/agent/config.zeek 42 42
+   :source-code: policy/frameworks/management/agent/config.zeek 43 43
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -111,7 +160,7 @@ Redefinable Options
    environment variable.
 
 .. zeek:id:: Management::Agent::name
-   :source-code: policy/frameworks/management/agent/config.zeek 16 16
+   :source-code: policy/frameworks/management/agent/config.zeek 17 17
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -123,7 +172,7 @@ Redefinable Options
    the implementation defaults to "agent-<hostname>".
 
 .. zeek:id:: Management::Agent::stderr_file
-   :source-code: policy/frameworks/management/agent/config.zeek 29 29
+   :source-code: policy/frameworks/management/agent/config.zeek 30 30
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -133,7 +182,7 @@ Redefinable Options
    but for the stderr stream.
 
 .. zeek:id:: Management::Agent::stdout_file
-   :source-code: policy/frameworks/management/agent/config.zeek 25 25
+   :source-code: policy/frameworks/management/agent/config.zeek 26 26
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -148,7 +197,7 @@ Redefinable Options
    :zeek:see:`Management::Log` module.
 
 .. zeek:id:: Management::Agent::topic_prefix
-   :source-code: policy/frameworks/management/agent/config.zeek 49 49
+   :source-code: policy/frameworks/management/agent/config.zeek 70 70
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -160,7 +209,7 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: Management::Agent::endpoint_info
-   :source-code: policy/frameworks/management/agent/config.zeek 97 120
+   :source-code: policy/frameworks/management/agent/config.zeek 118 141
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
@@ -169,14 +218,14 @@ Functions
    data format.
 
 .. zeek:id:: Management::Agent::get_name
-   :source-code: policy/frameworks/management/agent/config.zeek 81 87
+   :source-code: policy/frameworks/management/agent/config.zeek 102 108
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
    Returns the effective name of this agent.
 
 .. zeek:id:: Management::Agent::instance
-   :source-code: policy/frameworks/management/agent/config.zeek 89 95
+   :source-code: policy/frameworks/management/agent/config.zeek 110 116
 
    :Type: :zeek:type:`function` () : :zeek:type:`Management::Instance`
 

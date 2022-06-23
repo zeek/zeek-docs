@@ -16,43 +16,89 @@ Summary
 ~~~~~~~
 Types
 #####
-======================================================================================== ======================================================================
-:zeek:type:`Management::Controller::Runtime::GetNodesState`: :zeek:type:`record`         Request state specific to
-                                                                                         :zeek:see:`Management::Controller::API::get_nodes_request` and
-                                                                                         :zeek:see:`Management::Controller::API::get_nodes_response`.
-:zeek:type:`Management::Controller::Runtime::NodeDispatchState`: :zeek:type:`record`     Request state for node dispatch requests, to track the requested
-                                                                                         action and received responses.
-:zeek:type:`Management::Controller::Runtime::SetConfigurationState`: :zeek:type:`record` Request state specific to
-                                                                                         :zeek:see:`Management::Controller::API::set_configuration_request` and
-                                                                                         :zeek:see:`Management::Controller::API::set_configuration_response`.
-:zeek:type:`Management::Controller::Runtime::TestState`: :zeek:type:`record`             Dummy state for internal state-keeping test cases.
-======================================================================================== ======================================================================
+==================================================================================== ====================================================================
+:zeek:type:`Management::Controller::Runtime::ConfigState`: :zeek:type:`enum`         A cluster configuration uploaded by the client goes through multiple
+                                                                                     states on its way to deployment.
+:zeek:type:`Management::Controller::Runtime::DeployState`: :zeek:type:`record`       Request state specific to
+                                                                                     :zeek:see:`Management::Controller::API::deploy_request` and
+                                                                                     :zeek:see:`Management::Controller::API::deploy_response`.
+:zeek:type:`Management::Controller::Runtime::GetNodesState`: :zeek:type:`record`     Request state specific to
+                                                                                     :zeek:see:`Management::Controller::API::get_nodes_request` and
+                                                                                     :zeek:see:`Management::Controller::API::get_nodes_response`.
+:zeek:type:`Management::Controller::Runtime::NodeDispatchState`: :zeek:type:`record` Request state for node dispatch requests, to track the requested
+                                                                                     action and received responses.
+:zeek:type:`Management::Controller::Runtime::RestartState`: :zeek:type:`record`      Request state specific to
+                                                                                     :zeek:see:`Management::Controller::API::restart_request` and
+                                                                                     :zeek:see:`Management::Controller::API::restart_response`.
+:zeek:type:`Management::Controller::Runtime::TestState`: :zeek:type:`record`         Dummy state for internal state-keeping test cases.
+==================================================================================== ====================================================================
 
 Redefinitions
 #############
-============================================================================== =====================================================================================================================
+============================================================================== =============================================================================================================
 :zeek:type:`Management::Request::Request`: :zeek:type:`record`                 
                                                                                
                                                                                :New Fields: :zeek:type:`Management::Request::Request`
                                                                                
-                                                                                 set_configuration_state: :zeek:type:`Management::Controller::Runtime::SetConfigurationState` :zeek:attr:`&optional`
+                                                                                 deploy_state: :zeek:type:`Management::Controller::Runtime::DeployState` :zeek:attr:`&optional`
                                                                                
                                                                                  get_nodes_state: :zeek:type:`Management::Controller::Runtime::GetNodesState` :zeek:attr:`&optional`
                                                                                
                                                                                  node_dispatch_state: :zeek:type:`Management::Controller::Runtime::NodeDispatchState` :zeek:attr:`&optional`
                                                                                
+                                                                                 restart_state: :zeek:type:`Management::Controller::Runtime::RestartState` :zeek:attr:`&optional`
+                                                                               
                                                                                  test_state: :zeek:type:`Management::Controller::Runtime::TestState` :zeek:attr:`&optional`
 :zeek:id:`Management::role`: :zeek:type:`Management::Role` :zeek:attr:`&redef` 
 :zeek:id:`table_expire_interval`: :zeek:type:`interval` :zeek:attr:`&redef`    
-============================================================================== =====================================================================================================================
+============================================================================== =============================================================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Types
 #####
+.. zeek:type:: Management::Controller::Runtime::ConfigState
+   :source-code: policy/frameworks/management/controller/main.zeek 23 28
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: Management::Controller::Runtime::STAGED Management::Controller::Runtime::ConfigState
+
+         As provided by the client.
+
+      .. zeek:enum:: Management::Controller::Runtime::READY Management::Controller::Runtime::ConfigState
+
+         Necessary updates made, e.g. ports filled in.
+
+      .. zeek:enum:: Management::Controller::Runtime::DEPLOYED Management::Controller::Runtime::ConfigState
+
+         Sent off to the agents for deployment.
+
+   A cluster configuration uploaded by the client goes through multiple
+   states on its way to deployment.
+
+.. zeek:type:: Management::Controller::Runtime::DeployState
+   :source-code: policy/frameworks/management/controller/main.zeek 32 40
+
+   :Type: :zeek:type:`record`
+
+      config: :zeek:type:`Management::Configuration`
+         The cluster configuration the controller is deploying.
+
+      is_internal: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         Whether this is a controller-internal deployment, or
+         triggered via a request by a remote peer/client.
+
+      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+         Request state for every controller/agent transaction.
+
+   Request state specific to
+   :zeek:see:`Management::Controller::API::deploy_request` and
+   :zeek:see:`Management::Controller::API::deploy_response`.
+
 .. zeek:type:: Management::Controller::Runtime::GetNodesState
-   :source-code: policy/frameworks/management/controller/main.zeek 34 37
+   :source-code: policy/frameworks/management/controller/main.zeek 45 48
 
    :Type: :zeek:type:`record`
 
@@ -64,7 +110,7 @@ Types
    :zeek:see:`Management::Controller::API::get_nodes_response`.
 
 .. zeek:type:: Management::Controller::Runtime::NodeDispatchState
-   :source-code: policy/frameworks/management/controller/main.zeek 50 60
+   :source-code: policy/frameworks/management/controller/main.zeek 61 71
 
    :Type: :zeek:type:`record`
 
@@ -90,23 +136,20 @@ Types
    for an example of a specific API the controller generalizes into
    a dispatch.
 
-.. zeek:type:: Management::Controller::Runtime::SetConfigurationState
-   :source-code: policy/frameworks/management/controller/main.zeek 24 29
+.. zeek:type:: Management::Controller::Runtime::RestartState
+   :source-code: policy/frameworks/management/controller/main.zeek 76 79
 
    :Type: :zeek:type:`record`
-
-      config: :zeek:type:`Management::Configuration`
-         The cluster configuration established with this request
 
       requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          Request state for every controller/agent transaction.
 
    Request state specific to
-   :zeek:see:`Management::Controller::API::set_configuration_request` and
-   :zeek:see:`Management::Controller::API::set_configuration_response`.
+   :zeek:see:`Management::Controller::API::restart_request` and
+   :zeek:see:`Management::Controller::API::restart_response`.
 
 .. zeek:type:: Management::Controller::Runtime::TestState
-   :source-code: policy/frameworks/management/controller/main.zeek 63 64
+   :source-code: policy/frameworks/management/controller/main.zeek 82 83
 
    :Type: :zeek:type:`record`
 

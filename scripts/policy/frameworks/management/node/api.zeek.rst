@@ -51,7 +51,7 @@ Events
        here to filter themselves out of responding.
 
 .. zeek:id:: Management::Node::API::node_dispatch_response
-   :source-code: policy/frameworks/management/agent/main.zeek 449 518
+   :source-code: policy/frameworks/management/agent/main.zeek 674 743
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -68,7 +68,7 @@ Events
        contains a value appropriate for the requested dispatch.
 
 .. zeek:id:: Management::Node::API::notify_node_hello
-   :source-code: policy/frameworks/management/agent/main.zeek 648 671
+   :source-code: policy/frameworks/management/agent/main.zeek 993 1016
 
    :Type: :zeek:type:`event` (node: :zeek:type:`string`)
 
