@@ -32,6 +32,13 @@ Redefinable Options
 :zeek:id:`Management::Controller::topic`: :zeek:type:`string` :zeek:attr:`&redef`                The controller's Broker topic.
 ================================================================================================ ===========================================================================
 
+Constants
+#########
+================================================================== ====================================================================
+:zeek:id:`Management::Controller::store_name`: :zeek:type:`string` The name of the Broker store the controller uses to persist internal
+                                                                   state to disk.
+================================================================== ====================================================================
+
 Functions
 #########
 ======================================================================= ============================================================================
@@ -159,24 +166,35 @@ Redefinable Options
 
    The controller's Broker topic. Clients send requests to this topic.
 
+Constants
+#########
+.. zeek:id:: Management::Controller::store_name
+   :source-code: policy/frameworks/management/controller/config.zeek 64 64
+
+   :Type: :zeek:type:`string`
+   :Default: ``"controller"``
+
+   The name of the Broker store the controller uses to persist internal
+   state to disk.
+
 Functions
 #########
 .. zeek:id:: Management::Controller::endpoint_info
-   :source-code: policy/frameworks/management/controller/config.zeek 99 108
+   :source-code: policy/frameworks/management/controller/config.zeek 103 112
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
    Returns a :zeek:see:`Broker::EndpointInfo` record describing the controller.
 
 .. zeek:id:: Management::Controller::get_name
-   :source-code: policy/frameworks/management/controller/config.zeek 72 78
+   :source-code: policy/frameworks/management/controller/config.zeek 76 82
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
    Returns the effective name of the controller.
 
 .. zeek:id:: Management::Controller::network_info
-   :source-code: policy/frameworks/management/controller/config.zeek 80 98
+   :source-code: policy/frameworks/management/controller/config.zeek 84 102
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::NetworkInfo`
 
