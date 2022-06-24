@@ -14,31 +14,33 @@ Summary
 ~~~~~~~
 Types
 #####
-=========================================================== =======================================================================
+=========================================================== =====================================================================
 :zeek:type:`Management::Configuration`: :zeek:type:`record` Data structure capturing a cluster's complete configuration.
 :zeek:type:`Management::Instance`: :zeek:type:`record`      Configuration describing a Zeek instance running a Cluster
                                                             Agent.
 :zeek:type:`Management::InstanceVec`: :zeek:type:`vector`   
 :zeek:type:`Management::Node`: :zeek:type:`record`          Configuration describing a Cluster Node process.
-:zeek:type:`Management::NodeOutputs`: :zeek:type:`record`   In :zeek:see:`Management::Controller::API::set_configuration_response`,
-                                                            events, each :zeek:see:`Management::Result` indicates the outcome of a
-                                                            requested cluster node.
+:zeek:type:`Management::NodeOutputs`: :zeek:type:`record`   In :zeek:see:`Management::Controller::API::deploy_response` events,
+                                                            each :zeek:see:`Management::Result` indicates the outcome of a
+                                                            launched cluster node.
 :zeek:type:`Management::NodeStatus`: :zeek:type:`record`    The status of a Supervisor-managed node, as reported to the client in
                                                             a get_nodes_request/get_nodes_response transaction.
 :zeek:type:`Management::NodeStatusVec`: :zeek:type:`vector` 
 :zeek:type:`Management::Option`: :zeek:type:`record`        A Zeek-side option with value.
-:zeek:type:`Management::Result`: :zeek:type:`record`        Return value for request-response API event pairs
+:zeek:type:`Management::Result`: :zeek:type:`record`        Return value for request-response API event pairs.
 :zeek:type:`Management::ResultVec`: :zeek:type:`vector`     
 :zeek:type:`Management::Role`: :zeek:type:`enum`            Management infrastructure node type.
 :zeek:type:`Management::State`: :zeek:type:`enum`           State that a Cluster Node can be in.
-=========================================================== =======================================================================
+=========================================================== =====================================================================
 
 Functions
 #########
-============================================================== ==============================================
-:zeek:id:`Management::result_to_string`: :zeek:type:`function` Given a :zeek:see:`Management::Result` record,
-                                                               this function returns a string summarizing it.
-============================================================== ==============================================
+================================================================== =========================================================
+:zeek:id:`Management::result_to_string`: :zeek:type:`function`     Given a :zeek:see:`Management::Result` record,
+                                                                   this function returns a string summarizing it.
+:zeek:id:`Management::result_vec_to_string`: :zeek:type:`function` Given a vector of :zeek:see:`Management::Result` records,
+                                                                   this function returns a string summarizing them.
+================================================================== =========================================================
 
 
 Detailed Interface
@@ -50,7 +52,7 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string` :zeek:attr:`&default` = ``fD0qxAnfwOe`` :zeek:attr:`&optional`
+      id: :zeek:type:`string` :zeek:attr:`&default` = ``Chd8EgFWk2j`` :zeek:attr:`&optional`
          Unique identifier for a particular configuration
 
       instances: :zeek:type:`set` [:zeek:type:`Management::Instance`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
@@ -123,7 +125,7 @@ Types
    Configuration describing a Cluster Node process.
 
 .. zeek:type:: Management::NodeOutputs
-   :source-code: policy/frameworks/management/types.zeek 114 117
+   :source-code: policy/frameworks/management/types.zeek 119 122
 
    :Type: :zeek:type:`record`
 
@@ -133,10 +135,10 @@ Types
       stderr: :zeek:type:`string`
          The stderr stream of a Zeek process
 
-   In :zeek:see:`Management::Controller::API::set_configuration_response`,
-   events, each :zeek:see:`Management::Result` indicates the outcome of a
-   requested cluster node. If a node does not launch properly (meaning
-   it doesn't check in with the agent on thee machine it's running on),
+   In :zeek:see:`Management::Controller::API::deploy_response` events,
+   each :zeek:see:`Management::Result` indicates the outcome of a
+   launched cluster node. If a node does not launch properly (meaning
+   it doesn't check in with the agent on the machine it's running on),
    the result will indicate failure, and its data field will be an
    instance of this record, capturing the stdout and stderr output of
    the failing node.
@@ -188,32 +190,37 @@ Types
    A Zeek-side option with value.
 
 .. zeek:type:: Management::Result
-   :source-code: policy/frameworks/management/types.zeek 96 103
+   :source-code: policy/frameworks/management/types.zeek 101 108
 
    :Type: :zeek:type:`record`
 
       reqid: :zeek:type:`string`
          Request ID of operation this result refers to
 
-      instance: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Name of associated instance (for context)
-
       success: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
          True if successful
+
+      instance: :zeek:type:`string` :zeek:attr:`&optional`
+         Name of associated instance (for context)
 
       data: :zeek:type:`any` :zeek:attr:`&optional`
          Addl data returned for successful operation
 
-      error: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+      error: :zeek:type:`string` :zeek:attr:`&optional`
          Descriptive error on failure
 
       node: :zeek:type:`string` :zeek:attr:`&optional`
          Name of associated node (for context)
 
-   Return value for request-response API event pairs
+   Return value for request-response API event pairs. Some responses
+   contain one, others multiple of these. The request ID allows clients
+   to string requests and responses together. Agents and the controller
+   fill in the instance and node fields whenever there's sufficient
+   context to define them. Any result produced by an agent will carry an
+   instance value, for example.
 
 .. zeek:type:: Management::ResultVec
-   :source-code: policy/frameworks/management/types.zeek 105 105
+   :source-code: policy/frameworks/management/types.zeek 110 110
 
    :Type: :zeek:type:`vector` of :zeek:type:`Management::Result`
 
@@ -280,11 +287,19 @@ Types
 Functions
 #########
 .. zeek:id:: Management::result_to_string
-   :source-code: policy/frameworks/management/types.zeek 124 149
+   :source-code: policy/frameworks/management/types.zeek 133 158
 
    :Type: :zeek:type:`function` (res: :zeek:type:`Management::Result`) : :zeek:type:`string`
 
    Given a :zeek:see:`Management::Result` record,
    this function returns a string summarizing it.
+
+.. zeek:id:: Management::result_vec_to_string
+   :source-code: policy/frameworks/management/types.zeek 159 168
+
+   :Type: :zeek:type:`function` (res: :zeek:type:`Management::ResultVec`) : :zeek:type:`string`
+
+   Given a vector of :zeek:see:`Management::Result` records,
+   this function returns a string summarizing them.
 
 

@@ -23,7 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: Management::Supervisor::API::notify_node_exit
-   :source-code: policy/frameworks/management/agent/main.zeek 202 206
+   :source-code: policy/frameworks/management/agent/main.zeek 258 262
 
    :Type: :zeek:type:`event` (node: :zeek:type:`string`, outputs: :zeek:type:`Management::NodeOutputs`)
 

@@ -5,9 +5,9 @@ policy/frameworks/management/controller/api.zeek
 .. zeek:namespace:: Management::Controller::API
 
 The event API of cluster controllers. Most endpoints consist of event pairs,
-where the controller answers a zeek-client request event with a
-corresponding response event. Such event pairs share the same name prefix
-and end in "_request" and "_response", respectively.
+where the controller answers the client's request event with a corresponding
+response event. Such event pairs share the same name prefix and end in
+"_request" and "_response", respectively.
 
 :Namespace: Management::Controller::API
 :Imports: :doc:`policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>`
@@ -18,37 +18,54 @@ Constants
 #########
 =================================================================== ================================================================
 :zeek:id:`Management::Controller::API::version`: :zeek:type:`count` A simple versioning scheme, used to track basic compatibility of
-                                                                    controller, agents, and zeek-client.
+                                                                    controller, agents, and the client.
 =================================================================== ================================================================
 
 Events
 ######
-====================================================================================== ======================================================================
-:zeek:id:`Management::Controller::API::get_configuration_request`: :zeek:type:`event`  zeek-client sends this event to retrieve the currently deployed
-                                                                                       cluster configuration.
-:zeek:id:`Management::Controller::API::get_configuration_response`: :zeek:type:`event` Response to a get_configuration_request event.
-:zeek:id:`Management::Controller::API::get_id_value_request`: :zeek:type:`event`       zeek-client sends this event to retrieve the current value of a
-                                                                                       variable in Zeek's global namespace, referenced by the given
-                                                                                       identifier (i.e., variable name).
-:zeek:id:`Management::Controller::API::get_id_value_response`: :zeek:type:`event`      Response to a get_id_value_request event.
-:zeek:id:`Management::Controller::API::get_instances_request`: :zeek:type:`event`      zeek-client sends this event to request a list of the currently
-                                                                                       peered agents/instances.
-:zeek:id:`Management::Controller::API::get_instances_response`: :zeek:type:`event`     Response to a get_instances_request event.
-:zeek:id:`Management::Controller::API::get_nodes_request`: :zeek:type:`event`          zeek-client sends this event to request a list of
-                                                                                       :zeek:see:`Management::NodeStatus` records that capture
-                                                                                       the status of Supervisor-managed nodes running on the cluster's
-                                                                                       instances.
-:zeek:id:`Management::Controller::API::get_nodes_response`: :zeek:type:`event`         Response to a get_nodes_request event.
-:zeek:id:`Management::Controller::API::notify_agents_ready`: :zeek:type:`event`        The controller triggers this event when the operational cluster
-                                                                                       instances align with the ones desired by the cluster
-                                                                                       configuration.
-:zeek:id:`Management::Controller::API::set_configuration_request`: :zeek:type:`event`  zeek-client sends this event to establish a new cluster configuration,
-                                                                                       including the full cluster topology.
-:zeek:id:`Management::Controller::API::set_configuration_response`: :zeek:type:`event` Response to a set_configuration_request event.
-:zeek:id:`Management::Controller::API::test_timeout_request`: :zeek:type:`event`       This event causes no further action (other than getting logged) if
-                                                                                       with_state is F.
-:zeek:id:`Management::Controller::API::test_timeout_response`: :zeek:type:`event`      Response to a test_timeout_request event.
-====================================================================================== ======================================================================
+======================================================================================== ======================================================================
+:zeek:id:`Management::Controller::API::deploy_request`: :zeek:type:`event`               Trigger deployment of a previously staged configuration.
+:zeek:id:`Management::Controller::API::deploy_response`: :zeek:type:`event`              Response to a :zeek:see:`Management::Controller::API::deploy_request`
+                                                                                         event.
+:zeek:id:`Management::Controller::API::get_configuration_request`: :zeek:type:`event`    The client sends this event to retrieve the controller's current
+                                                                                         cluster configuration(s).
+:zeek:id:`Management::Controller::API::get_configuration_response`: :zeek:type:`event`   Response to a
+                                                                                         :zeek:see:`Management::Controller::API::get_configuration_request`
+                                                                                         event.
+:zeek:id:`Management::Controller::API::get_id_value_request`: :zeek:type:`event`         The client sends this event to retrieve the current value of a
+                                                                                         variable in Zeek's global namespace, referenced by the given
+                                                                                         identifier (i.e., variable name).
+:zeek:id:`Management::Controller::API::get_id_value_response`: :zeek:type:`event`        Response to a
+                                                                                         :zeek:see:`Management::Controller::API::get_id_value_request`
+                                                                                         event.
+:zeek:id:`Management::Controller::API::get_instances_request`: :zeek:type:`event`        The client sends this event to request a list of the currently
+                                                                                         peered agents/instances.
+:zeek:id:`Management::Controller::API::get_instances_response`: :zeek:type:`event`       Response to a
+                                                                                         :zeek:see:`Management::Controller::API::get_instances_request`
+                                                                                         event.
+:zeek:id:`Management::Controller::API::get_nodes_request`: :zeek:type:`event`            The client sends this event to request a list of
+                                                                                         :zeek:see:`Management::NodeStatus` records that capture
+                                                                                         the status of Supervisor-managed nodes running on the cluster's
+                                                                                         instances.
+:zeek:id:`Management::Controller::API::get_nodes_response`: :zeek:type:`event`           Response to a
+                                                                                         :zeek:see:`Management::Controller::API::get_nodes_request` event.
+:zeek:id:`Management::Controller::API::notify_agents_ready`: :zeek:type:`event`          The controller triggers this event when the operational cluster
+                                                                                         instances align with the ones desired by the cluster
+                                                                                         configuration.
+:zeek:id:`Management::Controller::API::restart_request`: :zeek:type:`event`              The client sends this event to restart currently running Zeek cluster
+                                                                                         nodes.
+:zeek:id:`Management::Controller::API::restart_response`: :zeek:type:`event`             Response to a :zeek:see:`Management::Controller::API::restart_request`
+                                                                                         event.
+:zeek:id:`Management::Controller::API::stage_configuration_request`: :zeek:type:`event`  Upload a configuration to the controller for later deployment.
+:zeek:id:`Management::Controller::API::stage_configuration_response`: :zeek:type:`event` Response to a
+                                                                                         :zeek:see:`Management::Controller::API::stage_configuration_request`
+                                                                                         event.
+:zeek:id:`Management::Controller::API::test_timeout_request`: :zeek:type:`event`         This event causes no further action (other than getting logged) if
+                                                                                         with_state is F.
+:zeek:id:`Management::Controller::API::test_timeout_response`: :zeek:type:`event`        Response to a
+                                                                                         :zeek:see:`Management::Controller::API::test_timeout_request`
+                                                                                         event.
+======================================================================================== ======================================================================
 
 
 Detailed Interface
@@ -62,29 +79,74 @@ Constants
    :Default: ``1``
 
    A simple versioning scheme, used to track basic compatibility of
-   controller, agents, and zeek-client.
+   controller, agents, and the client.
 
 Events
 ######
-.. zeek:id:: Management::Controller::API::get_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 894 916
+.. zeek:id:: Management::Controller::API::deploy_request
+   :source-code: policy/frameworks/management/controller/main.zeek 962 1002
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
-   zeek-client sends this event to retrieve the currently deployed
-   cluster configuration.
+   Trigger deployment of a previously staged configuration.  The client
+   sends this event to the controller, which deploys the configuration
+   to the agents. Agents then terminate any previously running cluster
+   nodes and (re-)launch those defined in the new configuration. Once
+   each agent has responded (or a timeout occurs), the controller sends
+   a response event back to the client, aggregating the results from the
+   agents. The controller keeps the staged configuration available for
+   download, or re-deployment.  In addition, the deployed configuration
+   becomes available for download as well, with any augmentations
+   (e.g. node ports filled in by auto-assignment) reflected.
    
 
    :reqid: a request identifier string, echoed in the response event.
    
 
+.. zeek:id:: Management::Controller::API::deploy_response
+   :source-code: policy/frameworks/management/controller/api.zeek 119 119
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
+
+   Response to a :zeek:see:`Management::Controller::API::deploy_request`
+   event. The controller sends this back to the client, conveying the
+   outcome of the deployment.
+   
+
+   :reqid: the request identifier used in the request event.
+   
+
+   :results: a vector of :zeek:see:`Management::Result` records.
+       Each member captures the result of launching one cluster
+       node captured in the configuration, or an agent-wide error
+       when the result does not indicate a particular node.
+   
+
+.. zeek:id:: Management::Controller::API::get_configuration_request
+   :source-code: policy/frameworks/management/controller/main.zeek 937 960
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, deployed: :zeek:type:`bool`)
+
+   The client sends this event to retrieve the controller's current
+   cluster configuration(s).
+   
+
+   :reqid: a request identifier string, echoed in the response event.
+   
+
+   :deployed: when true, returns the deployed configuration (if any),
+       otherwise the staged one (if any).
+   
+
 .. zeek:id:: Management::Controller::API::get_configuration_response
-   :source-code: policy/frameworks/management/controller/api.zeek 77 77
+   :source-code: policy/frameworks/management/controller/api.zeek 89 89
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
-   Response to a get_configuration_request event. The controller sends
-   this back to the client.
+   Response to a
+   :zeek:see:`Management::Controller::API::get_configuration_request`
+   event. The controller sends this back to the client, with the
+   requested configuration.
    
 
    :reqid: the request identifier used in the request event.
@@ -97,11 +159,11 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_id_value_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1085 1163
+   :source-code: policy/frameworks/management/controller/main.zeek 1171 1249
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, id: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
-   zeek-client sends this event to retrieve the current value of a
+   The client sends this event to retrieve the current value of a
    variable in Zeek's global namespace, referenced by the given
    identifier (i.e., variable name). The controller asks all agents
    to retrieve this value from each cluster node, accumulates the
@@ -121,18 +183,20 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_id_value_response
-   :source-code: policy/frameworks/management/controller/api.zeek 134 134
+   :source-code: policy/frameworks/management/controller/api.zeek 182 182
 
-   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
-   Response to a get_id_value_request event. The controller sends this
-   back to the client.
+   Response to a
+   :zeek:see:`Management::Controller::API::get_id_value_request`
+   event. The controller sends this back to the client, with a JSON
+   representation of the requested global ID on all relevant instances.
    
 
    :reqid: the request identifier used in the request event.
    
 
-   :result: a :zeek:type:`vector` of :zeek:see:`Management::Result`
+   :results: a :zeek:type:`vector` of :zeek:see:`Management::Result`
        records. Each record covers one Zeek cluster node. Each record's
        data field contains a string with the JSON rendering (as produced
        by :zeek:id:`to_json`, including the error strings it potentially
@@ -140,11 +204,11 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_instances_request
-   :source-code: policy/frameworks/management/controller/main.zeek 918 940
+   :source-code: policy/frameworks/management/controller/main.zeek 1004 1026
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
-   zeek-client sends this event to request a list of the currently
+   The client sends this event to request a list of the currently
    peered agents/instances.
    
 
@@ -152,27 +216,28 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_instances_response
-   :source-code: policy/frameworks/management/controller/api.zeek 31 31
+   :source-code: policy/frameworks/management/controller/api.zeek 32 32
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
-   Response to a get_instances_request event. The controller sends
-   this back to the client.
+   Response to a
+   :zeek:see:`Management::Controller::API::get_instances_request`
+   event. The controller sends this back to the client.
    
 
    :reqid: the request identifier used in the request event.
    
 
-   :result: the result record. Its data member is a
-       :zeek:see:`Management::Instance` record.
+   :result: a :zeek:see:`Management::Result`. Its data member is a vector
+       of :zeek:see:`Management::Instance` records.
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_request
-   :source-code: policy/frameworks/management/controller/main.zeek 987 1017
+   :source-code: policy/frameworks/management/controller/main.zeek 1073 1103
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
-   zeek-client sends this event to request a list of
+   The client sends this event to request a list of
    :zeek:see:`Management::NodeStatus` records that capture
    the status of Supervisor-managed nodes running on the cluster's
    instances.
@@ -182,26 +247,30 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_response
-   :source-code: policy/frameworks/management/controller/api.zeek 101 101
+   :source-code: policy/frameworks/management/controller/api.zeek 147 147
 
-   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
-   Response to a get_nodes_request event. The controller sends this
-   back to the client.
+   Response to a
+   :zeek:see:`Management::Controller::API::get_nodes_request` event. The
+   controller sends this back to the client, with a description of the
+   nodes currently managed by the Supervisors on all connected
+   instances. This includes agents and possibly the controller, if it
+   runs jointly with an agent.
    
 
    :reqid: the request identifier used in the request event.
    
 
-   :result: a :zeek:type:`vector` of :zeek:see:`Management::Result`
-       records. Each record covers one cluster instance. Each record's data
-       member is a vector of :zeek:see:`Management::NodeStatus`
-       records, covering the nodes at that instance. Results may also indicate
-       failure, with error messages indicating what went wrong.
+   :results: a :zeek:type:`vector` of :zeek:see:`Management::Result`
+       records. Each record covers one cluster instance. Each record's
+       data member is a vector of :zeek:see:`Management::NodeStatus`
+       records, covering the nodes at that instance. Results may also
+       indicate failure, with error messages indicating what went wrong.
    
 
 .. zeek:id:: Management::Controller::API::notify_agents_ready
-   :source-code: policy/frameworks/management/controller/main.zeek 562 581
+   :source-code: policy/frameworks/management/controller/main.zeek 677 710
 
    :Type: :zeek:type:`event` (instances: :zeek:type:`set` [:zeek:type:`string`])
 
@@ -215,15 +284,59 @@ Events
    :instances: the set of instance names now ready.
    
 
-.. zeek:id:: Management::Controller::API::set_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 739 893
+.. zeek:id:: Management::Controller::API::restart_request
+   :source-code: policy/frameworks/management/controller/main.zeek 1290 1384
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
+
+   The client sends this event to restart currently running Zeek cluster
+   nodes. The controller relays the request to its agents, which respond
+   with a list of :zeek:see:`Management::Result` records summarizing
+   each node restart. The controller combines these lists, and sends a
+   :zeek:see:`Management::Controller::API::restart_response` event with
+   the result.
+   
+
+   :reqid: a request identifier string, echoed in the response event.
+   
+
+   :nodes: a set of cluster node names (e.g. "worker-01") to restart.  An
+      empty set, supplied by default, means restart of all current
+      cluster nodes.
+   
+
+.. zeek:id:: Management::Controller::API::restart_response
+   :source-code: policy/frameworks/management/controller/api.zeek 213 213
+
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
+
+   Response to a :zeek:see:`Management::Controller::API::restart_request`
+   event. The controller sends this back to the client when it has received
+   responses from all agents involved, or a timeout occurs.
+   
+
+   :reqid: the request identifier used in the request event.
+   
+
+   :results: a :zeek:type:`vector` of :zeek:see:`Management::Result`,
+       combining the restart results from all agents. Each such result
+       identifies both the instance and node in question. Results that
+       do not identify an instance are generated by the controller,
+       flagging corner cases, including absence of a deployed cluster
+       or unknown nodes.
+   
+
+.. zeek:id:: Management::Controller::API::stage_configuration_request
+   :source-code: policy/frameworks/management/controller/main.zeek 878 936
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`)
 
-   zeek-client sends this event to establish a new cluster configuration,
-   including the full cluster topology. The controller processes the update
-   and relays it to the agents. Once each has responded (or a timeout occurs)
-   the controller sends a corresponding response event back to the client.
+   Upload a configuration to the controller for later deployment.
+   The client sends this event to the controller, which validates the
+   configuration and indicates the outcome in its response event. No
+   deployment takes place yet, and existing deployed configurations and
+   the running Zeek cluster remain intact. To trigger deployment of an uploaded
+   configuration, use :zeek:see:`Management::Controller::API::deploy_request`.
    
 
    :reqid: a request identifier string, echoed in the response event.
@@ -233,24 +346,28 @@ Events
        specifying the cluster configuration.
    
 
-.. zeek:id:: Management::Controller::API::set_configuration_response
-   :source-code: policy/frameworks/management/controller/api.zeek 56 56
+.. zeek:id:: Management::Controller::API::stage_configuration_response
+   :source-code: policy/frameworks/management/controller/api.zeek 63 63
 
-   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::ResultVec`)
+   :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
-   Response to a set_configuration_request event. The controller sends
-   this back to the client.
+   Response to a
+   :zeek:see:`Management::Controller::API::stage_configuration_request`
+   event. The controller sends this back to the client, conveying
+   validation results.
    
 
    :reqid: the request identifier used in the request event.
    
 
-   :result: a vector of :zeek:see:`Management::Result` records.
-       Each member captures one agent's response.
+   :results: a :zeek:see:`Management::Result` vector, indicating whether
+       the controller accepts the configuration. In case of a success,
+       a single result record indicates so. Otherwise, the sequence is
+       all errors, each indicating a configuration validation error.
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1225 1236
+   :source-code: policy/frameworks/management/controller/main.zeek 1462 1473
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, with_state: :zeek:type:`bool`)
 
@@ -269,12 +386,14 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_response
-   :source-code: policy/frameworks/management/controller/api.zeek 158 158
+   :source-code: policy/frameworks/management/controller/api.zeek 238 238
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
-   Response to a test_timeout_request event. The controller sends this
-   back to the client if the original request had the with_state flag.
+   Response to a
+   :zeek:see:`Management::Controller::API::test_timeout_request`
+   event. The controller sends this back to the client if the original
+   request had the with_state flag.
    
 
    :reqid: the request identifier used in the request event.

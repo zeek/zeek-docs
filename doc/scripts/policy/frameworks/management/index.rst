@@ -86,9 +86,9 @@ Package: policy/frameworks/management
 :doc:`/scripts/policy/frameworks/management/controller/api.zeek`
 
    The event API of cluster controllers. Most endpoints consist of event pairs,
-   where the controller answers a zeek-client request event with a
-   corresponding response event. Such event pairs share the same name prefix
-   and end in "_request" and "_response", respectively.
+   where the controller answers the client's request event with a corresponding
+   response event. Such event pairs share the same name prefix and end in
+   "_request" and "_response", respectively.
 
 :doc:`/scripts/policy/frameworks/management/controller/boot.zeek`
 

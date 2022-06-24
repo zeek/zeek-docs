@@ -95,7 +95,7 @@ Events
    :node: the desired configuration for the new supervised node process.
 
 .. zeek:id:: SupervisorControl::create_response
-   :source-code: policy/frameworks/management/agent/main.zeek 208 226
+   :source-code: policy/frameworks/management/agent/main.zeek 279 301
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`string`)
 
@@ -124,7 +124,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::destroy_response
-   :source-code: policy/frameworks/management/agent/main.zeek 228 246
+   :source-code: policy/frameworks/management/agent/main.zeek 303 325
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -171,7 +171,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::restart_response
-   :source-code: base/frameworks/supervisor/control.zeek 71 71
+   :source-code: policy/frameworks/management/agent/main.zeek 327 350
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`bool`)
 
@@ -200,7 +200,7 @@ Events
          nodes".
 
 .. zeek:id:: SupervisorControl::status_response
-   :source-code: policy/frameworks/management/agent/main.zeek 405 493
+   :source-code: policy/frameworks/management/agent/main.zeek 264 277
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Supervisor::Status`)
 
