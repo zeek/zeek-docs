@@ -14,23 +14,24 @@ Some frameworks target relatively specific use cases, while others run in
 nearly every Zeek installation. The logging framework, for example, provides
 the machinery behind all of the Zeek logs covered earlier. Frameworks also
 build on each other, so it’s well worth knowing their capabilities. The next
-few sections cover them in detail.
+sections cover them in detail.
 
 .. toctree::
    :maxdepth: 1
 
-   logging
-   notice
-   input
-   configuration
-   intel
-   cluster
    broker
-   supervisor
-   geoip
+   cluster
+   configuration
    file-analysis
+   geoip
+   input
+   intel
+   logging
+   management
+   netcontrol
+   notice
+   packet-analysis
    signatures
    sumstats
-   netcontrol
-   packet-analysis
+   supervisor
    tls-decryption
