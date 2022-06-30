@@ -530,11 +530,6 @@ Types
 
          Information about all SCTs that were encountered in the connection.
 
-      notary: :zeek:type:`CertNotary::Response` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/ssl/notary.zeek` is loaded)
-
-         A response from the ICSI certificate notary.
-
    The record type which contains the fields of the SSL log.
 
 Events
