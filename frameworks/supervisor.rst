@@ -1,3 +1,6 @@
+
+.. _framework-supervisor:
+
 ====================
 Supervisor Framework
 ====================
