@@ -492,7 +492,6 @@
    policy/files/unified2/__load__.zeek </scripts/policy/files/unified2/__load__.zeek>
    policy/files/unified2/main.zeek </scripts/policy/files/unified2/main.zeek>
    policy/files/x509/disable-certificate-events-known-certs.zeek </scripts/policy/files/x509/disable-certificate-events-known-certs.zeek>
-   policy/files/x509/log-ocsp.zeek </scripts/policy/files/x509/log-ocsp.zeek>
    policy/frameworks/packet-filter/shunt.zeek </scripts/policy/frameworks/packet-filter/shunt.zeek>
    policy/frameworks/software/version-changes.zeek </scripts/policy/frameworks/software/version-changes.zeek>
    policy/frameworks/software/vulnerable.zeek </scripts/policy/frameworks/software/vulnerable.zeek>
@@ -568,7 +567,6 @@
    policy/tuning/defaults/extracted_file_limits.zeek </scripts/policy/tuning/defaults/extracted_file_limits.zeek>
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
-   policy/protocols/ssl/notary.zeek </scripts/policy/protocols/ssl/notary.zeek>
    policy/frameworks/control/controllee.zeek </scripts/policy/frameworks/control/controllee.zeek>
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>
    policy/frameworks/management/agent/main.zeek </scripts/policy/frameworks/management/agent/main.zeek>
@@ -578,5 +576,4 @@
    policy/frameworks/files/extract-all-files.zeek </scripts/policy/frameworks/files/extract-all-files.zeek>
    policy/misc/dump-events.zeek </scripts/policy/misc/dump-events.zeek>
    policy/protocols/conn/speculative-service.zeek </scripts/policy/protocols/conn/speculative-service.zeek>
-   policy/protocols/ssl/extract-certs-pem.zeek </scripts/policy/protocols/ssl/extract-certs-pem.zeek>
    zeekygen/example.zeek </scripts/zeekygen/example.zeek>
