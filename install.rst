@@ -39,12 +39,12 @@ before you begin:
 
 To build Zeek from source, the following additional dependencies are required:
 
-    * CMake 3.5 or greater              (https://www.cmake.org)
+    * CMake 3.15 or greater              (https://www.cmake.org)
     * Make
-    * C/C++ compiler with C++17 support (GCC 7+ or Clang 4+)
+    * C/C++ compiler with C++17 support (GCC 8+ or Clang 9+)
     * SWIG                              (http://www.swig.org)
-    * Bison 2.5 or greater              (https://www.gnu.org/software/bison/)
-    * Flex (lexical analyzer generator) (https://github.com/westes/flex)
+    * Bison 3.3 or greater              (https://www.gnu.org/software/bison/)
+    * Flex (lexical analyzer generator) 2.6 or greater (https://github.com/westes/flex)
     * Libpcap headers                   (http://www.tcpdump.org)
     * OpenSSL headers                   (http://www.openssl.org)
     * zlib headers                      (https://zlib.net/)
