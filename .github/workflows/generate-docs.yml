@@ -1,0 +1,17 @@
+name: Generate Documentation
+
+on:
+  pull_request
+
+jobs:
+  generate:
+    if: github.repository == 'zeek/zeek-docs'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Fetch Dependencies
+        run: sudo pip3 install -r requirements.txt
+
+      - name: Generate Docs
+        run: make SPHINXOPTS="-W --keep-going"
