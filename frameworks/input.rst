@@ -206,14 +206,18 @@ re-read and the data in the Zeek table is updated to reflect the current state.
 Each time a change has been detected and all the new data has been read into
 the table, the :zeek:see:`Input::end_of_data` event is raised.
 
-When using the streaming mode (i.e., ``$mode=Input::STREAM``), Zeek assumes
-that the input is an append-only file to which new data is continually
-appended.  Zeek continually checks for new data at the end of the file and will
-add the new data to the table. If newer lines in the file have the same table
-index as previous lines, they will overwrite the values in the output table.
-Because of the nature of streaming reads (data is continually added to the
-table), the :zeek:see:`Input::end_of_data` event is never raised when using streaming
-reads.
+When using the streaming mode (i.e., ``$mode=Input::STREAM``), Zeek
+assumes that the input is an append-only file to which new data is
+continually appended. Zeek also checks to see if the file being
+followed has been renamed or rotated. The file is closed and reopened
+when tail detects that the filename being read from has a new inode
+number. Zeek continually checks for new data at the end of the file
+and will add the new data to the table. If newer lines in the file
+have the same table index as previous lines, they will overwrite
+the values in the output table. Because of the nature of streaming
+reads (data is continually added to the table), the
+:zeek:see:`Input::end_of_data` event is never raised when using
+streaming reads.
 
 .. tip::
 
