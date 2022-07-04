@@ -1,3 +1,4 @@
+SPHINXOPTS =
 
 all: html
 
@@ -10,10 +11,10 @@ clean:
 	rm -rf build/html
 
 html: builddir
-	sphinx-build -b html . ./build/html
+	sphinx-build -b html $(SPHINXOPTS) . ./build/html
 
 livehtml: builddir
-	sphinx-autobuild --ignore "*.git/*" --ignore "*.lock" --ignore "*.pyc" --ignore "*.swp" --ignore "*.swpx" --ignore "*.swx" -b html . ./build/html
+	sphinx-autobuild --ignore "*.git/*" --ignore "*.lock" --ignore "*.pyc" --ignore "*.swp" --ignore "*.swpx" --ignore "*.swx" -b html $(SPHINXOPTS) . ./build/html
 
 commit:
 	git add * && git commit -m 'Update generated docs'
