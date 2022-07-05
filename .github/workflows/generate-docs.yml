@@ -6,12 +6,18 @@ on:
 jobs:
   generate:
     if: github.repository == 'zeek/zeek-docs'
-    runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ['3.7', '3.8', '3.9', '3.10']
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Fetch Dependencies
         run: sudo pip3 install -r requirements.txt
-
       - name: Generate Docs
         run: make SPHINXOPTS="-W --keep-going"
