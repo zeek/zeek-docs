@@ -11,11 +11,13 @@ Summary
 ~~~~~~~
 Events
 ######
-=================================================================================== =====================================================================================
+=================================================================================== =======================================================================================
 :zeek:id:`ssl_alert`: :zeek:type:`event`                                            Generated for SSL/TLS alert records.
 :zeek:id:`ssl_change_cipher_spec`: :zeek:type:`event`                               This event is raised when a SSL/TLS ChangeCipherSpec message is encountered
                                                                                     before encryption begins.
 :zeek:id:`ssl_client_hello`: :zeek:type:`event`                                     Generated for an SSL/TLS client's initial *hello* message.
+:zeek:id:`ssl_connection_flipped`: :zeek:type:`event`                               Zeek typically assumes that the originator of a connection is the client of the SSL/TLS
+                                                                                    session.
 :zeek:id:`ssl_dh_client_params`: :zeek:type:`event`                                 Generated if a client uses a DH-anon or DHE cipher suite.
 :zeek:id:`ssl_dh_server_params`: :zeek:type:`event`                                 Generated if a server uses a DH-anon or DHE cipher suite.
 :zeek:id:`ssl_ecdh_client_params`: :zeek:type:`event`                               Generated if a client uses an ECDH-anon or ECDHE cipher suite.
@@ -52,7 +54,7 @@ Events
                                                                                     stateless-server session resumption mechanism.
 :zeek:id:`ssl_stapled_ocsp`: :zeek:type:`event`                                     This event contains the OCSP response contained in a Certificate Status Request
                                                                                     message, when the client requested OCSP stapling and the server supports it.
-=================================================================================== =====================================================================================
+=================================================================================== =======================================================================================
 
 
 Detailed Interface
@@ -60,9 +62,9 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ssl_alert
-   :source-code: base/protocols/ssl/main.zeek 441 447
+   :source-code: base/protocols/ssl/main.zeek 453 459
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, level: :zeek:type:`count`, desc: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, level: :zeek:type:`count`, desc: :zeek:type:`count`)
 
    Generated for SSL/TLS alert records. SSL/TLS sessions start with an
    unencrypted handshake, and Zeek extracts as much information out of that as
@@ -77,7 +79,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :level: The severity level, as sent in the *alert*. The values are defined as
@@ -91,9 +95,9 @@ Events
       ssl_session_ticket_handshake
 
 .. zeek:id:: ssl_change_cipher_spec
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 666 666
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 707 707
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`)
 
    This event is raised when a SSL/TLS ChangeCipherSpec message is encountered
    before encryption begins. Traffic will be encrypted following this message.
@@ -102,7 +106,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
    .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
       ssl_session_ticket_handshake x509_certificate ssl_client_hello
@@ -157,10 +163,29 @@ Events
       ssl_session_ticket_handshake x509_certificate ssl_handshake_message
       ssl_change_cipher_spec
       ssl_dh_client_params ssl_ecdh_server_params ssl_ecdh_client_params
-      ssl_rsa_client_pms
+      ssl_rsa_client_pms ssl_connection_flipped
+
+.. zeek:id:: ssl_connection_flipped
+   :source-code: base/protocols/ssl/main.zeek 342 347
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Zeek typically assumes that the originator of a connection is the client of the SSL/TLS
+   session. In some scenarios this does not hold, and the responder of a connection is the
+   client, and the initiator is the server.
+   
+   In these cases, Zeek raises this event. Connection direction is detected by looking at the
+   server hello, client hello, and hello request handshake messages.
+   
+
+   :c: The connection.
+   
+   .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
+      ssl_session_ticket_handshake x509_certificate ssl_client_hello
+      ssl_handshake_message
 
 .. zeek:id:: ssl_dh_client_params
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 327 327
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 342 342
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, Yc: :zeek:type:`string`)
 
@@ -179,7 +204,7 @@ Events
       ssl_ecdh_server_params ssl_ecdh_client_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_dh_server_params
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 276 276
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 291 291
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string`, q: :zeek:type:`string`, Ys: :zeek:type:`string`)
 
@@ -205,7 +230,7 @@ Events
       ssl_rsa_client_pms
 
 .. zeek:id:: ssl_ecdh_client_params
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 313 313
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 328 328
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, point: :zeek:type:`string`)
 
@@ -224,7 +249,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_ecdh_server_params
-   :source-code: base/protocols/ssl/main.zeek 298 303
+   :source-code: base/protocols/ssl/main.zeek 303 308
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, curve: :zeek:type:`count`, point: :zeek:type:`string`)
 
@@ -248,7 +273,7 @@ Events
 .. zeek:id:: ssl_encrypted_data
    :source-code: policy/protocols/ssl/heartbleed.zeek 226 238
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
    Generated for SSL/TLS messages that are sent after session encryption
    started.
@@ -260,7 +285,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :record_version: TLS version given in the record layer of the message.
@@ -277,7 +304,7 @@ Events
       ssl_alert ssl_heartbeat ssl_probable_encrypted_handshake_message
 
 .. zeek:id:: ssl_established
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 475 475
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 500 500
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -297,9 +324,9 @@ Events
       ssl_session_ticket_handshake x509_certificate
 
 .. zeek:id:: ssl_extension
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 112 112
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 115 115
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, code: :zeek:type:`count`, val: :zeek:type:`string`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, code: :zeek:type:`count`, val: :zeek:type:`string`)
 
    Generated for SSL/TLS extensions seen in an initial handshake.  SSL/TLS
    sessions start with an unencrypted handshake, and Zeek extracts as much
@@ -312,7 +339,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :code: The numerical code of the extension.  The values are standardized as
@@ -328,11 +357,12 @@ Events
       ssl_extension_server_name ssl_extension_signature_algorithm ssl_extension_key_share
       ssl_extension_psk_key_exchange_modes ssl_extension_supported_versions
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
+      ssl_connection_flipped
 
 .. zeek:id:: ssl_extension_application_layer_protocol_negotiation
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 364 364
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 381 381
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, protocols: :zeek:type:`string_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, protocols: :zeek:type:`string_vec`)
 
    Generated for an SSL/TLS Application-Layer Protocol Negotiation extension.
    This TLS extension is defined in draft-ietf-tls-applayerprotoneg and sent in
@@ -345,7 +375,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :protocols: List of supported application layer protocols.
@@ -361,7 +393,7 @@ Events
 .. zeek:id:: ssl_extension_ec_point_formats
    :source-code: policy/protocols/ssl/ssl-log-ext.zeek 95 101
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, point_formats: :zeek:type:`index_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, point_formats: :zeek:type:`index_vec`)
 
    Generated for an SSL/TLS Supported Point Formats extension. This TLS extension
    is defined in :rfc:`4492` and sent by the client and/or server in the initial
@@ -372,7 +404,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :point_formats: List of supported point formats.
@@ -390,7 +424,7 @@ Events
 .. zeek:id:: ssl_extension_elliptic_curves
    :source-code: policy/protocols/ssl/ssl-log-ext.zeek 103 109
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
 
    Generated for an SSL/TLS Elliptic Curves extension. This TLS extension is
    defined in :rfc:`4492` and sent by the client in the initial handshake. It
@@ -400,7 +434,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :curves: List of supported elliptic curves.
@@ -415,9 +451,9 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_key_share
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 199 199
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 210 210
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
 
    Generated for a Key Share extension. This TLS extension is defined in TLS1.3-draft16
    and sent by the client and the server in the initial handshake. It gives the list of
@@ -427,7 +463,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for the originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :curves: List of supported/chosen named groups.
@@ -442,9 +480,9 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_pre_shared_key_client_hello
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 222 222
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 235 235
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, identities: :zeek:type:`psk_identity_vec`, binders: :zeek:type:`string_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, identities: :zeek:type:`psk_identity_vec`, binders: :zeek:type:`string_vec`)
 
    Generated for the pre-shared key extension as it is sent in the TLS 1.3 client hello.
    
@@ -455,7 +493,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for the originator side of the connection
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :identities: A list of the identities the client is willing to negotiate with the server.
@@ -472,9 +512,9 @@ Events
       ssl_rsa_client_pms ssl_server_signature ssl_extension_pre_shared_key_server_hello
 
 .. zeek:id:: ssl_extension_pre_shared_key_server_hello
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 241 241
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 256 256
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, selected_identity: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, selected_identity: :zeek:type:`count`)
 
    Generated for the pre-shared key extension as it is sent in the TLS 1.3 server hello.
    
@@ -482,7 +522,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for the originator side of the connection
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :selected_identity: The identity the server chose as a 0-based index into the identities
@@ -499,7 +541,7 @@ Events
 .. zeek:id:: ssl_extension_psk_key_exchange_modes
    :source-code: policy/protocols/ssl/ssl-log-ext.zeek 140 146
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, modes: :zeek:type:`index_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, modes: :zeek:type:`index_vec`)
 
    Generated for an TLS Pre-Shared Key Exchange Modes extension. This TLS extension is defined
    in the TLS 1.3 rfc and sent by the client in the initial handshake. It contains the
@@ -508,7 +550,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :versions: List of supported Pre-Shared Key Exchange Modes.
@@ -522,9 +566,9 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_server_name
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 387 387
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 406 406
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, names: :zeek:type:`string_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, names: :zeek:type:`string_vec`)
 
    Generated for an SSL/TLS Server Name extension. This SSL/TLS extension is
    defined in :rfc:`3546` and sent by the client in the initial handshake. It
@@ -536,7 +580,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :names: A list of server names (DNS hostnames).
@@ -553,7 +599,7 @@ Events
 .. zeek:id:: ssl_extension_signature_algorithm
    :source-code: policy/protocols/ssl/ssl-log-ext.zeek 159 177
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`)
 
    Generated for an Signature Algorithms extension. This TLS extension
    is defined in :rfc:`5246` and sent by the client in the initial
@@ -564,7 +610,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :signature_algorithms: List of supported signature and hash algorithm pairs.
@@ -581,7 +629,7 @@ Events
 .. zeek:id:: ssl_extension_signed_certificate_timestamp
    :source-code: policy/protocols/ssl/validate-sct.zeek 77 80
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, logid: :zeek:type:`string`, timestamp: :zeek:type:`count`, signature_and_hashalgorithm: :zeek:type:`SSL::SignatureAndHashAlgorithm`, signature: :zeek:type:`string`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, version: :zeek:type:`count`, logid: :zeek:type:`string`, timestamp: :zeek:type:`count`, signature_and_hashalgorithm: :zeek:type:`SSL::SignatureAndHashAlgorithm`, signature: :zeek:type:`string`)
 
    Generated for the signed_certificate_timestamp TLS extension as defined in
    :rfc:`6962`. The extension is used to transmit signed proofs that are
@@ -591,7 +639,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :version: the version of the protocol to which the SCT conforms. Always
@@ -621,9 +671,9 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_supported_versions
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 440 440
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 463 463
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, versions: :zeek:type:`index_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, versions: :zeek:type:`index_vec`)
 
    Generated for an TLS Supported Versions extension. This TLS extension
    is defined in the TLS 1.3 rfc and sent by the client in the initial handshake.
@@ -634,7 +684,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :versions: List of supported TLS versions.
@@ -648,9 +700,9 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_handshake_message
-   :source-code: base/protocols/ssl/main.zeek 337 412
+   :source-code: base/protocols/ssl/main.zeek 349 424
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_type: :zeek:type:`count`, length: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, msg_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
    This event is raised for each unencrypted SSL/TLS handshake message.
    
@@ -658,7 +710,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :msg_type: Type of the handshake message that was seen.
@@ -668,12 +722,12 @@ Events
    
    .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
       ssl_session_ticket_handshake x509_certificate ssl_client_hello
-      ssl_change_cipher_spec
+      ssl_change_cipher_spec ssl_connection_flipped
 
 .. zeek:id:: ssl_heartbeat
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 544 544
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 573 573
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`, heartbeat_type: :zeek:type:`count`, payload_length: :zeek:type:`count`, payload: :zeek:type:`string`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, length: :zeek:type:`count`, heartbeat_type: :zeek:type:`count`, payload_length: :zeek:type:`count`, payload: :zeek:type:`string`)
 
    Generated for SSL/TLS heartbeat messages that are sent before session
    encryption starts. Generally heartbeat messages should rarely be seen in
@@ -683,7 +737,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :length: length of the entire heartbeat message.
@@ -703,9 +759,9 @@ Events
       ssl_alert ssl_encrypted_data
 
 .. zeek:id:: ssl_plaintext_data
-   :source-code: base/protocols/ssl/main.zeek 492 501
+   :source-code: base/protocols/ssl/main.zeek 504 513
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
    Generated for SSL/TLS messages that are sent before full session encryption
    starts. Note that "full encryption" is a bit fuzzy, especially for TLSv1.3;
@@ -718,7 +774,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :record_version: TLS version given in the record layer of the message.
@@ -735,9 +793,9 @@ Events
       ssl_alert ssl_heartbeat
 
 .. zeek:id:: ssl_probable_encrypted_handshake_message
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 625 625
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 660 660
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, length: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, length: :zeek:type:`count`)
 
    This event is generated for application data records of TLS 1.3 connections of which
    we suspect that they contain handshake messages.
@@ -766,7 +824,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :length: length of the entire message.
@@ -775,7 +835,7 @@ Events
       ssl_encrypted_data
 
 .. zeek:id:: ssl_rsa_client_pms
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 341 341
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 356 356
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, pms: :zeek:type:`string`)
 
@@ -847,10 +907,10 @@ Events
       ssl_session_ticket_handshake x509_certificate
       ssl_dh_server_params ssl_handshake_message ssl_change_cipher_spec
       ssl_dh_client_params ssl_ecdh_server_params ssl_ecdh_client_params
-      ssl_rsa_client_pms
+      ssl_rsa_client_pms ssl_connection_flipped
 
 .. zeek:id:: ssl_server_signature
-   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 299 299
+   :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 314 314
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, signature_and_hashalgorithm: :zeek:type:`SSL::SignatureAndHashAlgorithm`, signature: :zeek:type:`string`)
 
@@ -909,7 +969,7 @@ Events
 .. zeek:id:: ssl_stapled_ocsp
    :source-code: policy/protocols/ssl/validate-ocsp.zeek 34 37
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, response: :zeek:type:`string`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, response: :zeek:type:`string`)
 
    This event contains the OCSP response contained in a Certificate Status Request
    message, when the client requested OCSP stapling and the server supports it.
@@ -919,7 +979,9 @@ Events
    :c: The connection.
    
 
-   :is_orig: True if event is raised for originator side of the connection.
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
    
 
    :response: OCSP data.
