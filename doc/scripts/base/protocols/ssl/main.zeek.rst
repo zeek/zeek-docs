@@ -84,7 +84,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSL::ct_logs
-   :source-code: base/protocols/ssl/main.zeek 131 131
+   :source-code: base/protocols/ssl/main.zeek 136 136
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`SSL::CTInfo`
    :Attributes: :zeek:attr:`&redef`
@@ -101,7 +101,7 @@ Runtime Options
    are indexed by (binary) log-id.
 
 .. zeek:id:: SSL::disable_analyzer_after_detection
-   :source-code: base/protocols/ssl/main.zeek 136 136
+   :source-code: base/protocols/ssl/main.zeek 141 141
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -126,7 +126,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: SSL::root_certs
-   :source-code: base/protocols/ssl/main.zeek 111 111
+   :source-code: base/protocols/ssl/main.zeek 116 116
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -144,7 +144,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: SSL::CTInfo
-   :source-code: base/protocols/ssl/main.zeek 115 126
+   :source-code: base/protocols/ssl/main.zeek 120 131
 
    :Type: :zeek:type:`record`
 
@@ -167,7 +167,7 @@ Types
    Transparency log bundle.
 
 .. zeek:type:: SSL::Info
-   :source-code: base/protocols/ssl/main.zeek 16 107
+   :source-code: base/protocols/ssl/main.zeek 16 112
 
    :Type: :zeek:type:`record`
 
@@ -244,9 +244,14 @@ Types
          SSL history showing which types of packets we received in which order.
          Letters have the following meaning with client-sent letters being capitalized:
          
+         A direction flip occurs when the client hello packet is not sent from the originator
+         of a connection. This can, e.g., occur when DTLS is used in a connection that was
+         set up using STUN.
+         
          ======  ====================================================
          Letter  Meaning
          ======  ====================================================
+         ^       direction flipped
          H       hello_request
          C       client_hello
          S       server_hello
@@ -535,7 +540,7 @@ Types
 Events
 ######
 .. zeek:id:: SSL::log_ssl
-   :source-code: base/protocols/ssl/main.zeek 148 148
+   :source-code: base/protocols/ssl/main.zeek 153 153
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SSL::Info`)
 
@@ -545,7 +550,7 @@ Events
 Hooks
 #####
 .. zeek:id:: SSL::finalize_ssl
-   :source-code: base/protocols/ssl/main.zeek 471 481
+   :source-code: base/protocols/ssl/main.zeek 483 493
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
@@ -562,7 +567,7 @@ Hooks
 
 
 .. zeek:id:: SSL::ssl_finishing
-   :source-code: base/protocols/ssl/main.zeek 152 152
+   :source-code: base/protocols/ssl/main.zeek 157 157
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
@@ -572,7 +577,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SSL::delay_log
-   :source-code: base/protocols/ssl/main.zeek 209 214
+   :source-code: base/protocols/ssl/main.zeek 214 219
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -580,7 +585,7 @@ Functions
    logged as long as the token exists or until 15 seconds elapses.
 
 .. zeek:id:: SSL::undelay_log
-   :source-code: base/protocols/ssl/main.zeek 216 220
+   :source-code: base/protocols/ssl/main.zeek 221 225
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
