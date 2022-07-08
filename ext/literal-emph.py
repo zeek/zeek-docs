@@ -33,3 +33,6 @@ def setup(app):
     app.add_directive("literal-emph", LiteralEmph)
     app.add_node(LiteralEmphNode,
                  html=(visit_litemph_node, depart_litemph_node))
+    return {
+        'parallel_read_safe': True,
+    }
