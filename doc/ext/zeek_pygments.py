@@ -2,7 +2,9 @@ from pygments.lexer import RegexLexer, bygroups, include, words, bygroups
 from pygments.token import *
 
 def setup(Sphinx):
-    pass
+    return {
+        'parallel_read_safe': True,
+    }
 
 class ZeekLexer(RegexLexer):
     """
