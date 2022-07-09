@@ -24,29 +24,29 @@ Summary
 ~~~~~~~
 Redefinable Options
 ###################
-============================================================================================ =====================================================================
-:zeek:id:`LogAscii::empty_field`: :zeek:type:`string` :zeek:attr:`&redef`                    String to use for empty fields.
-:zeek:id:`LogAscii::enable_leftover_log_rotation`: :zeek:type:`bool` :zeek:attr:`&redef`     If true, detect log files that did not get properly rotated
-                                                                                             by a previous Zeek process (e.g.
-:zeek:id:`LogAscii::enable_utf_8`: :zeek:type:`bool` :zeek:attr:`&redef`                     If true, valid UTF-8 sequences will pass through unescaped and be
-                                                                                             written into logs.
-:zeek:id:`LogAscii::gzip_file_extension`: :zeek:type:`string` :zeek:attr:`&redef`            Define the file extension used when compressing log files when
-                                                                                             they are created with the :zeek:see:`LogAscii::gzip_level` option.
-:zeek:id:`LogAscii::gzip_level`: :zeek:type:`count` :zeek:attr:`&redef`                      Define the gzip level to compress the logs.
-:zeek:id:`LogAscii::include_meta`: :zeek:type:`bool` :zeek:attr:`&redef`                     If true, include lines with log meta information such as column names
-                                                                                             with types, the values of ASCII logging options that are in use, and
-                                                                                             the time when the file was opened and closed (the latter at the end).
-:zeek:id:`LogAscii::json_include_unset_fields`: :zeek:type:`bool` :zeek:attr:`&redef`        Handling of optional fields when writing out JSON.
-:zeek:id:`LogAscii::json_timestamps`: :zeek:type:`JSON::TimestampFormat` :zeek:attr:`&redef` Format of timestamps when writing out JSON.
-:zeek:id:`LogAscii::logdir`: :zeek:type:`string` :zeek:attr:`&redef`                         Define the default logging directory.
-:zeek:id:`LogAscii::meta_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                    Prefix for lines with meta information.
-:zeek:id:`LogAscii::output_to_stdout`: :zeek:type:`bool` :zeek:attr:`&redef`                 If true, output everything to stdout rather than
-                                                                                             into files.
-:zeek:id:`LogAscii::separator`: :zeek:type:`string` :zeek:attr:`&redef`                      Separator between fields.
-:zeek:id:`LogAscii::set_separator`: :zeek:type:`string` :zeek:attr:`&redef`                  Separator between set elements.
-:zeek:id:`LogAscii::unset_field`: :zeek:type:`string` :zeek:attr:`&redef`                    String to use for an unset &optional field.
-:zeek:id:`LogAscii::use_json`: :zeek:type:`bool` :zeek:attr:`&redef`                         If true, the default will be to write logs in a JSON format.
-============================================================================================ =====================================================================
+===================================================================================================== =====================================================================
+:zeek:id:`LogAscii::empty_field`: :zeek:type:`string` :zeek:attr:`&redef`                             String to use for empty fields.
+:zeek:id:`LogAscii::enable_leftover_log_rotation`: :zeek:type:`bool` :zeek:attr:`&redef`              If true, detect log files that did not get properly rotated
+                                                                                                      by a previous Zeek process (e.g.
+:zeek:id:`LogAscii::enable_utf_8`: :zeek:type:`bool` :zeek:attr:`&redef`                              If true, valid UTF-8 sequences will pass through unescaped and be
+                                                                                                      written into logs.
+:zeek:id:`LogAscii::gzip_file_extension`: :zeek:type:`string` :zeek:attr:`&redef`                     Define the file extension used when compressing log files when
+                                                                                                      they are created with the :zeek:see:`LogAscii::gzip_level` option.
+:zeek:id:`LogAscii::gzip_level`: :zeek:type:`count` :zeek:attr:`&redef`                               Define the gzip level to compress the logs.
+:zeek:id:`LogAscii::include_meta`: :zeek:type:`bool` :zeek:attr:`&redef`                              If true, include lines with log meta information such as column names
+                                                                                                      with types, the values of ASCII logging options that are in use, and
+                                                                                                      the time when the file was opened and closed (the latter at the end).
+:zeek:id:`LogAscii::json_include_unset_fields`: :zeek:type:`bool` :zeek:attr:`&redef`                 Handling of optional fields when writing out JSON.
+:zeek:id:`LogAscii::json_timestamps`: :zeek:type:`JSON::TimestampFormat` :zeek:attr:`&redef`          Format of timestamps when writing out JSON.
+:zeek:id:`LogAscii::logdir`: :zeek:type:`string` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *...* Define the default logging directory.
+:zeek:id:`LogAscii::meta_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                             Prefix for lines with meta information.
+:zeek:id:`LogAscii::output_to_stdout`: :zeek:type:`bool` :zeek:attr:`&redef`                          If true, output everything to stdout rather than
+                                                                                                      into files.
+:zeek:id:`LogAscii::separator`: :zeek:type:`string` :zeek:attr:`&redef`                               Separator between fields.
+:zeek:id:`LogAscii::set_separator`: :zeek:type:`string` :zeek:attr:`&redef`                           Separator between set elements.
+:zeek:id:`LogAscii::unset_field`: :zeek:type:`string` :zeek:attr:`&redef`                             String to use for an unset &optional field.
+:zeek:id:`LogAscii::use_json`: :zeek:type:`bool` :zeek:attr:`&redef`                                  If true, the default will be to write logs in a JSON format.
+===================================================================================================== =====================================================================
 
 
 Detailed Interface
@@ -54,7 +54,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: LogAscii::empty_field
-   :source-code: base/frameworks/logging/writers/ascii.zeek 100 100
+   :source-code: base/frameworks/logging/writers/ascii.zeek 103 103
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -118,7 +118,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::include_meta
-   :source-code: base/frameworks/logging/writers/ascii.zeek 79 79
+   :source-code: base/frameworks/logging/writers/ascii.zeek 82 82
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -131,7 +131,7 @@ Redefinable Options
    If writing in JSON format, this is implicitly disabled.
 
 .. zeek:id:: LogAscii::json_include_unset_fields
-   :source-code: base/frameworks/logging/writers/ascii.zeek 72 72
+   :source-code: base/frameworks/logging/writers/ascii.zeek 75 75
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -142,7 +142,7 @@ Redefinable Options
    the following field to T includes the key, with a null value.
 
 .. zeek:id:: LogAscii::json_timestamps
-   :source-code: base/frameworks/logging/writers/ascii.zeek 67 67
+   :source-code: base/frameworks/logging/writers/ascii.zeek 70 70
 
    :Type: :zeek:type:`JSON::TimestampFormat`
    :Attributes: :zeek:attr:`&redef`
@@ -155,18 +155,21 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::logdir
-   :source-code: base/frameworks/logging/writers/ascii.zeek 60 60
+   :source-code: base/frameworks/logging/writers/ascii.zeek 63 63
 
    :Type: :zeek:type:`string`
-   :Attributes: :zeek:attr:`&redef`
+   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *"Remove in v6.1. Use 'Log::default_logdir'."*
    :Default: ``""``
 
    Define the default logging directory. If empty, logs are written
    to the current working directory.
    
+   This setting is superseded by :zeek:see:`Log::default_logdir`. The
+   latter applies to all file writers and also interacts better with
+   log rotation.
 
 .. zeek:id:: LogAscii::meta_prefix
-   :source-code: base/frameworks/logging/writers/ascii.zeek 84 84
+   :source-code: base/frameworks/logging/writers/ascii.zeek 87 87
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -189,7 +192,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::separator
-   :source-code: base/frameworks/logging/writers/ascii.zeek 89 89
+   :source-code: base/frameworks/logging/writers/ascii.zeek 92 92
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -200,7 +203,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::set_separator
-   :source-code: base/frameworks/logging/writers/ascii.zeek 94 94
+   :source-code: base/frameworks/logging/writers/ascii.zeek 97 97
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -211,7 +214,7 @@ Redefinable Options
    This option is also available as a per-filter ``$config`` option.
 
 .. zeek:id:: LogAscii::unset_field
-   :source-code: base/frameworks/logging/writers/ascii.zeek 105 105
+   :source-code: base/frameworks/logging/writers/ascii.zeek 108 108
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
