@@ -320,6 +320,19 @@ example, :file:`conn.log` will be changed to :file:`myconn.log`:
 Keep in mind that the ``path`` field of a log filter never contains the
 filename extension. The extension will be determined later by the log writer.
 
+Change the Logging Directory
+----------------------------
+
+By default, Zeek log files are created in the current working directory.
+To write logs into a different directory, set :zeek:see:`Log::default_logdir`:
+
+.. code-block:: zeek
+
+  redef Log::default_logdir = /path/to/output_log_directory
+
+The :zeek:see:`Log::default_logdir` option is honored by all file based
+writes included with Zeek (ASCII and SQLite).
+
 Add an Additional Output File
 -----------------------------
 
@@ -656,6 +669,10 @@ name, meaning its name without a suffix. It returns these two components via a
 timestamp in the base name, as specified by
 :zeek:see:`Log::default_rotation_date_format`.
 
+When :zeek:see:`Log::default_logdir` is in use and :zeek:see:`Log::rotation_format_func`
+does not set an output directory (e.g. when :zeek:see:`Log::default_rotation_dir` is not set),
+:zeek:see:`Log::default_logdir` is used as the default output directory.
+
 For examples of customized log rotation, take a look at the
 `relevant <https://github.com/zeek/zeek/blob/master/testing/btest/scripts/base/frameworks/logging/rotate-custom-fmt-func.zeek>`_
 `test <https://github.com/zeek/zeek/blob/master/testing/btest/scripts/base/frameworks/logging/rotate-custom.zeek>`_
@@ -863,20 +880,6 @@ format:
 .. code-block:: zeek
 
   redef LogAscii::use_json = T;
-
-A similar global option is the logdir option specifying a directory as the location for output files.
-
-.. code-block:: zeek
-
-  redef LogAscii::logdir = output_directory;
-
-Both can be used from the command line, alone or together with other scripts:
-
-.. code-block:: zeek
-
-  zeek -r ../test-capture.cap LogAscii::use_json=T
-
-  mkdir output_directory ; zeek -r ../test-capture.cap LogAscii::logdir=output_directory
 
 
 Some writer options are filter-specific (i.e., they affect only the filters

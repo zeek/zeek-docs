@@ -364,11 +364,12 @@ behavior in the pcap, run Zeek with following command:
 
   zeek –r mypackets.trace my-script.zeek
 
-For example you can use the option logdir from the command line to write files into a directory:
+To specify the output directory for logs, you can set :zeek:see:`Log::default_logdir`
+on the command line:
 
 .. code-block:: zeek
 
-  mkdir output_directory ; zeek -r mypackets.trace LogAscii::logdir=output_directory
+  mkdir output_directory ; zeek -r mypackets.trace Log::default_logdir=output_directory
 
 
 Tracing Events
