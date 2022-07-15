@@ -110,7 +110,7 @@ Types
 Events
 ######
 .. zeek:id:: Management::Agent::Runtime::trigger_log_archival
-   :source-code: policy/frameworks/management/agent/main.zeek 212 256
+   :source-code: policy/frameworks/management/agent/main.zeek 217 261
 
    :Type: :zeek:type:`event` (run_archival: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`)
 
