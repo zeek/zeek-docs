@@ -120,7 +120,7 @@ Events
 .. zeek:id:: analyzer_confirmation
    :source-code: base/bif/event.bif.zeek 404 404
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, atype: :zeek:type:`Analyzer::Tag`, aid: :zeek:type:`count`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, atype: :zeek:type:`AllAnalyzers::Tag`, aid: :zeek:type:`count`)
 
    Generated when a protocol analyzer confirms that a connection is indeed
    using that protocol. Zeek's dynamic protocol detection heuristically activates
@@ -152,7 +152,7 @@ Events
 .. zeek:id:: analyzer_violation
    :source-code: base/bif/event.bif.zeek 449 449
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, atype: :zeek:type:`Analyzer::Tag`, aid: :zeek:type:`count`, reason: :zeek:type:`string`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, atype: :zeek:type:`AllAnalyzers::Tag`, aid: :zeek:type:`count`, reason: :zeek:type:`string`)
 
    Generated when a protocol analyzer determines that a connection it is parsing
    is not conforming to the protocol it expects. Zeek's dynamic protocol
