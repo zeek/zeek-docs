@@ -190,6 +190,12 @@ Types
 
          Dialects offered by the client.
 
+      smb2_create_options: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/smb/smb2-main.zeek` is loaded)
+
+         Keep the create_options in the command for
+         referencing later.
+
    This record is for the smb_cmd.log
 
 .. zeek:type:: SMB::FileInfo
