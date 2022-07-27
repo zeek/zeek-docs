@@ -34,4 +34,5 @@ sections cover them in detail.
    signatures
    sumstats
    supervisor
+   telemetry
    tls-decryption
