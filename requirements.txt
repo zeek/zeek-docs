@@ -1,8 +1,6 @@
-# Note: beware of https://github.com/readthedocs/sphinx_rtd_theme/issues/1115
-# and broken behavior with docutils 0.17
-jinja2<3.1
-pygments>=2.12.0
-docutils==0.16
-sphinx_rtd_theme==0.5.2
-Sphinx==3.4.3
-GitPython==3.1.14
+Jinja2==3.1.2
+Pygments>=2.12.0
+docutils==0.17.1
+sphinx_rtd_theme==1.0.0
+Sphinx==5.1.1
+GitPython==3.1.27
