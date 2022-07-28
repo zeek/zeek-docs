@@ -1,5 +1,7 @@
 SPHINXOPTS =
 
+NUMJOBS ?= auto
+
 all: html
 
 doc: html
@@ -11,7 +13,7 @@ clean:
 	rm -rf build/html
 
 html: builddir
-	sphinx-build -b html $(SPHINXOPTS) . ./build/html
+	sphinx-build -j $(NUMJOBS) -b html $(SPHINXOPTS) . ./build/html
 
 livehtml: builddir
 	sphinx-autobuild --ignore "*.git/*" --ignore "*.lock" --ignore "*.pyc" --ignore "*.swp" --ignore "*.swpx" --ignore "*.swx" -b html $(SPHINXOPTS) . ./build/html
