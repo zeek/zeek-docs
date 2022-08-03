@@ -17,11 +17,13 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-=============================================================================== ===============================================================
-:zeek:id:`DHCP::max_txid_watch_time`: :zeek:type:`interval` :zeek:attr:`&redef` The maximum amount of time that a transation ID will be watched
-                                                                                for to try and tie messages together into a single DHCP
-                                                                                transaction narrative.
-=============================================================================== ===============================================================
+==================================================================================== ===============================================================
+:zeek:id:`DHCP::max_msg_types_per_log_entry`: :zeek:type:`count` :zeek:attr:`&redef` The maximum number of msg_types allowed in a single log entry.
+:zeek:id:`DHCP::max_txid_watch_time`: :zeek:type:`interval` :zeek:attr:`&redef`      The maximum amount of time that a transation ID will be watched
+                                                                                     for to try and tie messages together into a single DHCP
+                                                                                     transaction narrative.
+:zeek:id:`DHCP::max_uids_per_log_entry`: :zeek:type:`count` :zeek:attr:`&redef`      The maximum number of uids allowed in a single log entry.
+==================================================================================== ===============================================================
 
 State Variables
 ###############
@@ -76,6 +78,15 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Runtime Options
 ###############
+.. zeek:id:: DHCP::max_msg_types_per_log_entry
+   :source-code: base/protocols/dhcp/main.zeek 98 98
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``50``
+
+   The maximum number of msg_types allowed in a single log entry.
+
 .. zeek:id:: DHCP::max_txid_watch_time
    :source-code: base/protocols/dhcp/main.zeek 92 92
 
@@ -87,10 +98,19 @@ Runtime Options
    for to try and tie messages together into a single DHCP
    transaction narrative.
 
+.. zeek:id:: DHCP::max_uids_per_log_entry
+   :source-code: base/protocols/dhcp/main.zeek 95 95
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``10``
+
+   The maximum number of uids allowed in a single log entry.
+
 State Variables
 ###############
 .. zeek:id:: DHCP::log_info
-   :source-code: base/protocols/dhcp/main.zeek 104 104
+   :source-code: base/protocols/dhcp/main.zeek 110 110
 
    :Type: :zeek:type:`DHCP::Info`
    :Default:
@@ -262,7 +282,7 @@ Types
 Events
 ######
 .. zeek:id:: DHCP::aggregate_msgs
-   :source-code: base/protocols/dhcp/main.zeek 98 98
+   :source-code: base/protocols/dhcp/main.zeek 104 104
 
    :Type: :zeek:type:`event` (ts: :zeek:type:`time`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`DHCP::Msg`, options: :zeek:type:`DHCP::Options`)
 
