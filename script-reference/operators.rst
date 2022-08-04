@@ -115,8 +115,8 @@ Bitwise operators
 -----------------
 
 The bitwise operators work with operands of type :zeek:type:`count` or ``vector
-of count``, but the bitwise complement operator works with :zeek:type:`count`
-only.
+of count``. The bitwise shift operators can also work with :zeek:type:`int`.
+The bitwise complement operator works with :zeek:type:`count` only.
 
 .. list-table::
   :header-rows: 1
@@ -132,6 +132,12 @@ only.
 
   * - Bitwise XOR
     - ``a ^ b``
+
+  * - Bitwise left shift
+    - ``a << b``
+
+  * - Bitwise right shift
+    - ``a >> b``
 
   * - Bitwise complement
     - ``~a``
