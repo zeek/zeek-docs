@@ -100,8 +100,9 @@ The ``int`` type supports the following operators:  arithmetic
 operators (``+``, ``-``, ``*``, ``/``, ``%``), comparison operators
 (``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), assignment operators
 (``=``, ``+=``, ``-=``), pre-increment (``++``), pre-decrement
-(``--``), unary plus and minus (``+``, ``-``), and absolute value
-(e.g., ``|-3|`` is 3, but the result type is :zeek:type:`count`).
+(``--``), unary plus and minus (``+``, ``-``), absolute value
+(e.g., ``|-3|`` is 3, but the result type is :zeek:type:`count`), and 
+bitwise shift operations (``<<``, ``>>``).
 
 When using type inferencing, use care so that the
 intended type is inferred, e.g. ``local size_difference = 0`` will
@@ -178,9 +179,10 @@ The ``count`` type supports the same operators as the :zeek:type:`int`
 type, but a unary plus or minus applied to a ``count`` results in an
 :zeek:type:`int`.
 
-In addition, ``count`` types support bitwise operations.  You can use
-``&``, ``|``, and ``^`` for bitwise ``and``, ``or``, and ``xor``.  You
-can also use ``~`` for bitwise (one's) complement.
+In addition, ``count`` types support more bitwise operations.  You can use
+``&``, ``|``, ``^``, ``<<``, and ``>>`` for bitwise ``and``, ``or``, 
+``xor``, ``left shift``, and ``right shift``.  You can also use ``~`` 
+for bitwise (one's) complement.
 
 For unsigned arithmetic involving ``count`` types that cause overflows
 (results that exceed the numeric limits of representable value in either
