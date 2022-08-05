@@ -327,6 +327,9 @@
    base/frameworks/netcontrol/drop.zeek </scripts/base/frameworks/netcontrol/drop.zeek>
    base/frameworks/netcontrol/shunt.zeek </scripts/base/frameworks/netcontrol/shunt.zeek>
    base/frameworks/netcontrol/non-cluster.zeek </scripts/base/frameworks/netcontrol/non-cluster.zeek>
+   base/frameworks/telemetry/__load__.zeek </scripts/base/frameworks/telemetry/__load__.zeek>
+   base/frameworks/telemetry/main.zeek </scripts/base/frameworks/telemetry/main.zeek>
+   base/misc/version.zeek </scripts/base/misc/version.zeek>
    base/protocols/conn/__load__.zeek </scripts/base/protocols/conn/__load__.zeek>
    base/protocols/conn/main.zeek </scripts/base/protocols/conn/main.zeek>
    base/protocols/conn/contents.zeek </scripts/base/protocols/conn/contents.zeek>
@@ -436,7 +439,6 @@
    base/misc/find-checksum-offloading.zeek </scripts/base/misc/find-checksum-offloading.zeek>
    base/misc/find-filtered-trace.zeek </scripts/base/misc/find-filtered-trace.zeek>
    base/misc/installation.zeek </scripts/base/misc/installation.zeek>
-   base/misc/version.zeek </scripts/base/misc/version.zeek>
    builtin-plugins/__preload__.zeek </scripts/builtin-plugins/__preload__.zeek>
    builtin-plugins/__load__.zeek </scripts/builtin-plugins/__load__.zeek>
    zeekygen/__load__.zeek </scripts/zeekygen/__load__.zeek>
@@ -496,6 +498,7 @@
    policy/frameworks/software/version-changes.zeek </scripts/policy/frameworks/software/version-changes.zeek>
    policy/frameworks/software/vulnerable.zeek </scripts/policy/frameworks/software/vulnerable.zeek>
    policy/frameworks/software/windows-version-detection.zeek </scripts/policy/frameworks/software/windows-version-detection.zeek>
+   policy/frameworks/telemetry/log.zeek </scripts/policy/frameworks/telemetry/log.zeek>
    policy/integration/barnyard2/__load__.zeek </scripts/policy/integration/barnyard2/__load__.zeek>
    policy/integration/barnyard2/types.zeek </scripts/policy/integration/barnyard2/types.zeek>
    policy/integration/barnyard2/main.zeek </scripts/policy/integration/barnyard2/main.zeek>
