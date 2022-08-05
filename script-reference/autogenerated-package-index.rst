@@ -208,6 +208,9 @@
 
    Plugins for the NetControl framework.
 
+:doc:`base/frameworks/telemetry </scripts/base/frameworks/telemetry/index>`
+
+
 :doc:`base/protocols/conn </scripts/base/protocols/conn/index>`
 
    Support for connection (TCP, UDP, or ICMP) analysis.
