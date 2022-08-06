@@ -916,7 +916,7 @@ Types
 Events
 ######
 .. zeek:id:: Notice::begin_suppression
-   :source-code: base/frameworks/notice/main.zeek 548 552
+   :source-code: base/frameworks/notice/main.zeek 549 553
 
    :Type: :zeek:type:`event` (ts: :zeek:type:`time`, suppress_for: :zeek:type:`interval`, note: :zeek:type:`Notice::Type`, identifier: :zeek:type:`string`)
 
@@ -1022,14 +1022,14 @@ Functions
 
 
 .. zeek:id:: Notice::apply_policy
-   :source-code: base/frameworks/notice/main.zeek 634 695
+   :source-code: base/frameworks/notice/main.zeek 635 696
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
    This is an internal function to populate policy records.
 
 .. zeek:id:: Notice::create_file_info
-   :source-code: base/frameworks/notice/main.zeek 595 612
+   :source-code: base/frameworks/notice/main.zeek 596 613
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`Notice::FileInfo`
 
@@ -1079,7 +1079,7 @@ Functions
            ``email_body_sections`` field of *n*.
 
 .. zeek:id:: Notice::is_being_suppressed
-   :source-code: base/frameworks/notice/main.zeek 575 584
+   :source-code: base/frameworks/notice/main.zeek 576 585
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`bool`
 
@@ -1104,7 +1104,7 @@ Functions
    :returns: True.
 
 .. zeek:id:: Notice::populate_file_info
-   :source-code: base/frameworks/notice/main.zeek 613 616
+   :source-code: base/frameworks/notice/main.zeek 614 617
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
@@ -1117,7 +1117,7 @@ Functions
    :n: a notice record that needs file-related fields populated.
 
 .. zeek:id:: Notice::populate_file_info2
-   :source-code: base/frameworks/notice/main.zeek 618 629
+   :source-code: base/frameworks/notice/main.zeek 619 630
 
    :Type: :zeek:type:`function` (fi: :zeek:type:`Notice::FileInfo`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
