@@ -101,7 +101,7 @@ operators (``+``, ``-``, ``*``, ``/``, ``%``), comparison operators
 (``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), assignment operators
 (``=``, ``+=``, ``-=``), pre-increment (``++``), pre-decrement
 (``--``), unary plus and minus (``+``, ``-``), absolute value
-(e.g., ``|-3|`` is 3, but the result type is :zeek:type:`count`), and 
+(e.g., ``|-3|`` is 3, but the result type is :zeek:type:`count`), and
 bitwise shift operations (``<<``, ``>>``).
 
 When using type inferencing, use care so that the
@@ -180,8 +180,8 @@ type, but a unary plus or minus applied to a ``count`` results in an
 :zeek:type:`int`.
 
 In addition, ``count`` types support more bitwise operations.  You can use
-``&``, ``|``, ``^``, ``<<``, and ``>>`` for bitwise ``and``, ``or``, 
-``xor``, ``left shift``, and ``right shift``.  You can also use ``~`` 
+``&``, ``|``, ``^``, ``<<``, and ``>>`` for bitwise ``and``, ``or``,
+``xor``, ``left shift``, and ``right shift``.  You can also use ``~``
 for bitwise (one's) complement.
 
 For unsigned arithmetic involving ``count`` types that cause overflows
@@ -596,6 +596,15 @@ match ``"foo"`` and ``"BaR"``, but *not* ``"Foo"``.
 For both ways of specifying case-insensitivity, characters enclosed
 in double quotes maintain their case-sensitivity.  So for example
 ``/"foo"/i`` will not match ``"Foo"``, but it will match ``"foo"``.
+
+Similar to the ``i`` specifier, you can add a ``s`` specifier to enable
+single-line mode, which causes the ``.`` character in a pattern to also
+match new-line characters. The same rules apply for ``(?s:<pattern>)``
+as with the ``i`` specifier.
+
+The ``i`` and ``s`` can also be combined together in a single pattern
+such as ``/foo/is`` or ``/bar/si``. In this case, both case-insensitivity
+and single-line mode will apply to the pattern.
 
 Type Conversions
 ^^^^^^^^^^^^^^^^
