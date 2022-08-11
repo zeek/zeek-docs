@@ -74,7 +74,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Agent::API::agent_standby_request
-   :source-code: policy/frameworks/management/agent/main.zeek 863 882
+   :source-code: policy/frameworks/management/agent/main.zeek 866 885
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -107,7 +107,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_request
-   :source-code: policy/frameworks/management/agent/main.zeek 849 861
+   :source-code: policy/frameworks/management/agent/main.zeek 852 864
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -138,7 +138,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::deploy_request
-   :source-code: policy/frameworks/management/agent/main.zeek 409 450
+   :source-code: policy/frameworks/management/agent/main.zeek 411 452
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`, force: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`)
 
@@ -180,7 +180,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_request
-   :source-code: policy/frameworks/management/agent/main.zeek 584 593
+   :source-code: policy/frameworks/management/agent/main.zeek 586 595
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -212,7 +212,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::node_dispatch_request
-   :source-code: policy/frameworks/management/agent/main.zeek 754 848
+   :source-code: policy/frameworks/management/agent/main.zeek 756 851
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, action: :zeek:type:`vector` of :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -302,7 +302,7 @@ Events
 
 
 .. zeek:id:: Management::Agent::API::restart_request
-   :source-code: policy/frameworks/management/agent/main.zeek 926 1001
+   :source-code: policy/frameworks/management/agent/main.zeek 929 1004
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 

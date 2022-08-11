@@ -30,7 +30,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: Management::Node::API::node_dispatch_request
-   :source-code: policy/frameworks/management/node/main.zeek 58 96
+   :source-code: policy/frameworks/management/node/main.zeek 58 97
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, action: :zeek:type:`vector` of :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -51,7 +51,7 @@ Events
        here to filter themselves out of responding.
 
 .. zeek:id:: Management::Node::API::node_dispatch_response
-   :source-code: policy/frameworks/management/agent/main.zeek 683 752
+   :source-code: policy/frameworks/management/agent/main.zeek 685 754
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -68,7 +68,7 @@ Events
        contains a value appropriate for the requested dispatch.
 
 .. zeek:id:: Management::Node::API::notify_node_hello
-   :source-code: policy/frameworks/management/agent/main.zeek 1002 1025
+   :source-code: policy/frameworks/management/agent/main.zeek 1005 1028
 
    :Type: :zeek:type:`event` (node: :zeek:type:`string`)
 
