@@ -62,7 +62,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ssl_alert
-   :source-code: base/protocols/ssl/main.zeek 453 459
+   :source-code: base/protocols/ssl/main.zeek 451 457
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, level: :zeek:type:`count`, desc: :zeek:type:`count`)
 
@@ -166,7 +166,7 @@ Events
       ssl_rsa_client_pms ssl_connection_flipped
 
 .. zeek:id:: ssl_connection_flipped
-   :source-code: base/protocols/ssl/main.zeek 342 347
+   :source-code: base/protocols/ssl/main.zeek 340 345
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -249,7 +249,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_rsa_client_pms
 
 .. zeek:id:: ssl_ecdh_server_params
-   :source-code: base/protocols/ssl/main.zeek 303 308
+   :source-code: base/protocols/ssl/main.zeek 301 306
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, curve: :zeek:type:`count`, point: :zeek:type:`string`)
 
@@ -700,7 +700,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_handshake_message
-   :source-code: base/protocols/ssl/main.zeek 349 424
+   :source-code: base/protocols/ssl/main.zeek 347 422
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, msg_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -759,7 +759,7 @@ Events
       ssl_alert ssl_encrypted_data
 
 .. zeek:id:: ssl_plaintext_data
-   :source-code: base/protocols/ssl/main.zeek 504 513
+   :source-code: base/protocols/ssl/main.zeek 502 511
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 

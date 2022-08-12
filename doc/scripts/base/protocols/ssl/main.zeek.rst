@@ -550,7 +550,7 @@ Events
 Hooks
 #####
 .. zeek:id:: SSL::finalize_ssl
-   :source-code: base/protocols/ssl/main.zeek 483 493
+   :source-code: base/protocols/ssl/main.zeek 481 491
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
