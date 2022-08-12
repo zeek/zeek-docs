@@ -50,7 +50,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Modbus::Info
-   :source-code: base/protocols/modbus/main.zeek 12 23
+   :source-code: base/protocols/modbus/main.zeek 12 29
 
    :Type: :zeek:type:`record`
 
@@ -63,8 +63,17 @@ Types
       id: :zeek:type:`conn_id` :zeek:attr:`&log`
          Identifier for the connection.
 
+      tid: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+         Modbus transaction ID
+
+      unit: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+         The terminal unit identifier for the message
+
       func: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          The name of the function message that was sent.
+
+      pdu_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         Whether this PDU was a response ("RESP") or request ("REQ")
 
       exception: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          The exception if the response was a failure.
@@ -77,7 +86,7 @@ Types
 Events
 ######
 .. zeek:id:: Modbus::log_modbus
-   :source-code: base/protocols/modbus/main.zeek 27 27
+   :source-code: base/protocols/modbus/main.zeek 33 33
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Modbus::Info`)
 
