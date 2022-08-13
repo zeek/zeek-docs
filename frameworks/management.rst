@@ -115,6 +115,45 @@ not (necessarily) implemented in Zeek's script layer. The Zeek distribution
 ships with ``zeek-client``, a command-line client implemented in Python, to
 provide management functionality. Users are welcome to implement other clients.
 
+.. _framework-management-visual-example:
+
+A Visual Example
+================
+
+Consider the following setup, consisting of a single instance, controller, and a
+connected ``zeek-client``, all running on different machines:
+
+.. image:: /images/management.png
+   :align: center
+
+The cluster system runs a single management instance, with an agent listening on
+TCP port 2151, the default. Since the agent needs to communicate with the
+Supervisor for node management tasks and the two run in separate processes, the
+Supervisor listens for Broker peerings, on TCP port 9999 (again, the default),
+and the two communicate events over topic ``zeek/supervisor``. As shown, the
+agent has launched a 4-node Zeek cluster consisting of two workers, a logger,
+and a manager, communicating internally as usual.
+
+The controller system is more straightforward, consisting merely of a
+Supervisor-governed management controller. This controller has connected to and
+peered with the agent on the cluster system, to relay commands received by the
+client via the agent's API and receive responses over Broker topic
+``zeek/management/agent``. Since the controller doesn't need to interact with
+the Supervisor, the latter doesn't listen on any ports. Standalone controllers,
+as running here, still require a Supervisor, to simplify co-located deployment
+of agent and controller in a single instance.
+
+Finally, the admin system doesn't run Zeek, but has it installed to provide
+``zeek-client``, the CLI for issuing cluster management requests. This client
+connects to and peers with the controller, exchanging controller API events over
+topic ``zeek/management/controller``. For more details on ``zeek-client``, see
+:ref:`below <framework-management-zeek-client>`.
+
+In practice you can simplify the deployment by running ``zeek-client`` directly
+on the controller machine, or by running agent and controller jointly on a
+single system. We cover this in :ref:`more detail
+<framework-management-running>`.
+
 Goals and Relationship to ZeekControl
 =====================================
 
@@ -133,6 +172,8 @@ management framework.
 ZeekControl remains included in the Zeek distribution, and remains the
 recommended solution for multi-system clusters and those needing rich management
 capabilities.
+
+.. _framework-management-running:
 
 Running Controller and Agent
 ============================
@@ -159,6 +200,12 @@ the framework. (Without it, the above command will simply return.)
    to avoid checksum errors, which commonly happen in local monitoring due to
    offload of the checksum computation to the NIC.
 
+The following illustrates this setup:
+
+.. image:: /images/management-all-in-one.png
+   :align: center
+   :scale: 75%
+
 Separate controller and agent instances
 ---------------------------------------
 
@@ -180,6 +227,12 @@ below). While technically not required to operate a stand-alone controller, the
 Supervisor is currently also required in this scenario, so don't omit the
 ``-j``.
 
+This looks as follows:
+
+.. image:: /images/management-all-in-one-two-zeeks.png
+   :align: center
+
+
 Controller and agent instances on separate systems
 --------------------------------------------------
 
@@ -199,6 +252,11 @@ in ``local.zeek`` and then launching
 .. code-block:: console
 
    # zeek -j policy/frameworks/management/agent local
+
+The result looks as already covered :ref:`earlier <framework-management-visual-example>`:
+
+.. image:: /images/management.png
+   :align: center
 
 To make the controller connect to remote agents, deploy configurations that
 include the location of such agents in the configuration. More on this below.
@@ -376,7 +434,9 @@ You can adapt the log archival configuration via the following settings:
   other than the included ``zeek-archiver``. The replacement should accept the
   same argument structure: ``<executable> -1 <input dir> <output dir>``. The
   ``-1`` here refers to ``zeek-archiver``'s one-shot processing mode.
-     
+
+.. _framework-management-zeek-client:
+
 The zeek-client CLI
 ===================
 
