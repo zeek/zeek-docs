@@ -1112,7 +1112,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Log::log_stream_policy
-   :source-code: base/frameworks/logging/main.zeek 583 583
+   :source-code: policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek 44 64
 
    :Type: :zeek:type:`Log::StreamPolicyHook`
 
