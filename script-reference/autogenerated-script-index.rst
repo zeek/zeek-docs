@@ -485,6 +485,7 @@
    policy/frameworks/intel/seen/smtp-url-extraction.zeek </scripts/policy/frameworks/intel/seen/smtp-url-extraction.zeek>
    policy/frameworks/intel/seen/x509.zeek </scripts/policy/frameworks/intel/seen/x509.zeek>
    policy/frameworks/netcontrol/catch-and-release.zeek </scripts/policy/frameworks/netcontrol/catch-and-release.zeek>
+   policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek </scripts/policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek>
    policy/frameworks/files/detect-MHR.zeek </scripts/policy/frameworks/files/detect-MHR.zeek>
    policy/frameworks/files/hash-all-files.zeek </scripts/policy/frameworks/files/hash-all-files.zeek>
    policy/frameworks/files/entropy-test-all-files.zeek </scripts/policy/frameworks/files/entropy-test-all-files.zeek>
