@@ -259,17 +259,9 @@ Miscellaneous
     - Description
     - Field Descriptions
 
-  * - :file:`barnyard2.log`
-    - Alerts received from Barnyard2
-    - :zeek:type:`Barnyard2::Info`
-
   * - :file:`dpd.log`
     - Dynamic protocol detection failures
     - :zeek:type:`DPD::Info`
-
-  * - :file:`unified2.log`
-    - Interprets Snort's unified output
-    - :zeek:type:`Unified2::Info`
 
   * - :file:`unknown_protocols.log`
     - Information about packet protocols that Zeek doesn't know how to process
