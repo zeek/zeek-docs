@@ -382,10 +382,6 @@
 :doc:`policy/frameworks/notice </scripts/policy/frameworks/notice/index>`
 
 
-:doc:`policy/files/unified2 </scripts/policy/files/unified2/index>`
-
-   Support for Unified2 files in the file analysis framework.
-
 :doc:`policy/integration/collective-intel </scripts/policy/integration/collective-intel/index>`
 
    The scripts in this module are for deeper integration with the

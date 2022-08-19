@@ -794,11 +794,6 @@ Types
          (present if :doc:`/scripts/policy/frameworks/netcontrol/catch-and-release.zeek` is loaded)
 
 
-      .. zeek:enum:: Unified2::LOG Log::ID
-
-         (present if :doc:`/scripts/policy/files/unified2/main.zeek` is loaded)
-
-
       .. zeek:enum:: Telemetry::LOG Log::ID
 
          (present if :doc:`/scripts/policy/frameworks/telemetry/log.zeek` is loaded)

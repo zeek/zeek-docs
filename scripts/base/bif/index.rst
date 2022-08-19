@@ -456,12 +456,6 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_PE.events.bif.zeek`
 
 
-:doc:`/scripts/base/bif/plugins/Zeek_Unified2.events.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_Unified2.types.bif.zeek`
-
-
 :doc:`/scripts/base/bif/plugins/Zeek_X509.events.bif.zeek`
 
 
