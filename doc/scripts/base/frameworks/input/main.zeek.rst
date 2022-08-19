@@ -352,7 +352,7 @@ Types
 Events
 ######
 .. zeek:id:: Input::end_of_data
-   :source-code: base/frameworks/input/main.zeek 249 249
+   :source-code: base/utils/exec.zeek 96 127
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, source: :zeek:type:`string`)
 

@@ -222,8 +222,6 @@
    base/bif/plugins/Zeek_FileExtract.functions.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.functions.bif.zeek>
    base/bif/plugins/Zeek_FileHash.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileHash.events.bif.zeek>
    base/bif/plugins/Zeek_PE.events.bif.zeek </scripts/base/bif/plugins/Zeek_PE.events.bif.zeek>
-   base/bif/plugins/Zeek_Unified2.events.bif.zeek </scripts/base/bif/plugins/Zeek_Unified2.events.bif.zeek>
-   base/bif/plugins/Zeek_Unified2.types.bif.zeek </scripts/base/bif/plugins/Zeek_Unified2.types.bif.zeek>
    base/bif/plugins/Zeek_X509.events.bif.zeek </scripts/base/bif/plugins/Zeek_X509.events.bif.zeek>
    base/bif/plugins/Zeek_X509.types.bif.zeek </scripts/base/bif/plugins/Zeek_X509.types.bif.zeek>
    base/bif/plugins/Zeek_X509.functions.bif.zeek </scripts/base/bif/plugins/Zeek_X509.functions.bif.zeek>
@@ -492,8 +490,6 @@
    policy/frameworks/notice/__load__.zeek </scripts/policy/frameworks/notice/__load__.zeek>
    policy/frameworks/notice/extend-email/hostnames.zeek </scripts/policy/frameworks/notice/extend-email/hostnames.zeek>
    policy/frameworks/notice/actions/drop.zeek </scripts/policy/frameworks/notice/actions/drop.zeek>
-   policy/files/unified2/__load__.zeek </scripts/policy/files/unified2/__load__.zeek>
-   policy/files/unified2/main.zeek </scripts/policy/files/unified2/main.zeek>
    policy/files/x509/disable-certificate-events-known-certs.zeek </scripts/policy/files/x509/disable-certificate-events-known-certs.zeek>
    policy/frameworks/packet-filter/shunt.zeek </scripts/policy/frameworks/packet-filter/shunt.zeek>
    policy/frameworks/software/version-changes.zeek </scripts/policy/frameworks/software/version-changes.zeek>

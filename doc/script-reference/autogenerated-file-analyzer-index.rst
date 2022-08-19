@@ -19,8 +19,6 @@ File Analyzers
 
       .. zeek:enum:: Files::ANALYZER_PE Files::Tag
 
-      .. zeek:enum:: Files::ANALYZER_UNIFIED2 Files::Tag
-
       .. zeek:enum:: Files::ANALYZER_OCSP_REPLY Files::Tag
 
       .. zeek:enum:: Files::ANALYZER_OCSP_REQUEST Files::Tag
@@ -252,114 +250,6 @@ Events
    
    .. zeek:see:: pe_dos_header pe_dos_code pe_file_header pe_optional_header
 
-Zeek::Unified2
---------------
-
-Analyze Unified2 alert files.
-
-Components
-++++++++++
-
-:zeek:enum:`Files::ANALYZER_UNIFIED2`
-
-Types
-+++++
-
-.. zeek:type:: Unified2::IDSEvent
-   :source-code: base/init-bare.zeek 4256 4278
-
-   :Type: :zeek:type:`record`
-
-      sensor_id: :zeek:type:`count`
-
-      event_id: :zeek:type:`count`
-
-      ts: :zeek:type:`time`
-
-      signature_id: :zeek:type:`count`
-
-      generator_id: :zeek:type:`count`
-
-      signature_revision: :zeek:type:`count`
-
-      classification_id: :zeek:type:`count`
-
-      priority_id: :zeek:type:`count`
-
-      src_ip: :zeek:type:`addr`
-
-      dst_ip: :zeek:type:`addr`
-
-      src_p: :zeek:type:`port`
-
-      dst_p: :zeek:type:`port`
-
-      impact_flag: :zeek:type:`count`
-
-      impact: :zeek:type:`count`
-
-      blocked: :zeek:type:`count`
-
-      mpls_label: :zeek:type:`count` :zeek:attr:`&optional`
-         Not available in "legacy" IDS events.
-
-      vlan_id: :zeek:type:`count` :zeek:attr:`&optional`
-         Not available in "legacy" IDS events.
-
-      packet_action: :zeek:type:`count` :zeek:attr:`&optional`
-         Only available in "legacy" IDS events.
-
-
-.. zeek:type:: Unified2::Packet
-   :source-code: base/init-bare.zeek 4280 4287
-
-   :Type: :zeek:type:`record`
-
-      sensor_id: :zeek:type:`count`
-
-      event_id: :zeek:type:`count`
-
-      event_second: :zeek:type:`count`
-
-      packet_ts: :zeek:type:`time`
-
-      link_type: :zeek:type:`count`
-
-      data: :zeek:type:`string`
-
-
-Events
-++++++
-
-.. zeek:id:: unified2_event
-   :source-code: policy/files/unified2/main.zeek 265 268
-
-   :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ev: :zeek:type:`Unified2::IDSEvent`)
-
-   Abstract all of the various Unified2 event formats into 
-   a single event.
-   
-
-   :f: The file.
-   
-
-   :ev: TODO.
-   
-
-.. zeek:id:: unified2_packet
-   :source-code: policy/files/unified2/main.zeek 270 278
-
-   :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, pkt: :zeek:type:`Unified2::Packet`)
-
-   The Unified2 packet format event.
-   
-
-   :f: The file.
-   
-
-   :pkt: TODO.
-   
-
 Zeek::X509
 ----------
 
@@ -378,7 +268,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 4326 4340
+   :source-code: base/init-bare.zeek 4290 4304
 
    :Type: :zeek:type:`record`
 
@@ -423,7 +313,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 4342 4348
+   :source-code: base/init-bare.zeek 4306 4312
 
    :Type: :zeek:type:`record`
 
@@ -444,7 +334,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 4350 4353
+   :source-code: base/init-bare.zeek 4314 4317
 
    :Type: :zeek:type:`record`
 
@@ -457,7 +347,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 4355 4361
+   :source-code: base/init-bare.zeek 4319 4325
 
    :Type: :zeek:type:`record`
 
@@ -478,7 +368,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 4364 4371
+   :source-code: base/init-bare.zeek 4328 4335
 
    :Type: :zeek:type:`record`
 
