@@ -500,9 +500,6 @@
    policy/frameworks/software/vulnerable.zeek </scripts/policy/frameworks/software/vulnerable.zeek>
    policy/frameworks/software/windows-version-detection.zeek </scripts/policy/frameworks/software/windows-version-detection.zeek>
    policy/frameworks/telemetry/log.zeek </scripts/policy/frameworks/telemetry/log.zeek>
-   policy/integration/barnyard2/__load__.zeek </scripts/policy/integration/barnyard2/__load__.zeek>
-   policy/integration/barnyard2/types.zeek </scripts/policy/integration/barnyard2/types.zeek>
-   policy/integration/barnyard2/main.zeek </scripts/policy/integration/barnyard2/main.zeek>
    policy/integration/collective-intel/__load__.zeek </scripts/policy/integration/collective-intel/__load__.zeek>
    policy/integration/collective-intel/main.zeek </scripts/policy/integration/collective-intel/main.zeek>
    policy/misc/capture-loss.zeek </scripts/policy/misc/capture-loss.zeek>

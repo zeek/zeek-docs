@@ -809,11 +809,6 @@ Types
          (present if :doc:`/scripts/policy/frameworks/telemetry/log.zeek` is loaded)
 
 
-      .. zeek:enum:: Barnyard2::LOG Log::ID
-
-         (present if :doc:`/scripts/policy/integration/barnyard2/main.zeek` is loaded)
-
-
       .. zeek:enum:: CaptureLoss::LOG Log::ID
 
          (present if :doc:`/scripts/policy/misc/capture-loss.zeek` is loaded)

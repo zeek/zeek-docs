@@ -386,10 +386,6 @@
 
    Support for Unified2 files in the file analysis framework.
 
-:doc:`policy/integration/barnyard2 </scripts/policy/integration/barnyard2/index>`
-
-   Integration with Barnyard2.
-
 :doc:`policy/integration/collective-intel </scripts/policy/integration/collective-intel/index>`
 
    The scripts in this module are for deeper integration with the
