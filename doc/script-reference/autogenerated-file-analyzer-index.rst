@@ -25,6 +25,8 @@ File Analyzers
 
       .. zeek:enum:: Files::ANALYZER_X509 Files::Tag
 
+.. _plugin-zeek-filedataevent:
+
 Zeek::FileDataEvent
 -------------------
 
@@ -34,6 +36,8 @@ Components
 ++++++++++
 
 :zeek:enum:`Files::ANALYZER_DATA_EVENT`
+
+.. _plugin-zeek-fileentropy:
 
 Zeek::FileEntropy
 -----------------
@@ -62,6 +66,8 @@ Events
 
    :ent: The results of the entropy testing.
    
+
+.. _plugin-zeek-fileextract:
 
 Zeek::FileExtract
 -----------------
@@ -112,6 +118,8 @@ Functions
 
    :zeek:see:`FileExtract::set_limit`.
 
+.. _plugin-zeek-filehash:
+
 Zeek::FileHash
 --------------
 
@@ -148,6 +156,8 @@ Events
    
    .. zeek:see:: Files::add_analyzer Files::ANALYZER_MD5
       Files::ANALYZER_SHA1 Files::ANALYZER_SHA256
+
+.. _plugin-zeek-pe:
 
 Zeek::PE
 --------
@@ -249,6 +259,8 @@ Events
    :h: The parsed section header information.
    
    .. zeek:see:: pe_dos_header pe_dos_code pe_file_header pe_optional_header
+
+.. _plugin-zeek-x509:
 
 Zeek::X509
 ----------
