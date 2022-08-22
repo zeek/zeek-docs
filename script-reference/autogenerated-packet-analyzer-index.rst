@@ -57,6 +57,8 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_VXLAN PacketAnalyzer::Tag
 
+.. _plugin-zeek-arp:
+
 Zeek::ARP
 ---------
 
@@ -161,6 +163,8 @@ Events
       been ported. To still enable this event, one needs to
       register a port for it or add a DPD payload signature.
 
+.. _plugin-zeek-ayiya:
+
 Zeek::AYIYA
 -----------
 
@@ -170,6 +174,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_AYIYA`
+
+.. _plugin-zeek-ethernet:
 
 Zeek::Ethernet
 --------------
@@ -181,6 +187,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_ETHERNET`
 
+.. _plugin-zeek-fddi:
+
 Zeek::FDDI
 ----------
 
@@ -190,6 +198,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_FDDI`
+
+.. _plugin-zeek-geneve:
 
 Zeek::Geneve
 ------------
@@ -224,6 +234,8 @@ Events
    .. note:: Since this event may be raised on a per-packet basis, handling
       it may become particularly expensive for real-time analysis.
 
+.. _plugin-zeek-gre:
+
 Zeek::GRE
 ---------
 
@@ -233,6 +245,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_GRE`
+
+.. _plugin-zeek-gtpv1:
 
 Zeek::GTPv1
 -----------
@@ -385,6 +399,8 @@ Functions
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
 
+.. _plugin-zeek-ieee802-11:
+
 Zeek::IEEE802_11
 ----------------
 
@@ -394,6 +410,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_IEEE802_11`
+
+.. _plugin-zeek-ieee802-11-radio:
 
 Zeek::IEEE802_11_Radio
 ----------------------
@@ -405,6 +423,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_IEEE802_11_RADIO`
 
+.. _plugin-zeek-ip:
+
 Zeek::IP
 --------
 
@@ -414,6 +434,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_IP`
+
+.. _plugin-zeek-iptunnel:
 
 Zeek::IPTunnel
 --------------
@@ -425,6 +447,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_IPTUNNEL`
 
+.. _plugin-zeek-linuxsll:
+
 Zeek::LinuxSLL
 --------------
 
@@ -434,6 +458,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_LINUXSLL`
+
+.. _plugin-zeek-mpls:
 
 Zeek::MPLS
 ----------
@@ -445,6 +471,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_MPLS`
 
+.. _plugin-zeek-nflog:
+
 Zeek::NFLog
 -----------
 
@@ -454,6 +482,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_NFLOG`
+
+.. _plugin-zeek-null:
 
 Zeek::Null
 ----------
@@ -465,6 +495,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_NULL`
 
+.. _plugin-zeek-pppoe:
+
 Zeek::PPPoE
 -----------
 
@@ -474,6 +506,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_PPPOE`
+
+.. _plugin-zeek-pppserial:
 
 Zeek::PPPSerial
 ---------------
@@ -485,6 +519,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_PPPSERIAL`
 
+.. _plugin-zeek-root:
+
 Zeek::Root
 ----------
 
@@ -495,6 +531,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_ROOT`
 
+.. _plugin-zeek-skip:
+
 Zeek::Skip
 ----------
 
@@ -504,6 +542,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_SKIP`
+
+.. _plugin-zeek-teredo:
 
 Zeek::Teredo
 ------------
@@ -606,6 +646,8 @@ Functions
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
 
+.. _plugin-zeek-vlan:
+
 Zeek::VLAN
 ----------
 
@@ -616,6 +658,8 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_VLAN`
 
+.. _plugin-zeek-vntag:
+
 Zeek::VNTag
 -----------
 
@@ -625,6 +669,8 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_VNTAG`
+
+.. _plugin-zeek-vxlan:
 
 Zeek::VXLAN
 -----------
