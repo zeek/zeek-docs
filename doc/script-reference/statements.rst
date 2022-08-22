@@ -559,9 +559,11 @@ loop variable must be specified as a comma-separated list of different
 loop variables (one for each index), enclosed in brackets.
 
 If the expression is a table, keys and values can be iterated over at the
-same time by specifying a key and value variable. The core exposes value
-variables for free, so this should be preferred to accessing the values in
-a separate lookup inside the loop.
+same time by specifying a key and value variable. Similarly, if the expression
+is a vector, indices and values can be iterated over at the same time by
+specifying an index and value variable.
+The core exposes value variables for free, so this should be preferred to
+accessing the values in a separate lookup inside the loop.
 
 Note that the loop variable in a ``for`` statement is not allowed to be
 a global variable, and it does not need to be declared prior to the ``for``
@@ -582,6 +584,7 @@ Example:
 
     local myset = set(80/tcp, 81/tcp);
     local mytable = table([10.0.0.1, 80/tcp]="s1", [10.0.0.2, 81/tcp]="s2");
+    local myvector = vector("zero", "one, "two");
 
     for ( p in myset )
         print p;
@@ -594,6 +597,9 @@ Example:
             next;
         print i,j;
         }
+
+    for ( i, val in myvector )
+        print i,val;
 
 
 .. zeek:keyword:: if
