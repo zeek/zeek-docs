@@ -58,6 +58,12 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/linux_sll/main.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/linux_sll2/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/linux_sll2/main.zeek`
+
+
 :doc:`/scripts/base/packet-protocols/nflog/__load__.zeek`
 
 

@@ -25,6 +25,9 @@
 :doc:`base/packet-protocols/linux_sll </scripts/base/packet-protocols/linux_sll/index>`
 
 
+:doc:`base/packet-protocols/linux_sll2 </scripts/base/packet-protocols/linux_sll2/index>`
+
+
 :doc:`base/packet-protocols/nflog </scripts/base/packet-protocols/nflog/index>`
 
 

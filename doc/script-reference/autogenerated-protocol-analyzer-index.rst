@@ -229,6 +229,8 @@ Protocol Analyzers
 
       .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_LINUXSLL AllAnalyzers::Tag
 
+      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_LINUXSLL2 AllAnalyzers::Tag
+
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_RLOGIN AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_RSH AllAnalyzers::Tag
