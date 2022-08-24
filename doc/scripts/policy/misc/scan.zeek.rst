@@ -51,7 +51,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Scan::addr_scan_interval
-   :source-code: policy/misc/scan.zeek 35 35
+   :source-code: policy/misc/scan.zeek 37 37
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -62,7 +62,7 @@ Redefinable Options
    scanners, but may also yield more false positives.
 
 .. zeek:id:: Scan::addr_scan_threshold
-   :source-code: policy/misc/scan.zeek 44 44
+   :source-code: policy/misc/scan.zeek 46 46
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -72,7 +72,7 @@ Redefinable Options
    have failed connections with on a single port.
 
 .. zeek:id:: Scan::port_scan_interval
-   :source-code: policy/misc/scan.zeek 40 40
+   :source-code: policy/misc/scan.zeek 42 42
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -83,7 +83,7 @@ Redefinable Options
    scanners, but may also yield more false positives.
 
 .. zeek:id:: Scan::port_scan_threshold
-   :source-code: policy/misc/scan.zeek 48 48
+   :source-code: policy/misc/scan.zeek 50 50
 
    :Type: :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -95,13 +95,13 @@ Redefinable Options
 Hooks
 #####
 .. zeek:id:: Scan::addr_scan_policy
-   :source-code: policy/misc/scan.zeek 50 50
+   :source-code: policy/misc/scan.zeek 52 52
 
    :Type: :zeek:type:`hook` (scanner: :zeek:type:`addr`, victim: :zeek:type:`addr`, scanned_port: :zeek:type:`port`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Scan::port_scan_policy
-   :source-code: policy/misc/scan.zeek 51 51
+   :source-code: policy/misc/scan.zeek 53 53
 
    :Type: :zeek:type:`hook` (scanner: :zeek:type:`addr`, victim: :zeek:type:`addr`, scanned_port: :zeek:type:`port`) : :zeek:type:`bool`
 
