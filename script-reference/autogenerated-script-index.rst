@@ -37,6 +37,8 @@
    base/packet-protocols/ieee802_11_radio/main.zeek </scripts/base/packet-protocols/ieee802_11_radio/main.zeek>
    base/packet-protocols/linux_sll/__load__.zeek </scripts/base/packet-protocols/linux_sll/__load__.zeek>
    base/packet-protocols/linux_sll/main.zeek </scripts/base/packet-protocols/linux_sll/main.zeek>
+   base/packet-protocols/linux_sll2/__load__.zeek </scripts/base/packet-protocols/linux_sll2/__load__.zeek>
+   base/packet-protocols/linux_sll2/main.zeek </scripts/base/packet-protocols/linux_sll2/main.zeek>
    base/packet-protocols/nflog/__load__.zeek </scripts/base/packet-protocols/nflog/__load__.zeek>
    base/packet-protocols/nflog/main.zeek </scripts/base/packet-protocols/nflog/main.zeek>
    base/packet-protocols/null/__load__.zeek </scripts/base/packet-protocols/null/__load__.zeek>

@@ -31,6 +31,8 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_LINUXSLL PacketAnalyzer::Tag
 
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_LINUXSLL2 PacketAnalyzer::Tag
+
       .. zeek:enum:: PacketAnalyzer::ANALYZER_MPLS PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_NFLOG PacketAnalyzer::Tag
@@ -458,6 +460,18 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_LINUXSLL`
+
+.. _plugin-zeek-linuxsll2:
+
+Zeek::LinuxSLL2
+---------------
+
+Linux cooked capture version 2 (SLL2) packet analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_LINUXSLL2`
 
 .. _plugin-zeek-mpls:
 
