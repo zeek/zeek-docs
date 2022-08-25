@@ -1,5 +1,7 @@
 .. _zkg package manager: https://docs.zeek.org/projects/package-manager/en/stable/
 
+.. _writing-plugins:
+
 ===============
 Writing Plugins
 ===============
