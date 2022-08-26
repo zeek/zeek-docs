@@ -18,49 +18,143 @@
 Installing Zeek
 ===============
 
-Prerequisites
+To run Zeek, grab our official Docker images, download our Linux binary
+packages, install via Homebrew on your Mac, use the ports collection on FreeBSD,
+or build Zeek yourself.
+
+Docker Images
 =============
 
-Before installing Zeek, you'll need to ensure that some dependencies
-are in place.
+We provide official Docker images on Docker Hub at https://hub.docker.com/u/zeekurity.
+
+    * For the latest feature release: ``docker pull zeekurity/zeek:latest``
+    * For the latest LTS release: ``docker pull zeekurity/zeek:lts``
+    * For a specific release: ``docker pull zeekurity/zeek:5.0.0-rc1``
+    * For the nightly build: ``docker pull zeekurity/zeek-dev:latest``
+
+The images run Debian and feature a complete Zeek installation with ``zeek``,
+``zkg``, and the Spicy toolchain, but are otherwise minimal to avoid bloat in
+derived images. For example, if you'd like to install Zeek plugins in those
+images, you'll need to install their needed toolchain, typically at least
+``g++`` for compilation, ``cmake`` and ``make`` as build tools, and
+``libpcap-dev`` to build against Zeek headers. Similarly, you'll need ``g++``
+for Spicy's JIT compilation, as well as ``cmake`` and ``make`` to build Spicy
+analyzer packages.
+
+  .. code-block:: console
+
+    apt-get update
+    apt-get install -y --no-install-recommends g++ cmake make libpcap-dev
+
+The Dockerfile lives `here <https://github.com/zeek/zeek/blob/master/docker/Dockerfile>`_.
+
+Binary Packages
+===============
+
+Linux
+-----
+
+We provide `binary packages <https://build.opensuse.org/project/show/security:zeek>`_
+for a wide range of Linux distributions via the `openSUSE Build Service
+<https://build.opensuse.org/>`_. To install, first add the relevant OBS
+package repository to your system, then use your system's package manager
+as usual.
+
+We provide packages for:
+
+    * the `latest Zeek feature release <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek>`__)
+    * the `latest Zeek LTS release <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-lts>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek-lts>`__)
+    * `nightly builds <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-nightly>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek-nightly>`__)
+    * `release candidates <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-rc>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek-rc>`__)
+
+For example, for the latest feature release on CentOS Stream 8 you'd run the following as root:
+
+  .. code-block:: console
+
+     cd /etc/yum.repos.d/
+     wget https://download.opensuse.org/repositories/security:/zeek/CentOS_8_Stream/security:zeek.repo
+     dnf install zeek
+
+For the LTS release on Ubuntu 22.04 the steps look as follows:
+
+  .. code-block:: console
+
+     echo 'deb http://download.opensuse.org/repositories/security:/zeek/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/security:zeek.list
+     curl -fsSL https://download.opensuse.org/repositories/security:zeek/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/security_zeek.gpg > /dev/null
+     sudo apt update
+     sudo apt install zeek-lts
+
+The primary install prefix for binary packages is :file:`/opt/zeek` (depending
+on which version you’re using), and includes a complete Zeek environment with
+``zeek`` itself, the ``zkg`` package manager, the Spicy toolchain, etc.
+
+See our `Binary Packages wiki page <https://github.com/zeek/zeek/wiki/Binary-Packages>`_
+for the latest updates on binary releases.
+
+macOS
+-----
+
+The Zeek `Homebrew formula <https://formulae.brew.sh/formula/zeek>`_
+provides binary packages ("bottles"). To install:
+
+  .. code-block:: console
+
+     brew install zeek
+
+These packages are not maintained by the Zeek project.
+
+FreeBSD
+-------
+
+Zeek is available from the ports collection. To install:
+
+  .. code-block:: console
+
+     sudo pkg install -y zeek
+
+These packages are not maintained by the Zeek project.
+
+Building from Source
+====================
+
+Building Zeek from source provides the most control over your build and is the
+preferred approach for advanced users. We support a wide range of operating
+systems and distributions. Our `support policy
+<https://github.com/zeek/zeek/wiki/Platform-Support-Policy>`_ is informed by
+what we can run in our CI pipelines with reasonable effort, with the current
+status captured in our `support matrix
+<https://github.com/zeek/zeek/wiki/Zeek-Operating-System-Support-Matrix>`_.
 
 Required Dependencies
 ---------------------
 
-Zeek requires the following libraries and tools to be installed
-before you begin:
+Building Zeek from source requires the following dependencies, including
+development headers for libraries:
 
-    * Libpcap                           (http://www.tcpdump.org)
-    * OpenSSL libraries                 (https://www.openssl.org)
-    * BIND8 library
-    * Libz
-    * Bash (for ZeekControl)
-    * Python 3.5 or greater             (https://www.python.org/)
-
-To build Zeek from source, the following additional dependencies are required:
-
-    * CMake 3.15 or greater              (https://www.cmake.org)
-    * Make
+    * Bash (for ZeekControl and BTest)
+    * BIND8 library or greater (if not covered by system's libresolv)
+    * Bison 3.3 or greater (https://www.gnu.org/software/bison/)
     * C/C++ compiler with C++17 support (GCC 8+ or Clang 9+)
-    * SWIG                              (http://www.swig.org)
-    * Bison 3.3 or greater              (https://www.gnu.org/software/bison/)
+    * CMake 3.15 or greater (https://www.cmake.org)
     * Flex (lexical analyzer generator) 2.6 or greater (https://github.com/westes/flex)
-    * Libpcap headers                   (http://www.tcpdump.org)
-    * OpenSSL headers                   (http://www.openssl.org)
-    * zlib headers                      (https://zlib.net/)
-    * Python 3.5 or greater             (https://www.python.org/)
+    * Libpcap (http://www.tcpdump.org)
+    * Make
+    * OpenSSL (http://www.openssl.org)
+    * Python 3.5 or greater (https://www.python.org/)
+    * SWIG (http://www.swig.org)
+    * Zlib (https://zlib.net/)
 
-To install the required dependencies, you can use:
+To install these, you can use:
 
 * RPM/RedHat-based Linux:
 
   .. code-block:: console
 
-     sudo yum install cmake make gcc gcc-c++ flex bison libpcap-devel openssl-devel python3 python3-devel swig zlib-devel
+     sudo dnf install cmake make gcc gcc-c++ flex bison libpcap-devel openssl-devel python3 python3-devel swig zlib-devel
 
-  Additionally, on RHEL/CentOS 7, you can install and activate a devtoolset_ to get access
-  to recent GCC versions. You will also have to install and activate CMake 3.
-  For example:
+  On pre-``dnf`` systems, use ``yum`` instead.  Additionally, on RHEL/CentOS 7,
+  you can install and activate a devtoolset_ to get access to recent GCC
+  versions. You will also have to install and activate CMake 3.  For example:
 
   .. code-block:: console
 
@@ -152,67 +246,7 @@ semantic-version``) and also ship with some distributions:
 pull in as a dependency. If you install via pip, remember that you also need
 ``git`` itself.
 
-Installing Zeek
-===============
-
-Zeek can be downloaded as either pre-built binary packages for Linux, or in
-source code form. On many platforms, Zeek also comes already integrated into
-package management systems (e.g., Homebrew on macOS), Note, however, that such
-external packages may not always be fully up to date.
-
-Using Pre-Built Binary Release Packages for Linux
--------------------------------------------------
-
-We are providing prebuilt binary packages for a variety of Linux distributions.
-See the `Binary-Packages wiki
-<https://github.com/zeek/zeek/wiki/Binary-Packages>`_ for the latest updates on
-binary releases and for more information.
-
-You can download the `packages for the latest feature release build here
-<https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek>`_
-for all the supported distributions. Please follow the instructions on that
-link to add rpm/deb repositories for the corresponding OS; grabbing the binary
-files directly does not give you all dependencies. The `package source files are
-available here <https://build.opensuse.org/package/show/security:zeek/zeek>`_.
-
-As an example, for CentOS:
-
-  For CentOS 8 run the following as root:
-
-  .. code-block:: console
-
-     cd /etc/yum.repos.d/
-     wget https://download.opensuse.org/repositories/security:/zeek/CentOS_8_Stream/security:zeek.repo
-     yum install zeek
-
-  For CentOS 7 run the following as root:
-
-  .. code-block:: console
-
-     cd /etc/yum.repos.d/
-     wget https://download.opensuse.org/repositories/security:/zeek/CentOS_7/security:zeek.repo
-     yum install zeek
-
-Furthermore, you can download the `packages for the latest LTS release build
-here
-<https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-lts>`_
-and `nightly builds are also available here
-<https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-nightly>`_
-for all the supported operating systems. Please follow the instructions on the
-links to add rpm/deb repositories for the corresponding OS; grabbing the binary
-files directly does not give you all dependencies. The `source files for LTS
-builds are available here
-<https://build.opensuse.org/package/show/security:zeek/zeek-lts>`_ and for
-nightly builds `source files are here
-<https://build.opensuse.org/package/show/security:zeek/zeek-nightly>`_.
-
-For example, if you prefer to use the most recent LTS release, use ``yum install
-zeek-lts``, and for the nightly builds use ``yum install zeek-nightly`` instead.
-
-The primary install prefix for binary packages is :file:`/opt/zeek` (depending
-on which version you’re using).
-
-Installing from Source
+Retrieving the Sources
 ----------------------
 
 Zeek releases are bundled into source packages for convenience and are
@@ -225,15 +259,17 @@ Git repositories hosted at https://github.com/zeek:
 
 .. code-block:: console
 
-    git clone --recursive https://github.com/zeek/zeek
+    git clone --recurse-submodules https://github.com/zeek/zeek
 
 .. note:: If you choose to clone the ``zeek`` repository
    non-recursively for a "minimal Zeek experience", be aware that
    compiling it depends on several of the other submodules as well, so
    you'll likely have to build/install those independently first.
 
-The typical way to build and install from source is (for more options,
-run ``./configure --help``):
+Configuring and Building
+------------------------
+
+The typical way to build and install from source is as follows:
 
 .. code-block:: console
 
@@ -357,13 +393,13 @@ And if that works, install on your host system:
 Once installed, you can copy/move the files from the installation prefix on the
 host system to the target system and start running Zeek as usual.
 
-Configure the Run-Time Environment
-==================================
+Configuring the Run-Time Environment
+====================================
 
 You may want to adjust your :envvar:`PATH` environment variable
 according to the platform/shell/package you're using since
-neither :file:`/usr/local/zeek/bin/` or :file:`/opt/zeek/bin/`
-are in the default :envvar:`PATH`. For example:
+neither :file:`/usr/local/zeek/bin/` nor :file:`/opt/zeek/bin/`
+will reside in the default :envvar:`PATH`. For example:
 
 Bourne-Shell Syntax:
 
@@ -378,3 +414,6 @@ C-Shell Syntax:
    setenv PATH /usr/local/zeek/bin:$PATH
 
 Or substitute ``/opt/zeek/bin`` instead if you installed from a binary package.
+
+Zeek supports several environment variables to adjust its behavior. Take a look
+at the ``zeek --help`` output for details.
