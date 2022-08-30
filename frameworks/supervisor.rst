@@ -146,3 +146,17 @@ Other than the orphaning-check and how it establishes the desired
 configuration from a combination of inheriting command-line arguments and
 inspecting Supervisor-specific options, a supervised node does not operate
 differently at run-time from a traditional Zeek process.
+
+Node Revival
+============
+
+The Supervisor framework assumes that supervised nodes run until something asks
+the Supervisor to stop them. When a supervised node exits unexpectedly, the Stem
+attempts to revive it during its periodic polling routine. This revival
+procedure implements exponential delay, as follows: starting from a delay of one
+second, the Stem revives the node up to 3 times. At that point, it doubles the
+revival delay, and again tries up to 3 times. This continues indefinitely: the
+Stem never gives up on a node, while the revival delay keeps growing. Once a
+supervised node has remained up for at least 30 seconds, the revival state
+clears and will start from scratch as just described, should the node exit
+again. The Supervisor codebase currently hard-wires these thresholds and delays.
