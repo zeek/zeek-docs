@@ -142,9 +142,102 @@ PF_RING, see the documentation on :ref:`how to configure Zeek with PF_RING
 Netmap
 ^^^^^^
 
-FreeBSD has an in-progress project named Netmap which will enable flow-based
-load balancing as well.  When it becomes viable for real world use, this
-document will be updated.
+`Netmap <https://github.com/luigirizzo/netmap>`_ is a framework for fast
+packet I/O that is natively supported on FreeBSD since version 10.
+On Linux it can be installed as an out-of-tree kernel module.
+
+FreeBSD
+"""""""
+FreeBSD's libpcap library supports netmap natively. This allows to prefix
+interface names with ``netmap:`` to instruct libpcap to open the interface
+in netmap mode. For example, a single Zeek worker can leverage netmap
+transparently using Zeek's default packet source as follows::
+
+    zeek -i netmap:em0
+
+.. warning::
+
+  Above command will put the em0 interface into kernel-bypass mode. Network
+  packets will pass directly to Zeek without being interpreted by the kernel.
+  If em0 is your primary network interface, this effectively disables
+  networking, including SSH connectivity.
+
+If your network card supports multiple rings, individual Zeek workers can be
+attached to these as well (this assumes the NIC does proper flow hashing in hardware)::
+
+    zeek -i netmap:em0-0
+    zeek -i netmap:em0-1
+
+For software load balancing support, the FreeBSD source tree includes the
+``lb`` tool to distribute packets into netmap pipes doing flow hashing
+in user-space.
+
+To compile and install ``lb``, ensure ``/usr/src`` is available on your
+FreeBSD system, then run the following commands::
+
+    cd /usr/src/tools/tools/netmap/
+    make
+    # Installs lb into /usr/local/bin
+    cp /usr/obj/usr/src/`uname -m`.`uname -m`/tools/tools/netmap/lb /usr/local/bin/
+
+
+To load-balance packets arriving on em0 into 4 different netmap pipes named
+``zeek}0`` through ``zeek}3``, run ``lb`` as follows::
+
+    lb -i em0 -p zeek:4
+    410.154166 main [634] interface is em0
+    411.377220 main [741] successfully opened netmap:em0
+    411.377243 main [812] opening pipe named netmap:zeek{0/xT@1
+    411.379200 main [829] successfully opened pipe #1 netmap:zeek{0/xT@1 (tx slots: 1024)
+    411.379242 main [838] zerocopy enabled
+    ...
+
+Now, Zeek workers can attach to these four netmap pipes. When starting Zeek
+workers manually, the respective invocations would be as follows. The ``/x``
+suffix specifies exclusive mode to prevent two Zeek processes consuming packets
+from the same netmap pipe::
+
+    zeek -i netmap:zeek}0/x
+    zeek -i netmap:zeek}1/x
+    zeek -i netmap:zeek}2/x
+    zeek -i netmap:zeek}3/x
+
+For packet-level debugging, you can attach ``tcpdump`` to any of the netmap
+pipes in read monitor mode even while Zeek workers are consuming from them::
+
+    tcpdump -i netmap:zeek}1/r
+
+In case libpcap's netmap support is insufficient, the external
+`Zeek netmap plugin <https://github.com/zeek/zeek-netmap>`_ can be installed.
+
+.. warning::
+
+  When using the zeek-netmap plugin on FreeBSD, the interface specification given to Zeek
+  needs to change from ``netmap:zeek}0/x`` to ``netmap::zeek}0/x`` - a single colon more.
+  In the first case, Zeek uses the default libpcap packet source and passes ``netmap:zeek}0``
+  as interface name. In the second case, ``netmap::`` is interpreted by Zeek and
+  the netmap packet source is instantiated. The ``zeek}0/x`` part is used as
+  interface name.
+
+Linux
+"""""
+
+While netmap isn't included in the Linux kernel, it can be installed as
+an out-of-tree kernel module.
+See the project's `Github repository <https://github.com/luigirizzo/netmap>`_
+for detailed instructions. This includes the ``lb`` tool for load balancing.
+
+On Linux, the external `zeek-netmap <https://github.com/zeek/zeek-netmap>`_
+packet source plugin is required, or the system's libpcap library as used by
+Zeek needs to be recompiled with native netmap support. With the netmap kernel
+module loaded and the Zeek plugin installed, running a Zeek worker as follows
+will leverage netmap on Linux::
+
+    zeek -i netmap::eth1
+
+For using ``lb`` or libpcap with netmap support, refer to the commands shown
+in the FreeBSD section - these are essentially the same.
+
 
 Click! Software Router
 ^^^^^^^^^^^^^^^^^^^^^^
