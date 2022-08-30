@@ -1,9 +1,9 @@
 
 .. _file-analysis-framework:
 
-=============
-File Analysis
-=============
+=======================
+File Analysis Framework
+=======================
 
 .. TODO: integrate BoZ revisions
 
@@ -23,12 +23,27 @@ File Analysis
     provide analysis specifically for files that is analogous to the
     analysis Zeek provides for network connections.
 
+Supported Protocols
+===================
+
+Zeek ships with file analysis for the following protocols:
+:ref:`FTP <plugin-zeek-ftp>`,
+:ref:`HTTP <plugin-zeek-http>`,
+:ref:`IRC <plugin-zeek-irc>`,
+:ref:`Kerberos <plugin-zeek-krb>`,
+:ref:`MIME <plugin-zeek-mime>`,
+:ref:`RDP <plugin-zeek-rdp>`,
+:ref:`SMTP <plugin-zeek-smtp>`, and
+:ref:`SSL/TLS/DTLS <plugin-zeek-ssl>`.
+Protocol analyzers are regular :ref:`Zeek plugins <writing-plugins>`, so users
+are welcome to provide additional ones in separate Zeek packages.
+
 File Lifecycle Events
 =====================
 
 The key events that may occur during the lifetime of a file are:
 :zeek:see:`file_new`, :zeek:see:`file_over_new_connection`,
-:zeek:see:`file_timeout`, :zeek:see:`file_gap`, and
+:zeek:see:`file_sniff`, :zeek:see:`file_timeout`, :zeek:see:`file_gap`, and
 :zeek:see:`file_state_remove`.  Handling any of these events provides
 some information about the file such as which network
 :zeek:see:`connection` and protocol are transporting the file, how many
@@ -63,18 +78,33 @@ connection UID.  So there's unique ways to identify both files and
 connections and files hold references to a connection (or connections)
 that transported it.
 
+File Type Identification
+========================
+
+Zeek ships with its own library of content signatures to determine the type of a
+file, conveyed as MIME types in the :zeek:see:`file_sniff` event. You can find
+those signatures in the Zeek distribution's ``scripts/base/frameworks/files/magic/``
+directory. (Despite the name, Zeek does `not` rely on libmagic for content analysis.)
+
 Adding Analysis
 ===============
 
-There are builtin file analyzers which can be attached to files.  Once
-attached, they start receiving the contents of the file as Zeek extracts
-it from an ongoing network connection.  What they do with the file
-contents is up to the particular file analyzer implementation, but
-they'll typically either report further information about the file via
-events (e.g. :zeek:see:`Files::ANALYZER_MD5` will report the
-file's MD5 checksum via :zeek:see:`file_hash` once calculated) or they'll
-have some side effect (e.g. :zeek:see:`Files::ANALYZER_EXTRACT`
-will write the contents of the file out to the local file system).
+Zeek supports customized file analysis via `file analyzers` that users can
+attach to observed files.  Once attached, file analyzers start receiving the
+contents of files as Zeek extracts them from ongoing network connections.
+Zeek comes with the following built-in analyzers:
+
+    * :ref:`plugin-zeek-filedataevent` to access file content via
+      events (as sequential data streams or non-sequential content chunks),
+    * :ref:`plugin-zeek-fileentropy` to compute various entropy for a file,
+    * :ref:`plugin-zeek-fileextract` to extract files to disk,
+    * :ref:`plugin-zeek-filehash` to produce common hash values for files,
+    * :ref:`plugin-zeek-pe` to parse executables in PE format, and
+    * :ref:`plugin-zeek-x509` to extract information about x509 certificates.
+
+Like protocol parsers, file analyzers are regular :ref:`Zeek plugins
+<writing-plugins>`, so users are free to contribute additional ones in separate
+Zeek packages.
 
 In the future there may be file analyzers that automatically attach to
 files based on heuristics, similar to the Dynamic Protocol Detection
@@ -96,7 +126,7 @@ calculate the MD5 of plain text files:
    new file, FakNcS1Jfe01uljb3
    file_hash, FakNcS1Jfe01uljb3, md5, 397168fd09991a0e712254df7bc639ac
 
-Some file analyzers might have tunable parameters that need to be
+Some file analyzers have tunable parameters that need to be
 specified in the call to :zeek:see:`Files::add_analyzer`:
 
 .. code-block:: zeek
@@ -115,9 +145,19 @@ the path specified by :zeek:see:`FileExtract::prefix` and the string,
 transferred, it's probably preferable to specify a different extraction
 path for each file, unlike this example.
 
+You may add the same analyzer type multiple times to a given file, assuming you
+use varying :zeek:see:`Files::AnalyzerArgs` parameterization, and remove them
+selectively from files via calls to :zeek:see:`Files::remove_analyzer`. You may
+also enable and disable file analyzers globally by calling
+:zeek:see:`Files::enable_analyzer` and :zeek:see:`Files::disable_analyzer`,
+respectively.
+
+For additional customizations and APIs, please refer to
+:doc:`base/frameworks/files/main.zeek </scripts/base/frameworks/files/main.zeek>`.
+
 Regardless of which file analyzers end up acting on a file, general
 information about the file (e.g. size, time of last data transferred,
-MIME type, etc.) are logged in ``files.log``.
+MIME type, etc.) is logged in ``files.log``.
 
 Input Framework Integration
 ===========================

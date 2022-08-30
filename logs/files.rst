@@ -3,7 +3,8 @@ files.log
 =========
 
 One of Zeek’s powerful features is the ability to extract content from network
-traffic and write it to disk as a file. This is easiest to understand with a
+traffic and write it to disk as a file, via its
+:ref:`File Analysis framework <file-analysis-framework>`. This is easiest to understand with a
 protocol like File Transfer Protocol (FTP), a classic means to exchange files
 over a channel separate from that used to exchange commands. Protocols like
 HTTP are slightly more complicated, as it includes headers which must be
