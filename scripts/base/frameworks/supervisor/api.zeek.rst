@@ -96,7 +96,7 @@ Types
    The role a supervised-node will play in Zeek's Cluster Framework.
 
 .. zeek:type:: Supervisor::NodeConfig
-   :source-code: base/frameworks/supervisor/api.zeek 33 62
+   :source-code: base/frameworks/supervisor/api.zeek 33 69
 
    :Type: :zeek:type:`record`
 
@@ -120,8 +120,16 @@ Types
          Whether to start the node in bare mode. When left out, the node
          inherits the bare-mode status the supervisor itself runs with.
 
-      scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         Additional script filenames/paths that the node should load.
+      addl_base_scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+         Additional script filenames/paths that the node should load
+         after the base scripts, and prior to any user-specified ones.
+
+      addl_user_scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+         Additional script filenames/paths that the node should load
+         after any user-specified scripts.
+
+      scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional` :zeek:attr:`&deprecated` = *"Remove in 6.1. Use the addl_user_scripts field instead."*
+         The former name of addl_user_scripts.
 
       env: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          Environment variables to define in the supervised node.
@@ -141,7 +149,7 @@ Types
    Configuration options that influence behavior of a supervised Zeek node.
 
 .. zeek:type:: Supervisor::NodeStatus
-   :source-code: base/frameworks/supervisor/api.zeek 65 71
+   :source-code: base/frameworks/supervisor/api.zeek 72 78
 
    :Type: :zeek:type:`record`
 
@@ -155,7 +163,7 @@ Types
    The current status of a supervised node.
 
 .. zeek:type:: Supervisor::Status
-   :source-code: base/frameworks/supervisor/api.zeek 74 77
+   :source-code: base/frameworks/supervisor/api.zeek 81 84
 
    :Type: :zeek:type:`record`
 
@@ -167,7 +175,7 @@ Types
 Events
 ######
 .. zeek:id:: Supervisor::node_status
-   :source-code: base/frameworks/supervisor/api.zeek 163 163
+   :source-code: base/frameworks/supervisor/api.zeek 170 170
 
    :Type: :zeek:type:`event` (node: :zeek:type:`string`, pid: :zeek:type:`count`)
 
