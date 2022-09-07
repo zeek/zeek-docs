@@ -189,17 +189,17 @@ To install these, you can use:
   clicking "Install").
 
   macOS comes with all required dependencies except for CMake_, SWIG_,
-  Bison, and OpenSSL (OpenSSL headers were removed in macOS 10.11,
+  Bison, Flex, and OpenSSL (OpenSSL headers were removed in macOS 10.11,
   therefore OpenSSL must be installed manually for macOS versions 10.11
   or newer).
 
   Distributions of these dependencies can likely be obtained from your
   preferred macOS package management system (e.g. Homebrew_,
   MacPorts_, or Fink_). Specifically for Homebrew, the ``cmake``,
-  ``swig``, ``openssl``, and ``bison`` packages
+  ``swig``, ``openssl``, ``bison``, and ``flex`` packages
   provide the required dependencies.  For MacPorts, the ``cmake``,
-  ``swig``, ``swig-python``, ``openssl``, and ``bison`` packages provide
-  the required dependencies.
+  ``swig``, ``swig-python``, ``openssl``, ``bison``, and ``flex`` packages
+  provide the required dependencies.
 
 Optional Dependencies
 ---------------------
