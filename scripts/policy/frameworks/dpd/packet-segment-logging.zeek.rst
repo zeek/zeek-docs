@@ -11,7 +11,6 @@ A caveat to logging packet data is that in some cases, the packet may
 not be the packet that actually caused the protocol violation.
 
 :Namespace: DPD
-:Imports: :doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`
 
 Summary
 ~~~~~~~
@@ -39,7 +38,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DPD::packet_segment_size
-   :source-code: policy/frameworks/dpd/packet-segment-logging.zeek 19 19
+   :source-code: policy/frameworks/dpd/packet-segment-logging.zeek 17 17
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`

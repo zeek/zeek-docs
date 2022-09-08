@@ -6,7 +6,7 @@ base/protocols/ntlm/main.zeek
 
 
 :Namespace: NTLM
-:Imports: :doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`
 
 Summary
 ~~~~~~~
@@ -43,7 +43,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NTLM::Info
-   :source-code: base/protocols/ntlm/main.zeek 11 39
+   :source-code: base/protocols/ntlm/main.zeek 10 38
 
    :Type: :zeek:type:`record`
 
@@ -85,14 +85,14 @@ Types
 Hooks
 #####
 .. zeek:id:: NTLM::finalize_ntlm
-   :source-code: base/protocols/ntlm/main.zeek 118 124
+   :source-code: base/protocols/ntlm/main.zeek 117 123
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    NTLM finalization hook.  Remaining NTLM info may get logged when it's called.
 
 .. zeek:id:: NTLM::log_policy
-   :source-code: base/protocols/ntlm/main.zeek 9 9
+   :source-code: base/protocols/ntlm/main.zeek 8 8
 
    :Type: :zeek:type:`Log::PolicyHook`
 

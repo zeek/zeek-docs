@@ -1,7 +1,7 @@
 :tocdepth: 3
 
-base/frameworks/dpd/main.zeek
-=============================
+base/frameworks/analyzer/dpd.zeek
+=================================
 .. zeek:namespace:: DPD
 
 Activates port-independent protocol detection and selectively disables
@@ -53,7 +53,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DPD::ignore_violations
-   :source-code: base/frameworks/dpd/main.zeek 39 39
+   :source-code: base/frameworks/analyzer/dpd.zeek 39 39
 
    :Type: :zeek:type:`set` [:zeek:type:`Analyzer::Tag`]
    :Attributes: :zeek:attr:`&redef`
@@ -74,7 +74,7 @@ Runtime Options
    Analyzers which you don't want to throw
 
 .. zeek:id:: DPD::ignore_violations_after
-   :source-code: base/frameworks/dpd/main.zeek 43 43
+   :source-code: base/frameworks/analyzer/dpd.zeek 43 43
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -84,7 +84,7 @@ Runtime Options
    Set to 0 to never ignore protocol violations.
 
 .. zeek:id:: DPD::max_violations
-   :source-code: base/frameworks/dpd/main.zeek 36 36
+   :source-code: base/frameworks/analyzer/dpd.zeek 36 36
 
    :Type: :zeek:type:`table` [:zeek:type:`Analyzer::Tag`] of :zeek:type:`count`
    :Attributes: :zeek:attr:`&default` = ``5`` :zeek:attr:`&optional` :zeek:attr:`&redef`
@@ -95,7 +95,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: DPD::Info
-   :source-code: base/frameworks/dpd/main.zeek 14 27
+   :source-code: base/frameworks/analyzer/dpd.zeek 14 27
 
    :Type: :zeek:type:`record`
 
@@ -126,7 +126,7 @@ Types
    The record type defining the columns to log in the DPD logging stream.
 
 .. zeek:type:: DPD::State
-   :source-code: base/frameworks/dpd/main.zeek 30 33
+   :source-code: base/frameworks/analyzer/dpd.zeek 30 33
 
    :Type: :zeek:type:`record`
 
@@ -138,7 +138,7 @@ Types
 Hooks
 #####
 .. zeek:id:: DPD::log_policy
-   :source-code: base/frameworks/dpd/main.zeek 11 11
+   :source-code: base/frameworks/analyzer/dpd.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 

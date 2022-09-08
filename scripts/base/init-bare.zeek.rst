@@ -7583,11 +7583,11 @@ Types
          The inner VLAN, if applicable for this connection.
 
       dpd: :zeek:type:`DPD::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/dpd/main.zeek` is loaded)
+         (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
 
       dpd_state: :zeek:type:`DPD::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/dpd/main.zeek` is loaded)
+         (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
 
       removal_hooks: :zeek:type:`set` [:zeek:type:`Conn::RemovalHook`] :zeek:attr:`&optional`

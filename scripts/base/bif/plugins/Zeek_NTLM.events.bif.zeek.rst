@@ -23,7 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ntlm_authenticate
-   :source-code: base/protocols/ntlm/main.zeek 86 96
+   :source-code: base/protocols/ntlm/main.zeek 85 95
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, request: :zeek:type:`NTLM::Authenticate`)
 
@@ -38,7 +38,7 @@ Events
    .. zeek:see:: ntlm_negotiate ntlm_challenge
 
 .. zeek:id:: ntlm_challenge
-   :source-code: base/protocols/ntlm/main.zeek 70 84
+   :source-code: base/protocols/ntlm/main.zeek 69 83
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, challenge: :zeek:type:`NTLM::Challenge`)
 
@@ -53,7 +53,7 @@ Events
    .. zeek:see:: ntlm_negotiate ntlm_authenticate
 
 .. zeek:id:: ntlm_negotiate
-   :source-code: base/protocols/ntlm/main.zeek 65 68
+   :source-code: base/protocols/ntlm/main.zeek 64 67
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, negotiate: :zeek:type:`NTLM::Negotiate`)
 
