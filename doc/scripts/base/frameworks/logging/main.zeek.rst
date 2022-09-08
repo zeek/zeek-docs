@@ -548,6 +548,11 @@ Types
          (present if :doc:`/scripts/base/frameworks/broker/log.zeek` is loaded)
 
 
+      .. zeek:enum:: DPD::LOG Log::ID
+
+         (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
+
+
       .. zeek:enum:: Files::LOG Log::ID
 
          (present if :doc:`/scripts/base/frameworks/files/main.zeek` is loaded)
@@ -582,11 +587,6 @@ Types
       .. zeek:enum:: Weird::LOG Log::ID
 
          (present if :doc:`/scripts/base/frameworks/notice/weird.zeek` is loaded)
-
-
-      .. zeek:enum:: DPD::LOG Log::ID
-
-         (present if :doc:`/scripts/base/frameworks/dpd/main.zeek` is loaded)
 
 
       .. zeek:enum:: Signatures::LOG Log::ID

@@ -4,7 +4,7 @@ base/frameworks/analyzer/__load__.zeek
 ======================================
 
 
-:Imports: :doc:`base/frameworks/analyzer/main.zeek </scripts/base/frameworks/analyzer/main.zeek>`
+:Imports: :doc:`base/frameworks/analyzer/dpd.zeek </scripts/base/frameworks/analyzer/dpd.zeek>`, :doc:`base/frameworks/analyzer/main.zeek </scripts/base/frameworks/analyzer/main.zeek>`
 
 Summary
 ~~~~~~~

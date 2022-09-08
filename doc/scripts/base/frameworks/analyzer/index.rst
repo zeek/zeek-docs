@@ -31,3 +31,8 @@ automatically activate a particular analyzer for new connections.
 :doc:`/scripts/base/frameworks/analyzer/__load__.zeek`
 
 
+:doc:`/scripts/base/frameworks/analyzer/dpd.zeek`
+
+   Activates port-independent protocol detection and selectively disables
+   analyzers if protocol violations occur.
+

@@ -106,6 +106,7 @@
    base/frameworks/input/readers/config.zeek </scripts/base/frameworks/input/readers/config.zeek>
    base/frameworks/input/readers/sqlite.zeek </scripts/base/frameworks/input/readers/sqlite.zeek>
    base/frameworks/analyzer/__load__.zeek </scripts/base/frameworks/analyzer/__load__.zeek>
+   base/frameworks/analyzer/dpd.zeek </scripts/base/frameworks/analyzer/dpd.zeek>
    base/frameworks/files/__load__.zeek </scripts/base/frameworks/files/__load__.zeek>
    base/frameworks/files/main.zeek </scripts/base/frameworks/files/main.zeek>
    base/bif/file_analysis.bif.zeek </scripts/base/bif/file_analysis.bif.zeek>
@@ -270,8 +271,6 @@
    base/frameworks/notice/actions/page.zeek </scripts/base/frameworks/notice/actions/page.zeek>
    base/frameworks/notice/actions/add-geodata.zeek </scripts/base/frameworks/notice/actions/add-geodata.zeek>
    base/frameworks/notice/actions/pp-alarms.zeek </scripts/base/frameworks/notice/actions/pp-alarms.zeek>
-   base/frameworks/dpd/__load__.zeek </scripts/base/frameworks/dpd/__load__.zeek>
-   base/frameworks/dpd/main.zeek </scripts/base/frameworks/dpd/main.zeek>
    base/frameworks/signatures/__load__.zeek </scripts/base/frameworks/signatures/__load__.zeek>
    base/frameworks/signatures/main.zeek </scripts/base/frameworks/signatures/main.zeek>
    base/frameworks/packet-filter/__load__.zeek </scripts/base/frameworks/packet-filter/__load__.zeek>

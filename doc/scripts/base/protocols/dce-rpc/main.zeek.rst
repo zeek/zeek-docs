@@ -6,7 +6,7 @@ base/protocols/dce-rpc/main.zeek
 
 
 :Namespace: DCE_RPC
-:Imports: :doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/dce-rpc/consts.zeek </scripts/base/protocols/dce-rpc/consts.zeek>`
+:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/dce-rpc/consts.zeek </scripts/base/protocols/dce-rpc/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -57,7 +57,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DCE_RPC::ignored_operations
-   :source-code: base/protocols/dce-rpc/main.zeek 34 34
+   :source-code: base/protocols/dce-rpc/main.zeek 33 33
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -92,7 +92,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: DCE_RPC::BackingState
-   :source-code: base/protocols/dce-rpc/main.zeek 48 51
+   :source-code: base/protocols/dce-rpc/main.zeek 47 50
 
    :Type: :zeek:type:`record`
 
@@ -102,7 +102,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::Info
-   :source-code: base/protocols/dce-rpc/main.zeek 12 30
+   :source-code: base/protocols/dce-rpc/main.zeek 11 29
 
    :Type: :zeek:type:`record`
 
@@ -131,7 +131,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::State
-   :source-code: base/protocols/dce-rpc/main.zeek 40 44
+   :source-code: base/protocols/dce-rpc/main.zeek 39 43
 
    :Type: :zeek:type:`record`
 
@@ -145,14 +145,14 @@ Types
 Hooks
 #####
 .. zeek:id:: DCE_RPC::finalize_dce_rpc
-   :source-code: base/protocols/dce-rpc/main.zeek 220 253
+   :source-code: base/protocols/dce-rpc/main.zeek 219 252
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    DCE_RPC finalization hook.  Remaining DCE_RPC info may get logged when it's called.
 
 .. zeek:id:: DCE_RPC::log_policy
-   :source-code: base/protocols/dce-rpc/main.zeek 10 10
+   :source-code: base/protocols/dce-rpc/main.zeek 9 9
 
    :Type: :zeek:type:`Log::PolicyHook`
 

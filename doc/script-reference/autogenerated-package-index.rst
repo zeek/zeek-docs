@@ -144,11 +144,6 @@
    that can be taken remotely at runtime to modify a running Zeek instance
    or collect information from the running instance.
 
-:doc:`base/frameworks/dpd </scripts/base/frameworks/dpd/index>`
-
-   The DPD (dynamic protocol detection) activates port-independent protocol
-   detection and selectively disables analyzers if protocol violations occur.
-
 :doc:`base/frameworks/signatures </scripts/base/frameworks/signatures/index>`
 
    The signature framework provides for doing low-level pattern matching.  While
