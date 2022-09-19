@@ -165,7 +165,7 @@ To install these, you can use:
 
   .. code-block:: console
 
-     sudo apt-get install cmake make gcc g++ flex bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
+     sudo apt-get install cmake make gcc g++ flex libfl-dev bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
 
 * FreeBSD:
 
