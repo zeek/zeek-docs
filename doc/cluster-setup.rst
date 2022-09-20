@@ -139,6 +139,77 @@ threaded and can't natively utilize all of the cores.  If you want to use
 PF_RING, see the documentation on :ref:`how to configure Zeek with PF_RING
 <pf-ring-config>`.
 
+
+AF_PACKET
+^^^^^^^^^
+
+On Linux, Zeek provides native support for `AF_PACKET sockets <https://docs.kernel.org/networking/packet_mmap.html>`_.
+Currently, this is provided by including the `external zeek-af_packet-plugin <https://github.com/J-Gras/zeek-af_packet-plugin>`_
+in default builds of Zeek for Linux.
+
+To check for availability of the ``af_packet`` packet source, print its information using ``zeek -N``::
+
+    zeek -N Zeek::AF_Packet
+    Zeek::AF_Packet - Packet acquisition via AF_Packet (dynamic, version 3.2.0)
+
+On FreeBSD, MacOSX, or if Zeek was built with ``--disable-af-packet``, the
+plugin won't be available.
+
+
+For the most basic usage, prefix the interface with ``af_packet::`` when invoking Zeek::
+
+    zeek -i af_packet::eth0
+
+The more interesting use-case is to use AF_PACKET to run multiple Zeek workers
+and have their packet sockets join what is called a fanout group.
+In such a setup, network packets are load-balanced across Zeek workers.
+By default load balancing is based on flow-hashes.
+This enables scaling the number of Zeek workers, each receiving a subset of
+the monitored traffic.
+
+The fanout group is identified by an id and configurable using the
+``AF_Packet::fanout_id`` constant. Its default is ``23``.
+
+As a caveat, within the same network namespace, two Zeek processes can not
+use the same fanout group id for listening on different network interfaces.
+If this is a setup you're running, configure different fanout group ids explicitly.
+For illustration purposes, the following starts 4 Zeek workers, using fanout group
+id 23 for ``eth0`` and 24 for ``eth1``::
+
+    zeek -p eth0-worker-01 -i af_packet::eth0 AF_Packet::fanout_id=23 &
+    zeek -p eth0-worker-02 -i af_packet::eth0 AF_Packet::fanout_id=23 &
+    zeek -p eth1-worker-01 -i af_packet::eth1 AF_Packet::fanout_id=24 &
+    zeek -p eth1-worker-02 -i af_packet::eth1 AF_Packet::fanout_id=24 &
+
+Without providing the ID explicitly, one of the invocations would fail with
+an error as follows::
+
+    zeek  -i af_packet::eth1
+    fatal error: problem with interface af_packet::eth1 (Invalid argument)
+
+
+The ``AF_Packet`` module provides a few redefined constants for further
+configuration. From a performance and memory usage perspective, this is
+mainly ``AF_Packet::buffer_size`` currently, but ``AF_Packet::block_size``
+and ``AF_Packet::block_timout`` will be available in a future versions
+for more advanced tuning.
+
+The algorithm to load-balance network packets is configurable as well. However,
+unless you have special requirements or know what you're doing, keep ``FANOUT_HASH``.
+
+For more details on the involved options, consider going through the description
+in the `packet manpage <https://man7.org/linux/man-pages/man7/packet.7.html>`_ and the
+previously referenced `kernel documentation <https://docs.kernel.org/networking/packet_mmap.html>`_.
+
+.. warning::
+
+  Zeek workers crashing or restarting due to running out of memory can,
+  for a short period of time, disturb load balancing due to their packet
+  sockets being removed and later rejoining the fanout group.
+  This may be visible in Zeek logs as gaps and/or duplicated connection
+  entries produced by different Zeek workers.
+
+
 Netmap
 ^^^^^^
 
