@@ -12,7 +12,7 @@ be interpreted as the source port meaning the ICMP message type and
 the destination port being the ICMP message code.
 
 :Namespace: Conn
-:Imports: :doc:`base/utils/site.zeek </scripts/base/utils/site.zeek>`
+:Imports: :doc:`base/utils/site.zeek </scripts/base/utils/site.zeek>`, :doc:`base/utils/strings.zeek </scripts/base/utils/strings.zeek>`
 
 Summary
 ~~~~~~~
@@ -54,7 +54,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::Info
-   :source-code: base/protocols/conn/main.zeek 20 151
+   :source-code: base/protocols/conn/main.zeek 21 152
 
    :Type: :zeek:type:`record`
 
@@ -233,7 +233,7 @@ Types
 Events
 ######
 .. zeek:id:: Conn::log_conn
-   :source-code: base/protocols/conn/main.zeek 155 155
+   :source-code: base/protocols/conn/main.zeek 156 156
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Conn::Info`)
 
@@ -243,7 +243,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Conn::log_policy
-   :source-code: base/protocols/conn/main.zeek 17 17
+   :source-code: base/protocols/conn/main.zeek 18 18
 
    :Type: :zeek:type:`Log::PolicyHook`
 

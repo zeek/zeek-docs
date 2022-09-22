@@ -28,7 +28,7 @@ Types
 
 Redefinitions
 #############
-============================================ ===========================================================
+============================================ ===================================================================================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`      Add the DPD logging stream identifier.
                                              
                                              * :zeek:enum:`DPD::LOG`
@@ -39,7 +39,11 @@ Redefinitions
                                                dpd: :zeek:type:`DPD::Info` :zeek:attr:`&optional`
                                              
                                                dpd_state: :zeek:type:`DPD::State` :zeek:attr:`&optional`
-============================================ ===========================================================
+                                             
+                                               service_violation: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+                                                 The set of services (analyzers) for which Zeek has observed a
+                                                 violation after the same service had previously been confirmed.
+============================================ ===================================================================================================================
 
 Hooks
 #####
