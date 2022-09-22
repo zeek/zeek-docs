@@ -7590,6 +7590,12 @@ Types
          (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
 
+      service_violation: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
+
+         The set of services (analyzers) for which Zeek has observed a
+         violation after the same service had previously been confirmed.
+
       removal_hooks: :zeek:type:`set` [:zeek:type:`Conn::RemovalHook`] :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
 

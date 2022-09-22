@@ -12,13 +12,12 @@ Summary
 ~~~~~~~
 Functions
 #########
-================================================== =============================================================================
+================================================== ==================================================================
 :zeek:id:`cut_tail`: :zeek:type:`function`         Cut a number of characters from the end of the given string.
 :zeek:id:`is_string_binary`: :zeek:type:`function` Returns true if the given string is at least 25% composed of 8-bit
                                                    characters.
-:zeek:id:`join_string_set`: :zeek:type:`function`  Join a set of strings together, with elements delimited by a constant string.
 :zeek:id:`string_escape`: :zeek:type:`function`    Given a string, returns an escaped version.
-================================================== =============================================================================
+================================================== ==================================================================
 
 
 Detailed Interface
@@ -26,7 +25,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: cut_tail
-   :source-code: base/utils/strings.zeek 58 63
+   :source-code: base/utils/strings.zeek 35 40
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, tail_len: :zeek:type:`count`) : :zeek:type:`string`
 
@@ -49,25 +48,8 @@ Functions
    Returns true if the given string is at least 25% composed of 8-bit
    characters.
 
-.. zeek:id:: join_string_set
-   :source-code: base/utils/strings.zeek 20 34
-
-   :Type: :zeek:type:`function` (ss: :zeek:type:`set` [:zeek:type:`string`], j: :zeek:type:`string`) : :zeek:type:`string`
-
-   Join a set of strings together, with elements delimited by a constant string.
-   
-
-   :ss: a set of strings to join.
-   
-
-   :j: the string used to join set elements.
-   
-
-   :returns: a string composed of all elements of the set, delimited by the
-            joining string.
-
 .. zeek:id:: string_escape
-   :source-code: base/utils/strings.zeek 43 50
+   :source-code: base/utils/strings.zeek 20 27
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, chars: :zeek:type:`string`) : :zeek:type:`string`
 
