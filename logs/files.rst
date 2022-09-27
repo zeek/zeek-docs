@@ -162,15 +162,11 @@ of ``FBbQxG1GXLXgmWhbk9`` we find the following entry.
   {
     "ts": 1596820191.969902,
     **"fuid": "FBbQxG1GXLXgmWhbk9",**
-    "tx_hosts": [
-      "23.195.64.241"
-    ],
-    "rx_hosts": [
-      "192.168.4.37"
-    ],
-    "conn_uids": [
-      "CzoFRWTQ6YIzfFXHk"
-    ],
+    "uid": "CzoFRWTQ6YIzfFXHk",
+    "id.orig_h": "192.168.4.37",
+    "id.orig_p": 58264,
+    "id.resp_h": "23.195.64.241",
+    "id.resp_p": 80,
     "source": "HTTP",
     "depth": 0,
     "analyzers": [
@@ -200,6 +196,12 @@ events were activated. Zeek saw 179272 bytes transferred and does not appear to
 have missed any bytes. Zeek extracted the file it saw as
 ``HTTP-FBbQxG1GXLXgmWhbk9.exe``, which means we should be able to locate that
 file on disk.
+
+The ``is_orig`` field in a :file:`files.log` entry can be used to determine
+which endpoint sent the file. When ``is_orig`` is ``false``, the responder of
+the connection is sending the file. In the example above we can tell that
+the HTTP server at ``23.195.64.241`` is sending the file and ``192.168.4.37``
+is receiving it.
 
 Inspecting the Extracted File
 =============================
