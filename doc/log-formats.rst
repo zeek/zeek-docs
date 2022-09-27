@@ -148,9 +148,9 @@ Next we look at Zeek’s :file:`files.log`.
   #unset_field    -
   #path   files
   #open   2020-06-05-14-48-32
-  #fields ts      fuid    tx_hosts        rx_hosts        conn_uids       source  depth   analyzers       mime_type       filename        duration        local_orig    is_orig seen_bytes      total_bytes     missing_bytes   overflow_bytes  timedout        parent_fuid     md5     sha1    sha256  extracted       extracted_cutoff      extracted_size
-  #types  time    string  set[addr]       set[addr]       set[string]     string  count   set[string]     string  string  interval        bool    bool    countcount    count   count   bool    string  string  string  string  string  bool    count
-  1591367999.604000       FEEsZS1w0Z0VJIb5x4      31.3.245.133    192.168.4.76    CLqEx41jYPOdfHF586      HTTP    0       (empty) text/plain      -       0.000000      -       F       39      39      0       0       F       -       -       -       -       -       -       -
+  #fields ts      fuid    uid     id.orig_h       id.origh_p      id.resp_h       id.resp_p       source  depth   analyzers       mime_type       filename        duration        local_orig    is_orig seen_bytes      total_bytes     missing_bytes   overflow_bytes  timedout        parent_fuid     md5     sha1    sha256  extracted       extracted_cutoff      extracted_size
+  #types  time    string  string  addr    port    addr    port    string  count   set[string]     string  string  interval        bool    bool    countcount    count   count   bool    string  string  string  string  string  bool    count
+  1591367999.604000       FEEsZS1w0Z0VJIb5x4      CLqEx41jYPOdfHF586      192.168.4.76    46378   31.3.245.133    80      HTTP    0       (empty) text/plain      -       0.000000      -       F       39      39      0       0       F       -       -       -       -       -       -       -
   #close  2020-06-05-14-48-32
 
 Next we look at Zeek’s :file:`http.log`.
@@ -457,7 +457,7 @@ Next we look at :file:`files.log`.
 
 ::
 
-  {"ts":1591367999.604,"fuid":"FEEsZS1w0Z0VJIb5x4","tx_hosts":["31.3.245.133"],"rx_hosts":["192.168.4.76"],"conn_uids":["C5bLoe2Mvxqhawzqqd"],"source":"HTTP","depth":0,"analyzers":[],"mime_type":"text/plain","duration":0.0,"is_orig":false,"seen_bytes":39,"total_bytes":39,"missing_bytes":0,"overflow_bytes":0,"timedout":false}
+  {"ts":1591367999.604,"fuid":"FEEsZS1w0Z0VJIb5x4","uid":"C5bLoe2Mvxqhawzqqd","id.orig_h":"192.168.4.76","id.orig_p":46378,"id.resp_h":"31.3.245.133","id.resp_p":80,"source":"HTTP","depth":0,"analyzers":[],"mime_type":"text/plain","duration":0.0,"is_orig":false,"seen_bytes":39,"total_bytes":39,"missing_bytes":0,"overflow_bytes":0,"timedout":false}
 
 Next we look at the :file:`http.log`.
 

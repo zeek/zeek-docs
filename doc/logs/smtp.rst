@@ -450,15 +450,11 @@ Zeek created two :file:`files.log` entries for observed x509 certificates:
   {
     "ts": "2020-08-15T13:14:33.157292Z",
     "fuid": "F2cHKgS8RS2OyLdI4",
-    "tx_hosts": [
-      "74.125.192.108"
-    ],
-    "rx_hosts": [
-      "192.168.4.43"
-    ],
-    "conn_uids": [
-      "CZ4iBM3vh98hH5GmV"
-    ],
+    "uid": "CZ4iBM3vh98hH5GmV",
+    "id.orig_h": "192.168.4.43",
+    "id.orig_p": 61329,
+    "id.resp_h": "74.125.192.108",
+    "id.resp_p": 465,
     "source": "SSL",
     "depth": 0,
     "analyzers": [
@@ -481,15 +477,11 @@ Zeek created two :file:`files.log` entries for observed x509 certificates:
   {
     "ts": "2020-08-15T13:14:33.157292Z",
     "fuid": "Fl9EEK26t5qzDVW3vf",
-    "tx_hosts": [
-      "74.125.192.108"
-    ],
-    "rx_hosts": [
-      "192.168.4.43"
-    ],
-    "conn_uids": [
-      "CZ4iBM3vh98hH5GmV"
-    ],
+    "uid": "CZ4iBM3vh98hH5GmV",
+    "id.orig_h": "192.168.4.43",
+    "id.orig_p": 61329,
+    "id.resp_h": "74.125.192.108",
+    "id.resp_p": 465,
     "source": "SSL",
     "depth": 0,
     "analyzers": [
@@ -580,15 +572,11 @@ Next are three :file:`files.log` entries for x509 certificates.
   {
     "ts": "2020-08-09T23:31:46.800843Z",
     "fuid": "FmLTdUtlSHFynFf4j",
-    "tx_hosts": [
-      "17.42.251.41"
-    ],
-    "rx_hosts": [
-      "192.168.4.41"
-    ],
-    "conn_uids": [
-      "CCqmLfIrqQeWvXol4"
-    ],
+    "uid": "CCqmLfIrqQeWvXol4",
+    "id.orig_h": "192.168.4.41",
+    "id.orig_p": 49334,
+    "id.resp_h": "17.42.251.41",
+    "id.resp_p": 587,
     "source": "SSL",
     "depth": 0,
     "analyzers": [
@@ -610,15 +598,11 @@ Next are three :file:`files.log` entries for x509 certificates.
   {
     "ts": "2020-08-09T23:31:46.800843Z",
     "fuid": "F5ITBU2e5kcvYpOZJd",
-    "tx_hosts": [
-      "17.42.251.41"
-    ],
-    "rx_hosts": [
-      "192.168.4.41"
-    ],
-    "conn_uids": [
-      "CCqmLfIrqQeWvXol4"
-    ],
+    "uid": "CCqmLfIrqQeWvXol4",
+    "id.orig_h": "192.168.4.41",
+    "id.orig_p": 49334,
+    "id.resp_h": "17.42.251.41",
+    "id.resp_p": 587,
     "source": "SSL",
     "depth": 0,
     "analyzers": [
@@ -640,15 +624,11 @@ Next are three :file:`files.log` entries for x509 certificates.
   {
     "ts": "2020-08-09T23:31:46.800843Z",
     "fuid": "F453Xk1oZcMiI6X3a7",
-    "tx_hosts": [
-      "17.42.251.41"
-    ],
-    "rx_hosts": [
-      "192.168.4.41"
-    ],
-    "conn_uids": [
-      "CCqmLfIrqQeWvXol4"
-    ],
+    "uid": "CCqmLfIrqQeWvXol4",
+    "id.orig_h": "192.168.4.41",
+    "id.orig_p": 49334,
+    "id.resp_h": "17.42.251.41",
+    "id.resp_p": 587,
     "source": "SSL",
     "depth": 0,
     "analyzers": [
