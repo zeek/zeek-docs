@@ -144,8 +144,9 @@ AF_PACKET
 ^^^^^^^^^
 
 On Linux, Zeek supports `AF_PACKET sockets <https://docs.kernel.org/networking/packet_mmap.html>`_ natively.
-Currently, this is provided by including the `external zeek-af_packet-plugin <https://github.com/J-Gras/zeek-af_packet-plugin>`_
-in default builds of Zeek for Linux.
+Currently, this is provided by including the `external Zeek::AF_Packet plugin <https://github.com/J-Gras/zeek-af_packet-plugin>`_
+in default builds of Zeek for Linux. Additional information can be found in
+the project's README file.
 
 To check the availability of the ``af_packet`` packet source, print its information using ``zeek -N``::
 
@@ -165,17 +166,19 @@ For the most basic usage, prefix the interface with ``af_packet::`` when invokin
 Generally, running Zeek this way requires a privileged user with CAP_NET_RAW
 and CAP_NET_ADMIN capabilities. Linux supports file-based capabilities: A
 process executing an executable with capabilities will receive these.
-Using this mechanism allows to run Zeek as an unprivileged once the file
+Using this mechanism allows to run Zeek as an unprivileged user once the file
 capabilities have been added::
 
     sudo setcap cap_net_raw,cap_net_admin=+eip /path/to/zeek
 
-Ethtool tuning
-""""""""""""""
+Offloading and ethtool tuning
+"""""""""""""""""""""""""""""
 
 While not specific to AF_PACKET, it is recommended to disable any offloading
 features provided by the network card or Linux networking stack when running
 Zeek. This allows to see network packets as they arrive on the wire.
+See this `blog post <https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html`>_
+for more background
 
 Toggling these features can be done with the ``ethtool -K`` command, for example::
 
@@ -198,24 +201,24 @@ In such a setup, the network traffic is load-balanced across Zeek workers.
 By default load balancing is based on symmetric flow hashes [#]_.
 
 For example, running two Zeek workers listening on the same network interface,
-each worker approximately analyzing half of the network traffic, can be done
+each worker analyzing approximately half of the network traffic, can be done
 as follows::
 
     zeek -p eth0-worker-01 -i af_packet::eth0 &
     zeek -p eth0-worker-02 -i af_packet::eth0 &
 
-The fanout group the packet sockets join is identified by an id and configurable
-using the ``AF_Packet::fanout_id`` constant  which defaults to 23. In the example
+The fanout group is identified by an id and configurable using the
+``AF_Packet::fanout_id`` constant which defaults to 23. In the example
 above, both Zeek workers join the same fanout group.
 
 
 .. note::
 
-  As a caveat, within the same network namespace, two Zeek processes can not
-  use the same fanout group id for listening on different network interfaces.
+  As a caveat, within the same Linux network namespace, two Zeek processes can
+  not use the same fanout group id for listening on different network interfaces.
   If this is a setup you're planning on running, configure the fanout group
   ids explicitly.
-  For illustration purposes, the following starts 2 Zeek workers each using
+  For illustration purposes, the following starts two Zeek workers each using
   a different network interface and fanout group id::
 
     zeek -i af_packet::eth0 AF_Packet::fanout_id=23 &
