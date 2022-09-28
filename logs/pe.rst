@@ -206,15 +206,11 @@ The relevant :file:`files.log` entry contains the following:
   {
     "ts": "2020-09-23T00:24:31.334435Z",
     "fuid": "FGYKX64SkXc4OcvlFf",
-    "tx_hosts": [
-      "63.88.73.83"
-    ],
-    "rx_hosts": [
-      "192.168.4.152"
-    ],
-    "conn_uids": [
-      "Cq2b9jR12c4lqZafg"
-    ],
+    "uid": "Cq2b9jR12c4lqZafg",
+    "id.orig_h": "192.168.4.152",
+    "id.orig_p": 59125,
+    "id.resp_h": "63.88.73.83",
+    "id.resp_p": 80,
     **"source": "HTTP",**
     "depth": 0,
     "analyzers": [

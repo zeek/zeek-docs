@@ -528,15 +528,11 @@ for similar information on extracted files:
   {
     "ts": 1507565439.130425,
     "fuid": "FwVZpk12AKBjE11UNg",
-    "tx_hosts": [
-      "192.168.10.31"
-    ],
-    "rx_hosts": [
-      "192.168.10.30"
-    ],
-    "conn_uids": [
-      "CR7Vww4LuLkMzi4jMd"
-    ],
+    "uid": "CR7Vww4LuLkMzi4jMd",
+    "id.orig_h": "192.168.10.31",
+    "id.orig_p": 49238,
+    "id.resp_h": "192.168.10.30",
+    "id.resp_p": 445
     "source": "SMB",
     "depth": 0,
     "analyzers": [
@@ -819,15 +815,12 @@ We see one entry in :file:`files.log`:
   {
     "ts": 1512585460.300969,
     "fuid": "FNMweB3f2OvTZ4UZLe",
-    **"tx_hosts": [**
-      **"192.168.10.30"**
-    **],**
-    **"rx_hosts": [**
-      **"192.168.10.31"**
-    **],**
-    "conn_uids": [
-      "C4j5Ds3VyExc2ZAOh9"
-    ],
+    "uid": "CR7Vww4LuLkMzi4jMd",
+    **"id.orig_h": "192.168.10.31",**
+    "id.orig_p": 49238,
+    **"id.resp_h": "192.168.10.30",**
+    "id.resp_p": 445
+    "source": "SMB",
     "source": "SMB",
     "depth": 0,
     "analyzers": [
@@ -836,7 +829,7 @@ We see one entry in :file:`files.log`:
     "mime_type": "application/x-dosexec",
     **"filename": "temp\\mimikatz.exe",**
     "duration": 0.010069131851196289,
-    "is_orig": false,
+    **"is_orig": false**,
     "seen_bytes": 804352,
     "total_bytes": 804352,
     "missing_bytes": 0,
@@ -845,13 +838,13 @@ We see one entry in :file:`files.log`:
   }
 
 This :file:`files.log` entry is similar to that seen in the previous case,
-except the ``tx_hosts`` and ``rx_hosts`` values are reversed. This log
+except the ``is_orig`` value is ``false``. This
 indicates that ``192.168.10.30`` sent a file titled :file:`mimikatz.exe` to
 ``192.168.10.31``, or, said differently, ``192.168.10.31`` downloaded a file
 from ``192.168.10.30``.
 
-With either language, the file started at ``192.168.10.30`` (the ``tx_hosts``)
-and ended up on ``192.168.10.31`` (the ``rx_hosts``).
+With either language, the file started at ``192.168.10.30`` (the responder)
+and ended up on ``192.168.10.31`` (the originator).
 
 This is the reverse of the previous case.
 
@@ -987,8 +980,9 @@ is happening here, other than to say it looks like :file:`mimikatz.exe` is
 being transferred. Only the :file:`files.log` entry makes it possible to see
 the direction of the transfer:
 
-The file started at ``192.168.10.30`` (the ``tx_hosts``) and ended up on
-``192.168.10.31`` (the ``tx_hosts``).
+The file started at ``192.168.10.30`` and ended up on ``192.168.10.31``. This
+conclusion is drawn from the originator and responder information and the
+``is_orig`` value for the given entry being ``false``.
 
 In the next section we will look at how someone might execute a file once it is
 present on a target.
@@ -1104,15 +1098,11 @@ creates a :file:`files.log` entry for it. Here is that entry:
   {
     "ts": 1508525002.992817,
     "fuid": "Fw42Pp34N0CC79C5Ua",
-    "tx_hosts": [
-      "192.168.10.31"
-    ],
-    "rx_hosts": [
-      "192.168.10.30"
-    ],
-    "conn_uids": [
-      "Cirxt14nybZjVhpOAk"
-    ],
+    "uid": "Cirxt14nybZjVhpOAk",
+    "id.orig_h": "192.168.10.31",
+    "id.orig_p": 49266,
+    "id.resp_h": "192.168.10.30",
+    "id.resp_p": 445,
     **"source": "SMB",**
     "depth": 0,
     "analyzers": [],
@@ -1606,15 +1596,11 @@ Zeek’s :file:`files.log` says the following about it:
   {
     "ts": 1507565599.578328,
     "fuid": "FtIFnm3ZqI1s96P74l",
-    "tx_hosts": [
-      "192.168.10.31"
-    ],
-    "rx_hosts": [
-      "192.168.10.30"
-    ],
-    "conn_uids": [
-      "C6HQVsDf8VCu0XTJe"
-    ],
+    "uid": "C6HQVsDf8VCu0XTJe",
+    "id.orig_h": "192.168.10.31",
+    "id.orig_p": 49239,
+    "id.resp_h": "192.168.10.30",
+    "id.resp_p": 445,
     "source": "SMB",
     "depth": 0,
     "analyzers": [
