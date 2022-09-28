@@ -204,8 +204,8 @@ For example, running two Zeek workers listening on the same network interface,
 each worker analyzing approximately half of the network traffic, can be done
 as follows::
 
-    zeek -p eth0-worker-01 -i af_packet::eth0 &
-    zeek -p eth0-worker-02 -i af_packet::eth0 &
+    zeek -i af_packet::eth0 &
+    zeek -i af_packet::eth0 &
 
 The fanout group is identified by an id and configurable using the
 ``AF_Packet::fanout_id`` constant which defaults to 23. In the example
