@@ -121,8 +121,11 @@ Functions
 :zeek:id:`int_to_count`: :zeek:type:`function`                                Converts a (positive) :zeek:type:`int` to a :zeek:type:`count`.
 :zeek:id:`int_to_double`: :zeek:type:`function`                               Converts an :zeek:type:`int` to a :zeek:type:`double`.
 :zeek:id:`interval_to_double`: :zeek:type:`function`                          Converts an :zeek:type:`interval` to a :zeek:type:`double`.
+:zeek:id:`is_file_analyzer`: :zeek:type:`function`                            Returns true if the given tag belongs to a file analyzer.
 :zeek:id:`is_icmp_port`: :zeek:type:`function`                                Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
 :zeek:id:`is_local_interface`: :zeek:type:`function`                          Checks whether a given IP address belongs to a local interface.
+:zeek:id:`is_packet_analyzer`: :zeek:type:`function`                          Returns true if the given tag belongs to a packet analyzer.
+:zeek:id:`is_protocol_analyzer`: :zeek:type:`function`                        Returns true if the given tag belongs to a protocol analyzer.
 :zeek:id:`is_remote_event`: :zeek:type:`function`                             Checks whether the last raised event came from a remote peer.
 :zeek:id:`is_tcp_port`: :zeek:type:`function`                                 Checks whether a given :zeek:type:`port` has TCP as transport protocol.
 :zeek:id:`is_udp_port`: :zeek:type:`function`                                 Checks whether a given :zeek:type:`port` has UDP as transport protocol.
@@ -1690,6 +1693,19 @@ Functions
    
    .. zeek:see:: double_to_interval
 
+.. zeek:id:: is_file_analyzer
+   :source-code: base/bif/zeek.bif.zeek 2514 2514
+
+   :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
+
+   Returns true if the given tag belongs to a file analyzer.
+   
+
+   :atype: The analyzer tag to check.
+   
+
+   :returns: true if *atype* is a tag of a file analyzer, else false.
+
 .. zeek:id:: is_icmp_port
    :source-code: base/bif/zeek.bif.zeek 1685 1685
 
@@ -1717,6 +1733,32 @@ Functions
    
 
    :returns: True if *ip* belongs to a local interface.
+
+.. zeek:id:: is_packet_analyzer
+   :source-code: base/bif/zeek.bif.zeek 2522 2522
+
+   :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
+
+   Returns true if the given tag belongs to a packet analyzer.
+   
+
+   :atype: The analyzer type to check.
+   
+
+   :returns: true if *atype* is a tag of a packet analyzer, else false.
+
+.. zeek:id:: is_protocol_analyzer
+   :source-code: base/bif/zeek.bif.zeek 2506 2506
+
+   :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
+
+   Returns true if the given tag belongs to a protocol analyzer.
+   
+
+   :atype: The analyzer tag to check.
+   
+
+   :returns: true if *atype* is a tag of a protocol analyzer, else false.
 
 .. zeek:id:: is_remote_event
    :source-code: base/bif/zeek.bif.zeek 2383 2383
