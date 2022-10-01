@@ -13,6 +13,8 @@ Summary
 Functions
 #########
 ====================================================================================== ==============================================================================================================
+:zeek:id:`PacketAnalyzer::__disable_analyzer`: :zeek:type:`function`                   Internal function to disable a packet analyzer.
+:zeek:id:`PacketAnalyzer::__enable_analyzer`: :zeek:type:`function`                    Internal function to enable a packet analyzer.
 :zeek:id:`PacketAnalyzer::__set_ignore_checksums_nets`: :zeek:type:`function`          Internal function that is used to update the core-mirror of the script-level `ignore_checksums_nets` variable.
 :zeek:id:`PacketAnalyzer::register_packet_analyzer`: :zeek:type:`function`             Add an entry to parent's dispatcher that maps a protocol/index to a next-stage child analyzer.
 :zeek:id:`PacketAnalyzer::register_protocol_detection`: :zeek:type:`function`          Registers a child analyzer with a parent analyzer to perform packet detection when determining whether
@@ -26,6 +28,20 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Functions
 #########
+.. zeek:id:: PacketAnalyzer::__disable_analyzer
+   :source-code: base/bif/packet_analysis.bif.zeek 41 41
+
+   :Type: :zeek:type:`function` (id: :zeek:type:`PacketAnalyzer::Tag`) : :zeek:type:`bool`
+
+   Internal function to disable a packet analyzer.
+
+.. zeek:id:: PacketAnalyzer::__enable_analyzer
+   :source-code: base/bif/packet_analysis.bif.zeek 45 45
+
+   :Type: :zeek:type:`function` (id: :zeek:type:`PacketAnalyzer::Tag`) : :zeek:type:`bool`
+
+   Internal function to enable a packet analyzer.
+
 .. zeek:id:: PacketAnalyzer::__set_ignore_checksums_nets
    :source-code: base/bif/packet_analysis.bif.zeek 29 29
 
