@@ -7,7 +7,7 @@ base/protocols/http/entities.zeek
 Analysis and logging for MIME entities found in HTTP sessions.
 
 :Namespace: HTTP
-:Imports: :doc:`base/frameworks/files </scripts/base/frameworks/files/index>`, :doc:`base/protocols/http/main.zeek </scripts/base/protocols/http/main.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/strings.zeek </scripts/base/utils/strings.zeek>`
+:Imports: :doc:`base/frameworks/files </scripts/base/frameworks/files/index>`, :doc:`base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>`, :doc:`base/protocols/http/main.zeek </scripts/base/protocols/http/main.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/strings.zeek </scripts/base/utils/strings.zeek>`
 
 Summary
 ~~~~~~~
@@ -80,7 +80,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: HTTP::max_files_orig
-   :source-code: base/protocols/http/entities.zeek 19 19
+   :source-code: base/protocols/http/entities.zeek 20 20
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -91,7 +91,7 @@ Runtime Options
    limit is reached to determine if it's enforced.
 
 .. zeek:id:: HTTP::max_files_resp
-   :source-code: base/protocols/http/entities.zeek 24 24
+   :source-code: base/protocols/http/entities.zeek 25 25
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -104,7 +104,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: HTTP::Entity
-   :source-code: base/protocols/http/entities.zeek 11 14
+   :source-code: base/protocols/http/entities.zeek 12 15
 
    :Type: :zeek:type:`record`
 
@@ -115,7 +115,7 @@ Types
 Hooks
 #####
 .. zeek:id:: HTTP::max_files_policy
-   :source-code: base/protocols/http/entities.zeek 30 30
+   :source-code: base/protocols/http/entities.zeek 31 31
 
    :Type: :zeek:type:`hook` (f: :zeek:type:`fa_file`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 
