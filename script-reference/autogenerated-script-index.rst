@@ -21,6 +21,7 @@
    base/frameworks/analyzer/main.zeek </scripts/base/frameworks/analyzer/main.zeek>
    base/frameworks/packet-filter/utils.zeek </scripts/base/frameworks/packet-filter/utils.zeek>
    base/bif/analyzer.bif.zeek </scripts/base/bif/analyzer.bif.zeek>
+   base/bif/file_analysis.bif.zeek </scripts/base/bif/file_analysis.bif.zeek>
    base/packet-protocols/root/__load__.zeek </scripts/base/packet-protocols/root/__load__.zeek>
    base/packet-protocols/root/main.zeek </scripts/base/packet-protocols/root/main.zeek>
    base/packet-protocols/ip/__load__.zeek </scripts/base/packet-protocols/ip/__load__.zeek>
@@ -109,7 +110,6 @@
    base/frameworks/analyzer/dpd.zeek </scripts/base/frameworks/analyzer/dpd.zeek>
    base/frameworks/files/__load__.zeek </scripts/base/frameworks/files/__load__.zeek>
    base/frameworks/files/main.zeek </scripts/base/frameworks/files/main.zeek>
-   base/bif/file_analysis.bif.zeek </scripts/base/bif/file_analysis.bif.zeek>
    base/utils/site.zeek </scripts/base/utils/site.zeek>
    base/utils/patterns.zeek </scripts/base/utils/patterns.zeek>
    base/frameworks/files/magic/__load__.zeek </scripts/base/frameworks/files/magic/__load__.zeek>
