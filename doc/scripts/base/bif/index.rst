@@ -80,6 +80,10 @@ Package: base/bif
 
    Internal functions and types used by the analyzer framework.
 
+:doc:`/scripts/base/bif/file_analysis.bif.zeek`
+
+   Internal functions and types used by the file analysis framework.
+
 :doc:`/scripts/base/bif/plugins/Zeek_Teredo.functions.bif.zeek`
 
 
@@ -109,10 +113,6 @@ Package: base/bif
 :doc:`/scripts/base/bif/input.bif.zeek`
 
    Internal functions and types used by the input framework.
-
-:doc:`/scripts/base/bif/file_analysis.bif.zeek`
-
-   Internal functions and types used by the file analysis framework.
 
 :doc:`/scripts/base/bif/__load__.zeek`
 
