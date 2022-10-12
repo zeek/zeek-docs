@@ -144,7 +144,7 @@ AF_PACKET
 ^^^^^^^^^
 
 On Linux, Zeek supports `AF_PACKET sockets <https://docs.kernel.org/networking/packet_mmap.html>`_ natively.
-Currently, this is provided by including the `external Zeek::AF_Packet plugin <https://github.com/J-Gras/zeek-af_packet-plugin>`_
+Currently, this is provided by including the `external Zeek::AF_Packet plugin <https://github.com/zeek/zeek-af_packet-plugin>`_
 in default builds of Zeek for Linux. Additional information can be found in
 the project's README file.
 
