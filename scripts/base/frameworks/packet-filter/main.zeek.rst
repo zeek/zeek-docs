@@ -90,7 +90,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: PacketFilter::default_capture_filter
-   :source-code: base/frameworks/packet-filter/main.zeek 56 56
+   :source-code: base/frameworks/packet-filter/main.zeek 59 59
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -101,7 +101,7 @@ Redefinable Options
    still be applied to reduce the captured traffic.
 
 .. zeek:id:: PacketFilter::enable_auto_protocol_capture_filters
-   :source-code: base/frameworks/packet-filter/main.zeek 118 118
+   :source-code: base/frameworks/packet-filter/main.zeek 121 121
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -113,7 +113,7 @@ Redefinable Options
    Unless you know what you are doing, leave this set to F.
 
 .. zeek:id:: PacketFilter::max_filter_compile_time
-   :source-code: base/frameworks/packet-filter/main.zeek 71 71
+   :source-code: base/frameworks/packet-filter/main.zeek 74 74
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -125,7 +125,7 @@ Redefinable Options
    in the :zeek:see:`PacketFilter::Too_Long_To_Compile_Filter` notice.
 
 .. zeek:id:: PacketFilter::restricted_filter
-   :source-code: base/frameworks/packet-filter/main.zeek 65 65
+   :source-code: base/frameworks/packet-filter/main.zeek 68 68
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -136,7 +136,7 @@ Redefinable Options
    filter is being used but MPLS or VLAN tags are on the traffic.
 
 .. zeek:id:: PacketFilter::unrestricted_filter
-   :source-code: base/frameworks/packet-filter/main.zeek 60 60
+   :source-code: base/frameworks/packet-filter/main.zeek 63 63
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -148,7 +148,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: PacketFilter::current_filter
-   :source-code: base/frameworks/packet-filter/main.zeek 122 122
+   :source-code: base/frameworks/packet-filter/main.zeek 125 125
 
    :Type: :zeek:type:`string`
    :Default: ``"<not set yet>"``
@@ -159,7 +159,7 @@ State Variables
 Types
 #####
 .. zeek:type:: PacketFilter::FilterPlugin
-   :source-code: base/frameworks/packet-filter/main.zeek 106 109
+   :source-code: base/frameworks/packet-filter/main.zeek 109 112
 
    :Type: :zeek:type:`record`
 
@@ -169,7 +169,7 @@ Types
    A data structure to represent filter generating plugins.
 
 .. zeek:type:: PacketFilter::Info
-   :source-code: base/frameworks/packet-filter/main.zeek 34 51
+   :source-code: base/frameworks/packet-filter/main.zeek 34 54
 
    :Type: :zeek:type:`record`
 
@@ -190,6 +190,9 @@ Types
       success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
          Indicate if the filter was applied successfully.
 
+      reason: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         A string reason why the filter failed to be created/installed.
+
    The record type defining columns to be logged in the packet filter
    logging stream.
 
@@ -205,7 +208,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: PacketFilter::exclude
-   :source-code: base/frameworks/packet-filter/main.zeek 202 210
+   :source-code: base/frameworks/packet-filter/main.zeek 205 213
 
    :Type: :zeek:type:`function` (filter_id: :zeek:type:`string`, filter: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -225,7 +228,7 @@ Functions
             installed or not.
 
 .. zeek:id:: PacketFilter::exclude_for
-   :source-code: base/frameworks/packet-filter/main.zeek 212 220
+   :source-code: base/frameworks/packet-filter/main.zeek 215 223
 
    :Type: :zeek:type:`function` (filter_id: :zeek:type:`string`, filter: :zeek:type:`string`, span: :zeek:type:`interval`) : :zeek:type:`bool`
 
@@ -248,7 +251,7 @@ Functions
             installed or not.
 
 .. zeek:id:: PacketFilter::install
-   :source-code: base/frameworks/packet-filter/main.zeek 267 332
+   :source-code: base/frameworks/packet-filter/main.zeek 270 348
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -256,7 +259,7 @@ Functions
    packet filter.
 
 .. zeek:id:: PacketFilter::register_filter_plugin
-   :source-code: base/frameworks/packet-filter/main.zeek 188 191
+   :source-code: base/frameworks/packet-filter/main.zeek 191 194
 
    :Type: :zeek:type:`function` (fp: :zeek:type:`PacketFilter::FilterPlugin`) : :zeek:type:`void`
 
