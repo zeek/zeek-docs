@@ -7,7 +7,7 @@ base/protocols/smtp/entities.zeek
 Analysis and logging for MIME entities found in SMTP sessions.
 
 :Namespace: SMTP
-:Imports: :doc:`base/frameworks/files </scripts/base/frameworks/files/index>`, :doc:`base/protocols/smtp/main.zeek </scripts/base/protocols/smtp/main.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/strings.zeek </scripts/base/utils/strings.zeek>`
+:Imports: :doc:`base/frameworks/files </scripts/base/frameworks/files/index>`, :doc:`base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>`, :doc:`base/protocols/smtp/main.zeek </scripts/base/protocols/smtp/main.zeek>`, :doc:`base/utils/files.zeek </scripts/base/utils/files.zeek>`, :doc:`base/utils/strings.zeek </scripts/base/utils/strings.zeek>`
 
 Summary
 ~~~~~~~
@@ -41,7 +41,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: SMTP::Entity
-   :source-code: base/protocols/smtp/entities.zeek 11 14
+   :source-code: base/protocols/smtp/entities.zeek 12 15
 
    :Type: :zeek:type:`record`
 
