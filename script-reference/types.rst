@@ -1649,6 +1649,10 @@ from the canonical prototype.
 To use :zeek:attr:`&default` on event arguments, it must appear on the
 first, canonical prototype.
 
+Employing its static analysis capabilities, Zeek will warn if it cannot
+determine that an event will ever be triggered. In case the warning is not
+appropriate (e.g., the event might be triggered remotely via broker),
+:zeek:attr:`&is_used` can be applied to suppress the warning.
 
 .. zeek:native-type:: hook
 
