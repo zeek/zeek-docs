@@ -453,6 +453,7 @@ Types
 :zeek:type:`PacketSource`: :zeek:type:`record`                                Properties of an I/O packet source being read by Zeek.
 :zeek:type:`Pcap::Interface`: :zeek:type:`record`                             The definition of a "pcap interface".
 :zeek:type:`Pcap::Interfaces`: :zeek:type:`set`                               
+:zeek:type:`Pcap::filter_state`: :zeek:type:`enum`                            The state of the compilation for a pcap filter.
 :zeek:type:`PcapFilterID`: :zeek:type:`enum`                                  Enum type identifying dynamic BPF filters.
 :zeek:type:`ProcStats`: :zeek:type:`record`                                   Statistics about Zeek's process.
 :zeek:type:`RADIUS::AttributeList`: :zeek:type:`vector`                       
@@ -1247,7 +1248,7 @@ Redefinable Options
    raise events before becoming rate-limited.
 
 .. zeek:id:: bits_per_uid
-   :source-code: base/init-bare.zeek 5509 5509
+   :source-code: base/init-bare.zeek 5520 5520
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1288,7 +1289,7 @@ Redefinable Options
    be reported via :zeek:see:`content_gap`.
 
 .. zeek:id:: digest_salt
-   :source-code: base/init-bare.zeek 5517 5517
+   :source-code: base/init-bare.zeek 5528 5528
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1472,7 +1473,7 @@ Redefinable Options
    means "forever", which resists evasion, but can lead to state accrual.
 
 .. zeek:id:: global_hash_seed
-   :source-code: base/init-bare.zeek 5504 5504
+   :source-code: base/init-bare.zeek 5515 5515
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -3037,7 +3038,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 5519 5519
+   :source-code: base/init-bare.zeek 5530 5530
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
@@ -5559,6 +5560,19 @@ Types
 
    :Type: :zeek:type:`set` [:zeek:type:`Pcap::Interface`]
 
+
+.. zeek:type:: Pcap::filter_state
+   :source-code: base/init-bare.zeek 5503 5508
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: Pcap::ok Pcap::filter_state
+
+      .. zeek:enum:: Pcap::fatal Pcap::filter_state
+
+      .. zeek:enum:: Pcap::warning Pcap::filter_state
+
+   The state of the compilation for a pcap filter.
 
 .. zeek:type:: PcapFilterID
    :source-code: base/init-bare.zeek 911 912
