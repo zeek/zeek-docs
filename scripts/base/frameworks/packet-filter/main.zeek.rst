@@ -190,7 +190,7 @@ Types
       success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
          Indicate if the filter was applied successfully.
 
-      reason: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+      failure_reason: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          A string reason why the filter failed to be created/installed.
 
    The record type defining columns to be logged in the packet filter

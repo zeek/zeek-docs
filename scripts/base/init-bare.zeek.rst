@@ -741,7 +741,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: MQTT::max_payload_size
-   :source-code: base/init-bare.zeek 5416 5416
+   :source-code: base/init-bare.zeek 5423 5423
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -752,7 +752,7 @@ Runtime Options
    default MQTT logs generated from that).
 
 .. zeek:id:: Weird::sampling_duration
-   :source-code: base/init-bare.zeek 5454 5454
+   :source-code: base/init-bare.zeek 5461 5461
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -771,7 +771,7 @@ Runtime Options
    threshold.
 
 .. zeek:id:: Weird::sampling_global_list
-   :source-code: base/init-bare.zeek 5430 5430
+   :source-code: base/init-bare.zeek 5437 5437
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -780,7 +780,7 @@ Runtime Options
    Rate-limits weird names in the table globally instead of per connection/flow.
 
 .. zeek:id:: Weird::sampling_rate
-   :source-code: base/init-bare.zeek 5441 5441
+   :source-code: base/init-bare.zeek 5448 5448
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -792,7 +792,7 @@ Runtime Options
    will disable all output of rate-limited weirds.
 
 .. zeek:id:: Weird::sampling_threshold
-   :source-code: base/init-bare.zeek 5435 5435
+   :source-code: base/init-bare.zeek 5442 5442
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -803,7 +803,7 @@ Runtime Options
    raise events for script-layer handling before being rate-limited.
 
 .. zeek:id:: Weird::sampling_whitelist
-   :source-code: base/init-bare.zeek 5427 5427
+   :source-code: base/init-bare.zeek 5434 5434
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -877,7 +877,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: BinPAC::flowbuffer_capacity_max
-   :source-code: base/init-bare.zeek 5483 5483
+   :source-code: base/init-bare.zeek 5490 5490
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -887,7 +887,7 @@ Redefinable Options
    grow to for use with incremental parsing of a given connection/analyzer.
 
 .. zeek:id:: BinPAC::flowbuffer_capacity_min
-   :source-code: base/init-bare.zeek 5488 5488
+   :source-code: base/init-bare.zeek 5495 5495
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -898,7 +898,7 @@ Redefinable Options
    later contracted, its capacity is also reduced to this size.
 
 .. zeek:id:: BinPAC::flowbuffer_contract_threshold
-   :source-code: base/init-bare.zeek 5496 5496
+   :source-code: base/init-bare.zeek 5503 5503
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -912,7 +912,7 @@ Redefinable Options
    than this value, it will be contracted.
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5156 5156
+   :source-code: base/init-bare.zeek 5163 5163
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -923,7 +923,7 @@ Redefinable Options
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5161 5161
+   :source-code: base/init-bare.zeek 5168 5168
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -943,7 +943,7 @@ Redefinable Options
    Kerberos keytab file name. Used to decrypt tickets encountered on the wire.
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5167 5167
+   :source-code: base/init-bare.zeek 5174 5174
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1205,7 +1205,7 @@ Redefinable Options
    may choose whether to perform the validation.
 
 .. zeek:id:: UnknownProtocol::first_bytes_count
-   :source-code: base/init-bare.zeek 5476 5476
+   :source-code: base/init-bare.zeek 5483 5483
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1215,7 +1215,7 @@ Redefinable Options
    first bytes field.
 
 .. zeek:id:: UnknownProtocol::sampling_duration
-   :source-code: base/init-bare.zeek 5472 5472
+   :source-code: base/init-bare.zeek 5479 5479
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -1226,7 +1226,7 @@ Redefinable Options
    before the rate-limiting for a pair expires and is reset.
 
 .. zeek:id:: UnknownProtocol::sampling_rate
-   :source-code: base/init-bare.zeek 5467 5467
+   :source-code: base/init-bare.zeek 5474 5474
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1238,7 +1238,7 @@ Redefinable Options
    will disable all output of rate-limited pairs.
 
 .. zeek:id:: UnknownProtocol::sampling_threshold
-   :source-code: base/init-bare.zeek 5461 5461
+   :source-code: base/init-bare.zeek 5468 5468
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1248,7 +1248,7 @@ Redefinable Options
    raise events before becoming rate-limited.
 
 .. zeek:id:: bits_per_uid
-   :source-code: base/init-bare.zeek 5520 5520
+   :source-code: base/init-bare.zeek 5516 5516
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1289,7 +1289,7 @@ Redefinable Options
    be reported via :zeek:see:`content_gap`.
 
 .. zeek:id:: digest_salt
-   :source-code: base/init-bare.zeek 5528 5528
+   :source-code: base/init-bare.zeek 5524 5524
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1473,7 +1473,7 @@ Redefinable Options
    means "forever", which resists evasion, but can lead to state accrual.
 
 .. zeek:id:: global_hash_seed
-   :source-code: base/init-bare.zeek 5515 5515
+   :source-code: base/init-bare.zeek 5511 5511
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -3038,7 +3038,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 5530 5530
+   :source-code: base/init-bare.zeek 5526 5526
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
@@ -4145,7 +4145,7 @@ Types
    .. zeek:see:: mount_proc_mnt
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5378 5387
+   :source-code: base/init-bare.zeek 5385 5394
 
    :Type: :zeek:type:`record`
 
@@ -4160,7 +4160,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5346 5376
+   :source-code: base/init-bare.zeek 5353 5383
 
    :Type: :zeek:type:`record`
 
@@ -4202,7 +4202,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5389 5411
+   :source-code: base/init-bare.zeek 5396 5418
 
    :Type: :zeek:type:`record`
 
@@ -5065,7 +5065,7 @@ Types
 
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5233 5267
+   :source-code: base/init-bare.zeek 5240 5274
 
    :Type: :zeek:type:`record`
 
@@ -5116,7 +5116,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5314 5341
+   :source-code: base/init-bare.zeek 5321 5348
 
    :Type: :zeek:type:`record`
 
@@ -5156,7 +5156,7 @@ Types
    for commands such as "monlist".
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5276 5309
+   :source-code: base/init-bare.zeek 5283 5316
 
    :Type: :zeek:type:`record`
 
@@ -5207,7 +5207,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5175 5228
+   :source-code: base/init-bare.zeek 5182 5235
 
    :Type: :zeek:type:`record`
 
@@ -5562,7 +5562,7 @@ Types
 
 
 .. zeek:type:: Pcap::filter_state
-   :source-code: base/init-bare.zeek 5503 5508
+   :source-code: base/init-bare.zeek 5151 5156
 
    :Type: :zeek:type:`enum`
 
