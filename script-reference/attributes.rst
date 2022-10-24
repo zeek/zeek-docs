@@ -76,6 +76,9 @@ it to write. Zeek features the following attributes:
   * - :zeek:attr:`&is_used`
     - Suppress "unused assignment" warnings from ``zeek -u`` analysis.
 
+  * - :zeek:attr:`&group`
+    - Annotates event handlers and hooks with event groups.
+
 .. _attribute-propagation-pitfalls:
 
 .. warning::
@@ -587,3 +590,30 @@ example:
 ::
 
   warning: please_warn assignment unused: please_warn = test; ./test.zeek, line 3
+
+.. zeek:attr:: &group
+
+&group
+------
+
+The `&group` attribute can be used on event handlers and hooks to add them
+into event groups.
+By default, all event groups are enabled. Disabling an event group disables
+all event handlers and hooks with a matching `&group` attribute. When an
+event handler or hook is part of multiple groups it is enabled only if all
+groups are enabled.
+
+.. code-block:: zeek
+
+     event http_request(c: connection, method: string, original_URI: string, unescaped_URI: string, version: string) &group="my-http-group"
+         {
+         ...
+         }
+
+     event zeek_init()
+         {
+         disable_event_group("my-http-group");
+         }
+
+See also the documentation for the functions :zeek:see:`enable_event_group`
+and :zeek:see:`disable_event_group`.
