@@ -65,7 +65,7 @@ Redefinable Options
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``"/usr/local/zeek/logs"``
+   :Default: ``"/Users/robin/tmp/zeek/logs"``
 
    The destination interval for archived logs.
 

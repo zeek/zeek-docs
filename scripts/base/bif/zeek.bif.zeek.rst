@@ -62,6 +62,8 @@ Functions
 :zeek:id:`decode_base64_conn`: :zeek:type:`function`                          Decodes a Base64-encoded string that was derived from processing a connection.
 :zeek:id:`disable_analyzer`: :zeek:type:`function`                            Disables the analyzer which raised the current event (if the analyzer
                                                                               belongs to the given connection).
+:zeek:id:`disable_event_group`: :zeek:type:`function`                         Disabled the given event group.
+:zeek:id:`disable_module_events`: :zeek:type:`function`                       Disable all event handlers and hooks in the given module.
 :zeek:id:`do_profiling`: :zeek:type:`function`                                Enables detailed collection of profiling statistics.
 :zeek:id:`double_to_count`: :zeek:type:`function`                             Converts a :zeek:type:`double` to a :zeek:type:`int`.
 :zeek:id:`double_to_int`: :zeek:type:`function`                               Converts a :zeek:type:`double` to a :zeek:type:`count`.
@@ -71,6 +73,8 @@ Functions
 :zeek:id:`dump_packet`: :zeek:type:`function`                                 Writes a given packet to a file.
 :zeek:id:`dump_rule_stats`: :zeek:type:`function`                             Write rule matcher statistics (DFA states, transitions, memory usage, cache
                                                                               hits/misses) to a file.
+:zeek:id:`enable_event_group`: :zeek:type:`function`                          Enabled the given event group.
+:zeek:id:`enable_module_events`: :zeek:type:`function`                        Enable all event handlers and hooks in the given module.
 :zeek:id:`enable_raw_output`: :zeek:type:`function`                           Prevents escaping of non-ASCII characters when writing to a file.
 :zeek:id:`encode_base64`: :zeek:type:`function`                               Encodes a Base64-encoded string.
 :zeek:id:`entropy_test_add`: :zeek:type:`function`                            Adds data to an incremental entropy calculation.
@@ -798,6 +802,35 @@ Functions
    
    .. zeek:see:: Analyzer::schedule_analyzer Analyzer::name
 
+.. zeek:id:: disable_event_group
+   :source-code: base/bif/zeek.bif.zeek 2546 2546
+
+   :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Disabled the given event group.
+   
+   All event and hook handlers with a matching :zeek:attr:`&group` attribute
+   will be disabled if not already disabled through another group.
+   
+
+   :group: The group to disable.
+   
+   .. zeek:see:: enable_event_group
+
+.. zeek:id:: disable_module_events
+   :source-code: base/bif/zeek.bif.zeek 2567 2567
+
+   :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Disable all event handlers and hooks in the given module.
+   
+   All event handlers and hooks defined in the given module will be disabled.
+   
+
+   :module_name: The module to disable.
+   
+   .. zeek:see:: enable_module_events enable_event_group disable_event_group
+
 .. zeek:id:: do_profiling
    :source-code: base/bif/zeek.bif.zeek 1053 1053
 
@@ -929,6 +962,36 @@ Functions
    :returns: True (unconditionally).
    
    .. zeek:see:: get_matcher_stats
+
+.. zeek:id:: enable_event_group
+   :source-code: base/bif/zeek.bif.zeek 2535 2535
+
+   :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Enabled the given event group.
+   
+   All event and hook handlers with a matching :zeek:attr:`&group` attribute
+   will be enabled if this group was the last disabled group of these handlers.
+   
+
+   :group: The group to enable.
+   
+   .. zeek:see:: disable_event_group
+
+.. zeek:id:: enable_module_events
+   :source-code: base/bif/zeek.bif.zeek 2557 2557
+
+   :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Enable all event handlers and hooks in the given module.
+   
+   All event handlers and hooks defined in the given module will be enabled
+   if not disabled otherwise through an event group.
+   
+
+   :module_name: The module to enable.
+   
+   .. zeek:see:: disable_module_events enable_event_group disable_event_group
 
 .. zeek:id:: enable_raw_output
    :source-code: base/bif/zeek.bif.zeek 2182 2182
