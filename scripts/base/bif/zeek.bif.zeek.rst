@@ -1016,11 +1016,11 @@ Functions
    Returns all value names associated with an enum type.
    
 
-   :et: An enum type.
+   :et: An enum type or a string naming one.
    
 
    :returns: All enum value names associated with enum type *et*.
-            If *et* is not an enum type, an empty set is returned.
+            If *et* is not an enum type or does not name one, an empty set is returned.
 
 .. zeek:id:: enum_to_int
    :source-code: base/bif/zeek.bif.zeek 1172 1172
