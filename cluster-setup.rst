@@ -139,6 +139,100 @@ threaded and can't natively utilize all of the cores.  If you want to use
 PF_RING, see the documentation on :ref:`how to configure Zeek with PF_RING
 <pf-ring-config>`.
 
+
+AF_PACKET
+^^^^^^^^^
+
+On Linux, Zeek supports `AF_PACKET sockets <https://docs.kernel.org/networking/packet_mmap.html>`_ natively.
+Currently, this is provided by including the `external Zeek::AF_Packet plugin <https://github.com/zeek/zeek-af_packet-plugin>`_
+in default builds of Zeek for Linux. Additional information can be found in
+the project's README file.
+
+To check the availability of the ``af_packet`` packet source, print its information using ``zeek -N``::
+
+    zeek -N Zeek::AF_Packet
+    Zeek::AF_Packet - Packet acquisition via AF_Packet (dynamic, version 3.2.0)
+
+On FreeBSD, MacOSX, or if Zeek was built with ``--disable-af-packet``, the
+plugin won't be available.
+
+Single worker mode
+""""""""""""""""""
+
+For the most basic usage, prefix the interface with ``af_packet::`` when invoking Zeek::
+
+    zeek -i af_packet::eth0
+
+Generally, running Zeek this way requires a privileged user with CAP_NET_RAW
+and CAP_NET_ADMIN capabilities. Linux supports file-based capabilities: A
+process executing an executable with capabilities will receive these.
+Using this mechanism allows to run Zeek as an unprivileged user once the file
+capabilities have been added::
+
+    sudo setcap cap_net_raw,cap_net_admin=+eip /path/to/zeek
+
+Offloading and ethtool tuning
+"""""""""""""""""""""""""""""
+
+While not specific to AF_PACKET, it is recommended to disable any offloading
+features provided by the network card or Linux networking stack when running
+Zeek. This allows to see network packets as they arrive on the wire.
+See this `blog post <https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html`>_
+for more background
+
+Toggling these features can be done with the ``ethtool -K`` command, for example::
+
+    IFACE=eth0
+    for offload in rx tx sg tso ufo gso gro lro; do
+      ethtool -K $IFACE $offload off
+    done
+
+Detailed statistics about the interface can be gathered via ``ethtool -S``.
+
+For more details around the involved offloads consult the
+`ethtool manpage <https://man7.org/linux/man-pages/man8/ethtool.8.html>`_.
+
+Load balancing
+""""""""""""""
+
+The more interesting use-case is to use AF_PACKET to run multiple Zeek workers
+and have their packet sockets join what is called a fanout group.
+In such a setup, the network traffic is load-balanced across Zeek workers.
+By default load balancing is based on symmetric flow hashes [#]_.
+
+For example, running two Zeek workers listening on the same network interface,
+each worker analyzing approximately half of the network traffic, can be done
+as follows::
+
+    zeek -i af_packet::eth0 &
+    zeek -i af_packet::eth0 &
+
+The fanout group is identified by an id and configurable using the
+``AF_Packet::fanout_id`` constant which defaults to 23. In the example
+above, both Zeek workers join the same fanout group.
+
+
+.. note::
+
+  As a caveat, within the same Linux network namespace, two Zeek processes can
+  not use the same fanout group id for listening on different network interfaces.
+  If this is a setup you're planning on running, configure the fanout group
+  ids explicitly.
+  For illustration purposes, the following starts two Zeek workers each using
+  a different network interface and fanout group id::
+
+    zeek -i af_packet::eth0 AF_Packet::fanout_id=23 &
+    zeek -i af_packet::eth1 AF_Packet::fanout_id=24 &
+
+.. warning::
+
+  Zeek workers crashing or restarting due to running out of memory can,
+  for a short period of time, disturb load balancing due to their packet
+  sockets being removed and later rejoining the fanout group.
+  This may be visible in Zeek logs as gaps and/or duplicated connection
+  entries produced by different Zeek workers.
+
+
 Netmap
 ^^^^^^
 
@@ -498,4 +592,12 @@ same packets multiple times with different tools.
        interface=dnacluster:21
        lb_method=pf_ring
        lb_procs=10
+
+.. [#] Some Linux kernel versions between 3.10 and 4.7 might exhibit
+       a bug that prevents the required symmetric hashing. The script available
+       in the Github project `can-i-use-afpacket-fanout <https://github.com/JustinAzoff/can-i-use-afpacket-fanout>`_
+       can be used to verify whether ``PACKET_FANOUT`` works as expected.
+
+       This issue has been fixed in all stable kernels for at least 5 years.
+       You're unlikely to be affected.
 
