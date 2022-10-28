@@ -238,9 +238,7 @@
    base/bif/plugins/Zeek_AsciiWriter.ascii.bif.zeek </scripts/base/bif/plugins/Zeek_AsciiWriter.ascii.bif.zeek>
    base/bif/plugins/Zeek_NoneWriter.none.bif.zeek </scripts/base/bif/plugins/Zeek_NoneWriter.none.bif.zeek>
    base/bif/plugins/Zeek_SQLiteWriter.sqlite.bif.zeek </scripts/base/bif/plugins/Zeek_SQLiteWriter.sqlite.bif.zeek>
-   base/bif/plugins/Zeek_Spicy.consts.bif.zeek </scripts/base/bif/plugins/Zeek_Spicy.consts.bif.zeek>
-   base/bif/plugins/Zeek_Spicy.events.bif.zeek </scripts/base/bif/plugins/Zeek_Spicy.events.bif.zeek>
-   base/bif/plugins/Zeek_Spicy.functions.bif.zeek </scripts/base/bif/plugins/Zeek_Spicy.functions.bif.zeek>
+   base/bif/plugins/Zeek_AF_Packet.af_packet.bif.zeek </scripts/base/bif/plugins/Zeek_AF_Packet.af_packet.bif.zeek>
    base/init-default.zeek </scripts/base/init-default.zeek>
    base/utils/active-http.zeek </scripts/base/utils/active-http.zeek>
    base/utils/exec.zeek </scripts/base/utils/exec.zeek>
@@ -442,11 +440,9 @@
    base/misc/find-filtered-trace.zeek </scripts/base/misc/find-filtered-trace.zeek>
    base/misc/installation.zeek </scripts/base/misc/installation.zeek>
    builtin-plugins/__preload__.zeek </scripts/builtin-plugins/__preload__.zeek>
-   builtin-plugins/Zeek_Spicy/__preload__.zeek </scripts/builtin-plugins/Zeek_Spicy/__preload__.zeek>
    builtin-plugins/__load__.zeek </scripts/builtin-plugins/__load__.zeek>
-   builtin-plugins/Zeek_Spicy/__load__.zeek </scripts/builtin-plugins/Zeek_Spicy/__load__.zeek>
-   builtin-plugins/Zeek_Spicy/Zeek/Spicy/bare.zeek </scripts/builtin-plugins/Zeek_Spicy/Zeek/Spicy/bare.zeek>
-   builtin-plugins/Zeek_Spicy/Zeek/Spicy/default.zeek </scripts/builtin-plugins/Zeek_Spicy/Zeek/Spicy/default.zeek>
+   builtin-plugins/Zeek_AF_Packet/__load__.zeek </scripts/builtin-plugins/Zeek_AF_Packet/__load__.zeek>
+   builtin-plugins/Zeek_AF_Packet/init.zeek </scripts/builtin-plugins/Zeek_AF_Packet/init.zeek>
    zeekygen/__load__.zeek </scripts/zeekygen/__load__.zeek>
    test-all-policy.zeek </scripts/test-all-policy.zeek>
    policy/frameworks/management/agent/__load__.zeek </scripts/policy/frameworks/management/agent/__load__.zeek>
