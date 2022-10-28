@@ -354,7 +354,7 @@
 :doc:`builtin-plugins </scripts/builtin-plugins/index>`
 
 
-:doc:`builtin-plugins/Zeek_Spicy </scripts/builtin-plugins/Zeek_Spicy/index>`
+:doc:`builtin-plugins/Zeek_AF_Packet </scripts/builtin-plugins/Zeek_AF_Packet/index>`
 
 
 :doc:`zeekygen </scripts/zeekygen/index>`

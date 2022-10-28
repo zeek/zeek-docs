@@ -1,13 +1,7 @@
 :orphan:
 
-Package: builtin-plugins
-========================
-
-
-:doc:`/scripts/builtin-plugins/__preload__.zeek`
-
-
-:doc:`/scripts/builtin-plugins/__load__.zeek`
+Package: builtin-plugins/Zeek_AF_Packet
+=======================================
 
 
 :doc:`/scripts/builtin-plugins/Zeek_AF_Packet/__load__.zeek`

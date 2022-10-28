@@ -371,12 +371,6 @@ Package: base/bif/plugins
 :doc:`/scripts/base/bif/plugins/Zeek_SQLiteWriter.sqlite.bif.zeek`
 
 
-:doc:`/scripts/base/bif/plugins/Zeek_Spicy.consts.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_Spicy.events.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_Spicy.functions.bif.zeek`
+:doc:`/scripts/base/bif/plugins/Zeek_AF_Packet.af_packet.bif.zeek`
 
 
