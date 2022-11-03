@@ -88,7 +88,7 @@ Types
          Used with :zeek:enum:`NetControl::FLOW`.
 
       ip: :zeek:type:`subnet` :zeek:attr:`&optional`
-         Used with :zeek:enum:`NetControl::ADDRESS` to specifiy a CIDR subnet.
+         Used with :zeek:enum:`NetControl::ADDRESS` to specify a CIDR subnet.
 
       mac: :zeek:type:`string` :zeek:attr:`&optional`
          Used with :zeek:enum:`NetControl::MAC`.

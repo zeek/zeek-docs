@@ -191,7 +191,7 @@ Types
    :Type: :zeek:type:`record`
 
       ts: :zeek:type:`time` :zeek:attr:`&log`
-         The absolute time indicating when the action for this log-line occured.
+         The absolute time indicating when the action for this log-line occurred.
 
       rule_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          The rule id that this log line refers to.
@@ -203,7 +203,7 @@ Types
          The action that was taken in this log-line.
 
       block_interval: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The current block_interaval (for how long the address is blocked).
+         The current block_interval (for how long the address is blocked).
 
       watch_interval: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
          The current watch_interval (for how long the address will be watched and re-block if it reappears).

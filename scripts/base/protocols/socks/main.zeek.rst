@@ -76,7 +76,7 @@ Types
 
       uid: :zeek:type:`string` :zeek:attr:`&log`
          Unique ID for the tunnel - may correspond to connection uid
-         or be non-existent.
+         or be nonexistent.
 
       id: :zeek:type:`conn_id` :zeek:attr:`&log`
          The connection's 4-tuple of endpoint addresses/ports.

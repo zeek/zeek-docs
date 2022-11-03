@@ -923,7 +923,7 @@ Events
    This event is generated when a notice begins to be suppressed.
    
 
-   :ts: time indicating then when the notice to be suppressed occured.
+   :ts: time indicating then when the notice to be suppressed occurred.
    
 
    :suppress_for: length of time that this notice should be suppressed.
@@ -954,7 +954,7 @@ Events
    event over a cluster.
    
 
-   :ts: time indicating then when the notice to be suppressed occured.
+   :ts: time indicating then when the notice to be suppressed occurred.
    
 
    :suppress_for: length of time that this notice should be suppressed.

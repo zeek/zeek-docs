@@ -5209,7 +5209,7 @@ Types
 
       data: :zeek:type:`string`
          The application-specific data that is being passed
-         from the sender to the reciever
+         from the sender to the receiver
 
       timestamp: :zeek:type:`time` :zeek:attr:`&optional`
          Current time from the sender of the message
@@ -7981,7 +7981,7 @@ Types
 
       negotiate_extended_sessionsecurity: :zeek:type:`bool`
          If set, requests usage of NTLM v2 session security
-         Note: NTML v2 session security is actually NTLM v1
+         Note: NTLM v2 session security is actually NTLM v1
 
       target_type_server: :zeek:type:`bool`
          If set, TargetName must be a server name
@@ -8219,7 +8219,7 @@ Types
 
    NTP standard message as defined in :rfc:`5905` for modes 1-5
    This record contains the standard fields used by the NTP protocol
-   for standard syncronization operations.
+   for standard synchronization operations.
 
 .. zeek:type:: NTP::ControlMessage
    :source-code: base/init-bare.zeek 5240 5274
@@ -8294,7 +8294,7 @@ Types
       implementation: :zeek:type:`count`
          The number of the implementation this request code
          is defined by.  An implementation number of zero is used
-         for requst codes/data formats which all implementations
+         for request codes/data formats which all implementations
          agree on.  Implementation number 255 is reserved (for
          extensions, in case we run out).
 
@@ -8343,7 +8343,7 @@ Types
            * 7 - reserved for private use
 
       std_msg: :zeek:type:`NTP::StandardMessage` :zeek:attr:`&optional`
-         If mode 1-5, the standard fields for syncronization operations are
+         If mode 1-5, the standard fields for synchronization operations are
          here.  See :rfc:`5905`
 
       control_msg: :zeek:type:`NTP::ControlMessage` :zeek:attr:`&optional`
@@ -10879,7 +10879,7 @@ Types
          The server supports large files with 64 bit offsets
 
       nt_smbs: :zeek:type:`bool`
-         The server supports the SMBs particilar to the NT LM 0.12 dialect. Implies nt_find.
+         The server supports the SMBs particular to the NT LM 0.12 dialect. Implies nt_find.
 
       rpc_remote_apis: :zeek:type:`bool`
          The server supports remote admin API requests via DCE-RPC
@@ -11083,7 +11083,7 @@ Types
          Specify whether to search for directories or files
 
       file_name: :zeek:type:`string`
-         The string to serch for (note: may contain wildcards)
+         The string to search for (note: may contain wildcards)
 
 
 .. zeek:type:: SMB1::Find_First2_Response_Args
@@ -11278,7 +11278,7 @@ Types
       negotiate_context_values: :zeek:type:`SMB2::NegotiateContextValues`
          An array of context values in SMB v. 3.1.1.
 
-   The response to an SMB2 *negotiate* request, which is used by tghe client to notify the server
+   The response to an SMB2 *negotiate* request, which is used by the client to notify the server
    what dialects of the SMB2 protocol the client understands.
    
    For more information, see MS-SMB2:2.2.4
@@ -11642,7 +11642,7 @@ Types
 
    This information class is used to query or set extended attribute (EA) information for a file.
    
-   For more infomation, see MS-SMB2:2.2.39 and MS-FSCC:2.4.15
+   For more information, see MS-SMB2:2.2.39 and MS-FSCC:2.4.15
    
 
 .. zeek:type:: SMB2::FileEAs
@@ -11652,7 +11652,7 @@ Types
 
    A vector of extended attribute (EA) information for a file.
    
-   For more infomation, see MS-SMB2:2.2.39 and MS-FSCC:2.4.15
+   For more information, see MS-SMB2:2.2.39 and MS-FSCC:2.4.15
    
 
 .. zeek:type:: SMB2::PreAuthIntegrityCapabilities

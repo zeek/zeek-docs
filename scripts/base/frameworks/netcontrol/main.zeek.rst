@@ -567,7 +567,7 @@ Functions
    :t: How long to whitelist it, with 0 being indefinitely.
    
 
-   :location: An optional string describing whitelist was triddered.
+   :location: An optional string describing whitelist was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.
@@ -586,7 +586,7 @@ Functions
    :t: How long to whitelist it, with 0 being indefinitely.
    
 
-   :location: An optional string describing whitelist was triddered.
+   :location: An optional string describing whitelist was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.

@@ -22,7 +22,7 @@ Redefinable Options
 State Variables
 ###############
 =================================================================================== ==========================================================
-:zeek:id:`Management::Request::null_req`: :zeek:type:`Management::Request::Request` A token request that serves as a null/nonexistant request.
+:zeek:id:`Management::Request::null_req`: :zeek:type:`Management::Request::Request` A token request that serves as a null/nonexistent request.
 =================================================================================== ==========================================================
 
 Types
@@ -121,7 +121,7 @@ State Variables
          }
 
 
-   A token request that serves as a null/nonexistant request.
+   A token request that serves as a null/nonexistent request.
 
 Types
 #####
@@ -131,7 +131,7 @@ Types
    :Type: :zeek:type:`record`
 
       id: :zeek:type:`string`
-         Each request has a hopfully unique ID provided by the requester.
+         Each request has a hopefully unique ID provided by the requester.
 
       parent_id: :zeek:type:`string` :zeek:attr:`&optional`
          For requests that result based upon another request (such as when
@@ -231,7 +231,7 @@ Functions
    nothing.
    
 
-   :reqid: the ID of the request state to releaase.
+   :reqid: the ID of the request state to release.
    
 
 .. zeek:id:: Management::Request::is_null

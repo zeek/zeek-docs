@@ -59,8 +59,8 @@ Functions
 :zeek:id:`Broker::keys`: :zeek:type:`function`                  Returns a set with all of a store's keys.
 :zeek:id:`Broker::pop`: :zeek:type:`function`                   Removes the last element of an existing vector.
 :zeek:id:`Broker::push`: :zeek:type:`function`                  Appends an element to an existing vector.
-:zeek:id:`Broker::put`: :zeek:type:`function`                   Insert a key-value pair in to the store.
-:zeek:id:`Broker::put_unique`: :zeek:type:`function`            Insert a key-value pair in to the store, but only if the key does not
+:zeek:id:`Broker::put`: :zeek:type:`function`                   Insert a key-value pair into the store.
+:zeek:id:`Broker::put_unique`: :zeek:type:`function`            Insert a key-value pair into the store, but only if the key does not
                                                                 already exist.
 :zeek:id:`Broker::record_assign`: :zeek:type:`function`         Replace a field in a record at a particular position.
 :zeek:id:`Broker::record_create`: :zeek:type:`function`         Create communication data of type "record".
@@ -567,7 +567,7 @@ Functions
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store) : :zeek:type:`Broker::QueryResult`
 
    Returns a set with all of a store's keys. The results reflect a snapshot
-   in time that may diverge from reality soon afterwards.   When acessing
+   in time that may diverge from reality soon afterwards.   When accessing
    any of the element, it may no longer actually be there. The function is
    also expensive for large stores, as it copies the complete set.
    
@@ -626,7 +626,7 @@ Functions
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, v: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
-   Insert a key-value pair in to the store.
+   Insert a key-value pair into the store.
    
 
    :h: the handle of the store to modify.
@@ -648,7 +648,7 @@ Functions
 
    :Type: :zeek:type:`function` (h: :zeek:type:`opaque` of Broker::Store, k: :zeek:type:`any`, v: :zeek:type:`any`, e: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`) : :zeek:type:`Broker::QueryResult`
 
-   Insert a key-value pair in to the store, but only if the key does not
+   Insert a key-value pair into the store, but only if the key does not
    already exist.
    
 

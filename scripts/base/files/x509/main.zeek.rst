@@ -181,7 +181,7 @@ Types
       cert: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/ssl/log-certs-base64.zeek` is loaded)
 
-         Base64 endoded X.509 certificate.
+         Base64 encoded X.509 certificate.
 
    The record type which contains the fields of the X.509 log.
 

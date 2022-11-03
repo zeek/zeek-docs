@@ -92,7 +92,7 @@ Types
          include transport protocol information)
 
       duration: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
-         The amount of time between the first packet beloning to
+         The amount of time between the first packet belonging to
          the SNMP session and the latest one seen.
 
       version: :zeek:type:`string` :zeek:attr:`&log`

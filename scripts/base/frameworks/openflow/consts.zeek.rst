@@ -459,7 +459,7 @@ Constants
    :Default: ``4294967288``
 
    Send the packet out the input port. This
-   virual port must be explicitly used in
+   virtual port must be explicitly used in
    order to send back out of the input port.
 
 .. zeek:id:: OpenFlow::OFPP_LOCAL

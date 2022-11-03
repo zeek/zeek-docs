@@ -20,7 +20,7 @@ Types
 :zeek:type:`Management::Agent::Runtime::DeployState`: :zeek:type:`record`       Request state for deploy requests.
 :zeek:type:`Management::Agent::Runtime::NodeDispatchState`: :zeek:type:`record` Request state for node dispatches, tracking the requested action
                                                                                 as well as received responses.
-:zeek:type:`Management::Agent::Runtime::RestartState`: :zeek:type:`record`      Request state for restart requests, tracking eceived responses.
+:zeek:type:`Management::Agent::Runtime::RestartState`: :zeek:type:`record`      Request state for restart requests, tracking received responses.
 :zeek:type:`Management::Agent::Runtime::SupervisorState`: :zeek:type:`record`   Request state specific to the agent's Supervisor interactions.
 =============================================================================== ================================================================
 
@@ -89,7 +89,7 @@ Types
          Request state for every node the agent asks the Supervisor
          to restart.
 
-   Request state for restart requests, tracking eceived responses.
+   Request state for restart requests, tracking received responses.
 
 .. zeek:type:: Management::Agent::Runtime::SupervisorState
    :source-code: policy/frameworks/management/agent/main.zeek 25 32

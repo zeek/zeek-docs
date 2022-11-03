@@ -57,7 +57,7 @@ Types
          Hash algorithm used to generate issuerNameHash and issuerKeyHash.
 
       issuerNameHash: :zeek:type:`string` :zeek:attr:`&log`
-         Hash of the issuer's distingueshed name.
+         Hash of the issuer's distinguished name.
 
       issuerKeyHash: :zeek:type:`string` :zeek:attr:`&log`
          Hash of the issuer's public key.

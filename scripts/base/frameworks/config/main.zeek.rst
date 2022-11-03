@@ -58,7 +58,7 @@ Types
    :Type: :zeek:type:`record`
 
       ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp at which the configuration change occured.
+         Timestamp at which the configuration change occurred.
 
       id: :zeek:type:`string` :zeek:attr:`&log`
          ID of the value that was changed.

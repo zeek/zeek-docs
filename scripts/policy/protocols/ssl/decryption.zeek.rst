@@ -37,10 +37,10 @@ Redefinitions
 
 Events
 ######
-============================================== =============================================================================================
+============================================== ==============================================================================================
 :zeek:id:`SSL::add_keys`: :zeek:type:`event`   This event can be triggered, e.g., via Broker to add known keys to the TLS key database.
-:zeek:id:`SSL::add_secret`: :zeek:type:`event` This event can be triggered, e.g., via Broker to add known secrets to the TLS secret datbase.
-============================================== =============================================================================================
+:zeek:id:`SSL::add_secret`: :zeek:type:`event` This event can be triggered, e.g., via Broker to add known secrets to the TLS secret database.
+============================================== ==============================================================================================
 
 
 Detailed Interface
@@ -87,7 +87,7 @@ Events
 
    :Type: :zeek:type:`event` (client_random: :zeek:type:`string`, secrets: :zeek:type:`string`)
 
-   This event can be triggered, e.g., via Broker to add known secrets to the TLS secret datbase.
+   This event can be triggered, e.g., via Broker to add known secrets to the TLS secret database.
    
 
    :client_random: client random for which the secret is set

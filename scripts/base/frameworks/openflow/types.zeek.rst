@@ -217,7 +217,7 @@ Types
          Priority level of flow entry.
 
       out_port: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         For OFPFC_DELETE* commands, require matching entried to include
+         For OFPFC_DELETE* commands, require matching entry to include
          this as an output port/group. OFPP_ANY/OFPG_ANY means no restrictions.
 
       out_group: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
