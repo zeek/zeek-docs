@@ -789,15 +789,15 @@ In this example,
 we've compiled a table of SSL-enabled services and their common
 ports.  The explicit declaration and constructor for the table are on
 two different lines and lay out the data types of the keys (strings) and the
-data types of the yields (ports) and then fill in some sample key and
-yield pairs.  You can also use a table accessor to insert one
-key-yield pair into the table.  When using the ``in``
+data types of the values (ports) and then fill in some sample key and
+value pairs.  You can also use a table accessor to insert one
+key-value pair into the table.  When using the ``in``
 operator on a table, you are effectively working with the keys of the table.
 In the case of an ``if`` statement, the ``in`` operator will check for
 membership among the set of keys and return a true or false value.
 The example shows how to check if ``SMTPS`` is not in the set
 of keys for the ``ssl_services`` table and if the condition holds true,
-we add the key-yield pair to the table.  Finally, the example shows how
+we add the key-value pair to the table.  Finally, the example shows how
 to use a ``for`` statement to iterate over each key currently in the table.
 
 Simple examples aside, tables can become extremely complex as the keys
@@ -826,15 +826,49 @@ This script shows a sample table of strings indexed by two
 strings, a count, and a final string.  With a tuple acting as an
 aggregate key, the order is important as a change in order would
 result in a new key.  Here, we're using the table to track the
-director, studio, year or release, and lead actor in a series of
-samurai flicks.  It's important to note that in the case of the ``for``
-statement, it's an all or nothing kind of iteration.  We cannot
-iterate over, say, the directors; we have to iterate with the exact
-format as the keys themselves.  In this case, we need squared brackets
-surrounding four temporary variables to act as a collection for our
-iteration.  While this is a contrived example, we could easily have
-had keys containing IP addresses (``addr``), ports (``port``) and even
-a ``string`` calculated as the result of a reverse hostname lookup.
+director, studio, year of release, and lead actor in a series of
+samurai flicks.
+
+In the case of the ``for`` statement above, iteration is done over all
+parts of the key. When not all parts of a key are needed within the ``for``
+loop's body, these can be ignored by using the blank identifier ``_``
+instead of a variable.
+It's important to note, however, that the structure of the key needs to
+be reflected: All parts of the key need to be captured within the brackets
+by a variable or the blank identifier.
+As a special case, a single blank identifier allows to ignore the whole key.
+In the previous example, we need squared brackets surrounding four temporary
+variables to act as a collection for our iteration. While this
+is a contrived example, we could easily have had keys containing IP addresses
+(``addr``), ports (``port``) and even a ``string`` calculated as the result
+of a reverse hostname lookup.
+
+The example below continues with the ``samurai_flicks`` table and show usage
+of the blank identifier in combination with key-value iteration.
+Using key-value iteration short-cuts the table access to lookup the value as
+it provides the respective entry's value directly in addition to the key.
+
+First, iteration is done by capturing the directors and movie names and
+ignoring all other elements of the key. Second, the whole key is ignored
+and only movie names used.
+
+.. literalinclude:: data_struct_table_complex_blank_value.zeek
+   :caption:
+   :language: zeek
+   :linenos:
+   :tab-width: 4
+
+.. code-block:: console
+
+   $ zeek data_struct_table_complex_blank_value.zeek
+   Kiru was directed by Kihachi Okamoto
+   Harakiri was directed by Masaki Kobayashi
+   Tasogare Seibei was directed by Yoji Yamada
+   Goyokin was directed by Hideo Gosha
+   Kiru is a movie
+   Harakiri is a movie
+   Tasogare Seibei is a movie
+   Goyokin is a movie
 
 
 Vectors
@@ -897,6 +931,18 @@ current item in the vector with ``addr_vector[i]``.
    1.2.0.0/18
    2.3.0.0/18
    3.4.0.0/18
+
+Providing a value variable to the ``for`` loop allows skipping the extra
+index operation. As the index variable is now is unused, the script below
+uses ``_``, the blank identifier, to ignore it. This script is semantically
+equivalent to the previous one, but does direct value iteration and therefore
+potentially more performant for very large vectors.
+
+.. literalinclude:: data_struct_vector_iter_value.zeek
+   :caption:
+   :language: zeek
+   :linenos:
+   :tab-width: 4
 
 Data Types Revisited
 --------------------

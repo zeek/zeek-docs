@@ -6,7 +6,7 @@ event zeek_init()
     # Initialize the table.
     ssl_services = table(["SSH"] = 22/tcp, ["HTTPS"] = 443/tcp);
 
-    # Insert one key-yield pair into the table.
+    # Insert one key-value pair into the table.
     ssl_services["IMAPS"] = 993/tcp;
 
     # Check if the key "SMTPS" is not in the table.
