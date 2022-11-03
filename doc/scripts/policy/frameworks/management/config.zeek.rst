@@ -19,8 +19,8 @@ Summary
 Redefinable Options
 ###################
 =============================================================================== ===================================================================
-:zeek:id:`Management::connect_retry`: :zeek:type:`interval` :zeek:attr:`&redef` The retry interval for Broker connnects.
-:zeek:id:`Management::default_address`: :zeek:type:`string` :zeek:attr:`&redef` The fallback listen address if more specific adddresses, such as
+:zeek:id:`Management::connect_retry`: :zeek:type:`interval` :zeek:attr:`&redef` The retry interval for Broker connects.
+:zeek:id:`Management::default_address`: :zeek:type:`string` :zeek:attr:`&redef` The fallback listen address if more specific addresses, such as
                                                                                 the controller's :zeek:see:`Management::Controller::listen_address`
                                                                                 remains empty.
 :zeek:id:`Management::role`: :zeek:type:`Management::Role` :zeek:attr:`&redef`  The role of this process in cluster management.
@@ -50,7 +50,7 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``1.0 sec``
 
-   The retry interval for Broker connnects. Defaults to a more
+   The retry interval for Broker connects. Defaults to a more
    aggressive value compared to Broker's 30s.
 
 .. zeek:id:: Management::default_address
@@ -60,7 +60,7 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``"0.0.0.0"``
 
-   The fallback listen address if more specific adddresses, such as
+   The fallback listen address if more specific addresses, such as
    the controller's :zeek:see:`Management::Controller::listen_address`
    remains empty. Unless redefined, this listens on all interfaces.
 

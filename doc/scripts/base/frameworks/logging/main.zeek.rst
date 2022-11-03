@@ -995,7 +995,7 @@ Types
          Time when closed.
 
       terminating: :zeek:type:`bool`
-         True if rotation occured due to Zeek shutting down.
+         True if rotation occurred due to Zeek shutting down.
 
    Information passed into rotation callback functions.
 
@@ -1013,7 +1013,7 @@ Types
          will generally fail.
 
       file_basename: :zeek:type:`string`
-         A base name to use for the the rotated log.  Log writers may later
+         A base name to use for the rotated log.  Log writers may later
          append a file extension of their choosing to this user-chosen
          base (e.g. if using the default ASCII writer and you want
          rotated files of the format "foo-<date>.log", then this basename
@@ -1110,7 +1110,7 @@ Hooks
    log write, prior to iterating over the stream's associated filters.
    As with filter-specific hooks, breaking from the hook vetoes writing
    of the given log record. Note that filter-level policy hooks still get
-   invoked after the global hook vetos, but they cannot "un-veto" the write.
+   invoked after the global hook vetoes, but they cannot "un-veto" the write.
 
 Functions
 #########

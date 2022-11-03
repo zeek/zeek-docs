@@ -41,7 +41,7 @@ Redefinitions
                                                                        capabilities: :zeek:type:`SSH::Capabilities` :zeek:attr:`&optional`
                                                                      
                                                                        analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
-                                                                         Analzyer ID
+                                                                         Analyzer ID
 :zeek:type:`connection`: :zeek:type:`record`                         
                                                                      
                                                                      :New Fields: :zeek:type:`connection`
@@ -130,7 +130,7 @@ Types
          Authentication result (T=success, F=failure, unset=unknown)
 
       auth_attempts: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of authentication attemps we observed. There's always
+         The number of authentication attempts we observed. There's always
          at least one, since some servers might support no authentication at all.
          It's important to note that not all of these are failures, since
          some servers require two-factor auth (e.g. password AND pubkey)
@@ -169,7 +169,7 @@ Types
       capabilities: :zeek:type:`SSH::Capabilities` :zeek:attr:`&optional`
 
       analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
-         Analzyer ID
+         Analyzer ID
 
       remote_location: :zeek:type:`geo_location` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/ssh/geo-data.zeek` is loaded)

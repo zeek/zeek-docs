@@ -15,7 +15,7 @@ Redefinable Options
 ==================================================================================================== ==============================================================
 :zeek:id:`SSL::log_include_client_certificate_subject_issuer`: :zeek:type:`bool` :zeek:attr:`&redef` Set this to true to include the client certificate subject
                                                                                                      and issuer in the SSL logfile.
-:zeek:id:`SSL::log_include_server_certificate_subject_issuer`: :zeek:type:`bool` :zeek:attr:`&redef` Set this to true to includd the server certificate subject and
+:zeek:id:`SSL::log_include_server_certificate_subject_issuer`: :zeek:type:`bool` :zeek:attr:`&redef` Set this to true to include the server certificate subject and
                                                                                                      issuer from the SSL log file.
 ==================================================================================================== ==============================================================
 
@@ -95,7 +95,7 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``F``
 
-   Set this to true to includd the server certificate subject and
+   Set this to true to include the server certificate subject and
    issuer from the SSL log file. This information is still available
    in x509.log.
 

@@ -141,7 +141,7 @@ Functions
    :threshold: Threshold in bytes to remove.
    
 
-   :is_orig: If true, threshold is removed for packets from originator, otherwhise for packets from responder.
+   :is_orig: If true, threshold is removed for packets from originator, otherwise for packets from responder.
    
 
    :returns: T on success, F on failure.

@@ -59,7 +59,7 @@ Constants
    RR TYPE value for a domain name pointer.
 
 .. zeek:id:: DNS::algorithms
-   :source-code: base/protocols/dns/consts.zeek 144 144
+   :source-code: base/protocols/dns/consts.zeek 154 154
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -93,7 +93,7 @@ Constants
    Possible values of the algorithms used in DNSKEY, DS and RRSIG records
 
 .. zeek:id:: DNS::base_errors
-   :source-code: base/protocols/dns/consts.zeek 97 97
+   :source-code: base/protocols/dns/consts.zeek 107 107
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -133,7 +133,7 @@ Constants
    Errors used for non-TSIG/EDNS types.
 
 .. zeek:id:: DNS::classes
-   :source-code: base/protocols/dns/consts.zeek 134 134
+   :source-code: base/protocols/dns/consts.zeek 144 144
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -155,7 +155,7 @@ Constants
    field in query messages.
 
 .. zeek:id:: DNS::digests
-   :source-code: base/protocols/dns/consts.zeek 167 167
+   :source-code: base/protocols/dns/consts.zeek 177 177
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -175,7 +175,7 @@ Constants
    Possible digest types used in DNSSEC.
 
 .. zeek:id:: DNS::edns_zfield
-   :source-code: base/protocols/dns/consts.zeek 127 127
+   :source-code: base/protocols/dns/consts.zeek 137 137
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = ``"?"``
@@ -205,13 +205,16 @@ Constants
             [20] = "ISDN",
             [33] = "SRV",
             [39] = "DNAME",
-            [30] = "EID",
+            [30] = "NXT",
             [46] = "RRSIG",
             [15] = "MX",
+            [65422] = "XPF",
             [28] = "AAAA",
             [64] = "SVCB",
+            [106] = "L64",
             [9] = "MR",
             [253] = "MAILB",
+            [107] = "LP",
             [53] = "SMIMEA",
             [55] = "HIP",
             [52] = "TLSA",
@@ -220,11 +223,14 @@ Constants
             [4] = "MF",
             [12] = "PTR",
             [41] = "OPT",
+            [58] = "TALINK",
             [17] = "RP",
+            [105] = "L32",
             [254] = "MAILA",
             [32768] = "TA",
             [25] = "KEY",
             [32769] = "DLV",
+            [65281] = "WINS",
             [29] = "LOC",
             [16] = "TXT",
             [255] = "*",
@@ -233,6 +239,7 @@ Constants
             [252] = "AXFR",
             [63] = "ZONEMD",
             [42] = "APL",
+            [57] = "RKEY",
             [1] = "A",
             [11] = "WKS",
             [35] = "NAPTR",
@@ -252,13 +259,14 @@ Constants
             [250] = "TSIG",
             [14] = "MINFO",
             [6] = "SOA",
-            [31] = "NIMLOC",
+            [31] = "EID",
             [23] = "NSAP-PTR",
             [8] = "MG",
             [27] = "GPOS",
+            [56] = "NINFO",
             [7] = "MB",
             [10] = "NULL",
-            [32] = "NB",
+            [32] = "NIMLOC",
             [13] = "HINFO",
             [26] = "PX",
             [65] = "HTTPS",
@@ -267,6 +275,7 @@ Constants
             [47] = "NSEC",
             [50] = "NSEC3",
             [2] = "NS",
+            [65282] = "WINS-R",
             [48] = "DNSKEY",
             [24] = "SIG",
             [99] = "SPF",
@@ -275,6 +284,7 @@ Constants
             [249] = "TKEY",
             [103] = "UNSPEC",
             [5] = "CNAME",
+            [104] = "NID",
             [61] = "OPENPGPKEY",
             [60] = "CDNSKEY",
             [100] = "UINFO",
@@ -288,7 +298,7 @@ Constants
    representation.
 
 .. zeek:id:: DNS::svcparam_keys
-   :source-code: base/protocols/dns/consts.zeek 177 177
+   :source-code: base/protocols/dns/consts.zeek 187 187
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`

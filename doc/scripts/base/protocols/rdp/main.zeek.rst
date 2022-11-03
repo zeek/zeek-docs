@@ -111,7 +111,7 @@ Types
 
       result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          Status result for the connection.  It's a mix between
-         RDP negotation failure messages and GCC server create
+         RDP negotiation failure messages and GCC server create
          response messages.
 
       security_protocol: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`

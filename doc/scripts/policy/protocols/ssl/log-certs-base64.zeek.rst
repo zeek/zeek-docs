@@ -19,7 +19,7 @@ Redefinitions
                                              :New Fields: :zeek:type:`X509::Info`
                                              
                                                cert: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-                                                 Base64 endoded X.509 certificate.
+                                                 Base64 encoded X.509 certificate.
 ============================================ ====================================================================
 
 

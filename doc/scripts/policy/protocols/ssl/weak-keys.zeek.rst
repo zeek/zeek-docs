@@ -54,7 +54,7 @@ Runtime Options
    Warn if the DH key length is smaller than the certificate key length. This is
    potentially unsafe because it gives a wrong impression of safety due to the
    certificate key length. However, it is very common and cannot be avoided in some
-   settings (e.g. with old jave clients).
+   settings (e.g. with old java clients).
 
 .. zeek:id:: SSL::notify_minimal_key_length
    :source-code: policy/protocols/ssl/weak-keys.zeek 28 28
