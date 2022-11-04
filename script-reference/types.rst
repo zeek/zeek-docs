@@ -520,15 +520,168 @@ Type Conversions
 pattern
 -------
 
-A type representing regular-expression patterns that can be used
-for fast text-searching operations.  Pattern constants are created
-by enclosing text within forward slashes (``/``) and use the same syntax
-as the patterns supported by the `flex lexical analyzer
-<http://westes.github.io/flex/manual/Patterns.html>`_.  The speed of
-regular expression matching does not depend on the complexity or
-size of the patterns.  Patterns support two types of matching, exact
-and embedded.
+A type representing regular-expression patterns that can be used for fast
+text-searching operations.  Pattern constants are created by enclosing text
+within forward slashes (``/``) and support a large subset of the `flex lexical
+analyzer <http://westes.github.io/flex/manual/Patterns.html>`_ syntax.  As in
+other implementations, patterns consist of ordinary and special characters.
+Patterns such as ``/a/`` or ``/A0123/`` match that specific character byte or
+character sequence, case-sensitively. Special characters and modifiers customize
+matching, as follows:
 
+.. list-table::
+  :header-rows: 1
+
+  * - Syntax
+    - Meaning
+
+  * - ``^``
+    - Matches the beginning of the input.
+
+  * - ``$``
+    - Matches the end of the input.
+
+  * - ``.``
+    - Matches any character except newline (but see the ``(?s:`` and ``/s`` modifiers).
+
+  * - ``<expr>*``
+    - Matches zero or more instances of ``expr``.
+
+  * - ``<expr>+``
+    - Matches one or more instances of ``expr``.
+
+  * - ``<expr>?``
+    - Matches zero or one instances of ``expr``.
+
+  * - ``<expr>{n}``
+    - Matches ``expr`` ``n`` times, where ``n`` is a non-negative integer.
+
+  * - ``<expr>{n,}``
+    - Matches ``expr`` ``n`` or more times, where ``n`` is a non-negative integer.
+
+  * - ``<expr>{n,m}``
+    - Matches ``expr`` between ``n`` and ``m`` times, inclusively, where ``n``
+      and ``m`` are non-negative integers and ``m >= n``.
+
+  * - ``<expr1>|<expr2>``
+    - Matches either ``expr1`` or ``expr2``.
+
+  * - ``(<expr>)``
+    - Groups the contained expression to form a building-block of a more complex
+      one.
+
+  * - ``"<chars>"``
+    - Matches literal strings, without the quotation marks. These always match
+      as given, even if case-insensitivity is active.
+
+  * - ``[<chars>]``
+    - Defines a character class, matching any of the contained characters.
+
+  * - ``[^<chars>]``
+    - Defines a negated character class, matching any but the contained
+      characters.
+
+  * - ``<char1>-<char2>``
+    - Inside a character class this specifies a range, matching any character
+      between ``<char1>`` and ``<char2>``, inclusively. Outside a character
+      class it matches the literal string.
+
+  * - ``(?i:<expr>)``
+    - Matches the expression case-insensitively.
+
+  * - ``(?s:<expr>)``
+    - Treats the input as a single line: the ``.`` character also matches
+      newlines.
+
+Zeek supports the following pre-defined character classes:
+
+.. list-table::
+  :header-rows: 1
+  :widths: 20 20 60
+
+  * - Shorthand
+    - Equivalent to
+    - Meaning
+
+  * - ``[:alnum:]``
+    - ``[A-Za-z0-9]``
+    - Upper- and lowercase letters plus digits.
+
+  * - ``[:alpha:]``
+    - ``[A-Za-z]``
+    - Upper- and lowercase letters.
+
+  * - ``[:blank:]``
+    - ``[ \t]``
+    - The space or tab character.
+
+  * - ``[:cntrl:]``
+    -
+    - Non-printable characters, a.k.a. control characters. See
+      `iscntrl() <https://cplusplus.com/reference/cctype/iscntrl/>`_ for details.
+
+  * - ``[:digit:]``
+    - ``[0-9]``
+    - Digits.
+
+  * - ``[:graph:]``
+    - ``[^ [:cntrl:]]``
+    - Characters with graphic representation: everything other than space
+      and control characters.
+
+  * - ``[:print:]``
+    - ``[^[:cntrl:]]``
+    - Printable characters: those with  graphic representation, plus the space character.
+
+  * - ``[:punct:]``
+    -
+    - Punctuation: any characters with graphic representation that are not alphanumeric.
+
+  * - ``[:space:]``
+    - ``[ \t\n\r\f\v]``
+    - Whitespace characters.
+
+  * - ``[:xdigit:]``
+    - ``[A-Fa-f0-9]``
+    - Hexadecimal characters.
+
+  * - ``[:lower:]``
+    - ``[a-z]``
+    - Lowercase letters.
+
+  * - ``[:upper:]``
+    - ``[A-Z]``
+    - Uppercase letters.
+
+To match special characters, escape them with a backslash (``\``).
+
+Zeek also supports the following pattern-level operators and modifiers:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Example
+    - Meaning
+
+  * - ``/<expr1>/ | /<expr2>/``
+    - Succeeds when either pattern matches the the input.
+
+  * - ``/<expr1>/ & /<expr2>/``
+    - Succeeds when the concatenation of both patterns matches the input. Note
+      that this differs from a logical "AND"; ordering matters.
+
+  * - ``/<expr>/i``
+    - Matches the expression case-insensitively, like ``(?i:<expr>)``. Use the
+      latter when you need it to apply to only a part of a larger expression.
+
+  * - ``/<expr>/s``
+    - Treats the input as a single line, like ``(?s:<expr>)``. Use the
+      latter when you need it to apply to only a part of a larger expression.
+
+The speed of regular expression matching does not depend on the complexity or
+size of the patterns.
+
+Patterns support two types of matching, exact and embedded.
 In exact matching the ``==`` equality relational operator is used
 with one ``pattern`` operand and one :zeek:type:`string`
 operand (order of operands does not matter) to check whether the full
@@ -567,42 +720,22 @@ yields true, while:
 is false since ``"oob"`` does not appear at the start of ``"foobar"``.  The
 ``!in`` operator would yield the negation of ``in``.
 
-You can create a disjunction (either-or) of two patterns
-using the ``|`` operator.  For example:
+Additional examples:
 
-.. code-block:: zeek
+- ``/foo+bar/`` matches ``"foobar"`` and ``"fooooobar"``, but not ``"fobar"``.
+- ``/foo*bar/`` matches ``"fobar"``, ``"foobar"``, and ``"fooooobar"``.
+- ``/foo?bar/`` matches ``"fobar"`` and ``"foobar"``, but not ``"fooooobar"``.
+- ``/foo[b-d]ar/`` matches ``"foobar"``, ``"foocar"``, and ``"foodar"``.
+- ``/foo/ | /bar/ in "foobar"`` yields true.
+- ``/foo/ & /bar/ in "foobar"`` yields true, since ``/(foo)(bar)/`` appears in ``"foobar"``.
+- ``/foo|bar/`` matches ``"foo"`` and ``"bar"``.
+- ``/fo(o|b)ar/`` matches ``"fooar"`` and ``"fobar"``, but not ``"foo"`` or ``"bar"``.
+- ``/foo|bar/i`` matches ``"foo"``, ``"Foo"``, ``"BaR"``, etc.
+- ``/foo|(?i:bar)/`` matches ``"foo"`` and ``"BaR"``, but *not* ``"Foo"``.
+- ``/"foo"/i`` matches ``"foo"``, but *not* ``"Foo"``.
+- ``/foo.bar/`` doesn't matche ``"foo\nbar"``, while ``/foo.bar/s`` does.
 
-    /foo/ | /bar/ in "foobar"
-
-yields true, like in the similar example above.  You can also
-create the conjunction (concatenation) of patterns using the ``&``
-operator.  For example:
-
-.. code-block:: zeek
-
-    /foo/ & /bar/ in "foobar"
-
-will yield true because the pattern ``/(foo)(bar)/`` appears in
-the string ``"foobar"``.
-
-When specifying a pattern, you can add a final ``i`` specifier to
-mark it as case-insensitive.  For example, ``/foo|bar/i`` will match
-``"foo"``, ``"Foo"``, ``"BaR"``, etc.
-
-You can also introduce a case-insensitive sub-pattern by enclosing it
-in ``(?i:<pattern>)``.  So, for example, ``/foo|(?i:bar)/`` will
-match ``"foo"`` and ``"BaR"``, but *not* ``"Foo"``.
-
-For both ways of specifying case-insensitivity, characters enclosed
-in double quotes maintain their case-sensitivity.  So for example
-``/"foo"/i`` will not match ``"Foo"``, but it will match ``"foo"``.
-
-Similar to the ``i`` specifier, you can add a ``s`` specifier to enable
-single-line mode, which causes the ``.`` character in a pattern to also
-match new-line characters. The same rules apply for ``(?s:<pattern>)``
-as with the ``i`` specifier.
-
-The ``i`` and ``s`` can also be combined together in a single pattern
+The ``i`` and ``s`` modifiers can also be combined in a single pattern
 such as ``/foo/is`` or ``/bar/si``. In this case, both case-insensitivity
 and single-line mode will apply to the pattern.
 
