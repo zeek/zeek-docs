@@ -570,6 +570,20 @@ a global variable, and it does not need to be declared prior to the ``for``
 statement.  The type will be inferred from the elements of the
 expression.
 
+In some scenarios, the loop variable or parts of the table index may be
+unused in the ``for`` loop's body. Zeek reserves ``_``, the blank identifier, as
+an explicitly way to support capturing unused variables.
+
+The blank identifier can be assigned expressions of any type, but it can
+never be referenced.
+For the ``for`` loop, this allows to use the blank identifier to capture
+unused loop variables of differing types---something that isn't possible
+with normal variables.
+As a special case, all index variables of a table or set can be ignored with
+a single blank identifier.
+In fact, in current versions of Zeek, ignoring all index variables allows
+for faster iteration and is therefore recommended to be used when possible.
+
 Currently, modifying a container's membership while iterating over it may
 result in undefined behavior, so do not add or remove elements
 inside the loop.
@@ -598,8 +612,17 @@ Example:
         print i,j;
         }
 
+    for ( _, val in mytable )
+        print val;
+
+    for ( [i,_], _ in mytable )
+        print i;
+
     for ( i, val in myvector )
         print i,val;
+
+    for ( _, val in myvector )
+        print val;
 
 
 .. zeek:keyword:: if
