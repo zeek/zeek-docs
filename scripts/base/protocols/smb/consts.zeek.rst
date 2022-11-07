@@ -105,8 +105,8 @@ Redefinable Options
                [22] = "NetrServerSetInfo",
                [43] = "NetrDfsGetVersion",
                [51] = "NetrDfsFixLocalVolume",
-               [37] = "NetrShareDelStart",
                [18] = "NetrShareDel",
+               [37] = "NetrShareDelStart",
                [44] = "NetrDfsCreateLocalPartition",
                [34] = "NetprNameCanonicalize"
             },
@@ -208,8 +208,8 @@ Redefinable Options
             [22] = "NetrServerSetInfo",
             [43] = "NetrDfsGetVersion",
             [51] = "NetrDfsFixLocalVolume",
-            [37] = "NetrShareDelStart",
             [18] = "NetrShareDel",
+            [37] = "NetrShareDelStart",
             [44] = "NetrDfsCreateLocalPartition",
             [34] = "NetprNameCanonicalize"
          }
