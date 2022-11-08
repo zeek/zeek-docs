@@ -76,6 +76,7 @@
    base/packet-protocols/gtpv1/__load__.zeek </scripts/base/packet-protocols/gtpv1/__load__.zeek>
    base/packet-protocols/gtpv1/main.zeek </scripts/base/packet-protocols/gtpv1/main.zeek>
    base/bif/plugins/Zeek_GTPv1.functions.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.functions.bif.zeek>
+   builtin-plugins/__preload__.zeek </scripts/builtin-plugins/__preload__.zeek>
    base/init-frameworks-and-bifs.zeek </scripts/base/init-frameworks-and-bifs.zeek>
    base/frameworks/logging/__load__.zeek </scripts/base/frameworks/logging/__load__.zeek>
    base/frameworks/logging/main.zeek </scripts/base/frameworks/logging/main.zeek>
@@ -439,7 +440,6 @@
    base/misc/find-checksum-offloading.zeek </scripts/base/misc/find-checksum-offloading.zeek>
    base/misc/find-filtered-trace.zeek </scripts/base/misc/find-filtered-trace.zeek>
    base/misc/installation.zeek </scripts/base/misc/installation.zeek>
-   builtin-plugins/__preload__.zeek </scripts/builtin-plugins/__preload__.zeek>
    builtin-plugins/__load__.zeek </scripts/builtin-plugins/__load__.zeek>
    builtin-plugins/Zeek_AF_Packet/__load__.zeek </scripts/builtin-plugins/Zeek_AF_Packet/__load__.zeek>
    builtin-plugins/Zeek_AF_Packet/init.zeek </scripts/builtin-plugins/Zeek_AF_Packet/init.zeek>
