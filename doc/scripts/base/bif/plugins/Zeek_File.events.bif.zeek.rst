@@ -22,7 +22,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: file_transferred
-   :source-code: base/protocols/ftp/main.zeek 339 347
+   :source-code: base/protocols/ftp/main.zeek 349 357
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prefix: :zeek:type:`string`, descr: :zeek:type:`string`, mime_type: :zeek:type:`string`)
 
