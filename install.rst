@@ -11,6 +11,7 @@
 .. _crosstool-NG: https://crosstool-ng.github.io/
 .. _CMake toolchain: https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html
 .. _contribute: https://github.com/zeek/zeek/wiki/Contribution-Guide
+.. _Chocolatey: https://chocolatey.org
 
 .. _installing-zeek:
 
@@ -200,6 +201,51 @@ To install these, you can use:
   provide the required dependencies.  For MacPorts, the ``cmake``,
   ``swig``, ``swig-python``, ``openssl``, ``bison``, and ``flex`` packages
   provide the required dependencies.
+
+* Windows
+
+  Compiling on Windows requires the installation of a development environment.
+  Zeek currently builds on Visual Studio 2019, and you can either install the
+  full version including the UI tools or you can install the command-line tools
+  and build from a shell. The instructions below describe how to install the
+  command-line tools, but are not necessary if you install the full VS2019
+  package. You will need to install Chocolatey_ in order to install the
+  dependencies as instructed below. It's possible to install them from other
+  sources, but that is left to the reader to determine how.
+
+  .. code-block:: console
+
+     choco install -y --no-progress visualstudio2019buildtools --version=16.11.11.0
+     choco install -y --no-progress visualstudio2019-workload-vctools --version=1.0.0 --package-parameters '--add Microsoft.VisualStudio.Component.VC.ATLMFC'
+     choco install -y --no-progress conan
+     choco install -y --no-progress sed
+     choco install -y --no-progress winflexbison3
+     choco install -y --no-progress msysgit
+     choco install -y --no-progress python
+     choco install -y --no-progress openssl
+
+  Once the dependencies are installed, you will need to add the Git installation
+  to your PATH (C:\Program Files\Git\bin by default). This is needed for the
+  ``sh`` command to be available during the build. Once all of the dependencies
+  are in place, you will need to open a shell (PowerShell or cmd) and add the
+  development environment to it. The following command is for running on an x86_64 host.
+
+  .. code-block:: console
+
+     c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat x86_amd64
+
+  Now you can build via cmake:
+
+  .. code-block:: console
+
+     mkdir build
+     cd build
+     cmake.exe .. -DCMAKE_BUILD_TYPE=release -DENABLE_ZEEK_UNIT_TESTS=yes -G Ninja
+     cmake.exe --build .
+
+  Note that all of this is duplicated in the CI configuration for Windows which
+  lives in the ``ci/windows`` directory.
+
 
 Optional Dependencies
 ---------------------
