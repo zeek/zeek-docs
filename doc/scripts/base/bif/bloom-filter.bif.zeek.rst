@@ -134,7 +134,7 @@ Functions
    :cells: The number of cells of the underlying counter vector. As there's
           no single answer to what's the best parameterization for a
           counting Bloom filter, we refer to the Bloom filter literature
-          here for choosing an appropiate value.
+          here for choosing an appropriate value.
    
 
    :max: The maximum counter value associated with each element
@@ -165,7 +165,7 @@ Functions
    that exceeded the width of its counter.
    
 
-   :bf: The coubting bloom filter handle.
+   :bf: The counting bloom filter handle.
    
 
    :x: The element to decrement

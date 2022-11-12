@@ -203,7 +203,7 @@ Functions
    :Type: :zeek:type:`function` (str: :zeek:type:`string`, re: :zeek:type:`pattern`) : :zeek:type:`string_vec`
 
    Finds all occurrences of a pattern in a string.  The order in which
-   occurrences are found is preverved and the return value may contain
+   occurrences are found is preserved and the return value may contain
    duplicate elements.
    
 

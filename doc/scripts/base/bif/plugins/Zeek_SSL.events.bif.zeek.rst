@@ -677,7 +677,7 @@ Events
 
    Generated for an TLS Supported Versions extension. This TLS extension
    is defined in the TLS 1.3 rfc and sent by the client in the initial handshake.
-   It contains the TLS versions that it supports. This informaion can be used by
+   It contains the TLS versions that it supports. This information can be used by
    the server to choose the best TLS version o use.
    
 

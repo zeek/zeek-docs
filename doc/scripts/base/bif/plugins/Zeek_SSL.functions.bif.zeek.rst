@@ -16,7 +16,7 @@ Functions
                                                       TLS application data in the connection.
 :zeek:id:`set_secret`: :zeek:type:`function`          Set the secret that should be used to derive keys for the connection.
 :zeek:id:`set_ssl_established`: :zeek:type:`function` Sets if the SSL analyzer should consider the connection established (handshake
-                                                      finished succesfully).
+                                                      finished successfully).
 ===================================================== ==============================================================================
 
 
@@ -64,7 +64,7 @@ Functions
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
    Sets if the SSL analyzer should consider the connection established (handshake
-   finished succesfully).
+   finished successfully).
    
 
    :c: The SSL connection.

@@ -143,7 +143,7 @@ Functions
 :zeek:id:`lookup_ID`: :zeek:type:`function`                                   Returns the value of a global identifier.
 :zeek:id:`lookup_addr`: :zeek:type:`function`                                 Issues an asynchronous reverse DNS lookup and delays the function result.
 :zeek:id:`lookup_asn`: :zeek:type:`function` :zeek:attr:`&deprecated` = *...* Performs an ASN lookup of an IP address.
-:zeek:id:`lookup_autonomous_system`: :zeek:type:`function`                    Performs an lookup of AS numbe & organization of an IP address.
+:zeek:id:`lookup_autonomous_system`: :zeek:type:`function`                    Performs an lookup of AS number & organization of an IP address.
 :zeek:id:`lookup_connection`: :zeek:type:`function`                           Returns the :zeek:type:`connection` record for a given connection identifier.
 :zeek:id:`lookup_hostname`: :zeek:type:`function`                             Issues an asynchronous DNS lookup and delays the function result.
 :zeek:id:`lookup_hostname_txt`: :zeek:type:`function`                         Issues an asynchronous TEXT DNS lookup and delays the function result.
@@ -511,7 +511,7 @@ Functions
    ``"foo3T"``.
    
 
-   :returns: A string concatentation of all arguments.
+   :returns: A string concatenation of all arguments.
 
 .. zeek:id:: cat_sep
    :source-code: base/bif/zeek.bif.zeek 746 746
@@ -1486,7 +1486,7 @@ Functions
 
    Calculates distance between two geographic locations using the haversine
    formula.  Latitudes and longitudes must be given in degrees, where southern
-   hemispere latitudes are negative and western hemisphere longitudes are
+   hemisphere latitudes are negative and western hemisphere longitudes are
    negative.
    
 
@@ -2008,7 +2008,7 @@ Functions
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`geo_autonomous_system`
 
-   Performs an lookup of AS numbe & organization of an IP address.
+   Performs an lookup of AS number & organization of an IP address.
    Requires Zeek to be built with ``libmaxminddb``.
    
 

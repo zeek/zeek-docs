@@ -894,7 +894,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 5540 5542
+   :source-code: base/init-bare.zeek 5551 5553
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
@@ -1323,7 +1323,7 @@ Events
    know how to handle.
    
 
-   :analzyer_name: The string name of the analyzer attempting to forward the protocol
+   :analyzer_name: The string name of the analyzer attempting to forward the protocol
    
 
    :protocol: The identifier of the protocol being forwarded

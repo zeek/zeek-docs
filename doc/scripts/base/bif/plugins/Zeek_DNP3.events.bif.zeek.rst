@@ -33,7 +33,7 @@ Events
 :zeek:id:`dnp3_analog_input_event_32woTime`: :zeek:type:`event`        Generated for DNP3 objects with the group number 32 and variation number 1
                                                                        analog input event 32 bit without time
 :zeek:id:`dnp3_analog_input_event_DPwTime`: :zeek:type:`event`         Generated for DNP3 objects with the group number 32 and variation number 8
-                                                                       analog input event double-precisiion float point with time
+                                                                       analog input event double-precision float point with time
 :zeek:id:`dnp3_analog_input_event_DPwoTime`: :zeek:type:`event`        Generated for DNP3 objects with the group number 32 and variation number 6
                                                                        analog input event double-precision float point without time
 :zeek:id:`dnp3_analog_input_event_SPwTime`: :zeek:type:`event`         Generated for DNP3 objects with the group number 32 and variation number 7
@@ -199,7 +199,7 @@ Events
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, flag: :zeek:type:`count`, value_low: :zeek:type:`count`, value_high: :zeek:type:`count`, time48: :zeek:type:`count`)
 
    Generated for DNP3 objects with the group number 32 and variation number 8
-   analog input event double-precisiion float point with time
+   analog input event double-precision float point with time
 
 .. zeek:id:: dnp3_analog_input_event_DPwoTime
    :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 263 263
