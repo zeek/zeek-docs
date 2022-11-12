@@ -11,10 +11,10 @@ Summary
 ~~~~~~~
 Events
 ######
-=============================================== ==========================================================================================
+=============================================== ===========================================================================================
 :zeek:id:`mqtt_connack`: :zeek:type:`event`     Generated for MQTT acknowledge connection messages
 :zeek:id:`mqtt_connect`: :zeek:type:`event`     Generated for MQTT "client requests a connection" messages
-:zeek:id:`mqtt_disconnect`: :zeek:type:`event`  Generated for MQTT disconnect messages sent by the client when it is diconnecting cleanly.
+:zeek:id:`mqtt_disconnect`: :zeek:type:`event`  Generated for MQTT disconnect messages sent by the client when it is disconnecting cleanly.
 :zeek:id:`mqtt_pingreq`: :zeek:type:`event`     Generated for MQTT ping requests sent by the client.
 :zeek:id:`mqtt_pingresp`: :zeek:type:`event`    Generated for MQTT ping responses sent by the server.
 :zeek:id:`mqtt_puback`: :zeek:type:`event`      Generated for MQTT publish acknowledgement messages
@@ -26,7 +26,7 @@ Events
 :zeek:id:`mqtt_subscribe`: :zeek:type:`event`   Generated for MQTT subscribe messages
 :zeek:id:`mqtt_unsuback`: :zeek:type:`event`    Generated for MQTT unsubscribe acknowledgements sent by the server
 :zeek:id:`mqtt_unsubscribe`: :zeek:type:`event` Generated for MQTT unsubscribe messages sent by the client
-=============================================== ==========================================================================================
+=============================================== ===========================================================================================
 
 
 Detailed Interface
@@ -64,7 +64,7 @@ Events
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
-   Generated for MQTT disconnect messages sent by the client when it is diconnecting cleanly.
+   Generated for MQTT disconnect messages sent by the client when it is disconnecting cleanly.
    
 
    :c: The connection

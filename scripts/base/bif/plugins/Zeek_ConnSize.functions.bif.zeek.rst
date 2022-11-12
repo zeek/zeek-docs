@@ -19,7 +19,7 @@ Functions
                                                                       threshold.
 :zeek:id:`set_current_conn_duration_threshold`: :zeek:type:`function` Sets the current duration threshold for connection, overwriting any potential old
                                                                       threshold.
-:zeek:id:`set_current_conn_packets_threshold`: :zeek:type:`function`  Sets a threshold for connection packets, overwtiting any potential old thresholds.
+:zeek:id:`set_current_conn_packets_threshold`: :zeek:type:`function`  Sets a threshold for connection packets, overwriting any potential old thresholds.
 ===================================================================== ===================================================================================
 
 
@@ -37,7 +37,7 @@ Functions
    :cid: The connection id.
    
 
-   :is_orig: If true, threshold of originator, otherwhise threshold of responder.
+   :is_orig: If true, threshold of originator, otherwise threshold of responder.
    
 
    :returns: 0 if no threshold is set or the threshold in bytes
@@ -73,7 +73,7 @@ Functions
    :cid: The connection id.
    
 
-   :is_orig: If true, threshold of originator, otherwhise threshold of responder.
+   :is_orig: If true, threshold of originator, otherwise threshold of responder.
    
 
    :returns: 0 if no threshold is set or the threshold in packets
@@ -97,7 +97,7 @@ Functions
    :threshold: Threshold in bytes.
    
 
-   :is_orig: If true, threshold is set for bytes from originator, otherwhise for bytes from responder.
+   :is_orig: If true, threshold is set for bytes from originator, otherwise for bytes from responder.
    
    .. zeek:see:: set_current_conn_packets_threshold conn_bytes_threshold_crossed conn_packets_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold
@@ -127,7 +127,7 @@ Functions
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, threshold: :zeek:type:`count`, is_orig: :zeek:type:`bool`) : :zeek:type:`bool`
 
-   Sets a threshold for connection packets, overwtiting any potential old thresholds.
+   Sets a threshold for connection packets, overwriting any potential old thresholds.
    Be aware that in nearly any case you will want to use the high level API
    instead (:zeek:see:`ConnThreshold::set_packets_threshold`).
    
@@ -138,7 +138,7 @@ Functions
    :threshold: Threshold in packets.
    
 
-   :is_orig: If true, threshold is set for packets from originator, otherwhise for packets from responder.
+   :is_orig: If true, threshold is set for packets from originator, otherwise for packets from responder.
    
    .. zeek:see:: set_current_conn_bytes_threshold conn_bytes_threshold_crossed conn_packets_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold

@@ -176,7 +176,7 @@ Events
    :ans: The type-independent part of the parsed answer record.
    
 
-   :binds: The parsed RDATA of BIND-Signeing state record.
+   :binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_CAA_reply
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 455 455
@@ -802,7 +802,7 @@ Events
    :ans: The type-independent part of the parsed answer record.
    
 
-   :binds: The parsed RDATA of BIND-Signeing state record.
+   :binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_SVCB
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 775 775

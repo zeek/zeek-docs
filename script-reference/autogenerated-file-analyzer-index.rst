@@ -280,7 +280,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 4348 4362
+   :source-code: base/init-bare.zeek 4359 4373
 
    :Type: :zeek:type:`record`
 
@@ -325,7 +325,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 4364 4370
+   :source-code: base/init-bare.zeek 4375 4381
 
    :Type: :zeek:type:`record`
 
@@ -346,7 +346,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 4372 4375
+   :source-code: base/init-bare.zeek 4383 4386
 
    :Type: :zeek:type:`record`
 
@@ -359,7 +359,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 4377 4383
+   :source-code: base/init-bare.zeek 4388 4394
 
    :Type: :zeek:type:`record`
 
@@ -380,7 +380,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 4386 4393
+   :source-code: base/init-bare.zeek 4397 4404
 
    :Type: :zeek:type:`record`
 
@@ -652,13 +652,13 @@ Events
    :revokeTime: Time the certificate was revoked, 0 if not revoked.
    
 
-   :revokeTeason: Reason certificate was revoked; empty string if not revoked or not specified.
+   :revokeReason: Reason certificate was revoked; empty string if not revoked or not specified.
    
 
    :thisUpdate: Time this response was generated.
    
 
-   :nextUpdate: Time next response will be ready; 0 if not supploed.
+   :nextUpdate: Time next response will be ready; 0 if not supplied.
    
    .. zeek:see:: ocsp_request ocsp_request_certificate ocsp_response_status
                 ocsp_response_bytes ocsp_extension
@@ -824,7 +824,7 @@ Functions
                     certificate extension; in that case, it is necessary for validation.
    
 
-   :returns: T if the validation could be performed succesfully, F otherwhise.
+   :returns: T if the validation could be performed successfully, F otherwise.
    
    .. zeek:see:: ssl_extension_signed_certificate_timestamp
                 x509_ocsp_ext_signed_certificate_timestamp

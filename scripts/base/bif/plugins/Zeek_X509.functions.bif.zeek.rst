@@ -63,7 +63,7 @@ Functions
                     certificate extension; in that case, it is necessary for validation.
    
 
-   :returns: T if the validation could be performed succesfully, F otherwhise.
+   :returns: T if the validation could be performed successfully, F otherwise.
    
    .. zeek:see:: ssl_extension_signed_certificate_timestamp
                 x509_ocsp_ext_signed_certificate_timestamp

@@ -384,7 +384,7 @@ Events
    :c: The connection.
    
 
-   :line: The ouput line.
+   :line: The output line.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_input_line  login_prompt login_success login_terminal rsh_reply

@@ -49,7 +49,7 @@ Events
    :ctx_id: The context identifier of the data representation.
    
 
-   :uuid: The string interpretted uuid of the endpoint being requested.
+   :uuid: The string interpreted uuid of the endpoint being requested.
    
 
    :ver_major: The major version of the endpoint being requested.
@@ -97,7 +97,7 @@ Events
    :ctx_id: The context identifier of the data representation.
    
 
-   :uuid: The string interpretted uuid of the endpoint being requested.
+   :uuid: The string interpreted uuid of the endpoint being requested.
    
 
    :ver_major: The major version of the endpoint being requested.
@@ -149,7 +149,7 @@ Events
    :ptype_id: Numeric representation of the procedure type of the message.
    
 
-   :ptype: Enum representation of the prodecure type of the message.
+   :ptype: Enum representation of the procedure type of the message.
    
    .. zeek:see:: dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 

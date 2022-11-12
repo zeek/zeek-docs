@@ -55,7 +55,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *allocation* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -104,7 +104,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *end_of_file* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -128,7 +128,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *fs_control* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -152,7 +152,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *fs_object_id* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -179,7 +179,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *full_EA* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -203,7 +203,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *link* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -230,7 +230,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *mode* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -254,7 +254,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *pipe* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -281,7 +281,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *position* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -329,7 +329,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *file* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -356,7 +356,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *short_name* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
@@ -380,7 +380,7 @@ Events
    Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
    version 2 requests of type *set_info* of the *valid_data_length* subtype
    
-   For more infomation, see MS-SMB2:2.2.39
+   For more information, see MS-SMB2:2.2.39
    
 
    :c: The connection.
