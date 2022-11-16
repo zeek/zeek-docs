@@ -3712,13 +3712,13 @@ Types
       name: :zeek:type:`string` :zeek:attr:`&log`
          Name of the zeek event.
 
-      times_queued: :zeek:type:`count` :zeek:attr:`&log`
-         Times it was queued, as captured by event hook.
+      times_called: :zeek:type:`count` :zeek:attr:`&log`
+         Times it was called, as counted by the event handlers.
    :Attributes: :zeek:attr:`&log`
 
    Statistics about how many times each event name is queued.
    
-   .. zeek:see:: get_event_handler_call_counts
+   .. zeek:see:: get_event_handler_stats
 
 .. zeek:type:: EventNameStats
    :source-code: base/init-bare.zeek 804 804

@@ -11,23 +11,22 @@ Summary
 ~~~~~~~
 Functions
 #########
-=============================================================== =========================================================================
-:zeek:id:`get_broker_stats`: :zeek:type:`function`              Returns statistics about Broker communication.
-:zeek:id:`get_conn_stats`: :zeek:type:`function`                Returns Zeek traffic statistics.
-:zeek:id:`get_dns_stats`: :zeek:type:`function`                 Returns statistics about DNS lookup activity.
-:zeek:id:`get_event_handler_call_counts`: :zeek:type:`function` Returns a list of event handlers that were called and the number of times
-                                                                each was called.
-:zeek:id:`get_event_stats`: :zeek:type:`function`               Returns statistics about the event engine.
-:zeek:id:`get_file_analysis_stats`: :zeek:type:`function`       Returns statistics about file analysis.
-:zeek:id:`get_gap_stats`: :zeek:type:`function`                 Returns statistics about TCP gaps.
-:zeek:id:`get_matcher_stats`: :zeek:type:`function`             Returns statistics about the regular expression engine.
-:zeek:id:`get_net_stats`: :zeek:type:`function`                 Returns packet capture statistics.
-:zeek:id:`get_proc_stats`: :zeek:type:`function`                Returns Zeek process statistics.
-:zeek:id:`get_reassembler_stats`: :zeek:type:`function`         Returns statistics about reassembler usage.
-:zeek:id:`get_reporter_stats`: :zeek:type:`function`            Returns statistics about reporter messages and weirds.
-:zeek:id:`get_thread_stats`: :zeek:type:`function`              Returns statistics about thread usage.
-:zeek:id:`get_timer_stats`: :zeek:type:`function`               Returns statistics about timer usage.
-=============================================================== =========================================================================
+========================================================= =======================================================
+:zeek:id:`get_broker_stats`: :zeek:type:`function`        Returns statistics about Broker communication.
+:zeek:id:`get_conn_stats`: :zeek:type:`function`          Returns Zeek traffic statistics.
+:zeek:id:`get_dns_stats`: :zeek:type:`function`           Returns statistics about DNS lookup activity.
+:zeek:id:`get_event_handler_stats`: :zeek:type:`function` Returns statistics about calls to event handlers.
+:zeek:id:`get_event_stats`: :zeek:type:`function`         Returns statistics about the event engine.
+:zeek:id:`get_file_analysis_stats`: :zeek:type:`function` Returns statistics about file analysis.
+:zeek:id:`get_gap_stats`: :zeek:type:`function`           Returns statistics about TCP gaps.
+:zeek:id:`get_matcher_stats`: :zeek:type:`function`       Returns statistics about the regular expression engine.
+:zeek:id:`get_net_stats`: :zeek:type:`function`           Returns packet capture statistics.
+:zeek:id:`get_proc_stats`: :zeek:type:`function`          Returns Zeek process statistics.
+:zeek:id:`get_reassembler_stats`: :zeek:type:`function`   Returns statistics about reassembler usage.
+:zeek:id:`get_reporter_stats`: :zeek:type:`function`      Returns statistics about reporter messages and weirds.
+:zeek:id:`get_thread_stats`: :zeek:type:`function`        Returns statistics about thread usage.
+:zeek:id:`get_timer_stats`: :zeek:type:`function`         Returns statistics about timer usage.
+========================================================= =======================================================
 
 
 Detailed Interface
@@ -104,13 +103,12 @@ Functions
                 get_broker_stats
                 get_reporter_stats
 
-.. zeek:id:: get_event_handler_call_counts
-   :source-code: base/bif/stats.bif.zeek 266 266
+.. zeek:id:: get_event_handler_stats
+   :source-code: base/bif/stats.bif.zeek 265 265
 
    :Type: :zeek:type:`function` () : :zeek:type:`EventNameStats`
 
-   Returns a list of event handlers that were called and the number of times
-   each was called.
+   Returns statistics about calls to event handlers.
    
 
    :returns: A record with event call statistics.
