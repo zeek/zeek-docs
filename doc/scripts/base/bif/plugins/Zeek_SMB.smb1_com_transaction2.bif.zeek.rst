@@ -28,7 +28,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb1_trans2_find_first2_request
-   :source-code: base/protocols/smb/smb1-main.zeek 243 246
+   :source-code: base/protocols/smb/smb1-main.zeek 244 247
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, args: :zeek:type:`SMB1::Find_First2_Request_Args`)
 
@@ -51,7 +51,7 @@ Events
       smb1_trans2_get_dfs_referral_request
 
 .. zeek:id:: smb1_trans2_get_dfs_referral_request
-   :source-code: base/protocols/smb/smb1-main.zeek 233 236
+   :source-code: base/protocols/smb/smb1-main.zeek 234 237
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
@@ -74,7 +74,7 @@ Events
       smb1_trans2_query_path_info_request
 
 .. zeek:id:: smb1_trans2_query_path_info_request
-   :source-code: base/protocols/smb/smb1-main.zeek 238 241
+   :source-code: base/protocols/smb/smb1-main.zeek 239 242
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
