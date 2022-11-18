@@ -573,11 +573,13 @@ code").
 It can also warn about unused functions, hooks, and event handlers.  The intent
 behind these checks is to catch instances where the script writer has introduced
 typos in names, or has forgotten to remove code that's no longer needed.  For
-functions and hooks, "unused" means the function/hook is not exported or in the
-global scope (nor deprecated), and no "live" (i.e., not "unused")
-function/hook/event handler calls it.  For event handlers, "unused" means that
-the event engine does not generate the event, nor do any "live"
-function/hook/event handler generates (and the event handler is not deprecated).
+functions and hooks, "unused" means the function/hook is neither exported nor in the
+global scope, and no "live" (i.e., not "unused") function/hook/event handler
+calls it.  For event handlers, "unused" means that the event engine does not
+generate the event, nor do any "live" functions/hooks/event handlers generate it.
+
+Zeek never reports any functions/hooks/event handlers that are marked deprecated
+(via :zeek:attr:`&deprecated`) as unused.
 
 For cases where it's desirable to suppress the warning, the
 ``&is_used`` attribute may be applied, for example:
