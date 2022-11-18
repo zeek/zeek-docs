@@ -33,7 +33,14 @@ We provide official Docker images on Docker Hub at https://hub.docker.com/u/zeek
     * For a specific release: ``docker pull zeekurity/zeek:5.0.0-rc1``
     * For the nightly build: ``docker pull zeekurity/zeek-dev:latest``
 
-The images run Debian and feature a complete Zeek installation with ``zeek``,
+Additionally, we push these images to Amazon's Public Elastic Container
+Registry (ECR) into the `Zeek Project <https://gallery.ecr.aws/zeek>`_
+public gallery. To use Amazon's container registry instead of Docker Hub,
+prefix images with ``public.ecr.aws/zeek`` instead of ``zeekurity``.
+
+    * For instance, to pull the latest feature release: ``docker pull public.ecr.aws/zeek/zeek:latest``
+
+The images are Debian-based and feature a complete Zeek installation with ``zeek``,
 ``zkg``, and the Spicy toolchain, but are otherwise minimal to avoid bloat in
 derived images. For example, if you'd like to install Zeek plugins in those
 images, you'll need to install their needed toolchain, typically at least
