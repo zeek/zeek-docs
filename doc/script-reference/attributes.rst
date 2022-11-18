@@ -74,7 +74,7 @@ it to write. Zeek features the following attributes:
     - Suppress "used before defined" warnings from ``zeek -u`` analysis.
 
   * - :zeek:attr:`&is_used`
-    - Suppress "unused assignment" warnings from ``zeek -u`` analysis.
+    - Suppress lack-of-use warnings from ``zeek -u`` analysis.
 
   * - :zeek:attr:`&group`
     - Annotates event handlers and hooks with event groups.
@@ -566,16 +566,45 @@ warnings.
 &is_used
 --------
 
-Zeek has static analysis capabilities
-for detecting locations in a script where local variables are assigned
-values that are not subsequently used (i.e. "dead code").
-For cases where it's desirable
-to suppress the warning, the ``&is_used`` attribute may be applied, for
-example:
+Zeek has static analysis capabilities for detecting locations in a script where
+local variables are assigned values that are not subsequently used (i.e. "dead
+code").
+
+It can also warn about unused functions, hooks, and event handlers.  The intent
+behind these checks is to catch instances where the script writer has introduced
+typos in names, or has forgotten to remove code that's no longer needed.  For
+functions and hooks, "unused" means the function/hook is neither exported nor in the
+global scope, and no "live" (i.e., not "unused") function/hook/event handler
+calls it.  For event handlers, "unused" means that the event engine does not
+generate the event, nor do any "live" functions/hooks/event handlers generate it.
+
+Zeek never reports any functions/hooks/event handlers that are marked deprecated
+(via :zeek:attr:`&deprecated`) as unused.
+
+For cases where it's desirable to suppress the warning, the
+``&is_used`` attribute may be applied, for example:
 
 .. code-block:: zeek
   :caption: test.zeek
   :linenos:
+
+    module Test;
+
+    export {
+        global baz: function();
+    }
+
+    function foo()
+        {
+        }
+
+    function bar() &is_used
+        {
+        }
+
+    function baz()
+        {
+        }
 
     event zeek_init()
         {
@@ -589,7 +618,8 @@ example:
 
 ::
 
-  warning: please_warn assignment unused: please_warn = test; ./test.zeek, line 3
+  warning in ./test.zeek, line 7: non-exported function does not have any callers (Test::foo)
+  warning: Test::please_warn assignment unused: Test::please_warn = test; ./test.zeek, line 21
 
 .. zeek:attr:: &group
 
