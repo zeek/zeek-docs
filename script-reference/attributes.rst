@@ -74,7 +74,7 @@ it to write. Zeek features the following attributes:
     - Suppress "used before defined" warnings from ``zeek -u`` analysis.
 
   * - :zeek:attr:`&is_used`
-    - Suppress "unused assignment" warnings from ``zeek -u`` analysis.
+    - Suppress lack-of-use warnings from ``zeek -u`` analysis.
 
   * - :zeek:attr:`&group`
     - Annotates event handlers and hooks with event groups.
@@ -568,12 +568,41 @@ warnings.
 
 Zeek has static analysis capabilities for detecting locations in a script where
 local variables are assigned values that are not subsequently used (i.e. "dead
-code").  For cases where it's desirable to suppress the warning, the
+code").
+
+It can also warn about unused functions, hooks, and event handlers.  The intent
+behind these checks is to catch instances where the script writer has introduced
+typos in names, or has forgotten to remove code that's no longer needed.  For
+functions and hooks, "unused" means the function/hook is not exported or in the
+global scope (nor deprecated), and no "live" (i.e., not "unused")
+function/hook/event handler calls it.  For event handlers, "unused" means that
+the event engine does not generate the event, nor do any "live"
+function/hook/event handler generates (and the event handler is not deprecated).
+
+For cases where it's desirable to suppress the warning, the
 ``&is_used`` attribute may be applied, for example:
 
 .. code-block:: zeek
   :caption: test.zeek
   :linenos:
+
+    module Test;
+
+    export {
+        global baz: function();
+    }
+
+    function foo()
+        {
+        }
+
+    function bar() &is_used
+        {
+        }
+
+    function baz()
+        {
+        }
 
     event zeek_init()
         {
@@ -587,7 +616,8 @@ code").  For cases where it's desirable to suppress the warning, the
 
 ::
 
-  warning: please_warn assignment unused: please_warn = test; ./test.zeek, line 3
+  warning in ./test.zeek, line 7: non-exported function does not have any callers (Test::foo)
+  warning: Test::please_warn assignment unused: Test::please_warn = test; ./test.zeek, line 21
 
 .. zeek:attr:: &group
 
