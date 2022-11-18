@@ -566,12 +566,10 @@ warnings.
 &is_used
 --------
 
-Zeek has static analysis capabilities
-for detecting locations in a script where local variables are assigned
-values that are not subsequently used (i.e. "dead code").
-For cases where it's desirable
-to suppress the warning, the ``&is_used`` attribute may be applied, for
-example:
+Zeek has static analysis capabilities for detecting locations in a script where
+local variables are assigned values that are not subsequently used (i.e. "dead
+code").  For cases where it's desirable to suppress the warning, the
+``&is_used`` attribute may be applied, for example:
 
 .. code-block:: zeek
   :caption: test.zeek
