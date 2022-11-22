@@ -280,7 +280,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 4359 4373
+   :source-code: base/init-bare.zeek 4363 4377
 
    :Type: :zeek:type:`record`
 
@@ -325,7 +325,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 4375 4381
+   :source-code: base/init-bare.zeek 4379 4385
 
    :Type: :zeek:type:`record`
 
@@ -346,7 +346,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 4383 4386
+   :source-code: base/init-bare.zeek 4387 4390
 
    :Type: :zeek:type:`record`
 
@@ -359,7 +359,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 4388 4394
+   :source-code: base/init-bare.zeek 4392 4398
 
    :Type: :zeek:type:`record`
 
@@ -380,7 +380,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 4397 4404
+   :source-code: base/init-bare.zeek 4401 4408
 
    :Type: :zeek:type:`record`
 
