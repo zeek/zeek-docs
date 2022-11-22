@@ -87,7 +87,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Weird::ignore_hosts
-   :source-code: base/frameworks/notice/weird.zeek 254 254
+   :source-code: base/frameworks/notice/weird.zeek 255 255
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Runtime Options
    and weird name into this set.
 
 .. zeek:id:: Weird::weird_do_not_ignore_repeats
-   :source-code: base/frameworks/notice/weird.zeek 258 258
+   :source-code: base/frameworks/notice/weird.zeek 259 259
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -136,6 +136,7 @@ Redefinable Options
             ["irc_invalid_whois_user_line"] = Weird::ACTION_LOG,
             ["FTP_too_many_pending_commands"] = Weird::ACTION_LOG_PER_CONN,
             ["DNS_label_len_gt_name_len"] = Weird::ACTION_LOG_PER_ORIG,
+            ["FTP_max_command_length_exceeded"] = Weird::ACTION_LOG_PER_CONN,
             ["irc_invalid_dcc_message_format"] = Weird::ACTION_LOG,
             ["netbios_server_session_request"] = Weird::ACTION_LOG,
             ["RPC_rexmit_inconsistency"] = Weird::ACTION_LOG,
@@ -168,8 +169,8 @@ Redefinable Options
             ["base64_illegal_encoding"] = Weird::ACTION_LOG,
             ["bad_ident_port"] = Weird::ACTION_LOG,
             ["simultaneous_open"] = Weird::ACTION_LOG_PER_CONN,
-            ["ident_request_addendum"] = Weird::ACTION_LOG,
             ["DNS_truncated_quest_too_short"] = Weird::ACTION_LOG,
+            ["ident_request_addendum"] = Weird::ACTION_LOG,
             ["illegal_%_at_end_of_URI"] = Weird::ACTION_LOG,
             ["irc_invalid_mode_message_format"] = Weird::ACTION_LOG,
             ["pop3_server_sending_client_commands"] = Weird::ACTION_LOG,
@@ -221,8 +222,8 @@ Redefinable Options
             ["DNS_RR_bad_length"] = Weird::ACTION_LOG,
             ["SSL_many_server_names"] = Weird::ACTION_LOG,
             ["irc_invalid_whois_channel_line"] = Weird::ACTION_LOG,
-            ["DNS_label_len_gt_pkt"] = Weird::ACTION_LOG_PER_ORIG,
             ["irc_line_size_exceeded"] = Weird::ACTION_LOG,
+            ["DNS_label_len_gt_pkt"] = Weird::ACTION_LOG_PER_ORIG,
             ["DNS_Conn_count_too_large"] = Weird::ACTION_LOG,
             ["irc_invalid_command"] = Weird::ACTION_LOG,
             ["inappropriate_FIN"] = Weird::ACTION_LOG,
@@ -289,7 +290,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Weird::did_log
-   :source-code: base/frameworks/notice/weird.zeek 272 272
+   :source-code: base/frameworks/notice/weird.zeek 273 273
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -300,7 +301,7 @@ State Variables
    could cause overload during storms.
 
 .. zeek:id:: Weird::did_notice
-   :source-code: base/frameworks/notice/weird.zeek 276 276
+   :source-code: base/frameworks/notice/weird.zeek 277 277
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -310,7 +311,7 @@ State Variables
    duplicate notices from being raised.
 
 .. zeek:id:: Weird::weird_ignore
-   :source-code: base/frameworks/notice/weird.zeek 267 267
+   :source-code: base/frameworks/notice/weird.zeek 268 268
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``10.0 mins`` :zeek:attr:`&redef`
@@ -419,7 +420,7 @@ Types
 Events
 ######
 .. zeek:id:: Weird::log_weird
-   :source-code: base/frameworks/notice/weird.zeek 282 282
+   :source-code: base/frameworks/notice/weird.zeek 283 283
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Weird::Info`)
 
@@ -441,7 +442,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Weird::weird
-   :source-code: base/frameworks/notice/weird.zeek 317 406
+   :source-code: base/frameworks/notice/weird.zeek 318 407
 
    :Type: :zeek:type:`function` (w: :zeek:type:`Weird::Info`) : :zeek:type:`void`
 
