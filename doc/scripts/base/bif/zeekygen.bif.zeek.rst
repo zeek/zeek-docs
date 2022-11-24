@@ -12,14 +12,17 @@ Summary
 ~~~~~~~
 Functions
 #########
-=========================================================== =============================================================================
-:zeek:id:`get_identifier_comments`: :zeek:type:`function`   Retrieve the Zeekygen-style comments (``##``) associated with an identifier
-                                                            (e.g.
-:zeek:id:`get_package_readme`: :zeek:type:`function`        Retrieve the contents of a Zeek script package's README file.
-:zeek:id:`get_record_field_comments`: :zeek:type:`function` Retrieve the Zeekygen-style comments (``##``) associated with a record field.
-:zeek:id:`get_script_comments`: :zeek:type:`function`       Retrieve the Zeekygen-style summary comments (``##!``) associated with
-                                                            a Zeek script.
-=========================================================== =============================================================================
+=================================================================== =============================================================================
+:zeek:id:`get_identifier_comments`: :zeek:type:`function`           Retrieve the Zeekygen-style comments (``##``) associated with an identifier
+                                                                    (e.g.
+:zeek:id:`get_identifier_declaring_script`: :zeek:type:`function`   Retrieve the declaring script associated with an identifier
+                                                                    (e.g.
+:zeek:id:`get_package_readme`: :zeek:type:`function`                Retrieve the contents of a Zeek script package's README file.
+:zeek:id:`get_record_field_comments`: :zeek:type:`function`         Retrieve the Zeekygen-style comments (``##``) associated with a record field.
+:zeek:id:`get_record_field_declaring_script`: :zeek:type:`function` Retrieve the declaring script associated with a record field.
+:zeek:id:`get_script_comments`: :zeek:type:`function`               Retrieve the Zeekygen-style summary comments (``##!``) associated with
+                                                                    a Zeek script.
+=================================================================== =============================================================================
 
 
 Detailed Interface
@@ -39,10 +42,27 @@ Functions
    
 
    :returns: comments associated with *name*.  If *name* is not a known
-            identifier, an empty string is returned.
+            script-level identifier, an empty string is returned.
+
+.. zeek:id:: get_identifier_declaring_script
+   :source-code: base/bif/zeekygen.bif.zeek 29 29
+
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
+
+   Retrieve the declaring script associated with an identifier
+   (e.g. a variable or type).
+   
+
+   :name: a script-level identifier
+   
+
+   :returns: declaring script associated with *name*. If *name* is not a known
+            script-level identifier, an empty string is returned.
+   
+   .. zeek:see:: get_record_field_declaring_script
 
 .. zeek:id:: get_package_readme
-   :source-code: base/bif/zeekygen.bif.zeek 39 39
+   :source-code: base/bif/zeekygen.bif.zeek 51 51
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -57,23 +77,44 @@ Functions
             package, an empty string is returned.
 
 .. zeek:id:: get_record_field_comments
-   :source-code: base/bif/zeekygen.bif.zeek 50 50
+   :source-code: base/bif/zeekygen.bif.zeek 62 62
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
    Retrieve the Zeekygen-style comments (``##``) associated with a record field.
    
 
-   :name: the name of a record type and a field within it formatted like
-         a typical record field access: "<record_type>$<field>".
+   :name: the name of a script-level record type and a field within it formatted
+         like a typical record field access: "<record_type>$<field>".
    
 
    :returns: comments associated with the record field.  If *name* does
-            not point to a known record type or a known field within a record
-            type, an empty string is returned.
+            not point to a known script-level record type or a known field within
+            a record type, an empty string is returned.
+
+.. zeek:id:: get_record_field_declaring_script
+   :source-code: base/bif/zeekygen.bif.zeek 78 78
+
+   :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
+
+   Retrieve the declaring script associated with a record field.
+   
+   The declaring script for a field is different from the declaring script
+   of the record type itself when fields were added via redef.
+   
+
+   :name: the name of a script-level record type and a field within it formatted
+         like a typical record field access: "<record_type>$<field>".
+   
+
+   :returns: the declaring script associated with the record field.  If *name* does
+            not point to a known script-level record type or a known field within
+            a record type, an empty string is returned.
+   
+   .. zeek:see:: get_identifier_declaring_script
 
 .. zeek:id:: get_script_comments
-   :source-code: base/bif/zeekygen.bif.zeek 29 29
+   :source-code: base/bif/zeekygen.bif.zeek 41 41
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
