@@ -236,14 +236,14 @@ To install these, you can use:
      choco install -y --no-progress openssl
 
   Once the dependencies are installed, you will need to add the Git installation
-  to your PATH (C:\Program Files\Git\bin by default). This is needed for the
+  to your PATH (``C:\Program Files\Git\bin`` by default). This is needed for the
   ``sh`` command to be available during the build. Once all of the dependencies
   are in place, you will need to open a shell (PowerShell or cmd) and add the
   development environment to it. The following command is for running on an x86_64 host.
 
   .. code-block:: console
 
-     c:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat x86_amd64
+     C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvarsall.bat x86_amd64
 
   Now you can build via cmake:
 
