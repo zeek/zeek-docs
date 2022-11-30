@@ -32,8 +32,6 @@ Redefinitions
 ==================================================================== ============================================================
 :zeek:type:`Log::ID`: :zeek:type:`enum`                              
                                                                      
-                                                                     * :zeek:enum:`SMB::AUTH_LOG`
-                                                                     
                                                                      * :zeek:enum:`SMB::FILES_LOG`
                                                                      
                                                                      * :zeek:enum:`SMB::MAPPING_LOG`
@@ -74,7 +72,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMB::logged_file_actions
-   :source-code: base/protocols/smb/main.zeek 39 39
+   :source-code: base/protocols/smb/main.zeek 38 38
 
    :Type: :zeek:type:`set` [:zeek:type:`SMB::Action`]
    :Attributes: :zeek:attr:`&redef`
@@ -96,7 +94,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: SMB::Action
-   :source-code: base/protocols/smb/main.zeek 18 37
+   :source-code: base/protocols/smb/main.zeek 17 36
 
    :Type: :zeek:type:`enum`
 
@@ -133,7 +131,7 @@ Types
    Abstracted actions for SMB file actions.
 
 .. zeek:type:: SMB::CmdInfo
-   :source-code: base/protocols/smb/main.zeek 95 130
+   :source-code: base/protocols/smb/main.zeek 94 129
 
    :Type: :zeek:type:`record`
 
@@ -199,7 +197,7 @@ Types
    This record is for the smb_cmd.log
 
 .. zeek:type:: SMB::FileInfo
-   :source-code: base/protocols/smb/main.zeek 49 72
+   :source-code: base/protocols/smb/main.zeek 48 71
 
    :Type: :zeek:type:`record`
 
@@ -243,7 +241,7 @@ Types
    This record is for the smb_files.log
 
 .. zeek:type:: SMB::State
-   :source-code: base/protocols/smb/main.zeek 134 157
+   :source-code: base/protocols/smb/main.zeek 133 154
 
    :Type: :zeek:type:`record`
 
@@ -265,9 +263,6 @@ Types
       tid_map: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::TreeInfo` :zeek:attr:`&optional`
          Tree map to retrieve tree information based on the tree ID.
 
-      uid_map: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
-         User map to retrieve user name based on the user ID.
-
       pipe_map: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
          Pipe map to retrieve UUID based on the file ID of a pipe.
 
@@ -280,7 +275,7 @@ Types
    the file and tree map of the connection.
 
 .. zeek:type:: SMB::TreeInfo
-   :source-code: base/protocols/smb/main.zeek 75 92
+   :source-code: base/protocols/smb/main.zeek 74 91
 
    :Type: :zeek:type:`record`
 
@@ -311,13 +306,13 @@ Types
 Hooks
 #####
 .. zeek:id:: SMB::log_policy_files
-   :source-code: base/protocols/smb/main.zeek 14 14
+   :source-code: base/protocols/smb/main.zeek 13 13
 
    :Type: :zeek:type:`Log::PolicyHook`
 
 
 .. zeek:id:: SMB::log_policy_mapping
-   :source-code: base/protocols/smb/main.zeek 15 15
+   :source-code: base/protocols/smb/main.zeek 14 14
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -325,7 +320,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SMB::set_current_file
-   :source-code: base/protocols/smb/main.zeek 191 201
+   :source-code: base/protocols/smb/main.zeek 188 198
 
    :Type: :zeek:type:`function` (smb_state: :zeek:type:`SMB::State`, file_id: :zeek:type:`count`) : :zeek:type:`void`
    :Attributes: :zeek:attr:`&redef`
@@ -333,7 +328,7 @@ Functions
    This is an internally used function.
 
 .. zeek:id:: SMB::write_file_log
-   :source-code: base/protocols/smb/main.zeek 203 231
+   :source-code: base/protocols/smb/main.zeek 200 228
 
    :Type: :zeek:type:`function` (state: :zeek:type:`SMB::State`) : :zeek:type:`void`
    :Attributes: :zeek:attr:`&redef`
