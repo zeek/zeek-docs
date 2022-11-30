@@ -744,11 +744,6 @@ Types
          (present if :doc:`/scripts/base/protocols/snmp/main.zeek` is loaded)
 
 
-      .. zeek:enum:: SMB::AUTH_LOG Log::ID
-
-         (present if :doc:`/scripts/base/protocols/smb/main.zeek` is loaded)
-
-
       .. zeek:enum:: SMB::MAPPING_LOG Log::ID
 
          (present if :doc:`/scripts/base/protocols/smb/main.zeek` is loaded)
