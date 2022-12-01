@@ -273,7 +273,7 @@
 
 :doc:`base/protocols/mqtt </scripts/base/protocols/mqtt/index>`
 
-   Definitions of constants used by the MQTT protocol
+   Support for MQTT protocol analysis.
 
 :doc:`base/protocols/mysql </scripts/base/protocols/mysql/index>`
 
@@ -394,10 +394,6 @@
 
    Detect hosts that are running traceroute.
 
-:doc:`policy/protocols/mqtt </scripts/policy/protocols/mqtt/index>`
-
-   Support for MQTT protocol analysis.
-
 :doc:`policy/tuning </scripts/policy/tuning/index>`
 
    Miscellaneous tuning parameters.
@@ -406,6 +402,9 @@
 
    Sets various defaults, and prints warning messages to stdout under
    certain conditions.
+
+:doc:`policy/protocols/mqtt </scripts/policy/protocols/mqtt/index>`
+
 
 :doc:`policy/frameworks/management/node </scripts/policy/frameworks/management/node/index>`
 

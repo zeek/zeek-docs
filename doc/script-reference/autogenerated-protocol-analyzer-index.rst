@@ -7141,7 +7141,7 @@ Events
 ++++++
 
 .. zeek:id:: mqtt_connect
-   :source-code: policy/protocols/mqtt/main.zeek 177 188
+   :source-code: base/protocols/mqtt/main.zeek 177 188
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`MQTT::ConnectMsg`)
 
@@ -7154,7 +7154,7 @@ Events
    :msg: MQTT connect message fields.
 
 .. zeek:id:: mqtt_connack
-   :source-code: policy/protocols/mqtt/main.zeek 190 197
+   :source-code: base/protocols/mqtt/main.zeek 190 197
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`MQTT::ConnectAckMsg`)
 
@@ -7199,7 +7199,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubrec
-   :source-code: policy/protocols/mqtt/main.zeek 257 266
+   :source-code: base/protocols/mqtt/main.zeek 257 266
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_id: :zeek:type:`count`)
 
@@ -7215,7 +7215,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubrel
-   :source-code: policy/protocols/mqtt/main.zeek 268 277
+   :source-code: base/protocols/mqtt/main.zeek 268 277
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg_id: :zeek:type:`count`)
 
@@ -7247,7 +7247,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_subscribe
-   :source-code: policy/protocols/mqtt/main.zeek 306 318
+   :source-code: base/protocols/mqtt/main.zeek 306 318
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`, topics: :zeek:type:`string_vec`, requested_qos: :zeek:type:`index_vec`)
 
@@ -7269,7 +7269,7 @@ Events
    :requested_qos: The desired QoS option associated with each topic.
 
 .. zeek:id:: mqtt_suback
-   :source-code: policy/protocols/mqtt/main.zeek 320 333
+   :source-code: base/protocols/mqtt/main.zeek 320 333
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`, granted_qos: :zeek:type:`count`)
 
@@ -7285,7 +7285,7 @@ Events
    :msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_unsubscribe
-   :source-code: policy/protocols/mqtt/main.zeek 335 346
+   :source-code: base/protocols/mqtt/main.zeek 335 346
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`, topics: :zeek:type:`string_vec`)
 
@@ -7301,7 +7301,7 @@ Events
    :topics: The topics being unsubscribed from
 
 .. zeek:id:: mqtt_unsuback
-   :source-code: policy/protocols/mqtt/main.zeek 348 360
+   :source-code: base/protocols/mqtt/main.zeek 348 360
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg_id: :zeek:type:`count`)
 

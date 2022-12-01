@@ -159,7 +159,7 @@ Redefinable Options
 :zeek:id:`log_rotate_base_time`: :zeek:type:`string` :zeek:attr:`&redef`                                 Base time of log rotations in 24-hour time format (``%H:%M``), e.g.
 :zeek:id:`max_analyzer_violations`: :zeek:type:`count` :zeek:attr:`&redef`                               The maximum number of analyzer violations the core generates before
                                                                                                          suppressing them for a given analyzer instance.
-:zeek:id:`max_timer_expires`: :zeek:type:`count` :zeek:attr:`&redef`                                     The maximum number of timers to expire after processing each new
+:zeek:id:`max_timer_expires`: :zeek:type:`count` :zeek:attr:`&redef`                                     The maximum number of expired timers to process after processing each new
                                                                                                          packet.
 :zeek:id:`mmdb_dir`: :zeek:type:`string` :zeek:attr:`&redef`                                             The directory containing MaxMind DB (.mmdb) files to use for GeoIP support.
 :zeek:id:`non_analyzed_lifetime`: :zeek:type:`interval` :zeek:attr:`&redef`                              If a connection belongs to an application that we don't analyze,
@@ -1636,6 +1636,12 @@ Redefinable Options
 
          Modbus::ports
 
+   :Redefinition: from :doc:`/scripts/base/protocols/mqtt/main.zeek`
+
+      ``+=``::
+
+         MQTT::ports
+
    :Redefinition: from :doc:`/scripts/base/protocols/ntp/main.zeek`
 
       ``+=``::
@@ -1702,12 +1708,6 @@ Redefinable Options
 
          XMPP::ports
 
-   :Redefinition: from :doc:`/scripts/policy/protocols/mqtt/main.zeek`
-
-      ``+=``::
-
-         MQTT::ports
-
 
    Ports which the core considers being likely used by servers. For ports in
    this set, it may heuristically decide to flip the direction of the
@@ -1748,8 +1748,8 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``300``
 
-   The maximum number of timers to expire after processing each new
-   packet.  The value trades off spreading out the timer expiration load
+   The maximum number of expired timers to process after processing each new
+   packet. The value trades off spreading out the timer expiration load
    with possibly having to hold state longer.  A value of 0 means
    "process all expired timers with each new packet".
 
@@ -7799,6 +7799,14 @@ Types
          (present if :doc:`/scripts/base/protocols/modbus/main.zeek` is loaded)
 
 
+      mqtt: :zeek:type:`MQTT::ConnectInfo` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+
+
+      mqtt_state: :zeek:type:`MQTT::State` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+
+
       mysql: :zeek:type:`MySQL::Info` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/mysql/main.zeek` is loaded)
 
@@ -7861,14 +7869,6 @@ Types
 
       known_services_done: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/conn/known-services.zeek` is loaded)
-
-
-      mqtt: :zeek:type:`MQTT::ConnectInfo` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/mqtt/main.zeek` is loaded)
-
-
-      mqtt_state: :zeek:type:`MQTT::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/mqtt/main.zeek` is loaded)
 
 
       speculative_service: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`

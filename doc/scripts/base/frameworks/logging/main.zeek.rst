@@ -704,6 +704,21 @@ Types
          (present if :doc:`/scripts/base/protocols/modbus/main.zeek` is loaded)
 
 
+      .. zeek:enum:: MQTT::CONNECT_LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+
+
+      .. zeek:enum:: MQTT::SUBSCRIBE_LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+
+
+      .. zeek:enum:: MQTT::PUBLISH_LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+
+
       .. zeek:enum:: mysql::LOG Log::ID
 
          (present if :doc:`/scripts/base/protocols/mysql/main.zeek` is loaded)
@@ -847,21 +862,6 @@ Types
       .. zeek:enum:: Modbus::REGISTER_CHANGE_LOG Log::ID
 
          (present if :doc:`/scripts/policy/protocols/modbus/track-memmap.zeek` is loaded)
-
-
-      .. zeek:enum:: MQTT::CONNECT_LOG Log::ID
-
-         (present if :doc:`/scripts/policy/protocols/mqtt/main.zeek` is loaded)
-
-
-      .. zeek:enum:: MQTT::SUBSCRIBE_LOG Log::ID
-
-         (present if :doc:`/scripts/policy/protocols/mqtt/main.zeek` is loaded)
-
-
-      .. zeek:enum:: MQTT::PUBLISH_LOG Log::ID
-
-         (present if :doc:`/scripts/policy/protocols/mqtt/main.zeek` is loaded)
 
 
       .. zeek:enum:: SMB::CMD_LOG Log::ID

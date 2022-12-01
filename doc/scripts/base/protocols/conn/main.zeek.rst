@@ -54,7 +54,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::Info
-   :source-code: base/protocols/conn/main.zeek 21 152
+   :source-code: base/protocols/conn/main.zeek 21 160
 
    :Type: :zeek:type:`record`
 
@@ -75,8 +75,16 @@ Types
          the connection.
 
       duration: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         How long the connection lasted.  For 3-way or 4-way connection
-         tear-downs, this will not include the final ACK.
+         How long the connection lasted.
+         
+         .. note:: The duration doesn't cover trailing "non-productive"
+            TCP packets (i.e., ones not contributing new stream payload)
+            once a direction is closed.  For example, for regular
+            3-way/4-way connection tear-downs it doesn't include the
+            final ACK.  The reason is largely historic: this approach
+            allows more accurate computation of connection data rates.
+            Zeek does however reflect such trailing packets in the
+            connection history.
 
       orig_bytes: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
          The number of payload bytes the originator sent. For TCP
@@ -233,7 +241,7 @@ Types
 Events
 ######
 .. zeek:id:: Conn::log_conn
-   :source-code: base/protocols/conn/main.zeek 156 156
+   :source-code: base/protocols/conn/main.zeek 164 164
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Conn::Info`)
 
