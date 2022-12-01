@@ -1,7 +1,7 @@
 :tocdepth: 3
 
-policy/protocols/mqtt/main.zeek
-===============================
+base/protocols/mqtt/main.zeek
+=============================
 .. zeek:namespace:: MQTT
 
 Implements base functionality for MQTT (v3.1.1) analysis.
@@ -72,7 +72,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: MQTT::ConnectInfo
-   :source-code: policy/protocols/mqtt/main.zeek 24 45
+   :source-code: base/protocols/mqtt/main.zeek 24 45
 
    :Type: :zeek:type:`record`
 
@@ -105,7 +105,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishInfo
-   :source-code: policy/protocols/mqtt/main.zeek 67 107
+   :source-code: base/protocols/mqtt/main.zeek 67 107
 
    :Type: :zeek:type:`record`
 
@@ -161,7 +161,7 @@ Types
 
 
 .. zeek:type:: MQTT::State
-   :source-code: policy/protocols/mqtt/main.zeek 122 128
+   :source-code: base/protocols/mqtt/main.zeek 122 128
 
    :Type: :zeek:type:`record`
 
@@ -175,7 +175,7 @@ Types
    Data structure to track pub/sub messaging state of a given connection.
 
 .. zeek:type:: MQTT::SubUnsub
-   :source-code: policy/protocols/mqtt/main.zeek 19 23
+   :source-code: base/protocols/mqtt/main.zeek 19 23
 
    :Type: :zeek:type:`enum`
 
@@ -186,7 +186,7 @@ Types
 
 
 .. zeek:type:: MQTT::SubscribeInfo
-   :source-code: policy/protocols/mqtt/main.zeek 47 65
+   :source-code: base/protocols/mqtt/main.zeek 47 65
 
    :Type: :zeek:type:`record`
 
@@ -218,7 +218,7 @@ Types
 Events
 ######
 .. zeek:id:: MQTT::log_mqtt
-   :source-code: policy/protocols/mqtt/main.zeek 111 111
+   :source-code: base/protocols/mqtt/main.zeek 111 111
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`MQTT::ConnectInfo`)
 
@@ -228,19 +228,19 @@ Events
 Hooks
 #####
 .. zeek:id:: MQTT::log_policy_connect
-   :source-code: policy/protocols/mqtt/main.zeek 15 15
+   :source-code: base/protocols/mqtt/main.zeek 15 15
 
    :Type: :zeek:type:`Log::PolicyHook`
 
 
 .. zeek:id:: MQTT::log_policy_publish
-   :source-code: policy/protocols/mqtt/main.zeek 17 17
+   :source-code: base/protocols/mqtt/main.zeek 17 17
 
    :Type: :zeek:type:`Log::PolicyHook`
 
 
 .. zeek:id:: MQTT::log_policy_subscribe
-   :source-code: policy/protocols/mqtt/main.zeek 16 16
+   :source-code: base/protocols/mqtt/main.zeek 16 16
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -248,7 +248,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: MQTT::publish_expire
-   :source-code: policy/protocols/mqtt/main.zeek 131 135
+   :source-code: base/protocols/mqtt/main.zeek 131 135
 
    :Type: :zeek:type:`function` (tbl: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`MQTT::PublishInfo`, idx: :zeek:type:`count`) : :zeek:type:`interval`
 
@@ -256,7 +256,7 @@ Functions
    yet simply causes the message to be logged.
 
 .. zeek:id:: MQTT::subscribe_expire
-   :source-code: policy/protocols/mqtt/main.zeek 137 141
+   :source-code: base/protocols/mqtt/main.zeek 137 141
 
    :Type: :zeek:type:`function` (tbl: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`MQTT::SubscribeInfo`, idx: :zeek:type:`count`) : :zeek:type:`interval`
 
