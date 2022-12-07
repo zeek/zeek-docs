@@ -52,7 +52,7 @@ analyzer packages.
   .. code-block:: console
 
     apt-get update
-    apt-get install -y --no-install-recommends g++ cmake make libpcap-dev
+    apt-get install -y g++ cmake make libpcap-dev
 
 The Dockerfile lives `here <https://github.com/zeek/zeek/blob/master/docker/Dockerfile>`_.
 
