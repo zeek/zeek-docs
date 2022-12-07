@@ -14,14 +14,24 @@ Events
 ==================================================== ==================================================================
 :zeek:id:`ssh1_server_host_key`: :zeek:type:`event`  During the :abbr:`SSH (Secure Shell)` key exchange, the server
                                                      supplies its public host key.
+:zeek:id:`ssh2_dh_gex_init`: :zeek:type:`event`      Generated if the connection uses a Diffie-Hellman Group Exchange
+                                                     key exchange method.
 :zeek:id:`ssh2_dh_server_params`: :zeek:type:`event` Generated if the connection uses a Diffie-Hellman Group Exchange
                                                      key exchange method.
+:zeek:id:`ssh2_ecc_init`: :zeek:type:`event`         The :abbr:`ECDH (Elliptic Curve Diffie-Hellman)` and
+                                                     :abbr:`ECMQV (Elliptic Curve Menezes-Qu-Vanstone)` key exchange
+                                                     algorithms use two ephemeral key pairs to generate a shared
+                                                     secret.
 :zeek:id:`ssh2_ecc_key`: :zeek:type:`event`          The :abbr:`ECDH (Elliptic Curve Diffie-Hellman)` and
                                                      :abbr:`ECMQV (Elliptic Curve Menezes-Qu-Vanstone)` key exchange
                                                      algorithms use two ephemeral key pairs to generate a shared
                                                      secret.
 :zeek:id:`ssh2_gss_error`: :zeek:type:`event`        In the event of a GSS-API error on the server, the server MAY send
                                                      send an error message with some additional details.
+:zeek:id:`ssh2_gss_init`: :zeek:type:`event`         In the event of a GSS-API key exchange, this event is raised on
+                                                     SSH_MSG_KEXGSS_INIT message.
+:zeek:id:`ssh2_rsa_secret`: :zeek:type:`event`       In the event of a GSS-API key exchange, this event is raised on
+                                                     SSH_MSG_KEXRSA_PUBKEY message.
 :zeek:id:`ssh2_server_host_key`: :zeek:type:`event`  During the :abbr:`SSH (Secure Shell)` key exchange, the server
                                                      supplies its public host key.
 :zeek:id:`ssh_auth_attempted`: :zeek:type:`event`    This event is generated when an :abbr:`SSH (Secure Shell)`
@@ -48,7 +58,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: ssh1_server_host_key
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 156 156
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 163 163
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, modulus: :zeek:type:`string`, exponent: :zeek:type:`string`)
 
@@ -76,14 +86,38 @@ Events
 
    :exponent: The exponent of the server's public host key.
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
       ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
-      ssh2_gss_error ssh2_ecc_key
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
+
+.. zeek:id:: ssh2_dh_gex_init
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 321 321
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
+
+   Generated if the connection uses a Diffie-Hellman Group Exchange
+   key exchange method. This event contains the direction of the key
+   exchange setup, which is indicated by the the SSH_MSG_KEX_DH_GEX_INIT
+   message as defined in :rfc:`4419#section-3`.
+   
+
+   :c: The connection.
+   
+
+   :is_orig: Did this message come from the originator?
+   
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh2_dh_server_params
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 227 227
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 237 237
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`string`, q: :zeek:type:`string`)
 
@@ -101,14 +135,42 @@ Events
 
    :q: The DH generator.
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
-      ssh1_server_host_key ssh_server_host_key ssh_encrypted_packet
-      ssh2_gss_error ssh2_ecc_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
+
+.. zeek:id:: ssh2_ecc_init
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 303 303
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
+
+   The :abbr:`ECDH (Elliptic Curve Diffie-Hellman)` and
+   :abbr:`ECMQV (Elliptic Curve Menezes-Qu-Vanstone)` key exchange
+   algorithms use two ephemeral key pairs to generate a shared
+   secret. This event is generated when either the SSH_MSG_KEX_ECDH_INIT
+   or SSH_MSG_ECMQV_INIT message is observed. By definition, these need
+   to originate from the client and not from the server.
+   For more information, see:
+   :rfc:`5656#section-4`.
+   
+
+   :c: The connection.
+   
+
+   :is_orig: Did this message come from the originator?
+   
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh2_ecc_key
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 269 269
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 281 281
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, q: :zeek:type:`string`)
 
@@ -120,7 +182,7 @@ Events
    :rfc:`5656#section-4`.
    
 
-   :c: The connection
+   :c: The connection.
    
 
    :is_orig: Did this message come from the originator?
@@ -128,14 +190,15 @@ Events
 
    :q: The ephemeral public key
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
-      ssh1_server_host_key ssh_server_host_key ssh_encrypted_packet
-      ssh2_dh_server_params ssh2_gss_error
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh2_gss_error
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 248 248
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 259 259
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, major_status: :zeek:type:`count`, minor_status: :zeek:type:`count`, err_msg: :zeek:type:`string`)
 
@@ -156,14 +219,60 @@ Events
 
    :err_msg: Detailed human-readable error message
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
-      ssh1_server_host_key ssh_server_host_key ssh_encrypted_packet
-      ssh2_dh_server_params ssh2_ecc_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
+
+.. zeek:id:: ssh2_gss_init
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 338 338
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
+
+   In the event of a GSS-API key exchange, this event is raised on
+   SSH_MSG_KEXGSS_INIT message.
+   For more information see :rfc:`4462#section-2.1`.
+   
+
+   :c: The connection.
+   
+
+   :is_orig: Did this message come from the originator?
+   
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
+
+.. zeek:id:: ssh2_rsa_secret
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 356 356
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
+
+   In the event of a GSS-API key exchange, this event is raised on
+   SSH_MSG_KEXRSA_PUBKEY message. This message is sent first by the server,
+   after which the server will respond with a SSH_MSG_KEXRSA_SECRET message.
+   For more information see :rfc:`4432#section-4`.
+   
+
+   :c: The connection.
+   
+
+   :is_orig: Did this message come from the originator?
+   
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh2_server_host_key
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 129 129
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 135 135
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, key: :zeek:type:`string`)
 
@@ -179,14 +288,15 @@ Events
    :key: The server's public host key. Note that this is the public key
       itself, and not just the fingerprint or hash.
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh1_server_host_key
-      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
-      ssh2_gss_error ssh2_ecc_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_attempted ssh_capabilities
+      ssh2_server_host_key ssh1_server_host_key ssh_server_host_key
+      ssh_encrypted_packet ssh2_dh_server_params ssh2_gss_error
+      ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init ssh2_gss_init
+      ssh2_rsa_secret
 
 .. zeek:id:: ssh_auth_attempted
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 88 88
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 92 92
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, authenticated: :zeek:type:`bool`)
 
@@ -215,14 +325,15 @@ Events
    :authenticated: This is true if the analyzer detected a
       successful connection from the authentication attempt.
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
       ssh_capabilities ssh2_server_host_key ssh1_server_host_key
       ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
-      ssh2_gss_error ssh2_ecc_key
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh_auth_successful
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 57 57
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 60 60
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, auth_method_none: :zeek:type:`bool`)
 
@@ -243,10 +354,11 @@ Events
       unauthenticated access, which some servers support.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
-      ssh_auth_result ssh_auth_attempted ssh_capabilities
-      ssh2_server_host_key ssh1_server_host_key ssh_server_host_key
-      ssh_encrypted_packet ssh2_dh_server_params ssh2_gss_error
-      ssh2_ecc_key
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh_capabilities
    :source-code: base/protocols/ssh/main.zeek 287 310
@@ -271,14 +383,15 @@ Events
    :capabilities: The list of algorithms and languages that the sender
       advertises support for, in order of preference.
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh2_server_host_key ssh1_server_host_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
       ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
-      ssh2_gss_error ssh2_ecc_key
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh_client_version
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 35 35
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 37 37
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`)
 
@@ -293,14 +406,15 @@ Events
 
    :version: The identification string
    
-   .. zeek:see:: ssh_server_version ssh_auth_successful ssh_auth_failed
-      ssh_auth_result ssh_auth_attempted ssh_capabilities
-      ssh2_server_host_key ssh1_server_host_key ssh_server_host_key
-      ssh_encrypted_packet ssh2_dh_server_params ssh2_gss_error
-      ssh2_ecc_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh_encrypted_packet
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 208 208
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 217 217
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, orig: :zeek:type:`bool`, len: :zeek:type:`count`)
 
@@ -322,14 +436,15 @@ Events
    :len: The length of the :abbr:`SSH (Secure Shell)` payload, in
       bytes. Note that this ignores reassembly, as this is unknown.
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
-      ssh1_server_host_key ssh_server_host_key ssh2_dh_server_params
-      ssh2_gss_error ssh2_ecc_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh_server_host_key
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 185 185
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 193 193
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hash: :zeek:type:`string`)
 
@@ -356,14 +471,15 @@ Events
          by other traditional tools, ``ssh``, ``ssh-keygen``, etc, and is the
          hexadecimal representation of all 16 MD5 hash bytes delimited by colons.
    
-   .. zeek:see:: ssh_server_version ssh_client_version
-      ssh_auth_successful ssh_auth_failed ssh_auth_result
-      ssh_auth_attempted ssh_capabilities ssh2_server_host_key
-      ssh1_server_host_key ssh_encrypted_packet ssh2_dh_server_params
-      ssh2_gss_error ssh2_ecc_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 .. zeek:id:: ssh_server_version
-   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 18 18
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 19 19
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`)
 
@@ -378,10 +494,11 @@ Events
 
    :version: The identification string
    
-   .. zeek:see:: ssh_client_version ssh_auth_successful ssh_auth_failed
-      ssh_auth_result ssh_auth_attempted ssh_capabilities
-      ssh2_server_host_key ssh1_server_host_key ssh_server_host_key
-      ssh_encrypted_packet ssh2_dh_server_params ssh2_gss_error
-      ssh2_ecc_key
+   .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
+      ssh_auth_result ssh_auth_successful ssh_auth_attempted
+      ssh_capabilities ssh2_server_host_key ssh1_server_host_key
+      ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
+      ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
+      ssh2_gss_init ssh2_rsa_secret
 
 
