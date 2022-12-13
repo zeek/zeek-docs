@@ -246,7 +246,7 @@ class ZeekIdentifier(ZeekGeneric):
 
 class ZeekNative(ZeekGeneric):
     def handle_signature(self, sig, signode):
-        # The run() method is overriden to drop signode anyway in favor of
+        # The run() method is overridden to drop signode anyway in favor of
         # simply adding the index and a target nodes and leaving up
         # to the .rst document to explicitly add things that need to
         # be presented in the final rendering (e.g. a section header)

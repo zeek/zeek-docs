@@ -112,4 +112,4 @@ toggling of scripting functionality.
 
    While all :zeek:see:`ssl_extension` handlers are processed jointly
    for each instance of the event, generally state build up and
-   dyanamic enabling and disabling may need careful consideration.
+   dynamic enabling and disabling may need careful consideration.

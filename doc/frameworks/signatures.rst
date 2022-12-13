@@ -177,7 +177,7 @@ loading its policy script):
 
 ``http-reply-body /<regular expression>/``
     The regular expression is matched against server-side bodys of
-    HTTP replys.
+    HTTP replies.
 
 ``ftp /<regular expression>/``
     The regular expression is matched against the command line input

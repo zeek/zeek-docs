@@ -558,7 +558,7 @@ filter to a stream:
 
 Note that this approach has subtle implications: the new filter does not use the
 ``Foo::log_policy`` hook, and that hook does not get invoked for writes to this
-filter. Any vetos or additional processing implemented in ``Foo::log_policy``
+filter. Any vetoes or additional processing implemented in ``Foo::log_policy``
 handlers no longer happens for the new filter. Such hook replacement should
 rarely be necessary; you may find it preferable to narrow the stream's default
 handler to the filter in question:
