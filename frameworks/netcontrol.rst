@@ -761,7 +761,7 @@ The Python scripts that are used to interface with the available NetControl
 plugins are contained in the `zeek-netcontrol` repository (`github link <https://github.com/zeek/zeek-netcontrol>`_).
 The repository contains scripts for the OpenFlow as well as the acld plugin.
 Furthermore, it contains a script for the broker plugin which can be used to
-call configureable command-line programs when used with the broker plugin.
+call configurable command-line programs when used with the broker plugin.
 
 The repository also contains documentation on how to install these connectors.
 The `netcontrol` directory contains an API that allows you to write your own

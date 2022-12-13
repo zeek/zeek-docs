@@ -318,7 +318,7 @@ Linux
 
 While netmap isn't included in the Linux kernel, it can be installed as
 an out-of-tree kernel module.
-See the project's `Github repository <https://github.com/luigirizzo/netmap>`_
+See the project's `GitHub repository <https://github.com/luigirizzo/netmap>`_
 for detailed instructions. This includes the ``lb`` tool for load balancing.
 
 On Linux, the external `zeek-netmap <https://github.com/zeek/zeek-netmap>`_
@@ -595,7 +595,7 @@ same packets multiple times with different tools.
 
 .. [#] Some Linux kernel versions between 3.10 and 4.7 might exhibit
        a bug that prevents the required symmetric hashing. The script available
-       in the Github project `can-i-use-afpacket-fanout <https://github.com/JustinAzoff/can-i-use-afpacket-fanout>`_
+       in the GitHub project `can-i-use-afpacket-fanout <https://github.com/JustinAzoff/can-i-use-afpacket-fanout>`_
        can be used to verify whether ``PACKET_FANOUT`` works as expected.
 
        This issue has been fixed in all stable kernels for at least 5 years.
