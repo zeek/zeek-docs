@@ -108,6 +108,8 @@ Functions
 :zeek:id:`global_container_footprints`: :zeek:type:`function`                 Generates a table of the "footprint" of all global container variables.
 :zeek:id:`global_ids`: :zeek:type:`function`                                  Generates a table with information about all global identifiers.
 :zeek:id:`global_options`: :zeek:type:`function`                              Returns a set giving the names of all global options.
+:zeek:id:`has_event_group`: :zeek:type:`function`                             Does an attribute event group with this name exist?
+:zeek:id:`has_module_events`: :zeek:type:`function`                           Does a module event group with this name exist?
 :zeek:id:`haversine_distance`: :zeek:type:`function`                          Calculates distance between two geographic locations using the haversine
                                                                               formula.
 :zeek:id:`hexstr_to_bytestring`: :zeek:type:`function`                        Converts a hex-string into its binary representation.
@@ -800,7 +802,7 @@ Functions
    .. zeek:see:: Analyzer::schedule_analyzer Analyzer::name
 
 .. zeek:id:: disable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2545 2545
+   :source-code: base/bif/zeek.bif.zeek 2547 2547
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -812,10 +814,11 @@ Functions
 
    :group: The group to disable.
    
-   .. zeek:see:: enable_event_group
+   .. zeek:see:: enable_event_group disable_event_group has_event_group
+                 enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: disable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2566 2566
+   :source-code: base/bif/zeek.bif.zeek 2579 2579
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -826,7 +829,8 @@ Functions
 
    :module_name: The module to disable.
    
-   .. zeek:see:: enable_module_events enable_event_group disable_event_group
+   .. zeek:see:: enable_event_group disable_event_group has_event_group
+                 enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: do_profiling
    :source-code: base/bif/zeek.bif.zeek 1052 1052
@@ -961,7 +965,7 @@ Functions
    .. zeek:see:: get_matcher_stats
 
 .. zeek:id:: enable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2534 2534
+   :source-code: base/bif/zeek.bif.zeek 2535 2535
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -973,10 +977,11 @@ Functions
 
    :group: The group to enable.
    
-   .. zeek:see:: disable_event_group
+   .. zeek:see:: enable_event_group disable_event_group has_event_group
+                 enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2556 2556
+   :source-code: base/bif/zeek.bif.zeek 2568 2568
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -988,7 +993,8 @@ Functions
 
    :module_name: The module to enable.
    
-   .. zeek:see:: disable_module_events enable_event_group disable_event_group
+   .. zeek:see:: enable_event_group disable_event_group has_event_group
+                 enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_raw_output
    :source-code: base/bif/zeek.bif.zeek 2181 2181
@@ -1478,6 +1484,32 @@ Functions
    :Type: :zeek:type:`function` () : :zeek:type:`string_set`
 
    Returns a set giving the names of all global options.
+
+.. zeek:id:: has_event_group
+   :source-code: base/bif/zeek.bif.zeek 2556 2556
+
+   :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Does an attribute event group with this name exist?
+   
+
+   :group: The group name.
+   
+   .. zeek:see:: enable_event_group disable_event_group has_event_group
+                 enable_module_events disable_module_events has_module_events
+
+.. zeek:id:: has_module_events
+   :source-code: base/bif/zeek.bif.zeek 2588 2588
+
+   :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Does a module event group with this name exist?
+   
+
+   :group: The group name.
+   
+   .. zeek:see:: enable_event_group disable_event_group has_event_group
+                 enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: haversine_distance
    :source-code: base/bif/zeek.bif.zeek 1887 1887
