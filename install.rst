@@ -26,12 +26,12 @@ or build Zeek yourself.
 Docker Images
 =============
 
-We provide official Docker images on Docker Hub at https://hub.docker.com/u/zeekurity.
+We provide official Docker images on Docker Hub at https://hub.docker.com/u/zeek
 
-    * For the latest feature release: ``docker pull zeekurity/zeek:latest``
-    * For the latest LTS release: ``docker pull zeekurity/zeek:lts``
-    * For a specific release: ``docker pull zeekurity/zeek:5.0.0-rc1``
-    * For the nightly build: ``docker pull zeekurity/zeek-dev:latest``
+    * For the latest feature release: ``docker pull zeek/zeek:latest``
+    * For the latest LTS release: ``docker pull zeek/zeek:lts``
+    * For a specific release: ``docker pull zeek/zeek:5.0.0-rc1``
+    * For the nightly build: ``docker pull zeek/zeek-dev:latest``
 
 Additionally, we push these images to Amazon's Public Elastic Container
 Registry (ECR) into the `Zeek Project <https://gallery.ecr.aws/zeek>`_
