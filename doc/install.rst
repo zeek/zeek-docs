@@ -36,7 +36,7 @@ We provide official Docker images on Docker Hub at https://hub.docker.com/u/zeek
 Additionally, we push these images to Amazon's Public Elastic Container
 Registry (ECR) into the `Zeek Project <https://gallery.ecr.aws/zeek>`_
 public gallery. To use Amazon's container registry instead of Docker Hub,
-prefix images with ``public.ecr.aws/zeek`` instead of ``zeekurity``.
+prefix images with ``public.ecr.aws/zeek`` instead of ``zeek``.
 
     * For instance, to pull the latest feature release: ``docker pull public.ecr.aws/zeek/zeek:latest``
 
