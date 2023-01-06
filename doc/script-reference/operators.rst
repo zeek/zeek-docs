@@ -5,6 +5,8 @@ The Zeek scripting language supports the following operators.  Note that
 each data type only supports a subset of these operators.  For more
 details, see the documentation about the :doc:`data types <types>`.
 
+.. _relational-operators:
+
 Relational operators
 --------------------
 
@@ -38,6 +40,8 @@ operands of type :zeek:type:`interval`, :zeek:type:`time`, :zeek:type:`string`,
   * - Greater than or equal
     - ``a >= b``
 
+.. _logical-operators:
+
 Logical operators
 -----------------
 
@@ -58,6 +62,8 @@ evaluate to type :zeek:type:`bool`.
 
   * - Logical NOT
     - ``! a``
+
+.. _arithmetic-operators:
 
 Arithmetic operators
 --------------------
@@ -111,6 +117,8 @@ Arithmetic operators
     - If operand is  :zeek:type:`string`, :zeek:type:`set`, :zeek:type:`table`,
       or  :zeek:type:`vector`, this evaluates to number of elements.
 
+.. _bitwise-operators:
+
 Bitwise operators
 -----------------
 
@@ -141,6 +149,8 @@ The bitwise complement operator works with :zeek:type:`count` only.
 
   * - Bitwise complement
     - ``~a``
+
+.. _set-operators:
 
 Set operators
 -------------
@@ -238,6 +248,8 @@ append an element to the end of a
 vector.  For example, ``v += e`` is equivalent to ``v[|v|] = e``,
 providing that ``e``'s type corresponds to that of one of ``v``'s elements.
 
+.. _record-field-operators:
+
 Record field operators
 ----------------------
 
@@ -260,6 +272,8 @@ field name must be in the declaration of the record type.
     - ``a?$b``
     - Evaluates to type :zeek:type:`bool`.  True if the specified field has
       been assigned a value, or if not.
+
+.. _pattern-operators:
 
 Pattern operators
 -----------------
