@@ -90,12 +90,15 @@ Adding Analysis
 ===============
 
 Zeek supports customized file analysis via `file analyzers` that users can
-attach to observed files.  Once attached, file analyzers start receiving the
-contents of files as Zeek extracts them from ongoing network connections.
+attach to observed files. You can attach analyzers selectively to individual
+files, or register them for auto-attachment under certain conditions. Once
+attached, file analyzers start receiving the contents of files as Zeek parses
+them from ongoing network connections.
+
 Zeek comes with the following built-in analyzers:
 
     * :ref:`plugin-zeek-filedataevent` to access file content via
-      events (as sequential data streams or non-sequential content chunks),
+      events (as data streams or content chunks),
     * :ref:`plugin-zeek-fileentropy` to compute various entropy for a file,
     * :ref:`plugin-zeek-fileextract` to extract files to disk,
     * :ref:`plugin-zeek-filehash` to produce common hash values for files,
@@ -103,21 +106,64 @@ Zeek comes with the following built-in analyzers:
     * :ref:`plugin-zeek-x509` to extract information about x509 certificates.
 
 Like protocol parsers, file analyzers are regular :ref:`Zeek plugins
-<writing-plugins>`, so users are free to contribute additional ones in separate
-Zeek packages.
+<writing-plugins>`. Users are free to contribute additional ones via Zeek
+packages.
 
-In the future there may be file analyzers that automatically attach to
-files based on heuristics, similar to the Dynamic Protocol Detection
-(DPD) framework for connections, but many will always require an
-explicit attachment decision.
+Per-file analyzer registration
+------------------------------
 
-Here's a simple example of how to use the MD5 file analyzer to
-calculate the MD5 of plain text files:
+To attach an analyzer to a specific file, call :zeek:see:`Files::add_analyzer`
+with the analyzer's component tag (such as :zeek:see:`Files::ANALYZER_MD5`;
+consult the above analyzers for details). Some file analyzers support parameters
+that you can provide to this function via a :zeek:see:`Files::AnalyzerArgs`
+record, while others introduce additional event types and tunable script-layer
+settings.
+
+You can add multiple analyzers to a file, and add the same analyzer type
+multiple times, assuming you use varying :zeek:see:`Files::AnalyzerArgs`
+parameterization. You may remove these selectively from files via calls to
+:zeek:see:`Files::remove_analyzer`. You may also enable and disable file
+analyzers globally by calling :zeek:see:`Files::enable_analyzer` and
+:zeek:see:`Files::disable_analyzer`, respectively.
+
+Generic analyzer registration
+-----------------------------
+
+The framework provides mechanisms for automatically attaching analyzers to
+files. For example, the :zeek:see:`Files::register_for_mime_types` function
+ensures that Zeek automatically attaches a given analyzer to all files of a
+given MIME type. For fully customized  auto-attachment logic take a look at
+:zeek:see:`Files::register_analyzer_add_callback`, and refer to
+:doc:`base/frameworks/files/main.zeek </scripts/base/frameworks/files/main.zeek>`
+for additional APIs and data structures.
+
+Regardless of which file analyzers end up acting on a file, general
+information about the file (e.g. size, time of last data transferred,
+MIME type, etc.) is logged in ``files.log``.
+
+Protocol-specific state
+-----------------------
+
+Some protocol analyzers redefine the ``fa_file`` record to add additional
+state. For example, ``base/protocols/http/entities.zeek``, which Zeek loads by
+default as part of the HTTP analyzer, makes the transaction's
+:zeek:see:`HTTP::Info` record available via ``f$http`` to provide HTTP
+context. As always, make sure to test the presence of optional fields via the
+``a?$b`` :ref:`record field operator <record-field-operators>` before accessing
+them.
+
+Examples
+--------
+
+File hashing
+^^^^^^^^^^^^
+
+The following script uses the MD5 file analyzer to calculate the hashes of plain
+text files:
 
 .. literalinclude:: file_analysis_02.zeek
    :caption:
    :language: zeek
-   :linenos:
    :tab-width: 4
 
 .. code-block:: console
@@ -126,38 +172,82 @@ calculate the MD5 of plain text files:
    new file, FakNcS1Jfe01uljb3
    file_hash, FakNcS1Jfe01uljb3, md5, 397168fd09991a0e712254df7bc639ac
 
-Some file analyzers have tunable parameters that need to be
-specified in the call to :zeek:see:`Files::add_analyzer`:
+File extraction
+^^^^^^^^^^^^^^^
+
+The following example sets up extraction of observed files to disk:
 
 .. code-block:: zeek
+
+    global idx: count = 0;
 
     event file_new(f: fa_file)
         {
         Files::add_analyzer(f, Files::ANALYZER_EXTRACT,
-                            [$extract_filename="myfile"]);
+                            [$extract_filename=fmt("file-%04d", ++idx)]);
         }
 
-In this case, the file extraction analyzer doesn't generate any further
-events, but does have the effect of writing out the file contents to the
-local file system at the location resulting from the concatenation of
-the path specified by :zeek:see:`FileExtract::prefix` and the string,
-``myfile``.  Of course, for a network with more than a single file being
-transferred, it's probably preferable to specify a different extraction
-path for each file, unlike this example.
+The file extraction analyzer now writes the content of each observed file to a
+separate file on disk. The output file name results from concatenating the
+:zeek:see:`FileExtract::prefix` (normally ``./extract_files/``) and the
+enumerated ``file-NNNN`` strings.
 
-You may add the same analyzer type multiple times to a given file, assuming you
-use varying :zeek:see:`Files::AnalyzerArgs` parameterization, and remove them
-selectively from files via calls to :zeek:see:`Files::remove_analyzer`. You may
-also enable and disable file analyzers globally by calling
-:zeek:see:`Files::enable_analyzer` and :zeek:see:`Files::disable_analyzer`,
-respectively.
+In a production setting you'll likely want to include additional information in
+the output, for example from state attached to the provided file record. The
+Zeek distribution ships with a starting point for such approaches: the
+``policy/frameworks/files/extract-all-files.zeek`` script. For additional
+configurability, take a look at the `file-extraction
+<https://github.com/hosom/file-extraction>`_ Zeek package.
 
-For additional customizations and APIs, please refer to
-:doc:`base/frameworks/files/main.zeek </scripts/base/frameworks/files/main.zeek>`.
+Script-level content analysis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Regardless of which file analyzers end up acting on a file, general
-information about the file (e.g. size, time of last data transferred,
-MIME type, etc.) is logged in ``files.log``.
+The ``FileDataEvent`` analyzer provides script-layer access to file content for
+customized analysis. Since observed files can be very large, Zeek cannot buffer
+these files and provide their entire content to the script layer once
+complete. Instead, the ``FileDataEvent`` analyzer reflects the incremental
+nature of file content as Zeek observes it, and supports two types of events to
+allow you to process it: user-provided `stream events` receive new file content
+as supplied by connection-oriented protocols, while `chunk events` receive
+observed data as provided by protocols that do not feature stream semantics.
+
+The following example manually computes the SHA256 hash of each observed file by
+building up hash state and feeding streamed file content into the hash
+computation. When Zeek removes a file's state (because it has fully observed it,
+or perhaps because its state is timing out), it prints the resulting hash to the
+console:
+
+.. code-block:: zeek
+
+    global hashstate: table[string] of opaque of sha256;
+
+    event file_stream(f: fa_file, data: string)
+        {
+        if ( f$id !in hashstate )
+            hashstate[f$id] = sha256_hash_init();
+
+        sha256_hash_update(hashstate[f$id], data);
+        }
+
+    event file_new(f: fa_file)
+        {
+        Files::add_analyzer(f, Files::ANALYZER_DATA_EVENT, [$stream_event=file_stream]);
+        }
+
+    event file_state_remove(f: fa_file)
+        {
+        if ( f$id in hashstate )
+            {
+            print(sha256_hash_finish(hashstate[f$id]));
+            delete hashstate[f$id];
+            }
+        }
+
+Be careful with this approach, as it can quickly prove expensive to route all
+file content through the script layer. Make sure to add the analyzer only for
+relevant files, and consider removing it via :zeek:see:`Files::remove_analyzer`
+when you no longer require content analysis. For performance-critical
+applications a new file analyzer plugin could be a better approach.
 
 Input Framework Integration
 ===========================
