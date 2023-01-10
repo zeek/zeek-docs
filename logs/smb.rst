@@ -29,7 +29,7 @@ compromised Windows environment.
 
 The paper is available here:
 
-https://401trg.com/an-introduction-to-smb-for-network-security-analysts/
+https://401trg.github.io/pages/an-introduction-to-smb-for-network-security-analysts.html
 
 The packet captures are available here:
 
