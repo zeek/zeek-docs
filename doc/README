@@ -75,7 +75,7 @@ Local Previewing (How To Build)
 
 First make sure you have the required dependencies used for building docs:
 
-* Python interpreter >= 3.5
+* Python interpreter >= 3.7
 * Sphinx: https://www.sphinx-doc.org/en/master/
 * Read the Docs Sphinx Theme: https://github.com/rtfd/sphinx_rtd_theme
 * GitPython: https://github.com/gitpython-developers/GitPython
