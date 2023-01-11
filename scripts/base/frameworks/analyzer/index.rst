@@ -36,3 +36,7 @@ automatically activate a particular analyzer for new connections.
    Activates port-independent protocol detection and selectively disables
    analyzers if protocol violations occur.
 
+:doc:`/scripts/base/frameworks/analyzer/logging.zeek`
+
+   Logging analyzer confirmations and violations into analyzer.log
+

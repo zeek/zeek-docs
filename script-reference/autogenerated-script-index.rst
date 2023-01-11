@@ -107,8 +107,19 @@
    base/frameworks/input/readers/binary.zeek </scripts/base/frameworks/input/readers/binary.zeek>
    base/frameworks/input/readers/config.zeek </scripts/base/frameworks/input/readers/config.zeek>
    base/frameworks/input/readers/sqlite.zeek </scripts/base/frameworks/input/readers/sqlite.zeek>
+   base/frameworks/cluster/__load__.zeek </scripts/base/frameworks/cluster/__load__.zeek>
+   base/frameworks/cluster/main.zeek </scripts/base/frameworks/cluster/main.zeek>
+   base/frameworks/control/__load__.zeek </scripts/base/frameworks/control/__load__.zeek>
+   base/frameworks/control/main.zeek </scripts/base/frameworks/control/main.zeek>
+   base/frameworks/cluster/pools.zeek </scripts/base/frameworks/cluster/pools.zeek>
+   base/utils/hash_hrw.zeek </scripts/base/utils/hash_hrw.zeek>
+   base/frameworks/config/__load__.zeek </scripts/base/frameworks/config/__load__.zeek>
+   base/frameworks/config/main.zeek </scripts/base/frameworks/config/main.zeek>
+   base/frameworks/config/input.zeek </scripts/base/frameworks/config/input.zeek>
+   base/frameworks/config/weird.zeek </scripts/base/frameworks/config/weird.zeek>
    base/frameworks/analyzer/__load__.zeek </scripts/base/frameworks/analyzer/__load__.zeek>
    base/frameworks/analyzer/dpd.zeek </scripts/base/frameworks/analyzer/dpd.zeek>
+   base/frameworks/analyzer/logging.zeek </scripts/base/frameworks/analyzer/logging.zeek>
    base/frameworks/files/__load__.zeek </scripts/base/frameworks/files/__load__.zeek>
    base/frameworks/files/main.zeek </scripts/base/frameworks/files/main.zeek>
    base/utils/site.zeek </scripts/base/utils/site.zeek>
@@ -254,7 +265,6 @@
    base/utils/email.zeek </scripts/base/utils/email.zeek>
    base/utils/files.zeek </scripts/base/utils/files.zeek>
    base/utils/geoip-distance.zeek </scripts/base/utils/geoip-distance.zeek>
-   base/utils/hash_hrw.zeek </scripts/base/utils/hash_hrw.zeek>
    base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>
    base/utils/queue.zeek </scripts/base/utils/queue.zeek>
    base/utils/strings.zeek </scripts/base/utils/strings.zeek>
@@ -263,11 +273,6 @@
    base/utils/urls.zeek </scripts/base/utils/urls.zeek>
    base/frameworks/notice/__load__.zeek </scripts/base/frameworks/notice/__load__.zeek>
    base/frameworks/notice/main.zeek </scripts/base/frameworks/notice/main.zeek>
-   base/frameworks/cluster/__load__.zeek </scripts/base/frameworks/cluster/__load__.zeek>
-   base/frameworks/cluster/main.zeek </scripts/base/frameworks/cluster/main.zeek>
-   base/frameworks/control/__load__.zeek </scripts/base/frameworks/control/__load__.zeek>
-   base/frameworks/control/main.zeek </scripts/base/frameworks/control/main.zeek>
-   base/frameworks/cluster/pools.zeek </scripts/base/frameworks/cluster/pools.zeek>
    base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>
    base/frameworks/notice/actions/email_admin.zeek </scripts/base/frameworks/notice/actions/email_admin.zeek>
    base/frameworks/notice/actions/page.zeek </scripts/base/frameworks/notice/actions/page.zeek>
@@ -284,10 +289,6 @@
    base/frameworks/intel/main.zeek </scripts/base/frameworks/intel/main.zeek>
    base/frameworks/intel/files.zeek </scripts/base/frameworks/intel/files.zeek>
    base/frameworks/intel/input.zeek </scripts/base/frameworks/intel/input.zeek>
-   base/frameworks/config/__load__.zeek </scripts/base/frameworks/config/__load__.zeek>
-   base/frameworks/config/main.zeek </scripts/base/frameworks/config/main.zeek>
-   base/frameworks/config/input.zeek </scripts/base/frameworks/config/input.zeek>
-   base/frameworks/config/weird.zeek </scripts/base/frameworks/config/weird.zeek>
    base/frameworks/sumstats/__load__.zeek </scripts/base/frameworks/sumstats/__load__.zeek>
    base/frameworks/sumstats/main.zeek </scripts/base/frameworks/sumstats/main.zeek>
    base/frameworks/sumstats/plugins/__load__.zeek </scripts/base/frameworks/sumstats/plugins/__load__.zeek>

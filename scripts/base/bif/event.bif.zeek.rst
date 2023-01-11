@@ -54,10 +54,10 @@ Events
 :zeek:id:`expired_conn_weird`: :zeek:type:`event`                                     Generated for unexpected activity related to a specific connection whose
                                                                                       internal state has already been expired.
 :zeek:id:`file_gap`: :zeek:type:`event`                                               Indicates that a chunk of the file is missing.
-:zeek:id:`file_new`: :zeek:type:`event`                                               Indicates that an analysis of a new file has begun.
+:zeek:id:`file_new`: :zeek:type:`event`                                               Indicates that analysis of a new file has begun.
 :zeek:id:`file_opened`: :zeek:type:`event`                                            Generated each time Zeek's script interpreter opens a file.
-:zeek:id:`file_over_new_connection`: :zeek:type:`event`                               Indicates that a file has been seen being transferred over a connection
-                                                                                      different from the original.
+:zeek:id:`file_over_new_connection`: :zeek:type:`event`                               Indicates that Zeek has begun to observe a file for the first time on the
+                                                                                      given connection.
 :zeek:id:`file_reassembly_overflow`: :zeek:type:`event`                               Indicates that the file had an overflow of the reassembly buffer.
 :zeek:id:`file_sniff`: :zeek:type:`event`                                             Provide all metadata that has been inferred about a particular file
                                                                                       from inspection of the initial content that been seen at the beginning
@@ -110,7 +110,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: Pcap::file_done
-   :source-code: base/bif/event.bif.zeek 988 988
+   :source-code: base/bif/event.bif.zeek 999 999
 
    :Type: :zeek:type:`event` (path: :zeek:type:`string`)
 
@@ -233,7 +233,7 @@ Events
    .. zeek:see:: is_protocol_analyzer is_packet_analyzer is_file_analyzer
 
 .. zeek:id:: anonymization_mapping
-   :source-code: base/bif/event.bif.zeek 982 982
+   :source-code: base/bif/event.bif.zeek 993 993
 
    :Type: :zeek:type:`event` (orig: :zeek:type:`addr`, mapped: :zeek:type:`addr`)
 
@@ -437,7 +437,7 @@ Events
       tap.
 
 .. zeek:id:: dns_mapping_altered
-   :source-code: base/bif/event.bif.zeek 966 966
+   :source-code: base/bif/event.bif.zeek 977 977
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`, old_addrs: :zeek:type:`addr_set`, new_addrs: :zeek:type:`addr_set`)
 
@@ -461,7 +461,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_lost_name
-   :source-code: base/bif/event.bif.zeek 933 933
+   :source-code: base/bif/event.bif.zeek 944 944
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -478,7 +478,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_name_changed
-   :source-code: base/bif/event.bif.zeek 948 948
+   :source-code: base/bif/event.bif.zeek 959 959
 
    :Type: :zeek:type:`event` (prev: :zeek:type:`dns_mapping`, latest: :zeek:type:`dns_mapping`)
 
@@ -497,7 +497,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_new_name
-   :source-code: base/bif/event.bif.zeek 920 920
+   :source-code: base/bif/event.bif.zeek 931 931
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -513,7 +513,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_unverified
-   :source-code: base/bif/event.bif.zeek 908 908
+   :source-code: base/bif/event.bif.zeek 919 919
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -530,7 +530,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_valid
-   :source-code: base/bif/event.bif.zeek 895 895
+   :source-code: base/bif/event.bif.zeek 906 906
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -608,7 +608,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: file_gap
-   :source-code: base/bif/event.bif.zeek 854 854
+   :source-code: base/bif/event.bif.zeek 865 865
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, offset: :zeek:type:`count`, len: :zeek:type:`count`)
 
@@ -627,12 +627,18 @@ Events
       file_sniff file_state_remove file_reassembly_overflow
 
 .. zeek:id:: file_new
-   :source-code: base/bif/event.bif.zeek 797 797
+   :source-code: base/bif/event.bif.zeek 803 803
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
-   Indicates that an analysis of a new file has begun. The analysis can be
-   augmented at this time via :zeek:see:`Files::add_analyzer`.
+   Indicates that analysis of a new file has begun.  The analysis can be
+   augmented at this time via :zeek:see:`Files::add_analyzer`.  This event
+   triggers once when Zeek first establishes state for the file.  Zeek does not
+   base identity on content (it cannot, since analysis has only just begun), but
+   on the relevant protocol analyzer's notion of file identity as per the
+   :zeek:see:`get_file_handle`/:zeek:see:`set_file_handle` mechanism.  That is,
+   Zeek triggers this event whenever a protocol analyzer thinks it's
+   encountering a new file.
    
 
    :f: The file.
@@ -653,12 +659,17 @@ Events
    :f: The opened file.
 
 .. zeek:id:: file_over_new_connection
-   :source-code: base/bif/event.bif.zeek 811 811
+   :source-code: base/bif/event.bif.zeek 822 822
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
-   Indicates that a file has been seen being transferred over a connection
-   different from the original.
+   Indicates that Zeek has begun to observe a file for the first time on the
+   given connection.  This is similar to :zeek:see:`file_new`, but also triggers
+   once on each subsequent connection in which the relevant protocol analyzer
+   encounters any part of the file.  As with :zeek:see:`file_new`, the protocol
+   analyzer defines file identity.  When Zeek encounters a file for the first
+   time, it first triggers :zeek:see:`file_new`, then
+   :zeek:see:`file_over_new_connection`.
    
 
    :f: The file.
@@ -673,7 +684,7 @@ Events
       file_state_remove
 
 .. zeek:id:: file_reassembly_overflow
-   :source-code: base/bif/event.bif.zeek 874 874
+   :source-code: base/bif/event.bif.zeek 885 885
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, offset: :zeek:type:`count`, skipped: :zeek:type:`count`)
 
@@ -699,7 +710,7 @@ Events
       Files::set_reassembly_buffer_size
 
 .. zeek:id:: file_sniff
-   :source-code: base/bif/event.bif.zeek 830 830
+   :source-code: base/bif/event.bif.zeek 841 841
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, meta: :zeek:type:`fa_metadata`)
 
@@ -723,7 +734,7 @@ Events
       file_state_remove
 
 .. zeek:id:: file_state_remove
-   :source-code: base/bif/event.bif.zeek 883 883
+   :source-code: base/bif/event.bif.zeek 894 894
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
@@ -1045,7 +1056,7 @@ Events
    .. zeek:see:: new_packet tcp_packet
 
 .. zeek:id:: packet_not_processed
-   :source-code: base/bif/event.bif.zeek 1010 1010
+   :source-code: base/bif/event.bif.zeek 1021 1021
 
    :Type: :zeek:type:`event` (pkt: :zeek:type:`pcap_packet`)
 

@@ -100,6 +100,22 @@
    The input framework provides a way to read previously stored data either as
    an event stream or into a Zeek table.
 
+:doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`
+
+   The cluster framework provides for establishing and controlling a cluster
+   of Zeek instances.
+
+:doc:`base/frameworks/control </scripts/base/frameworks/control/index>`
+
+   The control framework provides the foundation for providing "commands"
+   that can be taken remotely at runtime to modify a running Zeek instance
+   or collect information from the running instance.
+
+:doc:`base/frameworks/config </scripts/base/frameworks/config/index>`
+
+   The configuration framework provides a way to change the Zeek configuration
+   in "option" values at run-time.
+
 :doc:`base/frameworks/analyzer </scripts/base/frameworks/analyzer/index>`
 
    The analyzer framework allows to dynamically enable or disable Zeek's
@@ -133,17 +149,6 @@
    of them are actionable.  This decoupling of detection and reporting allows
    Zeek to be customized to the different needs that sites have.
 
-:doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`
-
-   The cluster framework provides for establishing and controlling a cluster
-   of Zeek instances.
-
-:doc:`base/frameworks/control </scripts/base/frameworks/control/index>`
-
-   The control framework provides the foundation for providing "commands"
-   that can be taken remotely at runtime to modify a running Zeek instance
-   or collect information from the running instance.
-
 :doc:`base/frameworks/signatures </scripts/base/frameworks/signatures/index>`
 
    The signature framework provides for doing low-level pattern matching.  While
@@ -167,11 +172,6 @@
    The intelligence framework provides a way to store and query intelligence
    data (such as IP addresses or strings). Metadata can also be associated
    with the intelligence.
-
-:doc:`base/frameworks/config </scripts/base/frameworks/config/index>`
-
-   The configuration framework provides a way to change the Zeek configuration
-   in "option" values at run-time.
 
 :doc:`base/frameworks/sumstats </scripts/base/frameworks/sumstats/index>`
 
