@@ -548,9 +548,24 @@ Types
          (present if :doc:`/scripts/base/frameworks/broker/log.zeek` is loaded)
 
 
+      .. zeek:enum:: Cluster::LOG Log::ID
+
+         (present if :doc:`/scripts/base/frameworks/cluster/main.zeek` is loaded)
+
+
+      .. zeek:enum:: Config::LOG Log::ID
+
+         (present if :doc:`/scripts/base/frameworks/config/main.zeek` is loaded)
+
+
       .. zeek:enum:: DPD::LOG Log::ID
 
          (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
+
+
+      .. zeek:enum:: Analyzer::Logging::LOG Log::ID
+
+         (present if :doc:`/scripts/base/frameworks/analyzer/logging.zeek` is loaded)
 
 
       .. zeek:enum:: Files::LOG Log::ID
@@ -563,11 +578,6 @@ Types
       .. zeek:enum:: Reporter::LOG Log::ID
 
          (present if :doc:`/scripts/base/frameworks/reporter/main.zeek` is loaded)
-
-
-      .. zeek:enum:: Cluster::LOG Log::ID
-
-         (present if :doc:`/scripts/base/frameworks/cluster/main.zeek` is loaded)
 
 
       .. zeek:enum:: Notice::LOG Log::ID
@@ -607,11 +617,6 @@ Types
       .. zeek:enum:: Intel::LOG Log::ID
 
          (present if :doc:`/scripts/base/frameworks/intel/main.zeek` is loaded)
-
-
-      .. zeek:enum:: Config::LOG Log::ID
-
-         (present if :doc:`/scripts/base/frameworks/config/main.zeek` is loaded)
 
 
       .. zeek:enum:: Tunnel::LOG Log::ID
