@@ -15,7 +15,7 @@ Runtime Options
 ###############
 =========================================================================================== ==================================================================
 :zeek:id:`Analyzer::Logging::enable`: :zeek:type:`bool` :zeek:attr:`&redef`                 Enable logging of analyzer violations and optionally confirmations
-                                                                                            when :zeek::see:`Analyzer::Logging::include_confirmations` is set.
+                                                                                            when :zeek:see:`Analyzer::Logging::include_confirmations` is set.
 :zeek:id:`Analyzer::Logging::failure_data_max_size`: :zeek:type:`count` :zeek:attr:`&redef` If a violation contains information about the data causing it,
                                                                                             include at most this many bytes of it in the log.
 :zeek:id:`Analyzer::Logging::ignore_analyzers`: :zeek:type:`set` :zeek:attr:`&redef`        Set of analyzers for which to not log confirmations or violations.
@@ -55,7 +55,7 @@ Runtime Options
    :Default: ``T``
 
    Enable logging of analyzer violations and optionally confirmations
-   when :zeek::see:`Analyzer::Logging::include_confirmations` is set.
+   when :zeek:see:`Analyzer::Logging::include_confirmations` is set.
 
 .. zeek:id:: Analyzer::Logging::failure_data_max_size
    :source-code: base/frameworks/analyzer/logging.zeek 58 58
