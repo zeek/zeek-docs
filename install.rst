@@ -75,15 +75,7 @@ We provide packages for:
     * `nightly builds <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-nightly>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek-nightly>`__)
     * `release candidates <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-rc>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek-rc>`__)
 
-For example, for the latest feature release on CentOS Stream 8 you'd run the following as root:
-
-  .. code-block:: console
-
-     cd /etc/yum.repos.d/
-     wget https://download.opensuse.org/repositories/security:/zeek/CentOS_8_Stream/security:zeek.repo
-     dnf install zeek
-
-For the LTS release on Ubuntu 22.04 the steps look as follows:
+For example, for the Zeek LTS release on Ubuntu 22.04 the steps look as follows:
 
   .. code-block:: console
 
