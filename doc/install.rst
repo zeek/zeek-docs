@@ -20,8 +20,8 @@ Installing Zeek
 ===============
 
 To run Zeek, grab our official Docker images, download our Linux binary
-packages, install via Homebrew on your Mac, use the ports collection on FreeBSD,
-or build Zeek yourself.
+packages, install via Homebrew on your Mac, use the ports collections on
+FreeBSD and OpenBSD, or build Zeek yourself.
 
 Docker Images
 =============
@@ -106,11 +106,24 @@ These packages are not maintained by the Zeek project.
 FreeBSD
 -------
 
-Zeek is available from the ports collection. To install:
+Zeek is available from the `FreeBSD ports collection <https://www.freshports.org/security/zeek>`_.
+To install:
 
   .. code-block:: console
 
      sudo pkg install -y zeek
+
+These packages are not maintained by the Zeek project.
+
+OpenBSD
+-------
+
+Zeek is available from the `OpenBSD ports collection <https://openports.se/net/bro>`_.
+To install:
+
+  .. code-block:: console
+
+     sudo pkg_add zeek
 
 These packages are not maintained by the Zeek project.
 
