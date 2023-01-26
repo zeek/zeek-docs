@@ -20,8 +20,8 @@ Installing Zeek
 ===============
 
 To run Zeek, grab our official Docker images, download our Linux binary
-packages, install via Homebrew on your Mac, use the ports collection on FreeBSD,
-or build Zeek yourself.
+packages, install via Homebrew on your Mac, use the ports collections on
+FreeBSD and OpenBSD, or build Zeek yourself.
 
 Docker Images
 =============
@@ -75,15 +75,7 @@ We provide packages for:
     * `nightly builds <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-nightly>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek-nightly>`__)
     * `release candidates <https://software.opensuse.org/download.html?project=security%3Azeek&package=zeek-rc>`_ (`sources <https://build.opensuse.org/package/show/security:zeek/zeek-rc>`__)
 
-For example, for the latest feature release on CentOS Stream 8 you'd run the following as root:
-
-  .. code-block:: console
-
-     cd /etc/yum.repos.d/
-     wget https://download.opensuse.org/repositories/security:/zeek/CentOS_8_Stream/security:zeek.repo
-     dnf install zeek
-
-For the LTS release on Ubuntu 22.04 the steps look as follows:
+For example, for the Zeek LTS release on Ubuntu 22.04 the steps look as follows:
 
   .. code-block:: console
 
@@ -114,11 +106,24 @@ These packages are not maintained by the Zeek project.
 FreeBSD
 -------
 
-Zeek is available from the ports collection. To install:
+Zeek is available from the `FreeBSD ports collection <https://www.freshports.org/security/zeek>`_.
+To install:
 
   .. code-block:: console
 
      sudo pkg install -y zeek
+
+These packages are not maintained by the Zeek project.
+
+OpenBSD
+-------
+
+Zeek is available from the `OpenBSD ports collection <https://openports.se/net/bro>`_.
+To install:
+
+  .. code-block:: console
+
+     sudo pkg_add zeek
 
 These packages are not maintained by the Zeek project.
 
