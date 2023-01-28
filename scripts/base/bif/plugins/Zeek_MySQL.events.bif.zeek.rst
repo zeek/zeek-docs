@@ -13,6 +13,7 @@ Events
 ######
 ==================================================== ======================================================================================================
 :zeek:id:`mysql_command_request`: :zeek:type:`event` Generated for a command request from a MySQL client.
+:zeek:id:`mysql_eof`: :zeek:type:`event`             Generated for a MySQL EOF packet.
 :zeek:id:`mysql_error`: :zeek:type:`event`           Generated for an unsuccessful MySQL response.
 :zeek:id:`mysql_handshake`: :zeek:type:`event`       Generated for a client handshake response packet, which includes the username the client is attempting
                                                      to connect as.
@@ -46,6 +47,24 @@ Events
    :arg: The argument for the command (empty string if not provided).
    
    .. zeek:see:: mysql_error mysql_ok mysql_server_version mysql_handshake
+
+.. zeek:id:: mysql_eof
+   :source-code: base/protocols/mysql/main.zeek 115 132
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_intermediate: :zeek:type:`bool`)
+
+   Generated for a MySQL EOF packet.
+   
+   See the MySQL `documentation <http://dev.mysql.com/doc/internals/en/client-server-protocol.html>`__
+   for more information about the MySQL protocol.
+   
+
+   :c: The connection.
+   
+
+   :is_intermediate: True if this is an EOF packet between the column definition and the rows, false if a final EOF.
+   
+   .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_error
    :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 31 31
@@ -106,7 +125,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_result_row
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 57 57
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 70 70
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, row: :zeek:type:`string_vec`)
 
