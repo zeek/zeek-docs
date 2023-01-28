@@ -92,7 +92,7 @@ Events
 Hooks
 #####
 .. zeek:id:: MySQL::finalize_mysql
-   :source-code: base/protocols/mysql/main.zeek 133 140
+   :source-code: base/protocols/mysql/main.zeek 152 159
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
