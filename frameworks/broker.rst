@@ -371,6 +371,36 @@ time relative to the entry's last modification time.
 Note that all data store queries must be made within Zeek's asynchronous
 ``when`` statements and must specify a timeout block.
 
+
+SQLite Data Store Tuning
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+When leveraging the SQLite backend for persistence, SQLite's default journaling
+and consistency settings are used. Concretely, ``journal_mode`` is set to
+``DELETE`` and ``synchronous`` to ``FULL``. This in turn is not optimal for
+`high INSERT or UPDATE rates <https://www.sqlite.org/faq.html#q19>`_
+due to SQLite waiting for the required IO to complete until data is safely
+on disk. This can also have a non-negligible system effect when the
+SQLite database is located on the same device as other IO critical processes.
+
+Starting with Zeek 5.2, it is possible to tune and relax these settings by
+providing an appropriate :zeek:see:`Broker::BackendOptions` and
+:zeek:see:`Broker::SQLiteOptions` instance to
+:zeek:see:`Broker::create_master`. The following example changes the
+data store to use `Write-Ahead Logging <https://www.sqlite.org/wal.html>`_
+which should perform significantly faster than the default.
+
+
+.. literalinclude:: broker/store-sqlite-tuning.zeek
+   :caption: store-sqlite-tuning.zeek
+   :language: zeek
+   :linenos:
+   :tab-width: 4
+
+If your use-case turns out to require more and lower-level tuning around
+SQLite options, please get in contact or open a feature request on GitHub.
+
+
 Cluster Framework Examples
 ==========================
 
