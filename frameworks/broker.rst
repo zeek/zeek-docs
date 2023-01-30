@@ -8,7 +8,7 @@ Broker Communication Framework
 
 .. rst-class:: opening
 
-    Zeek now uses the `Broker Library
+    Zeek uses the `Broker Library
     <https://docs.zeek.org/projects/broker>`_ to exchange information with
     other Zeek processes.  Broker itself uses CAF_ (C++ Actor Framework)
     internally for connecting nodes and exchanging arbitrary data over
@@ -28,9 +28,31 @@ Cluster Layout / API
 Layout / Topology
 -----------------
 
-- Each worker node connects to all proxies.
+In a Zeek cluster setup, every Zeek process is assigned a cluster role.
+Such a process is then called a Zeek node, a cluster node, or just named
+after the role of the process (the manager, the loggers, ...). A basic Zeek
+cluster uses four different node types, enumerated in the script-level
+variable :zeek:see:`Cluster::NodeType`.
 
-- All node types connect to all logger nodes and the manager node.
+- Manager
+- Logger
+- Worker
+- Proxy
+
+Proxy nodes are optional with Zeek's base scripts. However, certain external or
+third-party scripts may require the presence of proxies in a cluster.
+
+In small Zeek deployments, all nodes may run on a single host. In large
+Zeek deployments, nodes may be distributed across multiple physical
+systems for scaling.
+
+Currently, a single Manager node in a Zeek cluster exists. Further, connectivity
+between nodes is determined statically based on their type:
+
+- Every node connects to all loggers and the manager.
+
+- Each worker connects to all proxies.
+
 
 .. figure:: broker/cluster-layout.png
 
