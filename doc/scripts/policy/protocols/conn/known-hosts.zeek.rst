@@ -145,7 +145,7 @@ State Variables
             master_node=""
             master=F
             backend=Broker::MEMORY
-            options=[sqlite=[path=""]]
+            options=[sqlite=[path="", synchronous=<uninitialized>, journal_mode=<uninitialized>, failure_mode=Broker::SQLITE_FAILURE_MODE_FAIL, integrity_check=F]]
             clone_resync_interval=10.0 secs
             clone_stale_interval=5.0 mins
             clone_mutation_buffer_interval=2.0 mins

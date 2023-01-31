@@ -69,7 +69,7 @@ Functions
 .. zeek:id:: Broker::__create_master
    :source-code: base/bif/store.bif.zeek 22 22
 
-   :Type: :zeek:type:`function` (id: :zeek:type:`string`, b: :zeek:type:`Broker::BackendType`, options: :zeek:type:`Broker::BackendOptions` :zeek:attr:`&default` = ``[sqlite=[path=]]`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of Broker::Store
+   :Type: :zeek:type:`function` (id: :zeek:type:`string`, b: :zeek:type:`Broker::BackendType`, options: :zeek:type:`Broker::BackendOptions` :zeek:attr:`&default` = *[sqlite=[path=, synchronous=<uninitialized>, journal_mode=<uninitialized>, failure_mode=Broker::SQLITE_FAILURE_MODE_FAIL, integrity_check=F]]* :zeek:attr:`&optional`) : :zeek:type:`opaque` of Broker::Store
 
 
 .. zeek:id:: Broker::__decrement
