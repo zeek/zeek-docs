@@ -1022,14 +1022,14 @@ Functions
 
 
 .. zeek:id:: Notice::apply_policy
-   :source-code: base/frameworks/notice/main.zeek 635 696
+   :source-code: base/frameworks/notice/main.zeek 641 702
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
    This is an internal function to populate policy records.
 
 .. zeek:id:: Notice::create_file_info
-   :source-code: base/frameworks/notice/main.zeek 596 613
+   :source-code: base/frameworks/notice/main.zeek 596 615
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`Notice::FileInfo`
 
@@ -1104,7 +1104,7 @@ Functions
    :returns: True.
 
 .. zeek:id:: Notice::populate_file_info
-   :source-code: base/frameworks/notice/main.zeek 614 617
+   :source-code: base/frameworks/notice/main.zeek 616 619
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
@@ -1117,7 +1117,7 @@ Functions
    :n: a notice record that needs file-related fields populated.
 
 .. zeek:id:: Notice::populate_file_info2
-   :source-code: base/frameworks/notice/main.zeek 619 630
+   :source-code: base/frameworks/notice/main.zeek 621 636
 
    :Type: :zeek:type:`function` (fi: :zeek:type:`Notice::FileInfo`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 

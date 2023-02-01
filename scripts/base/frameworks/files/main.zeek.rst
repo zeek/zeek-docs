@@ -427,7 +427,7 @@ Functions
    :returns: The analyzer name corresponding to the tag.
 
 .. zeek:id:: Files::describe
-   :source-code: base/frameworks/files/main.zeek 500 508
+   :source-code: base/frameworks/files/main.zeek 500 511
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
