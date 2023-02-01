@@ -526,7 +526,7 @@ Events
    Marks a point in the event stream at which the event queue started flushing.
 
 .. zeek:id:: expired_conn_weird
-   :source-code: base/frameworks/notice/weird.zeek 421 433
+   :source-code: base/frameworks/notice/weird.zeek 422 434
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`)
@@ -696,7 +696,7 @@ Events
       file_sniff
 
 .. zeek:id:: file_timeout
-   :source-code: base/frameworks/files/main.zeek 562 566
+   :source-code: base/frameworks/files/main.zeek 565 569
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
@@ -711,7 +711,7 @@ Events
       Files::set_timeout_interval
 
 .. zeek:id:: file_weird
-   :source-code: base/frameworks/notice/weird.zeek 466 477
+   :source-code: base/frameworks/notice/weird.zeek 467 478
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`)
@@ -743,7 +743,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: flow_weird
-   :source-code: base/frameworks/notice/weird.zeek 435 451
+   :source-code: base/frameworks/notice/weird.zeek 436 452
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`)
@@ -781,7 +781,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: get_file_handle
-   :source-code: base/frameworks/files/main.zeek 511 518
+   :source-code: base/frameworks/files/main.zeek 514 521
 
    :Type: :zeek:type:`event` (tag: :zeek:type:`Analyzer::Tag`, c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 

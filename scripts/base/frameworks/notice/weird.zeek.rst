@@ -87,7 +87,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Weird::ignore_hosts
-   :source-code: base/frameworks/notice/weird.zeek 255 255
+   :source-code: base/frameworks/notice/weird.zeek 256 256
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Runtime Options
    and weird name into this set.
 
 .. zeek:id:: Weird::weird_do_not_ignore_repeats
-   :source-code: base/frameworks/notice/weird.zeek 259 259
+   :source-code: base/frameworks/notice/weird.zeek 260 260
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -147,6 +147,7 @@ Redefinable Options
             ["contentline_size_exceeded"] = Weird::ACTION_LOG,
             ["unescaped_%_in_URI"] = Weird::ACTION_LOG,
             ["fragment_overlap"] = Weird::ACTION_LOG_PER_ORIG,
+            ["smb_tree_connect_andx_response_without_tree"] = Weird::ACTION_LOG_PER_CONN,
             ["bad_TCP_checksum"] = Weird::ACTION_LOG_PER_ORIG,
             ["pop3_client_command_unknown"] = Weird::ACTION_LOG,
             ["TCP_christmas"] = Weird::ACTION_LOG,
@@ -290,7 +291,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Weird::did_log
-   :source-code: base/frameworks/notice/weird.zeek 273 273
+   :source-code: base/frameworks/notice/weird.zeek 274 274
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -301,7 +302,7 @@ State Variables
    could cause overload during storms.
 
 .. zeek:id:: Weird::did_notice
-   :source-code: base/frameworks/notice/weird.zeek 277 277
+   :source-code: base/frameworks/notice/weird.zeek 278 278
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -311,7 +312,7 @@ State Variables
    duplicate notices from being raised.
 
 .. zeek:id:: Weird::weird_ignore
-   :source-code: base/frameworks/notice/weird.zeek 268 268
+   :source-code: base/frameworks/notice/weird.zeek 269 269
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``10.0 mins`` :zeek:attr:`&redef`
@@ -420,7 +421,7 @@ Types
 Events
 ######
 .. zeek:id:: Weird::log_weird
-   :source-code: base/frameworks/notice/weird.zeek 283 283
+   :source-code: base/frameworks/notice/weird.zeek 284 284
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Weird::Info`)
 
@@ -442,7 +443,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Weird::weird
-   :source-code: base/frameworks/notice/weird.zeek 318 407
+   :source-code: base/frameworks/notice/weird.zeek 319 408
 
    :Type: :zeek:type:`function` (w: :zeek:type:`Weird::Info`) : :zeek:type:`void`
 

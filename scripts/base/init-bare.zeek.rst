@@ -6570,10 +6570,10 @@ Types
          minimum amount of free disk space required to begin document filtering
 
       free_space_threshold: :zeek:type:`int`
-         minimum amount of free disk space required to continue document filtering
+         minimum amount of free disk space required to continue filtering documents and merging word lists
 
-      free_space_threshold: :zeek:type:`int`
-         minimum amount of free disk space required to continue document filtering
+      free_space_stop_filtering: :zeek:type:`int`
+         minimum amount of free disk space required to continue content filtering
 
       delete_quota_threshold: :zeek:type:`count`
          default per-user disk quota

@@ -11547,10 +11547,10 @@ Types
          minimum amount of free disk space required to begin document filtering
 
       free_space_threshold: :zeek:type:`int`
-         minimum amount of free disk space required to continue document filtering
+         minimum amount of free disk space required to continue filtering documents and merging word lists
 
-      free_space_threshold: :zeek:type:`int`
-         minimum amount of free disk space required to continue document filtering
+      free_space_stop_filtering: :zeek:type:`int`
+         minimum amount of free disk space required to continue content filtering
 
       delete_quota_threshold: :zeek:type:`count`
          default per-user disk quota
@@ -11905,7 +11905,7 @@ Events
    .. zeek:see:: smb1_message smb1_negotiate_request
 
 .. zeek:id:: smb1_nt_create_andx_request
-   :source-code: base/protocols/smb/smb1-main.zeek 133 142
+   :source-code: base/protocols/smb/smb1-main.zeek 142 151
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
@@ -11928,7 +11928,7 @@ Events
    .. zeek:see:: smb1_message smb1_nt_create_andx_response
 
 .. zeek:id:: smb1_nt_create_andx_response
-   :source-code: base/protocols/smb/smb1-main.zeek 144 161
+   :source-code: base/protocols/smb/smb1-main.zeek 153 170
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_id: :zeek:type:`count`, file_size: :zeek:type:`count`, times: :zeek:type:`SMB::MACTimes`)
 
@@ -12048,7 +12048,7 @@ Events
    .. zeek:see:: smb1_message smb1_read_andx_request
 
 .. zeek:id:: smb1_session_setup_andx_request
-   :source-code: base/protocols/smb/smb1-main.zeek 248 249
+   :source-code: base/protocols/smb/smb1-main.zeek 257 258
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, request: :zeek:type:`SMB1::SessionSetupAndXRequest`)
 
@@ -12069,7 +12069,7 @@ Events
    .. zeek:see:: smb1_message smb1_session_setup_andx_response
 
 .. zeek:id:: smb1_session_setup_andx_response
-   :source-code: base/protocols/smb/smb1-main.zeek 253 254
+   :source-code: base/protocols/smb/smb1-main.zeek 262 263
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, response: :zeek:type:`SMB1::SessionSetupAndXResponse`)
 
@@ -12090,7 +12090,7 @@ Events
    .. zeek:see:: smb1_message smb1_session_setup_andx_request
 
 .. zeek:id:: smb1_transaction_request
-   :source-code: base/protocols/smb/smb1-main.zeek 258 261
+   :source-code: base/protocols/smb/smb1-main.zeek 267 270
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, name: :zeek:type:`string`, sub_cmd: :zeek:type:`count`, parameters: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -12199,7 +12199,7 @@ Events
       smb1_trans2_get_dfs_referral_request smb1_transaction_request
 
 .. zeek:id:: smb1_trans2_find_first2_request
-   :source-code: base/protocols/smb/smb1-main.zeek 243 246
+   :source-code: base/protocols/smb/smb1-main.zeek 252 255
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, args: :zeek:type:`SMB1::Find_First2_Request_Args`)
 
@@ -12222,7 +12222,7 @@ Events
       smb1_trans2_get_dfs_referral_request
 
 .. zeek:id:: smb1_trans2_query_path_info_request
-   :source-code: base/protocols/smb/smb1-main.zeek 238 241
+   :source-code: base/protocols/smb/smb1-main.zeek 247 250
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
@@ -12245,7 +12245,7 @@ Events
       smb1_trans2_get_dfs_referral_request
 
 .. zeek:id:: smb1_trans2_get_dfs_referral_request
-   :source-code: base/protocols/smb/smb1-main.zeek 233 236
+   :source-code: base/protocols/smb/smb1-main.zeek 242 245
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB1::Header`, file_name: :zeek:type:`string`)
 
