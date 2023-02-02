@@ -230,6 +230,9 @@
 
    Support for Domain Name System (DNS) protocol analysis.
 
+:doc:`base/protocols/finger </scripts/base/protocols/finger/index>`
+
+
 :doc:`base/protocols/ftp </scripts/base/protocols/ftp/index>`
 
    Support for File Transfer Protocol (FTP) analysis.

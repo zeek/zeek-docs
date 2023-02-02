@@ -350,6 +350,9 @@
    base/protocols/dns/__load__.zeek </scripts/base/protocols/dns/__load__.zeek>
    base/protocols/dns/consts.zeek </scripts/base/protocols/dns/consts.zeek>
    base/protocols/dns/main.zeek </scripts/base/protocols/dns/main.zeek>
+   base/protocols/finger/__load__.zeek </scripts/base/protocols/finger/__load__.zeek>
+   base/protocols/finger/spicy-events.zeek </scripts/base/protocols/finger/spicy-events.zeek>
+   base/protocols/finger/main.zeek </scripts/base/protocols/finger/main.zeek>
    base/protocols/ftp/__load__.zeek </scripts/base/protocols/ftp/__load__.zeek>
    base/protocols/ftp/utils-commands.zeek </scripts/base/protocols/ftp/utils-commands.zeek>
    base/protocols/ftp/info.zeek </scripts/base/protocols/ftp/info.zeek>
@@ -429,6 +432,7 @@
    base/protocols/ssh/__load__.zeek </scripts/base/protocols/ssh/__load__.zeek>
    base/protocols/ssh/main.zeek </scripts/base/protocols/ssh/main.zeek>
    base/protocols/syslog/__load__.zeek </scripts/base/protocols/syslog/__load__.zeek>
+   base/protocols/syslog/spicy-events.zeek </scripts/base/protocols/syslog/spicy-events.zeek>
    base/protocols/syslog/consts.zeek </scripts/base/protocols/syslog/consts.zeek>
    base/protocols/syslog/main.zeek </scripts/base/protocols/syslog/main.zeek>
    base/protocols/tunnels/__load__.zeek </scripts/base/protocols/tunnels/__load__.zeek>
