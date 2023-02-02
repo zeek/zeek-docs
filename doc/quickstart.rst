@@ -196,7 +196,7 @@ Some subdirectories worth more explanation are:
 * :samp:`{$PREFIX}/bin/`
 
   This directory contains all the binaries that get installed as part of Zeek
-  installation. Few important ones you should know about are:
+  installation. A few important ones you should know about are:
 
   * :program:`zeek`
 
@@ -218,7 +218,7 @@ Some subdirectories worth more explanation are:
   This directory contains the important configuration files that need to be
   modified for the minimal starting configuration as well as for configuring an
   advanced Zeek cluster installation. This is one of the important directories
-  from the user perspective, and one should be familiar with the files in
+  from the user perspective, and one should be familiar with the files it
   contains:
 
   * :file:`networks.cfg`
