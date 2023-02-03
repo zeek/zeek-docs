@@ -110,6 +110,8 @@ Functions
 :zeek:id:`global_options`: :zeek:type:`function`                              Returns a set giving the names of all global options.
 :zeek:id:`has_event_group`: :zeek:type:`function`                             Does an attribute event group with this name exist?
 :zeek:id:`has_module_events`: :zeek:type:`function`                           Does a module event group with this name exist?
+:zeek:id:`have_spicy_analyzers`: :zeek:type:`function`                        Returns true if Zeek was built with support for its in-tree Spicy analyzers
+                                                                              (which is the default).
 :zeek:id:`haversine_distance`: :zeek:type:`function`                          Calculates distance between two geographic locations using the haversine
                                                                               formula.
 :zeek:id:`hexstr_to_bytestring`: :zeek:type:`function`                        Converts a hex-string into its binary representation.
@@ -1510,6 +1512,14 @@ Functions
    
    .. zeek:see:: enable_event_group disable_event_group has_event_group
                  enable_module_events disable_module_events has_module_events
+
+.. zeek:id:: have_spicy_analyzers
+   :source-code: base/bif/zeek.bif.zeek 2593 2593
+
+   :Type: :zeek:type:`function` () : :zeek:type:`bool`
+
+   Returns true if Zeek was built with support for its in-tree Spicy analyzers
+   (which is the default).
 
 .. zeek:id:: haversine_distance
    :source-code: base/bif/zeek.bif.zeek 1887 1887
