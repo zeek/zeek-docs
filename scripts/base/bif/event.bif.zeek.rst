@@ -747,7 +747,7 @@ Events
       file_sniff
 
 .. zeek:id:: file_timeout
-   :source-code: base/frameworks/files/main.zeek 560 564
+   :source-code: base/frameworks/files/main.zeek 564 568
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
@@ -832,7 +832,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: get_file_handle
-   :source-code: base/frameworks/files/main.zeek 513 520
+   :source-code: base/frameworks/files/main.zeek 513 524
 
    :Type: :zeek:type:`event` (tag: :zeek:type:`Analyzer::Tag`, c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
