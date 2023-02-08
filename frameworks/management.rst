@@ -306,25 +306,30 @@ variables, or redefine the following:
 Firewalling and encryption
 --------------------------
 
-By default, the controller listens for clients and agents on ``2150/tcp``.
+By default, the controller listens for clients and agents on ports ``2149/tcp`` and
+``2150/tcp``. The former port supports Broker's WebSocket data format, the latter its
+traditional one.
 Unless you run all components, including the client, on a single system, you'll
-want to open up this port on the controller's system. The agent's default port
+want to open up these ports on the controller's system. The agent's default port
 is ``2151/tcp``. It always listens; this allows cluster nodes to connect to it
 to send status reports. If the agents connect to the controller, your firewall
 may block the agent's port since host-local connectivity from cluster nodes to
 the agent process suffices.
 
-To switch agent and/or controller to a different port, set environment variables
-``ZEEK_CONTROLLER_PORT`` / ``ZEEK_AGENT_PORT``, or use the following:
+To switch agent and/or controller to different ports, set environment variables
+``ZEEK_CONTROLLER_PORT`` / ``ZEEK_CONTROLLER_WEBSOCKET_PORT`` / ``ZEEK_AGENT_PORT``,
+or use the following:
 
 .. code-block:: zeek
 
+   redef Management::Controller::default_port_websocket = 21490/tcp;
    redef Management::Controller::default_port = 21500/tcp;
    redef Management::Agent::default_port = 21510/tcp;
 
 By default, agent and controller listen globally. To make them listen on a
-specific interface, set environment variable ``ZEEK_CONTROLLER_ADDR`` /
-``ZEEK_AGENT_ADDR``, or redefine the framework's fallback default address:
+specific interface, set environment variables ``ZEEK_CONTROLLER_ADDR`` /
+``ZEEK_CONTROLLER_WEBSOCKET_ADDR`` / ``ZEEK_AGENT_ADDR``,
+or redefine the framework's fallback default address:
 
 .. code-block:: zeek
 
@@ -386,14 +391,14 @@ The framework configures log rotation and archival via Zeek's included
   You can also relocate the spool by setting the ``ZEEK_MANAGEMENT_SPOOL_DIR``
   environment variable or redefining :zeek:see:`Management::spool_dir`. The
   framework will place ``log-queue`` into that new destination.
-  
+
 * The log rotation callback rotates node-local logs into the log queue, with
   naming suitable for ``zeek-archiver``. An example:
 
   .. code-block:: console
 
      conn__2022-06-20-10-00-00__2022-06-20-11-00-00__.log
-     
+
   For details, take a look at the implementation in
   ``scripts/policy/frameworks/management/persistence.zeek``.
 
@@ -426,7 +431,7 @@ You can adapt the log archival configuration via the following settings:
 
 * Redefine :zeek:see:`Management::Agent::archive_interval` for an interval other
   than the log rotation one.
-  
+
 * Redefine :zeek:see:`Management::Agent::archive_dir` to change the
   destination directory.
 
@@ -461,6 +466,53 @@ render these directly to JSON. Instead, it translates the responses to a more
 convenient JSON format reflecting specific types of requests. Several commands
 share a common output format.
 
+.. _zeek-client-installation:
+
+Standalone installation
+-----------------------
+
+As mentioned above, Zeek ships with ``zeek-client`` by default. Since users will
+often want to use the client from machines not otherwise running Zeek, the
+client is also available as a standalone Python package via ``pip``:
+
+.. code-block:: console
+
+   $ pip install zeek-client
+
+Users with custom Zeek builds who don't require a Zeek-bundled ``zeek-client``
+can skip its installation by configuring their build with
+``--disable-zeek-client``.
+
+.. _zeek-client-compatibility:
+
+Compatibility
+-------------
+
+Zeek 5.2 switched client/controller communication from Broker's native wire
+format to the newer `WebSocket data transport
+<https://docs.zeek.org/projects/broker/en/current/web-socket.html>`_, with
+``zeek-client`` 1.2.0 being the first version to exlusively use WebSockets.
+This has a few implications:
+
+* Since Broker dedicates separate ports to the respective wire formats, the
+  controller listens on TCP port 2149 for WebSocket connections, while
+  TCP port 2150 remains available for connections by native-Broker clients, as well
+  as by management agents connecting to the controller.
+
+* ``zeek-client`` 1.2.0 and newer default to connecting to port 2149.
+
+* Controllers running Zeek older than 5.2 need tweaking to listen on a WebSocket
+  port, for example by saying:
+
+  .. code-block:: console
+
+     event zeek_init()
+         {
+         Broker::listen_websocket("0.0.0.0", 2149/tcp);
+         }
+
+* Older clients continue to work with Zeek 5.2 and newer.
+
 .. _zeek-client-configuration:
 
 Configuration
@@ -486,19 +538,19 @@ specify a controller's location on the network, you could:
 
      [controller]
      host = mycontroller
-     port = 21500
+     port = 21490
 
 * Set the environment:
 
   .. code-block:: console
 
-     ZEEK_CLIENT_CONFIG_SETTINGS="controller.host=mycontroller controller.port=21500"
+     ZEEK_CLIENT_CONFIG_SETTINGS="controller.host=mycontroller controller.port=21490"
 
 * Use the ``--set`` option, possibly repeatedly:
 
   .. code-block:: console
 
-     $ zeek-client --set controller.host=mycontroller --set controller.port=21500 ...
+     $ zeek-client --set controller.host=mycontroller --set controller.port=21490 ...
 
 Other than the controller coordinates, the settings should rarely require
 changing. If you're curious about their meaning, please consult the `source code
@@ -513,21 +565,7 @@ package, ``zeek-client`` features command-line auto-completion. For example:
 .. code-block:: console
 
    $ zeek-client --set controller.<TAB>
-   controller.host=127.0.0.1  controller.port=2150
-
-Zeek build dependency
----------------------
-
-``zeek-client`` outsources most of its functionality to its (included)
-``zeekclient`` Python module, and depends on Broker for event I/O. Due to this
-dependency we don't currently provide ``zeek-client`` as a standalone package.
-We plan to support Broker's new `WebSocket data transport
-<https://docs.zeek.org/projects/broker/en/current/web-socket.html>`_ in the near
-future to simplify this.
-
-Users with custom Zeek builds who don't require ``zeek-client`` can skip it by
-configuring their build with ``--disable-zeek-client``.
-
+   controller.host=127.0.0.1  controller.port=2149
 
 Common cluster management tasks
 ===============================
