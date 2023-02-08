@@ -391,14 +391,14 @@ The framework configures log rotation and archival via Zeek's included
   You can also relocate the spool by setting the ``ZEEK_MANAGEMENT_SPOOL_DIR``
   environment variable or redefining :zeek:see:`Management::spool_dir`. The
   framework will place ``log-queue`` into that new destination.
-  
+
 * The log rotation callback rotates node-local logs into the log queue, with
   naming suitable for ``zeek-archiver``. An example:
 
   .. code-block:: console
 
      conn__2022-06-20-10-00-00__2022-06-20-11-00-00__.log
-     
+
   For details, take a look at the implementation in
   ``scripts/policy/frameworks/management/persistence.zeek``.
 
@@ -431,7 +431,7 @@ You can adapt the log archival configuration via the following settings:
 
 * Redefine :zeek:see:`Management::Agent::archive_interval` for an interval other
   than the log rotation one.
-  
+
 * Redefine :zeek:see:`Management::Agent::archive_dir` to change the
   destination directory.
 
