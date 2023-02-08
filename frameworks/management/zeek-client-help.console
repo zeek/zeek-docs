@@ -13,7 +13,7 @@ options:
                         /usr/local/zeek/etc/zeek-client.cfg)
   --controller HOST:PORT
                         Address and port of the controller, either of which
-                        may be omitted (default: 127.0.0.1:2150)
+                        may be omitted (default: 127.0.0.1:2149)
   --set SECTION.KEY=VAL
                         Adjust a configuration setting. Can use repeatedly.
                         See show-settings.
