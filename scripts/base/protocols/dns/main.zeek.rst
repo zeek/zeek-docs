@@ -168,8 +168,19 @@ Types
          that the name server supports recursive queries.
 
       Z: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         A reserved field that is usually zero in
-         queries and responses.
+         A reserved field that is zero in queries and responses unless
+         using DNSSEC. This field represents the 3-bit Z field using
+         the specification from RFC 1035.
+
+      AD :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         The DNSSEC Authentic Data bit in a response message indicates
+         that the name server has authenticated all the data in the 
+         answer and authority sections. In a request, it indicates the
+         requester understands and is interested in the AD bit.
+
+      CD :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         The DNSSEC Checking Disabled bit in a query indicates that
+         pending, non-authenticated data is acceptable to the sender.
 
       answers: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          The set of resource descriptions in the query answer.
