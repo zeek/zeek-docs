@@ -61,3 +61,8 @@ Documentation Versioning
   To help clarify which release you are using, the version numbering
   scheme for the two release branches is described in the `Release
   Cadence <https://github.com/zeek/zeek/wiki/Release-Cadence>`_ policy.
+
+  Documentation for older Zeek releases remains available for approximately one
+  full major-version release cycle, i.e., about a year. You can browse recent
+  versions via the fly-out menu in the bottom left, and find all available
+  versions on the `RTD website <https://readthedocs.org/projects/zeek-docs/versions/>`_.
