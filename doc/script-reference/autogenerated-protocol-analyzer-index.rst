@@ -269,6 +269,8 @@ Protocol Analyzers
 
       .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_NULL AllAnalyzers::Tag
 
+      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_PBB AllAnalyzers::Tag
+
       .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_PE AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_PIA_TCP AllAnalyzers::Tag

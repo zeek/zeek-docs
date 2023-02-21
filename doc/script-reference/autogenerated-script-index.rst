@@ -52,6 +52,8 @@
    base/packet-protocols/vlan/main.zeek </scripts/base/packet-protocols/vlan/main.zeek>
    base/packet-protocols/mpls/__load__.zeek </scripts/base/packet-protocols/mpls/__load__.zeek>
    base/packet-protocols/mpls/main.zeek </scripts/base/packet-protocols/mpls/main.zeek>
+   base/packet-protocols/pbb/__load__.zeek </scripts/base/packet-protocols/pbb/__load__.zeek>
+   base/packet-protocols/pbb/main.zeek </scripts/base/packet-protocols/pbb/main.zeek>
    base/packet-protocols/vntag/__load__.zeek </scripts/base/packet-protocols/vntag/__load__.zeek>
    base/packet-protocols/vntag/main.zeek </scripts/base/packet-protocols/vntag/main.zeek>
    base/packet-protocols/udp/__load__.zeek </scripts/base/packet-protocols/udp/__load__.zeek>

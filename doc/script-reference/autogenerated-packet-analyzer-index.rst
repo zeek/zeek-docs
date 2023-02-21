@@ -39,6 +39,8 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_NULL PacketAnalyzer::Tag
 
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_PBB PacketAnalyzer::Tag
+
       .. zeek:enum:: PacketAnalyzer::ANALYZER_PPPOE PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_PPPSERIAL PacketAnalyzer::Tag
@@ -508,6 +510,18 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_NULL`
+
+.. _plugin-zeek-pbb:
+
+Zeek::PBB
+---------
+
+PBB packet analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_PBB`
 
 .. _plugin-zeek-pppoe:
 
