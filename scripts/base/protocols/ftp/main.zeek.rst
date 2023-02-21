@@ -19,8 +19,18 @@ Runtime Options
 ============================================================================ ======================================================================
 :zeek:id:`FTP::guest_ids`: :zeek:type:`set` :zeek:attr:`&redef`              User IDs that can be considered "anonymous".
 :zeek:id:`FTP::logged_commands`: :zeek:type:`set` :zeek:attr:`&redef`        List of commands that should have their command/response pairs logged.
+:zeek:id:`FTP::max_arg_length`: :zeek:type:`count` :zeek:attr:`&redef`       Truncate the arg field in the log to that many bytes to avoid
+                                                                             excessive logging volume.
+:zeek:id:`FTP::max_password_length`: :zeek:type:`count` :zeek:attr:`&redef`  Truncate the password field in the log to that many bytes to avoid
+                                                                             excessive logging volume as this values is replicated in each
+                                                                             of the entries related to an FTP session.
 :zeek:id:`FTP::max_pending_commands`: :zeek:type:`count` :zeek:attr:`&redef` Allow a client to send this many commands before the server
                                                                              sends a reply.
+:zeek:id:`FTP::max_reply_msg_length`: :zeek:type:`count` :zeek:attr:`&redef` Truncate the reply_msg field in the log to that many bytes to avoid
+                                                                             excessive logging volume.
+:zeek:id:`FTP::max_user_length`: :zeek:type:`count` :zeek:attr:`&redef`      Truncate the user field in the log to that many bytes to avoid
+                                                                             excessive logging volume as this values is replicated in each
+                                                                             of the entries related to an FTP session.
 ============================================================================ ======================================================================
 
 Types
@@ -115,6 +125,27 @@ Runtime Options
 
    List of commands that should have their command/response pairs logged.
 
+.. zeek:id:: FTP::max_arg_length
+   :source-code: base/protocols/ftp/main.zeek 73 73
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``4096``
+
+   Truncate the arg field in the log to that many bytes to avoid
+   excessive logging volume.
+
+.. zeek:id:: FTP::max_password_length
+   :source-code: base/protocols/ftp/main.zeek 69 69
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``128``
+
+   Truncate the password field in the log to that many bytes to avoid
+   excessive logging volume as this values is replicated in each
+   of the entries related to an FTP session.
+
 .. zeek:id:: FTP::max_pending_commands
    :source-code: base/protocols/ftp/main.zeek 59 59
 
@@ -125,6 +156,27 @@ Runtime Options
    Allow a client to send this many commands before the server
    sends a reply. If this value is exceeded a weird named
    FTP_too_many_pending_commands is logged for the connection.
+
+.. zeek:id:: FTP::max_reply_msg_length
+   :source-code: base/protocols/ftp/main.zeek 77 77
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``4096``
+
+   Truncate the reply_msg field in the log to that many bytes to avoid
+   excessive logging volume.
+
+.. zeek:id:: FTP::max_user_length
+   :source-code: base/protocols/ftp/main.zeek 64 64
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``128``
+
+   Truncate the user field in the log to that many bytes to avoid
+   excessive logging volume as this values is replicated in each
+   of the entries related to an FTP session.
 
 Types
 #####
@@ -155,14 +207,14 @@ Events
 Hooks
 #####
 .. zeek:id:: FTP::finalize_ftp
-   :source-code: base/protocols/ftp/main.zeek 378 388
+   :source-code: base/protocols/ftp/main.zeek 426 436
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    FTP finalization hook.  Remaining FTP info may get logged when it's called.
 
 .. zeek:id:: FTP::finalize_ftp_data
-   :source-code: base/protocols/ftp/main.zeek 365 375
+   :source-code: base/protocols/ftp/main.zeek 413 423
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
@@ -179,7 +231,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: FTP::parse_ftp_reply_code
-   :source-code: base/protocols/ftp/main.zeek 123 137
+   :source-code: base/protocols/ftp/main.zeek 141 155
 
    :Type: :zeek:type:`function` (code: :zeek:type:`count`) : :zeek:type:`FTP::ReplyCode`
 
