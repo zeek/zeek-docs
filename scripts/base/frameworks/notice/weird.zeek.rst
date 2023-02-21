@@ -87,7 +87,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Weird::ignore_hosts
-   :source-code: base/frameworks/notice/weird.zeek 256 256
+   :source-code: base/frameworks/notice/weird.zeek 260 260
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Runtime Options
    and weird name into this set.
 
 .. zeek:id:: Weird::weird_do_not_ignore_repeats
-   :source-code: base/frameworks/notice/weird.zeek 260 260
+   :source-code: base/frameworks/notice/weird.zeek 264 264
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -156,6 +156,7 @@ Redefinable Options
             ["irc_invalid_kick_message_format"] = Weird::ACTION_LOG,
             ["excess_RPC"] = Weird::ACTION_LOG_PER_ORIG,
             ["invalid_irc_global_users_reply"] = Weird::ACTION_LOG,
+            ["FTP_reply_msg_too_long"] = Weird::ACTION_LOG_PER_CONN,
             ["bad_rsh_prolog"] = Weird::ACTION_LOG,
             ["irc_line_too_short"] = Weird::ACTION_LOG,
             ["UDP_datagram_length_mismatch"] = Weird::ACTION_LOG_PER_ORIG,
@@ -170,18 +171,18 @@ Redefinable Options
             ["base64_illegal_encoding"] = Weird::ACTION_LOG,
             ["bad_ident_port"] = Weird::ACTION_LOG,
             ["simultaneous_open"] = Weird::ACTION_LOG_PER_CONN,
-            ["DNS_truncated_quest_too_short"] = Weird::ACTION_LOG,
             ["ident_request_addendum"] = Weird::ACTION_LOG,
+            ["DNS_truncated_quest_too_short"] = Weird::ACTION_LOG,
             ["illegal_%_at_end_of_URI"] = Weird::ACTION_LOG,
-            ["irc_invalid_mode_message_format"] = Weird::ACTION_LOG,
             ["pop3_server_sending_client_commands"] = Weird::ACTION_LOG,
+            ["irc_invalid_mode_message_format"] = Weird::ACTION_LOG,
             ["SYN_after_close"] = Weird::ACTION_LOG,
             ["window_recision"] = Weird::ACTION_LOG,
             ["inflate_failed"] = Weird::ACTION_LOG,
             ["DNS_truncated_len_lt_hdr_len"] = Weird::ACTION_LOG,
             ["irc_invalid_privmsg_message_format"] = Weird::ACTION_LOG,
-            ["excessive_data_without_further_acks"] = Weird::ACTION_LOG,
             ["pending_data_when_closed"] = Weird::ACTION_LOG,
+            ["excessive_data_without_further_acks"] = Weird::ACTION_LOG,
             ["netbios_raw_session_msg"] = Weird::ACTION_LOG,
             ["responder_RPC_call"] = Weird::ACTION_LOG_PER_ORIG,
             ["SYN_after_reset"] = Weird::ACTION_LOG,
@@ -200,6 +201,7 @@ Redefinable Options
             ["baroque_SYN"] = Weird::ACTION_LOG,
             ["unexpected_multiple_HTTP_requests"] = Weird::ACTION_LOG,
             ["unknown_netbios_type"] = Weird::ACTION_LOG,
+            ["FTP_user_too_long"] = Weird::ACTION_LOG_PER_CONN,
             ["bad_RPC"] = Weird::ACTION_LOG_PER_ORIG,
             ["incompletely_captured_fragment"] = Weird::ACTION_LOG,
             ["irc_too_many_invalid"] = Weird::ACTION_LOG,
@@ -211,14 +213,15 @@ Redefinable Options
             ["possible_split_routing"] = Weird::ACTION_LOG,
             ["irc_invalid_who_message_format"] = Weird::ACTION_LOG,
             ["HTTP_chunked_transfer_for_multipart_message"] = Weird::ACTION_LOG,
+            ["FTP_arg_too_long"] = Weird::ACTION_LOG_PER_CONN,
             ["irc_invalid_njoin_line"] = Weird::ACTION_LOG,
             ["line_terminated_with_single_CR"] = Weird::ACTION_LOG,
             ["HTTP_overlapping_messages"] = Weird::ACTION_LOG,
             ["deficit_netbios_hdr_len"] = Weird::ACTION_LOG,
-            ["repeated_SYN_with_ack"] = Weird::ACTION_LOG,
             ["irc_invalid_reply_number"] = Weird::ACTION_LOG,
-            ["RPC_underflow"] = Weird::ACTION_LOG,
+            ["repeated_SYN_with_ack"] = Weird::ACTION_LOG,
             ["malformed_ssh_identification"] = Weird::ACTION_LOG,
+            ["RPC_underflow"] = Weird::ACTION_LOG,
             ["unexpected_server_HTTP_data"] = Weird::ACTION_LOG,
             ["DNS_RR_bad_length"] = Weird::ACTION_LOG,
             ["SSL_many_server_names"] = Weird::ACTION_LOG,
@@ -231,8 +234,8 @@ Redefinable Options
             ["transaction_subcmd_missing"] = Weird::ACTION_LOG,
             ["HTTP_version_mismatch"] = Weird::ACTION_LOG,
             ["irc_invalid_join_line"] = Weird::ACTION_LOG,
-            ["rlogin_text_after_rejected"] = Weird::ACTION_LOG,
             ["multiple_HTTP_request_elements"] = Weird::ACTION_LOG,
+            ["rlogin_text_after_rejected"] = Weird::ACTION_LOG,
             ["spontaneous_RST"] = Weird::ACTION_IGNORE,
             ["bad_IP_checksum"] = Weird::ACTION_LOG_PER_ORIG,
             ["no_smb_session_using_parsesambamsg"] = Weird::ACTION_LOG,
@@ -253,9 +256,10 @@ Redefinable Options
             ["irc_invalid_who_line"] = Weird::ACTION_LOG,
             ["DNS_truncated_ans_too_short"] = Weird::ACTION_LOG,
             ["RST_with_data"] = Weird::ACTION_LOG,
+            ["FTP_password_too_long"] = Weird::ACTION_LOG_PER_CONN,
             ["above_hole_data_without_any_acks"] = Weird::ACTION_LOG,
-            ["partial_ident_request"] = Weird::ACTION_LOG,
             ["bad_UDP_checksum"] = Weird::ACTION_LOG_PER_ORIG,
+            ["partial_ident_request"] = Weird::ACTION_LOG,
             ["DNS_truncated_RR_rdlength_lt_len"] = Weird::ACTION_LOG,
             ["bad_RPC_program"] = Weird::ACTION_LOG,
             ["irc_invalid_topic_reply"] = Weird::ACTION_LOG,
@@ -265,9 +269,9 @@ Redefinable Options
             ["DNS_NAME_too_long"] = Weird::ACTION_LOG,
             ["crud_trailing_HTTP_request"] = Weird::ACTION_LOG,
             ["spontaneous_FIN"] = Weird::ACTION_IGNORE,
+            ["rsh_text_after_rejected"] = Weird::ACTION_LOG,
             ["pop3_malformed_auth_plain"] = Weird::ACTION_LOG,
             ["bad_HTTP_version"] = Weird::ACTION_LOG,
-            ["rsh_text_after_rejected"] = Weird::ACTION_LOG,
             ["bad_TCP_header_len"] = Weird::ACTION_LOG,
             ["unknown_HTTP_method"] = Weird::ACTION_LOG,
             ["netbios_client_session_reply"] = Weird::ACTION_LOG,
@@ -291,7 +295,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Weird::did_log
-   :source-code: base/frameworks/notice/weird.zeek 274 274
+   :source-code: base/frameworks/notice/weird.zeek 278 278
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -302,7 +306,7 @@ State Variables
    could cause overload during storms.
 
 .. zeek:id:: Weird::did_notice
-   :source-code: base/frameworks/notice/weird.zeek 278 278
+   :source-code: base/frameworks/notice/weird.zeek 282 282
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -312,7 +316,7 @@ State Variables
    duplicate notices from being raised.
 
 .. zeek:id:: Weird::weird_ignore
-   :source-code: base/frameworks/notice/weird.zeek 269 269
+   :source-code: base/frameworks/notice/weird.zeek 273 273
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``10.0 mins`` :zeek:attr:`&redef`
@@ -421,7 +425,7 @@ Types
 Events
 ######
 .. zeek:id:: Weird::log_weird
-   :source-code: base/frameworks/notice/weird.zeek 284 284
+   :source-code: base/frameworks/notice/weird.zeek 288 288
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Weird::Info`)
 
@@ -443,7 +447,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Weird::weird
-   :source-code: base/frameworks/notice/weird.zeek 319 408
+   :source-code: base/frameworks/notice/weird.zeek 323 412
 
    :Type: :zeek:type:`function` (w: :zeek:type:`Weird::Info`) : :zeek:type:`void`
 
