@@ -46,6 +46,9 @@
 :doc:`base/packet-protocols/mpls </scripts/base/packet-protocols/mpls/index>`
 
 
+:doc:`base/packet-protocols/pbb </scripts/base/packet-protocols/pbb/index>`
+
+
 :doc:`base/packet-protocols/vntag </scripts/base/packet-protocols/vntag/index>`
 
 

@@ -100,6 +100,12 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/mpls/main.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/pbb/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/pbb/main.zeek`
+
+
 :doc:`/scripts/base/packet-protocols/vntag/__load__.zeek`
 
 
