@@ -160,6 +160,8 @@ Redefinable Options
 :zeek:id:`log_rotate_base_time`: :zeek:type:`string` :zeek:attr:`&redef`                                 Base time of log rotations in 24-hour time format (``%H:%M``), e.g.
 :zeek:id:`max_analyzer_violations`: :zeek:type:`count` :zeek:attr:`&redef`                               The maximum number of analyzer violations the core generates before
                                                                                                          suppressing them for a given analyzer instance.
+:zeek:id:`max_find_all_string_length`: :zeek:type:`int` :zeek:attr:`&redef`                              Maximum string length allowed for calls to the :zeek:see:`find_all` and
+                                                                                                         :zeek:see:`find_all_ordered` BIFs.
 :zeek:id:`max_timer_expires`: :zeek:type:`count` :zeek:attr:`&redef`                                     The maximum number of expired timers to process after processing each new
                                                                                                          packet.
 :zeek:id:`mmdb_dir`: :zeek:type:`string` :zeek:attr:`&redef`                                             The directory containing MaxMind DB (.mmdb) files to use for GeoIP support.
@@ -1750,6 +1752,16 @@ Redefinable Options
    analyzers through script logic after a certain number of violations
    was observed.
 
+.. zeek:id:: max_find_all_string_length
+   :source-code: base/init-bare.zeek 5577 5577
+
+   :Type: :zeek:type:`int`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``10000``
+
+   Maximum string length allowed for calls to the :zeek:see:`find_all` and
+   :zeek:see:`find_all_ordered` BIFs.
+
 .. zeek:id:: max_timer_expires
    :source-code: base/init-bare.zeek 2132 2132
 
@@ -3071,7 +3083,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 5575 5575
+   :source-code: base/init-bare.zeek 5579 5579
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
