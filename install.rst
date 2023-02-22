@@ -54,7 +54,8 @@ analyzer packages.
     apt-get update
     apt-get install -y --no-install-recommends g++ cmake make libpcap-dev
 
-The Dockerfile lives `here <https://github.com/zeek/zeek/blob/master/docker/Dockerfile>`_.
+The source files used to create the container images are on
+`GitHub <https://github.com/zeek/zeek/blob/master/docker>`_.
 
 Binary Packages
 ===============
