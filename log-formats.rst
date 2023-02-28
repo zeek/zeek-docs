@@ -370,7 +370,7 @@ offset.
 The default format can be altered by using the ``-D`` and ``-U`` flags, using the
 standard ``strftime`` syntax. For example, to format the timestamp in the
 US-typical “Middle Endian” you could use a format string of:
-``%d-%m-%YT%H:%M:%S%z``
+``%m-%d-%YT%H:%M:%S%z``
 
 .. code-block:: console
 
@@ -378,8 +378,8 @@ US-typical “Middle Endian” you could use a format string of:
 
 ::
 
-  05-06-2020T14:39:59+0000        192.168.4.76    testmyids.com   -
-  05-06-2020T14:39:59+0000        192.168.4.76    testmyids.com   31.3.245.133
+  06-05-2020T14:39:59+0000        192.168.4.76    testmyids.com   -
+  06-05-2020T14:39:59+0000        192.168.4.76    testmyids.com   31.3.245.133
 
 Using :program:`awk` and :program:`zeek-cut` have been the traditional method
 of interacting with Zeek logs. In the next section we will look at the
