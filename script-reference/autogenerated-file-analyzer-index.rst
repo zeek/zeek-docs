@@ -280,7 +280,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 4383 4397
+   :source-code: base/init-bare.zeek 4383 4398
 
    :Type: :zeek:type:`record`
 
@@ -323,9 +323,12 @@ Types
       curve: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
          Curve, if EC-certificate
 
+      tbs_sig_alg: :zeek:type:`string`
+         Name of the signature algorithm given inside the tbsCertificate. Should be equivalent to `sig_alg`.
+
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 4399 4405
+   :source-code: base/init-bare.zeek 4400 4406
 
    :Type: :zeek:type:`record`
 
@@ -346,7 +349,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 4407 4410
+   :source-code: base/init-bare.zeek 4408 4411
 
    :Type: :zeek:type:`record`
 
@@ -359,7 +362,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 4412 4418
+   :source-code: base/init-bare.zeek 4413 4419
 
    :Type: :zeek:type:`record`
 
@@ -380,7 +383,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 4421 4428
+   :source-code: base/init-bare.zeek 4422 4429
 
    :Type: :zeek:type:`record`
 
