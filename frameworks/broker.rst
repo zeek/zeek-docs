@@ -39,9 +39,6 @@ variable :zeek:see:`Cluster::NodeType`.
 - Worker
 - Proxy
 
-Proxy nodes are optional with Zeek's base scripts. However, certain external or
-third-party scripts may require the presence of proxies in a cluster.
-
 In small Zeek deployments, all nodes may run on a single host. In large
 Zeek deployments, nodes may be distributed across multiple physical
 systems for scaling.
