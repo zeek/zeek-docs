@@ -76,7 +76,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DNS::max_pending_msgs
-   :source-code: base/protocols/dns/main.zeek 125 125
+   :source-code: base/protocols/dns/main.zeek 133 133
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -89,7 +89,7 @@ Runtime Options
    response is ongoing).
 
 .. zeek:id:: DNS::max_pending_query_ids
-   :source-code: base/protocols/dns/main.zeek 130 130
+   :source-code: base/protocols/dns/main.zeek 138 138
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -102,7 +102,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: DNS::Info
-   :source-code: base/protocols/dns/main.zeek 18 85
+   :source-code: base/protocols/dns/main.zeek 18 93
 
    :Type: :zeek:type:`record`
 
@@ -168,8 +168,18 @@ Types
          that the name server supports recursive queries.
 
       Z: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         A reserved field that is usually zero in
-         queries and responses.
+         A reserved field that is zero in queries and responses unless
+         using DNSSEC. This field represents the 3-bit Z field using
+         the specification from RFC 1035.
+
+      AD: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         The DNSSEC Authentic Data bit in a response message indicates
+         that the name server has authenticated all the data in the
+         answer and authority sections.
+
+      CD: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         The DNSSEC Checking Disabled bit in a query indicates that
+         pending, non-authenticated data is acceptable to the sender
 
       answers: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          The set of resource descriptions in the query answer.
@@ -213,7 +223,7 @@ Types
    The record type which contains the column fields of the DNS log.
 
 .. zeek:type:: DNS::PendingMessages
-   :source-code: base/protocols/dns/main.zeek 118 118
+   :source-code: base/protocols/dns/main.zeek 126 126
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`Queue::Queue`
 
@@ -221,7 +231,7 @@ Types
    DNS message query/transaction ID.
 
 .. zeek:type:: DNS::State
-   :source-code: base/protocols/dns/main.zeek 134 149
+   :source-code: base/protocols/dns/main.zeek 142 157
 
    :Type: :zeek:type:`record`
 
@@ -246,7 +256,7 @@ Types
 Events
 ######
 .. zeek:id:: DNS::log_dns
-   :source-code: base/protocols/dns/main.zeek 89 89
+   :source-code: base/protocols/dns/main.zeek 97 97
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`DNS::Info`)
 
@@ -256,7 +266,7 @@ Events
 Hooks
 #####
 .. zeek:id:: DNS::do_reply
-   :source-code: base/protocols/dns/main.zeek 103 103
+   :source-code: base/protocols/dns/main.zeek 111 111
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, reply: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -278,7 +288,7 @@ Hooks
    :reply: The specific response information according to RR type/class.
 
 .. zeek:id:: DNS::finalize_dns
-   :source-code: base/protocols/dns/main.zeek 621 636
+   :source-code: base/protocols/dns/main.zeek 633 648
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
@@ -292,7 +302,7 @@ Hooks
    A default logging policy hook for the stream.
 
 .. zeek:id:: DNS::set_session
-   :source-code: base/protocols/dns/main.zeek 237 346
+   :source-code: base/protocols/dns/main.zeek 245 354
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, is_query: :zeek:type:`bool`) : :zeek:type:`bool`
 
