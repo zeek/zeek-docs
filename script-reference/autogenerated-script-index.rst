@@ -556,6 +556,7 @@
    policy/protocols/ssh/geo-data.zeek </scripts/policy/protocols/ssh/geo-data.zeek>
    policy/protocols/ssh/interesting-hostnames.zeek </scripts/policy/protocols/ssh/interesting-hostnames.zeek>
    policy/protocols/ssh/software.zeek </scripts/policy/protocols/ssh/software.zeek>
+   policy/protocols/ssl/certificate-request-info.zeek </scripts/policy/protocols/ssl/certificate-request-info.zeek>
    policy/protocols/ssl/decryption.zeek </scripts/policy/protocols/ssl/decryption.zeek>
    policy/protocols/ssl/expiring-certs.zeek </scripts/policy/protocols/ssl/expiring-certs.zeek>
    policy/protocols/ssl/heartbleed.zeek </scripts/policy/protocols/ssl/heartbleed.zeek>

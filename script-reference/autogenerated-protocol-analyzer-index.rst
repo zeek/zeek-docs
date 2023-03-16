@@ -15488,7 +15488,7 @@ Events
    
    .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
       ssl_session_ticket_handshake x509_certificate ssl_client_hello
-      ssl_change_cipher_spec ssl_connection_flipped
+      ssl_change_cipher_spec ssl_connection_flipped ssl_certificate_request
 
 .. zeek:id:: ssl_change_cipher_spec
    :source-code: base/bif/plugins/Zeek_SSL.events.bif.zeek 707 707
@@ -15528,6 +15528,37 @@ Events
    .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
       ssl_session_ticket_handshake x509_certificate ssl_client_hello
       ssl_handshake_message
+
+.. zeek:id:: ssl_certificate_request
+   :source-code: policy/protocols/ssl/certificate-request-info.zeek 13 24
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, certificate_types: :zeek:type:`index_vec`, supported_signature_algorithms: :zeek:type:`SSL::SignatureAndHashAlgorithm`, certificate_authorities: :zeek:type:`string_vec`)
+
+   This event is raised, when a Certificate Request handshake message is encountered. This
+   Message can be used by a TLS server to request a client certificate.
+   
+
+   :c: The connection.
+   
+
+   :is_client: True if event is raised for the client side of the connection
+              (the side that sends the client hello). This is typically equivalent
+              with the originator, but does not have to be in all circumstances.
+   
+
+   :certificate_types: List of the types of certificates that the client may offer.
+   
+
+   :supported_signature_algorithms: List of hash/sighature algorithm pairs that the server
+                                   supports, listed in descending order of preferences.
+   
+
+   :certificate_authorities: List of distinguished names of certificate authorities that are
+                            acceptable to the server. The individual entries are DER encoded.
+                            :zeek:id:`parse_distinguished_name` can be used to decode the strings.
+   
+   .. zeek:see:: ssl_handshake_message x509_certificate ssl_server_hello ssl_client_hello
+                 parse_distinguished_name
 
 Functions
 +++++++++
@@ -15579,6 +15610,22 @@ Functions
    
 
    :returns: T on success, F on failure.
+
+.. zeek:id:: parse_distinguished_name
+   :source-code: base/bif/plugins/Zeek_SSL.functions.bif.zeek 46 46
+
+   :Type: :zeek:type:`function` (dn: :zeek:type:`string`) : :zeek:type:`string`
+
+   Decodes a DER-encoded distinguished name into an ASCII string,
+   using the RFC2253 representation
+   
+
+   :dn: DER encoded distinguished name
+   
+
+   :returns: Ascii representation on success, empty string on failure
+   
+   .. zeek:see:: ssl_certificate_request
 
 .. _plugin-zeek-syslog:
 
