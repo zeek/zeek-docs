@@ -156,6 +156,10 @@ Redefinable Options
 :zeek:id:`ignore_checksums`: :zeek:type:`bool` :zeek:attr:`&redef`                                       If true, don't verify checksums, and accept packets that give a length of
                                                                                                          zero in the IPv4 header.
 :zeek:id:`ignore_keep_alive_rexmit`: :zeek:type:`bool` :zeek:attr:`&redef`                               Ignore certain TCP retransmissions for :zeek:see:`conn_stats`.
+:zeek:id:`io_poll_interval_default`: :zeek:type:`count` :zeek:attr:`&redef`                              How many rounds to go without checking IO sources with file descriptors
+                                                                                                         for readiness by default.
+:zeek:id:`io_poll_interval_live`: :zeek:type:`count` :zeek:attr:`&redef`                                 How often to check IO sources with file descriptors for readiness when
+                                                                                                         monitoring with a live packet source.
 :zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef`                                     Ports which the core considers being likely used by servers.
 :zeek:id:`log_rotate_base_time`: :zeek:type:`string` :zeek:attr:`&redef`                                 Base time of log rotations in 24-hour time format (``%H:%M``), e.g.
 :zeek:id:`max_analyzer_violations`: :zeek:type:`count` :zeek:attr:`&redef`                               The maximum number of analyzer violations the core generates before
@@ -1538,6 +1542,46 @@ Redefinable Options
    :zeek:see:`conn_stats`.
    
    .. zeek:see:: conn_stats
+
+.. zeek:id:: io_poll_interval_default
+   :source-code: base/init-bare.zeek 5595 5595
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``100``
+
+   How many rounds to go without checking IO sources with file descriptors
+   for readiness by default. This is used when reading from traces.
+   
+   Very roughly, when reading from a pcap, setting this to 100 results in
+   100 packets being processed without checking FD based IO sources.
+   
+   .. note:: This should not be changed outside of development or when
+      debugging problems with the main-loop, or developing features with
+      tight main-loop interaction.
+   
+   .. zeek:see:: io_poll_interval_live
+
+.. zeek:id:: io_poll_interval_live
+   :source-code: base/init-bare.zeek 5610 5610
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``10``
+
+   How often to check IO sources with file descriptors for readiness when
+   monitoring with a live packet source.
+   
+   The poll interval gets defaulted to 100 which is good for cases like reading
+   from pcap files and when there isn't a packet source, but is a little too
+   infrequent for live sources (especially fast live sources). Set it down a
+   little bit for those sources.
+   
+   .. note:: This should not be changed outside of development or when
+      debugging problems with the main-loop, or developing features with
+      tight main-loop interaction.
+   
+   .. zeek:see:: io_poll_interval_default
 
 .. zeek:id:: likely_server_ports
    :source-code: base/init-bare.zeek 5059 5059
@@ -3083,7 +3127,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 5584 5584
+   :source-code: base/init-bare.zeek 5613 5613
 
    :Type: :zeek:type:`bool`
    :Default: ``F``

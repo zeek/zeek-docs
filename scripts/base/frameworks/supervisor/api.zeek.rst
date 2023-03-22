@@ -58,7 +58,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Supervisor::ClusterEndpoint
-   :source-code: base/frameworks/supervisor/api.zeek 20 30
+   :source-code: base/frameworks/supervisor/api.zeek 20 33
 
    :Type: :zeek:type:`record`
 
@@ -73,6 +73,10 @@ Types
 
       interface: :zeek:type:`string` :zeek:attr:`&optional`
          The interface name from which the node will read/analyze packets.
+         Typically used by worker nodes.
+
+      pcap_file: :zeek:type:`string` :zeek:attr:`&optional`
+         The PCAP file name from which the node will read/analyze packets.
          Typically used by worker nodes.
 
    Describes configuration of a supervised-node within Zeek's Cluster
@@ -96,7 +100,7 @@ Types
    The role a supervised-node will play in Zeek's Cluster Framework.
 
 .. zeek:type:: Supervisor::NodeConfig
-   :source-code: base/frameworks/supervisor/api.zeek 33 69
+   :source-code: base/frameworks/supervisor/api.zeek 36 74
 
    :Type: :zeek:type:`record`
 
@@ -106,6 +110,9 @@ Types
 
       interface: :zeek:type:`string` :zeek:attr:`&optional`
          The interface name from which the node will read/analyze packets.
+
+      pcap_file: :zeek:type:`string` :zeek:attr:`&optional`
+         The PCAP file name from which the node will read/analyze packets.
 
       directory: :zeek:type:`string` :zeek:attr:`&optional`
          The working directory that the node should use.
@@ -149,7 +156,7 @@ Types
    Configuration options that influence behavior of a supervised Zeek node.
 
 .. zeek:type:: Supervisor::NodeStatus
-   :source-code: base/frameworks/supervisor/api.zeek 72 78
+   :source-code: base/frameworks/supervisor/api.zeek 77 83
 
    :Type: :zeek:type:`record`
 
@@ -163,7 +170,7 @@ Types
    The current status of a supervised node.
 
 .. zeek:type:: Supervisor::Status
-   :source-code: base/frameworks/supervisor/api.zeek 81 84
+   :source-code: base/frameworks/supervisor/api.zeek 86 89
 
    :Type: :zeek:type:`record`
 
@@ -175,7 +182,7 @@ Types
 Events
 ######
 .. zeek:id:: Supervisor::node_status
-   :source-code: base/frameworks/supervisor/api.zeek 170 170
+   :source-code: base/frameworks/supervisor/api.zeek 175 175
 
    :Type: :zeek:type:`event` (node: :zeek:type:`string`, pid: :zeek:type:`count`)
 
