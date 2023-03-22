@@ -404,9 +404,6 @@ attribute:
 
 .. code-block:: zeek
 
-  # Note: if using ZeekControl then you don't need to redef local_nets.
-  redef Site::local_nets = { 192.168.0.0/16 };
-
   function myfunc(id: Log::ID, path: string, rec: Conn::Info) : string
       {
       # Return "conn-local" if originator is a local IP, otherwise
@@ -423,8 +420,9 @@ attribute:
       }
 
 Running this will now produce two new files, :file:`conn-local.log` and
-:file:`conn-remote.log`, with the corresponding entries (for this example
-to work, the :zeek:see:`Site::local_nets` must specify your local network). One
+:file:`conn-remote.log`, with the corresponding entries. For this example
+to work, :zeek:see:`Site::local_nets` must specify your local network.
+It defaults to IANA's standard private address space. One
 could extend this further for example to log information by subnets or even by
 IP address. Be careful, however, as it is easy to create many files very
 quickly.
