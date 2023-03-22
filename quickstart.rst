@@ -53,9 +53,9 @@ installation that will manage a single (standalone) Zeek instance on the
      host=localhost
      interface=eth0   # change this according to your listening interface in ifconfig
 
-2. [Optional but recommended]: In :samp:`{$PREFIX}/etc/networks.cfg`, comment
-   out the default settings and add the networks that Zeek will consider local
-   to the monitored environment.
+2. [Optional but recommended]: In :samp:`{$PREFIX}/etc/networks.cfg`, add
+   networks that Zeek will consider local to the monitored environment. More on
+   this :ref:`below <local_site_customization>`.
 
 3. [Optional]: In :samp:`{$PREFIX}/etc/zeekctl.cfg`, change the ``MailTo``
    email address to a desired recipient and the ``LogRotationInterval`` to
@@ -504,32 +504,40 @@ under :samp:`{$PREFIX}/share/zeek/policy/misc/detect-traceroute` and contains a
 :file:`__load__.zeek` script telling zeek which scripts to load under that
 directory to run against the pcap.
 
+.. _local_site_customization:
+
 Local Site Customization
 ------------------------
 
-There is one script that is installed which is considered “local site
-customization” and is not overwritten when upgrades take place. To use the
-site-specific :file:`local.zeek` script, just add it to the command-line (can
-also be loaded through scripts with ``@load``; ZeekControl loads it
-automatically):
+Zeek ships with one script for local customization: the site-specific
+:file:`local.zeek` file.  Subsequent upgrades do not overwrite this file, so you
+can safely edit it.  To use, just add it to the command-line or load it through
+your own scripts via :zeek:keyword:`@load`.  If you use ZeekControl there's no
+extra step: it loads it automatically.
 
 .. code-block:: console
 
   zeek -i en0 local
 
-With a fresh installation, this causes Zeek to load a script that prints a
-warning about lacking the :zeek:see:`Site::local_nets` variable being
-configured. You can supply this information in the :file:`local.zeek` file or
-at the command line like this (supply your “local” subnets in place of the
-example subnets):
+Some of Zeek's logic distinguishes networks local to your site from ones
+elsewhere.  For such analysis to work correctly, you need to tell Zeek about
+your network.  You do this by configuring the :zeek:see:`Site::local_nets`
+variable, a :zeek:type:`set` of :zeek:type:`subnet` ranges.  By default, Zeek
+considers IANA-registered private address space such as 10/8 and 192.168/16
+site-local, and automatically adds it to :zeek:see:`Site::local_nets`. If your
+network consists of additional subnets, add them in the :file:`local.zeek` file
+or at the command line, for example as follows:
 
 .. code-block:: console
 
   zeek -r mypackets.trace local -e "Site::local_nets += { 1.2.3.0/24, 5.6.7.0/24 }"
 
-When running with ZeekControl, this value is set by configuring the
-:file:`networks.cfg` file.  Note the example also shows how you can execute
-script code without it being in a :file:`.zeek` file.
+When running with ZeekControl, you adjust :zeek:see:`Site::local_nets` by
+configuring the :file:`networks.cfg` file.
+
+For additional configurability around site-local networks, see
+:zeek:see:`Site::private_address_space` and the
+:zeek:see:`Site::private_address_space_is_local` flag.
 
 Running Zeek Without Installing
 -------------------------------
