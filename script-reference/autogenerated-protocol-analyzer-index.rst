@@ -883,7 +883,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5243 5243
+   :source-code: base/init-bare.zeek 5269 5269
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -894,7 +894,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5248 5248
+   :source-code: base/init-bare.zeek 5274 5274
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -7055,7 +7055,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5433 5463
+   :source-code: base/init-bare.zeek 5459 5489
 
    :Type: :zeek:type:`record`
 
@@ -7097,7 +7097,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5465 5474
+   :source-code: base/init-bare.zeek 5491 5500
 
    :Type: :zeek:type:`record`
 
@@ -7112,7 +7112,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5476 5498
+   :source-code: base/init-bare.zeek 5502 5524
 
    :Type: :zeek:type:`record`
 
@@ -7511,7 +7511,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5254 5254
+   :source-code: base/init-bare.zeek 5280 5280
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8173,7 +8173,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5262 5315
+   :source-code: base/init-bare.zeek 5288 5341
 
    :Type: :zeek:type:`record`
 
@@ -8248,7 +8248,7 @@ Types
    for standard synchronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5320 5354
+   :source-code: base/init-bare.zeek 5346 5380
 
    :Type: :zeek:type:`record`
 
@@ -8299,7 +8299,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5363 5396
+   :source-code: base/init-bare.zeek 5389 5422
 
    :Type: :zeek:type:`record`
 
@@ -8350,7 +8350,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5401 5428
+   :source-code: base/init-bare.zeek 5427 5454
 
    :Type: :zeek:type:`record`
 
@@ -15532,7 +15532,7 @@ Events
 .. zeek:id:: ssl_certificate_request
    :source-code: policy/protocols/ssl/certificate-request-info.zeek 13 24
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, certificate_types: :zeek:type:`index_vec`, supported_signature_algorithms: :zeek:type:`SSL::SignatureAndHashAlgorithm`, certificate_authorities: :zeek:type:`string_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, certificate_types: :zeek:type:`index_vec`, supported_signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`, certificate_authorities: :zeek:type:`string_vec`)
 
    This event is raised, when a Certificate Request handshake message is encountered. This
    Message can be used by a TLS server to request a client certificate.
