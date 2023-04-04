@@ -98,7 +98,7 @@ Events
 .. zeek:id:: ssl_certificate_request
    :source-code: policy/protocols/ssl/certificate-request-info.zeek 13 24
 
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, certificate_types: :zeek:type:`index_vec`, supported_signature_algorithms: :zeek:type:`SSL::SignatureAndHashAlgorithm`, certificate_authorities: :zeek:type:`string_vec`)
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, certificate_types: :zeek:type:`index_vec`, supported_signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`, certificate_authorities: :zeek:type:`string_vec`)
 
    This event is raised, when a Certificate Request handshake message is encountered. This
    Message can be used by a TLS server to request a client certificate.
