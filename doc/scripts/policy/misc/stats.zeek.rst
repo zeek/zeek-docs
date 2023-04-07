@@ -7,7 +7,7 @@ policy/misc/stats.zeek
 Log memory/packet/lag statistics.
 
 :Namespace: Stats
-:Imports: :doc:`base/frameworks/notice </scripts/base/frameworks/notice/index>`
+:Imports: :doc:`base/frameworks/notice </scripts/base/frameworks/notice/index>`, :doc:`base/frameworks/telemetry </scripts/base/frameworks/telemetry/index>`
 
 Summary
 ~~~~~~~
@@ -49,7 +49,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Stats::report_interval
-   :source-code: policy/misc/stats.zeek 13 13
+   :source-code: policy/misc/stats.zeek 14 14
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -60,7 +60,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: Stats::Info
-   :source-code: policy/misc/stats.zeek 15 81
+   :source-code: policy/misc/stats.zeek 16 85
 
    :Type: :zeek:type:`record`
 
@@ -91,6 +91,10 @@ Types
       pkt_lag: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
          Lag between the wall clock and packet timestamps if reading
          live traffic.
+
+      pkts_filtered: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+         Number of packets filtered from the link since the last
+         stats interval if reading live traffic.
 
       events_proc: :zeek:type:`count` :zeek:attr:`&log`
          Number of events processed since the last stats interval.
@@ -151,7 +155,7 @@ Types
 Events
 ######
 .. zeek:id:: Stats::log_stats
-   :source-code: policy/misc/stats.zeek 84 84
+   :source-code: policy/misc/stats.zeek 88 88
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Stats::Info`)
 
@@ -160,7 +164,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Stats::log_policy
-   :source-code: policy/misc/stats.zeek 10 10
+   :source-code: policy/misc/stats.zeek 11 11
 
    :Type: :zeek:type:`Log::PolicyHook`
 
