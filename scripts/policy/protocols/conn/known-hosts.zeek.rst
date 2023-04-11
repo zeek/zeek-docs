@@ -122,7 +122,7 @@ Redefinable Options
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``T``
+   :Default: ``F``
 
    Toggles between different implementations of this script.
    When true, use a Broker data store, else use a regular Zeek set

@@ -875,7 +875,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5153 5153
+   :source-code: base/init-bare.zeek 5177 5177
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -886,7 +886,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5158 5158
+   :source-code: base/init-bare.zeek 5182 5182
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -3069,7 +3069,7 @@ Events
 ++++++
 
 .. zeek:id:: file_transferred
-   :source-code: base/protocols/ftp/main.zeek 397 405
+   :source-code: base/protocols/ftp/main.zeek 443 451
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prefix: :zeek:type:`string`, descr: :zeek:type:`string`, mime_type: :zeek:type:`string`)
 
@@ -7013,7 +7013,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5343 5373
+   :source-code: base/init-bare.zeek 5367 5397
 
    :Type: :zeek:type:`record`
 
@@ -7055,7 +7055,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5375 5384
+   :source-code: base/init-bare.zeek 5399 5408
 
    :Type: :zeek:type:`record`
 
@@ -7070,7 +7070,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5386 5408
+   :source-code: base/init-bare.zeek 5410 5432
 
    :Type: :zeek:type:`record`
 
@@ -7447,7 +7447,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5164 5164
+   :source-code: base/init-bare.zeek 5188 5188
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8097,7 +8097,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5172 5225
+   :source-code: base/init-bare.zeek 5196 5249
 
    :Type: :zeek:type:`record`
 
@@ -8172,7 +8172,7 @@ Types
    for standard syncronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5230 5264
+   :source-code: base/init-bare.zeek 5254 5288
 
    :Type: :zeek:type:`record`
 
@@ -8223,7 +8223,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5273 5306
+   :source-code: base/init-bare.zeek 5297 5330
 
    :Type: :zeek:type:`record`
 
@@ -8274,7 +8274,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5311 5338
+   :source-code: base/init-bare.zeek 5335 5362
 
    :Type: :zeek:type:`record`
 
@@ -8972,7 +8972,7 @@ Events
    :flags: The flags set by the server.
 
 .. zeek:id:: rdp_client_core_data
-   :source-code: base/protocols/rdp/main.zeek 186 201
+   :source-code: base/protocols/rdp/main.zeek 186 212
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientCoreData`)
 
@@ -8998,7 +8998,7 @@ Events
    :data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_client_network_data
-   :source-code: base/protocols/rdp/main.zeek 203 217
+   :source-code: base/protocols/rdp/main.zeek 214 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, channels: :zeek:type:`RDP::ClientChannelList`)
 
@@ -9024,7 +9024,7 @@ Events
    :data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_gcc_server_create_response
-   :source-code: base/protocols/rdp/main.zeek 218 223
+   :source-code: base/protocols/rdp/main.zeek 229 234
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`count`)
 
@@ -9037,7 +9037,7 @@ Events
    :result: The 8-bit integer representing the GCC Conference Create Response result.
 
 .. zeek:id:: rdp_server_security
-   :source-code: base/protocols/rdp/main.zeek 225 231
+   :source-code: base/protocols/rdp/main.zeek 236 242
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, encryption_method: :zeek:type:`count`, encryption_level: :zeek:type:`count`)
 
@@ -9053,7 +9053,7 @@ Events
    :encryption_level: The 32-bit integer representing the encryption level used in the connection.
 
 .. zeek:id:: rdp_server_certificate
-   :source-code: base/protocols/rdp/main.zeek 233 245
+   :source-code: base/protocols/rdp/main.zeek 244 256
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cert_type: :zeek:type:`count`, permanently_issued: :zeek:type:`bool`)
 
@@ -9071,7 +9071,7 @@ Events
    :permanently_issued: Value will be true is the certificate(s) is permanent on the server.
 
 .. zeek:id:: rdp_begin_encryption
-   :source-code: base/protocols/rdp/main.zeek 247 257
+   :source-code: base/protocols/rdp/main.zeek 258 268
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`)
 
@@ -13231,7 +13231,7 @@ Events
 ++++++
 
 .. zeek:id:: smtp_request
-   :source-code: base/protocols/smtp/main.zeek 163 200
+   :source-code: base/protocols/smtp/main.zeek 204 265
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -13365,7 +13365,7 @@ Events
    .. zeek:see:: smtp_data  smtp_request smtp_reply
 
 .. zeek:id:: smtp_starttls
-   :source-code: base/protocols/smtp/main.zeek 331 338
+   :source-code: base/protocols/smtp/main.zeek 396 403
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

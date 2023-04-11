@@ -26,7 +26,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Pcap::error
-   :source-code: base/bif/pcap.bif.zeek 70 70
+   :source-code: base/bif/pcap.bif.zeek 71 71
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
@@ -47,13 +47,13 @@ Functions
                 uninstall_dst_net_filter
 
 .. zeek:id:: Pcap::findalldevs
-   :source-code: base/bif/pcap.bif.zeek 73 73
+   :source-code: base/bif/pcap.bif.zeek 74 74
 
    :Type: :zeek:type:`function` () : :zeek:type:`Pcap::Interfaces`
 
 
 .. zeek:id:: Pcap::install_pcap_filter
-   :source-code: base/bif/pcap.bif.zeek 53 53
+   :source-code: base/bif/pcap.bif.zeek 54 54
 
    :Type: :zeek:type:`function` (id: :zeek:type:`PcapFilterID`) : :zeek:type:`bool`
 
@@ -79,7 +79,7 @@ Functions
                 Pcap::error
 
 .. zeek:id:: Pcap::precompile_pcap_filter
-   :source-code: base/bif/pcap.bif.zeek 32 32
+   :source-code: base/bif/pcap.bif.zeek 33 33
 
    :Type: :zeek:type:`function` (id: :zeek:type:`PcapFilterID`, s: :zeek:type:`string`) : :zeek:type:`bool`
 

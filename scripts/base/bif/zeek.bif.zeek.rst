@@ -121,6 +121,7 @@ Functions
 :zeek:id:`interval_to_double`: :zeek:type:`function`                            Converts an :zeek:type:`interval` to a :zeek:type:`double`.
 :zeek:id:`is_icmp_port`: :zeek:type:`function`                                  Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
 :zeek:id:`is_local_interface`: :zeek:type:`function`                            Checks whether a given IP address belongs to a local interface.
+:zeek:id:`is_processing_suspended`: :zeek:type:`function`                       Returns whether or not processing is currently suspended.
 :zeek:id:`is_remote_event`: :zeek:type:`function`                               Checks whether the last raised event came from a remote peer.
 :zeek:id:`is_tcp_port`: :zeek:type:`function`                                   Checks whether a given :zeek:type:`port` has TCP as transport protocol.
 :zeek:id:`is_udp_port`: :zeek:type:`function`                                   Checks whether a given :zeek:type:`port` has UDP as transport protocol.
@@ -253,7 +254,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: __init_secondary_bifs
-   :source-code: base/bif/zeek.bif.zeek 2396 2396
+   :source-code: base/bif/zeek.bif.zeek 2405 2405
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -342,7 +343,7 @@ Functions
         Missing elements count as false.
 
 .. zeek:id:: anonymize_addr
-   :source-code: base/bif/zeek.bif.zeek 2449 2449
+   :source-code: base/bif/zeek.bif.zeek 2458 2458
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, cl: :zeek:type:`IPAddrAnonymizationClass`) : :zeek:type:`addr`
 
@@ -549,7 +550,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: compress_path
-   :source-code: base/bif/zeek.bif.zeek 2471 2471
+   :source-code: base/bif/zeek.bif.zeek 2480 2480
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -578,13 +579,14 @@ Functions
    .. zeek:see:: lookup_connection
 
 .. zeek:id:: continue_processing
-   :source-code: base/bif/zeek.bif.zeek 2370 2370
+   :source-code: base/bif/zeek.bif.zeek 2372 2372
 
    :Type: :zeek:type:`function` () : :zeek:type:`any`
 
    Resumes Zeek's packet processing.
    
    .. zeek:see:: suspend_processing
+                 is_processing_suspended
 
 .. zeek:id:: convert_for_pattern
    :source-code: base/bif/zeek.bif.zeek 1551 1551
@@ -1235,7 +1237,7 @@ Functions
    .. zeek:see:: hrw_weight
 
 .. zeek:id:: generate_all_events
-   :source-code: base/bif/zeek.bif.zeek 2390 2390
+   :source-code: base/bif/zeek.bif.zeek 2399 2399
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1709,6 +1711,16 @@ Functions
 
    :returns: True if *ip* belongs to a local interface.
 
+.. zeek:id:: is_processing_suspended
+   :source-code: base/bif/zeek.bif.zeek 2379 2379
+
+   :Type: :zeek:type:`function` () : :zeek:type:`bool`
+
+   Returns whether or not processing is currently suspended.
+   
+   .. zeek:see:: suspend_processing
+                 continue_processing
+
 .. zeek:id:: is_remote_event
    :source-code: base/bif/zeek.bif.zeek 2356 2356
 
@@ -1996,7 +2008,7 @@ Functions
    .. zeek:see:: remask_addr
 
 .. zeek:id:: match_signatures
-   :source-code: base/bif/zeek.bif.zeek 2381 2381
+   :source-code: base/bif/zeek.bif.zeek 2390 2390
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, pattern_type: :zeek:type:`int`, s: :zeek:type:`string`, bol: :zeek:type:`bool`, eol: :zeek:type:`bool`, from_orig: :zeek:type:`bool`, clear: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -2334,7 +2346,7 @@ Functions
    .. zeek:see:: count_to_port
 
 .. zeek:id:: preserve_prefix
-   :source-code: base/bif/zeek.bif.zeek 2419 2419
+   :source-code: base/bif/zeek.bif.zeek 2428 2428
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, width: :zeek:type:`count`) : :zeek:type:`any`
 
@@ -2351,7 +2363,7 @@ Functions
    .. todo:: Currently dysfunctional.
 
 .. zeek:id:: preserve_subnet
-   :source-code: base/bif/zeek.bif.zeek 2429 2429
+   :source-code: base/bif/zeek.bif.zeek 2438 2438
 
    :Type: :zeek:type:`function` (a: :zeek:type:`subnet`) : :zeek:type:`any`
 
@@ -3079,7 +3091,7 @@ Functions
    .. zeek:see:: to_subnet
 
 .. zeek:id:: suspend_processing
-   :source-code: base/bif/zeek.bif.zeek 2364 2364
+   :source-code: base/bif/zeek.bif.zeek 2365 2365
 
    :Type: :zeek:type:`function` () : :zeek:type:`any`
 
@@ -3088,6 +3100,7 @@ Functions
    (*pseudo-realtime* mode).
    
    .. zeek:see:: continue_processing
+                 is_processing_suspended
 
 .. zeek:id:: syslog
    :source-code: base/bif/zeek.bif.zeek 450 450
@@ -3238,7 +3251,7 @@ Functions
    .. zeek:see:: to_addr to_port to_subnet
 
 .. zeek:id:: to_json
-   :source-code: base/bif/zeek.bif.zeek 2462 2462
+   :source-code: base/bif/zeek.bif.zeek 2471 2471
 
    :Type: :zeek:type:`function` (val: :zeek:type:`any`, only_loggable: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`, field_escape_pattern: :zeek:type:`pattern` :zeek:attr:`&default` = ``/^?(^_)$?/`` :zeek:attr:`&optional`) : :zeek:type:`string`
 

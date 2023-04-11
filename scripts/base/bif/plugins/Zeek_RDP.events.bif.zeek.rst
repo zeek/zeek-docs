@@ -36,7 +36,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: rdp_begin_encryption
-   :source-code: base/protocols/rdp/main.zeek 247 257
+   :source-code: base/protocols/rdp/main.zeek 258 268
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, security_protocol: :zeek:type:`count`)
 
@@ -62,7 +62,7 @@ Events
    :data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_client_core_data
-   :source-code: base/protocols/rdp/main.zeek 186 201
+   :source-code: base/protocols/rdp/main.zeek 186 212
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`RDP::ClientCoreData`)
 
@@ -75,7 +75,7 @@ Events
    :data: The data contained in the client core data structure.
 
 .. zeek:id:: rdp_client_network_data
-   :source-code: base/protocols/rdp/main.zeek 203 217
+   :source-code: base/protocols/rdp/main.zeek 214 228
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, channels: :zeek:type:`RDP::ClientChannelList`)
 
@@ -118,7 +118,7 @@ Events
    :flags: The flags set by the client.
 
 .. zeek:id:: rdp_gcc_server_create_response
-   :source-code: base/protocols/rdp/main.zeek 218 223
+   :source-code: base/protocols/rdp/main.zeek 229 234
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, result: :zeek:type:`count`)
 
@@ -181,7 +181,7 @@ Events
    :flags: The flags set by the server.
 
 .. zeek:id:: rdp_server_certificate
-   :source-code: base/protocols/rdp/main.zeek 233 245
+   :source-code: base/protocols/rdp/main.zeek 244 256
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cert_type: :zeek:type:`count`, permanently_issued: :zeek:type:`bool`)
 
@@ -199,7 +199,7 @@ Events
    :permanently_issued: Value will be true is the certificate(s) is permanent on the server.
 
 .. zeek:id:: rdp_server_security
-   :source-code: base/protocols/rdp/main.zeek 225 231
+   :source-code: base/protocols/rdp/main.zeek 236 242
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, encryption_method: :zeek:type:`count`, encryption_level: :zeek:type:`count`)
 

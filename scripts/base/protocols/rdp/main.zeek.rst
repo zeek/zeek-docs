@@ -188,7 +188,7 @@ Events
 Hooks
 #####
 .. zeek:id:: RDP::finalize_rdp
-   :source-code: base/protocols/rdp/main.zeek 284 291
+   :source-code: base/protocols/rdp/main.zeek 295 302
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
