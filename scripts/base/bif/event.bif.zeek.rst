@@ -316,7 +316,7 @@ Events
    .. zeek:see:: connection_established new_connection
 
 .. zeek:id:: connection_reused
-   :source-code: base/protocols/ftp/main.zeek 407 411
+   :source-code: base/protocols/ftp/main.zeek 453 457
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -566,7 +566,7 @@ Events
    Marks a point in the event stream at which the event queue started flushing.
 
 .. zeek:id:: expired_conn_weird
-   :source-code: base/frameworks/notice/weird.zeek 426 438
+   :source-code: base/frameworks/notice/weird.zeek 428 440
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`)
@@ -762,7 +762,7 @@ Events
       Files::set_timeout_interval
 
 .. zeek:id:: file_weird
-   :source-code: base/frameworks/notice/weird.zeek 471 482
+   :source-code: base/frameworks/notice/weird.zeek 473 484
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`)
@@ -794,7 +794,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: flow_weird
-   :source-code: base/frameworks/notice/weird.zeek 440 456
+   :source-code: base/frameworks/notice/weird.zeek 442 458
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`)
@@ -905,7 +905,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 5580 5582
+   :source-code: base/init-bare.zeek 5604 5606
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 

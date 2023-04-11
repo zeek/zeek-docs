@@ -133,6 +133,7 @@ Functions
 :zeek:id:`is_icmp_port`: :zeek:type:`function`                                Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
 :zeek:id:`is_local_interface`: :zeek:type:`function`                          Checks whether a given IP address belongs to a local interface.
 :zeek:id:`is_packet_analyzer`: :zeek:type:`function`                          Returns true if the given tag belongs to a packet analyzer.
+:zeek:id:`is_processing_suspended`: :zeek:type:`function`                     Returns whether or not processing is currently suspended.
 :zeek:id:`is_protocol_analyzer`: :zeek:type:`function`                        Returns true if the given tag belongs to a protocol analyzer.
 :zeek:id:`is_remote_event`: :zeek:type:`function`                             Checks whether the last raised event came from a remote peer.
 :zeek:id:`is_tcp_port`: :zeek:type:`function`                                 Checks whether a given :zeek:type:`port` has TCP as transport protocol.
@@ -268,7 +269,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: __init_secondary_bifs
-   :source-code: base/bif/zeek.bif.zeek 2422 2422
+   :source-code: base/bif/zeek.bif.zeek 2431 2431
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -357,7 +358,7 @@ Functions
         Missing elements count as false.
 
 .. zeek:id:: anonymize_addr
-   :source-code: base/bif/zeek.bif.zeek 2475 2475
+   :source-code: base/bif/zeek.bif.zeek 2484 2484
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, cl: :zeek:type:`IPAddrAnonymizationClass`) : :zeek:type:`addr`
 
@@ -582,7 +583,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: compress_path
-   :source-code: base/bif/zeek.bif.zeek 2497 2497
+   :source-code: base/bif/zeek.bif.zeek 2506 2506
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -611,13 +612,14 @@ Functions
    .. zeek:see:: lookup_connection
 
 .. zeek:id:: continue_processing
-   :source-code: base/bif/zeek.bif.zeek 2396 2396
+   :source-code: base/bif/zeek.bif.zeek 2398 2398
 
    :Type: :zeek:type:`function` () : :zeek:type:`any`
 
    Resumes Zeek's packet processing.
    
    .. zeek:see:: suspend_processing
+                 is_processing_suspended
 
 .. zeek:id:: convert_for_pattern
    :source-code: base/bif/zeek.bif.zeek 1577 1577
@@ -804,7 +806,7 @@ Functions
    .. zeek:see:: Analyzer::schedule_analyzer Analyzer::name
 
 .. zeek:id:: disable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2547 2547
+   :source-code: base/bif/zeek.bif.zeek 2556 2556
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -820,7 +822,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: disable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2579 2579
+   :source-code: base/bif/zeek.bif.zeek 2588 2588
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -967,7 +969,7 @@ Functions
    .. zeek:see:: get_matcher_stats
 
 .. zeek:id:: enable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2535 2535
+   :source-code: base/bif/zeek.bif.zeek 2544 2544
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -983,7 +985,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2568 2568
+   :source-code: base/bif/zeek.bif.zeek 2577 2577
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1331,7 +1333,7 @@ Functions
    .. zeek:see:: hrw_weight
 
 .. zeek:id:: generate_all_events
-   :source-code: base/bif/zeek.bif.zeek 2416 2416
+   :source-code: base/bif/zeek.bif.zeek 2425 2425
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1488,7 +1490,7 @@ Functions
    Returns a set giving the names of all global options.
 
 .. zeek:id:: has_event_group
-   :source-code: base/bif/zeek.bif.zeek 2556 2556
+   :source-code: base/bif/zeek.bif.zeek 2565 2565
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1501,7 +1503,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: has_module_events
-   :source-code: base/bif/zeek.bif.zeek 2588 2588
+   :source-code: base/bif/zeek.bif.zeek 2597 2597
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1514,7 +1516,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: have_spicy_analyzers
-   :source-code: base/bif/zeek.bif.zeek 2593 2593
+   :source-code: base/bif/zeek.bif.zeek 2602 2602
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1796,7 +1798,7 @@ Functions
    .. zeek:see:: double_to_interval
 
 .. zeek:id:: is_file_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2513 2513
+   :source-code: base/bif/zeek.bif.zeek 2522 2522
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1837,7 +1839,7 @@ Functions
    :returns: True if *ip* belongs to a local interface.
 
 .. zeek:id:: is_packet_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2521 2521
+   :source-code: base/bif/zeek.bif.zeek 2530 2530
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1849,8 +1851,18 @@ Functions
 
    :returns: true if *atype* is a tag of a packet analyzer, else false.
 
+.. zeek:id:: is_processing_suspended
+   :source-code: base/bif/zeek.bif.zeek 2405 2405
+
+   :Type: :zeek:type:`function` () : :zeek:type:`bool`
+
+   Returns whether or not processing is currently suspended.
+   
+   .. zeek:see:: suspend_processing
+                 continue_processing
+
 .. zeek:id:: is_protocol_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2505 2505
+   :source-code: base/bif/zeek.bif.zeek 2514 2514
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -2149,7 +2161,7 @@ Functions
    .. zeek:see:: remask_addr
 
 .. zeek:id:: match_signatures
-   :source-code: base/bif/zeek.bif.zeek 2407 2407
+   :source-code: base/bif/zeek.bif.zeek 2416 2416
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, pattern_type: :zeek:type:`int`, s: :zeek:type:`string`, bol: :zeek:type:`bool`, eol: :zeek:type:`bool`, from_orig: :zeek:type:`bool`, clear: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -2505,7 +2517,7 @@ Functions
    .. zeek:see:: exp floor sqrt ln log10
 
 .. zeek:id:: preserve_prefix
-   :source-code: base/bif/zeek.bif.zeek 2445 2445
+   :source-code: base/bif/zeek.bif.zeek 2454 2454
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, width: :zeek:type:`count`) : :zeek:type:`any`
 
@@ -2522,7 +2534,7 @@ Functions
    .. todo:: Currently dysfunctional.
 
 .. zeek:id:: preserve_subnet
-   :source-code: base/bif/zeek.bif.zeek 2455 2455
+   :source-code: base/bif/zeek.bif.zeek 2464 2464
 
    :Type: :zeek:type:`function` (a: :zeek:type:`subnet`) : :zeek:type:`any`
 
@@ -3250,7 +3262,7 @@ Functions
    .. zeek:see:: to_subnet
 
 .. zeek:id:: suspend_processing
-   :source-code: base/bif/zeek.bif.zeek 2390 2390
+   :source-code: base/bif/zeek.bif.zeek 2391 2391
 
    :Type: :zeek:type:`function` () : :zeek:type:`any`
 
@@ -3259,6 +3271,7 @@ Functions
    (*pseudo-realtime* mode).
    
    .. zeek:see:: continue_processing
+                 is_processing_suspended
 
 .. zeek:id:: syslog
    :source-code: base/bif/zeek.bif.zeek 450 450
@@ -3439,7 +3452,7 @@ Functions
    .. zeek:see:: to_addr to_port to_subnet
 
 .. zeek:id:: to_json
-   :source-code: base/bif/zeek.bif.zeek 2488 2488
+   :source-code: base/bif/zeek.bif.zeek 2497 2497
 
    :Type: :zeek:type:`function` (val: :zeek:type:`any`, only_loggable: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`, field_escape_pattern: :zeek:type:`pattern` :zeek:attr:`&default` = ``/^?(^_)$?/`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
