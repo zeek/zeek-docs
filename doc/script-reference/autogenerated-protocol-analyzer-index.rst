@@ -3085,7 +3085,7 @@ Events
 ++++++
 
 .. zeek:id:: file_transferred
-   :source-code: base/protocols/ftp/main.zeek 397 405
+   :source-code: base/protocols/ftp/main.zeek 443 451
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prefix: :zeek:type:`string`, descr: :zeek:type:`string`, mime_type: :zeek:type:`string`)
 
@@ -13325,7 +13325,7 @@ Events
 ++++++
 
 .. zeek:id:: smtp_request
-   :source-code: base/protocols/smtp/main.zeek 163 200
+   :source-code: base/protocols/smtp/main.zeek 204 265
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -13459,7 +13459,7 @@ Events
    .. zeek:see:: smtp_data  smtp_request smtp_reply
 
 .. zeek:id:: smtp_starttls
-   :source-code: base/protocols/smtp/main.zeek 331 338
+   :source-code: base/protocols/smtp/main.zeek 396 403
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

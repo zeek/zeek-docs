@@ -6,15 +6,21 @@ base/protocols/smtp/main.zeek
 
 
 :Namespace: SMTP
-:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`, :doc:`base/utils/directions-and-hosts.zeek </scripts/base/utils/directions-and-hosts.zeek>`, :doc:`base/utils/email.zeek </scripts/base/utils/email.zeek>`
+:Imports: :doc:`base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`, :doc:`base/utils/directions-and-hosts.zeek </scripts/base/utils/directions-and-hosts.zeek>`, :doc:`base/utils/email.zeek </scripts/base/utils/email.zeek>`
 
 Summary
 ~~~~~~~
 Runtime Options
 ###############
-========================================================================= ===================================================
-:zeek:id:`SMTP::mail_path_capture`: :zeek:type:`Host` :zeek:attr:`&redef` Direction to capture the full "Received from" path.
-========================================================================= ===================================================
+====================================================================================== ================================================================
+:zeek:id:`SMTP::mail_path_capture`: :zeek:type:`Host` :zeek:attr:`&redef`              Direction to capture the full "Received from" path.
+:zeek:id:`SMTP::mail_transaction_validation`: :zeek:type:`bool` :zeek:attr:`&redef`    When seeing a RCPT TO or DATA command, validate that it has been
+                                                                                       preceded by a MAIL FROM or RCPT TO command, respectively, else
+                                                                                       log a weird and possibly disable the SMTP analyzer upon too
+                                                                                       many invalid transactions.
+:zeek:id:`SMTP::max_invalid_mail_transactions`: :zeek:type:`count` :zeek:attr:`&redef` Disable the SMTP analyzer when that many invalid transactions
+                                                                                       have been observed in an SMTP session.
+====================================================================================== ================================================================
 
 Types
 #####
@@ -64,7 +70,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMTP::mail_path_capture
-   :source-code: base/protocols/smtp/main.zeek 85 85
+   :source-code: base/protocols/smtp/main.zeek 91 91
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -76,10 +82,32 @@ Runtime Options
       ALL_HOSTS - always capture the entire path.
       NO_HOSTS - never capture the path.
 
+.. zeek:id:: SMTP::mail_transaction_validation
+   :source-code: base/protocols/smtp/main.zeek 105 105
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   When seeing a RCPT TO or DATA command, validate that it has been
+   preceded by a MAIL FROM or RCPT TO command, respectively, else
+   log a weird and possibly disable the SMTP analyzer upon too
+   many invalid transactions.
+
+.. zeek:id:: SMTP::max_invalid_mail_transactions
+   :source-code: base/protocols/smtp/main.zeek 109 109
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``25``
+
+   Disable the SMTP analyzer when that many invalid transactions
+   have been observed in an SMTP session.
+
 Types
 #####
 .. zeek:type:: SMTP::Info
-   :source-code: base/protocols/smtp/main.zeek 13 68
+   :source-code: base/protocols/smtp/main.zeek 14 69
 
    :Type: :zeek:type:`record`
 
@@ -181,7 +209,7 @@ Types
 
 
 .. zeek:type:: SMTP::State
-   :source-code: base/protocols/smtp/main.zeek 70 78
+   :source-code: base/protocols/smtp/main.zeek 71 84
 
    :Type: :zeek:type:`record`
 
@@ -194,6 +222,14 @@ Types
 
       pending_messages: :zeek:type:`set` [:zeek:type:`SMTP::Info`] :zeek:attr:`&optional`
 
+      trans_mail_from_seen: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      trans_rcpt_to_seen: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      invalid_transactions: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
+
       mime_depth: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/smtp/entities.zeek` is loaded)
 
@@ -204,7 +240,7 @@ Types
 Events
 ######
 .. zeek:id:: SMTP::log_smtp
-   :source-code: base/protocols/smtp/main.zeek 90 90
+   :source-code: base/protocols/smtp/main.zeek 96 96
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SMTP::Info`)
 
@@ -212,14 +248,14 @@ Events
 Hooks
 #####
 .. zeek:id:: SMTP::finalize_smtp
-   :source-code: base/protocols/smtp/main.zeek 325 329
+   :source-code: base/protocols/smtp/main.zeek 390 394
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    SMTP finalization hook.  Remaining SMTP info may get logged when it's called.
 
 .. zeek:id:: SMTP::log_policy
-   :source-code: base/protocols/smtp/main.zeek 11 11
+   :source-code: base/protocols/smtp/main.zeek 12 12
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -227,7 +263,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SMTP::describe
-   :source-code: base/protocols/smtp/main.zeek 340 366
+   :source-code: base/protocols/smtp/main.zeek 405 431
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`SMTP::Info`) : :zeek:type:`string`
 
