@@ -87,7 +87,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Weird::ignore_hosts
-   :source-code: base/frameworks/notice/weird.zeek 260 260
+   :source-code: base/frameworks/notice/weird.zeek 262 262
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Runtime Options
    and weird name into this set.
 
 .. zeek:id:: Weird::weird_do_not_ignore_repeats
-   :source-code: base/frameworks/notice/weird.zeek 264 264
+   :source-code: base/frameworks/notice/weird.zeek 266 266
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -145,6 +145,7 @@ Redefinable Options
             ["excessively_large_fragment"] = Weird::ACTION_LOG,
             ["truncated_header"] = Weird::ACTION_LOG,
             ["contentline_size_exceeded"] = Weird::ACTION_LOG,
+            ["smtp_mail_transaction_invalid"] = Weird::ACTION_LOG_PER_CONN,
             ["unescaped_%_in_URI"] = Weird::ACTION_LOG,
             ["fragment_overlap"] = Weird::ACTION_LOG_PER_ORIG,
             ["smb_tree_connect_andx_response_without_tree"] = Weird::ACTION_LOG_PER_CONN,
@@ -165,6 +166,7 @@ Redefinable Options
             ["irc_invalid_invite_message_format"] = Weird::ACTION_LOG,
             ["premature_connection_reuse"] = Weird::ACTION_LOG,
             ["fragment_size_inconsistency"] = Weird::ACTION_LOG_PER_ORIG,
+            ["smtp_excessive_invalid_mail_transactions"] = Weird::ACTION_LOG_PER_CONN,
             ["SYN_with_data"] = Weird::ACTION_LOG_PER_ORIG,
             ["DNS_RR_length_mismatch"] = Weird::ACTION_LOG,
             ["irc_invalid_whois_operator_line"] = Weird::ACTION_LOG,
@@ -295,7 +297,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Weird::did_log
-   :source-code: base/frameworks/notice/weird.zeek 278 278
+   :source-code: base/frameworks/notice/weird.zeek 280 280
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -306,7 +308,7 @@ State Variables
    could cause overload during storms.
 
 .. zeek:id:: Weird::did_notice
-   :source-code: base/frameworks/notice/weird.zeek 282 282
+   :source-code: base/frameworks/notice/weird.zeek 284 284
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -316,7 +318,7 @@ State Variables
    duplicate notices from being raised.
 
 .. zeek:id:: Weird::weird_ignore
-   :source-code: base/frameworks/notice/weird.zeek 273 273
+   :source-code: base/frameworks/notice/weird.zeek 275 275
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``10.0 mins`` :zeek:attr:`&redef`
@@ -425,7 +427,7 @@ Types
 Events
 ######
 .. zeek:id:: Weird::log_weird
-   :source-code: base/frameworks/notice/weird.zeek 288 288
+   :source-code: base/frameworks/notice/weird.zeek 290 290
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Weird::Info`)
 
@@ -447,7 +449,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Weird::weird
-   :source-code: base/frameworks/notice/weird.zeek 323 412
+   :source-code: base/frameworks/notice/weird.zeek 325 414
 
    :Type: :zeek:type:`function` (w: :zeek:type:`Weird::Info`) : :zeek:type:`void`
 
