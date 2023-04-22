@@ -96,7 +96,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Config::set_value
-   :source-code: base/frameworks/config/main.zeek 105 108
+   :source-code: base/frameworks/config/main.zeek 99 102
 
    :Type: :zeek:type:`function` (ID: :zeek:type:`string`, val: :zeek:type:`any`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
