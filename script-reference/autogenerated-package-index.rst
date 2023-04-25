@@ -61,6 +61,15 @@
 :doc:`base/packet-protocols/icmp </scripts/base/packet-protocols/icmp/index>`
 
 
+:doc:`base/packet-protocols/llc </scripts/base/packet-protocols/llc/index>`
+
+
+:doc:`base/packet-protocols/novell_802_3 </scripts/base/packet-protocols/novell_802_3/index>`
+
+
+:doc:`base/packet-protocols/snap </scripts/base/packet-protocols/snap/index>`
+
+
 :doc:`base/packet-protocols/gre </scripts/base/packet-protocols/gre/index>`
 
 

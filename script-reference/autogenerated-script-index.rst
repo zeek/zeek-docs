@@ -63,6 +63,12 @@
    base/packet-protocols/tcp/main.zeek </scripts/base/packet-protocols/tcp/main.zeek>
    base/packet-protocols/icmp/__load__.zeek </scripts/base/packet-protocols/icmp/__load__.zeek>
    base/packet-protocols/icmp/main.zeek </scripts/base/packet-protocols/icmp/main.zeek>
+   base/packet-protocols/llc/__load__.zeek </scripts/base/packet-protocols/llc/__load__.zeek>
+   base/packet-protocols/llc/main.zeek </scripts/base/packet-protocols/llc/main.zeek>
+   base/packet-protocols/novell_802_3/__load__.zeek </scripts/base/packet-protocols/novell_802_3/__load__.zeek>
+   base/packet-protocols/novell_802_3/main.zeek </scripts/base/packet-protocols/novell_802_3/main.zeek>
+   base/packet-protocols/snap/__load__.zeek </scripts/base/packet-protocols/snap/__load__.zeek>
+   base/packet-protocols/snap/main.zeek </scripts/base/packet-protocols/snap/main.zeek>
    base/packet-protocols/gre/__load__.zeek </scripts/base/packet-protocols/gre/__load__.zeek>
    base/packet-protocols/gre/main.zeek </scripts/base/packet-protocols/gre/main.zeek>
    base/packet-protocols/iptunnel/__load__.zeek </scripts/base/packet-protocols/iptunnel/__load__.zeek>
