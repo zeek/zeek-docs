@@ -19,3 +19,6 @@ Package: policy/frameworks/notice
    This script extends the built in notice code to implement the IP address
    dropping functionality.
 
+:doc:`/scripts/policy/frameworks/notice/community-id.zeek`
+
+

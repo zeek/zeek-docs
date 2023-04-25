@@ -25,8 +25,6 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_FTP_DATA Analyzer::Tag
 
-      .. zeek:enum:: Analyzer::ANALYZER_IRC_DATA Analyzer::Tag
-
       .. zeek:enum:: Analyzer::ANALYZER_FINGER Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_FTP Analyzer::Tag
@@ -46,6 +44,8 @@ Protocol Analyzers
       .. zeek:enum:: Analyzer::ANALYZER_IMAP Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_IRC Analyzer::Tag
+
+      .. zeek:enum:: Analyzer::ANALYZER_IRC_DATA Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_KRB Analyzer::Tag
 
@@ -173,8 +173,6 @@ Protocol Analyzers
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_FTP_DATA AllAnalyzers::Tag
 
-      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_IRC_DATA AllAnalyzers::Tag
-
       .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_DATA_EVENT AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::FILES_ANALYZER_ENTROPY AllAnalyzers::Tag
@@ -222,6 +220,8 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_IPTUNNEL AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_IRC AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_IRC_DATA AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_KRB AllAnalyzers::Tag
 
@@ -883,7 +883,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5270 5270
+   :source-code: base/init-bare.zeek 5271 5271
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -894,7 +894,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5275 5275
+   :source-code: base/init-bare.zeek 5276 5276
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1235,7 +1235,7 @@ Types
 +++++
 
 .. zeek:type:: DHCP::Msg
-   :source-code: base/init-bare.zeek 3702 3717
+   :source-code: base/init-bare.zeek 3703 3718
 
    :Type: :zeek:type:`record`
 
@@ -1279,7 +1279,7 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::Addrs
-   :source-code: base/init-bare.zeek 3698 3698
+   :source-code: base/init-bare.zeek 3699 3699
 
    :Type: :zeek:type:`vector` of :zeek:type:`addr`
 
@@ -1289,7 +1289,7 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::SubOpt
-   :source-code: base/init-bare.zeek 3741 3744
+   :source-code: base/init-bare.zeek 3742 3745
 
    :Type: :zeek:type:`record`
 
@@ -1301,13 +1301,13 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::SubOpts
-   :source-code: base/init-bare.zeek 3746 3746
+   :source-code: base/init-bare.zeek 3747 3747
 
    :Type: :zeek:type:`vector` of :zeek:type:`DHCP::SubOpt`
 
 
 .. zeek:type:: DHCP::ClientFQDN
-   :source-code: base/init-bare.zeek 3727 3737
+   :source-code: base/init-bare.zeek 3728 3738
 
    :Type: :zeek:type:`record`
 
@@ -1327,7 +1327,7 @@ Types
    DHCP Client FQDN Option information (Option 81)
 
 .. zeek:type:: DHCP::ClientID
-   :source-code: base/init-bare.zeek 3721 3724
+   :source-code: base/init-bare.zeek 3722 3725
 
    :Type: :zeek:type:`record`
 
@@ -1339,7 +1339,7 @@ Types
    .. zeek:see:: dhcp_message
 
 .. zeek:type:: DHCP::Options
-   :source-code: base/init-bare.zeek 3748 3846
+   :source-code: base/init-bare.zeek 3749 3847
 
    :Type: :zeek:type:`record`
 
@@ -3079,8 +3079,6 @@ Components
 
 :zeek:enum:`Analyzer::ANALYZER_FTP_DATA`
 
-:zeek:enum:`Analyzer::ANALYZER_IRC_DATA`
-
 Events
 ++++++
 
@@ -4050,6 +4048,8 @@ Components
 
 :zeek:enum:`Analyzer::ANALYZER_IRC`
 
+:zeek:enum:`Analyzer::ANALYZER_IRC_DATA`
+
 Events
 ++++++
 
@@ -4083,7 +4083,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
    
    .. note:: This event is generated only for messages that originate
       at the client-side. Commands coming in from remote trigger
@@ -4121,7 +4121,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 86 86
@@ -4153,7 +4153,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message  irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
    
    .. note::
    
@@ -4189,7 +4189,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_privmsg_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 134 134
@@ -4222,7 +4222,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_notice_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 159 159
@@ -4255,7 +4255,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message  irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_squery_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 184 184
@@ -4288,7 +4288,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_join_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 205 205
@@ -4315,7 +4315,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_part_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 230 230
@@ -4348,7 +4348,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_nick_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 253 253
@@ -4378,7 +4378,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_invalid_nick
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 271 271
@@ -4401,7 +4401,7 @@ Events
       irc_global_users  irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_network_info
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 295 295
@@ -4433,7 +4433,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_server_info
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 319 319
@@ -4465,7 +4465,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_channel_info
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 339 339
@@ -4491,7 +4491,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_who_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 375 375
@@ -4541,7 +4541,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_names_info
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 400 400
@@ -4573,7 +4573,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message  irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_operator_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 420 420
@@ -4599,7 +4599,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_channel_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 442 442
@@ -4628,7 +4628,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_user_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 468 468
@@ -4663,7 +4663,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_oper_response
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 489 489
@@ -4690,7 +4690,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_global_users
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 512 512
@@ -4720,7 +4720,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_channel_topic
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 534 534
@@ -4749,7 +4749,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_who_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 557 557
@@ -4779,7 +4779,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 580 580
@@ -4809,7 +4809,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_oper_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 603 603
@@ -4839,7 +4839,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message  irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_kick_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 631 631
@@ -4876,7 +4876,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_error_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 655 655
@@ -4907,7 +4907,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_invite_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 681 681
@@ -4941,7 +4941,7 @@ Events
       irc_global_users irc_invalid_nick  irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_mode_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 705 705
@@ -4972,7 +4972,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message  irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_squit_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 731 731
@@ -5006,7 +5006,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_dcc_message
    :source-code: base/protocols/irc/dcc-send.zeek 109 123
@@ -5018,6 +5018,9 @@ Events
    
    See `Wikipedia <http://en.wikipedia.org/wiki/Internet_Relay_Chat>`__ for more
    information about the IRC protocol.
+   
+   See `Wikipedia <https://en.wikipedia.org/wiki/Direct_Client-to-Client>`__ for more
+   information about the DCC.
    
 
    :c: The connection.
@@ -5052,10 +5055,36 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
+
+.. zeek:id:: irc_dcc_send_ack
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 789 789
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, bytes_received: :zeek:type:`count`)
+
+   Generated for IRC messages of type *dcc*. This event is generated for
+   DCC SEND acknowledge message.
+   
+   See `Wikipedia <http://en.wikipedia.org/wiki/Internet_Relay_Chat>`__ for more
+   information about the IRC protocol.
+   
+   See `Wikipedia <https://en.wikipedia.org/wiki/Direct_Client-to-Client>`__ for more
+   information about the DCC.
+   
+
+   :c: The connection.
+   
+
+   :bytes_received: The number of bytes received as reported by the recipient.
+   
+   .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
+      irc_global_users irc_invalid_nick irc_invite_message irc_join_message
+      irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
+      irc_nick_message irc_notice_message irc_oper_message irc_oper_response
+      irc_part_message irc_password_message
 
 .. zeek:id:: irc_user_message
-   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 792 792
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 816 816
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, host: :zeek:type:`string`, server: :zeek:type:`string`, real_name: :zeek:type:`string`)
 
@@ -5088,10 +5117,10 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_password_message
-   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 813 813
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 837 837
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, password: :zeek:type:`string`)
 
@@ -5115,10 +5144,10 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message
+      irc_part_message irc_dcc_send_ack
 
 .. zeek:id:: irc_starttls
-   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 821 821
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 845 845
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -5147,7 +5176,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: KRB::keytab
-   :source-code: base/init-bare.zeek 4731 4731
+   :source-code: base/init-bare.zeek 4732 4732
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -5159,7 +5188,7 @@ Types
 +++++
 
 .. zeek:type:: KRB::Error_Msg
-   :source-code: base/init-bare.zeek 4817 4840
+   :source-code: base/init-bare.zeek 4818 4841
 
    :Type: :zeek:type:`record`
 
@@ -5199,7 +5228,7 @@ Types
    The data from the ERROR_MSG message. See :rfc:`4120`.
 
 .. zeek:type:: KRB::SAFE_Msg
-   :source-code: base/init-bare.zeek 4798 4814
+   :source-code: base/init-bare.zeek 4799 4815
 
    :Type: :zeek:type:`record`
 
@@ -5228,7 +5257,7 @@ Types
    The data from the SAFE message. See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Options
-   :source-code: base/init-bare.zeek 4733 4764
+   :source-code: base/init-bare.zeek 4734 4765
 
    :Type: :zeek:type:`record`
 
@@ -5278,7 +5307,7 @@ Types
    KDC Options. See :rfc:`4120`
 
 .. zeek:type:: KRB::AP_Options
-   :source-code: base/init-bare.zeek 4767 4772
+   :source-code: base/init-bare.zeek 4768 4773
 
    :Type: :zeek:type:`record`
 
@@ -5291,7 +5320,7 @@ Types
    AP Options. See :rfc:`4120`
 
 .. zeek:type:: KRB::Type_Value
-   :source-code: base/init-bare.zeek 4776 4781
+   :source-code: base/init-bare.zeek 4777 4782
 
    :Type: :zeek:type:`record`
 
@@ -5305,7 +5334,7 @@ Types
    that have a type and a string value.
 
 .. zeek:type:: KRB::Ticket
-   :source-code: base/init-bare.zeek 4843 4856
+   :source-code: base/init-bare.zeek 4844 4857
 
    :Type: :zeek:type:`record`
 
@@ -5330,13 +5359,13 @@ Types
    A Kerberos ticket. See :rfc:`4120`.
 
 .. zeek:type:: KRB::Ticket_Vector
-   :source-code: base/init-bare.zeek 4858 4858
+   :source-code: base/init-bare.zeek 4859 4859
 
    :Type: :zeek:type:`vector` of :zeek:type:`KRB::Ticket`
 
 
 .. zeek:type:: KRB::Host_Address
-   :source-code: base/init-bare.zeek 4786 4793
+   :source-code: base/init-bare.zeek 4787 4794
 
    :Type: :zeek:type:`record`
 
@@ -5352,7 +5381,7 @@ Types
    A Kerberos host address See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Request
-   :source-code: base/init-bare.zeek 4861 4892
+   :source-code: base/init-bare.zeek 4862 4893
 
    :Type: :zeek:type:`record`
 
@@ -5401,7 +5430,7 @@ Types
    The data from the AS_REQ and TGS_REQ messages. See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Response
-   :source-code: base/init-bare.zeek 4895 4909
+   :source-code: base/init-bare.zeek 4896 4910
 
    :Type: :zeek:type:`record`
 
@@ -7055,7 +7084,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5460 5490
+   :source-code: base/init-bare.zeek 5461 5491
 
    :Type: :zeek:type:`record`
 
@@ -7097,7 +7126,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5492 5501
+   :source-code: base/init-bare.zeek 5493 5502
 
    :Type: :zeek:type:`record`
 
@@ -7112,7 +7141,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5503 5525
+   :source-code: base/init-bare.zeek 5504 5526
 
    :Type: :zeek:type:`record`
 
@@ -7511,7 +7540,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5281 5281
+   :source-code: base/init-bare.zeek 5282 5282
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -7910,7 +7939,7 @@ Types
 +++++
 
 .. zeek:type:: NTLM::Negotiate
-   :source-code: base/init-bare.zeek 2881 2890
+   :source-code: base/init-bare.zeek 2882 2891
 
    :Type: :zeek:type:`record`
 
@@ -7928,7 +7957,7 @@ Types
 
 
 .. zeek:type:: NTLM::Challenge
-   :source-code: base/init-bare.zeek 2918 2932
+   :source-code: base/init-bare.zeek 2919 2933
 
    :Type: :zeek:type:`record`
 
@@ -7952,7 +7981,7 @@ Types
 
 
 .. zeek:type:: NTLM::Authenticate
-   :source-code: base/init-bare.zeek 2934 2949
+   :source-code: base/init-bare.zeek 2935 2950
 
    :Type: :zeek:type:`record`
 
@@ -7979,7 +8008,7 @@ Types
 
 
 .. zeek:type:: NTLM::NegotiateFlags
-   :source-code: base/init-bare.zeek 2826 2879
+   :source-code: base/init-bare.zeek 2827 2880
 
    :Type: :zeek:type:`record`
 
@@ -8056,7 +8085,7 @@ Types
 
 
 .. zeek:type:: NTLM::Version
-   :source-code: base/init-bare.zeek 2815 2824
+   :source-code: base/init-bare.zeek 2816 2825
 
    :Type: :zeek:type:`record`
 
@@ -8074,7 +8103,7 @@ Types
 
 
 .. zeek:type:: NTLM::AVs
-   :source-code: base/init-bare.zeek 2892 2916
+   :source-code: base/init-bare.zeek 2893 2917
 
    :Type: :zeek:type:`record`
 
@@ -8173,7 +8202,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5289 5342
+   :source-code: base/init-bare.zeek 5290 5343
 
    :Type: :zeek:type:`record`
 
@@ -8248,7 +8277,7 @@ Types
    for standard synchronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5347 5381
+   :source-code: base/init-bare.zeek 5348 5382
 
    :Type: :zeek:type:`record`
 
@@ -8299,7 +8328,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5390 5423
+   :source-code: base/init-bare.zeek 5391 5424
 
    :Type: :zeek:type:`record`
 
@@ -8350,7 +8379,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5428 5455
+   :source-code: base/init-bare.zeek 5429 5456
 
    :Type: :zeek:type:`record`
 
@@ -8669,19 +8698,19 @@ Types
 +++++
 
 .. zeek:type:: RADIUS::AttributeList
-   :source-code: base/init-bare.zeek 4476 4476
+   :source-code: base/init-bare.zeek 4477 4477
 
    :Type: :zeek:type:`vector` of :zeek:type:`string`
 
 
 .. zeek:type:: RADIUS::Attributes
-   :source-code: base/init-bare.zeek 4477 4477
+   :source-code: base/init-bare.zeek 4478 4478
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`RADIUS::AttributeList`
 
 
 .. zeek:type:: RADIUS::Message
-   :source-code: base/init-bare.zeek 4479 4488
+   :source-code: base/init-bare.zeek 4480 4489
 
    :Type: :zeek:type:`record`
 
@@ -8756,7 +8785,7 @@ Types
 +++++
 
 .. zeek:type:: RDP::EarlyCapabilityFlags
-   :source-code: base/init-bare.zeek 4493 4503
+   :source-code: base/init-bare.zeek 4494 4504
 
    :Type: :zeek:type:`record`
 
@@ -8780,7 +8809,7 @@ Types
 
 
 .. zeek:type:: RDP::ClientCoreData
-   :source-code: base/init-bare.zeek 4505 4526
+   :source-code: base/init-bare.zeek 4506 4527
 
    :Type: :zeek:type:`record`
 
@@ -8826,7 +8855,7 @@ Types
 
 
 .. zeek:type:: RDP::ClientSecurityData
-   :source-code: base/init-bare.zeek 4530 4542
+   :source-code: base/init-bare.zeek 4531 4543
 
    :Type: :zeek:type:`record`
 
@@ -8847,7 +8876,7 @@ Types
    to advertise client cryptographic support.
 
 .. zeek:type:: RDP::ClientClusterData
-   :source-code: base/init-bare.zeek 4578 4597
+   :source-code: base/init-bare.zeek 4579 4598
 
    :Type: :zeek:type:`record`
 
@@ -8880,14 +8909,14 @@ Types
    or to request a connection to a given session identifier.
 
 .. zeek:type:: RDP::ClientChannelList
-   :source-code: base/init-bare.zeek 4600 4600
+   :source-code: base/init-bare.zeek 4601 4601
 
    :Type: :zeek:type:`vector` of :zeek:type:`RDP::ClientChannelDef`
 
    The list of channels requested by the client.
 
 .. zeek:type:: RDP::ClientChannelDef
-   :source-code: base/init-bare.zeek 4545 4573
+   :source-code: base/init-bare.zeek 4546 4574
 
    :Type: :zeek:type:`record`
 
@@ -10711,7 +10740,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: SMB::pipe_filenames
-   :source-code: base/init-bare.zeek 2984 2984
+   :source-code: base/init-bare.zeek 2985 2985
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -10733,7 +10762,7 @@ Types
 +++++
 
 .. zeek:type:: SMB1::NegotiateResponse
-   :source-code: base/init-bare.zeek 3158 3167
+   :source-code: base/init-bare.zeek 3159 3168
 
    :Type: :zeek:type:`record`
 
@@ -10750,7 +10779,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseCore
-   :source-code: base/init-bare.zeek 3087 3090
+   :source-code: base/init-bare.zeek 3088 3091
 
    :Type: :zeek:type:`record`
 
@@ -10759,7 +10788,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseLANMAN
-   :source-code: base/init-bare.zeek 3092 3118
+   :source-code: base/init-bare.zeek 3093 3119
 
    :Type: :zeek:type:`record`
 
@@ -10799,7 +10828,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseNTLM
-   :source-code: base/init-bare.zeek 3120 3156
+   :source-code: base/init-bare.zeek 3121 3157
 
    :Type: :zeek:type:`record`
 
@@ -10852,7 +10881,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateResponseSecurity
-   :source-code: base/init-bare.zeek 3070 3085
+   :source-code: base/init-bare.zeek 3071 3086
 
    :Type: :zeek:type:`record`
 
@@ -10876,7 +10905,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateRawMode
-   :source-code: base/init-bare.zeek 3019 3024
+   :source-code: base/init-bare.zeek 3020 3025
 
    :Type: :zeek:type:`record`
 
@@ -10888,7 +10917,7 @@ Types
 
 
 .. zeek:type:: SMB1::NegotiateCapabilities
-   :source-code: base/init-bare.zeek 3026 3068
+   :source-code: base/init-bare.zeek 3027 3069
 
    :Type: :zeek:type:`record`
 
@@ -10950,7 +10979,7 @@ Types
 
 
 .. zeek:type:: SMB1::SessionSetupAndXRequest
-   :source-code: base/init-bare.zeek 3185 3227
+   :source-code: base/init-bare.zeek 3186 3228
 
    :Type: :zeek:type:`record`
 
@@ -11009,7 +11038,7 @@ Types
 
 
 .. zeek:type:: SMB1::SessionSetupAndXResponse
-   :source-code: base/init-bare.zeek 3229 3242
+   :source-code: base/init-bare.zeek 3230 3243
 
    :Type: :zeek:type:`record`
 
@@ -11033,7 +11062,7 @@ Types
 
 
 .. zeek:type:: SMB1::SessionSetupAndXCapabilities
-   :source-code: base/init-bare.zeek 3169 3183
+   :source-code: base/init-bare.zeek 3170 3184
 
    :Type: :zeek:type:`record`
 
@@ -11058,7 +11087,7 @@ Types
 
 
 .. zeek:type:: SMB1::Trans_Sec_Args
-   :source-code: base/init-bare.zeek 3271 3288
+   :source-code: base/init-bare.zeek 3272 3289
 
    :Type: :zeek:type:`record`
 
@@ -11088,7 +11117,7 @@ Types
 
 
 .. zeek:type:: SMB1::Find_First2_Request_Args
-   :source-code: base/init-bare.zeek 3311 3325
+   :source-code: base/init-bare.zeek 3312 3326
 
    :Type: :zeek:type:`record`
 
@@ -11113,7 +11142,7 @@ Types
 
 
 .. zeek:type:: SMB1::Find_First2_Response_Args
-   :source-code: base/init-bare.zeek 3327 3337
+   :source-code: base/init-bare.zeek 3328 3338
 
    :Type: :zeek:type:`record`
 
@@ -11132,7 +11161,7 @@ Types
 
 
 .. zeek:type:: SMB1::Trans2_Args
-   :source-code: base/init-bare.zeek 3244 3269
+   :source-code: base/init-bare.zeek 3245 3270
 
    :Type: :zeek:type:`record`
 
@@ -11174,7 +11203,7 @@ Types
 
 
 .. zeek:type:: SMB1::Trans2_Sec_Args
-   :source-code: base/init-bare.zeek 3290 3309
+   :source-code: base/init-bare.zeek 3291 3310
 
    :Type: :zeek:type:`record`
 
@@ -11207,7 +11236,7 @@ Types
 
 
 .. zeek:type:: SMB2::CloseResponse
-   :source-code: base/init-bare.zeek 3452 3461
+   :source-code: base/init-bare.zeek 3453 3462
 
    :Type: :zeek:type:`record`
 
@@ -11231,7 +11260,7 @@ Types
    .. zeek:see:: smb2_close_response
 
 .. zeek:type:: SMB2::CreateRequest
-   :source-code: base/init-bare.zeek 3600 3607
+   :source-code: base/init-bare.zeek 3601 3608
 
    :Type: :zeek:type:`record`
 
@@ -11251,7 +11280,7 @@ Types
    .. zeek:see:: smb2_create_request
 
 .. zeek:type:: SMB2::CreateResponse
-   :source-code: base/init-bare.zeek 3615 3626
+   :source-code: base/init-bare.zeek 3616 3627
 
    :Type: :zeek:type:`record`
 
@@ -11278,7 +11307,7 @@ Types
    .. zeek:see:: smb2_create_response
 
 .. zeek:type:: SMB2::NegotiateResponse
-   :source-code: base/init-bare.zeek 3527 3544
+   :source-code: base/init-bare.zeek 3528 3545
 
    :Type: :zeek:type:`record`
 
@@ -11312,7 +11341,7 @@ Types
    .. zeek:see:: smb2_negotiate_response
 
 .. zeek:type:: SMB2::SessionSetupRequest
-   :source-code: base/init-bare.zeek 3552 3555
+   :source-code: base/init-bare.zeek 3553 3556
 
    :Type: :zeek:type:`record`
 
@@ -11327,7 +11356,7 @@ Types
    .. zeek:see:: smb2_session_setup_request
 
 .. zeek:type:: SMB2::SessionSetupResponse
-   :source-code: base/init-bare.zeek 3579 3582
+   :source-code: base/init-bare.zeek 3580 3583
 
    :Type: :zeek:type:`record`
 
@@ -11343,7 +11372,7 @@ Types
    .. zeek:see:: smb2_session_setup_response
 
 .. zeek:type:: SMB2::SessionSetupFlags
-   :source-code: base/init-bare.zeek 3563 3570
+   :source-code: base/init-bare.zeek 3564 3571
 
    :Type: :zeek:type:`record`
 
@@ -11364,7 +11393,7 @@ Types
    .. zeek:see:: smb2_session_setup_response
 
 .. zeek:type:: SMB2::TreeConnectResponse
-   :source-code: base/init-bare.zeek 3590 3593
+   :source-code: base/init-bare.zeek 3591 3594
 
    :Type: :zeek:type:`record`
 
@@ -11379,7 +11408,7 @@ Types
    .. zeek:see:: smb2_tree_connect_response
 
 .. zeek:type:: SMB2::Transform_header
-   :source-code: base/init-bare.zeek 3675 3686
+   :source-code: base/init-bare.zeek 3676 3687
 
    :Type: :zeek:type:`record`
 
@@ -11411,7 +11440,7 @@ Types
       smb2_write_request
 
 .. zeek:type:: SMB::MACTimes
-   :source-code: base/init-bare.zeek 2960 2977
+   :source-code: base/init-bare.zeek 2961 2978
 
    :Type: :zeek:type:`record`
 
@@ -11446,7 +11475,7 @@ Types
    .. zeek:see:: smb1_nt_create_andx_response smb2_create_response
 
 .. zeek:type:: SMB1::Header
-   :source-code: base/init-bare.zeek 3008 3017
+   :source-code: base/init-bare.zeek 3009 3018
 
    :Type: :zeek:type:`record`
 
@@ -11494,7 +11523,7 @@ Types
       smb1_write_andx_response
 
 .. zeek:type:: SMB2::Header
-   :source-code: base/init-bare.zeek 3356 3381
+   :source-code: base/init-bare.zeek 3357 3382
 
    :Type: :zeek:type:`record`
 
@@ -11545,7 +11574,7 @@ Types
       smb2_write_request
 
 .. zeek:type:: SMB2::GUID
-   :source-code: base/init-bare.zeek 3389 3394
+   :source-code: base/init-bare.zeek 3390 3395
 
    :Type: :zeek:type:`record`
 
@@ -11563,7 +11592,7 @@ Types
       smb2_file_rename smb2_file_delete smb2_write_request
 
 .. zeek:type:: SMB2::FileAttrs
-   :source-code: base/init-bare.zeek 3401 3444
+   :source-code: base/init-bare.zeek 3402 3445
 
    :Type: :zeek:type:`record`
 
@@ -11631,7 +11660,7 @@ Types
    .. zeek:see:: smb2_create_response
 
 .. zeek:type:: SMB2::Fscontrol
-   :source-code: base/init-bare.zeek 3632 3645
+   :source-code: base/init-bare.zeek 3633 3646
 
    :Type: :zeek:type:`record`
 
@@ -11659,7 +11688,7 @@ Types
    
 
 .. zeek:type:: SMB2::FileEA
-   :source-code: base/init-bare.zeek 3651 3656
+   :source-code: base/init-bare.zeek 3652 3657
 
    :Type: :zeek:type:`record`
 
@@ -11675,7 +11704,7 @@ Types
    
 
 .. zeek:type:: SMB2::FileEAs
-   :source-code: base/init-bare.zeek 3662 3662
+   :source-code: base/init-bare.zeek 3663 3663
 
    :Type: :zeek:type:`vector` of :zeek:type:`SMB2::FileEA`
 
@@ -11685,7 +11714,7 @@ Types
    
 
 .. zeek:type:: SMB2::PreAuthIntegrityCapabilities
-   :source-code: base/init-bare.zeek 3467 3476
+   :source-code: base/init-bare.zeek 3468 3477
 
    :Type: :zeek:type:`record`
 
@@ -11707,7 +11736,7 @@ Types
    
 
 .. zeek:type:: SMB2::EncryptionCapabilities
-   :source-code: base/init-bare.zeek 3482 3487
+   :source-code: base/init-bare.zeek 3483 3488
 
    :Type: :zeek:type:`record`
 
@@ -11723,7 +11752,7 @@ Types
    
 
 .. zeek:type:: SMB2::CompressionCapabilities
-   :source-code: base/init-bare.zeek 3493 3498
+   :source-code: base/init-bare.zeek 3494 3499
 
    :Type: :zeek:type:`record`
 
@@ -11739,7 +11768,7 @@ Types
    
 
 .. zeek:type:: SMB2::NegotiateContextValue
-   :source-code: base/init-bare.zeek 3504 3517
+   :source-code: base/init-bare.zeek 3505 3518
 
    :Type: :zeek:type:`record`
 
@@ -11767,7 +11796,7 @@ Types
    
 
 .. zeek:type:: SMB2::NegotiateContextValues
-   :source-code: base/init-bare.zeek 3519 3519
+   :source-code: base/init-bare.zeek 3520 3520
 
    :Type: :zeek:type:`vector` of :zeek:type:`SMB2::NegotiateContextValue`
 
@@ -13502,7 +13531,7 @@ Types
 +++++
 
 .. zeek:type:: SNMP::Header
-   :source-code: base/init-bare.zeek 4644 4649
+   :source-code: base/init-bare.zeek 4645 4650
 
    :Type: :zeek:type:`record`
 
@@ -13522,7 +13551,7 @@ Types
    determines what header field is initialized.
 
 .. zeek:type:: SNMP::HeaderV1
-   :source-code: base/init-bare.zeek 4609 4611
+   :source-code: base/init-bare.zeek 4610 4612
 
    :Type: :zeek:type:`record`
 
@@ -13532,7 +13561,7 @@ Types
    including the PDU data.  See :rfc:`1157`.
 
 .. zeek:type:: SNMP::HeaderV2
-   :source-code: base/init-bare.zeek 4615 4617
+   :source-code: base/init-bare.zeek 4616 4618
 
    :Type: :zeek:type:`record`
 
@@ -13542,7 +13571,7 @@ Types
    including the PDU data.  See :rfc:`1901`.
 
 .. zeek:type:: SNMP::HeaderV3
-   :source-code: base/init-bare.zeek 4629 4639
+   :source-code: base/init-bare.zeek 4630 4640
 
    :Type: :zeek:type:`record`
 
@@ -13568,7 +13597,7 @@ Types
    including the PDU data.  See :rfc:`3412`.
 
 .. zeek:type:: SNMP::PDU
-   :source-code: base/init-bare.zeek 4699 4704
+   :source-code: base/init-bare.zeek 4700 4705
 
    :Type: :zeek:type:`record`
 
@@ -13583,7 +13612,7 @@ Types
    A ``PDU`` data structure from either :rfc:`1157` or :rfc:`3416`.
 
 .. zeek:type:: SNMP::TrapPDU
-   :source-code: base/init-bare.zeek 4707 4714
+   :source-code: base/init-bare.zeek 4708 4715
 
    :Type: :zeek:type:`record`
 
@@ -13602,7 +13631,7 @@ Types
    A ``Trap-PDU`` data structure from :rfc:`1157`.
 
 .. zeek:type:: SNMP::BulkPDU
-   :source-code: base/init-bare.zeek 4717 4723
+   :source-code: base/init-bare.zeek 4718 4724
 
    :Type: :zeek:type:`record`
 
@@ -13619,7 +13648,7 @@ Types
    A ``BulkPDU`` data structure from :rfc:`3416`.
 
 .. zeek:type:: SNMP::ScopedPDU_Context
-   :source-code: base/init-bare.zeek 4622 4625
+   :source-code: base/init-bare.zeek 4623 4626
 
    :Type: :zeek:type:`record`
 
@@ -13632,7 +13661,7 @@ Types
    See :rfc:`3412`.
 
 .. zeek:type:: SNMP::ObjectValue
-   :source-code: base/init-bare.zeek 4660 4667
+   :source-code: base/init-bare.zeek 4661 4668
 
    :Type: :zeek:type:`record`
 
@@ -13659,7 +13688,7 @@ Types
    values will only have their corresponding tag value set.
 
 .. zeek:type:: SNMP::Binding
-   :source-code: base/init-bare.zeek 4689 4692
+   :source-code: base/init-bare.zeek 4690 4693
 
    :Type: :zeek:type:`record`
 
@@ -13671,7 +13700,7 @@ Types
    :rfc:`3416`, which maps an Object Identifier to a value.
 
 .. zeek:type:: SNMP::Bindings
-   :source-code: base/init-bare.zeek 4696 4696
+   :source-code: base/init-bare.zeek 4697 4697
 
    :Type: :zeek:type:`vector` of :zeek:type:`SNMP::Binding`
 
@@ -14045,7 +14074,7 @@ Types
 +++++
 
 .. zeek:type:: SSH::Algorithm_Prefs
-   :source-code: base/init-bare.zeek 2782 2787
+   :source-code: base/init-bare.zeek 2783 2788
 
    :Type: :zeek:type:`record`
 
@@ -14059,7 +14088,7 @@ Types
    in each direction.
 
 .. zeek:type:: SSH::Capabilities
-   :source-code: base/init-bare.zeek 2794 2809
+   :source-code: base/init-bare.zeek 2795 2810
 
    :Type: :zeek:type:`record`
 
@@ -14555,7 +14584,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: SSL::dtls_max_version_errors
-   :source-code: base/init-bare.zeek 4394 4394
+   :source-code: base/init-bare.zeek 4395 4395
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -14567,7 +14596,7 @@ Options/Constants
    might be interleaved in the same UDP "connection".
 
 .. zeek:id:: SSL::dtls_max_reported_version_errors
-   :source-code: base/init-bare.zeek 4397 4397
+   :source-code: base/init-bare.zeek 4398 4398
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -14579,7 +14608,7 @@ Types
 +++++
 
 .. zeek:type:: SSL::SignatureAndHashAlgorithm
-   :source-code: base/init-bare.zeek 4380 4383
+   :source-code: base/init-bare.zeek 4381 4384
 
    :Type: :zeek:type:`record`
 
@@ -14591,7 +14620,7 @@ Types
 
 
 .. zeek:type:: SSL::PSKIdentity
-   :source-code: base/init-bare.zeek 4385 4388
+   :source-code: base/init-bare.zeek 4386 4389
 
    :Type: :zeek:type:`record`
 

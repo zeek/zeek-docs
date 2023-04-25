@@ -25,6 +25,9 @@ Package: base/bif
    You'll find most of Zeek's built-in functions that aren't protocol-specific
    in this file.
 
+:doc:`/scripts/base/bif/communityid.bif.zeek`
+
+
 :doc:`/scripts/base/bif/stats.bif.zeek`
 
 

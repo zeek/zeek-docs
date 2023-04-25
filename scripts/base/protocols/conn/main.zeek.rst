@@ -209,6 +209,10 @@ Types
          *uid* values for any encapsulating parent connections
          used over the lifetime of this inner connection.
 
+      community_id: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+         (present if :doc:`/scripts/policy/protocols/conn/community-id-logging.zeek` is loaded)
+
+
       orig_l2_addr: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/conn/mac-logging.zeek` is loaded)
 
