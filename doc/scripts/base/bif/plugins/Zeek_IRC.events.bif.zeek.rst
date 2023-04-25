@@ -15,6 +15,7 @@ Events
 :zeek:id:`irc_channel_info`: :zeek:type:`event`        Generated for an IRC reply of type *luserchannels*.
 :zeek:id:`irc_channel_topic`: :zeek:type:`event`       Generated for an IRC reply of type *topic*.
 :zeek:id:`irc_dcc_message`: :zeek:type:`event`         Generated for IRC messages of type *dcc*.
+:zeek:id:`irc_dcc_send_ack`: :zeek:type:`event`        Generated for IRC messages of type *dcc*.
 :zeek:id:`irc_error_message`: :zeek:type:`event`       Generated for IRC messages of type *error*.
 :zeek:id:`irc_global_users`: :zeek:type:`event`        Generated for an IRC reply of type *globalusers*.
 :zeek:id:`irc_invalid_nick`: :zeek:type:`event`        Generated when a server rejects an IRC nickname.
@@ -77,7 +78,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_channel_topic
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 534 534
@@ -106,7 +107,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_dcc_message
    :source-code: base/protocols/irc/dcc-send.zeek 109 123
@@ -118,6 +119,9 @@ Events
    
    See `Wikipedia <http://en.wikipedia.org/wiki/Internet_Relay_Chat>`__ for more
    information about the IRC protocol.
+   
+   See `Wikipedia <https://en.wikipedia.org/wiki/Direct_Client-to-Client>`__ for more
+   information about the DCC.
    
 
    :c: The connection.
@@ -152,7 +156,33 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
+
+.. zeek:id:: irc_dcc_send_ack
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 789 789
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, bytes_received: :zeek:type:`count`)
+
+   Generated for IRC messages of type *dcc*. This event is generated for
+   DCC SEND acknowledge message.
+   
+   See `Wikipedia <http://en.wikipedia.org/wiki/Internet_Relay_Chat>`__ for more
+   information about the IRC protocol.
+   
+   See `Wikipedia <https://en.wikipedia.org/wiki/Direct_Client-to-Client>`__ for more
+   information about the DCC.
+   
+
+   :c: The connection.
+   
+
+   :bytes_received: The number of bytes received as reported by the recipient.
+   
+   .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
+      irc_global_users irc_invalid_nick irc_invite_message irc_join_message
+      irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
+      irc_nick_message irc_notice_message irc_oper_message irc_oper_response
+      irc_part_message irc_password_message
 
 .. zeek:id:: irc_error_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 655 655
@@ -183,7 +213,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_global_users
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 512 512
@@ -213,7 +243,7 @@ Events
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_invalid_nick
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 271 271
@@ -236,7 +266,7 @@ Events
       irc_global_users  irc_invite_message irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_invite_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 681 681
@@ -270,7 +300,7 @@ Events
       irc_global_users irc_invalid_nick  irc_join_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_join_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 205 205
@@ -297,7 +327,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_kick_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_kick_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 631 631
@@ -334,7 +364,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_message irc_mode_message irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 86 86
@@ -366,7 +396,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message  irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
    
    .. note::
    
@@ -403,7 +433,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message  irc_names_info irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_names_info
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 400 400
@@ -435,7 +465,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message  irc_network_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_network_info
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 295 295
@@ -467,7 +497,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_nick_message
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_nick_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 253 253
@@ -497,7 +527,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_notice_message irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_notice_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 159 159
@@ -530,7 +560,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message  irc_oper_message irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_oper_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 603 603
@@ -560,7 +590,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message  irc_oper_response irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_oper_response
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 489 489
@@ -587,7 +617,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_part_message
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_part_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 230 230
@@ -620,10 +650,10 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_password_message
+      irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_password_message
-   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 813 813
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 837 837
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, password: :zeek:type:`string`)
 
@@ -647,7 +677,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message
+      irc_part_message irc_dcc_send_ack
 
 .. zeek:id:: irc_privmsg_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 134 134
@@ -680,7 +710,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_quit_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 109 109
@@ -710,7 +740,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_reply
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 56 56
@@ -744,7 +774,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_request
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 30 30
@@ -776,7 +806,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
    
    .. note:: This event is generated only for messages that originate
       at the client-side. Commands coming in from remote trigger
@@ -812,7 +842,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_squery_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 184 184
@@ -845,7 +875,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_squit_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 731 731
@@ -879,10 +909,10 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_starttls
-   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 821 821
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 845 845
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -894,7 +924,7 @@ Events
    :c: The connection.
 
 .. zeek:id:: irc_user_message
-   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 792 792
+   :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 816 816
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, user: :zeek:type:`string`, host: :zeek:type:`string`, server: :zeek:type:`string`, real_name: :zeek:type:`string`)
 
@@ -927,7 +957,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_who_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 375 375
@@ -977,7 +1007,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_who_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 557 557
@@ -1007,7 +1037,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_channel_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 442 442
@@ -1036,7 +1066,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 580 580
@@ -1066,7 +1096,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_operator_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 420 420
@@ -1092,7 +1122,7 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_whois_user_line
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 468 468
@@ -1127,6 +1157,6 @@ Events
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
       irc_kick_message irc_message irc_mode_message irc_names_info irc_network_info
       irc_nick_message irc_notice_message irc_oper_message irc_oper_response
-      irc_part_message irc_password_message
+      irc_part_message irc_password_message irc_dcc_send_ack
 
 
