@@ -231,6 +231,8 @@ Protocol Analyzers
 
       .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_LINUXSLL2 AllAnalyzers::Tag
 
+      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_LLC AllAnalyzers::Tag
+
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_RLOGIN AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_CONTENTS_RSH AllAnalyzers::Tag
@@ -262,6 +264,8 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NETBIOSSSN AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_NFLOG AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_NOVELL_802_3 AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_NTLM AllAnalyzers::Tag
 
@@ -312,6 +316,8 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SMB AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SMTP AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_SNAP AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SNMP AllAnalyzers::Tag
 

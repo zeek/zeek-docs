@@ -33,9 +33,13 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_LINUXSLL2 PacketAnalyzer::Tag
 
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_LLC PacketAnalyzer::Tag
+
       .. zeek:enum:: PacketAnalyzer::ANALYZER_MPLS PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_NFLOG PacketAnalyzer::Tag
+
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_NOVELL_802_3 PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_NULL PacketAnalyzer::Tag
 
@@ -48,6 +52,8 @@ Packet Analyzers
       .. zeek:enum:: PacketAnalyzer::ANALYZER_ROOT PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_SKIP PacketAnalyzer::Tag
+
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_SNAP PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_TCP PacketAnalyzer::Tag
 
@@ -475,6 +481,18 @@ Components
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_LINUXSLL2`
 
+.. _plugin-zeek-llc:
+
+Zeek::LLC
+---------
+
+LLC packet analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_LLC`
+
 .. _plugin-zeek-mpls:
 
 Zeek::MPLS
@@ -498,6 +516,18 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_NFLOG`
+
+.. _plugin-zeek-novell-802-3:
+
+Zeek::NOVELL_802_3
+------------------
+
+Novell 802.3 variantx packet analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_NOVELL_802_3`
 
 .. _plugin-zeek-null:
 
@@ -570,6 +600,18 @@ Components
 ++++++++++
 
 :zeek:enum:`PacketAnalyzer::ANALYZER_SKIP`
+
+.. _plugin-zeek-snap:
+
+Zeek::SNAP
+----------
+
+SNAP packet analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`PacketAnalyzer::ANALYZER_SNAP`
 
 .. _plugin-zeek-teredo:
 

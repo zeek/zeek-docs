@@ -130,6 +130,24 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/icmp/main.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/llc/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/llc/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/novell_802_3/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/novell_802_3/main.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/snap/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/snap/main.zeek`
+
+
 :doc:`/scripts/base/packet-protocols/gre/__load__.zeek`
 
 
