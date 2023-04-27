@@ -50,7 +50,7 @@ class ZeekLexer(RegexLexer):
 
         'directives': [
             (r'(@(load-plugin|load-sigs|load|unload))\b.*$', Comment.Preproc),
-            (r'(@(DEBUG|DIR|FILENAME|deprecated|if|ifdef|ifndef|else|endif))\b', Comment.Preproc),
+            (r'(@(DEBUG|DIR|FILENAME|deprecated|if|activate-if|ifdef|ifndef|else|endif))\b', Comment.Preproc),
             (r'(@prefixes)\s*(\+?=).*$', Comment.Preproc),
         ],
 

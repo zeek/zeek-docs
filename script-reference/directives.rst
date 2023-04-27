@@ -241,13 +241,63 @@ Example:
     @endif
 
 
+.. zeek:keyword:: @activate-if
+
+@activate-if
+------------
+
+A special form of ``@if`` that behaves the same if the condition is true.
+If the condition is false, however, rather than blindly skipping the input, the
+code will still be fully parsed (generating errors as appropriate), but it
+will not be *activated*, meaning changes it makes via ``redef`` or by defining
+function/hook/event handler bodies do not actually take effect.
+
+Example:
+
+.. code-block:: zeek
+
+    @activate-if ( running_a_cluster() )
+        event zeek_init()
+            {
+	    do_my_cluster_setup_stuff();
+            }
+    @endif
+
+will install a ``zeek_init`` event handler *if*, at scripting load time,
+``running_a_cluster()`` returns ``T``, and won't install it otherwise.
+
+The following:
+
+.. code-block:: zeek
+
+    @activate-if ( running_a_cluster() )
+        event zeek_init()
+            {
+	    oops syntax error
+            }
+    @endif
+
+will *always* generate a syntax error, regardless of what
+``running_a_cluster()`` returns, whereas if you used an ``@if`` then it
+would only generate a syntax error if the return value was ``T``.
+
+To ensure consistency, an ``@activate-if`` must not appear inside a
+function body, and cannot ``redef`` a ``record`` or ``enum`` type.  Zeek will
+also generate a warning if you nest an ``@activate-if`` inside an ``@if`` or
+vice-versa.
+
+Along with providing error-checking for your not-currently-active conditional
+code, ``@activate-if`` enables better scripting code coverage assessments,
+and enables more extensive *script compilation* (currently an experimental
+feature), so you should prefer its use to ``@if`` when appropriate.
+
 .. zeek:keyword:: @else
 
 @else
 -----
 
-This directive is optional after an ``@if``, ``@ifdef``, or
-``@ifndef``.  If present, it provides an else clause.
+This directive is optional after an ``@if``, ``@ifdef``, ``@ifndef``, or
+``@activate-if``.  If present, it provides an else clause.
 
 Example:
 
@@ -265,8 +315,8 @@ Example:
 @endif
 ------
 
-This directive is required to terminate each ``@if``, ``@ifdef``, or
-``@ifndef``.
+This directive is required to terminate each ``@if``, ``@ifdef``,
+``@ifndef``, or ``@activate-if``.
 
 
 .. zeek:keyword:: @DEBUG
