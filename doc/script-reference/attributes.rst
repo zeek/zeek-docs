@@ -67,6 +67,9 @@ it to write. Zeek features the following attributes:
   * - :zeek:attr:`&broker_allow_complex_type`
     - Used for table persistence/synchronization.
 
+  * - :zeek:attr:`&ordered`
+    - Used for predictable member iteration of tables and sets.
+
   * - :zeek:attr:`&deprecated`
     - Marks an identifier as deprecated.
 
@@ -486,6 +489,30 @@ table.
                 # Propagate new value to Broker:
                 t["test"] = rec;
                 }
+
+.. zeek:attr:: &ordered
+
+&ordered
+--------
+
+Used on tables and sets, this attribute ensures that iteration yields members in
+the order they were inserted. Without this attribute, the iteration order remains
+undefined. The following is guaranteed to print "foo", "bar", and "baz", in that
+order:
+
+.. code-block:: zeek
+
+    global sset: set[string] &ordered;
+
+    event zeek_init()
+        {
+        add sset["foo"];
+        add sset["bar"];
+        add sset["baz"];
+
+        for ( s in sset )
+            print s;
+        }
 
 .. zeek:attr:: &deprecated
 
