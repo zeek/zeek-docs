@@ -67,6 +67,9 @@ it to write. Zeek features the following attributes:
   * - :zeek:attr:`&broker_allow_complex_type`
     - Used for table persistence/synchronization.
 
+  * - :zeek:attr:`&ordered`
+    - Used for predictable member iteration of tables and sets.
+
   * - :zeek:attr:`&deprecated`
     - Marks an identifier as deprecated.
 
@@ -107,7 +110,6 @@ it to write. Zeek features the following attributes:
 
 Here is a more detailed explanation of each attribute:
 
-
 .. zeek:attr:: &redef
 
 &redef
@@ -126,7 +128,6 @@ Note that a variable declared ``global`` can also have its value changed
 with assignment statements (doesn't matter if it has the :zeek:attr:`&redef`
 attribute or not).
 
-
 .. zeek:attr:: &priority
 
 &priority
@@ -143,14 +144,12 @@ default value is ``0``.  Example:
         print "high priority";
         }
 
-
 .. zeek:attr:: &log
 
 &log
 ----
 
 Writes a :zeek:type:`record` field to the associated log stream.
-
 
 .. zeek:attr:: &optional
 
@@ -171,7 +170,6 @@ In this example, the record could be instantiated with either
 The ``?$`` operator can be used to check if a record field has a value or
 not (it returns a ``bool`` value of ``T`` if the field has a value,
 and ``F`` if not).
-
 
 .. zeek:attr:: &default
 
@@ -207,7 +205,6 @@ or as ``myfunc(5, 53/udp)``:
         print a, b;
         }
 
-
 .. zeek:attr:: &add_func
 
 &add_func
@@ -221,7 +218,6 @@ value given after the ``+=`` operator in the :zeek:keyword:`redef` declaration. 
 return value of the function will be the actual new value of the
 variable after the "redef" declaration is parsed.
 
-
 .. zeek:attr:: &delete_func
 
 &delete_func
@@ -229,7 +225,6 @@ variable after the "redef" declaration is parsed.
 
 Same as :zeek:attr:`&add_func`, except for :zeek:keyword:`redef` declarations
 that use the ``-=`` operator.
-
 
 .. zeek:attr:: &expire_func
 
@@ -250,7 +245,6 @@ The return value is an :zeek:type:`interval` indicating the amount of
 additional time to wait before expiring the container element at the
 given index (which will trigger another execution of this function).
 
-
 .. zeek:attr:: &read_expire
 
 &read_expire
@@ -260,7 +254,6 @@ Specifies a read expiration timeout for container elements. That is,
 the element expires after the given amount of time since the last
 time it has been read. Note that a write also counts as a read.
 
-
 .. zeek:attr:: &write_expire
 
 &write_expire
@@ -269,7 +262,6 @@ time it has been read. Note that a write also counts as a read.
 Specifies a write expiration timeout for container elements. That
 is, the element expires after the given amount of time since the
 last time it has been written.
-
 
 .. zeek:attr:: &create_expire
 
@@ -296,7 +288,6 @@ been inserted into the container, regardless of any reads or writes.
 
    * :zeek:see:`table_expire_delay` interval specifies how long Zeek
      waits until it processes the next batch of members.
-
 
 .. zeek:attr:: &on_change
 
@@ -357,14 +348,12 @@ a infinite loop:
         t[idxa, idxb] = val+1;
         }
 
-
 .. zeek:attr:: &raw_output
 
 &raw_output
 -----------
 
 Opens a file in raw mode, i.e., non-ASCII characters are not escaped.
-
 
 .. zeek:attr:: &error_handler
 
@@ -377,7 +366,6 @@ framework: :zeek:id:`reporter_info`, :zeek:id:`reporter_warning`, and
 from being able to generate reporter messages that go through any of
 those events (i.e., it prevents an infinite event recursion).  Instead,
 such nested reporter messages are output to stderr.
-
 
 .. zeek:attr:: &type_column
 
@@ -403,7 +391,6 @@ named ``ip``, ``srcp``, ``proto``, and ``msg``:
         srcp: port &type_column = "proto";
         msg: string;
     };
-
 
 .. zeek:attr:: &backend
 
@@ -432,7 +419,7 @@ example, to bind a table to a memory-backed Broker store, use:
 &broker_store
 -------------
 
-This attribute is similar to :zeek:attr:`&backend` in allowing a zeek table to 
+This attribute is similar to :zeek:attr:`&backend` in allowing a Zeek table to
 bind to a Broker store. It differs from :zeek:attr:`&backend` as this attribute
 allows you to specify the Broker store you want to bind, without creating it.
 
@@ -486,6 +473,30 @@ table.
                 # Propagate new value to Broker:
                 t["test"] = rec;
                 }
+
+.. zeek:attr:: &ordered
+
+&ordered
+--------
+
+Used on tables and sets, this attribute ensures that iteration yields members in
+the order they were inserted. Without this attribute, the iteration order remains
+undefined. The following is guaranteed to print "foo", "bar", and "baz", in that
+order:
+
+.. code-block:: zeek
+
+    global sset: set[string] &ordered;
+
+    event zeek_init()
+        {
+        add sset["foo"];
+        add sset["bar"];
+        add sset["baz"];
+
+        for ( s in sset )
+            print s;
+        }
 
 .. zeek:attr:: &deprecated
 
