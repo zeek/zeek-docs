@@ -6,7 +6,7 @@ base/protocols/smb/smb2-main.zeek
 
 
 :Namespace: SMB2
-:Imports: :doc:`base/protocols/smb/main.zeek </scripts/base/protocols/smb/main.zeek>`
+:Imports: :doc:`base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>`, :doc:`base/protocols/smb/main.zeek </scripts/base/protocols/smb/main.zeek>`
 
 Summary
 ~~~~~~~

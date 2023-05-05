@@ -12,9 +12,11 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-========================================================================= ==================================
-:zeek:id:`SMB::logged_file_actions`: :zeek:type:`set` :zeek:attr:`&redef` The file actions which are logged.
-========================================================================= ==================================
+================================================================================ ===========================================================
+:zeek:id:`SMB::enable_clear_script_state`: :zeek:type:`bool` :zeek:attr:`&redef` Whether to reset a connection's SMB script state whenever a
+                                                                                 :zeek:see:`smb2_discarded_messages_state` event is raised.
+:zeek:id:`SMB::logged_file_actions`: :zeek:type:`set` :zeek:attr:`&redef`        The file actions which are logged.
+================================================================================ ===========================================================
 
 Types
 #####
@@ -71,6 +73,19 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Runtime Options
 ###############
+.. zeek:id:: SMB::enable_clear_script_state
+   :source-code: base/protocols/smb/main.zeek 52 52
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   Whether to reset a connection's SMB script state whenever a
+   :zeek:see:`smb2_discarded_messages_state` event is raised.
+   
+   This setting protects from unbounded script state growth in
+   environments with high capture loss or traffic anomalies.
+
 .. zeek:id:: SMB::logged_file_actions
    :source-code: base/protocols/smb/main.zeek 38 38
 
@@ -131,7 +146,7 @@ Types
    Abstracted actions for SMB file actions.
 
 .. zeek:type:: SMB::CmdInfo
-   :source-code: base/protocols/smb/main.zeek 94 129
+   :source-code: base/protocols/smb/main.zeek 101 136
 
    :Type: :zeek:type:`record`
 
@@ -197,7 +212,7 @@ Types
    This record is for the smb_cmd.log
 
 .. zeek:type:: SMB::FileInfo
-   :source-code: base/protocols/smb/main.zeek 48 71
+   :source-code: base/protocols/smb/main.zeek 55 78
 
    :Type: :zeek:type:`record`
 
@@ -241,7 +256,7 @@ Types
    This record is for the smb_files.log
 
 .. zeek:type:: SMB::State
-   :source-code: base/protocols/smb/main.zeek 133 154
+   :source-code: base/protocols/smb/main.zeek 140 161
 
    :Type: :zeek:type:`record`
 
@@ -275,7 +290,7 @@ Types
    the file and tree map of the connection.
 
 .. zeek:type:: SMB::TreeInfo
-   :source-code: base/protocols/smb/main.zeek 74 91
+   :source-code: base/protocols/smb/main.zeek 81 98
 
    :Type: :zeek:type:`record`
 
@@ -320,7 +335,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SMB::set_current_file
-   :source-code: base/protocols/smb/main.zeek 188 198
+   :source-code: base/protocols/smb/main.zeek 195 205
 
    :Type: :zeek:type:`function` (smb_state: :zeek:type:`SMB::State`, file_id: :zeek:type:`count`) : :zeek:type:`void`
    :Attributes: :zeek:attr:`&redef`
@@ -328,7 +343,7 @@ Functions
    This is an internally used function.
 
 .. zeek:id:: SMB::write_file_log
-   :source-code: base/protocols/smb/main.zeek 200 228
+   :source-code: base/protocols/smb/main.zeek 207 235
 
    :Type: :zeek:type:`function` (state: :zeek:type:`SMB::State`) : :zeek:type:`void`
    :Attributes: :zeek:attr:`&redef`
