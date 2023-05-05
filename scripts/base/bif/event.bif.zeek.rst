@@ -566,7 +566,7 @@ Events
    Marks a point in the event stream at which the event queue started flushing.
 
 .. zeek:id:: expired_conn_weird
-   :source-code: base/frameworks/notice/weird.zeek 428 440
+   :source-code: base/frameworks/notice/weird.zeek 429 441
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`conn_id`, uid: :zeek:type:`string`, addl: :zeek:type:`string`)
@@ -762,7 +762,7 @@ Events
       Files::set_timeout_interval
 
 .. zeek:id:: file_weird
-   :source-code: base/frameworks/notice/weird.zeek 473 484
+   :source-code: base/frameworks/notice/weird.zeek 474 485
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string`)
@@ -794,7 +794,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: flow_weird
-   :source-code: base/frameworks/notice/weird.zeek 442 458
+   :source-code: base/frameworks/notice/weird.zeek 443 459
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, src: :zeek:type:`addr`, dst: :zeek:type:`addr`, addl: :zeek:type:`string`)
@@ -905,7 +905,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 5673 5675
+   :source-code: base/init-bare.zeek 5683 5685
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 

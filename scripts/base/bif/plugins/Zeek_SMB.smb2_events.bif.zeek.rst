@@ -11,16 +11,38 @@ Summary
 ~~~~~~~
 Events
 ######
-=========================================== ===========================================================================================
-:zeek:id:`smb2_message`: :zeek:type:`event` Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
-                                            version 2 messages.
-=========================================== ===========================================================================================
+============================================================ ===========================================================================================
+:zeek:id:`smb2_discarded_messages_state`: :zeek:type:`event` Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
+                                                             version 2 connections for which pending read, ioctl or tree requests exceeds
+                                                             the :zeek:see:`SMB::max_pending_messages` setting.
+:zeek:id:`smb2_message`: :zeek:type:`event`                  Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
+                                                             version 2 messages.
+============================================================ ===========================================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Events
 ######
+.. zeek:id:: smb2_discarded_messages_state
+   :source-code: base/protocols/smb/smb2-main.zeek 350 366
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, state: :zeek:type:`string`)
+
+   Generated for :abbr:`SMB (Server Message Block)`/:abbr:`CIFS (Common Internet File System)`
+   version 2 connections for which pending read, ioctl or tree requests exceeds
+   the :zeek:see:`SMB::max_pending_messages` setting. This event indicates either
+   traffic loss, traffic load-balancing issues, or failures to parse or match
+   SMB responses with SMB requests. When this event is raised, internal per-connection
+   parser state has been reset.
+   
+
+   :c: The affected connection.
+   
+
+   :state: String describing what kind of state was affected.
+          One of read, ioctl or tree.
+
 .. zeek:id:: smb2_message
    :source-code: base/bif/plugins/Zeek_SMB.smb2_events.bif.zeek 20 20
 
