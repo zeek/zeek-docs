@@ -84,7 +84,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SSL::ct_logs
-   :source-code: base/protocols/ssl/main.zeek 136 136
+   :source-code: base/protocols/ssl/main.zeek 139 139
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`SSL::CTInfo`
    :Attributes: :zeek:attr:`&redef`
@@ -101,7 +101,7 @@ Runtime Options
    are indexed by (binary) log-id.
 
 .. zeek:id:: SSL::disable_analyzer_after_detection
-   :source-code: base/protocols/ssl/main.zeek 141 141
+   :source-code: base/protocols/ssl/main.zeek 144 144
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -126,7 +126,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: SSL::root_certs
-   :source-code: base/protocols/ssl/main.zeek 116 116
+   :source-code: base/protocols/ssl/main.zeek 119 119
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -144,7 +144,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: SSL::CTInfo
-   :source-code: base/protocols/ssl/main.zeek 120 131
+   :source-code: base/protocols/ssl/main.zeek 123 134
 
    :Type: :zeek:type:`record`
 
@@ -167,7 +167,7 @@ Types
    Transparency log bundle.
 
 .. zeek:type:: SSL::Info
-   :source-code: base/protocols/ssl/main.zeek 16 112
+   :source-code: base/protocols/ssl/main.zeek 16 115
 
    :Type: :zeek:type:`record`
 
@@ -239,6 +239,10 @@ Types
       logged: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          Flag to indicate if this record already has been logged, to
          prevent duplicates.
+
+      hrr_seen: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         Flag to indicate that we have seen a Hello Retry request message.
+         Used internally for ssl_history logging
 
       ssl_history: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
          SSL history showing which types of packets we received in which order.
@@ -545,7 +549,7 @@ Types
 Events
 ######
 .. zeek:id:: SSL::log_ssl
-   :source-code: base/protocols/ssl/main.zeek 153 153
+   :source-code: base/protocols/ssl/main.zeek 156 156
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SSL::Info`)
 
@@ -555,7 +559,7 @@ Events
 Hooks
 #####
 .. zeek:id:: SSL::finalize_ssl
-   :source-code: base/protocols/ssl/main.zeek 481 491
+   :source-code: base/protocols/ssl/main.zeek 495 505
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
@@ -572,7 +576,7 @@ Hooks
 
 
 .. zeek:id:: SSL::ssl_finishing
-   :source-code: base/protocols/ssl/main.zeek 157 157
+   :source-code: base/protocols/ssl/main.zeek 160 160
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
@@ -582,7 +586,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SSL::delay_log
-   :source-code: base/protocols/ssl/main.zeek 214 219
+   :source-code: base/protocols/ssl/main.zeek 217 222
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -590,7 +594,7 @@ Functions
    logged as long as the token exists or until 15 seconds elapses.
 
 .. zeek:id:: SSL::undelay_log
-   :source-code: base/protocols/ssl/main.zeek 221 225
+   :source-code: base/protocols/ssl/main.zeek 224 228
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
