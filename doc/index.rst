@@ -31,6 +31,7 @@ to connect with the community.
    logs/index
    scripting/index
    frameworks/index
+   customizations
    script-reference/index
    devel/index
    components/index
