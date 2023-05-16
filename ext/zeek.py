@@ -16,6 +16,7 @@ from sphinx.domains import Domain, ObjType, Index
 from sphinx.locale import _
 from sphinx.directives import ObjectDescription
 from sphinx.roles import XRefRole
+from sphinx.util import docfields
 from sphinx.util.nodes import make_refnode
 from sphinx import version_info
 
@@ -240,9 +241,21 @@ class ZeekEnum(ZeekGeneric):
         signode += addnodes.desc_name("", name)
         return name
 
+class ZeekParamField(docfields.GroupedField):
+    has_arg = True
+    is_typed = True
+
 class ZeekIdentifier(ZeekGeneric):
+    zeek_param_field = ZeekParamField('param', label='Parameters', can_collapse=True)
+    field_type_map = {
+        'param': (zeek_param_field, False)
+    }
+
     def get_index_text(self, name):
         return name
+
+    def get_field_type_map(self):
+        return self.field_type_map
 
 class ZeekNative(ZeekGeneric):
     def handle_signature(self, sig, signode):
