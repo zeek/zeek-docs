@@ -85,15 +85,15 @@ Events
    with a table reader.
    
 
-   :name: Name of the input stream.
+   :param name: Name of the input stream.
    
 
-   :source: Source of the input stream.
+   :param source: Source of the input stream.
    
 
-   :id: ID of the configuration option being set.
+   :param id: ID of the configuration option being set.
    
 
-   :value: New value of the configuration option being set.
+   :param value: New value of the configuration option being set.
 
 

@@ -109,10 +109,10 @@ Functions
    Log controller constructor.
    
 
-   :dpid: OpenFlow switch datapath id.
+   :param dpid: OpenFlow switch datapath id.
    
 
-   :success_event: If true, flow_mod_success is raised for each logged line.
+   :param success_event: If true, flow_mod_success is raised for each logged line.
    
 
    :returns: OpenFlow::Controller record.

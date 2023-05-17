@@ -35,13 +35,13 @@ Events
    See :rfc:`6960` for more details on OCSP.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :ext: The parsed extension (same format as X.509 extensions).
+   :param ext: The parsed extension (same format as X.509 extensions).
    
 
-   :global_resp: T if extension encountered in the global response (in ResponseData),
+   :param global_resp: T if extension encountered in the global response (in ResponseData),
                 F when encountered in a SingleResponse.
    
    .. zeek:see:: ocsp_request ocsp_request_certificate ocsp_response_status
@@ -59,10 +59,10 @@ Events
    This event is raised exactly once for each OCSP Request.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :req: version: the version of the OCSP request. Typically 0 (Version 1).
+   :param req: version: the version of the OCSP request. Typically 0 (Version 1).
    
    .. zeek:see:: ocsp_request_certificate ocsp_response_status
                 ocsp_response_bytes ocsp_response_certificate ocsp_extension
@@ -81,16 +81,16 @@ Events
    requesting information for a different (or in theory even the same) certificate.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :hashAlgorithm: The hash algorithm used for the issuerKeyHash.
+   :param hashAlgorithm: The hash algorithm used for the issuerKeyHash.
    
 
-   :issuerKeyHash: Hash of the issuers public key.
+   :param issuerKeyHash: Hash of the issuers public key.
    
 
-   :serialNumber: Serial number of the certificate for which the status is requested.
+   :param serialNumber: Serial number of the certificate for which the status is requested.
    
    .. zeek:see:: ocsp_request ocsp_response_status
                 ocsp_response_bytes ocsp_response_certificate ocsp_extension
@@ -106,25 +106,25 @@ Events
    a TLS extension. See :rfc:`6960` for more details on OCSP.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
+   :param status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
    
 
-   :version: Version of the OCSP response (typically - for version 1).
+   :param version: Version of the OCSP response (typically - for version 1).
    
 
-   :responderId: The id of the OCSP responder; either a public key hash or a distinguished name.
+   :param responderId: The id of the OCSP responder; either a public key hash or a distinguished name.
    
 
-   :producedAt: Time at which the reply was produced.
+   :param producedAt: Time at which the reply was produced.
    
 
-   :signatureAlgorithm: Algorithm used for the OCSP signature.
+   :param signatureAlgorithm: Algorithm used for the OCSP signature.
    
 
-   :certs: Optional list of certificates that are sent with the OCSP response; these typically
+   :param certs: Optional list of certificates that are sent with the OCSP response; these typically
           are needed to perform validation of the reply.
    
    .. zeek:see:: ocsp_request ocsp_request_certificate ocsp_response_status
@@ -140,34 +140,34 @@ Events
    See :rfc:`6960` for more details on OCSP.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :hashAlgorithm: The hash algorithm used for issuerNameHash and issuerKeyHash.
+   :param hashAlgorithm: The hash algorithm used for issuerNameHash and issuerKeyHash.
    
 
-   :issuerNameHash: Hash of the issuer's distinguished name.
+   :param issuerNameHash: Hash of the issuer's distinguished name.
    
 
-   :issuerKeyHash: Hash of the issuer's public key.
+   :param issuerKeyHash: Hash of the issuer's public key.
    
 
-   :serialNumber: Serial number of the affected certificate.
+   :param serialNumber: Serial number of the affected certificate.
    
 
-   :certStatus: Status of the certificate.
+   :param certStatus: Status of the certificate.
    
 
-   :revokeTime: Time the certificate was revoked, 0 if not revoked.
+   :param revokeTime: Time the certificate was revoked, 0 if not revoked.
    
 
-   :revokeReason: Reason certificate was revoked; empty string if not revoked or not specified.
+   :param revokeReason: Reason certificate was revoked; empty string if not revoked or not specified.
    
 
-   :thisUpdate: Time this response was generated.
+   :param thisUpdate: Time this response was generated.
    
 
-   :nextUpdate: Time next response will be ready; 0 if not supplied.
+   :param nextUpdate: Time next response will be ready; 0 if not supplied.
    
    .. zeek:see:: ocsp_request ocsp_request_certificate ocsp_response_status
                 ocsp_response_bytes ocsp_extension
@@ -184,10 +184,10 @@ Events
    This event is raised exactly once for each OCSP reply.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
+   :param status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
    
    .. zeek:see:: ocsp_request ocsp_request_certificate
                 ocsp_response_bytes ocsp_response_certificate ocsp_extension

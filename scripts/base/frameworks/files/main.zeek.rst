@@ -375,13 +375,13 @@ Functions
    Adds an analyzer to the analysis of a given file.
    
 
-   :f: the file.
+   :param f: the file.
    
 
-   :tag: the analyzer type.
+   :param tag: the analyzer type.
    
 
-   :args: any parameters the analyzer takes.
+   :param args: any parameters the analyzer takes.
    
 
    :returns: true if the analyzer will be added, or false if analysis
@@ -407,7 +407,7 @@ Functions
    Checks whether a file analyzer is generally enabled.
    
 
-   :tag: the analyzer type to check.
+   :param tag: the analyzer type to check.
    
 
    :returns: true if the analyzer is generally enabled, else false.
@@ -421,7 +421,7 @@ Functions
    analyzer's name.
    
 
-   :tag: The analyzer tag.
+   :param tag: The analyzer tag.
    
 
    :returns: The analyzer name corresponding to the tag.
@@ -435,7 +435,7 @@ Functions
    For example, with HTTP it would return a URL.
    
 
-   :f: The file to be described.
+   :param f: The file to be described.
    
 
    :returns: a text description regarding metadata of the file.
@@ -448,7 +448,7 @@ Functions
    Disables a file analyzer.
    
 
-   :tag: the analyzer type to disable.
+   :param tag: the analyzer type to disable.
    
 
    :returns: false if the analyzer tag could not be found, else true.
@@ -462,7 +462,7 @@ Functions
    transferred out of order this will have no effect.
    
 
-   :f: the file.
+   :param f: the file.
 
 .. zeek:id:: Files::enable_analyzer
    :source-code: base/frameworks/files/main.zeek 400 403
@@ -472,7 +472,7 @@ Functions
    Enables a file analyzer.
    
 
-   :tag: the analyzer type to enable.
+   :param tag: the analyzer type to enable.
    
 
    :returns: false if the analyzer tag could not be found, else true.
@@ -486,7 +486,7 @@ Functions
    file is transferred out of order.
    
 
-   :f: the file.
+   :param f: the file.
 
 .. zeek:id:: Files::file_exists
    :source-code: base/frameworks/files/main.zeek 370 373
@@ -496,7 +496,7 @@ Functions
    Lookup to see if a particular file id exists and is still valid.
    
 
-   :fuid: the file id.
+   :param fuid: the file id.
    
 
    :returns: T if the file uid is known.
@@ -509,7 +509,7 @@ Functions
    Lookup an :zeek:see:`fa_file` record with the file id.
    
 
-   :fuid: the file id.
+   :param fuid: the file id.
    
 
    :returns: the associated :zeek:see:`fa_file` record.
@@ -525,10 +525,10 @@ Functions
    only be called by file analyzer authors but is *not required*.
    
 
-   :tag: Tag for the file analyzer.
+   :param tag: Tag for the file analyzer.
    
 
-   :callback: Function to execute when the given file analyzer is being added.
+   :param callback: Function to execute when the given file analyzer is being added.
 
 .. zeek:id:: Files::register_for_mime_type
    :source-code: base/frameworks/files/main.zeek 473 488
@@ -540,10 +540,10 @@ Functions
    to all MIME types already registered, it doesn't replace them.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
-   :mt: The MIME type in the form "foo/bar" (case-insensitive).
+   :param mt: The MIME type in the form "foo/bar" (case-insensitive).
    
 
    :returns: True if the MIME type was successfully registered.
@@ -559,10 +559,10 @@ Functions
    them.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
-   :mts: The set of MIME types, each in the form "foo/bar" (case-insensitive).
+   :param mts: The set of MIME types, each in the form "foo/bar" (case-insensitive).
    
 
    :returns: True if the MIME types were successfully registered.
@@ -577,10 +577,10 @@ Functions
    only have a single callback registered for it.
    
 
-   :tag: Tag for the protocol analyzer having a callback being registered.
+   :param tag: Tag for the protocol analyzer having a callback being registered.
    
 
-   :reg: A :zeek:see:`Files::ProtoRegistration` record.
+   :param reg: A :zeek:see:`Files::ProtoRegistration` record.
    
 
    :returns: true if the protocol being registered was not previously registered.
@@ -593,7 +593,7 @@ Functions
    Returns a set of all MIME types currently registered for a specific analyzer.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
    :returns: The set of MIME types.
@@ -606,13 +606,13 @@ Functions
    Removes an analyzer from the analysis of a given file.
    
 
-   :f: the file.
+   :param f: the file.
    
 
-   :tag: the analyzer type.
+   :param tag: the analyzer type.
    
 
-   :args: the analyzer (type and args) to remove.
+   :param args: the analyzer (type and args) to remove.
    
 
    :returns: true if the analyzer will be removed, or false if analysis
@@ -627,10 +627,10 @@ Functions
    for the given file.
    
 
-   :f: the file.
+   :param f: the file.
    
 
-   :max: Maximum allowed size of the reassembly buffer.
+   :param max: Maximum allowed size of the reassembly buffer.
 
 .. zeek:id:: Files::set_timeout_interval
    :source-code: base/frameworks/files/main.zeek 380 383
@@ -644,10 +644,10 @@ Functions
    again for the period specified by *t*.
    
 
-   :f: the file.
+   :param f: the file.
    
 
-   :t: the amount of time the file can remain inactive before discarding.
+   :param t: the amount of time the file can remain inactive before discarding.
    
 
    :returns: true if the timeout interval was set, or false if analysis
@@ -661,7 +661,7 @@ Functions
    Stops/ignores any further analysis of a given file.
    
 
-   :f: the file.
+   :param f: the file.
    
 
    :returns: true if analysis for the given file will be ignored for the

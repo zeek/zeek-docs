@@ -30,10 +30,10 @@ Events
    entropy testing on a file.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :ent: The results of the entropy testing.
+   :param ent: The results of the entropy testing.
    
 
 

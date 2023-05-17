@@ -35,10 +35,10 @@ Events
    See :rfc:`4380` for more information about the Teredo protocol.
    
 
-   :outer: The Teredo tunnel connection.
+   :param outer: The Teredo tunnel connection.
    
 
-   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   :param inner: The Teredo-encapsulated IPv6 packet header and transport header.
    
    .. zeek:see:: teredo_packet teredo_origin_indication teredo_bubble
    
@@ -55,10 +55,10 @@ Events
    See :rfc:`4380` for more information about the Teredo protocol.
    
 
-   :outer: The Teredo tunnel connection.
+   :param outer: The Teredo tunnel connection.
    
 
-   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   :param inner: The Teredo-encapsulated IPv6 packet header and transport header.
    
    .. zeek:see:: teredo_packet teredo_authentication teredo_origin_indication
    
@@ -75,10 +75,10 @@ Events
    See :rfc:`4380` for more information about the Teredo protocol.
    
 
-   :outer: The Teredo tunnel connection.
+   :param outer: The Teredo tunnel connection.
    
 
-   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   :param inner: The Teredo-encapsulated IPv6 packet header and transport header.
    
    .. zeek:see:: teredo_packet teredo_authentication teredo_bubble
    
@@ -94,10 +94,10 @@ Events
    See :rfc:`4380` for more information about the Teredo protocol.
    
 
-   :outer: The Teredo tunnel connection.
+   :param outer: The Teredo tunnel connection.
    
 
-   :inner: The Teredo-encapsulated IPv6 packet header and transport header.
+   :param inner: The Teredo-encapsulated IPv6 packet header and transport header.
    
    .. zeek:see:: teredo_authentication teredo_origin_indication teredo_bubble
    

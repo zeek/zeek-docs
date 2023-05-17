@@ -35,7 +35,7 @@ Functions
    using the RFC2253 representation
    
 
-   :dn: DER encoded distinguished name
+   :param dn: DER encoded distinguished name
    
 
    :returns: Ascii representation on success, empty string on failure
@@ -51,10 +51,10 @@ Functions
    TLS application data in the connection.
    
 
-   :c: The affected connection
+   :param c: The affected connection
    
 
-   :keys: The key buffer as derived via TLS PRF.
+   :param keys: The key buffer as derived via TLS PRF.
    
 
    :returns: T on success, F on failure.
@@ -68,10 +68,10 @@ Functions
    (For TLS 1.2 this is the pre-master secret).
    
 
-   :c: The affected connection
+   :param c: The affected connection
    
 
-   :secret: secret to set
+   :param secret: secret to set
    
 
    :returns: T on success, F on failure.
@@ -85,7 +85,7 @@ Functions
    finished successfully).
    
 
-   :c: The SSL connection.
+   :param c: The SSL connection.
    
 
    :returns: T on success, F on failure.

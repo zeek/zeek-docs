@@ -28,7 +28,7 @@ Functions
    Compute the Community ID hash (v1) from a connection identifier.
    
 
-   :cid: The identifier of the connection for which to compute the community-id.
+   :param cid: The identifier of the connection for which to compute the community-id.
    
 
    :returns: The Community ID hash of the connection identifier as string.

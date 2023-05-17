@@ -267,16 +267,16 @@ Hooks
    responses.
    
 
-   :c: The connection record for which to fill in DNS reply data.
+   :param c: The connection record for which to fill in DNS reply data.
    
 
-   :msg: The DNS message header information for the response.
+   :param msg: The DNS message header information for the response.
    
 
-   :ans: The general information of a RR response.
+   :param ans: The general information of a RR response.
    
 
-   :reply: The specific response information according to RR type/class.
+   :param reply: The specific response information according to RR type/class.
 
 .. zeek:id:: DNS::finalize_dns
    :source-code: base/protocols/dns/main.zeek 622 637
@@ -302,12 +302,12 @@ Hooks
    when creating a new session value.
    
 
-   :c: The connection involved in the new session.
+   :param c: The connection involved in the new session.
    
 
-   :msg: The DNS message header information.
+   :param msg: The DNS message header information.
    
 
-   :is_query: Indicator for if this is being called for a query or a response.
+   :param is_query: Indicator for if this is being called for a query or a response.
 
 

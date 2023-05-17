@@ -98,13 +98,13 @@ Functions
    Sets the maximum allowed extracted file size.
    
 
-   :f: A file that's being extracted.
+   :param f: A file that's being extracted.
    
 
-   :args: Arguments that identify a file extraction analyzer.
+   :param args: Arguments that identify a file extraction analyzer.
    
 
-   :n: Allowed number of bytes to be extracted.
+   :param n: Allowed number of bytes to be extracted.
    
 
    :returns: false if a file extraction analyzer wasn't active for

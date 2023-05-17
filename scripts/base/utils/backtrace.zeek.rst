@@ -26,20 +26,20 @@ Functions
    Prints a Zeek function call stack.
    
 
-   :show_args: whether to print function argument names/types/values.
+   :param show_args: whether to print function argument names/types/values.
    
 
-   :one_line: whether to print the stack in a single line or multiple.
+   :param one_line: whether to print the stack in a single line or multiple.
    
 
-   :one_line_delim: delimiter between stack elements if printing to one line.
+   :param one_line_delim: delimiter between stack elements if printing to one line.
    
 
-   :skip: the number of call stack elements to skip past, starting from zero,
+   :param skip: the number of call stack elements to skip past, starting from zero,
          with that being the call to this function.
    
 
-   :to_file: the file to which the call stack will be printed.
+   :param to_file: the file to which the call stack will be printed.
    
    .. zeek:see:: backtrace
 

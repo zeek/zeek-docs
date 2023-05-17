@@ -98,13 +98,13 @@ Functions
    Stops forwarding a uni-directional flow's packets to Zeek.
    
 
-   :f: The flow to shunt.
+   :param f: The flow to shunt.
    
 
-   :t: How long to leave the shunt in place, with 0 being indefinitely.
+   :param t: How long to leave the shunt in place, with 0 being indefinitely.
    
 
-   :location: An optional string describing where the shunt was triggered.
+   :param location: An optional string describing where the shunt was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.

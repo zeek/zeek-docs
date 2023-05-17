@@ -36,19 +36,19 @@ Events
    For more information, see MS-CIFS:2.2.4.42
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_id: The file identifier being written to.
+   :param file_id: The file identifier being written to.
    
 
-   :offset: The byte offset the requested read begins at.
+   :param offset: The byte offset the requested read begins at.
    
 
-   :length: The number of bytes being requested.
+   :param length: The number of bytes being requested.
    
    .. zeek:see:: smb1_message smb1_read_andx_response
 
@@ -63,13 +63,13 @@ Events
    For more information, see MS-CIFS:2.2.4.42
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :data_len: The length of data from the requested file.
+   :param data_len: The length of data from the requested file.
    
    .. zeek:see:: smb1_message smb1_read_andx_request
 

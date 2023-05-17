@@ -205,7 +205,7 @@ Events
    Management::Request::finish().
    
 
-   :req: the request state that is expiring.
+   :param req: the request state that is expiring.
    
 
 Functions
@@ -218,7 +218,7 @@ Functions
    This function establishes request state.
    
 
-   :reqid: the identifier to use for the request.
+   :param reqid: the identifier to use for the request.
    
 
 .. zeek:id:: Management::Request::finish
@@ -231,7 +231,7 @@ Functions
    nothing.
    
 
-   :reqid: the ID of the request state to release.
+   :param reqid: the ID of the request state to release.
    
 
 .. zeek:id:: Management::Request::is_null
@@ -243,7 +243,7 @@ Functions
    request is null.
    
 
-   :request: a Request record to check.
+   :param request: a Request record to check.
    
 
    :returns: T if the given request matches the null_req instance, F otherwise.
@@ -258,7 +258,7 @@ Functions
    it. When no such request exists, returns Management::Request::null_req.
    
 
-   :reqid: the ID of the request state to retrieve.
+   :param reqid: the ID of the request state to retrieve.
    
 
 .. zeek:id:: Management::Request::to_string
@@ -269,7 +269,7 @@ Functions
    For troubleshooting, this function renders a request record to a string.
    
 
-   :request: the request to render.
+   :param request: the request to render.
    
 
 

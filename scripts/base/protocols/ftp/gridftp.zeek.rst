@@ -110,7 +110,7 @@ Events
    Raised when a GridFTP data channel is detected.
    
 
-   :c: The connection pertaining to the GridFTP data channel.
+   :param c: The connection pertaining to the GridFTP data channel.
 
 Functions
 #########
@@ -129,7 +129,7 @@ Functions
    issuer subjects.
    
 
-   :c: The connection which may possibly be a GridFTP data channel.
+   :param c: The connection which may possibly be a GridFTP data channel.
    
 
    :returns: true if the connection should be further polled for an

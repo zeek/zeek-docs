@@ -348,13 +348,13 @@ Functions
    Using a negative amount is an error.
    
 
-   :cf: The counter family to use.
+   :param cf: The counter family to use.
    
 
-   :label_values: The label values to use for the counter.
+   :param label_values: The label values to use for the counter.
    
 
-   :amount: The amount by which to increment the counter.
+   :param amount: The amount by which to increment the counter.
    
 
    :returns: True if the counter was incremented successfully.
@@ -370,13 +370,13 @@ Functions
    metric is an error and will be ignored.
    
 
-   :cf: The counter family to use.
+   :param cf: The counter family to use.
    
 
-   :label_values: The label values to use for the counter.
+   :param label_values: The label values to use for the counter.
    
 
-   :value: The value to set the counter to.
+   :param value: The value to set the counter to.
    
 
    :returns: True if the counter value was set successfully.
@@ -390,10 +390,10 @@ Functions
    Using a negative `amount` is an error.
    
 
-   :c: The counter instance.
+   :param c: The counter instance.
    
 
-   :amount: The amount by which to increment the counter.
+   :param amount: The amount by which to increment the counter.
    
 
    :returns: True if the counter was incremented successfully.
@@ -410,10 +410,10 @@ Functions
    metric is an error and will be ignored.
    
 
-   :c: The counter instance.
+   :param c: The counter instance.
    
 
-   :value: The value to set the counter to.
+   :param value: The value to set the counter to.
    
 
    :returns: True if the counter value was set successfully.
@@ -433,10 +433,10 @@ Functions
    Decrement a :zeek:see:`Telemetry::Gauge` by `amount`.
    
 
-   :g: The gauge instance.
+   :param g: The gauge instance.
    
 
-   :amount: The amount by which to decrement the gauge.
+   :param amount: The amount by which to decrement the gauge.
    
 
    :returns: True if the gauge was incremented successfully.
@@ -451,13 +451,13 @@ Functions
    This is a short-cut for :zeek:see:`Telemetry::gauge_dec`.
    
 
-   :gf: The gauge family to use.
+   :param gf: The gauge family to use.
    
 
-   :label_values: The label values to use for the gauge.
+   :param label_values: The label values to use for the gauge.
    
 
-   :amount: The amount by which to increment the gauge.
+   :param amount: The amount by which to increment the gauge.
    
 
    :returns: True if the gauge was incremented successfully.
@@ -473,13 +473,13 @@ Functions
    Using a negative amount is an error.
    
 
-   :gf: The gauge family to use.
+   :param gf: The gauge family to use.
    
 
-   :label_values: The label values to use for the gauge.
+   :param label_values: The label values to use for the gauge.
    
 
-   :amount: The amount by which to increment the gauge.
+   :param amount: The amount by which to increment the gauge.
    
 
    :returns: True if the gauge was incremented successfully.
@@ -494,13 +494,13 @@ Functions
    This is a short-cut for :zeek:see:`Telemetry::gauge_set`.
    
 
-   :gf: The gauge family to use.
+   :param gf: The gauge family to use.
    
 
-   :label_values: The label values to use for the gauge.
+   :param label_values: The label values to use for the gauge.
    
 
-   :value: The value to set the gauge to.
+   :param value: The value to set the gauge to.
    
 
    :returns: True if the gauge value was set successfully.
@@ -513,10 +513,10 @@ Functions
    Increment a :zeek:see:`Telemetry::Gauge` by `amount`.
    
 
-   :g: The gauge instance.
+   :param g: The gauge instance.
    
 
-   :amount: The amount by which to increment the gauge.
+   :param amount: The amount by which to increment the gauge.
    
 
    :returns: True if the gauge was incremented successfully.
@@ -529,10 +529,10 @@ Functions
    Helper to set a :zeek:see:`Telemetry::Gauge` to the given `value`.
    
 
-   :g: The gauge instance.
+   :param g: The gauge instance.
    
 
-   :value: The value to set the gauge to.
+   :param value: The value to set the gauge to.
    
 
    :returns: True if the gauge value was set successfully.
@@ -554,13 +554,13 @@ Functions
    This is a short-cut for :zeek:see:`Telemetry::histogram_observe`.
    
 
-   :hf: The histogram family to use.
+   :param hf: The histogram family to use.
    
 
-   :label_values: The label values to use for the histogram.
+   :param label_values: The label values to use for the histogram.
    
 
-   :measurement: The value for this observations.
+   :param measurement: The value for this observations.
    
 
    :returns: True if measurement was observed successfully.
@@ -573,10 +573,10 @@ Functions
    Observe a measurement for a :zeek:see:`Telemetry::Histogram`.
    
 
-   :h: The histogram instance.
+   :param h: The histogram instance.
    
 
-   :measurement: The value for this observations.
+   :param measurement: The value for this observations.
    
 
    :returns: True if measurement was observed successfully.

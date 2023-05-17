@@ -40,13 +40,13 @@ Events
    event is also raised for all matching UDP packets, including empty ones.
    
 
-   :u: The connection record for the corresponding UDP flow.
+   :param u: The connection record for the corresponding UDP flow.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
 
-   :contents: TODO.
+   :param contents: TODO.
    
    .. zeek:see::  udp_reply udp_request udp_session_done
       udp_content_deliver_all_orig udp_content_deliver_all_resp
@@ -61,13 +61,13 @@ Events
    'C'/'c' history reporting.
    
 
-   :u: The connection record for the corresponding UDP flow.
+   :param u: The connection record for the corresponding UDP flow.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
 
-   :threshold: the threshold that was crossed
+   :param threshold: the threshold that was crossed
    
    .. zeek:see::  udp_reply udp_request udp_session_done
       tcp_multiple_checksum_errors
@@ -82,7 +82,7 @@ Events
    care.
    
 
-   :u: The connection record for the corresponding UDP flow.
+   :param u: The connection record for the corresponding UDP flow.
    
    .. zeek:see:: udp_contents  udp_request udp_session_done
 
@@ -96,7 +96,7 @@ Events
    care.
    
 
-   :u: The connection record for the corresponding UDP flow.
+   :param u: The connection record for the corresponding UDP flow.
    
    .. zeek:see:: udp_contents udp_reply  udp_session_done
 

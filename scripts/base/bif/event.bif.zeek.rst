@@ -117,7 +117,7 @@ Events
    An event that signals a pcap file is done being processed.
    
 
-   :path: the filesystem path of the pcap file
+   :param path: the filesystem path of the pcap file
 
 .. zeek:id:: analyzer_confirmation
    :source-code: base/bif/event.bif.zeek 436 436
@@ -132,16 +132,16 @@ Events
    that is indeed the case; if so, this event will be generated.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :atype: The type of the analyzer confirming that its protocol is in
+   :param atype: The type of the analyzer confirming that its protocol is in
           use. The value is one of the ``Analyzer::ANALYZER_*`` constants. For example,
           ``Analyzer::ANALYZER_HTTP`` means the HTTP analyzer determined that it's indeed
           parsing an HTTP connection.
    
 
-   :aid:   A unique integer ID identifying the specific *instance* of the
+   :param aid:   A unique integer ID identifying the specific *instance* of the
           analyzer *atype*  that is analyzing the connection ``c``. The ID can
           be used to reference the analyzer when using builtin functions like
           :zeek:id:`disable_analyzer`.
@@ -160,11 +160,11 @@ Events
    Generated when an analyzer confirms successful parsing of a protocol, file, or packets.
    
 
-   :atype: The type of the analyzer confirming analysis. The value may be associated
+   :param atype: The type of the analyzer confirming analysis. The value may be associated
           with a protocol, file or packet analyzer.
    
 
-   :info: Details about the confirmation, which may include a :zeek:type:`connection`
+   :param info: Details about the confirmation, which may include a :zeek:type:`connection`
          object or :zeek:type:`fa_file` object related to the confirmation.
    
    .. note::
@@ -190,22 +190,22 @@ Events
    the analyzer will trigger this event.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :atype: The type of the analyzer confirming that its protocol is in
+   :param atype: The type of the analyzer confirming that its protocol is in
           use. The value is one of the ``Analyzer::ANALYZER_*`` constants. For example,
           ``Analyzer::ANALYZER_HTTP`` means the HTTP analyzer determined that it's indeed
           parsing an HTTP connection.
    
 
-   :aid:   A unique integer ID identifying the specific *instance* of the
+   :param aid:   A unique integer ID identifying the specific *instance* of the
           analyzer *atype*  that is analyzing the connection ``c``. The ID can
           be used to reference the analyzer when using builtin functions like
           :zeek:id:`disable_analyzer`.
    
 
-   :reason: TODO.
+   :param reason: TODO.
    
    .. note::
    
@@ -222,11 +222,11 @@ Events
    Generated for analyzer violations when parsing of a protocol, file, or packet.
    
 
-   :atype: The type of the analyzer reporting the violation. The value may be associated
+   :param atype: The type of the analyzer reporting the violation. The value may be associated
           with a protocol, file or packet analyzer.
    
 
-   :info: Details about the violation. This record may include a :zeek:type:`connection`
+   :param info: Details about the violation. This record may include a :zeek:type:`connection`
          object or :zeek:type:`fa_file` and optionally the raw data as :zeek:type:`string`
          related to this violation.
    
@@ -249,13 +249,13 @@ Events
    connection state, independent of how a connection terminates.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :os: Statistics for the originator endpoint.
+   :param os: Statistics for the originator endpoint.
    
 
-   :rs: Statistics for the responder endpoint.
+   :param rs: Statistics for the responder endpoint.
    
    .. zeek:see:: connection_state_remove
 
@@ -272,18 +272,18 @@ Events
    connection.
    
 
-   :name: A unique name for the specific type of "weird" situation. Zeek's default
+   :param name: A unique name for the specific type of "weird" situation. Zeek's default
          scripts use this name in filtering policies that specify which
          "weirds" are worth reporting.
    
 
-   :c: The corresponding connection.
+   :param c: The corresponding connection.
    
 
-   :addl: Optional additional context further describing the situation.
+   :param addl: Optional additional context further describing the situation.
    
 
-   :source: Optional source for the weird. When called by analyzers, this should
+   :param source: Optional source for the weird. When called by analyzers, this should
            be filled in with the name of the analyzer.
    
    .. zeek:see:: flow_weird net_weird file_weird expired_conn_weird
@@ -302,16 +302,16 @@ Events
    the flow label that it's using.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
 
-   :old_label: The old flow label that the endpoint was using.
+   :param old_label: The old flow label that the endpoint was using.
    
 
-   :new_label: The new flow label that the endpoint is using.
+   :param new_label: The new flow label that the endpoint is using.
    
    .. zeek:see:: connection_established new_connection
 
@@ -325,7 +325,7 @@ Events
    earlier connection it still considers active.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -347,7 +347,7 @@ Events
    flows.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -367,7 +367,7 @@ Events
    and can be used to check conditions on a regular basis.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -387,7 +387,7 @@ Events
    closed the connection or one side never became active.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -417,16 +417,16 @@ Events
    acknowledged it, even though Zeek didn't see it).
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the gap is on the originator's side.
+   :param is_orig: True if the gap is on the originator's side.
    
 
-   :seq: The sequence number where the gap starts.
+   :param seq: The sequence number where the gap starts.
    
 
-   :length: The number of bytes missing.
+   :param length: The number of bytes missing.
    
    .. note::
    
@@ -447,14 +447,14 @@ Events
    returns a different answer than we have stored in the cache.
    
 
-   :dm: A record describing the new resolver result.
+   :param dm: A record describing the new resolver result.
    
 
-   :old_addrs: Addresses that used to be part of the returned set for the query
+   :param old_addrs: Addresses that used to be part of the returned set for the query
               described by *dm*, but are not anymore.
    
 
-   :new_addrs: Addresses that were not part of the returned set for the query
+   :param new_addrs: Addresses that were not part of the returned set for the query
               described by *dm*, but now are.
    
    .. zeek:see:: dns_mapping_lost_name dns_mapping_new_name dns_mapping_unverified
@@ -472,7 +472,7 @@ Events
    though we have already stored a result in the cache.
    
 
-   :dm: A record describing the old resolver result.
+   :param dm: A record describing the old resolver result.
    
    .. zeek:see:: dns_mapping_altered dns_mapping_new_name dns_mapping_unverified
       dns_mapping_valid
@@ -489,9 +489,9 @@ Events
    string than we already have in the cache.
    
 
-   :prev: A record describing the old resolver result.
+   :param prev: A record describing the old resolver result.
 
-   :latest: A record describing the new resolver result.
+   :param latest: A record describing the new resolver result.
    
    .. zeek:see:: dns_mapping_altered dns_mapping_new_name dns_mapping_unverified
       dns_mapping_valid
@@ -507,7 +507,7 @@ Events
    lookup produces an answer for a query that was marked as failed in the cache.
    
 
-   :dm: A record describing the new resolver result.
+   :param dm: A record describing the new resolver result.
    
    .. zeek:see:: dns_mapping_altered dns_mapping_lost_name dns_mapping_unverified
       dns_mapping_valid
@@ -524,7 +524,7 @@ Events
    already stored a result in the cache.
    
 
-   :dm: A record describing the old resolver result.
+   :param dm: A record describing the old resolver result.
    
    .. zeek:see:: dns_mapping_altered dns_mapping_lost_name dns_mapping_new_name
       dns_mapping_valid
@@ -540,7 +540,7 @@ Events
    the same result as stored in the cache.
    
 
-   :dm: A record describing the new resolver result (which matches the old one).
+   :param dm: A record describing the new resolver result (which matches the old one).
    
    .. zeek:see:: dns_mapping_altered dns_mapping_lost_name dns_mapping_new_name
       dns_mapping_unverified
@@ -554,7 +554,7 @@ Events
    extension header.
    
 
-   :p: Information from the header of the packet that triggered the event.
+   :param p: Information from the header of the packet that triggered the event.
    
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
@@ -583,21 +583,21 @@ Events
    connection.
    
 
-   :name: A unique name for the specific type of "weird" situation. Zeek's default
+   :param name: A unique name for the specific type of "weird" situation. Zeek's default
          scripts use this name in filtering policies that specify which
          "weirds" are worth reporting.
    
 
-   :id: The tuple associated with a previously-expired connection.
+   :param id: The tuple associated with a previously-expired connection.
    
 
-   :uid: The UID string associated with a previously-expired connection.
+   :param uid: The UID string associated with a previously-expired connection.
    
 
-   :addl: Optional additional context further describing the situation.
+   :param addl: Optional additional context further describing the situation.
    
 
-   :source: Optional source for the weird. When called by analyzers, this should
+   :param source: Optional source for the weird. When called by analyzers, this should
            be filled in with the name of the analyzer.
    
    .. zeek:see:: flow_weird net_weird file_weird conn_weird
@@ -615,13 +615,13 @@ Events
    Indicates that a chunk of the file is missing.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :offset: The byte offset from the start of the file at which the gap begins.
+   :param offset: The byte offset from the start of the file at which the gap begins.
    
 
-   :len: The number of missing bytes.
+   :param len: The number of missing bytes.
    
    .. zeek:see:: file_new file_over_new_connection file_timeout
       file_sniff file_state_remove file_reassembly_overflow
@@ -641,7 +641,7 @@ Events
    encountering a new file.
    
 
-   :f: The file.
+   :param f: The file.
    
    .. zeek:see:: file_over_new_connection file_timeout file_gap
       file_sniff file_state_remove
@@ -656,7 +656,7 @@ Events
    normal log files as created by log writers.
    
 
-   :f: The opened file.
+   :param f: The opened file.
 
 .. zeek:id:: file_over_new_connection
    :source-code: base/bif/event.bif.zeek 822 822
@@ -672,13 +672,13 @@ Events
    :zeek:see:`file_over_new_connection`.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :c: The new connection over which the file is seen being transferred.
+   :param c: The new connection over which the file is seen being transferred.
    
 
-   :is_orig: true if the originator of *c* is the one sending the file.
+   :param is_orig: true if the originator of *c* is the one sending the file.
    
    .. zeek:see:: file_new file_timeout file_gap file_sniff
       file_state_remove
@@ -692,14 +692,14 @@ Events
    This is a specialization of the :zeek:id:`file_gap` event.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :offset: The byte offset from the start of the file at which the reassembly
+   :param offset: The byte offset from the start of the file at which the reassembly
            couldn't continue due to running out of reassembly buffer space.
    
 
-   :skipped: The number of bytes of the file skipped over to flush some
+   :param skipped: The number of bytes of the file skipped over to flush some
             file data and get back under the reassembly buffer size limit.
             This value will also be represented as a gap.
    
@@ -725,10 +725,10 @@ Events
    will be left all unset.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :meta: Metadata that's been discovered about the file.
+   :param meta: Metadata that's been discovered about the file.
    
    .. zeek:see:: file_over_new_connection file_timeout file_gap
       file_state_remove
@@ -741,7 +741,7 @@ Events
    This event is generated each time file analysis is ending for a given file.
    
 
-   :f: The file.
+   :param f: The file.
    
    .. zeek:see:: file_new file_over_new_connection file_timeout file_gap
       file_sniff
@@ -755,7 +755,7 @@ Events
    for the file in a while.
    
 
-   :f: The file.
+   :param f: The file.
    
    .. zeek:see:: file_new file_over_new_connection file_gap
       file_sniff file_state_remove default_file_timeout_interval
@@ -773,18 +773,18 @@ Events
    ``*_weird`` events to report that.
    
 
-   :name: A unique name for the specific type of "weird" situation. Zeek's default
+   :param name: A unique name for the specific type of "weird" situation. Zeek's default
          scripts use this name in filtering policies that specify which
          "weirds" are worth reporting.
    
 
-   :f: The corresponding file.
+   :param f: The corresponding file.
    
 
-   :addl: Additional information related to the weird.
+   :param addl: Additional information related to the weird.
    
 
-   :source: The name of the file analyzer that generated the weird.
+   :param source: The name of the file analyzer that generated the weird.
    
    .. zeek:see:: flow_weird net_weird conn_weird expired_conn_weird
    
@@ -807,21 +807,21 @@ Events
    them.
    
 
-   :name: A unique name for the specific type of "weird" situation. Zeek's default
+   :param name: A unique name for the specific type of "weird" situation. Zeek's default
          scripts use this name in filtering policies that specify which
          "weirds" are worth reporting.
    
 
-   :src: The source address corresponding to the activity.
+   :param src: The source address corresponding to the activity.
    
 
-   :dst: The destination address corresponding to the activity.
+   :param dst: The destination address corresponding to the activity.
    
 
-   :addl: Optional additional context further describing the situation.
+   :param addl: Optional additional context further describing the situation.
    
 
-   :source: Optional source for the weird. When called by analyzers, this should
+   :param source: Optional source for the weird. When called by analyzers, this should
            be filled in with the name of the analyzer.
    
    .. zeek:see:: conn_weird net_weird file_weird expired_conn_weird
@@ -844,13 +844,13 @@ Events
    call :zeek:see:`set_file_handle` will "win".
    
 
-   :tag: The analyzer which is carrying the file data.
+   :param tag: The analyzer which is carrying the file data.
    
 
-   :c: The connection which is carrying the file data.
+   :param c: The connection which is carrying the file data.
    
 
-   :is_orig: The direction the file data is flowing over the connection.
+   :param is_orig: The direction the file data is flowing over the connection.
    
    .. zeek:see:: set_file_handle
 
@@ -864,10 +864,10 @@ Events
    that happens to utilize extension headers frequently.
    
 
-   :c: The connection the packet is part of.
+   :param c: The connection the packet is part of.
    
 
-   :p: Information from the header of the packet that triggered the event.
+   :param p: Information from the header of the packet that triggered the event.
    
    .. zeek:see:: new_packet tcp_packet packet_contents esp_packet
 
@@ -883,14 +883,14 @@ Events
    can understand where Zeek spends its time.
    
 
-   :samples: A set with functions and locations seen during the processing of
+   :param samples: A set with functions and locations seen during the processing of
             the sampled packet.
    
 
-   :CPU: The CPU time spent on processing the sampled packet.
+   :param CPU: The CPU time spent on processing the sampled packet.
    
 
-   :dmem: The difference in memory usage caused by processing the sampled packet.
+   :param dmem: The difference in memory usage caused by processing the sampled packet.
 
 .. zeek:id:: mobile_ipv6_message
    :source-code: base/bif/event.bif.zeek 316 316
@@ -900,7 +900,7 @@ Events
    Generated for any packet using a Mobile IPv6 Mobility Header.
    
 
-   :p: Information from the header of the packet that triggered the event.
+   :param p: Information from the header of the packet that triggered the event.
    
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
@@ -918,7 +918,7 @@ Events
    :zeek:see:`zeek_init`.
    
 
-   :t: The time at with the Zeek-termination process started.
+   :param t: The time at with the Zeek-termination process started.
    
    .. zeek:see:: zeek_init zeek_done
    
@@ -940,15 +940,15 @@ Events
    not tied directly to a specific connection or pair of hosts.
    
 
-   :name: A unique name for the specific type of "weird" situation. Zeek's default
+   :param name: A unique name for the specific type of "weird" situation. Zeek's default
          scripts use this name in filtering policies that specify which
          "weirds" are worth reporting.
    
 
-   :addl: Optional additional context further describing the situation.
+   :param addl: Optional additional context further describing the situation.
    
 
-   :source: Optional source for the weird. When called by analyzers, this should
+   :param source: Optional source for the weird. When called by analyzers, this should
            be filled in with the name of the analyzer.
    
    .. zeek:see:: flow_weird file_weird conn_weird expired_conn_weird
@@ -981,7 +981,7 @@ Events
    ICMP flows.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -1008,10 +1008,10 @@ Events
    debugging purposes.
    
 
-   :name: The name of the event.
+   :param name: The name of the event.
    
 
-   :params: The event's parameters.
+   :param params: The event's parameters.
 
 .. zeek:id:: new_packet
    :source-code: base/bif/event.bif.zeek 287 287
@@ -1028,10 +1028,10 @@ Events
    packet-level analysis, it may come in handy.
    
 
-   :c: The connection the packet is part of.
+   :param c: The connection the packet is part of.
    
 
-   :p: Information from the header of the packet that triggered the event.
+   :param p: Information from the header of the packet that triggered the event.
    
    .. zeek:see:: tcp_packet packet_contents raw_packet
 
@@ -1048,10 +1048,10 @@ Events
    do some packet-level analysis, it may come in handy.
    
 
-   :c: The connection the packet is part of.
+   :param c: The connection the packet is part of.
    
 
-   :contents: The raw transport-layer payload.
+   :param contents: The raw transport-layer payload.
    
    .. zeek:see:: new_packet tcp_packet
 
@@ -1066,7 +1066,7 @@ Events
    of packets that are unprocessed.
    
 
-   :pkt: Data for the unprocessed packet
+   :param pkt: Data for the unprocessed packet
 
 .. zeek:id:: profiling_update
    :source-code: base/bif/event.bif.zeek 689 689
@@ -1078,10 +1078,10 @@ Events
    :zeek:id:`profiling_interval` and :zeek:id:`expensive_profiling_multiple`.
    
 
-   :f: The profiling file.
+   :param f: The profiling file.
    
 
-   :expensive: True if this event corresponds to heavier-weight profiling as
+   :param expensive: True if this event corresponds to heavier-weight profiling as
               indicated by the :zeek:id:`expensive_profiling_multiple` variable.
    
    .. zeek:see::  profiling_interval expensive_profiling_multiple
@@ -1096,10 +1096,10 @@ Events
    that a protocol is actually used, it allows to retain that information.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :atype: The type of the analyzer confirming that its protocol is in
+   :param atype: The type of the analyzer confirming that its protocol is in
           use. The value is one of the ``Analyzer::ANALYZER_*`` constants. For example,
           ``Analyzer::ANALYZER_HTTP`` means the HTTP analyzer determined that it's indeed
           parsing an HTTP connection.
@@ -1118,7 +1118,7 @@ Events
    packet-level analysis, it may come in handy.
    
 
-   :p: Information from the header of the packet that triggered the event.
+   :param p: Information from the header of the packet that triggered the event.
    
    .. zeek:see:: new_packet packet_contents
 
@@ -1133,13 +1133,13 @@ Events
    :zeek:id:`Reporter::error`.
    
 
-   :t: The time the error was passed to the reporter.
+   :param t: The time the error was passed to the reporter.
    
 
-   :msg: The error message.
+   :param msg: The error message.
    
 
-   :location: A (potentially empty) string describing a location associated with
+   :param location: A (potentially empty) string describing a location associated with
        the error.
    
    .. zeek:see:: reporter_info reporter_warning Reporter::info Reporter::warning
@@ -1160,13 +1160,13 @@ Events
    scripts calling :zeek:id:`Reporter::info`.
    
 
-   :t: The time the message was passed to the reporter.
+   :param t: The time the message was passed to the reporter.
    
 
-   :msg: The message itself.
+   :param msg: The message itself.
    
 
-   :location: A (potentially empty) string describing a location associated with
+   :param location: A (potentially empty) string describing a location associated with
              the message.
    
    .. zeek:see:: reporter_warning reporter_error Reporter::info Reporter::warning
@@ -1187,13 +1187,13 @@ Events
    :zeek:id:`Reporter::warning`.
    
 
-   :t: The time the warning was passed to the reporter.
+   :param t: The time the warning was passed to the reporter.
    
 
-   :msg: The warning message.
+   :param msg: The warning message.
    
 
-   :location: A (potentially empty) string describing a location associated with
+   :param location: A (potentially empty) string describing a location associated with
        the warning.
    
    .. zeek:see:: reporter_info reporter_error Reporter::info Reporter::warning
@@ -1216,16 +1216,16 @@ Events
    mismatches with that older still-buffered data will likewise trigger the event.
    
 
-   :c: The connection showing the inconsistency.
+   :param c: The connection showing the inconsistency.
    
 
-   :t1: The original payload.
+   :param t1: The original payload.
    
 
-   :t2: The new payload.
+   :param t2: The new payload.
    
 
-   :tcp_flags: A string with the TCP flags of the packet triggering the
+   :param tcp_flags: A string with the TCP flags of the packet triggering the
               inconsistency. In the string, each character corresponds to one
               set flag, as follows: ``S`` -> SYN; ``F`` -> FIN; ``R`` -> RST;
               ``A`` -> ACK; ``P`` -> PUSH; ``U`` -> URGENT. This string will
@@ -1246,10 +1246,10 @@ Events
    raised.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :a: The analyzer that was scheduled for the connection with the
+   :param a: The analyzer that was scheduled for the connection with the
       :zeek:id:`Analyzer::schedule_analyzer` call. When the event is raised, that
       analyzer will already have been activated to process the connection. The
       ``count`` is one of the ``ANALYZER_*`` constants, e.g., ``ANALYZER_HTTP``.
@@ -1278,14 +1278,14 @@ Events
    about Zeek's signature engine.
    
 
-   :state: Context about the match, including which signatures triggered the
+   :param state: Context about the match, including which signatures triggered the
           event and the connection for which the match was found.
    
 
-   :msg: The message passed to the ``event`` signature action.
+   :param msg: The message passed to the ``event`` signature action.
    
 
-   :data: The last chunk of input that triggered the match. Note that the
+   :param data: The last chunk of input that triggered the match. Note that the
          specifics here are not well-defined as Zeek does not buffer any input.
          If a match is split across packet boundaries, only the last chunk
          triggering the match will be passed on to the event.
@@ -1305,10 +1305,10 @@ Events
    default scripts are doing).
    
 
-   :c: The connection whose tunnel/encapsulation changed.
+   :param c: The connection whose tunnel/encapsulation changed.
    
 
-   :e: The new encapsulation.
+   :param e: The new encapsulation.
 
 .. zeek:id:: udp_session_done
    :source-code: base/bif/event.bif.zeek 233 233
@@ -1321,7 +1321,7 @@ Events
    Teredo, and GTPv1 support this.
    
 
-   :u: The connection record for the corresponding UDP flow.
+   :param u: The connection record for the corresponding UDP flow.
    
    .. zeek:see:: udp_contents udp_reply udp_request
 
@@ -1334,13 +1334,13 @@ Events
    know how to handle.
    
 
-   :analyzer_name: The string name of the analyzer attempting to forward the protocol
+   :param analyzer_name: The string name of the analyzer attempting to forward the protocol
    
 
-   :protocol: The identifier of the protocol being forwarded
+   :param protocol: The identifier of the protocol being forwarded
    
 
-   :first_bytes: A certain number of bytes at the start of the unknown protocol's header.
+   :param first_bytes: A certain number of bytes at the start of the unknown protocol's header.
    
    .. zeek:see:: UnknownProtocol::first_bytes_count
 
@@ -1392,10 +1392,10 @@ Events
    Raised for each policy script loaded by the script interpreter.
    
 
-   :path: The full path to the script loaded.
+   :param path: The full path to the script loaded.
    
 
-   :level: The "nesting level": zero for a top-level Zeek script and incremented
+   :param level: The "nesting level": zero for a top-level Zeek script and incremented
           recursively for each ``@load``.
 
 

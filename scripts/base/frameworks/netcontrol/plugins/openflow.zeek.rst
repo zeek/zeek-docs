@@ -98,10 +98,10 @@ Types
          Predicate that is called on rule insertion or removal.
          
 
-         :p: Current plugin state.
+         :param p: Current plugin state.
          
 
-         :r: The rule to be inserted or removed.
+         :param r: The rule to be inserted or removed.
          
 
          :returns: T if the rule can be handled by the current backend, F otherwise.
@@ -112,13 +112,13 @@ Types
          device.
          
 
-         :p: Current plugin state.
+         :param p: Current plugin state.
          
 
-         :r: The rule to be inserted or removed.
+         :param r: The rule to be inserted or removed.
          
 
-         :m: The openflow match structures that were generated for this rules.
+         :param m: The openflow match structures that were generated for this rules.
          
 
          :returns: The modified OpenFlow match structures that will be used in place of the structures passed in m.
@@ -128,13 +128,13 @@ Types
          device. It can modify the FlowMod message before it is passed on.
          
 
-         :p: Current plugin state.
+         :param p: Current plugin state.
          
 
-         :r: The rule to be inserted or removed.
+         :param r: The rule to be inserted or removed.
          
 
-         :m: The OpenFlow FlowMod message.
+         :param m: The OpenFlow FlowMod message.
          
 
          :returns: The modified FlowMod message that is used in lieu of m.

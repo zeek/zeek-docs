@@ -70,11 +70,11 @@ Functions
    :zeek:see:`connection_state_remove` event.
    
 
-   :c: The associated connection whose :zeek:see:`connection_state_remove`
+   :param c: The associated connection whose :zeek:see:`connection_state_remove`
       event should trigger a callback to *hk*.
    
 
-   :hk: The hook function to use as a callback.
+   :param hk: The hook function to use as a callback.
    
 
    :returns: false if the provided hook was previously registered, else true.
@@ -89,11 +89,11 @@ Functions
    be called.
    
 
-   :c: The associated connection whose :zeek:see:`connection_state_remove`
+   :param c: The associated connection whose :zeek:see:`connection_state_remove`
       event could have triggered a callback to *hk*.
    
 
-   :hk: The hook function that would have been used as a callback.
+   :param hk: The hook function that would have been used as a callback.
    
 
    :returns: true if the provided hook was previously registered, else false.

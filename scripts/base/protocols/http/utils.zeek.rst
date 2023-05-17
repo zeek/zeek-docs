@@ -35,7 +35,7 @@ Functions
    handle edge cases such as proxied requests appropriately.
    
 
-   :rec: An :zeek:type:`HTTP::Info` record.
+   :param rec: An :zeek:type:`HTTP::Info` record.
    
 
    :returns: A URL, not prefixed by ``"http://"``.
@@ -49,7 +49,7 @@ Functions
    handle edge cases such as proxied requests appropriately.
    
 
-   :rec: An :zeek:type:`HTTP::Info` record.
+   :param rec: An :zeek:type:`HTTP::Info` record.
    
 
    :returns: A URL prefixed with ``"http://"``.
@@ -70,10 +70,10 @@ Functions
    by "=", this function can be used to parse out all of the key names.
    
 
-   :data: The raw data, such as a URL or cookie value.
+   :param data: The raw data, such as a URL or cookie value.
    
 
-   :kv_splitter: A regular expression representing the separator between
+   :param kv_splitter: A regular expression representing the separator between
                 key-value pairs.
    
 

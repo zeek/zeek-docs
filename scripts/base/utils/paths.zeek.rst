@@ -50,10 +50,10 @@ Functions
    Constructs a path to a file given a directory and a file name.
    
 
-   :dir: the directory in which the file lives.
+   :param dir: the directory in which the file lives.
    
 
-   :file_name: the name of the file.
+   :param file_name: the name of the file.
    
 
    :returns: the concatenation of the directory path and file name, or just
@@ -78,7 +78,7 @@ Functions
    .. todo:: Make this work on Window's style directories.
    
 
-   :input: a string that may contain an absolute path.
+   :param input: a string that may contain an absolute path.
    
 
    :returns: the first absolute path found in input string, else an empty string.

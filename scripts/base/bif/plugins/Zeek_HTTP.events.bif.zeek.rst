@@ -45,13 +45,13 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the header was sent by the originator of the TCP connection.
+   :param is_orig: True if the header was sent by the originator of the TCP connection.
    
 
-   :hlist: A *table* containing all headers extracted from the current entity.
+   :param hlist: A *table* containing all headers extracted from the current entity.
           The table is indexed by the position of the header (1 for the first,
           2 for the second, etc.).
    
@@ -77,10 +77,10 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
    .. zeek:see:: http_all_headers  http_content_type http_end_entity http_entity_data
@@ -97,10 +97,10 @@ Events
    will be raised after this event.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :protocol: The protocol to which the connection is switching.
+   :param protocol: The protocol to which the connection is switching.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header http_message_done http_reply
@@ -120,17 +120,17 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
 
-   :ty: The main type.
+   :param ty: The main type.
    
 
-   :subty: The subtype.
+   :param subty: The subtype.
    
    .. zeek:see:: http_all_headers http_begin_entity  http_end_entity http_entity_data
       http_event http_header http_message_done http_reply http_request http_stats
@@ -154,10 +154,10 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_entity_data
@@ -184,17 +184,17 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: One chunk of raw entity data.
+   :param data: One chunk of raw entity data.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_event http_header http_message_done http_reply http_request http_stats
@@ -212,14 +212,14 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :event_type: A string describing the general category of the problem found
+   :param event_type: A string describing the general category of the problem found
                (e.g., ``illegal format``).
    
 
-   :detail: Further more detailed description of the error.
+   :param detail: Further more detailed description of the error.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data  http_header http_message_done http_reply http_request
@@ -239,19 +239,19 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the header was sent by the originator of the TCP connection.
+   :param is_orig: True if the header was sent by the originator of the TCP connection.
    
 
-   :original_name: The name of the header (unaltered).
+   :param original_name: The name of the header (unaltered).
    
 
-   :name: The name of the header (converted to all uppercase).
+   :param name: The name of the header (converted to all uppercase).
    
 
-   :value: The value of the header.
+   :param value: The value of the header.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event  http_message_done http_reply http_request
@@ -277,14 +277,14 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
 
-   :stat: Further meta information about the message.
+   :param stat: Further meta information about the message.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header  http_reply http_request http_stats
@@ -304,16 +304,16 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :version: The version number specified in the reply (e.g., ``1.1``).
+   :param version: The version number specified in the reply (e.g., ``1.1``).
    
 
-   :code: The numerical response code returned by the server.
+   :param code: The numerical response code returned by the server.
    
 
-   :reason: The textual description returned by the server along with *code*.
+   :param reason: The textual description returned by the server along with *code*.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header http_message_done http_request
@@ -333,19 +333,19 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :method: The HTTP method extracted from the request (e.g., ``GET``, ``POST``).
+   :param method: The HTTP method extracted from the request (e.g., ``GET``, ``POST``).
    
 
-   :original_URI: The unprocessed URI as specified in the request.
+   :param original_URI: The unprocessed URI as specified in the request.
    
 
-   :unescaped_URI: The URI with all percent-encodings decoded.
+   :param unescaped_URI: The URI with all percent-encodings decoded.
    
 
-   :version: The version number specified in the request (e.g., ``1.1``).
+   :param version: The version number specified in the request (e.g., ``1.1``).
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header http_message_done http_reply http_stats
@@ -361,10 +361,10 @@ Events
    fully processed.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :stats: Statistics summarizing HTTP-level properties of the finished
+   :param stats: Statistics summarizing HTTP-level properties of the finished
           connection.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity

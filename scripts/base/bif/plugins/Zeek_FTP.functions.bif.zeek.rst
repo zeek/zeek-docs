@@ -36,10 +36,10 @@ Functions
    ``10.0.0.1`` and ``1055/tcp`` yields ``"10,0,0,1,4,31"``.
    
 
-   :a: The IP address.
+   :param a: The IP address.
    
 
-   :p: The TCP port.
+   :param p: The TCP port.
    
 
    :returns: The FTP PORT string.
@@ -57,7 +57,7 @@ Functions
    where ``<d>`` is a delimiter in the ASCII range 33-126 (usually ``|``).
    
 
-   :s: The string of the FTP EPRT command, e.g., ``"|1|10.0.0.1|1055|"``.
+   :param s: The string of the FTP EPRT command, e.g., ``"|1|10.0.0.1|1055|"``.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.
@@ -74,7 +74,7 @@ Functions
    where ``<d>`` is a delimiter in the ASCII range 33-126 (usually ``|``).
    
 
-   :str: The string containing the result of the FTP EPSV command.
+   :param str: The string containing the result of the FTP EPSV command.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.
@@ -89,7 +89,7 @@ Functions
    Converts the result of the FTP PASV command to an :zeek:type:`ftp_port`.
    
 
-   :str: The string containing the result of the FTP PASV command.
+   :param str: The string containing the result of the FTP PASV command.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.
@@ -105,7 +105,7 @@ Functions
    :zeek:type:`ftp_port`.
    
 
-   :s: The string of the FTP PORT command, e.g., ``"10,0,0,1,4,31"``.
+   :param s: The string of the FTP PORT command, e.g., ``"10,0,0,1,4,31"``.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.

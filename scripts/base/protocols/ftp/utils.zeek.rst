@@ -32,7 +32,7 @@ Functions
    Creates a URL from an :zeek:type:`FTP::Info` record.
    
 
-   :rec: An :zeek:type:`FTP::Info` record.
+   :param rec: An :zeek:type:`FTP::Info` record.
    
 
    :returns: A URL, not prefixed by ``"ftp://"``.
@@ -45,7 +45,7 @@ Functions
    Creates a URL from an :zeek:type:`FTP::Info` record.
    
 
-   :rec: An :zeek:type:`FTP::Info` record.
+   :param rec: An :zeek:type:`FTP::Info` record.
    
 
    :returns: A URL prefixed with ``"ftp://"``.

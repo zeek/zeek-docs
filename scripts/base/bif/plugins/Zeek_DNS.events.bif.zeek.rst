@@ -71,17 +71,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :a: The address returned by the reply.
+   :param a: The address returned by the reply.
    
    .. zeek:see::  dns_A_reply dns_AAAA_reply dns_CNAME_reply dns_EDNS_addl dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -104,17 +104,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :a: The address returned by the reply.
+   :param a: The address returned by the reply.
    
    .. zeek:see::  dns_A_reply dns_A6_reply dns_CNAME_reply dns_EDNS_addl dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -137,17 +137,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :a: The address returned by the reply.
+   :param a: The address returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A6_reply dns_CNAME_reply dns_EDNS_addl dns_HINFO_reply
       dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply
@@ -166,17 +166,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :binds: The parsed RDATA of BIND-Signing state record.
+   :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_CAA_reply
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 455 455
@@ -189,23 +189,23 @@ Events
    See `RFC 6844 <https://tools.ietf.org/html/rfc6844>`__ for more details.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :flags: The flags byte of the CAA reply.
+   :param flags: The flags byte of the CAA reply.
    
 
-   :tag: The property identifier of the CAA reply.
+   :param tag: The property identifier of the CAA reply.
    
 
-   :value: The property value of the CAA reply.
+   :param value: The property value of the CAA reply.
 
 .. zeek:id:: dns_CNAME_reply
    :source-code: base/protocols/dns/main.zeek 509 512
@@ -220,17 +220,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply  dns_EDNS_addl dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -249,17 +249,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :dnskey: The parsed DNSKEY record.
+   :param dnskey: The parsed DNSKEY record.
 
 .. zeek:id:: dns_DS
    :source-code: base/protocols/dns/main.zeek 590 596
@@ -270,17 +270,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :ds: The parsed RDATA of DS record.
+   :param ds: The parsed RDATA of DS record.
 
 .. zeek:id:: dns_EDNS_addl
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 531 531
@@ -295,14 +295,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The parsed EDNS reply.
+   :param ans: The parsed EDNS reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -327,14 +327,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :opt: The parsed EDNS Cookie option.
+   :param opt: The parsed EDNS Cookie option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -357,14 +357,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :opt: The parsed EDNS option.
+   :param opt: The parsed EDNS option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -389,14 +389,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :opt: The parsed EDNS Keepalive option.
+   :param opt: The parsed EDNS Keepalive option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -420,14 +420,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -449,17 +449,17 @@ Events
    For replies with multiple answers, an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :https: The parsed RDATA of HTTPS type record.
+   :param https: The parsed RDATA of HTTPS type record.
 
 .. zeek:id:: dns_LOC
    :source-code: base/protocols/dns/main.zeek 609 615
@@ -470,17 +470,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :loc: The parsed RDATA of LOC type record.
+   :param loc: The parsed RDATA of LOC type record.
 
 .. zeek:id:: dns_MX_reply
    :source-code: base/protocols/dns/main.zeek 515 518
@@ -495,20 +495,20 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
 
-   :preference: The preference for *name* specified by the reply.
+   :param preference: The preference for *name* specified by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply  dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply
@@ -527,20 +527,20 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :next_name: The parsed next secure domain name.
+   :param next_name: The parsed next secure domain name.
    
 
-   :bitmaps: vector of strings in hex for the bit maps present.
+   :param bitmaps: vector of strings in hex for the bit maps present.
 
 .. zeek:id:: dns_NSEC3
    :source-code: base/protocols/dns/main.zeek 580 583
@@ -551,17 +551,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :nsec3: The parsed RDATA of Nsec3 record.
+   :param nsec3: The parsed RDATA of Nsec3 record.
 
 .. zeek:id:: dns_NSEC3PARAM
    :source-code: base/protocols/dns/main.zeek 585 588
@@ -572,17 +572,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :nsec3param: The parsed RDATA of NSEC3PARAM record.
+   :param nsec3param: The parsed RDATA of NSEC3PARAM record.
 
 .. zeek:id:: dns_NS_reply
    :source-code: base/protocols/dns/main.zeek 504 507
@@ -597,17 +597,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply  dns_PTR_reply dns_SOA_reply dns_SRV_reply
@@ -630,17 +630,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply  dns_SOA_reply dns_SRV_reply
@@ -659,17 +659,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :rrsig: The parsed RRSIG record.
+   :param rrsig: The parsed RRSIG record.
 
 .. zeek:id:: dns_SOA_reply
    :source-code: base/protocols/dns/main.zeek 525 528
@@ -684,17 +684,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :soa: The parsed SOA value.
+   :param soa: The parsed SOA value.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SRV_reply
@@ -717,17 +717,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :strs: The textual information returned by the reply.
+   :param strs: The textual information returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -750,29 +750,29 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :target: Target of the SRV response -- the canonical hostname of the
+   :param target: Target of the SRV response -- the canonical hostname of the
            machine providing the service, ending in a dot.
    
 
-   :priority: Priority of the SRV response -- the priority of the target
+   :param priority: Priority of the SRV response -- the priority of the target
              host, lower value means more preferred.
    
 
-   :weight: Weight of the SRV response -- a relative weight for records
+   :param weight: Weight of the SRV response -- a relative weight for records
            with the same priority, higher value means more preferred.
    
 
-   :p: Port of the SRV response -- the TCP or UDP port on which the
+   :param p: Port of the SRV response -- the TCP or UDP port on which the
       service is to be found.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
@@ -792,17 +792,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :binds: The parsed RDATA of BIND-Signing state record.
+   :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_SVCB
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 775 775
@@ -815,17 +815,17 @@ Events
    For replies with multiple answers, an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :svcb: The parsed RDATA of SVCB type record.
+   :param svcb: The parsed RDATA of SVCB type record.
 
 .. zeek:id:: dns_TSIG_addl
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 631 631
@@ -840,14 +840,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The parsed TSIG reply.
+   :param ans: The parsed TSIG reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -870,17 +870,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :strs: The textual information returned by the reply.
+   :param strs: The textual information returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -903,14 +903,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -934,11 +934,11 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -960,17 +960,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :is_orig:  True if the message was sent by the originator of the connection.
+   :param is_orig:  True if the message was sent by the originator of the connection.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :len: The length of the message's raw representation (i.e., the DNS payload).
+   :param len: The length of the message's raw representation (i.e., the DNS payload).
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -993,23 +993,23 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :query: The queried name.
+   :param query: The queried name.
    
 
-   :qtype: The queried resource record type.
+   :param qtype: The queried resource record type.
    
 
-   :qclass: The queried resource record class.
+   :param qclass: The queried resource record class.
    
 
-   :original_query: The queried name, with the original case kept intact
+   :param original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -1035,23 +1035,23 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :query: The queried name (normalized to all lowercase).
+   :param query: The queried name (normalized to all lowercase).
    
 
-   :qtype: The queried resource record type.
+   :param qtype: The queried resource record type.
    
 
-   :qclass: The queried resource record class.
+   :param qclass: The queried resource record class.
    
 
-   :original_query: The queried name, with the original case kept intact
+   :param original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -1075,23 +1075,23 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :query: The queried name (normalized to all lowercase).
+   :param query: The queried name (normalized to all lowercase).
    
 
-   :qtype: The queried resource record type.
+   :param qtype: The queried resource record type.
    
 
-   :qclass: The queried resource record class.
+   :param qclass: The queried resource record class.
    
 
-   :original_query: The queried name, with the original case kept intact
+   :param original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -1110,14 +1110,14 @@ Events
    that Zeek knows how to parse and generate another more specific event.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply

@@ -33,22 +33,22 @@ Events
    for more information about the ARP protocol.
    
 
-   :mac_src: The reply's source MAC address.
+   :param mac_src: The reply's source MAC address.
    
 
-   :mac_dst: The reply's destination MAC address.
+   :param mac_dst: The reply's destination MAC address.
    
 
-   :SPA: The sender protocol address.
+   :param SPA: The sender protocol address.
    
 
-   :SHA: The sender hardware address.
+   :param SHA: The sender hardware address.
    
 
-   :TPA: The target protocol address.
+   :param TPA: The target protocol address.
    
 
-   :THA: The target hardware address.
+   :param THA: The target hardware address.
    
    .. zeek:see::  arp_request bad_arp
 
@@ -63,22 +63,22 @@ Events
    for more information about the ARP protocol.
    
 
-   :mac_src: The request's source MAC address.
+   :param mac_src: The request's source MAC address.
    
 
-   :mac_dst: The request's destination MAC address.
+   :param mac_dst: The request's destination MAC address.
    
 
-   :SPA: The sender protocol address.
+   :param SPA: The sender protocol address.
    
 
-   :SHA: The sender hardware address.
+   :param SHA: The sender hardware address.
    
 
-   :TPA: The target protocol address.
+   :param TPA: The target protocol address.
    
 
-   :THA: The target hardware address.
+   :param THA: The target hardware address.
    
    .. zeek:see:: arp_reply  bad_arp
 
@@ -92,19 +92,19 @@ Events
    match the originator of the packet.
    
 
-   :SPA: The sender protocol address.
+   :param SPA: The sender protocol address.
    
 
-   :SHA: The sender hardware address.
+   :param SHA: The sender hardware address.
    
 
-   :TPA: The target protocol address.
+   :param TPA: The target protocol address.
    
 
-   :THA: The target hardware address.
+   :param THA: The target hardware address.
    
 
-   :explanation: A short description of why the ARP packet is considered "bad".
+   :param explanation: A short description of why the ARP packet is considered "bad".
    
    .. zeek:see:: arp_reply arp_request
    

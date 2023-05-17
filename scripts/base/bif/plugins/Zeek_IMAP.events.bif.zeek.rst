@@ -32,10 +32,10 @@ Events
    after being queried using the CAPABILITY command.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :capabilities: The list of IMAP capabilities as sent by the server.
+   :param capabilities: The list of IMAP capabilities as sent by the server.
 
 .. zeek:id:: imap_starttls
    :source-code: base/bif/plugins/Zeek_IMAP.events.bif.zeek 17 17
@@ -46,6 +46,6 @@ Events
    StartTLS exchange between the client and the server.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 

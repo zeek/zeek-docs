@@ -53,13 +53,13 @@ Functions
    Ryu controller constructor.
    
 
-   :host: Controller ip.
+   :param host: Controller ip.
    
 
-   :host_port: Controller listen port.
+   :param host_port: Controller listen port.
    
 
-   :dpid: OpenFlow switch datapath id.
+   :param dpid: OpenFlow switch datapath id.
    
 
    :returns: OpenFlow::Controller record.

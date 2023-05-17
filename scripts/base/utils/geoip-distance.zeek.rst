@@ -29,10 +29,10 @@ Functions
    based on GeoIP database locations.  Requires Zeek to be built with GeoIP.
    
 
-   :a1: First IP address.
+   :param a1: First IP address.
    
 
-   :a2: Second IP address.
+   :param a2: Second IP address.
    
 
    :returns: The distance between *a1* and *a2* in miles, or -1.0 if GeoIP data

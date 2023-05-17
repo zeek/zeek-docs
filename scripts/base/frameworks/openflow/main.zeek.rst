@@ -59,10 +59,10 @@ Events
    Event that is raised once a controller finishes initialization
    and is completely activated.
 
-   :name: Unique name of this controller instance.
+   :param name: Unique name of this controller instance.
    
 
-   :controller: The controller that finished activation.
+   :param controller: The controller that finished activation.
 
 .. zeek:id:: OpenFlow::flow_mod_failure
    :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 383 394
@@ -72,16 +72,16 @@ Events
    Reports an error while installing a flow Rule.
    
 
-   :name: The unique name of the OpenFlow controller from which this event originated.
+   :param name: The unique name of the OpenFlow controller from which this event originated.
    
 
-   :match: The ofp_match record which describes the flow to match.
+   :param match: The ofp_match record which describes the flow to match.
    
 
-   :flow_mod: The openflow flow_mod record which describes the action to take.
+   :param flow_mod: The openflow flow_mod record which describes the action to take.
    
 
-   :msg: Message to describe the event.
+   :param msg: Message to describe the event.
 
 .. zeek:id:: OpenFlow::flow_mod_success
    :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 356 381
@@ -91,16 +91,16 @@ Events
    Event confirming successful modification of a flow rule.
    
 
-   :name: The unique name of the OpenFlow controller from which this event originated.
+   :param name: The unique name of the OpenFlow controller from which this event originated.
    
 
-   :match: The ofp_match record which describes the flow to match.
+   :param match: The ofp_match record which describes the flow to match.
    
 
-   :flow_mod: The openflow flow_mod record which describes the action to take.
+   :param flow_mod: The openflow flow_mod record which describes the action to take.
    
 
-   :msg: An optional informational message by the plugin.
+   :param msg: An optional informational message by the plugin.
 
 .. zeek:id:: OpenFlow::flow_removed
    :source-code: base/frameworks/netcontrol/plugins/openflow.zeek 396 418
@@ -112,28 +112,28 @@ Events
    in supports_flow_removed.
    
 
-   :name: The unique name of the OpenFlow controller from which this event originated.
+   :param name: The unique name of the OpenFlow controller from which this event originated.
    
 
-   :match: The ofp_match record which was used to create the flow.
+   :param match: The ofp_match record which was used to create the flow.
    
 
-   :cookie: The cookie that was specified when creating the flow.
+   :param cookie: The cookie that was specified when creating the flow.
    
 
-   :priority: The priority that was specified when creating the flow.
+   :param priority: The priority that was specified when creating the flow.
    
 
-   :reason: The reason for flow removal (OFPRR_*).
+   :param reason: The reason for flow removal (OFPRR_*).
    
 
-   :duration_sec: Duration of the flow in seconds.
+   :param duration_sec: Duration of the flow in seconds.
    
 
-   :packet_count: Packet count of the flow.
+   :param packet_count: Packet count of the flow.
    
 
-   :byte_count: Byte count of the flow.
+   :param byte_count: Byte count of the flow.
 
 Functions
 #########
@@ -154,7 +154,7 @@ Functions
    Clear the current flow table of the controller.
    
 
-   :controller: The controller which should execute the flow modification.
+   :param controller: The controller which should execute the flow modification.
    
 
    :returns: F on error or if the plugin does not support the operation, T when the operation was queued.
@@ -167,13 +167,13 @@ Functions
    Global flow_mod function.
    
 
-   :controller: The controller which should execute the flow modification.
+   :param controller: The controller which should execute the flow modification.
    
 
-   :match: The ofp_match record which describes the flow to match.
+   :param match: The ofp_match record which describes the flow to match.
    
 
-   :flow_mod: The openflow flow_mod record which describes the action to take.
+   :param flow_mod: The openflow flow_mod record which describes the action to take.
    
 
    :returns: F on error or if the plugin does not support the operation, T when the operation was queued.
@@ -186,7 +186,7 @@ Functions
    Function to generate a new cookie using our group id.
    
 
-   :cookie: The openflow match cookie.
+   :param cookie: The openflow match cookie.
    
 
    :returns: The cookie group id.
@@ -199,7 +199,7 @@ Functions
    Function to get the group id out of a given cookie.
    
 
-   :cookie: The openflow match cookie.
+   :param cookie: The openflow match cookie.
    
 
    :returns: The cookie group id.
@@ -212,7 +212,7 @@ Functions
    Function to get the unique id out of a given cookie.
    
 
-   :cookie: The openflow match cookie.
+   :param cookie: The openflow match cookie.
    
 
    :returns: The cookie unique id.
@@ -225,7 +225,7 @@ Functions
    Function to lookup a controller instance by name.
    
 
-   :name: Unique name of the controller to look up.
+   :param name: Unique name of the controller to look up.
    
 
    :returns: One element vector with controller, if found. Empty vector otherwise.
@@ -239,10 +239,10 @@ Functions
    create match objects for OpenFlow.
    
 
-   :id: The conn_id record that describes the record.
+   :param id: The conn_id record that describes the record.
    
 
-   :reverse: Reverse the sources and destinations when creating the match record (default F).
+   :param reverse: Reverse the sources and destinations when creating the match record (default F).
    
 
    :returns: ofp_match object for the conn_id record.
@@ -256,13 +256,13 @@ Functions
    is called automatically by the plugin _new functions.
    
 
-   :tpe: Type of this plugin.
+   :param tpe: Type of this plugin.
    
 
-   :name: Unique name of this controller instance.
+   :param name: Unique name of this controller instance.
    
 
-   :controller: The controller to register.
+   :param controller: The controller to register.
 
 .. zeek:id:: OpenFlow::unregister_controller
    :source-code: base/frameworks/openflow/non-cluster.zeek 36 39
@@ -274,6 +274,6 @@ Functions
    be used.
    
 
-   :controller: The controller to unregister.
+   :param controller: The controller to unregister.
 
 

@@ -48,13 +48,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: The raw data of all MIME entities concatenated.
+   :param data: The raw data of all MIME entities concatenated.
    
    .. zeek:see::  mime_all_headers mime_begin_entity mime_content_hash mime_end_entity
       mime_entity_data mime_event mime_one_header mime_segment_data
@@ -76,10 +76,10 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hlist: A *table* containing all headers extracted from the current entity.
+   :param hlist: A *table* containing all headers extracted from the current entity.
           The table is indexed by the position of the header (1 for the first,
           2 for the second, etc.).
    
@@ -105,7 +105,7 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: mime_all_data mime_all_headers  mime_content_hash mime_end_entity
       mime_entity_data mime_event mime_one_header mime_segment_data smtp_data
@@ -128,13 +128,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :content_len: The length of the entity being hashed.
+   :param content_len: The length of the entity being hashed.
    
 
-   :hash_value: The MD5 hash.
+   :param hash_value: The MD5 hash.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_end_entity
       mime_entity_data mime_event mime_one_header mime_segment_data
@@ -157,7 +157,7 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_entity_data mime_event mime_one_header mime_segment_data smtp_data
@@ -184,13 +184,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: The raw data of the complete entity.
+   :param data: The raw data of the complete entity.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity  mime_event mime_one_header mime_segment_data
@@ -210,14 +210,14 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :event_type: A string describing the general category of the problem found
+   :param event_type: A string describing the general category of the problem found
       (e.g., ``illegal format``).
    
 
-   :detail: Further more detailed description of the error.
+   :param detail: Further more detailed description of the error.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data  mime_one_header mime_segment_data http_event
@@ -239,10 +239,10 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :h: The parsed MIME header.
+   :param h: The parsed MIME header.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data mime_event  mime_segment_data
@@ -271,13 +271,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: The raw data of one segment of the current entity.
+   :param data: The raw data of one segment of the current entity.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data mime_event mime_one_header http_entity_data

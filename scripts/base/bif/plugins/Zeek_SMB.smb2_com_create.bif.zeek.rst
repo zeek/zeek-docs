@@ -35,13 +35,13 @@ Events
    For more information, see MS-SMB2:2.2.13
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :request: A record with more information related to the request.
+   :param request: A record with more information related to the request.
    
    .. zeek:see:: smb2_message smb2_create_response
 
@@ -57,13 +57,13 @@ Events
    For more information, see MS-SMB2:2.2.14
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: A record with more information related to the response.
+   :param response: A record with more information related to the response.
    
    .. zeek:see:: smb2_message smb2_create_request
 

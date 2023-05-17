@@ -33,10 +33,10 @@ Functions
    registered, it doesn't replace them.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
-   :p: The well-known port to associate with the analyzer.
+   :param p: The well-known port to associate with the analyzer.
    
 
    :returns: True if the port was successfully registered.
@@ -52,10 +52,10 @@ Functions
    already registered, it doesn't replace them.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
-   :ports: The set of well-known ports to associate with the analyzer.
+   :param ports: The set of well-known ports to associate with the analyzer.
    
 
    :returns: True if the ports were successfully registered.

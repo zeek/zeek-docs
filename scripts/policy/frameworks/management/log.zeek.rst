@@ -106,7 +106,7 @@ Functions
    A debug-level log message writer.
    
 
-   :message: the message to log.
+   :param message: the message to log.
    
 
 .. zeek:id:: Management::Log::error
@@ -118,7 +118,7 @@ Functions
    terminate Zeek or have other runtime effects.)
    
 
-   :message: the message to log.
+   :param message: the message to log.
    
 
 .. zeek:id:: Management::Log::info
@@ -129,7 +129,7 @@ Functions
    An info-level log message writer.
    
 
-   :message: the message to log.
+   :param message: the message to log.
    
 
 .. zeek:id:: Management::Log::warning
@@ -140,7 +140,7 @@ Functions
    A warning-level log message writer.
    
 
-   :message: the message to log.
+   :param message: the message to log.
    
 
 

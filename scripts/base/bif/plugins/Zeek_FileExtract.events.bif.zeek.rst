@@ -33,18 +33,18 @@ Events
    The analyzer is automatically removed from file *f*.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :args: Arguments that identify a particular file extraction analyzer.
+   :param args: Arguments that identify a particular file extraction analyzer.
          This is only provided to be able to pass along to
          :zeek:see:`FileExtract::set_limit`.
    
 
-   :limit: The limit, in bytes, the extracted file is about to breach.
+   :param limit: The limit, in bytes, the extracted file is about to breach.
    
 
-   :len: The length of the file chunk about to be written.
+   :param len: The length of the file chunk about to be written.
    
    .. zeek:see:: Files::add_analyzer Files::ANALYZER_EXTRACT
 

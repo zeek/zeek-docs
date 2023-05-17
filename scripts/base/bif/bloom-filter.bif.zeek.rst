@@ -39,10 +39,10 @@ Functions
    Adds an element to a Bloom filter. For counting bloom filters, the counter is incremented.
    
 
-   :bf: The Bloom filter handle.
+   :param bf: The Bloom filter handle.
    
 
-   :x: The element to add.
+   :param x: The element to add.
    
    .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2
       bloomfilter_counting_init bloomfilter_lookup bloomfilter_clear
@@ -56,14 +56,14 @@ Functions
    Creates a basic Bloom filter.
    
 
-   :fp: The desired false-positive rate.
+   :param fp: The desired false-positive rate.
    
 
-   :capacity: the maximum number of elements that guarantees a false-positive
+   :param capacity: the maximum number of elements that guarantees a false-positive
              rate of *fp*.
    
 
-   :name: A name that uniquely identifies and seeds the Bloom filter. If empty,
+   :param name: A name that uniquely identifies and seeds the Bloom filter. If empty,
          the filter will use :zeek:id:`global_hash_seed` if that's set, and
          otherwise use a local seed tied to the current Zeek process. Only
          filters with the same seed can be merged with
@@ -86,13 +86,13 @@ Functions
    vector.
    
 
-   :k: The number of hash functions to use.
+   :param k: The number of hash functions to use.
    
 
-   :cells: The number of cells of the underlying bit vector.
+   :param cells: The number of cells of the underlying bit vector.
    
 
-   :name: A name that uniquely identifies and seeds the Bloom filter. If empty,
+   :param name: A name that uniquely identifies and seeds the Bloom filter. If empty,
          the filter will use :zeek:id:`global_hash_seed` if that's set, and
          otherwise use a local seed tied to the current Zeek process. Only
          filters with the same seed can be merged with
@@ -114,7 +114,7 @@ Functions
    of the Bloom filter, such as the element type and the hasher seed.
    
 
-   :bf: The Bloom filter handle.
+   :param bf: The Bloom filter handle.
    
    .. zeek:see:: bloomfilter_basic_init bloomfilter_basic_init2
       bloomfilter_counting_init bloomfilter_add bloomfilter_lookup
@@ -128,21 +128,21 @@ Functions
    Creates a counting Bloom filter.
    
 
-   :k: The number of hash functions to use.
+   :param k: The number of hash functions to use.
    
 
-   :cells: The number of cells of the underlying counter vector. As there's
+   :param cells: The number of cells of the underlying counter vector. As there's
           no single answer to what's the best parameterization for a
           counting Bloom filter, we refer to the Bloom filter literature
           here for choosing an appropriate value.
    
 
-   :max: The maximum counter value associated with each element
+   :param max: The maximum counter value associated with each element
         described by *w = ceil(log_2(max))* bits. Each bit in the underlying
         counter vector becomes a cell of size *w* bits.
    
 
-   :name: A name that uniquely identifies and seeds the Bloom filter. If empty,
+   :param name: A name that uniquely identifies and seeds the Bloom filter. If empty,
          the filter will use :zeek:id:`global_hash_seed` if that's set, and
          otherwise use a local seed tied to the current Zeek process. Only
          filters with the same seed can be merged with
@@ -165,10 +165,10 @@ Functions
    that exceeded the width of its counter.
    
 
-   :bf: The counting bloom filter handle.
+   :param bf: The counting bloom filter handle.
    
 
-   :x: The element to decrement
+   :param x: The element to decrement
    
 
    :returns: True on success
@@ -186,7 +186,7 @@ Functions
    state. This is for debugging/testing purposes only.
    
 
-   :bf: The Bloom filter handle.
+   :param bf: The Bloom filter handle.
    
 
    :returns: a string with a representation of a Bloom filter's internal state.
@@ -210,10 +210,10 @@ Functions
    during intersection.
    
 
-   :bf1: The first Bloom filter handle.
+   :param bf1: The first Bloom filter handle.
    
 
-   :bf2: The second Bloom filter handle.
+   :param bf2: The second Bloom filter handle.
    
 
    :returns: The intersection of *bf1* and *bf2*.
@@ -235,10 +235,10 @@ Functions
    For a counting bloom filter, this is the estimate of how often an element was added.
    
 
-   :bf: The Bloom filter handle.
+   :param bf: The Bloom filter handle.
    
 
-   :x: The element to count.
+   :param x: The element to count.
    
 
    :returns: the counter associated with *x* in *bf*.
@@ -255,10 +255,10 @@ Functions
    Merges two Bloom filters.
    
 
-   :bf1: The first Bloom filter handle.
+   :param bf1: The first Bloom filter handle.
    
 
-   :bf2: The second Bloom filter handle.
+   :param bf2: The second Bloom filter handle.
    
 
    :returns: The union of *bf1* and *bf2*.

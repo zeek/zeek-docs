@@ -32,12 +32,12 @@ Events
    more information about the NTP protocol.
    
 
-   :c: The connection record describing the corresponding UDP flow.
+   :param c: The connection record describing the corresponding UDP flow.
    
 
-   :is_orig: True if the message was sent by the originator.
+   :param is_orig: True if the message was sent by the originator.
    
 
-   :msg: The parsed NTP message.
+   :param msg: The parsed NTP message.
 
 

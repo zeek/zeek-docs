@@ -43,22 +43,22 @@ Functions
    See RFC6962 for more details.
    
 
-   :cert: Certificate against which the SCT should be validated.
+   :param cert: Certificate against which the SCT should be validated.
    
 
-   :logid: Log id of the SCT.
+   :param logid: Log id of the SCT.
    
 
-   :log_key: Public key of the Log that issued the SCT proof.
+   :param log_key: Public key of the Log that issued the SCT proof.
    
 
-   :timestamp: Timestamp at which the proof was generated.
+   :param timestamp: Timestamp at which the proof was generated.
    
 
-   :hash_algorithm: Hash algorithm that was used for the SCT proof.
+   :param hash_algorithm: Hash algorithm that was used for the SCT proof.
    
 
-   :issuer_key_hash: The SHA-256 hash of the certificate issuer's public key.
+   :param issuer_key_hash: The SHA-256 hash of the certificate issuer's public key.
                     This only has to be provided if the SCT was encountered in an X.509
                     certificate extension; in that case, it is necessary for validation.
    
@@ -82,10 +82,10 @@ Functions
    for our tests.
    
 
-   :cert: The X509 certificate opaque handle.
+   :param cert: The X509 certificate opaque handle.
    
 
-   :hostname: Hostname to check
+   :param hostname: Hostname to check
    
 
    :returns: empty string if the hostname does not match; matched name (which can contain wildcards)
@@ -105,10 +105,10 @@ Functions
    the wildcard has to be at least at the third level (so \*.a.b).
    
 
-   :hostname: Hostname to test
+   :param hostname: Hostname to test
    
 
-   :certname: Name given in the CN/SAN of a certificate; wildcards will be expanded
+   :param certname: Name given in the CN/SAN of a certificate; wildcards will be expanded
    
 
    :returns: True if the hostname matches.
@@ -123,7 +123,7 @@ Functions
    Constructs an opaque of X509 from a der-formatted string.
    
 
-   :Note: this function is mostly meant for testing purposes
+   :param Note: this function is mostly meant for testing purposes
    
    .. zeek:see:: x509_certificate x509_extension x509_ext_basic_constraints
                 x509_ext_subject_alternative_name x509_verify
@@ -137,10 +137,10 @@ Functions
    Returns the string form of a certificate.
    
 
-   :cert: The X509 certificate opaque handle.
+   :param cert: The X509 certificate opaque handle.
    
 
-   :pem: A boolean that specifies if the certificate is returned
+   :param pem: A boolean that specifies if the certificate is returned
         in pem-form (true), or as the raw ASN1 encoded binary
         (false).
    
@@ -158,12 +158,12 @@ Functions
    Get the hash of the issuer's distinguished name.
    
 
-   :cert: The X509 certificate opaque handle.
+   :param cert: The X509 certificate opaque handle.
    
 
-   :hash_alg: the hash algorithm to use, according to the IANA mapping at
+   :param hash_alg: the hash algorithm to use, according to the IANA mapping at
 
-             :https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-18
+             :param https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-18
    
 
    :returns: The hash as a string.
@@ -179,16 +179,16 @@ Functions
    Verifies an OCSP reply.
    
 
-   :certs: Specifies the certificate chain to use. Server certificate first.
+   :param certs: Specifies the certificate chain to use. Server certificate first.
    
 
-   :ocsp_reply: the ocsp reply to validate.
+   :param ocsp_reply: the ocsp reply to validate.
    
 
-   :root_certs: A list of root certificates to validate the certificate chain.
+   :param root_certs: A list of root certificates to validate the certificate chain.
    
 
-   :verify_time: Time for the validity check of the certificates.
+   :param verify_time: Time for the validity check of the certificates.
    
 
    :returns: A record of type X509::Result containing the result code of the
@@ -206,7 +206,7 @@ Functions
    Parses a certificate into an X509::Certificate structure.
    
 
-   :cert: The X509 certificate opaque handle.
+   :param cert: The X509 certificate opaque handle.
    
 
    :returns: A X509::Certificate structure.
@@ -227,10 +227,10 @@ Functions
    tbl[sha256 of certificate] is set. If this is the case, the X509 analyzer will skip all further
    processing, and instead just call the callback that is set with
 
-   :zeek:id:`x509_set_certificate_cache_hit_callback`.
+   :param zeek:id:`x509_set_certificate_cache_hit_callback`.
    
 
-   :tbl: Table to use as the certificate cache.
+   :param tbl: Table to use as the certificate cache.
    
 
    :returns: Always returns true.
@@ -249,7 +249,7 @@ Functions
    by :zeek:id:`x509_set_certificate_cache`.
    
 
-   :f: The callback that will be called when encountering a certificate in the cache table.
+   :param f: The callback that will be called when encountering a certificate in the cache table.
    
 
    :returns: Always returns true.
@@ -267,12 +267,12 @@ Functions
    Get the hash of the Subject Public Key Information of the certificate.
    
 
-   :cert: The X509 certificate opaque handle.
+   :param cert: The X509 certificate opaque handle.
    
 
-   :hash_alg: the hash algorithm to use, according to the IANA mapping at
+   :param hash_alg: the hash algorithm to use, according to the IANA mapping at
 
-             :https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-18
+             :param https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-18
    
 
    :returns: The hash as a string.
@@ -288,12 +288,12 @@ Functions
    Get the hash of the subject's distinguished name.
    
 
-   :cert: The X509 certificate opaque handle.
+   :param cert: The X509 certificate opaque handle.
    
 
-   :hash_alg: the hash algorithm to use, according to the IANA mapping at
+   :param hash_alg: the hash algorithm to use, according to the IANA mapping at
 
-             :https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-18
+             :param https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-18
    
 
    :returns: The hash as a string.
@@ -309,15 +309,15 @@ Functions
    Verifies a certificate.
    
 
-   :certs: Specifies a certificate chain that is being used to validate
+   :param certs: Specifies a certificate chain that is being used to validate
           the given certificate against the root store given in *root_certs*.
           The host certificate has to be at index 0.
    
 
-   :root_certs: A list of root certificates to validate the certificate chain.
+   :param root_certs: A list of root certificates to validate the certificate chain.
    
 
-   :verify_time: Time for the validity check of the certificates.
+   :param verify_time: Time for the validity check of the certificates.
    
 
    :returns: A record of type X509::Result containing the result code of the

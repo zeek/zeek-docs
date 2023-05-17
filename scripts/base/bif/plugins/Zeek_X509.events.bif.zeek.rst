@@ -38,14 +38,14 @@ Events
    about the X.509 format.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :cert_ref: An opaque pointer to the underlying OpenSSL data structure of the
+   :param cert_ref: An opaque pointer to the underlying OpenSSL data structure of the
              certificate.
    
 
-   :cert: The parsed certificate information.
+   :param cert: The parsed certificate information.
    
    .. zeek:see:: x509_extension x509_ext_basic_constraints
                 x509_ext_subject_alternative_name x509_parse x509_verify
@@ -60,10 +60,10 @@ Events
    This extension can be used to identify the subject of a certificate as a CA.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :ext: The parsed basic constraints extension.
+   :param ext: The parsed basic constraints extension.
    
    .. zeek:see:: x509_certificate x509_extension
                 x509_ext_subject_alternative_name x509_parse x509_verify
@@ -80,10 +80,10 @@ Events
    names for which a certificate is valid.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :ext: The parsed subject alternative name extension.
+   :param ext: The parsed subject alternative name extension.
    
    .. zeek:see:: x509_certificate x509_extension x509_ext_basic_constraints
                 x509_parse x509_verify x509_ocsp_ext_signed_certificate_timestamp
@@ -100,10 +100,10 @@ Events
    about the X.509 format.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :ext: The parsed extension.
+   :param ext: The parsed extension.
    
    .. zeek:see:: x509_certificate x509_ext_basic_constraints
                 x509_ext_subject_alternative_name x509_parse x509_verify
@@ -120,25 +120,25 @@ Events
    in an X.509 certificate or in an OCSP reply.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :version: the version of the protocol to which the SCT conforms. Always
+   :param version: the version of the protocol to which the SCT conforms. Always
             should be 0 (representing version 1)
    
 
-   :logid: 32 bit key id
+   :param logid: 32 bit key id
    
 
-   :timestamp: the NTP Time when the entry was logged measured since
+   :param timestamp: the NTP Time when the entry was logged measured since
               the epoch, ignoring leap seconds, in milliseconds.
    
 
-   :signature_and_hashalgorithm: signature and hash algorithm used for the
+   :param signature_and_hashalgorithm: signature and hash algorithm used for the
                                 digitally_signed struct
    
 
-   :signature: signature part of the digitally_signed struct
+   :param signature: signature part of the digitally_signed struct
    
    .. zeek:see:: ssl_extension_signed_certificate_timestamp x509_extension x509_ext_basic_constraints
                 x509_parse x509_verify x509_ext_subject_alternative_name

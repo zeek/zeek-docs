@@ -28,7 +28,7 @@ Functions
    Skips SMTP data until the next email in a connection.
    
 
-   :c: The SMTP connection.
+   :param c: The SMTP connection.
    
    .. zeek:see:: skip_http_entity_data
 

@@ -280,7 +280,7 @@ Functions
                 get_broker_stats
                 get_reporter_stats
 
-   :TODO: this should have been deprecated before?
+   :param TODO: this should have been deprecated before?
 
 .. zeek:id:: get_reporter_stats
    :source-code: base/bif/stats.bif.zeek 258 258

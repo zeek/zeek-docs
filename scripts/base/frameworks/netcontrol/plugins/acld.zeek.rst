@@ -97,10 +97,10 @@ Types
          Predicate that is called on rule insertion or removal.
          
 
-         :p: Current plugin state.
+         :param p: Current plugin state.
          
 
-         :r: The rule to be inserted or removed.
+         :param r: The rule to be inserted or removed.
          
 
          :returns: T if the rule can be handled by the current backend, F otherwise.
@@ -159,13 +159,13 @@ Hooks
    by the plugin.
    
 
-   :p: Current plugin state.
+   :param p: Current plugin state.
    
 
-   :r: The rule to be inserted or removed.
+   :param r: The rule to be inserted or removed.
    
 
-   :ar: The acld rule to be inserted or removed.
+   :param ar: The acld rule to be inserted or removed.
 
 Functions
 #########

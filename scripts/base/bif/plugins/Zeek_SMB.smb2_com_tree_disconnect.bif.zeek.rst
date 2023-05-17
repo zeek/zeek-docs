@@ -33,10 +33,10 @@ Events
    client access to a server resource.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
    .. zeek:see:: smb2_message
 
@@ -50,10 +50,10 @@ Events
    client access to a server resource.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
    .. zeek:see:: smb2_message
 

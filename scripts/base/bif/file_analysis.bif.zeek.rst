@@ -139,7 +139,7 @@ Functions
    input will be ignored/discarded.
    
 
-   :handle: A string that uniquely identifies a file.
+   :param handle: A string that uniquely identifies a file.
    
    .. zeek:see:: get_file_handle
 

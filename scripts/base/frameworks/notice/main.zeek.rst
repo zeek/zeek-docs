@@ -923,16 +923,16 @@ Events
    This event is generated when a notice begins to be suppressed.
    
 
-   :ts: time indicating then when the notice to be suppressed occurred.
+   :param ts: time indicating then when the notice to be suppressed occurred.
    
 
-   :suppress_for: length of time that this notice should be suppressed.
+   :param suppress_for: length of time that this notice should be suppressed.
    
 
-   :note: The :zeek:type:`Notice::Type` of the notice.
+   :param note: The :zeek:type:`Notice::Type` of the notice.
    
 
-   :identifier: The identifier string of the notice that should be suppressed.
+   :param identifier: The identifier string of the notice that should be suppressed.
 
 .. zeek:id:: Notice::log_notice
    :source-code: base/frameworks/notice/main.zeek 339 339
@@ -943,7 +943,7 @@ Events
    record as it is sent on to the logging framework.
    
 
-   :rec: The record containing notice data before it is logged.
+   :param rec: The record containing notice data before it is logged.
 
 .. zeek:id:: Notice::manager_begin_suppression
    :source-code: base/frameworks/notice/main.zeek 298 298
@@ -954,16 +954,16 @@ Events
    event over a cluster.
    
 
-   :ts: time indicating then when the notice to be suppressed occurred.
+   :param ts: time indicating then when the notice to be suppressed occurred.
    
 
-   :suppress_for: length of time that this notice should be suppressed.
+   :param suppress_for: length of time that this notice should be suppressed.
    
 
-   :note: The :zeek:type:`Notice::Type` of the notice.
+   :param note: The :zeek:type:`Notice::Type` of the notice.
    
 
-   :identifier: The identifier string of the notice that should be suppressed.
+   :param identifier: The identifier string of the notice that should be suppressed.
 
 .. zeek:id:: Notice::suppressed
    :source-code: base/frameworks/notice/main.zeek 310 310
@@ -974,7 +974,7 @@ Events
    suppressed.
    
 
-   :n: The record containing notice data regarding the notice type
+   :param n: The record containing notice data regarding the notice type
       being suppressed.
 
 Hooks
@@ -1004,7 +1004,7 @@ Hooks
    policy has also been applied.
    
 
-   :n: The record containing notice data.
+   :param n: The record containing notice data.
 
 .. zeek:id:: Notice::policy
    :source-code: base/frameworks/notice/main.zeek 199 199
@@ -1036,7 +1036,7 @@ Functions
    Creates a record containing a subset of a full :zeek:see:`fa_file` record.
    
 
-   :f: record containing metadata about a file.
+   :param f: record containing metadata about a file.
    
 
    :returns: record containing a subset of fields copied from *f*.
@@ -1050,10 +1050,10 @@ Functions
    sending with sendmail.
    
 
-   :subject_desc: a subject string to use for the mail.
+   :param subject_desc: a subject string to use for the mail.
    
 
-   :dest: recipient string to use for the mail.
+   :param dest: recipient string to use for the mail.
    
 
    :returns: a string of mail headers to which an email body can be
@@ -1069,13 +1069,13 @@ Functions
    :zeek:enum:`Notice::ACTION_PAGE` actions.
    
 
-   :n: The record of notice data to email.
+   :param n: The record of notice data to email.
    
 
-   :dest: The intended recipient of the notice email.
+   :param dest: The intended recipient of the notice email.
    
 
-   :extend: Whether to extend the email using the
+   :param extend: Whether to extend the email using the
            ``email_body_sections`` field of *n*.
 
 .. zeek:id:: Notice::is_being_suppressed
@@ -1086,7 +1086,7 @@ Functions
    A function to determine if an event is supposed to be suppressed.
    
 
-   :n: The record containing the notice in question.
+   :param n: The record containing the notice in question.
 
 .. zeek:id:: Notice::log_mailing_postprocessor
    :source-code: base/frameworks/notice/main.zeek 381 396
@@ -1098,7 +1098,7 @@ Functions
    The rotated log is removed upon being sent.
    
 
-   :info: A record containing the rotated log file information.
+   :param info: A record containing the rotated log file information.
    
 
    :returns: True.
@@ -1111,10 +1111,10 @@ Functions
    Populates file-related fields in a notice info record.
    
 
-   :f: record containing metadata about a file.
+   :param f: record containing metadata about a file.
    
 
-   :n: a notice record that needs file-related fields populated.
+   :param n: a notice record that needs file-related fields populated.
 
 .. zeek:id:: Notice::populate_file_info2
    :source-code: base/frameworks/notice/main.zeek 621 636
@@ -1124,9 +1124,9 @@ Functions
    Populates file-related fields in a notice info record.
    
 
-   :fi: record containing metadata about a file.
+   :param fi: record containing metadata about a file.
    
 
-   :n: a notice record that needs file-related fields populated.
+   :param n: a notice record that needs file-related fields populated.
 
 

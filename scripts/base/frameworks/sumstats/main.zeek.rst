@@ -450,7 +450,7 @@ Functions
    Create a summary statistic.
    
 
-   :ss: The SumStat to create.
+   :param ss: The SumStat to create.
 
 .. zeek:id:: SumStats::key2str
    :source-code: base/frameworks/sumstats/main.zeek 285 293
@@ -461,7 +461,7 @@ Functions
    a simple string.
    
 
-   :key: The metric key that is to be converted into a string.
+   :param key: The metric key that is to be converted into a string.
    
 
    :returns: A string representation of the metric key.
@@ -483,7 +483,7 @@ Functions
    any effect when called on workers.
    
 
-   :ss_name: SumStat name.
+   :param ss_name: SumStat name.
    
 
    :returns: true on success, false on failure. Failures can be: sumstat not found,
@@ -498,14 +498,14 @@ Functions
    called when a script has measured some point value.
    
 
-   :id: The observation stream identifier that the data
+   :param id: The observation stream identifier that the data
        point represents.
    
 
-   :key: The key that the value is related to.
+   :param key: The key that the value is related to.
    
 
-   :obs: The data point to send into the stream.
+   :param obs: The data point to send into the stream.
 
 .. zeek:id:: SumStats::request_key
    :source-code: base/frameworks/sumstats/non-cluster.zeek 86 96
@@ -519,10 +519,10 @@ Functions
    function.
    
 
-   :ss_name: SumStat name.
+   :param ss_name: SumStat name.
    
 
-   :key: The SumStat key being requested.
+   :param key: The SumStat key being requested.
    
 
    :returns: The result for the requested sumstat key.

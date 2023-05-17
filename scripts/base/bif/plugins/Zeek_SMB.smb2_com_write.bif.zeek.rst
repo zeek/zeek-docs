@@ -35,19 +35,19 @@ Events
    For more information, see MS-SMB2:2.2.21
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The GUID being used for the file.
+   :param file_id: The GUID being used for the file.
    
 
-   :offset: How far into the file this write should be taking place.
+   :param offset: How far into the file this write should be taking place.
    
 
-   :length: The number of bytes of the file being written.
+   :param length: The number of bytes of the file being written.
    
    .. zeek:see:: smb2_message
 
@@ -63,13 +63,13 @@ Events
    For more information, see MS-SMB2:2.2.22
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :length: The number of bytes of the file being written.
+   :param length: The number of bytes of the file being written.
    
    .. zeek:see:: smb2_message
 

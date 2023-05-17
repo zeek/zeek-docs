@@ -472,17 +472,17 @@ Types
          :zeek:see:`Log::default_path_func` is used.
          
 
-         :id: The ID associated with the log stream.
+         :param id: The ID associated with the log stream.
          
 
-         :path: A suggested path value, which may be either the filter's
+         :param path: A suggested path value, which may be either the filter's
                ``path`` if defined, else a previous result from the
                function.  If no ``path`` is defined for the filter,
                then the first call to the function will contain an
                empty string.
          
 
-         :rec: An instance of the stream's ``columns`` type with its
+         :param rec: An instance of the stream's ``columns`` type with its
               fields set to the values to be logged.
          
 
@@ -920,15 +920,15 @@ Types
    the filter$config table.
    
 
-   :rec: An instance of the stream's ``columns`` type with its
+   :param rec: An instance of the stream's ``columns`` type with its
         fields set to the values to be logged.
    
 
-   :id: The ID associated with the logging stream the filter
+   :param id: The ID associated with the logging stream the filter
        belongs to.
    
 
-   :filter: The :zeek:type:`Log::Filter` instance that steers
+   :param filter: The :zeek:type:`Log::Filter` instance that steers
            the output of the given log record.
 
 .. zeek:type:: Log::PrintLogInfo
@@ -1104,11 +1104,11 @@ Types
    given record by breaking from the hook handler.
    
 
-   :rec: An instance of the stream's ``columns`` type with its
+   :param rec: An instance of the stream's ``columns`` type with its
         fields set to the values to be logged.
    
 
-   :id: The ID associated with the logging stream the filter
+   :param id: The ID associated with the logging stream the filter
        belongs to.
 
 .. zeek:type:: Log::Writer
@@ -1155,7 +1155,7 @@ Functions
    set as "default" to a given logging stream.
    
 
-   :id: The ID associated with a logging stream for which to add a default
+   :param id: The ID associated with a logging stream for which to add a default
        filter.
    
 
@@ -1176,10 +1176,10 @@ Functions
    is removed when the new filter is successfully added.
    
 
-   :id: The ID associated with the logging stream to filter.
+   :param id: The ID associated with the logging stream to filter.
    
 
-   :filter: A record describing the desired logging parameters.
+   :param filter: A record describing the desired logging parameters.
    
 
    :returns: True if the filter was successfully added, false if
@@ -1197,10 +1197,10 @@ Functions
    Creates a new logging stream with the default filter.
    
 
-   :id: The ID enum to be associated with the new logging stream.
+   :param id: The ID enum to be associated with the new logging stream.
    
 
-   :stream: A record defining the content that the new stream will log.
+   :param stream: A record defining the content that the new stream will log.
    
 
    :returns: True if a new logging stream was successfully created and
@@ -1233,16 +1233,16 @@ Functions
    this function is used as the ``path_func``.
    
 
-   :id: The ID associated with the log stream.
+   :param id: The ID associated with the log stream.
    
 
-   :path: A suggested path value, which may be either the filter's
+   :param path: A suggested path value, which may be either the filter's
          ``path`` if defined, else a previous result from the function.
          If no ``path`` is defined for the filter, then the first call
          to the function will contain an empty string.
    
 
-   :rec: An instance of the stream's ``columns`` type with its
+   :param rec: An instance of the stream's ``columns`` type with its
         fields set to the values to be logged.
    
 
@@ -1258,7 +1258,7 @@ Functions
    are enabled by default.
    
 
-   :id: The ID associated with the logging stream to disable.
+   :param id: The ID associated with the logging stream to disable.
    
 
    :returns: True if the stream is now disabled or was already disabled.
@@ -1275,7 +1275,7 @@ Functions
    are enabled by default.
    
 
-   :id: The ID associated with the logging stream to enable.
+   :param id: The ID associated with the logging stream to enable.
    
 
    :returns: True if the stream is re-enabled or was not previously disabled.
@@ -1291,7 +1291,7 @@ Functions
    logging stream.
    
 
-   :id: The ID associated with a logging stream for which to flush buffered
+   :param id: The ID associated with a logging stream for which to flush buffered
        data.
    
 
@@ -1309,11 +1309,11 @@ Functions
    Gets a filter associated with an existing logging stream.
    
 
-   :id: The ID associated with a logging stream from which to
+   :param id: The ID associated with a logging stream from which to
        obtain one of its filters.
    
 
-   :name: A string to match against the ``name`` field of a
+   :param name: A string to match against the ``name`` field of a
          :zeek:type:`Log::Filter` for identification purposes.
    
 
@@ -1333,7 +1333,7 @@ Functions
    logging stream.
    
 
-   :id: The ID of a logging stream from which to obtain the list
+   :param id: The ID of a logging stream from which to obtain the list
        of filter names.
    
 
@@ -1351,7 +1351,7 @@ Functions
    "default".
    
 
-   :id: The ID associated with a logging stream from which to remove the
+   :param id: The ID associated with a logging stream from which to remove the
        default filter.
    
 
@@ -1368,11 +1368,11 @@ Functions
    Removes a filter from an existing logging stream.
    
 
-   :id: The ID associated with the logging stream from which to
+   :param id: The ID associated with the logging stream from which to
        remove a filter.
    
 
-   :name: A string to match against the ``name`` field of a
+   :param name: A string to match against the ``name`` field of a
          :zeek:type:`Log::Filter` for identification purposes.
    
 
@@ -1390,7 +1390,7 @@ Functions
    Removes a logging stream completely, stopping all the threads.
    
 
-   :id: The ID associated with the logging stream.
+   :param id: The ID associated with the logging stream.
    
 
    :returns: True if the stream was successfully removed.
@@ -1415,10 +1415,10 @@ Functions
    that are added to :zeek:id:`Log::default_rotation_postprocessors`.
    
 
-   :info: A record holding meta-information about the log being rotated.
+   :param info: A record holding meta-information about the log being rotated.
    
 
-   :npath: The new path of the file (after already being rotated/processed
+   :param npath: The new path of the file (after already being rotated/processed
           by writer-specific postprocessor as defined in
           :zeek:id:`Log::default_rotation_postprocessors`).
    
@@ -1442,11 +1442,11 @@ Functions
    it doesn't then toggling buffering with this function has no effect.
    
 
-   :id: The ID associated with a logging stream for which to
+   :param id: The ID associated with a logging stream for which to
        enable/disable buffering.
    
 
-   :buffered: Whether to enable or disable log buffering.
+   :param buffered: Whether to enable or disable log buffering.
    
 
    :returns: True if buffering status was set, false if the logging stream
@@ -1462,10 +1462,10 @@ Functions
    Writes a new log line/entry to a logging stream.
    
 
-   :id: The ID associated with a logging stream to be written to.
+   :param id: The ID associated with a logging stream to be written to.
    
 
-   :columns: A record value describing the values of each field/column
+   :param columns: A record value describing the values of each field/column
             to write to the log stream.
    
 

@@ -87,7 +87,7 @@ Events
    point has no operational impact on the running cluster.
    
 
-   :reqid: a request identifier string, echoed in the response event.
+   :param reqid: a request identifier string, echoed in the response event.
    
 
 .. zeek:id:: Management::Agent::API::agent_standby_response
@@ -100,10 +100,10 @@ Events
    agent sends this back to the controller.
    
 
-   :reqid: the request identifier used in the request event.
+   :param reqid: the request identifier used in the request event.
    
 
-   :result: the result record.
+   :param result: the result record.
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_request
@@ -118,7 +118,7 @@ Events
    this agent.
    
 
-   :reqid: a request identifier string, echoed in the response event.
+   :param reqid: a request identifier string, echoed in the response event.
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_response
@@ -131,10 +131,10 @@ Events
    agent sends this back to the controller.
    
 
-   :reqid: the request identifier used in the request event.
+   :param reqid: the request identifier used in the request event.
    
 
-   :result: the result record.
+   :param result: the result record.
    
 
 .. zeek:id:: Management::Agent::API::deploy_request
@@ -147,16 +147,16 @@ Events
    :zeek:see:`Management::Agent::API::deploy_response` event.  event.
    
 
-   :reqid: a request identifier string, echoed in the response event.
+   :param reqid: a request identifier string, echoed in the response event.
    
 
-   :config: a :zeek:see:`Management::Configuration` record describing the
+   :param config: a :zeek:see:`Management::Configuration` record describing the
        cluster topology. This contains the full topology, not just the
        part pertaining to this instance: the cluster framework requires
        full cluster visibility to establish needed peerings.
    
 
-   :force: whether to re-deploy (i.e., restart its Zeek cluster nodes)
+   :param force: whether to re-deploy (i.e., restart its Zeek cluster nodes)
        when the agent already runs this configuration. This relies on
        the config ID to determine config equality.
    
@@ -170,10 +170,10 @@ Events
    event. The agent sends this back to the controller.
    
 
-   :reqid: the request identifier used in the request event.
+   :param reqid: the request identifier used in the request event.
    
 
-   :results: A vector of :zeek:see:`Management::Result` records, each
+   :param results: A vector of :zeek:see:`Management::Result` records, each
        capturing the outcome of a single launched node. For failing
        nodes, the result's data field is a
        :zeek:see:`Management::NodeOutputs` record.
@@ -190,7 +190,7 @@ Events
    instances.
    
 
-   :reqid: a request identifier string, echoed in the response event.
+   :param reqid: a request identifier string, echoed in the response event.
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_response
@@ -202,10 +202,10 @@ Events
    event. The agent sends this back to the controller.
    
 
-   :reqid: the request identifier used in the request event.
+   :param reqid: the request identifier used in the request event.
    
 
-   :result: a :zeek:see:`Management::Result` record. Its data
+   :param result: a :zeek:see:`Management::Result` record. Its data
        member is a vector of :zeek:see:`Management::NodeStatus`
        records, covering the nodes at this instance. The result may also
        indicate failure, with error messages indicating what went wrong.
@@ -226,13 +226,13 @@ Events
      of the ID to look up.
    
 
-   :reqid: a request identifier string, echoed in the response event.
+   :param reqid: a request identifier string, echoed in the response event.
    
 
-   :action: the requested dispatch command, with any arguments.
+   :param action: the requested dispatch command, with any arguments.
    
 
-   :nodes: a set of cluster node names (e.g. "worker-01") to retrieve
+   :param nodes: a set of cluster node names (e.g. "worker-01") to retrieve
       the values from. An empty set, supplied by default, means
       retrieval from all nodes managed by the agent.
    
@@ -248,10 +248,10 @@ Events
    outcomes on all nodes managed by that agent.
    
 
-   :reqid: the request identifier used in the request event.
+   :param reqid: the request identifier used in the request event.
    
 
-   :results: a :zeek:type:`vector` of :zeek:see:`Management::Result`
+   :param results: a :zeek:type:`vector` of :zeek:see:`Management::Result`
        records. Each record covers one Zeek cluster node managed by this
        agent. Upon success, each :zeek:see:`Management::Result` record's
        data member contains the dispatches' response in a data type
@@ -269,18 +269,18 @@ Events
    `:zeek:see:`Broker::peer_added` and triggered by it.
    
 
-   :instance: an instance name, really the agent's name as per
+   :param instance: an instance name, really the agent's name as per
       :zeek:see:`Management::Agent::get_name`.
    
 
-   :id: the Broker ID of the agent.
+   :param id: the Broker ID of the agent.
    
 
-   :connecting: true if this agent connected to the controller,
+   :param connecting: true if this agent connected to the controller,
       false if the controller connected to the agent.
    
 
-   :api_version: the API version of this agent.
+   :param api_version: the API version of this agent.
    
 
 .. zeek:id:: Management::Agent::API::notify_change
@@ -315,10 +315,10 @@ Events
    RUNNING state. The agent ignores nodes not currently running.
    
 
-   :reqid: a request identifier string, echoed in the response event.
+   :param reqid: a request identifier string, echoed in the response event.
    
 
-   :nodes: a set of cluster node names (e.g. "worker-01") to restart. An
+   :param nodes: a set of cluster node names (e.g. "worker-01") to restart. An
       empty set, supplied by default, means restart of all of the
       agent's current cluster nodes.
    
@@ -333,10 +333,10 @@ Events
    Supervisor has restarted all nodes affected, or a timeout occurs.
    
 
-   :reqid: the request identifier used in the request event.
+   :param reqid: the request identifier used in the request event.
    
 
-   :results: a :zeek:type:`vector` of :zeek:see:`Management::Result`, one
+   :param results: a :zeek:type:`vector` of :zeek:see:`Management::Result`, one
        for each Supervisor transaction. Each such result identifies both
        the instance and node.
    

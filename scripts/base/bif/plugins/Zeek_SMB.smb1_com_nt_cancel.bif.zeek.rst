@@ -33,10 +33,10 @@ Events
    For more information, see MS-CIFS:2.2.4.65
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
    .. zeek:see:: smb1_message
 

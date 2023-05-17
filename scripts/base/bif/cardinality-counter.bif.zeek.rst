@@ -34,10 +34,10 @@ Functions
    Adds an element to a HyperLogLog cardinality counter.
    
 
-   :handle: the HLL handle.
+   :param handle: the HLL handle.
    
 
-   :elem: the element to add.
+   :param elem: the element to add.
    
 
    :returns: true on success.
@@ -53,7 +53,7 @@ Functions
    Copy a HLL cardinality counter.
    
 
-   :handle: cardinality counter to copy.
+   :param handle: cardinality counter to copy.
    
 
    :returns: copy of handle.
@@ -69,7 +69,7 @@ Functions
    Estimate the current cardinality of an HLL cardinality counter.
    
 
-   :handle: the HLL handle.
+   :param handle: the HLL handle.
    
 
    :returns: the cardinality estimate. Returns -1.0 if the counter is empty.
@@ -86,10 +86,10 @@ Functions
    algorithm.
    
 
-   :err: the desired error rate (e.g. 0.01).
+   :param err: the desired error rate (e.g. 0.01).
    
 
-   :confidence: the desired confidence for the error rate (e.g., 0.95).
+   :param confidence: the desired confidence for the error rate (e.g., 0.95).
    
 
    :returns: a HLL cardinality handle.
@@ -108,10 +108,10 @@ Functions
       see :zeek:id:`bloomfilter_merge`.
    
 
-   :handle1: the first HLL handle, which will contain the merged result.
+   :param handle1: the first HLL handle, which will contain the merged result.
    
 
-   :handle2: the second HLL handle, which will be merged into the first.
+   :param handle2: the second HLL handle, which will be merged into the first.
    
 
    :returns: true on success.

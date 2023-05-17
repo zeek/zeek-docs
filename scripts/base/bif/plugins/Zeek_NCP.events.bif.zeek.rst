@@ -32,22 +32,22 @@ Events
    more information about the NCP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :frame_type: The frame type, as specified by the protocol.
+   :param frame_type: The frame type, as specified by the protocol.
    
 
-   :length: The length of the request body, excluding the frame header.
+   :param length: The length of the request body, excluding the frame header.
    
 
-   :req_frame: The frame type from the corresponding request.
+   :param req_frame: The frame type from the corresponding request.
    
 
-   :req_func: The function code from the corresponding request.
+   :param req_func: The function code from the corresponding request.
    
 
-   :completion_code: The reply's completion code, as specified by the protocol.
+   :param completion_code: The reply's completion code, as specified by the protocol.
    
    .. zeek:see:: ncp_request
    
@@ -67,16 +67,16 @@ Events
    more information about the NCP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :frame_type: The frame type, as specified by the protocol.
+   :param frame_type: The frame type, as specified by the protocol.
    
 
-   :length: The length of the request body, excluding the frame header.
+   :param length: The length of the request body, excluding the frame header.
    
 
-   :func: The requested function, as specified by the protocol.
+   :param func: The requested function, as specified by the protocol.
    
    .. zeek:see:: ncp_reply
    

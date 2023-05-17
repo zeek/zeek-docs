@@ -384,10 +384,10 @@ Functions
    Other scripts should call this function when they detect software.
    
 
-   :id: The connection id where the software was discovered.
+   :param id: The connection id where the software was discovered.
    
 
-   :info: A record representing the software discovered.
+   :param info: A record representing the software discovered.
    
 
    :returns: T if the software was logged, F otherwise.

@@ -257,10 +257,10 @@ Functions
    of an arbitrary key.
    
 
-   :pool: the pool of nodes to consider.
+   :param pool: the pool of nodes to consider.
    
 
-   :key: data used for input to the hashing function that will uniformly
+   :param key: data used for input to the hashing function that will uniformly
         distribute keys among available nodes.
    
 
@@ -293,10 +293,10 @@ Functions
    Retrieve the topic associated with the node in a round-robin fashion.
    
 
-   :pool: the pool of nodes to consider.
+   :param pool: the pool of nodes to consider.
    
 
-   :key: an arbitrary string to identify the purpose for which you're
+   :param key: an arbitrary string to identify the purpose for which you're
         requesting the topic.  e.g. consider using a name-spaced key
         like "Intel::cluster_rr_key" if you need to guarantee that
         a group of messages get distributed in a well-defined pattern

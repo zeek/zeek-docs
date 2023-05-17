@@ -38,24 +38,24 @@ Events
    multiple times for a single RPC message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :uuid: The string interpreted uuid of the endpoint being requested.
+   :param uuid: The string interpreted uuid of the endpoint being requested.
    
 
-   :ver_major: The major version of the endpoint being requested.
+   :param ver_major: The major version of the endpoint being requested.
    
 
-   :ver_minor: The minor version of the endpoint being requested.
+   :param ver_minor: The minor version of the endpoint being requested.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context_resp
 
@@ -67,10 +67,10 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` alter context response message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
@@ -86,24 +86,24 @@ Events
    multiple times for a single RPC message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :uuid: The string interpreted uuid of the endpoint being requested.
+   :param uuid: The string interpreted uuid of the endpoint being requested.
    
 
-   :ver_major: The major version of the endpoint being requested.
+   :param ver_major: The major version of the endpoint being requested.
    
 
-   :ver_minor: The minor version of the endpoint being requested.
+   :param ver_minor: The minor version of the endpoint being requested.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
@@ -115,15 +115,15 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` bind request ack message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :sec_addr: Secondary address for the ack.
+   :param sec_addr: Secondary address for the ack.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_request dce_rpc_response
 
@@ -135,21 +135,21 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the message was sent by the originator of the TCP connection.
+   :param is_orig: True if the message was sent by the originator of the TCP connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ptype_id: Numeric representation of the procedure type of the message.
+   :param ptype_id: Numeric representation of the procedure type of the message.
    
 
-   :ptype: Enum representation of the procedure type of the message.
+   :param ptype: Enum representation of the procedure type of the message.
    
    .. zeek:see:: dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
@@ -161,21 +161,21 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` request message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub_len: Length of the data for the request.
+   :param stub_len: Length of the data for the request.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response dce_rpc_request_stub
 
@@ -187,21 +187,21 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` request message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub: The data for the request.
+   :param stub: The data for the request.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response_stub dce_rpc_request
 
@@ -213,20 +213,20 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` response message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub_len: Length of the data for the response.
+   :param stub_len: Length of the data for the response.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response_stub
 
@@ -238,20 +238,20 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` response message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub: The data for the response.
+   :param stub: The data for the response.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request_stub dce_rpc_response
 

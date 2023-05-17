@@ -191,12 +191,12 @@ Events
    (re-)started.
    
 
-   :node: the name of a previously created node via
+   :param node: the name of a previously created node via
          :zeek:see:`Supervisor::create` indicating to which
          child process the stdout line is associated.
    
 
-   :pid: the process ID the stem reported for this node.
+   :param pid: the process ID the stem reported for this node.
 
 Hooks
 #####
@@ -210,7 +210,7 @@ Hooks
    associated stream.
    
 
-   :node: the name of a previously created node via
+   :param node: the name of a previously created node via
          :zeek:see:`Supervisor::create` indicating to which
          child process the stdout line is associated.
          A empty value is used to indicate the message
@@ -218,7 +218,7 @@ Hooks
          (this should typically never happen).
    
 
-   :msg: line-buffered contents from the stderr of a child process.
+   :param msg: line-buffered contents from the stderr of a child process.
 
 .. zeek:id:: Supervisor::stdout_hook
    :source-code: policy/frameworks/management/supervisor/main.zeek 55 75
@@ -230,7 +230,7 @@ Hooks
    associated stream.
    
 
-   :node: the name of a previously created node via
+   :param node: the name of a previously created node via
          :zeek:see:`Supervisor::create` indicating to which
          child process the stdout line is associated.
          An empty value is used to indicate the message
@@ -238,7 +238,7 @@ Hooks
          (this should typically never happen).
    
 
-   :msg: line-buffered contents from the stdout of a child process.
+   :param msg: line-buffered contents from the stdout of a child process.
 
 Functions
 #########
@@ -251,7 +251,7 @@ Functions
    It's an error to call this from a process other than a Supervisor.
    
 
-   :node: the desired configuration for the new supervised node process.
+   :param node: the desired configuration for the new supervised node process.
    
 
    :returns: an empty string on success or description of the error/failure.
@@ -265,7 +265,7 @@ Functions
    It's an error to call this from a process other than a Supervisor.
    
 
-   :node: the name of the node to destroy or an empty string to mean
+   :param node: the name of the node to destroy or an empty string to mean
          "all nodes".
    
 
@@ -307,7 +307,7 @@ Functions
    It's an error to call this from a process other than a Supervisor.
    
 
-   :node: the name of the node to restart or an empty string to mean
+   :param node: the name of the node to restart or an empty string to mean
          "all nodes".
    
 
@@ -322,7 +322,7 @@ Functions
    It's an error to call this from a process other than a Supervisor.
    
 
-   :node: the name of the node to get the status of or an empty string
+   :param node: the name of the node to get the status of or an empty string
          to mean "all nodes".
    
 

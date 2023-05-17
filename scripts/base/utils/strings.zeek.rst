@@ -32,10 +32,10 @@ Functions
    Cut a number of characters from the end of the given string.
    
 
-   :s: a string to trim.
+   :param s: a string to trim.
    
 
-   :tail_len: the number of characters to remove from the end of the string.
+   :param tail_len: the number of characters to remove from the end of the string.
    
 
    :returns: the given string with *tail_len* characters removed from the end.
@@ -56,10 +56,10 @@ Functions
    Given a string, returns an escaped version.
    
 
-   :s: a string to escape.
+   :param s: a string to escape.
    
 
-   :chars: a string containing all the characters that need to be escaped.
+   :param chars: a string containing all the characters that need to be escaped.
    
 
    :returns: a string with all occurrences of any character in *chars* escaped

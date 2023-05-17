@@ -29,7 +29,7 @@ Functions
    Extract mail addresses out of address specifications conforming to RFC5322.
    
 
-   :str: A string potentially containing email addresses.
+   :param str: A string potentially containing email addresses.
    
 
    :returns: A set of extracted email addresses.  An empty set is returned
@@ -43,7 +43,7 @@ Functions
    Extract mail addresses out of address specifications conforming to RFC5322.
    
 
-   :str: A string potentially containing email addresses.
+   :param str: A string potentially containing email addresses.
    
 
    :returns: A vector of extracted email addresses.  An empty vector is returned
@@ -57,7 +57,7 @@ Functions
    Extract the first email address from a string.
    
 
-   :str: A string potentially containing email addresses.
+   :param str: A string potentially containing email addresses.
    
 
    :returns: An email address or empty string if none found.
@@ -74,7 +74,7 @@ Functions
    as part of an email address.
    
 
-   :str: The argument from a MIME header.
+   :param str: The argument from a MIME header.
    
 
    :returns: A set of addresses or empty string if none found.

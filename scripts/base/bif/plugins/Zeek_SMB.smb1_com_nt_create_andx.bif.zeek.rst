@@ -36,13 +36,13 @@ Events
    For more information, see MS-CIFS:2.2.4.64
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :name: The ``name`` attribute  specified in the message.
+   :param name: The ``name`` attribute  specified in the message.
    
    .. zeek:see:: smb1_message smb1_nt_create_andx_response
 
@@ -58,19 +58,19 @@ Events
    For more information, see MS-CIFS:2.2.4.64
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :file_size: Size of the file.
+   :param file_size: Size of the file.
    
 
-   :times: Timestamps associated with the file in question.
+   :param times: Timestamps associated with the file in question.
    
    .. zeek:see:: smb1_message smb1_nt_create_andx_request
 

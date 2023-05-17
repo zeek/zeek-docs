@@ -32,16 +32,16 @@ Events
    more information about the FTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :code: The numerical response code the server responded with.
+   :param code: The numerical response code the server responded with.
    
 
-   :msg:  The textual message of the response.
+   :param msg:  The textual message of the response.
    
 
-   :cont_resp: True if the reply line is tagged as being continued to the next
+   :param cont_resp: True if the reply line is tagged as being continued to the next
               line. If so, further events will be raised and a handler may want
               to reassemble the pieces before processing the response any
               further.
@@ -60,13 +60,13 @@ Events
    more information about the FTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :command: The FTP command issued by the client (without any arguments).
+   :param command: The FTP command issued by the client (without any arguments).
    
 
-   :arg: The arguments going with the command.
+   :param arg: The arguments going with the command.
    
    .. zeek:see:: ftp_reply fmt_ftp_port parse_eftp_port
       parse_ftp_epsv parse_ftp_pasv parse_ftp_port

@@ -38,7 +38,7 @@ Functions
    (e.g. a variable or type).
    
 
-   :name: a script-level identifier for which to retrieve comments.
+   :param name: a script-level identifier for which to retrieve comments.
    
 
    :returns: comments associated with *name*.  If *name* is not a known
@@ -53,7 +53,7 @@ Functions
    (e.g. a variable or type).
    
 
-   :name: a script-level identifier
+   :param name: a script-level identifier
    
 
    :returns: declaring script associated with *name*. If *name* is not a known
@@ -69,7 +69,7 @@ Functions
    Retrieve the contents of a Zeek script package's README file.
    
 
-   :name: the name of a Zeek script package.  It must be a relative path
+   :param name: the name of a Zeek script package.  It must be a relative path
          to where it is located within a particular component of ZEEKPATH.
    
 
@@ -84,7 +84,7 @@ Functions
    Retrieve the Zeekygen-style comments (``##``) associated with a record field.
    
 
-   :name: the name of a script-level record type and a field within it formatted
+   :param name: the name of a script-level record type and a field within it formatted
          like a typical record field access: "<record_type>$<field>".
    
 
@@ -103,7 +103,7 @@ Functions
    of the record type itself when fields were added via redef.
    
 
-   :name: the name of a script-level record type and a field within it formatted
+   :param name: the name of a script-level record type and a field within it formatted
          like a typical record field access: "<record_type>$<field>".
    
 
@@ -122,7 +122,7 @@ Functions
    a Zeek script.
    
 
-   :name: the name of a Zeek script.  It must be a relative path to where
+   :param name: the name of a Zeek script.  It must be a relative path to where
          it is located within a particular component of ZEEKPATH and use
          the same file name extension/suffix as the actual file (e.g. ".zeek").
    

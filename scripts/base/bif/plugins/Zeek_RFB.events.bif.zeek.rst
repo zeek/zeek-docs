@@ -33,10 +33,10 @@ Events
    Generated for RFB event authentication result message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :result: whether or not authentication was succesful
+   :param result: whether or not authentication was succesful
 
 .. zeek:id:: rfb_authentication_type
    :source-code: base/protocols/rfb/main.zeek 131 136
@@ -46,10 +46,10 @@ Events
    Generated for RFB event authentication mechanism selection
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :authtype: the value of the chosen authentication mechanism
+   :param authtype: the value of the chosen authentication mechanism
 
 .. zeek:id:: rfb_client_version
    :source-code: base/protocols/rfb/main.zeek 117 122
@@ -59,10 +59,10 @@ Events
    Generated for RFB event client banner message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :version: of the client's rfb library
+   :param version: of the client's rfb library
 
 .. zeek:id:: rfb_server_parameters
    :source-code: base/bif/plugins/Zeek_RFB.events.bif.zeek 53 53
@@ -72,16 +72,16 @@ Events
    Generated for RFB event server parameter message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :name: name of the shared screen
+   :param name: name of the shared screen
    
 
-   :width: width of the shared screen
+   :param width: width of the shared screen
    
 
-   :height: height of the shared screen
+   :param height: height of the shared screen
 
 .. zeek:id:: rfb_server_version
    :source-code: base/protocols/rfb/main.zeek 124 129
@@ -91,10 +91,10 @@ Events
    Generated for RFB event server banner message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :version: of the server's rfb library
+   :param version: of the server's rfb library
 
 .. zeek:id:: rfb_share_flag
    :source-code: base/protocols/rfb/main.zeek 157 160
@@ -104,9 +104,9 @@ Events
    Generated for RFB event share flag messages
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :flag: whether or not the share flag was set
+   :param flag: whether or not the share flag was set
 
 

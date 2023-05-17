@@ -32,13 +32,13 @@ Events
    :zeek:see:`ConnThreshold::bytes_threshold_crossed` instead.
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: true if the threshold was crossed by the originator of the connection
+   :param is_orig: true if the threshold was crossed by the originator of the connection
    
    .. zeek:see:: set_current_conn_packets_threshold set_current_conn_bytes_threshold conn_packets_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold conn_duration_threshold_crossed
@@ -58,13 +58,13 @@ Events
    idle, this can be raised significantly later.
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: true if the threshold was crossed by the originator of the connection
+   :param is_orig: true if the threshold was crossed by the originator of the connection
    
    .. zeek:see:: set_current_conn_packets_threshold set_current_conn_bytes_threshold conn_bytes_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold
@@ -80,13 +80,13 @@ Events
    :zeek:see:`ConnThreshold::packets_threshold_crossed` instead.
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: true if the threshold was crossed by the originator of the connection
+   :param is_orig: true if the threshold was crossed by the originator of the connection
    
    .. zeek:see:: set_current_conn_packets_threshold set_current_conn_bytes_threshold conn_bytes_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold conn_duration_threshold_crossed

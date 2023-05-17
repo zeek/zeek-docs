@@ -35,6 +35,6 @@ Events
    const.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 

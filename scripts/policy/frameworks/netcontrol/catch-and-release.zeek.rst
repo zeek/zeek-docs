@@ -266,10 +266,10 @@ Events
    activity was seen within the watch_until period.
    
 
-   :a: The address that is no longer being managed.
+   :param a: The address that is no longer being managed.
    
 
-   :bi: The :zeek:see:`NetControl::BlockInfo` record containing information about the block.
+   :param bi: The :zeek:see:`NetControl::BlockInfo` record containing information about the block.
 
 .. zeek:id:: NetControl::log_netcontrol_catch_release
    :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 154 154
@@ -300,7 +300,7 @@ Functions
    which events the catch and release functionality usually monitors for activity.
    
 
-   :a: The address that was seen and should be re-dropped if it is being watched.
+   :param a: The address that was seen and should be re-dropped if it is being watched.
 
 .. zeek:id:: NetControl::drop_address_catch_release
    :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 341 404
@@ -317,13 +317,13 @@ Functions
    which will be assigned on the manager.
    
 
-   :a: The address to be dropped.
+   :param a: The address to be dropped.
    
 
-   :t: How long to drop it, with 0 being indefinitely.
+   :param t: How long to drop it, with 0 being indefinitely.
    
 
-   :location: An optional string describing where the drop was triggered.
+   :param location: An optional string describing where the drop was triggered.
    
 
    :returns: The :zeek:see:`NetControl::BlockInfo` record containing information about
@@ -342,7 +342,7 @@ Functions
    this function.
    
 
-   :a: The address to get information about.
+   :param a: The address to get information about.
    
 
    :returns: The :zeek:see:`NetControl::BlockInfo` record containing information about
@@ -360,10 +360,10 @@ Functions
    the block is removed.
    
 
-   :a: The address to be unblocked.
+   :param a: The address to be unblocked.
    
 
-   :reason: A reason for the unblock.
+   :param reason: A reason for the unblock.
    
 
    :returns: True if the address was unblocked.

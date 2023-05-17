@@ -32,19 +32,19 @@ Events
    For more information, see MS-CIFS:2.2.4.47.1
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)`
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)`
         version 1 message.
    
 
-   :args: arguments of the message (SMB_Parameters.Words)
+   :param args: arguments of the message (SMB_Parameters.Words)
    
 
-   :parameters: content of the SMB_Data.Trans_Parameters field
+   :param parameters: content of the SMB_Data.Trans_Parameters field
    
 
-   :data: content of the SMB_Data.Trans_Data field
+   :param data: content of the SMB_Data.Trans_Data field
 
 

@@ -41,11 +41,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see::  netbios_session_keepalive netbios_session_message
@@ -75,11 +75,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_message
@@ -109,18 +109,18 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :is_orig:  True if the message was sent by the originator of the connection.
+   :param is_orig:  True if the message was sent by the originator of the connection.
    
 
-   :msg_type: The general type of message, as defined in Section 4.3.1 of
+   :param msg_type: The general type of message, as defined in Section 4.3.1 of
              :rfc:`1002`.
    
 
-   :data_len: The length of the message's payload.
+   :param data_len: The length of the message's payload.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
       netbios_session_raw_message netbios_session_rejected netbios_session_request
@@ -151,14 +151,14 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :is_orig: True if the message was sent by the originator of the connection.
+   :param is_orig: True if the message was sent by the originator of the connection.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header (i.e., the ``user_data``).
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
@@ -191,11 +191,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
@@ -225,11 +225,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
@@ -259,11 +259,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive

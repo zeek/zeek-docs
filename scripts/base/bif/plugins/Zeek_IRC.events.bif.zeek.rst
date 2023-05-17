@@ -65,14 +65,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :chans: The number of channels as returned in the reply.
+   :param chans: The number of channels as returned in the reply.
    
    .. zeek:see::  irc_channel_topic irc_dcc_message irc_error_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -91,17 +91,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :channel: The channel name specified in the reply.
+   :param channel: The channel name specified in the reply.
    
 
-   :topic: The topic specified in the reply.
+   :param topic: The topic specified in the reply.
    
    .. zeek:see:: irc_channel_info  irc_dcc_message irc_error_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -124,33 +124,33 @@ Events
    information about the DCC.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :target: The target specified in the message.
+   :param target: The target specified in the message.
    
 
-   :dcc_type: The DCC type specified in the message.
+   :param dcc_type: The DCC type specified in the message.
    
 
-   :argument:  The argument specified in the message.
+   :param argument:  The argument specified in the message.
    
 
-   :address: The address specified in the message.
+   :param address: The address specified in the message.
    
 
-   :dest_port: The destination port specified in the message.
+   :param dest_port: The destination port specified in the message.
    
 
-   :size: The size specified in the message.
+   :param size: The size specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic  irc_error_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -173,10 +173,10 @@ Events
    information about the DCC.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :bytes_received: The number of bytes received as reported by the recipient.
+   :param bytes_received: The number of bytes received as reported by the recipient.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -196,18 +196,18 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :message: The textual description specified in the message.
+   :param message: The textual description specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -226,18 +226,18 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :msg: The message coming with the reply.
+   :param msg: The message coming with the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -256,10 +256,10 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
@@ -280,21 +280,21 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :nickname: The nickname specified in the message.
+   :param nickname: The nickname specified in the message.
    
 
-   :channel: The channel specified in the message.
+   :param channel: The channel specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick  irc_join_message irc_kick_message
@@ -314,14 +314,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :info_list: The user information coming with the command.
+   :param info_list: The user information coming with the command.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_kick_message
@@ -341,24 +341,24 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :chans: The channels specified in the message.
+   :param chans: The channels specified in the message.
    
 
-   :users: The users specified in the message.
+   :param users: The users specified in the message.
    
 
-   :comment: The comment specified in the message.
+   :param comment: The comment specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -377,20 +377,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always false.
+   :param is_orig: Always false.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :command: The command.
+   :param command: The command.
    
 
-   :message: TODO.
+   :param message: TODO.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -416,18 +416,18 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :params: The parameters coming with the message.
+   :param params: The parameters coming with the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -446,20 +446,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :c_type: The channel type.
+   :param c_type: The channel type.
    
 
-   :channel: The channel.
+   :param channel: The channel.
    
 
-   :users: The set of users.
+   :param users: The set of users.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -478,20 +478,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :users: The number of users as returned in the reply.
+   :param users: The number of users as returned in the reply.
    
 
-   :services: The number of services as returned in the reply.
+   :param services: The number of services as returned in the reply.
    
 
-   :servers: The number of servers as returned in the reply.
+   :param servers: The number of servers as returned in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -511,17 +511,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :who: The user changing its nickname.
+   :param who: The user changing its nickname.
    
 
-   :newnick: The new nickname.
+   :param newnick: The new nickname.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -541,20 +541,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :source: The source of the private communication.
+   :param source: The source of the private communication.
    
 
-   :target: The target of the private communication.
+   :param target: The target of the private communication.
    
 
-   :message: The text of communication.
+   :param message: The text of communication.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -574,17 +574,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :user: The user specified in the message.
+   :param user: The user specified in the message.
    
 
-   :password: The password specified in the message.
+   :param password: The password specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -603,14 +603,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :got_oper: True if the *oper* command was executed successfully
+   :param got_oper: True if the *oper* command was executed successfully
              (*youreport*) and false otherwise (*nooperhost*).
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
@@ -631,20 +631,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname coming with the message.
+   :param nick: The nickname coming with the message.
    
 
-   :chans: The set of channels affected.
+   :param chans: The set of channels affected.
    
 
-   :message: The text coming with the message.
+   :param message: The text coming with the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -664,14 +664,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :password: The password specified in the message.
+   :param password: The password specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -691,20 +691,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :source: The source of the private communication.
+   :param source: The source of the private communication.
    
 
-   :target: The target of the private communication.
+   :param target: The target of the private communication.
    
 
-   :message: The text of communication.
+   :param message: The text of communication.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -724,17 +724,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname coming with the message.
+   :param nick: The nickname coming with the message.
    
 
-   :message: The text included with the message.
+   :param message: The text included with the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -754,21 +754,21 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the reply. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the reply. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :code: The reply code, as specified by the protocol.
+   :param code: The reply code, as specified by the protocol.
    
 
-   :params: The reply's parameters.
+   :param params: The reply's parameters.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -787,20 +787,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always true.
+   :param is_orig: Always true.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :command: The command.
+   :param command: The command.
    
 
-   :arguments: The arguments for the command.
+   :param arguments: The arguments for the command.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -823,20 +823,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :users: The number of users as returned in the reply.
+   :param users: The number of users as returned in the reply.
    
 
-   :services: The number of services as returned in the reply.
+   :param services: The number of services as returned in the reply.
    
 
-   :servers: The number of servers as returned in the reply.
+   :param servers: The number of servers as returned in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -856,20 +856,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :source: The source of the private communication.
+   :param source: The source of the private communication.
    
 
-   :target: The target of the private communication.
+   :param target: The target of the private communication.
    
 
-   :message: The text of communication.
+   :param message: The text of communication.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -889,21 +889,21 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :server: The server specified in the message.
+   :param server: The server specified in the message.
    
 
-   :message: The textual description specified in the message.
+   :param message: The textual description specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -921,7 +921,7 @@ Events
    analyzer for related SSL events, which will now be generated.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 .. zeek:id:: irc_user_message
    :source-code: base/bif/plugins/Zeek_IRC.events.bif.zeek 816 816
@@ -935,23 +935,23 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :user: The user specified in the message.
+   :param user: The user specified in the message.
    
 
-   :host: The host name specified in the message.
+   :param host: The host name specified in the message.
    
 
-   :server: The server name specified in the message.
+   :param server: The server name specified in the message.
    
 
-   :real_name: The real name specified in the message.
+   :param real_name: The real name specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -970,38 +970,38 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :target_nick: The target nickname.
+   :param target_nick: The target nickname.
    
 
-   :channel: The channel.
+   :param channel: The channel.
    
 
-   :user: The user.
+   :param user: The user.
    
 
-   :host: The host.
+   :param host: The host.
    
 
-   :server: The server.
+   :param server: The server.
    
 
-   :nick: The nickname.
+   :param nick: The nickname.
    
 
-   :params: The parameters.
+   :param params: The parameters.
    
 
-   :hops: The hop count.
+   :param hops: The hop count.
    
 
-   :real_name: The real name.
+   :param real_name: The real name.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -1021,17 +1021,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :mask: The mask specified in the message.
+   :param mask: The mask specified in the message.
    
 
-   :oper: True if the operator flag was set.
+   :param oper: True if the operator flag was set.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -1050,17 +1050,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname specified in the reply.
+   :param nick: The nickname specified in the reply.
    
 
-   :chans: The set of channels returned.
+   :param chans: The set of channels returned.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -1080,17 +1080,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :server: TODO.
+   :param server: TODO.
    
 
-   :users: TODO.
+   :param users: TODO.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -1109,14 +1109,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname specified in the reply.
+   :param nick: The nickname specified in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -1135,23 +1135,23 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname specified in the reply.
+   :param nick: The nickname specified in the reply.
    
 
-   :user: The user name specified in the reply.
+   :param user: The user name specified in the reply.
    
 
-   :host: The host name specified in the reply.
+   :param host: The host name specified in the reply.
    
 
-   :real_name: The real name specified in the reply.
+   :param real_name: The real name specified in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message

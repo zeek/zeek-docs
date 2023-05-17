@@ -28,10 +28,10 @@ Events
    Generated for GSSAPI negotiation results.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :state: The resulting state of the negotiation.
+   :param state: The resulting state of the negotiation.
    
 
 

@@ -29,7 +29,7 @@ Functions
    Decode a NetBIOS name.  See https://jeffpar.github.io/kbarchive/kb/194/Q194203/.
    
 
-   :name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
+   :param name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
    
 
    :returns: The decoded NetBIOS name, e.g., ``"THE NETBIOS NAM"``.  An empty
@@ -48,7 +48,7 @@ Functions
    See https://en.wikipedia.org/wiki/NetBIOS#NetBIOS_Suffixes.
    
 
-   :name: An encoded NetBIOS name.
+   :param name: An encoded NetBIOS name.
    
 
    :returns: The numeric value of *name* or 256 if it's not a valid encoding.

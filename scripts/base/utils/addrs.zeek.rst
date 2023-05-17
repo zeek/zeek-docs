@@ -340,7 +340,7 @@ Functions
    address is included in square brackets.
    
 
-   :a: the address to make suitable for URI inclusion.
+   :param a: the address to make suitable for URI inclusion.
    
 
    :returns: the string representation of the address suitable for URI inclusion.
@@ -353,10 +353,10 @@ Functions
    Extracts all IP (v4 or v6) address strings from a given string.
    
 
-   :input: a string that may contain an IP address anywhere within it.
+   :param input: a string that may contain an IP address anywhere within it.
    
 
-   :check_wrapping: if true, will only return IP addresses that are wrapped in matching pairs of spaces, square brackets, curly braces, or parens. This can be used to avoid extracting strings that look like IPs from innocuous strings, such as SMTP headers.
+   :param check_wrapping: if true, will only return IP addresses that are wrapped in matching pairs of spaces, square brackets, curly braces, or parens. This can be used to avoid extracting strings that look like IPs from innocuous strings, such as SMTP headers.
    
 
    :returns: an array containing all valid IP address strings found in *input*.
@@ -369,7 +369,7 @@ Functions
    Checks if all elements of a string array are a valid octet value.
    
 
-   :octets: an array of strings to check for valid octet values.
+   :param octets: an array of strings to check for valid octet values.
    
 
    :returns: T if every element is between 0 and 255, inclusive, else F.
@@ -384,7 +384,7 @@ Functions
    digits, an empty string is returned.
    
 
-   :a: the string to normalize.
+   :param a: the string to normalize.
    
 
    :returns: a normalized MAC address, or an empty string in the case of an error.

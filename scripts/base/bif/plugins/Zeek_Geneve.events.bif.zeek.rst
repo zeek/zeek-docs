@@ -29,13 +29,13 @@ Events
    See :rfc:`8926` for more information about the Geneve protocol.
    
 
-   :outer: The Geneve tunnel connection.
+   :param outer: The Geneve tunnel connection.
    
 
-   :inner: The Geneve-encapsulated Ethernet packet header and transport header.
+   :param inner: The Geneve-encapsulated Ethernet packet header and transport header.
    
 
-   :vni: Geneve Network Identifier.
+   :param vni: Geneve Network Identifier.
    
    .. note:: Since this event may be raised on a per-packet basis, handling
       it may become particularly expensive for real-time analysis.

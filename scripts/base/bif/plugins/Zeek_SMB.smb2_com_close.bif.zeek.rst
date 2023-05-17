@@ -35,13 +35,13 @@ Events
    For more information, see MS-SMB2:2.2.15
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_name: The SMB2 GUID of the file being closed.
+   :param file_name: The SMB2 GUID of the file being closed.
    
    .. zeek:see:: smb2_message smb2_close_response
 
@@ -57,13 +57,13 @@ Events
    For more information, see MS-SMB2:2.2.16
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: A record of attributes returned from the server from the close.
+   :param response: A record of attributes returned from the server from the close.
    
    .. zeek:see:: smb2_message smb2_close_request
 

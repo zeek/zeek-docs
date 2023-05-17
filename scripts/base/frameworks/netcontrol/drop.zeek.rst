@@ -103,7 +103,7 @@ Hooks
    are passed on. If one of the hooks uses break, the rule is ignored.
    
 
-   :r: The rule to be added.
+   :param r: The rule to be added.
 
 .. zeek:id:: NetControl::log_policy_drop
    :source-code: base/frameworks/netcontrol/drop.zeek 10 10
@@ -121,13 +121,13 @@ Functions
    Stops all packets involving an IP address from being forwarded.
    
 
-   :a: The address to be dropped.
+   :param a: The address to be dropped.
    
 
-   :t: How long to drop it, with 0 being indefinitely.
+   :param t: How long to drop it, with 0 being indefinitely.
    
 
-   :location: An optional string describing where the drop was triggered.
+   :param location: An optional string describing where the drop was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.
@@ -140,13 +140,13 @@ Functions
    Stops all packets involving a connection address from being forwarded.
    
 
-   :c: The connection to be dropped.
+   :param c: The connection to be dropped.
    
 
-   :t: How long to drop it, with 0 being indefinitely.
+   :param t: How long to drop it, with 0 being indefinitely.
    
 
-   :location: An optional string describing where the drop was triggered.
+   :param location: An optional string describing where the drop was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.
