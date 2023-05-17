@@ -416,7 +416,9 @@ input file, as shown earlier.
   file on the side, and then atomically rename it to the filename monitored by
   the framework.
 
-There’s currently no JSON ingestion mode for this reader.
+There’s currently no JSON ingestion mode for this reader, but see the section
+about using the :ref:`raw reader <input-raw-reader>` together with the
+builtin :zeek:see:`from_json` function.
 
 The Benchmark Reader
 --------------------
@@ -433,6 +435,8 @@ This  reader, selected via :zeek:see:`Input::READER_BINARY`, is intended for
 use with file analysis input streams to ingest file content (and is the default
 type of reader for those streams).
 
+.. _input-raw-reader:
+
 The Raw Reader
 --------------
 
@@ -441,6 +445,35 @@ is split by a specified record separator (newline by default). The contents are
 returned line-by-line as strings; it can, for example, be used to read
 configuration files and the like and is probably only useful in the event mode
 and not for reading data to tables.
+
+Reading JSON Lines
+~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 6.0
+
+
+While the ASCII reader does not currently support JSON natively, it is
+possible to use the raw reader together with the builtin :zeek:see:`from_json`
+function to read files in JSON lines format and instantiate Zeek record
+values based on the input.
+
+The following example shows how this can be done, holding two state tables
+in order to allow for removal updates of the read data.
+
+.. literalinclude:: denylist.jsonl
+   :caption:
+   :language: json
+   :linenos:
+   :tab-width: 4
+
+.. literalinclude:: input_json_1.zeek
+   :caption: Loading denylist.jsonl, converting to Zeek types, populating a table.
+   :language: zeek
+   :linenos:
+   :tab-width: 4
+
+If your input data is already, or can be easily converted into JSON Lines format,
+above approach can be used to load it into Zeek.
 
 .. _input-sqlite-reader:
 
