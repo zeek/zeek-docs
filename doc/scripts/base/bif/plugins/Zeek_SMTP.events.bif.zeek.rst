@@ -38,14 +38,14 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the data is the originator of the TCP
+   :param is_orig: True if the sender of the data is the originator of the TCP
          connection.
    
 
-   :data: The raw data. Note that the size of each chunk is undefined and
+   :param data: The raw data. Note that the size of each chunk is undefined and
          depends on specifics of the underlying TCP connection.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
@@ -67,10 +67,10 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the command is the originator of the TCP
+   :param is_orig: True if the sender of the command is the originator of the TCP
          connection. Note that this is not redundant: the SMTP ``TURN`` command
          allows client and server to flip roles on established SMTP sessions,
          and hence a "reply" might still come from the TCP-level originator. In
@@ -78,16 +78,16 @@ Events
          insecure and rarely used.
    
 
-   :code: The reply's numerical code.
+   :param code: The reply's numerical code.
    
 
-   :cmd: TODO.
+   :param cmd: TODO.
    
 
-   :msg: The reply's textual description.
+   :param msg: The reply's textual description.
    
 
-   :cont_resp: True if the reply line is tagged as being continued to the next
+   :param cont_resp: True if the reply line is tagged as being continued to the next
          line. If so, further events will be raised and a handler may want to
          reassemble the pieces before processing the response any further.
    
@@ -108,10 +108,10 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the command is the originator of the TCP
+   :param is_orig: True if the sender of the command is the originator of the TCP
          connection. Note that this is not redundant: the SMTP ``TURN`` command
          allows client and server to flip roles on established SMTP sessions,
          and hence a "request" might still come from the TCP-level responder.
@@ -119,10 +119,10 @@ Events
          insecure and rarely used.
    
 
-   :command: The request's command, without any arguments.
+   :param command: The request's command, without any arguments.
    
 
-   :arg: The request command's arguments.
+   :param arg: The request command's arguments.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data mime_event mime_one_header mime_segment_data
@@ -140,7 +140,7 @@ Events
    analyzer for related SSL events, which will now be generated.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
 .. zeek:id:: smtp_unexpected
@@ -157,17 +157,17 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the unexpected activity is the originator of
+   :param is_orig: True if the sender of the unexpected activity is the originator of
          the TCP connection.
    
 
-   :msg: A descriptive message of what was unexpected.
+   :param msg: A descriptive message of what was unexpected.
    
 
-   :detail: The actual SMTP line triggering the event.
+   :param detail: The actual SMTP line triggering the event.
    
    .. zeek:see:: smtp_data  smtp_request smtp_reply
 

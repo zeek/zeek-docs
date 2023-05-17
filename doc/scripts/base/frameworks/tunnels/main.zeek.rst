@@ -171,10 +171,10 @@ Functions
    and logs the closing/expiration of the tunnel.
    
 
-   :tunnel: The tunnel which has closed or expired.
+   :param tunnel: The tunnel which has closed or expired.
    
 
-   :action: The specific reason for the tunnel ending.
+   :param action: The specific reason for the tunnel ending.
 
 .. zeek:id:: Tunnel::expire
    :source-code: base/frameworks/tunnels/main.zeek 138 142
@@ -186,10 +186,10 @@ Functions
    :zeek:id:`Tunnel::active` table.
    
 
-   :t: A table of tunnels.
+   :param t: A table of tunnels.
    
 
-   :idx: The index of the tunnel table corresponding to the tunnel to expire.
+   :param idx: The index of the tunnel table corresponding to the tunnel to expire.
    
 
    :returns: 0secs, which when this function is used as an

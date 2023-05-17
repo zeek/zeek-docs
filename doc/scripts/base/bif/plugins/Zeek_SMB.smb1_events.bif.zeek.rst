@@ -32,10 +32,10 @@ Events
    Generated when there is an :abbr:`SMB (Server Message Block)` version 1 response with no message body.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
    
    .. zeek:see:: smb1_message
 
@@ -49,13 +49,13 @@ Events
    including a status that signals an error.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
    
 
-   :is_orig: True if the message was sent by the originator of the underlying
+   :param is_orig: True if the message was sent by the originator of the underlying
             transport-level connection.
    
    .. zeek:see:: smb1_message
@@ -75,13 +75,13 @@ Events
    ports 138/139 and :abbr:`SMB (Server Message Block)`-over-TCP on port 445.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :is_orig: True if the message was sent by the originator of the underlying
+   :param is_orig: True if the message was sent by the originator of the underlying
             transport-level connection.
    
    .. zeek:see:: smb2_message

@@ -240,13 +240,13 @@ Events
    Confirms that a rule was put in place by a plugin.
    
 
-   :r: The rule now in place.
+   :param r: The rule now in place.
    
 
-   :p: The state for the plugin that put it into place.
+   :param p: The state for the plugin that put it into place.
    
 
-   :msg: An optional informational message by the plugin.
+   :param msg: An optional informational message by the plugin.
 
 .. zeek:id:: NetControl::rule_destroyed
    :source-code: base/frameworks/netcontrol/main.zeek 256 256
@@ -269,13 +269,13 @@ Events
    Reports an error when operating on a rule.
    
 
-   :r: The rule that encountered an error.
+   :param r: The rule that encountered an error.
    
 
-   :p: The state for the plugin that reported the error.
+   :param p: The state for the plugin that reported the error.
    
 
-   :msg: An optional informational message by the plugin.
+   :param msg: An optional informational message by the plugin.
 
 .. zeek:id:: NetControl::rule_exists
    :source-code: base/frameworks/netcontrol/non-cluster.zeek 31 37
@@ -289,13 +289,13 @@ Events
    still be forced by manually issuing a remove_rule call.
    
 
-   :r: The rule that was already in place.
+   :param r: The rule that was already in place.
    
 
-   :p: The plugin that reported that the rule already was in place.
+   :param p: The plugin that reported that the rule already was in place.
    
 
-   :msg: An optional informational message by the plugin.
+   :param msg: An optional informational message by the plugin.
 
 .. zeek:id:: NetControl::rule_new
    :source-code: base/frameworks/netcontrol/main.zeek 247 247
@@ -321,14 +321,14 @@ Events
    remove_rule function call.
    
 
-   :r: The rule now removed.
+   :param r: The rule now removed.
    
 
-   :p: The state for the plugin that had the rule in place and now
+   :param p: The state for the plugin that had the rule in place and now
       removed it.
    
 
-   :msg: An optional informational message by the plugin.
+   :param msg: An optional informational message by the plugin.
 
 .. zeek:id:: NetControl::rule_timeout
    :source-code: base/frameworks/netcontrol/main.zeek 227 227
@@ -338,17 +338,17 @@ Events
    Reports that a rule was removed from a plugin due to a timeout.
    
 
-   :r: The rule now removed.
+   :param r: The rule now removed.
    
 
-   :i: Additional flow information, if supported by the protocol.
+   :param i: Additional flow information, if supported by the protocol.
    
 
-   :p: The state for the plugin that had the rule in place and now
+   :param p: The state for the plugin that had the rule in place and now
       removed it.
    
 
-   :msg: An optional informational message by the plugin.
+   :param msg: An optional informational message by the plugin.
 
 Hooks
 #####
@@ -369,7 +369,7 @@ Hooks
    ignored and not passed on to any plugin.
    
 
-   :r: The rule to be added.
+   :param r: The rule to be added.
 
 Functions
 #########
@@ -381,10 +381,10 @@ Functions
    Activates a plugin.
    
 
-   :p: The plugin to activate.
+   :param p: The plugin to activate.
    
 
-   :priority: The higher the priority, the earlier this plugin will be checked
+   :param priority: The higher the priority, the earlier this plugin will be checked
              whether it supports an operation, relative to other plugins.
 
 .. zeek:id:: NetControl::add_rule
@@ -395,7 +395,7 @@ Functions
    Installs a rule.
    
 
-   :r: The rule to install.
+   :param r: The rule to install.
    
 
    :returns: If successful, returns an ID string unique to the rule that can
@@ -424,10 +424,10 @@ Functions
    it will stay installed and not be removed later.
    
 
-   :id: The rule to delete, specified as the ID returned by :zeek:see:`NetControl::add_rule`.
+   :param id: The rule to delete, specified as the ID returned by :zeek:see:`NetControl::add_rule`.
    
 
-   :reason: Optional string argument giving information on why the rule was deleted.
+   :param reason: Optional string argument giving information on why the rule was deleted.
    
 
    :returns: True if removal is successful, or sent to manager.
@@ -445,7 +445,7 @@ Functions
    current state.
    
 
-   :ip: The ip address to search for.
+   :param ip: The ip address to search for.
    
 
    :returns: vector of all rules affecting the IP address.
@@ -470,7 +470,7 @@ Functions
    current state.
    
 
-   :sn: The subnet to search for.
+   :param sn: The subnet to search for.
    
 
    :returns: vector of all rules affecting the subnet.
@@ -497,16 +497,16 @@ Functions
    is blocked.
    
 
-   :infected: the host to quarantine.
+   :param infected: the host to quarantine.
    
 
-   :dns: the network dns server.
+   :param dns: the network dns server.
    
 
-   :quarantine: the quarantine server running a dns and a web server.
+   :param quarantine: the quarantine server running a dns and a web server.
    
 
-   :t: how long to leave the quarantine in place.
+   :param t: how long to leave the quarantine in place.
    
 
    :returns: Vector of inserted rules on success, empty list on failure.
@@ -519,16 +519,16 @@ Functions
    Redirects a uni-directional flow to another port.
    
 
-   :f: The flow to redirect.
+   :param f: The flow to redirect.
    
 
-   :out_port: Port to redirect the flow to.
+   :param out_port: Port to redirect the flow to.
    
 
-   :t: How long to leave the redirect in place, with 0 being indefinitely.
+   :param t: How long to leave the redirect in place, with 0 being indefinitely.
    
 
-   :location: An optional string describing where the redirect was triggered.
+   :param location: An optional string describing where the redirect was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.
@@ -541,10 +541,10 @@ Functions
    Removes a rule.
    
 
-   :id: The rule to remove, specified as the ID returned by :zeek:see:`NetControl::add_rule`.
+   :param id: The rule to remove, specified as the ID returned by :zeek:see:`NetControl::add_rule`.
    
 
-   :reason: Optional string argument giving information on why the rule was removed.
+   :param reason: Optional string argument giving information on why the rule was removed.
    
 
    :returns: True if successful, the relevant plugin indicated that it knew
@@ -561,13 +561,13 @@ Functions
    Allows all traffic involving a specific IP address to be forwarded.
    
 
-   :a: The address to be whitelisted.
+   :param a: The address to be whitelisted.
    
 
-   :t: How long to whitelist it, with 0 being indefinitely.
+   :param t: How long to whitelist it, with 0 being indefinitely.
    
 
-   :location: An optional string describing whitelist was triggered.
+   :param location: An optional string describing whitelist was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.
@@ -580,13 +580,13 @@ Functions
    Allows all traffic involving a specific IP subnet to be forwarded.
    
 
-   :s: The subnet to be whitelisted.
+   :param s: The subnet to be whitelisted.
    
 
-   :t: How long to whitelist it, with 0 being indefinitely.
+   :param t: How long to whitelist it, with 0 being indefinitely.
    
 
-   :location: An optional string describing whitelist was triggered.
+   :param location: An optional string describing whitelist was triggered.
    
 
    :returns: The id of the inserted rule on success and zero on failure.

@@ -82,13 +82,13 @@ Events
    Generated for a connection that crossed a set byte threshold
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: True if the threshold was crossed by the originator of the connection
+   :param is_orig: True if the threshold was crossed by the originator of the connection
 
 .. zeek:id:: ConnThreshold::duration_threshold_crossed
    :source-code: base/protocols/conn/thresholds.zeek 109 109
@@ -101,13 +101,13 @@ Events
    idle, this can be raised significantly later.
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: True if the threshold was crossed by the originator of the connection
+   :param is_orig: True if the threshold was crossed by the originator of the connection
 
 .. zeek:id:: ConnThreshold::packets_threshold_crossed
    :source-code: base/protocols/conn/thresholds.zeek 97 97
@@ -117,13 +117,13 @@ Events
    Generated for a connection that crossed a set byte threshold
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: True if the threshold was crossed by the originator of the connection
+   :param is_orig: True if the threshold was crossed by the originator of the connection
 
 Functions
 #########
@@ -135,13 +135,13 @@ Functions
    Deletes a byte threshold for connection sizes.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in bytes to remove.
+   :param threshold: Threshold in bytes to remove.
    
 
-   :is_orig: If true, threshold is removed for packets from originator, otherwise for packets from responder.
+   :param is_orig: If true, threshold is removed for packets from originator, otherwise for packets from responder.
    
 
    :returns: T on success, F on failure.
@@ -154,10 +154,10 @@ Functions
    Deletes a duration threshold for a connection.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in packets.
+   :param threshold: Threshold in packets.
    
 
    :returns: T on success, F on failure.
@@ -170,13 +170,13 @@ Functions
    Deletes a packet threshold for connection sizes.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in packets.
+   :param threshold: Threshold in packets.
    
 
-   :is_orig: If true, threshold is removed for packets from originator, otherwise for packets from responder.
+   :param is_orig: If true, threshold is removed for packets from originator, otherwise for packets from responder.
    
 
    :returns: T on success, F on failure.
@@ -190,13 +190,13 @@ Functions
    conn_bytes_threshold_crossed will be raised for each set threshold.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in bytes.
+   :param threshold: Threshold in bytes.
    
 
-   :is_orig: If true, threshold is set for bytes from originator, otherwise for bytes from responder.
+   :param is_orig: If true, threshold is set for bytes from originator, otherwise for bytes from responder.
    
 
    :returns: T on success, F on failure.
@@ -210,10 +210,10 @@ Functions
    conn_duration_threshold_crossed will be raised for each set threshold.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in seconds.
+   :param threshold: Threshold in seconds.
    
 
    :returns: T on success, F on failure.
@@ -227,13 +227,13 @@ Functions
    conn_packets_threshold_crossed will be raised for each set threshold.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in packets.
+   :param threshold: Threshold in packets.
    
 
-   :is_orig: If true, threshold is set for packets from originator, otherwise for packets from responder.
+   :param is_orig: If true, threshold is set for packets from originator, otherwise for packets from responder.
    
 
    :returns: T on success, F on failure.

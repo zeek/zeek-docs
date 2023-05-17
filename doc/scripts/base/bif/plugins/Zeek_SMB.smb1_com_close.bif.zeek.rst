@@ -33,13 +33,13 @@ Events
    For more information, see MS-CIFS:2.2.4.5
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_id: The file identifier being closed.
+   :param file_id: The file identifier being closed.
    
    .. zeek:see:: smb1_message
 

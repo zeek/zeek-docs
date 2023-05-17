@@ -107,13 +107,13 @@ Functions
    to other nodes.
    
 
-   :ID: The ID of the option to update.
+   :param ID: The ID of the option to update.
    
 
-   :val: The new value of the option.
+   :param val: The new value of the option.
    
 
-   :location: Optional parameter detailing where this change originated from.
+   :param location: Optional parameter detailing where this change originated from.
    
 
    :returns: true on success, false when an error occurs.

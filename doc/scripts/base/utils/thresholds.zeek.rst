@@ -86,10 +86,10 @@ Functions
    thresholds in a given set.
    
 
-   :v: a vector holding counts that represent thresholds.
+   :param v: a vector holding counts that represent thresholds.
    
 
-   :tracker: the record being used to track event counter and currently
+   :param tracker: the record being used to track event counter and currently
             monitored threshold value.
    
 

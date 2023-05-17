@@ -436,7 +436,7 @@ Events
    logging stream before the data is actually written.
    
 
-   :rec: The weird columns about to be logged to the weird stream.
+   :param rec: The weird columns about to be logged to the weird stream.
 
 Hooks
 #####

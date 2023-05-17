@@ -693,13 +693,13 @@ Events
    :zeek:see:`ConnThreshold::bytes_threshold_crossed` instead.
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: true if the threshold was crossed by the originator of the connection
+   :param is_orig: true if the threshold was crossed by the originator of the connection
    
    .. zeek:see:: set_current_conn_packets_threshold set_current_conn_bytes_threshold conn_packets_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold conn_duration_threshold_crossed
@@ -715,13 +715,13 @@ Events
    :zeek:see:`ConnThreshold::packets_threshold_crossed` instead.
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: true if the threshold was crossed by the originator of the connection
+   :param is_orig: true if the threshold was crossed by the originator of the connection
    
    .. zeek:see:: set_current_conn_packets_threshold set_current_conn_bytes_threshold conn_bytes_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold conn_duration_threshold_crossed
@@ -741,13 +741,13 @@ Events
    idle, this can be raised significantly later.
    
 
-   :c: the connection
+   :param c: the connection
    
 
-   :threshold: the threshold that was set
+   :param threshold: the threshold that was set
    
 
-   :is_orig: true if the threshold was crossed by the originator of the connection
+   :param is_orig: true if the threshold was crossed by the originator of the connection
    
    .. zeek:see:: set_current_conn_packets_threshold set_current_conn_bytes_threshold conn_bytes_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold
@@ -766,13 +766,13 @@ Functions
    instead (:zeek:see:`ConnThreshold::set_bytes_threshold`).
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in bytes.
+   :param threshold: Threshold in bytes.
    
 
-   :is_orig: If true, threshold is set for bytes from originator, otherwise for bytes from responder.
+   :param is_orig: If true, threshold is set for bytes from originator, otherwise for bytes from responder.
    
    .. zeek:see:: set_current_conn_packets_threshold conn_bytes_threshold_crossed conn_packets_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold
@@ -788,13 +788,13 @@ Functions
    instead (:zeek:see:`ConnThreshold::set_packets_threshold`).
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in packets.
+   :param threshold: Threshold in packets.
    
 
-   :is_orig: If true, threshold is set for packets from originator, otherwise for packets from responder.
+   :param is_orig: If true, threshold is set for packets from originator, otherwise for packets from responder.
    
    .. zeek:see:: set_current_conn_bytes_threshold conn_bytes_threshold_crossed conn_packets_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold
@@ -810,10 +810,10 @@ Functions
    instead (:zeek:see:`ConnThreshold::set_duration_threshold`).
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :threshold: Threshold in seconds.
+   :param threshold: Threshold in seconds.
    
    .. zeek:see:: set_current_conn_packets_threshold conn_bytes_threshold_crossed conn_packets_threshold_crossed
                  get_current_conn_bytes_threshold get_current_conn_packets_threshold
@@ -826,10 +826,10 @@ Functions
 
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :is_orig: If true, threshold of originator, otherwise threshold of responder.
+   :param is_orig: If true, threshold of originator, otherwise threshold of responder.
    
 
    :returns: 0 if no threshold is set or the threshold in bytes
@@ -846,10 +846,10 @@ Functions
    Gets the current packet threshold size for a connection.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
-   :is_orig: If true, threshold of originator, otherwise threshold of responder.
+   :param is_orig: If true, threshold of originator, otherwise threshold of responder.
    
 
    :returns: 0 if no threshold is set or the threshold in packets
@@ -865,7 +865,7 @@ Functions
    Gets the current duration threshold size for a connection.
    
 
-   :cid: The connection id.
+   :param cid: The connection id.
    
 
    :returns: 0 if no threshold is set or the threshold in seconds
@@ -1006,21 +1006,21 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the message was sent by the originator of the TCP connection.
+   :param is_orig: True if the message was sent by the originator of the TCP connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ptype_id: Numeric representation of the procedure type of the message.
+   :param ptype_id: Numeric representation of the procedure type of the message.
    
 
-   :ptype: Enum representation of the procedure type of the message.
+   :param ptype: Enum representation of the procedure type of the message.
    
    .. zeek:see:: dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
@@ -1034,24 +1034,24 @@ Events
    multiple times for a single RPC message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :uuid: The string interpreted uuid of the endpoint being requested.
+   :param uuid: The string interpreted uuid of the endpoint being requested.
    
 
-   :ver_major: The major version of the endpoint being requested.
+   :param ver_major: The major version of the endpoint being requested.
    
 
-   :ver_minor: The minor version of the endpoint being requested.
+   :param ver_minor: The minor version of the endpoint being requested.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
@@ -1065,24 +1065,24 @@ Events
    multiple times for a single RPC message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :uuid: The string interpreted uuid of the endpoint being requested.
+   :param uuid: The string interpreted uuid of the endpoint being requested.
    
 
-   :ver_major: The major version of the endpoint being requested.
+   :param ver_major: The major version of the endpoint being requested.
    
 
-   :ver_minor: The minor version of the endpoint being requested.
+   :param ver_minor: The minor version of the endpoint being requested.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context_resp
 
@@ -1094,15 +1094,15 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` bind request ack message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :sec_addr: Secondary address for the ack.
+   :param sec_addr: Secondary address for the ack.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_request dce_rpc_response
 
@@ -1114,10 +1114,10 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` alter context response message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
@@ -1131,21 +1131,21 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` request message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub_len: Length of the data for the request.
+   :param stub_len: Length of the data for the request.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response dce_rpc_request_stub
 
@@ -1157,20 +1157,20 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` response message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub_len: Length of the data for the response.
+   :param stub_len: Length of the data for the response.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response_stub
 
@@ -1182,21 +1182,21 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` request message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
    
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub: The data for the request.
+   :param stub: The data for the request.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_response_stub dce_rpc_request
 
@@ -1208,20 +1208,20 @@ Events
    Generated for every :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` response message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   :param fid: File ID of the PIPE that carried the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
         message. Zero will be used if the :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)` was
         not transported over a pipe.
    
 
-   :ctx_id: The context identifier of the data representation.
+   :param ctx_id: The context identifier of the data representation.
 
-   :opnum: Number of the RPC operation.
+   :param opnum: Number of the RPC operation.
    
 
-   :stub: The data for the response.
+   :param stub: The data for the response.
    
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request_stub dce_rpc_response
 
@@ -1459,18 +1459,18 @@ Events
    Generated for all DHCP messages.
    
 
-   :c: The connection record describing the underlying UDP flow.
+   :param c: The connection record describing the underlying UDP flow.
    
 
-   :is_orig: Indicate if the message came in a packet from the
+   :param is_orig: Indicate if the message came in a packet from the
            originator/client of the udp flow or the responder/server.
    
 
-   :msg: The parsed type-independent part of the DHCP message. The message
+   :param msg: The parsed type-independent part of the DHCP message. The message
         type is indicated in this record.
    
 
-   :options: The full set of supported and parsed DHCP options.
+   :param options: The full set of supported and parsed DHCP options.
 
 .. _plugin-zeek-dnp3:
 
@@ -1497,13 +1497,13 @@ Events
    Generated for a DNP3 request header.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :fc: function code.
+   :param fc: function code.
    
 
 .. zeek:id:: dnp3_application_response_header
@@ -1514,16 +1514,16 @@ Events
    Generated for a DNP3 response header.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :fc: function code.
+   :param fc: function code.
    
 
-   :iin: internal indication number.
+   :param iin: internal indication number.
    
 
 .. zeek:id:: dnp3_object_header
@@ -1534,28 +1534,28 @@ Events
    Generated for the object header found in both DNP3 requests and responses.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :obj_type: type of object, which is classified based on an 8-bit group number
+   :param obj_type: type of object, which is classified based on an 8-bit group number
              and an 8-bit variation number.
    
 
-   :qua_field: qualifier field.
+   :param qua_field: qualifier field.
    
 
-   :number: TODO.
+   :param number: TODO.
    
 
-   :rf_low: the structure of the range field depends on the qualified field.
+   :param rf_low: the structure of the range field depends on the qualified field.
            In some cases, the range field contains only one logic part, e.g.,
            number of objects, so only *rf_low* contains useful values.
    
 
-   :rf_high: in some cases, the range field contains two logic parts, e.g., start
+   :param rf_high: in some cases, the range field contains two logic parts, e.g., start
             index and stop index, so *rf_low* contains the start index
             while *rf_high* contains the stop index.
    
@@ -1569,13 +1569,13 @@ Events
    of the prefix are defined by the qualifier field.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :prefix_value: The prefix.
+   :param prefix_value: The prefix.
    
 
 .. zeek:id:: dnp3_header_block
@@ -1589,22 +1589,22 @@ Events
    treated as a single entity).
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :len:   the "length" field in the DNP3 Pseudo Link Layer.
+   :param len:   the "length" field in the DNP3 Pseudo Link Layer.
    
 
-   :ctrl:  the "control" field in the DNP3 Pseudo Link Layer.
+   :param ctrl:  the "control" field in the DNP3 Pseudo Link Layer.
    
 
-   :dest_addr: the "destination" field in the DNP3 Pseudo Link Layer.
+   :param dest_addr: the "destination" field in the DNP3 Pseudo Link Layer.
    
 
-   :src_addr: the "source" field in the DNP3 Pseudo Link Layer.
+   :param src_addr: the "source" field in the DNP3 Pseudo Link Layer.
    
 
 .. zeek:id:: dnp3_response_data_object
@@ -1620,13 +1620,13 @@ Events
    object data.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :data_value: The value for those objects that carry their information here
+   :param data_value: The value for those objects that carry their information here
                directly.
    
 
@@ -1644,7 +1644,7 @@ Events
 
    Generated for DNP3 objects with the group number 12 and variation number 1
 
-   :CROB: control relay output block
+   :param CROB: control relay output block
 
 .. zeek:id:: dnp3_pcb
    :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 113 113
@@ -1653,7 +1653,7 @@ Events
 
    Generated for DNP3 objects with the group number 12 and variation number 2
 
-   :PCB: Pattern Control Block
+   :param PCB: Pattern Control Block
 
 .. zeek:id:: dnp3_counter_32wFlag
    :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 118 118
@@ -2020,17 +2020,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :is_orig:  True if the message was sent by the originator of the connection.
+   :param is_orig:  True if the message was sent by the originator of the connection.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :len: The length of the message's raw representation (i.e., the DNS payload).
+   :param len: The length of the message's raw representation (i.e., the DNS payload).
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2054,23 +2054,23 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :query: The queried name (normalized to all lowercase).
+   :param query: The queried name (normalized to all lowercase).
    
 
-   :qtype: The queried resource record type.
+   :param qtype: The queried resource record type.
    
 
-   :qclass: The queried resource record class.
+   :param qclass: The queried resource record class.
    
 
-   :original_query: The queried name, with the original case kept intact
+   :param original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2096,23 +2096,23 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :query: The queried name (normalized to all lowercase).
+   :param query: The queried name (normalized to all lowercase).
    
 
-   :qtype: The queried resource record type.
+   :param qtype: The queried resource record type.
    
 
-   :qclass: The queried resource record class.
+   :param qclass: The queried resource record class.
    
 
-   :original_query: The queried name, with the original case kept intact
+   :param original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2135,23 +2135,23 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :query: The queried name.
+   :param query: The queried name.
    
 
-   :qtype: The queried resource record type.
+   :param qtype: The queried resource record type.
    
 
-   :qclass: The queried resource record class.
+   :param qclass: The queried resource record class.
    
 
-   :original_query: The queried name, with the original case kept intact
+   :param original_query: The queried name, with the original case kept intact
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2174,17 +2174,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :a: The address returned by the reply.
+   :param a: The address returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A6_reply dns_CNAME_reply dns_EDNS_addl dns_HINFO_reply
       dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply
@@ -2207,17 +2207,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :a: The address returned by the reply.
+   :param a: The address returned by the reply.
    
    .. zeek:see::  dns_A_reply dns_A6_reply dns_CNAME_reply dns_EDNS_addl dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2240,17 +2240,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :a: The address returned by the reply.
+   :param a: The address returned by the reply.
    
    .. zeek:see::  dns_A_reply dns_AAAA_reply dns_CNAME_reply dns_EDNS_addl dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2273,17 +2273,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply  dns_PTR_reply dns_SOA_reply dns_SRV_reply
@@ -2306,17 +2306,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply  dns_EDNS_addl dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2339,17 +2339,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply  dns_SOA_reply dns_SRV_reply
@@ -2372,17 +2372,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :soa: The parsed SOA value.
+   :param soa: The parsed SOA value.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SRV_reply
@@ -2405,14 +2405,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2436,14 +2436,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2466,20 +2466,20 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :name: The name returned by the reply.
+   :param name: The name returned by the reply.
    
 
-   :preference: The preference for *name* specified by the reply.
+   :param preference: The preference for *name* specified by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply  dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply
@@ -2502,17 +2502,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :strs: The textual information returned by the reply.
+   :param strs: The textual information returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2535,17 +2535,17 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :strs: The textual information returned by the reply.
+   :param strs: The textual information returned by the reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2566,23 +2566,23 @@ Events
    See `RFC 6844 <https://tools.ietf.org/html/rfc6844>`__ for more details.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :flags: The flags byte of the CAA reply.
+   :param flags: The flags byte of the CAA reply.
    
 
-   :tag: The property identifier of the CAA reply.
+   :param tag: The property identifier of the CAA reply.
    
 
-   :value: The property value of the CAA reply.
+   :param value: The property value of the CAA reply.
 
 .. zeek:id:: dns_SRV_reply
    :source-code: base/protocols/dns/main.zeek 535 538
@@ -2597,29 +2597,29 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :target: Target of the SRV response -- the canonical hostname of the
+   :param target: Target of the SRV response -- the canonical hostname of the
            machine providing the service, ending in a dot.
    
 
-   :priority: Priority of the SRV response -- the priority of the target
+   :param priority: Priority of the SRV response -- the priority of the target
              host, lower value means more preferred.
    
 
-   :weight: Weight of the SRV response -- a relative weight for records
+   :param weight: Weight of the SRV response -- a relative weight for records
            with the same priority, higher value means more preferred.
    
 
-   :p: Port of the SRV response -- the TCP or UDP port on which the
+   :param p: Port of the SRV response -- the TCP or UDP port on which the
       service is to be found.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
@@ -2639,14 +2639,14 @@ Events
    that Zeek knows how to parse and generate another more specific event.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2665,14 +2665,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The parsed EDNS reply.
+   :param ans: The parsed EDNS reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2695,14 +2695,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :opt: The parsed EDNS option.
+   :param opt: The parsed EDNS option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2727,14 +2727,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :opt: The parsed EDNS Keepalive option.
+   :param opt: The parsed EDNS Keepalive option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2759,14 +2759,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :opt: The parsed EDNS Cookie option.
+   :param opt: The parsed EDNS Cookie option.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
@@ -2789,14 +2789,14 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The parsed TSIG reply.
+   :param ans: The parsed TSIG reply.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -2815,17 +2815,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :rrsig: The parsed RRSIG record.
+   :param rrsig: The parsed RRSIG record.
 
 .. zeek:id:: dns_DNSKEY
    :source-code: base/protocols/dns/main.zeek 568 574
@@ -2836,17 +2836,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :dnskey: The parsed DNSKEY record.
+   :param dnskey: The parsed DNSKEY record.
 
 .. zeek:id:: dns_NSEC
    :source-code: base/protocols/dns/main.zeek 575 578
@@ -2857,20 +2857,20 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :next_name: The parsed next secure domain name.
+   :param next_name: The parsed next secure domain name.
    
 
-   :bitmaps: vector of strings in hex for the bit maps present.
+   :param bitmaps: vector of strings in hex for the bit maps present.
 
 .. zeek:id:: dns_NSEC3
    :source-code: base/protocols/dns/main.zeek 580 583
@@ -2881,17 +2881,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :nsec3: The parsed RDATA of Nsec3 record.
+   :param nsec3: The parsed RDATA of Nsec3 record.
 
 .. zeek:id:: dns_NSEC3PARAM
    :source-code: base/protocols/dns/main.zeek 585 588
@@ -2902,17 +2902,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :nsec3param: The parsed RDATA of NSEC3PARAM record.
+   :param nsec3param: The parsed RDATA of NSEC3PARAM record.
 
 .. zeek:id:: dns_DS
    :source-code: base/protocols/dns/main.zeek 590 596
@@ -2923,17 +2923,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :ds: The parsed RDATA of DS record.
+   :param ds: The parsed RDATA of DS record.
 
 .. zeek:id:: dns_BINDS
    :source-code: base/protocols/dns/main.zeek 597 600
@@ -2944,17 +2944,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :binds: The parsed RDATA of BIND-Signing state record.
+   :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_SSHFP
    :source-code: base/protocols/dns/main.zeek 602 608
@@ -2965,17 +2965,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :binds: The parsed RDATA of BIND-Signing state record.
+   :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_LOC
    :source-code: base/protocols/dns/main.zeek 609 615
@@ -2986,17 +2986,17 @@ Events
    an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :loc: The parsed RDATA of LOC type record.
+   :param loc: The parsed RDATA of LOC type record.
 
 .. zeek:id:: dns_SVCB
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 775 775
@@ -3009,17 +3009,17 @@ Events
    For replies with multiple answers, an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :svcb: The parsed RDATA of SVCB type record.
+   :param svcb: The parsed RDATA of SVCB type record.
 
 .. zeek:id:: dns_HTTPS
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 792 792
@@ -3033,17 +3033,17 @@ Events
    For replies with multiple answers, an individual event of the corresponding type is raised for each.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
 
-   :ans: The type-independent part of the parsed answer record.
+   :param ans: The type-independent part of the parsed answer record.
    
 
-   :https: The parsed RDATA of HTTPS type record.
+   :param https: The parsed RDATA of HTTPS type record.
 
 .. zeek:id:: dns_end
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 815 815
@@ -3059,11 +3059,11 @@ Events
    sessions.
    
 
-   :c: The connection, which may be UDP or TCP depending on the type of the
+   :param c: The connection, which may be UDP or TCP depending on the type of the
       transport-layer session being analyzed.
    
 
-   :msg: The parsed DNS message header.
+   :param msg: The parsed DNS message header.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -3097,16 +3097,16 @@ Events
    (e.g. as happens w/ FTP or IRC).
    
 
-   :c: The connection over which file data is transferred.
+   :param c: The connection over which file data is transferred.
    
 
-   :prefix: Up to 1024 bytes of the file data.
+   :param prefix: Up to 1024 bytes of the file data.
    
 
-   :descr: Deprecated/unused argument.
+   :param descr: Deprecated/unused argument.
    
 
-   :mime_type: MIME type of the file or "<unknown>" if no file magic signatures
+   :param mime_type: MIME type of the file or "<unknown>" if no file magic signatures
               matched.
 
 .. _plugin-zeek-finger:
@@ -3135,16 +3135,16 @@ Events
    information about the Finger protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :full: True if verbose information is requested (``/W`` switch).
+   :param full: True if verbose information is requested (``/W`` switch).
    
 
-   :username: The request's user name.
+   :param username: The request's user name.
    
 
-   :hostname: The request's host name.
+   :param hostname: The request's host name.
    
    .. zeek:see:: finger_reply
    
@@ -3164,10 +3164,10 @@ Events
    information about the Finger protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :reply_line: The reply as returned by the server
+   :param reply_line: The reply as returned by the server
    
    .. zeek:see:: finger_request
    
@@ -3227,13 +3227,13 @@ Events
    more information about the FTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :command: The FTP command issued by the client (without any arguments).
+   :param command: The FTP command issued by the client (without any arguments).
    
 
-   :arg: The arguments going with the command.
+   :param arg: The arguments going with the command.
    
    .. zeek:see:: ftp_reply fmt_ftp_port parse_eftp_port
       parse_ftp_epsv parse_ftp_pasv parse_ftp_port
@@ -3249,16 +3249,16 @@ Events
    more information about the FTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :code: The numerical response code the server responded with.
+   :param code: The numerical response code the server responded with.
    
 
-   :msg:  The textual message of the response.
+   :param msg:  The textual message of the response.
    
 
-   :cont_resp: True if the reply line is tagged as being continued to the next
+   :param cont_resp: True if the reply line is tagged as being continued to the next
               line. If so, further events will be raised and a handler may want
               to reassemble the pieces before processing the response any
               further.
@@ -3278,7 +3278,7 @@ Functions
    :zeek:type:`ftp_port`.
    
 
-   :s: The string of the FTP PORT command, e.g., ``"10,0,0,1,4,31"``.
+   :param s: The string of the FTP PORT command, e.g., ``"10,0,0,1,4,31"``.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.
@@ -3296,7 +3296,7 @@ Functions
    where ``<d>`` is a delimiter in the ASCII range 33-126 (usually ``|``).
    
 
-   :s: The string of the FTP EPRT command, e.g., ``"|1|10.0.0.1|1055|"``.
+   :param s: The string of the FTP EPRT command, e.g., ``"|1|10.0.0.1|1055|"``.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.
@@ -3311,7 +3311,7 @@ Functions
    Converts the result of the FTP PASV command to an :zeek:type:`ftp_port`.
    
 
-   :str: The string containing the result of the FTP PASV command.
+   :param str: The string containing the result of the FTP PASV command.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.
@@ -3328,7 +3328,7 @@ Functions
    where ``<d>`` is a delimiter in the ASCII range 33-126 (usually ``|``).
    
 
-   :str: The string containing the result of the FTP EPSV command.
+   :param str: The string containing the result of the FTP EPSV command.
    
 
    :returns: The FTP PORT, e.g., ``[h=10.0.0.1, p=1055/tcp, valid=T]``.
@@ -3344,10 +3344,10 @@ Functions
    ``10.0.0.1`` and ``1055/tcp`` yields ``"10,0,0,1,4,31"``.
    
 
-   :a: The IP address.
+   :param a: The IP address.
    
 
-   :p: The TCP port.
+   :param p: The TCP port.
    
 
    :returns: The FTP PORT string.
@@ -3501,10 +3501,10 @@ Events
    Generated for GSSAPI negotiation results.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :state: The resulting state of the negotiation.
+   :param state: The resulting state of the negotiation.
    
 
 .. _plugin-zeek-http:
@@ -3536,19 +3536,19 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :method: The HTTP method extracted from the request (e.g., ``GET``, ``POST``).
+   :param method: The HTTP method extracted from the request (e.g., ``GET``, ``POST``).
    
 
-   :original_URI: The unprocessed URI as specified in the request.
+   :param original_URI: The unprocessed URI as specified in the request.
    
 
-   :unescaped_URI: The URI with all percent-encodings decoded.
+   :param unescaped_URI: The URI with all percent-encodings decoded.
    
 
-   :version: The version number specified in the request (e.g., ``1.1``).
+   :param version: The version number specified in the request (e.g., ``1.1``).
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header http_message_done http_reply http_stats
@@ -3568,16 +3568,16 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :version: The version number specified in the reply (e.g., ``1.1``).
+   :param version: The version number specified in the reply (e.g., ``1.1``).
    
 
-   :code: The numerical response code returned by the server.
+   :param code: The numerical response code returned by the server.
    
 
-   :reason: The textual description returned by the server along with *code*.
+   :param reason: The textual description returned by the server along with *code*.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header http_message_done http_request
@@ -3597,19 +3597,19 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the header was sent by the originator of the TCP connection.
+   :param is_orig: True if the header was sent by the originator of the TCP connection.
    
 
-   :original_name: The name of the header (unaltered).
+   :param original_name: The name of the header (unaltered).
    
 
-   :name: The name of the header (converted to all uppercase).
+   :param name: The name of the header (converted to all uppercase).
    
 
-   :value: The value of the header.
+   :param value: The value of the header.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event  http_message_done http_reply http_request
@@ -3631,13 +3631,13 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the header was sent by the originator of the TCP connection.
+   :param is_orig: True if the header was sent by the originator of the TCP connection.
    
 
-   :hlist: A *table* containing all headers extracted from the current entity.
+   :param hlist: A *table* containing all headers extracted from the current entity.
           The table is indexed by the position of the header (1 for the first,
           2 for the second, etc.).
    
@@ -3663,10 +3663,10 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
    .. zeek:see:: http_all_headers  http_content_type http_end_entity http_entity_data
@@ -3688,10 +3688,10 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_entity_data
@@ -3718,17 +3718,17 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: One chunk of raw entity data.
+   :param data: One chunk of raw entity data.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_event http_header http_message_done http_reply http_request http_stats
@@ -3749,17 +3749,17 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
 
-   :ty: The main type.
+   :param ty: The main type.
    
 
-   :subty: The subtype.
+   :param subty: The subtype.
    
    .. zeek:see:: http_all_headers http_begin_entity  http_end_entity http_entity_data
       http_event http_header http_message_done http_reply http_request http_stats
@@ -3785,14 +3785,14 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the entity was sent by the originator of the TCP
+   :param is_orig: True if the entity was sent by the originator of the TCP
             connection.
    
 
-   :stat: Further meta information about the message.
+   :param stat: Further meta information about the message.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header  http_reply http_request http_stats
@@ -3809,14 +3809,14 @@ Events
    for more information about the HTTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :event_type: A string describing the general category of the problem found
+   :param event_type: A string describing the general category of the problem found
                (e.g., ``illegal format``).
    
 
-   :detail: Further more detailed description of the error.
+   :param detail: Further more detailed description of the error.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data  http_header http_message_done http_reply http_request
@@ -3832,10 +3832,10 @@ Events
    fully processed.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :stats: Statistics summarizing HTTP-level properties of the finished
+   :param stats: Statistics summarizing HTTP-level properties of the finished
           connection.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
@@ -3852,10 +3852,10 @@ Events
    will be raised after this event.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :protocol: The protocol to which the connection is switching.
+   :param protocol: The protocol to which the connection is switching.
    
    .. zeek:see:: http_all_headers http_begin_entity http_content_type http_end_entity
       http_entity_data http_event http_header http_message_done http_reply
@@ -3872,10 +3872,10 @@ Functions
    Skips the data of the HTTP entity.
    
 
-   :c: The HTTP connection.
+   :param c: The HTTP connection.
    
 
-   :is_orig: If true, the client data is skipped, and the server data otherwise.
+   :param is_orig: If true, the client data is skipped, and the server data otherwise.
    
    .. zeek:see:: skip_smtp_data
 
@@ -3887,7 +3887,7 @@ Functions
    Unescapes all characters in a URI (decode every ``%xx`` group).
    
 
-   :URI: The URI to unescape.
+   :param URI: The URI to unescape.
    
 
    :returns: The unescaped URI with all ``%xx`` groups decoded.
@@ -3926,13 +3926,13 @@ Events
    information about the Ident protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :lport: The request's local port.
+   :param lport: The request's local port.
    
 
-   :rport: The request's remote port.
+   :param rport: The request's remote port.
    
    .. zeek:see:: ident_error ident_reply
    
@@ -3952,19 +3952,19 @@ Events
    information about the Ident protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :lport: The corresponding request's local port.
+   :param lport: The corresponding request's local port.
    
 
-   :rport: The corresponding request's remote port.
+   :param rport: The corresponding request's remote port.
    
 
-   :user_id: The user id returned by the reply.
+   :param user_id: The user id returned by the reply.
    
 
-   :system: The operating system returned by the reply.
+   :param system: The operating system returned by the reply.
    
    .. zeek:see:: ident_error  ident_request
    
@@ -3984,16 +3984,16 @@ Events
    information about the Ident protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :lport: The corresponding request's local port.
+   :param lport: The corresponding request's local port.
    
 
-   :rport: The corresponding request's remote port.
+   :param rport: The corresponding request's remote port.
    
 
-   :line: The error description returned by the reply.
+   :param line: The error description returned by the reply.
    
    .. zeek:see:: ident_reply ident_request
    
@@ -4026,10 +4026,10 @@ Events
    after being queried using the CAPABILITY command.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :capabilities: The list of IMAP capabilities as sent by the server.
+   :param capabilities: The list of IMAP capabilities as sent by the server.
 
 .. zeek:id:: imap_starttls
    :source-code: base/bif/plugins/Zeek_IMAP.events.bif.zeek 17 17
@@ -4040,7 +4040,7 @@ Events
    StartTLS exchange between the client and the server.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 .. _plugin-zeek-irc:
 
@@ -4070,20 +4070,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always true.
+   :param is_orig: Always true.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :command: The command.
+   :param command: The command.
    
 
-   :arguments: The arguments for the command.
+   :param arguments: The arguments for the command.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4107,21 +4107,21 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the reply. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the reply. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :code: The reply code, as specified by the protocol.
+   :param code: The reply code, as specified by the protocol.
    
 
-   :params: The reply's parameters.
+   :param params: The reply's parameters.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4140,20 +4140,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always false.
+   :param is_orig: Always false.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :command: The command.
+   :param command: The command.
    
 
-   :message: TODO.
+   :param message: TODO.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4179,17 +4179,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname coming with the message.
+   :param nick: The nickname coming with the message.
    
 
-   :message: The text included with the message.
+   :param message: The text included with the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4209,20 +4209,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :source: The source of the private communication.
+   :param source: The source of the private communication.
    
 
-   :target: The target of the private communication.
+   :param target: The target of the private communication.
    
 
-   :message: The text of communication.
+   :param message: The text of communication.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4242,20 +4242,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :source: The source of the private communication.
+   :param source: The source of the private communication.
    
 
-   :target: The target of the private communication.
+   :param target: The target of the private communication.
    
 
-   :message: The text of communication.
+   :param message: The text of communication.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4275,20 +4275,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :source: The source of the private communication.
+   :param source: The source of the private communication.
    
 
-   :target: The target of the private communication.
+   :param target: The target of the private communication.
    
 
-   :message: The text of communication.
+   :param message: The text of communication.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4308,14 +4308,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :info_list: The user information coming with the command.
+   :param info_list: The user information coming with the command.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_kick_message
@@ -4335,20 +4335,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname coming with the message.
+   :param nick: The nickname coming with the message.
    
 
-   :chans: The set of channels affected.
+   :param chans: The set of channels affected.
    
 
-   :message: The text coming with the message.
+   :param message: The text coming with the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4368,17 +4368,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :who: The user changing its nickname.
+   :param who: The user changing its nickname.
    
 
-   :newnick: The new nickname.
+   :param newnick: The new nickname.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4397,10 +4397,10 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
@@ -4420,20 +4420,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :users: The number of users as returned in the reply.
+   :param users: The number of users as returned in the reply.
    
 
-   :services: The number of services as returned in the reply.
+   :param services: The number of services as returned in the reply.
    
 
-   :servers: The number of servers as returned in the reply.
+   :param servers: The number of servers as returned in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4452,20 +4452,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :users: The number of users as returned in the reply.
+   :param users: The number of users as returned in the reply.
    
 
-   :services: The number of services as returned in the reply.
+   :param services: The number of services as returned in the reply.
    
 
-   :servers: The number of servers as returned in the reply.
+   :param servers: The number of servers as returned in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4484,14 +4484,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :chans: The number of channels as returned in the reply.
+   :param chans: The number of channels as returned in the reply.
    
    .. zeek:see::  irc_channel_topic irc_dcc_message irc_error_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -4510,38 +4510,38 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :target_nick: The target nickname.
+   :param target_nick: The target nickname.
    
 
-   :channel: The channel.
+   :param channel: The channel.
    
 
-   :user: The user.
+   :param user: The user.
    
 
-   :host: The host.
+   :param host: The host.
    
 
-   :server: The server.
+   :param server: The server.
    
 
-   :nick: The nickname.
+   :param nick: The nickname.
    
 
-   :params: The parameters.
+   :param params: The parameters.
    
 
-   :hops: The hop count.
+   :param hops: The hop count.
    
 
-   :real_name: The real name.
+   :param real_name: The real name.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4560,20 +4560,20 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :c_type: The channel type.
+   :param c_type: The channel type.
    
 
-   :channel: The channel.
+   :param channel: The channel.
    
 
-   :users: The set of users.
+   :param users: The set of users.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4592,14 +4592,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname specified in the reply.
+   :param nick: The nickname specified in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4618,17 +4618,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname specified in the reply.
+   :param nick: The nickname specified in the reply.
    
 
-   :chans: The set of channels returned.
+   :param chans: The set of channels returned.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4647,23 +4647,23 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :nick: The nickname specified in the reply.
+   :param nick: The nickname specified in the reply.
    
 
-   :user: The user name specified in the reply.
+   :param user: The user name specified in the reply.
    
 
-   :host: The host name specified in the reply.
+   :param host: The host name specified in the reply.
    
 
-   :real_name: The real name specified in the reply.
+   :param real_name: The real name specified in the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4682,14 +4682,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :got_oper: True if the *oper* command was executed successfully
+   :param got_oper: True if the *oper* command was executed successfully
              (*youreport*) and false otherwise (*nooperhost*).
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
@@ -4709,18 +4709,18 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :msg: The message coming with the reply.
+   :param msg: The message coming with the reply.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -4739,17 +4739,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :channel: The channel name specified in the reply.
+   :param channel: The channel name specified in the reply.
    
 
-   :topic: The topic specified in the reply.
+   :param topic: The topic specified in the reply.
    
    .. zeek:see:: irc_channel_info  irc_dcc_message irc_error_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -4769,17 +4769,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :mask: The mask specified in the message.
+   :param mask: The mask specified in the message.
    
 
-   :oper: True if the operator flag was set.
+   :param oper: True if the operator flag was set.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4799,17 +4799,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :server: TODO.
+   :param server: TODO.
    
 
-   :users: TODO.
+   :param users: TODO.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4829,17 +4829,17 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :user: The user specified in the message.
+   :param user: The user specified in the message.
    
 
-   :password: The password specified in the message.
+   :param password: The password specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4859,24 +4859,24 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :chans: The channels specified in the message.
+   :param chans: The channels specified in the message.
    
 
-   :users: The users specified in the message.
+   :param users: The users specified in the message.
    
 
-   :comment: The comment specified in the message.
+   :param comment: The comment specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4896,18 +4896,18 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :message: The textual description specified in the message.
+   :param message: The textual description specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -4927,21 +4927,21 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :nickname: The nickname specified in the message.
+   :param nickname: The nickname specified in the message.
    
 
-   :channel: The channel specified in the message.
+   :param channel: The channel specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick  irc_join_message irc_kick_message
@@ -4961,18 +4961,18 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :params: The parameters coming with the message.
+   :param params: The parameters coming with the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -4992,21 +4992,21 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :server: The server specified in the message.
+   :param server: The server specified in the message.
    
 
-   :message: The textual description specified in the message.
+   :param message: The textual description specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -5029,33 +5029,33 @@ Events
    information about the DCC.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :prefix: The optional prefix coming with the command. IRC uses the prefix to
+   :param prefix: The optional prefix coming with the command. IRC uses the prefix to
            indicate the true origin of a message.
    
 
-   :target: The target specified in the message.
+   :param target: The target specified in the message.
    
 
-   :dcc_type: The DCC type specified in the message.
+   :param dcc_type: The DCC type specified in the message.
    
 
-   :argument:  The argument specified in the message.
+   :param argument:  The argument specified in the message.
    
 
-   :address: The address specified in the message.
+   :param address: The address specified in the message.
    
 
-   :dest_port: The destination port specified in the message.
+   :param dest_port: The destination port specified in the message.
    
 
-   :size: The size specified in the message.
+   :param size: The size specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic  irc_error_message irc_global_users
       irc_invalid_nick irc_invite_message irc_join_message irc_kick_message
@@ -5078,10 +5078,10 @@ Events
    information about the DCC.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :bytes_received: The number of bytes received as reported by the recipient.
+   :param bytes_received: The number of bytes received as reported by the recipient.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -5101,23 +5101,23 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :user: The user specified in the message.
+   :param user: The user specified in the message.
    
 
-   :host: The host name specified in the message.
+   :param host: The host name specified in the message.
    
 
-   :server: The server name specified in the message.
+   :param server: The server name specified in the message.
    
 
-   :real_name: The real name specified in the message.
+   :param real_name: The real name specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -5137,14 +5137,14 @@ Events
    information about the IRC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :password: The password specified in the message.
+   :param password: The password specified in the message.
    
    .. zeek:see:: irc_channel_info irc_channel_topic irc_dcc_message irc_error_message
       irc_global_users irc_invalid_nick irc_invite_message irc_join_message
@@ -5162,7 +5162,7 @@ Events
    analyzer for related SSL events, which will now be generated.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 .. _plugin-zeek-krb:
 
@@ -5478,10 +5478,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC request message data structure.
+   :param msg: A Kerberos KDC request message data structure.
    
    .. zeek:see:: krb_as_response krb_tgs_request krb_tgs_response krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -5500,10 +5500,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC reply message data structure.
+   :param msg: A Kerberos KDC reply message data structure.
    
    .. zeek:see:: krb_as_request krb_tgs_request krb_tgs_response krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -5523,10 +5523,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC request message data structure.
+   :param msg: A Kerberos KDC request message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_response krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -5545,10 +5545,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC reply message data structure.
+   :param msg: A Kerberos KDC reply message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -5567,13 +5567,13 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :ticket: The Kerberos ticket being used for authentication.
+   :param ticket: The Kerberos ticket being used for authentication.
    
 
-   :opts: A Kerberos AP options data structure.
+   :param opts: A Kerberos AP options data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -5593,7 +5593,7 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_priv krb_safe krb_cred krb_error
@@ -5612,10 +5612,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :is_orig: Whether the originator of the connection sent this message.
+   :param is_orig: Whether the originator of the connection sent this message.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_safe krb_cred krb_error
@@ -5632,13 +5632,13 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :is_orig: Whether the originator of the connection sent this message.
+   :param is_orig: Whether the originator of the connection sent this message.
    
 
-   :msg: A Kerberos SAFE message data structure.
+   :param msg: A Kerberos SAFE message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_priv krb_cred krb_error
@@ -5655,13 +5655,13 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :is_orig: Whether the originator of the connection sent this message.
+   :param is_orig: Whether the originator of the connection sent this message.
    
 
-   :tickets: Tickets obtained from the KDC that are being forwarded.
+   :param tickets: Tickets obtained from the KDC that are being forwarded.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_priv krb_safe krb_error
@@ -5677,10 +5677,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos error message data structure.
+   :param msg: A Kerberos error message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_priv krb_safe krb_cred
@@ -5722,21 +5722,21 @@ Events
    See :rfc:`1258` for more information about the Rlogin/Rsh protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :client_user: The client-side user name as sent in the initial protocol
+   :param client_user: The client-side user name as sent in the initial protocol
          handshake.
    
 
-   :server_user: The server-side user name as sent in the initial protocol
+   :param server_user: The server-side user name as sent in the initial protocol
          handshake.
    
 
-   :line: The command line sent in the request.
+   :param line: The command line sent in the request.
    
 
-   :new_session: True if this is the first command of the Rsh session.
+   :param new_session: True if this is the first command of the Rsh session.
    
    .. zeek:see:: rsh_reply login_confused login_confused_text login_display
       login_failure login_input_line login_output_line login_prompt login_success
@@ -5760,18 +5760,18 @@ Events
    See :rfc:`1258` for more information about the Rlogin/Rsh protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :client_user: The client-side user name as sent in the initial protocol
+   :param client_user: The client-side user name as sent in the initial protocol
          handshake.
    
 
-   :server_user: The server-side user name as sent in the initial protocol
+   :param server_user: The server-side user name as sent in the initial protocol
          handshake.
    
 
-   :line: The command line sent in the request.
+   :param line: The command line sent in the request.
    
    .. zeek:see:: rsh_request login_confused login_confused_text login_display
       login_failure login_input_line login_output_line login_prompt login_success
@@ -5796,21 +5796,21 @@ Events
    raised if a login attempt appears to have been unsuccessful.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :user: The user name tried.
+   :param user: The user name tried.
    
 
-   :client_user: For Telnet connections, this is an empty string, but for Rlogin
+   :param client_user: For Telnet connections, this is an empty string, but for Rlogin
          connections, it is the client name passed in the initial authentication
          information (to check against .rhosts).
    
 
-   :password:  The password tried.
+   :param password:  The password tried.
    
 
-   :line:  The line of text that led the analyzer to conclude that the
+   :param line:  The line of text that led the analyzer to conclude that the
           authentication had failed.
    
    .. zeek:see:: login_confused login_confused_text login_display login_input_line
@@ -5840,21 +5840,21 @@ Events
    raised if a login attempt appears to have been successful.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :user: The user name used.
+   :param user: The user name used.
    
 
-   :client_user: For Telnet connections, this is an empty string, but for Rlogin
+   :param client_user: For Telnet connections, this is an empty string, but for Rlogin
          connections, it is the client name passed in the initial authentication
          information (to check against .rhosts).
    
 
-   :password: The password used.
+   :param password: The password used.
    
 
-   :line:  The line of text that led the analyzer to conclude that the
+   :param line:  The line of text that led the analyzer to conclude that the
           authentication had succeeded.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
@@ -5882,10 +5882,10 @@ Events
    control characters (such as in-band Telnet options) removed.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :line: The input line.
+   :param line: The input line.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_output_line login_prompt login_success login_terminal    rsh_request
@@ -5905,10 +5905,10 @@ Events
    control characters (such as in-band Telnet options) removed.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :line: The output line.
+   :param line: The output line.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_input_line  login_prompt login_success login_terminal rsh_reply
@@ -5930,16 +5930,16 @@ Events
    the authentication dialog, it raises this event.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :msg: Gives the particular problem the heuristics detected (for example,
+   :param msg: Gives the particular problem the heuristics detected (for example,
         ``multiple_login_prompts`` means that the engine saw several login
         prompts in a row, without the type-ahead from the client side presumed
         necessary to cause them)
    
 
-   :line: The line of text that caused the heuristics to conclude they were
+   :param line: The line of text that caused the heuristics to conclude they were
          confused.
    
    .. zeek:see::  login_confused_text login_display login_failure login_input_line login_output_line
@@ -5964,10 +5964,10 @@ Events
    connection.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :line: The line the user typed.
+   :param line: The line the user typed.
    
    .. zeek:see:: login_confused  login_display login_failure login_input_line
       login_output_line login_prompt login_success login_terminal direct_login_prompts
@@ -5989,10 +5989,10 @@ Events
    information is extracted out of environment variables sent as Telnet options.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :terminal: The TERM value transmitted.
+   :param terminal: The TERM value transmitted.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_input_line login_output_line login_prompt login_success
@@ -6012,10 +6012,10 @@ Events
    information is extracted out of environment variables sent as Telnet options.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :display: The DISPLAY transmitted.
+   :param display: The DISPLAY transmitted.
    
    .. zeek:see:: login_confused login_confused_text  login_failure login_input_line
       login_output_line login_prompt login_success login_terminal
@@ -6040,10 +6040,10 @@ Events
    about the Telnet protocol.
    
 
-   :name: The authenticated name.
+   :param name: The authenticated name.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see::  authentication_rejected authentication_skipped login_success
    
@@ -6071,10 +6071,10 @@ Events
    about the Telnet protocol.
    
 
-   :name: The attempted authentication name.
+   :param name: The attempted authentication name.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: authentication_accepted authentication_skipped login_failure
    
@@ -6100,7 +6100,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: authentication_accepted authentication_rejected direct_login_prompts
       get_login_state login_failure_msgs login_non_failure_msgs login_prompts
@@ -6130,10 +6130,10 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :prompt: The TTYPROMPT transmitted.
+   :param prompt: The TTYPROMPT transmitted.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_input_line login_output_line  login_success login_terminal
@@ -6157,7 +6157,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: authentication_accepted authentication_rejected authentication_skipped
       login_confused login_confused_text login_display login_failure login_input_line
@@ -6180,7 +6180,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: bad_option bad_option_termination  authentication_accepted
       authentication_rejected authentication_skipped login_confused
@@ -6198,7 +6198,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: inconsistent_option bad_option_termination authentication_accepted
       authentication_rejected authentication_skipped login_confused
@@ -6222,7 +6222,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: inconsistent_option bad_option authentication_accepted
       authentication_rejected authentication_skipped login_confused
@@ -6246,7 +6246,7 @@ Functions
    Returns the state of the given login (Telnet or Rlogin) connection.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: False if the connection is not active or is not tagged as a
@@ -6273,10 +6273,10 @@ Functions
    Sets the login state of a connection with a login analyzer.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
-   :new_state: The new state of the login analyzer. See
+   :param new_state: The new state of the login analyzer. See
               :zeek:id:`get_login_state` for possible values.
    
 
@@ -6313,7 +6313,7 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: mime_all_data mime_all_headers  mime_content_hash mime_end_entity
       mime_entity_data mime_event mime_one_header mime_segment_data smtp_data
@@ -6337,7 +6337,7 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_entity_data mime_event mime_one_header mime_segment_data smtp_data
@@ -6360,10 +6360,10 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :h: The parsed MIME header.
+   :param h: The parsed MIME header.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data mime_event  mime_segment_data
@@ -6386,10 +6386,10 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hlist: A *table* containing all headers extracted from the current entity.
+   :param hlist: A *table* containing all headers extracted from the current entity.
           The table is indexed by the position of the header (1 for the first,
           2 for the second, etc.).
    
@@ -6420,13 +6420,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: The raw data of one segment of the current entity.
+   :param data: The raw data of one segment of the current entity.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data mime_event mime_one_header http_entity_data
@@ -6453,13 +6453,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: The raw data of the complete entity.
+   :param data: The raw data of the complete entity.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity  mime_event mime_one_header mime_segment_data
@@ -6483,13 +6483,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :length: The length of *data*.
+   :param length: The length of *data*.
    
 
-   :data: The raw data of all MIME entities concatenated.
+   :param data: The raw data of all MIME entities concatenated.
    
    .. zeek:see::  mime_all_headers mime_begin_entity mime_content_hash mime_end_entity
       mime_entity_data mime_event mime_one_header mime_segment_data
@@ -6509,14 +6509,14 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :event_type: A string describing the general category of the problem found
+   :param event_type: A string describing the general category of the problem found
       (e.g., ``illegal format``).
    
 
-   :detail: Further more detailed description of the error.
+   :param detail: Further more detailed description of the error.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data  mime_one_header mime_segment_data http_event
@@ -6538,13 +6538,13 @@ Events
    about MIME.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :content_len: The length of the entity being hashed.
+   :param content_len: The length of the entity being hashed.
    
 
-   :hash_value: The MD5 hash.
+   :param hash_value: The MD5 hash.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_end_entity
       mime_entity_data mime_event mime_one_header mime_segment_data
@@ -6576,13 +6576,13 @@ Events
    is further supported or not.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
 
 .. zeek:id:: modbus_exception
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 22 22
@@ -6592,13 +6592,13 @@ Events
    Generated for any Modbus exception message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :code: The exception code.
+   :param code: The exception code.
 
 .. zeek:id:: modbus_read_coils_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 34 34
@@ -6608,16 +6608,16 @@ Events
    Generated for a Modbus read coils request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil to be read.
+   :param start_address: The memory address of the first coil to be read.
    
 
-   :quantity: The number of coils to be read.
+   :param quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_coils_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 44 44
@@ -6627,13 +6627,13 @@ Events
    Generated for a Modbus read coils response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :coils: The coil values returned from the device.
+   :param coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_discrete_inputs_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 56 56
@@ -6643,16 +6643,16 @@ Events
    Generated for a Modbus read discrete inputs request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil to be read.
+   :param start_address: The memory address of the first coil to be read.
    
 
-   :quantity: The number of coils to be read.
+   :param quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_discrete_inputs_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 66 66
@@ -6662,13 +6662,13 @@ Events
    Generated for a Modbus read discrete inputs response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :coils: The coil values returned from the device.
+   :param coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_holding_registers_request
    :source-code: policy/protocols/modbus/track-memmap.zeek 62 65
@@ -6678,16 +6678,16 @@ Events
    Generated for a Modbus read holding registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register to be read.
+   :param start_address: The memory address of the first register to be read.
    
 
-   :quantity: The number of registers to be read.
+   :param quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_holding_registers_response
    :source-code: policy/protocols/modbus/track-memmap.zeek 67 102
@@ -6697,13 +6697,13 @@ Events
    Generated for a Modbus read holding registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :registers: The register values returned from the device.
+   :param registers: The register values returned from the device.
 
 .. zeek:id:: modbus_read_input_registers_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 100 100
@@ -6713,16 +6713,16 @@ Events
    Generated for a Modbus read input registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register to be read.
+   :param start_address: The memory address of the first register to be read.
    
 
-   :quantity: The number of registers to be read.
+   :param quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_input_registers_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 110 110
@@ -6732,13 +6732,13 @@ Events
    Generated for a Modbus read input registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :registers: The register values returned from the device.
+   :param registers: The register values returned from the device.
 
 .. zeek:id:: modbus_write_single_coil_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 122 122
@@ -6748,16 +6748,16 @@ Events
    Generated for a Modbus write single coil request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the coil to be written.
+   :param address: The memory address of the coil to be written.
    
 
-   :value: The value to be written to the coil.
+   :param value: The value to be written to the coil.
 
 .. zeek:id:: modbus_write_single_coil_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 134 134
@@ -6767,16 +6767,16 @@ Events
    Generated for a Modbus write single coil response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the coil that was written.
+   :param address: The memory address of the coil that was written.
    
 
-   :value: The value that was written to the coil.
+   :param value: The value that was written to the coil.
 
 .. zeek:id:: modbus_write_single_register_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 146 146
@@ -6786,16 +6786,16 @@ Events
    Generated for a Modbus write single register request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register to be written.
+   :param address: The memory address of the register to be written.
    
 
-   :value: The value to be written to the register.
+   :param value: The value to be written to the register.
 
 .. zeek:id:: modbus_write_single_register_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 158 158
@@ -6805,16 +6805,16 @@ Events
    Generated for a Modbus write single register response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register that was written.
+   :param address: The memory address of the register that was written.
    
 
-   :value: The value that was written to the register.
+   :param value: The value that was written to the register.
 
 .. zeek:id:: modbus_write_multiple_coils_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 170 170
@@ -6824,16 +6824,16 @@ Events
    Generated for a Modbus write multiple coils request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil to be written.
+   :param start_address: The memory address of the first coil to be written.
    
 
-   :coils: The values to be written to the coils.
+   :param coils: The values to be written to the coils.
 
 .. zeek:id:: modbus_write_multiple_coils_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 182 182
@@ -6843,16 +6843,16 @@ Events
    Generated for a Modbus write multiple coils response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil that was written.
+   :param start_address: The memory address of the first coil that was written.
    
 
-   :quantity: The quantity of coils that were written.
+   :param quantity: The quantity of coils that were written.
 
 .. zeek:id:: modbus_write_multiple_registers_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 194 194
@@ -6862,16 +6862,16 @@ Events
    Generated for a Modbus write multiple registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register to be written.
+   :param start_address: The memory address of the first register to be written.
    
 
-   :registers: The values to be written to the registers.
+   :param registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_write_multiple_registers_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 206 206
@@ -6881,16 +6881,16 @@ Events
    Generated for a Modbus write multiple registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register that was written.
+   :param start_address: The memory address of the first register that was written.
    
 
-   :quantity: The quantity of registers that were written.
+   :param quantity: The quantity of registers that were written.
 
 .. zeek:id:: modbus_read_file_record_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 217 217
@@ -6900,10 +6900,10 @@ Events
    Generated for a Modbus read file record request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -6916,10 +6916,10 @@ Events
    Generated for a Modbus read file record response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -6932,10 +6932,10 @@ Events
    Generated for a Modbus write file record request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -6948,10 +6948,10 @@ Events
    Generated for a Modbus write file record response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -6964,19 +6964,19 @@ Events
    Generated for a Modbus mask write register request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register where the masks should be applied.
+   :param address: The memory address of the register where the masks should be applied.
    
 
-   :and_mask: The value of the logical AND mask to apply to the register.
+   :param and_mask: The value of the logical AND mask to apply to the register.
    
 
-   :or_mask: The value of the logical OR mask to apply to the register.
+   :param or_mask: The value of the logical OR mask to apply to the register.
 
 .. zeek:id:: modbus_mask_write_register_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 278 278
@@ -6986,19 +6986,19 @@ Events
    Generated for a Modbus mask write register request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register where the masks were applied.
+   :param address: The memory address of the register where the masks were applied.
    
 
-   :and_mask: The value of the logical AND mask applied register.
+   :param and_mask: The value of the logical AND mask applied register.
    
 
-   :or_mask: The value of the logical OR mask applied to the register.
+   :param or_mask: The value of the logical OR mask applied to the register.
 
 .. zeek:id:: modbus_read_write_multiple_registers_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 294 294
@@ -7008,22 +7008,22 @@ Events
    Generated for a Modbus read/write multiple registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :read_start_address: The memory address of the first register to be read.
+   :param read_start_address: The memory address of the first register to be read.
    
 
-   :read_quantity: The number of registers to read.
+   :param read_quantity: The number of registers to read.
    
 
-   :write_start_address: The memory address of the first register to be written.
+   :param write_start_address: The memory address of the first register to be written.
    
 
-   :write_registers: The values to be written to the registers.
+   :param write_registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_read_write_multiple_registers_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 305 305
@@ -7033,13 +7033,13 @@ Events
    Generated for a Modbus read/write multiple registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :written_registers: The register values read from the registers specified in
+   :param written_registers: The register values read from the registers specified in
                       the request.
 
 .. zeek:id:: modbus_read_fifo_queue_request
@@ -7050,13 +7050,13 @@ Events
    Generated for a Modbus read FIFO queue request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The address of the FIFO queue to read.
+   :param start_address: The address of the FIFO queue to read.
 
 .. zeek:id:: modbus_read_fifo_queue_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 325 325
@@ -7066,13 +7066,13 @@ Events
    Generated for a Modbus read FIFO queue response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :fifos: The register values read from the FIFO queue on the device.
+   :param fifos: The register values read from the FIFO queue on the device.
 
 .. _plugin-zeek-mqtt:
 
@@ -7185,10 +7185,10 @@ Events
    Generated for MQTT "client requests a connection" messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg: MQTT connect message fields.
+   :param msg: MQTT connect message fields.
 
 .. zeek:id:: mqtt_connack
    :source-code: base/protocols/mqtt/main.zeek 190 197
@@ -7198,10 +7198,10 @@ Events
    Generated for MQTT acknowledge connection messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg: MQTT connect ack message fields.
+   :param msg: MQTT connect ack message fields.
 
 .. zeek:id:: mqtt_publish
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 27 27
@@ -7211,13 +7211,13 @@ Events
    Generated for MQTT publish messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg: The MQTT publish message record.
+   :param msg: The MQTT publish message record.
 
 .. zeek:id:: mqtt_puback
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 37 37
@@ -7227,13 +7227,13 @@ Events
    Generated for MQTT publish acknowledgement messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubrec
    :source-code: base/protocols/mqtt/main.zeek 257 266
@@ -7243,13 +7243,13 @@ Events
    Generated for MQTT publish received messages (QoS 2 publish received, part 1)
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubrel
    :source-code: base/protocols/mqtt/main.zeek 268 277
@@ -7259,13 +7259,13 @@ Events
    Generated for MQTT publish release messages (QoS 2 publish received, part 2)
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubcomp
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 67 67
@@ -7275,13 +7275,13 @@ Events
    Generated for MQTT publish complete messages (QoS 2 publish received, part 3)
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_subscribe
    :source-code: base/protocols/mqtt/main.zeek 306 318
@@ -7291,19 +7291,19 @@ Events
    Generated for MQTT subscribe messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
    
 
-   :topics: The topics being subscribed to
+   :param topics: The topics being subscribed to
    
 
-   :requested_qos: The desired QoS option associated with each topic.
+   :param requested_qos: The desired QoS option associated with each topic.
 
 .. zeek:id:: mqtt_suback
    :source-code: base/protocols/mqtt/main.zeek 320 333
@@ -7313,13 +7313,13 @@ Events
    Generated for MQTT subscribe messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_unsubscribe
    :source-code: base/protocols/mqtt/main.zeek 335 346
@@ -7329,13 +7329,13 @@ Events
    Generated for MQTT unsubscribe messages sent by the client
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
    
 
-   :topics: The topics being unsubscribed from
+   :param topics: The topics being unsubscribed from
 
 .. zeek:id:: mqtt_unsuback
    :source-code: base/protocols/mqtt/main.zeek 348 360
@@ -7345,10 +7345,10 @@ Events
    Generated for MQTT unsubscribe acknowledgements sent by the server
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pingreq
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 115 115
@@ -7358,7 +7358,7 @@ Events
    Generated for MQTT ping requests sent by the client.
    
 
-   :c: The connection
+   :param c: The connection
 
 .. zeek:id:: mqtt_pingresp
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 121 121
@@ -7368,7 +7368,7 @@ Events
    Generated for MQTT ping responses sent by the server.
    
 
-   :c: The connection
+   :param c: The connection
 
 .. zeek:id:: mqtt_disconnect
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 127 127
@@ -7378,7 +7378,7 @@ Events
    Generated for MQTT disconnect messages sent by the client when it is disconnecting cleanly.
    
 
-   :c: The connection
+   :param c: The connection
 
 .. _plugin-zeek-mysql:
 
@@ -7406,13 +7406,13 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :command: The numerical code of the command issued.
+   :param command: The numerical code of the command issued.
    
 
-   :arg: The argument for the command (empty string if not provided).
+   :param arg: The argument for the command (empty string if not provided).
    
    .. zeek:see:: mysql_error mysql_ok mysql_server_version mysql_handshake
 
@@ -7427,13 +7427,13 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :code: The error code.
+   :param code: The error code.
    
 
-   :msg: Any extra details about the error (empty string if not provided).
+   :param msg: Any extra details about the error (empty string if not provided).
    
    .. zeek:see:: mysql_command_request mysql_ok mysql_server_version mysql_handshake
 
@@ -7448,10 +7448,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :affected_rows: The number of rows that were affected.
+   :param affected_rows: The number of rows that were affected.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
@@ -7466,10 +7466,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_intermediate: True if this is an EOF packet between the column definition and the rows, false if a final EOF.
+   :param is_intermediate: True if this is an EOF packet between the column definition and the rows, false if a final EOF.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
@@ -7484,10 +7484,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :row: The result row data.
+   :param row: The result row data.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake mysql_ok
 
@@ -7502,10 +7502,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :ver: The server version string.
+   :param ver: The server version string.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_handshake
 
@@ -7521,10 +7521,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :username: The username supplied by the client
+   :param username: The username supplied by the client
    
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_server_version
 
@@ -7568,16 +7568,16 @@ Events
    more information about the NCP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :frame_type: The frame type, as specified by the protocol.
+   :param frame_type: The frame type, as specified by the protocol.
    
 
-   :length: The length of the request body, excluding the frame header.
+   :param length: The length of the request body, excluding the frame header.
    
 
-   :func: The requested function, as specified by the protocol.
+   :param func: The requested function, as specified by the protocol.
    
    .. zeek:see:: ncp_reply
    
@@ -7597,22 +7597,22 @@ Events
    more information about the NCP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :frame_type: The frame type, as specified by the protocol.
+   :param frame_type: The frame type, as specified by the protocol.
    
 
-   :length: The length of the request body, excluding the frame header.
+   :param length: The length of the request body, excluding the frame header.
    
 
-   :req_frame: The frame type from the corresponding request.
+   :param req_frame: The frame type from the corresponding request.
    
 
-   :req_func: The function code from the corresponding request.
+   :param req_func: The function code from the corresponding request.
    
 
-   :completion_code: The reply's completion code, as specified by the protocol.
+   :param completion_code: The reply's completion code, as specified by the protocol.
    
    .. zeek:see:: ncp_request
    
@@ -7652,18 +7652,18 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :is_orig:  True if the message was sent by the originator of the connection.
+   :param is_orig:  True if the message was sent by the originator of the connection.
    
 
-   :msg_type: The general type of message, as defined in Section 4.3.1 of
+   :param msg_type: The general type of message, as defined in Section 4.3.1 of
              :rfc:`1002`.
    
 
-   :data_len: The length of the message's payload.
+   :param data_len: The length of the message's payload.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
       netbios_session_raw_message netbios_session_rejected netbios_session_request
@@ -7692,11 +7692,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
@@ -7726,11 +7726,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see::  netbios_session_keepalive netbios_session_message
@@ -7760,11 +7760,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
@@ -7796,14 +7796,14 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :is_orig: True if the message was sent by the originator of the connection.
+   :param is_orig: True if the message was sent by the originator of the connection.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header (i.e., the ``user_data``).
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
@@ -7836,11 +7836,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_keepalive
@@ -7872,11 +7872,11 @@ Events
    the packet format for NetBIOS over TCP/IP, which Zeek parses.
    
 
-   :c: The connection, which may be TCP or UDP, depending on the type of the
+   :param c: The connection, which may be TCP or UDP, depending on the type of the
       NetBIOS session.
    
 
-   :msg: The raw payload of the message sent, excluding the common NetBIOS
+   :param msg: The raw payload of the message sent, excluding the common NetBIOS
         header.
    
    .. zeek:see:: netbios_session_accepted netbios_session_message
@@ -7903,7 +7903,7 @@ Functions
    Decode a NetBIOS name.  See https://jeffpar.github.io/kbarchive/kb/194/Q194203/.
    
 
-   :name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
+   :param name: The encoded NetBIOS name, e.g., ``"FEEIEFCAEOEFFEECEJEPFDCAEOEBENEF"``.
    
 
    :returns: The decoded NetBIOS name, e.g., ``"THE NETBIOS NAM"``.  An empty
@@ -7922,7 +7922,7 @@ Functions
    See https://en.wikipedia.org/wiki/NetBIOS#NetBIOS_Suffixes.
    
 
-   :name: An encoded NetBIOS name.
+   :param name: An encoded NetBIOS name.
    
 
    :returns: The numeric value of *name* or 256 if it's not a valid encoding.
@@ -8155,10 +8155,10 @@ Events
    Generated for :abbr:`NTLM (NT LAN Manager)` messages of type *negotiate*.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
+   :param negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
    
    .. zeek:see:: ntlm_challenge ntlm_authenticate
 
@@ -8170,10 +8170,10 @@ Events
    Generated for :abbr:`NTLM (NT LAN Manager)` messages of type *challenge*.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
+   :param negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
    
    .. zeek:see:: ntlm_negotiate ntlm_authenticate
 
@@ -8185,10 +8185,10 @@ Events
    Generated for :abbr:`NTLM (NT LAN Manager)` messages of type *authenticate*.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :request: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
+   :param request: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
    
    .. zeek:see:: ntlm_negotiate ntlm_challenge
 
@@ -8439,13 +8439,13 @@ Events
    more information about the NTP protocol.
    
 
-   :c: The connection record describing the corresponding UDP flow.
+   :param c: The connection record describing the corresponding UDP flow.
    
 
-   :is_orig: True if the message was sent by the originator.
+   :param is_orig: True if the message was sent by the originator.
    
 
-   :msg: The parsed NTP message.
+   :param msg: The parsed NTP message.
 
 .. _plugin-zeek-pia:
 
@@ -8487,17 +8487,17 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :command: The command sent.
+   :param command: The command sent.
    
 
-   :arg: The argument to the command.
+   :param arg: The argument to the command.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_reply
       pop3_unexpected
@@ -8518,18 +8518,18 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :cmd: The success indicator sent by the server. This corresponds to the
+   :param cmd: The success indicator sent by the server. This corresponds to the
         first token on the line sent, and should be either ``OK`` or ``ERR``.
    
 
-   :msg: The textual description the server sent along with *cmd*.
+   :param msg: The textual description the server sent along with *cmd*.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_request
       pop3_unexpected
@@ -8555,13 +8555,13 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the data was sent by the originator of the TCP connection.
+   :param is_orig: True if the data was sent by the originator of the TCP connection.
    
 
-   :data: The data sent.
+   :param data: The data sent.
    
    .. zeek:see:: pop3_login_failure pop3_login_success pop3_reply pop3_request
       pop3_unexpected
@@ -8584,16 +8584,16 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the data was sent by the originator of the TCP connection.
+   :param is_orig: True if the data was sent by the originator of the TCP connection.
    
 
-   :msg: A textual description of the situation.
+   :param msg: A textual description of the situation.
    
 
-   :detail: The input that triggered the event.
+   :param detail: The input that triggered the event.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_reply pop3_request
    
@@ -8616,7 +8616,7 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_reply
       pop3_request pop3_unexpected
@@ -8637,17 +8637,17 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always false.
+   :param is_orig: Always false.
    
 
-   :user: The user name used for authentication. The event is only generated if
+   :param user: The user name used for authentication. The event is only generated if
          a non-empty user name was used.
    
 
-   :password: The password used for authentication.
+   :param password: The password used for authentication.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_reply pop3_request
       pop3_unexpected
@@ -8668,17 +8668,17 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always false.
+   :param is_orig: Always false.
    
 
-   :user: The user name attempted for authentication. The event is only
+   :param user: The user name attempted for authentication. The event is only
          generated if a non-empty user name was used.
    
 
-   :password: The password attempted for authentication.
+   :param password: The password attempted for authentication.
    
    .. zeek:see:: pop3_data pop3_login_success pop3_reply pop3_request
       pop3_unexpected
@@ -8747,10 +8747,10 @@ Events
    information about RADIUS.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :result: A record containing fields parsed from a RADIUS packet.
+   :param result: A record containing fields parsed from a RADIUS packet.
    
 
 .. zeek:id:: radius_attribute
@@ -8764,13 +8764,13 @@ Events
    information about RADIUS.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :attr_type: The value of the code field (1 == User-Name, 2 == User-Password, etc.).
+   :param attr_type: The value of the code field (1 == User-Name, 2 == User-Password, etc.).
    
 
-   :value: The data/value bound to the attribute.
+   :param value: The data/value bound to the attribute.
    
 
 .. _plugin-zeek-rdp:
@@ -8979,7 +8979,7 @@ Events
    Generated for RDPEUDP SYN UDP Datagram
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
 
 .. zeek:id:: rdpeudp_synack
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 13 13
@@ -8989,7 +8989,7 @@ Events
    Generated for RDPEUDP SYNACK UDP Datagram
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
 
 .. zeek:id:: rdpeudp_established
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 21 21
@@ -8999,10 +8999,10 @@ Events
    Generated when RDPEUDP connections are established (both sides SYN)
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+   :param version: Whether the connection is RDPEUDP1 or RDPEUDP2
 
 .. zeek:id:: rdpeudp_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 33 33
@@ -9012,16 +9012,16 @@ Events
    Generated when for data messages exchanged after a RDPEUDP connection establishes
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :is_orig: Whether the data was sent by the originator or responder of the connection.
+   :param is_orig: Whether the data was sent by the originator or responder of the connection.
    
 
-   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+   :param version: Whether the connection is RDPEUDP1 or RDPEUDP2
    
 
-   :data: The payload of the packet. This is probably very non-performant.
+   :param data: The payload of the packet. This is probably very non-performant.
 
 .. zeek:id:: rdp_native_encrypted_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 43 43
@@ -9031,13 +9031,13 @@ Events
    Generated for each packet after RDP native encryption begins
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :orig: True if the packet was sent by the originator of the connection.
+   :param orig: True if the packet was sent by the originator of the connection.
    
 
-   :len: The length of the encrypted data.
+   :param len: The length of the encrypted data.
 
 .. zeek:id:: rdp_connect_request
    :source-code: base/protocols/rdp/main.zeek 165 170
@@ -9048,13 +9048,13 @@ Events
    Generated for X.224 client requests.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :cookie: The cookie included in the request.
+   :param cookie: The cookie included in the request.
    
 
-   :flags: The flags set by the client.
+   :param flags: The flags set by the client.
 
 .. zeek:id:: rdp_negotiation_response
    :source-code: base/protocols/rdp/main.zeek 172 177
@@ -9065,13 +9065,13 @@ Events
    Generated for RDP Negotiation Response messages.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :security_protocol: The security protocol selected by the server.
+   :param security_protocol: The security protocol selected by the server.
    
 
-   :flags: The flags set by the server.
+   :param flags: The flags set by the server.
 
 .. zeek:id:: rdp_negotiation_failure
    :source-code: base/protocols/rdp/main.zeek 179 184
@@ -9082,13 +9082,13 @@ Events
    Generated for RDP Negotiation Failure messages.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :failure_code: The failure code sent by the server.
+   :param failure_code: The failure code sent by the server.
    
 
-   :flags: The flags set by the server.
+   :param flags: The flags set by the server.
 
 .. zeek:id:: rdp_client_core_data
    :source-code: base/protocols/rdp/main.zeek 186 212
@@ -9098,10 +9098,10 @@ Events
    Generated for MCS client requests.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :data: The data contained in the client core data structure.
+   :param data: The data contained in the client core data structure.
 
 .. zeek:id:: rdp_client_security_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 95 95
@@ -9111,10 +9111,10 @@ Events
    Generated for client security data packets.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :data: The data contained in the client security data structure.
+   :param data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_client_network_data
    :source-code: base/protocols/rdp/main.zeek 214 228
@@ -9124,10 +9124,10 @@ Events
    Generated for Client Network Data (TS_UD_CS_NET) packets
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :channels: The channels that were requested
+   :param channels: The channels that were requested
 
 .. zeek:id:: rdp_client_cluster_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 111 111
@@ -9137,10 +9137,10 @@ Events
    Generated for client cluster data packets.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :data: The data contained in the client security data structure.
+   :param data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_gcc_server_create_response
    :source-code: base/protocols/rdp/main.zeek 229 234
@@ -9150,10 +9150,10 @@ Events
    Generated for MCS server responses.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :result: The 8-bit integer representing the GCC Conference Create Response result.
+   :param result: The 8-bit integer representing the GCC Conference Create Response result.
 
 .. zeek:id:: rdp_server_security
    :source-code: base/protocols/rdp/main.zeek 236 242
@@ -9163,13 +9163,13 @@ Events
    Generated for MCS server responses.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :encryption_method: The 32-bit integer representing the encryption method used in the connection.
+   :param encryption_method: The 32-bit integer representing the encryption method used in the connection.
    
 
-   :encryption_level: The 32-bit integer representing the encryption level used in the connection.
+   :param encryption_level: The 32-bit integer representing the encryption level used in the connection.
 
 .. zeek:id:: rdp_server_certificate
    :source-code: base/protocols/rdp/main.zeek 244 256
@@ -9181,13 +9181,13 @@ Events
    only be generated a single time.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :cert_type: Indicates the type of certificate.
+   :param cert_type: Indicates the type of certificate.
    
 
-   :permanently_issued: Value will be true is the certificate(s) is permanent on the server.
+   :param permanently_issued: Value will be true is the certificate(s) is permanent on the server.
 
 .. zeek:id:: rdp_begin_encryption
    :source-code: base/protocols/rdp/main.zeek 258 268
@@ -9197,10 +9197,10 @@ Events
    Generated when an RDP session becomes encrypted.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :security_protocol: The security protocol being used for the session.
+   :param security_protocol: The security protocol being used for the session.
 
 .. _plugin-zeek-rfb:
 
@@ -9225,10 +9225,10 @@ Events
    Generated for RFB event authentication mechanism selection
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :authtype: the value of the chosen authentication mechanism
+   :param authtype: the value of the chosen authentication mechanism
 
 .. zeek:id:: rfb_auth_result
    :source-code: base/protocols/rfb/main.zeek 152 155
@@ -9238,10 +9238,10 @@ Events
    Generated for RFB event authentication result message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :result: whether or not authentication was succesful
+   :param result: whether or not authentication was succesful
 
 .. zeek:id:: rfb_share_flag
    :source-code: base/protocols/rfb/main.zeek 157 160
@@ -9251,10 +9251,10 @@ Events
    Generated for RFB event share flag messages
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :flag: whether or not the share flag was set
+   :param flag: whether or not the share flag was set
 
 .. zeek:id:: rfb_client_version
    :source-code: base/protocols/rfb/main.zeek 117 122
@@ -9264,10 +9264,10 @@ Events
    Generated for RFB event client banner message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :version: of the client's rfb library
+   :param version: of the client's rfb library
 
 .. zeek:id:: rfb_server_version
    :source-code: base/protocols/rfb/main.zeek 124 129
@@ -9277,10 +9277,10 @@ Events
    Generated for RFB event server banner message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :version: of the server's rfb library
+   :param version: of the server's rfb library
 
 .. zeek:id:: rfb_server_parameters
    :source-code: base/bif/plugins/Zeek_RFB.events.bif.zeek 53 53
@@ -9290,16 +9290,16 @@ Events
    Generated for RFB event server parameter message
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :name: name of the shared screen
+   :param name: name of the shared screen
    
 
-   :width: width of the shared screen
+   :param width: width of the shared screen
    
 
-   :height: height of the shared screen
+   :param height: height of the shared screen
 
 .. _plugin-zeek-rpc:
 
@@ -9338,10 +9338,10 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
       nfs_proc_not_implemented  nfs_proc_read nfs_proc_readdir nfs_proc_readlink
@@ -9367,16 +9367,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :fh: TODO.
+   :param fh: TODO.
    
 
-   :attrs: The attributes returned in the reply. The values may not be valid if
+   :param attrs: The attributes returned in the reply. The values may not be valid if
          the request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create  nfs_proc_lookup nfs_proc_mkdir
@@ -9403,16 +9403,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
 
-   :rep: The attributes returned in the reply. The values may not be
+   :param rep: The attributes returned in the reply. The values may not be
         valid if the request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create  nfs_proc_lookup nfs_proc_mkdir
@@ -9439,16 +9439,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr  nfs_proc_mkdir
@@ -9475,16 +9475,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9511,16 +9511,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :fh: The file handle passed in the request.
+   :param fh: The file handle passed in the request.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9547,16 +9547,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
 
-   :rep: The attributes returned in the reply. The values may not be
+   :param rep: The attributes returned in the reply. The values may not be
         valid if the request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create  nfs_proc_lookup nfs_proc_mkdir
@@ -9583,16 +9583,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9619,16 +9619,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req: TODO.
+   :param req: TODO.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9656,16 +9656,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req: TODO.
+   :param req: TODO.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see::  nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9692,16 +9692,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req: TODO.
+   :param req: TODO.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup
@@ -9728,16 +9728,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req: TODO.
+   :param req: TODO.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9764,16 +9764,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req: TODO.
+   :param req: TODO.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9800,16 +9800,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req: TODO.
+   :param req: TODO.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9836,16 +9836,16 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req: TODO.
+   :param req: TODO.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
@@ -9871,13 +9871,13 @@ Events
    information about the service.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :proc: The procedure called that Zeek does not implement.
+   :param proc: The procedure called that Zeek does not implement.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
       nfs_proc_null nfs_proc_read nfs_proc_readdir nfs_proc_readlink nfs_proc_remove
@@ -9897,10 +9897,10 @@ Events
    status included.
    
 
-   :n: The connection.
+   :param n: The connection.
    
 
-   :info: Reports the status included in the reply.
+   :param info: Reports the status included in the reply.
    
    .. zeek:see:: nfs_proc_create nfs_proc_getattr nfs_proc_lookup nfs_proc_mkdir
       nfs_proc_not_implemented nfs_proc_null nfs_proc_read nfs_proc_readdir
@@ -9924,7 +9924,7 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
    .. zeek:see:: pm_request_set pm_request_unset pm_request_getport
       pm_request_dump pm_request_callit pm_attempt_null pm_attempt_set
@@ -9948,13 +9948,13 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :m: The argument to the request.
+   :param m: The argument to the request.
    
 
-   :success: True if the request was successful, according to the corresponding
+   :param success: True if the request was successful, according to the corresponding
             reply. If no reply was seen, this will be false once the request
             times out.
    
@@ -9980,13 +9980,13 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :m: The argument to the request.
+   :param m: The argument to the request.
    
 
-   :success: True if the request was successful, according to the corresponding
+   :param success: True if the request was successful, according to the corresponding
             reply. If no reply was seen, this will be false once the request
             times out.
    
@@ -10012,13 +10012,13 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :pr: The argument to the request.
+   :param pr: The argument to the request.
    
 
-   :p: The port returned by the server.
+   :param p: The port returned by the server.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_dump pm_request_callit pm_attempt_null pm_attempt_set
@@ -10042,10 +10042,10 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :m: The mappings returned by the server.
+   :param m: The mappings returned by the server.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_getport pm_request_callit pm_attempt_null
@@ -10070,13 +10070,13 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :call: The argument to the request.
+   :param call: The argument to the request.
    
 
-   :p: The port value returned by the call.
+   :param p: The port value returned by the call.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_getport pm_request_dump pm_attempt_null
@@ -10101,10 +10101,10 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
@@ -10130,14 +10130,14 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
 
-   :m: The argument to the original request.
+   :param m: The argument to the original request.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_getport pm_request_dump pm_request_callit
@@ -10162,14 +10162,14 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
 
-   :m: The argument to the original request.
+   :param m: The argument to the original request.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_getport pm_request_dump pm_request_callit
@@ -10194,14 +10194,14 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
 
-   :pr: The argument to the original request.
+   :param pr: The argument to the original request.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_getport pm_request_dump pm_request_callit
@@ -10225,10 +10225,10 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
@@ -10254,14 +10254,14 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
 
-   :call: The argument to the original request.
+   :param call: The argument to the original request.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_getport pm_request_dump pm_request_callit
@@ -10289,10 +10289,10 @@ Events
    service.
    
 
-   :r: The RPC connection.
+   :param r: The RPC connection.
    
 
-   :bad_p: The invalid port value.
+   :param bad_p: The invalid port value.
    
    .. zeek:see:: pm_request_null pm_request_set pm_request_unset
       pm_request_getport pm_request_dump pm_request_callit
@@ -10320,29 +10320,29 @@ Events
    about the ONC RPC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :prog: The remote program to call.
+   :param prog: The remote program to call.
    
 
-   :ver: The version of the remote program to call.
+   :param ver: The version of the remote program to call.
    
 
-   :proc: The procedure of the remote program to call.
+   :param proc: The procedure of the remote program to call.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
 
-   :start_time: The time when the *call* was seen.
+   :param start_time: The time when the *call* was seen.
    
 
-   :call_len: The size of the *call_body* PDU.
+   :param call_len: The size of the *call_body* PDU.
    
 
-   :reply_len: The size of the *reply_body* PDU.
+   :param reply_len: The size of the *reply_body* PDU.
    
    .. zeek:see:: rpc_call rpc_reply dce_rpc_bind dce_rpc_message dce_rpc_request
       dce_rpc_response rpc_timeout
@@ -10364,22 +10364,22 @@ Events
    about the ONC RPC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :xid: The transaction identifier allowing to match requests with replies.
+   :param xid: The transaction identifier allowing to match requests with replies.
    
 
-   :prog: The remote program to call.
+   :param prog: The remote program to call.
    
 
-   :ver: The version of the remote program to call.
+   :param ver: The version of the remote program to call.
    
 
-   :proc: The procedure of the remote program to call.
+   :param proc: The procedure of the remote program to call.
    
 
-   :call_len: The size of the *call_body* PDU.
+   :param call_len: The size of the *call_body* PDU.
    
    .. zeek:see::  rpc_dialogue rpc_reply dce_rpc_bind dce_rpc_message dce_rpc_request
       dce_rpc_response rpc_timeout
@@ -10401,17 +10401,17 @@ Events
    about the ONC RPC protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :xid: The transaction identifier allowing to match requests with replies.
+   :param xid: The transaction identifier allowing to match requests with replies.
    
 
-   :status: The status of the reply, which should be one of the index values of
+   :param status: The status of the reply, which should be one of the index values of
            :zeek:id:`RPC_status`.
    
 
-   :reply_len: The size of the *reply_body* PDU.
+   :param reply_len: The size of the *reply_body* PDU.
    
    .. zeek:see:: rpc_call rpc_dialogue  dce_rpc_bind dce_rpc_message dce_rpc_request
       dce_rpc_response rpc_timeout
@@ -10433,10 +10433,10 @@ Events
    MOUNT is a service running on top of RPC.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
    .. zeek:see:: mount_proc_mnt mount_proc_umnt
       mount_proc_umnt_all mount_proc_not_implemented
@@ -10457,16 +10457,16 @@ Events
    MOUNT is a service running on top of RPC.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
 
-   :rep: The response returned in the reply. The values may not be valid if the
+   :param rep: The response returned in the reply. The values may not be valid if the
         request was unsuccessful.
    
    .. zeek:see:: mount_proc_mnt mount_proc_umnt
@@ -10488,13 +10488,13 @@ Events
    MOUNT is a service running on top of RPC.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
    .. zeek:see:: mount_proc_mnt mount_proc_umnt
       mount_proc_umnt_all mount_proc_not_implemented
@@ -10515,13 +10515,13 @@ Events
    MOUNT is a service running on top of RPC.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :req:  The arguments passed in the request.
+   :param req:  The arguments passed in the request.
    
    .. zeek:see:: mount_proc_mnt mount_proc_umnt
       mount_proc_umnt_all mount_proc_not_implemented
@@ -10540,13 +10540,13 @@ Events
    analyzer does not implement.
    
 
-   :c: The RPC connection.
+   :param c: The RPC connection.
    
 
-   :info: Reports the status of the dialogue, along with some meta information.
+   :param info: Reports the status of the dialogue, along with some meta information.
    
 
-   :proc: The procedure called that Zeek does not implement.
+   :param proc: The procedure called that Zeek does not implement.
    
    .. zeek:see:: mount_proc_mnt mount_proc_umnt
       mount_proc_umnt_all mount_proc_not_implemented
@@ -10565,10 +10565,10 @@ Events
    status included.
    
 
-   :n: The connection.
+   :param n: The connection.
    
 
-   :info: Reports the status included in the reply.
+   :param info: Reports the status included in the reply.
    
    .. zeek:see:: mount_proc_mnt mount_proc_umnt
       mount_proc_umnt_all mount_proc_not_implemented
@@ -10606,16 +10606,16 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :method: The :abbr:`SIP (Session Initiation Protocol)` method extracted from the request (e.g., ``REGISTER``, ``NOTIFY``).
+   :param method: The :abbr:`SIP (Session Initiation Protocol)` method extracted from the request (e.g., ``REGISTER``, ``NOTIFY``).
    
 
-   :original_URI: The unprocessed URI as specified in the request.
+   :param original_URI: The unprocessed URI as specified in the request.
    
 
-   :version: The version number specified in the request (e.g., ``2.0``).
+   :param version: The version number specified in the request (e.g., ``2.0``).
    
    .. zeek:see:: sip_reply sip_header sip_all_headers sip_begin_entity sip_end_entity
 
@@ -10632,16 +10632,16 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :version: The :abbr:`SIP (Session Initiation Protocol)` version in use.
+   :param version: The :abbr:`SIP (Session Initiation Protocol)` version in use.
    
 
-   :code: The response code.
+   :param code: The response code.
    
 
-   :reason: Textual details for the response code.
+   :param reason: Textual details for the response code.
    
    .. zeek:see:: sip_request sip_header sip_all_headers sip_begin_entity sip_end_entity
 
@@ -10656,16 +10656,16 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the header came from the originator.
+   :param is_orig: Whether the header came from the originator.
    
 
-   :name: Header name.
+   :param name: Header name.
    
 
-   :value: Header value.
+   :param value: Header value.
    
    .. zeek:see:: sip_request sip_reply sip_all_headers sip_begin_entity sip_end_entity
 
@@ -10680,13 +10680,13 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the headers came from the originator.
+   :param is_orig: Whether the headers came from the originator.
    
 
-   :hlist: All the headers, and their values
+   :param hlist: All the headers, and their values
    
    .. zeek:see:: sip_request sip_reply sip_header sip_begin_entity sip_end_entity
 
@@ -10703,10 +10703,10 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the message came from the originator.
+   :param is_orig: Whether the message came from the originator.
    
    .. zeek:see:: sip_request sip_reply sip_header sip_all_headers sip_end_entity
 
@@ -10721,10 +10721,10 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the message came from the originator.
+   :param is_orig: Whether the message came from the originator.
    
    .. zeek:see:: sip_request sip_reply sip_header sip_all_headers sip_begin_entity
 
@@ -11838,13 +11838,13 @@ Events
    For more information, see MS-CIFS:2.2.4.17
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :directory_name: The directory name to check for existence.
+   :param directory_name: The directory name to check for existence.
    
    .. zeek:see:: smb1_message smb1_check_directory_response
 
@@ -11860,10 +11860,10 @@ Events
    For more information, see MS-CIFS:2.2.4.17
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
    .. zeek:see:: smb1_message smb1_check_directory_request
 
@@ -11879,13 +11879,13 @@ Events
    For more information, see MS-CIFS:2.2.4.5
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_id: The file identifier being closed.
+   :param file_id: The file identifier being closed.
    
    .. zeek:see:: smb1_message
 
@@ -11902,13 +11902,13 @@ Events
    For more information, see MS-CIFS:2.2.4.1
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :directory_name: The name of the directory to create.
+   :param directory_name: The name of the directory to create.
    
    .. zeek:see:: smb1_message smb1_create_directory_response smb1_transaction2_request
 
@@ -11925,10 +11925,10 @@ Events
    For more information, see MS-CIFS:2.2.4.1
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
    .. zeek:see:: smb1_message smb1_create_directory_request smb1_transaction2_request
 
@@ -11944,16 +11944,16 @@ Events
    For more information, see MS-CIFS:2.2.4.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :echo_count: The number of times the server should echo the data back.
+   :param echo_count: The number of times the server should echo the data back.
    
 
-   :data: The data for the server to echo.
+   :param data: The data for the server to echo.
    
    .. zeek:see:: smb1_message smb1_echo_response
 
@@ -11968,16 +11968,16 @@ Events
    For more information, see MS-CIFS:2.2.4.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :seq_num: The sequence number of this echo reply.
+   :param seq_num: The sequence number of this echo reply.
    
 
-   :data: The data echoed back from the client.
+   :param data: The data echoed back from the client.
    
    .. zeek:see:: smb1_message smb1_echo_request
 
@@ -11995,10 +11995,10 @@ Events
    For more information, see MS-CIFS:2.2.4.54
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Indicates which host sent the logoff message.
+   :param is_orig: Indicates which host sent the logoff message.
    
    .. zeek:see:: smb1_message
 
@@ -12015,13 +12015,13 @@ Events
    For more information, see MS-CIFS:2.2.4.52
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :dialects: The SMB dialects supported by the client.
+   :param dialects: The SMB dialects supported by the client.
    
    .. zeek:see:: smb1_message smb1_negotiate_response
 
@@ -12037,13 +12037,13 @@ Events
    For more information, see MS-CIFS:2.2.4.52
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :response: A record structure containing more information from the response.
+   :param response: A record structure containing more information from the response.
    
    .. zeek:see:: smb1_message smb1_negotiate_request
 
@@ -12060,13 +12060,13 @@ Events
    For more information, see MS-CIFS:2.2.4.64
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :name: The ``name`` attribute  specified in the message.
+   :param name: The ``name`` attribute  specified in the message.
    
    .. zeek:see:: smb1_message smb1_nt_create_andx_response
 
@@ -12082,19 +12082,19 @@ Events
    For more information, see MS-CIFS:2.2.4.64
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :file_size: Size of the file.
+   :param file_size: Size of the file.
    
 
-   :times: Timestamps associated with the file in question.
+   :param times: Timestamps associated with the file in question.
    
    .. zeek:see:: smb1_message smb1_nt_create_andx_request
 
@@ -12110,10 +12110,10 @@ Events
    For more information, see MS-CIFS:2.2.4.65
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
    .. zeek:see:: smb1_message
 
@@ -12130,13 +12130,13 @@ Events
    For more information, see MS-CIFS:2.2.4.9
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :filename: The filename that the client is querying.
+   :param filename: The filename that the client is querying.
    
    .. zeek:see:: smb1_message smb1_transaction2_request
 
@@ -12153,19 +12153,19 @@ Events
    For more information, see MS-CIFS:2.2.4.42
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_id: The file identifier being written to.
+   :param file_id: The file identifier being written to.
    
 
-   :offset: The byte offset the requested read begins at.
+   :param offset: The byte offset the requested read begins at.
    
 
-   :length: The number of bytes being requested.
+   :param length: The number of bytes being requested.
    
    .. zeek:see:: smb1_message smb1_read_andx_response
 
@@ -12180,13 +12180,13 @@ Events
    For more information, see MS-CIFS:2.2.4.42
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :data_len: The length of data from the requested file.
+   :param data_len: The length of data from the requested file.
    
    .. zeek:see:: smb1_message smb1_read_andx_request
 
@@ -12201,13 +12201,13 @@ Events
    For more information, see MS-CIFS:2.2.4.53
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :request: The parsed request data of the SMB message. See init-bare for more details.
+   :param request: The parsed request data of the SMB message. See init-bare for more details.
    
    .. zeek:see:: smb1_message smb1_session_setup_andx_response
 
@@ -12222,13 +12222,13 @@ Events
    For more information, see MS-CIFS:2.2.4.53
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :response: The parsed response data of the SMB message. See init-bare for more details.
+   :param response: The parsed response data of the SMB message. See init-bare for more details.
    
    .. zeek:see:: smb1_message smb1_session_setup_andx_request
 
@@ -12245,23 +12245,23 @@ Events
    For more information, see MS-CIFS:2.2.4.33.1
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :name: A name string that MAY identify the resource (a specific Mailslot or Named Pipe) 
+   :param name: A name string that MAY identify the resource (a specific Mailslot or Named Pipe) 
          against which the operation is performed.
    
 
-   :sub_cmd: The sub command, some may be parsed and have their own events.
+   :param sub_cmd: The sub command, some may be parsed and have their own events.
    
 
-   :parameters: content of the SMB_Data.Trans_Parameters field
+   :param parameters: content of the SMB_Data.Trans_Parameters field
    
 
-   :data: content of the SMB_Data.Trans_Data field
+   :param data: content of the SMB_Data.Trans_Data field
    
    .. zeek:see:: smb1_message smb1_transaction2_request
 
@@ -12278,16 +12278,16 @@ Events
    For more information, see MS-CIFS:2.2.4.33.2
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :parameters: content of the SMB_Data.Trans_Parameters field
+   :param parameters: content of the SMB_Data.Trans_Parameters field
    
 
-   :data: content of the SMB_Data.Trans_Data field
+   :param data: content of the SMB_Data.Trans_Data field
 
 .. zeek:id:: smb1_transaction_secondary_request
    :source-code: base/bif/plugins/Zeek_SMB.smb1_com_transaction_secondary.bif.zeek 19 19
@@ -12302,16 +12302,16 @@ Events
    For more information, see MS-CIFS:2.2.4.34
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :parameters: the SMB_Data.Trans_Parameters field content
+   :param parameters: the SMB_Data.Trans_Parameters field content
    
 
-   :data: the SMB_Data.Trans_Data field content
+   :param data: the SMB_Data.Trans_Data field content
    
 
 .. zeek:id:: smb1_transaction2_request
@@ -12330,13 +12330,13 @@ Events
    For more information, see MS-CIFS:2.2.4.46
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :sub_cmd: The sub command, some are parsed and have their own events.
+   :param sub_cmd: The sub command, some are parsed and have their own events.
    
    .. zeek:see:: smb1_message smb1_trans2_find_first2_request smb1_trans2_query_path_info_request
       smb1_trans2_get_dfs_referral_request smb1_transaction_request
@@ -12353,13 +12353,13 @@ Events
    For more information, see MS-CIFS:2.2.6.2
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :args: A record data structure with arguments given to the command.
+   :param args: A record data structure with arguments given to the command.
    
    .. zeek:see:: smb1_message smb1_transaction2_request smb1_trans2_query_path_info_request
       smb1_trans2_get_dfs_referral_request
@@ -12376,13 +12376,13 @@ Events
    For more information, see MS-CIFS:2.2.6.6
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_name: File name the request is in reference to. 
+   :param file_name: File name the request is in reference to. 
    
    .. zeek:see:: smb1_message smb1_transaction2_request smb1_trans2_find_first2_request
       smb1_trans2_get_dfs_referral_request
@@ -12399,13 +12399,13 @@ Events
    For more information, see MS-CIFS:2.2.6.16
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_name: File name the request is in reference to.
+   :param file_name: File name the request is in reference to.
    
    .. zeek:see:: smb1_message smb1_transaction2_request smb1_trans2_find_first2_request
       smb1_trans2_query_path_info_request
@@ -12421,20 +12421,20 @@ Events
    For more information, see MS-CIFS:2.2.4.47.1
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)`
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)`
         version 1 message.
    
 
-   :args: arguments of the message (SMB_Parameters.Words)
+   :param args: arguments of the message (SMB_Parameters.Words)
    
 
-   :parameters: content of the SMB_Data.Trans_Parameters field
+   :param parameters: content of the SMB_Data.Trans_Parameters field
    
 
-   :data: content of the SMB_Data.Trans_Data field
+   :param data: content of the SMB_Data.Trans_Data field
 
 .. zeek:id:: smb1_tree_connect_andx_request
    :source-code: base/protocols/smb/smb1-main.zeek 100 106
@@ -12448,16 +12448,16 @@ Events
    For more information, see MS-CIFS:2.2.4.55
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :path: The ``path`` attribute specified in the message.
+   :param path: The ``path`` attribute specified in the message.
    
 
-   :service: The ``service`` attribute specified in the message.
+   :param service: The ``service`` attribute specified in the message.
    
    .. zeek:see:: smb1_message smb1_tree_connect_andx_response
 
@@ -12473,16 +12473,16 @@ Events
    For more information, see MS-CIFS:2.2.4.55
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :service: The ``service`` attribute specified in the message.
+   :param service: The ``service`` attribute specified in the message.
    
 
-   :native_file_system: The file system of the remote server as indicate by the server.
+   :param native_file_system: The file system of the remote server as indicate by the server.
    
    .. zeek:see:: smb1_message smb1_tree_connect_andx_request
 
@@ -12498,13 +12498,13 @@ Events
    For more information, see MS-CIFS:2.2.4.51
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :is_orig: True if the message was from the originator.
+   :param is_orig: True if the message was from the originator.
    
    .. zeek:see:: smb1_message
 
@@ -12521,16 +12521,16 @@ Events
    For more information, see MS-CIFS:2.2.4.43
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :offset: The byte offset into the referenced file data is being written.
+   :param offset: The byte offset into the referenced file data is being written.
    
 
-   :data: The data being written.
+   :param data: The data being written.
    
    .. zeek:see:: smb1_message smb1_write_andx_response
 
@@ -12546,13 +12546,13 @@ Events
    For more information, see MS-CIFS:2.2.4.43
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :written_bytes: The number of bytes the server reported having actually written.
+   :param written_bytes: The number of bytes the server reported having actually written.
    
    .. zeek:see:: smb1_message smb1_write_andx_request
 
@@ -12571,13 +12571,13 @@ Events
    ports 138/139 and :abbr:`SMB (Server Message Block)`-over-TCP on port 445.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :is_orig: True if the message was sent by the originator of the underlying
+   :param is_orig: True if the message was sent by the originator of the underlying
             transport-level connection.
    
    .. zeek:see:: smb2_message
@@ -12590,10 +12590,10 @@ Events
    Generated when there is an :abbr:`SMB (Server Message Block)` version 1 response with no message body.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
    
    .. zeek:see:: smb1_message
 
@@ -12607,13 +12607,13 @@ Events
    including a status that signals an error.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` message.
    
 
-   :is_orig: True if the message was sent by the originator of the underlying
+   :param is_orig: True if the message was sent by the originator of the underlying
             transport-level connection.
    
    .. zeek:see:: smb1_message
@@ -12630,13 +12630,13 @@ Events
    For more information, see MS-SMB2:2.2.15
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_name: The SMB2 GUID of the file being closed.
+   :param file_name: The SMB2 GUID of the file being closed.
    
    .. zeek:see:: smb2_message smb2_close_response
 
@@ -12652,13 +12652,13 @@ Events
    For more information, see MS-SMB2:2.2.16
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: A record of attributes returned from the server from the close.
+   :param response: A record of attributes returned from the server from the close.
    
    .. zeek:see:: smb2_message smb2_close_request
 
@@ -12674,13 +12674,13 @@ Events
    For more information, see MS-SMB2:2.2.13
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :request: A record with more information related to the request.
+   :param request: A record with more information related to the request.
    
    .. zeek:see:: smb2_message smb2_create_response
 
@@ -12696,13 +12696,13 @@ Events
    For more information, see MS-SMB2:2.2.14
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: A record with more information related to the response.
+   :param response: A record with more information related to the response.
    
    .. zeek:see:: smb2_message smb2_create_request
 
@@ -12718,13 +12718,13 @@ Events
    For more information, see MS-SMB2:2.2.3
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :dialects: A vector of the client's supported dialects.
+   :param dialects: A vector of the client's supported dialects.
    
    .. zeek:see:: smb2_message smb2_negotiate_response
 
@@ -12740,13 +12740,13 @@ Events
    For more information, see MS-SMB2:2.2.4
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: The negotiate response data structure.
+   :param response: The negotiate response data structure.
    
    .. zeek:see:: smb2_message smb2_negotiate_request
 
@@ -12762,19 +12762,19 @@ Events
    For more information, see MS-SMB2:2.2.19
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The GUID being used for the file.
+   :param file_id: The GUID being used for the file.
    
 
-   :offset: How far into the file this read should be taking place.
+   :param offset: How far into the file this read should be taking place.
    
 
-   :length: The number of bytes of the file being read.
+   :param length: The number of bytes of the file being read.
    
    .. zeek:see:: smb2_message
 
@@ -12791,13 +12791,13 @@ Events
    For more information, see MS-SMB2:2.2.5
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :request: A record containing more information related to the request.
+   :param request: A record containing more information related to the request.
    
    .. zeek:see:: smb2_message smb2_session_setup_response
 
@@ -12813,13 +12813,13 @@ Events
    For more information, see MS-SMB2:2.2.6
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: A record containing more information related to the response.
+   :param response: A record containing more information related to the response.
    
    .. zeek:see:: smb2_message smb2_session_setup_request
 
@@ -12834,16 +12834,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: A GUID to identify the file.
+   :param file_id: A GUID to identify the file.
    
 
-   :dst_filename: The filename to rename the file into.
+   :param dst_filename: The filename to rename the file into.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -12858,16 +12858,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :delete_pending: A boolean value to indicate that a file should be deleted 
+   :param delete_pending: A boolean value to indicate that a file should be deleted 
                    when it's closed if set to T.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
@@ -12883,19 +12883,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :times: Timestamps associated with the file in question.
+   :param times: Timestamps associated with the file in question.
    
 
-   :attrs: File attributes.
+   :param attrs: File attributes.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -12910,16 +12910,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :alloc_size: desired allocation size.
+   :param alloc_size: desired allocation size.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -12934,16 +12934,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :end_of_file: the absolute new end of file position as a byte offset from the start of the file
+   :param end_of_file: the absolute new end of file position as a byte offset from the start of the file
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -12958,16 +12958,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :mode: specifies how the file will subsequently be accessed.
+   :param mode: specifies how the file will subsequently be accessed.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -12982,19 +12982,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :read_mode: specifies if data must be read as a stream of bytes or messages
+   :param read_mode: specifies if data must be read as a stream of bytes or messages
    
 
-   :completion_mode: specifies if blocking mode must be enabled or not
+   :param completion_mode: specifies if blocking mode must be enabled or not
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -13009,16 +13009,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :current_byte_offset: specifies the offset, in bytes, of the file pointer from the beginning of the file
+   :param current_byte_offset: specifies the offset, in bytes, of the file pointer from the beginning of the file
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -13033,16 +13033,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :file_name: specifies the name of the file to be changed
+   :param file_name: specifies the name of the file to be changed
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -13057,16 +13057,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :valid_data_length: specifies the new valid data length for the file
+   :param valid_data_length: specifies the new valid data length for the file
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -13081,16 +13081,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :FileEAs: a vector of extended file attributes as defined in MS-FSCC:2.4.15
+   :param FileEAs: a vector of extended file attributes as defined in MS-FSCC:2.4.15
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -13105,19 +13105,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :root_directory: contains the file handle for the directory where the link is to be created
+   :param root_directory: contains the file handle for the directory where the link is to be created
    
 
-   :file_name: contains the name to be assigned to the newly created link
+   :param file_name: contains the name to be assigned to the newly created link
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -13132,16 +13132,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :fs_control: contains fs_control info (see MS-FCC 2.5.2)
+   :param fs_control: contains fs_control info (see MS-FCC 2.5.2)
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -13156,19 +13156,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :object_id: contains a 16-bytes GUID that identifies the file system volume (see MS-FCC 2.5.6)
+   :param object_id: contains a 16-bytes GUID that identifies the file system volume (see MS-FCC 2.5.6)
    
 
-   :extended_info: contains extended information on the file system volume
+   :param extended_info: contains extended information on the file system volume
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link
 
@@ -13184,13 +13184,13 @@ Events
    For more information, see MS-SMB2:2.2.9
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :path: Path of the requested tree.
+   :param path: Path of the requested tree.
    
    .. zeek:see:: smb2_message smb2_tree_connect_response
 
@@ -13206,13 +13206,13 @@ Events
    For more information, see MS-SMB2:2.2.10
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: A record with more information related to the response.
+   :param response: A record with more information related to the response.
    
    .. zeek:see:: smb2_message smb2_tree_connect_request
 
@@ -13226,10 +13226,10 @@ Events
    client access to a server resource.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
    .. zeek:see:: smb2_message
 
@@ -13243,10 +13243,10 @@ Events
    client access to a server resource.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
    .. zeek:see:: smb2_message
 
@@ -13262,19 +13262,19 @@ Events
    For more information, see MS-SMB2:2.2.21
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The GUID being used for the file.
+   :param file_id: The GUID being used for the file.
    
 
-   :offset: How far into the file this write should be taking place.
+   :param offset: How far into the file this write should be taking place.
    
 
-   :length: The number of bytes of the file being written.
+   :param length: The number of bytes of the file being written.
    
    .. zeek:see:: smb2_message
 
@@ -13290,13 +13290,13 @@ Events
    For more information, see MS-SMB2:2.2.22
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :length: The number of bytes of the file being written.
+   :param length: The number of bytes of the file being written.
    
    .. zeek:see:: smb2_message
 
@@ -13312,10 +13312,10 @@ Events
    For more information, see MS-SMB2:2.2.41
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed transformed header message, which is starting with \xfdSMB and different from SMB1 and SMB2 headers.
+   :param hdr: The parsed transformed header message, which is starting with \xfdSMB and different from SMB1 and SMB2 headers.
    
    .. zeek:see:: smb2_message
 
@@ -13334,13 +13334,13 @@ Events
    ports 138/139 and :abbr:`SMB (Server Message Block)`-over-TCP on port 445.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :is_orig: True if the message came from the originator side.
+   :param is_orig: True if the message came from the originator side.
    
    .. zeek:see:: smb1_message
 
@@ -13357,10 +13357,10 @@ Events
    parser state has been reset.
    
 
-   :c: The affected connection.
+   :param c: The affected connection.
    
 
-   :state: String describing what kind of state was affected.
+   :param state: String describing what kind of state was affected.
           One of read, ioctl or tree.
 
 .. zeek:id:: smb_pipe_connect_heuristic
@@ -13377,7 +13377,7 @@ Events
    const.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 .. _plugin-zeek-smtp:
 
@@ -13405,10 +13405,10 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the command is the originator of the TCP
+   :param is_orig: True if the sender of the command is the originator of the TCP
          connection. Note that this is not redundant: the SMTP ``TURN`` command
          allows client and server to flip roles on established SMTP sessions,
          and hence a "request" might still come from the TCP-level responder.
@@ -13416,10 +13416,10 @@ Events
          insecure and rarely used.
    
 
-   :command: The request's command, without any arguments.
+   :param command: The request's command, without any arguments.
    
 
-   :arg: The request command's arguments.
+   :param arg: The request command's arguments.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
       mime_end_entity mime_entity_data mime_event mime_one_header mime_segment_data
@@ -13438,10 +13438,10 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the command is the originator of the TCP
+   :param is_orig: True if the sender of the command is the originator of the TCP
          connection. Note that this is not redundant: the SMTP ``TURN`` command
          allows client and server to flip roles on established SMTP sessions,
          and hence a "reply" might still come from the TCP-level originator. In
@@ -13449,16 +13449,16 @@ Events
          insecure and rarely used.
    
 
-   :code: The reply's numerical code.
+   :param code: The reply's numerical code.
    
 
-   :cmd: TODO.
+   :param cmd: TODO.
    
 
-   :msg: The reply's textual description.
+   :param msg: The reply's textual description.
    
 
-   :cont_resp: True if the reply line is tagged as being continued to the next
+   :param cont_resp: True if the reply line is tagged as being continued to the next
          line. If so, further events will be raised and a handler may want to
          reassemble the pieces before processing the response any further.
    
@@ -13482,14 +13482,14 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the data is the originator of the TCP
+   :param is_orig: True if the sender of the data is the originator of the TCP
          connection.
    
 
-   :data: The raw data. Note that the size of each chunk is undefined and
+   :param data: The raw data. Note that the size of each chunk is undefined and
          depends on specifics of the underlying TCP connection.
    
    .. zeek:see:: mime_all_data mime_all_headers mime_begin_entity mime_content_hash
@@ -13514,17 +13514,17 @@ Events
    for more information about the SMTP protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the sender of the unexpected activity is the originator of
+   :param is_orig: True if the sender of the unexpected activity is the originator of
          the TCP connection.
    
 
-   :msg: A descriptive message of what was unexpected.
+   :param msg: A descriptive message of what was unexpected.
    
 
-   :detail: The actual SMTP line triggering the event.
+   :param detail: The actual SMTP line triggering the event.
    
    .. zeek:see:: smtp_data  smtp_request smtp_reply
 
@@ -13538,7 +13538,7 @@ Events
    analyzer for related SSL events, which will now be generated.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
 Functions
@@ -13552,7 +13552,7 @@ Functions
    Skips SMTP data until the next email in a connection.
    
 
-   :c: The SMTP connection.
+   :param c: The SMTP connection.
    
    .. zeek:see:: skip_http_entity_data
 
@@ -13759,17 +13759,17 @@ Events
    An SNMP ``GetRequest-PDU`` message from either :rfc:`1157` or :rfc:`3416`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_get_next_request
    :source-code: base/protocols/snmp/main.zeek 121 125
@@ -13780,17 +13780,17 @@ Events
    :rfc:`3416`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_response
    :source-code: base/protocols/snmp/main.zeek 127 145
@@ -13801,17 +13801,17 @@ Events
    ``Response-PDU`` from :rfc:`3416`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_set_request
    :source-code: base/protocols/snmp/main.zeek 146 150
@@ -13821,17 +13821,17 @@ Events
    An SNMP ``SetRequest-PDU`` message from either :rfc:`1157` or :rfc:`3416`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_trap
    :source-code: base/protocols/snmp/main.zeek 152 155
@@ -13841,17 +13841,17 @@ Events
    An SNMP ``Trap-PDU`` message from :rfc:`1157`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_get_bulk_request
    :source-code: base/protocols/snmp/main.zeek 115 119
@@ -13861,17 +13861,17 @@ Events
    An SNMP ``GetBulkRequest-PDU`` message from :rfc:`3416`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_inform_request
    :source-code: base/protocols/snmp/main.zeek 157 160
@@ -13881,17 +13881,17 @@ Events
    An SNMP ``InformRequest-PDU`` message from :rfc:`3416`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_trapV2
    :source-code: base/protocols/snmp/main.zeek 162 165
@@ -13901,17 +13901,17 @@ Events
    An SNMP ``SNMPv2-Trap-PDU`` message from :rfc:`1157`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_report
    :source-code: base/protocols/snmp/main.zeek 167 170
@@ -13921,17 +13921,17 @@ Events
    An SNMP ``Report-PDU`` message from :rfc:`3416`.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :pdu: An SNMP PDU data structure.
+   :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_unknown_pdu
    :source-code: base/protocols/snmp/main.zeek 172 175
@@ -13941,17 +13941,17 @@ Events
    An SNMP PDU message of unknown type.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :tag: The tag of the unknown SNMP PDU.
+   :param tag: The tag of the unknown SNMP PDU.
 
 .. zeek:id:: snmp_unknown_scoped_pdu
    :source-code: base/protocols/snmp/main.zeek 177 180
@@ -13962,17 +13962,17 @@ Events
    an encrypted PDU was in the datagram).
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
    
 
-   :tag: The tag of the unknown SNMP PDU scope.
+   :param tag: The tag of the unknown SNMP PDU scope.
 
 .. zeek:id:: snmp_encrypted_pdu
    :source-code: base/protocols/snmp/main.zeek 182 185
@@ -13982,13 +13982,13 @@ Events
    An SNMPv3 encrypted PDU message.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :header: SNMP version-dependent data that precedes PDU data in the top-level
+   :param header: SNMP version-dependent data that precedes PDU data in the top-level
            SNMP message structure.
 
 .. zeek:id:: snmp_unknown_header_version
@@ -13999,13 +13999,13 @@ Events
    A datagram with an unknown SNMP version.
    
 
-   :c: The connection over which the SNMP datagram is sent.
+   :param c: The connection over which the SNMP datagram is sent.
    
 
-   :is_orig: The endpoint which sent the SNMP datagram.
+   :param is_orig: The endpoint which sent the SNMP datagram.
    
 
-   :version: The value of the unknown SNMP version.
+   :param version: The value of the unknown SNMP version.
 
 .. _plugin-zeek-socks:
 
@@ -14030,22 +14030,22 @@ Events
    Generated when a SOCKS request is analyzed.
    
 
-   :c: The parent connection of the proxy.
+   :param c: The parent connection of the proxy.
    
 
-   :version: The version of SOCKS this message used.
+   :param version: The version of SOCKS this message used.
    
 
-   :request_type: The type of the request.
+   :param request_type: The type of the request.
    
 
-   :sa: Address that the tunneled traffic should be sent to.
+   :param sa: Address that the tunneled traffic should be sent to.
    
 
-   :p: The destination port for the proxied traffic.
+   :param p: The destination port for the proxied traffic.
    
 
-   :user: Username given for the SOCKS connection.  This is not yet implemented
+   :param user: Username given for the SOCKS connection.  This is not yet implemented
          for SOCKSv5.
 
 .. zeek:id:: socks_reply
@@ -14056,19 +14056,19 @@ Events
    Generated when a SOCKS reply is analyzed.
    
 
-   :c: The parent connection of the proxy.
+   :param c: The parent connection of the proxy.
    
 
-   :version: The version of SOCKS this message used.
+   :param version: The version of SOCKS this message used.
    
 
-   :reply: The status reply from the server.
+   :param reply: The status reply from the server.
    
 
-   :sa: The address that the server sent the traffic to.
+   :param sa: The address that the server sent the traffic to.
    
 
-   :p: The destination port for the proxied traffic.
+   :param p: The destination port for the proxied traffic.
 
 .. zeek:id:: socks_login_userpass_request
    :source-code: base/protocols/socks/main.zeek 104 113
@@ -14078,13 +14078,13 @@ Events
    Generated when a SOCKS client performs username and password based login.
    
 
-   :c: The parent connection of the proxy.
+   :param c: The parent connection of the proxy.
    
 
-   :user: The given username.
+   :param user: The given username.
    
 
-   :password: The given password.
+   :param password: The given password.
 
 .. zeek:id:: socks_login_userpass_reply
    :source-code: base/protocols/socks/main.zeek 115 121
@@ -14094,10 +14094,10 @@ Events
    Generated when a SOCKS server replies to a username/password login attempt.
    
 
-   :c: The parent connection of the proxy.
+   :param c: The parent connection of the proxy.
    
 
-   :code: The response code for the attempted login.
+   :param code: The response code for the attempted login.
 
 .. _plugin-zeek-ssh:
 
@@ -14174,10 +14174,10 @@ Events
    details.
    
 
-   :c: The connection over which the message was sent.
+   :param c: The connection over which the message was sent.
    
 
-   :version: The identification string
+   :param version: The identification string
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14197,10 +14197,10 @@ Events
    details.
    
 
-   :c: The connection over which the message was sent.
+   :param c: The connection over which the message was sent.
    
 
-   :version: The identification string
+   :param version: The identification string
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14221,11 +14221,11 @@ Events
    doubt about the authentication success, this event is *not* raised.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :auth_method_none: This is true if the analyzer detected a
+   :param auth_method_none: This is true if the analyzer detected a
       successful connection before any authentication challenge. The
       :abbr:`SSH (Secure Shell)` protocol provides a mechanism for
       unauthenticated access, which some servers support.
@@ -14260,11 +14260,11 @@ Events
    In almost all connections, it will be raised once unless
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :authenticated: This is true if the analyzer detected a
+   :param authenticated: This is true if the analyzer detected a
       successful connection from the authentication attempt.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -14286,15 +14286,15 @@ Events
    details.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :cookie: The SSH_MSG_KEXINIT cookie - a random value generated by
+   :param cookie: The SSH_MSG_KEXINIT cookie - a random value generated by
       the sender.
    
 
-   :capabilities: The list of algorithms and languages that the sender
+   :param capabilities: The list of algorithms and languages that the sender
       advertises support for, in order of preference.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -14314,11 +14314,11 @@ Events
    appropriate key exchange message is seen for SSH2.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :key: The server's public host key. Note that this is the public key
+   :param key: The server's public host key. Note that this is the public key
       itself, and not just the fingerprint or hash.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -14338,24 +14338,24 @@ Events
    appropriate key exchange message is seen for SSH1.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :p: The exponent for the server's public host key (note this parameter
+   :param p: The exponent for the server's public host key (note this parameter
       is truly the exponent even though named *p* and the *exponent* parameter
       will eventually replace it).
    
 
-   :e: The prime modulus for the server's public host key (note this parameter
+   :param e: The prime modulus for the server's public host key (note this parameter
       is truly the modulus even though named *e* and the *modulus* parameter
       will eventually replace it).
    
 
-   :modulus: The prime modulus of the server's public host key.
+   :param modulus: The prime modulus of the server's public host key.
    
 
-   :exponent: The exponent of the server's public host key.
+   :param exponent: The exponent of the server's public host key.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14375,11 +14375,11 @@ Events
    a fingerprint of the server's host key.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :hash: an MD5 hash fingerprint associated with the server's host key.
+   :param hash: an MD5 hash fingerprint associated with the server's host key.
          For SSH2, this is the hash of the "server public host key" string as
          seen on the wire in the Diffie-Hellman key exchange reply message
          (the string itself, excluding the 4-byte length associated with it),
@@ -14411,15 +14411,15 @@ Events
    event. This carries a performance penalty.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :orig: Whether the packet was sent by the originator of the TCP
+   :param orig: Whether the packet was sent by the originator of the TCP
       connection.
    
 
-   :len: The length of the :abbr:`SSH (Secure Shell)` payload, in
+   :param len: The length of the :abbr:`SSH (Secure Shell)` payload, in
       bytes. Note that this ignores reassembly, as this is unknown.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -14440,13 +14440,13 @@ Events
    :rfc:`4419#section-3`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :p: The DH prime modulus.
+   :param p: The DH prime modulus.
    
 
-   :q: The DH generator.
+   :param q: The DH generator.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14466,16 +14466,16 @@ Events
    see :rfc:`4462#section-2.1`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :major_status: GSS-API major status code.
+   :param major_status: GSS-API major status code.
    
 
-   :minor_status: GSS-API minor status code.
+   :param minor_status: GSS-API minor status code.
    
 
-   :err_msg: Detailed human-readable error message
+   :param err_msg: Detailed human-readable error message
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14497,13 +14497,13 @@ Events
    :rfc:`5656#section-4`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
 
-   :q: The ephemeral public key
+   :param q: The ephemeral public key
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14527,10 +14527,10 @@ Events
    :rfc:`5656#section-4`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14550,10 +14550,10 @@ Events
    message as defined in :rfc:`4419#section-3`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14572,10 +14572,10 @@ Events
    For more information see :rfc:`4462#section-2.1`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14595,10 +14595,10 @@ Events
    For more information see :rfc:`4432#section-4`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -14688,35 +14688,35 @@ Events
    more information about the SSL/TLS protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :version: The protocol version as extracted from the client's message.  The
+   :param version: The protocol version as extracted from the client's message.  The
             values are standardized as part of the SSL/TLS protocol. The
             :zeek:id:`SSL::version_strings` table maps them to descriptive names.
    
 
-   :record_version: TLS version given in the record layer of the message.
+   :param record_version: TLS version given in the record layer of the message.
                    Set to 0 for SSLv2.
    
 
-   :possible_ts: The current time as sent by the client. Note that SSL/TLS does
+   :param possible_ts: The current time as sent by the client. Note that SSL/TLS does
                 not require clocks to be set correctly, so treat with care.
    
 
-   :session_id: The session ID sent by the client (if any).
+   :param session_id: The session ID sent by the client (if any).
    
 
-   :client_random: The random value sent by the client. For version 2 connections,
+   :param client_random: The random value sent by the client. For version 2 connections,
    		  the client challenge is returned.
    
 
-   :ciphers: The list of ciphers the client offered to use. The values are
+   :param ciphers: The list of ciphers the client offered to use. The values are
             standardized as part of the SSL/TLS protocol. The
             :zeek:id:`SSL::cipher_desc` table maps them to descriptive names.
    
 
-   :comp_methods: The list of compression methods that the client offered to use.
+   :param comp_methods: The list of compression methods that the client offered to use.
                  This value is not sent in TLSv1.3 or SSLv2.
    
    .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
@@ -14739,39 +14739,39 @@ Events
    more information about the SSL/TLS protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :version: The protocol version as extracted from the server's message.
+   :param version: The protocol version as extracted from the server's message.
             The values are standardized as part of the SSL/TLS protocol. The
             :zeek:id:`SSL::version_strings` table maps them to descriptive names.
    
 
-   :record_version: TLS version given in the record layer of the message.
+   :param record_version: TLS version given in the record layer of the message.
                    Set to 0 for SSLv2.
    
 
-   :possible_ts: The current time as sent by the server. Note that SSL/TLS does
+   :param possible_ts: The current time as sent by the server. Note that SSL/TLS does
                 not require clocks to be set correctly, so treat with care. This value
                 is meaningless in SSLv2 and TLSv1.3.
    
 
-   :session_id: The session ID as sent back by the server (if any). This value is not
+   :param session_id: The session ID as sent back by the server (if any). This value is not
                sent in TLSv1.3.
    
 
-   :server_random: The random value sent by the server. For version 2 connections,
+   :param server_random: The random value sent by the server. For version 2 connections,
    		  the connection-id is returned. Note - the full 32 bytes are included in
    		  server_random. This means that the 4 bytes present in possible_ts are repeated;
    		  if you do not want this behavior ignore the first 4 bytes.
    
 
-   :cipher: The cipher chosen by the server.  The values are standardized as part
+   :param cipher: The cipher chosen by the server.  The values are standardized as part
            of the SSL/TLS protocol. The :zeek:id:`SSL::cipher_desc` table maps
            them to descriptive names.
    
 
-   :comp_method: The compression method chosen by the client. The values are
+   :param comp_method: The compression method chosen by the client. The values are
                 standardized as part of the SSL/TLS protocol. This value is not
                 sent in TLSv1.3 or SSLv2.
    
@@ -14794,20 +14794,20 @@ Events
    Note that Zeek offers more specialized events for a few extensions.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :code: The numerical code of the extension.  The values are standardized as
+   :param code: The numerical code of the extension.  The values are standardized as
          part of the SSL/TLS protocol. The :zeek:id:`SSL::extensions` table maps
          them to descriptive names.
    
 
-   :val: The raw extension value that was sent in the message.
+   :param val: The raw extension value that was sent in the message.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension_ec_point_formats
@@ -14827,15 +14827,15 @@ Events
    gives the list of elliptic curves supported by the client.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :curves: List of supported elliptic curves.
+   :param curves: List of supported elliptic curves.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -14858,15 +14858,15 @@ Events
    client.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :point_formats: List of supported point formats.
+   :param point_formats: List of supported point formats.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -14890,15 +14890,15 @@ Events
    client.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :signature_algorithms: List of supported signature and hash algorithm pairs.
+   :param signature_algorithms: List of supported signature and hash algorithm pairs.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -14920,15 +14920,15 @@ Events
    named groups supported by the client and chosen by the server.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :curves: List of supported/chosen named groups.
+   :param curves: List of supported/chosen named groups.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -14951,18 +14951,18 @@ Events
    they can either be pre-shared or be based on previous handshakes.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :identities: A list of the identities the client is willing to negotiate with the server.
+   :param identities: A list of the identities the client is willing to negotiate with the server.
    
 
-   :binders: A series of HMAC values; for computation, see the TLS 1.3 RFC.
+   :param binders: A series of HMAC values; for computation, see the TLS 1.3 RFC.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -14981,15 +14981,15 @@ Events
    Generated for the pre-shared key extension as it is sent in the TLS 1.3 server hello.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :selected_identity: The identity the server chose as a 0-based index into the identities
+   :param selected_identity: The identity the server chose as a 0-based index into the identities
                       the client sent.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
@@ -15011,13 +15011,13 @@ Events
    in the ServerKeyExchange message as defined in :rfc:`4492`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :curve: The curve parameters.
+   :param curve: The curve parameters.
    
 
-   :point: The server's ECDH public key.
+   :param point: The server's ECDH public key.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_server_signature
@@ -15033,16 +15033,16 @@ Events
    defined in :rfc:`5246`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :p: The DH prime modulus.
+   :param p: The DH prime modulus.
    
 
-   :q: The DH generator.
+   :param q: The DH generator.
    
 
-   :Ys: The server's DH public key.
+   :param Ys: The server's DH public key.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_server_signature
@@ -15059,10 +15059,10 @@ Events
    the ServerKeyExchange message as defined in :rfc:`4492` and :rfc:`5246`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :signature_and_hashalgorithm: signature and hash algorithm used for the
+   :param signature_and_hashalgorithm: signature and hash algorithm used for the
                                 digitally_signed struct. This field is only present
                                 starting with TLSv1.2 and DTLSv1.2. Earlier versions
                                 used a hardcoded hash algorithm. For protocol versions
@@ -15070,7 +15070,7 @@ Events
                                 value of 256.
    
 
-   :signature: Signature part of the digitally_signed struct. The private key
+   :param signature: Signature part of the digitally_signed struct. The private key
               corresponding to the certified public key in the server's certificate
               message is used for signing.
    
@@ -15088,10 +15088,10 @@ Events
    message as defined in :rfc:`4492`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :point: The client's ECDH public key.
+   :param point: The client's ECDH public key.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_server_signature
@@ -15107,10 +15107,10 @@ Events
    defined in :rfc:`5246`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :Yc: The client's DH public key.
+   :param Yc: The client's DH public key.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_server_signature
@@ -15126,10 +15126,10 @@ Events
    server's certificate as defined in :rfc:`5246`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :pms: The encrypted pre-master secret.
+   :param pms: The encrypted pre-master secret.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_server_signature
@@ -15148,15 +15148,15 @@ Events
    At the moment it is mostly used to negotiate the use of SPDY / HTTP2.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :protocols: List of supported application layer protocols.
+   :param protocols: List of supported application layer protocols.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -15179,15 +15179,15 @@ Events
    wants to contact.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :names: A list of server names (DNS hostnames).
+   :param names: A list of server names (DNS hostnames).
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -15209,30 +15209,30 @@ Events
    used for Certificate Transparency.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :version: the version of the protocol to which the SCT conforms. Always
+   :param version: the version of the protocol to which the SCT conforms. Always
             should be 0 (representing version 1)
    
 
-   :logid: 32 bit key id
+   :param logid: 32 bit key id
    
 
-   :timestamp: the NTP Time when the entry was logged measured since
+   :param timestamp: the NTP Time when the entry was logged measured since
               the epoch, ignoring leap seconds, in milliseconds.
    
 
-   :signature_and_hashalgorithm: signature and hash algorithm used for the
+   :param signature_and_hashalgorithm: signature and hash algorithm used for the
                                 digitally_signed struct
    
 
-   :signature: signature part of the digitally_signed struct
+   :param signature: signature part of the digitally_signed struct
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -15255,15 +15255,15 @@ Events
    the server to choose the best TLS version o use.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :versions: List of supported TLS versions.
+   :param versions: List of supported TLS versions.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -15283,15 +15283,15 @@ Events
    in the TLS 1.3 rfc and sent by the client in the initial handshake. It contains the
    list of Pre-Shared Key Exchange Modes that it supports.
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :versions: List of supported Pre-Shared Key Exchange Modes.
+   :param versions: List of supported Pre-Shared Key Exchange Modes.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -15312,15 +15312,15 @@ Events
    be used for the connection.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :cid: The connection ID given by the client or the server.
+   :param cid: The connection ID given by the client or the server.
    
    .. zeek:see:: ssl_alert ssl_client_hello ssl_established ssl_server_hello
       ssl_session_ticket_handshake ssl_extension
@@ -15345,7 +15345,7 @@ Events
    more information about the SSL/TLS protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: ssl_alert ssl_client_hello  ssl_extension ssl_server_hello
       ssl_session_ticket_handshake x509_certificate
@@ -15365,19 +15365,19 @@ Events
    more information about the SSL/TLS protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :level: The severity level, as sent in the *alert*. The values are defined as
+   :param level: The severity level, as sent in the *alert*. The values are defined as
           part of the SSL/TLS protocol.
    
 
-   :desc: A numerical value identifying the cause of the *alert*. The values are
+   :param desc: A numerical value identifying the cause of the *alert*. The values are
          defined as part of the SSL/TLS protocol.
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_extension ssl_server_hello
@@ -15399,14 +15399,14 @@ Events
    more information about the SSL/TLS protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :ticket_lifetime_hint: A hint from the server about how long the ticket
+   :param ticket_lifetime_hint: A hint from the server about how long the ticket
                          should be stored by the client.
    
 
-   :ticket: The raw ticket data.
+   :param ticket: The raw ticket data.
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_extension ssl_server_hello
       ssl_alert
@@ -15421,25 +15421,25 @@ Events
    normal TLS traffic. Heartbeats are described in :rfc:`6520`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :length: length of the entire heartbeat message.
+   :param length: length of the entire heartbeat message.
    
 
-   :heartbeat_type: type of the heartbeat message. Per RFC, 1 = request, 2 = response.
+   :param heartbeat_type: type of the heartbeat message. Per RFC, 1 = request, 2 = response.
    
 
-   :payload_length: length of the payload of the heartbeat message, according to
+   :param payload_length: length of the payload of the heartbeat message, according to
                    packet field.
    
 
-   :payload: payload contained in the heartbeat message. Size can differ from
+   :param payload: payload contained in the heartbeat message. Size can differ from
             payload_length, if payload_length and actual packet length disagree.
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_extension ssl_server_hello
@@ -15458,23 +15458,23 @@ Events
    not have CCS anymore.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :record_version: TLS version given in the record layer of the message.
+   :param record_version: TLS version given in the record layer of the message.
                    Set to 0 for SSLv2.
    
 
-   :content_type: message type as reported by TLS session layer. Not populated for
+   :param content_type: message type as reported by TLS session layer. Not populated for
                  SSLv2.
    
 
-   :length: length of the entire message.
+   :param length: length of the entire message.
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_extension ssl_server_hello
       ssl_alert ssl_heartbeat
@@ -15497,23 +15497,23 @@ Events
    are used with the connection ID extension in the client or server hello.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :record_version: TLS version given in the record layer of the message.
+   :param record_version: TLS version given in the record layer of the message.
                    Set to 0 for SSLv2.
    
 
-   :content_type: message type as reported by TLS session layer. Not populated for
+   :param content_type: message type as reported by TLS session layer. Not populated for
                  SSLv2.
    
 
-   :length: length of the encrypted payload in the record.
+   :param length: length of the encrypted payload in the record.
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_extension ssl_server_hello
       ssl_alert ssl_heartbeat ssl_probable_encrypted_handshake_message
@@ -15548,15 +15548,15 @@ Events
    Note that :zeek:see::ssl_encrypted_data is also raised for these messages.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :length: length of the entire message.
+   :param length: length of the entire message.
    
    .. zeek:see::  ssl_client_hello ssl_established ssl_server_hello
       ssl_encrypted_data
@@ -15571,15 +15571,15 @@ Events
    See description in :rfc:`6066`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :response: OCSP data.
+   :param response: OCSP data.
 
 .. zeek:id:: ssl_handshake_message
    :source-code: base/protocols/ssl/main.zeek 354 436
@@ -15589,18 +15589,18 @@ Events
    This event is raised for each unencrypted SSL/TLS handshake message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :msg_type: Type of the handshake message that was seen.
+   :param msg_type: Type of the handshake message that was seen.
    
 
-   :length: Length of the handshake message that was seen.
+   :param length: Length of the handshake message that was seen.
    
    .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
       ssl_session_ticket_handshake x509_certificate ssl_client_hello
@@ -15615,10 +15615,10 @@ Events
    before encryption begins. Traffic will be encrypted following this message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
@@ -15639,7 +15639,7 @@ Events
    server hello, client hello, and hello request handshake messages.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: ssl_alert ssl_established ssl_extension ssl_server_hello
       ssl_session_ticket_handshake x509_certificate ssl_client_hello
@@ -15654,22 +15654,22 @@ Events
    Message can be used by a TLS server to request a client certificate.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_client: True if event is raised for the client side of the connection
+   :param is_client: True if event is raised for the client side of the connection
               (the side that sends the client hello). This is typically equivalent
               with the originator, but does not have to be in all circumstances.
    
 
-   :certificate_types: List of the types of certificates that the client may offer.
+   :param certificate_types: List of the types of certificates that the client may offer.
    
 
-   :supported_signature_algorithms: List of hash/sighature algorithm pairs that the server
+   :param supported_signature_algorithms: List of hash/sighature algorithm pairs that the server
                                    supports, listed in descending order of preferences.
    
 
-   :certificate_authorities: List of distinguished names of certificate authorities that are
+   :param certificate_authorities: List of distinguished names of certificate authorities that are
                             acceptable to the server. The individual entries are DER encoded.
                             :zeek:id:`parse_distinguished_name` can be used to decode the strings.
    
@@ -15688,7 +15688,7 @@ Functions
    finished successfully).
    
 
-   :c: The SSL connection.
+   :param c: The SSL connection.
    
 
    :returns: T on success, F on failure.
@@ -15702,10 +15702,10 @@ Functions
    (For TLS 1.2 this is the pre-master secret).
    
 
-   :c: The affected connection
+   :param c: The affected connection
    
 
-   :secret: secret to set
+   :param secret: secret to set
    
 
    :returns: T on success, F on failure.
@@ -15719,10 +15719,10 @@ Functions
    TLS application data in the connection.
    
 
-   :c: The affected connection
+   :param c: The affected connection
    
 
-   :keys: The key buffer as derived via TLS PRF.
+   :param keys: The key buffer as derived via TLS PRF.
    
 
    :returns: T on success, F on failure.
@@ -15736,7 +15736,7 @@ Functions
    using the RFC2253 representation
    
 
-   :dn: DER encoded distinguished name
+   :param dn: DER encoded distinguished name
    
 
    :returns: Ascii representation on success, empty string on failure
@@ -15769,16 +15769,16 @@ Events
    information about the Syslog protocol.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :facility: The "facility" included in the message.
+   :param facility: The "facility" included in the message.
    
 
-   :severity: The "severity" included in the message.
+   :param severity: The "severity" included in the message.
    
 
-   :msg: The message logged.
+   :param msg: The message logged.
    
    .. note:: Zeek currently parses only UDP syslog traffic. Support for TCP
       syslog will be added soon.
@@ -15866,7 +15866,7 @@ Events
    connection.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -15887,7 +15887,7 @@ Events
    packet to the destination without seeing a reply.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_established
       connection_finished connection_first_ACK
@@ -15910,7 +15910,7 @@ Events
    'A' in the history string.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_finished connection_first_ACK
@@ -15930,7 +15930,7 @@ Events
    establishment.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -15952,7 +15952,7 @@ Events
    the other endpoint a chance to close the connection normally.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -15970,7 +15970,7 @@ Events
    when a regular FIN handshake from both endpoints was observed.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_first_ACK
@@ -15989,7 +15989,7 @@ Events
    happen due to split routing, in which Zeek only sees one side of a connection.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -16008,7 +16008,7 @@ Events
    with a RST packet denying it.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -16034,7 +16034,7 @@ Events
    packet.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -16052,7 +16052,7 @@ Events
    Generated for each still-open TCP connection when Zeek terminates.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -16070,10 +16070,10 @@ Events
    by its TCP analyzer.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :pkt: Information extracted from the SYN packet.
+   :param pkt: Information extracted from the SYN packet.
    
    .. zeek:see:: connection_EOF  connection_attempt connection_established
       connection_finished connection_first_ACK
@@ -16099,7 +16099,7 @@ Events
    its *originator*.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: connection_EOF connection_SYN_packet connection_attempt
       connection_established connection_finished
@@ -16122,10 +16122,10 @@ Events
    reassembling the corresponding side of the communication.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
    .. zeek:see::  connection_SYN_packet connection_attempt connection_established
       connection_finished connection_first_ACK
@@ -16147,28 +16147,28 @@ Events
    packet-level analysis, it may come in handy.
    
 
-   :c: The connection the packet is part of.
+   :param c: The connection the packet is part of.
    
 
-   :is_orig: True if the packet was sent by the connection's originator.
+   :param is_orig: True if the packet was sent by the connection's originator.
    
 
-   :flags: A string with the packet's TCP flags. In the string, each character
+   :param flags: A string with the packet's TCP flags. In the string, each character
           corresponds to one set flag, as follows: ``S`` -> SYN; ``F`` -> FIN;
           ``R`` -> RST; ``A`` -> ACK; ``P`` -> PUSH; ``U`` -> URGENT.
    
 
-   :seq: The packet's relative TCP sequence number.
+   :param seq: The packet's relative TCP sequence number.
    
 
-   :ack: If the ACK flag is set for the packet, the packet's relative ACK
+   :param ack: If the ACK flag is set for the packet, the packet's relative ACK
         number, else zero.
    
 
-   :len: The length of the TCP payload, as specified in the packet header.
+   :param len: The length of the TCP payload, as specified in the packet header.
    
 
-   :payload: The raw TCP payload. Note that this may be shorter than *len* if
+   :param payload: The raw TCP payload. Note that this may be shorter than *len* if
             the packet was not fully captured.
    
    .. zeek:see:: new_packet packet_contents tcp_option tcp_contents tcp_rexmit
@@ -16183,16 +16183,16 @@ Events
    be raised very often.
    
 
-   :c: The connection the packet is part of.
+   :param c: The connection the packet is part of.
    
 
-   :is_orig: True if the packet was sent by the connection's originator.
+   :param is_orig: True if the packet was sent by the connection's originator.
    
 
-   :opt: The numerical option number, as found in the TCP header.
+   :param opt: The numerical option number, as found in the TCP header.
    
 
-   :optlen: The length of the options value.
+   :param optlen: The length of the options value.
    
    .. zeek:see:: tcp_packet tcp_contents tcp_rexmit tcp_options
    
@@ -16207,13 +16207,13 @@ Events
    low-level event and potentially expensive as it may be raised very often.
    
 
-   :c: The connection the packet is part of.
+   :param c: The connection the packet is part of.
    
 
-   :is_orig: True if the packet was sent by the connection's originator.
+   :param is_orig: True if the packet was sent by the connection's originator.
    
 
-   :options: The list of options parsed out of the TCP header.
+   :param options: The list of options parsed out of the TCP header.
    
    .. zeek:see:: tcp_packet tcp_contents tcp_rexmit tcp_option
 
@@ -16232,17 +16232,17 @@ Events
    of data as then all that data needs to be passed on to the scripting layer.
    
 
-   :c: The connection the payload is part of.
+   :param c: The connection the payload is part of.
    
 
-   :is_orig: True if the packet was sent by the connection's originator.
+   :param is_orig: True if the packet was sent by the connection's originator.
    
 
-   :seq: The sequence number corresponding to the first byte of the payload
+   :param seq: The sequence number corresponding to the first byte of the payload
         chunk.
    
 
-   :contents: The raw payload, which will be non-empty.
+   :param contents: The raw payload, which will be non-empty.
    
    .. zeek:see:: tcp_packet tcp_option tcp_rexmit
       tcp_content_delivery_ports_orig tcp_content_delivery_ports_resp
@@ -16265,24 +16265,24 @@ Events
    Generated for each detected TCP segment retransmission.
    
 
-   :c: The connection the packet is part of.
+   :param c: The connection the packet is part of.
    
 
-   :is_orig: True if the packet was sent by the connection's originator.
+   :param is_orig: True if the packet was sent by the connection's originator.
    
 
-   :seq: The segment's relative TCP sequence number.
+   :param seq: The segment's relative TCP sequence number.
    
 
-   :len: The length of the TCP segment, as specified in the packet header.
+   :param len: The length of the TCP segment, as specified in the packet header.
    
 
-   :data_in_flight: The number of bytes corresponding to the difference between
+   :param data_in_flight: The number of bytes corresponding to the difference between
                    the last sequence number and last acknowledgement number
                    we've seen for a given endpoint.
    
 
-   :window: the TCP window size.
+   :param window: the TCP window size.
 
 .. zeek:id:: tcp_multiple_checksum_errors
    :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 351 351
@@ -16293,13 +16293,13 @@ Events
    'C'/'c' history reporting.
    
 
-   :c: The connection record for the TCP connection.
+   :param c: The connection record for the TCP connection.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
 
-   :threshold: the threshold that was crossed
+   :param threshold: the threshold that was crossed
    
    .. zeek:see::  udp_multiple_checksum_errors
       tcp_multiple_zero_windows tcp_multiple_retransmissions tcp_multiple_gap
@@ -16313,13 +16313,13 @@ Events
    'W'/'w' history reporting.
    
 
-   :c: The connection record for the TCP connection.
+   :param c: The connection record for the TCP connection.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
 
-   :threshold: the threshold that was crossed
+   :param threshold: the threshold that was crossed
    
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_retransmissions tcp_multiple_gap
 
@@ -16332,13 +16332,13 @@ Events
    'T'/'t' history reporting.
    
 
-   :c: The connection record for the TCP connection.
+   :param c: The connection record for the TCP connection.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
 
-   :threshold: the threshold that was crossed
+   :param threshold: the threshold that was crossed
    
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_zero_windows tcp_multiple_gap
 
@@ -16351,13 +16351,13 @@ Events
    reporting.
    
 
-   :c: The connection record for the TCP connection.
+   :param c: The connection record for the TCP connection.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
    
 
-   :threshold: the threshold that was crossed
+   :param threshold: the threshold that was crossed
    
    .. zeek:see::  tcp_multiple_checksum_errors tcp_multiple_zero_windows tcp_multiple_retransmissions
 
@@ -16369,13 +16369,13 @@ Events
    Generated when failing to write contents of a TCP stream to a file.
    
 
-   :c: The connection whose contents are being recorded.
+   :param c: The connection whose contents are being recorded.
    
 
-   :is_orig: Which side of the connection encountered a failure to write.
+   :param is_orig: Which side of the connection encountered a failure to write.
    
 
-   :msg: A reason or description for the failure.
+   :param msg: A reason or description for the failure.
    
    .. zeek:see:: set_contents_file get_contents_file
 
@@ -16392,7 +16392,7 @@ Functions
    they are not relative to the beginning of the connection).
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: The highest sequence number sent by a connection's originator, or 0
@@ -16410,7 +16410,7 @@ Functions
    they are not relative to the beginning of the connection).
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: The highest sequence number sent by a connection's responder, or 0
@@ -16427,10 +16427,10 @@ Functions
    contents.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
-   :direction: Controls what sides of the connection to record. The argument can
+   :param direction: Controls what sides of the connection to record. The argument can
               take one of the four values:
    
               - ``CONTENTS_NONE``: Stop recording the connection's content.
@@ -16443,7 +16443,7 @@ Functions
                 in the order the data was seen by Zeek.
    
 
-   :f: The file handle of the file to write the contents to.
+   :param f: The file handle of the file to write the contents to.
    
 
    :returns: Returns false if *cid* does not point to an active connection, and
@@ -16467,10 +16467,10 @@ Functions
    Returns the file handle of the contents file of a connection.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
-   :direction: Controls what sides of the connection to record. See
+   :param direction: Controls what sides of the connection to record. See
               :zeek:id:`set_contents_file` for possible values.
    
 
@@ -16505,7 +16505,7 @@ Events
    StartTLS exchange between the client and the server.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 .. _plugin-zeek-zip:
 

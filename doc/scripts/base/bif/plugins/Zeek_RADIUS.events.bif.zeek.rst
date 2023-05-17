@@ -32,13 +32,13 @@ Events
    information about RADIUS.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :attr_type: The value of the code field (1 == User-Name, 2 == User-Password, etc.).
+   :param attr_type: The value of the code field (1 == User-Name, 2 == User-Password, etc.).
    
 
-   :value: The data/value bound to the attribute.
+   :param value: The data/value bound to the attribute.
    
 
 .. zeek:id:: radius_message
@@ -52,10 +52,10 @@ Events
    information about RADIUS.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :result: A record containing fields parsed from a RADIUS packet.
+   :param result: A record containing fields parsed from a RADIUS packet.
    
 
 

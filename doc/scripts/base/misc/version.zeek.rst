@@ -110,7 +110,7 @@ Functions
    string.
    
 
-   :version_string: Version to check against the current running version.
+   :param version_string: Version to check against the current running version.
    
 
    :returns: True if running version greater or equal to the given version.
@@ -123,7 +123,7 @@ Functions
    Parse a given version string.
    
 
-   :version_string: Zeek version string.
+   :param version_string: Zeek version string.
    
 
    :returns: `VersionDescription` record.

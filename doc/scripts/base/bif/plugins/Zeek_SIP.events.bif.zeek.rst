@@ -36,13 +36,13 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the headers came from the originator.
+   :param is_orig: Whether the headers came from the originator.
    
 
-   :hlist: All the headers, and their values
+   :param hlist: All the headers, and their values
    
    .. zeek:see:: sip_request sip_reply sip_header sip_begin_entity sip_end_entity
 
@@ -59,10 +59,10 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the message came from the originator.
+   :param is_orig: Whether the message came from the originator.
    
    .. zeek:see:: sip_request sip_reply sip_header sip_all_headers sip_end_entity
 
@@ -77,10 +77,10 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the message came from the originator.
+   :param is_orig: Whether the message came from the originator.
    
    .. zeek:see:: sip_request sip_reply sip_header sip_all_headers sip_begin_entity
 
@@ -95,16 +95,16 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Whether the header came from the originator.
+   :param is_orig: Whether the header came from the originator.
    
 
-   :name: Header name.
+   :param name: Header name.
    
 
-   :value: Header value.
+   :param value: Header value.
    
    .. zeek:see:: sip_request sip_reply sip_all_headers sip_begin_entity sip_end_entity
 
@@ -121,16 +121,16 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :version: The :abbr:`SIP (Session Initiation Protocol)` version in use.
+   :param version: The :abbr:`SIP (Session Initiation Protocol)` version in use.
    
 
-   :code: The response code.
+   :param code: The response code.
    
 
-   :reason: Textual details for the response code.
+   :param reason: Textual details for the response code.
    
    .. zeek:see:: sip_request sip_header sip_all_headers sip_begin_entity sip_end_entity
 
@@ -147,16 +147,16 @@ Events
    for more information about the :abbr:`SIP (Session Initiation Protocol)` protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :method: The :abbr:`SIP (Session Initiation Protocol)` method extracted from the request (e.g., ``REGISTER``, ``NOTIFY``).
+   :param method: The :abbr:`SIP (Session Initiation Protocol)` method extracted from the request (e.g., ``REGISTER``, ``NOTIFY``).
    
 
-   :original_URI: The unprocessed URI as specified in the request.
+   :param original_URI: The unprocessed URI as specified in the request.
    
 
-   :version: The version number specified in the request (e.g., ``2.0``).
+   :param version: The version number specified in the request (e.g., ``2.0``).
    
    .. zeek:see:: sip_reply sip_header sip_all_headers sip_begin_entity sip_end_entity
 

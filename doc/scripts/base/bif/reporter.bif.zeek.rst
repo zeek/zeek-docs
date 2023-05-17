@@ -57,13 +57,13 @@ Functions
    Generates a "conn" weird.
    
 
-   :name: the name of the weird.
+   :param name: the name of the weird.
    
 
-   :c: the connection associated with the weird.
+   :param c: the connection associated with the weird.
    
 
-   :addl: additional information to accompany the weird.
+   :param addl: additional information to accompany the weird.
    
 
    :returns: Always true.
@@ -77,7 +77,7 @@ Functions
    be addressed. Program execution does not terminate.
    
 
-   :msg: The error message to report.
+   :param msg: The error message to report.
    
 
    :returns: Always true.
@@ -92,7 +92,7 @@ Functions
    Generates a fatal error on stderr and terminates program execution.
    
 
-   :msg: The error message to report.
+   :param msg: The error message to report.
    
 
    :returns: Always true.
@@ -106,7 +106,7 @@ Functions
    after dumping a core file
    
 
-   :msg: The error message to report.
+   :param msg: The error message to report.
    
 
    :returns: Always true.
@@ -119,13 +119,13 @@ Functions
    Generates a "file" weird.
    
 
-   :name: the name of the weird.
+   :param name: the name of the weird.
    
 
-   :f: the file associated with the weird.
+   :param f: the file associated with the weird.
    
 
-   :addl: additional information to accompany the weird.
+   :param addl: additional information to accompany the weird.
    
 
    :returns: true if the file was still valid, else false.
@@ -138,13 +138,13 @@ Functions
    Generates a "flow" weird.
    
 
-   :name: the name of the weird.
+   :param name: the name of the weird.
    
 
-   :orig: the originator host associated with the weird.
+   :param orig: the originator host associated with the weird.
    
 
-   :resp: the responder host associated with the weird.
+   :param resp: the responder host associated with the weird.
    
 
    :returns: Always true.
@@ -207,7 +207,7 @@ Functions
    Generates an informational message.
    
 
-   :msg: The informational message to report.
+   :param msg: The informational message to report.
    
 
    :returns: Always true.
@@ -222,7 +222,7 @@ Functions
    Generates a "net" weird.
    
 
-   :name: the name of the weird.
+   :param name: the name of the weird.
    
 
    :returns: Always true.
@@ -236,7 +236,7 @@ Functions
    this will not delete already running timers.
    
 
-   :weird_sampling_duration: New weird sampling duration.
+   :param weird_sampling_duration: New weird sampling duration.
    
 
    :returns: always returns True
@@ -249,7 +249,7 @@ Functions
    Sets the weird sampling global list
    
 
-   :global_list: New weird sampling rate.
+   :param global_list: New weird sampling rate.
    
 
    :returns: Always true.
@@ -262,7 +262,7 @@ Functions
    Sets the weird sampling rate.
    
 
-   :weird_sampling_rate: New weird sampling rate.
+   :param weird_sampling_rate: New weird sampling rate.
    
 
    :returns: Always returns true.
@@ -275,7 +275,7 @@ Functions
    Sets the current weird sampling threshold
    
 
-   :threshold: New weird sampling threshold.
+   :param threshold: New weird sampling threshold.
    
 
    :returns: Always returns true;
@@ -288,7 +288,7 @@ Functions
    Sets the weird sampling whitelist
    
 
-   :whitelist: New weird sampling rate.
+   :param whitelist: New weird sampling rate.
    
 
    :returns: Always true.
@@ -301,7 +301,7 @@ Functions
    Generates a message that warns of a potential problem.
    
 
-   :msg: The warning message to report.
+   :param msg: The warning message to report.
    
 
    :returns: Always true.

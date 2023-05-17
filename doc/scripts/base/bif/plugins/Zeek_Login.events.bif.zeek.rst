@@ -52,7 +52,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: authentication_accepted authentication_rejected authentication_skipped
       login_confused login_confused_text login_display login_failure login_input_line
@@ -72,10 +72,10 @@ Events
    about the Telnet protocol.
    
 
-   :name: The authenticated name.
+   :param name: The authenticated name.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see::  authentication_rejected authentication_skipped login_success
    
@@ -103,10 +103,10 @@ Events
    about the Telnet protocol.
    
 
-   :name: The attempted authentication name.
+   :param name: The attempted authentication name.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: authentication_accepted authentication_skipped login_failure
    
@@ -132,7 +132,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: authentication_accepted authentication_rejected direct_login_prompts
       get_login_state login_failure_msgs login_non_failure_msgs login_prompts
@@ -160,7 +160,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: inconsistent_option bad_option_termination authentication_accepted
       authentication_rejected authentication_skipped login_confused
@@ -184,7 +184,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: inconsistent_option bad_option authentication_accepted
       authentication_rejected authentication_skipped login_confused
@@ -214,7 +214,7 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: bad_option bad_option_termination  authentication_accepted
       authentication_rejected authentication_skipped login_confused
@@ -232,16 +232,16 @@ Events
    the authentication dialog, it raises this event.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :msg: Gives the particular problem the heuristics detected (for example,
+   :param msg: Gives the particular problem the heuristics detected (for example,
         ``multiple_login_prompts`` means that the engine saw several login
         prompts in a row, without the type-ahead from the client side presumed
         necessary to cause them)
    
 
-   :line: The line of text that caused the heuristics to conclude they were
+   :param line: The line of text that caused the heuristics to conclude they were
          confused.
    
    .. zeek:see::  login_confused_text login_display login_failure login_input_line login_output_line
@@ -266,10 +266,10 @@ Events
    connection.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :line: The line the user typed.
+   :param line: The line the user typed.
    
    .. zeek:see:: login_confused  login_display login_failure login_input_line
       login_output_line login_prompt login_success login_terminal direct_login_prompts
@@ -291,10 +291,10 @@ Events
    information is extracted out of environment variables sent as Telnet options.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :display: The DISPLAY transmitted.
+   :param display: The DISPLAY transmitted.
    
    .. zeek:see:: login_confused login_confused_text  login_failure login_input_line
       login_output_line login_prompt login_success login_terminal
@@ -316,21 +316,21 @@ Events
    raised if a login attempt appears to have been unsuccessful.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :user: The user name tried.
+   :param user: The user name tried.
    
 
-   :client_user: For Telnet connections, this is an empty string, but for Rlogin
+   :param client_user: For Telnet connections, this is an empty string, but for Rlogin
          connections, it is the client name passed in the initial authentication
          information (to check against .rhosts).
    
 
-   :password:  The password tried.
+   :param password:  The password tried.
    
 
-   :line:  The line of text that led the analyzer to conclude that the
+   :param line:  The line of text that led the analyzer to conclude that the
           authentication had failed.
    
    .. zeek:see:: login_confused login_confused_text login_display login_input_line
@@ -358,10 +358,10 @@ Events
    control characters (such as in-band Telnet options) removed.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :line: The input line.
+   :param line: The input line.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_output_line login_prompt login_success login_terminal    rsh_request
@@ -381,10 +381,10 @@ Events
    control characters (such as in-band Telnet options) removed.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :line: The output line.
+   :param line: The output line.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_input_line  login_prompt login_success login_terminal rsh_reply
@@ -408,10 +408,10 @@ Events
    about the Telnet protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :prompt: The TTYPROMPT transmitted.
+   :param prompt: The TTYPROMPT transmitted.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_input_line login_output_line  login_success login_terminal
@@ -433,21 +433,21 @@ Events
    raised if a login attempt appears to have been successful.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :user: The user name used.
+   :param user: The user name used.
    
 
-   :client_user: For Telnet connections, this is an empty string, but for Rlogin
+   :param client_user: For Telnet connections, this is an empty string, but for Rlogin
          connections, it is the client name passed in the initial authentication
          information (to check against .rhosts).
    
 
-   :password: The password used.
+   :param password: The password used.
    
 
-   :line:  The line of text that led the analyzer to conclude that the
+   :param line:  The line of text that led the analyzer to conclude that the
           authentication had succeeded.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
@@ -475,10 +475,10 @@ Events
    information is extracted out of environment variables sent as Telnet options.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :terminal: The TERM value transmitted.
+   :param terminal: The TERM value transmitted.
    
    .. zeek:see:: login_confused login_confused_text login_display login_failure
       login_input_line login_output_line login_prompt login_success
@@ -499,18 +499,18 @@ Events
    See :rfc:`1258` for more information about the Rlogin/Rsh protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :client_user: The client-side user name as sent in the initial protocol
+   :param client_user: The client-side user name as sent in the initial protocol
          handshake.
    
 
-   :server_user: The server-side user name as sent in the initial protocol
+   :param server_user: The server-side user name as sent in the initial protocol
          handshake.
    
 
-   :line: The command line sent in the request.
+   :param line: The command line sent in the request.
    
    .. zeek:see:: rsh_request login_confused login_confused_text login_display
       login_failure login_input_line login_output_line login_prompt login_success
@@ -534,21 +534,21 @@ Events
    See :rfc:`1258` for more information about the Rlogin/Rsh protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :client_user: The client-side user name as sent in the initial protocol
+   :param client_user: The client-side user name as sent in the initial protocol
          handshake.
    
 
-   :server_user: The server-side user name as sent in the initial protocol
+   :param server_user: The server-side user name as sent in the initial protocol
          handshake.
    
 
-   :line: The command line sent in the request.
+   :param line: The command line sent in the request.
    
 
-   :new_session: True if this is the first command of the Rsh session.
+   :param new_session: True if this is the first command of the Rsh session.
    
    .. zeek:see:: rsh_reply login_confused login_confused_text login_display
       login_failure login_input_line login_output_line login_prompt login_success

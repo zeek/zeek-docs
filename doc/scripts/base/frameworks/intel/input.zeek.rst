@@ -72,13 +72,13 @@ Events
    also be used in custom scripts for further checks.
    
 
-   :desc: The :zeek:type:`Input::EventDescription` record which generated the event.
+   :param desc: The :zeek:type:`Input::EventDescription` record which generated the event.
    
 
-   :tpe: The type of input event.
+   :param tpe: The type of input event.
    
 
-   :item: The intel item being read (of type :zeek:type:`Intel::Item`).
+   :param item: The intel item being read (of type :zeek:type:`Intel::Item`).
    
 
 .. zeek:id:: Intel::read_error
@@ -91,13 +91,13 @@ Events
    in custom scripts. Errors can be of different levels (information, warning, errors).
    
 
-   :desc: The :zeek:type:`Input::EventDescription` record which generated the error.
+   :param desc: The :zeek:type:`Input::EventDescription` record which generated the error.
    
 
-   :message: An error message.
+   :param message: An error message.
    
 
-   :level: The :zeek:type:`Reporter::Level` of the error.
+   :param level: The :zeek:type:`Reporter::Level` of the error.
    
 
 

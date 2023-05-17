@@ -360,10 +360,10 @@ Events
    including after an update.
    
 
-   :name: Name of the input stream.
+   :param name: Name of the input stream.
    
 
-   :source: String that identifies the data source (such as the filename).
+   :param source: String that identifies the data source (such as the filename).
 
 Functions
 #########
@@ -377,7 +377,7 @@ Functions
    framework.
    
 
-   :description: A record describing the source.
+   :param description: A record describing the source.
    
 
    :returns: true on success.
@@ -390,7 +390,7 @@ Functions
    Create a new event input stream from a given source.
    
 
-   :description: `EventDescription` record describing the source.
+   :param description: `EventDescription` record describing the source.
    
 
    :returns: true on success.
@@ -403,7 +403,7 @@ Functions
    Create a new table input stream from a given source.
    
 
-   :description: `TableDescription` record describing the source.
+   :param description: `TableDescription` record describing the source.
    
 
    :returns: true on success.
@@ -416,7 +416,7 @@ Functions
    Forces the current input to be checked for changes.
    
 
-   :id: string value identifying the stream.
+   :param id: string value identifying the stream.
    
 
    :returns: true on success and false if the named stream was not found.
@@ -429,7 +429,7 @@ Functions
    Remove an input stream.
    
 
-   :id: string value identifying the stream to be removed.
+   :param id: string value identifying the stream to be removed.
    
 
    :returns: true on success and false if the named stream was not found.

@@ -217,11 +217,11 @@ Functions
    a "not".
    
 
-   :filter_id: An arbitrary string that can be used to identify
+   :param filter_id: An arbitrary string that can be used to identify
               the filter.
    
 
-   :filter: A BPF expression of traffic that should be excluded.
+   :param filter: A BPF expression of traffic that should be excluded.
    
 
    :returns: A boolean value to indicate if the filter was successfully
@@ -237,14 +237,14 @@ Functions
    don't want to see (it will be wrapped in a "not" condition).
    
 
-   :filter_id: An arbitrary string that can be used to identify
+   :param filter_id: An arbitrary string that can be used to identify
               the filter.
    
 
-   :filter: A BPF expression of traffic that should be excluded.
+   :param filter: A BPF expression of traffic that should be excluded.
    
 
-   :length: The duration for which this filter should be put in place.
+   :param length: The duration for which this filter should be put in place.
    
 
    :returns: A boolean value to indicate if the filter was successfully

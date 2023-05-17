@@ -36,13 +36,13 @@ Events
    For more information, see MS-CIFS:2.2.4.52
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :dialects: The SMB dialects supported by the client.
+   :param dialects: The SMB dialects supported by the client.
    
    .. zeek:see:: smb1_message smb1_negotiate_response
 
@@ -58,13 +58,13 @@ Events
    For more information, see MS-CIFS:2.2.4.52
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :response: A record structure containing more information from the response.
+   :param response: A record structure containing more information from the response.
    
    .. zeek:see:: smb1_message smb1_negotiate_request
 

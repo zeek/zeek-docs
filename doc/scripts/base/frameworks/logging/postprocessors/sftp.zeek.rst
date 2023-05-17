@@ -117,7 +117,7 @@ Functions
    reading from trace files.
    
 
-   :info: A record holding meta-information about the log file to be
+   :param info: A record holding meta-information about the log file to be
          postprocessed.
    
 

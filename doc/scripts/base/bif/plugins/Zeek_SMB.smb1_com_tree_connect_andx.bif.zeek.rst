@@ -35,16 +35,16 @@ Events
    For more information, see MS-CIFS:2.2.4.55
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :path: The ``path`` attribute specified in the message.
+   :param path: The ``path`` attribute specified in the message.
    
 
-   :service: The ``service`` attribute specified in the message.
+   :param service: The ``service`` attribute specified in the message.
    
    .. zeek:see:: smb1_message smb1_tree_connect_andx_response
 
@@ -60,16 +60,16 @@ Events
    For more information, see MS-CIFS:2.2.4.55
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :service: The ``service`` attribute specified in the message.
+   :param service: The ``service`` attribute specified in the message.
    
 
-   :native_file_system: The file system of the remote server as indicate by the server.
+   :param native_file_system: The file system of the remote server as indicate by the server.
    
    .. zeek:see:: smb1_message smb1_tree_connect_andx_request
 

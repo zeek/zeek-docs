@@ -52,13 +52,13 @@ Functions
    in the future.
    
 
-   :dir: The directory to monitor for files.
+   :param dir: The directory to monitor for files.
    
 
-   :callback: Callback that gets executed with each file name
+   :param callback: Callback that gets executed with each file name
              that is found.  Filenames are provided with the full path.
    
 
-   :poll_interval: An interval at which to check for new files.
+   :param poll_interval: An interval at which to check for new files.
 
 

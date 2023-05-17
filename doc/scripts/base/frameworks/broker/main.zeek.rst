@@ -739,12 +739,12 @@ Functions
    script.)
    
 
-   :topic: a topic string associated with the event message.
+   :param topic: a topic string associated with the event message.
           Peers advertise interest by registering a subscription to some
           prefix of this topic name.
    
 
-   :ev: a Zeek event value.
+   :param ev: a Zeek event value.
    
 
    :returns: true if automatic event sending is now enabled.
@@ -757,10 +757,10 @@ Functions
    Stop automatically sending an event to peers upon local dispatch.
    
 
-   :topic: a topic originally given to :zeek:see:`Broker::auto_publish`.
+   :param topic: a topic originally given to :zeek:see:`Broker::auto_publish`.
    
 
-   :ev: an event originally given to :zeek:see:`Broker::auto_publish`.
+   :param ev: an event originally given to :zeek:see:`Broker::auto_publish`.
    
 
    :returns: true if automatic events will not occur for the topic/event
@@ -794,7 +794,7 @@ Functions
    with the same argument to undo this operation.
    
 
-   :topic_prefix: a prefix to match against remote message topics.
+   :param topic_prefix: a prefix to match against remote message topics.
                  e.g. an empty prefix matches everything and "a" matches
                  "alice" and "amy" but not "bob".
    
@@ -809,15 +809,15 @@ Functions
    Listen for remote connections using the native Broker protocol.
    
 
-   :a: an address string on which to accept connections, e.g.
+   :param a: an address string on which to accept connections, e.g.
       "127.0.0.1".  An empty string refers to INADDR_ANY.
    
 
-   :p: the TCP port to listen on. The value 0 means that the OS should choose
+   :param p: the TCP port to listen on. The value 0 means that the OS should choose
       the next available free port.
    
 
-   :retry: If non-zero, retries listening in regular intervals if the port cannot be
+   :param retry: If non-zero, retries listening in regular intervals if the port cannot be
           acquired immediately. 0 disables retries.  If the
           ZEEK_DEFAULT_LISTEN_RETRY environment variable is set (as number
           of seconds), it overrides any value given here.
@@ -835,15 +835,15 @@ Functions
    Listen for remote connections using WebSocket.
    
 
-   :a: an address string on which to accept connections, e.g.
+   :param a: an address string on which to accept connections, e.g.
       "127.0.0.1".  An empty string refers to INADDR_ANY.
    
 
-   :p: the TCP port to listen on. The value 0 means that the OS should choose
+   :param p: the TCP port to listen on. The value 0 means that the OS should choose
       the next available free port.
    
 
-   :retry: If non-zero, retries listening in regular intervals if the port cannot be
+   :param retry: If non-zero, retries listening in regular intervals if the port cannot be
           acquired immediately. 0 disables retries.  If the
           ZEEK_DEFAULT_LISTEN_RETRY environment variable is set (as number
           of seconds), it overrides any value given here.
@@ -865,10 +865,10 @@ Functions
    :zeek:see:`Broker::default_log_topic_prefix`.
    
 
-   :id: the ID associated with the log stream entry that will be sent.
+   :param id: the ID associated with the log stream entry that will be sent.
    
 
-   :path: the path to which the log stream entry will be output.
+   :param path: the path to which the log stream entry will be output.
    
 
    :returns: a string representing the broker topic to which the log
@@ -892,13 +892,13 @@ Functions
    Initiate a remote connection.
    
 
-   :a: an address to connect to, e.g. "localhost" or "127.0.0.1".
+   :param a: an address to connect to, e.g. "localhost" or "127.0.0.1".
    
 
-   :p: the TCP port on which the remote side is listening.
+   :param p: the TCP port on which the remote side is listening.
    
 
-   :retry: an interval at which to retry establishing the
+   :param retry: an interval at which to retry establishing the
           connection with the remote peer if it cannot be made initially, or
           if it ever becomes disconnected.  If the
           ZEEK_DEFAULT_CONNECT_RETRY environment variable is set (as number
@@ -930,10 +930,10 @@ Functions
    will update their local value for that identifier on receipt.
    
 
-   :topic: a topic associated with the message.
+   :param topic: a topic associated with the message.
    
 
-   :id: the identifier to publish.
+   :param id: the identifier to publish.
    
 
    :returns: true if the message is sent.
@@ -948,7 +948,7 @@ Functions
    calling (except during :zeek:see:`zeek_init`).
    
 
-   :topic_prefix: a prefix to match against remote message topics.
+   :param topic_prefix: a prefix to match against remote message topics.
                  e.g. an empty prefix matches everything and "a" matches
                  "alice" and "amy" but not "bob".
    
@@ -967,17 +967,17 @@ Functions
    unless peering resumes later.
    
 
-   :a: the address used in previous successful call to :zeek:see:`Broker::peer`.
+   :param a: the address used in previous successful call to :zeek:see:`Broker::peer`.
    
 
-   :p: the port used in previous successful call to :zeek:see:`Broker::peer`.
+   :param p: the port used in previous successful call to :zeek:see:`Broker::peer`.
    
 
    :returns: true if the arguments match a previously successful call to
             :zeek:see:`Broker::peer`.
    
 
-   :TODO: We do not have a function yet to terminate a connection.
+   :param TODO: We do not have a function yet to terminate a connection.
 
 .. zeek:id:: Broker::unsubscribe
    :source-code: base/frameworks/broker/main.zeek 607 610
@@ -989,7 +989,7 @@ Functions
    (except during :zeek:see:`zeek_init`).
    
 
-   :topic_prefix: a prefix previously supplied to a successful call to
+   :param topic_prefix: a prefix previously supplied to a successful call to
                  :zeek:see:`Broker::subscribe` or :zeek:see:`Broker::forward`.
    
 

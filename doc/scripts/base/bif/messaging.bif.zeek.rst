@@ -87,7 +87,7 @@ Functions
    :zeek:see:`Broker::publish`.
    
 
-   :args: an event, followed by a list of argument values that may be used
+   :param args: an event, followed by a list of argument values that may be used
          to call it.
    
 
@@ -102,10 +102,10 @@ Functions
    Publishes an event at a given topic.
    
 
-   :topic: a topic associated with the event message.
+   :param topic: a topic associated with the event message.
    
 
-   :args: Either the event arguments as already made by
+   :param args: Either the event arguments as already made by
          :zeek:see:`Broker::make_event` or the argument list to pass along
          to it.
    
@@ -121,14 +121,14 @@ Functions
    (Highest Random Weight) hashing strategy.
    
 
-   :pool: the pool of nodes that are eligible to receive the event.
+   :param pool: the pool of nodes that are eligible to receive the event.
    
 
-   :key: data used for input to the hashing function that will uniformly
+   :param key: data used for input to the hashing function that will uniformly
         distribute keys among available nodes.
    
 
-   :args: Either the event arguments as already made by
+   :param args: Either the event arguments as already made by
          :zeek:see:`Broker::make_event` or the argument list to pass along
          to it.
    
@@ -144,15 +144,15 @@ Functions
    distribution strategy.
    
 
-   :pool: the pool of nodes that are eligible to receive the event.
+   :param pool: the pool of nodes that are eligible to receive the event.
    
 
-   :key: an arbitrary string to identify the purpose for which you're
+   :param key: an arbitrary string to identify the purpose for which you're
         distributing the event.  e.g. consider using namespacing of your
         script like "Intel::cluster_rr_key".
    
 
-   :args: Either the event arguments as already made by
+   :param args: Either the event arguments as already made by
          :zeek:see:`Broker::make_event` or the argument list to pass along
          to it.
    

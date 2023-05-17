@@ -3426,13 +3426,13 @@ Types
    :zeek:see:`disable_analyzer`, which may be never.
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :atype: The type / tag of the analyzer being disabled.
+   :param atype: The type / tag of the analyzer being disabled.
    
 
-   :aid: The analyzer ID.
+   :param aid: The analyzer ID.
 
 .. zeek:type:: AnalyzerConfirmationInfo
    :source-code: base/init-bare.zeek 2346 2360
@@ -10929,7 +10929,7 @@ Functions
    will be performed on it.
    
 
-   :p: The IP and ICMP headers of the considered packet.
+   :param p: The IP and ICMP headers of the considered packet.
    
 
    :returns: True if the packet should not be analyzed any further.
@@ -10951,7 +10951,7 @@ Functions
    will be performed on it.
    
 
-   :p: The IP header of the considered packet.
+   :param p: The IP header of the considered packet.
    
 
    :returns: True if the packet should not be analyzed any further.
@@ -10973,10 +10973,10 @@ Functions
    will be performed on it.
    
 
-   :p: The IP and TCP headers of the considered packet.
+   :param p: The IP and TCP headers of the considered packet.
    
 
-   :d: Up to :zeek:see:`discarder_maxlen` bytes of the TCP payload.
+   :param d: Up to :zeek:see:`discarder_maxlen` bytes of the TCP payload.
    
 
    :returns: True if the packet should not be analyzed any further.
@@ -10998,10 +10998,10 @@ Functions
    will be performed on it.
    
 
-   :p: The IP and UDP headers of the considered packet.
+   :param p: The IP and UDP headers of the considered packet.
    
 
-   :d: Up to :zeek:see:`discarder_maxlen` bytes of the UDP payload.
+   :param d: Up to :zeek:see:`discarder_maxlen` bytes of the UDP payload.
    
 
    :returns: True if the packet should not be analyzed any further.
@@ -11020,9 +11020,9 @@ Functions
    Returns maximum of two ``count`` values.
    
 
-   :a: First value.
+   :param a: First value.
 
-   :b: Second value.
+   :param b: Second value.
    
 
    :returns: The maximum of *a* and *b*.
@@ -11035,9 +11035,9 @@ Functions
    Returns maximum of two ``double`` values.
    
 
-   :a: First value.
+   :param a: First value.
 
-   :b: Second value.
+   :param b: Second value.
    
 
    :returns: The maximum of *a* and *b*.
@@ -11050,9 +11050,9 @@ Functions
    Returns maximum of two ``interval`` values.
    
 
-   :a: First value.
+   :param a: First value.
 
-   :b: Second value.
+   :param b: Second value.
    
 
    :returns: The maximum of *a* and *b*.
@@ -11065,9 +11065,9 @@ Functions
    Returns minimum of two ``count`` values.
    
 
-   :a: First value.
+   :param a: First value.
 
-   :b: Second value.
+   :param b: Second value.
    
 
    :returns: The minimum of *a* and *b*.
@@ -11080,9 +11080,9 @@ Functions
    Returns minimum of two ``double`` values.
    
 
-   :a: First value.
+   :param a: First value.
 
-   :b: Second value.
+   :param b: Second value.
    
 
    :returns: The minimum of *a* and *b*.
@@ -11095,9 +11095,9 @@ Functions
    Returns minimum of two ``interval`` values.
    
 
-   :a: First value.
+   :param a: First value.
 
-   :b: Second value.
+   :param b: Second value.
    
 
    :returns: The minimum of *a* and *b*.

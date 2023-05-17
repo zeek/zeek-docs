@@ -29,10 +29,10 @@ Functions
    Skips the data of the HTTP entity.
    
 
-   :c: The HTTP connection.
+   :param c: The HTTP connection.
    
 
-   :is_orig: If true, the client data is skipped, and the server data otherwise.
+   :param is_orig: If true, the client data is skipped, and the server data otherwise.
    
    .. zeek:see:: skip_smtp_data
 
@@ -44,7 +44,7 @@ Functions
    Unescapes all characters in a URI (decode every ``%xx`` group).
    
 
-   :URI: The URI to unescape.
+   :param URI: The URI to unescape.
    
 
    :returns: The unescaped URI with all ``%xx`` groups decoded.

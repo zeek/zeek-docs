@@ -35,16 +35,16 @@ Events
    For more information, see MS-CIFS:2.2.4.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :echo_count: The number of times the server should echo the data back.
+   :param echo_count: The number of times the server should echo the data back.
    
 
-   :data: The data for the server to echo.
+   :param data: The data for the server to echo.
    
    .. zeek:see:: smb1_message smb1_echo_response
 
@@ -59,16 +59,16 @@ Events
    For more information, see MS-CIFS:2.2.4.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :seq_num: The sequence number of this echo reply.
+   :param seq_num: The sequence number of this echo reply.
    
 
-   :data: The data echoed back from the client.
+   :param data: The data echoed back from the client.
    
    .. zeek:see:: smb1_message smb1_echo_request
 

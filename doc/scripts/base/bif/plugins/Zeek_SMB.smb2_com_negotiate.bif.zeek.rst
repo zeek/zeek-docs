@@ -35,13 +35,13 @@ Events
    For more information, see MS-SMB2:2.2.3
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :dialects: A vector of the client's supported dialects.
+   :param dialects: A vector of the client's supported dialects.
    
    .. zeek:see:: smb2_message smb2_negotiate_response
 
@@ -57,13 +57,13 @@ Events
    For more information, see MS-SMB2:2.2.4
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :response: The negotiate response data structure.
+   :param response: The negotiate response data structure.
    
    .. zeek:see:: smb2_message smb2_negotiate_request
 

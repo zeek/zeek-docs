@@ -144,7 +144,7 @@ Functions
    :zeek:see:`Analyzer::register_for_ports` function.
    
 
-   :tag: The analyzer tag.
+   :param tag: The analyzer tag.
    
 
    :returns: BPF filter string.
@@ -158,7 +158,7 @@ Functions
    further for analysis of future connections.
    
 
-   :tag: The tag of the analyzer to disable.
+   :param tag: The tag of the analyzer to disable.
    
 
    :returns: True if the analyzer was successfully disabled.
@@ -172,7 +172,7 @@ Functions
    of future connections as decided by Zeek's dynamic protocol detection.
    
 
-   :tag: The tag of the analyzer to enable.
+   :param tag: The tag of the analyzer to enable.
    
 
    :returns: True if the analyzer was successfully enabled.
@@ -194,7 +194,7 @@ Functions
    Translates an analyzer's name to a tag enum value.
    
 
-   :name: The analyzer name.
+   :param name: The analyzer name.
    
 
    :returns: The analyzer tag corresponding to the name.
@@ -210,7 +210,7 @@ Functions
    verify that the given name as string is a valid analyzer name.
    
 
-   :name: The analyzer name.
+   :param name: The analyzer name.
    
 
    :returns: True if the given name is a valid analyzer, else false.
@@ -223,7 +223,7 @@ Functions
    Translates an analyzer type to a string with the analyzer's name.
    
 
-   :tag: The analyzer tag.
+   :param tag: The analyzer tag.
    
 
    :returns: The analyzer name corresponding to the tag.
@@ -239,10 +239,10 @@ Functions
    registered, it doesn't replace them.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
-   :p: The well-known port to associate with the analyzer.
+   :param p: The well-known port to associate with the analyzer.
    
 
    :returns: True if the port was successfully registered.
@@ -258,10 +258,10 @@ Functions
    already registered, it doesn't replace them.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
-   :ports: The set of well-known ports to associate with the analyzer.
+   :param ports: The set of well-known ports to associate with the analyzer.
    
 
    :returns: True if the ports were successfully registered.
@@ -275,7 +275,7 @@ Functions
    specific analyzer.
    
 
-   :tag: The tag of the analyzer.
+   :param tag: The tag of the analyzer.
    
 
    :returns: The set of ports.
@@ -289,20 +289,20 @@ Functions
    given IP address and port.
    
 
-   :orig: The IP address originating a connection in the future.
+   :param orig: The IP address originating a connection in the future.
          0.0.0.0 can be used as a wildcard to match any originator address.
    
 
-   :resp: The IP address responding to a connection from *orig*.
+   :param resp: The IP address responding to a connection from *orig*.
    
 
-   :resp_p: The destination port at *resp*.
+   :param resp_p: The destination port at *resp*.
    
 
-   :analyzer: The analyzer ID.
+   :param analyzer: The analyzer ID.
    
 
-   :tout: A timeout interval after which the scheduling request will be
+   :param tout: A timeout interval after which the scheduling request will be
          discarded if the connection has not yet been seen.
    
 

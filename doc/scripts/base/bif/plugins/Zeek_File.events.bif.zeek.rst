@@ -30,16 +30,16 @@ Events
    (e.g. as happens w/ FTP or IRC).
    
 
-   :c: The connection over which file data is transferred.
+   :param c: The connection over which file data is transferred.
    
 
-   :prefix: Up to 1024 bytes of the file data.
+   :param prefix: Up to 1024 bytes of the file data.
    
 
-   :descr: Deprecated/unused argument.
+   :param descr: Deprecated/unused argument.
    
 
-   :mime_type: MIME type of the file or "<unknown>" if no file magic signatures
+   :param mime_type: MIME type of the file or "<unknown>" if no file magic signatures
               matched.
 
 

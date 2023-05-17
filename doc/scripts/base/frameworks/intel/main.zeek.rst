@@ -525,13 +525,13 @@ Hooks
    added with a priority of 5.
    
 
-   :info: The Info record that will be logged.
+   :param info: The Info record that will be logged.
    
 
-   :s: Information about the data seen.
+   :param s: Information about the data seen.
    
 
-   :items: The intel items that match the seen data.
+   :param items: The intel items that match the seen data.
    
    In case the hook execution is terminated using break, the match will
    not be logged.
@@ -547,7 +547,7 @@ Hooks
    data store.
    
 
-   :item: The intel item that should be inserted.
+   :param item: The intel item that should be inserted.
 
 .. zeek:id:: Intel::item_expired
    :source-code: policy/frameworks/intel/do_expire.zeek 10 14
@@ -557,13 +557,13 @@ Hooks
    This hook can be used to handle expiration of intelligence items.
    
 
-   :indicator: The indicator of the expired item.
+   :param indicator: The indicator of the expired item.
    
 
-   :indicator_type: The indicator type of the expired item.
+   :param indicator_type: The indicator type of the expired item.
    
 
-   :metas: The set of metadata describing the expired item.
+   :param metas: The set of metadata describing the expired item.
    
    If all hook handlers are executed, the expiration timeout will be reset.
    Otherwise, if one of the handlers terminates using break, the item will

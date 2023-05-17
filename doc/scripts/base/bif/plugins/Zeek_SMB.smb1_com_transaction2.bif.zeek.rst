@@ -39,13 +39,13 @@ Events
    For more information, see MS-CIFS:2.2.6.2
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :args: A record data structure with arguments given to the command.
+   :param args: A record data structure with arguments given to the command.
    
    .. zeek:see:: smb1_message smb1_transaction2_request smb1_trans2_query_path_info_request
       smb1_trans2_get_dfs_referral_request
@@ -62,13 +62,13 @@ Events
    For more information, see MS-CIFS:2.2.6.16
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_name: File name the request is in reference to.
+   :param file_name: File name the request is in reference to.
    
    .. zeek:see:: smb1_message smb1_transaction2_request smb1_trans2_find_first2_request
       smb1_trans2_query_path_info_request
@@ -85,13 +85,13 @@ Events
    For more information, see MS-CIFS:2.2.6.6
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :file_name: File name the request is in reference to. 
+   :param file_name: File name the request is in reference to. 
    
    .. zeek:see:: smb1_message smb1_transaction2_request smb1_trans2_find_first2_request
       smb1_trans2_get_dfs_referral_request
@@ -112,13 +112,13 @@ Events
    For more information, see MS-CIFS:2.2.4.46
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :sub_cmd: The sub command, some are parsed and have their own events.
+   :param sub_cmd: The sub command, some are parsed and have their own events.
    
    .. zeek:see:: smb1_message smb1_trans2_find_first2_request smb1_trans2_query_path_info_request
       smb1_trans2_get_dfs_referral_request smb1_transaction_request

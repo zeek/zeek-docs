@@ -318,7 +318,7 @@ Events
    to the signature logging stream.
    
 
-   :rec: The record of signature data about to be logged.
+   :param rec: The record of signature data about to be logged.
 
 Hooks
 #####

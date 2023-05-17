@@ -30,7 +30,7 @@ Functions
    Renders a set of strings to an alphabetically sorted vector.
    
 
-   :ss: the string set to convert.
+   :param ss: the string set to convert.
    
 
    :returns: the vector of all strings in ss.

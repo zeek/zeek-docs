@@ -33,13 +33,13 @@ Functions
    to form a new filter.
    
 
-   :lfilter: Filter which will go on the left side.
+   :param lfilter: Filter which will go on the left side.
    
 
-   :op: Operation being applied (typically "or" or "and").
+   :param op: Operation being applied (typically "or" or "and").
    
 
-   :rfilter: Filter which will go on the right side.
+   :param rfilter: Filter which will go on the right side.
    
 
    :returns: A new string representing the two filters combined with
@@ -55,7 +55,7 @@ Functions
    match the port.
    
 
-   :p: The port.
+   :param p: The port.
    
 
    :returns: A valid BPF filter string for matching the port.
@@ -68,9 +68,9 @@ Functions
    Create a BPF filter to sample IPv4 and IPv6 traffic.
    
 
-   :num_parts: The number of parts the traffic should be split into.
+   :param num_parts: The number of parts the traffic should be split into.
    
 
-   :this_part: The part of the traffic this filter will accept (0-based).
+   :param this_part: The part of the traffic this filter will accept (0-based).
 
 

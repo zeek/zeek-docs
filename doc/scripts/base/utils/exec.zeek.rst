@@ -85,7 +85,7 @@ Functions
    to be run with the `when` statement.
    
 
-   :cmd: The command to run.  Use care to avoid injection attacks!
+   :param cmd: The command to run.  Use care to avoid injection attacks!
    
 
    :returns: A record representing the full results from the

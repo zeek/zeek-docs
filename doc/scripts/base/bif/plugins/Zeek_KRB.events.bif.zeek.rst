@@ -49,13 +49,13 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :ticket: The Kerberos ticket being used for authentication.
+   :param ticket: The Kerberos ticket being used for authentication.
    
 
-   :opts: A Kerberos AP options data structure.
+   :param opts: A Kerberos AP options data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -75,7 +75,7 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_priv krb_safe krb_cred krb_error
@@ -95,10 +95,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC request message data structure.
+   :param msg: A Kerberos KDC request message data structure.
    
    .. zeek:see:: krb_as_response krb_tgs_request krb_tgs_response krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -117,10 +117,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC reply message data structure.
+   :param msg: A Kerberos KDC reply message data structure.
    
    .. zeek:see:: krb_as_request krb_tgs_request krb_tgs_response krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -137,13 +137,13 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :is_orig: Whether the originator of the connection sent this message.
+   :param is_orig: Whether the originator of the connection sent this message.
    
 
-   :tickets: Tickets obtained from the KDC that are being forwarded.
+   :param tickets: Tickets obtained from the KDC that are being forwarded.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_priv krb_safe krb_error
@@ -159,10 +159,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos error message data structure.
+   :param msg: A Kerberos error message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_priv krb_safe krb_cred
@@ -181,10 +181,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :is_orig: Whether the originator of the connection sent this message.
+   :param is_orig: Whether the originator of the connection sent this message.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_safe krb_cred krb_error
@@ -201,13 +201,13 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :is_orig: Whether the originator of the connection sent this message.
+   :param is_orig: Whether the originator of the connection sent this message.
    
 
-   :msg: A Kerberos SAFE message data structure.
+   :param msg: A Kerberos SAFE message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_priv krb_cred krb_error
@@ -227,10 +227,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC request message data structure.
+   :param msg: A Kerberos KDC request message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_response krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error
@@ -249,10 +249,10 @@ Events
    more information about the Kerberos protocol.
    
 
-   :c: The connection over which this Kerberos message was sent.
+   :param c: The connection over which this Kerberos message was sent.
    
 
-   :msg: A Kerberos KDC reply message data structure.
+   :param msg: A Kerberos KDC reply message data structure.
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_ap_request
       krb_ap_response krb_priv krb_safe krb_cred krb_error

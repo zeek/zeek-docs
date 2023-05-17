@@ -113,7 +113,7 @@ Functions
    function and must be called within a "when" statement.
    
 
-   :req: A record instance representing all options for an HTTP request.
+   :param req: A record instance representing all options for an HTTP request.
    
 
    :returns: A record with the full response message.

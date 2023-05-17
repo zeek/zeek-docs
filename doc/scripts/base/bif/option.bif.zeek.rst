@@ -35,7 +35,7 @@ Functions
    a "vector of any".
    
 
-   :v: an "any" type corresponding to a set.
+   :param v: an "any" type corresponding to a set.
    
 
    :returns: a vector-of-any with one element for each member of v.
@@ -49,13 +49,13 @@ Functions
    handlers to be called.
    
 
-   :ID: The ID of the option to update.
+   :param ID: The ID of the option to update.
    
 
-   :val: The new value of the option.
+   :param val: The new value of the option.
    
 
-   :location: Optional parameter detailing where this change originated from.
+   :param location: Optional parameter detailing where this change originated from.
    
 
    :returns: true on success, false when an error occurred.
@@ -76,10 +76,10 @@ Functions
    called anytime :zeek:id:`Option::set` is called for the option.
    
 
-   :ID: The ID of the option for which change notifications are desired.
+   :param ID: The ID of the option for which change notifications are desired.
    
 
-   :on_change: The function that will be called when a change occurs. The
+   :param on_change: The function that will be called when a change occurs. The
               function can choose to receive two or three parameters: the first
               parameter is a string containing *ID*, the second parameter is
               the new option value. The third, optional, parameter is the
@@ -92,7 +92,7 @@ Functions
               return value of the first change handler as the "new value".
    
 
-   :priority: The priority of the function that was added; functions with higher
+   :param priority: The priority of the function that was added; functions with higher
              priority are called first, functions with the same priority are
              called in the order in which they were added.
    

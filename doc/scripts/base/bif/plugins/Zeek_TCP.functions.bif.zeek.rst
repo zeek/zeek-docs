@@ -32,10 +32,10 @@ Functions
    Returns the file handle of the contents file of a connection.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
-   :direction: Controls what sides of the connection to record. See
+   :param direction: Controls what sides of the connection to record. See
               :zeek:id:`set_contents_file` for possible values.
    
 
@@ -56,7 +56,7 @@ Functions
    they are not relative to the beginning of the connection).
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: The highest sequence number sent by a connection's originator, or 0
@@ -74,7 +74,7 @@ Functions
    they are not relative to the beginning of the connection).
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: The highest sequence number sent by a connection's responder, or 0
@@ -91,10 +91,10 @@ Functions
    contents.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
-   :direction: Controls what sides of the connection to record. The argument can
+   :param direction: Controls what sides of the connection to record. The argument can
               take one of the four values:
    
               - ``CONTENTS_NONE``: Stop recording the connection's content.
@@ -107,7 +107,7 @@ Functions
                 in the order the data was seen by Zeek.
    
 
-   :f: The file handle of the file to write the contents to.
+   :param f: The file handle of the file to write the contents to.
    
 
    :returns: Returns false if *cid* does not point to an active connection, and

@@ -100,7 +100,7 @@ Functions
    In contrast to :zeek:id:`escape_string`, this encoding is *not* fully reversible.`
    
 
-   :str: The string to escape.
+   :param str: The string to escape.
    
 
    :returns: The escaped string.
@@ -115,9 +115,9 @@ Functions
    Returns the number of times a substring occurs within a string
    
 
-   :str: The string to search in.
+   :param str: The string to search in.
 
-   :substr: The string to search for.
+   :param substr: The string to search for.
    
 
    :returns: The number of times the substring occurred.
@@ -133,10 +133,10 @@ Functions
    For example, ``edit("hello there", "e")`` returns ``"llo t"``.
    
 
-   :arg_s: The string to edit.
+   :param arg_s: The string to edit.
    
 
-   :arg_edit_char: A string of exactly one character that represents the
+   :param arg_edit_char: A string of exactly one character that represents the
                   "backspace character". If it is longer than one character Zeek
                   generates a run-time error and uses the first character in
                   the string.
@@ -172,7 +172,7 @@ Functions
    In contrast to :zeek:id:`clean`, this encoding is fully reversible.`
    
 
-   :str: The string to escape.
+   :param str: The string to escape.
    
 
    :returns: The escaped string.
@@ -187,13 +187,13 @@ Functions
    Finds all occurrences of a pattern in a string.
    
 
-   :str: The string to inspect.
+   :param str: The string to inspect.
    
 
-   :re: The pattern to look for in *str*.
+   :param re: The pattern to look for in *str*.
    
 
-   :max_str_size: The maximum string size allowed as input. If set to -1, this will use the
+   :param max_str_size: The maximum string size allowed as input. If set to -1, this will use the
                  :zeek:see:`max_find_all_string_length` global constant. If set to 0, this
                  check is disabled. If the length of `str` is greater than this size, an
                  empty set is returned.
@@ -213,13 +213,13 @@ Functions
    duplicate elements.
    
 
-   :str: The string to inspect.
+   :param str: The string to inspect.
    
 
-   :re: The pattern to look for in *str*.
+   :param re: The pattern to look for in *str*.
    
 
-   :max_str_size: The maximum string size allowed as input. If set to -1, this will use the
+   :param max_str_size: The maximum string size allowed as input. If set to -1, this will use the
                  :zeek:see:`max_find_all_string_length` global constant. If set to 0, this
                  check is disabled. If the length of `str` is greater than this size, an
                  empty set is returned.
@@ -240,10 +240,10 @@ Functions
    return the final character in the string.
    
 
-   :str: The string to inspect.
+   :param str: The string to inspect.
    
 
-   :re: The pattern to look for in *str*.
+   :param re: The pattern to look for in *str*.
    
 
    :returns: The last string in *str* that matches *re*, or the empty string.
@@ -261,17 +261,17 @@ Functions
    will always return a failure.
    
 
-   :str: The string to search in.
+   :param str: The string to search in.
 
-   :substr: The string to search for.
+   :param substr: The string to search for.
 
-   :start: An optional position for the start of the substring.
+   :param start: An optional position for the start of the substring.
 
-   :end: An optional position for the end of the substring. A value less than
+   :param end: An optional position for the end of the substring. A value less than
         zero (such as the default -1) means a search until the end of the
         string.
 
-   :case_sensitive: Set to false to perform a case-insensitive search.
+   :param case_sensitive: Set to false to perform a case-insensitive search.
                    (default: T). Note that case-insensitive searches use the
                    ``tolower`` libc function, which is locale-sensitive.
    
@@ -289,13 +289,13 @@ Functions
    in a given string.
    
 
-   :str: The string to perform the substitution in.
+   :param str: The string to perform the substitution in.
    
 
-   :re: The pattern being replaced with *repl*.
+   :param re: The pattern being replaced with *repl*.
    
 
-   :repl: The string that replaces *re*.
+   :param repl: The string that replaces *re*.
    
 
    :returns: A copy of *str* with all occurrences of *re* replaced with *repl*.
@@ -312,7 +312,7 @@ Functions
    on the right.
    
 
-   :data_str: The string to dump in hex format.
+   :param data_str: The string to dump in hex format.
    
 
    :returns: The hex dump of the given string.
@@ -349,7 +349,7 @@ Functions
    The empty string is ASCII.
    
 
-   :str: The string to examine.
+   :param str: The string to examine.
    
 
    :returns: False if any byte value of *str* is greater than 127, and true
@@ -375,10 +375,10 @@ Functions
    between each element.
    
 
-   :ss: The :zeek:type:`string_set` (``set[string]``).
+   :param ss: The :zeek:type:`string_set` (``set[string]``).
    
 
-   :sep: The separator to place between each element.
+   :param sep: The separator to place between each element.
    
 
    :returns: The concatenation of all elements in *s*, with *sep* placed
@@ -397,10 +397,10 @@ Functions
    between each element.
    
 
-   :sep: The separator to place between each element.
+   :param sep: The separator to place between each element.
    
 
-   :vec: The :zeek:type:`string_vec` (``vector of string``).
+   :param vec: The :zeek:type:`string_vec` (``vector of string``).
    
 
    :returns: The concatenation of all elements in *vec*, with *sep* placed
@@ -418,10 +418,10 @@ Functions
    <http://en.wikipedia.org/wiki/Levenshtein_distance>`__ for more information.
    
 
-   :s1: The first string.
+   :param s1: The first string.
    
 
-   :s2: The second string.
+   :param s2: The second string.
    
 
    :returns: The Levenshtein distance of two strings as a count.
@@ -436,12 +436,12 @@ Functions
    with a specified character.
    
 
-   :str: The string to left-justify.
+   :param str: The string to left-justify.
 
-   :count: The length of the returned string. If this value is less than or
+   :param count: The length of the returned string. If this value is less than or
           equal to the length of str, a copy of str is returned.
 
-   :fill: The character used to fill in any extra characters in the resulting
+   :param fill: The character used to fill in any extra characters in the resulting
          string. If a string longer than one character is passed, an error is
          reported. This defaults to the space character.
    
@@ -459,10 +459,10 @@ Functions
    starting at the beginning of the string until first mismatch.
    
 
-   :str: The string to strip characters from.
+   :param str: The string to strip characters from.
    
 
-   :chars: A string consisting of the characters to be removed.
+   :param chars: A string consisting of the characters to be removed.
           Defaults to all whitespace characters.
    
 
@@ -493,7 +493,7 @@ Functions
    Returns a reversed copy of the string
    
 
-   :str: The string to reverse.
+   :param str: The string to reverse.
    
 
    :returns: A reversed copy of *str*
@@ -508,16 +508,16 @@ Functions
    the substring instead of the smallest.
    
 
-   :str: The string to search in.
+   :param str: The string to search in.
 
-   :substr: The string to search for.
+   :param substr: The string to search for.
 
-   :start: An optional position for the start of the substring.
+   :param start: An optional position for the start of the substring.
 
-   :end: An optional position for the end of the substring. A value less than
+   :param end: An optional position for the end of the substring. A value less than
         zero (such as the default -1) means a search from the end of the string.
 
-   :case_sensitive: Set to false to perform a case-insensitive search.
+   :param case_sensitive: Set to false to perform a case-insensitive search.
                    (default: T). Note that case-insensitive searches use the
                    ``tolower`` libc function, which is locale-sensitive.
    
@@ -535,12 +535,12 @@ Functions
    with a specified character.
    
 
-   :str: The string to right-justify.
+   :param str: The string to right-justify.
 
-   :count: The length of the returned string. If this value is less than or
+   :param count: The length of the returned string. If this value is less than or
           equal to the length of str, a copy of str is returned.
 
-   :fill: The character used to fill in any extra characters in the resulting
+   :param fill: The character used to fill in any extra characters in the resulting
          string. If a string longer than one character is passed, an error is
          reported. This defaults to the space character.
    
@@ -558,10 +558,10 @@ Functions
    starting at the end of the string until first mismatch.
    
 
-   :str: The string to strip characters from.
+   :param str: The string to strip characters from.
    
 
-   :chars: A string consisting of the characters to be removed.
+   :param chars: A string consisting of the characters to be removed.
           Defaults to all whitespace characters.
    
 
@@ -580,7 +580,7 @@ Functions
    :zeek:id:`system` or similar calls.
    
 
-   :source: The string to escape.
+   :param source: The string to escape.
    
 
    :returns: A shell-escaped version of *source*.  Specifically, this
@@ -600,10 +600,10 @@ Functions
    Splits a string into an array of strings according to a pattern.
    
 
-   :str: The string to split.
+   :param str: The string to split.
    
 
-   :re: The pattern describing the element separator in *str*.
+   :param re: The pattern describing the element separator in *str*.
    
 
    :returns: An array of strings where each element corresponds to a substring
@@ -623,10 +623,10 @@ Functions
    strings is returned.
    
 
-   :str: The string to split.
+   :param str: The string to split.
    
 
-   :re: The pattern describing the separator to split *str* in two pieces.
+   :param re: The pattern describing the separator to split *str* in two pieces.
    
 
    :returns: An array of strings with two elements in which the first represents
@@ -648,10 +648,10 @@ Functions
    pattern and even-indexed ones do not.
    
 
-   :str: The string to split.
+   :param str: The string to split.
    
 
-   :re: The pattern describing the element separator in *str*.
+   :param re: The pattern describing the element separator in *str*.
    
 
    :returns: An array of strings where each two successive elements correspond
@@ -671,17 +671,17 @@ Functions
    including separators in the result and the number of times to split.
    
 
-   :str: The string to split.
+   :param str: The string to split.
    
 
-   :re: The pattern describing the element separator in *str*.
+   :param re: The pattern describing the element separator in *str*.
    
 
-   :incl_sep: A flag indicating whether to include the separator matches in the
+   :param incl_sep: A flag indicating whether to include the separator matches in the
              result (as in :zeek:id:`split_string_all`).
    
 
-   :max_num_sep: The number of times to split *str*.
+   :param max_num_sep: The number of times to split *str*.
    
 
    :returns: An array of strings where, if *incl_sep* is true, each two
@@ -708,13 +708,13 @@ Functions
    See `Wikipedia <http://en.wikipedia.org/wiki/Smith%E2%80%93Waterman_algorithm>`__.
    
 
-   :s1: The first string.
+   :param s1: The first string.
    
 
-   :s2: The second string.
+   :param s2: The second string.
    
 
-   :params: Parameters for the Smith-Waterman algorithm.
+   :param params: Parameters for the Smith-Waterman algorithm.
    
 
    :returns: The result of the Smith-Waterman algorithm calculation.
@@ -728,10 +728,10 @@ Functions
    points.
    
 
-   :s: The string to split.
+   :param s: The string to split.
    
 
-   :idx: The index vector (``vector of count``) with the cutting points
+   :param idx: The index vector (``vector of count``) with the cutting points
    
 
    :returns: A zero-indexed vector of strings.
@@ -746,10 +746,10 @@ Functions
    Lexicographically compares two strings.
    
 
-   :s1: The first string.
+   :param s1: The first string.
    
 
-   :s2: The second string.
+   :param s2: The second string.
    
 
    :returns: An integer greater than, equal to, or less than 0 according as
@@ -779,10 +779,10 @@ Functions
    string.
    
 
-   :len: The length of the output string.
+   :param len: The length of the output string.
    
 
-   :source: The string to concatenate repeatedly until *len* has been reached.
+   :param source: The string to concatenate repeatedly until *len* has been reached.
    
 
    :returns: A string of length *len* filled with *source*.
@@ -795,7 +795,7 @@ Functions
    Returns an ASCII hexadecimal representation of a string.
    
 
-   :s: The string to convert to hex.
+   :param s: The string to convert to hex.
    
 
    :returns: A copy of *s* where each byte is replaced with the corresponding
@@ -809,7 +809,7 @@ Functions
    Strips whitespace at both ends of a string.
    
 
-   :str: The string to strip the whitespace from.
+   :param str: The string to strip the whitespace from.
    
 
    :returns: A copy of *str* with leading and trailing whitespace removed.
@@ -824,10 +824,10 @@ Functions
    Locates the first occurrence of one string in another.
    
 
-   :big: The string to look in.
+   :param big: The string to look in.
    
 
-   :little: The (smaller) string to find inside *big*.
+   :param little: The (smaller) string to find inside *big*.
    
 
    :returns: The location of *little* in *big*, or 0 if *little* is not found in
@@ -844,13 +844,13 @@ Functions
    in a given string.
    
 
-   :str: The string to perform the substitution in.
+   :param str: The string to perform the substitution in.
    
 
-   :re: The pattern being replaced with *repl*.
+   :param re: The pattern being replaced with *repl*.
    
 
-   :repl: The string that replaces *re*.
+   :param repl: The string that replaces *re*.
    
 
    :returns: A copy of *str* with the first occurence of *re* replaced with
@@ -866,14 +866,14 @@ Functions
    Get a substring from a string, given a starting position and length.
    
 
-   :s: The string to obtain a substring from.
+   :param s: The string to obtain a substring from.
    
 
-   :start: The starting position of the substring in *s*, where 1 is the first
+   :param start: The starting position of the substring in *s*, where 1 is the first
           character. As a special case, 0 also represents the first character.
    
 
-   :n: The number of characters to extract, beginning at *start*.
+   :param n: The number of characters to extract, beginning at *start*.
    
 
    :returns: A substring of *s* of length *n* from position *start*.
@@ -886,13 +886,13 @@ Functions
    Substitutes each (non-overlapping) appearance of a string in another.
    
 
-   :s: The string in which to perform the substitution.
+   :param s: The string in which to perform the substitution.
    
 
-   :from: The string to look for which is replaced with *to*.
+   :param from: The string to look for which is replaced with *to*.
    
 
-   :to: The string that replaces all occurrences of *from* in *s*.
+   :param to: The string that replaces all occurrences of *from* in *s*.
    
 
    :returns: A copy of *s* where each occurrence of *from* is replaced with *to*.
@@ -907,7 +907,7 @@ Functions
    Swaps the case of every alphabetic character in a string. For example, the string "aBc" be returned as "AbC".
    
 
-   :str: The string to swap cases in.
+   :param str: The string to swap cases in.
    
 
    :returns: A copy of the str with the case of each character swapped.
@@ -921,7 +921,7 @@ Functions
    Replaces all uppercase letters in a string with their lowercase counterpart.
    
 
-   :str: The string to convert to lowercase letters.
+   :param str: The string to convert to lowercase letters.
    
 
    :returns: A copy of the given string with the uppercase letters (as indicated
@@ -943,7 +943,7 @@ Functions
        - ``'`` and ``""`` to ``\'`` and ``\"``, respectively.
    
 
-   :str: The string to escape.
+   :param str: The string to escape.
    
 
    :returns: The escaped string.
@@ -959,7 +959,7 @@ Functions
    in the string to be capitalized. See https://docs.python.org/3/library/stdtypes.html#str.title for more info.
    
 
-   :str: The string to convert.
+   :param str: The string to convert.
    
 
    :returns: A title-cased version of the string.
@@ -973,7 +973,7 @@ Functions
    Replaces all lowercase letters in a string with their uppercase counterpart.
    
 
-   :str: The string to convert to uppercase letters.
+   :param str: The string to convert to uppercase letters.
    
 
    :returns: A copy of the given string with the lowercase letters (as indicated

@@ -32,10 +32,10 @@ Functions
    Starts monitoring a given connection.
    
 
-   :c: The connection to watch.
+   :param c: The connection to watch.
    
 
-   :callback: A callback function that takes as arguments the monitored
+   :param callback: A callback function that takes as arguments the monitored
              *connection*, and counter *cnt* that increments each time
              the callback is called.  It returns an interval indicating
              how long in the future to schedule an event which will call
@@ -43,10 +43,10 @@ Functions
              to stop.
    
 
-   :cnt: The initial value of a counter which gets passed to *callback*.
+   :param cnt: The initial value of a counter which gets passed to *callback*.
    
 
-   :i: The initial interval at which to schedule the next callback.
+   :param i: The initial interval at which to schedule the next callback.
       May be ``0secs`` to poll right away.
 
 

@@ -32,10 +32,10 @@ Events
    information about the Finger protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :reply_line: The reply as returned by the server
+   :param reply_line: The reply as returned by the server
    
    .. zeek:see:: finger_request
    
@@ -55,16 +55,16 @@ Events
    information about the Finger protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :full: True if verbose information is requested (``/W`` switch).
+   :param full: True if verbose information is requested (``/W`` switch).
    
 
-   :username: The request's user name.
+   :param username: The request's user name.
    
 
-   :hostname: The request's host name.
+   :param hostname: The request's host name.
    
    .. zeek:see:: finger_reply
    

@@ -37,10 +37,10 @@ Events
    parser state has been reset.
    
 
-   :c: The affected connection.
+   :param c: The affected connection.
    
 
-   :state: String describing what kind of state was affected.
+   :param state: String describing what kind of state was affected.
           One of read, ioctl or tree.
 
 .. zeek:id:: smb2_message
@@ -58,13 +58,13 @@ Events
    ports 138/139 and :abbr:`SMB (Server Message Block)`-over-TCP on port 445.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :is_orig: True if the message came from the originator side.
+   :param is_orig: True if the message came from the originator side.
    
    .. zeek:see:: smb1_message
 

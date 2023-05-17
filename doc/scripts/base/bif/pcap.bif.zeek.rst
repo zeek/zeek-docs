@@ -65,7 +65,7 @@ Functions
    there's no active packet source or the pcap filter ID does not exist.
    
 
-   :id: The PCAP filter id of a precompiled filter.
+   :param id: The PCAP filter id of a precompiled filter.
    
 
    :returns: A state value denoting whether any warnings or errors were
@@ -83,7 +83,7 @@ Functions
    filter initialization.
    
 
-   :id: The PCAP filter id of a precompiled filter.
+   :param id: The PCAP filter id of a precompiled filter.
    
 
    :returns: Warning/error strings from the initialization process, a blank
@@ -102,7 +102,7 @@ Functions
    :zeek:id:`Pcap::precompile_pcap_filter`.
    
 
-   :id: The PCAP filter id of a precompiled filter.
+   :param id: The PCAP filter id of a precompiled filter.
    
 
    :returns: True if the filter associated with *id* has been installed
@@ -127,10 +127,10 @@ Functions
    Precompiles a PCAP filter and binds it to a given identifier.
    
 
-   :id: The PCAP identifier to reference the filter *s* later on.
+   :param id: The PCAP identifier to reference the filter *s* later on.
    
 
-   :s: The PCAP filter. See ``man tcpdump`` for valid expressions.
+   :param s: The PCAP filter. See ``man tcpdump`` for valid expressions.
    
 
    :returns: True if *s* is valid and precompiles successfully.

@@ -89,10 +89,10 @@ Events
    Send a request to a remote Supervisor process to create a node.
    
 
-   :reqid: an arbitrary string that will be directly echoed in the response
+   :param reqid: an arbitrary string that will be directly echoed in the response
    
 
-   :node: the desired configuration for the new supervised node process.
+   :param node: the desired configuration for the new supervised node process.
 
 .. zeek:id:: SupervisorControl::create_response
    :source-code: policy/frameworks/management/agent/main.zeek 286 308
@@ -103,10 +103,10 @@ Events
    :zeek:see:`SupervisorControl::create_request`.
    
 
-   :reqid: an arbitrary string matching the value in the original request.
+   :param reqid: an arbitrary string matching the value in the original request.
    
 
-   :result: the return value of the remote call to
+   :param result: the return value of the remote call to
            :zeek:see:`Supervisor::create`.
 
 .. zeek:id:: SupervisorControl::destroy_request
@@ -117,10 +117,10 @@ Events
    Send a request to a remote Supervisor process to destroy a node.
    
 
-   :reqid: an arbitrary string that will be directly echoed in the response
+   :param reqid: an arbitrary string that will be directly echoed in the response
    
 
-   :node: the name of the node to destroy or empty string to mean "all
+   :param node: the name of the node to destroy or empty string to mean "all
          nodes".
 
 .. zeek:id:: SupervisorControl::destroy_response
@@ -132,10 +132,10 @@ Events
    :zeek:see:`SupervisorControl::destroy_request`.
    
 
-   :reqid: an arbitrary string matching the value in the original request.
+   :param reqid: an arbitrary string matching the value in the original request.
    
 
-   :result: the return value of the remote call to
+   :param result: the return value of the remote call to
            :zeek:see:`Supervisor::destroy`.
 
 .. zeek:id:: SupervisorControl::node_status
@@ -149,12 +149,12 @@ Events
    :zeek:see:`Supervisor::node_status`.
    
 
-   :node: the name of a previously created node via
+   :param node: the name of a previously created node via
          :zeek:see:`Supervisor::create` indicating to which
          child process the stdout line is associated.
    
 
-   :pid: the process ID the stem reported for this node.
+   :param pid: the process ID the stem reported for this node.
 
 .. zeek:id:: SupervisorControl::restart_request
    :source-code: base/frameworks/supervisor/main.zeek 93 101
@@ -164,10 +164,10 @@ Events
    Send a request to a remote Supervisor process to restart a node.
    
 
-   :reqid: an arbitrary string that will be directly echoed in the response
+   :param reqid: an arbitrary string that will be directly echoed in the response
    
 
-   :node: the name of the node to restart or empty string to mean "all
+   :param node: the name of the node to restart or empty string to mean "all
          nodes".
 
 .. zeek:id:: SupervisorControl::restart_response
@@ -179,10 +179,10 @@ Events
    :zeek:see:`SupervisorControl::restart_request`.
    
 
-   :reqid: an arbitrary string matching the value in the original request.
+   :param reqid: an arbitrary string matching the value in the original request.
    
 
-   :result: the return value of the remote call to
+   :param result: the return value of the remote call to
            :zeek:see:`Supervisor::restart`.
 
 .. zeek:id:: SupervisorControl::status_request
@@ -193,10 +193,10 @@ Events
    Send a request to a remote Supervisor process to retrieve node status.
    
 
-   :reqid: an arbitrary string that will be directly echoed in the response
+   :param reqid: an arbitrary string that will be directly echoed in the response
    
 
-   :node: the name of the node to get status of or empty string to mean "all
+   :param node: the name of the node to get status of or empty string to mean "all
          nodes".
 
 .. zeek:id:: SupervisorControl::status_response
@@ -208,10 +208,10 @@ Events
    :zeek:see:`SupervisorControl::status_request`.
    
 
-   :reqid: an arbitrary string matching the value in the original request.
+   :param reqid: an arbitrary string matching the value in the original request.
    
 
-   :result: the return value of the remote call to
+   :param result: the return value of the remote call to
            :zeek:see:`Supervisor::status`.
 
 .. zeek:id:: SupervisorControl::stop_request

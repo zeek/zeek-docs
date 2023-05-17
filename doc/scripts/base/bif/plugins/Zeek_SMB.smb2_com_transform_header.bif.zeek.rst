@@ -33,10 +33,10 @@ Events
    For more information, see MS-SMB2:2.2.41
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed transformed header message, which is starting with \xfdSMB and different from SMB1 and SMB2 headers.
+   :param hdr: The parsed transformed header message, which is starting with \xfdSMB and different from SMB1 and SMB2 headers.
    
    .. zeek:see:: smb2_message
 

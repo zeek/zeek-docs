@@ -85,10 +85,10 @@ Functions
    Checks whether a given host (IP address) matches a given host type.
    
 
-   :ip: address of a host.
+   :param ip: address of a host.
    
 
-   :h: a host type.
+   :param h: a host type.
    
 
    :returns: T if the given host matches the given type, else F.
@@ -102,10 +102,10 @@ Functions
    to the locally-monitored network.
    
 
-   :id: a connection record containing the originator/responder hosts.
+   :param id: a connection record containing the originator/responder hosts.
    
 
-   :d: a direction with respect to the locally-monitored network.
+   :param d: a direction with respect to the locally-monitored network.
    
 
    :returns: T if the two connection endpoints match the given direction, else F.

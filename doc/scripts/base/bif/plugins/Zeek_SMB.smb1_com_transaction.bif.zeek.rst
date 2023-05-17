@@ -36,23 +36,23 @@ Events
    For more information, see MS-CIFS:2.2.4.33.1
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :name: A name string that MAY identify the resource (a specific Mailslot or Named Pipe) 
+   :param name: A name string that MAY identify the resource (a specific Mailslot or Named Pipe) 
          against which the operation is performed.
    
 
-   :sub_cmd: The sub command, some may be parsed and have their own events.
+   :param sub_cmd: The sub command, some may be parsed and have their own events.
    
 
-   :parameters: content of the SMB_Data.Trans_Parameters field
+   :param parameters: content of the SMB_Data.Trans_Parameters field
    
 
-   :data: content of the SMB_Data.Trans_Data field
+   :param data: content of the SMB_Data.Trans_Data field
    
    .. zeek:see:: smb1_message smb1_transaction2_request
 
@@ -69,15 +69,15 @@ Events
    For more information, see MS-CIFS:2.2.4.33.2
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :parameters: content of the SMB_Data.Trans_Parameters field
+   :param parameters: content of the SMB_Data.Trans_Parameters field
    
 
-   :data: content of the SMB_Data.Trans_Data field
+   :param data: content of the SMB_Data.Trans_Data field
 
 

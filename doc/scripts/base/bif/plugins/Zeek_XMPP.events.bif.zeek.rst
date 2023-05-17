@@ -30,6 +30,6 @@ Events
    StartTLS exchange between the client and the server.
    
 
-   :c: The connection.
+   :param c: The connection.
 
 

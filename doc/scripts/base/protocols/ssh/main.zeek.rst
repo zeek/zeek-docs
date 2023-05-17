@@ -203,7 +203,7 @@ Events
    This event is only raised once per connection.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
    .. zeek:see:: ssh_server_version ssh_client_version
@@ -226,14 +226,14 @@ Events
    This event is only raised once per connection.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :result: True if the authentication was successful, false if not.
+   :param result: True if the authentication was successful, false if not.
    
 
-   :auth_attempts: The number of authentication attempts that were
+   :param auth_attempts: The number of authentication attempts that were
       observed.
    
    .. zeek:see:: ssh_server_version ssh_client_version

@@ -41,10 +41,10 @@ Events
    Generated for MQTT acknowledge connection messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg: MQTT connect ack message fields.
+   :param msg: MQTT connect ack message fields.
 
 .. zeek:id:: mqtt_connect
    :source-code: base/protocols/mqtt/main.zeek 177 188
@@ -54,10 +54,10 @@ Events
    Generated for MQTT "client requests a connection" messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg: MQTT connect message fields.
+   :param msg: MQTT connect message fields.
 
 .. zeek:id:: mqtt_disconnect
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 127 127
@@ -67,7 +67,7 @@ Events
    Generated for MQTT disconnect messages sent by the client when it is disconnecting cleanly.
    
 
-   :c: The connection
+   :param c: The connection
 
 .. zeek:id:: mqtt_pingreq
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 115 115
@@ -77,7 +77,7 @@ Events
    Generated for MQTT ping requests sent by the client.
    
 
-   :c: The connection
+   :param c: The connection
 
 .. zeek:id:: mqtt_pingresp
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 121 121
@@ -87,7 +87,7 @@ Events
    Generated for MQTT ping responses sent by the server.
    
 
-   :c: The connection
+   :param c: The connection
 
 .. zeek:id:: mqtt_puback
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 37 37
@@ -97,13 +97,13 @@ Events
    Generated for MQTT publish acknowledgement messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubcomp
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 67 67
@@ -113,13 +113,13 @@ Events
    Generated for MQTT publish complete messages (QoS 2 publish received, part 3)
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_publish
    :source-code: base/bif/plugins/Zeek_MQTT.events.bif.zeek 27 27
@@ -129,13 +129,13 @@ Events
    Generated for MQTT publish messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg: The MQTT publish message record.
+   :param msg: The MQTT publish message record.
 
 .. zeek:id:: mqtt_pubrec
    :source-code: base/protocols/mqtt/main.zeek 257 266
@@ -145,13 +145,13 @@ Events
    Generated for MQTT publish received messages (QoS 2 publish received, part 1)
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_pubrel
    :source-code: base/protocols/mqtt/main.zeek 268 277
@@ -161,13 +161,13 @@ Events
    Generated for MQTT publish release messages (QoS 2 publish received, part 2)
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_suback
    :source-code: base/protocols/mqtt/main.zeek 320 333
@@ -177,13 +177,13 @@ Events
    Generated for MQTT subscribe messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_subscribe
    :source-code: base/protocols/mqtt/main.zeek 306 318
@@ -193,19 +193,19 @@ Events
    Generated for MQTT subscribe messages
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :is_orig: Direction in which the message was sent
+   :param is_orig: Direction in which the message was sent
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
    
 
-   :topics: The topics being subscribed to
+   :param topics: The topics being subscribed to
    
 
-   :requested_qos: The desired QoS option associated with each topic.
+   :param requested_qos: The desired QoS option associated with each topic.
 
 .. zeek:id:: mqtt_unsuback
    :source-code: base/protocols/mqtt/main.zeek 348 360
@@ -215,10 +215,10 @@ Events
    Generated for MQTT unsubscribe acknowledgements sent by the server
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
 
 .. zeek:id:: mqtt_unsubscribe
    :source-code: base/protocols/mqtt/main.zeek 335 346
@@ -228,12 +228,12 @@ Events
    Generated for MQTT unsubscribe messages sent by the client
    
 
-   :c: The connection
+   :param c: The connection
    
 
-   :msg_id: The id value for the message.
+   :param msg_id: The id value for the message.
    
 
-   :topics: The topics being unsubscribed from
+   :param topics: The topics being unsubscribed from
 
 

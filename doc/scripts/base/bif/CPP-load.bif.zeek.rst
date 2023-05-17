@@ -30,7 +30,7 @@ Functions
    Activates the compile-to-C++ scripts associated with the given hash.
    
 
-   :h: Hash of the set of C++ scripts.
+   :param h: Hash of the set of C++ scripts.
    
 
    :returns: True if it was present and loaded, false if not.

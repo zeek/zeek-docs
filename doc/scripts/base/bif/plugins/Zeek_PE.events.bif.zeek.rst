@@ -34,10 +34,10 @@ Events
    to inform the user that the program can't be run in DOS mode.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :code: The DOS stub
+   :param code: The DOS stub
    
    .. zeek:see:: pe_dos_header pe_file_header pe_optional_header pe_section_header
 
@@ -51,10 +51,10 @@ Events
    size of the file, initial value of registers, etc.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :h: The parsed DOS header information.
+   :param h: The parsed DOS header information.
    
    .. zeek:see:: pe_dos_code pe_file_header pe_optional_header pe_section_header
 
@@ -69,10 +69,10 @@ Events
    pointers to other parts of the file.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :h: The parsed file header information.
+   :param h: The parsed file header information.
    
    .. zeek:see:: pe_dos_header pe_dos_code pe_optional_header pe_section_header
 
@@ -88,10 +88,10 @@ Events
    into memory.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :h: The parsed optional header information.
+   :param h: The parsed optional header information.
    
    .. zeek:see:: pe_dos_header pe_dos_code pe_file_header pe_section_header
 
@@ -105,10 +105,10 @@ Events
    and characteristics.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :h: The parsed section header information.
+   :param h: The parsed section header information.
    
    .. zeek:see:: pe_dos_header pe_dos_code pe_file_header pe_optional_header
 

@@ -77,10 +77,10 @@ Events
    This event can be triggered, e.g., via Broker to add known keys to the TLS key database.
    
 
-   :client_random: client random for which the key is set
+   :param client_random: client random for which the key is set
    
 
-   :keys: key material
+   :param keys: key material
 
 .. zeek:id:: SSL::add_secret
    :source-code: policy/protocols/ssl/decryption.zeek 87 90
@@ -90,9 +90,9 @@ Events
    This event can be triggered, e.g., via Broker to add known secrets to the TLS secret database.
    
 
-   :client_random: client random for which the secret is set
+   :param client_random: client random for which the secret is set
    
 
-   :secrets: derived TLS secrets material
+   :param secrets: derived TLS secrets material
 
 

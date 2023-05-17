@@ -288,7 +288,7 @@ Functions
    Checks whether a given file is open.
    
 
-   :f: The file to check.
+   :param f: The file to check.
    
 
    :returns: True if *f* is an open :zeek:type:`file`.
@@ -303,7 +303,7 @@ Functions
    Converts an :zeek:type:`addr` to an :zeek:type:`index_vec`.
    
 
-   :a: The address to convert into a vector of counts.
+   :param a: The address to convert into a vector of counts.
    
 
    :returns: A vector containing the host-order address representation,
@@ -320,7 +320,7 @@ Functions
    ``192.168.0.1`` to ``1.0.168.192.in-addr.arpa``.
    
 
-   :a: The IP address to convert to a reverse pointer name.
+   :param a: The IP address to convert to a reverse pointer name.
    
 
    :returns: The reverse pointer representation of *a*.
@@ -335,7 +335,7 @@ Functions
    Converts a :zeek:type:`addr` to a :zeek:type:`subnet`.
    
 
-   :a: The address to convert.
+   :param a: The address to convert.
    
 
    :returns: The address as a :zeek:type:`subnet`.
@@ -351,7 +351,7 @@ Functions
    true.
    
 
-   :v: The boolean vector instance.
+   :param v: The boolean vector instance.
    
 
    :returns: True iff all elements in *v* are true or there are no elements.
@@ -370,10 +370,10 @@ Functions
    Anonymizes an IP address.
    
 
-   :a: The address to anonymize.
+   :param a: The address to anonymize.
    
 
-   :cl: The anonymization class, which can take on three different values:
+   :param cl: The anonymization class, which can take on three different values:
    
        - ``ORIG_ADDR``: Tag *a* as an originator address.
    
@@ -397,7 +397,7 @@ Functions
    element.
    
 
-   :v: The boolean vector instance.
+   :param v: The boolean vector instance.
    
 
    :returns: True if any element in *v* is true.
@@ -434,10 +434,10 @@ Functions
    Converts a string of bytes to a :zeek:type:`count`.
    
 
-   :s: A string of bytes containing the binary representation of the value.
+   :param s: A string of bytes containing the binary representation of the value.
    
 
-   :is_le: If true, *s* is assumed to be in little endian format, else it's big endian.
+   :param is_le: If true, *s* is assumed to be in little endian format, else it's big endian.
    
 
    :returns: The value contained in *s*, or 0 if the conversion failed.
@@ -453,7 +453,7 @@ Functions
    but works on 8-byte strings.
    
 
-   :s: A string of bytes containing the binary representation of a double value.
+   :param s: A string of bytes containing the binary representation of a double value.
    
 
    :returns: The double value contained in *s*, or 0 if the conversion
@@ -471,7 +471,7 @@ Functions
    but works on 4-byte strings.
    
 
-   :s: A string of bytes containing the binary representation of a float value.
+   :param s: A string of bytes containing the binary representation of a float value.
    
 
    :returns: The float value contained in *s*, or 0 if the conversion
@@ -488,7 +488,7 @@ Functions
    For example, ``"04"`` would be converted to ``"3034"``.
    
 
-   :bytestring: The string of bytes.
+   :param bytestring: The string of bytes.
    
 
    :returns: The hexadecimal representation of *bytestring*.
@@ -504,7 +504,7 @@ Functions
    on a given rotate interval.
    
 
-   :i: The rotate interval to base the calculation on.
+   :param i: The rotate interval to base the calculation on.
    
 
    :returns: The duration until the next file rotation time.
@@ -534,10 +534,10 @@ Functions
    replaced by the given default string instead.
    
 
-   :sep: The separator to place between each argument.
+   :param sep: The separator to place between each argument.
    
 
-   :def: The default string to use when an argument is the empty string.
+   :param def: The default string to use when an argument is the empty string.
    
 
    :returns: A concatenation of all arguments with *sep* between each one and
@@ -555,7 +555,7 @@ Functions
    returns ``-3.0``.
    
 
-   :d: The :zeek:type:`double` to manipulate.
+   :param d: The :zeek:type:`double` to manipulate.
    
 
    :returns: The next lowest integer of *d* as :zeek:type:`double`.
@@ -572,10 +572,10 @@ Functions
    a longest prefix match.
    
 
-   :search: the subnet to search for.
+   :param search: the subnet to search for.
    
 
-   :t: the set[subnet] or table[subnet].
+   :param t: the set[subnet] or table[subnet].
    
 
    :returns: True if the exact subnet is a member, false otherwise.
@@ -588,7 +588,7 @@ Functions
    Removes all elements from a set or table.
    
 
-   :v: The set or table
+   :param v: The set or table
 
 .. zeek:id:: close
    :source-code: base/bif/zeek.bif.zeek 2054 2054
@@ -598,7 +598,7 @@ Functions
    Closes an open file and flushes any buffered content.
    
 
-   :f: A :zeek:type:`file` handle to an open file.
+   :param f: A :zeek:type:`file` handle to an open file.
    
 
    :returns: True on success.
@@ -616,7 +616,7 @@ Functions
    references and also removing dual '/'s and extraneous '/./'s.
    
 
-   :dir: a path string, either relative or absolute.
+   :param dir: a path string, either relative or absolute.
    
 
    :returns: a compressed version of the input path.
@@ -629,7 +629,7 @@ Functions
    Checks whether a connection is (still) active.
    
 
-   :c: The connection id to check.
+   :param c: The connection id to check.
    
 
    :returns: True if the connection identified by *c* exists.
@@ -656,7 +656,7 @@ Functions
    ``^$-:"\/|*+?.(){}[]`` is prefixed with a ``\``.
    
 
-   :s: The string to escape.
+   :param s: The string to escape.
    
 
    :returns: An escaped version of *s* that has the structure of a valid
@@ -673,7 +673,7 @@ Functions
    Converts a :zeek:type:`count` to a :zeek:type:`double`.
    
 
-   :c: The :zeek:type:`count` to convert.
+   :param c: The :zeek:type:`count` to convert.
    
 
    :returns: The :zeek:type:`count` *c* as :zeek:type:`double`.
@@ -688,10 +688,10 @@ Functions
    Converts a :zeek:type:`count` and ``transport_proto`` to a :zeek:type:`port`.
    
 
-   :num: The :zeek:type:`port` number.
+   :param num: The :zeek:type:`port` number.
    
 
-   :proto: The transport protocol.
+   :param proto: The transport protocol.
    
 
    :returns: The :zeek:type:`count` *num* as :zeek:type:`port`.
@@ -706,7 +706,7 @@ Functions
    Converts a :zeek:type:`count` to an :zeek:type:`addr`.
    
 
-   :ip: The :zeek:type:`count` to convert.
+   :param ip: The :zeek:type:`count` to convert.
    
 
    :returns: The :zeek:type:`count` *ip* as :zeek:type:`addr`.
@@ -721,7 +721,7 @@ Functions
    Converts an :zeek:type:`index_vec` to an :zeek:type:`addr`.
    
 
-   :v: The vector containing host-order IP address representation,
+   :param v: The vector containing host-order IP address representation,
       one element for IPv4 addresses, four elements for IPv6 addresses.
    
 
@@ -781,10 +781,10 @@ Functions
    Decodes a Base64-encoded string.
    
 
-   :s: The Base64-encoded string.
+   :param s: The Base64-encoded string.
    
 
-   :a: An optional custom alphabet. The empty string indicates the default
+   :param a: An optional custom alphabet. The empty string indicates the default
       alphabet. If given, the string must consist of 64 unique characters.
    
 
@@ -802,13 +802,13 @@ Functions
    ``weird.log`` with the associated connection.
    
 
-   :cid: The identifier of the connection that the encoding originates from.
+   :param cid: The identifier of the connection that the encoding originates from.
    
 
-   :s: The Base64-encoded string.
+   :param s: The Base64-encoded string.
    
 
-   :a: An optional custom alphabet. The empty string indicates the default
+   :param a: An optional custom alphabet. The empty string indicates the default
       alphabet. If given, the string must consist of 64 unique characters.
    
 
@@ -825,16 +825,16 @@ Functions
    belongs to the given connection).
    
 
-   :cid: The connection identifier.
+   :param cid: The connection identifier.
    
 
-   :aid: The analyzer ID.
+   :param aid: The analyzer ID.
    
 
-   :err_if_no_conn: Emit an error message if the connection does not exit.
+   :param err_if_no_conn: Emit an error message if the connection does not exit.
    
 
-   :prevent: Prevent the same analyzer type from being attached in the future.
+   :param prevent: Prevent the same analyzer type from being attached in the future.
             This is useful for preventing the same analyzer from being
             automatically reattached in the future, e.g. as a result of a
             DPD signature suddenly matching.
@@ -856,7 +856,7 @@ Functions
    will be disabled if not already disabled through another group.
    
 
-   :group: The group to disable.
+   :param group: The group to disable.
    
    .. zeek:see:: enable_event_group disable_event_group has_event_group
                  enable_module_events disable_module_events has_module_events
@@ -871,7 +871,7 @@ Functions
    All event handlers and hooks defined in the given module will be disabled.
    
 
-   :module_name: The module to disable.
+   :param module_name: The module to disable.
    
    .. zeek:see:: enable_event_group disable_event_group has_event_group
                  enable_module_events disable_module_events has_module_events
@@ -906,7 +906,7 @@ Functions
    Converts a :zeek:type:`double` to a :zeek:type:`int`.
    
 
-   :d: The :zeek:type:`double` to convert.
+   :param d: The :zeek:type:`double` to convert.
    
 
    :returns: The :zeek:type:`double` *d* as signed integer. The value returned
@@ -922,7 +922,7 @@ Functions
    Converts a :zeek:type:`double` to a :zeek:type:`count`.
    
 
-   :d: The :zeek:type:`double` to convert.
+   :param d: The :zeek:type:`double` to convert.
    
 
    :returns: The :zeek:type:`double` *d* as unsigned integer, or 0 if *d* < 0.0.
@@ -937,7 +937,7 @@ Functions
    Converts a :zeek:type:`double` to an :zeek:type:`interval`.
    
 
-   :d: The :zeek:type:`double` to convert.
+   :param d: The :zeek:type:`double` to convert.
    
 
    :returns: The :zeek:type:`double` *d* as :zeek:type:`interval`.
@@ -952,7 +952,7 @@ Functions
    Converts a :zeek:type:`double` value to a :zeek:type:`time`.
    
 
-   :d: The :zeek:type:`double` to convert.
+   :param d: The :zeek:type:`double` to convert.
    
 
    :returns: The :zeek:type:`double` value *d* as :zeek:type:`time`.
@@ -967,7 +967,7 @@ Functions
    Writes the current packet to a file.
    
 
-   :file_name: The name of the file to write the packet to.
+   :param file_name: The name of the file to write the packet to.
    
 
    :returns: True on success.
@@ -982,10 +982,10 @@ Functions
    Writes a given packet to a file.
    
 
-   :pkt: The PCAP packet.
+   :param pkt: The PCAP packet.
    
 
-   :file_name: The name of the file to write *pkt* to.
+   :param file_name: The name of the file to write *pkt* to.
    
 
    :returns: True on success
@@ -1001,7 +1001,7 @@ Functions
    hits/misses) to a file.
    
 
-   :f: The file to write to.
+   :param f: The file to write to.
    
 
    :returns: True (unconditionally).
@@ -1019,7 +1019,7 @@ Functions
    will be enabled if this group was the last disabled group of these handlers.
    
 
-   :group: The group to enable.
+   :param group: The group to enable.
    
    .. zeek:see:: enable_event_group disable_event_group has_event_group
                  enable_module_events disable_module_events has_module_events
@@ -1035,7 +1035,7 @@ Functions
    if not disabled otherwise through an event group.
    
 
-   :module_name: The module to enable.
+   :param module_name: The module to enable.
    
    .. zeek:see:: enable_event_group disable_event_group has_event_group
                  enable_module_events disable_module_events has_module_events
@@ -1049,7 +1049,7 @@ Functions
    This function is equivalent to :zeek:attr:`&raw_output`.
    
 
-   :f: The file to disable raw output for.
+   :param f: The file to disable raw output for.
 
 .. zeek:id:: encode_base64
    :source-code: base/bif/zeek.bif.zeek 1552 1552
@@ -1059,10 +1059,10 @@ Functions
    Encodes a Base64-encoded string.
    
 
-   :s: The string to encode.
+   :param s: The string to encode.
    
 
-   :a: An optional custom alphabet. The empty string indicates the default
+   :param a: An optional custom alphabet. The empty string indicates the default
       alphabet. If given, the string must consist of 64 unique characters.
    
 
@@ -1078,10 +1078,10 @@ Functions
    Adds data to an incremental entropy calculation.
    
 
-   :handle: The opaque handle representing the entropy calculation state.
+   :param handle: The opaque handle representing the entropy calculation state.
    
 
-   :data: The data to add to the entropy calculation.
+   :param data: The data to add to the entropy calculation.
    
 
    :returns: True on success.
@@ -1098,7 +1098,7 @@ Functions
    add data to it via :zeek:id:`entropy_test_add`.
    
 
-   :handle: The opaque handle representing the entropy calculation state.
+   :param handle: The opaque handle representing the entropy calculation state.
    
 
    :returns: The result of the entropy test. See :zeek:id:`find_entropy` for a
@@ -1126,7 +1126,7 @@ Functions
    Returns all value names associated with an enum type.
    
 
-   :et: An enum type or a string naming one.
+   :param et: An enum type or a string naming one.
    
 
    :returns: All enum value names associated with enum type *et*.
@@ -1140,7 +1140,7 @@ Functions
    Converts an :zeek:type:`enum` to an :zeek:type:`int`.
    
 
-   :e: The :zeek:type:`enum` to convert.
+   :param e: The :zeek:type:`enum` to convert.
    
 
    :returns: The :zeek:type:`int` value that corresponds to the :zeek:type:`enum`.
@@ -1153,7 +1153,7 @@ Functions
    Shuts down the Zeek process immediately.
    
 
-   :code: The exit code to return with.
+   :param code: The exit code to return with.
    
    .. zeek:see:: terminate
 
@@ -1165,7 +1165,7 @@ Functions
    Computes the exponential function.
    
 
-   :d: The argument to the exponential function.
+   :param d: The argument to the exponential function.
    
 
    :returns: *e* to the power of *d*.
@@ -1181,7 +1181,7 @@ Functions
    signatures.
    
 
-   :data: The data for which to find matching MIME types.
+   :param data: The data for which to find matching MIME types.
    
 
    :returns: All matching signatures, in order of strength.
@@ -1196,7 +1196,7 @@ Functions
    Converts UNIX file permissions given by a mode to an ASCII string.
    
 
-   :mode: The permissions (an octal number like 0644 converted to decimal).
+   :param mode: The permissions (an octal number like 0644 converted to decimal).
    
 
    :returns: A string representation of *mode* in the format
@@ -1210,7 +1210,7 @@ Functions
    Returns the size of a given file.
    
 
-   :f: The name of the file whose size to lookup.
+   :param f: The name of the file whose size to lookup.
    
 
    :returns: The size of *f* in bytes.
@@ -1224,10 +1224,10 @@ Functions
    that contain a given subnet.
    
 
-   :search: the subnet to search for.
+   :param search: the subnet to search for.
    
 
-   :t: the set[subnet] or table[subnet].
+   :param t: the set[subnet] or table[subnet].
    
 
    :returns: A new table that contains all the entries that cover the subnet searched for.
@@ -1241,7 +1241,7 @@ Functions
    See http://www.fourmilab.ch/random.
    
 
-   :data: The data to compute the entropy for.
+   :param data: The data to compute the entropy for.
    
 
    :returns: The result of the entropy test, which contains the following
@@ -1290,7 +1290,7 @@ Functions
    returns ``-4.0``.
    
 
-   :d: The :zeek:type:`double` to manipulate.
+   :param d: The :zeek:type:`double` to manipulate.
    
 
    :returns: The next lowest integer of *d* as :zeek:type:`double`.
@@ -1365,7 +1365,7 @@ Functions
    See `<https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function>`_.
    
 
-   :input: The desired input value to hash.
+   :param input: The desired input value to hash.
    
 
    :returns: The hashed value.
@@ -1395,13 +1395,13 @@ Functions
    Optional or default record fields are allowed to be missing or null in the input.
    
 
-   :s: The JSON string to parse.
+   :param s: The JSON string to parse.
    
 
-   :t: Type of Zeek data.
+   :param t: Type of Zeek data.
    
 
-   :returns: A value of type t.
+   :param returns: A value of type t.
    
    .. zeek:see:: to_json
 
@@ -1425,7 +1425,7 @@ Functions
    Extracts the transport protocol from a connection.
    
 
-   :cid: The connection identifier.
+   :param cid: The connection identifier.
    
 
    :returns: The transport protocol of the connection identified by *cid*.
@@ -1467,7 +1467,7 @@ Functions
    Gets the filename associated with a file handle.
    
 
-   :f: The file handle to inquire the name for.
+   :param f: The file handle to inquire the name for.
    
 
    :returns: The filename associated with *f*.
@@ -1482,7 +1482,7 @@ Functions
    Extracts the transport protocol from a :zeek:type:`port`.
    
 
-   :p: The port.
+   :param p: The port.
    
 
    :returns: The transport protocol of the port *p*.
@@ -1498,7 +1498,7 @@ Functions
    Returns a system environment variable.
    
 
-   :var: The name of the variable whose value to request.
+   :param var: The name of the variable whose value to request.
    
 
    :returns: The system environment variable identified by *var*, or an empty
@@ -1570,7 +1570,7 @@ Functions
    Does an attribute event group with this name exist?
    
 
-   :group: The group name.
+   :param group: The group name.
    
    .. zeek:see:: enable_event_group disable_event_group has_event_group
                  enable_module_events disable_module_events has_module_events
@@ -1583,7 +1583,7 @@ Functions
    Does a module event group with this name exist?
    
 
-   :group: The group name.
+   :param group: The group name.
    
    .. zeek:see:: enable_event_group disable_event_group has_event_group
                  enable_module_events disable_module_events has_module_events
@@ -1614,16 +1614,16 @@ Functions
    negative.
    
 
-   :lat1: Latitude (in degrees) of location 1.
+   :param lat1: Latitude (in degrees) of location 1.
    
 
-   :long1: Longitude (in degrees) of location 1.
+   :param long1: Longitude (in degrees) of location 1.
    
 
-   :lat2: Latitude (in degrees) of location 2.
+   :param lat2: Latitude (in degrees) of location 2.
    
 
-   :long2: Longitude (in degrees) of location 2.
+   :param long2: Longitude (in degrees) of location 2.
    
 
    :returns: Distance in miles.
@@ -1642,7 +1642,7 @@ Functions
    (0-9, a-f, or A-F), otherwise behavior is undefined.
    
 
-   :hexstr: The hexadecimal string representation.
+   :param hexstr: The hexadecimal string representation.
    
 
    :returns: The binary representation of *hexstr*.
@@ -1658,14 +1658,14 @@ Functions
    See `<https://en.wikipedia.org/wiki/Rendezvous_hashing>`_.
    The weight function used is the one recommended in the original
 
-   :paper: `<http://www.eecs.umich.edu/techreports/cse/96/CSE-TR-316-96.pdf>`_.
+   :param paper: `<http://www.eecs.umich.edu/techreports/cse/96/CSE-TR-316-96.pdf>`_.
    
 
-   :key_digest: A 32-bit digest of a key.  E.g. use :zeek:see:`fnv1a32` to
+   :param key_digest: A 32-bit digest of a key.  E.g. use :zeek:see:`fnv1a32` to
                produce this.
    
 
-   :site_id: A 32-bit site/node identifier.
+   :param site_id: A 32-bit site/node identifier.
    
 
    :returns: The weight value for the key/site pair.
@@ -1681,10 +1681,10 @@ Functions
    signatures.
    
 
-   :data: The data to find the MIME type for.
+   :param data: The data to find the MIME type for.
    
 
-   :return_mime: Deprecated argument; does nothing, except emit a warning
+   :param return_mime: Deprecated argument; does nothing, except emit a warning
                 when false.
    
 
@@ -1705,14 +1705,14 @@ Functions
    packet according to the routing extension header.
    
 
-   :ip: Drop packets to this IP address.
+   :param ip: Drop packets to this IP address.
    
 
-   :tcp_flags: If none of these TCP flags are set, drop packets to *ip* with
+   :param tcp_flags: If none of these TCP flags are set, drop packets to *ip* with
               probability *prob*.
    
 
-   :prob: The probability [0.0, 1.0] used to drop packets to *ip*.
+   :param prob: The probability [0.0, 1.0] used to drop packets to *ip*.
    
 
    :returns: True (unconditionally).
@@ -1739,14 +1739,14 @@ Functions
    a certain probability if none of a given set of TCP flags are set.
    
 
-   :snet: Drop packets to this subnet.
+   :param snet: Drop packets to this subnet.
    
 
-   :tcp_flags: If none of these TCP flags are set, drop packets to *snet* with
+   :param tcp_flags: If none of these TCP flags are set, drop packets to *snet* with
               probability *prob*.
    
 
-   :prob: The probability [0.0, 1.0] used to drop packets to *snet*.
+   :param prob: The probability [0.0, 1.0] used to drop packets to *snet*.
    
 
    :returns: True (unconditionally).
@@ -1775,14 +1775,14 @@ Functions
    the Home Address option, this filters out against that home address.
    
 
-   :ip: The IP address to drop.
+   :param ip: The IP address to drop.
    
 
-   :tcp_flags: If none of these TCP flags are set, drop packets from *ip* with
+   :param tcp_flags: If none of these TCP flags are set, drop packets from *ip* with
               probability *prob*.
    
 
-   :prob: The probability [0.0, 1.0] used to drop packets from *ip*.
+   :param prob: The probability [0.0, 1.0] used to drop packets from *ip*.
    
 
    :returns: True (unconditionally).
@@ -1809,14 +1809,14 @@ Functions
    a certain probability if none of a given set of TCP flags are set.
    
 
-   :snet: The subnet to drop packets from.
+   :param snet: The subnet to drop packets from.
    
 
-   :tcp_flags: If none of these TCP flags are set, drop packets from *snet* with
+   :param tcp_flags: If none of these TCP flags are set, drop packets from *snet* with
               probability *prob*.
    
 
-   :prob: The probability [0.0, 1.0] used to drop packets from *snet*.
+   :param prob: The probability [0.0, 1.0] used to drop packets from *snet*.
    
 
    :returns: True (unconditionally).
@@ -1842,7 +1842,7 @@ Functions
    Converts a (positive) :zeek:type:`int` to a :zeek:type:`count`.
    
 
-   :n: The :zeek:type:`int` to convert.
+   :param n: The :zeek:type:`int` to convert.
    
 
    :returns: The :zeek:type:`int` *n* as unsigned integer, or 0 if *n* < 0.
@@ -1855,7 +1855,7 @@ Functions
    Converts an :zeek:type:`int` to a :zeek:type:`double`.
    
 
-   :i: The :zeek:type:`int` to convert.
+   :param i: The :zeek:type:`int` to convert.
    
 
    :returns: The :zeek:type:`int` *i* as :zeek:type:`double`.
@@ -1870,7 +1870,7 @@ Functions
    Converts an :zeek:type:`interval` to a :zeek:type:`double`.
    
 
-   :i: The :zeek:type:`interval` to convert.
+   :param i: The :zeek:type:`interval` to convert.
    
 
    :returns: The :zeek:type:`interval` *i* as :zeek:type:`double`.
@@ -1885,7 +1885,7 @@ Functions
    Returns true if the given tag belongs to a file analyzer.
    
 
-   :atype: The analyzer tag to check.
+   :param atype: The analyzer tag to check.
    
 
    :returns: true if *atype* is a tag of a file analyzer, else false.
@@ -1898,7 +1898,7 @@ Functions
    Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
    
 
-   :p: The :zeek:type:`port` to check.
+   :param p: The :zeek:type:`port` to check.
    
 
    :returns: True iff *p* is an ICMP port.
@@ -1913,7 +1913,7 @@ Functions
    Checks whether a given IP address belongs to a local interface.
    
 
-   :ip: The IP address to check.
+   :param ip: The IP address to check.
    
 
    :returns: True if *ip* belongs to a local interface.
@@ -1926,7 +1926,7 @@ Functions
    Returns true if the given tag belongs to a packet analyzer.
    
 
-   :atype: The analyzer type to check.
+   :param atype: The analyzer type to check.
    
 
    :returns: true if *atype* is a tag of a packet analyzer, else false.
@@ -1949,7 +1949,7 @@ Functions
    Returns true if the given tag belongs to a protocol analyzer.
    
 
-   :atype: The analyzer tag to check.
+   :param atype: The analyzer tag to check.
    
 
    :returns: true if *atype* is a tag of a protocol analyzer, else false.
@@ -1972,7 +1972,7 @@ Functions
    Checks whether a given :zeek:type:`port` has TCP as transport protocol.
    
 
-   :p: The :zeek:type:`port` to check.
+   :param p: The :zeek:type:`port` to check.
    
 
    :returns: True iff *p* is a TCP port.
@@ -1987,7 +1987,7 @@ Functions
    Checks whether a given :zeek:type:`port` has UDP as transport protocol.
    
 
-   :p: The :zeek:type:`port` to check.
+   :param p: The :zeek:type:`port` to check.
    
 
    :returns: True iff *p* is a UDP port.
@@ -2002,7 +2002,7 @@ Functions
    Returns whether an address is IPv4 or not.
    
 
-   :a: the address to check.
+   :param a: the address to check.
    
 
    :returns: true if *a* is an IPv4 address, else false.
@@ -2015,7 +2015,7 @@ Functions
    Returns whether a subnet specification is IPv4 or not.
    
 
-   :s: the subnet to check.
+   :param s: the subnet to check.
    
 
    :returns: true if *s* is an IPv4 subnet, else false.
@@ -2028,7 +2028,7 @@ Functions
    Returns whether an address is IPv6 or not.
    
 
-   :a: the address to check.
+   :param a: the address to check.
    
 
    :returns: true if *a* is an IPv6 address, else false.
@@ -2041,7 +2041,7 @@ Functions
    Returns whether a subnet specification is IPv6 or not.
    
 
-   :s: the subnet to check.
+   :param s: the subnet to check.
    
 
    :returns: true if *s* is an IPv6 subnet, else false.
@@ -2054,7 +2054,7 @@ Functions
    Checks if a string is a valid IPv4 or IPv6 address.
    
 
-   :ip: the string to check for valid IP formatting.
+   :param ip: the string to check for valid IP formatting.
    
 
    :returns: T if the string is a valid IPv4 or IPv6 address format.
@@ -2067,7 +2067,7 @@ Functions
    Computes the natural logarithm of a number.
    
 
-   :d: The argument to the logarithm.
+   :param d: The argument to the logarithm.
    
 
    :returns: The natural logarithm of *d*.
@@ -2082,7 +2082,7 @@ Functions
    Computes the common logarithm of a number.
    
 
-   :d: The argument to the logarithm.
+   :param d: The argument to the logarithm.
    
 
    :returns: The common logarithm of *d*.
@@ -2097,7 +2097,7 @@ Functions
    Computes the base 2 logarithm of a number.
    
 
-   :d: The argument to the logarithm.
+   :param d: The argument to the logarithm.
    
 
    :returns: The base 2 logarithm of *d*.
@@ -2112,7 +2112,7 @@ Functions
    Returns the value of a global identifier.
    
 
-   :id: The global identifier.
+   :param id: The global identifier.
    
 
    :returns: The value of *id*. If *id* does not describe a valid identifier,
@@ -2128,7 +2128,7 @@ Functions
    e.g., ``when ( local host = lookup_addr(10.0.0.1) ) { f(host); }``.
    
 
-   :host: The IP address to lookup.
+   :param host: The IP address to lookup.
    
 
    :returns: The DNS name of *host*.
@@ -2145,7 +2145,7 @@ Functions
    Requires Zeek to be built with ``libmaxminddb``.
    
 
-   :a: The IP address to lookup.
+   :param a: The IP address to lookup.
    
 
    :returns: The number of the ASN that contains the IP address.
@@ -2161,7 +2161,7 @@ Functions
    Requires Zeek to be built with ``libmaxminddb``.
    
 
-   :a: The IP address to lookup.
+   :param a: The IP address to lookup.
    
 
    :returns: A record with autonomous system number and organization that contains *a*.
@@ -2176,7 +2176,7 @@ Functions
    Returns the :zeek:type:`connection` record for a given connection identifier.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: The :zeek:type:`connection` record for *cid*. If *cid* does not point
@@ -2195,7 +2195,7 @@ Functions
    e.g., ``when ( local h = lookup_hostname("www.zeek.org") ) { f(h); }``.
    
 
-   :host: The hostname to lookup.
+   :param host: The hostname to lookup.
    
 
    :returns: A set of DNS A and AAAA records associated with *host*.
@@ -2212,7 +2212,7 @@ Functions
    e.g., ``when ( local h = lookup_hostname_txt("www.zeek.org") ) { f(h); }``.
    
 
-   :host: The hostname to lookup.
+   :param host: The hostname to lookup.
    
 
    :returns: The DNS TXT record associated with *host*.
@@ -2228,7 +2228,7 @@ Functions
    Requires Zeek to be built with ``libmaxminddb``.
    
 
-   :a: The IP address to lookup.
+   :param a: The IP address to lookup.
    
 
    :returns: A record with country, region, city, latitude, and longitude.
@@ -2244,10 +2244,10 @@ Functions
    ``mask_addr(1.2.3.4, 18)`` returns ``1.2.0.0``.
    
 
-   :a: The address to mask.
+   :param a: The address to mask.
    
 
-   :top_bits_to_keep: The number of top bits to keep in *a*; must be greater
+   :param top_bits_to_keep: The number of top bits to keep in *a*; must be greater
                      than 0 and less than 33 for IPv4, or 129 for IPv6.
    
 
@@ -2271,10 +2271,10 @@ Functions
    Gets all subnets that contain a given subnet from a set/table[subnet].
    
 
-   :search: the subnet to search for.
+   :param search: the subnet to search for.
    
 
-   :t: the set[subnet] or table[subnet].
+   :param t: the set[subnet] or table[subnet].
    
 
    :returns: All the keys of the set or table that cover the subnet searched for.
@@ -2307,7 +2307,7 @@ Functions
    Returns the final MD5 digest of an incremental hash computation.
    
 
-   :handle: The opaque handle associated with this hash computation.
+   :param handle: The opaque handle associated with this hash computation.
    
 
    :returns: The hash value associated with the computation of *handle*.
@@ -2351,10 +2351,10 @@ Functions
    function.
    
 
-   :handle: The opaque handle associated with this hash computation.
+   :param handle: The opaque handle associated with this hash computation.
    
 
-   :data: The data to add to the hash computation.
+   :param data: The data to add to the hash computation.
    
 
    :returns: True on success.
@@ -2387,7 +2387,7 @@ Functions
    Creates a new directory.
    
 
-   :f: The directory name.
+   :param f: The directory name.
    
 
    :returns: True if the operation succeeds or if *f* already exists,
@@ -2406,7 +2406,7 @@ Functions
    Requires Zeek to be built with ``libmaxminddb``.
    
 
-   :f: The filename of the MaxMind ASN DB.
+   :param f: The filename of the MaxMind ASN DB.
    
 
    :returns: A boolean indicating whether the db was successfully opened.
@@ -2422,7 +2422,7 @@ Functions
    Requires Zeek to be built with ``libmaxminddb``.
    
 
-   :f: The filename of the MaxMind City or Country DB.
+   :param f: The filename of the MaxMind City or Country DB.
    
 
    :returns: A boolean indicating whether the db was successfully opened.
@@ -2452,7 +2452,7 @@ Functions
    function overwrites it (as opposed to :zeek:id:`open_for_append`).
    
 
-   :f: The path to the file.
+   :param f: The path to the file.
    
 
    :returns: A :zeek:type:`file` handle for subsequent operations.
@@ -2470,7 +2470,7 @@ Functions
    exists, this function appends to it (as opposed to :zeek:id:`open`).
    
 
-   :f: The path to the file.
+   :param f: The path to the file.
    
 
    :returns: A :zeek:type:`file` handle for subsequent operations.
@@ -2489,7 +2489,7 @@ Functions
    function.
    
 
-   :v: The vector whose order to compute.
+   :param v: The vector whose order to compute.
    
 
    :returns: A ``vector of count`` with the indices of the ordered elements.
@@ -2516,10 +2516,10 @@ Functions
    Compares two paraglobs for equality.
    
 
-   :p_one: A compiled paraglob.
+   :param p_one: A compiled paraglob.
    
 
-   :p_two: A compiled paraglob.
+   :param p_two: A compiled paraglob.
    
 
    :returns: True if both paraglobs contain the same patterns, false otherwise.
@@ -2534,7 +2534,7 @@ Functions
    Initializes and returns a new paraglob.
    
 
-   :v: Vector of patterns to initialize the paraglob with.
+   :param v: Vector of patterns to initialize the paraglob with.
    
 
    :returns: A new, compiled, paraglob with the patterns in *v*
@@ -2549,10 +2549,10 @@ Functions
    Gets all the patterns inside the handle associated with an input string.
    
 
-   :handle: A compiled paraglob.
+   :param handle: A compiled paraglob.
    
 
-   :match: string to match against the paraglob.
+   :param match: string to match against the paraglob.
    
 
    :returns: A vector of strings matching the input string.
@@ -2568,10 +2568,10 @@ Functions
    stream to send it to the opened process's stdin.
    
 
-   :program: The program to execute.
+   :param program: The program to execute.
    
 
-   :to_write: Data to pipe to the opened program's process via ``stdin``.
+   :param to_write: Data to pipe to the opened program's process via ``stdin``.
    
 
    :returns: True on success.
@@ -2586,7 +2586,7 @@ Functions
    Converts a :zeek:type:`port` to a :zeek:type:`count`.
    
 
-   :p: The :zeek:type:`port` to convert.
+   :param p: The :zeek:type:`port` to convert.
    
 
    :returns: The :zeek:type:`port` *p* as :zeek:type:`count`.
@@ -2601,10 +2601,10 @@ Functions
    Computes the *x* raised to the power *y*.
    
 
-   :x: The number to be raised to a power.
+   :param x: The number to be raised to a power.
    
 
-   :y: The number that specifies a power.
+   :param y: The number that specifies a power.
    
 
    :returns: The number *x* raised to the power *y*.
@@ -2619,10 +2619,10 @@ Functions
    Preserves the prefix of an IP address in anonymization.
    
 
-   :a: The address to preserve.
+   :param a: The address to preserve.
    
 
-   :width: The number of bits from the top that should remain intact.
+   :param width: The number of bits from the top that should remain intact.
    
    .. zeek:see:: preserve_subnet anonymize_addr
    
@@ -2636,7 +2636,7 @@ Functions
    Preserves the prefix of a subnet in anonymization.
    
 
-   :a: The subnet to preserve.
+   :param a: The subnet to preserve.
    
    .. zeek:see:: preserve_prefix anonymize_addr
    
@@ -2665,7 +2665,7 @@ Functions
    ``1.0.168.192.in-addr.arpa`` to ``192.168.0.1``.
    
 
-   :s: The string with the reverse pointer name.
+   :param s: The string with the reverse pointer name.
    
 
    :returns: The IP address corresponding to *s*.
@@ -2680,7 +2680,7 @@ Functions
    Generates a random number.
    
 
-   :max: The maximum value of the random number.
+   :param max: The maximum value of the random number.
    
 
    :returns: a random positive integer in the interval *[0, max)*.
@@ -2702,7 +2702,7 @@ Functions
    in network order.
    
 
-   :b: The raw bytes (:zeek:type:`string`) to convert.
+   :param b: The raw bytes (:zeek:type:`string`) to convert.
    
 
    :returns: The byte :zeek:type:`string` *b* as :zeek:type:`addr`.
@@ -2719,7 +2719,7 @@ Functions
    in network order.
    
 
-   :b: The raw bytes (:zeek:type:`string`) to convert.
+   :param b: The raw bytes (:zeek:type:`string`) to convert.
    
 
    :returns: The byte :zeek:type:`string` *b* as :zeek:type:`addr`.
@@ -2764,7 +2764,7 @@ Functions
    and its default value (if specified).
    
 
-   :rec: The record value or type to inspect.
+   :param rec: The record value or type to inspect.
    
 
    :returns: A table that describes the fields of a record.
@@ -2778,7 +2778,7 @@ Functions
    the name of a record field. Nested records are flattened.
    
 
-   :rt: The name of the record type.
+   :param rt: The name of the record type.
    
 
    :returns: A string vector with the field names of *rt*.
@@ -2794,13 +2794,13 @@ Functions
    serial scans.
    
 
-   :a1: The address to mask with *top_bits_from_a1*.
+   :param a1: The address to mask with *top_bits_from_a1*.
    
 
-   :a2: The address to take the remaining bits from.
+   :param a2: The address to take the remaining bits from.
    
 
-   :top_bits_from_a1: The number of top bits to keep in *a1*; must be greater
+   :param top_bits_from_a1: The number of top bits to keep in *a1*; must be greater
                      than 0 and less than 129.  This value is always interpreted
                      relative to the IPv6 bit width (v4-mapped addresses start
                      at bit number 96).
@@ -2818,10 +2818,10 @@ Functions
    Renames a file from src_f to dst_f.
    
 
-   :src_f: the name of the file to rename.
+   :param src_f: the name of the file to rename.
    
 
-   :dest_f: the name of the file after the rename operation.
+   :param dest_f: the name of the file after the rename operation.
    
 
    :returns: True if the rename succeeds and false otherwise.
@@ -2838,10 +2838,10 @@ Functions
    Resizes a vector.
    
 
-   :aggr: The vector instance.
+   :param aggr: The vector instance.
    
 
-   :newsize: The new size of *aggr*.
+   :param newsize: The new size of *aggr*.
    
 
    :returns: The old size of *aggr*, or 0 if *aggr* is not a :zeek:type:`vector`.
@@ -2854,7 +2854,7 @@ Functions
    Removes a directory.
    
 
-   :d: The directory name.
+   :param d: The directory name.
    
 
    :returns: True if the operation succeeds, and false if the
@@ -2872,7 +2872,7 @@ Functions
    Rotates a file.
    
 
-   :f: An open file handle.
+   :param f: An open file handle.
    
 
    :returns: Rotation statistics which include the original file name, the name
@@ -2888,7 +2888,7 @@ Functions
    Rotates a file identified by its name.
    
 
-   :f: The name of the file to rotate
+   :param f: The name of the file to rotate
    
 
    :returns: Rotation statistics which include the original file name, the name
@@ -2905,7 +2905,7 @@ Functions
    *rtype* of 0 into a vector of addresses.
    
 
-   :s: The *data* field of an :zeek:type:`ip6_routing` record that has
+   :param s: The *data* field of an :zeek:type:`ip6_routing` record that has
       an *rtype* of 0.
    
 
@@ -2921,10 +2921,10 @@ Functions
    objects are the same.
    
 
-   :o1: The first object.
+   :param o1: The first object.
    
 
-   :o2: The second object.
+   :param o2: The second object.
    
 
    :returns: True if *o1* and *o2* are equal.
@@ -2937,10 +2937,10 @@ Functions
    Alters the buffering behavior of a file.
    
 
-   :f: A :zeek:type:`file` handle to an open file.
+   :param f: A :zeek:type:`file` handle to an open file.
    
 
-   :buffered: When true, *f* is fully buffered, i.e., bytes are saved in a
+   :param buffered: When true, *f* is fully buffered, i.e., bytes are saved in a
              buffer until the block size has been reached. When
              false, *f* is line buffered, i.e., bytes are saved up until a
              newline occurs.
@@ -2958,10 +2958,10 @@ Functions
    overrides the global inactivity timeout.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
-   :t: The new inactivity timeout for the connection identified by *cid*.
+   :param t: The new inactivity timeout for the connection identified by *cid*.
    
 
    :returns: The previous timeout interval.
@@ -2975,7 +2975,7 @@ Functions
    event replaying.
    
 
-   :nt: The time to which to set "network time".
+   :param nt: The time to which to set "network time".
    
 
    :returns: The timestamp of the packet processed.
@@ -2991,10 +2991,10 @@ Functions
    recorded (when ``-w`` option is provided on the command line).
    
 
-   :cid: The connection identifier.
+   :param cid: The connection identifier.
    
 
-   :do_record: True to enable packet contents, and false to disable for the
+   :param do_record: True to enable packet contents, and false to disable for the
               connection identified by *cid*.
    
 
@@ -3019,10 +3019,10 @@ Functions
    Sets a system environment variable.
    
 
-   :var: The name of the variable.
+   :param var: The name of the variable.
    
 
-   :val: The (new) value of the variable *var*.
+   :param val: The (new) value of the variable *var*.
    
 
    :returns: True on success.
@@ -3057,7 +3057,7 @@ Functions
    Returns the final SHA1 digest of an incremental hash computation.
    
 
-   :handle: The opaque handle associated with this hash computation.
+   :param handle: The opaque handle associated with this hash computation.
    
 
    :returns: The hash value associated with the computation of *handle*.
@@ -3101,10 +3101,10 @@ Functions
    function.
    
 
-   :handle: The opaque handle associated with this hash computation.
+   :param handle: The opaque handle associated with this hash computation.
    
 
-   :data: The data to add to the hash computation.
+   :param data: The data to add to the hash computation.
    
 
    :returns: True on success.
@@ -3141,7 +3141,7 @@ Functions
    Returns the final SHA256 digest of an incremental hash computation.
    
 
-   :handle: The opaque handle associated with this hash computation.
+   :param handle: The opaque handle associated with this hash computation.
    
 
    :returns: The hash value associated with the computation of *handle*.
@@ -3185,10 +3185,10 @@ Functions
    function.
    
 
-   :handle: The opaque handle associated with this hash computation.
+   :param handle: The opaque handle associated with this hash computation.
    
 
-   :data: The data to add to the hash computation.
+   :param data: The data to add to the hash computation.
    
 
    :returns: True on success.
@@ -3208,7 +3208,7 @@ Functions
    have been processing the connection.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: False if *cid* does not point to an active connection, and true
@@ -3232,7 +3232,7 @@ Functions
    is a numeric type (int, count, double, time, etc.).
    
 
-   :v: The vector instance to sort.
+   :param v: The vector instance to sort.
    
 
    :returns: The vector, sorted from minimum to maximum value. If the vector
@@ -3248,7 +3248,7 @@ Functions
    Computes the square root of a :zeek:type:`double`.
    
 
-   :x: The number to compute the square root of.
+   :param x: The number to compute the square root of.
    
 
    :returns: The square root of *x*.
@@ -3263,7 +3263,7 @@ Functions
    Sets the seed for subsequent :zeek:id:`rand` calls.
    
 
-   :seed: The seed for the PRNG.
+   :param seed: The seed for the PRNG.
    
    .. zeek:see:: rand
    
@@ -3280,10 +3280,10 @@ Functions
    Formats a given time value according to a format string.
    
 
-   :fmt: The format string. See ``man strftime`` for the syntax.
+   :param fmt: The format string. See ``man strftime`` for the syntax.
    
 
-   :d: The time value.
+   :param d: The time value.
    
 
    :returns: The time *d* formatted according to *fmt*.
@@ -3296,10 +3296,10 @@ Functions
    Converts a :zeek:type:`string` into a :zeek:type:`pattern`.
    
 
-   :s: The string to convert.
+   :param s: The string to convert.
    
 
-   :convert: If true, *s* is first passed through the function
+   :param convert: If true, *s* is first passed through the function
             :zeek:id:`convert_for_pattern` to escape special characters of
             patterns.
    
@@ -3316,11 +3316,11 @@ Functions
    Parse a textual representation of a date/time value into a ``time`` type value.
    
 
-   :fmt: The format string used to parse the following *d* argument. See ``man strftime``
+   :param fmt: The format string used to parse the following *d* argument. See ``man strftime``
         for the syntax.
    
 
-   :d: The string representing the time.
+   :param d: The string representing the time.
    
 
    :returns: The time value calculated from parsing *d* with *fmt*.
@@ -3334,7 +3334,7 @@ Functions
    extracting the prefix.
    
 
-   :sn: The subnet to convert.
+   :param sn: The subnet to convert.
    
 
    :returns: The subnet as an :zeek:type:`addr`.
@@ -3349,7 +3349,7 @@ Functions
    Returns the width of a :zeek:type:`subnet`.
    
 
-   :sn: The subnet.
+   :param sn: The subnet.
    
 
    :returns: The width of the subnet.
@@ -3376,7 +3376,7 @@ Functions
    Send a string to syslog.
    
 
-   :s: The string to log via syslog
+   :param s: The string to log via syslog
 
 .. zeek:id:: system
    :source-code: base/bif/zeek.bif.zeek 126 126
@@ -3389,7 +3389,7 @@ Functions
    ``system(fmt("rm %s", safe_shell_quote(sniffed_data)));``
    
 
-   :str: The command to execute.
+   :param str: The command to execute.
    
 
    :returns: The return value from the OS ``system`` function.
@@ -3413,10 +3413,10 @@ Functions
    but changes the environment before invoking the command.
    
 
-   :str: The command to execute.
+   :param str: The command to execute.
    
 
-   :env: A :zeek:type:`table` with the environment variables in the form
+   :param env: A :zeek:type:`table` with the environment variables in the form
         of key-value pairs. Each specified environment variable name
         will be automatically prepended with ``ZEEK_ARG_``.
    
@@ -3433,7 +3433,7 @@ Functions
    Gets all keys from a table.
    
 
-   :t: The :zeek:type:`table`
+   :param t: The :zeek:type:`table`
    
 
    :returns: A ``set of T`` of all the keys in t.
@@ -3448,7 +3448,7 @@ Functions
    Gets all values from a table.
    
 
-   :t: The :zeek:type:`table`
+   :param t: The :zeek:type:`table`
    
 
    :returns: A ``vector of T`` of all the values in t.
@@ -3476,7 +3476,7 @@ Functions
    Converts a :zeek:type:`time` value to a :zeek:type:`double`.
    
 
-   :t: The :zeek:type:`time` to convert.
+   :param t: The :zeek:type:`time` to convert.
    
 
    :returns: The :zeek:type:`time` value *t* as :zeek:type:`double`.
@@ -3491,7 +3491,7 @@ Functions
    Converts a :zeek:type:`string` to an :zeek:type:`addr`.
    
 
-   :ip: The :zeek:type:`string` to convert.
+   :param ip: The :zeek:type:`string` to convert.
    
 
    :returns: The :zeek:type:`string` *ip* as :zeek:type:`addr`, or the unspecified
@@ -3508,7 +3508,7 @@ Functions
    Converts a :zeek:type:`string` to a :zeek:type:`count`.
    
 
-   :str: The :zeek:type:`string` to convert.
+   :param str: The :zeek:type:`string` to convert.
    
 
    :returns: The :zeek:type:`string` *str* as unsigned integer, or 0 if *str* has
@@ -3524,7 +3524,7 @@ Functions
    Converts a :zeek:type:`string` to a :zeek:type:`double`.
    
 
-   :str: The :zeek:type:`string` to convert.
+   :param str: The :zeek:type:`string` to convert.
    
 
    :returns: The :zeek:type:`string` *str* as double, or 0 if *str* has
@@ -3539,7 +3539,7 @@ Functions
    Converts a :zeek:type:`string` to an :zeek:type:`int`.
    
 
-   :str: The :zeek:type:`string` to convert.
+   :param str: The :zeek:type:`string` to convert.
    
 
    :returns: The :zeek:type:`string` *str* as :zeek:type:`int`.
@@ -3554,14 +3554,14 @@ Functions
    A function to convert arbitrary Zeek data into a JSON string.
    
 
-   :v: The value to convert to JSON.  Typically a record.
+   :param v: The value to convert to JSON.  Typically a record.
    
 
-   :only_loggable: If the v value is a record this will only cause
+   :param only_loggable: If the v value is a record this will only cause
                   fields with the &log attribute to be included in the JSON.
    
 
-   :returns: a JSON formatted string.
+   :param returns: a JSON formatted string.
    
    .. zeek:see:: fmt cat cat_sep string_cat print_raw from_json
 
@@ -3573,7 +3573,7 @@ Functions
    Converts a :zeek:type:`string` to a :zeek:type:`port`.
    
 
-   :s: The :zeek:type:`string` to convert.
+   :param s: The :zeek:type:`string` to convert.
    
 
    :returns: A :zeek:type:`port` converted from *s*.
@@ -3588,7 +3588,7 @@ Functions
    Converts a :zeek:type:`string` to a :zeek:type:`subnet`.
    
 
-   :sn: The subnet to convert.
+   :param sn: The subnet to convert.
    
 
    :returns: The *sn* string as a :zeek:type:`subnet`, or the unspecified subnet
@@ -3605,7 +3605,7 @@ Functions
    Returns all type name aliases of a value or type.
    
 
-   :x: An arbitrary value or type.
+   :param x: An arbitrary value or type.
    
 
    :returns: The set of all type name aliases of *x* (or the type of *x*
@@ -3629,7 +3629,7 @@ Functions
    Returns the type name of an arbitrary Zeek variable.
    
 
-   :t: An arbitrary object.
+   :param t: An arbitrary object.
    
 
    :returns: The type name of *t*.
@@ -3642,7 +3642,7 @@ Functions
    Removes a destination address filter.
    
 
-   :ip: The IP address for which a destination filter was previously installed.
+   :param ip: The IP address for which a destination filter was previously installed.
    
 
    :returns: True on success.
@@ -3666,7 +3666,7 @@ Functions
    Removes a destination subnet filter.
    
 
-   :snet: The subnet for which a destination filter was previously installed.
+   :param snet: The subnet for which a destination filter was previously installed.
    
 
    :returns: True on success.
@@ -3690,7 +3690,7 @@ Functions
    Removes a source address filter.
    
 
-   :ip: The IP address for which a source filter was previously installed.
+   :param ip: The IP address for which a source filter was previously installed.
    
 
    :returns: True on success.
@@ -3714,7 +3714,7 @@ Functions
    Removes a source subnet filter.
    
 
-   :snet: The subnet for which a source filter was previously installed.
+   :param snet: The subnet for which a source filter was previously installed.
    
 
    :returns: True on success.
@@ -3738,7 +3738,7 @@ Functions
    Creates an identifier that is unique with high probability.
    
 
-   :prefix: A custom string prepended to the result.
+   :param prefix: A custom string prepended to the result.
    
 
    :returns: A string identifier that is unique.
@@ -3753,10 +3753,10 @@ Functions
    Creates an identifier that is unique with high probability.
    
 
-   :pool: A seed for determinism.
+   :param pool: A seed for determinism.
    
 
-   :prefix: A custom string prepended to the result.
+   :param prefix: A custom string prepended to the result.
    
 
    :returns: A string identifier that is unique.
@@ -3771,7 +3771,7 @@ Functions
    Removes a file from a directory.
    
 
-   :f: the file to delete.
+   :param f: the file to delete.
    
 
    :returns: True if the operation succeeds and the file was deleted,
@@ -3792,7 +3792,7 @@ Functions
    See `<http://en.wikipedia.org/wiki/Universally_unique_identifier>`_.
    
 
-   :uuid: The 16 bytes of the UUID.
+   :param uuid: The 16 bytes of the UUID.
    
 
    :returns: The string representation of *uuid*.
@@ -3819,10 +3819,10 @@ Functions
    Writes data to an open file.
    
 
-   :f: A :zeek:type:`file` handle to an open file.
+   :param f: A :zeek:type:`file` handle to an open file.
    
 
-   :data: The data to write to *f*.
+   :param data: The data to write to *f*.
    
 
    :returns: True on success.

@@ -43,10 +43,10 @@ Events
    Generated when an RDP session becomes encrypted.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :security_protocol: The security protocol being used for the session.
+   :param security_protocol: The security protocol being used for the session.
 
 .. zeek:id:: rdp_client_cluster_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 111 111
@@ -56,10 +56,10 @@ Events
    Generated for client cluster data packets.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :data: The data contained in the client security data structure.
+   :param data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_client_core_data
    :source-code: base/protocols/rdp/main.zeek 186 212
@@ -69,10 +69,10 @@ Events
    Generated for MCS client requests.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :data: The data contained in the client core data structure.
+   :param data: The data contained in the client core data structure.
 
 .. zeek:id:: rdp_client_network_data
    :source-code: base/protocols/rdp/main.zeek 214 228
@@ -82,10 +82,10 @@ Events
    Generated for Client Network Data (TS_UD_CS_NET) packets
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :channels: The channels that were requested
+   :param channels: The channels that were requested
 
 .. zeek:id:: rdp_client_security_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 95 95
@@ -95,10 +95,10 @@ Events
    Generated for client security data packets.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :data: The data contained in the client security data structure.
+   :param data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_connect_request
    :source-code: base/protocols/rdp/main.zeek 165 170
@@ -109,13 +109,13 @@ Events
    Generated for X.224 client requests.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :cookie: The cookie included in the request.
+   :param cookie: The cookie included in the request.
    
 
-   :flags: The flags set by the client.
+   :param flags: The flags set by the client.
 
 .. zeek:id:: rdp_gcc_server_create_response
    :source-code: base/protocols/rdp/main.zeek 229 234
@@ -125,10 +125,10 @@ Events
    Generated for MCS server responses.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :result: The 8-bit integer representing the GCC Conference Create Response result.
+   :param result: The 8-bit integer representing the GCC Conference Create Response result.
 
 .. zeek:id:: rdp_native_encrypted_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 43 43
@@ -138,13 +138,13 @@ Events
    Generated for each packet after RDP native encryption begins
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :orig: True if the packet was sent by the originator of the connection.
+   :param orig: True if the packet was sent by the originator of the connection.
    
 
-   :len: The length of the encrypted data.
+   :param len: The length of the encrypted data.
 
 .. zeek:id:: rdp_negotiation_failure
    :source-code: base/protocols/rdp/main.zeek 179 184
@@ -155,13 +155,13 @@ Events
    Generated for RDP Negotiation Failure messages.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :failure_code: The failure code sent by the server.
+   :param failure_code: The failure code sent by the server.
    
 
-   :flags: The flags set by the server.
+   :param flags: The flags set by the server.
 
 .. zeek:id:: rdp_negotiation_response
    :source-code: base/protocols/rdp/main.zeek 172 177
@@ -172,13 +172,13 @@ Events
    Generated for RDP Negotiation Response messages.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :security_protocol: The security protocol selected by the server.
+   :param security_protocol: The security protocol selected by the server.
    
 
-   :flags: The flags set by the server.
+   :param flags: The flags set by the server.
 
 .. zeek:id:: rdp_server_certificate
    :source-code: base/protocols/rdp/main.zeek 244 256
@@ -190,13 +190,13 @@ Events
    only be generated a single time.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :cert_type: Indicates the type of certificate.
+   :param cert_type: Indicates the type of certificate.
    
 
-   :permanently_issued: Value will be true is the certificate(s) is permanent on the server.
+   :param permanently_issued: Value will be true is the certificate(s) is permanent on the server.
 
 .. zeek:id:: rdp_server_security
    :source-code: base/protocols/rdp/main.zeek 236 242
@@ -206,13 +206,13 @@ Events
    Generated for MCS server responses.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :encryption_method: The 32-bit integer representing the encryption method used in the connection.
+   :param encryption_method: The 32-bit integer representing the encryption method used in the connection.
    
 
-   :encryption_level: The 32-bit integer representing the encryption level used in the connection.
+   :param encryption_level: The 32-bit integer representing the encryption level used in the connection.
 
 .. zeek:id:: rdpeudp_data
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 33 33
@@ -222,16 +222,16 @@ Events
    Generated when for data messages exchanged after a RDPEUDP connection establishes
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :is_orig: Whether the data was sent by the originator or responder of the connection.
+   :param is_orig: Whether the data was sent by the originator or responder of the connection.
    
 
-   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+   :param version: Whether the connection is RDPEUDP1 or RDPEUDP2
    
 
-   :data: The payload of the packet. This is probably very non-performant.
+   :param data: The payload of the packet. This is probably very non-performant.
 
 .. zeek:id:: rdpeudp_established
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 21 21
@@ -241,10 +241,10 @@ Events
    Generated when RDPEUDP connections are established (both sides SYN)
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :version: Whether the connection is RDPEUDP1 or RDPEUDP2
+   :param version: Whether the connection is RDPEUDP1 or RDPEUDP2
 
 .. zeek:id:: rdpeudp_syn
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 7 7
@@ -254,7 +254,7 @@ Events
    Generated for RDPEUDP SYN UDP Datagram
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
 
 .. zeek:id:: rdpeudp_synack
    :source-code: base/bif/plugins/Zeek_RDP.events.bif.zeek 13 13
@@ -264,6 +264,6 @@ Events
    Generated for RDPEUDP SYNACK UDP Datagram
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
 
 

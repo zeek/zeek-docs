@@ -30,13 +30,13 @@ Events
    file contents.
    
 
-   :f: The file.
+   :param f: The file.
    
 
-   :kind: The type of digest algorithm.
+   :param kind: The type of digest algorithm.
    
 
-   :hash: The result of the hashing.
+   :param hash: The result of the hashing.
    
    .. zeek:see:: Files::add_analyzer Files::ANALYZER_MD5
       Files::ANALYZER_SHA1 Files::ANALYZER_SHA256

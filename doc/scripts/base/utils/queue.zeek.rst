@@ -95,7 +95,7 @@ Functions
    Get a value from the end of a queue.
    
 
-   :q: The queue to get the value from.
+   :param q: The queue to get the value from.
    
 
    :returns: The value gotten from the queue.
@@ -108,10 +108,10 @@ Functions
    Get the contents of the queue as a vector.
    
 
-   :q: The queue.
+   :param q: The queue.
    
 
-   :ret: A vector containing the current contents of the queue
+   :param ret: A vector containing the current contents of the queue
         as the type of ret.
 
 .. zeek:id:: Queue::init
@@ -122,7 +122,7 @@ Functions
    Initialize a queue record structure.
    
 
-   :s: A record which configures the queue.
+   :param s: A record which configures the queue.
    
 
    :returns: An opaque queue record.
@@ -135,7 +135,7 @@ Functions
    Get the number of items in a queue.
    
 
-   :q: The queue.
+   :param q: The queue.
    
 
    :returns: The length of the queue.
@@ -150,10 +150,10 @@ Functions
    merged queue.
    
 
-   :q1: The first queue.  Settings are taken from here.
+   :param q1: The first queue.  Settings are taken from here.
    
 
-   :q2: The second queue.
+   :param q2: The second queue.
    
 
    :returns: A new queue from merging the other two together.
@@ -166,7 +166,7 @@ Functions
    Peek at the value at the end of the queue without removing it.
    
 
-   :q: The queue to get the value from.
+   :param q: The queue to get the value from.
    
 
    :returns: The value at the end of the queue.
@@ -179,9 +179,9 @@ Functions
    Put a value onto the beginning of a queue.
    
 
-   :q: The queue to put the value into.
+   :param q: The queue to put the value into.
    
 
-   :val: The value to insert into the queue.
+   :param val: The value to insert into the queue.
 
 

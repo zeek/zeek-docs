@@ -58,16 +58,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :alloc_size: desired allocation size.
+   :param alloc_size: desired allocation size.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -82,16 +82,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :delete_pending: A boolean value to indicate that a file should be deleted 
+   :param delete_pending: A boolean value to indicate that a file should be deleted 
                    when it's closed if set to T.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
@@ -107,16 +107,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :end_of_file: the absolute new end of file position as a byte offset from the start of the file
+   :param end_of_file: the absolute new end of file position as a byte offset from the start of the file
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -131,16 +131,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :fs_control: contains fs_control info (see MS-FCC 2.5.2)
+   :param fs_control: contains fs_control info (see MS-FCC 2.5.2)
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -155,19 +155,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :object_id: contains a 16-bytes GUID that identifies the file system volume (see MS-FCC 2.5.6)
+   :param object_id: contains a 16-bytes GUID that identifies the file system volume (see MS-FCC 2.5.6)
    
 
-   :extended_info: contains extended information on the file system volume
+   :param extended_info: contains extended information on the file system volume
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link
 
@@ -182,16 +182,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :FileEAs: a vector of extended file attributes as defined in MS-FSCC:2.4.15
+   :param FileEAs: a vector of extended file attributes as defined in MS-FSCC:2.4.15
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -206,19 +206,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :root_directory: contains the file handle for the directory where the link is to be created
+   :param root_directory: contains the file handle for the directory where the link is to be created
    
 
-   :file_name: contains the name to be assigned to the newly created link
+   :param file_name: contains the name to be assigned to the newly created link
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -233,16 +233,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :mode: specifies how the file will subsequently be accessed.
+   :param mode: specifies how the file will subsequently be accessed.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -257,19 +257,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :read_mode: specifies if data must be read as a stream of bytes or messages
+   :param read_mode: specifies if data must be read as a stream of bytes or messages
    
 
-   :completion_mode: specifies if blocking mode must be enabled or not
+   :param completion_mode: specifies if blocking mode must be enabled or not
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -284,16 +284,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :current_byte_offset: specifies the offset, in bytes, of the file pointer from the beginning of the file
+   :param current_byte_offset: specifies the offset, in bytes, of the file pointer from the beginning of the file
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -308,16 +308,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: A GUID to identify the file.
+   :param file_id: A GUID to identify the file.
    
 
-   :dst_filename: The filename to rename the file into.
+   :param dst_filename: The filename to rename the file into.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -332,19 +332,19 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :times: Timestamps associated with the file in question.
+   :param times: Timestamps associated with the file in question.
    
 
-   :attrs: File attributes.
+   :param attrs: File attributes.
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -359,16 +359,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :file_name: specifies the name of the file to be changed
+   :param file_name: specifies the name of the file to be changed
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 
@@ -383,16 +383,16 @@ Events
    For more information, see MS-SMB2:2.2.39
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 2 message.
    
 
-   :file_id: The SMB2 GUID for the file.
+   :param file_id: The SMB2 GUID for the file.
    
 
-   :valid_data_length: specifies the new valid data length for the file
+   :param valid_data_length: specifies the new valid data length for the file
    
    .. zeek:see:: smb2_message smb2_file_delete smb2_file_sattr smb2_file_allocation smb2_file_endoffile smb2_file_mode smb2_file_pipe smb2_file_position smb2_file_shortname smb2_file_validdatalength smb2_file_fullea smb2_file_link smb2_file_fsobjectid
 

@@ -38,13 +38,13 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :command: The numerical code of the command issued.
+   :param command: The numerical code of the command issued.
    
 
-   :arg: The argument for the command (empty string if not provided).
+   :param arg: The argument for the command (empty string if not provided).
    
    .. zeek:see:: mysql_error mysql_ok mysql_server_version mysql_handshake
 
@@ -59,10 +59,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_intermediate: True if this is an EOF packet between the column definition and the rows, false if a final EOF.
+   :param is_intermediate: True if this is an EOF packet between the column definition and the rows, false if a final EOF.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
@@ -77,13 +77,13 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :code: The error code.
+   :param code: The error code.
    
 
-   :msg: Any extra details about the error (empty string if not provided).
+   :param msg: Any extra details about the error (empty string if not provided).
    
    .. zeek:see:: mysql_command_request mysql_ok mysql_server_version mysql_handshake
 
@@ -99,10 +99,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :username: The username supplied by the client
+   :param username: The username supplied by the client
    
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_server_version
 
@@ -117,10 +117,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :affected_rows: The number of rows that were affected.
+   :param affected_rows: The number of rows that were affected.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
@@ -135,10 +135,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :row: The result row data.
+   :param row: The result row data.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake mysql_ok
 
@@ -153,10 +153,10 @@ Events
    for more information about the MySQL protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :ver: The server version string.
+   :param ver: The server version string.
    
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_handshake
 

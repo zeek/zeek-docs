@@ -34,13 +34,13 @@ Events
    For more information, see MS-CIFS:2.2.4.53
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :request: The parsed request data of the SMB message. See init-bare for more details.
+   :param request: The parsed request data of the SMB message. See init-bare for more details.
    
    .. zeek:see:: smb1_message smb1_session_setup_andx_response
 
@@ -55,13 +55,13 @@ Events
    For more information, see MS-CIFS:2.2.4.53
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
+   :param hdr: The parsed header of the :abbr:`SMB (Server Message Block)` version 1 message.
    
 
-   :response: The parsed response data of the SMB message. See init-bare for more details.
+   :param response: The parsed response data of the SMB message. See init-bare for more details.
    
    .. zeek:see:: smb1_message smb1_session_setup_andx_request
 

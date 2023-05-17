@@ -316,17 +316,17 @@ Functions
    Extends an existing string with another.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :s: the string to append.
+   :param s: the string to append.
    
 
-   :e: the new expiration interval of the modified key. If null, the
+   :param e: the new expiration interval of the modified key. If null, the
       current expiration time isn't changed.
    
 
@@ -350,7 +350,7 @@ Functions
    Close a data store.
    
 
-   :h: a data store handle.
+   :param h: a data store handle.
    
 
    :returns: true if store was valid and is now closed.  The handle can no
@@ -370,21 +370,21 @@ Functions
    quicker than reaching out to a remote master store.
    
 
-   :name: the unique name which identifies the master data store.
+   :param name: the unique name which identifies the master data store.
    
 
-   :resync_interval: the frequency at which a clone that is disconnected from
+   :param resync_interval: the frequency at which a clone that is disconnected from
                     its master attempts to reconnect with it.
    
 
-   :stale_interval: the duration after which a clone that is disconnected
+   :param stale_interval: the duration after which a clone that is disconnected
                    from its master will begin to treat its local cache as
                    stale.  In this state, queries to the clone will timeout.
                    A negative value indicates that the local cache is never
                    treated as stale.
    
 
-   :mutation_buffer_interval: the amount of time to buffer data store update
+   :param mutation_buffer_interval: the amount of time to buffer data store update
                              messages once a clone detects its master is
                              unavailable.  If the clone reconnects before
                              this time, it will replay all buffered
@@ -407,13 +407,13 @@ Functions
    Create a master data store which contains key-value pairs.
    
 
-   :name: a unique name for the data store.
+   :param name: a unique name for the data store.
    
 
-   :b: the storage backend to use.
+   :param b: the storage backend to use.
    
 
-   :options: tunes how some storage backends operate.
+   :param options: tunes how some storage backends operate.
    
 
    :returns: a handle to the data store for which a subsequent call to
@@ -432,7 +432,7 @@ Functions
       functions.
    
 
-   :d: any Zeek value to attempt to convert (not all types are supported).
+   :param d: any Zeek value to attempt to convert (not all types are supported).
    
 
    :returns: the converted communication data.  If the supplied Zeek data
@@ -447,7 +447,7 @@ Functions
    Retrieve the type of data associated with communication data.
    
 
-   :d: the communication data.
+   :param d: the communication data.
    
 
    :returns: The data type associated with the communication data.
@@ -463,17 +463,17 @@ Functions
    numerical types, as well as for timestamps.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :amount: the amount to decrement the value by.
+   :param amount: the amount to decrement the value by.
    
 
-   :e: the new expiration interval of the modified key. If null, the current
+   :param e: the new expiration interval of the modified key. If null, the current
       expiration time isn't changed.
    
 
@@ -487,10 +487,10 @@ Functions
    Remove a key-value pair from the store.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key to remove.
+   :param k: the key to remove.
    
 
    :returns: false if the store handle was not valid.
@@ -503,10 +503,10 @@ Functions
    Check if a key exists in a data store.
    
 
-   :h: the handle of the store to query.
+   :param h: the handle of the store to query.
    
 
-   :k: the key to lookup.
+   :param k: the key to lookup.
    
 
    :returns: True if the key exists in the data store.
@@ -519,10 +519,10 @@ Functions
    Lookup the value associated with a key in a data store.
    
 
-   :h: the handle of the store to query.
+   :param h: the handle of the store to query.
    
 
-   :k: the key to lookup.
+   :param k: the key to lookup.
    
 
    :returns: the result of the query.
@@ -536,13 +536,13 @@ Functions
    is supported for values of types set, table, and vector.
    
 
-   :h: the handle of the store to query.
+   :param h: the handle of the store to query.
    
 
-   :k: the key of the container value to lookup.
+   :param k: the key of the container value to lookup.
    
 
-   :i: the index to retrieve from the container value.
+   :param i: the index to retrieve from the container value.
    
 
    :returns: For tables and vectors, the value at the given index, or
@@ -559,17 +559,17 @@ Functions
    numerical types, as well as for timestamps.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :a: the amount to increment the value by.
+   :param a: the amount to increment the value by.
    
 
-   :e: the new expiration interval of the modified key. If null, the
+   :param e: the new expiration interval of the modified key. If null, the
       current expiration time isn't changed.
    
 
@@ -583,17 +583,17 @@ Functions
    Inserts an element into an existing set.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :i: the index to insert into the set.
+   :param i: the index to insert into the set.
    
 
-   :e: the new expiration interval of the modified key. If null, the
+   :param e: the new expiration interval of the modified key. If null, the
       current expiration time isn't changed.
    
 
@@ -607,20 +607,20 @@ Functions
    Inserts an element into an existing table.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :i: the index to insert into the table
+   :param i: the index to insert into the table
    
 
-   :v: the value to associate with the index.
+   :param v: the value to associate with the index.
    
 
-   :e: the new expiration interval of the modified key. If null, the
+   :param e: the new expiration interval of the modified key. If null, the
       current expiration time isn't changed.
    
 
@@ -659,14 +659,14 @@ Functions
    Removes the last element of an existing vector.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :e: the new expiration interval of the modified key. If null, the
+   :param e: the new expiration interval of the modified key. If null, the
       current expiration time isn't changed.
    
 
@@ -680,17 +680,17 @@ Functions
    Appends an element to an existing vector.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :b: the value to append to the vector.
+   :param b: the value to append to the vector.
    
 
-   :e: the new expiration interval of the modified key. If null, the
+   :param e: the new expiration interval of the modified key. If null, the
       current expiration time isn't changed.
    
 
@@ -704,16 +704,16 @@ Functions
    Insert a key-value pair into the store.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key to insert.
+   :param k: the key to insert.
    
 
-   :v: the value to insert.
+   :param v: the value to insert.
    
 
-   :e: the expiration interval of the key-value pair.
+   :param e: the expiration interval of the key-value pair.
    
 
    :returns: false if the store handle was not valid.
@@ -727,16 +727,16 @@ Functions
    already exist.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key to insert.
+   :param k: the key to insert.
    
 
-   :v: the value to insert.
+   :param v: the value to insert.
    
 
-   :e: the expiration interval of the key-value pair.
+   :param e: the expiration interval of the key-value pair.
    
 
    :returns: the result of the query which is a boolean data value that is
@@ -751,13 +751,13 @@ Functions
    Replace a field in a record at a particular position.
    
 
-   :r: the record to modify.
+   :param r: the record to modify.
    
 
-   :d: the new field value to assign.
+   :param d: the new field value to assign.
    
 
-   :idx: the index to replace.
+   :param idx: the index to replace.
    
 
    :returns: false if the index was larger than any valid index, else true.
@@ -770,7 +770,7 @@ Functions
    Create communication data of type "record".
    
 
-   :sz: the number of fields in the record.
+   :param sz: the number of fields in the record.
    
 
    :returns: record data, with all fields uninitialized.
@@ -784,7 +784,7 @@ Functions
    internally to ensure the iterator is always valid.
    
 
-   :r: the record to iterate over.
+   :param r: the record to iterate over.
    
 
    :returns: an iterator.
@@ -797,7 +797,7 @@ Functions
    Check if there are no more elements to iterate over.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if there are no more elements to iterator over, i.e.
@@ -811,7 +811,7 @@ Functions
    Advance an iterator.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if the iterator, after advancing, still references an element
@@ -826,7 +826,7 @@ Functions
    Retrieve the data at an iterator's current position.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: element in the collection that the iterator currently references.
@@ -839,10 +839,10 @@ Functions
    Lookup a field in a record at a particular position.
    
 
-   :r: the record to query.
+   :param r: the record to query.
    
 
-   :idx: the index to lookup.
+   :param idx: the index to lookup.
    
 
    :returns: the value at the index.  The optional field of the returned record
@@ -857,7 +857,7 @@ Functions
    Get the number of fields within a record.
    
 
-   :r: the record to query.
+   :param r: the record to query.
    
 
    :returns: the number of fields in the record.
@@ -870,17 +870,17 @@ Functions
    Removes an element from an existing set or table.
    
 
-   :h: the handle of the store to modify.
+   :param h: the handle of the store to modify.
    
 
-   :k: the key whose associated value is to be modified. The key must
+   :param k: the key whose associated value is to be modified. The key must
       already exist.
    
 
-   :i: the index to remove from the set or table.
+   :param i: the index to remove from the set or table.
    
 
-   :e: the new expiration interval of the modified key. If null, the
+   :param e: the new expiration interval of the modified key. If null, the
       current expiration time isn't changed.
    
 
@@ -894,7 +894,7 @@ Functions
    Remove all elements within a set.
    
 
-   :s: the set to clear.
+   :param s: the set to clear.
    
 
    :returns: always true.
@@ -907,10 +907,10 @@ Functions
    Check if a set contains a particular element.
    
 
-   :s: the set to query.
+   :param s: the set to query.
    
 
-   :key: the element to check for existence.
+   :param key: the element to check for existence.
    
 
    :returns: true if the key exists in the set.
@@ -930,10 +930,10 @@ Functions
    Insert an element into a set.
    
 
-   :s: the set to modify.
+   :param s: the set to modify.
    
 
-   :key: the element to insert.
+   :param key: the element to insert.
    
 
    :returns: true if the key was inserted, or false if it already existed.
@@ -947,7 +947,7 @@ Functions
    internally to ensure the iterator is always valid.
    
 
-   :s: the set to iterate over.
+   :param s: the set to iterate over.
    
 
    :returns: an iterator.
@@ -960,7 +960,7 @@ Functions
    Check if there are no more elements to iterate over.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if there are no more elements to iterator over, i.e.
@@ -974,7 +974,7 @@ Functions
    Advance an iterator.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if the iterator, after advancing, still references an element
@@ -989,7 +989,7 @@ Functions
    Retrieve the data at an iterator's current position.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: element in the collection that the iterator currently references.
@@ -1002,10 +1002,10 @@ Functions
    Remove an element from a set.
    
 
-   :s: the set to modify.
+   :param s: the set to modify.
    
 
-   :key: the element to remove.
+   :param key: the element to remove.
    
 
    :returns: true if the element existed in the set and is now removed.
@@ -1018,7 +1018,7 @@ Functions
    Get the number of elements within a set.
    
 
-   :s: the set to query.
+   :param s: the set to query.
    
 
    :returns: the number of elements in the set.
@@ -1041,7 +1041,7 @@ Functions
    Remove all elements within a table.
    
 
-   :t: the table to clear.
+   :param t: the table to clear.
    
 
    :returns: always true.
@@ -1054,10 +1054,10 @@ Functions
    Check if a table contains a particular key.
    
 
-   :t: the table to query.
+   :param t: the table to query.
    
 
-   :key: the key to check for existence.
+   :param key: the key to check for existence.
    
 
    :returns: true if the key exists in the table.
@@ -1077,13 +1077,13 @@ Functions
    Insert a key-value pair into a table.
    
 
-   :t: the table to modify.
+   :param t: the table to modify.
    
 
-   :key: the key at which to insert the value.
+   :param key: the key at which to insert the value.
    
 
-   :val: the value to insert.
+   :param val: the value to insert.
    
 
    :returns: true if the key-value pair was inserted, or false if the key
@@ -1098,7 +1098,7 @@ Functions
    internally to ensure the iterator is always valid.
    
 
-   :t: the table to iterate over.
+   :param t: the table to iterate over.
    
 
    :returns: an iterator.
@@ -1111,7 +1111,7 @@ Functions
    Check if there are no more elements to iterate over.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if there are no more elements to iterator over, i.e.
@@ -1125,7 +1125,7 @@ Functions
    Advance an iterator.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if the iterator, after advancing, still references an element
@@ -1140,7 +1140,7 @@ Functions
    Retrieve the data at an iterator's current position.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: element in the collection that the iterator currently references.
@@ -1153,10 +1153,10 @@ Functions
    Retrieve a value from a table.
    
 
-   :t: the table to query.
+   :param t: the table to query.
    
 
-   :key: the key to lookup.
+   :param key: the key to lookup.
    
 
    :returns: the value associated with the key.  If the key did not exist, then
@@ -1170,10 +1170,10 @@ Functions
    Remove a key-value pair from a table.
    
 
-   :t: the table to modify.
+   :param t: the table to modify.
    
 
-   :key: the key to remove from the table.
+   :param key: the key to remove from the table.
    
 
    :returns: the value associated with the key.  If the key did not exist, then
@@ -1187,7 +1187,7 @@ Functions
    Get the number of elements within a table.
    
 
-   :t: the table to query.
+   :param t: the table to query.
    
 
    :returns: the number of elements in the table.
@@ -1200,7 +1200,7 @@ Functions
    Remove all elements within a vector.
    
 
-   :v: the vector to clear.
+   :param v: the vector to clear.
    
 
    :returns: always true.
@@ -1221,13 +1221,13 @@ Functions
    existing elements (insertion always grows the size of the vector by one).
    
 
-   :v: the vector to modify.
+   :param v: the vector to modify.
    
 
-   :d: the element to insert.
+   :param d: the element to insert.
    
 
-   :idx: the index at which to insert the data.  If it is greater than the
+   :param idx: the index at which to insert the data.  If it is greater than the
         current size of the vector, the element is inserted at the end.
    
 
@@ -1242,7 +1242,7 @@ Functions
    internally to ensure the iterator is always valid.
    
 
-   :v: the vector to iterate over.
+   :param v: the vector to iterate over.
    
 
    :returns: an iterator.
@@ -1255,7 +1255,7 @@ Functions
    Check if there are no more elements to iterate over.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if there are no more elements to iterator over, i.e.
@@ -1269,7 +1269,7 @@ Functions
    Advance an iterator.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: true if the iterator, after advancing, still references an element
@@ -1284,7 +1284,7 @@ Functions
    Retrieve the data at an iterator's current position.
    
 
-   :it: an iterator.
+   :param it: an iterator.
    
 
    :returns: element in the collection that the iterator currently references.
@@ -1297,10 +1297,10 @@ Functions
    Lookup an element in a vector at a particular position.
    
 
-   :v: the vector to query.
+   :param v: the vector to query.
    
 
-   :idx: the index to lookup.
+   :param idx: the index to lookup.
    
 
    :returns: the value at the index.  If the index was larger than any
@@ -1314,10 +1314,10 @@ Functions
    Remove an element from a vector at a particular position.
    
 
-   :v: the vector to modify.
+   :param v: the vector to modify.
    
 
-   :idx: the index to remove.
+   :param idx: the index to remove.
    
 
    :returns: the value that was just evicted.  If the index was larger than any
@@ -1331,13 +1331,13 @@ Functions
    Replace an element in a vector at a particular position.
    
 
-   :v: the vector to modify.
+   :param v: the vector to modify.
    
 
-   :d: the element to insert.
+   :param d: the element to insert.
    
 
-   :idx: the index to replace.
+   :param idx: the index to replace.
    
 
    :returns: the value that was just evicted.  If the index was larger than any
@@ -1351,7 +1351,7 @@ Functions
    Get the number of elements within a vector.
    
 
-   :v: the vector to query.
+   :param v: the vector to query.
    
 
    :returns: the number of elements in the vector.

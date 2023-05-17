@@ -40,13 +40,13 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the data was sent by the originator of the TCP connection.
+   :param is_orig: True if the data was sent by the originator of the TCP connection.
    
 
-   :data: The data sent.
+   :param data: The data sent.
    
    .. zeek:see:: pop3_login_failure pop3_login_success pop3_reply pop3_request
       pop3_unexpected
@@ -67,17 +67,17 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always false.
+   :param is_orig: Always false.
    
 
-   :user: The user name attempted for authentication. The event is only
+   :param user: The user name attempted for authentication. The event is only
          generated if a non-empty user name was used.
    
 
-   :password: The password attempted for authentication.
+   :param password: The password attempted for authentication.
    
    .. zeek:see:: pop3_data pop3_login_success pop3_reply pop3_request
       pop3_unexpected
@@ -98,17 +98,17 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Always false.
+   :param is_orig: Always false.
    
 
-   :user: The user name used for authentication. The event is only generated if
+   :param user: The user name used for authentication. The event is only generated if
          a non-empty user name was used.
    
 
-   :password: The password used for authentication.
+   :param password: The password used for authentication.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_reply pop3_request
       pop3_unexpected
@@ -129,18 +129,18 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :cmd: The success indicator sent by the server. This corresponds to the
+   :param cmd: The success indicator sent by the server. This corresponds to the
         first token on the line sent, and should be either ``OK`` or ``ERR``.
    
 
-   :msg: The textual description the server sent along with *cmd*.
+   :param msg: The textual description the server sent along with *cmd*.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_request
       pop3_unexpected
@@ -163,17 +163,17 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the command was sent by the originator of the TCP
+   :param is_orig: True if the command was sent by the originator of the TCP
             connection.
    
 
-   :command: The command sent.
+   :param command: The command sent.
    
 
-   :arg: The argument to the command.
+   :param arg: The argument to the command.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_reply
       pop3_unexpected
@@ -197,7 +197,7 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_reply
       pop3_request pop3_unexpected
@@ -220,16 +220,16 @@ Events
    about the POP3 protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: True if the data was sent by the originator of the TCP connection.
+   :param is_orig: True if the data was sent by the originator of the TCP connection.
    
 
-   :msg: A textual description of the situation.
+   :param msg: A textual description of the situation.
    
 
-   :detail: The input that triggered the event.
+   :param detail: The input that triggered the event.
    
    .. zeek:see:: pop3_data pop3_login_failure pop3_login_success pop3_reply pop3_request
    

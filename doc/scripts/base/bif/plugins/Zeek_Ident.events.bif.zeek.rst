@@ -33,16 +33,16 @@ Events
    information about the Ident protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :lport: The corresponding request's local port.
+   :param lport: The corresponding request's local port.
    
 
-   :rport: The corresponding request's remote port.
+   :param rport: The corresponding request's remote port.
    
 
-   :line: The error description returned by the reply.
+   :param line: The error description returned by the reply.
    
    .. zeek:see:: ident_reply ident_request
    
@@ -62,19 +62,19 @@ Events
    information about the Ident protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :lport: The corresponding request's local port.
+   :param lport: The corresponding request's local port.
    
 
-   :rport: The corresponding request's remote port.
+   :param rport: The corresponding request's remote port.
    
 
-   :user_id: The user id returned by the reply.
+   :param user_id: The user id returned by the reply.
    
 
-   :system: The operating system returned by the reply.
+   :param system: The operating system returned by the reply.
    
    .. zeek:see:: ident_error  ident_request
    
@@ -94,13 +94,13 @@ Events
    information about the Ident protocol.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :lport: The request's local port.
+   :param lport: The request's local port.
    
 
-   :rport: The request's remote port.
+   :param rport: The request's remote port.
    
    .. zeek:see:: ident_error ident_reply
    

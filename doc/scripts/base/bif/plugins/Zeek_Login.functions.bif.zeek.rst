@@ -29,7 +29,7 @@ Functions
    Returns the state of the given login (Telnet or Rlogin) connection.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
    :returns: False if the connection is not active or is not tagged as a
@@ -56,10 +56,10 @@ Functions
    Sets the login state of a connection with a login analyzer.
    
 
-   :cid: The connection ID.
+   :param cid: The connection ID.
    
 
-   :new_state: The new state of the login analyzer. See
+   :param new_state: The new state of the login analyzer. See
               :zeek:id:`get_login_state` for possible values.
    
 

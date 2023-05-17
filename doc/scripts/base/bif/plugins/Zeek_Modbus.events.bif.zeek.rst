@@ -56,13 +56,13 @@ Events
    Generated for any Modbus exception message.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :code: The exception code.
+   :param code: The exception code.
 
 .. zeek:id:: modbus_mask_write_register_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 264 264
@@ -72,19 +72,19 @@ Events
    Generated for a Modbus mask write register request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register where the masks should be applied.
+   :param address: The memory address of the register where the masks should be applied.
    
 
-   :and_mask: The value of the logical AND mask to apply to the register.
+   :param and_mask: The value of the logical AND mask to apply to the register.
    
 
-   :or_mask: The value of the logical OR mask to apply to the register.
+   :param or_mask: The value of the logical OR mask to apply to the register.
 
 .. zeek:id:: modbus_mask_write_register_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 278 278
@@ -94,19 +94,19 @@ Events
    Generated for a Modbus mask write register request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register where the masks were applied.
+   :param address: The memory address of the register where the masks were applied.
    
 
-   :and_mask: The value of the logical AND mask applied register.
+   :param and_mask: The value of the logical AND mask applied register.
    
 
-   :or_mask: The value of the logical OR mask applied to the register.
+   :param or_mask: The value of the logical OR mask applied to the register.
 
 .. zeek:id:: modbus_message
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 12 12
@@ -117,13 +117,13 @@ Events
    is further supported or not.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :is_orig: True if the event is raised for the originator side.
+   :param is_orig: True if the event is raised for the originator side.
 
 .. zeek:id:: modbus_read_coils_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 34 34
@@ -133,16 +133,16 @@ Events
    Generated for a Modbus read coils request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil to be read.
+   :param start_address: The memory address of the first coil to be read.
    
 
-   :quantity: The number of coils to be read.
+   :param quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_coils_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 44 44
@@ -152,13 +152,13 @@ Events
    Generated for a Modbus read coils response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :coils: The coil values returned from the device.
+   :param coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_discrete_inputs_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 56 56
@@ -168,16 +168,16 @@ Events
    Generated for a Modbus read discrete inputs request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil to be read.
+   :param start_address: The memory address of the first coil to be read.
    
 
-   :quantity: The number of coils to be read.
+   :param quantity: The number of coils to be read.
 
 .. zeek:id:: modbus_read_discrete_inputs_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 66 66
@@ -187,13 +187,13 @@ Events
    Generated for a Modbus read discrete inputs response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :coils: The coil values returned from the device.
+   :param coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_fifo_queue_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 315 315
@@ -203,13 +203,13 @@ Events
    Generated for a Modbus read FIFO queue request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The address of the FIFO queue to read.
+   :param start_address: The address of the FIFO queue to read.
 
 .. zeek:id:: modbus_read_fifo_queue_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 325 325
@@ -219,13 +219,13 @@ Events
    Generated for a Modbus read FIFO queue response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :fifos: The register values read from the FIFO queue on the device.
+   :param fifos: The register values read from the FIFO queue on the device.
 
 .. zeek:id:: modbus_read_file_record_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 217 217
@@ -235,10 +235,10 @@ Events
    Generated for a Modbus read file record request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -251,10 +251,10 @@ Events
    Generated for a Modbus read file record response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -267,16 +267,16 @@ Events
    Generated for a Modbus read holding registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register to be read.
+   :param start_address: The memory address of the first register to be read.
    
 
-   :quantity: The number of registers to be read.
+   :param quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_holding_registers_response
    :source-code: policy/protocols/modbus/track-memmap.zeek 67 102
@@ -286,13 +286,13 @@ Events
    Generated for a Modbus read holding registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :registers: The register values returned from the device.
+   :param registers: The register values returned from the device.
 
 .. zeek:id:: modbus_read_input_registers_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 100 100
@@ -302,16 +302,16 @@ Events
    Generated for a Modbus read input registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register to be read.
+   :param start_address: The memory address of the first register to be read.
    
 
-   :quantity: The number of registers to be read.
+   :param quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_input_registers_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 110 110
@@ -321,13 +321,13 @@ Events
    Generated for a Modbus read input registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :registers: The register values returned from the device.
+   :param registers: The register values returned from the device.
 
 .. zeek:id:: modbus_read_write_multiple_registers_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 294 294
@@ -337,22 +337,22 @@ Events
    Generated for a Modbus read/write multiple registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :read_start_address: The memory address of the first register to be read.
+   :param read_start_address: The memory address of the first register to be read.
    
 
-   :read_quantity: The number of registers to read.
+   :param read_quantity: The number of registers to read.
    
 
-   :write_start_address: The memory address of the first register to be written.
+   :param write_start_address: The memory address of the first register to be written.
    
 
-   :write_registers: The values to be written to the registers.
+   :param write_registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_read_write_multiple_registers_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 305 305
@@ -362,13 +362,13 @@ Events
    Generated for a Modbus read/write multiple registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :written_registers: The register values read from the registers specified in
+   :param written_registers: The register values read from the registers specified in
                       the request.
 
 .. zeek:id:: modbus_write_file_record_request
@@ -379,10 +379,10 @@ Events
    Generated for a Modbus write file record request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -395,10 +395,10 @@ Events
    Generated for a Modbus write file record response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
    .. note: This event is incomplete.  The information from the data structure
             is not yet passed through to the event.
@@ -411,16 +411,16 @@ Events
    Generated for a Modbus write multiple coils request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil to be written.
+   :param start_address: The memory address of the first coil to be written.
    
 
-   :coils: The values to be written to the coils.
+   :param coils: The values to be written to the coils.
 
 .. zeek:id:: modbus_write_multiple_coils_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 182 182
@@ -430,16 +430,16 @@ Events
    Generated for a Modbus write multiple coils response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first coil that was written.
+   :param start_address: The memory address of the first coil that was written.
    
 
-   :quantity: The quantity of coils that were written.
+   :param quantity: The quantity of coils that were written.
 
 .. zeek:id:: modbus_write_multiple_registers_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 194 194
@@ -449,16 +449,16 @@ Events
    Generated for a Modbus write multiple registers request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register to be written.
+   :param start_address: The memory address of the first register to be written.
    
 
-   :registers: The values to be written to the registers.
+   :param registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_write_multiple_registers_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 206 206
@@ -468,16 +468,16 @@ Events
    Generated for a Modbus write multiple registers response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :start_address: The memory address of the first register that was written.
+   :param start_address: The memory address of the first register that was written.
    
 
-   :quantity: The quantity of registers that were written.
+   :param quantity: The quantity of registers that were written.
 
 .. zeek:id:: modbus_write_single_coil_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 122 122
@@ -487,16 +487,16 @@ Events
    Generated for a Modbus write single coil request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the coil to be written.
+   :param address: The memory address of the coil to be written.
    
 
-   :value: The value to be written to the coil.
+   :param value: The value to be written to the coil.
 
 .. zeek:id:: modbus_write_single_coil_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 134 134
@@ -506,16 +506,16 @@ Events
    Generated for a Modbus write single coil response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the coil that was written.
+   :param address: The memory address of the coil that was written.
    
 
-   :value: The value that was written to the coil.
+   :param value: The value that was written to the coil.
 
 .. zeek:id:: modbus_write_single_register_request
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 146 146
@@ -525,16 +525,16 @@ Events
    Generated for a Modbus write single register request.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register to be written.
+   :param address: The memory address of the register to be written.
    
 
-   :value: The value to be written to the register.
+   :param value: The value to be written to the register.
 
 .. zeek:id:: modbus_write_single_register_response
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 158 158
@@ -544,15 +544,15 @@ Events
    Generated for a Modbus write single register response.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :headers: The headers for the modbus function.
+   :param headers: The headers for the modbus function.
    
 
-   :address: The memory address of the register that was written.
+   :param address: The memory address of the register that was written.
    
 
-   :value: The value that was written to the register.
+   :param value: The value that was written to the register.
 
 

@@ -30,10 +30,10 @@ Events
    Generated for :abbr:`NTLM (NT LAN Manager)` messages of type *authenticate*.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :request: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
+   :param request: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
    
    .. zeek:see:: ntlm_negotiate ntlm_challenge
 
@@ -45,10 +45,10 @@ Events
    Generated for :abbr:`NTLM (NT LAN Manager)` messages of type *challenge*.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
+   :param negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
    
    .. zeek:see:: ntlm_negotiate ntlm_authenticate
 
@@ -60,10 +60,10 @@ Events
    Generated for :abbr:`NTLM (NT LAN Manager)` messages of type *negotiate*.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
+   :param negotiate: The parsed data of the :abbr:`NTLM (NT LAN Manager)` message. See init-bare for more details.
    
    .. zeek:see:: ntlm_challenge ntlm_authenticate
 

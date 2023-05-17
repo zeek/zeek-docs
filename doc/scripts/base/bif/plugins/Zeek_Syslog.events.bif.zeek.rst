@@ -31,16 +31,16 @@ Events
    information about the Syslog protocol.
    
 
-   :c: The connection record for the underlying transport-layer session/flow.
+   :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :facility: The "facility" included in the message.
+   :param facility: The "facility" included in the message.
    
 
-   :severity: The "severity" included in the message.
+   :param severity: The "severity" included in the message.
    
 
-   :msg: The message logged.
+   :param msg: The message logged.
    
    .. note:: Zeek currently parses only UDP syslog traffic. Support for TCP
       syslog will be added soon.

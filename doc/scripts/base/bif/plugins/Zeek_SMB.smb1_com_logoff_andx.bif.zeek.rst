@@ -35,10 +35,10 @@ Events
    For more information, see MS-CIFS:2.2.4.54
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Indicates which host sent the logoff message.
+   :param is_orig: Indicates which host sent the logoff message.
    
    .. zeek:see:: smb1_message
 

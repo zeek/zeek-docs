@@ -562,10 +562,10 @@ Functions
    function for uses that are not operating a cluster.
    
 
-   :name: the name of the data store to create.
+   :param name: the name of the data store to create.
    
 
-   :persistent: whether the data store must be persistent.
+   :param persistent: whether the data store must be persistent.
    
 
    :returns: the store's information.  For master stores, the store will be
@@ -628,7 +628,7 @@ Functions
    Retrieve the topic associated with a specific node in the cluster.
    
 
-   :name: the name of the cluster node (e.g. "manager").
+   :param name: the name of the cluster node (e.g. "manager").
    
 
    :returns: a topic string that may used to send a message exclusively to
@@ -642,7 +642,7 @@ Functions
    Retrieve the topic associated with a specific node in the cluster.
    
 
-   :id: the id of the cluster node (from :zeek:see:`Broker::EndpointInfo`
+   :param id: the id of the cluster node (from :zeek:see:`Broker::EndpointInfo`
        or :zeek:see:`Broker::node_id`.
    
 

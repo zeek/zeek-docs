@@ -39,13 +39,13 @@ Events
    complement to :zeek:see:`Management::Agent::API::node_dispatch_request`.
    
 
-   :reqid: a request identifier string, echoed in the response event.
+   :param reqid: a request identifier string, echoed in the response event.
    
 
-   :action: the requested dispatch command, with any arguments.
+   :param action: the requested dispatch command, with any arguments.
    
 
-   :nodes: the cluster node names this dispatch targets. An empty set,
+   :param nodes: the cluster node names this dispatch targets. An empty set,
        supplied by default, means it applies to all nodes. Since nodes
        receive all dispatch requests, they can use any node names provided
        here to filter themselves out of responding.
@@ -60,10 +60,10 @@ Events
    :zeek:see:`Management::Agent::API::node_dispatch_response`.
    
 
-   :reqid: the request identifier used in the request event.
+   :param reqid: the request identifier used in the request event.
    
 
-   :result: a :zeek:see:`Management::Result` record covering one Zeek
+   :param result: a :zeek:see:`Management::Result` record covering one Zeek
        cluster node managed by the agent. Upon success, the data field
        contains a value appropriate for the requested dispatch.
 
@@ -79,7 +79,7 @@ Events
    for agents.
    
 
-   :node: the name of the node, as given in :zeek:see:`Cluster::node`.
+   :param node: the name of the node, as given in :zeek:see:`Cluster::node`.
    
 
 

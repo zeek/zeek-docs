@@ -233,13 +233,13 @@ Events
    Generated for a DNP3 request header.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :fc: function code.
+   :param fc: function code.
    
 
 .. zeek:id:: dnp3_application_response_header
@@ -250,16 +250,16 @@ Events
    Generated for a DNP3 response header.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :fc: function code.
+   :param fc: function code.
    
 
-   :iin: internal indication number.
+   :param iin: internal indication number.
    
 
 .. zeek:id:: dnp3_attribute_common
@@ -308,7 +308,7 @@ Events
 
    Generated for DNP3 objects with the group number 12 and variation number 1
 
-   :CROB: control relay output block
+   :param CROB: control relay output block
 
 .. zeek:id:: dnp3_debug_byte
    :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 323 323
@@ -513,22 +513,22 @@ Events
    treated as a single entity).
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :len:   the "length" field in the DNP3 Pseudo Link Layer.
+   :param len:   the "length" field in the DNP3 Pseudo Link Layer.
    
 
-   :ctrl:  the "control" field in the DNP3 Pseudo Link Layer.
+   :param ctrl:  the "control" field in the DNP3 Pseudo Link Layer.
    
 
-   :dest_addr: the "destination" field in the DNP3 Pseudo Link Layer.
+   :param dest_addr: the "destination" field in the DNP3 Pseudo Link Layer.
    
 
-   :src_addr: the "source" field in the DNP3 Pseudo Link Layer.
+   :param src_addr: the "source" field in the DNP3 Pseudo Link Layer.
    
 
 .. zeek:id:: dnp3_object_header
@@ -539,28 +539,28 @@ Events
    Generated for the object header found in both DNP3 requests and responses.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :obj_type: type of object, which is classified based on an 8-bit group number
+   :param obj_type: type of object, which is classified based on an 8-bit group number
              and an 8-bit variation number.
    
 
-   :qua_field: qualifier field.
+   :param qua_field: qualifier field.
    
 
-   :number: TODO.
+   :param number: TODO.
    
 
-   :rf_low: the structure of the range field depends on the qualified field.
+   :param rf_low: the structure of the range field depends on the qualified field.
            In some cases, the range field contains only one logic part, e.g.,
            number of objects, so only *rf_low* contains useful values.
    
 
-   :rf_high: in some cases, the range field contains two logic parts, e.g., start
+   :param rf_high: in some cases, the range field contains two logic parts, e.g., start
             index and stop index, so *rf_low* contains the start index
             while *rf_high* contains the stop index.
    
@@ -574,13 +574,13 @@ Events
    of the prefix are defined by the qualifier field.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :prefix_value: The prefix.
+   :param prefix_value: The prefix.
    
 
 .. zeek:id:: dnp3_pcb
@@ -590,7 +590,7 @@ Events
 
    Generated for DNP3 objects with the group number 12 and variation number 2
 
-   :PCB: Pattern Control Block
+   :param PCB: Pattern Control Block
 
 .. zeek:id:: dnp3_response_data_object
    :source-code: base/bif/plugins/Zeek_DNP3.events.bif.zeek 99 99
@@ -605,13 +605,13 @@ Events
    object data.
    
 
-   :c: The connection the DNP3 communication is part of.
+   :param c: The connection the DNP3 communication is part of.
    
 
-   :is_orig: True if this reflects originator-side activity.
+   :param is_orig: True if this reflects originator-side activity.
    
 
-   :data_value: The value for those objects that carry their information here
+   :param data_value: The value for those objects that carry their information here
                directly.
    
 

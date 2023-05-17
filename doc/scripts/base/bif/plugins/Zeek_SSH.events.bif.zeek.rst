@@ -67,24 +67,24 @@ Events
    appropriate key exchange message is seen for SSH1.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :p: The exponent for the server's public host key (note this parameter
+   :param p: The exponent for the server's public host key (note this parameter
       is truly the exponent even though named *p* and the *exponent* parameter
       will eventually replace it).
    
 
-   :e: The prime modulus for the server's public host key (note this parameter
+   :param e: The prime modulus for the server's public host key (note this parameter
       is truly the modulus even though named *e* and the *modulus* parameter
       will eventually replace it).
    
 
-   :modulus: The prime modulus of the server's public host key.
+   :param modulus: The prime modulus of the server's public host key.
    
 
-   :exponent: The exponent of the server's public host key.
+   :param exponent: The exponent of the server's public host key.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -104,10 +104,10 @@ Events
    message as defined in :rfc:`4419#section-3`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -127,13 +127,13 @@ Events
    :rfc:`4419#section-3`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :p: The DH prime modulus.
+   :param p: The DH prime modulus.
    
 
-   :q: The DH generator.
+   :param q: The DH generator.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -157,10 +157,10 @@ Events
    :rfc:`5656#section-4`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -182,13 +182,13 @@ Events
    :rfc:`5656#section-4`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
 
-   :q: The ephemeral public key
+   :param q: The ephemeral public key
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -208,16 +208,16 @@ Events
    see :rfc:`4462#section-2.1`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :major_status: GSS-API major status code.
+   :param major_status: GSS-API major status code.
    
 
-   :minor_status: GSS-API minor status code.
+   :param minor_status: GSS-API minor status code.
    
 
-   :err_msg: Detailed human-readable error message
+   :param err_msg: Detailed human-readable error message
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -236,10 +236,10 @@ Events
    For more information see :rfc:`4462#section-2.1`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -259,10 +259,10 @@ Events
    For more information see :rfc:`4432#section-4`.
    
 
-   :c: The connection.
+   :param c: The connection.
    
 
-   :is_orig: Did this message come from the originator?
+   :param is_orig: Did this message come from the originator?
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -281,11 +281,11 @@ Events
    appropriate key exchange message is seen for SSH2.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :key: The server's public host key. Note that this is the public key
+   :param key: The server's public host key. Note that this is the public key
       itself, and not just the fingerprint or hash.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -318,11 +318,11 @@ Events
    In almost all connections, it will be raised once unless
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :authenticated: This is true if the analyzer detected a
+   :param authenticated: This is true if the analyzer detected a
       successful connection from the authentication attempt.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -344,11 +344,11 @@ Events
    doubt about the authentication success, this event is *not* raised.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :auth_method_none: This is true if the analyzer detected a
+   :param auth_method_none: This is true if the analyzer detected a
       successful connection before any authentication challenge. The
       :abbr:`SSH (Secure Shell)` protocol provides a mechanism for
       unauthenticated access, which some servers support.
@@ -372,15 +372,15 @@ Events
    details.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :cookie: The SSH_MSG_KEXINIT cookie - a random value generated by
+   :param cookie: The SSH_MSG_KEXINIT cookie - a random value generated by
       the sender.
    
 
-   :capabilities: The list of algorithms and languages that the sender
+   :param capabilities: The list of algorithms and languages that the sender
       advertises support for, in order of preference.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -401,10 +401,10 @@ Events
    details.
    
 
-   :c: The connection over which the message was sent.
+   :param c: The connection over which the message was sent.
    
 
-   :version: The identification string
+   :param version: The identification string
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
@@ -425,15 +425,15 @@ Events
    event. This carries a performance penalty.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :orig: Whether the packet was sent by the originator of the TCP
+   :param orig: Whether the packet was sent by the originator of the TCP
       connection.
    
 
-   :len: The length of the :abbr:`SSH (Secure Shell)` payload, in
+   :param len: The length of the :abbr:`SSH (Secure Shell)` payload, in
       bytes. Note that this ignores reassembly, as this is unknown.
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
@@ -454,11 +454,11 @@ Events
    a fingerprint of the server's host key.
    
 
-   :c: The connection over which the :abbr:`SSH (Secure Shell)`
+   :param c: The connection over which the :abbr:`SSH (Secure Shell)`
       connection took place.
    
 
-   :hash: an MD5 hash fingerprint associated with the server's host key.
+   :param hash: an MD5 hash fingerprint associated with the server's host key.
          For SSH2, this is the hash of the "server public host key" string as
          seen on the wire in the Diffie-Hellman key exchange reply message
          (the string itself, excluding the 4-byte length associated with it),
@@ -489,10 +489,10 @@ Events
    details.
    
 
-   :c: The connection over which the message was sent.
+   :param c: The connection over which the message was sent.
    
 
-   :version: The identification string
+   :param version: The identification string
    
    .. zeek:see:: ssh_server_version ssh_client_version ssh_auth_failed
       ssh_auth_result ssh_auth_successful ssh_auth_attempted
