@@ -206,6 +206,35 @@ Example:
         print "version 2 detected";
     @endif
 
+If you add the attribute :zeek:attr:`&analyze` after the condition, like this:
+
+.. code-block:: zeek
+
+    @if ( ver == 2 ) &analyze
+        print "version 2 detected";
+    @endif
+
+then Zeek will analyze the conditional code *even if the condition is false*.
+Here, "analyze" means it will ensure that it is syntactically and semantically
+correct, generating errors as appropriate.  However, if the condition is false
+then the code will not be "activated", meaning that changes it makes via
+``redef`` or by defining function/hook/event handler bodies do not actually
+take effect.
+
+.. note::
+
+	In general, you should use :zeek:attr:`&analyze` for conditional
+	code unless complexities prevent you from doing so.  Along with
+	providing error-checking for your inactive conditional code,
+	:zeek:attr:`&analyze` enables better scripting code coverage
+	assessments, and enables more extensive *script compilation*
+	(currently an experimental feature).
+
+To ensure consistency, an :zeek:attr:`&analyze` conditional must not appear
+inside a function body, and cannot ``redef`` a ``record`` or ``enum`` type.
+Zeek will also generate a warning if you nest it inside an ``@if`` or
+vice-versa, as such usages can reflect the introduction of potential blind
+spots that use of :zeek:attr:`&analyze` is meant to prevent.
 
 .. zeek:keyword:: @ifdef
 
@@ -223,6 +252,11 @@ Example:
         print "pi is defined";
     @endif
 
+.. note::
+
+	You cannot pair ``@ifdef`` with :zeek:attr:`&analyze`, since
+	by its nature it's relying on a semantic element that isn't
+	otherwise available.
 
 .. zeek:keyword:: @ifndef
 
@@ -259,6 +293,8 @@ Example:
         print "pi is not defined";
     @endif
 
+If the beginning of the conditional code uses ``@if`` ... :zeek:attr:`&analyze`,
+then both the "true" and "false" branches will be analyzed for correctness.
 
 .. zeek:keyword:: @endif
 
