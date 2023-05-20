@@ -30,7 +30,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: FTP::cmd_reply_code
-   :source-code: base/protocols/ftp/utils-commands.zeek 21 21
+   :source-code: base/protocols/ftp/utils-commands.zeek 24 24
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`count`]
    :Attributes: :zeek:attr:`&redef`
@@ -372,7 +372,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: FTP::CmdArg
-   :source-code: base/protocols/ftp/utils-commands.zeek 4 13
+   :source-code: base/protocols/ftp/utils-commands.zeek 4 16
 
    :Type: :zeek:type:`record`
 
@@ -388,9 +388,13 @@ Types
       seq: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
          Counter to track how many commands have been executed.
 
+      cwd_consumed: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+         Flag indicating if the arg of this CmdArg has been used
+         to update cwd of c$ftp.
+
 
 .. zeek:type:: FTP::PendingCmds
-   :source-code: base/protocols/ftp/utils-commands.zeek 18 18
+   :source-code: base/protocols/ftp/utils-commands.zeek 21 21
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`FTP::CmdArg`
 
