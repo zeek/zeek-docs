@@ -588,8 +588,8 @@ what to explore next:
 * Reading the code of scripts that ship with Zeek is also a great way to gain
   further understanding of the language and how scripts tend to be structured.
 * Review the FAQ_.
-* Join the Zeek community Slack channel for interacting with the fellow Zeekers
-  and Zeek core developers.
+* Join the Zeek community :slacklink:`Slack channel <>` or :discourselink:`forum <>`
+  for interacting with fellow Zeekers and Zeek core developers.
 * Track Zeek code releases by reading the "Release Notes" for each release.
   The "Get Zeek" web page points to this file for each new version of Zeek.
   These notes appear as the file NEWS, which summarizes the most important
