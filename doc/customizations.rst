@@ -101,7 +101,7 @@ Logging
 JSON Streaming Logs
 -------------------
 
-The externally maintained `json-streaming-logs`_ package tailors Zeek
+The externally-maintained `json-streaming-logs`_ package tailors Zeek
 for use with log shippers like `Filebeat`_ or `fluentd`_. It configures
 additional log files prefixed with ``json_streaming_``, adds ``_path``
 and ``_write_ts`` fields to log records and configures log rotation

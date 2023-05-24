@@ -472,8 +472,8 @@ in order to allow for removal updates of the read data.
    :linenos:
    :tab-width: 4
 
-If your input data is already, or can be easily converted into JSON Lines format,
-above approach can be used to load it into Zeek.
+If your input data is already in, or can be easily converted into, JSON Lines format
+the above approach can be used to load it into Zeek.
 
 .. _input-sqlite-reader:
 

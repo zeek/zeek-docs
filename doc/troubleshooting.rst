@@ -18,10 +18,10 @@ settings, there might be a memory leak in Zeek's C++ core or it might be
 scripting state growth. Examples of the latter are a global table that is
 populated but elements aren't expired or removed. Containers attached to
 connections may also cause unbounded state growth when these connections
-are long lived.
+are long-lived.
 
 For such issues, using jemalloc's memory profiling can be invaluable. A good
-introduction to this topic is `Justin Azhoff's profiling presentation`_ (`slides`_).
+introduction to this topic is `Justin Azoff's profiling presentation`_ (`slides`_).
 
 
 Jemalloc Memory Profiling
@@ -37,7 +37,7 @@ has it enabled while Fedora 38 does not. You're advised to verify the
 
    If your distribution does not provide a suitable libjemalloc package,
    building jemalloc from source configured with the required options
-   reasonably easy.
+   is reasonably easy.
 
    .. code-block:: console
 
@@ -76,9 +76,9 @@ and libjemalloc setup.
 
 .. note::
 
-   Neither ``LD_PRELOAD`` nor ``MALLOC_CONF`` work with setuid or setcap
+   Neither ``LD_PRELOAD`` nor ``MALLOC_CONF`` work with a setuid or setcap
    ``zeek`` binary and you might need to run as root or another privileged
-   enough user instead.
+   user instead.
 
 At this point you can run Zeek with a ``MALLOC_CONF`` setting that will dump
 memory profiles roughly every 256MB of allocation activity (controlled by the
@@ -135,7 +135,7 @@ files will be located in a worker's individual spool directory and can be
 processed with the ``jeprof`` utility as shown above.
 
 .. _zeek-jemalloc: https://github.com/JustinAzoff/zeek-jemalloc-profiling/tree/master
-.. _justin azhoff's profiling presentation: https://www.youtube.com/watch?v=gWSXbqxnJfs
+.. _justin azoff's profiling presentation: https://www.youtube.com/watch?v=gWSXbqxnJfs
 .. _slides: https://old.zeek.org/zeekweek2019/slides/justin-azoff-profiling.pdf
 .. _jemalloc: https://jemalloc.net/
 
@@ -221,7 +221,7 @@ Metrics and Stats
 Telemetry Framework and Prometheus
 ----------------------------------
 
-Starting with Zeek 5.1, the script-level as well a C++ API of the :ref:`framework-telemetry`
+Starting with Zeek 5.1, the script-level as well as C++ API of the :ref:`framework-telemetry`
 is being leveraged more extensively to expose metrics about Zeek's operational behavior.
 Generally we recommend consuming these metrics through the Prometheus endpoint
 exposed on ``http://manager-ip:9911/metrics`` by default.
@@ -295,11 +295,11 @@ The default reporting interval is 5 minutes. It can make sense to reduce
 this interval for testing or during troubleshooting via
 ``redef Stats::report_interval=30sec``. Stats collection may have a
 non-negligible impact on performance and running, for example,
-every second may be detrimental to performance.
+every second may be detrimental.
 
 For historic reasons, this log contains delta values for ``pkts_proc``,
 ``bytes_recv``, ``events_proc``, ``tcp_conns``, etc. This can make it
-difficult to use the values as is in metrics systems that expect counter
+difficult to use the values as-is in metrics systems that expect counter
 metrics to continuously grow and compute rates or delta values on the fly.
 
 .. note::
