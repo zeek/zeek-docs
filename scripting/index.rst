@@ -9,3 +9,4 @@ Introduction to Scripting
    basics
    usage
    event-groups
+   javascript
