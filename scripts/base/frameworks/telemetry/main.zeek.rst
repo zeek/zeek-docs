@@ -296,7 +296,7 @@ Types
 Hooks
 #####
 .. zeek:id:: Telemetry::sync
-   :source-code: policy/misc/stats.zeek 126 139
+   :source-code: policy/misc/stats.zeek 135 151
 
    :Type: :zeek:type:`hook` () : :zeek:type:`bool`
 
