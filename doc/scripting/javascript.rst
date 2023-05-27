@@ -34,17 +34,17 @@ external system.
 
 JavaScript integration adds to the above by enabling Zeek to load JavaScript
 code directly, thereby allowing developers to use its rich ecosystem of
-builtin and third-party directly within Zeek.
+built-in and third-party libraries directly within Zeek.
 
 If you previously wanted to start a `HTTP server`_ within Zeek, record Zeek
 event data on-the-fly to a `Redis`_ database, got scared at looking at
 :zeek:see:`ActiveHTTP`'s implementation (or annoyed that it eats all newlines
 in HTTP responses), you may want to give JavaScript a go!
 
-Builtin Plugin
-==============
+Built-in Plugin
+===============
 
-The external `ZeekJS`_ plugin is included with Zeek as an optional builtin plugin.
+The external `ZeekJS`_ plugin is included with Zeek as an optional built-in plugin.
 When `Node.js`_ development headers and libraries are found when building Zeek
 from source, the plugin is automatically included.
 
@@ -98,18 +98,18 @@ loop or running garbage collection.
 Hello World
 ===========
 
-When JavaScript is executed by Zeek, a global ``zeek`` object is added to
-the global namespace.
+When JavaScript is executed by Zeek, a ``zeek`` object is added to
+the JavaScript's global namespace.
 This object can be used to register event or hook handlers, raise new Zeek
-events, invoking Zeek side functions, etc. Think the global ``document`` object
-in a browser, but for Zeek functionality.
+events, invoking Zeek side functions, etc. This is similar to the global
+``document`` object in a browser, but for Zeek functionality.
 
 The API documentation for the global ``zeek`` object created is available
 in the `ZeekJS documentation`_.
 
 .. note: External due to requiring npm/jsdoc during building.
 
-The following script calls the :zeek:see:`zeek_version` builtin
+The following script calls the :zeek:see:`zeek_version` built-in
 function and uses JavaScript's ``console.log()`` for printing a Hello message
 within a ``zeek_init`` handler:
 
@@ -207,14 +207,14 @@ Updates to properties of such objects in JavaScript become visible in Zeek.
 On the other hand, normal JavaScript objects (`{}` or `Object()`) are passed
 from JavaScript to Zeek are passed by copy as new Zeek record values. Changes
 to the original JavaScript object will not be reflected within Zeek.
-In below example, the ``intel_item`` JavaScript object will be converted to
+In the example below, the ``intel_item`` JavaScript object will be converted to
 a new :zeek:see:`Intel::Item` Zeek record which is then
 passed to the :zeek:see:`Intel::insert` function. Modifying properties of
 ``intel_item`` after it has been inserted to the Intel data store has
 no impact.
 
 .. literalinclude:: js/intel-insert.js
-   :caption: hello.js
+   :caption: intel-insert.js
    :language: javascript
 
 .. note::
@@ -262,14 +262,14 @@ Set and vector values
 The :zeek:see:`set` and :zeek:see:`vector` types are currently copied from
 Zeek to JavaScript as `Array`_ objects. These objects don't reference the
 original set or vector on the Zeek side. This means that mutation of the
-JavaScript side objects via accessors on the `Array` does not modify the
+JavaScript side objects via accessors on the `Array` do not modify the
 Zeek side value. However, objects referencing the Zeek record values within
 these arrays are mutable.
 
 This mainly becomes relevant if you wanted to modify state attached to
 a connection within JavaScript. Re-assigning ``c.service`` below works
 as expected, the ``c.service.push()`` approach on the other had would
-not change the Zeek-side set.
+not change the set on the Zeek-side.
 
 .. literalinclude:: js/connection-service.js
    :caption: connection-service.js
@@ -316,7 +316,7 @@ type conversion, the second one succeeds.
 Debugging
 ---------
 
-There might be limitations, surprises and bugs within the type conversions.
+There might be limitations, surprises and bugs with the type conversions.
 If Zeek was built with debugging enabled, the ``plugin-Zeek-JavaScript``
 debug stream may provide some helpful clues.
 
@@ -372,7 +372,7 @@ as JSON in the POST request's body.
    listening on lo
 
 
-As a first example, the :zeek:see:`get_net_stats` builtin function is
+As a first example, the :zeek:see:`get_net_stats` built-in function is
 invoked and returns the current monitoring statistics in response.
 
 .. code-block:: console
