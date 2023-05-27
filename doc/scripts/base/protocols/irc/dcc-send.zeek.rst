@@ -46,7 +46,7 @@ Detailed Interface
 Hooks
 #####
 .. zeek:id:: IRC::finalize_irc_data
-   :source-code: base/protocols/irc/dcc-send.zeek 135 146
+   :source-code: base/protocols/irc/dcc-send.zeek 136 146
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

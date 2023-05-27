@@ -16,7 +16,21 @@ Redefinitions
 :zeek:id:`Log::default_rotation_dir`: :zeek:type:`string` :zeek:attr:`&redef` 
 ============================================================================= =
 
+Functions
+#########
+=============================================================== =
+:zeek:id:`archiver_rotation_format_func`: :zeek:type:`function` 
+=============================================================== =
+
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Functions
+#########
+.. zeek:id:: archiver_rotation_format_func
+   :source-code: policy/frameworks/management/persistence.zeek 29 29
+
+   :Type: :zeek:type:`function` (ri: :zeek:type:`Log::RotationFmtInfo`) : :zeek:type:`Log::RotationPath`
+
+
 

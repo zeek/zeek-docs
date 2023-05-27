@@ -3089,7 +3089,7 @@ Events
 ++++++
 
 .. zeek:id:: file_transferred
-   :source-code: base/protocols/ftp/main.zeek 445 453
+   :source-code: base/protocols/ftp/main.zeek 447 455
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, prefix: :zeek:type:`string`, descr: :zeek:type:`string`, mime_type: :zeek:type:`string`)
 
@@ -5015,7 +5015,7 @@ Events
       irc_part_message irc_password_message irc_dcc_send_ack
 
 .. zeek:id:: irc_dcc_message
-   :source-code: base/protocols/irc/dcc-send.zeek 109 123
+   :source-code: base/protocols/irc/dcc-send.zeek 111 124
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, prefix: :zeek:type:`string`, target: :zeek:type:`string`, dcc_type: :zeek:type:`string`, argument: :zeek:type:`string`, address: :zeek:type:`addr`, dest_port: :zeek:type:`count`, size: :zeek:type:`count`)
 
@@ -15920,7 +15920,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: partial_connection
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 508 512
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 516 520
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

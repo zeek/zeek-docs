@@ -70,7 +70,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: SSL::add_keys
-   :source-code: policy/protocols/ssl/decryption.zeek 82 85
+   :source-code: policy/protocols/ssl/decryption.zeek 81 84
 
    :Type: :zeek:type:`event` (client_random: :zeek:type:`string`, keys: :zeek:type:`string`)
 
@@ -83,7 +83,7 @@ Events
    :param keys: key material
 
 .. zeek:id:: SSL::add_secret
-   :source-code: policy/protocols/ssl/decryption.zeek 87 90
+   :source-code: policy/protocols/ssl/decryption.zeek 86 89
 
    :Type: :zeek:type:`event` (client_random: :zeek:type:`string`, secrets: :zeek:type:`string`)
 
