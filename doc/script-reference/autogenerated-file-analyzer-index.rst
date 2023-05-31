@@ -427,7 +427,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_extension
-   :source-code: base/files/x509/main.zeek 175 182
+   :source-code: base/files/x509/main.zeek 177 184
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::Extension`)
 
@@ -447,7 +447,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ext_basic_constraints
-   :source-code: base/files/x509/main.zeek 184 191
+   :source-code: base/files/x509/main.zeek 186 193
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::BasicConstraints`)
 

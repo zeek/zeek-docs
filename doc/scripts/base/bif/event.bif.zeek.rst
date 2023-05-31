@@ -316,7 +316,7 @@ Events
    .. zeek:see:: connection_established new_connection
 
 .. zeek:id:: connection_reused
-   :source-code: base/protocols/ftp/main.zeek 457 461
+   :source-code: base/protocols/ftp/main.zeek 455 459
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

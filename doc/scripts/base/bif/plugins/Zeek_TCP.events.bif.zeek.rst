@@ -327,7 +327,7 @@ Events
       scheduled_analyzer_applied new_connection partial_connection
 
 .. zeek:id:: partial_connection
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 516 520
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 508 512
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
