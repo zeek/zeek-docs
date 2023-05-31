@@ -1022,7 +1022,7 @@ Functions
 
 
 .. zeek:id:: Notice::apply_policy
-   :source-code: base/frameworks/notice/main.zeek 641 703
+   :source-code: base/frameworks/notice/main.zeek 641 702
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
