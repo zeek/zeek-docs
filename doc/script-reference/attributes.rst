@@ -82,9 +82,6 @@ it to write. Zeek features the following attributes:
   * - :zeek:attr:`&group`
     - Annotates event handlers and hooks with event groups.
 
-  * - :zeek:attr:`&analyze`
-    - Instructs Zeek to analyze conditional code even if it's not activated.
-
 .. _attribute-propagation-pitfalls:
 
 .. warning::
@@ -661,15 +658,3 @@ groups are enabled.
 
 See also the documentation for the functions :zeek:see:`enable_event_group`
 and :zeek:see:`disable_event_group`.
-
-.. zeek:attr:: &analyze
-
-&analyze
---------
-
-The `&analyze` attribute is associated with an :zeek:see:`@if` conditional.
-It instructs Zeek to validate any associated conditional code even if the
-condition is false, generating error messages if it does not correctly
-compile.  In general, you should use `&analyze` for conditional
-code unless complexities prevent you from doing so, as it can help you find
-errors in inactive code.

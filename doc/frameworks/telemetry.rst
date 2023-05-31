@@ -358,7 +358,7 @@ process, but keep the export and import of metrics enabled, use the following sn
 
     @load base/frameworks/cluster
 
-    @if ( Cluster::local_node_type() == Cluster::MANAGER )
+    @ifdef ( Cluster::local_node_type() == Cluster::MANAGER )
     redef Broker::metrics_port = 1234/tcp;
     @endif
 
