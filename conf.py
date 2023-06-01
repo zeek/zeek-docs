@@ -291,7 +291,7 @@ man_pages = [
 todo_include_todos=True
 
 extlinks = {
-    'slacklink': ('https://join.slack.com/t/zeekorg/shared_invite/zt-1ev1nr7z4-rEVSsaIzYzFWpdgh2I6ZOg/%s', None),
+    'slacklink': ('https://zeek.org/slack/%s', None),
     'discourselink': ('https://community.zeek.org/%s', None),
 }
 extlinks_detect_hardcoded_links = True
