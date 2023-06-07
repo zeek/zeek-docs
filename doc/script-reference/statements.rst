@@ -146,10 +146,9 @@ change the visibility of global identifiers).
 const
 ~~~~~
 
-A variable declared with the ``const`` keyword will be constant.
-
-Variables declared as constant are required to be initialized at the
-time of declaration.  Normally, the type is inferred from the initializer,
+A variable declared with the ``const`` keyword cannot be changed by
+reassignment.  Variables declared as constant are required to be initialized at
+the time of declaration.  Normally, the type is inferred from the initializer,
 but the type can be explicitly specified.  Example:
 
 .. code-block:: zeek
@@ -157,10 +156,31 @@ but the type can be explicitly specified.  Example:
     const pi = 3.14;
     const ssh_port: port = 22/tcp;
 
-The value of a constant cannot be changed.  The only exception is if the
-variable is a global constant and has the :zeek:attr:`&redef`
-attribute, but even then its value can be changed only with a
-:zeek:keyword:`redef`.
+The value of a constant cannot be changed:
+
+.. code-block:: zeek
+
+    ssh_port = 80/tcp; # "error [...]: const is not a modifiable lvalue (ssh_port)"
+
+The only exception is if the variable is a global constant and has the
+:zeek:attr:`&redef` attribute, but even then its value can be changed only with
+a :zeek:keyword:`redef` declaration:
+
+.. code-block:: zeek
+
+    const ssh_port: port = 22/tcp &redef;
+    # ...
+    redef ssh_port = 2222/tcp; # ok
+
+Const-ness does not apply to members of existing container type instances, which
+can still be modified, added, or removed:
+
+.. code-block:: zeek
+
+    const ssh_ports = vector(22/tcp, 2222/tcp);
+    # ...
+    ssh_ports += 222/tcp; # ok
+    ssh_ports = vector(222/tcp); # error [...]: const is not a modifiable lvalue (ssh_ports)
 
 The scope of a constant is local if the declaration is in a
 function, hook, or event handler, and global otherwise.
