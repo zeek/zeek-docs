@@ -461,7 +461,6 @@
    zeekygen/__load__.zeek </scripts/zeekygen/__load__.zeek>
    test-all-policy.zeek </scripts/test-all-policy.zeek>
    policy/frameworks/cluster/experimental.zeek </scripts/policy/frameworks/cluster/experimental.zeek>
-   policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>
    policy/frameworks/management/agent/__load__.zeek </scripts/policy/frameworks/management/agent/__load__.zeek>
    policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>
    policy/frameworks/management/types.zeek </scripts/policy/frameworks/management/types.zeek>
@@ -587,6 +586,7 @@
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
    policy/protocols/mqtt/__load__.zeek </scripts/policy/protocols/mqtt/__load__.zeek>
+   policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>
    policy/frameworks/control/controllee.zeek </scripts/policy/frameworks/control/controllee.zeek>
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>
    policy/frameworks/management/agent/main.zeek </scripts/policy/frameworks/management/agent/main.zeek>
