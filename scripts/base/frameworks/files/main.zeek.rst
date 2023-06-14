@@ -301,25 +301,6 @@ Types
 
          The number of bytes extracted to disk.
 
-      tx_hosts: :zeek:type:`set` [:zeek:type:`addr`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek` is loaded)
-
-         If this file was transferred over a network
-         connection this should show the host or hosts that
-         the data sourced from.
-
-      rx_hosts: :zeek:type:`set` [:zeek:type:`addr`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek` is loaded)
-
-         If this file was transferred over a network
-         connection this should show the host or hosts that
-         the data traveled to.
-
-      conn_uids: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek` is loaded)
-
-         Connection UIDs over which the file was transferred.
-
       entropy: :zeek:type:`double` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/frameworks/files/entropy-test-all-files.zeek` is loaded)
 

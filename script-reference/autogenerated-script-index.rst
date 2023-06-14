@@ -503,7 +503,6 @@
    policy/frameworks/intel/seen/smtp-url-extraction.zeek </scripts/policy/frameworks/intel/seen/smtp-url-extraction.zeek>
    policy/frameworks/intel/seen/x509.zeek </scripts/policy/frameworks/intel/seen/x509.zeek>
    policy/frameworks/netcontrol/catch-and-release.zeek </scripts/policy/frameworks/netcontrol/catch-and-release.zeek>
-   policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek </scripts/policy/frameworks/files/deprecated-txhosts-rxhosts-connuids.zeek>
    policy/frameworks/files/detect-MHR.zeek </scripts/policy/frameworks/files/detect-MHR.zeek>
    policy/frameworks/files/hash-all-files.zeek </scripts/policy/frameworks/files/hash-all-files.zeek>
    policy/frameworks/files/entropy-test-all-files.zeek </scripts/policy/frameworks/files/entropy-test-all-files.zeek>
@@ -525,7 +524,6 @@
    policy/misc/load-balancing.zeek </scripts/policy/misc/load-balancing.zeek>
    policy/misc/loaded-scripts.zeek </scripts/policy/misc/loaded-scripts.zeek>
    policy/misc/profiling.zeek </scripts/policy/misc/profiling.zeek>
-   policy/misc/scan.zeek </scripts/policy/misc/scan.zeek>
    policy/misc/stats.zeek </scripts/policy/misc/stats.zeek>
    policy/misc/weird-stats.zeek </scripts/policy/misc/weird-stats.zeek>
    policy/misc/trim-trace-file.zeek </scripts/policy/misc/trim-trace-file.zeek>
@@ -585,7 +583,6 @@
    policy/tuning/defaults/extracted_file_limits.zeek </scripts/policy/tuning/defaults/extracted_file_limits.zeek>
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
-   policy/protocols/mqtt/__load__.zeek </scripts/policy/protocols/mqtt/__load__.zeek>
    policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>
    policy/frameworks/control/controllee.zeek </scripts/policy/frameworks/control/controllee.zeek>
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>
