@@ -630,7 +630,7 @@ Functions
    
 
    :returns: An array of strings with two elements in which the first represents
-            the substring in *str* up to the first occurence of *re*, and the
+            the substring in *str* up to the first occurrence of *re*, and the
             second everything after *re*. An array of one string is returned
             when *s* cannot be split.
    
@@ -853,7 +853,7 @@ Functions
    :param repl: The string that replaces *re*.
    
 
-   :returns: A copy of *str* with the first occurence of *re* replaced with
+   :returns: A copy of *str* with the first occurrence of *re* replaced with
             *repl*.
    
    .. zeek:see:: gsub subst_string

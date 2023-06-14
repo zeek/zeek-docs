@@ -280,7 +280,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 4434 4449
+   :source-code: base/init-bare.zeek 4473 4488
 
    :Type: :zeek:type:`record`
 
@@ -328,7 +328,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 4451 4457
+   :source-code: base/init-bare.zeek 4490 4496
 
    :Type: :zeek:type:`record`
 
@@ -349,7 +349,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 4459 4462
+   :source-code: base/init-bare.zeek 4498 4501
 
    :Type: :zeek:type:`record`
 
@@ -362,7 +362,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 4464 4470
+   :source-code: base/init-bare.zeek 4503 4509
 
    :Type: :zeek:type:`record`
 
@@ -383,7 +383,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 4473 4480
+   :source-code: base/init-bare.zeek 4512 4519
 
    :Type: :zeek:type:`record`
 
@@ -584,7 +584,7 @@ Events
    :param f: The file.
    
 
-   :param status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
+   :param status: The status of the OCSP response (e.g. successful, malformedRequest, tryLater).
    
    .. zeek:see:: ocsp_request ocsp_request_certificate
                 ocsp_response_bytes ocsp_response_certificate ocsp_extension
@@ -603,7 +603,7 @@ Events
    :param f: The file.
    
 
-   :param status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
+   :param status: The status of the OCSP response (e.g. successful, malformedRequest, tryLater).
    
 
    :param version: Version of the OCSP response (typically - for version 1).

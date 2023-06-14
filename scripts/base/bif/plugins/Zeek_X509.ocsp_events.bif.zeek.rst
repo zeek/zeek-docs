@@ -109,7 +109,7 @@ Events
    :param f: The file.
    
 
-   :param status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
+   :param status: The status of the OCSP response (e.g. successful, malformedRequest, tryLater).
    
 
    :param version: Version of the OCSP response (typically - for version 1).
@@ -187,7 +187,7 @@ Events
    :param f: The file.
    
 
-   :param status: The status of the OCSP response (e.g. succesful, malformedRequest, tryLater).
+   :param status: The status of the OCSP response (e.g. successful, malformedRequest, tryLater).
    
    .. zeek:see:: ocsp_request ocsp_request_certificate
                 ocsp_response_bytes ocsp_response_certificate ocsp_extension
