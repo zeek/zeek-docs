@@ -103,7 +103,7 @@ Events
       better approach.
 
 .. zeek:id:: connection_attempt
-   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 34 34
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 514 518
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -227,7 +227,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_pending
-   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 167 167
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 532 536
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -244,7 +244,7 @@ Events
       new_connection new_connection_contents partial_connection zeek_done
 
 .. zeek:id:: connection_rejected
-   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 138 138
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 520 524
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -270,7 +270,7 @@ Events
       and then :zeek:id:`connection_reset`.
 
 .. zeek:id:: connection_reset
-   :source-code: base/bif/plugins/Zeek_TCP.events.bif.zeek 154 154
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 526 530
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
