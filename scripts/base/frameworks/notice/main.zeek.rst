@@ -649,29 +649,6 @@ Types
          detail about specific traceroutes that we run, refer to the
          traceroute.log.
 
-      .. zeek:enum:: Scan::Address_Scan Notice::Type
-
-         (present if :doc:`/scripts/policy/misc/scan.zeek` is loaded)
-
-
-         Address scans detect that a host appears to be scanning some
-         number of destinations on a single port. This notice is
-         generated when more than :zeek:id:`Scan::addr_scan_threshold`
-         unique hosts are seen over the previous
-         :zeek:id:`Scan::addr_scan_interval` time range.
-
-      .. zeek:enum:: Scan::Port_Scan Notice::Type
-
-         (present if :doc:`/scripts/policy/misc/scan.zeek` is loaded)
-
-
-         Port scans detect that an attacking host appears to be
-         scanning a single victim host on several ports.  This notice
-         is generated when an attacking host attempts to connect to
-         :zeek:id:`Scan::port_scan_threshold`
-         unique ports on a single host over the previous
-         :zeek:id:`Scan::port_scan_interval` time range.
-
       .. zeek:enum:: Conn::Retransmission_Inconsistency Notice::Type
 
          (present if :doc:`/scripts/policy/protocols/conn/weirds.zeek` is loaded)
@@ -1022,14 +999,14 @@ Functions
 
 
 .. zeek:id:: Notice::apply_policy
-   :source-code: base/frameworks/notice/main.zeek 641 702
+   :source-code: base/frameworks/notice/main.zeek 632 693
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
    This is an internal function to populate policy records.
 
 .. zeek:id:: Notice::create_file_info
-   :source-code: base/frameworks/notice/main.zeek 596 615
+   :source-code: base/frameworks/notice/main.zeek 587 606
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`Notice::FileInfo`
 
@@ -1104,7 +1081,7 @@ Functions
    :returns: True.
 
 .. zeek:id:: Notice::populate_file_info
-   :source-code: base/frameworks/notice/main.zeek 616 619
+   :source-code: base/frameworks/notice/main.zeek 607 610
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
@@ -1117,7 +1094,7 @@ Functions
    :param n: a notice record that needs file-related fields populated.
 
 .. zeek:id:: Notice::populate_file_info2
-   :source-code: base/frameworks/notice/main.zeek 621 636
+   :source-code: base/frameworks/notice/main.zeek 612 627
 
    :Type: :zeek:type:`function` (fi: :zeek:type:`Notice::FileInfo`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 

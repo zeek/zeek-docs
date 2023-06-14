@@ -418,9 +418,6 @@
    Sets various defaults, and prints warning messages to stdout under
    certain conditions.
 
-:doc:`policy/protocols/mqtt </scripts/policy/protocols/mqtt/index>`
-
-
 :doc:`policy/frameworks/management/node </scripts/policy/frameworks/management/node/index>`
 
 

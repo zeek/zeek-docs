@@ -179,7 +179,7 @@ Events
    :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_CAA_reply
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 455 455
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 453 453
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, flags: :zeek:type:`count`, tag: :zeek:type:`string`, value: :zeek:type:`string`)
 
@@ -283,7 +283,7 @@ Events
    :param ds: The parsed RDATA of DS record.
 
 .. zeek:id:: dns_EDNS_addl
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 531 531
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 529 529
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_edns_additional`)
 
@@ -313,7 +313,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_cookie
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 607 607
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 605 605
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_cookie`)
 
@@ -345,7 +345,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_ecs
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 555 555
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 553 553
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_ecs`)
 
@@ -375,7 +375,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_tcp_keepalive
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 581 581
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 579 579
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_tcp_keepalive`)
 
@@ -410,7 +410,6 @@ Events
    :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 353 353
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, cpu: :zeek:type:`string`, os: :zeek:type:`string`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`)
 
    Generated for DNS replies of type *HINFO*. For replies with multiple answers,
    an individual event of the corresponding type is raised for each.
@@ -438,14 +437,14 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_HTTPS
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 792 792
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 790 790
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, https: :zeek:type:`dns_svcb_rr`)
 
    Generated for DNS replies of type *HTTPS* (HTTPS Specific Service Endpoints).
    See `RFC draft for DNS SVCB/HTTPS <https://datatracker.ietf.org/doc/html/draft-ietf-dnsop-svcb-https-07>`__
    for more information about DNS SVCB/HTTPS resource records.
-   Since SVCB and HTTPS records share the same wire format layout, the argument https is dns_svcb_rr. 
+   Since SVCB and HTTPS records share the same wire format layout, the argument https is dns_svcb_rr.
    For replies with multiple answers, an individual event of the corresponding type is raised for each.
    
 
@@ -805,7 +804,7 @@ Events
    :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_SVCB
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 775 775
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 773 773
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, svcb: :zeek:type:`dns_svcb_rr`)
 
@@ -828,7 +827,7 @@ Events
    :param svcb: The parsed RDATA of SVCB type record.
 
 .. zeek:id:: dns_TSIG_addl
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 631 631
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 629 629
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_tsig_additional`)
 
@@ -921,7 +920,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_end
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 815 815
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 813 813
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`)
 
