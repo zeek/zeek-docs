@@ -93,8 +93,7 @@ Toy scan detection
 Taking the previous example even further, we can implement a simple detection
 to demonstrate the thresholding functionality.  This example is a toy to
 demonstrate how thresholding works in Sumstats and is not meant to be a
-real-world functional example, that is left to the
-:doc:`/scripts/policy/misc/scan.zeek` script that is included with Zeek.
+real-world functional example.
 
 .. literalinclude:: sumstats-toy-scan.zeek
    :caption:
@@ -111,4 +110,3 @@ containing a host running nmap:
    192.168.1.71 attempted 5 or more connections
 
 It seems the host running nmap was detected!
-

@@ -36,7 +36,7 @@ Events
    :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :param result: whether or not authentication was succesful
+   :param result: whether or not authentication was successful
 
 .. zeek:id:: rfb_authentication_type
    :source-code: base/protocols/rfb/main.zeek 131 136
