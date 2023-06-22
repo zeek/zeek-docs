@@ -316,26 +316,42 @@ and expect these to be included, redefine the
 Native Prometheus Export
 ------------------------
 
-When running a cluster of Zeek processes, the manager process opens
-TCP port 9911 for metrics exposition in Prometheus by default.
-Further, the manager process imports all metrics from other Zeek processes
-via Broker. Querying the manager's Prometheus port yields its own metrics
-as well as metrics from all other processes. The ``endpoint`` label can
-be used to differentiate between them.
+When running a cluster of Zeek processes, the manager process can be configured
+to run a HTTP server on port 9911/tcp for Prometheus exposition by loading the
+following policy script::
+
+    @load frameworks/telemetry/prometheus
+
+This script instructs the manager process to import all metrics from other
+Zeek processes via Broker and configures other nodes to regularly export their metrics.
+Querying the manager's Prometheus endpoint (``curl http://manager-ip:9911/metrics``)
+then yields its own metrics as well as metrics from all other processes in the
+Zeek cluster. The ``endpoint`` label on the metrics can be used to differentiate
+the originator.
+
+.. note::
+
+   .. versionchanged:: 6.0
+
+   This script was previously loaded by default. Due to adding extra processing
+   overhead to the manager process even if Prometheus is not used, this is not
+   the default anymore. Future improvements may allow to load the script by
+   default again.
 
 As shown with the ``curl`` examples in the previous section, a Prometheus
 server can be configured to scrape the Zeek manager process directly.
 See also the `Prometheus Getting Started Guide`_.
 
-This default setup is configured by setting :zeek:see:`Broker::metrics_port`,
-:zeek:see:`Broker::metrics_import_topics`, :zeek:see:`Broker::metrics_export_topic`
-and :zeek:see:`Broker::metrics_export_endpoint_name` options in
-``scripts/base/frameworks/telemetry/cluster.zeek``.
+The ``scripts/policy/frameworks/telemetry/prometheus.zeek`` script sets
+:zeek:see:`Broker::metrics_port`, :zeek:see:`Broker::metrics_import_topics`,
+:zeek:see:`Broker::metrics_export_topic` and :zeek:see:`Broker::metrics_export_endpoint_name`
+appropriately.
 
 .. above file isn't included in the docs as it's not loaded in the doc generation, can not use :doc:
 
-If this default configuration isn't right for your environment, there's
-the option to redefine the options in ``local.zeek`` to something more
+
+If this configuration isn't right for your environment, there's
+the possibility to redefine the options in ``local.zeek`` to something more
 suitable. For example, the following snippet opens an individual Prometheus
 port for each Zeek process (relative to the port used in ``cluster-layout.zeek``)
 and disables the export and import of metrics::
