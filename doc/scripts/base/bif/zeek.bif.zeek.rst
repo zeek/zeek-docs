@@ -607,7 +607,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: compress_path
-   :source-code: base/bif/zeek.bif.zeek 2557 2557
+   :source-code: base/bif/zeek.bif.zeek 2561 2561
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -845,7 +845,7 @@ Functions
    .. zeek:see:: Analyzer::schedule_analyzer Analyzer::name
 
 .. zeek:id:: disable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2607 2607
+   :source-code: base/bif/zeek.bif.zeek 2611 2611
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -861,7 +861,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: disable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2639 2639
+   :source-code: base/bif/zeek.bif.zeek 2643 2643
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1008,7 +1008,7 @@ Functions
    .. zeek:see:: get_matcher_stats
 
 .. zeek:id:: enable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2595 2595
+   :source-code: base/bif/zeek.bif.zeek 2599 2599
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1024,7 +1024,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2628 2628
+   :source-code: base/bif/zeek.bif.zeek 2632 2632
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1372,9 +1372,9 @@ Functions
    .. zeek:see:: hrw_weight
 
 .. zeek:id:: from_json
-   :source-code: base/bif/zeek.bif.zeek 2548 2548
+   :source-code: base/bif/zeek.bif.zeek 2552 2552
 
-   :Type: :zeek:type:`function` (s: :zeek:type:`string`, t: :zeek:type:`any`) : :zeek:type:`from_json_result`
+   :Type: :zeek:type:`function` (s: :zeek:type:`string`, t: :zeek:type:`any`, key_func: :zeek:type:`string_mapper` :zeek:attr:`&default` = :zeek:see:`from_json_default_key_mapper` :zeek:attr:`&optional`) : :zeek:type:`from_json_result`
 
    A function to convert a JSON string into Zeek values of a given type.
    
@@ -1398,6 +1398,11 @@ Functions
    
 
    :param t: Type of Zeek data.
+   
+
+   :param key_func: Optional function to normalize key names in JSON objects. Useful
+             when keys are not valid field identifiers, or represent reserved
+             keywords like **port** or **type**.
    
 
    :param returns: A value of type t.
@@ -1562,7 +1567,7 @@ Functions
    Returns a set giving the names of all global options.
 
 .. zeek:id:: has_event_group
-   :source-code: base/bif/zeek.bif.zeek 2616 2616
+   :source-code: base/bif/zeek.bif.zeek 2620 2620
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1575,7 +1580,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: has_module_events
-   :source-code: base/bif/zeek.bif.zeek 2648 2648
+   :source-code: base/bif/zeek.bif.zeek 2652 2652
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1588,14 +1593,14 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: have_spicy
-   :source-code: base/bif/zeek.bif.zeek 2653 2653
+   :source-code: base/bif/zeek.bif.zeek 2657 2657
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
    Returns true if Zeek was built with support for using Spicy analyzers (which
 
 .. zeek:id:: have_spicy_analyzers
-   :source-code: base/bif/zeek.bif.zeek 2658 2658
+   :source-code: base/bif/zeek.bif.zeek 2662 2662
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1877,7 +1882,7 @@ Functions
    .. zeek:see:: double_to_interval
 
 .. zeek:id:: is_file_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2573 2573
+   :source-code: base/bif/zeek.bif.zeek 2577 2577
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1918,7 +1923,7 @@ Functions
    :returns: True if *ip* belongs to a local interface.
 
 .. zeek:id:: is_packet_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2581 2581
+   :source-code: base/bif/zeek.bif.zeek 2585 2585
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1941,7 +1946,7 @@ Functions
                  continue_processing
 
 .. zeek:id:: is_protocol_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2565 2565
+   :source-code: base/bif/zeek.bif.zeek 2569 2569
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
