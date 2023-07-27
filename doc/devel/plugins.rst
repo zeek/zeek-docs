@@ -234,7 +234,7 @@ A plugin's directory needs to follow a set of conventions so that Zeek
 story. We'll use ``<base>`` to represent a plugin's top-level
 directory. With the skeleton, ``<base>`` corresponds to ``build/``.
 
-``<base>/__bro_plugin__``
+``<base>/__zeek_plugin__``
     A file that marks a directory as containing a Zeek plugin. The file
     must exist, and its content must consist of a single line with the
     qualified name of the plugin (e.g., "Demo::Rot13").
@@ -295,7 +295,7 @@ produced files for committing, but does not yet commit the files. This allows
 you to tweak the new plugin as needed prior to the initial commit.
 
 ``make install`` copies over the ``lib`` and ``scripts`` directories,
-as well as the ``__bro_plugin__`` magic file and any further
+as well as the ``__zeek_plugin__`` magic file and any further
 distribution files specified in ``CMakeLists.txt`` (e.g., README,
 VERSION). You can find a full list of files installed in
 ``build/MANIFEST``. Behind the scenes, ``make install`` really just
