@@ -28,6 +28,9 @@ it to write. Zeek features the following attributes:
   * - :zeek:attr:`&default`
     - Specify a default value.
 
+  * - :zeek:attr:`&default_insert`
+    - Specify a default value for tables with insert behavior.
+
   * - :zeek:attr:`&add_func`
     - Specify a function to call for each ``redef +=``.
 
@@ -193,6 +196,85 @@ attempted access to a non-existing index:
 
     global mytable: table[count] of string &default="foo";
 
+In addition to constant values as shown above, the :zeek:attr:`&default` attribute
+also accepts arbitrary Zeek expressions. For example, arithmetic expressions and
+function calls are possible:
+
+.. code-block:: zeek
+
+   type Info: record {
+       ts: time &log &default=network_time();
+       ts_ms: double &log &default=time_to_double(network_time()) * 1000;
+   };
+
+The expressions are evaluated whenever a new record is instantiated.
+
+On tables, the :zeek:attr:`&default` attribute can further be set to a function
+(including an anonymous lambda function), which will be invoked for any read access
+to a non-existing index to generate a substitute result. The signature of such a default function
+has to match with the index and value types of the given table. Below, a default
+function for a table with a composite index and value type of :zeek:type:`string` is shown.
+The arguments for the function call, ``c`` and ``s`` below, are populated with
+the values used for the index:
+
+.. code-block:: zeek
+
+    function table_default(c: count, s: string): string {
+        return fmt("unknown-%s-%s", c, s);
+    }
+
+    global mytable: table[count, string] of string &default=table_default;
+
+    print mytable[0, "a"];
+
+Using an anonymous function instead looks as follows:
+
+.. code-block:: zeek
+
+    global mytable: table[count, string] of string &default=function(c: count, s: string): string {
+        return fmt("unknown-%s-%s", c, s);
+    };
+
+    print mytable[0, "a"];
+
+The output of both these examples is ``unknown-0-a``.
+
+A common usage pattern of the :zeek:attr:`&default` attribute in Zeek's base
+scripts is to format a default textual representation for unknown protocol
+values that are otherwise mapped to textual descriptions.
+The following excerpt is from :doc:`/scripts/base/protocols/dns/consts.zeek`
+mapping numeric DNS query types to their textual representation. A default
+function is used to produce a string containing the numeric value of query types:
+
+.. code-block:: zeek
+
+    ## Mapping of DNS query type codes to human readable string
+    ## representation.
+    const query_types = {
+        [1] = "A",
+        [2] = "NS",
+        [3] = "MD",
+        [4] = "MF",
+        [5] = "CNAME",
+        # many many more ...
+        [65422] = "XPF",
+        [65521] = "INTEGRITY",
+    } &default = function(n: count): string { return fmt("query-%d", n); };
+
+
+Note that when accessing a non-existing index, the created default value will
+not be inserted into the table. The following script will output ``foo``,
+but the table remains empty. The second print statement outputs ``0``:
+
+.. code-block:: zeek
+
+    global mytable: table[count] of string &default="foo";
+    print mytable[0];
+    print |mytable|;
+
+For inserting the created default value into a table, the :zeek:attr:`&default_insert`
+attribute can be used instead.
+
 When used with function/hook/event parameters, all of the parameters
 with the :zeek:attr:`&default` attribute must come after all other parameters.
 For example, the following function could be called either as ``myfunc(5)``
@@ -204,6 +286,20 @@ or as ``myfunc(5, 53/udp)``:
         {
         print a, b;
         }
+
+.. zeek:attr:: &default_insert
+
+&default_insert
+---------------
+
+.. versionadded:: 6.1
+
+This attribute is only applicable to tables. :zeek:attr:`&default_insert`
+provides the same functionality as table's :zeek:attr:`&default` but with the addition
+that upon access to a non-existing index, the created value will be inserted
+into the table. For complex value types like tables or record types used for
+tracking further state, :zeek:attr:`&default_insert` is often more useful and
+efficient than :zeek:attr:`&default`.
 
 .. zeek:attr:: &add_func
 
