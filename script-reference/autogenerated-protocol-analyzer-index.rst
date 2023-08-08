@@ -889,7 +889,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5317 5317
+   :source-code: base/init-bare.zeek 5348 5348
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -900,7 +900,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5322 5322
+   :source-code: base/init-bare.zeek 5353 5353
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -5181,7 +5181,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: KRB::keytab
-   :source-code: base/init-bare.zeek 4793 4793
+   :source-code: base/init-bare.zeek 4824 4824
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -5193,7 +5193,7 @@ Types
 +++++
 
 .. zeek:type:: KRB::Error_Msg
-   :source-code: base/init-bare.zeek 4879 4902
+   :source-code: base/init-bare.zeek 4910 4933
 
    :Type: :zeek:type:`record`
 
@@ -5233,7 +5233,7 @@ Types
    The data from the ERROR_MSG message. See :rfc:`4120`.
 
 .. zeek:type:: KRB::SAFE_Msg
-   :source-code: base/init-bare.zeek 4860 4876
+   :source-code: base/init-bare.zeek 4891 4907
 
    :Type: :zeek:type:`record`
 
@@ -5262,7 +5262,7 @@ Types
    The data from the SAFE message. See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Options
-   :source-code: base/init-bare.zeek 4795 4826
+   :source-code: base/init-bare.zeek 4826 4857
 
    :Type: :zeek:type:`record`
 
@@ -5312,7 +5312,7 @@ Types
    KDC Options. See :rfc:`4120`
 
 .. zeek:type:: KRB::AP_Options
-   :source-code: base/init-bare.zeek 4829 4834
+   :source-code: base/init-bare.zeek 4860 4865
 
    :Type: :zeek:type:`record`
 
@@ -5325,7 +5325,7 @@ Types
    AP Options. See :rfc:`4120`
 
 .. zeek:type:: KRB::Type_Value
-   :source-code: base/init-bare.zeek 4838 4843
+   :source-code: base/init-bare.zeek 4869 4874
 
    :Type: :zeek:type:`record`
 
@@ -5339,7 +5339,7 @@ Types
    that have a type and a string value.
 
 .. zeek:type:: KRB::Ticket
-   :source-code: base/init-bare.zeek 4905 4918
+   :source-code: base/init-bare.zeek 4936 4949
 
    :Type: :zeek:type:`record`
 
@@ -5364,13 +5364,13 @@ Types
    A Kerberos ticket. See :rfc:`4120`.
 
 .. zeek:type:: KRB::Ticket_Vector
-   :source-code: base/init-bare.zeek 4920 4920
+   :source-code: base/init-bare.zeek 4951 4951
 
    :Type: :zeek:type:`vector` of :zeek:type:`KRB::Ticket`
 
 
 .. zeek:type:: KRB::Host_Address
-   :source-code: base/init-bare.zeek 4848 4855
+   :source-code: base/init-bare.zeek 4879 4886
 
    :Type: :zeek:type:`record`
 
@@ -5386,7 +5386,7 @@ Types
    A Kerberos host address See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Request
-   :source-code: base/init-bare.zeek 4923 4954
+   :source-code: base/init-bare.zeek 4954 4985
 
    :Type: :zeek:type:`record`
 
@@ -5435,7 +5435,7 @@ Types
    The data from the AS_REQ and TGS_REQ messages. See :rfc:`4120`.
 
 .. zeek:type:: KRB::KDC_Response
-   :source-code: base/init-bare.zeek 4957 4971
+   :source-code: base/init-bare.zeek 4988 5002
 
    :Type: :zeek:type:`record`
 
@@ -6892,8 +6892,9 @@ Events
    :param quantity: The quantity of registers that were written.
 
 .. zeek:id:: modbus_read_file_record_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 217 217
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 218 218
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileRecordRequests`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus read file record request.
@@ -6904,12 +6905,16 @@ Events
 
    :param headers: The headers for the modbus function.
    
-   .. note: This event is incomplete.  The information from the data structure
-            is not yet passed through to the event.
+
+   :param byte_count: The full byte count for all of the reference records that follow.
+   
+
+   :param refs: A vector of reference records.
 
 .. zeek:id:: modbus_read_file_record_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 228 228
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 232 232
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileRecordResponses`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus read file record response.
@@ -6920,12 +6925,16 @@ Events
 
    :param headers: The headers for the modbus function.
    
-   .. note: This event is incomplete.  The information from the data structure
-            is not yet passed through to the event.
+
+   :param byte_count: The full byte count for all of the reference records that follow.
+   
+
+   :param refs: A vector of reference records.
 
 .. zeek:id:: modbus_write_file_record_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 239 239
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 246 246
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileReferences`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus write file record request.
@@ -6936,12 +6945,16 @@ Events
 
    :param headers: The headers for the modbus function.
    
-   .. note: This event is incomplete.  The information from the data structure
-            is not yet passed through to the event.
+
+   :param byte_count: The full byte count for all of the reference records that follow.
+   
+
+   :param refs: A vector of reference records.
 
 .. zeek:id:: modbus_write_file_record_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 250 250
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 260 260
 
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileReferences`)
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus write file record response.
@@ -6952,11 +6965,14 @@ Events
 
    :param headers: The headers for the modbus function.
    
-   .. note: This event is incomplete.  The information from the data structure
-            is not yet passed through to the event.
+
+   :param byte_count: The full byte count for all of the reference records that follow.
+   
+
+   :param refs: A vector of reference records.
 
 .. zeek:id:: modbus_mask_write_register_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 264 264
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 276 276
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -6978,7 +6994,7 @@ Events
    :param or_mask: The value of the logical OR mask to apply to the register.
 
 .. zeek:id:: modbus_mask_write_register_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 278 278
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 290 290
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -7000,7 +7016,7 @@ Events
    :param or_mask: The value of the logical OR mask applied to the register.
 
 .. zeek:id:: modbus_read_write_multiple_registers_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 294 294
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 306 306
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, read_start_address: :zeek:type:`count`, read_quantity: :zeek:type:`count`, write_start_address: :zeek:type:`count`, write_registers: :zeek:type:`ModbusRegisters`)
 
@@ -7025,7 +7041,7 @@ Events
    :param write_registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_read_write_multiple_registers_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 305 305
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 317 317
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, written_registers: :zeek:type:`ModbusRegisters`)
 
@@ -7042,7 +7058,7 @@ Events
                       the request.
 
 .. zeek:id:: modbus_read_fifo_queue_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 315 315
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 327 327
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`)
 
@@ -7058,7 +7074,7 @@ Events
    :param start_address: The address of the FIFO queue to read.
 
 .. zeek:id:: modbus_read_fifo_queue_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 325 325
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 337 337
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, fifos: :zeek:type:`ModbusRegisters`)
 
@@ -7072,6 +7088,82 @@ Events
    
 
    :param fifos: The register values read from the FIFO queue on the device.
+
+.. zeek:id:: modbus_diagnostics_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 349 349
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, subfunction: :zeek:type:`count`, data: :zeek:type:`string`)
+
+   Generated for a Modbus Diagnostics request.
+   
+
+   :param c: The connection.
+   
+
+   :param headers: The headers for the modbus function.
+   
+
+   :param subfunction: The subfunction for the diagnostics request.
+   
+
+   :param data: The data passed in the diagnostics request.
+
+.. zeek:id:: modbus_diagnostics_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 361 361
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, subfunction: :zeek:type:`count`, data: :zeek:type:`string`)
+
+   Generated for a Modbus Diagnostics response.
+   
+
+   :param c: The connection.
+   
+
+   :param headers: The headers for the modbus function.
+   
+
+   :param subfunction: The subfunction for the diagnostics response.
+   
+
+   :param data: The data passed in the diagnostics response.
+
+.. zeek:id:: modbus_encap_interface_transport_request
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 373 373
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, mei_type: :zeek:type:`count`, data: :zeek:type:`string`)
+
+   Generated for a Modbus Encapsulated Interface Transport request.
+   
+
+   :param c: The connection.
+   
+
+   :param headers: The headers for the modbus function.
+   
+
+   :param mei_type: The MEI type for the request.
+   
+
+   :param data: The MEI type specific data passed in the request.
+
+.. zeek:id:: modbus_encap_interface_transport_response
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 385 385
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, mei_type: :zeek:type:`count`, data: :zeek:type:`string`)
+
+   Generated for a Modbus Encapsulated Interface Transport response.
+   
+
+   :param c: The connection.
+   
+
+   :param headers: The headers for the modbus function.
+   
+
+   :param mei_type: The MEI type for the response.
+   
+
+   :param data: The MEI type specific data passed in the response.
 
 .. _plugin-zeek-mqtt:
 
@@ -7089,7 +7181,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5507 5537
+   :source-code: base/init-bare.zeek 5538 5568
 
    :Type: :zeek:type:`record`
 
@@ -7131,7 +7223,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5539 5548
+   :source-code: base/init-bare.zeek 5570 5579
 
    :Type: :zeek:type:`record`
 
@@ -7146,7 +7238,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5550 5572
+   :source-code: base/init-bare.zeek 5581 5603
 
    :Type: :zeek:type:`record`
 
@@ -7545,7 +7637,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5328 5328
+   :source-code: base/init-bare.zeek 5359 5359
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8207,7 +8299,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5336 5389
+   :source-code: base/init-bare.zeek 5367 5420
 
    :Type: :zeek:type:`record`
 
@@ -8282,7 +8374,7 @@ Types
    for standard synchronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5394 5428
+   :source-code: base/init-bare.zeek 5425 5459
 
    :Type: :zeek:type:`record`
 
@@ -8333,7 +8425,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5437 5470
+   :source-code: base/init-bare.zeek 5468 5501
 
    :Type: :zeek:type:`record`
 
@@ -8384,7 +8476,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5475 5502
+   :source-code: base/init-bare.zeek 5506 5533
 
    :Type: :zeek:type:`record`
 
@@ -8703,19 +8795,19 @@ Types
 +++++
 
 .. zeek:type:: RADIUS::AttributeList
-   :source-code: base/init-bare.zeek 4539 4539
+   :source-code: base/init-bare.zeek 4570 4570
 
    :Type: :zeek:type:`vector` of :zeek:type:`string`
 
 
 .. zeek:type:: RADIUS::Attributes
-   :source-code: base/init-bare.zeek 4540 4540
+   :source-code: base/init-bare.zeek 4571 4571
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`RADIUS::AttributeList`
 
 
 .. zeek:type:: RADIUS::Message
-   :source-code: base/init-bare.zeek 4542 4551
+   :source-code: base/init-bare.zeek 4573 4582
 
    :Type: :zeek:type:`record`
 
@@ -8790,7 +8882,7 @@ Types
 +++++
 
 .. zeek:type:: RDP::EarlyCapabilityFlags
-   :source-code: base/init-bare.zeek 4556 4566
+   :source-code: base/init-bare.zeek 4587 4597
 
    :Type: :zeek:type:`record`
 
@@ -8814,7 +8906,7 @@ Types
 
 
 .. zeek:type:: RDP::ClientCoreData
-   :source-code: base/init-bare.zeek 4568 4589
+   :source-code: base/init-bare.zeek 4599 4620
 
    :Type: :zeek:type:`record`
 
@@ -8860,7 +8952,7 @@ Types
 
 
 .. zeek:type:: RDP::ClientSecurityData
-   :source-code: base/init-bare.zeek 4593 4605
+   :source-code: base/init-bare.zeek 4624 4636
 
    :Type: :zeek:type:`record`
 
@@ -8881,7 +8973,7 @@ Types
    to advertise client cryptographic support.
 
 .. zeek:type:: RDP::ClientClusterData
-   :source-code: base/init-bare.zeek 4641 4660
+   :source-code: base/init-bare.zeek 4672 4691
 
    :Type: :zeek:type:`record`
 
@@ -8914,14 +9006,14 @@ Types
    or to request a connection to a given session identifier.
 
 .. zeek:type:: RDP::ClientChannelList
-   :source-code: base/init-bare.zeek 4663 4663
+   :source-code: base/init-bare.zeek 4694 4694
 
    :Type: :zeek:type:`vector` of :zeek:type:`RDP::ClientChannelDef`
 
    The list of channels requested by the client.
 
 .. zeek:type:: RDP::ClientChannelDef
-   :source-code: base/init-bare.zeek 4608 4636
+   :source-code: base/init-bare.zeek 4639 4667
 
    :Type: :zeek:type:`record`
 
@@ -13598,7 +13690,7 @@ Types
 +++++
 
 .. zeek:type:: SNMP::Header
-   :source-code: base/init-bare.zeek 4707 4712
+   :source-code: base/init-bare.zeek 4738 4743
 
    :Type: :zeek:type:`record`
 
@@ -13618,7 +13710,7 @@ Types
    determines what header field is initialized.
 
 .. zeek:type:: SNMP::HeaderV1
-   :source-code: base/init-bare.zeek 4672 4674
+   :source-code: base/init-bare.zeek 4703 4705
 
    :Type: :zeek:type:`record`
 
@@ -13628,7 +13720,7 @@ Types
    including the PDU data.  See :rfc:`1157`.
 
 .. zeek:type:: SNMP::HeaderV2
-   :source-code: base/init-bare.zeek 4678 4680
+   :source-code: base/init-bare.zeek 4709 4711
 
    :Type: :zeek:type:`record`
 
@@ -13638,7 +13730,7 @@ Types
    including the PDU data.  See :rfc:`1901`.
 
 .. zeek:type:: SNMP::HeaderV3
-   :source-code: base/init-bare.zeek 4692 4702
+   :source-code: base/init-bare.zeek 4723 4733
 
    :Type: :zeek:type:`record`
 
@@ -13664,7 +13756,7 @@ Types
    including the PDU data.  See :rfc:`3412`.
 
 .. zeek:type:: SNMP::PDU
-   :source-code: base/init-bare.zeek 4762 4767
+   :source-code: base/init-bare.zeek 4793 4798
 
    :Type: :zeek:type:`record`
 
@@ -13679,7 +13771,7 @@ Types
    A ``PDU`` data structure from either :rfc:`1157` or :rfc:`3416`.
 
 .. zeek:type:: SNMP::TrapPDU
-   :source-code: base/init-bare.zeek 4770 4777
+   :source-code: base/init-bare.zeek 4801 4808
 
    :Type: :zeek:type:`record`
 
@@ -13698,7 +13790,7 @@ Types
    A ``Trap-PDU`` data structure from :rfc:`1157`.
 
 .. zeek:type:: SNMP::BulkPDU
-   :source-code: base/init-bare.zeek 4780 4785
+   :source-code: base/init-bare.zeek 4811 4816
 
    :Type: :zeek:type:`record`
 
@@ -13713,7 +13805,7 @@ Types
    A ``BulkPDU`` data structure from :rfc:`3416`.
 
 .. zeek:type:: SNMP::ScopedPDU_Context
-   :source-code: base/init-bare.zeek 4685 4688
+   :source-code: base/init-bare.zeek 4716 4719
 
    :Type: :zeek:type:`record`
 
@@ -13726,7 +13818,7 @@ Types
    See :rfc:`3412`.
 
 .. zeek:type:: SNMP::ObjectValue
-   :source-code: base/init-bare.zeek 4723 4730
+   :source-code: base/init-bare.zeek 4754 4761
 
    :Type: :zeek:type:`record`
 
@@ -13753,7 +13845,7 @@ Types
    values will only have their corresponding tag value set.
 
 .. zeek:type:: SNMP::Binding
-   :source-code: base/init-bare.zeek 4752 4755
+   :source-code: base/init-bare.zeek 4783 4786
 
    :Type: :zeek:type:`record`
 
@@ -13765,7 +13857,7 @@ Types
    :rfc:`3416`, which maps an Object Identifier to a value.
 
 .. zeek:type:: SNMP::Bindings
-   :source-code: base/init-bare.zeek 4759 4759
+   :source-code: base/init-bare.zeek 4790 4790
 
    :Type: :zeek:type:`vector` of :zeek:type:`SNMP::Binding`
 
@@ -14649,7 +14741,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: SSL::dtls_max_version_errors
-   :source-code: base/init-bare.zeek 4457 4457
+   :source-code: base/init-bare.zeek 4488 4488
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -14661,7 +14753,7 @@ Options/Constants
    might be interleaved in the same UDP "connection".
 
 .. zeek:id:: SSL::dtls_max_reported_version_errors
-   :source-code: base/init-bare.zeek 4460 4460
+   :source-code: base/init-bare.zeek 4491 4491
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -14673,7 +14765,7 @@ Types
 +++++
 
 .. zeek:type:: SSL::SignatureAndHashAlgorithm
-   :source-code: base/init-bare.zeek 4443 4446
+   :source-code: base/init-bare.zeek 4474 4477
 
    :Type: :zeek:type:`record`
 
@@ -14685,7 +14777,7 @@ Types
 
 
 .. zeek:type:: SSL::PSKIdentity
-   :source-code: base/init-bare.zeek 4448 4451
+   :source-code: base/init-bare.zeek 4479 4482
 
    :Type: :zeek:type:`record`
 
