@@ -4523,7 +4523,7 @@ Types
 
       record_num: :zeek:type:`count`
 
-      record_length: :zeek:type:`count`
+      record_len: :zeek:type:`count`
 
       record_data: :zeek:type:`string`
 
