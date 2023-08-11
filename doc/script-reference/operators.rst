@@ -339,6 +339,11 @@ Only the following kinds of type casts are supported currently:
 - A value of declared type :zeek:type:`any` can be cast to its actual
   underlying type.
 - All values can be cast to their declared types (i.e., this is a no-op).
+- :zeek:type:`set` and :zeek:type:`vector` values can be converted into each
+  other, with the following limitations: (1) A :zeek:type:`set` being converted
+  into a :zeek:type:`vector` can only have a single index type.  Converting a
+  set with multiple index types will return an error. (2) The :zeek:type:`set`
+  and :zeek:type:`vector` types must have the same internal type.
 
 The function in this example tries to cast a value to a string:
 
@@ -352,6 +357,15 @@ The function in this example tries to cast a value to a string:
             s = (a as string);
         }
 
+The function in this example converts a set to a vector:
+
+.. code-block:: zeek
+
+    function example()
+        {
+	local s: set[count] = { 1, 2, 3 };
+	local v = s as vector of count;
+        }
 
 Other operators
 ---------------
