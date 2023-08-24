@@ -510,6 +510,7 @@
    policy/frameworks/notice/extend-email/hostnames.zeek </scripts/policy/frameworks/notice/extend-email/hostnames.zeek>
    policy/frameworks/notice/actions/drop.zeek </scripts/policy/frameworks/notice/actions/drop.zeek>
    policy/frameworks/notice/community-id.zeek </scripts/policy/frameworks/notice/community-id.zeek>
+   policy/protocols/conn/community-id-logging.zeek </scripts/policy/protocols/conn/community-id-logging.zeek>
    policy/files/x509/disable-certificate-events-known-certs.zeek </scripts/policy/files/x509/disable-certificate-events-known-certs.zeek>
    policy/frameworks/packet-filter/shunt.zeek </scripts/policy/frameworks/packet-filter/shunt.zeek>
    policy/frameworks/software/version-changes.zeek </scripts/policy/frameworks/software/version-changes.zeek>
@@ -529,7 +530,6 @@
    policy/misc/weird-stats.zeek </scripts/policy/misc/weird-stats.zeek>
    policy/misc/trim-trace-file.zeek </scripts/policy/misc/trim-trace-file.zeek>
    policy/misc/unknown-protocols.zeek </scripts/policy/misc/unknown-protocols.zeek>
-   policy/protocols/conn/community-id-logging.zeek </scripts/policy/protocols/conn/community-id-logging.zeek>
    policy/protocols/conn/known-hosts.zeek </scripts/policy/protocols/conn/known-hosts.zeek>
    policy/protocols/conn/known-services.zeek </scripts/policy/protocols/conn/known-services.zeek>
    policy/protocols/conn/mac-logging.zeek </scripts/policy/protocols/conn/mac-logging.zeek>
