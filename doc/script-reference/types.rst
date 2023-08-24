@@ -1321,6 +1321,16 @@ this expression is equivalent to:
 
     v[|v|] = e;
 
+In addition, if *e*'s type is ``vector of X`` and so is *v*'s type, then
+
+.. code-block:: zeek
+
+    v += e;
+
+instead appends each element of *e* to *v*.  (In this case the expression
+is *not* equivalent to ``v[|v|] = e``, which will generate an error because
+*e*'s type is not compatible with ``X``.)
+
 Lookup and iteration
 ^^^^^^^^^^^^^^^^^^^^
 
