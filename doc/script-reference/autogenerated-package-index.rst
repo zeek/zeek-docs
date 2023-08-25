@@ -34,6 +34,9 @@
 :doc:`base/packet-protocols/null </scripts/base/packet-protocols/null/index>`
 
 
+:doc:`base/packet-protocols/ppp </scripts/base/packet-protocols/ppp/index>`
+
+
 :doc:`base/packet-protocols/ppp_serial </scripts/base/packet-protocols/ppp_serial/index>`
 
 

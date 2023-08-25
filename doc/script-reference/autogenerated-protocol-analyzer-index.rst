@@ -283,6 +283,8 @@ Protocol Analyzers
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_POP3 AllAnalyzers::Tag
 
+      .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_PPP AllAnalyzers::Tag
+
       .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_PPPOE AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::PACKETANALYZER_ANALYZER_PPPSERIAL AllAnalyzers::Tag

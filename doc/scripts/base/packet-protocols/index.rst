@@ -76,6 +76,12 @@ Package: base/packet-protocols
 :doc:`/scripts/base/packet-protocols/null/main.zeek`
 
 
+:doc:`/scripts/base/packet-protocols/ppp/__load__.zeek`
+
+
+:doc:`/scripts/base/packet-protocols/ppp/main.zeek`
+
+
 :doc:`/scripts/base/packet-protocols/ppp_serial/__load__.zeek`
 
 
