@@ -45,6 +45,8 @@
    base/packet-protocols/nflog/main.zeek </scripts/base/packet-protocols/nflog/main.zeek>
    base/packet-protocols/null/__load__.zeek </scripts/base/packet-protocols/null/__load__.zeek>
    base/packet-protocols/null/main.zeek </scripts/base/packet-protocols/null/main.zeek>
+   base/packet-protocols/ppp/__load__.zeek </scripts/base/packet-protocols/ppp/__load__.zeek>
+   base/packet-protocols/ppp/main.zeek </scripts/base/packet-protocols/ppp/main.zeek>
    base/packet-protocols/ppp_serial/__load__.zeek </scripts/base/packet-protocols/ppp_serial/__load__.zeek>
    base/packet-protocols/ppp_serial/main.zeek </scripts/base/packet-protocols/ppp_serial/main.zeek>
    base/packet-protocols/pppoe/__load__.zeek </scripts/base/packet-protocols/pppoe/__load__.zeek>
