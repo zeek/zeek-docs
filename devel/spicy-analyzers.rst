@@ -27,3 +27,9 @@ create a Zeek protocol, packet, or file analyzer.
 
 See the `Spicy documentation <https://docs.zeek.org/projects/spicy/en/latest/getting-started.html>`_
 for details on how to write and integrate a parser.
+
+Zeek installs the grammars of its builtin Spicy parsers for potential reuse,
+e.g., the ``Finger`` `grammar
+<https://github.com/zeek/zeek/blob/master/src/analyzer/protocol/finger/finger.spicy>`_
+gets installed to ``<PREFIX>/share/spicy/finger/finger.spicy``. It could be
+used in user code by importing it with ``import Finger from finger;``.
