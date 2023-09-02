@@ -87,7 +87,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Weird::ignore_hosts
-   :source-code: base/frameworks/notice/weird.zeek 264 264
+   :source-code: base/frameworks/notice/weird.zeek 266 266
 
    :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -97,7 +97,7 @@ Runtime Options
    and weird name into this set.
 
 .. zeek:id:: Weird::weird_do_not_ignore_repeats
-   :source-code: base/frameworks/notice/weird.zeek 268 268
+   :source-code: base/frameworks/notice/weird.zeek 270 270
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -171,8 +171,8 @@ Redefinable Options
             ["SYN_with_data"] = Weird::ACTION_LOG_PER_ORIG,
             ["DNS_RR_length_mismatch"] = Weird::ACTION_LOG,
             ["irc_invalid_whois_operator_line"] = Weird::ACTION_LOG,
-            ["base64_illegal_encoding"] = Weird::ACTION_LOG,
             ["bad_ident_port"] = Weird::ACTION_LOG,
+            ["base64_illegal_encoding"] = Weird::ACTION_LOG,
             ["simultaneous_open"] = Weird::ACTION_LOG_PER_CONN,
             ["ident_request_addendum"] = Weird::ACTION_LOG,
             ["DNS_truncated_quest_too_short"] = Weird::ACTION_LOG,
@@ -197,6 +197,7 @@ Redefinable Options
             ["repeated_SYN_reply_wo_ack"] = Weird::ACTION_LOG,
             ["bad_HTTP_reply"] = Weird::ACTION_LOG,
             ["FIN_storm"] = Weird::ACTION_NOTICE_PER_ORIG,
+            ["HTTP_response_before_request"] = Weird::ACTION_LOG,
             ["NUL_in_line"] = Weird::ACTION_LOG,
             ["pop3_server_command_unknown"] = Weird::ACTION_LOG,
             ["fragment_inconsistency"] = Weird::ACTION_LOG_PER_ORIG,
@@ -216,21 +217,22 @@ Redefinable Options
             ["possible_split_routing"] = Weird::ACTION_LOG,
             ["irc_invalid_who_message_format"] = Weird::ACTION_LOG,
             ["HTTP_chunked_transfer_for_multipart_message"] = Weird::ACTION_LOG,
-            ["FTP_arg_too_long"] = Weird::ACTION_LOG_PER_CONN,
             ["irc_invalid_njoin_line"] = Weird::ACTION_LOG,
+            ["FTP_arg_too_long"] = Weird::ACTION_LOG_PER_CONN,
             ["line_terminated_with_single_CR"] = Weird::ACTION_LOG,
             ["HTTP_overlapping_messages"] = Weird::ACTION_LOG,
             ["deficit_netbios_hdr_len"] = Weird::ACTION_LOG,
-            ["irc_invalid_reply_number"] = Weird::ACTION_LOG,
             ["repeated_SYN_with_ack"] = Weird::ACTION_LOG,
+            ["irc_invalid_reply_number"] = Weird::ACTION_LOG,
             ["malformed_ssh_identification"] = Weird::ACTION_LOG,
             ["RPC_underflow"] = Weird::ACTION_LOG,
             ["unexpected_server_HTTP_data"] = Weird::ACTION_LOG,
             ["DNS_RR_bad_length"] = Weird::ACTION_LOG,
             ["SSL_many_server_names"] = Weird::ACTION_LOG,
             ["irc_invalid_whois_channel_line"] = Weird::ACTION_LOG,
-            ["irc_line_size_exceeded"] = Weird::ACTION_LOG,
             ["DNS_label_len_gt_pkt"] = Weird::ACTION_LOG_PER_ORIG,
+            ["irc_line_size_exceeded"] = Weird::ACTION_LOG,
+            ["HTTP_excessive_pipelining"] = Weird::ACTION_LOG,
             ["DNS_Conn_count_too_large"] = Weird::ACTION_LOG,
             ["irc_invalid_command"] = Weird::ACTION_LOG,
             ["inappropriate_FIN"] = Weird::ACTION_LOG,
@@ -286,9 +288,9 @@ Redefinable Options
             ["RST_storm"] = Weird::ACTION_LOG,
             ["fragment_protocol_inconsistency"] = Weird::ACTION_LOG,
             ["originator_RPC_reply"] = Weird::ACTION_LOG_PER_ORIG,
+            ["FIN_after_reset"] = Weird::ACTION_IGNORE,
             ["pop3_bad_base64_encoding"] = Weird::ACTION_LOG,
             ["active_connection_reuse"] = Weird::ACTION_LOG,
-            ["FIN_after_reset"] = Weird::ACTION_IGNORE,
             ["truncated_ARP"] = Weird::ACTION_LOG,
             ["HTTP_bad_chunk_size"] = Weird::ACTION_LOG
          }
@@ -299,7 +301,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Weird::did_log
-   :source-code: base/frameworks/notice/weird.zeek 282 282
+   :source-code: base/frameworks/notice/weird.zeek 284 284
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -310,7 +312,7 @@ State Variables
    could cause overload during storms.
 
 .. zeek:id:: Weird::did_notice
-   :source-code: base/frameworks/notice/weird.zeek 286 286
+   :source-code: base/frameworks/notice/weird.zeek 288 288
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``1.0 day`` :zeek:attr:`&redef`
@@ -320,7 +322,7 @@ State Variables
    duplicate notices from being raised.
 
 .. zeek:id:: Weird::weird_ignore
-   :source-code: base/frameworks/notice/weird.zeek 277 277
+   :source-code: base/frameworks/notice/weird.zeek 279 279
 
    :Type: :zeek:type:`set` [:zeek:type:`string`, :zeek:type:`string`]
    :Attributes: :zeek:attr:`&create_expire` = ``10.0 mins`` :zeek:attr:`&redef`
@@ -429,7 +431,7 @@ Types
 Events
 ######
 .. zeek:id:: Weird::log_weird
-   :source-code: base/frameworks/notice/weird.zeek 292 292
+   :source-code: base/frameworks/notice/weird.zeek 294 294
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Weird::Info`)
 
@@ -451,7 +453,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Weird::weird
-   :source-code: base/frameworks/notice/weird.zeek 327 416
+   :source-code: base/frameworks/notice/weird.zeek 329 418
 
    :Type: :zeek:type:`function` (w: :zeek:type:`Weird::Info`) : :zeek:type:`void`
 
