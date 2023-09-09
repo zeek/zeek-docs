@@ -49,7 +49,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: KRB::describe_file
-   :source-code: base/protocols/krb/files.zeek 38 63
+   :source-code: base/protocols/krb/files.zeek 38 62
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 

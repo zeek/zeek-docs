@@ -97,7 +97,7 @@ Events
       ssl_session_ticket_handshake
 
 .. zeek:id:: ssl_certificate_request
-   :source-code: policy/protocols/ssl/certificate-request-info.zeek 13 24
+   :source-code: policy/protocols/ssl/certificate-request-info.zeek 13 23
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, certificate_types: :zeek:type:`index_vec`, supported_signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`, certificate_authorities: :zeek:type:`string_vec`)
 
@@ -673,7 +673,7 @@ Events
       ssl_extension_connection_id
 
 .. zeek:id:: ssl_extension_signature_algorithm
-   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 159 177
+   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 159 176
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`)
 

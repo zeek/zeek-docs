@@ -2491,7 +2491,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_TXT_reply
-   :source-code: base/protocols/dns/main.zeek 464 478
+   :source-code: base/protocols/dns/main.zeek 464 477
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, strs: :zeek:type:`string_vec`)
 
@@ -2524,7 +2524,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_SPF_reply
-   :source-code: base/protocols/dns/main.zeek 479 493
+   :source-code: base/protocols/dns/main.zeek 479 492
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, strs: :zeek:type:`string_vec`)
 
@@ -6691,7 +6691,7 @@ Events
    :param quantity: The number of registers to be read.
 
 .. zeek:id:: modbus_read_holding_registers_response
-   :source-code: policy/protocols/modbus/track-memmap.zeek 67 102
+   :source-code: policy/protocols/modbus/track-memmap.zeek 67 101
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, registers: :zeek:type:`ModbusRegisters`)
 
@@ -9210,7 +9210,7 @@ Events
    :param data: The data contained in the client security data structure.
 
 .. zeek:id:: rdp_client_network_data
-   :source-code: base/protocols/rdp/main.zeek 214 228
+   :source-code: base/protocols/rdp/main.zeek 214 227
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, channels: :zeek:type:`RDP::ClientChannelList`)
 
@@ -12834,7 +12834,7 @@ Events
    .. zeek:see:: smb2_message smb2_negotiate_response
 
 .. zeek:id:: smb2_negotiate_response
-   :source-code: base/protocols/smb/smb2-main.zeek 88 103
+   :source-code: base/protocols/smb/smb2-main.zeek 88 102
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, hdr: :zeek:type:`SMB2::Header`, response: :zeek:type:`SMB2::NegotiateResponse`)
 
@@ -13515,7 +13515,7 @@ Events
 ++++++
 
 .. zeek:id:: smtp_request
-   :source-code: base/protocols/smtp/main.zeek 204 265
+   :source-code: base/protocols/smtp/main.zeek 204 264
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -13911,7 +13911,7 @@ Events
    :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_response
-   :source-code: base/protocols/snmp/main.zeek 127 145
+   :source-code: base/protocols/snmp/main.zeek 127 144
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 
@@ -14998,7 +14998,7 @@ Events
       ssl_extension_connection_id
 
 .. zeek:id:: ssl_extension_signature_algorithm
-   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 159 177
+   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 159 176
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`)
 
@@ -15764,7 +15764,7 @@ Events
       ssl_handshake_message
 
 .. zeek:id:: ssl_certificate_request
-   :source-code: policy/protocols/ssl/certificate-request-info.zeek 13 24
+   :source-code: policy/protocols/ssl/certificate-request-info.zeek 13 23
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, certificate_types: :zeek:type:`index_vec`, supported_signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`, certificate_authorities: :zeek:type:`string_vec`)
 

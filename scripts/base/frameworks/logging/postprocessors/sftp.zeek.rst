@@ -107,7 +107,7 @@ Types
 Functions
 #########
 .. zeek:id:: Log::sftp_postprocessor
-   :source-code: base/frameworks/logging/postprocessors/sftp.zeek 58 76
+   :source-code: base/frameworks/logging/postprocessors/sftp.zeek 58 75
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
 

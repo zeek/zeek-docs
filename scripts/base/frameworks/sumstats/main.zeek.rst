@@ -443,7 +443,7 @@ Types
 Functions
 #########
 .. zeek:id:: SumStats::create
-   :source-code: base/frameworks/sumstats/main.zeek 392 438
+   :source-code: base/frameworks/sumstats/main.zeek 392 437
 
    :Type: :zeek:type:`function` (ss: :zeek:type:`SumStats::SumStat`) : :zeek:type:`void`
 
@@ -490,7 +490,7 @@ Functions
             or sumstat not created for manual epochs.
 
 .. zeek:id:: SumStats::observe
-   :source-code: base/frameworks/sumstats/main.zeek 439 504
+   :source-code: base/frameworks/sumstats/main.zeek 439 503
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`, orig_key: :zeek:type:`SumStats::Key`, obs: :zeek:type:`SumStats::Observation`) : :zeek:type:`void`
 

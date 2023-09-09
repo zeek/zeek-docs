@@ -101,7 +101,7 @@ Functions
    :returns: The value gotten from the queue.
 
 .. zeek:id:: Queue::get_vector
-   :source-code: base/utils/queue.zeek 140 156
+   :source-code: base/utils/queue.zeek 140 155
 
    :Type: :zeek:type:`function` (q: :zeek:type:`Queue::Queue`, ret: :zeek:type:`vector` of :zeek:type:`any`) : :zeek:type:`void`
 
@@ -141,7 +141,7 @@ Functions
    :returns: The length of the queue.
 
 .. zeek:id:: Queue::merge
-   :source-code: base/utils/queue.zeek 118 134
+   :source-code: base/utils/queue.zeek 118 133
 
    :Type: :zeek:type:`function` (q1: :zeek:type:`Queue::Queue`, q2: :zeek:type:`Queue::Queue`) : :zeek:type:`Queue::Queue`
 

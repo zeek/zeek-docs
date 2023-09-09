@@ -200,7 +200,7 @@ Events
 Hooks
 #####
 .. zeek:id:: SIP::finalize_sip
-   :source-code: base/protocols/sip/main.zeek 300 310
+   :source-code: base/protocols/sip/main.zeek 300 309
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

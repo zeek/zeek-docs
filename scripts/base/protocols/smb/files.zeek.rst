@@ -23,7 +23,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: SMB::describe_file
-   :source-code: base/protocols/smb/files.zeek 36 49
+   :source-code: base/protocols/smb/files.zeek 36 48
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 

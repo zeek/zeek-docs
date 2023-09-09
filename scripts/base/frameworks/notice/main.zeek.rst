@@ -1005,7 +1005,7 @@ Functions
    This is an internal function to populate policy records.
 
 .. zeek:id:: Notice::create_file_info
-   :source-code: base/frameworks/notice/main.zeek 583 602
+   :source-code: base/frameworks/notice/main.zeek 583 601
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`Notice::FileInfo`
 
@@ -1036,7 +1036,7 @@ Functions
             appended.
 
 .. zeek:id:: Notice::email_notice_to
-   :source-code: base/frameworks/notice/main.zeek 425 494
+   :source-code: base/frameworks/notice/main.zeek 425 493
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`, dest: :zeek:type:`string`, extend: :zeek:type:`bool`) : :zeek:type:`void`
 

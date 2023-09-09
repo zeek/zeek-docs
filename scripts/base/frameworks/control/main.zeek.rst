@@ -209,7 +209,7 @@ Events
    Returns the current net_stats.
 
 .. zeek:id:: Control::peer_status_request
-   :source-code: policy/frameworks/control/controllee.zeek 39 58
+   :source-code: policy/frameworks/control/controllee.zeek 39 57
 
    :Type: :zeek:type:`event` ()
 

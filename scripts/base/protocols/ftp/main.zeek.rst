@@ -207,7 +207,7 @@ Events
 Hooks
 #####
 .. zeek:id:: FTP::finalize_ftp
-   :source-code: base/protocols/ftp/main.zeek 474 484
+   :source-code: base/protocols/ftp/main.zeek 474 483
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

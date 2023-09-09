@@ -154,7 +154,7 @@ Events
    :param pdu: An SNMP PDU data structure.
 
 .. zeek:id:: snmp_response
-   :source-code: base/protocols/snmp/main.zeek 127 145
+   :source-code: base/protocols/snmp/main.zeek 127 144
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, header: :zeek:type:`SNMP::Header`, pdu: :zeek:type:`SNMP::PDU`)
 

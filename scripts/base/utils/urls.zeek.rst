@@ -102,7 +102,7 @@ Functions
    Extracts URLs discovered in arbitrary text.
 
 .. zeek:id:: find_all_urls_without_scheme
-   :source-code: base/utils/urls.zeek 39 51
+   :source-code: base/utils/urls.zeek 39 50
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`) : :zeek:type:`string_set`
 

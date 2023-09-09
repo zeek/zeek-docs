@@ -362,7 +362,7 @@ Functions
    :returns: an array containing all valid IP address strings found in *input*.
 
 .. zeek:id:: has_valid_octets
-   :source-code: base/utils/addrs.zeek 71 81
+   :source-code: base/utils/addrs.zeek 71 80
 
    :Type: :zeek:type:`function` (octets: :zeek:type:`string_vec`) : :zeek:type:`bool`
 

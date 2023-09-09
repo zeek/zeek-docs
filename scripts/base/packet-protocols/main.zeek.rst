@@ -42,7 +42,7 @@ Functions
    :returns: True if the port was successfully registered.
 
 .. zeek:id:: PacketAnalyzer::register_for_ports
-   :source-code: base/packet-protocols/main.zeek 37 49
+   :source-code: base/packet-protocols/main.zeek 37 48
 
    :Type: :zeek:type:`function` (parent: :zeek:type:`PacketAnalyzer::Tag`, child: :zeek:type:`PacketAnalyzer::Tag`, ports: :zeek:type:`set` [:zeek:type:`port`]) : :zeek:type:`bool`
 

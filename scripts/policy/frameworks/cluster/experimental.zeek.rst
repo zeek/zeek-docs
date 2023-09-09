@@ -46,7 +46,7 @@ Events
        being raised.
 
 .. zeek:id:: Cluster::Experimental::node_fully_connected
-   :source-code: policy/frameworks/cluster/nodes-experimental/manager.zeek 16 32
+   :source-code: policy/frameworks/cluster/nodes-experimental/manager.zeek 16 31
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`, resending: :zeek:type:`bool`)
 

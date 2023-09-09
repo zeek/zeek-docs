@@ -162,7 +162,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::deploy_response
-   :source-code: policy/frameworks/management/controller/main.zeek 820 877
+   :source-code: policy/frameworks/management/controller/main.zeek 820 876
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
@@ -238,7 +238,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::node_dispatch_response
-   :source-code: policy/frameworks/management/controller/main.zeek 1104 1170
+   :source-code: policy/frameworks/management/controller/main.zeek 1104 1169
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
@@ -324,7 +324,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::restart_response
-   :source-code: policy/frameworks/management/controller/main.zeek 1250 1289
+   :source-code: policy/frameworks/management/controller/main.zeek 1250 1288
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 

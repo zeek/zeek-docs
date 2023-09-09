@@ -39,7 +39,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: FTP::describe_file
-   :source-code: base/protocols/ftp/files.zeek 34 47
+   :source-code: base/protocols/ftp/files.zeek 34 46
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 

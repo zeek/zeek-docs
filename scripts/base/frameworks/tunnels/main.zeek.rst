@@ -206,7 +206,7 @@ Functions
    :zeek:id:`Tunnel::active` table and adds it if not.
 
 .. zeek:id:: Tunnel::register_all
-   :source-code: base/frameworks/tunnels/main.zeek 98 103
+   :source-code: base/frameworks/tunnels/main.zeek 98 102
 
    :Type: :zeek:type:`function` (ecv: :zeek:type:`EncapsulatingConnVector`) : :zeek:type:`void`
 

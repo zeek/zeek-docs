@@ -940,7 +940,7 @@ Events
       event.
 
 .. zeek:id:: new_event
-   :source-code: policy/misc/dump-events.zeek 27 51
+   :source-code: policy/misc/dump-events.zeek 27 50
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, params: :zeek:type:`call_argument_vector`)
 

@@ -19,7 +19,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: print_backtrace
-   :source-code: base/utils/backtrace.zeek 19 79
+   :source-code: base/utils/backtrace.zeek 19 78
 
    :Type: :zeek:type:`function` (show_args: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`, one_line: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`, one_line_delim: :zeek:type:`string` :zeek:attr:`&default` = ``"|"`` :zeek:attr:`&optional`, skip: :zeek:type:`count` :zeek:attr:`&default` = ``1`` :zeek:attr:`&optional`, to_file: :zeek:type:`file` :zeek:attr:`&default` = ``file "/dev/stdout" of string`` :zeek:attr:`&optional`) : :zeek:type:`void`
 

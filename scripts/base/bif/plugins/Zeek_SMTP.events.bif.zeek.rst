@@ -98,7 +98,7 @@ Events
    .. note:: Zeek doesn't support the newer ETRN extension yet.
 
 .. zeek:id:: smtp_request
-   :source-code: base/protocols/smtp/main.zeek 204 265
+   :source-code: base/protocols/smtp/main.zeek 204 264
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 

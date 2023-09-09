@@ -35,7 +35,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: SMTP::describe_file
-   :source-code: base/protocols/smtp/files.zeek 28 40
+   :source-code: base/protocols/smtp/files.zeek 28 39
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 

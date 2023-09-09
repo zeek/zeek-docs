@@ -233,7 +233,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1073 1103
+   :source-code: policy/frameworks/management/controller/main.zeek 1073 1102
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
