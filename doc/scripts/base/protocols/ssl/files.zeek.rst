@@ -102,7 +102,7 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: SSL::describe_file
-   :source-code: base/protocols/ssl/files.zeek 74 96
+   :source-code: base/protocols/ssl/files.zeek 74 95
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 

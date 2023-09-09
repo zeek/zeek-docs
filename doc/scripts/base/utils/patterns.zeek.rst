@@ -70,7 +70,7 @@ Functions
    :returns: a record indicating the match status.
 
 .. zeek:id:: set_to_regex
-   :source-code: base/utils/patterns.zeek 23 36
+   :source-code: base/utils/patterns.zeek 23 35
 
    :Type: :zeek:type:`function` (ss: :zeek:type:`set` [:zeek:type:`string`], pat: :zeek:type:`string`) : :zeek:type:`pattern`
 

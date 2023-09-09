@@ -40,7 +40,7 @@ Redefinable Options
 Events
 ######
 .. zeek:id:: InputRaw::process_finished
-   :source-code: base/utils/exec.zeek 129 152
+   :source-code: base/utils/exec.zeek 129 151
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, source: :zeek:type:`string`, exit_code: :zeek:type:`count`, signal_exit: :zeek:type:`bool`)
 

@@ -207,7 +207,7 @@ Events
    .. zeek:see:: pe_dos_header pe_file_header pe_optional_header pe_section_header
 
 .. zeek:id:: pe_file_header
-   :source-code: base/files/pe/main.zeek 77 91
+   :source-code: base/files/pe/main.zeek 77 90
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::FileHeader`)
 
@@ -225,7 +225,7 @@ Events
    .. zeek:see:: pe_dos_header pe_dos_code pe_optional_header pe_section_header
 
 .. zeek:id:: pe_optional_header
-   :source-code: base/files/pe/main.zeek 92 120
+   :source-code: base/files/pe/main.zeek 92 119
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, h: :zeek:type:`PE::OptionalHeader`)
 

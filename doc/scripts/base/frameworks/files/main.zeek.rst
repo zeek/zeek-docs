@@ -530,7 +530,7 @@ Functions
    :returns: True if the MIME type was successfully registered.
 
 .. zeek:id:: Files::register_for_mime_types
-   :source-code: base/frameworks/files/main.zeek 460 472
+   :source-code: base/frameworks/files/main.zeek 460 471
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`, mime_types: :zeek:type:`set` [:zeek:type:`string`]) : :zeek:type:`bool`
 

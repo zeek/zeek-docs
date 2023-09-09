@@ -62,7 +62,7 @@ Functions
    Create an extremely shortened representation of a log line.
 
 .. zeek:id:: HTTP::extract_keys
-   :source-code: base/protocols/http/utils.zeek 41 54
+   :source-code: base/protocols/http/utils.zeek 41 53
 
    :Type: :zeek:type:`function` (data: :zeek:type:`string`, kv_splitter: :zeek:type:`pattern`) : :zeek:type:`string_vec`
 

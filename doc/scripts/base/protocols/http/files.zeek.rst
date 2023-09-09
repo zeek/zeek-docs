@@ -23,7 +23,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: HTTP::describe_file
-   :source-code: base/protocols/http/files.zeek 37 50
+   :source-code: base/protocols/http/files.zeek 37 49
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 

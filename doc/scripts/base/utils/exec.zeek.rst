@@ -76,7 +76,7 @@ Types
 Functions
 #########
 .. zeek:id:: Exec::run
-   :source-code: base/utils/exec.zeek 153 188
+   :source-code: base/utils/exec.zeek 153 187
 
    :Type: :zeek:type:`function` (cmd: :zeek:type:`Exec::Command`) : :zeek:type:`Exec::Result`
 

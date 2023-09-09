@@ -330,7 +330,7 @@ Types
 Events
 ######
 .. zeek:id:: Software::log_software
-   :source-code: policy/frameworks/software/vulnerable.zeek 130 147
+   :source-code: policy/frameworks/software/vulnerable.zeek 130 146
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Software::Info`)
 

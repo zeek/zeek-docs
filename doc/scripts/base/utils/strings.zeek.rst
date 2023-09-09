@@ -49,7 +49,7 @@ Functions
    characters.
 
 .. zeek:id:: string_escape
-   :source-code: base/utils/strings.zeek 20 27
+   :source-code: base/utils/strings.zeek 20 26
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, chars: :zeek:type:`string`) : :zeek:type:`string`
 

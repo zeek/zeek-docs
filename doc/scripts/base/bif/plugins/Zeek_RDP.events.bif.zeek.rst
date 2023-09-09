@@ -75,7 +75,7 @@ Events
    :param data: The data contained in the client core data structure.
 
 .. zeek:id:: rdp_client_network_data
-   :source-code: base/protocols/rdp/main.zeek 214 228
+   :source-code: base/protocols/rdp/main.zeek 214 227
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, channels: :zeek:type:`RDP::ClientChannelList`)
 

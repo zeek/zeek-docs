@@ -22,7 +22,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: extract_email_addrs_set
-   :source-code: base/utils/email.zeek 24 34
+   :source-code: base/utils/email.zeek 24 33
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`set` [:zeek:type:`string`]
 
@@ -36,7 +36,7 @@ Functions
             if no email addresses are discovered.
 
 .. zeek:id:: extract_email_addrs_vec
-   :source-code: base/utils/email.zeek 7 17
+   :source-code: base/utils/email.zeek 7 16
 
    :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`string_vec`
 
@@ -63,7 +63,7 @@ Functions
    :returns: An email address or empty string if none found.
 
 .. zeek:id:: split_mime_email_addresses
-   :source-code: base/utils/email.zeek 58 68
+   :source-code: base/utils/email.zeek 58 67
 
    :Type: :zeek:type:`function` (line: :zeek:type:`string`) : :zeek:type:`set` [:zeek:type:`string`]
 

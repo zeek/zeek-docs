@@ -104,7 +104,7 @@ Types
 Functions
 #########
 .. zeek:id:: Log::scp_postprocessor
-   :source-code: base/frameworks/logging/postprocessors/scp.zeek 56 73
+   :source-code: base/frameworks/logging/postprocessors/scp.zeek 56 72
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
 

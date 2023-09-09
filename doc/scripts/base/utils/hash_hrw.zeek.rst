@@ -78,7 +78,7 @@ Functions
    :returns: F is the site is already in the pool, else T.
 
 .. zeek:id:: HashHRW::get_site
-   :source-code: base/utils/hash_hrw.zeek 58 77
+   :source-code: base/utils/hash_hrw.zeek 58 76
 
    :Type: :zeek:type:`function` (pool: :zeek:type:`HashHRW::Pool`, key: :zeek:type:`any`) : :zeek:type:`HashHRW::Site`
 

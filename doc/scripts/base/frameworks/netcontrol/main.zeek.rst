@@ -407,7 +407,7 @@ Functions
             only later.
 
 .. zeek:id:: NetControl::clear
-   :source-code: base/frameworks/netcontrol/main.zeek 1059 1064
+   :source-code: base/frameworks/netcontrol/main.zeek 1059 1063
 
    :Type: :zeek:type:`function` () : :zeek:type:`void`
 
@@ -451,7 +451,7 @@ Functions
    :returns: vector of all rules affecting the IP address.
 
 .. zeek:id:: NetControl::find_rules_subnet
-   :source-code: base/frameworks/netcontrol/main.zeek 727 748
+   :source-code: base/frameworks/netcontrol/main.zeek 727 747
 
    :Type: :zeek:type:`function` (sn: :zeek:type:`subnet`) : :zeek:type:`vector` of :zeek:type:`NetControl::Rule`
 
