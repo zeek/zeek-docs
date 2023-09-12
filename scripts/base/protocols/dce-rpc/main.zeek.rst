@@ -145,7 +145,7 @@ Types
 Hooks
 #####
 .. zeek:id:: DCE_RPC::finalize_dce_rpc
-   :source-code: base/protocols/dce-rpc/main.zeek 220 253
+   :source-code: base/protocols/dce-rpc/main.zeek 237 270
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

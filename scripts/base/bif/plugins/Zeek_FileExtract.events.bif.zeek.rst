@@ -23,7 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: file_extraction_limit
-   :source-code: base/files/extract/main.zeek 72 76
+   :source-code: base/files/extract/main.zeek 89 93
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, args: :zeek:type:`Files::AnalyzerArgs`, limit: :zeek:type:`count`, len: :zeek:type:`count`)
 

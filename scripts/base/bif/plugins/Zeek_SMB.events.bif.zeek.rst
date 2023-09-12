@@ -11,16 +11,34 @@ Summary
 ~~~~~~~
 Events
 ######
-========================================================= ===================================================================
-:zeek:id:`smb_pipe_connect_heuristic`: :zeek:type:`event` Generated for :abbr:`SMB (Server Message Block)` connections when a
-                                                          named pipe has been detected heuristically.
-========================================================= ===================================================================
+============================================================== ==========================================================================
+:zeek:id:`smb_discarded_dce_rpc_analyzers`: :zeek:type:`event` Generated for :abbr:`SMB (Server Message Block)` when the number of
+                                                               :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+                                                               analyzers exceeds :zeek:see:`SMB::max_dce_rpc_analyzers`.
+:zeek:id:`smb_pipe_connect_heuristic`: :zeek:type:`event`      Generated for :abbr:`SMB (Server Message Block)` connections when a
+                                                               named pipe has been detected heuristically.
+============================================================== ==========================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Events
 ######
+.. zeek:id:: smb_discarded_dce_rpc_analyzers
+   :source-code: base/protocols/dce-rpc/main.zeek 220 227
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated for :abbr:`SMB (Server Message Block)` when the number of
+   :abbr:`DCE-RPC (Distributed Computing Environment/Remote Procedure Calls)`
+   analyzers exceeds :zeek:see:`SMB::max_dce_rpc_analyzers`.
+   Occurrence of this event may indicate traffic loss, traffic load-balancing
+   issues or abnormal SMB protocol usage.
+   
+
+   :c: The connection.
+   
+
 .. zeek:id:: smb_pipe_connect_heuristic
    :source-code: base/protocols/smb/main.zeek 233 237
 

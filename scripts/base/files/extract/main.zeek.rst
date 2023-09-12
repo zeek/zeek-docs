@@ -12,10 +12,12 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-============================================================================= ================================================================
-:zeek:id:`FileExtract::default_limit`: :zeek:type:`count` :zeek:attr:`&redef` The default max size for extracted files (they won't exceed this
-                                                                              number of bytes).
-============================================================================= ================================================================
+============================================================================================= ================================================================
+:zeek:id:`FileExtract::default_limit`: :zeek:type:`count` :zeek:attr:`&redef`                 The default max size for extracted files (they won't exceed this
+                                                                                              number of bytes).
+:zeek:id:`FileExtract::default_limit_includes_missing`: :zeek:type:`bool` :zeek:attr:`&redef` This setting configures if the file extract limit is inclusive
+                                                                                              of missing bytes.
+============================================================================================= ================================================================
 
 Redefinable Options
 ###################
@@ -25,7 +27,7 @@ Redefinable Options
 
 Redefinitions
 #############
-========================================================================= =========================================================================================================================
+========================================================================= ==========================================================================================================================================================
 :zeek:type:`Files::AnalyzerArgs`: :zeek:type:`record` :zeek:attr:`&redef` 
                                                                           
                                                                           :New Fields: :zeek:type:`Files::AnalyzerArgs`
@@ -35,6 +37,9 @@ Redefinitions
                                                                           
                                                                             extract_limit: :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit` :zeek:attr:`&optional`
                                                                               The maximum allowed file size in bytes of *extract_filename*.
+                                                                          
+                                                                            extract_limit_includes_missing: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit_includes_missing` :zeek:attr:`&optional`
+                                                                              By default, missing bytes in files count towards the extract file size.
 :zeek:type:`Files::Info`: :zeek:type:`record` :zeek:attr:`&redef`         
                                                                           
                                                                           :New Fields: :zeek:type:`Files::Info`
@@ -48,7 +53,7 @@ Redefinitions
                                                                           
                                                                             extracted_size: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
                                                                               The number of bytes extracted to disk.
-========================================================================= =========================================================================================================================
+========================================================================= ==========================================================================================================================================================
 
 Functions
 #########
@@ -77,6 +82,21 @@ Runtime Options
    The default max size for extracted files (they won't exceed this
    number of bytes). A value of zero means unlimited.
 
+.. zeek:id:: FileExtract::default_limit_includes_missing
+   :source-code: base/files/extract/main.zeek 21 21
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   This setting configures if the file extract limit is inclusive
+   of missing bytes. By default, missing bytes do count towards the
+   limit.
+   Setting this option to false changes this behavior so that missing
+   bytes no longer count towards these limits. Files with
+   missing bytes are created as sparse files on disk. Their apparent size
+   can exceed this file size limit.
+
 Redefinable Options
 ###################
 .. zeek:id:: FileExtract::prefix
@@ -91,7 +111,7 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: FileExtract::set_limit
-   :source-code: base/files/extract/main.zeek 55 58
+   :source-code: base/files/extract/main.zeek 72 75
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, args: :zeek:type:`Files::AnalyzerArgs`, n: :zeek:type:`count`) : :zeek:type:`bool`
 

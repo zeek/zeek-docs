@@ -79,7 +79,7 @@ Events
 ++++++
 
 .. zeek:id:: file_extraction_limit
-   :source-code: base/files/extract/main.zeek 72 76
+   :source-code: base/files/extract/main.zeek 89 93
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, args: :zeek:type:`Files::AnalyzerArgs`, limit: :zeek:type:`count`, len: :zeek:type:`count`)
 
@@ -266,7 +266,7 @@ Types
 +++++
 
 .. zeek:type:: Unified2::IDSEvent
-   :source-code: base/init-bare.zeek 4262 4284
+   :source-code: base/init-bare.zeek 4278 4300
 
    :Type: :zeek:type:`record`
 
@@ -311,7 +311,7 @@ Types
 
 
 .. zeek:type:: Unified2::Packet
-   :source-code: base/init-bare.zeek 4286 4293
+   :source-code: base/init-bare.zeek 4302 4309
 
    :Type: :zeek:type:`record`
 
@@ -378,7 +378,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 4332 4346
+   :source-code: base/init-bare.zeek 4348 4362
 
    :Type: :zeek:type:`record`
 
@@ -423,7 +423,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 4348 4354
+   :source-code: base/init-bare.zeek 4364 4370
 
    :Type: :zeek:type:`record`
 
@@ -444,7 +444,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 4356 4359
+   :source-code: base/init-bare.zeek 4372 4375
 
    :Type: :zeek:type:`record`
 
@@ -457,7 +457,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 4361 4367
+   :source-code: base/init-bare.zeek 4377 4383
 
    :Type: :zeek:type:`record`
 
@@ -478,7 +478,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 4370 4377
+   :source-code: base/init-bare.zeek 4386 4393
 
    :Type: :zeek:type:`record`
 
