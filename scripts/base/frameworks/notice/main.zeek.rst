@@ -472,6 +472,10 @@ Types
          Indicate if the $src IP address was dropped and denied
          network access.
 
+      community_id: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+         (present if :doc:`/scripts/policy/frameworks/notice/community-id.zeek` is loaded)
+
+
    The record type that is used for representing and logging notices.
 
 .. zeek:type:: Notice::Type

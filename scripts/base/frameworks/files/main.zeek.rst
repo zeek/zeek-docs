@@ -176,6 +176,17 @@ Types
          raised and the analyzer will be removed unless
          :zeek:see:`FileExtract::set_limit` is called to increase the
          limit.  A value of zero means "no limit".
+
+      extract_limit_includes_missing: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit_includes_missing` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+
+         By default, missing bytes in files count towards the extract file size.
+         Missing bytes can, e.g., occur due to missed traffic, or offsets
+         used when downloading files.
+         Setting this option to false changes this behavior so that holes
+         in files do no longer count towards these limits. Files with
+         holes are created as sparse files on disk. Their apparent size
+         can exceed this file size limit.
    :Attributes: :zeek:attr:`&redef`
 
    A structure which parameterizes a type of file analysis.
@@ -370,7 +381,7 @@ Functions
 .. zeek:id:: Files::add_analyzer
    :source-code: base/frameworks/files/main.zeek 415 431
 
-   :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, tag: :zeek:type:`Files::Tag`, args: :zeek:type:`Files::AnalyzerArgs` :zeek:attr:`&default` = *[chunk_event=<uninitialized>, stream_event=<uninitialized>, extract_filename=<uninitialized>, extract_limit=104857600]* :zeek:attr:`&optional`) : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, tag: :zeek:type:`Files::Tag`, args: :zeek:type:`Files::AnalyzerArgs` :zeek:attr:`&default` = *[chunk_event=<uninitialized>, stream_event=<uninitialized>, extract_filename=<uninitialized>, extract_limit=104857600, extract_limit_includes_missing=T]* :zeek:attr:`&optional`) : :zeek:type:`bool`
 
    Adds an analyzer to the analysis of a given file.
    
@@ -601,7 +612,7 @@ Functions
 .. zeek:id:: Files::remove_analyzer
    :source-code: base/frameworks/files/main.zeek 438 441
 
-   :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, tag: :zeek:type:`Files::Tag`, args: :zeek:type:`Files::AnalyzerArgs` :zeek:attr:`&default` = *[chunk_event=<uninitialized>, stream_event=<uninitialized>, extract_filename=<uninitialized>, extract_limit=104857600]* :zeek:attr:`&optional`) : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, tag: :zeek:type:`Files::Tag`, args: :zeek:type:`Files::AnalyzerArgs` :zeek:attr:`&default` = *[chunk_event=<uninitialized>, stream_event=<uninitialized>, extract_filename=<uninitialized>, extract_limit=104857600, extract_limit_includes_missing=T]* :zeek:attr:`&optional`) : :zeek:type:`bool`
 
    Removes an analyzer from the analysis of a given file.
    
