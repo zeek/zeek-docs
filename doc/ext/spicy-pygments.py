@@ -1,0 +1,1 @@
+../../auxil/spicy/doc/scripts/spicy-pygments.py
