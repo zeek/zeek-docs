@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.abspath('ext'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions += ['zeek', 'sphinx.ext.todo', 'zeek_pygments', 'literal-emph']
+extensions += ['zeek', 'sphinx.ext.todo', 'zeek_pygments', 'spicy-pygments', 'literal-emph']
 extensions += ['sphinx.ext.extlinks']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -285,5 +285,6 @@ todo_include_todos=True
 extlinks = {
     'slacklink': ('https://zeek.org/slack/%s', None),
     'discourselink': ('https://community.zeek.org/%s', None),
+    'spicylink': ('https://docs.zeek.org/projects/spicy/en/latest/%s', None),
 }
 extlinks_detect_hardcoded_links = True
