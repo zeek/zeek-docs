@@ -563,6 +563,11 @@ Types
 
          Indicates packets were dropped by the packet filter.
 
+      .. zeek:enum:: Spicy::Spicy_Max_File_Depth_Exceeded Notice::Type
+
+         (present if :doc:`/scripts/base/frameworks/spicy/main.zeek` is loaded)
+
+
       .. zeek:enum:: ProtocolDetector::Protocol_Found Notice::Type
 
          (present if :doc:`/scripts/policy/frameworks/dpd/detect-protocols.zeek` is loaded)

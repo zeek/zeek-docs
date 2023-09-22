@@ -143,6 +143,9 @@ Package: base/bif
 
    Functions to probabilistically determine top-k elements.
 
+:doc:`/scripts/base/bif/spicy.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/__load__.zeek`
 
 
@@ -177,9 +180,6 @@ Package: base/bif
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_File.events.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_Finger.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_FTP.events.bif.zeek`
@@ -405,9 +405,6 @@ Package: base/bif
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_SSL.consts.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_Syslog.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_TCP.events.bif.zeek`
