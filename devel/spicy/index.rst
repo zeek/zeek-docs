@@ -41,6 +41,7 @@ finger;``.
    getting-started
    tutorial
    reference
+   faq
 
 .. note::
 
