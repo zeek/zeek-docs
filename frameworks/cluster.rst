@@ -245,14 +245,12 @@ generally follows certain conventions in choosing these topics to help avoid
 conflicts and generally make them easier to remember.
 
 To communicate between workers, proxies and manager one needs to know the topic
-name to which all workers, proxies and manager are subscribed.  Two main topics
-that are important to be familiar with for cluster communication are:
+name to which all workers, proxies and manager are subscribed to. These are:
 
   1. :zeek:see:`Cluster::worker_topic`  - to which all workers are subscribed
-  2. :zeek:see:`Cluster::manager_topic` - to which manager is subscribed
+  2. :zeek:see:`Cluster::proxy_topic` - to which all proxies are subscribed
+  3. :zeek:see:`Cluster::manager_topic` - to which manager is subscribed
 
-In addition to these, :zeek:see:`Cluster::proxy_pool` (comprises all the
-proxies) is a useful set.
 
 The following table illustrates all the topics and communication events for
 clusterization, along with potential use cases:
@@ -274,9 +272,10 @@ clusterization, along with potential use cases:
     - * Find characteristics of a “scan” eg. SYN-only pkts
       * Send data to manager for aggregation
 
-  * - Workers to proxy
-    - :zeek:see:`Cluster::proxy_pool`
-    - * Aggregation (eg. DNS query types)
+  * - Worker or manager to proxy
+    - :zeek:see:`Cluster::proxy_topic`
+    - * Run operation on all proxies
+      * Disseminate notice suppression
 
   * - Worker to manager to worker
     - :zeek:see:`Cluster::manager_topic` + :zeek:see:`Cluster::worker_topic`
@@ -290,6 +289,32 @@ clusterization, along with potential use cases:
       * Distribute data to workers
       * Workers to report counts of connections to manager
       * Aggregate the counts on manager
+
+Cluster Pools
+-------------
+
+In addition to topics, Zeek nodes can join a :zeek:see:`Cluster::Pool`.
+Using :zeek:see:`Cluster::publish_hrw` and :zeek:see:`Cluster::publish_rr`,
+pools allow to publish events to individual proxies without prior knowledge
+of a cluster's shape and size.
+
+A popular pool is the :zeek:see:`Cluster::proxy_pool`. It comprises all
+the proxies of a cluster. Examples of its use are listed in the following table.
+
+
+.. list-table::
+  :header-rows: 1
+
+  * - Event
+    - Pool
+    - Use cases
+
+  * - Workers to individual proxy processes
+    - :zeek:see:`Cluster::proxy_pool`
+    - * Aggregation based on Highest Random Weight (eg. DNS query types, see the :ref:`section below <cluster-framework-proxies-uniform>` for details.)
+      * Aggregation of Software versions for a given host
+      * Offloading tasks in round-robin fashion across proxies
+
 
 Publishing Events Across the Cluster
 ------------------------------------
@@ -343,6 +368,9 @@ An example sending an event from worker to manager:
 
 More details and code snippets and documentation on Broker communication
 frameworks are available at :ref:`broker-framework`.
+
+
+.. _cluster-framework-proxies-uniform:
 
 Distributing Events Uniformly Across Proxies
 --------------------------------------------
@@ -583,9 +611,3 @@ specific connection has gone to, it will end up on a one specific proxy only.
                      $identifier=cat(p$resp), $suppress_for=1 hrs]);
           }
       }
-
-Conclusion
-==========
-
-We hope that this guide will help you take advantage of Zeek’s cluster
-capabilities in your deployment.
