@@ -283,7 +283,7 @@ man_pages = [
 todo_include_todos=True
 
 extlinks = {
-    'slacklink': ('https://zeek.org/slack/%s', None),
+    'slacklink': ('https://zeek.org/slack%s', None),
     'discourselink': ('https://community.zeek.org/%s', None),
     'spicylink': ('https://docs.zeek.org/projects/spicy/en/latest/%s', None),
 }
