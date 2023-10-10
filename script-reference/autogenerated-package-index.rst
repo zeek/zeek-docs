@@ -288,6 +288,9 @@
 
    Support for Kerberos protocol analysis.
 
+:doc:`base/protocols/ldap </scripts/base/protocols/ldap/index>`
+
+
 :doc:`base/protocols/modbus </scripts/base/protocols/modbus/index>`
 
    Support for Modbus protocol analysis.

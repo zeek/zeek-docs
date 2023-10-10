@@ -119,6 +119,10 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_FINGER Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_LDAP_TCP Analyzer::Tag
+
+      .. zeek:enum:: Analyzer::ANALYZER_LDAP_UDP Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_SYSLOG Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_SSH Analyzer::Tag
@@ -324,6 +328,10 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SOCKS AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_FINGER AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_TCP AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_UDP AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SYSLOG AllAnalyzers::Tag
 
@@ -14213,6 +14221,9 @@ Zeek::Spicy
 -----------
 
 Support for Spicy parsers (.hlto)
+
+Types
++++++
 
 .. _plugin-zeek-ssh:
 
