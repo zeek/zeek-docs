@@ -419,6 +419,9 @@
    base/protocols/ntp/main.zeek </scripts/base/protocols/ntp/main.zeek>
    base/protocols/ntp/consts.zeek </scripts/base/protocols/ntp/consts.zeek>
    base/protocols/pop3/__load__.zeek </scripts/base/protocols/pop3/__load__.zeek>
+   base/protocols/quic/__load__.zeek </scripts/base/protocols/quic/__load__.zeek>
+   base/protocols/quic/consts.zeek </scripts/base/protocols/quic/consts.zeek>
+   base/protocols/quic/main.zeek </scripts/base/protocols/quic/main.zeek>
    base/protocols/radius/__load__.zeek </scripts/base/protocols/radius/__load__.zeek>
    base/protocols/radius/main.zeek </scripts/base/protocols/radius/main.zeek>
    base/protocols/radius/consts.zeek </scripts/base/protocols/radius/consts.zeek>

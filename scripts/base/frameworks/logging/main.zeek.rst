@@ -766,6 +766,11 @@ Types
          (present if :doc:`/scripts/base/protocols/ntp/main.zeek` is loaded)
 
 
+      .. zeek:enum:: QUIC::LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/quic/main.zeek` is loaded)
+
+
       .. zeek:enum:: RADIUS::LOG Log::ID
 
          (present if :doc:`/scripts/base/protocols/radius/main.zeek` is loaded)
