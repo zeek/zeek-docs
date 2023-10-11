@@ -1732,6 +1732,12 @@ Redefinable Options
 
          KRB::tcp_ports, KRB::udp_ports
 
+   :Redefinition: from :doc:`/scripts/base/protocols/ldap/main.zeek`
+
+      ``+=``::
+
+         LDAP::ports_tcp, LDAP::ports_udp
+
    :Redefinition: from :doc:`/scripts/base/protocols/modbus/main.zeek`
 
       ``+=``::
@@ -8079,6 +8085,10 @@ Types
 
       krb: :zeek:type:`KRB::Info` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/krb/main.zeek` is loaded)
+
+
+      ldap: :zeek:type:`LDAP::State` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/ldap/main.zeek` is loaded)
 
 
       modbus: :zeek:type:`Modbus::Info` :zeek:attr:`&optional`
