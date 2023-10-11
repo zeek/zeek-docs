@@ -314,6 +314,9 @@
 
    Support for POP3 (Post Office Protocol) protocol analysis.
 
+:doc:`base/protocols/quic </scripts/base/protocols/quic/index>`
+
+
 :doc:`base/protocols/radius </scripts/base/protocols/radius/index>`
 
    Support for RADIUS protocol analysis.

@@ -123,6 +123,8 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_LDAP_UDP Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_QUIC Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_SYSLOG Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_SSH Analyzer::Tag
@@ -332,6 +334,8 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_TCP AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_UDP AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_QUIC AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SYSLOG AllAnalyzers::Tag
 
@@ -899,7 +903,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5348 5348
+   :source-code: base/init-bare.zeek 5353 5353
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -910,7 +914,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5353 5353
+   :source-code: base/init-bare.zeek 5358 5358
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -7530,7 +7534,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5538 5568
+   :source-code: base/init-bare.zeek 5543 5573
 
    :Type: :zeek:type:`record`
 
@@ -7572,7 +7576,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5570 5579
+   :source-code: base/init-bare.zeek 5575 5584
 
    :Type: :zeek:type:`record`
 
@@ -7587,7 +7591,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5581 5603
+   :source-code: base/init-bare.zeek 5586 5608
 
    :Type: :zeek:type:`record`
 
@@ -7986,7 +7990,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5359 5359
+   :source-code: base/init-bare.zeek 5364 5364
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8648,7 +8652,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5367 5420
+   :source-code: base/init-bare.zeek 5372 5425
 
    :Type: :zeek:type:`record`
 
@@ -8723,7 +8727,7 @@ Types
    for standard synchronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5425 5459
+   :source-code: base/init-bare.zeek 5430 5464
 
    :Type: :zeek:type:`record`
 
@@ -8774,7 +8778,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5468 5501
+   :source-code: base/init-bare.zeek 5473 5506
 
    :Type: :zeek:type:`record`
 
@@ -8825,7 +8829,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5506 5533
+   :source-code: base/init-bare.zeek 5511 5538
 
    :Type: :zeek:type:`record`
 
@@ -14570,6 +14574,24 @@ Zeek::Spicy
 -----------
 
 Support for Spicy parsers (.hlto)
+
+Types
++++++
+
+.. zeek:type:: QUIC::LongPacketType
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: QUIC::LongPacketType_INITIAL QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_ZERO_RTT QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_HANDSHAKE QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_RETRY QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_Undef QUIC::LongPacketType
+
 
 .. _plugin-zeek-ssh:
 
