@@ -721,6 +721,16 @@ Types
          (present if :doc:`/scripts/base/protocols/krb/main.zeek` is loaded)
 
 
+      .. zeek:enum:: LDAP::LDAP_LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/ldap/main.zeek` is loaded)
+
+
+      .. zeek:enum:: LDAP::LDAP_SEARCH_LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/ldap/main.zeek` is loaded)
+
+
       .. zeek:enum:: Modbus::LOG Log::ID
 
          (present if :doc:`/scripts/base/protocols/modbus/main.zeek` is loaded)

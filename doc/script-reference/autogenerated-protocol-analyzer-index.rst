@@ -119,6 +119,10 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_FINGER Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_LDAP_TCP Analyzer::Tag
+
+      .. zeek:enum:: Analyzer::ANALYZER_LDAP_UDP Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_SYSLOG Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_SSH Analyzer::Tag
@@ -324,6 +328,10 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SOCKS AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_FINGER AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_TCP AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_UDP AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SYSLOG AllAnalyzers::Tag
 
@@ -5675,6 +5683,355 @@ Events
    
    .. zeek:see:: krb_as_request krb_as_response krb_tgs_request krb_tgs_response
       krb_ap_request krb_ap_response krb_priv krb_safe krb_cred
+
+.. _plugin-zeek-ldap:
+
+Zeek::LDAP
+----------
+
+LDAP analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`Analyzer::ANALYZER_LDAP_TCP`
+
+:zeek:enum:`Analyzer::ANALYZER_LDAP_UDP`
+
+Types
++++++
+
+.. zeek:type:: LDAP::ProtocolOpcode
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_BIND_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_BIND_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_UNBIND_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_SEARCH_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_SEARCH_RESULT_ENTRY LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_SEARCH_RESULT_DONE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_MODIFY_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_MODIFY_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_ADD_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_ADD_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_DEL_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_DEL_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_MOD_DN_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_MOD_DN_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_COMPARE_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_COMPARE_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_ABANDON_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_SEARCH_RESULT_REFERENCE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_EXTENDED_REQUEST LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_EXTENDED_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_INTERMEDIATE_RESPONSE LDAP::ProtocolOpcode
+
+      .. zeek:enum:: LDAP::ProtocolOpcode_Undef LDAP::ProtocolOpcode
+
+
+.. zeek:type:: LDAP::ResultCode
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: LDAP::ResultCode_SUCCESS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_OPERATIONS_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_PROTOCOL_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_TIME_LIMIT_EXCEEDED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_SIZE_LIMIT_EXCEEDED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_COMPARE_FALSE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_COMPARE_TRUE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_AUTH_METHOD_NOT_SUPPORTED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_STRONGER_AUTH_REQUIRED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_PARTIAL_RESULTS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_REFERRAL LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_ADMIN_LIMIT_EXCEEDED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_UNAVAILABLE_CRITICAL_EXTENSION LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CONFIDENTIALITY_REQUIRED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_SASL_BIND_IN_PROGRESS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NO_SUCH_ATTRIBUTE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_UNDEFINED_ATTRIBUTE_TYPE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INAPPROPRIATE_MATCHING LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CONSTRAINT_VIOLATION LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_ATTRIBUTE_OR_VALUE_EXISTS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INVALID_ATTRIBUTE_SYNTAX LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NO_SUCH_OBJECT LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_ALIAS_PROBLEM LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INVALID_DNSYNTAX LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_ALIAS_DEREFERENCING_PROBLEM LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INAPPROPRIATE_AUTHENTICATION LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INVALID_CREDENTIALS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INSUFFICIENT_ACCESS_RIGHTS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_BUSY LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_UNAVAILABLE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_UNWILLING_TO_PERFORM LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_LOOP_DETECT LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_SORT_CONTROL_MISSING LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_OFFSET_RANGE_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NAMING_VIOLATION LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_OBJECT_CLASS_VIOLATION LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NOT_ALLOWED_ON_NON_LEAF LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NOT_ALLOWED_ON_RDN LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_ENTRY_ALREADY_EXISTS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_OBJECT_CLASS_MODS_PROHIBITED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_RESULTS_TOO_LARGE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_AFFECTS_MULTIPLE_DSAS LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CONTROL_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_OTHER LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_SERVER_DOWN LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_LOCAL_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_ENCODING_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_DECODING_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_TIMEOUT LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_AUTH_UNKNOWN LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_FILTER_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_USER_CANCELED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_PARAM_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NO_MEMORY LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CONNECT_ERROR LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NOT_SUPPORTED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CONTROL_NOT_FOUND LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NO_RESULTS_RETURNED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_MORE_RESULTS_TO_RETURN LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CLIENT_LOOP LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_REFERRAL_LIMIT_EXCEEDED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INVALID_RESPONSE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_AMBIGUOUS_RESPONSE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_TLS_NOT_SUPPORTED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_INTERMEDIATE_RESPONSE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_UNKNOWN_TYPE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_LCUP_INVALID_DATA LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_LCUP_UNSUPPORTED_SCHEME LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_LCUP_RELOAD_REQUIRED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CANCELED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_NO_SUCH_OPERATION LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_TOO_LATE LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_CANNOT_CANCEL LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_ASSERTION_FAILED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_AUTHORIZATION_DENIED LDAP::ResultCode
+
+      .. zeek:enum:: LDAP::ResultCode_Undef LDAP::ResultCode
+
+
+.. zeek:type:: LDAP::BindAuthType
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: LDAP::BindAuthType_BIND_AUTH_SIMPLE LDAP::BindAuthType
+
+      .. zeek:enum:: LDAP::BindAuthType_BIND_AUTH_SASL LDAP::BindAuthType
+
+      .. zeek:enum:: LDAP::BindAuthType_Undef LDAP::BindAuthType
+
+
+.. zeek:type:: LDAP::SearchScope
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: LDAP::SearchScope_SEARCH_BASE LDAP::SearchScope
+
+      .. zeek:enum:: LDAP::SearchScope_SEARCH_SINGLE LDAP::SearchScope
+
+      .. zeek:enum:: LDAP::SearchScope_SEARCH_TREE LDAP::SearchScope
+
+      .. zeek:enum:: LDAP::SearchScope_Undef LDAP::SearchScope
+
+
+.. zeek:type:: LDAP::SearchDerefAlias
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: LDAP::SearchDerefAlias_DEREF_NEVER LDAP::SearchDerefAlias
+
+      .. zeek:enum:: LDAP::SearchDerefAlias_DEREF_IN_SEARCHING LDAP::SearchDerefAlias
+
+      .. zeek:enum:: LDAP::SearchDerefAlias_DEREF_FINDING_BASE LDAP::SearchDerefAlias
+
+      .. zeek:enum:: LDAP::SearchDerefAlias_DEREF_ALWAYS LDAP::SearchDerefAlias
+
+      .. zeek:enum:: LDAP::SearchDerefAlias_Undef LDAP::SearchDerefAlias
+
+
+.. zeek:type:: ASN1::ASN1Type
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: ASN1::ASN1Type_Boolean ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_Integer ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_BitString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_OctetString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_NullVal ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_ObjectIdentifier ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_ObjectDescriptor ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_InstanceOf ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_Real ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_Enumerated ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_EmbeddedPDV ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_UTF8String ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_RelativeOID ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_Sequence ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_Set ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_NumericString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_PrintableString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_TeletextString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_VideotextString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_IA5String ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_UTCTime ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_GeneralizedTime ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_GraphicString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_VisibleString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_GeneralString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_UniversalString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_CharacterString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_BMPString ASN1::ASN1Type
+
+      .. zeek:enum:: ASN1::ASN1Type_Undef ASN1::ASN1Type
+
+
+.. zeek:type:: ASN1::ASN1Class
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: ASN1::ASN1Class_Universal ASN1::ASN1Class
+
+      .. zeek:enum:: ASN1::ASN1Class_Application ASN1::ASN1Class
+
+      .. zeek:enum:: ASN1::ASN1Class_ContextSpecific ASN1::ASN1Class
+
+      .. zeek:enum:: ASN1::ASN1Class_Private ASN1::ASN1Class
+
+      .. zeek:enum:: ASN1::ASN1Class_Undef ASN1::ASN1Class
+
+
+Events
+++++++
+
+.. zeek:id:: LDAP::message
+   :source-code: base/protocols/ldap/main.zeek 197 267
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, opcode: :zeek:type:`LDAP::ProtocolOpcode`, result: :zeek:type:`LDAP::ResultCode`, matched_dn: :zeek:type:`string`, diagnostic_message: :zeek:type:`string`, object: :zeek:type:`string`, argument: :zeek:type:`string`)
+
 
 .. _plugin-zeek-login:
 

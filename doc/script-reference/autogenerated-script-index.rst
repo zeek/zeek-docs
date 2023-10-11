@@ -401,6 +401,9 @@
    base/protocols/krb/main.zeek </scripts/base/protocols/krb/main.zeek>
    base/protocols/krb/consts.zeek </scripts/base/protocols/krb/consts.zeek>
    base/protocols/krb/files.zeek </scripts/base/protocols/krb/files.zeek>
+   base/protocols/ldap/__load__.zeek </scripts/base/protocols/ldap/__load__.zeek>
+   base/protocols/ldap/consts.zeek </scripts/base/protocols/ldap/consts.zeek>
+   base/protocols/ldap/main.zeek </scripts/base/protocols/ldap/main.zeek>
    base/protocols/modbus/__load__.zeek </scripts/base/protocols/modbus/__load__.zeek>
    base/protocols/modbus/consts.zeek </scripts/base/protocols/modbus/consts.zeek>
    base/protocols/modbus/main.zeek </scripts/base/protocols/modbus/main.zeek>
