@@ -9132,6 +9132,39 @@ Events
       been ported. To still enable this event, one needs to
       register a port for it or add a DPD payload signature.
 
+.. _plugin-zeek-quic:
+
+Zeek::QUIC
+----------
+
+QUIC analyzer
+
+Components
+++++++++++
+
+:zeek:enum:`Analyzer::ANALYZER_QUIC`
+
+Types
++++++
+
+.. zeek:type:: QUIC::LongPacketType
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: QUIC::LongPacketType_INITIAL QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_ZERO_RTT QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_HANDSHAKE QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_RETRY QUIC::LongPacketType
+
+      .. zeek:enum:: QUIC::LongPacketType_Undef QUIC::LongPacketType
+
+
+Events
+++++++
+
 .. _plugin-zeek-radius:
 
 Zeek::RADIUS
@@ -14574,24 +14607,6 @@ Zeek::Spicy
 -----------
 
 Support for Spicy parsers (.hlto)
-
-Types
-+++++
-
-.. zeek:type:: QUIC::LongPacketType
-
-   :Type: :zeek:type:`enum`
-
-      .. zeek:enum:: QUIC::LongPacketType_INITIAL QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_ZERO_RTT QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_HANDSHAKE QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_RETRY QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_Undef QUIC::LongPacketType
-
 
 .. _plugin-zeek-ssh:
 
