@@ -493,6 +493,9 @@ Here are the statements that the Zeek scripting language supports.
   * - :zeek:keyword:`add`, :zeek:keyword:`delete`
     - Add or delete elements
 
+  * - :zeek:keyword:`assert`
+    - Runtime assertion
+
   * - :zeek:keyword:`print`
     - Print to stdout or a file
 
@@ -531,6 +534,55 @@ Example:
 
     local myset: set[string];
     add myset["test"];
+
+
+.. zeek:keyword:: assert
+
+assert
+~~~~~~
+
+.. versionadded:: 6.1
+
+The ``assert`` statement can be used for runtime assertion checks or as a building
+block for a testing framework. It takes an expression ``expr`` of type
+:zeek:see:`bool` and an optional message of type :zeek:see:`string`.
+If ``expr`` at runtime evaluates to ``F``, the string representation
+of the expression and the given message, if any, are logged
+via :zeek:see:`Reporter::error` by default.
+
+Script execution for a given event handler stops with a failing ``assert`` statement
+comparable to a scripting runtime error after generating the log.
+
+Example:
+
+.. literalinclude:: assert_1.zeek
+   :language: zeek
+   :linenos:
+   :tab-width: 4
+
+This script prints the following messages to stderr, as well as logging them to
+``reporter.log``.
+
+.. code-block:: console
+
+   $ zeek assert_1.zeek
+   error in ./assert_1.zeek, line 6: assertion failure: 40 < x
+   error in ./assert_1.zeek, line 12: assertion failure: 40 < x (37 is not greater than 40)
+
+.. note::
+
+   Zeek's exit code in this example will be ``0``, indicating success.
+   Script errors other than those in a ``zeek_init()`` handler are not
+   reflected in Zeek's exit code.
+
+
+The logging behavior of failing assert statements can be customized using the
+:zeek:see:`assertion_failure` or zeek:see:`assertion_result` hook.
+Using the :zeek:see:`break` statement in either hook allows for suppression
+of the the default log generation.
+The :zeek:see:`assertion_result` hook is targeted for testing frameworks as it
+is likely prohibitively expensive for use in a live production environment due
+to being invoked for every ``assert`` statement execution.
 
 
 .. zeek:keyword:: break
