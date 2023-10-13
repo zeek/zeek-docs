@@ -246,8 +246,11 @@ redef
 
 There are several ways that ``redef`` can be used:  to redefine the initial
 value of a global variable or runtime option, to extend a record type or
-enum type, or to specify a new event handler body that replaces all those
-that were previously defined.
+enum type, to add or remove attributes of record fields, or to specify a
+new event handler body that replaces all those that were previously defined.
+
+Redefining Initial Values
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're using ``redef`` to redefine the initial value of a global variable
 (defined using either :zeek:keyword:`const` or :zeek:keyword:`global`), then
@@ -271,6 +274,9 @@ Examples:
     redef pi = 3.14;
     redef set_of_ports += { 22/tcp, 53/udp };
 
+Extending Records Types or Enums
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you're using ``redef`` to extend a record or enum, then you must
 use the ``+=`` assignment operator.
 For an enum, you can add more enumeration constants, and for a record
@@ -284,6 +290,37 @@ Examples:
 
     redef enum color += { Blue, Red };
     redef record MyRecord += { n2:int &optional; s2:string &optional; };
+
+Changing Attributes of Record Fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 5.1
+
+If you're using ``redef`` to change the attributes of a record field, you must
+use either the ``+=`` or ``-=`` assignment operator and specify the record field
+by means of the field access operator ``$`` using the record type's name.
+
+Only the ``&log`` attribute can currently be removed from or added to an
+existing record field. This enables removal of columns from logs that are
+uninteresting for a given deployment or include columns that do not yet have
+the ``&log`` attribute.
+
+.. note::
+
+   The :ref:`logging framework <framework-logging>` provides a separate
+   mechanism to exlude columns from logs by means of the ``exclude`` field
+   on :zeek:see:`Log::Filter` instances.
+
+Examples:
+
+.. code-block:: zeek
+
+    redef record Notice::Info$email_dest -= { &log }
+
+    redef record X509::Certificate$tbs_sig_alg += { &log };
+
+Replacing Event Handlers
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're using ``redef`` to specify a new event handler body that
 replaces all those that were previously defined (i.e., any subsequently
