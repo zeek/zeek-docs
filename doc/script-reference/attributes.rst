@@ -152,7 +152,42 @@ default value is ``0``.  Example:
 &log
 ----
 
-Writes a :zeek:type:`record` field to the associated log stream.
+When a :zeek:type:`record` field has the ``&log`` attribute, this field is
+included as a column in the log stream associated with the record type. This
+association happens with :zeek:see:`Log::create_stream` and commonly looks as
+follows:
+
+.. code-block:: zeek
+
+    redef enum Log::ID += { LOG };
+
+    type Info: record {
+        ts: time &log &default=network_time();
+        id: conn_id &log;
+        msg: string &log;
+        hidden: count &default=0;  # This is not logged.
+    };
+
+    event zeek_init() {
+        Log::create_stream(LOG, [$columns=Info, $path="example"]);
+    }
+
+The log stream above will have the columns ``ts``, ``id`` and ``msg``.
+
+When ``&log`` is placed at the end of a record type declaration, all fields
+listed in the declaration will have the ``&log`` attribute implicitly.
+
+.. code-block:: zeek
+
+    type conn_id: record {
+        orig_h: addr;
+        orig_p: port;
+        resp_h: addr;
+        resp_p: port;
+    } &log;
+
+Fields added to such a record types later on using :zeek:see:`redef` need to
+explicitly specify ``&log`` again, however.
 
 .. zeek:attr:: &optional
 
