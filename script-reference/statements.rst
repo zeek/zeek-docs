@@ -246,8 +246,11 @@ redef
 
 There are several ways that ``redef`` can be used:  to redefine the initial
 value of a global variable or runtime option, to extend a record type or
-enum type, or to specify a new event handler body that replaces all those
-that were previously defined.
+enum type, to add or remove attributes of record fields, or to specify a
+new event handler body that replaces all those that were previously defined.
+
+Redefining Initial Values
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're using ``redef`` to redefine the initial value of a global variable
 (defined using either :zeek:keyword:`const` or :zeek:keyword:`global`), then
@@ -271,6 +274,9 @@ Examples:
     redef pi = 3.14;
     redef set_of_ports += { 22/tcp, 53/udp };
 
+Extending Records Types or Enums
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you're using ``redef`` to extend a record or enum, then you must
 use the ``+=`` assignment operator.
 For an enum, you can add more enumeration constants, and for a record
@@ -284,6 +290,37 @@ Examples:
 
     redef enum color += { Blue, Red };
     redef record MyRecord += { n2:int &optional; s2:string &optional; };
+
+Changing Attributes of Record Fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 5.1
+
+If you're using ``redef`` to change the attributes of a record field, you must
+use either the ``+=`` or ``-=`` assignment operator and specify the record field
+by means of the field access operator ``$`` using the record type's name.
+
+Only the ``&log`` attribute can currently be removed from or added to an
+existing record field. This enables removal of columns from logs that are
+uninteresting for a given deployment or include columns that do not yet have
+the ``&log`` attribute.
+
+.. note::
+
+   The :ref:`logging framework <framework-logging>` provides a separate
+   mechanism to exlude columns from logs by means of the ``exclude`` field
+   on :zeek:see:`Log::Filter` instances.
+
+Examples:
+
+.. code-block:: zeek
+
+    redef record Notice::Info$email_dest -= { &log }
+
+    redef record X509::Certificate$tbs_sig_alg += { &log };
+
+Replacing Event Handlers
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you're using ``redef`` to specify a new event handler body that
 replaces all those that were previously defined (i.e., any subsequently
@@ -456,6 +493,9 @@ Here are the statements that the Zeek scripting language supports.
   * - :zeek:keyword:`add`, :zeek:keyword:`delete`
     - Add or delete elements
 
+  * - :zeek:keyword:`assert`
+    - Runtime assertion
+
   * - :zeek:keyword:`print`
     - Print to stdout or a file
 
@@ -494,6 +534,55 @@ Example:
 
     local myset: set[string];
     add myset["test"];
+
+
+.. zeek:keyword:: assert
+
+assert
+~~~~~~
+
+.. versionadded:: 6.1
+
+The ``assert`` statement can be used for runtime assertion checks or as a building
+block for a testing framework. It takes an expression ``expr`` of type
+:zeek:see:`bool` and an optional message of type :zeek:see:`string`.
+If ``expr`` at runtime evaluates to ``F``, the string representation
+of the expression and the given message, if any, are logged
+via :zeek:see:`Reporter::error` by default.
+
+Script execution for a given event handler stops with a failing ``assert`` statement
+comparable to a scripting runtime error after generating the log.
+
+Example:
+
+.. literalinclude:: assert_1.zeek
+   :language: zeek
+   :linenos:
+   :tab-width: 4
+
+This script prints the following messages to stderr, as well as logging them to
+``reporter.log``.
+
+.. code-block:: console
+
+   $ zeek assert_1.zeek
+   error in ./assert_1.zeek, line 6: assertion failure: 40 < x
+   error in ./assert_1.zeek, line 12: assertion failure: 40 < x (37 is not greater than 40)
+
+.. note::
+
+   Zeek's exit code in this example will be ``0``, indicating success.
+   Script errors other than those in a ``zeek_init()`` handler are not
+   reflected in Zeek's exit code.
+
+
+The logging behavior of failing assert statements can be customized using the
+:zeek:see:`assertion_failure` or zeek:see:`assertion_result` hook.
+Using the :zeek:see:`break` statement in either hook allows for suppression
+of the the default log generation.
+The :zeek:see:`assertion_result` hook is targeted for testing frameworks as it
+is likely prohibitively expensive for use in a live production environment due
+to being invoked for every ``assert`` statement execution.
 
 
 .. zeek:keyword:: break
