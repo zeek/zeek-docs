@@ -2,7 +2,7 @@ global conn_durations_hf = Telemetry::register_histogram_family([
 	$prefix="zeek",
 	$name="monitored_connection_duration",
 	$unit="seconds",
-	$helptext="Duration of monitored connections",
+	$help_text="Duration of monitored connections",
 	$bounds=vector(0.1, 1.0, 10.0, 30.0, 60.0),
 	$labels=vector("proto", "service")
 ]);
@@ -21,4 +21,3 @@ event connection_state_remove(c: connection)
 		Telemetry::histogram_observe(h, interval_to_double(c$duration));
 		}
 	}
-
