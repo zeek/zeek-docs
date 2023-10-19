@@ -2,7 +2,7 @@ global http_counter_cf = Telemetry::register_counter_family([
 	$prefix="zeek",
 	$name="monitored_http_requests",
 	$unit="1",
-	$helptext="Number of http requests observed"
+	$help_text="Number of http requests observed"
 ]);
 
 global http_counter = Telemetry::counter_with(http_counter_cf);

@@ -4,7 +4,7 @@ global tunnels_active_size_gf = Telemetry::register_gauge_family([
 	$prefix="zeek",
 	$name="monitored_tunnels_active",
 	$unit="1",
-	$helptext="Number of currently active tunnels as tracked in Tunnel::active"
+	$help_text="Number of currently active tunnels as tracked in Tunnel::active"
 ]);
 
 global tunnels_active_size_gauge = Telemetry::gauge_with(tunnels_active_size_gf);
@@ -13,7 +13,7 @@ global tunnels_active_footprint_gf = Telemetry::register_gauge_family([
 	$prefix="zeek",
 	$name="monitored_tunnels_active_footprint",
 	$unit="1",
-	$helptext="Footprint of the Tunnel::active table"
+	$help_text="Footprint of the Tunnel::active table"
 ]);
 
 global tunnels_active_footprint_gauge = Telemetry::gauge_with(tunnels_active_footprint_gf);

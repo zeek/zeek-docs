@@ -2,7 +2,7 @@ global log_writes_cf = Telemetry::register_counter_family([
 	$prefix="zeek",
 	$name="log_writes",
 	$unit="1",
-	$helptext="Number of log writes per stream",
+	$help_text="Number of log writes per stream",
 	$labels=vector("log_id")
 ]);
 
