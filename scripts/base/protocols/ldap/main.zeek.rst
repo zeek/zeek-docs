@@ -53,7 +53,6 @@ Events
 ==================================================== =
 :zeek:id:`LDAP::log_ldap`: :zeek:type:`event`        
 :zeek:id:`LDAP::log_ldap_search`: :zeek:type:`event` 
-:zeek:id:`LDAP::message`: :zeek:type:`event`         
 ==================================================== =
 
 Hooks
@@ -204,16 +203,10 @@ Events
    :Type: :zeek:type:`event` (rec: :zeek:type:`LDAP::SearchInfo`)
 
 
-.. zeek:id:: LDAP::message
-   :source-code: base/protocols/ldap/main.zeek 197 267
-
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, opcode: :zeek:type:`LDAP::ProtocolOpcode`, result: :zeek:type:`LDAP::ResultCode`, matched_dn: :zeek:type:`string`, diagnostic_message: :zeek:type:`string`, object: :zeek:type:`string`, argument: :zeek:type:`string`)
-
-
 Hooks
 #####
 .. zeek:id:: LDAP::finalize_ldap
-   :source-code: base/protocols/ldap/main.zeek 341 367
+   :source-code: base/protocols/ldap/main.zeek 331 357
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

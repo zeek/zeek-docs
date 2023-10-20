@@ -402,6 +402,7 @@
    base/protocols/krb/consts.zeek </scripts/base/protocols/krb/consts.zeek>
    base/protocols/krb/files.zeek </scripts/base/protocols/krb/files.zeek>
    base/protocols/ldap/__load__.zeek </scripts/base/protocols/ldap/__load__.zeek>
+   base/protocols/ldap/spicy-events.zeek </scripts/base/protocols/ldap/spicy-events.zeek>
    base/protocols/ldap/consts.zeek </scripts/base/protocols/ldap/consts.zeek>
    base/protocols/ldap/main.zeek </scripts/base/protocols/ldap/main.zeek>
    base/protocols/modbus/__load__.zeek </scripts/base/protocols/modbus/__load__.zeek>
@@ -420,6 +421,7 @@
    base/protocols/ntp/consts.zeek </scripts/base/protocols/ntp/consts.zeek>
    base/protocols/pop3/__load__.zeek </scripts/base/protocols/pop3/__load__.zeek>
    base/protocols/quic/__load__.zeek </scripts/base/protocols/quic/__load__.zeek>
+   base/protocols/quic/spicy-events.zeek </scripts/base/protocols/quic/spicy-events.zeek>
    base/protocols/quic/consts.zeek </scripts/base/protocols/quic/consts.zeek>
    base/protocols/quic/main.zeek </scripts/base/protocols/quic/main.zeek>
    base/protocols/radius/__load__.zeek </scripts/base/protocols/radius/__load__.zeek>
