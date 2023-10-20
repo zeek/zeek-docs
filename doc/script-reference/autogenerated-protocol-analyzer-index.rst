@@ -6032,10 +6032,113 @@ Events
 ++++++
 
 .. zeek:id:: LDAP::message
-   :source-code: base/protocols/ldap/main.zeek 197 267
+   :source-code: base/protocols/ldap/main.zeek 187 257
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, opcode: :zeek:type:`LDAP::ProtocolOpcode`, result: :zeek:type:`LDAP::ResultCode`, matched_dn: :zeek:type:`string`, diagnostic_message: :zeek:type:`string`, object: :zeek:type:`string`, argument: :zeek:type:`string`)
 
+   Event generated for each LDAPMessage (either direction).
+   
+
+   :param c: The connection.
+   
+
+   :param message_id: The messageID element.
+   
+
+   :param opcode: The protocolOp field in the message.
+   
+
+   :param result: The result code if the message contains a result.
+   
+
+   :param matched_dn: The DN if the message contains a result.
+   
+
+   :param diagnostic_message: Diagnostic message if the LDAP message contains a result.
+   
+
+   :param object: The object name this message refers to.
+   
+
+   :param argument: Additional arguments this message includes.
+
+.. zeek:id:: LDAP::bind_request
+   :source-code: base/protocols/ldap/main.zeek 314 328
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, version: :zeek:type:`int`, name: :zeek:type:`string`, auth_type: :zeek:type:`LDAP::BindAuthType`, auth_info: :zeek:type:`string`)
+
+   Event generated for each LDAPMessage containing a BindRequest.
+   
+
+   :param c: The connection.
+   
+
+   :param message_id: The messageID element.
+   
+
+   :param version: The version field in the BindRequest.
+   
+
+   :param name: The name field in the BindRequest.
+   
+
+   :param auth_type: The auth type field in the BindRequest.
+   
+
+   :param auth_info: Additional information related to the used auth type.
+
+.. zeek:id:: LDAP::search_request
+   :source-code: base/protocols/ldap/main.zeek 270 296
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, base_object: :zeek:type:`string`, scope: :zeek:type:`LDAP::SearchScope`, deref: :zeek:type:`LDAP::SearchDerefAlias`, size_limit: :zeek:type:`int`, time_limit: :zeek:type:`int`, types_only: :zeek:type:`bool`, filter: :zeek:type:`string`, attributes: :zeek:type:`vector` of :zeek:type:`string`)
+
+   Event generated for each LDAPMessage containing a SearchRequest.
+   
+
+   :param c: The connection.
+   
+
+   :param message_id: The messageID element.
+   
+
+   :param base_object: The baseObject field in the SearchRequest.
+   
+
+   :param scope: The scope field in the SearchRequest.
+   
+
+   :param deref_alias: The derefAlias field in the SearchRequest
+   
+
+   :param size_limit: The sizeLimit field in the SearchRequest.
+   
+
+   :param time_limit: The timeLimit field in the SearchRequest.
+   
+
+   :param types_only: The typesOnly field in the SearchRequest.
+   
+
+   :param filter: The string representation of the filter field in the SearchRequest.
+   
+
+   :param attributes: Additional attributes of the SearchRequest.
+
+.. zeek:id:: LDAP::search_result
+   :source-code: base/protocols/ldap/main.zeek 301 306
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, object_name: :zeek:type:`string`)
+
+   Event generated for each SearchResultEntry in LDAP messages.
+   
+
+   :param c: The connection.
+   
+
+   :param message_id: The messageID element.
+   
+
+   :param object_name: The object name in the SearchResultEntry.
 
 .. _plugin-zeek-login:
 
@@ -9164,6 +9267,131 @@ Types
 
 Events
 ++++++
+
+.. zeek:id:: QUIC::initial_packet
+   :source-code: base/protocols/quic/main.zeek 123 127
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
+
+   Generated for a QUIC Initial packet.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if the packet is from the the connection's originator.
+   
+
+   :param version: The Version field.
+   
+
+   :param dcid: The Destination Connection ID field.
+   
+
+   :param scid: The Source Connection ID field.
+   
+
+.. zeek:id:: QUIC::retry_packet
+   :source-code: base/protocols/quic/main.zeek 142 152
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`, retry_token: :zeek:type:`string`, retry_integrity_tag: :zeek:type:`string`)
+
+   Generated for a QUIC Retry packet.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if the packet is from the the connection's originator.
+   
+
+   :param version: The Version field.
+   
+
+   :param dcid: The Destination Connection ID field.
+   
+
+   :param scid: The Source Connection ID field.
+   
+
+   :param retry_token: The Retry Token field.
+   
+
+   :param integrity_tag: The Retry Integrity Tag field.
+
+.. zeek:id:: QUIC::handshake_packet
+   :source-code: base/protocols/quic/main.zeek 129 133
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
+
+   Generated for a QUIC Handshake packet.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if the packet is from the the connection's originator.
+   
+
+   :param version: The Version field.
+   
+
+   :param dcid: The Destination Connection ID field.
+   
+
+   :param scid: The Source Connection ID field.
+
+.. zeek:id:: QUIC::zero_rtt_packet
+   :source-code: base/protocols/quic/main.zeek 135 139
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
+
+   Generated for a QUIC 0-RTT packet.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if the packet is from the the connection's originator.
+   
+
+   :param version: The Version field.
+   
+
+   :param dcid: The Destination Connection ID field.
+   
+
+   :param scid: The Source Connection ID field.
+
+.. zeek:id:: QUIC::connection_close_frame
+   :source-code: base/protocols/quic/main.zeek 156 166
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`, error_code: :zeek:type:`count`, reason_phrase: :zeek:type:`string`)
+
+   Generated for a QUIC CONNECTION_CLOSE frame.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if the packet is from the the connection's originator.
+   
+
+   :param version: The Version field.
+   
+
+   :param dcid: The Destination Connection ID field.
+   
+
+   :param scid: The Source Connection ID field.
+   
+
+   :param error_code: Count indicating the reason for closing this connection.
+   
+
+   :param reason_phrase: Additional diagnostic information for the closure.
+   
+   .. note:: Packets with CONNECTION_CLOSE frames are usually encrypted after connection establishment and not visible to Zeek.
 
 .. _plugin-zeek-radius:
 
