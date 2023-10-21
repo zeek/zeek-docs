@@ -11,6 +11,12 @@ Initial idea for a quic.log.
 
 Summary
 ~~~~~~~
+Runtime Options
+###############
+=========================================================================== ========================================
+:zeek:id:`QUIC::max_history_length`: :zeek:type:`count` :zeek:attr:`&redef` The maximum length of the history field.
+=========================================================================== ========================================
+
 Types
 #####
 ============================================ =
@@ -46,6 +52,17 @@ Hooks
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Runtime Options
+###############
+.. zeek:id:: QUIC::max_history_length
+   :source-code: base/protocols/quic/main.zeek 74 74
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``100``
+
+   The maximum length of the history field.
+
 Types
 #####
 .. zeek:type:: QUIC::Info
@@ -117,7 +134,7 @@ Events
 Hooks
 #####
 .. zeek:id:: QUIC::finalize_quic
-   :source-code: base/protocols/quic/main.zeek 203 209
+   :source-code: base/protocols/quic/main.zeek 209 215
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
