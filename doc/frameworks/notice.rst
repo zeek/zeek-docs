@@ -40,7 +40,7 @@ Notices <raising-notices>` section.
 Once a notice is raised, it can have any number of actions applied to it by
 writing :zeek:see:`Notice::policy` hooks which are described in the
 :ref:`Notice Policy <notice-policy>` section below. Such actions can for
-example  to send a mail to the configured address(es) or to simply ignore the
+example send email to configured address(es), or simply ignore the
 notice. Currently, the following actions are defined:
 
 .. list-table::
@@ -210,7 +210,7 @@ script which raises the notice looks like this:
   NOTICE([$note=Password_Guessing,
           $msg=fmt("%s appears to be guessing SSH passwords (seen in %d connections).", key$host, r$num),
           $src=key$host,
-        $identifier=cat(key$host)]);
+          $identifier=cat(key$host)]);
 
 :zeek:see:`NOTICE` is a normal function in the global namespace which wraps a
 function within the Notice namespace. It takes a single argument of the
@@ -373,13 +373,10 @@ separate e-mails:
     );
     }
 
-If there is extra information that you would like to add to emails, that is
-possible to add by writing :zeek:see:`Notice::policy` hooks.
-
-There is a field in the :zeek:see:`Notice::Info` record named
-`$email_body_sections` which will be included verbatim when email is being
-sent. An example of including some information from an HTTP request is included
-below.
+You can also use :zeek:see:`Notice::policy` hooks to add extra information to
+emails. The :zeek:see:`Notice::Info` record contains a vector of strings named
+`$email_body_sections` which Zeek will include verbatim when sending email.
+An example of including some information from an HTTP request is included below.
 
 .. code-block:: zeek
 
@@ -400,17 +397,17 @@ to run the notice actions must be available to the respective node(s).
 
 The role of the manager is to receive and distribute notice suppression
 information, so that duplicate notices do not get generated. Bear in mind that
-there is some amount of latency intrinsic in this synchronization, so it’s
-possible that rapidly-generating notices will be repeated (and in this case,
-any actions would be executed multiple times, once by each notice-generating
-worker).
+some amount of latency is intrinsic in this synchronization, so it’s
+possible that rapidly-generating notices will be duplicates. In this case, any
+actions will also execute multiple times, once by each notice-generating
+node.
 
 The Weird Log
 =============
 
 A wide range of “weird” activity detected by Zeek can trigger corresponding
 events that inform the script layer of this activity. These events exist at
-various flow-level granularities, including :zeek:see:`conn_weird`,
+various granularities, including :zeek:see:`conn_weird`,
 :zeek:see:`flow_weird`, :zeek:see:`net_weird`, :zeek:see:`file_weird`, and
 others. Built atop the notice framework, the :doc:`Weird
 </scripts/base/frameworks/notice/weird.zeek>` module implements event handlers
@@ -425,7 +422,7 @@ specifications. That is, don’t consider them actionable detections in an IDS
 sense, though they might well provide meaningful additional clues for a
 security incident.
 
-The notice type for weirds is ``Activity``. You have a wide range of actions at
+The notice type for weirds is :zeek:see:`Weird::Activity`. You have a wide range of actions at
 your disposal for how to handle weirds: you can ignore them, log them, or have
 them trigger notice, all at various reduction/filtering granularities (see the
 :zeek:see:`Weird::Action` enum values for details). For dynamic filtering, the
