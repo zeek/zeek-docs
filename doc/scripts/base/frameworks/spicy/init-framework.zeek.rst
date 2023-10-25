@@ -6,7 +6,6 @@ base/frameworks/spicy/init-framework.zeek
 
 
 :Namespace: Spicy
-:Imports: :doc:`base/misc/version.zeek </scripts/base/misc/version.zeek>`
 
 Summary
 ~~~~~~~
@@ -26,7 +25,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Spicy::disable_file_analyzer
-   :source-code: base/frameworks/spicy/init-framework.zeek 73 76
+   :source-code: base/frameworks/spicy/init-framework.zeek 71 74
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
 
@@ -41,7 +40,7 @@ Functions
    :returns: true if the operation succeeded
 
 .. zeek:id:: Spicy::disable_protocol_analyzer
-   :source-code: base/frameworks/spicy/init-framework.zeek 63 66
+   :source-code: base/frameworks/spicy/init-framework.zeek 61 64
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`) : :zeek:type:`bool`
 
@@ -56,7 +55,7 @@ Functions
    :returns: true if the operation succeeded
 
 .. zeek:id:: Spicy::enable_file_analyzer
-   :source-code: base/frameworks/spicy/init-framework.zeek 68 71
+   :source-code: base/frameworks/spicy/init-framework.zeek 66 69
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Files::Tag`) : :zeek:type:`bool`
 
@@ -71,7 +70,7 @@ Functions
    :returns: true if the operation succeeded
 
 .. zeek:id:: Spicy::enable_protocol_analyzer
-   :source-code: base/frameworks/spicy/init-framework.zeek 58 61
+   :source-code: base/frameworks/spicy/init-framework.zeek 56 59
 
    :Type: :zeek:type:`function` (tag: :zeek:type:`Analyzer::Tag`) : :zeek:type:`bool`
 
@@ -86,7 +85,7 @@ Functions
    :returns: true if the operation succeeded
 
 .. zeek:id:: Spicy::resource_usage
-   :source-code: base/frameworks/spicy/init-framework.zeek 78 81
+   :source-code: base/frameworks/spicy/init-framework.zeek 76 79
 
    :Type: :zeek:type:`function` () : :zeek:type:`Spicy::ResourceUsage`
 
