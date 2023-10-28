@@ -18,6 +18,8 @@ Runtime Options
 :zeek:id:`SSL::ct_logs`: :zeek:type:`table` :zeek:attr:`&redef`                         The Certificate Transparency log bundle.
 :zeek:id:`SSL::disable_analyzer_after_detection`: :zeek:type:`bool` :zeek:attr:`&redef` If true, detach the SSL analyzer from the connection to prevent
                                                                                         continuing to process encrypted traffic.
+:zeek:id:`SSL::max_ssl_history_length`: :zeek:type:`count` :zeek:attr:`&redef`          Maximum length of the ssl_history field to prevent unbounded
+                                                                                        growth when the parser is running into unexpected situations.
 ======================================================================================= ===============================================================
 
 Redefinable Options
@@ -122,6 +124,16 @@ Runtime Options
    If true, detach the SSL analyzer from the connection to prevent
    continuing to process encrypted traffic. Helps with performance
    (especially with large file transfers).
+
+.. zeek:id:: SSL::max_ssl_history_length
+   :source-code: base/protocols/ssl/main.zeek 148 148
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``100``
+
+   Maximum length of the ssl_history field to prevent unbounded
+   growth when the parser is running into unexpected situations.
 
 Redefinable Options
 ###################
@@ -549,7 +561,7 @@ Types
 Events
 ######
 .. zeek:id:: SSL::log_ssl
-   :source-code: base/protocols/ssl/main.zeek 156 156
+   :source-code: base/protocols/ssl/main.zeek 160 160
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SSL::Info`)
 
@@ -559,7 +571,7 @@ Events
 Hooks
 #####
 .. zeek:id:: SSL::finalize_ssl
-   :source-code: base/protocols/ssl/main.zeek 495 505
+   :source-code: base/protocols/ssl/main.zeek 505 515
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
@@ -576,7 +588,7 @@ Hooks
 
 
 .. zeek:id:: SSL::ssl_finishing
-   :source-code: base/protocols/ssl/main.zeek 160 160
+   :source-code: base/protocols/ssl/main.zeek 164 164
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
@@ -586,7 +598,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SSL::delay_log
-   :source-code: base/protocols/ssl/main.zeek 217 222
+   :source-code: base/protocols/ssl/main.zeek 227 232
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -594,7 +606,7 @@ Functions
    logged as long as the token exists or until 15 seconds elapses.
 
 .. zeek:id:: SSL::undelay_log
-   :source-code: base/protocols/ssl/main.zeek 224 228
+   :source-code: base/protocols/ssl/main.zeek 234 238
 
    :Type: :zeek:type:`function` (info: :zeek:type:`SSL::Info`, token: :zeek:type:`string`) : :zeek:type:`void`
 
