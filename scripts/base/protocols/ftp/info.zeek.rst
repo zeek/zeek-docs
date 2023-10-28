@@ -63,7 +63,7 @@ Types
    The expected endpoints of an FTP data channel.
 
 .. zeek:type:: FTP::Info
-   :source-code: base/protocols/ftp/info.zeek 26 72
+   :source-code: base/protocols/ftp/info.zeek 26 75
 
    :Type: :zeek:type:`record`
 
@@ -115,6 +115,9 @@ Types
       pending_commands: :zeek:type:`FTP::PendingCmds`
          Queue for commands that have been sent but not yet responded
          to are tracked here.
+
+      command_seq: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+         Sequence number of previous command.
 
       passive: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
          Indicates if the session is in active or passive mode.
