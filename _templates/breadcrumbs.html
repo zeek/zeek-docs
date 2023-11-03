@@ -4,7 +4,7 @@
 <li class="wy-breadcrumbs-aside">
 {% if pagename != "search" %}
   {% if display_github %}
-    {% if github_version == "master" %}
+    {% if github_version == "topic/christian/test-fix-github-edit-link" %}
       <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/edit/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ page_source_suffix }}" class="fa fa-github"> {{ _('Edit on GitHub') }}</a>
     {% endif %}
   {% elif show_source and has_source and sourcename %}
