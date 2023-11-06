@@ -20,6 +20,7 @@ Zeek Logs
    smb
    irc
    rdp
+   ldap
    traceroute
    tunnel
    dpd
