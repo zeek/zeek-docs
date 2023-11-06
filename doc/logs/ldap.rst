@@ -22,8 +22,7 @@ LDAP communicates using a client-server model. The LDAP server contains the dire
 
 The LDAP analyzer outputs two LDAP related logs. :file:`ldap.log` contains details about the LDAP session except those related to searches. :file:`ldap_search.log` contains information related to LDAP searches.
 
-For details on every element of the :file:`ldap.log` and :file:`ldap_search.log` refer to :zeek:see:`LDAP`.
-:file:`ldap.log`. Below is an inspection of the :file:`ldap.log` and :file:`ldap_search.log` in JSON format.
+For details on every element of the :file:`ldap.log` and :file:`ldap_search.log` refer to :zeek:see:`LDAP`. Below is an inspection of the :file:`ldap.log` and :file:`ldap_search.log` in JSON format.
 
 ldap.log
 ========
