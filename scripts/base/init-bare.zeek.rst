@@ -71,191 +71,191 @@ Runtime Options
 
 Redefinable Options
 ###################
-========================================================================================== ================================================================================
-:zeek:id:`BinPAC::flowbuffer_capacity_max`: :zeek:type:`count` :zeek:attr:`&redef`         Maximum capacity, in bytes, that the BinPAC flowbuffer is allowed to
-                                                                                           grow to for use with incremental parsing of a given connection/analyzer.
-:zeek:id:`BinPAC::flowbuffer_capacity_min`: :zeek:type:`count` :zeek:attr:`&redef`         The initial capacity, in bytes, that will be allocated to the BinPAC
-                                                                                           flowbuffer of a given connection/analyzer.
-:zeek:id:`BinPAC::flowbuffer_contract_threshold`: :zeek:type:`count` :zeek:attr:`&redef`   The threshold, in bytes, at which the BinPAC flowbuffer of a given
-                                                                                           connection/analyzer will have its capacity contracted to
-                                                                                           :zeek:see:`BinPAC::flowbuffer_capacity_min` after parsing a full unit.
-:zeek:id:`DCE_RPC::max_cmd_reassembly`: :zeek:type:`count` :zeek:attr:`&redef`             The maximum number of simultaneous fragmented commands that
-                                                                                           the DCE_RPC analyzer will tolerate before the it will generate
-                                                                                           a weird and skip further input.
-:zeek:id:`DCE_RPC::max_frag_data`: :zeek:type:`count` :zeek:attr:`&redef`                  The maximum number of fragmented bytes that the DCE_RPC analyzer
-                                                                                           will tolerate on a command before the analyzer will generate a weird
-                                                                                           and skip further input.
-:zeek:id:`KRB::keytab`: :zeek:type:`string` :zeek:attr:`&redef`                            Kerberos keytab file name.
-:zeek:id:`NCP::max_frame_size`: :zeek:type:`count` :zeek:attr:`&redef`                     The maximum number of bytes to allocate when parsing NCP frames.
-:zeek:id:`NFS3::return_data`: :zeek:type:`bool` :zeek:attr:`&redef`                        If true, :zeek:see:`nfs_proc_read` and :zeek:see:`nfs_proc_write`
-                                                                                           events return the file data that has been read/written.
-:zeek:id:`NFS3::return_data_first_only`: :zeek:type:`bool` :zeek:attr:`&redef`             If :zeek:id:`NFS3::return_data` is true, whether to *only* return data
-                                                                                           if the read or write offset is 0, i.e., only return data for the
-                                                                                           beginning of the file.
-:zeek:id:`NFS3::return_data_max`: :zeek:type:`count` :zeek:attr:`&redef`                   If :zeek:id:`NFS3::return_data` is true, how much data should be
-                                                                                           returned at most.
-:zeek:id:`Pcap::bufsize`: :zeek:type:`count` :zeek:attr:`&redef`                           Number of Mbytes to provide as buffer space when capturing from live
-                                                                                           interfaces.
-:zeek:id:`Pcap::bufsize_offline_bytes`: :zeek:type:`count` :zeek:attr:`&redef`             Number of bytes to use for buffering file read operations when reading
-                                                                                           from a PCAP file.
-:zeek:id:`Pcap::non_fd_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                 Default timeout for packet sources without file descriptors.
-:zeek:id:`Pcap::snaplen`: :zeek:type:`count` :zeek:attr:`&redef`                           Number of bytes per packet to capture from live interfaces.
-:zeek:id:`Reporter::errors_to_stderr`: :zeek:type:`bool` :zeek:attr:`&redef`               Tunable for sending reporter error messages to STDERR.
-:zeek:id:`Reporter::info_to_stderr`: :zeek:type:`bool` :zeek:attr:`&redef`                 Tunable for sending reporter info messages to STDERR.
-:zeek:id:`Reporter::warnings_to_stderr`: :zeek:type:`bool` :zeek:attr:`&redef`             Tunable for sending reporter warning messages to STDERR.
-:zeek:id:`SMB::max_dce_rpc_analyzers`: :zeek:type:`count` :zeek:attr:`&redef`              Maximum number of DCE-RPC analyzers per connection
-                                                                                           before discarding them to avoid unbounded state growth.
-:zeek:id:`SMB::max_pending_messages`: :zeek:type:`count` :zeek:attr:`&redef`               The maximum number of messages for which to retain state
-                                                                                           about offsets, fids, or tree ids within the parser.
-:zeek:id:`SMB::pipe_filenames`: :zeek:type:`set` :zeek:attr:`&redef`                       A set of file names used as named pipes over SMB.
-:zeek:id:`SSL::dtls_max_reported_version_errors`: :zeek:type:`count` :zeek:attr:`&redef`   Maximum number of invalid version errors to report in one DTLS connection.
-:zeek:id:`SSL::dtls_max_version_errors`: :zeek:type:`count` :zeek:attr:`&redef`            Number of non-DTLS frames that can occur in a DTLS connection before
-                                                                                           parsing of the connection is suspended.
-:zeek:id:`SSL::max_alerts_per_record`: :zeek:type:`count` :zeek:attr:`&redef`              Maximum number of Alert messages parsed from an SSL record with
-                                                                                           content_type alert (21).
-:zeek:id:`Threading::heartbeat_interval`: :zeek:type:`interval` :zeek:attr:`&redef`        The heartbeat interval used by the threading framework.
-:zeek:id:`Tunnel::delay_gtp_confirmation`: :zeek:type:`bool` :zeek:attr:`&redef`           With this set, the GTP analyzer waits until the most-recent upflow
-                                                                                           and downflow packets are a valid GTPv1 encapsulation before
-                                                                                           issuing :zeek:see:`analyzer_confirmation_info`.
-:zeek:id:`Tunnel::delay_teredo_confirmation`: :zeek:type:`bool` :zeek:attr:`&redef`        With this set, the Teredo analyzer waits until it sees both sides
-                                                                                           of a connection using a valid Teredo encapsulation before issuing
-                                                                                           a :zeek:see:`analyzer_confirmation_info`.
-:zeek:id:`Tunnel::ip_tunnel_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`            How often to cleanup internal state for inactive IP tunnels
-                                                                                           (includes GRE tunnels).
-:zeek:id:`Tunnel::max_changes_per_connection`: :zeek:type:`count` :zeek:attr:`&redef`      The number of tunnel_changed events that will be sent for a connection.
-:zeek:id:`Tunnel::max_depth`: :zeek:type:`count` :zeek:attr:`&redef`                       The maximum depth of a tunnel to decapsulate until giving up.
-:zeek:id:`Tunnel::validate_vxlan_checksums`: :zeek:type:`bool` :zeek:attr:`&redef`         Whether to validate the checksum supplied in the outer UDP header
-                                                                                           of a VXLAN encapsulation.
-:zeek:id:`UnknownProtocol::first_bytes_count`: :zeek:type:`count` :zeek:attr:`&redef`      The number of bytes to extract from the next header and log in the
-                                                                                           first bytes field.
-:zeek:id:`UnknownProtocol::sampling_duration`: :zeek:type:`interval` :zeek:attr:`&redef`   How long an analyzer/protocol pair is allowed to keep state/counters in
-                                                                                           in memory.
-:zeek:id:`UnknownProtocol::sampling_rate`: :zeek:type:`count` :zeek:attr:`&redef`          The rate-limiting sampling rate.
-:zeek:id:`UnknownProtocol::sampling_threshold`: :zeek:type:`count` :zeek:attr:`&redef`     How many reports for an analyzer/protocol pair will be allowed to
-                                                                                           raise events before becoming rate-limited.
-:zeek:id:`allow_network_time_forward`: :zeek:type:`bool` :zeek:attr:`&redef`               Whether Zeek will forward network_time to the current time upon
-                                                                                           observing an idle packet source (or no configured packet source).
-:zeek:id:`bits_per_uid`: :zeek:type:`count` :zeek:attr:`&redef`                            Number of bits in UIDs that are generated to identify connections and
-                                                                                           files.
-:zeek:id:`check_for_unused_event_handlers`: :zeek:type:`bool` :zeek:attr:`&redef`          If true, warns about unused event handlers at startup.
-:zeek:id:`cmd_line_bpf_filter`: :zeek:type:`string` :zeek:attr:`&redef`                    BPF filter the user has set via the -f command line options.
-:zeek:id:`detect_filtered_trace`: :zeek:type:`bool` :zeek:attr:`&redef`                    Whether to attempt to automatically detect SYN/FIN/RST-filtered trace
-                                                                                           and not report missing segments for such connections.
-:zeek:id:`digest_salt`: :zeek:type:`string` :zeek:attr:`&redef`                            This salt value is used for several message digests in Zeek.
-:zeek:id:`dns_session_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                  Time to wait before timing out a DNS request.
-:zeek:id:`dpd_buffer_size`: :zeek:type:`count` :zeek:attr:`&redef`                         Size of per-connection buffer used for dynamic protocol detection.
-:zeek:id:`dpd_ignore_ports`: :zeek:type:`bool` :zeek:attr:`&redef`                         If true, don't consider any ports for deciding which protocol analyzer to
-                                                                                           use.
-:zeek:id:`dpd_late_match_stop`: :zeek:type:`bool` :zeek:attr:`&redef`                      If true, stops signature matching after a late match.
-:zeek:id:`dpd_match_only_beginning`: :zeek:type:`bool` :zeek:attr:`&redef`                 If true, stops signature matching if :zeek:see:`dpd_buffer_size` has been
-                                                                                           reached.
-:zeek:id:`dpd_max_packets`: :zeek:type:`count` :zeek:attr:`&redef`                         Maximum number of per-connection packets that will be buffered for dynamic
-                                                                                           protocol detection.
-:zeek:id:`dpd_reassemble_first_packets`: :zeek:type:`bool` :zeek:attr:`&redef`             Reassemble the beginning of all TCP connections before doing
-                                                                                           signature matching.
-:zeek:id:`exit_only_after_terminate`: :zeek:type:`bool` :zeek:attr:`&redef`                Flag to prevent Zeek from exiting automatically when input is exhausted.
-:zeek:id:`expensive_profiling_multiple`: :zeek:type:`count` :zeek:attr:`&redef`            Multiples of :zeek:see:`profiling_interval` at which (more expensive) memory
-                                                                                           profiling is done (0 disables).
-:zeek:id:`frag_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                         How long to hold onto fragments for possible reassembly.
-:zeek:id:`global_hash_seed`: :zeek:type:`string` :zeek:attr:`&redef`                       Seed for hashes computed internally for probabilistic data structures.
-:zeek:id:`icmp_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`              If an ICMP flow is inactive, time it out after this interval.
-:zeek:id:`ignore_checksums`: :zeek:type:`bool` :zeek:attr:`&redef`                         If true, don't verify checksums, and accept packets that give a length of
-                                                                                           zero in the IPv4 header.
-:zeek:id:`ignore_keep_alive_rexmit`: :zeek:type:`bool` :zeek:attr:`&redef`                 Ignore certain TCP retransmissions for :zeek:see:`conn_stats`.
-:zeek:id:`io_poll_interval_default`: :zeek:type:`count` :zeek:attr:`&redef`                How many rounds to go without checking IO sources with file descriptors
-                                                                                           for readiness by default.
-:zeek:id:`io_poll_interval_live`: :zeek:type:`count` :zeek:attr:`&redef`                   How often to check IO sources with file descriptors for readiness when
-                                                                                           monitoring with a live packet source.
-:zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef`                       Ports which the core considers being likely used by servers.
-:zeek:id:`log_rotate_base_time`: :zeek:type:`string` :zeek:attr:`&redef`                   Base time of log rotations in 24-hour time format (``%H:%M``), e.g.
-:zeek:id:`max_analyzer_violations`: :zeek:type:`count` :zeek:attr:`&redef`                 The maximum number of analyzer violations the core generates before
-                                                                                           suppressing them for a given analyzer instance.
-:zeek:id:`max_find_all_string_length`: :zeek:type:`int` :zeek:attr:`&redef`                Maximum string length allowed for calls to the :zeek:see:`find_all` and
-                                                                                           :zeek:see:`find_all_ordered` BIFs.
-:zeek:id:`max_timer_expires`: :zeek:type:`count` :zeek:attr:`&redef`                       The maximum number of expired timers to process after processing each new
-                                                                                           packet.
-:zeek:id:`mmdb_dir`: :zeek:type:`string` :zeek:attr:`&redef`                               The directory containing MaxMind DB (.mmdb) files to use for GeoIP support.
-:zeek:id:`mmdb_stale_check_interval`: :zeek:type:`interval` :zeek:attr:`&redef`            Sets the interval for MaxMind DB file staleness checks.
-:zeek:id:`non_analyzed_lifetime`: :zeek:type:`interval` :zeek:attr:`&redef`                If a connection belongs to an application that we don't analyze,
-                                                                                           time it out after this interval.
-:zeek:id:`packet_filter_default`: :zeek:type:`bool` :zeek:attr:`&redef`                    Default mode for Zeek's user-space dynamic packet filter.
-:zeek:id:`packet_source_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`     If a packet source does not yield packets for this amount of time,
-                                                                                           it is considered idle.
-:zeek:id:`partial_connection_ok`: :zeek:type:`bool` :zeek:attr:`&redef`                    If true, instantiate connection state when a partial connection
-                                                                                           (one missing its initial establishment negotiation) is seen.
-:zeek:id:`peer_description`: :zeek:type:`string` :zeek:attr:`&redef`                       Description transmitted to remote communication peers for identification.
-:zeek:id:`pkt_profile_freq`: :zeek:type:`double` :zeek:attr:`&redef`                       Frequency associated with packet profiling.
-:zeek:id:`pkt_profile_mode`: :zeek:type:`pkt_profile_modes` :zeek:attr:`&redef`            Output mode for packet profiling information.
-:zeek:id:`profiling_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                   Update interval for profiling (0 disables).
-:zeek:id:`record_all_packets`: :zeek:type:`bool` :zeek:attr:`&redef`                       If a trace file is given with ``-w``, dump *all* packets seen by Zeek into it.
-:zeek:id:`report_gaps_for_partial`: :zeek:type:`bool` :zeek:attr:`&redef`                  Whether we want :zeek:see:`content_gap` for partial
-                                                                                           connections.
-:zeek:id:`rpc_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                          Time to wait before timing out an RPC request.
-:zeek:id:`segment_profiling`: :zeek:type:`bool` :zeek:attr:`&redef`                        If true, then write segment profiling information (very high volume!)
-                                                                                           in addition to profiling statistics.
-:zeek:id:`sig_max_group_size`: :zeek:type:`count` :zeek:attr:`&redef`                      Maximum size of regular expression groups for signature matching.
-:zeek:id:`skip_http_data`: :zeek:type:`bool` :zeek:attr:`&redef`                           Skip HTTP data for performance considerations.
-:zeek:id:`table_expire_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                   When expiring table entries, wait this amount of time before checking the
-                                                                                           next chunk of entries.
-:zeek:id:`table_expire_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                Check for expired table entries after this amount of time.
-:zeek:id:`table_incremental_step`: :zeek:type:`count` :zeek:attr:`&redef`                  When expiring/serializing table entries, don't work on more than this many
-                                                                                           table entries at a time.
-:zeek:id:`tcp_SYN_ack_ok`: :zeek:type:`bool` :zeek:attr:`&redef`                           If true, instantiate connection state when a SYN/ACK is seen but not the
-                                                                                           initial SYN (even if :zeek:see:`partial_connection_ok` is false).
-:zeek:id:`tcp_SYN_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                      Check up on the result of an initial SYN after this much time.
-:zeek:id:`tcp_attempt_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                    Wait this long upon seeing an initial SYN before timing out the
-                                                                                           connection attempt.
-:zeek:id:`tcp_close_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                      Upon seeing a normal connection close, flush state after this much time.
-:zeek:id:`tcp_connection_linger`: :zeek:type:`interval` :zeek:attr:`&redef`                When checking a closed connection for further activity, consider it
-                                                                                           inactive if there hasn't been any for this long.
-:zeek:id:`tcp_content_deliver_all_orig`: :zeek:type:`bool` :zeek:attr:`&redef`             If true, all TCP originator-side traffic is reported via
-                                                                                           :zeek:see:`tcp_contents`.
-:zeek:id:`tcp_content_deliver_all_resp`: :zeek:type:`bool` :zeek:attr:`&redef`             If true, all TCP responder-side traffic is reported via
-                                                                                           :zeek:see:`tcp_contents`.
-:zeek:id:`tcp_content_delivery_ports_orig`: :zeek:type:`table` :zeek:attr:`&redef`         Defines destination TCP ports for which the contents of the originator stream
-                                                                                           should be delivered via :zeek:see:`tcp_contents`.
-:zeek:id:`tcp_content_delivery_ports_resp`: :zeek:type:`table` :zeek:attr:`&redef`         Defines destination TCP ports for which the contents of the responder stream
-                                                                                           should be delivered via :zeek:see:`tcp_contents`.
-:zeek:id:`tcp_excessive_data_without_further_acks`: :zeek:type:`count` :zeek:attr:`&redef` If we've seen this much data without any of it being acked, we give up
-                                                                                           on that connection to avoid memory exhaustion due to buffering all that
-                                                                                           stuff.
-:zeek:id:`tcp_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`               If a TCP connection is inactive, time it out after this interval.
-:zeek:id:`tcp_match_undelivered`: :zeek:type:`bool` :zeek:attr:`&redef`                    If true, pass any undelivered to the signature engine before flushing the state.
-:zeek:id:`tcp_max_above_hole_without_any_acks`: :zeek:type:`count` :zeek:attr:`&redef`     If we're not seeing our peer's ACKs, the maximum volume of data above a
-                                                                                           sequence hole that we'll tolerate before assuming that there's been a packet
-                                                                                           drop and we should give up on tracking a connection.
-:zeek:id:`tcp_max_initial_window`: :zeek:type:`count` :zeek:attr:`&redef`                  Maximum amount of data that might plausibly be sent in an initial flight
-                                                                                           (prior to receiving any acks).
-:zeek:id:`tcp_max_old_segments`: :zeek:type:`count` :zeek:attr:`&redef`                    Number of TCP segments to buffer beyond what's been acknowledged already
-                                                                                           to detect retransmission inconsistencies.
-:zeek:id:`tcp_partial_close_delay`: :zeek:type:`interval` :zeek:attr:`&redef`              Generate a :zeek:id:`connection_partial_close` event this much time after one
-                                                                                           half of a partial connection closes, assuming there has been no subsequent
-                                                                                           activity.
-:zeek:id:`tcp_reassembler_ports_orig`: :zeek:type:`set` :zeek:attr:`&redef`                For services without a handler, these sets define originator-side ports
-                                                                                           that still trigger reassembly.
-:zeek:id:`tcp_reassembler_ports_resp`: :zeek:type:`set` :zeek:attr:`&redef`                For services without a handler, these sets define responder-side ports
-                                                                                           that still trigger reassembly.
-:zeek:id:`tcp_reset_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                      Upon seeing a RST, flush state after this much time.
-:zeek:id:`tcp_session_timer`: :zeek:type:`interval` :zeek:attr:`&redef`                    After a connection has closed, wait this long for further activity
-                                                                                           before checking whether to time out its state.
-:zeek:id:`tcp_storm_interarrival_thresh`: :zeek:type:`interval` :zeek:attr:`&redef`        FINs/RSTs must come with this much time or less between them to be
-                                                                                           considered a "storm".
-:zeek:id:`tcp_storm_thresh`: :zeek:type:`count` :zeek:attr:`&redef`                        Number of FINs/RSTs in a row that constitute a "storm".
-:zeek:id:`time_machine_profiling`: :zeek:type:`bool` :zeek:attr:`&redef`                   If true, output profiling for Time-Machine queries.
-:zeek:id:`truncate_http_URI`: :zeek:type:`int` :zeek:attr:`&redef`                         Maximum length of HTTP URIs passed to events.
-:zeek:id:`udp_content_deliver_all_orig`: :zeek:type:`bool` :zeek:attr:`&redef`             If true, all UDP originator-side traffic is reported via
-                                                                                           :zeek:see:`udp_contents`.
-:zeek:id:`udp_content_deliver_all_resp`: :zeek:type:`bool` :zeek:attr:`&redef`             If true, all UDP responder-side traffic is reported via
-                                                                                           :zeek:see:`udp_contents`.
-:zeek:id:`udp_content_delivery_ports_orig`: :zeek:type:`table` :zeek:attr:`&redef`         Defines UDP destination ports for which the contents of the originator stream
-                                                                                           should be delivered via :zeek:see:`udp_contents`.
-:zeek:id:`udp_content_delivery_ports_resp`: :zeek:type:`table` :zeek:attr:`&redef`         Defines UDP destination ports for which the contents of the responder stream
-                                                                                           should be delivered via :zeek:see:`udp_contents`.
-:zeek:id:`udp_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`               If a UDP flow is inactive, time it out after this interval.
-:zeek:id:`use_conn_size_analyzer`: :zeek:type:`bool` :zeek:attr:`&redef`                   Whether to use the ``ConnSize`` analyzer to count the number of packets and
-                                                                                           IP-level bytes transferred by each endpoint.
-:zeek:id:`watchdog_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                    Zeek's watchdog interval.
-========================================================================================== ================================================================================
+================================================================================================================================= ================================================================================
+:zeek:id:`BinPAC::flowbuffer_capacity_max`: :zeek:type:`count` :zeek:attr:`&redef`                                                Maximum capacity, in bytes, that the BinPAC flowbuffer is allowed to
+                                                                                                                                  grow to for use with incremental parsing of a given connection/analyzer.
+:zeek:id:`BinPAC::flowbuffer_capacity_min`: :zeek:type:`count` :zeek:attr:`&redef`                                                The initial capacity, in bytes, that will be allocated to the BinPAC
+                                                                                                                                  flowbuffer of a given connection/analyzer.
+:zeek:id:`BinPAC::flowbuffer_contract_threshold`: :zeek:type:`count` :zeek:attr:`&redef`                                          The threshold, in bytes, at which the BinPAC flowbuffer of a given
+                                                                                                                                  connection/analyzer will have its capacity contracted to
+                                                                                                                                  :zeek:see:`BinPAC::flowbuffer_capacity_min` after parsing a full unit.
+:zeek:id:`DCE_RPC::max_cmd_reassembly`: :zeek:type:`count` :zeek:attr:`&redef`                                                    The maximum number of simultaneous fragmented commands that
+                                                                                                                                  the DCE_RPC analyzer will tolerate before the it will generate
+                                                                                                                                  a weird and skip further input.
+:zeek:id:`DCE_RPC::max_frag_data`: :zeek:type:`count` :zeek:attr:`&redef`                                                         The maximum number of fragmented bytes that the DCE_RPC analyzer
+                                                                                                                                  will tolerate on a command before the analyzer will generate a weird
+                                                                                                                                  and skip further input.
+:zeek:id:`KRB::keytab`: :zeek:type:`string` :zeek:attr:`&redef`                                                                   Kerberos keytab file name.
+:zeek:id:`NCP::max_frame_size`: :zeek:type:`count` :zeek:attr:`&redef`                                                            The maximum number of bytes to allocate when parsing NCP frames.
+:zeek:id:`NFS3::return_data`: :zeek:type:`bool` :zeek:attr:`&redef`                                                               If true, :zeek:see:`nfs_proc_read` and :zeek:see:`nfs_proc_write`
+                                                                                                                                  events return the file data that has been read/written.
+:zeek:id:`NFS3::return_data_first_only`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    If :zeek:id:`NFS3::return_data` is true, whether to *only* return data
+                                                                                                                                  if the read or write offset is 0, i.e., only return data for the
+                                                                                                                                  beginning of the file.
+:zeek:id:`NFS3::return_data_max`: :zeek:type:`count` :zeek:attr:`&redef`                                                          If :zeek:id:`NFS3::return_data` is true, how much data should be
+                                                                                                                                  returned at most.
+:zeek:id:`Pcap::bufsize`: :zeek:type:`count` :zeek:attr:`&redef`                                                                  Number of Mbytes to provide as buffer space when capturing from live
+                                                                                                                                  interfaces.
+:zeek:id:`Pcap::bufsize_offline_bytes`: :zeek:type:`count` :zeek:attr:`&redef`                                                    Number of bytes to use for buffering file read operations when reading
+                                                                                                                                  from a PCAP file.
+:zeek:id:`Pcap::non_fd_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                        Default timeout for packet sources without file descriptors.
+:zeek:id:`Pcap::snaplen`: :zeek:type:`count` :zeek:attr:`&redef`                                                                  Number of bytes per packet to capture from live interfaces.
+:zeek:id:`Reporter::errors_to_stderr`: :zeek:type:`bool` :zeek:attr:`&redef`                                                      Tunable for sending reporter error messages to STDERR.
+:zeek:id:`Reporter::info_to_stderr`: :zeek:type:`bool` :zeek:attr:`&redef`                                                        Tunable for sending reporter info messages to STDERR.
+:zeek:id:`Reporter::warnings_to_stderr`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    Tunable for sending reporter warning messages to STDERR.
+:zeek:id:`SMB::max_dce_rpc_analyzers`: :zeek:type:`count` :zeek:attr:`&redef`                                                     Maximum number of DCE-RPC analyzers per connection
+                                                                                                                                  before discarding them to avoid unbounded state growth.
+:zeek:id:`SMB::max_pending_messages`: :zeek:type:`count` :zeek:attr:`&redef`                                                      The maximum number of messages for which to retain state
+                                                                                                                                  about offsets, fids, or tree ids within the parser.
+:zeek:id:`SMB::pipe_filenames`: :zeek:type:`set` :zeek:attr:`&redef`                                                              A set of file names used as named pipes over SMB.
+:zeek:id:`SSL::dtls_max_reported_version_errors`: :zeek:type:`count` :zeek:attr:`&redef`                                          Maximum number of invalid version errors to report in one DTLS connection.
+:zeek:id:`SSL::dtls_max_version_errors`: :zeek:type:`count` :zeek:attr:`&redef`                                                   Number of non-DTLS frames that can occur in a DTLS connection before
+                                                                                                                                  parsing of the connection is suspended.
+:zeek:id:`SSL::max_alerts_per_record`: :zeek:type:`count` :zeek:attr:`&redef`                                                     Maximum number of Alert messages parsed from an SSL record with
+                                                                                                                                  content_type alert (21).
+:zeek:id:`Threading::heartbeat_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                               The heartbeat interval used by the threading framework.
+:zeek:id:`Tunnel::delay_gtp_confirmation`: :zeek:type:`bool` :zeek:attr:`&redef`                                                  With this set, the GTP analyzer waits until the most-recent upflow
+                                                                                                                                  and downflow packets are a valid GTPv1 encapsulation before
+                                                                                                                                  issuing :zeek:see:`analyzer_confirmation_info`.
+:zeek:id:`Tunnel::delay_teredo_confirmation`: :zeek:type:`bool` :zeek:attr:`&redef`                                               With this set, the Teredo analyzer waits until it sees both sides
+                                                                                                                                  of a connection using a valid Teredo encapsulation before issuing
+                                                                                                                                  a :zeek:see:`analyzer_confirmation_info`.
+:zeek:id:`Tunnel::ip_tunnel_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                   How often to cleanup internal state for inactive IP tunnels
+                                                                                                                                  (includes GRE tunnels).
+:zeek:id:`Tunnel::max_changes_per_connection`: :zeek:type:`count` :zeek:attr:`&redef`                                             The number of tunnel_changed events that will be sent for a connection.
+:zeek:id:`Tunnel::max_depth`: :zeek:type:`count` :zeek:attr:`&redef`                                                              The maximum depth of a tunnel to decapsulate until giving up.
+:zeek:id:`Tunnel::validate_vxlan_checksums`: :zeek:type:`bool` :zeek:attr:`&redef`                                                Whether to validate the checksum supplied in the outer UDP header
+                                                                                                                                  of a VXLAN encapsulation.
+:zeek:id:`UnknownProtocol::first_bytes_count`: :zeek:type:`count` :zeek:attr:`&redef`                                             The number of bytes to extract from the next header and log in the
+                                                                                                                                  first bytes field.
+:zeek:id:`UnknownProtocol::sampling_duration`: :zeek:type:`interval` :zeek:attr:`&redef`                                          How long an analyzer/protocol pair is allowed to keep state/counters in
+                                                                                                                                  in memory.
+:zeek:id:`UnknownProtocol::sampling_rate`: :zeek:type:`count` :zeek:attr:`&redef`                                                 The rate-limiting sampling rate.
+:zeek:id:`UnknownProtocol::sampling_threshold`: :zeek:type:`count` :zeek:attr:`&redef`                                            How many reports for an analyzer/protocol pair will be allowed to
+                                                                                                                                  raise events before becoming rate-limited.
+:zeek:id:`allow_network_time_forward`: :zeek:type:`bool` :zeek:attr:`&redef`                                                      Whether Zeek will forward network_time to the current time upon
+                                                                                                                                  observing an idle packet source (or no configured packet source).
+:zeek:id:`bits_per_uid`: :zeek:type:`count` :zeek:attr:`&redef`                                                                   Number of bits in UIDs that are generated to identify connections and
+                                                                                                                                  files.
+:zeek:id:`check_for_unused_event_handlers`: :zeek:type:`bool` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *...*                If true, warns about unused event handlers at startup.
+:zeek:id:`cmd_line_bpf_filter`: :zeek:type:`string` :zeek:attr:`&redef`                                                           BPF filter the user has set via the -f command line options.
+:zeek:id:`detect_filtered_trace`: :zeek:type:`bool` :zeek:attr:`&redef`                                                           Whether to attempt to automatically detect SYN/FIN/RST-filtered trace
+                                                                                                                                  and not report missing segments for such connections.
+:zeek:id:`digest_salt`: :zeek:type:`string` :zeek:attr:`&redef`                                                                   This salt value is used for several message digests in Zeek.
+:zeek:id:`dns_session_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                         Time to wait before timing out a DNS request.
+:zeek:id:`dpd_buffer_size`: :zeek:type:`count` :zeek:attr:`&redef`                                                                Size of per-connection buffer used for dynamic protocol detection.
+:zeek:id:`dpd_ignore_ports`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                If true, don't consider any ports for deciding which protocol analyzer to
+                                                                                                                                  use.
+:zeek:id:`dpd_late_match_stop`: :zeek:type:`bool` :zeek:attr:`&redef`                                                             If true, stops signature matching after a late match.
+:zeek:id:`dpd_match_only_beginning`: :zeek:type:`bool` :zeek:attr:`&redef`                                                        If true, stops signature matching if :zeek:see:`dpd_buffer_size` has been
+                                                                                                                                  reached.
+:zeek:id:`dpd_max_packets`: :zeek:type:`count` :zeek:attr:`&redef`                                                                Maximum number of per-connection packets that will be buffered for dynamic
+                                                                                                                                  protocol detection.
+:zeek:id:`dpd_reassemble_first_packets`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    Reassemble the beginning of all TCP connections before doing
+                                                                                                                                  signature matching.
+:zeek:id:`exit_only_after_terminate`: :zeek:type:`bool` :zeek:attr:`&redef`                                                       Flag to prevent Zeek from exiting automatically when input is exhausted.
+:zeek:id:`expensive_profiling_multiple`: :zeek:type:`count` :zeek:attr:`&redef`                                                   Multiples of :zeek:see:`profiling_interval` at which (more expensive) memory
+                                                                                                                                  profiling is done (0 disables).
+:zeek:id:`frag_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                                How long to hold onto fragments for possible reassembly.
+:zeek:id:`global_hash_seed`: :zeek:type:`string` :zeek:attr:`&redef`                                                              Seed for hashes computed internally for probabilistic data structures.
+:zeek:id:`icmp_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                     If an ICMP flow is inactive, time it out after this interval.
+:zeek:id:`ignore_checksums`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                If true, don't verify checksums, and accept packets that give a length of
+                                                                                                                                  zero in the IPv4 header.
+:zeek:id:`ignore_keep_alive_rexmit`: :zeek:type:`bool` :zeek:attr:`&redef`                                                        Ignore certain TCP retransmissions for :zeek:see:`conn_stats`.
+:zeek:id:`io_poll_interval_default`: :zeek:type:`count` :zeek:attr:`&redef`                                                       How many rounds to go without checking IO sources with file descriptors
+                                                                                                                                  for readiness by default.
+:zeek:id:`io_poll_interval_live`: :zeek:type:`count` :zeek:attr:`&redef`                                                          How often to check IO sources with file descriptors for readiness when
+                                                                                                                                  monitoring with a live packet source.
+:zeek:id:`likely_server_ports`: :zeek:type:`set` :zeek:attr:`&redef`                                                              Ports which the core considers being likely used by servers.
+:zeek:id:`log_rotate_base_time`: :zeek:type:`string` :zeek:attr:`&redef`                                                          Base time of log rotations in 24-hour time format (``%H:%M``), e.g.
+:zeek:id:`max_analyzer_violations`: :zeek:type:`count` :zeek:attr:`&redef`                                                        The maximum number of analyzer violations the core generates before
+                                                                                                                                  suppressing them for a given analyzer instance.
+:zeek:id:`max_find_all_string_length`: :zeek:type:`int` :zeek:attr:`&redef`                                                       Maximum string length allowed for calls to the :zeek:see:`find_all` and
+                                                                                                                                  :zeek:see:`find_all_ordered` BIFs.
+:zeek:id:`max_timer_expires`: :zeek:type:`count` :zeek:attr:`&redef`                                                              The maximum number of expired timers to process after processing each new
+                                                                                                                                  packet.
+:zeek:id:`mmdb_dir`: :zeek:type:`string` :zeek:attr:`&redef`                                                                      The directory containing MaxMind DB (.mmdb) files to use for GeoIP support.
+:zeek:id:`mmdb_stale_check_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                                   Sets the interval for MaxMind DB file staleness checks.
+:zeek:id:`non_analyzed_lifetime`: :zeek:type:`interval` :zeek:attr:`&redef`                                                       If a connection belongs to an application that we don't analyze,
+                                                                                                                                  time it out after this interval.
+:zeek:id:`packet_filter_default`: :zeek:type:`bool` :zeek:attr:`&redef`                                                           Default mode for Zeek's user-space dynamic packet filter.
+:zeek:id:`packet_source_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                            If a packet source does not yield packets for this amount of time,
+                                                                                                                                  it is considered idle.
+:zeek:id:`partial_connection_ok`: :zeek:type:`bool` :zeek:attr:`&redef`                                                           If true, instantiate connection state when a partial connection
+                                                                                                                                  (one missing its initial establishment negotiation) is seen.
+:zeek:id:`peer_description`: :zeek:type:`string` :zeek:attr:`&redef`                                                              Description transmitted to remote communication peers for identification.
+:zeek:id:`pkt_profile_freq`: :zeek:type:`double` :zeek:attr:`&redef`                                                              Frequency associated with packet profiling.
+:zeek:id:`pkt_profile_mode`: :zeek:type:`pkt_profile_modes` :zeek:attr:`&redef`                                                   Output mode for packet profiling information.
+:zeek:id:`profiling_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                                          Update interval for profiling (0 disables).
+:zeek:id:`record_all_packets`: :zeek:type:`bool` :zeek:attr:`&redef`                                                              If a trace file is given with ``-w``, dump *all* packets seen by Zeek into it.
+:zeek:id:`report_gaps_for_partial`: :zeek:type:`bool` :zeek:attr:`&redef`                                                         Whether we want :zeek:see:`content_gap` for partial
+                                                                                                                                  connections.
+:zeek:id:`rpc_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                                 Time to wait before timing out an RPC request.
+:zeek:id:`segment_profiling`: :zeek:type:`bool` :zeek:attr:`&redef`                                                               If true, then write segment profiling information (very high volume!)
+                                                                                                                                  in addition to profiling statistics.
+:zeek:id:`sig_max_group_size`: :zeek:type:`count` :zeek:attr:`&redef`                                                             Maximum size of regular expression groups for signature matching.
+:zeek:id:`skip_http_data`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                  Skip HTTP data for performance considerations.
+:zeek:id:`table_expire_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                                          When expiring table entries, wait this amount of time before checking the
+                                                                                                                                  next chunk of entries.
+:zeek:id:`table_expire_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                                       Check for expired table entries after this amount of time.
+:zeek:id:`table_incremental_step`: :zeek:type:`count` :zeek:attr:`&redef`                                                         When expiring/serializing table entries, don't work on more than this many
+                                                                                                                                  table entries at a time.
+:zeek:id:`tcp_SYN_ack_ok`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                  If true, instantiate connection state when a SYN/ACK is seen but not the
+                                                                                                                                  initial SYN (even if :zeek:see:`partial_connection_ok` is false).
+:zeek:id:`tcp_SYN_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                             Check up on the result of an initial SYN after this much time.
+:zeek:id:`tcp_attempt_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                                           Wait this long upon seeing an initial SYN before timing out the
+                                                                                                                                  connection attempt.
+:zeek:id:`tcp_close_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                                             Upon seeing a normal connection close, flush state after this much time.
+:zeek:id:`tcp_connection_linger`: :zeek:type:`interval` :zeek:attr:`&redef`                                                       When checking a closed connection for further activity, consider it
+                                                                                                                                  inactive if there hasn't been any for this long.
+:zeek:id:`tcp_content_deliver_all_orig`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    If true, all TCP originator-side traffic is reported via
+                                                                                                                                  :zeek:see:`tcp_contents`.
+:zeek:id:`tcp_content_deliver_all_resp`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    If true, all TCP responder-side traffic is reported via
+                                                                                                                                  :zeek:see:`tcp_contents`.
+:zeek:id:`tcp_content_delivery_ports_orig`: :zeek:type:`table` :zeek:attr:`&redef`                                                Defines destination TCP ports for which the contents of the originator stream
+                                                                                                                                  should be delivered via :zeek:see:`tcp_contents`.
+:zeek:id:`tcp_content_delivery_ports_resp`: :zeek:type:`table` :zeek:attr:`&redef`                                                Defines destination TCP ports for which the contents of the responder stream
+                                                                                                                                  should be delivered via :zeek:see:`tcp_contents`.
+:zeek:id:`tcp_excessive_data_without_further_acks`: :zeek:type:`count` :zeek:attr:`&redef`                                        If we've seen this much data without any of it being acked, we give up
+                                                                                                                                  on that connection to avoid memory exhaustion due to buffering all that
+                                                                                                                                  stuff.
+:zeek:id:`tcp_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                      If a TCP connection is inactive, time it out after this interval.
+:zeek:id:`tcp_match_undelivered`: :zeek:type:`bool` :zeek:attr:`&redef`                                                           If true, pass any undelivered to the signature engine before flushing the state.
+:zeek:id:`tcp_max_above_hole_without_any_acks`: :zeek:type:`count` :zeek:attr:`&redef`                                            If we're not seeing our peer's ACKs, the maximum volume of data above a
+                                                                                                                                  sequence hole that we'll tolerate before assuming that there's been a packet
+                                                                                                                                  drop and we should give up on tracking a connection.
+:zeek:id:`tcp_max_initial_window`: :zeek:type:`count` :zeek:attr:`&redef`                                                         Maximum amount of data that might plausibly be sent in an initial flight
+                                                                                                                                  (prior to receiving any acks).
+:zeek:id:`tcp_max_old_segments`: :zeek:type:`count` :zeek:attr:`&redef`                                                           Number of TCP segments to buffer beyond what's been acknowledged already
+                                                                                                                                  to detect retransmission inconsistencies.
+:zeek:id:`tcp_partial_close_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                                     Generate a :zeek:id:`connection_partial_close` event this much time after one
+                                                                                                                                  half of a partial connection closes, assuming there has been no subsequent
+                                                                                                                                  activity.
+:zeek:id:`tcp_reassembler_ports_orig`: :zeek:type:`set` :zeek:attr:`&redef`                                                       For services without a handler, these sets define originator-side ports
+                                                                                                                                  that still trigger reassembly.
+:zeek:id:`tcp_reassembler_ports_resp`: :zeek:type:`set` :zeek:attr:`&redef`                                                       For services without a handler, these sets define responder-side ports
+                                                                                                                                  that still trigger reassembly.
+:zeek:id:`tcp_reset_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                                             Upon seeing a RST, flush state after this much time.
+:zeek:id:`tcp_session_timer`: :zeek:type:`interval` :zeek:attr:`&redef`                                                           After a connection has closed, wait this long for further activity
+                                                                                                                                  before checking whether to time out its state.
+:zeek:id:`tcp_storm_interarrival_thresh`: :zeek:type:`interval` :zeek:attr:`&redef`                                               FINs/RSTs must come with this much time or less between them to be
+                                                                                                                                  considered a "storm".
+:zeek:id:`tcp_storm_thresh`: :zeek:type:`count` :zeek:attr:`&redef`                                                               Number of FINs/RSTs in a row that constitute a "storm".
+:zeek:id:`time_machine_profiling`: :zeek:type:`bool` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = ``"Remove in v7.1. Unused."`` If true, output profiling for Time-Machine queries.
+:zeek:id:`truncate_http_URI`: :zeek:type:`int` :zeek:attr:`&redef`                                                                Maximum length of HTTP URIs passed to events.
+:zeek:id:`udp_content_deliver_all_orig`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    If true, all UDP originator-side traffic is reported via
+                                                                                                                                  :zeek:see:`udp_contents`.
+:zeek:id:`udp_content_deliver_all_resp`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    If true, all UDP responder-side traffic is reported via
+                                                                                                                                  :zeek:see:`udp_contents`.
+:zeek:id:`udp_content_delivery_ports_orig`: :zeek:type:`table` :zeek:attr:`&redef`                                                Defines UDP destination ports for which the contents of the originator stream
+                                                                                                                                  should be delivered via :zeek:see:`udp_contents`.
+:zeek:id:`udp_content_delivery_ports_resp`: :zeek:type:`table` :zeek:attr:`&redef`                                                Defines UDP destination ports for which the contents of the responder stream
+                                                                                                                                  should be delivered via :zeek:see:`udp_contents`.
+:zeek:id:`udp_inactivity_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                      If a UDP flow is inactive, time it out after this interval.
+:zeek:id:`use_conn_size_analyzer`: :zeek:type:`bool` :zeek:attr:`&redef`                                                          Whether to use the ``ConnSize`` analyzer to count the number of packets and
+                                                                                                                                  IP-level bytes transferred by each endpoint.
+:zeek:id:`watchdog_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                                           Zeek's watchdog interval.
+================================================================================================================================= ================================================================================
 
 Constants
 #########
@@ -1350,7 +1350,7 @@ Redefinable Options
    :source-code: base/init-bare.zeek 5195 5195
 
    :Type: :zeek:type:`bool`
-   :Attributes: :zeek:attr:`&redef`
+   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *"Remove in v7.1. This has been replaced by usage analyzer functionality."*
    :Default: ``F``
 
    If true, warns about unused event handlers at startup.
@@ -2410,7 +2410,7 @@ Redefinable Options
    :source-code: base/init-bare.zeek 5192 5192
 
    :Type: :zeek:type:`bool`
-   :Attributes: :zeek:attr:`&redef`
+   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = ``"Remove in v7.1. Unused."``
    :Default: ``F``
 
    If true, output profiling for Time-Machine queries.

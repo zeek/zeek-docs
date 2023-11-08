@@ -28,40 +28,40 @@ Summary
 ~~~~~~~
 Redefinable Options
 ###################
-==================================================================================================== ===============================================================================
-:zeek:id:`Cluster::default_backend`: :zeek:type:`Broker::BackendType` :zeek:attr:`&redef`            The type of data store backend that will be used for all data stores if
-                                                                                                     no other has already been specified by the user in :zeek:see:`Cluster::stores`.
-:zeek:id:`Cluster::default_master_node`: :zeek:type:`string` :zeek:attr:`&redef`                     Name of the node on which master data stores will be created if no other
-                                                                                                     has already been specified by the user in :zeek:see:`Cluster::stores`.
-:zeek:id:`Cluster::default_persistent_backend`: :zeek:type:`Broker::BackendType` :zeek:attr:`&redef` The type of persistent data store backend that will be used for all data
-                                                                                                     stores if no other has already been specified by the user in
-                                                                                                     :zeek:see:`Cluster::stores`.
-:zeek:id:`Cluster::default_store_dir`: :zeek:type:`string` :zeek:attr:`&redef`                       Setting a default dir will, for persistent backends that have not
-                                                                                                     been given an explicit file path via :zeek:see:`Cluster::stores`,
-                                                                                                     automatically create a path within this dir that is based on the name of
-                                                                                                     the data store.
-:zeek:id:`Cluster::enable_round_robin_logging`: :zeek:type:`bool` :zeek:attr:`&redef`                Whether to distribute log messages among available logging nodes.
-:zeek:id:`Cluster::logger_topic`: :zeek:type:`string` :zeek:attr:`&redef`                            The topic name used for exchanging messages that are relevant to
-                                                                                                     logger nodes in a cluster.
-:zeek:id:`Cluster::manager_is_logger`: :zeek:type:`bool` :zeek:attr:`&redef`                         Indicates whether or not the manager will act as the logger and receive
-                                                                                                     logs.
-:zeek:id:`Cluster::manager_topic`: :zeek:type:`string` :zeek:attr:`&redef`                           The topic name used for exchanging messages that are relevant to
-                                                                                                     manager nodes in a cluster.
-:zeek:id:`Cluster::node`: :zeek:type:`string` :zeek:attr:`&redef`                                    This is usually supplied on the command line for each instance
-                                                                                                     of the cluster that is started up.
-:zeek:id:`Cluster::node_topic_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                       The topic prefix used for exchanging messages that are relevant to
-                                                                                                     a named node in a cluster.
-:zeek:id:`Cluster::nodeid_topic_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                     The topic prefix used for exchanging messages that are relevant to
-                                                                                                     a unique node in a cluster.
-:zeek:id:`Cluster::nodes`: :zeek:type:`table` :zeek:attr:`&redef`                                    The cluster layout definition.
-:zeek:id:`Cluster::proxy_topic`: :zeek:type:`string` :zeek:attr:`&redef`                             The topic name used for exchanging messages that are relevant to
-                                                                                                     proxy nodes in a cluster.
-:zeek:id:`Cluster::retry_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                        Interval for retrying failed connections between cluster nodes.
-:zeek:id:`Cluster::time_machine_topic`: :zeek:type:`string` :zeek:attr:`&redef`                      The topic name used for exchanging messages that are relevant to
-                                                                                                     time machine nodes in a cluster.
-:zeek:id:`Cluster::worker_topic`: :zeek:type:`string` :zeek:attr:`&redef`                            The topic name used for exchanging messages that are relevant to
-                                                                                                     worker nodes in a cluster.
-==================================================================================================== ===============================================================================
+======================================================================================================================================== ===============================================================================
+:zeek:id:`Cluster::default_backend`: :zeek:type:`Broker::BackendType` :zeek:attr:`&redef`                                                The type of data store backend that will be used for all data stores if
+                                                                                                                                         no other has already been specified by the user in :zeek:see:`Cluster::stores`.
+:zeek:id:`Cluster::default_master_node`: :zeek:type:`string` :zeek:attr:`&redef`                                                         Name of the node on which master data stores will be created if no other
+                                                                                                                                         has already been specified by the user in :zeek:see:`Cluster::stores`.
+:zeek:id:`Cluster::default_persistent_backend`: :zeek:type:`Broker::BackendType` :zeek:attr:`&redef`                                     The type of persistent data store backend that will be used for all data
+                                                                                                                                         stores if no other has already been specified by the user in
+                                                                                                                                         :zeek:see:`Cluster::stores`.
+:zeek:id:`Cluster::default_store_dir`: :zeek:type:`string` :zeek:attr:`&redef`                                                           Setting a default dir will, for persistent backends that have not
+                                                                                                                                         been given an explicit file path via :zeek:see:`Cluster::stores`,
+                                                                                                                                         automatically create a path within this dir that is based on the name of
+                                                                                                                                         the data store.
+:zeek:id:`Cluster::enable_round_robin_logging`: :zeek:type:`bool` :zeek:attr:`&redef`                                                    Whether to distribute log messages among available logging nodes.
+:zeek:id:`Cluster::logger_topic`: :zeek:type:`string` :zeek:attr:`&redef`                                                                The topic name used for exchanging messages that are relevant to
+                                                                                                                                         logger nodes in a cluster.
+:zeek:id:`Cluster::manager_is_logger`: :zeek:type:`bool` :zeek:attr:`&redef`                                                             Indicates whether or not the manager will act as the logger and receive
+                                                                                                                                         logs.
+:zeek:id:`Cluster::manager_topic`: :zeek:type:`string` :zeek:attr:`&redef`                                                               The topic name used for exchanging messages that are relevant to
+                                                                                                                                         manager nodes in a cluster.
+:zeek:id:`Cluster::node`: :zeek:type:`string` :zeek:attr:`&redef`                                                                        This is usually supplied on the command line for each instance
+                                                                                                                                         of the cluster that is started up.
+:zeek:id:`Cluster::node_topic_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                                                           The topic prefix used for exchanging messages that are relevant to
+                                                                                                                                         a named node in a cluster.
+:zeek:id:`Cluster::nodeid_topic_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                                                         The topic prefix used for exchanging messages that are relevant to
+                                                                                                                                         a unique node in a cluster.
+:zeek:id:`Cluster::nodes`: :zeek:type:`table` :zeek:attr:`&redef`                                                                        The cluster layout definition.
+:zeek:id:`Cluster::proxy_topic`: :zeek:type:`string` :zeek:attr:`&redef`                                                                 The topic name used for exchanging messages that are relevant to
+                                                                                                                                         proxy nodes in a cluster.
+:zeek:id:`Cluster::retry_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                                            Interval for retrying failed connections between cluster nodes.
+:zeek:id:`Cluster::time_machine_topic`: :zeek:type:`string` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = ``"Remove in v7.1: Unused."`` The topic name used for exchanging messages that are relevant to
+                                                                                                                                         time machine nodes in a cluster.
+:zeek:id:`Cluster::worker_topic`: :zeek:type:`string` :zeek:attr:`&redef`                                                                The topic name used for exchanging messages that are relevant to
+                                                                                                                                         worker nodes in a cluster.
+======================================================================================================================================== ===============================================================================
 
 Constants
 #########
@@ -137,7 +137,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Cluster::default_backend
-   :source-code: base/frameworks/cluster/main.zeek 70 70
+   :source-code: base/frameworks/cluster/main.zeek 77 77
 
    :Type: :zeek:type:`Broker::BackendType`
    :Attributes: :zeek:attr:`&redef`
@@ -147,7 +147,7 @@ Redefinable Options
    no other has already been specified by the user in :zeek:see:`Cluster::stores`.
 
 .. zeek:id:: Cluster::default_master_node
-   :source-code: base/frameworks/cluster/main.zeek 66 66
+   :source-code: base/frameworks/cluster/main.zeek 73 73
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -159,7 +159,7 @@ Redefinable Options
    node".
 
 .. zeek:id:: Cluster::default_persistent_backend
-   :source-code: base/frameworks/cluster/main.zeek 76 76
+   :source-code: base/frameworks/cluster/main.zeek 83 83
 
    :Type: :zeek:type:`Broker::BackendType`
    :Attributes: :zeek:attr:`&redef`
@@ -171,7 +171,7 @@ Redefinable Options
    :zeek:see:`Cluster::create_store` with the *persistent* argument set true.
 
 .. zeek:id:: Cluster::default_store_dir
-   :source-code: base/frameworks/cluster/main.zeek 82 82
+   :source-code: base/frameworks/cluster/main.zeek 89 89
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -202,7 +202,7 @@ Redefinable Options
    logger nodes in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::manager_is_logger
-   :source-code: base/frameworks/cluster/main.zeek 235 235
+   :source-code: base/frameworks/cluster/main.zeek 242 242
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -224,7 +224,7 @@ Redefinable Options
    manager nodes in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::node
-   :source-code: base/frameworks/cluster/main.zeek 239 239
+   :source-code: base/frameworks/cluster/main.zeek 246 246
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -234,7 +234,7 @@ Redefinable Options
    of the cluster that is started up.
 
 .. zeek:id:: Cluster::node_topic_prefix
-   :source-code: base/frameworks/cluster/main.zeek 56 56
+   :source-code: base/frameworks/cluster/main.zeek 63 63
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -244,7 +244,7 @@ Redefinable Options
    a named node in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::nodeid_topic_prefix
-   :source-code: base/frameworks/cluster/main.zeek 60 60
+   :source-code: base/frameworks/cluster/main.zeek 67 67
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -254,7 +254,7 @@ Redefinable Options
    a unique node in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::nodes
-   :source-code: base/frameworks/cluster/main.zeek 220 220
+   :source-code: base/frameworks/cluster/main.zeek 227 227
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Cluster::Node`
    :Attributes: :zeek:attr:`&redef`
@@ -278,7 +278,7 @@ Redefinable Options
    proxy nodes in a cluster.  Used with broker-enabled cluster communication.
 
 .. zeek:id:: Cluster::retry_interval
-   :source-code: base/frameworks/cluster/main.zeek 244 244
+   :source-code: base/frameworks/cluster/main.zeek 251 251
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -292,7 +292,7 @@ Redefinable Options
    :source-code: base/frameworks/cluster/main.zeek 45 45
 
    :Type: :zeek:type:`string`
-   :Attributes: :zeek:attr:`&redef`
+   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = ``"Remove in v7.1: Unused."``
    :Default: ``"zeek/cluster/time_machine"``
 
    The topic name used for exchanging messages that are relevant to
@@ -335,7 +335,7 @@ Constants
 State Variables
 ###############
 .. zeek:id:: Cluster::stores
-   :source-code: base/frameworks/cluster/main.zeek 117 117
+   :source-code: base/frameworks/cluster/main.zeek 124 124
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Cluster::StoreInfo`
    :Attributes: :zeek:attr:`&default` = *[name=<uninitialized>, store=<uninitialized>, master_node=, master=F, backend=Broker::MEMORY, options=[sqlite=[path=, synchronous=<uninitialized>, journal_mode=<uninitialized>, failure_mode=Broker::SQLITE_FAILURE_MODE_FAIL, integrity_check=F]], clone_resync_interval=10.0 secs, clone_stale_interval=5.0 mins, clone_mutation_buffer_interval=2.0 mins]* :zeek:attr:`&redef`
@@ -352,7 +352,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Cluster::Info
-   :source-code: base/frameworks/cluster/main.zeek 138 145
+   :source-code: base/frameworks/cluster/main.zeek 145 152
 
    :Type: :zeek:type:`record`
 
@@ -369,7 +369,7 @@ Types
    The record type which contains the column fields of the cluster log.
 
 .. zeek:type:: Cluster::NamedNode
-   :source-code: base/frameworks/cluster/main.zeek 195 198
+   :source-code: base/frameworks/cluster/main.zeek 202 205
 
    :Type: :zeek:type:`record`
 
@@ -380,7 +380,7 @@ Types
    Record to represent a cluster node including its name.
 
 .. zeek:type:: Cluster::Node
-   :source-code: base/frameworks/cluster/main.zeek 172 192
+   :source-code: base/frameworks/cluster/main.zeek 179 199
 
    :Type: :zeek:type:`record`
 
@@ -398,13 +398,13 @@ Types
          The port that this node will listen on for peer connections.
          A value of ``0/unknown`` means the node is not pre-configured to listen.
 
-      interface: :zeek:type:`string` :zeek:attr:`&optional`
+      interface: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&deprecated` = *"Remove in v7.1: interface is not required and not set consistently on workers. Replace usages with packet_source() or keep a separate worker-to-interface mapping in a global table."*
          Identifier for the interface a worker is sniffing.
 
       manager: :zeek:type:`string` :zeek:attr:`&optional`
          Name of the manager node this node uses.  For workers and proxies.
 
-      time_machine: :zeek:type:`string` :zeek:attr:`&optional`
+      time_machine: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&deprecated` = ``"Remove in v7.1: Unused."``
          Name of a time machine node with which this node connects.
 
       id: :zeek:type:`string` :zeek:attr:`&optional`
@@ -422,7 +422,7 @@ Types
    Record type to indicate a node in a cluster.
 
 .. zeek:type:: Cluster::NodeType
-   :source-code: base/frameworks/cluster/main.zeek 149 170
+   :source-code: base/frameworks/cluster/main.zeek 156 177
 
    :Type: :zeek:type:`enum`
 
@@ -463,7 +463,7 @@ Types
    configuration.
 
 .. zeek:type:: Cluster::StoreInfo
-   :source-code: base/frameworks/cluster/main.zeek 85 108
+   :source-code: base/frameworks/cluster/main.zeek 92 115
 
    :Type: :zeek:type:`record`
 
@@ -503,7 +503,7 @@ Types
 Events
 ######
 .. zeek:id:: Cluster::hello
-   :source-code: base/frameworks/cluster/main.zeek 344 369
+   :source-code: base/frameworks/cluster/main.zeek 351 376
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -513,7 +513,7 @@ Events
    if the node dies and has to reconnect later.
 
 .. zeek:id:: Cluster::node_down
-   :source-code: base/frameworks/cluster/main.zeek 258 258
+   :source-code: base/frameworks/cluster/main.zeek 265 265
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -521,7 +521,7 @@ Events
    locally whenever a connected cluster node becomes disconnected.
 
 .. zeek:id:: Cluster::node_up
-   :source-code: base/frameworks/cluster/main.zeek 254 254
+   :source-code: base/frameworks/cluster/main.zeek 261 261
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -531,7 +531,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Cluster::log_policy
-   :source-code: base/frameworks/cluster/main.zeek 135 135
+   :source-code: base/frameworks/cluster/main.zeek 142 142
 
    :Type: :zeek:type:`Log::PolicyHook`
 
@@ -540,7 +540,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Cluster::create_store
-   :source-code: base/frameworks/cluster/main.zeek 408 483
+   :source-code: base/frameworks/cluster/main.zeek 415 490
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, persistent: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`Cluster::StoreInfo`
 
@@ -559,7 +559,7 @@ Functions
             be set until the node containing the master store has connected.
 
 .. zeek:id:: Cluster::get_active_node_count
-   :source-code: base/frameworks/cluster/main.zeek 313 316
+   :source-code: base/frameworks/cluster/main.zeek 320 323
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
@@ -568,7 +568,7 @@ Functions
    out how many nodes should be responding to requests.
 
 .. zeek:id:: Cluster::get_node_count
-   :source-code: base/frameworks/cluster/main.zeek 300 311
+   :source-code: base/frameworks/cluster/main.zeek 307 318
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
@@ -576,7 +576,7 @@ Functions
    node type.
 
 .. zeek:id:: Cluster::is_enabled
-   :source-code: base/frameworks/cluster/main.zeek 318 321
+   :source-code: base/frameworks/cluster/main.zeek 325 328
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -587,7 +587,7 @@ Functions
    :returns: True if :zeek:id:`Cluster::node` has been set.
 
 .. zeek:id:: Cluster::local_node_type
-   :source-code: base/frameworks/cluster/main.zeek 323 332
+   :source-code: base/frameworks/cluster/main.zeek 330 339
 
    :Type: :zeek:type:`function` () : :zeek:type:`Cluster::NodeType`
 
@@ -600,14 +600,14 @@ Functions
    :returns: The :zeek:type:`Cluster::NodeType` the calling node acts as.
 
 .. zeek:id:: Cluster::log
-   :source-code: base/frameworks/cluster/main.zeek 485 488
+   :source-code: base/frameworks/cluster/main.zeek 492 495
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`void`
 
    Write a message to the cluster logging stream.
 
 .. zeek:id:: Cluster::node_topic
-   :source-code: base/frameworks/cluster/main.zeek 334 337
+   :source-code: base/frameworks/cluster/main.zeek 341 344
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -621,7 +621,7 @@ Functions
             a given cluster node.
 
 .. zeek:id:: Cluster::nodeid_topic
-   :source-code: base/frameworks/cluster/main.zeek 339 342
+   :source-code: base/frameworks/cluster/main.zeek 346 349
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`string`
 
