@@ -158,6 +158,13 @@ Terminates the currently active Zeek-side session, flushing all state. Any
 subsequent activity will start a new session from scratch. This can only be
 called from inside a protocol analyzer.
 
+.. _spicy_skip_input:
+
+.. rubric:: ``function zeek::skip_input()``
+
+Tells Zeek to skip sending any further input data to the current analyzer.
+This is supported for protocol and file analyzers.
+
 .. _spicy_file_set_size:
 
 .. rubric:: ``function zeek::file_set_size(size: uint64, fid: optional<string> = Null)``
