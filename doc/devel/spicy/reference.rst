@@ -394,9 +394,9 @@ the pieces going into such an event definition:
             Zeek. On the Zeek-side this will turn into a parameter of
             Zeek type ``fa_file``. This ID can be used with file or protocol
             analyzers. For protocol analyzers it refers to the most recently
-            opened, but not yet closed file, see :spicylink:`zeek::file_begin
-            <zeek.html#spicy-file-begin>` and
-            :spicylink:`zeek::file_end <zeek.html#spicy-file-end>`.
+            opened, but not yet closed file, see :ref:`zeek::file_begin
+            <spicy_file_begin>` and
+            :ref:`zeek::file_end <spicy_file_end>`.
 
         ``$packet``
             Refers to the packet that's currently being processed by
