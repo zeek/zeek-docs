@@ -380,7 +380,7 @@ the pieces going into such an event definition:
                   fails to produce a value, the record field is
                   likewise left unset.
 
-    In addition to full Spicy expressions, there are three reserved
+    In addition to full Spicy expressions, there are four reserved
     IDs with specific meanings when used as arguments:
 
         ``$conn``
