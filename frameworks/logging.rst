@@ -274,6 +274,115 @@ Note that this must run after the stream is created, so the priority of this
 event handler must be lower than the priority of the event handler where the
 stream was created.
 
+
+Delaying Log Writes
+-------------------
+
+.. versionadded:: 6.2
+
+The logging framework allows delaying log writes using the
+:zeek:see:`Log::delay` function.
+
+This functionality enables querying or waiting for additional data to attach to
+an in-flight log record for which a :zeek:see:`Log::write` has happened.
+Common examples are the execution of DNS reverse lookups for the addresses
+of a connection, or - more generally - asynchronous queries to external systems.
+Similarly, waiting a small duration for more data from an external process
+pertaining to specific connections or events is another. For example, endpoint
+agents may provide detailed process information for specific connections
+logged by Zeek.
+
+Conceptually, the delay of a log record is placed after the execution of the
+global :zeek:see:`Log::log_stream_policy` hook and before the execution of
+:ref:`policy hooks attached to filters <logging-filtering-log-records>`.
+At this point, calling :zeek:see:`Log::delay` is only valid for the currently
+*active write* during the execution of the global :zeek:see:`Log::log_stream_policy`
+hook. Calling :zeek:see:`Log::delay` in any other context or with the wrong
+arguments results in runtime errors.
+
+.. note::
+
+   While this may appear very restrictive, it does make it explicit that it is
+   the action of a :zeek:see:`Log::write` for a given stream and log record
+   that is being delayed as well as providing a defined point where a delay starts.
+
+   Prior ideas entertained the idea of an implicit and very lax interface, but
+   in the end was deemed too loose and provided too much flexibility that would
+   be hard to later restrict again or keep stable. The current interface might
+   be made more lax in the future if it turns out to be too rigid.
+
+
+By default, log records are not delayed. That is, during the execution of
+the :zeek:see:`Log::write` function, a serialized version of the given log
+record is handed off to a remote logger or a local logging thread.
+Modifications of the same log record after :zeek:see:`Log::write` has returned
+have no effect.
+
+In contrast, when a log write is delayed using the :zeek:see:`Log::delay`
+function, the record is enqueued into a per-stream record queue and the
+:zeek:see:`Log::write` returns. Processing of the delayed write resumes once
+it is released by using the :zeek:see:`Log::delay_finish` function or until
+a maximum, per-stream configurable, delay duration expires.
+
+When processing of a log write is resumed, first, all post delay callbacks
+given to :zeek:see:`Log::delay` are executed. Thereafter, as for non-delayed
+writes, filter policy hooks are executed and the log record is serialized.
+
+Policy hooks attached to filters and the serialization step observe any
+mutations done during the delay. Filter policy hooks may even use these
+modifications for deciding on the verdict of the given log record.
+
+.. note::
+
+   Policy hooks attached to filters are often used to skip logging of
+   uninteresting log records. When combined with log write delaying, users
+   should consider lifting such filter logic up into the
+   :zeek:see:`Log::log_stream_policy` hook to avoid unnecessarily delaying
+   records when it is known that these will be discarded later on.
+
+
+The :zeek:see:`Log::delay` and :zeek:see:`Log::delay_finish` functions increment
+and decrement an internal reference count for a given write. To continue a
+delayed write, :zeek:see:`Log::delay_finish` must be called as often as
+:zeek:see:`Log::delay`.
+
+
+Zeek delays a log record by a configurable interval defined for each log stream.
+It defaults to the global :zeek:see:`Log::default_max_delay_interval`, and can be
+adapted by calling :zeek:see:`Log::set_max_delay_interval` on the stream.
+It is possible to explicitly extend the delay duration by providing a post
+delay callback to :zeek:see:`Log::delay`. Calling :zeek:see:`Log::delay` from
+within such a post delay callback re-delays the record, essentially putting
+it at the end of the per-stream queue again.
+
+.. note::
+
+   While this puts additional burden on the script writer to realize per-record
+   specific longer delay intervals, it allows for a simpler internal implementation.
+   Additionally, the explicit re-delaying is also meant to make users aware of the
+   consequences when using such long delays either on purpose or by accident.
+
+   For multiple second or even longer delays, it is suggested to consider resumable,
+   robust and non-ephemeral external post processing steps based on Zeek logs instead.
+   In the face of worker crashes or uncontrolled restarts of a Zeek cluster, all
+   delayed log records are inevitably lost.
+
+
+The following example shows how to use the :ref:`when <when-statement>` to asynchronously
+lookup the DNS names of the originator and responder addresses to enrich an
+in-flight :zeek:see:`Conn::Info` record. By default, a stream's maximum delay
+interval is 200 milliseconds - the ``timeout 150msec`` part ensures a delayed
+write resumes after 150 milliseconds already by explicitly calling
+:zeek:see:`Log::delay_finish`.
+
+
+.. literalinclude:: logging/delay1.zeek
+   :caption: Enriching conn.log with originator and responder names.
+   :language: zeek
+   :linenos:
+   :tab-width: 4
+
+
 Filters
 =======
 
@@ -442,6 +551,8 @@ allows to do a more generic variant:
 
 This function can be used with all log streams that have records containing an
 ``id: conn_id`` field.
+
+.. _logging-filtering-log-records:
 
 Filtering Log Records
 ---------------------
