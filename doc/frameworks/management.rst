@@ -606,11 +606,7 @@ Here's a full-featured configuration describing the available options, assuming
 a single agent running on a machine "testbox" with default settings:
 
 .. literalinclude:: management/full-config.ini
-   :language: toml
-..
-   Using toml in the above only because it produces slightly better highlighting.
-   The files are not technically TOML but what's compatible with Python's
-   configparser classes.
+   :language: ini
 
 .. _simplification-instance-local:
 
