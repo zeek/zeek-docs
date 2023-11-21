@@ -1113,6 +1113,7 @@ Membership can be tested with ``in`` or ``!in``:
 See the :zeek:keyword:`for` statement for information on how to iterate over
 the elements in a table.
 
+.. _table-special-lookups:
 
 Special lookups
 ^^^^^^^^^^^^^^^
@@ -1132,10 +1133,13 @@ the closest (narrowest) subnet. For example:
 will print ``9, 5``. Attempting to look up an address that doesn't match
 any of the subnet indices results in a run-time error.
 
-In addition, you can index tables that have an index type of
-:zeek:type:`pattern` using a :zeek:type:`string` value. This lookup returns
-a (possibly empty) :zeek:type:`vector` of yield values corresponding to
-each of the patterns that match. For example:
+.. versionadded:: 6.2
+
+In addition, :zeek:type:`string` lookups for tables that have an index type of
+:zeek:type:`pattern` return a (possibly empty)
+:zeek:type:`vector` containing the values corresponding to each of the
+patterns matching the given string. The order of entries in the resulting
+vector is non-deterministic. For example:
 
 .. code-block:: zeek
 
@@ -1145,15 +1149,29 @@ each of the patterns that match. For example:
     pt[/(foo|bletch)/] = 3;
     print pt["foo"];
 
-will print either ``[1, 3]`` or ``[3, 1]`` (the order can vary).
-Indexing with a string that matches only one pattern still returns a
-(one-element) :zeek:type:`vector`, and indexing with a string that no
+will print either ``[1, 3]`` or ``[3, 1]``.
+Indexing with a string that matches only one pattern returns a
+one-element :zeek:type:`vector`, and indexing with a string that no
 pattern matches returns an empty :zeek:type:`vector`.
 
 Note that these pattern matches are all *exact*: the pattern must match
 the entire string. If you want the pattern to match if it's *anywhere*
 in the string, you can use the usual regular expression operators such
 as ``/.*foo.*/``.
+
+.. note::
+
+   Internally, the individual patterns are matched in parallel using a lazily
+   constructed determinstic finite automaton (DFA). Depending on the nature of
+   patterns used within the table *and* the input data used for lookups, this
+   may result in difficult to predict memory consumption over time.
+
+   Users are advised to test scripts using this feature with realistic and
+   adversarial input data with focus on memory growth. It is possible to
+   reset the DFA's state by removal or addition of a single pattern. For
+   observability, the function :zeek:see:`table_pattern_matcher_stats` can
+   be used. It returns a :zeek:see:`MatcherStats` record with details about
+   the DFA's state.
 
 
 Additional operations
@@ -1291,6 +1309,11 @@ identifier between vertical pipe characters:
 
     |s|
 
+
+The :ref:`table's special lookups <table-special-lookups>` extend to the
+set ``in`` operator: Using ``in`` with ``addr`` and ``set[subnet]``
+or ``string`` and ``set[pattern]`` yields ``T`` if any of the subnets
+or patterns the set holds contain or match the given value.
 
 .. zeek:native-type:: vector
 
