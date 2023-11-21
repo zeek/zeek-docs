@@ -365,7 +365,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Software::cmp_versions
-   :source-code: base/frameworks/software/main.zeek 379 455
+   :source-code: base/frameworks/software/main.zeek 380 456
 
    :Type: :zeek:type:`function` (v1: :zeek:type:`Software::Version`, v2: :zeek:type:`Software::Version`) : :zeek:type:`int`
 
@@ -377,7 +377,7 @@ Functions
              is compared lexicographically.
 
 .. zeek:id:: Software::found
-   :source-code: base/frameworks/software/main.zeek 520 549
+   :source-code: base/frameworks/software/main.zeek 521 550
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`, info: :zeek:type:`Software::Info`) : :zeek:type:`bool`
 

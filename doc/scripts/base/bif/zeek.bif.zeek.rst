@@ -239,6 +239,7 @@ Functions
 :zeek:id:`system_env`: :zeek:type:`function`                  Invokes a command via the ``system`` function of the OS with a prepared
                                                               environment.
 :zeek:id:`table_keys`: :zeek:type:`function`                  Gets all keys from a table.
+:zeek:id:`table_pattern_matcher_stats`: :zeek:type:`function` Return MatcherStats for a table[pattern] or set[pattern] value.
 :zeek:id:`table_values`: :zeek:type:`function`                Gets all values from a table.
 :zeek:id:`terminate`: :zeek:type:`function`                   Gracefully shut down Zeek by terminating outstanding processing.
 :zeek:id:`time_to_double`: :zeek:type:`function`              Converts a :zeek:type:`time` value to a :zeek:type:`double`.
@@ -3455,6 +3456,27 @@ Functions
    :returns: A ``set of T`` of all the keys in t.
    
    .. zeek:see:: table_values
+
+.. zeek:id:: table_pattern_matcher_stats
+   :source-code: base/bif/zeek.bif.zeek 2709 2709
+
+   :Type: :zeek:type:`function` (tbl: :zeek:type:`any`) : :zeek:type:`MatcherStats`
+
+   Return MatcherStats for a table[pattern] or set[pattern] value.
+   
+   This returns a MatcherStats objects that can be used for introspection
+   of the DFA used for such a table. Statistics reset whenever elements are
+   added or removed to the table as these operations result in the underlying
+   DFA being rebuilt.
+   
+   This function iterates over all states of the DFA. Calling it at a high
+   frequency is likely detrimental to performance.
+   
+
+   :param tbl: The table to get stats for.
+   
+
+   :returns: A record with matcher statistics.
 
 .. zeek:id:: table_values
    :source-code: base/bif/zeek.bif.zeek 607 607
