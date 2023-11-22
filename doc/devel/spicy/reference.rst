@@ -687,7 +687,7 @@ guide::
 
 Instead of providing the precompiled analyzer on the Zeek command
 line, you can also copy them into
-``${prefix}/lib/spicy/Zeek_Spicy/modules``. Zeek will
+``${prefix}/lib/zeek/spicy``. Zeek will
 automatically load any ``*.hlto`` object files it finds there. In
 addition, Zeek also scans its plugin directory for ``*.hlto``
 files. Alternatively, you can override both of those locations by
