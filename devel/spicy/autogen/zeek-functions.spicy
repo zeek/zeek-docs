@@ -138,10 +138,11 @@ handle: handle to the child analyzer to remove
 
 .. _spicy_file_begin:
 
-.. rubric:: ``function zeek::file_begin(mime_type: optional<string> = Null) : string``
+.. rubric:: ``function zeek::file_begin(mime_type: optional<string> = Null, fuid: optional<string> = Null) : string``
 
 Signals the beginning of a file to Zeek's file analysis, associating it with the current connection.
 Optionally, a mime type can be provided. It will be passed on to Zeek's file analysis framework.
+Optionally, a file ID can be provided. It will be passed on to Zeek's file analysis framework.
 Returns the Zeek-side file ID of the new file.
 
 .. _spicy_fuid:
