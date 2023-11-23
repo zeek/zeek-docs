@@ -1161,17 +1161,16 @@ as ``/.*foo.*/``.
 
 .. note::
 
-   Internally, the individual patterns are matched in parallel using a lazily
-   constructed determinstic finite automaton (DFA). Depending on the nature of
-   patterns used within the table *and* the input data used for lookups, this
-   may result in difficult to predict memory consumption over time.
+   Internally, Zeek matches a table's patterns in parallel using a lazily
+   constructed deterministic finite automaton (DFA). This means that the nature
+   of patterns in the table *and* the strings looked up in it can lead to
+   varying degrees of runtime memory growth.
 
-   Users are advised to test scripts using this feature with realistic and
-   adversarial input data with focus on memory growth. It is possible to
-   reset the DFA's state by removal or addition of a single pattern. For
-   observability, the function :zeek:see:`table_pattern_matcher_stats` can
-   be used. It returns a :zeek:see:`MatcherStats` record with details about
-   the DFA's state.
+   Users are advised to test scripts using this feature with a wide range of
+   input data. Script developers can reset the DFA's state by removal or
+   addition of a single pattern. For observability, the
+   :zeek:see:`table_pattern_matcher_stats` function returns a
+   :zeek:see:`MatcherStats` record with details about a table's DFA state.
 
 
 Additional operations
