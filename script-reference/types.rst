@@ -733,7 +733,7 @@ Additional examples:
 - ``/foo|bar/i`` matches ``"foo"``, ``"Foo"``, ``"BaR"``, etc.
 - ``/foo|(?i:bar)/`` matches ``"foo"`` and ``"BaR"``, but *not* ``"Foo"``.
 - ``/"foo"/i`` matches ``"foo"``, but *not* ``"Foo"``.
-- ``/foo.bar/`` doesn't matche ``"foo\nbar"``, while ``/foo.bar/s`` does.
+- ``/foo.bar/`` doesn't match ``"foo\nbar"``, while ``/foo.bar/s`` does.
 
 The ``i`` and ``s`` modifiers can also be combined in a single pattern
 such as ``/foo/is`` or ``/bar/si``. In this case, both case-insensitivity
