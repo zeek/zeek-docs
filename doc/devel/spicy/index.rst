@@ -8,7 +8,7 @@ and more. Zeek supports integrating Spicy analyzers so that one can
 create Zeek protocol, packet and file analyzers. This section digs
 into how that integration works. We begin with a short "Getting
 Started" guide showing you the basics of using Spicy with Zeek,
-followed by an in-depth tutorial on adding a comeplete protocol
+followed by an in-depth tutorial on adding a complete protocol
 analyzer to Zeek. The final part consists of a reference section
 documenting everything the Spicy integration supports.
 
