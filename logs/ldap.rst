@@ -100,11 +100,8 @@ from the log.
     }
 
 
-Detection Use Cases
-===================
+Conclusion
+==========
 
-With the additional information that Zeek LDAP logs provide the ability to do
-string matching, pattern matching and Machine Learning modelling is improved.
-
-For example a list of know LDAP queries used by attackers can be found `here
-<https://gist.github.com/jsecurity101/9c7e94f95b8d90f9252d64949562ba5d>`_.
+The Zeek LDAP logs provide additional insights that help improve observability
+into this protocol.
