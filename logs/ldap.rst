@@ -23,15 +23,15 @@ information. This is a quick overview of how the protocol works:
     server by providing credentials.
 
     Queries: Clients search for entries in the LDAP directory using LDAP
-    queries, which consist of a base DN, a scope (such as one level or the
-    entire subtree), and a filter to match entries. Queries are read only.
+    queries, which consist of a base Distinguished Name (DN), a scope (such
+    as one level or the entire subtree), and a filter to match entries. Queries
+    are read only.
 
     Operations: Clients with the correct privileges can perform a variety of
     operations; in addition to search, they can add, delete or modify.
 
     Data Format: LDAP data entries are formatted as records consisting of a
-    distinguished name (DN) and a set of attributes. Each attribute has a name
-    and one or more values.
+    DN and a set of attributes. Each attribute has a name and one or more values.
 
 The LDAP analyzer outputs two LDAP related logs. :file:`ldap.log` contains
 details about the LDAP session except those related to searches.
@@ -49,7 +49,7 @@ An example of an :file:`ldap.log`.
 .. code-block:: console
 
     zeek@zeek-6.1:~ zeek -C LogAscii::use_json=T LDAP::default_log_search_attributes=T -r ldap-simpleauth.pcap
-    zeek@zeek-6.1:~ jq . ldap_search.log
+    zeek@zeek-6.1:~ jq . ldap.log
 
 ::
 
