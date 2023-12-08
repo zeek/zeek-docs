@@ -246,6 +246,12 @@ To install these, you can use:
   dependencies as instructed below. It's possible to install them from other
   sources (msys2, cygwin, etc), which we leave to the reader.
 
+  Cloning the repository will also require Developer Mode to be enabled in
+  Windows. This is due to the existence of a number of symbolic links in the
+  repository. Without Developer Mode, ``git`` on Windows will ignore these
+  links and builds will fail. There are a couple of different ways to enable
+  it, and the settings may differ depending on the version of Windows.
+
   .. code-block:: console
 
      choco install -y --no-progress visualstudio2019buildtools --version=16.11.11.0
@@ -261,7 +267,8 @@ To install these, you can use:
   to your PATH (``C:\Program Files\Git\bin`` by default). This is needed for the
   ``sh`` command to be available during the build. Once all of the dependencies
   are in place, you will need to open a shell (PowerShell or cmd) and add the
-  development environment to it. The following command is for running on an x86_64 host.
+  development environment to it. The following command is for running on an
+  x86_64 host.
 
   .. code-block:: console
 
