@@ -45,6 +45,9 @@ This script contains a default event handler that raises
 :zeek:enum:`Signatures::Sensitive_Signature` :doc:`Notices <notice>`
 (as well as others; see the beginning of the script).
 
+As documented in :ref:`signatures-actions`, it's possible to use a custom
+event instead of :zeek:id:`signature_match`.
+
 As signatures are independent of Zeek's scripts, they are put into
 their own file(s). There are three ways to specify which files contain
 signatures: By using the ``-s`` flag when you invoke Zeek, or by
@@ -258,11 +261,13 @@ matched. The following context conditions are defined:
     state is rejected as an error in the signature since it does not have a
     useful meaning like it does for TCP.
 
+.. _signatures-actions:
+
 Actions
 -------
 
 Actions define what to do if a signature matches. Currently, there are
-two actions defined:
+two actions defined, ``event`` and ``enable``.
 
 ``event <string>``
     Raises a :zeek:id:`signature_match` event. The event handler has the
@@ -276,6 +281,35 @@ two actions defined:
     part of the payload that has eventually lead to the signature
     match (this may be empty for signatures without content
     conditions).
+
+``event event_name [string]``
+
+    .. versionadded:: 6.2
+
+    To raise a custom event, the event's name can be inserted before the string::
+
+        event my_signature_match "Found root!"
+
+    Instead of :zeek:id:`signature_match`, this raises ``my_signature_match``.
+    The parameters for the ``my_signature_match`` event are expected to be the
+    same as for :zeek:id:`signature_match`.
+
+    It is further possible to omit the string altogether::
+
+      event found_root
+
+    In this case, the type of the ``found_root`` event handler does not have
+    a ``msg`` parameter:
+
+    .. code-block:: zeek
+
+        event found_root(state: signature_state, data: string)
+
+    .. note::
+
+      Matches for signatures that use custom events do not appear
+      in ``signatures.log``.
+
 
 ``enable <string>``
     Enables the protocol analyzer ``<string>`` for the matching
