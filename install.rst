@@ -256,7 +256,7 @@ To install these, you can use:
 
      choco install -y --no-progress visualstudio2019buildtools --version=16.11.11.0
      choco install -y --no-progress visualstudio2019-workload-vctools --version=1.0.0 --package-parameters '--add Microsoft.VisualStudio.Component.VC.ATLMFC'
-     choco install -y --no-progress conan
+     choco install -y --no-progress conan --version=1.58.0
      choco install -y --no-progress sed
      choco install -y --no-progress winflexbison3
      choco install -y --no-progress msysgit
