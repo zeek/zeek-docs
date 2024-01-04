@@ -12,12 +12,12 @@ Summary
 ~~~~~~~
 Events
 ######
-=================================================== ================================================================
-:zeek:id:`LDAP::bind_request`: :zeek:type:`event`   Event generated for each LDAPMessage containing a BindRequest.
-:zeek:id:`LDAP::message`: :zeek:type:`event`        Event generated for each LDAPMessage (either direction).
-:zeek:id:`LDAP::search_request`: :zeek:type:`event` Event generated for each LDAPMessage containing a SearchRequest.
-:zeek:id:`LDAP::search_result`: :zeek:type:`event`  Event generated for each SearchResultEntry in LDAP messages.
-=================================================== ================================================================
+======================================================== ================================================================
+:zeek:id:`LDAP::bind_request`: :zeek:type:`event`        Event generated for each LDAPMessage containing a BindRequest.
+:zeek:id:`LDAP::message`: :zeek:type:`event`             Event generated for each LDAPMessage (either direction).
+:zeek:id:`LDAP::search_request`: :zeek:type:`event`      Event generated for each LDAPMessage containing a SearchRequest.
+:zeek:id:`LDAP::search_result_entry`: :zeek:type:`event` Event generated for each SearchResultEntry in LDAP messages.
+======================================================== ================================================================
 
 
 Detailed Interface
@@ -25,7 +25,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: LDAP::bind_request
-   :source-code: base/protocols/ldap/main.zeek 314 328
+   :source-code: base/protocols/ldap/main.zeek 359 380
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, version: :zeek:type:`int`, name: :zeek:type:`string`, auth_type: :zeek:type:`LDAP::BindAuthType`, auth_info: :zeek:type:`string`)
 
@@ -50,7 +50,7 @@ Events
    :param auth_info: Additional information related to the used auth type.
 
 .. zeek:id:: LDAP::message
-   :source-code: base/protocols/ldap/main.zeek 187 257
+   :source-code: base/protocols/ldap/main.zeek 188 280
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, opcode: :zeek:type:`LDAP::ProtocolOpcode`, result: :zeek:type:`LDAP::ResultCode`, matched_dn: :zeek:type:`string`, diagnostic_message: :zeek:type:`string`, object: :zeek:type:`string`, argument: :zeek:type:`string`)
 
@@ -81,7 +81,7 @@ Events
    :param argument: Additional arguments this message includes.
 
 .. zeek:id:: LDAP::search_request
-   :source-code: base/protocols/ldap/main.zeek 270 296
+   :source-code: base/protocols/ldap/main.zeek 292 341
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, base_object: :zeek:type:`string`, scope: :zeek:type:`LDAP::SearchScope`, deref: :zeek:type:`LDAP::SearchDerefAlias`, size_limit: :zeek:type:`int`, time_limit: :zeek:type:`int`, types_only: :zeek:type:`bool`, filter: :zeek:type:`string`, attributes: :zeek:type:`vector` of :zeek:type:`string`)
 
@@ -117,8 +117,8 @@ Events
 
    :param attributes: Additional attributes of the SearchRequest.
 
-.. zeek:id:: LDAP::search_result
-   :source-code: base/protocols/ldap/main.zeek 301 306
+.. zeek:id:: LDAP::search_result_entry
+   :source-code: base/protocols/ldap/main.zeek 346 351
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, object_name: :zeek:type:`string`)
 
