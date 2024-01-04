@@ -6,7 +6,7 @@ base/protocols/ldap/main.zeek
 
 
 :Namespace: LDAP
-:Imports: :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/ldap/consts.zeek </scripts/base/protocols/ldap/consts.zeek>`
+:Imports: :doc:`base/frameworks/reporter </scripts/base/frameworks/reporter/index>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/ldap/consts.zeek </scripts/base/protocols/ldap/consts.zeek>`
 
 Summary
 ~~~~~~~
@@ -69,7 +69,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: LDAP::default_capture_password
-   :source-code: base/protocols/ldap/main.zeek 19 19
+   :source-code: base/protocols/ldap/main.zeek 20 20
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -78,7 +78,7 @@ Runtime Options
    Whether clear text passwords are captured or not.
 
 .. zeek:id:: LDAP::default_log_search_attributes
-   :source-code: base/protocols/ldap/main.zeek 22 22
+   :source-code: base/protocols/ldap/main.zeek 23 23
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -89,7 +89,7 @@ Runtime Options
 Redefinable Options
 ###################
 .. zeek:id:: LDAP::ports_tcp
-   :source-code: base/protocols/ldap/main.zeek 13 13
+   :source-code: base/protocols/ldap/main.zeek 14 14
 
    :Type: :zeek:type:`set` [:zeek:type:`port`]
    :Attributes: :zeek:attr:`&redef`
@@ -106,7 +106,7 @@ Redefinable Options
    TCP ports which should be considered for analysis.
 
 .. zeek:id:: LDAP::ports_udp
-   :source-code: base/protocols/ldap/main.zeek 16 16
+   :source-code: base/protocols/ldap/main.zeek 17 17
 
    :Type: :zeek:type:`set` [:zeek:type:`port`]
    :Attributes: :zeek:attr:`&redef`
@@ -124,7 +124,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: LDAP::MessageInfo
-   :source-code: base/protocols/ldap/main.zeek 36 66
+   :source-code: base/protocols/ldap/main.zeek 37 67
 
    :Type: :zeek:type:`record`
 
@@ -138,19 +138,19 @@ Types
 
       version: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      opcodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+      opcode: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      results: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+      result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      diagnostic_messages: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+      diagnostic_message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      objects: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+      object: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      arguments: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+      argument: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
 
 .. zeek:type:: LDAP::SearchInfo
-   :source-code: base/protocols/ldap/main.zeek 71 105
+   :source-code: base/protocols/ldap/main.zeek 72 106
 
    :Type: :zeek:type:`record`
 
@@ -162,17 +162,17 @@ Types
 
       message_id: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      scopes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+      scope: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      derefs: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+      deref_aliases: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      base_objects: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+      base_object: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
       result_count: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      results: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+      result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      diagnostic_messages: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+      diagnostic_message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
       filter: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
@@ -180,7 +180,7 @@ Types
 
 
 .. zeek:type:: LDAP::State
-   :source-code: base/protocols/ldap/main.zeek 107 110
+   :source-code: base/protocols/ldap/main.zeek 108 111
 
    :Type: :zeek:type:`record`
 
@@ -192,13 +192,13 @@ Types
 Events
 ######
 .. zeek:id:: LDAP::log_ldap
-   :source-code: base/protocols/ldap/main.zeek 114 114
+   :source-code: base/protocols/ldap/main.zeek 115 115
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`LDAP::MessageInfo`)
 
 
 .. zeek:id:: LDAP::log_ldap_search
-   :source-code: base/protocols/ldap/main.zeek 115 115
+   :source-code: base/protocols/ldap/main.zeek 116 116
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`LDAP::SearchInfo`)
 
@@ -206,21 +206,21 @@ Events
 Hooks
 #####
 .. zeek:id:: LDAP::finalize_ldap
-   :source-code: base/protocols/ldap/main.zeek 331 357
+   :source-code: base/protocols/ldap/main.zeek 383 402
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    LDAP finalization hook.
 
 .. zeek:id:: LDAP::log_policy
-   :source-code: base/protocols/ldap/main.zeek 25 25
+   :source-code: base/protocols/ldap/main.zeek 26 26
 
    :Type: :zeek:type:`Log::PolicyHook`
 
    Default logging policy hook for LDAP_LOG.
 
 .. zeek:id:: LDAP::log_policy_search
-   :source-code: base/protocols/ldap/main.zeek 28 28
+   :source-code: base/protocols/ldap/main.zeek 29 29
 
    :Type: :zeek:type:`Log::PolicyHook`
 

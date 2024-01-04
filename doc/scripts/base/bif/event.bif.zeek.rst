@@ -70,7 +70,6 @@ Events
                                                                             about how to identify the logical "file" to which some data/input
                                                                             belongs.
 :zeek:id:`ipv6_ext_headers`: :zeek:type:`event`                             Generated for every IPv6 packet that contains extension headers.
-:zeek:id:`load_sample`: :zeek:type:`event`                                  Generated regularly for the purpose of profiling Zeek's processing.
 :zeek:id:`mobile_ipv6_message`: :zeek:type:`event`                          Generated for any packet using a Mobile IPv6 Mobility Header.
 :zeek:id:`net_done`: :zeek:type:`event`                                     Generated as one of the first steps of Zeek's main-loop termination, just
                                                                             before it starts to flush any remaining events/timers/state.
@@ -108,7 +107,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: Pcap::file_done
-   :source-code: base/bif/event.bif.zeek 955 955
+   :source-code: base/bif/event.bif.zeek 940 940
 
    :Type: :zeek:type:`event` (path: :zeek:type:`string`)
 
@@ -160,7 +159,7 @@ Events
    .. zeek:see:: is_protocol_analyzer is_packet_analyzer is_file_analyzer
 
 .. zeek:id:: anonymization_mapping
-   :source-code: base/bif/event.bif.zeek 949 949
+   :source-code: base/bif/event.bif.zeek 934 934
 
    :Type: :zeek:type:`event` (orig: :zeek:type:`addr`, mapped: :zeek:type:`addr`)
 
@@ -380,7 +379,7 @@ Events
       tap.
 
 .. zeek:id:: dns_mapping_altered
-   :source-code: base/bif/event.bif.zeek 933 933
+   :source-code: base/bif/event.bif.zeek 918 918
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`, old_addrs: :zeek:type:`addr_set`, new_addrs: :zeek:type:`addr_set`)
 
@@ -404,7 +403,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_lost_name
-   :source-code: base/bif/event.bif.zeek 900 900
+   :source-code: base/bif/event.bif.zeek 885 885
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -421,7 +420,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_name_changed
-   :source-code: base/bif/event.bif.zeek 915 915
+   :source-code: base/bif/event.bif.zeek 900 900
 
    :Type: :zeek:type:`event` (prev: :zeek:type:`dns_mapping`, latest: :zeek:type:`dns_mapping`)
 
@@ -440,7 +439,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_new_name
-   :source-code: base/bif/event.bif.zeek 887 887
+   :source-code: base/bif/event.bif.zeek 872 872
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -456,7 +455,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_unverified
-   :source-code: base/bif/event.bif.zeek 875 875
+   :source-code: base/bif/event.bif.zeek 860 860
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -473,7 +472,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_valid
-   :source-code: base/bif/event.bif.zeek 862 862
+   :source-code: base/bif/event.bif.zeek 847 847
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -502,7 +501,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: event_queue_flush_point
-   :source-code: base/bif/event.bif.zeek 726 726
+   :source-code: base/bif/event.bif.zeek 711 711
 
    :Type: :zeek:type:`event` ()
 
@@ -551,7 +550,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: file_gap
-   :source-code: base/bif/event.bif.zeek 821 821
+   :source-code: base/bif/event.bif.zeek 806 806
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, offset: :zeek:type:`count`, len: :zeek:type:`count`)
 
@@ -570,7 +569,7 @@ Events
       file_sniff file_state_remove file_reassembly_overflow
 
 .. zeek:id:: file_new
-   :source-code: base/bif/event.bif.zeek 759 759
+   :source-code: base/bif/event.bif.zeek 744 744
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
@@ -590,7 +589,7 @@ Events
       file_sniff file_state_remove
 
 .. zeek:id:: file_opened
-   :source-code: base/bif/event.bif.zeek 722 722
+   :source-code: base/bif/event.bif.zeek 707 707
 
    :Type: :zeek:type:`event` (f: :zeek:type:`file`)
 
@@ -602,7 +601,7 @@ Events
    :param f: The opened file.
 
 .. zeek:id:: file_over_new_connection
-   :source-code: base/bif/event.bif.zeek 778 778
+   :source-code: base/bif/event.bif.zeek 763 763
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -627,7 +626,7 @@ Events
       file_state_remove
 
 .. zeek:id:: file_reassembly_overflow
-   :source-code: base/bif/event.bif.zeek 841 841
+   :source-code: base/bif/event.bif.zeek 826 826
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, offset: :zeek:type:`count`, skipped: :zeek:type:`count`)
 
@@ -653,7 +652,7 @@ Events
       Files::set_reassembly_buffer_size
 
 .. zeek:id:: file_sniff
-   :source-code: base/bif/event.bif.zeek 797 797
+   :source-code: base/bif/event.bif.zeek 782 782
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, meta: :zeek:type:`fa_metadata`)
 
@@ -677,7 +676,7 @@ Events
       file_state_remove
 
 .. zeek:id:: file_state_remove
-   :source-code: base/bif/event.bif.zeek 850 850
+   :source-code: base/bif/event.bif.zeek 835 835
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
@@ -814,27 +813,6 @@ Events
    
    .. zeek:see:: new_packet tcp_packet packet_contents esp_packet
 
-.. zeek:id:: load_sample
-   :source-code: base/bif/event.bif.zeek 612 612
-
-   :Type: :zeek:type:`event` (samples: :zeek:type:`load_sample_info`, CPU: :zeek:type:`interval`, dmem: :zeek:type:`int`)
-
-   Generated regularly for the purpose of profiling Zeek's processing. This event
-   is raised for every :zeek:id:`load_sample_freq` packet. For these packets,
-   Zeek records script-level functions executed during their processing as well
-   as further internal locations. By sampling the processing in this form, one
-   can understand where Zeek spends its time.
-   
-
-   :param samples: A set with functions and locations seen during the processing of
-            the sampled packet.
-   
-
-   :param CPU: The CPU time spent on processing the sampled packet.
-   
-
-   :param dmem: The difference in memory usage caused by processing the sampled packet.
-
 .. zeek:id:: mobile_ipv6_message
    :source-code: base/bif/event.bif.zeek 328 328
 
@@ -848,7 +826,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 5760 5762
+   :source-code: base/init-bare.zeek 5741 5743
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
@@ -999,7 +977,7 @@ Events
    .. zeek:see:: new_packet tcp_packet
 
 .. zeek:id:: packet_not_processed
-   :source-code: base/bif/event.bif.zeek 977 977
+   :source-code: base/bif/event.bif.zeek 962 962
 
    :Type: :zeek:type:`event` (pkt: :zeek:type:`pcap_packet`)
 
@@ -1012,7 +990,7 @@ Events
    :param pkt: Data for the unprocessed packet
 
 .. zeek:id:: profiling_update
-   :source-code: base/bif/event.bif.zeek 645 645
+   :source-code: base/bif/event.bif.zeek 630 630
 
    :Type: :zeek:type:`event` (f: :zeek:type:`file`, expensive: :zeek:type:`bool`)
 
@@ -1208,7 +1186,7 @@ Events
       ``ANALYZER_*`` constants right now.
 
 .. zeek:id:: signature_match
-   :source-code: base/bif/event.bif.zeek 632 632
+   :source-code: base/bif/event.bif.zeek 617 617
 
    :Type: :zeek:type:`event` (state: :zeek:type:`signature_state`, msg: :zeek:type:`string`, data: :zeek:type:`string`)
 
