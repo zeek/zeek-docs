@@ -62,10 +62,10 @@ An example of an :file:`ldap.log`.
       "id.resp_p": 3268,
       "message_id": 3,
       "version": 3,
-      "opcodes": ["bind simple"],
-      "results": ["success"],
-      "objects": ["CN=xxxxxxxx,OU=Users,OU=Accounts,DC=xx,DC=xxx,DC=xxxxx,DC=net"],
-      "arguments": ["REDACTED"]
+      "opcode": "bind simple",
+      "result": "success",
+      "object": "CN=xxxxxxxx,OU=Users,OU=Accounts,DC=xx,DC=xxx,DC=xxxxx,DC=net",
+      "argument": "REDACTED"
     }
 
 
@@ -91,12 +91,15 @@ from the log.
       "id.resp_h": "10.0.0.2",
       "id.resp_p": 3268,
       "message_id": 2,
-      "scopes": ["tree"],
-      "derefs": ["always"],
-      "base_objects": [DC=xx,DC=xxx,DC=xxxxx,DC=net"], "result_count": 1,
-      "results": ["success"],
+      "scope": "tree",
+      "deref_aliases": "always",
+      "base_object": "DC=xx,DC=xxx,DC=xxxxx,DC=net",
+      "result_count": 1,
+      "result": "success",
       "filter": "(&(objectclass=*)(sAMAccountName=xxxxxxxx))",
-      "attributes": ["sAMAccountName"]
+      "attributes": [
+        "sAMAccountName"
+      ]
     }
 
 
