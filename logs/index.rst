@@ -21,6 +21,7 @@ Zeek Logs
    irc
    rdp
    ldap
+   quic
    traceroute
    tunnel
    dpd
