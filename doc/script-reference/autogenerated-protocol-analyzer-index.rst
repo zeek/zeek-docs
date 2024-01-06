@@ -9247,24 +9247,6 @@ Components
 
 :zeek:enum:`Analyzer::ANALYZER_QUIC`
 
-Types
-+++++
-
-.. zeek:type:: QUIC::LongPacketType
-
-   :Type: :zeek:type:`enum`
-
-      .. zeek:enum:: QUIC::LongPacketType_INITIAL QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_ZERO_RTT QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_HANDSHAKE QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_RETRY QUIC::LongPacketType
-
-      .. zeek:enum:: QUIC::LongPacketType_Undef QUIC::LongPacketType
-
-
 Events
 ++++++
 
