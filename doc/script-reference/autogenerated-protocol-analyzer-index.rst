@@ -9346,7 +9346,7 @@ Events
    :param scid: The Source Connection ID field.
 
 .. zeek:id:: QUIC::connection_close_frame
-   :source-code: base/protocols/quic/main.zeek 162 172
+   :source-code: base/protocols/quic/main.zeek 175 185
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`, error_code: :zeek:type:`count`, reason_phrase: :zeek:type:`string`)
 
