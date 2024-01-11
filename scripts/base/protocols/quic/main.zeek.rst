@@ -134,7 +134,7 @@ Events
 Hooks
 #####
 .. zeek:id:: QUIC::finalize_quic
-   :source-code: base/protocols/quic/main.zeek 209 215
+   :source-code: base/protocols/quic/main.zeek 222 228
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
