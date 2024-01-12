@@ -1251,7 +1251,7 @@ Redefinable Options
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``2``
+   :Default: ``4``
 
    The maximum depth of a tunnel to decapsulate until giving up.
    Setting this to zero will disable all types of tunnel decapsulation.

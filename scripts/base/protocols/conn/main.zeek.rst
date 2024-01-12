@@ -54,7 +54,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::Info
-   :source-code: base/protocols/conn/main.zeek 21 160
+   :source-code: base/protocols/conn/main.zeek 21 161
 
    :Type: :zeek:type:`record`
 
@@ -172,6 +172,7 @@ Types
          i       inconsistent packet (e.g. FIN+RST bits set)
          q       multi-flag packet (SYN+FIN or SYN+RST bits set)
          ^       connection direction was flipped by Zeek's heuristic
+         x       connection analysis partial (e.g. limits exceeded)
          ======  ====================================================
          
          If the event comes from the originator, the letter is in
@@ -245,7 +246,7 @@ Types
 Events
 ######
 .. zeek:id:: Conn::log_conn
-   :source-code: base/protocols/conn/main.zeek 164 164
+   :source-code: base/protocols/conn/main.zeek 165 165
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Conn::Info`)
 
