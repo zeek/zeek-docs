@@ -25,6 +25,8 @@ and OpenBSD, or build Zeek yourself. For details about our release cadence
 and the significance of Zeek's version numbers, please refer to our `Release
 Cadence <https://github.com/zeek/zeek/wiki/Release-Cadence>`_ wiki page.
 
+.. _docker-images:
+
 Docker Images
 =============
 
@@ -59,6 +61,8 @@ analyzer packages.
 
 The source files used to create the container images are on
 `GitHub <https://github.com/zeek/zeek/blob/master/docker>`_.
+
+.. _binary-packages:
 
 Binary Packages
 ===============
@@ -302,10 +306,9 @@ build time:
     * krb5 libraries and headers
     * ipsumdump (for trace-summary; https://github.com/kohler/ipsumdump)
 
-Geolocation is probably the most interesting and can be installed
-on most platforms by following the instructions for :ref:`installing
-the GeoIP library and database
-<geolocation>`.
+Geolocation is probably the most interesting and can be installed on most
+platforms by following the instructions for :ref:`address geolocation and AS
+lookups <geolocation>`.
 
 The `zkg package manager`_, included in the Zeek installation, requires
 two external Python modules:

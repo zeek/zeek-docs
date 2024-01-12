@@ -48,6 +48,8 @@ redirects:
   "/devel/contributors/memory-checks.html": "/devel/contributors.html"
   "/intro/index.html": "/about.html"
   "/intro/": "/about.html"
+  # Revamped geolocation docs
+  "/frameworks/geoip.html": "/customizations.html#address-geolocation-and-as-lookups"
   # Moved coding style doc when re-organizing maintainer/contributor guides.
   "/devel/style_guide.html": "/devel/contributors/coding-style.html"
   # All the following are needed due to the .bro -> .zeek file suffix renaming.
