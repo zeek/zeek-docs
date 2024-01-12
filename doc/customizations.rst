@@ -72,6 +72,173 @@ or used in custom scripts.
 .. _Community ID Flow Hashing: https://github.com/corelight/community-id-spec
 .. _zeek-community-id: https://github.com/corelight/zeek-community-id/>`_
 
+.. _geolocation:
+
+Address geolocation and AS lookups
+----------------------------------
+
+.. _libmaxminddb: https://github.com/maxmind/libmaxminddb
+
+Zeek supports IP address geolocation as well as AS (autonomous system)
+lookups. This requires two things:
+
+    * Compilation of Zeek with the `libmaxminddb`_ library and development
+      headers. If you're using our :ref:`Docker images <docker-images>` or
+      :ref:`binary packages <binary-packages>`, there's nothing to do: they ship
+      with GeoIP support.
+    * Installation of corresponding MaxMind database files on your
+      system.
+
+To check whether your Zeek supports geolocation, run ``zeek-config --have-geoip``
+(available since Zeek 6.2) or simply try an address lookup. The following
+indicates that your Zeek lacks support:
+
+.. code-block:: console
+
+    $ zeek -e 'lookup_location(1.2.3.4)'
+    error in <command line>, line 1: Zeek was not configured for GeoIP support (lookup_location(1.2.3.4))
+
+Read on for more details about building Zeek with GeoIP support, and how to
+configure access to the database files.
+
+Building Zeek with libmaxminddb
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you build Zeek yourself, you need to install libmaxminddb prior to
+configuring your build.
+
+* RPM/RedHat-based Linux:
+
+  .. code-block:: console
+
+      sudo yum install libmaxminddb-devel
+
+* DEB/Debian-based Linux:
+
+  .. code-block:: console
+
+      sudo apt-get install libmaxminddb-dev
+
+* FreeBSD:
+
+  .. code-block:: console
+
+      sudo pkg install libmaxminddb
+
+* Mac OS X:
+
+  You need to install from your preferred package management system
+  (e.g. Homebrew, MacPorts, or Fink).  For Homebrew, the name of the package
+  that you need is libmaxminddb.
+
+The ``configure`` script's output indicates whether it successfully located
+libmaxminddb. If your system's MaxMind library resides in a non-standard path,
+you may need to specify it via ``./configure --with-geoip=<path>``.
+
+Installing and configuring GeoIP databases
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+MaxMind's databases ship as individual files that you can `download
+<https://www.maxmind.com/en/accounts/current/geoip/downloads>`_ from their
+website after `signing up <https://www.maxmind.com/en/geolite2/signup>`_ for an
+account. Some Linux distributions also offer free databases in their package
+managers.
+
+There are three types of databases: city-level geolocation, country-level
+geolocation, and mapping of IP addresses to autonomous systems (AS number and
+organization). Download these and decide on a place to put them on your
+file system. If you use automated tooling or system packages for the
+installation, that path may be chosen for you, such as ``/usr/share/GeoIP``.
+
+Zeek provides three ways to configure access to the databases:
+
+* Specifying the path and filenames via script variables. Use the
+  :zeek:see:`mmdb_dir` variable, unset by default, to point to the directory
+  containing the database(s). By default Zeek looks for databases called
+  ``GeoLite2-City.mmdb``, ``GeoLite2-Country.mmdb``, and
+  ``GeoLite2-ASN.mmdb``. Starting with Zeek 6.2 you can adjust these names by
+  redefining the :zeek:see:`mmdb_city_db`, :zeek:see:`mmdb_country_db`, and
+  :zeek:see:`mmdb_asn_db` variables.
+* Relying on Zeek's pre-configured search paths and filenames. The
+  :zeek:see:`mmdb_dir_fallbacks` variable contains default
+  search paths that Zeek will try in turn when :zeek:see:`mmdb_dir` is not
+  set. Prior to Zeek 6.2 these paths were hardcoded; they're now redefinable.
+  For geolocation, Zeek first attempts the city-level databases due to their
+  greater precision, and falls back to the city-level one.  You can adjust the
+  database filenames via :zeek:see:`mmdb_city_db` and related variables, as
+  covered above.
+* Opening databases explicitly via scripting. The
+  :zeek:see:`mmdb_open_location_db` and :zeek:see:`mmdb_open_asn_db`
+  functions take full paths to database files. Zeek only ever uses one
+  geolocation and one ASN database, and these loads override any databases
+  previously loaded. These loads can occur at any point.
+
+Querying the databases
+^^^^^^^^^^^^^^^^^^^^^^
+
+Two built-in functions provide GeoIP functionality:
+
+.. code-block:: zeek
+
+    function lookup_location(a:addr): geo_location
+    function lookup_autonomous_system(a:addr): geo_autonomous_system
+
+:zeek:see:`lookup_location` returns a :zeek:see:`geo_location` record with
+country/region/etc fields, while :zeek:see:`lookup_autonomous_system` returns a
+:zeek:see:`geo_autonomous_system` record indicating the AS number and
+organization. Depending on the queried IP address some fields may be
+uninitialized, so you should guard access with an ``a?$b`` :ref:`existence test
+<record-field-operators>`.
+
+Zeek tests the database files for staleness. If it detects that a database has
+been updated, it will automatically reload it. Zeek does not automatically add
+GeoIP intelligence to its logs, but several add-on scripts and packages provide
+such functionality. These include:
+
+* The :ref:`notice framework <notice-framework>` lets you configure notice types
+  that you'd like to augment with location information. See
+  :zeek:see:`Notice::lookup_location_types` and
+  :zeek:see:`Notice::ACTION_ADD_GEODATA` for details.
+* The :doc:`/scripts/policy/protocols/smtp/detect-suspicious-orig.zeek` and
+  :doc:`/scripts/policy/protocols/ssh/geo-data.zeek` policy scripts.
+* Several `Zeek packages <https://packages.zeek.org>`_.
+
+Testing
+^^^^^^^
+
+Before using the GeoIP functionality it is a good idea to verify that
+everything is setup correctly. You can quickly check if the GeoIP
+functionality works by running commands like these:
+
+.. code-block:: console
+
+    zeek -e "print lookup_location(8.8.8.8);"
+
+If you see an error message similar to "Failed to open GeoIP location database",
+then your database configuration is broken. You may need to rename or move your
+GeoIP database files.
+
+Example
+^^^^^^^
+
+The following shows every FTP connection from hosts in Ohio, US:
+
+.. code-block:: zeek
+
+    event ftp_reply(c: connection, code: count, msg: string, cont_resp: bool)
+    {
+      local client = c$id$orig_h;
+      local loc = lookup_location(client);
+
+      if (loc?$region && loc$region == "OH" && loc?$country_code && loc$country_code == "US")
+      {
+        local city = loc?$city ? loc$city : "<unknown>";
+
+        print fmt("FTP Connection from:%s (%s,%s,%s)", client, city,
+          loc$region, loc$country_code);
+      }
+    }
+
 
 Log Writers
 ===========
