@@ -66,7 +66,7 @@ except:
         repo = git.Repo(os.path.abspath('.'))
         version = u"git/master"
 
-        version_tag_re = 'v\d+\.\d+(\.\d+)?'
+        version_tag_re = r'v\d+\.\d+(\.\d+)?'
         version_tags = [t for t in repo.tags if
                 t.commit == repo.head.commit and
                 re.match(version_tag_re, str(t))
