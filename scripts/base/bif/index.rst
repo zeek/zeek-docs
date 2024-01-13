@@ -64,6 +64,9 @@ Package: base/bif
    Definitions of built-in functions related to loading compiled-to-C++
    scripts.
 
+:doc:`/scripts/base/bif/mmdb.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek`
 
 
@@ -375,6 +378,9 @@ Package: base/bif
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_SMB.types.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_SMTP.consts.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_SMTP.events.bif.zeek`

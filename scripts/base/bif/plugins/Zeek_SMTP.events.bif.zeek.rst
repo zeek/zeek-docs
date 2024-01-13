@@ -98,7 +98,7 @@ Events
    .. note:: Zeek doesn't support the newer ETRN extension yet.
 
 .. zeek:id:: smtp_request
-   :source-code: base/protocols/smtp/main.zeek 204 264
+   :source-code: base/protocols/smtp/main.zeek 204 272
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -131,7 +131,7 @@ Events
    .. note:: Zeek does not support the newer ETRN extension yet.
 
 .. zeek:id:: smtp_starttls
-   :source-code: base/protocols/smtp/main.zeek 396 403
+   :source-code: base/protocols/smtp/main.zeek 404 411
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
