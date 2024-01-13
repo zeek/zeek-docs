@@ -247,6 +247,9 @@ Package: base/bif/plugins
 :doc:`/scripts/base/bif/plugins/Zeek_SMB.types.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_SMTP.consts.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_SMTP.events.bif.zeek`
 
 
