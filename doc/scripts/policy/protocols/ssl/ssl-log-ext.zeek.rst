@@ -2,11 +2,13 @@
 
 policy/protocols/ssl/ssl-log-ext.zeek
 =====================================
+.. zeek:namespace:: SSL
 
 This file adds a lot of additional information to the SSL log
 It is not loaded by default since the information significantly expands
 the log and is probably not interesting for a majority of people.
 
+:Namespace: SSL
 :Imports: :doc:`base/protocols/ssl </scripts/base/protocols/ssl/index>`
 
 Summary
