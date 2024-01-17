@@ -460,7 +460,7 @@ Events
       ssl_extension_pre_shared_key_server_hello ssl_extension_pre_shared_key_client_hello
 
 .. zeek:id:: ssl_extension_ec_point_formats
-   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 95 101
+   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 93 101
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, point_formats: :zeek:type:`index_vec`)
 
@@ -492,7 +492,7 @@ Events
       ssl_extension_connection_id
 
 .. zeek:id:: ssl_extension_elliptic_curves
-   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 103 109
+   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 103 111
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, curves: :zeek:type:`index_vec`)
 
@@ -613,7 +613,7 @@ Events
       ssl_extension_connection_id
 
 .. zeek:id:: ssl_extension_psk_key_exchange_modes
-   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 140 146
+   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 139 147
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, modes: :zeek:type:`index_vec`)
 
@@ -673,7 +673,7 @@ Events
       ssl_extension_connection_id
 
 .. zeek:id:: ssl_extension_signature_algorithm
-   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 159 176
+   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 159 178
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, signature_algorithms: :zeek:type:`signature_and_hashalgorithm_vec`)
 
@@ -1018,7 +1018,7 @@ Events
       ssl_dh_client_params ssl_ecdh_server_params ssl_ecdh_client_params
 
 .. zeek:id:: ssl_session_ticket_handshake
-   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 68 74
+   :source-code: policy/protocols/ssl/ssl-log-ext.zeek 68 73
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, ticket_lifetime_hint: :zeek:type:`count`, ticket: :zeek:type:`string`)
 
