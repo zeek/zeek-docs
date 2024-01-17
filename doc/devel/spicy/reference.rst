@@ -334,11 +334,12 @@ the pieces going into such an event definition:
 
     .. _zeek-event-arg-types:
 
-    .. csv-table:: Type Conversion from Spicy to Zeek
+    .. csv-table:: Type conversion from Spicy to Zeek
         :header: "Spicy Type", "Zeek Type", "Notes"
 
         ``addr``, ``addr``,
         ``bool``, ``bool``,
+        ``bytes``, ``string``,
         ``enum { ... }``, ``enum { ... }``, [1]
         ``int(8|16|32|64)``, ``int``,
         ``interval``, ``interval``,
