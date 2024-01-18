@@ -281,7 +281,7 @@ Types
       pipe_map: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
          Pipe map to retrieve UUID based on the file ID of a pipe.
 
-      recent_files: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional` :zeek:attr:`&read_expire` = ``3.0 mins``
+      recent_files: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          A set of recent files to avoid logging the same
          files over and over in the smb files log.
          This only applies to files seen in a single connection.
