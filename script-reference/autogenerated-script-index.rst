@@ -169,6 +169,7 @@
    base/bif/plugins/Zeek_KRB.events.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.events.bif.zeek>
    base/bif/plugins/Zeek_Login.events.bif.zeek </scripts/base/bif/plugins/Zeek_Login.events.bif.zeek>
    base/bif/plugins/Zeek_Login.functions.bif.zeek </scripts/base/bif/plugins/Zeek_Login.functions.bif.zeek>
+   base/bif/plugins/Zeek_MIME.consts.bif.zeek </scripts/base/bif/plugins/Zeek_MIME.consts.bif.zeek>
    base/bif/plugins/Zeek_MIME.events.bif.zeek </scripts/base/bif/plugins/Zeek_MIME.events.bif.zeek>
    base/bif/plugins/Zeek_Modbus.events.bif.zeek </scripts/base/bif/plugins/Zeek_Modbus.events.bif.zeek>
    base/bif/plugins/Zeek_MQTT.types.bif.zeek </scripts/base/bif/plugins/Zeek_MQTT.types.bif.zeek>
