@@ -14123,7 +14123,7 @@ Options/Constants
 
    The maximum line length within a BDAT chunk before a forceful linebreak
    is introduced and a weird is raised. Conventionally, MIME messages
-   have a maximum line length of 1000 octest when properly encoded.
+   have a maximum line length of 1000 octets when properly encoded.
 
 Events
 ++++++
