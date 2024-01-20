@@ -836,7 +836,7 @@ Events
    having exhausted reading its input trace file(s), receiving a termination
    signal, or because Zeek was run without a network input source and has
    finished executing any global statements.  This event comes before
-   :zeek:see:`zeek_init`.
+   :zeek:see:`zeek_done`.
    
 
    :param t: The time at with the Zeek-termination process started.
