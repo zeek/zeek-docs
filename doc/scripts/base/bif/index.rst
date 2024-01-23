@@ -221,6 +221,9 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_Login.functions.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_MIME.consts.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_MIME.events.bif.zeek`
 
 
