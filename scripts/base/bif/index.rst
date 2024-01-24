@@ -425,6 +425,18 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_TCP.functions.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_WebSocket.consts.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_WebSocket.events.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_WebSocket.functions.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_WebSocket.types.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek`
 
 
