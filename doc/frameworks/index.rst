@@ -23,7 +23,6 @@ sections cover them in detail.
    cluster
    configuration
    file-analysis
-   geoip
    input
    intel
    logging
