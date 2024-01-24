@@ -357,6 +357,9 @@
 
    Support for Syslog protocol analysis.
 
+:doc:`base/protocols/websocket </scripts/base/protocols/websocket/index>`
+
+
 :doc:`base/protocols/tunnels </scripts/base/protocols/tunnels/index>`
 
    Provides DPD signatures for tunneling protocols that otherwise

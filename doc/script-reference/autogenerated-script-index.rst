@@ -238,6 +238,10 @@
    base/bif/plugins/Zeek_TCP.events.bif.zeek </scripts/base/bif/plugins/Zeek_TCP.events.bif.zeek>
    base/bif/plugins/Zeek_TCP.types.bif.zeek </scripts/base/bif/plugins/Zeek_TCP.types.bif.zeek>
    base/bif/plugins/Zeek_TCP.functions.bif.zeek </scripts/base/bif/plugins/Zeek_TCP.functions.bif.zeek>
+   base/bif/plugins/Zeek_WebSocket.consts.bif.zeek </scripts/base/bif/plugins/Zeek_WebSocket.consts.bif.zeek>
+   base/bif/plugins/Zeek_WebSocket.events.bif.zeek </scripts/base/bif/plugins/Zeek_WebSocket.events.bif.zeek>
+   base/bif/plugins/Zeek_WebSocket.functions.bif.zeek </scripts/base/bif/plugins/Zeek_WebSocket.functions.bif.zeek>
+   base/bif/plugins/Zeek_WebSocket.types.bif.zeek </scripts/base/bif/plugins/Zeek_WebSocket.types.bif.zeek>
    base/bif/plugins/Zeek_XMPP.events.bif.zeek </scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek>
    base/bif/plugins/Zeek_ARP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek>
    base/bif/plugins/Zeek_UDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek>
@@ -460,6 +464,9 @@
    base/protocols/syslog/spicy-events.zeek </scripts/base/protocols/syslog/spicy-events.zeek>
    base/protocols/syslog/consts.zeek </scripts/base/protocols/syslog/consts.zeek>
    base/protocols/syslog/main.zeek </scripts/base/protocols/syslog/main.zeek>
+   base/protocols/websocket/__load__.zeek </scripts/base/protocols/websocket/__load__.zeek>
+   base/protocols/websocket/consts.zeek </scripts/base/protocols/websocket/consts.zeek>
+   base/protocols/websocket/main.zeek </scripts/base/protocols/websocket/main.zeek>
    base/protocols/tunnels/__load__.zeek </scripts/base/protocols/tunnels/__load__.zeek>
    base/protocols/xmpp/__load__.zeek </scripts/base/protocols/xmpp/__load__.zeek>
    base/protocols/xmpp/main.zeek </scripts/base/protocols/xmpp/main.zeek>

@@ -868,6 +868,11 @@ Types
          (present if :doc:`/scripts/base/protocols/syslog/main.zeek` is loaded)
 
 
+      .. zeek:enum:: WebSocket::LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/websocket/main.zeek` is loaded)
+
+
       .. zeek:enum:: PE::LOG Log::ID
 
          (present if :doc:`/scripts/base/files/pe/main.zeek` is loaded)
