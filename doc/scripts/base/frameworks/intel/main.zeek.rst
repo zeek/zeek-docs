@@ -58,6 +58,7 @@ Hooks
                                                            inserted into the internal data store.
 :zeek:id:`Intel::item_expired`: :zeek:type:`hook`          This hook can be used to handle expiration of intelligence items.
 :zeek:id:`Intel::log_policy`: :zeek:type:`Log::PolicyHook` 
+:zeek:id:`Intel::seen_policy`: :zeek:type:`hook`           Hook to modify and intercept :zeek:see:`Intel::seen` behavior.
 ========================================================== =======================================================================
 
 Functions
@@ -75,7 +76,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Intel::item_expiration
-   :source-code: base/frameworks/intel/main.zeek 164 164
+   :source-code: base/frameworks/intel/main.zeek 187 187
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -495,13 +496,13 @@ Types
 Events
 ######
 .. zeek:id:: Intel::log_intel
-   :source-code: base/frameworks/intel/main.zeek 187 187
+   :source-code: base/frameworks/intel/main.zeek 210 210
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Intel::Info`)
 
 
 .. zeek:id:: Intel::match
-   :source-code: base/frameworks/intel/main.zeek 144 144
+   :source-code: base/frameworks/intel/main.zeek 146 146
 
    :Type: :zeek:type:`event` (s: :zeek:type:`Intel::Seen`, items: :zeek:type:`set` [:zeek:type:`Intel::Item`])
 
@@ -512,11 +513,13 @@ Events
    
    This is the primary mechanism where a user may take actions based on
    data provided by the intelligence framework.
+   
+   .. zeek::see:: Intel::seen_policy
 
 Hooks
 #####
 .. zeek:id:: Intel::extend_match
-   :source-code: base/frameworks/intel/main.zeek 158 158
+   :source-code: base/frameworks/intel/main.zeek 160 160
 
    :Type: :zeek:type:`hook` (info: :zeek:type:`Intel::Info`, s: :zeek:type:`Intel::Seen`, items: :zeek:type:`set` [:zeek:type:`Intel::Item`]) : :zeek:type:`bool`
 
@@ -575,10 +578,37 @@ Hooks
    :Type: :zeek:type:`Log::PolicyHook`
 
 
+.. zeek:id:: Intel::seen_policy
+   :source-code: base/frameworks/intel/main.zeek 181 181
+
+   :Type: :zeek:type:`hook` (s: :zeek:type:`Intel::Seen`, found: :zeek:type:`bool`) : :zeek:type:`bool`
+
+   Hook to modify and intercept :zeek:see:`Intel::seen` behavior.
+   
+   This hook is invoked after the Intel datastore was searched for
+   a given :zeek:see:`Intel::Seen` instance. If a matching entry was
+   found, the *found* argument is set to ``T``, else ``F``.
+   
+   Breaking from this hook suppresses :zeek:see:`Intel::match`
+   event generation and any subsequent logging.
+   
+   Note that this hook only runs on the Zeek node where :zeek:seen:`Intel::seen`
+   is invoked. In a cluster configuration that is usually on the worker nodes.
+   This is in contrast to :zeek:see:`Intel::match` that usually runs
+   centrally on the the manager node instead.
+   
+
+   :param s: The :zeek:see:`Intel::Seen` instance passed to the :zeek:see:`Intel::seen` function.
+   
+
+   :param found: ``T`` if Intel datastore contained *s*, else ``F``.
+   
+   .. zeek::see:: Intel::match
+
 Functions
 #########
 .. zeek:id:: Intel::insert
-   :source-code: base/frameworks/intel/main.zeek 512 519
+   :source-code: base/frameworks/intel/main.zeek 538 545
 
    :Type: :zeek:type:`function` (item: :zeek:type:`Intel::Item`) : :zeek:type:`void`
 
@@ -588,7 +618,7 @@ Functions
    the existing metadata record will be updated.
 
 .. zeek:id:: Intel::remove
-   :source-code: base/frameworks/intel/main.zeek 565 604
+   :source-code: base/frameworks/intel/main.zeek 591 630
 
    :Type: :zeek:type:`function` (item: :zeek:type:`Intel::Item`, purge_indicator: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`void`
 
@@ -596,7 +626,7 @@ Functions
    given metadata is ignored and the indicator is removed completely.
 
 .. zeek:id:: Intel::seen
-   :source-code: base/frameworks/intel/main.zeek 353 378
+   :source-code: base/frameworks/intel/main.zeek 376 404
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Intel::Seen`) : :zeek:type:`void`
 
