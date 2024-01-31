@@ -55,7 +55,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: QUIC::max_history_length
-   :source-code: base/protocols/quic/main.zeek 74 74
+   :source-code: base/protocols/quic/main.zeek 77 77
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -66,7 +66,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: QUIC::Info
-   :source-code: base/protocols/quic/main.zeek 13 65
+   :source-code: base/protocols/quic/main.zeek 13 68
 
    :Type: :zeek:type:`record`
 
@@ -87,6 +87,9 @@ Types
          First Destination Connection ID used by client. This is
          random and unpredictable, but used for packet protection
          by client and server.
+
+      client_scid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         Client's Source Connection ID from the first INITIAL packet.
 
       server_scid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          Server chosen Connection ID usually from server's first
@@ -126,7 +129,7 @@ Types
 Events
 ######
 .. zeek:id:: QUIC::log_quic
-   :source-code: base/protocols/quic/main.zeek 67 67
+   :source-code: base/protocols/quic/main.zeek 70 70
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`QUIC::Info`)
 
@@ -134,13 +137,13 @@ Events
 Hooks
 #####
 .. zeek:id:: QUIC::finalize_quic
-   :source-code: base/protocols/quic/main.zeek 222 228
+   :source-code: base/protocols/quic/main.zeek 227 233
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
 
 .. zeek:id:: QUIC::log_policy
-   :source-code: base/protocols/quic/main.zeek 69 69
+   :source-code: base/protocols/quic/main.zeek 72 72
 
    :Type: :zeek:type:`Log::PolicyHook`
 
