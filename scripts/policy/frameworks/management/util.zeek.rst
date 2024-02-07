@@ -23,7 +23,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Management::Util::set_to_vector
-   :source-code: policy/frameworks/management/util.zeek 15 26
+   :source-code: policy/frameworks/management/util.zeek 15 25
 
    :Type: :zeek:type:`function` (ss: :zeek:type:`set` [:zeek:type:`string`]) : :zeek:type:`vector` of :zeek:type:`string`
 

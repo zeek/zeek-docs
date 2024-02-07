@@ -197,7 +197,7 @@ Functions
             *idx* immediately.
 
 .. zeek:id:: Tunnel::register
-   :source-code: base/frameworks/tunnels/main.zeek 110 129
+   :source-code: base/frameworks/tunnels/main.zeek 110 128
 
    :Type: :zeek:type:`function` (ec: :zeek:type:`Tunnel::EncapsulatingConn`) : :zeek:type:`void`
 

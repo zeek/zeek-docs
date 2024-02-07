@@ -287,7 +287,7 @@ Types
 Functions
 #########
 .. zeek:id:: Management::result_to_string
-   :source-code: policy/frameworks/management/types.zeek 133 158
+   :source-code: policy/frameworks/management/types.zeek 133 157
 
    :Type: :zeek:type:`function` (res: :zeek:type:`Management::Result`) : :zeek:type:`string`
 
@@ -295,7 +295,7 @@ Functions
    this function returns a string summarizing it.
 
 .. zeek:id:: Management::result_vec_to_string
-   :source-code: policy/frameworks/management/types.zeek 159 168
+   :source-code: policy/frameworks/management/types.zeek 159 167
 
    :Type: :zeek:type:`function` (res: :zeek:type:`Management::ResultVec`) : :zeek:type:`string`
 

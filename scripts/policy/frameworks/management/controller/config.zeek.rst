@@ -231,7 +231,7 @@ Constants
 Functions
 #########
 .. zeek:id:: Management::Controller::endpoint_info
-   :source-code: policy/frameworks/management/controller/config.zeek 154 163
+   :source-code: policy/frameworks/management/controller/config.zeek 154 162
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
@@ -239,7 +239,7 @@ Functions
    controller's Broker connectivity.
 
 .. zeek:id:: Management::Controller::endpoint_info_websocket
-   :source-code: policy/frameworks/management/controller/config.zeek 164 173
+   :source-code: policy/frameworks/management/controller/config.zeek 164 172
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
@@ -254,7 +254,7 @@ Functions
    Returns the effective name of the controller.
 
 .. zeek:id:: Management::Controller::network_info
-   :source-code: policy/frameworks/management/controller/config.zeek 116 134
+   :source-code: policy/frameworks/management/controller/config.zeek 116 133
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::NetworkInfo`
 
@@ -262,7 +262,7 @@ Functions
    controller's Broker connectivity.
 
 .. zeek:id:: Management::Controller::network_info_websocket
-   :source-code: policy/frameworks/management/controller/config.zeek 135 153
+   :source-code: policy/frameworks/management/controller/config.zeek 135 152
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::NetworkInfo`
 

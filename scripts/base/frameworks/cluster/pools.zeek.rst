@@ -56,7 +56,7 @@ State Variables
       ::
 
          {
-            spec=[topic="", node_type=Cluster::PROXY, max_nodes=<uninitialized>, exclusive=F]
+            spec=[topic=<uninitialized>, node_type=<uninitialized>, max_nodes=<uninitialized>, exclusive=F]
             nodes={
 
             }
@@ -103,7 +103,7 @@ State Variables
       ::
 
          {
-            spec=[topic="", node_type=Cluster::PROXY, max_nodes=<uninitialized>, exclusive=F]
+            spec=[topic=<uninitialized>, node_type=<uninitialized>, max_nodes=<uninitialized>, exclusive=F]
             nodes={
 
             }
@@ -150,7 +150,7 @@ State Variables
       ::
 
          {
-            spec=[topic="", node_type=Cluster::PROXY, max_nodes=<uninitialized>, exclusive=F]
+            spec=[topic=<uninitialized>, node_type=<uninitialized>, max_nodes=<uninitialized>, exclusive=F]
             nodes={
 
             }
@@ -221,10 +221,10 @@ Types
 
    :Type: :zeek:type:`record`
 
-      topic: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+      topic: :zeek:type:`string`
          A topic string that can be used to reach all nodes within a pool.
 
-      node_type: :zeek:type:`Cluster::NodeType` :zeek:attr:`&default` = ``Cluster::PROXY`` :zeek:attr:`&optional`
+      node_type: :zeek:type:`Cluster::NodeType`
          The type of nodes that are contained within the pool.
 
       max_nodes: :zeek:type:`count` :zeek:attr:`&optional`

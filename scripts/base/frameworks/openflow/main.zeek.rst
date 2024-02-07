@@ -231,7 +231,7 @@ Functions
    :returns: One element vector with controller, if found. Empty vector otherwise.
 
 .. zeek:id:: OpenFlow::match_conn
-   :source-code: base/frameworks/openflow/main.zeek 153 195
+   :source-code: base/frameworks/openflow/main.zeek 153 194
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`, reverse: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`OpenFlow::ofp_match`
 

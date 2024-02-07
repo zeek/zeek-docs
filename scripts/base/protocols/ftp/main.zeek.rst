@@ -231,7 +231,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: FTP::parse_ftp_reply_code
-   :source-code: base/protocols/ftp/main.zeek 141 155
+   :source-code: base/protocols/ftp/main.zeek 141 154
 
    :Type: :zeek:type:`function` (code: :zeek:type:`count`) : :zeek:type:`FTP::ReplyCode`
 

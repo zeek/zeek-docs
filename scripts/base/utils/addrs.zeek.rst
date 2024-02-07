@@ -346,7 +346,7 @@ Functions
    :returns: the string representation of the address suitable for URI inclusion.
 
 .. zeek:id:: extract_ip_addresses
-   :source-code: base/utils/addrs.zeek 89 118
+   :source-code: base/utils/addrs.zeek 89 117
 
    :Type: :zeek:type:`function` (input: :zeek:type:`string`, check_wrapping: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`string_vec`
 
@@ -375,7 +375,7 @@ Functions
    :returns: T if every element is between 0 and 255, inclusive, else F.
 
 .. zeek:id:: normalize_mac
-   :source-code: base/utils/addrs.zeek 141 160
+   :source-code: base/utils/addrs.zeek 141 159
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`) : :zeek:type:`string`
 

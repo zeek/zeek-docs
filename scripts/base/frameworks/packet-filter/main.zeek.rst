@@ -251,7 +251,7 @@ Functions
             installed or not.
 
 .. zeek:id:: PacketFilter::install
-   :source-code: base/frameworks/packet-filter/main.zeek 270 348
+   :source-code: base/frameworks/packet-filter/main.zeek 270 347
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 

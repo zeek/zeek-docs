@@ -105,7 +105,7 @@ Functions
    another threshold.
 
 .. zeek:id:: new_track_count
-   :source-code: base/utils/thresholds.zeek 43 48
+   :source-code: base/utils/thresholds.zeek 43 47
 
    :Type: :zeek:type:`function` () : :zeek:type:`TrackCount`
 
