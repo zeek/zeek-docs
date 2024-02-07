@@ -1576,7 +1576,7 @@ Functions
    .. zeek:see:: Log::create_stream
 
 .. zeek:id:: Log::rotation_format_func
-   :source-code: base/frameworks/logging/main.zeek 836 862
+   :source-code: base/frameworks/logging/main.zeek 836 861
 
    :Type: :zeek:type:`function` (ri: :zeek:type:`Log::RotationFmtInfo`) : :zeek:type:`Log::RotationPath`
    :Attributes: :zeek:attr:`&redef`

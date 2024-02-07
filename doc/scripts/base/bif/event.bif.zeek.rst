@@ -1247,7 +1247,7 @@ Events
    .. zeek:see:: udp_contents udp_reply udp_request
 
 .. zeek:id:: unknown_protocol
-   :source-code: policy/misc/unknown-protocols.zeek 31 41
+   :source-code: policy/misc/unknown-protocols.zeek 31 40
 
    :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`)
 

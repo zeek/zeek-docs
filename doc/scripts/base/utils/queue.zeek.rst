@@ -115,7 +115,7 @@ Functions
         as the type of ret.
 
 .. zeek:id:: Queue::init
-   :source-code: base/utils/queue.zeek 88 96
+   :source-code: base/utils/queue.zeek 88 95
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Queue::Settings` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`) : :zeek:type:`Queue::Queue`
 

@@ -293,7 +293,7 @@ Hooks
    A default logging policy hook for the stream.
 
 .. zeek:id:: DNS::set_session
-   :source-code: base/protocols/dns/main.zeek 238 347
+   :source-code: base/protocols/dns/main.zeek 238 346
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, is_query: :zeek:type:`bool`) : :zeek:type:`bool`
 

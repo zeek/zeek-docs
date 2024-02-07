@@ -75,11 +75,13 @@ Events
 
 Hooks
 #####
-=============================================================== =========================================================================
+=============================================================== =============================================================================
 :zeek:id:`NetControl::log_policy`: :zeek:type:`Log::PolicyHook` A default logging policy hook for the stream.
+:zeek:id:`NetControl::rule_added_policy`: :zeek:type:`hook`     Hook that allows the modification of rule states after they are returned from
+                                                                the plugins and have been added to the rules database.
 :zeek:id:`NetControl::rule_policy`: :zeek:type:`hook`           Hook that allows the modification of rules passed to add_rule before they
                                                                 are passed on to the plugins.
-=============================================================== =========================================================================
+=============================================================== =============================================================================
 
 Functions
 #########
@@ -105,7 +107,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: NetControl::Info
-   :source-code: base/frameworks/netcontrol/main.zeek 294 325
+   :source-code: base/frameworks/netcontrol/main.zeek 308 339
 
    :Type: :zeek:type:`record`
 
@@ -157,7 +159,7 @@ Types
    The record type defining the column fields of the NetControl log.
 
 .. zeek:type:: NetControl::InfoCategory
-   :source-code: base/frameworks/netcontrol/main.zeek 274 282
+   :source-code: base/frameworks/netcontrol/main.zeek 288 296
 
    :Type: :zeek:type:`enum`
 
@@ -176,7 +178,7 @@ Types
    Type of an entry in the NetControl log.
 
 .. zeek:type:: NetControl::InfoState
-   :source-code: base/frameworks/netcontrol/main.zeek 284 292
+   :source-code: base/frameworks/netcontrol/main.zeek 298 306
 
    :Type: :zeek:type:`enum`
 
@@ -209,7 +211,7 @@ Types
 Events
 ######
 .. zeek:id:: NetControl::init
-   :source-code: base/frameworks/netcontrol/main.zeek 628 636
+   :source-code: base/frameworks/netcontrol/main.zeek 642 650
 
    :Type: :zeek:type:`event` ()
 
@@ -225,7 +227,7 @@ Events
    have finished their initialization.
 
 .. zeek:id:: NetControl::log_netcontrol
-   :source-code: base/frameworks/netcontrol/main.zeek 329 329
+   :source-code: base/frameworks/netcontrol/main.zeek 343 343
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`NetControl::Info`)
 
@@ -262,7 +264,7 @@ Events
    rule_error events.
 
 .. zeek:id:: NetControl::rule_error
-   :source-code: base/frameworks/netcontrol/non-cluster.zeek 57 60
+   :source-code: base/frameworks/netcontrol/main.zeek 236 236
 
    :Type: :zeek:type:`event` (r: :zeek:type:`NetControl::Rule`, p: :zeek:type:`NetControl::PluginState`, msg: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
@@ -278,7 +280,7 @@ Events
    :param msg: An optional informational message by the plugin.
 
 .. zeek:id:: NetControl::rule_exists
-   :source-code: base/frameworks/netcontrol/non-cluster.zeek 31 37
+   :source-code: base/frameworks/netcontrol/main.zeek 204 204
 
    :Type: :zeek:type:`event` (r: :zeek:type:`NetControl::Rule`, p: :zeek:type:`NetControl::PluginState`, msg: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
@@ -359,6 +361,28 @@ Hooks
 
    A default logging policy hook for the stream.
 
+.. zeek:id:: NetControl::rule_added_policy
+   :source-code: base/frameworks/netcontrol/main.zeek 277 277
+
+   :Type: :zeek:type:`hook` (r: :zeek:type:`NetControl::Rule`, p: :zeek:type:`NetControl::PluginState`, exists: :zeek:type:`bool`, msg: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Hook that allows the modification of rule states after they are returned from
+   the plugins and have been added to the rules database. This allows low-level
+   modification of the handling of rules like, e.g., changing rule expiration depending
+   on context.
+   
+
+   :param r: The rule now in place.
+   
+
+   :param p: The state for the plugin that put it into place.
+   
+
+   :param exists: If the adding plugin flagged the rule as already existing.
+   
+
+   :param msg: An optional informational message by the plugin.
+
 .. zeek:id:: NetControl::rule_policy
    :source-code: base/frameworks/netcontrol/main.zeek 263 263
 
@@ -407,7 +431,7 @@ Functions
             only later.
 
 .. zeek:id:: NetControl::clear
-   :source-code: base/frameworks/netcontrol/main.zeek 1059 1063
+   :source-code: base/frameworks/netcontrol/main.zeek 1075 1079
 
    :Type: :zeek:type:`function` () : :zeek:type:`void`
 
@@ -434,7 +458,7 @@ Functions
             False if the rule could not be found.
 
 .. zeek:id:: NetControl::find_rules_addr
-   :source-code: base/frameworks/netcontrol/main.zeek 749 752
+   :source-code: base/frameworks/netcontrol/main.zeek 763 766
 
    :Type: :zeek:type:`function` (ip: :zeek:type:`addr`) : :zeek:type:`vector` of :zeek:type:`NetControl::Rule`
 
@@ -451,7 +475,7 @@ Functions
    :returns: vector of all rules affecting the IP address.
 
 .. zeek:id:: NetControl::find_rules_subnet
-   :source-code: base/frameworks/netcontrol/main.zeek 727 747
+   :source-code: base/frameworks/netcontrol/main.zeek 741 761
 
    :Type: :zeek:type:`function` (sn: :zeek:type:`subnet`) : :zeek:type:`vector` of :zeek:type:`NetControl::Rule`
 
@@ -476,7 +500,7 @@ Functions
    :returns: vector of all rules affecting the subnet.
 
 .. zeek:id:: NetControl::plugin_activated
-   :source-code: base/frameworks/netcontrol/main.zeek 603 621
+   :source-code: base/frameworks/netcontrol/main.zeek 617 635
 
    :Type: :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`) : :zeek:type:`void`
 
@@ -486,7 +510,7 @@ Functions
    will be discarded.
 
 .. zeek:id:: NetControl::quarantine_host
-   :source-code: base/frameworks/netcontrol/main.zeek 556 576
+   :source-code: base/frameworks/netcontrol/main.zeek 570 590
 
    :Type: :zeek:type:`function` (infected: :zeek:type:`addr`, dns: :zeek:type:`addr`, quarantine: :zeek:type:`addr`, t: :zeek:type:`interval`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`vector` of :zeek:type:`string`
 
@@ -512,7 +536,7 @@ Functions
    :returns: Vector of inserted rules on success, empty list on failure.
 
 .. zeek:id:: NetControl::redirect_flow
-   :source-code: base/frameworks/netcontrol/main.zeek 542 554
+   :source-code: base/frameworks/netcontrol/main.zeek 556 568
 
    :Type: :zeek:type:`function` (f: :zeek:type:`flow_id`, out_port: :zeek:type:`count`, t: :zeek:type:`interval`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -554,7 +578,7 @@ Functions
             wrong at that point.
 
 .. zeek:id:: NetControl::whitelist_address
-   :source-code: base/frameworks/netcontrol/main.zeek 525 531
+   :source-code: base/frameworks/netcontrol/main.zeek 539 545
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, t: :zeek:type:`interval`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -573,7 +597,7 @@ Functions
    :returns: The id of the inserted rule on success and zero on failure.
 
 .. zeek:id:: NetControl::whitelist_subnet
-   :source-code: base/frameworks/netcontrol/main.zeek 533 539
+   :source-code: base/frameworks/netcontrol/main.zeek 547 553
 
    :Type: :zeek:type:`function` (s: :zeek:type:`subnet`, t: :zeek:type:`interval`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`string`
 

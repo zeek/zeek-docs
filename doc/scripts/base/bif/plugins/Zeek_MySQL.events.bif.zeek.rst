@@ -88,7 +88,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_ok mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_handshake
-   :source-code: base/protocols/mysql/main.zeek 52 66
+   :source-code: base/protocols/mysql/main.zeek 52 65
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, username: :zeek:type:`string`)
 

@@ -2828,7 +2828,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_RRSIG
-   :source-code: base/protocols/dns/main.zeek 560 567
+   :source-code: base/protocols/dns/main.zeek 560 566
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, rrsig: :zeek:type:`dns_rrsig_rr`)
 
@@ -2849,7 +2849,7 @@ Events
    :param rrsig: The parsed RRSIG record.
 
 .. zeek:id:: dns_DNSKEY
-   :source-code: base/protocols/dns/main.zeek 568 574
+   :source-code: base/protocols/dns/main.zeek 568 573
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, dnskey: :zeek:type:`dns_dnskey_rr`)
 
@@ -2936,7 +2936,7 @@ Events
    :param nsec3param: The parsed RDATA of NSEC3PARAM record.
 
 .. zeek:id:: dns_DS
-   :source-code: base/protocols/dns/main.zeek 590 596
+   :source-code: base/protocols/dns/main.zeek 590 595
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, ds: :zeek:type:`dns_ds_rr`)
 
@@ -2978,7 +2978,7 @@ Events
    :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_SSHFP
-   :source-code: base/protocols/dns/main.zeek 602 608
+   :source-code: base/protocols/dns/main.zeek 602 607
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, algo: :zeek:type:`count`, fptype: :zeek:type:`count`, fingerprint: :zeek:type:`string`)
 
@@ -2999,7 +2999,7 @@ Events
    :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_LOC
-   :source-code: base/protocols/dns/main.zeek 609 615
+   :source-code: base/protocols/dns/main.zeek 609 614
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, loc: :zeek:type:`dns_loc_rr`)
 
@@ -3566,7 +3566,7 @@ Events
       truncate_http_URI http_connection_upgrade
 
 .. zeek:id:: http_reply
-   :source-code: base/protocols/http/main.zeek 265 305
+   :source-code: base/protocols/http/main.zeek 265 304
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, version: :zeek:type:`string`, code: :zeek:type:`count`, reason: :zeek:type:`string`)
 
@@ -8078,7 +8078,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_handshake
 
 .. zeek:id:: mysql_handshake
-   :source-code: base/protocols/mysql/main.zeek 52 66
+   :source-code: base/protocols/mysql/main.zeek 52 65
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, username: :zeek:type:`string`)
 
@@ -11354,7 +11354,7 @@ Events
    .. zeek:see:: sip_request sip_header sip_all_headers sip_begin_entity sip_end_entity
 
 .. zeek:id:: sip_header
-   :source-code: base/protocols/sip/main.zeek 193 274
+   :source-code: base/protocols/sip/main.zeek 193 273
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, name: :zeek:type:`string`, value: :zeek:type:`string`)
 
@@ -16642,7 +16642,7 @@ Events
       scheduled_analyzer_applied new_connection partial_connection
 
 .. zeek:id:: connection_attempt
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 514 518
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 546 550
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -16686,7 +16686,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: partial_connection
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 508 512
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 540 544
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -16765,7 +16765,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_rejected
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 520 524
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 552 556
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -16791,7 +16791,7 @@ Events
       and then :zeek:id:`connection_reset`.
 
 .. zeek:id:: connection_reset
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 526 530
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 558 562
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -16811,7 +16811,7 @@ Events
       partial_connection
 
 .. zeek:id:: connection_pending
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 532 536
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 564 568
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

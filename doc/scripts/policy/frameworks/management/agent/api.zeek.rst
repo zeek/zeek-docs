@@ -138,7 +138,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::deploy_request
-   :source-code: policy/frameworks/management/agent/main.zeek 411 452
+   :source-code: policy/frameworks/management/agent/main.zeek 411 451
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`, force: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`)
 
@@ -212,7 +212,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::node_dispatch_request
-   :source-code: policy/frameworks/management/agent/main.zeek 756 851
+   :source-code: policy/frameworks/management/agent/main.zeek 756 850
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, action: :zeek:type:`vector` of :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -302,7 +302,7 @@ Events
 
 
 .. zeek:id:: Management::Agent::API::restart_request
-   :source-code: policy/frameworks/management/agent/main.zeek 929 1004
+   :source-code: policy/frameworks/management/agent/main.zeek 929 1003
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 

@@ -103,7 +103,7 @@ Events
       better approach.
 
 .. zeek:id:: connection_attempt
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 514 518
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 546 550
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -227,7 +227,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_pending
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 532 536
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 564 568
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -244,7 +244,7 @@ Events
       new_connection new_connection_contents partial_connection zeek_done
 
 .. zeek:id:: connection_rejected
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 520 524
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 552 556
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -270,7 +270,7 @@ Events
       and then :zeek:id:`connection_reset`.
 
 .. zeek:id:: connection_reset
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 526 530
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 558 562
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -327,7 +327,7 @@ Events
       scheduled_analyzer_applied new_connection partial_connection
 
 .. zeek:id:: partial_connection
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 508 512
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 540 544
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 

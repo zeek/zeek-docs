@@ -209,7 +209,7 @@ Redefinable Options
 Functions
 #########
 .. zeek:id:: Management::Agent::endpoint_info
-   :source-code: policy/frameworks/management/agent/config.zeek 118 141
+   :source-code: policy/frameworks/management/agent/config.zeek 118 140
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
