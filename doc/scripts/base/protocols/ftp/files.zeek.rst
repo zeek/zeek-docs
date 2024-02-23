@@ -12,19 +12,13 @@ Summary
 ~~~~~~~
 Redefinitions
 #############
-============================================================= ====================================================================
-:zeek:type:`FTP::Info`: :zeek:type:`record`                   
-                                                              
-                                                              :New Fields: :zeek:type:`FTP::Info`
-                                                              
-                                                                fuid: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-                                                                  File unique ID.
+============================================================= ====================================================
 :zeek:type:`fa_file`: :zeek:type:`record` :zeek:attr:`&redef` 
                                                               
                                                               :New Fields: :zeek:type:`fa_file`
                                                               
                                                                 ftp: :zeek:type:`FTP::Info` :zeek:attr:`&optional`
-============================================================= ====================================================================
+============================================================= ====================================================
 
 Functions
 #########
@@ -39,14 +33,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: FTP::describe_file
-   :source-code: base/protocols/ftp/files.zeek 34 46
+   :source-code: base/protocols/ftp/files.zeek 29 41
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
    Describe the file being transferred.
 
 .. zeek:id:: FTP::get_file_handle
-   :source-code: base/protocols/ftp/files.zeek 26 32
+   :source-code: base/protocols/ftp/files.zeek 21 27
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 
