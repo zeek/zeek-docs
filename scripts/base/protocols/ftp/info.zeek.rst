@@ -63,7 +63,7 @@ Types
    The expected endpoints of an FTP data channel.
 
 .. zeek:type:: FTP::Info
-   :source-code: base/protocols/ftp/info.zeek 26 75
+   :source-code: base/protocols/ftp/info.zeek 26 78
 
    :Type: :zeek:type:`record`
 
@@ -126,8 +126,6 @@ Types
          Determines if the password will be captured for this request.
 
       fuid: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/base/protocols/ftp/files.zeek` is loaded)
-
          File unique ID.
 
       last_auth_requested: :zeek:type:`string` :zeek:attr:`&optional`
