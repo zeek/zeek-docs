@@ -621,6 +621,18 @@ Example:
     # In this example, "b" must have the "&optional" attribute
     delete myrec$b;
 
+.. versionadded:: 7.0
+
+The ``delete`` statement can also be used to remove all elements from
+a :zeek:type:`set`, :zeek:type:`table` or :zeek:type:`vector`.
+
+Example:
+
+.. code-block:: zeek
+
+    local myset = set("this", "test");
+    delete myset;
+
 
 .. zeek:keyword:: event
 
