@@ -123,6 +123,39 @@ within a ``zeek_init`` handler:
    Hello, Zeek 6.0.0!
 
 
+Execution Model
+===============
+
+There's two ways JavaScript code is executed.
+
+First, JavaScript event or hook handlers are added as additional ``Func::Body``
+instances to the respective ``Func`` objects. These extra bodies
+point to instances of a custom ``Stmt`` subclass with tag ``STMT_EXTERN``.
+The ``Stmt::Exec()`` implementation of this class calls the listener function,
+a ``v8::Function``, registered through ``zeek.on()``.
+When Zeek executes all bodies of an event or hook handler during ``Func::Invoke()``,
+some bodies execute JavaScript functions instead of Zeek script statements.
+This approach allows to register JavaScript listener functions using Zeek's priority
+mechanism.  Further, changes done by JavaScript code to global Zeek variables or
+record fields are visible to Zeek script and vice versa. In summary, execution
+of Zeek and JavaScript code is interleaved when executing event or hook handlers.
+
+Second, the Node.js IO loop (libuv) is registered as an ``IOSource`` with
+Zeek's main loop. When there's any IO activity in Node.js, libuv's backend
+file descriptor becomes ready, waking up the Zeek main loop. Zeek then transfers
+control through the registered ``IOsource`` to the JavaScript plugin which
+runs the libuv IO loop until there's no more work to be done. At this point,
+the plugin yields control back to Zeek's main loop, draining any queued events,
+processing timers, or simply waiting for the next network packet to arrive.
+
+From the above it follows that there is no parallel JavaScript code execution
+happening in a separate thread. Zeek script and JavaScript execute interleaved
+on Zeek's main thread, driven by the main loop's logic. This also implies that
+long running JavaScript code will block Zeek's main loop and Zeek script
+execution. This is no different than what would happen in a WebBrowser or an
+asynchronous Node.js network server, however, and the same applies to a long
+running Zeek script event handler.
+
 
 Types
 =====
