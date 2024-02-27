@@ -861,6 +861,12 @@ Runtime Options
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``4096``
+   :Redefinition: from :doc:`/scripts/policy/frameworks/signatures/iso-9660.zeek`
+
+      ``=``::
+
+         2048 * (16 + 1)
+
 
    Default amount of bytes that file analysis will buffer in order to use
    for mime type matching.  File analyzers attached at the time of mime type

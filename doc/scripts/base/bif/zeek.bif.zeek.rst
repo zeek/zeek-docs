@@ -93,6 +93,7 @@ Functions
 :zeek:id:`filter_subnet_table`: :zeek:type:`function`         For a set[subnet]/table[subnet], create a new table that contains all entries
                                                               that contain a given subnet.
 :zeek:id:`find_entropy`: :zeek:type:`function`                Performs an entropy test on the given data.
+:zeek:id:`find_in_zeekpath`: :zeek:type:`function`            Determine the path used by a non-relative @load directive.
 :zeek:id:`floor`: :zeek:type:`function`                       Computes the greatest integer less than the given :zeek:type:`double` value.
 :zeek:id:`flush_all`: :zeek:type:`function`                   Flushes all open files to disk.
 :zeek:id:`fmt`: :zeek:type:`function`                         Produces a formatted string à la ``printf``.
@@ -1279,6 +1280,24 @@ Functions
                   For random sequences this value will be close to zero.
    
    .. zeek:see:: entropy_test_init entropy_test_add entropy_test_finish
+
+.. zeek:id:: find_in_zeekpath
+   :source-code: base/bif/zeek.bif.zeek 2676 2676
+
+   :Type: :zeek:type:`function` (p: :zeek:type:`string`) : :zeek:type:`string`
+
+   Determine the path used by a non-relative @load directive.
+   
+   This function is package aware: Passing *package* will yield the
+   path to *package.zeek*, *package/__load__.zeek* or an empty string
+   if neither can be found. Note that passing a relative path or absolute
+   path is an error.
+   
+
+   :param path: The filename, package or path to search for in ZEEKPATH.
+   
+
+   :returns: Path of script file that would be loaded by an @load directive.
 
 .. zeek:id:: floor
    :source-code: base/bif/zeek.bif.zeek 827 827
