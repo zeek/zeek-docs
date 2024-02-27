@@ -285,6 +285,7 @@
    base/utils/files.zeek </scripts/base/utils/files.zeek>
    base/utils/geoip-distance.zeek </scripts/base/utils/geoip-distance.zeek>
    base/utils/numbers.zeek </scripts/base/utils/numbers.zeek>
+   base/utils/packages.zeek </scripts/base/utils/packages.zeek>
    base/utils/queue.zeek </scripts/base/utils/queue.zeek>
    base/utils/strings.zeek </scripts/base/utils/strings.zeek>
    base/utils/thresholds.zeek </scripts/base/utils/thresholds.zeek>
@@ -615,6 +616,7 @@
    policy/frameworks/management/node/__load__.zeek </scripts/policy/frameworks/management/node/__load__.zeek>
    policy/frameworks/management/node/main.zeek </scripts/policy/frameworks/management/node/main.zeek>
    policy/frameworks/files/extract-all-files.zeek </scripts/policy/frameworks/files/extract-all-files.zeek>
+   policy/frameworks/signatures/iso-9660.zeek </scripts/policy/frameworks/signatures/iso-9660.zeek>
    policy/misc/dump-events.zeek </scripts/policy/misc/dump-events.zeek>
    policy/protocols/conn/speculative-service.zeek </scripts/policy/protocols/conn/speculative-service.zeek>
    policy/frameworks/spicy/resource-usage.zeek </scripts/policy/frameworks/spicy/resource-usage.zeek>
