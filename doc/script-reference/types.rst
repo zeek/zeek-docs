@@ -1073,6 +1073,14 @@ Remove individual table elements with :zeek:keyword:`delete`:
 Nothing happens if the element with index value ``13`` isn't present in
 the table.
 
+.. versionadded:: 7.0
+
+Removing all table elements can be done with the :zeek:keyword:`delete`, too:
+
+.. code-block:: zeek
+
+    delete t;
+
 .. note::
 
    Indexing with complex types (such as records or sets) happens via hashing of
@@ -1256,6 +1264,15 @@ Elements are removed with :zeek:keyword:`delete`:
 
     delete s[21/tcp];
 
+.. versionadded:: 7.0
+
+Removing all set elements can be done with the :zeek:keyword:`delete`, too:
+
+.. code-block:: zeek
+
+    delete s;
+
+
 Nothing happens if the element with value ``21/tcp`` isn't present in
 the set.
 
@@ -1423,6 +1440,11 @@ false.
 
 See the :zeek:keyword:`for` statement for info on how to iterate over
 the elements in a vector.
+
+.. versionadded:: 7.0
+
+The :zeek:keyword:`delete` statement can be used to delete all elements
+from a vector.
 
 Vectorized operations
 ^^^^^^^^^^^^^^^^^^^^^
