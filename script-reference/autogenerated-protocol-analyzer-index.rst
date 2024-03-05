@@ -3146,6 +3146,127 @@ Components
 
 :zeek:enum:`Analyzer::ANALYZER_FINGER`
 
+Types
++++++
+
+.. zeek:type:: spicy::AddressFamily
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::AddressFamily_IPv4 spicy::AddressFamily
+
+      .. zeek:enum:: spicy::AddressFamily_IPv6 spicy::AddressFamily
+
+      .. zeek:enum:: spicy::AddressFamily_Undef spicy::AddressFamily
+
+
+.. zeek:type:: spicy::BitOrder
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::BitOrder_LSB0 spicy::BitOrder
+
+      .. zeek:enum:: spicy::BitOrder_MSB0 spicy::BitOrder
+
+      .. zeek:enum:: spicy::BitOrder_Undef spicy::BitOrder
+
+
+.. zeek:type:: spicy::ByteOrder
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::ByteOrder_Little spicy::ByteOrder
+
+      .. zeek:enum:: spicy::ByteOrder_Big spicy::ByteOrder
+
+      .. zeek:enum:: spicy::ByteOrder_Network spicy::ByteOrder
+
+      .. zeek:enum:: spicy::ByteOrder_Host spicy::ByteOrder
+
+      .. zeek:enum:: spicy::ByteOrder_Undef spicy::ByteOrder
+
+
+.. zeek:type:: spicy::Charset
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::Charset_ASCII spicy::Charset
+
+      .. zeek:enum:: spicy::Charset_UTF8 spicy::Charset
+
+      .. zeek:enum:: spicy::Charset_Undef spicy::Charset
+
+
+.. zeek:type:: spicy::DecodeErrorStrategy
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::DecodeErrorStrategy_IGNORE spicy::DecodeErrorStrategy
+
+      .. zeek:enum:: spicy::DecodeErrorStrategy_REPLACE spicy::DecodeErrorStrategy
+
+      .. zeek:enum:: spicy::DecodeErrorStrategy_STRICT spicy::DecodeErrorStrategy
+
+      .. zeek:enum:: spicy::DecodeErrorStrategy_Undef spicy::DecodeErrorStrategy
+
+
+.. zeek:type:: spicy::Protocol
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::Protocol_TCP spicy::Protocol
+
+      .. zeek:enum:: spicy::Protocol_UDP spicy::Protocol
+
+      .. zeek:enum:: spicy::Protocol_ICMP spicy::Protocol
+
+      .. zeek:enum:: spicy::Protocol_Undef spicy::Protocol
+
+
+.. zeek:type:: spicy::RealType
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::RealType_IEEE754_Single spicy::RealType
+
+      .. zeek:enum:: spicy::RealType_IEEE754_Double spicy::RealType
+
+      .. zeek:enum:: spicy::RealType_Undef spicy::RealType
+
+
+.. zeek:type:: spicy::ReassemblerPolicy
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::ReassemblerPolicy_First spicy::ReassemblerPolicy
+
+      .. zeek:enum:: spicy::ReassemblerPolicy_Undef spicy::ReassemblerPolicy
+
+
+.. zeek:type:: spicy::Side
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::Side_Left spicy::Side
+
+      .. zeek:enum:: spicy::Side_Right spicy::Side
+
+      .. zeek:enum:: spicy::Side_Both spicy::Side
+
+      .. zeek:enum:: spicy::Side_Undef spicy::Side
+
+
+.. zeek:type:: spicy::Direction
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: spicy::Direction_Forward spicy::Direction
+
+      .. zeek:enum:: spicy::Direction_Backward spicy::Direction
+
+      .. zeek:enum:: spicy::Direction_Undef spicy::Direction
+
+
 Events
 ++++++
 
