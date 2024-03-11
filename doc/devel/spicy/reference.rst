@@ -598,9 +598,117 @@ dependent types must be exported *first* in the EVT file for this to
 work. As a result, you cannot export self-recursive unit types.
 
 As you can see in the example, unit fields are always declared as
-optional on the Zeek-side, as they may not have been set during
+:zeek:see:`&optional` on the Zeek-side, as they may not have been set during
 parsing. Unit variables are non-optional by default, unless declared
 as ``&optional`` in Spicy.
+
+.. _spicy_unit_export:
+
+Controlling created Zeek types
+""""""""""""""""""""""""""""""
+
+If needed the automatic unit type exporting described above can be customized.
+The general syntax for this is:
+
+.. code-block:: spicy-evt
+
+    export SPICY_ID [with { [SIPCY_FIELD_NAME [&log], ]... }];
+    export SPICY_ID [as ZEEK_ID [ with { [SIPCY_FIELD_NAME [&log], ]...]  }];
+    export SPICY_ID [without { [SIPCY_FIELD_NAME, ]... }];
+    export SPICY_ID [as ZEEK_ID [ without { [SIPCY_FIELD_NAME, ]...]  }];
+    export SPICY_ID &log;
+    export SPICY_ID as ZEEK_ID &log;
+
+This allows
+
+1. including fields to export by naming them in ``with``, e.g.,
+   ``export foo::A with { x, y }`` creates a Zeek record with the Spicy unit
+   fields ``x`` and ``y`` added to the Zeek record type.
+
+2. excluding fields from export by naming them in ``without``, e.g.,
+   ``export foo::A without { x }`` creates a Zeek record with all fields but
+   ``x`` of the Spicy unit exported.
+
+3. renaming the Spicy type on export, e.g., ``export foo::A as bar::X`` exports
+   the Spicy unit type ``A`` in Spicy module ``foo`` to a Zeek record type ``X``
+   in Zeek module ``bar``.
+
+4. controlling :zeek:see:`&log` attribute on generated Zeek record types. We can either
+   the mark all Zeek record fields ``&log`` by marking the whole type ``&log``
+   with e.g., ``export foo::A &log`` or ``export foo::A as bar::X &log``, or
+   mark individual fields ``&log`` in the ``with`` field list.
+
+.. rubric:: Example: Controlling exported fields
+
+Assume we are given a Spicy unit type ``foo::X``:
+
+.. code-block:: spicy
+
+    module foo;
+
+    public type X = unit {
+        x: uint8;
+        y: uint8;
+        z: uint8;
+    };
+
+To create a Zeek type without the field ``x`` we can use the following ``export``
+statement:
+
+.. code-block:: spicy-evt
+
+    export foo::X without { x };
+
+.. rubric:: Example: Adding Zeek ``&log`` attributes to created Zeek record types
+
+In Zeek records, data intended to be written to Zeek log streams needs to be
+marked :zeek:see:`&log`. We can trigger creation of this attribute from Spicy
+either per-field or for the whole ``record``.
+
+The export statement
+
+.. code-block:: spicy-evt
+
+    export foo::X &log;
+
+creates a Zeek record type
+
+.. code-block:: zeek
+
+    module foo;
+
+    export {
+
+      type X: record {
+        x: count &optional &log;
+        y: count &optional &log;
+        z: count &optional &log;
+      };
+
+    }
+
+To mark individual fields :zeek:see:`&log` we can use the attribute on the
+respective fields, e.g.,
+
+.. code-block:: spicy-evt
+
+    export foo::X with { x &log, y, z };
+
+creates a Zeek record type
+
+.. code-block:: zeek
+
+    module foo;
+
+    export {
+
+      type X: record {
+        x: count &optional &log;
+        y: count &optional;
+        z: count &optional;
+      };
+
+    }
 
 .. _spicy_struct:
 
