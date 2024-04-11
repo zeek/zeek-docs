@@ -12,6 +12,7 @@
 .. _CMake toolchain: https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html
 .. _contribute: https://github.com/zeek/zeek/wiki/Contribution-Guide
 .. _Chocolatey: https://chocolatey.org
+.. _Npcap: https://npcap.com/
 
 .. _installing-zeek:
 
@@ -283,11 +284,21 @@ To install these, you can use:
 
      mkdir build
      cd build
-     cmake.exe .. -DCMAKE_BUILD_TYPE=release -DENABLE_ZEEK_UNIT_TESTS=yes -G Ninja
+     cmake.exe .. -DCMAKE_BUILD_TYPE=release -DENABLE_ZEEK_UNIT_TESTS=yes -DVCPKG_TARGET_TRIPLET="x64-windows-static" -G Ninja
      cmake.exe --build .
 
-  Note that all of this is duplicated in the CI configuration for Windows which
-  lives in the ``ci/windows`` directory.
+  All of this is duplicated in the CI configuration for Windows which lives in
+  the ``ci/windows`` directory, and can be used as a reference for running the
+  commands by hand.
+
+  Note: By default, Windows links against the standard libpcap library from
+  vcpkg. This version of libpcap does not support packet capture on Windows,
+  unlike other platforms. In order to capture packets from live interfaces on
+  Windows, you will need to link against the Npcap_ libary. This library is free
+  for personal use, but requires a paid license for commercial use or
+  redistribution. To link against Npcap, download the SDK from their website,
+  unzip it, and then pass ``-DPCAP_ROOT_DIR="<path to npcap sdk>"`` to the
+  initial CMake invocation for Zeek.
 
 
 Optional Dependencies
