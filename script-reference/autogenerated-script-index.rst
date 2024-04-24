@@ -138,6 +138,7 @@
    base/utils/site.zeek </scripts/base/utils/site.zeek>
    base/utils/patterns.zeek </scripts/base/utils/patterns.zeek>
    base/frameworks/files/magic/__load__.zeek </scripts/base/frameworks/files/magic/__load__.zeek>
+   base/frameworks/telemetry/options.zeek </scripts/base/frameworks/telemetry/options.zeek>
    base/bif/__load__.zeek </scripts/base/bif/__load__.zeek>
    base/bif/telemetry.bif.zeek </scripts/base/bif/telemetry.bif.zeek>
    base/bif/zeekygen.bif.zeek </scripts/base/bif/zeekygen.bif.zeek>

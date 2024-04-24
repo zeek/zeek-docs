@@ -11,12 +11,6 @@ Functions for accessing counter metrics from script land.
 
 Summary
 ~~~~~~~
-Types
-#####
-===================================================== =
-:zeek:type:`Telemetry::MetricType`: :zeek:type:`enum` 
-===================================================== =
-
 Functions
 #########
 ============================================================================== =
@@ -53,26 +47,6 @@ Functions
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
-Types
-#####
-.. zeek:type:: Telemetry::MetricType
-   :source-code: base/bif/telemetry.bif.zeek 9 9
-
-   :Type: :zeek:type:`enum`
-
-      .. zeek:enum:: Telemetry::DOUBLE_COUNTER Telemetry::MetricType
-
-      .. zeek:enum:: Telemetry::INT_COUNTER Telemetry::MetricType
-
-      .. zeek:enum:: Telemetry::DOUBLE_GAUGE Telemetry::MetricType
-
-      .. zeek:enum:: Telemetry::INT_GAUGE Telemetry::MetricType
-
-      .. zeek:enum:: Telemetry::DOUBLE_HISTOGRAM Telemetry::MetricType
-
-      .. zeek:enum:: Telemetry::INT_HISTOGRAM Telemetry::MetricType
-
-
 Functions
 #########
 .. zeek:id:: Telemetry::__collect_histogram_metrics
@@ -90,7 +64,7 @@ Functions
 .. zeek:id:: Telemetry::__dbl_counter_family
    :source-code: base/bif/telemetry.bif.zeek 37 37
 
-   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``"1"`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of dbl_counter_metric_family
+   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of dbl_counter_metric_family
 
 
 .. zeek:id:: Telemetry::__dbl_counter_inc
@@ -120,7 +94,7 @@ Functions
 .. zeek:id:: Telemetry::__dbl_gauge_family
    :source-code: base/bif/telemetry.bif.zeek 68 68
 
-   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``"1"`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of dbl_gauge_metric_family
+   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of dbl_gauge_metric_family
 
 
 .. zeek:id:: Telemetry::__dbl_gauge_inc
@@ -144,7 +118,7 @@ Functions
 .. zeek:id:: Telemetry::__dbl_histogram_family
    :source-code: base/bif/telemetry.bif.zeek 99 99
 
-   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, bounds: :zeek:type:`double_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``"1"`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of dbl_histogram_metric_family
+   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, bounds: :zeek:type:`double_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of dbl_histogram_metric_family
 
 
 .. zeek:id:: Telemetry::__dbl_histogram_metric_get_or_add
@@ -168,7 +142,7 @@ Functions
 .. zeek:id:: Telemetry::__int_counter_family
    :source-code: base/bif/telemetry.bif.zeek 23 23
 
-   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``"1"`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of int_counter_metric_family
+   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of int_counter_metric_family
 
 
 .. zeek:id:: Telemetry::__int_counter_inc
@@ -198,7 +172,7 @@ Functions
 .. zeek:id:: Telemetry::__int_gauge_family
    :source-code: base/bif/telemetry.bif.zeek 51 51
 
-   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``"1"`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of int_gauge_metric_family
+   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of int_gauge_metric_family
 
 
 .. zeek:id:: Telemetry::__int_gauge_inc
@@ -222,7 +196,7 @@ Functions
 .. zeek:id:: Telemetry::__int_histogram_family
    :source-code: base/bif/telemetry.bif.zeek 85 85
 
-   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, bounds: :zeek:type:`int_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``"1"`` :zeek:attr:`&optional`, is_sum: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of int_histogram_metric_family
+   :Type: :zeek:type:`function` (prefix: :zeek:type:`string`, name: :zeek:type:`string`, labels: :zeek:type:`string_vec`, bounds: :zeek:type:`int_vec`, helptext: :zeek:type:`string` :zeek:attr:`&default` = ``"Zeek Script Metric"`` :zeek:attr:`&optional`, unit: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`opaque` of int_histogram_metric_family
 
 
 .. zeek:id:: Telemetry::__int_histogram_metric_get_or_add

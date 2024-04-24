@@ -92,7 +92,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: Telemetry::HistogramInfo
-   :source-code: policy/frameworks/telemetry/log.zeek 56 89
+   :source-code: policy/frameworks/telemetry/log.zeek 53 83
 
    :Type: :zeek:type:`record`
 
@@ -107,9 +107,6 @@ Types
 
       name: :zeek:type:`string` :zeek:attr:`&log`
          The name of the metric.
-
-      unit: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The unit of this metric, or unset if unit-less.
 
       labels: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
          The names of the individual labels.
@@ -132,7 +129,7 @@ Types
    Record type used for logging histogram metrics.
 
 .. zeek:type:: Telemetry::Info
-   :source-code: policy/frameworks/telemetry/log.zeek 25 53
+   :source-code: policy/frameworks/telemetry/log.zeek 25 50
 
    :Type: :zeek:type:`record`
 
@@ -152,9 +149,6 @@ Types
       name: :zeek:type:`string` :zeek:attr:`&log`
          The name of the metric.
 
-      unit: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The unit of this metric, or unset if unit-less.
-
       labels: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
          The names of the individual labels.
 
@@ -169,14 +163,14 @@ Types
 Events
 ######
 .. zeek:id:: Telemetry::log_telemetry
-   :source-code: policy/frameworks/telemetry/log.zeek 98 98
+   :source-code: policy/frameworks/telemetry/log.zeek 92 92
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Telemetry::Info`)
 
    Event triggered for every record in the stream.
 
 .. zeek:id:: Telemetry::log_telemetry_histogram
-   :source-code: policy/frameworks/telemetry/log.zeek 101 101
+   :source-code: policy/frameworks/telemetry/log.zeek 95 95
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Telemetry::HistogramInfo`)
 
@@ -185,14 +179,14 @@ Events
 Hooks
 #####
 .. zeek:id:: Telemetry::log_policy
-   :source-code: policy/frameworks/telemetry/log.zeek 92 92
+   :source-code: policy/frameworks/telemetry/log.zeek 86 86
 
    :Type: :zeek:type:`Log::PolicyHook`
 
    A default logging policy hook for the stream.
 
 .. zeek:id:: Telemetry::log_policy_histogram
-   :source-code: policy/frameworks/telemetry/log.zeek 95 95
+   :source-code: policy/frameworks/telemetry/log.zeek 89 89
 
    :Type: :zeek:type:`Log::PolicyHook`
 
