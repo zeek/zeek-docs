@@ -361,6 +361,10 @@ the pieces going into such an event definition:
             A corresponding Zeek-side ``enum`` type is automatically
             created. See :ref:`below <spicy_enum>` for more.
 
+            One special-case: For convenience, the Spicy-side
+            `Protocol` enum is automatically mapped to the Zeek-side
+            `transport_proto` enum.
+
         [2]
             The optional value must have a value, otherwise a runtime
             exception will be thrown.
