@@ -4,6 +4,9 @@ Package: base/frameworks/telemetry
 ==================================
 
 
+:doc:`/scripts/base/frameworks/telemetry/options.zeek`
+
+
 :doc:`/scripts/base/frameworks/telemetry/__load__.zeek`
 
 
