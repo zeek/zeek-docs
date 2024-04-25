@@ -8,8 +8,8 @@ Module for recording and querying metrics. This modules wraps
 the lower-level telemetry.bif functions.
 
 Metrics will be exposed through a Prometheus HTTP endpoint when
-enabled by setting :zeek:see:`Broker::metrics_port` or using the
-`BROKER_METRICS_PORT` environment variable.
+enabled by setting :zeek:see:`Telemetry::metrics_port` or using the
+`ZEEK_METRICS_PORT` environment variable.
 
 :Namespace: Telemetry
 :Imports: :doc:`base/frameworks/telemetry/options.zeek </scripts/base/frameworks/telemetry/options.zeek>`, :doc:`base/misc/version.zeek </scripts/base/misc/version.zeek>`

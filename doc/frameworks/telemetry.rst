@@ -343,9 +343,8 @@ server can be configured to scrape the Zeek manager process directly.
 See also the `Prometheus Getting Started Guide`_.
 
 The ``scripts/policy/frameworks/telemetry/prometheus.zeek`` script sets
-:zeek:see:`Broker::metrics_port`, :zeek:see:`Broker::metrics_import_topics`,
-:zeek:see:`Broker::metrics_export_topic` and :zeek:see:`Broker::metrics_export_endpoint_name`
-appropriately.
+:zeek:see:`Telemetry::metrics_port` and
+:zeek:see:`Telemetry::metrics_endpoint_name` appropriately.
 
 .. above file isn't included in the docs as it's not loaded in the doc generation, can not use :doc:
 
@@ -362,9 +361,7 @@ and disables the export and import of metrics::
     global my_node = Cluster::nodes[Cluster::node];
     global my_metrics_port = count_to_port(port_to_count(my_node$p) - 1000, tcp);
 
-    redef Broker::metrics_port = my_metrics_port;
-    redef Broker::metrics_import_topics = vector();
-    redef Broker::metrics_export_topic = "";
+    redef Telemetry::metrics_port = my_metrics_port;
 
 With this configuration, the Prometheus server will need to be configured to
 scrape each individual Zeek process's port.
@@ -375,7 +372,7 @@ process, but keep the export and import of metrics enabled, use the following sn
     @load base/frameworks/cluster
 
     @ifdef ( Cluster::local_node_type() == Cluster::MANAGER )
-    redef Broker::metrics_port = 1234/tcp;
+    redef Telemetry::metrics_port = 1234/tcp;
     @endif
 
 
@@ -383,16 +380,11 @@ Environment variables
 ^^^^^^^^^^^^^^^^^^^^^
 
 Above Zeek options can also be controlled via environment variables. Instead
-of setting :zeek:see:`Broker::metrics_port` in a Zeek script, you can set
-the ``BROKER_METRICS_PORT`` environment variable which takes precedence
+of setting :zeek:see:`Telemetry::metrics_port` in a Zeek script, you can set
+the ``ZEEK_METRICS_PORT`` environment variable which takes precedence
 over the Zeek option.
 
-As with Zeek script options, there are two configuration possibilities for
-a cluster. Either configure a unique ``BROKER_METRICS_PORT`` and ``BROKER_ENDPOINT_NAME``
-for each of the Zeek processes. Then, setup a Prometheus server to scrape each
-of these individual endpoints.
-Alternatively, set ``BROKER_METRICS_IMPORT_TOPICS`` and ``BROKER_METRICS_EXPORT_TOPIC``
-environment variables appropriately to have a single process, presumably the Zeek manager,
-import all metrics from other Zeek processes in a cluster. In this scenario,
-set ``BROKER_METRICS_PORT`` only for the Zeek manager and configure the
-Prometheus server to scrape just the manager.
+As with Zeek script options, there are two configuration possibilities for a
+cluster. Either configure a unique ``ZEEK_METRICS_PORT`` and
+``ZEEK_METRICS_ENDPOINT_NAME`` for each of the Zeek processes. Then, setup a
+Prometheus server to scrape each of these individual endpoints.
