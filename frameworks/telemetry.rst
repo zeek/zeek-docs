@@ -1,6 +1,7 @@
 .. _histogram_quantile(): https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile
 .. _Prometheus Getting Started Guide: https://prometheus.io/docs/prometheus/latest/getting_started/
 .. _Prometheus Metric Types: https://prometheus.io/docs/concepts/metric_types/
+.. _Prometheus HTTP Service Discovery: https://prometheus.io/docs/prometheus/latest/http_sd/
 .. _CAF: https://github.com/actor-framework/actor-framework
 
 .. _framework-telemetry:
@@ -316,18 +317,22 @@ and expect these to be included, redefine the
 Native Prometheus Export
 ------------------------
 
-When running a cluster of Zeek processes, the manager process can be configured
-to run a HTTP server on port 9911/tcp for Prometheus exposition by loading the
-following policy script::
+When running a cluster of Zeek processes, all nodes can be configured to run an
+HTTP server for exporting data to Prometheus by loading the following policy script::
 
     @load frameworks/telemetry/prometheus
 
-This script instructs the manager process to import all metrics from other
-Zeek processes via Broker and configures other nodes to regularly export their metrics.
-Querying the manager's Prometheus endpoint (``curl http://manager-ip:9911/metrics``)
-then yields its own metrics as well as metrics from all other processes in the
-Zeek cluster. The ``endpoint`` label on the metrics can be used to differentiate
-the originator.
+This script instructs the nodes to set the ``Telemetry::metrics_port`` variable
+based on the ``metrics_port`` value for each node in the cluster
+configuration. Querying each node's Prometheus endpoint (``curl
+http://node-ip:metrics-port/metrics``) then yields that node's metrics. The
+``endpoint`` label on the metrics can be used to differentiate the originator.
+
+The manager node also provides a `Prometheus HTTP Service Discovery`_ endpoint
+that exports a mapping of all of the nodes and their port numbers. This endpoint
+is ``http://manager-ip:metrics-port/services.json``. Prometheus can be
+configured to read that endpoint and automatically set up importing from all of
+the nodes at once.
 
 .. note::
 
@@ -338,8 +343,13 @@ the originator.
    the default anymore. Future improvements may allow to load the script by
    default again.
 
+   .. versionchanged: 7.0
+
+   The built-in aggregation for Zeek telemetry to the manager node has been
+   removed, in favor of the service discovery endpoint.
+
 As shown with the ``curl`` examples in the previous section, a Prometheus
-server can be configured to scrape the Zeek manager process directly.
+server can be configured to scrape the Zeek node processes directly.
 See also the `Prometheus Getting Started Guide`_.
 
 The ``scripts/policy/frameworks/telemetry/prometheus.zeek`` script sets
@@ -352,9 +362,7 @@ The ``scripts/policy/frameworks/telemetry/prometheus.zeek`` script sets
 If this configuration isn't right for your environment, there's
 the possibility to redefine the options in ``local.zeek`` to something more
 suitable. For example, the following snippet opens an individual Prometheus
-port for each Zeek process (relative to the port used in ``cluster-layout.zeek``)
-and disables the export and import of metrics::
-
+port for each Zeek process (relative to the port used in ``cluster-layout.zeek``):
 
     @load base/frameworks/cluster
 
@@ -362,9 +370,6 @@ and disables the export and import of metrics::
     global my_metrics_port = count_to_port(port_to_count(my_node$p) - 1000, tcp);
 
     redef Telemetry::metrics_port = my_metrics_port;
-
-With this configuration, the Prometheus server will need to be configured to
-scrape each individual Zeek process's port.
 
 As a different example, to only change the port from 9911 to 1234 on the manager
 process, but keep the export and import of metrics enabled, use the following snippet::
