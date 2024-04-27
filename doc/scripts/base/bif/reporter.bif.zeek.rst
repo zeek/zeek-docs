@@ -22,8 +22,8 @@ Functions
 #########
 ========================================================================== ========================================================================
 :zeek:id:`Reporter::conn_weird`: :zeek:type:`function`                     Generates a "conn" weird.
-:zeek:id:`Reporter::error`: :zeek:type:`function`                          Generates a usually non-fatal error indicative of a definite problem that 
-                                                                           should be addressed.
+:zeek:id:`Reporter::error`: :zeek:type:`function`                          Generates a non-fatal error indicative of a definite problem that should
+                                                                           be addressed.
 :zeek:id:`Reporter::fatal`: :zeek:type:`function`                          Generates a fatal error on stderr and terminates program execution.
 :zeek:id:`Reporter::fatal_error_with_core`: :zeek:type:`function`          Generates a fatal error on stderr and terminates program execution
                                                                            after dumping a core file
@@ -74,8 +74,7 @@ Functions
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`bool`
 
    Generates a non-fatal error indicative of a definite problem that should
-   be addressed. Program execution does not terminate unless the error is
-   reported during initialization (e.g., :zeek:see:`zeek_init`).
+   be addressed. Program execution does not terminate.
    
 
    :param msg: The error message to report.
