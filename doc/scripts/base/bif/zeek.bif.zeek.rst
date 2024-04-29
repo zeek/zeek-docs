@@ -257,8 +257,8 @@ Functions
 :zeek:id:`unique_id_from`: :zeek:type:`function`              Creates an identifier that is unique with high probability.
 :zeek:id:`unlink`: :zeek:type:`function`                      Removes a file from a directory.
 :zeek:id:`uuid_to_string`: :zeek:type:`function`              Converts a bytes representation of a UUID into its string form.
-:zeek:id:`val_footprint`: :zeek:type:`function`               Computes a value's "footprint": the number of objects the value contains
-                                                              either directly or indirectly.
+:zeek:id:`val_footprint`: :zeek:type:`function`               Computes a value's "footprint": the number of equivalent objects the
+                                                              value contains either directly or indirectly.
 :zeek:id:`write_file`: :zeek:type:`function`                  Writes data to an open file.
 :zeek:id:`zeek_args`: :zeek:type:`function`                   Returns: list of command-line arguments (``argv``) used to run Zeek.
 :zeek:id:`zeek_is_terminating`: :zeek:type:`function`         Checks if Zeek is terminating.
@@ -1580,6 +1580,7 @@ Functions
    This is (approximately) the number of objects the global contains either
    directly or indirectly.  The number is not meant to be precise, but
    rather comparable: larger footprint correlates with more memory consumption.
+   Note that sufficiently long `string` values are treated as multiple objects.
    The table index is the variable name and the value is the footprint.
    
 
@@ -3794,6 +3795,7 @@ Functions
    Computes a value's "footprint": the number of objects the value contains
    either directly or indirectly.  The number is not meant to be precise, but
    rather comparable: larger footprint correlates with more memory consumption.
+   Note that sufficiently long `string` values are treated as multiple objects.
    
 
    :returns: the footprint.
