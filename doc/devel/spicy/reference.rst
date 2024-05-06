@@ -112,11 +112,12 @@ properties are supported:
             direction is not ``originator``).
 
     ``replaces ANALYZER_NAME``
-        Disables an existing analyzer that Zeek already provides
-        internally, allowing you to replace a built-in analyzer with a new
-        Spicy version. ``ANALYZER_NAME`` is the Zeek-side name of the
-        analyzer. To find that name, inspect the output of ``zeek -NN``
-        for available analyzers::
+        Replaces a built-in analyzer that Zeek already provides with a
+        new Spicy version by internally disabling the existing
+        analyzer and redirecting any usage to the new Spicy analyzer
+        instead. ``ANALYZER_NAME`` is the Zeek-side name of the
+        analyzer. To find that name, inspect the output of ``zeek
+        -NN`` for available analyzers::
 
             # zeek -NN | grep '\[Analyzer\]'
             ...
@@ -125,6 +126,22 @@ properties are supported:
 
         Here, ``SMTP`` is the name you would write into ``replaces`` to
         disable the built-in SMTP analyzer.
+
+        The replacement takes effect in most places where normally the
+        existing Zeek analyzer would be used, or gets referenced,
+        including in Zeek scripts (e.g., when registering
+        well-known ports).
+
+        .. note::
+
+            ``replaces`` is not limited to substituting built-in
+            analyzers; you could also replace one Spicy analyzer with
+            another. However, there is no support for more complex
+            scenarios like chains of analyzers replacing each other;
+            results are undefined in that case. It's best to stick to
+            replacing classic, built-in analyzers, and control
+            everything else simply through not loading any undesired
+            Spicy analyzers in the first place.
 
 As a full example, here's what a new HTTP analyzer could look like:
 
