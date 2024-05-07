@@ -603,9 +603,9 @@
    policy/protocols/ssl/weak-keys.zeek </scripts/policy/protocols/ssl/weak-keys.zeek>
    policy/tuning/__load__.zeek </scripts/policy/tuning/__load__.zeek>
    policy/tuning/defaults/__load__.zeek </scripts/policy/tuning/defaults/__load__.zeek>
+   policy/tuning/defaults/extracted_file_limits.zeek </scripts/policy/tuning/defaults/extracted_file_limits.zeek>
    policy/tuning/defaults/packet-fragments.zeek </scripts/policy/tuning/defaults/packet-fragments.zeek>
    policy/tuning/defaults/warnings.zeek </scripts/policy/tuning/defaults/warnings.zeek>
-   policy/tuning/defaults/extracted_file_limits.zeek </scripts/policy/tuning/defaults/extracted_file_limits.zeek>
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
    policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>

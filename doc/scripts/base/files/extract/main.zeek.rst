@@ -71,16 +71,10 @@ Runtime Options
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``0``
-   :Redefinition: from :doc:`/scripts/policy/tuning/defaults/extracted_file_limits.zeek`
-
-      ``=``::
-
-         104857600
-
+   :Default: ``104857600``
 
    The default max size for extracted files (they won't exceed this
-   number of bytes). A value of zero means unlimited.
+   number of bytes). A value of zero means unlimited. Defaults to 100MB.
 
 .. zeek:id:: FileExtract::default_limit_includes_missing
    :source-code: base/files/extract/main.zeek 21 21

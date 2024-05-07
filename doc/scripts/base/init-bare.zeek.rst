@@ -1630,13 +1630,7 @@ Redefinable Options
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``0 secs``
-   :Redefinition: from :doc:`/scripts/policy/tuning/defaults/packet-fragments.zeek`
-
-      ``=``::
-
-         5.0 mins
-
+   :Default: ``5.0 mins``
 
    How long to hold onto fragments for possible reassembly.  A value of 0.0
    means "forever", which resists evasion, but can lead to state accrual.
