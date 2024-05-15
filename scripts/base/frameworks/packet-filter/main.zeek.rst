@@ -82,6 +82,7 @@ Functions
 :zeek:id:`PacketFilter::install`: :zeek:type:`function`                Call this function to build and install a new dynamically built
                                                                        packet filter.
 :zeek:id:`PacketFilter::register_filter_plugin`: :zeek:type:`function` API function to register a new plugin for dynamic restriction filters.
+:zeek:id:`PacketFilter::remove_exclude`: :zeek:type:`function`         Remove a previously added exclude filter fragment by name.
 ====================================================================== ======================================================================
 
 
@@ -101,7 +102,7 @@ Redefinable Options
    still be applied to reduce the captured traffic.
 
 .. zeek:id:: PacketFilter::enable_auto_protocol_capture_filters
-   :source-code: base/frameworks/packet-filter/main.zeek 121 121
+   :source-code: base/frameworks/packet-filter/main.zeek 131 131
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -148,7 +149,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: PacketFilter::current_filter
-   :source-code: base/frameworks/packet-filter/main.zeek 125 125
+   :source-code: base/frameworks/packet-filter/main.zeek 135 135
 
    :Type: :zeek:type:`string`
    :Default: ``"<not set yet>"``
@@ -159,7 +160,7 @@ State Variables
 Types
 #####
 .. zeek:type:: PacketFilter::FilterPlugin
-   :source-code: base/frameworks/packet-filter/main.zeek 109 112
+   :source-code: base/frameworks/packet-filter/main.zeek 119 122
 
    :Type: :zeek:type:`record`
 
@@ -208,7 +209,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: PacketFilter::exclude
-   :source-code: base/frameworks/packet-filter/main.zeek 205 213
+   :source-code: base/frameworks/packet-filter/main.zeek 222 230
 
    :Type: :zeek:type:`function` (filter_id: :zeek:type:`string`, filter: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -228,7 +229,7 @@ Functions
             installed or not.
 
 .. zeek:id:: PacketFilter::exclude_for
-   :source-code: base/frameworks/packet-filter/main.zeek 215 223
+   :source-code: base/frameworks/packet-filter/main.zeek 232 240
 
    :Type: :zeek:type:`function` (filter_id: :zeek:type:`string`, filter: :zeek:type:`string`, span: :zeek:type:`interval`) : :zeek:type:`bool`
 
@@ -251,7 +252,7 @@ Functions
             installed or not.
 
 .. zeek:id:: PacketFilter::install
-   :source-code: base/frameworks/packet-filter/main.zeek 270 348
+   :source-code: base/frameworks/packet-filter/main.zeek 287 365
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -259,10 +260,26 @@ Functions
    packet filter.
 
 .. zeek:id:: PacketFilter::register_filter_plugin
-   :source-code: base/frameworks/packet-filter/main.zeek 191 194
+   :source-code: base/frameworks/packet-filter/main.zeek 201 204
 
    :Type: :zeek:type:`function` (fp: :zeek:type:`PacketFilter::FilterPlugin`) : :zeek:type:`void`
 
    API function to register a new plugin for dynamic restriction filters.
+
+.. zeek:id:: PacketFilter::remove_exclude
+   :source-code: base/frameworks/packet-filter/main.zeek 211 220
+
+   :Type: :zeek:type:`function` (filter_id: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Remove a previously added exclude filter fragment by name. The
+   traffic that was being filtered will be allowed through the filter
+   after calling this function.
+   
+
+   :param filter_id: The name given to the filter fragment which you'd like to remove.
+   
+
+   :returns: A boolean value to indicate if a filter fragment with the given name
+            actually installed.
 
 
