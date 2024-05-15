@@ -40,14 +40,14 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: Version::info
-   :source-code: base/misc/version.zeek 113 113
+   :source-code: base/misc/version.zeek 125 125
 
    :Type: :zeek:type:`Version::VersionDescription`
 
    `VersionDescription` record pertaining to the currently running version of Zeek.
 
 .. zeek:id:: Version::number
-   :source-code: base/misc/version.zeek 119 119
+   :source-code: base/misc/version.zeek 131 131
 
    :Type: :zeek:type:`count`
 
@@ -59,7 +59,7 @@ Constants
 Types
 #####
 .. zeek:type:: Version::VersionDescription
-   :source-code: base/misc/version.zeek 12 39
+   :source-code: base/misc/version.zeek 12 41
 
    :Type: :zeek:type:`record`
 
@@ -94,6 +94,9 @@ Types
       debug: :zeek:type:`bool`
          If set to true, the version is a debug build
 
+      localversion: :zeek:type:`string`
+         Local version portion of the version string
+
       version_string: :zeek:type:`string`
          String representation of this version
 
@@ -102,7 +105,7 @@ Types
 Functions
 #########
 .. zeek:id:: Version::at_least
-   :source-code: base/misc/version.zeek 122 125
+   :source-code: base/misc/version.zeek 134 137
 
    :Type: :zeek:type:`function` (version_string: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -116,7 +119,7 @@ Functions
    :returns: True if running version greater or equal to the given version.
 
 .. zeek:id:: Version::parse
-   :source-code: base/misc/version.zeek 57 109
+   :source-code: base/misc/version.zeek 59 121
 
    :Type: :zeek:type:`function` (version_string: :zeek:type:`string`) : :zeek:type:`Version::VersionDescription`
 
