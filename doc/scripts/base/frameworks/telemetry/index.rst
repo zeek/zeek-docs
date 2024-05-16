@@ -16,6 +16,5 @@ Package: base/frameworks/telemetry
    the lower-level telemetry.bif functions.
    
    Metrics will be exposed through a Prometheus HTTP endpoint when
-   enabled by setting :zeek:see:`Telemetry::metrics_port` or using the
-   `ZEEK_METRICS_PORT` environment variable.
+   enabled by setting :zeek:see:`Telemetry::metrics_port`.
 

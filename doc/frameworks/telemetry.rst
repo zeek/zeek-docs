@@ -379,17 +379,3 @@ process, but keep the export and import of metrics enabled, use the following sn
     @ifdef ( Cluster::local_node_type() == Cluster::MANAGER )
     redef Telemetry::metrics_port = 1234/tcp;
     @endif
-
-
-Environment variables
-^^^^^^^^^^^^^^^^^^^^^
-
-Above Zeek options can also be controlled via environment variables. Instead
-of setting :zeek:see:`Telemetry::metrics_port` in a Zeek script, you can set
-the ``ZEEK_METRICS_PORT`` environment variable which takes precedence
-over the Zeek option.
-
-As with Zeek script options, there are two configuration possibilities for a
-cluster. Either configure a unique ``ZEEK_METRICS_PORT`` and
-``ZEEK_METRICS_ENDPOINT_NAME`` for each of the Zeek processes. Then, setup a
-Prometheus server to scrape each of these individual endpoints.
