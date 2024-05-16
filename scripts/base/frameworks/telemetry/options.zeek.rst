@@ -23,7 +23,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Telemetry::metrics_endpoint_name
-   :source-code: base/frameworks/telemetry/options.zeek 19 19
+   :source-code: base/frameworks/telemetry/options.zeek 16 16
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -31,19 +31,16 @@ Redefinable Options
 
    ID for the metrics exporter. This is used as the 'endpoint' label
    value when exporting data to Prometheus. In a cluster setup, this
-   defaults to the name of the node in the cluster configuration. Zeek
-   overrides any value provided in zeek_init or earlier at startup if
-   the environment variable ZEEK_METRICS_ENDPOINT_NAME is defined.
+   defaults to the name of the node in the cluster configuration.
 
 .. zeek:id:: Telemetry::metrics_port
-   :source-code: base/frameworks/telemetry/options.zeek 12 12
+   :source-code: base/frameworks/telemetry/options.zeek 11 11
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``0/unknown``
 
    Port used to make metric data available to Prometheus scrapers via
-   HTTP. Zeek overrides any value provided in zeek_init or earlier at
-   startup if the environment variable ZEEK_METRICS_PORT is defined.
+   HTTP.
 
 
