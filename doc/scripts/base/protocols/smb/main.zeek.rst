@@ -343,7 +343,7 @@ Functions
    This is an internally used function.
 
 .. zeek:id:: SMB::write_file_log
-   :source-code: base/protocols/smb/main.zeek 207 235
+   :source-code: base/protocols/smb/main.zeek 207 241
 
    :Type: :zeek:type:`function` (state: :zeek:type:`SMB::State`) : :zeek:type:`void`
    :Attributes: :zeek:attr:`&redef`

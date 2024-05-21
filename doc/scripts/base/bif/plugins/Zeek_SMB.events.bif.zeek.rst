@@ -40,7 +40,7 @@ Events
    
 
 .. zeek:id:: smb_pipe_connect_heuristic
-   :source-code: base/protocols/smb/main.zeek 237 241
+   :source-code: base/protocols/smb/main.zeek 243 247
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
