@@ -208,6 +208,7 @@ Redefinable Options
 :zeek:id:`report_gaps_for_partial`: :zeek:type:`bool` :zeek:attr:`&redef`                                                         Whether we want :zeek:see:`content_gap` for partial
                                                                                                                                   connections.
 :zeek:id:`rpc_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                                 Time to wait before timing out an RPC request.
+:zeek:id:`running_under_test`: :zeek:type:`bool` :zeek:attr:`&redef`                                                              Whether Zeek is being run under test.
 :zeek:id:`sig_max_group_size`: :zeek:type:`count` :zeek:attr:`&redef`                                                             Maximum size of regular expression groups for signature matching.
 :zeek:id:`skip_http_data`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                  Skip HTTP data for performance considerations.
 :zeek:id:`table_expire_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                                          When expiring table entries, wait this amount of time before checking the
@@ -2188,6 +2189,16 @@ Redefinable Options
 
    Time to wait before timing out an RPC request.
 
+.. zeek:id:: running_under_test
+   :source-code: base/init-bare.zeek 5952 5952
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+   Whether Zeek is being run under test. This can be used to alter functionality
+   while testing, but should be used sparingly.
+
 .. zeek:id:: sig_max_group_size
    :source-code: base/init-bare.zeek 5185 5185
 
@@ -3350,7 +3361,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 5951 5951
+   :source-code: base/init-bare.zeek 5954 5954
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
