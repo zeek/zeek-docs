@@ -9521,6 +9521,28 @@ Events
    
    .. note:: Packets with CONNECTION_CLOSE frames are usually encrypted after connection establishment and not visible to Zeek.
 
+.. zeek:id:: QUIC::unhandled_version
+   :source-code: base/protocols/quic/main.zeek 166 176
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
+
+   Generated for an unrecognized QUIC version.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if the packet is from the the connection's originator.
+   
+
+   :param version: The Version field.
+   
+
+   :param dcid: The Destination Connection ID field.
+   
+
+   :param scid: The Source Connection ID field.
+
 .. _plugin-zeek-radius:
 
 Zeek::RADIUS

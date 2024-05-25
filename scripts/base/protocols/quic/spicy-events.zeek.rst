@@ -17,6 +17,7 @@ Events
 :zeek:id:`QUIC::handshake_packet`: :zeek:type:`event`       Generated for a QUIC Handshake packet.
 :zeek:id:`QUIC::initial_packet`: :zeek:type:`event`         Generated for a QUIC Initial packet.
 :zeek:id:`QUIC::retry_packet`: :zeek:type:`event`           Generated for a QUIC Retry packet.
+:zeek:id:`QUIC::unhandled_version`: :zeek:type:`event`      Generated for an unrecognized QUIC version.
 :zeek:id:`QUIC::zero_rtt_packet`: :zeek:type:`event`        Generated for a QUIC 0-RTT packet.
 =========================================================== ============================================
 
@@ -127,6 +128,28 @@ Events
    
 
    :param integrity_tag: The Retry Integrity Tag field.
+
+.. zeek:id:: QUIC::unhandled_version
+   :source-code: base/protocols/quic/main.zeek 166 176
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
+
+   Generated for an unrecognized QUIC version.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if the packet is from the the connection's originator.
+   
+
+   :param version: The Version field.
+   
+
+   :param dcid: The Destination Connection ID field.
+   
+
+   :param scid: The Source Connection ID field.
 
 .. zeek:id:: QUIC::zero_rtt_packet
    :source-code: base/protocols/quic/main.zeek 146 150
