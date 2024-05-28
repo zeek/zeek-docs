@@ -362,7 +362,7 @@ The ``scripts/policy/frameworks/telemetry/prometheus.zeek`` script sets
 If this configuration isn't right for your environment, there's
 the possibility to redefine the options in ``local.zeek`` to something more
 suitable. For example, the following snippet opens an individual Prometheus
-port for each Zeek process (relative to the port used in ``cluster-layout.zeek``):
+port for each Zeek process (relative to the port used in ``cluster-layout.zeek``)::
 
     @load base/frameworks/cluster
 
