@@ -31,19 +31,14 @@ Events
 
 Functions
 #########
-============================================================================ =
-:zeek:id:`Broker::__listen`: :zeek:type:`function`                           
-:zeek:id:`Broker::__node_id`: :zeek:type:`function`                          
-:zeek:id:`Broker::__peer`: :zeek:type:`function`                             
-:zeek:id:`Broker::__peer_no_retry`: :zeek:type:`function`                    
-:zeek:id:`Broker::__peers`: :zeek:type:`function`                            
-:zeek:id:`Broker::__set_metrics_export_endpoint_name`: :zeek:type:`function` 
-:zeek:id:`Broker::__set_metrics_export_interval`: :zeek:type:`function`      
-:zeek:id:`Broker::__set_metrics_export_prefixes`: :zeek:type:`function`      
-:zeek:id:`Broker::__set_metrics_export_topic`: :zeek:type:`function`         
-:zeek:id:`Broker::__set_metrics_import_topics`: :zeek:type:`function`        
-:zeek:id:`Broker::__unpeer`: :zeek:type:`function`                           
-============================================================================ =
+========================================================= =
+:zeek:id:`Broker::__listen`: :zeek:type:`function`        
+:zeek:id:`Broker::__node_id`: :zeek:type:`function`       
+:zeek:id:`Broker::__peer`: :zeek:type:`function`          
+:zeek:id:`Broker::__peer_no_retry`: :zeek:type:`function` 
+:zeek:id:`Broker::__peers`: :zeek:type:`function`         
+:zeek:id:`Broker::__unpeer`: :zeek:type:`function`        
+========================================================= =
 
 
 Detailed Interface
@@ -141,36 +136,6 @@ Functions
    :source-code: base/bif/comm.bif.zeek 95 95
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::PeerInfos`
-
-
-.. zeek:id:: Broker::__set_metrics_export_endpoint_name
-   :source-code: base/bif/comm.bif.zeek 110 110
-
-   :Type: :zeek:type:`function` (value: :zeek:type:`string`) : :zeek:type:`bool`
-
-
-.. zeek:id:: Broker::__set_metrics_export_interval
-   :source-code: base/bif/comm.bif.zeek 101 101
-
-   :Type: :zeek:type:`function` (value: :zeek:type:`interval`) : :zeek:type:`bool`
-
-
-.. zeek:id:: Broker::__set_metrics_export_prefixes
-   :source-code: base/bif/comm.bif.zeek 113 113
-
-   :Type: :zeek:type:`function` (filter: :zeek:type:`string_vec`) : :zeek:type:`bool`
-
-
-.. zeek:id:: Broker::__set_metrics_export_topic
-   :source-code: base/bif/comm.bif.zeek 104 104
-
-   :Type: :zeek:type:`function` (value: :zeek:type:`string`) : :zeek:type:`bool`
-
-
-.. zeek:id:: Broker::__set_metrics_import_topics
-   :source-code: base/bif/comm.bif.zeek 107 107
-
-   :Type: :zeek:type:`function` (filter: :zeek:type:`string_vec`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__unpeer

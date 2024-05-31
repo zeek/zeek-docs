@@ -19,251 +19,253 @@ Summary
 ~~~~~~~
 Functions
 #########
-============================================================= ========================================================================================
-:zeek:id:`__init_secondary_bifs`: :zeek:type:`function`       An internal function that helps initialize BIFs.
-:zeek:id:`active_file`: :zeek:type:`function`                 Checks whether a given file is open.
-:zeek:id:`addr_to_counts`: :zeek:type:`function`              Converts an :zeek:type:`addr` to an :zeek:type:`index_vec`.
-:zeek:id:`addr_to_ptr_name`: :zeek:type:`function`            Converts an IP address to a reverse pointer name.
-:zeek:id:`addr_to_subnet`: :zeek:type:`function`              Converts a :zeek:type:`addr` to a :zeek:type:`subnet`.
-:zeek:id:`all_set`: :zeek:type:`function`                     Tests whether *all* elements of a boolean vector (``vector of bool``) are
-                                                              true.
-:zeek:id:`anonymize_addr`: :zeek:type:`function`              Anonymizes an IP address.
-:zeek:id:`any_set`: :zeek:type:`function`                     Tests whether a boolean vector (``vector of bool``) has *any* true
-                                                              element.
-:zeek:id:`backtrace`: :zeek:type:`function`                   Returns a representation of the call stack as a vector of call stack
-                                                              elements, each containing call location information.
-:zeek:id:`bare_mode`: :zeek:type:`function`                   Returns whether Zeek was started in bare mode.
-:zeek:id:`bytestring_to_count`: :zeek:type:`function`         Converts a string of bytes to a :zeek:type:`count`.
-:zeek:id:`bytestring_to_double`: :zeek:type:`function`        Converts a string of bytes representing a double value (in network byte order)
-                                                              to a :zeek:type:`double`.
-:zeek:id:`bytestring_to_float`: :zeek:type:`function`         Converts a string of bytes representing a float value (in network byte order)
-                                                              to a :zeek:type:`double`.
-:zeek:id:`bytestring_to_hexstr`: :zeek:type:`function`        Converts a string of bytes into its hexadecimal representation.
-:zeek:id:`calc_next_rotate`: :zeek:type:`function`            Calculates the duration until the next time a file is to be rotated, based
-                                                              on a given rotate interval.
-:zeek:id:`cat`: :zeek:type:`function`                         Returns the concatenation of the string representation of its arguments.
-:zeek:id:`cat_sep`: :zeek:type:`function`                     Concatenates all arguments, with a separator placed between each one.
-:zeek:id:`ceil`: :zeek:type:`function`                        Computes the smallest integer greater or equal than the given :zeek:type:`double` value.
-:zeek:id:`check_subnet`: :zeek:type:`function`                Checks if a specific subnet is a member of a set/table[subnet].
-:zeek:id:`clear_table`: :zeek:type:`function`                 Removes all elements from a set or table.
-:zeek:id:`close`: :zeek:type:`function`                       Closes an open file and flushes any buffered content.
-:zeek:id:`compress_path`: :zeek:type:`function`               Compresses a given path by removing '..'s and the parent directory it
-                                                              references and also removing dual '/'s and extraneous '/./'s.
-:zeek:id:`connection_exists`: :zeek:type:`function`           Checks whether a connection is (still) active.
-:zeek:id:`continue_processing`: :zeek:type:`function`         Resumes Zeek's packet processing.
-:zeek:id:`convert_for_pattern`: :zeek:type:`function`         Escapes a string so that it becomes a valid :zeek:type:`pattern` and can be
-                                                              used with the :zeek:id:`string_to_pattern`.
-:zeek:id:`count_to_double`: :zeek:type:`function`             Converts a :zeek:type:`count` to a :zeek:type:`double`.
-:zeek:id:`count_to_port`: :zeek:type:`function`               Converts a :zeek:type:`count` and ``transport_proto`` to a :zeek:type:`port`.
-:zeek:id:`count_to_v4_addr`: :zeek:type:`function`            Converts a :zeek:type:`count` to an :zeek:type:`addr`.
-:zeek:id:`counts_to_addr`: :zeek:type:`function`              Converts an :zeek:type:`index_vec` to an :zeek:type:`addr`.
-:zeek:id:`current_analyzer`: :zeek:type:`function`            Returns the ID of the analyzer which raised the current event.
-:zeek:id:`current_event_time`: :zeek:type:`function`          Returns the timestamp of the last raised event.
-:zeek:id:`current_time`: :zeek:type:`function`                Returns the current wall-clock time.
-:zeek:id:`decode_base64`: :zeek:type:`function`               Decodes a Base64-encoded string.
-:zeek:id:`decode_base64_conn`: :zeek:type:`function`          Decodes a Base64-encoded string that was derived from processing a connection.
-:zeek:id:`disable_analyzer`: :zeek:type:`function`            Disables the analyzer which raised the current event (if the analyzer
-                                                              belongs to the given connection).
-:zeek:id:`disable_event_group`: :zeek:type:`function`         Disabled the given event group.
-:zeek:id:`disable_module_events`: :zeek:type:`function`       Disable all event handlers and hooks in the given module.
-:zeek:id:`do_profiling`: :zeek:type:`function`                Enables detailed collection of profiling statistics.
-:zeek:id:`double_to_count`: :zeek:type:`function`             Converts a :zeek:type:`double` to a :zeek:type:`int`.
-:zeek:id:`double_to_int`: :zeek:type:`function`               Converts a :zeek:type:`double` to a :zeek:type:`count`.
-:zeek:id:`double_to_interval`: :zeek:type:`function`          Converts a :zeek:type:`double` to an :zeek:type:`interval`.
-:zeek:id:`double_to_time`: :zeek:type:`function`              Converts a :zeek:type:`double` value to a :zeek:type:`time`.
-:zeek:id:`dump_current_packet`: :zeek:type:`function`         Writes the current packet to a file.
-:zeek:id:`dump_packet`: :zeek:type:`function`                 Writes a given packet to a file.
-:zeek:id:`dump_rule_stats`: :zeek:type:`function`             Write rule matcher statistics (DFA states, transitions, memory usage, cache
-                                                              hits/misses) to a file.
-:zeek:id:`enable_event_group`: :zeek:type:`function`          Enabled the given event group.
-:zeek:id:`enable_module_events`: :zeek:type:`function`        Enable all event handlers and hooks in the given module.
-:zeek:id:`enable_raw_output`: :zeek:type:`function`           Prevents escaping of non-ASCII characters when writing to a file.
-:zeek:id:`encode_base64`: :zeek:type:`function`               Encodes a Base64-encoded string.
-:zeek:id:`entropy_test_add`: :zeek:type:`function`            Adds data to an incremental entropy calculation.
-:zeek:id:`entropy_test_finish`: :zeek:type:`function`         Finishes an incremental entropy calculation.
-:zeek:id:`entropy_test_init`: :zeek:type:`function`           Initializes data structures for incremental entropy calculation.
-:zeek:id:`enum_names`: :zeek:type:`function`                  Returns all value names associated with an enum type.
-:zeek:id:`enum_to_int`: :zeek:type:`function`                 Converts an :zeek:type:`enum` to an :zeek:type:`int`.
-:zeek:id:`exit`: :zeek:type:`function`                        Shuts down the Zeek process immediately.
-:zeek:id:`exp`: :zeek:type:`function`                         Computes the exponential function.
-:zeek:id:`file_magic`: :zeek:type:`function`                  Determines the MIME type of a piece of data using Zeek's file magic
-                                                              signatures.
-:zeek:id:`file_mode`: :zeek:type:`function`                   Converts UNIX file permissions given by a mode to an ASCII string.
-:zeek:id:`file_size`: :zeek:type:`function`                   Returns the size of a given file.
-:zeek:id:`filter_subnet_table`: :zeek:type:`function`         For a set[subnet]/table[subnet], create a new table that contains all entries
-                                                              that contain a given subnet.
-:zeek:id:`find_entropy`: :zeek:type:`function`                Performs an entropy test on the given data.
-:zeek:id:`find_in_zeekpath`: :zeek:type:`function`            Determine the path used by a non-relative @load directive.
-:zeek:id:`floor`: :zeek:type:`function`                       Computes the greatest integer less than the given :zeek:type:`double` value.
-:zeek:id:`flush_all`: :zeek:type:`function`                   Flushes all open files to disk.
-:zeek:id:`fmt`: :zeek:type:`function`                         Produces a formatted string à la ``printf``.
-:zeek:id:`fnv1a32`: :zeek:type:`function`                     Returns 32-bit digest of arbitrary input values using FNV-1a hash algorithm.
-:zeek:id:`from_json`: :zeek:type:`function`                   A function to convert a JSON string into Zeek values of a given type.
-:zeek:id:`generate_all_events`: :zeek:type:`function`         By default, zeek does not generate (raise) events that have not handled by
-                                                              any scripts.
-:zeek:id:`get_conn_transport_proto`: :zeek:type:`function`    Extracts the transport protocol from a connection.
-:zeek:id:`get_current_packet`: :zeek:type:`function`          Returns the currently processed PCAP packet.
-:zeek:id:`get_current_packet_header`: :zeek:type:`function`   Function to get the raw headers of the currently processed packet.
-:zeek:id:`get_file_name`: :zeek:type:`function`               Gets the filename associated with a file handle.
-:zeek:id:`get_port_transport_proto`: :zeek:type:`function`    Extracts the transport protocol from a :zeek:type:`port`.
-:zeek:id:`getenv`: :zeek:type:`function`                      Returns a system environment variable.
-:zeek:id:`gethostname`: :zeek:type:`function`                 Returns the hostname of the machine Zeek runs on.
-:zeek:id:`getpid`: :zeek:type:`function`                      Returns Zeek's process ID.
-:zeek:id:`global_container_footprints`: :zeek:type:`function` Generates a table of the "footprint" of all global container variables.
-:zeek:id:`global_ids`: :zeek:type:`function`                  Generates a table with information about all global identifiers.
-:zeek:id:`global_options`: :zeek:type:`function`              Returns a set giving the names of all global options.
-:zeek:id:`has_event_group`: :zeek:type:`function`             Does an attribute event group with this name exist?
-:zeek:id:`has_module_events`: :zeek:type:`function`           Does a module event group with this name exist?
-:zeek:id:`have_spicy`: :zeek:type:`function`                  Returns true if Zeek was built with support for using Spicy analyzers (which
-:zeek:id:`have_spicy_analyzers`: :zeek:type:`function`        Returns true if Zeek was built with support for its in-tree Spicy analyzers
-                                                              (which is the default if Spicy support is available).
-:zeek:id:`haversine_distance`: :zeek:type:`function`          Calculates distance between two geographic locations using the haversine
-                                                              formula.
-:zeek:id:`hexstr_to_bytestring`: :zeek:type:`function`        Converts a hex-string into its binary representation.
-:zeek:id:`hrw_weight`: :zeek:type:`function`                  Calculates a weight value for use in a Rendezvous Hashing algorithm.
-:zeek:id:`identify_data`: :zeek:type:`function`               Determines the MIME type of a piece of data using Zeek's file magic
-                                                              signatures.
-:zeek:id:`install_dst_addr_filter`: :zeek:type:`function`     Installs a filter to drop packets destined to a given IP address with
-                                                              a certain probability if none of a given set of TCP flags are set.
-:zeek:id:`install_dst_net_filter`: :zeek:type:`function`      Installs a filter to drop packets destined to a given subnet with
-                                                              a certain probability if none of a given set of TCP flags are set.
-:zeek:id:`install_src_addr_filter`: :zeek:type:`function`     Installs a filter to drop packets from a given IP source address with
-                                                              a certain probability if none of a given set of TCP flags are set.
-:zeek:id:`install_src_net_filter`: :zeek:type:`function`      Installs a filter to drop packets originating from a given subnet with
-                                                              a certain probability if none of a given set of TCP flags are set.
-:zeek:id:`int_to_count`: :zeek:type:`function`                Converts a (positive) :zeek:type:`int` to a :zeek:type:`count`.
-:zeek:id:`int_to_double`: :zeek:type:`function`               Converts an :zeek:type:`int` to a :zeek:type:`double`.
-:zeek:id:`interval_to_double`: :zeek:type:`function`          Converts an :zeek:type:`interval` to a :zeek:type:`double`.
-:zeek:id:`is_file_analyzer`: :zeek:type:`function`            Returns true if the given tag belongs to a file analyzer.
-:zeek:id:`is_icmp_port`: :zeek:type:`function`                Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
-:zeek:id:`is_local_interface`: :zeek:type:`function`          Checks whether a given IP address belongs to a local interface.
-:zeek:id:`is_packet_analyzer`: :zeek:type:`function`          Returns true if the given tag belongs to a packet analyzer.
-:zeek:id:`is_processing_suspended`: :zeek:type:`function`     Returns whether or not processing is currently suspended.
-:zeek:id:`is_protocol_analyzer`: :zeek:type:`function`        Returns true if the given tag belongs to a protocol analyzer.
-:zeek:id:`is_remote_event`: :zeek:type:`function`             Checks whether the last raised event came from a remote peer.
-:zeek:id:`is_tcp_port`: :zeek:type:`function`                 Checks whether a given :zeek:type:`port` has TCP as transport protocol.
-:zeek:id:`is_udp_port`: :zeek:type:`function`                 Checks whether a given :zeek:type:`port` has UDP as transport protocol.
-:zeek:id:`is_v4_addr`: :zeek:type:`function`                  Returns whether an address is IPv4 or not.
-:zeek:id:`is_v4_subnet`: :zeek:type:`function`                Returns whether a subnet specification is IPv4 or not.
-:zeek:id:`is_v6_addr`: :zeek:type:`function`                  Returns whether an address is IPv6 or not.
-:zeek:id:`is_v6_subnet`: :zeek:type:`function`                Returns whether a subnet specification is IPv6 or not.
-:zeek:id:`is_valid_ip`: :zeek:type:`function`                 Checks if a string is a valid IPv4 or IPv6 address.
-:zeek:id:`ln`: :zeek:type:`function`                          Computes the natural logarithm of a number.
-:zeek:id:`log10`: :zeek:type:`function`                       Computes the common logarithm of a number.
-:zeek:id:`log2`: :zeek:type:`function`                        Computes the base 2 logarithm of a number.
-:zeek:id:`lookup_ID`: :zeek:type:`function`                   Returns the value of a global identifier.
-:zeek:id:`lookup_addr`: :zeek:type:`function`                 Issues an asynchronous reverse DNS lookup and delays the function result.
-:zeek:id:`lookup_connection`: :zeek:type:`function`           Returns the :zeek:type:`connection` record for a given connection identifier.
-:zeek:id:`lookup_hostname`: :zeek:type:`function`             Issues an asynchronous DNS lookup and delays the function result.
-:zeek:id:`lookup_hostname_txt`: :zeek:type:`function`         Issues an asynchronous TEXT DNS lookup and delays the function result.
-:zeek:id:`mask_addr`: :zeek:type:`function`                   Masks an address down to the number of given upper bits.
-:zeek:id:`match_signatures`: :zeek:type:`function`            Manually triggers the signature engine for a given connection.
-:zeek:id:`matching_subnets`: :zeek:type:`function`            Gets all subnets that contain a given subnet from a set/table[subnet].
-:zeek:id:`md5_hash`: :zeek:type:`function`                    Computes the MD5 hash value of the provided list of arguments.
-:zeek:id:`md5_hash_finish`: :zeek:type:`function`             Returns the final MD5 digest of an incremental hash computation.
-:zeek:id:`md5_hash_init`: :zeek:type:`function`               Constructs an MD5 handle to enable incremental hash computation.
-:zeek:id:`md5_hash_update`: :zeek:type:`function`             Updates the MD5 value associated with a given index.
-:zeek:id:`md5_hmac`: :zeek:type:`function`                    Computes an HMAC-MD5 hash value of the provided list of arguments.
-:zeek:id:`mkdir`: :zeek:type:`function`                       Creates a new directory.
-:zeek:id:`network_time`: :zeek:type:`function`                Returns the timestamp of the last packet processed.
-:zeek:id:`open`: :zeek:type:`function`                        Opens a file for writing.
-:zeek:id:`open_for_append`: :zeek:type:`function`             Opens a file for writing or appending.
-:zeek:id:`order`: :zeek:type:`function`                       Returns the order of the elements in a vector according to some
-                                                              comparison function.
-:zeek:id:`packet_source`: :zeek:type:`function`               Returns: the packet source being read by Zeek.
-:zeek:id:`paraglob_equals`: :zeek:type:`function`             Compares two paraglobs for equality.
-:zeek:id:`paraglob_init`: :zeek:type:`function`               Initializes and returns a new paraglob.
-:zeek:id:`paraglob_match`: :zeek:type:`function`              Gets all the patterns inside the handle associated with an input string.
-:zeek:id:`piped_exec`: :zeek:type:`function`                  Opens a program with ``popen`` and writes a given string to the returned
-                                                              stream to send it to the opened process's stdin.
-:zeek:id:`port_to_count`: :zeek:type:`function`               Converts a :zeek:type:`port` to a :zeek:type:`count`.
-:zeek:id:`pow`: :zeek:type:`function`                         Computes the *x* raised to the power *y*.
-:zeek:id:`preserve_prefix`: :zeek:type:`function`             Preserves the prefix of an IP address in anonymization.
-:zeek:id:`preserve_subnet`: :zeek:type:`function`             Preserves the prefix of a subnet in anonymization.
-:zeek:id:`print_raw`: :zeek:type:`function`                   Renders a sequence of values to a string of bytes and outputs them directly
-                                                              to ``stdout`` with no additional escape sequences added.
-:zeek:id:`ptr_name_to_addr`: :zeek:type:`function`            Converts a reverse pointer name to an address.
-:zeek:id:`rand`: :zeek:type:`function`                        Generates a random number.
-:zeek:id:`raw_bytes_to_v4_addr`: :zeek:type:`function`        Converts a :zeek:type:`string` of bytes into an IPv4 address.
-:zeek:id:`raw_bytes_to_v6_addr`: :zeek:type:`function`        Converts a :zeek:type:`string` of bytes into an IPv6 address.
-:zeek:id:`reading_live_traffic`: :zeek:type:`function`        Checks whether Zeek reads traffic from one or more network interfaces (as
-                                                              opposed to from a network trace in a file).
-:zeek:id:`reading_traces`: :zeek:type:`function`              Checks whether Zeek reads traffic from a trace file (as opposed to from a
-                                                              network interface).
-:zeek:id:`record_fields`: :zeek:type:`function`               Generates metadata about a record's fields.
-:zeek:id:`record_type_to_vector`: :zeek:type:`function`       Converts a record type name to a vector of strings, where each element is
-                                                              the name of a record field.
-:zeek:id:`remask_addr`: :zeek:type:`function`                 Takes some top bits (such as a subnet address) from one address and the other
-                                                              bits (intra-subnet part) from a second address and merges them to get a new
-                                                              address.
-:zeek:id:`rename`: :zeek:type:`function`                      Renames a file from src_f to dst_f.
-:zeek:id:`resize`: :zeek:type:`function`                      Resizes a vector.
-:zeek:id:`rmdir`: :zeek:type:`function`                       Removes a directory.
-:zeek:id:`rotate_file`: :zeek:type:`function`                 Rotates a file.
-:zeek:id:`rotate_file_by_name`: :zeek:type:`function`         Rotates a file identified by its name.
-:zeek:id:`routing0_data_to_addrs`: :zeek:type:`function`      Converts the *data* field of :zeek:type:`ip6_routing` records that have
-                                                              *rtype* of 0 into a vector of addresses.
-:zeek:id:`same_object`: :zeek:type:`function`                 Checks whether two objects reference the same internal object.
-:zeek:id:`set_buf`: :zeek:type:`function`                     Alters the buffering behavior of a file.
-:zeek:id:`set_inactivity_timeout`: :zeek:type:`function`      Sets an individual inactivity timeout for a connection and thus
-                                                              overrides the global inactivity timeout.
-:zeek:id:`set_network_time`: :zeek:type:`function`            Sets the timestamp associated with the last packet processed.
-:zeek:id:`set_record_packets`: :zeek:type:`function`          Controls whether packet contents belonging to a connection should be
-                                                              recorded (when ``-w`` option is provided on the command line).
-:zeek:id:`setenv`: :zeek:type:`function`                      Sets a system environment variable.
-:zeek:id:`sha1_hash`: :zeek:type:`function`                   Computes the SHA1 hash value of the provided list of arguments.
-:zeek:id:`sha1_hash_finish`: :zeek:type:`function`            Returns the final SHA1 digest of an incremental hash computation.
-:zeek:id:`sha1_hash_init`: :zeek:type:`function`              Constructs an SHA1 handle to enable incremental hash computation.
-:zeek:id:`sha1_hash_update`: :zeek:type:`function`            Updates the SHA1 value associated with a given index.
-:zeek:id:`sha256_hash`: :zeek:type:`function`                 Computes the SHA256 hash value of the provided list of arguments.
-:zeek:id:`sha256_hash_finish`: :zeek:type:`function`          Returns the final SHA256 digest of an incremental hash computation.
-:zeek:id:`sha256_hash_init`: :zeek:type:`function`            Constructs an SHA256 handle to enable incremental hash computation.
-:zeek:id:`sha256_hash_update`: :zeek:type:`function`          Updates the SHA256 value associated with a given index.
-:zeek:id:`skip_further_processing`: :zeek:type:`function`     Informs Zeek that it should skip any further processing of the contents of
-                                                              a given connection.
-:zeek:id:`sort`: :zeek:type:`function`                        Sorts a vector in place.
-:zeek:id:`sqrt`: :zeek:type:`function`                        Computes the square root of a :zeek:type:`double`.
-:zeek:id:`srand`: :zeek:type:`function`                       Sets the seed for subsequent :zeek:id:`rand` calls.
-:zeek:id:`strftime`: :zeek:type:`function`                    Formats a given time value according to a format string.
-:zeek:id:`string_to_pattern`: :zeek:type:`function`           Converts a :zeek:type:`string` into a :zeek:type:`pattern`.
-:zeek:id:`strptime`: :zeek:type:`function`                    Parse a textual representation of a date/time value into a ``time`` type value.
-:zeek:id:`subnet_to_addr`: :zeek:type:`function`              Converts a :zeek:type:`subnet` to an :zeek:type:`addr` by
-                                                              extracting the prefix.
-:zeek:id:`subnet_width`: :zeek:type:`function`                Returns the width of a :zeek:type:`subnet`.
-:zeek:id:`suspend_processing`: :zeek:type:`function`          Stops Zeek's packet processing.
-:zeek:id:`syslog`: :zeek:type:`function`                      Send a string to syslog.
-:zeek:id:`system`: :zeek:type:`function`                      Invokes a command via the ``system`` function of the OS.
-:zeek:id:`system_env`: :zeek:type:`function`                  Invokes a command via the ``system`` function of the OS with a prepared
-                                                              environment.
-:zeek:id:`table_keys`: :zeek:type:`function`                  Gets all keys from a table.
-:zeek:id:`table_pattern_matcher_stats`: :zeek:type:`function` Return MatcherStats for a table[pattern] or set[pattern] value.
-:zeek:id:`table_values`: :zeek:type:`function`                Gets all values from a table.
-:zeek:id:`terminate`: :zeek:type:`function`                   Gracefully shut down Zeek by terminating outstanding processing.
-:zeek:id:`time_to_double`: :zeek:type:`function`              Converts a :zeek:type:`time` value to a :zeek:type:`double`.
-:zeek:id:`to_addr`: :zeek:type:`function`                     Converts a :zeek:type:`string` to an :zeek:type:`addr`.
-:zeek:id:`to_count`: :zeek:type:`function`                    Converts a :zeek:type:`string` to a :zeek:type:`count`.
-:zeek:id:`to_double`: :zeek:type:`function`                   Converts a :zeek:type:`string` to a :zeek:type:`double`.
-:zeek:id:`to_int`: :zeek:type:`function`                      Converts a :zeek:type:`string` to an :zeek:type:`int`.
-:zeek:id:`to_json`: :zeek:type:`function`                     A function to convert arbitrary Zeek data into a JSON string.
-:zeek:id:`to_port`: :zeek:type:`function`                     Converts a :zeek:type:`string` to a :zeek:type:`port`.
-:zeek:id:`to_subnet`: :zeek:type:`function`                   Converts a :zeek:type:`string` to a :zeek:type:`subnet`.
-:zeek:id:`type_aliases`: :zeek:type:`function`                Returns all type name aliases of a value or type.
-:zeek:id:`type_name`: :zeek:type:`function`                   Returns the type name of an arbitrary Zeek variable.
-:zeek:id:`uninstall_dst_addr_filter`: :zeek:type:`function`   Removes a destination address filter.
-:zeek:id:`uninstall_dst_net_filter`: :zeek:type:`function`    Removes a destination subnet filter.
-:zeek:id:`uninstall_src_addr_filter`: :zeek:type:`function`   Removes a source address filter.
-:zeek:id:`uninstall_src_net_filter`: :zeek:type:`function`    Removes a source subnet filter.
-:zeek:id:`unique_id`: :zeek:type:`function`                   Creates an identifier that is unique with high probability.
-:zeek:id:`unique_id_from`: :zeek:type:`function`              Creates an identifier that is unique with high probability.
-:zeek:id:`unlink`: :zeek:type:`function`                      Removes a file from a directory.
-:zeek:id:`uuid_to_string`: :zeek:type:`function`              Converts a bytes representation of a UUID into its string form.
-:zeek:id:`val_footprint`: :zeek:type:`function`               Computes a value's "footprint": the number of objects the value contains
-                                                              either directly or indirectly.
-:zeek:id:`write_file`: :zeek:type:`function`                  Writes data to an open file.
-:zeek:id:`zeek_args`: :zeek:type:`function`                   Returns: list of command-line arguments (``argv``) used to run Zeek.
-:zeek:id:`zeek_is_terminating`: :zeek:type:`function`         Checks if Zeek is terminating.
-:zeek:id:`zeek_version`: :zeek:type:`function`                Returns the Zeek version string.
-============================================================= ========================================================================================
+=============================================================== ========================================================================================
+:zeek:id:`__init_secondary_bifs`: :zeek:type:`function`         An internal function that helps initialize BIFs.
+:zeek:id:`active_file`: :zeek:type:`function`                   Checks whether a given file is open.
+:zeek:id:`addr_to_counts`: :zeek:type:`function`                Converts an :zeek:type:`addr` to an :zeek:type:`index_vec`.
+:zeek:id:`addr_to_ptr_name`: :zeek:type:`function`              Converts an IP address to a reverse pointer name.
+:zeek:id:`addr_to_subnet`: :zeek:type:`function`                Converts a :zeek:type:`addr` to a :zeek:type:`subnet`.
+:zeek:id:`all_set`: :zeek:type:`function`                       Tests whether *all* elements of a boolean vector (``vector of bool``) are
+                                                                true.
+:zeek:id:`anonymize_addr`: :zeek:type:`function`                Anonymizes an IP address.
+:zeek:id:`any_set`: :zeek:type:`function`                       Tests whether a boolean vector (``vector of bool``) has *any* true
+                                                                element.
+:zeek:id:`backtrace`: :zeek:type:`function`                     Returns a representation of the call stack as a vector of call stack
+                                                                elements, each containing call location information.
+:zeek:id:`bare_mode`: :zeek:type:`function`                     Returns whether Zeek was started in bare mode.
+:zeek:id:`bytestring_to_count`: :zeek:type:`function`           Converts a string of bytes to a :zeek:type:`count`.
+:zeek:id:`bytestring_to_double`: :zeek:type:`function`          Converts a string of bytes representing a double value (in network byte order)
+                                                                to a :zeek:type:`double`.
+:zeek:id:`bytestring_to_float`: :zeek:type:`function`           Converts a string of bytes representing a float value (in network byte order)
+                                                                to a :zeek:type:`double`.
+:zeek:id:`bytestring_to_hexstr`: :zeek:type:`function`          Converts a string of bytes into its hexadecimal representation.
+:zeek:id:`calc_next_rotate`: :zeek:type:`function`              Calculates the duration until the next time a file is to be rotated, based
+                                                                on a given rotate interval.
+:zeek:id:`cat`: :zeek:type:`function`                           Returns the concatenation of the string representation of its arguments.
+:zeek:id:`cat_sep`: :zeek:type:`function`                       Concatenates all arguments, with a separator placed between each one.
+:zeek:id:`ceil`: :zeek:type:`function`                          Computes the smallest integer greater or equal than the given :zeek:type:`double` value.
+:zeek:id:`check_subnet`: :zeek:type:`function`                  Checks if a specific subnet is a member of a set/table[subnet].
+:zeek:id:`clear_table`: :zeek:type:`function`                   Removes all elements from a set or table.
+:zeek:id:`close`: :zeek:type:`function`                         Closes an open file and flushes any buffered content.
+:zeek:id:`compress_path`: :zeek:type:`function`                 Compresses a given path by removing '..'s and the parent directory it
+                                                                references and also removing dual '/'s and extraneous '/./'s.
+:zeek:id:`connection_exists`: :zeek:type:`function`             Checks whether a connection is (still) active.
+:zeek:id:`continue_processing`: :zeek:type:`function`           Resumes Zeek's packet processing.
+:zeek:id:`convert_for_pattern`: :zeek:type:`function`           Escapes a string so that it becomes a valid :zeek:type:`pattern` and can be
+                                                                used with the :zeek:id:`string_to_pattern`.
+:zeek:id:`count_to_double`: :zeek:type:`function`               Converts a :zeek:type:`count` to a :zeek:type:`double`.
+:zeek:id:`count_to_port`: :zeek:type:`function`                 Converts a :zeek:type:`count` and ``transport_proto`` to a :zeek:type:`port`.
+:zeek:id:`count_to_v4_addr`: :zeek:type:`function`              Converts a :zeek:type:`count` to an :zeek:type:`addr`.
+:zeek:id:`counts_to_addr`: :zeek:type:`function`                Converts an :zeek:type:`index_vec` to an :zeek:type:`addr`.
+:zeek:id:`current_analyzer`: :zeek:type:`function`              Returns the ID of the analyzer which raised the current event.
+:zeek:id:`current_event_time`: :zeek:type:`function`            Returns the timestamp of the last raised event.
+:zeek:id:`current_time`: :zeek:type:`function`                  Returns the current wall-clock time.
+:zeek:id:`decode_base64`: :zeek:type:`function`                 Decodes a Base64-encoded string.
+:zeek:id:`decode_base64_conn`: :zeek:type:`function`            Decodes a Base64-encoded string that was derived from processing a connection.
+:zeek:id:`disable_analyzer`: :zeek:type:`function`              Disables the analyzer which raised the current event (if the analyzer
+                                                                belongs to the given connection).
+:zeek:id:`disable_event_group`: :zeek:type:`function`           Disabled the given event group.
+:zeek:id:`disable_module_events`: :zeek:type:`function`         Disable all event handlers and hooks in the given module.
+:zeek:id:`do_profiling`: :zeek:type:`function`                  Enables detailed collection of profiling statistics.
+:zeek:id:`double_to_count`: :zeek:type:`function`               Converts a :zeek:type:`double` to a :zeek:type:`int`.
+:zeek:id:`double_to_int`: :zeek:type:`function`                 Converts a :zeek:type:`double` to a :zeek:type:`count`.
+:zeek:id:`double_to_interval`: :zeek:type:`function`            Converts a :zeek:type:`double` to an :zeek:type:`interval`.
+:zeek:id:`double_to_time`: :zeek:type:`function`                Converts a :zeek:type:`double` value to a :zeek:type:`time`.
+:zeek:id:`dump_current_packet`: :zeek:type:`function`           Writes the current packet to a file.
+:zeek:id:`dump_packet`: :zeek:type:`function`                   Writes a given packet to a file.
+:zeek:id:`dump_rule_stats`: :zeek:type:`function`               Write rule matcher statistics (DFA states, transitions, memory usage, cache
+                                                                hits/misses) to a file.
+:zeek:id:`enable_event_group`: :zeek:type:`function`            Enabled the given event group.
+:zeek:id:`enable_module_events`: :zeek:type:`function`          Enable all event handlers and hooks in the given module.
+:zeek:id:`enable_raw_output`: :zeek:type:`function`             Prevents escaping of non-ASCII characters when writing to a file.
+:zeek:id:`encode_base64`: :zeek:type:`function`                 Encodes a Base64-encoded string.
+:zeek:id:`entropy_test_add`: :zeek:type:`function`              Adds data to an incremental entropy calculation.
+:zeek:id:`entropy_test_finish`: :zeek:type:`function`           Finishes an incremental entropy calculation.
+:zeek:id:`entropy_test_init`: :zeek:type:`function`             Initializes data structures for incremental entropy calculation.
+:zeek:id:`enum_names`: :zeek:type:`function`                    Returns all value names associated with an enum type.
+:zeek:id:`enum_to_int`: :zeek:type:`function`                   Converts an :zeek:type:`enum` to an :zeek:type:`int`.
+:zeek:id:`exit`: :zeek:type:`function`                          Shuts down the Zeek process immediately.
+:zeek:id:`exp`: :zeek:type:`function`                           Computes the exponential function.
+:zeek:id:`file_magic`: :zeek:type:`function`                    Determines the MIME type of a piece of data using Zeek's file magic
+                                                                signatures.
+:zeek:id:`file_mode`: :zeek:type:`function`                     Converts UNIX file permissions given by a mode to an ASCII string.
+:zeek:id:`file_size`: :zeek:type:`function`                     Returns the size of a given file.
+:zeek:id:`filter_subnet_table`: :zeek:type:`function`           For a set[subnet]/table[subnet], create a new table that contains all entries
+                                                                that contain a given subnet.
+:zeek:id:`find_entropy`: :zeek:type:`function`                  Performs an entropy test on the given data.
+:zeek:id:`find_in_zeekpath`: :zeek:type:`function`              Determine the path used by a non-relative @load directive.
+:zeek:id:`floor`: :zeek:type:`function`                         Computes the greatest integer less than the given :zeek:type:`double` value.
+:zeek:id:`flush_all`: :zeek:type:`function`                     Flushes all open files to disk.
+:zeek:id:`fmt`: :zeek:type:`function`                           Produces a formatted string à la ``printf``.
+:zeek:id:`fnv1a32`: :zeek:type:`function`                       Returns 32-bit digest of arbitrary input values using FNV-1a hash algorithm.
+:zeek:id:`from_json`: :zeek:type:`function`                     A function to convert a JSON string into Zeek values of a given type.
+:zeek:id:`generate_all_events`: :zeek:type:`function`           By default, zeek does not generate (raise) events that have not handled by
+                                                                any scripts.
+:zeek:id:`get_conn_transport_proto`: :zeek:type:`function`      Extracts the transport protocol from a connection.
+:zeek:id:`get_current_packet`: :zeek:type:`function`            Returns the currently processed PCAP packet.
+:zeek:id:`get_current_packet_header`: :zeek:type:`function`     Function to get the raw headers of the currently processed packet.
+:zeek:id:`get_file_name`: :zeek:type:`function`                 Gets the filename associated with a file handle.
+:zeek:id:`get_port_transport_proto`: :zeek:type:`function`      Extracts the transport protocol from a :zeek:type:`port`.
+:zeek:id:`getenv`: :zeek:type:`function`                        Returns a system environment variable.
+:zeek:id:`gethostname`: :zeek:type:`function`                   Returns the hostname of the machine Zeek runs on.
+:zeek:id:`getpid`: :zeek:type:`function`                        Returns Zeek's process ID.
+:zeek:id:`global_container_footprints`: :zeek:type:`function`   Generates a table of the "footprint" of all global container variables.
+:zeek:id:`global_ids`: :zeek:type:`function`                    Generates a table with information about all global identifiers.
+:zeek:id:`global_options`: :zeek:type:`function`                Returns a set giving the names of all global options.
+:zeek:id:`has_event_group`: :zeek:type:`function`               Does an attribute event group with this name exist?
+:zeek:id:`has_module_events`: :zeek:type:`function`             Does a module event group with this name exist?
+:zeek:id:`have_spicy`: :zeek:type:`function`                    Returns true if Zeek was built with support for using Spicy analyzers (which
+:zeek:id:`have_spicy_analyzers`: :zeek:type:`function`          Returns true if Zeek was built with support for its in-tree Spicy analyzers
+                                                                (which is the default if Spicy support is available).
+:zeek:id:`haversine_distance`: :zeek:type:`function`            Calculates distance between two geographic locations using the haversine
+                                                                formula.
+:zeek:id:`hexstr_to_bytestring`: :zeek:type:`function`          Converts a hex-string into its binary representation.
+:zeek:id:`hrw_weight`: :zeek:type:`function`                    Calculates a weight value for use in a Rendezvous Hashing algorithm.
+:zeek:id:`identify_data`: :zeek:type:`function`                 Determines the MIME type of a piece of data using Zeek's file magic
+                                                                signatures.
+:zeek:id:`install_dst_addr_filter`: :zeek:type:`function`       Installs a filter to drop packets destined to a given IP address with
+                                                                a certain probability if none of a given set of TCP flags are set.
+:zeek:id:`install_dst_net_filter`: :zeek:type:`function`        Installs a filter to drop packets destined to a given subnet with
+                                                                a certain probability if none of a given set of TCP flags are set.
+:zeek:id:`install_src_addr_filter`: :zeek:type:`function`       Installs a filter to drop packets from a given IP source address with
+                                                                a certain probability if none of a given set of TCP flags are set.
+:zeek:id:`install_src_net_filter`: :zeek:type:`function`        Installs a filter to drop packets originating from a given subnet with
+                                                                a certain probability if none of a given set of TCP flags are set.
+:zeek:id:`int_to_count`: :zeek:type:`function`                  Converts a (positive) :zeek:type:`int` to a :zeek:type:`count`.
+:zeek:id:`int_to_double`: :zeek:type:`function`                 Converts an :zeek:type:`int` to a :zeek:type:`double`.
+:zeek:id:`interval_to_double`: :zeek:type:`function`            Converts an :zeek:type:`interval` to a :zeek:type:`double`.
+:zeek:id:`is_file_analyzer`: :zeek:type:`function`              Returns true if the given tag belongs to a file analyzer.
+:zeek:id:`is_icmp_port`: :zeek:type:`function`                  Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
+:zeek:id:`is_local_interface`: :zeek:type:`function`            Checks whether a given IP address belongs to a local interface.
+:zeek:id:`is_packet_analyzer`: :zeek:type:`function`            Returns true if the given tag belongs to a packet analyzer.
+:zeek:id:`is_processing_suspended`: :zeek:type:`function`       Returns whether or not processing is currently suspended.
+:zeek:id:`is_protocol_analyzer`: :zeek:type:`function`          Returns true if the given tag belongs to a protocol analyzer.
+:zeek:id:`is_remote_event`: :zeek:type:`function`               Checks whether the last raised event came from a remote peer.
+:zeek:id:`is_tcp_port`: :zeek:type:`function`                   Checks whether a given :zeek:type:`port` has TCP as transport protocol.
+:zeek:id:`is_udp_port`: :zeek:type:`function`                   Checks whether a given :zeek:type:`port` has UDP as transport protocol.
+:zeek:id:`is_v4_addr`: :zeek:type:`function`                    Returns whether an address is IPv4 or not.
+:zeek:id:`is_v4_subnet`: :zeek:type:`function`                  Returns whether a subnet specification is IPv4 or not.
+:zeek:id:`is_v6_addr`: :zeek:type:`function`                    Returns whether an address is IPv6 or not.
+:zeek:id:`is_v6_subnet`: :zeek:type:`function`                  Returns whether a subnet specification is IPv6 or not.
+:zeek:id:`is_valid_ip`: :zeek:type:`function`                   Checks if a string is a valid IPv4 or IPv6 address.
+:zeek:id:`ln`: :zeek:type:`function`                            Computes the natural logarithm of a number.
+:zeek:id:`log10`: :zeek:type:`function`                         Computes the common logarithm of a number.
+:zeek:id:`log2`: :zeek:type:`function`                          Computes the base 2 logarithm of a number.
+:zeek:id:`lookup_ID`: :zeek:type:`function`                     Returns the value of a global identifier.
+:zeek:id:`lookup_addr`: :zeek:type:`function`                   Issues an asynchronous reverse DNS lookup and delays the function result.
+:zeek:id:`lookup_connection`: :zeek:type:`function`             Returns the :zeek:type:`connection` record for a given connection identifier.
+:zeek:id:`lookup_connection_analyzer_id`: :zeek:type:`function` Returns the numeric ID of the requested protocol analyzer for the given
+                                                                connection.
+:zeek:id:`lookup_hostname`: :zeek:type:`function`               Issues an asynchronous DNS lookup and delays the function result.
+:zeek:id:`lookup_hostname_txt`: :zeek:type:`function`           Issues an asynchronous TEXT DNS lookup and delays the function result.
+:zeek:id:`mask_addr`: :zeek:type:`function`                     Masks an address down to the number of given upper bits.
+:zeek:id:`match_signatures`: :zeek:type:`function`              Manually triggers the signature engine for a given connection.
+:zeek:id:`matching_subnets`: :zeek:type:`function`              Gets all subnets that contain a given subnet from a set/table[subnet].
+:zeek:id:`md5_hash`: :zeek:type:`function`                      Computes the MD5 hash value of the provided list of arguments.
+:zeek:id:`md5_hash_finish`: :zeek:type:`function`               Returns the final MD5 digest of an incremental hash computation.
+:zeek:id:`md5_hash_init`: :zeek:type:`function`                 Constructs an MD5 handle to enable incremental hash computation.
+:zeek:id:`md5_hash_update`: :zeek:type:`function`               Updates the MD5 value associated with a given index.
+:zeek:id:`md5_hmac`: :zeek:type:`function`                      Computes an HMAC-MD5 hash value of the provided list of arguments.
+:zeek:id:`mkdir`: :zeek:type:`function`                         Creates a new directory.
+:zeek:id:`network_time`: :zeek:type:`function`                  Returns the timestamp of the last packet processed.
+:zeek:id:`open`: :zeek:type:`function`                          Opens a file for writing.
+:zeek:id:`open_for_append`: :zeek:type:`function`               Opens a file for writing or appending.
+:zeek:id:`order`: :zeek:type:`function`                         Returns the order of the elements in a vector according to some
+                                                                comparison function.
+:zeek:id:`packet_source`: :zeek:type:`function`                 Returns: the packet source being read by Zeek.
+:zeek:id:`paraglob_equals`: :zeek:type:`function`               Compares two paraglobs for equality.
+:zeek:id:`paraglob_init`: :zeek:type:`function`                 Initializes and returns a new paraglob.
+:zeek:id:`paraglob_match`: :zeek:type:`function`                Gets all the patterns inside the handle associated with an input string.
+:zeek:id:`piped_exec`: :zeek:type:`function`                    Opens a program with ``popen`` and writes a given string to the returned
+                                                                stream to send it to the opened process's stdin.
+:zeek:id:`port_to_count`: :zeek:type:`function`                 Converts a :zeek:type:`port` to a :zeek:type:`count`.
+:zeek:id:`pow`: :zeek:type:`function`                           Computes the *x* raised to the power *y*.
+:zeek:id:`preserve_prefix`: :zeek:type:`function`               Preserves the prefix of an IP address in anonymization.
+:zeek:id:`preserve_subnet`: :zeek:type:`function`               Preserves the prefix of a subnet in anonymization.
+:zeek:id:`print_raw`: :zeek:type:`function`                     Renders a sequence of values to a string of bytes and outputs them directly
+                                                                to ``stdout`` with no additional escape sequences added.
+:zeek:id:`ptr_name_to_addr`: :zeek:type:`function`              Converts a reverse pointer name to an address.
+:zeek:id:`rand`: :zeek:type:`function`                          Generates a random number.
+:zeek:id:`raw_bytes_to_v4_addr`: :zeek:type:`function`          Converts a :zeek:type:`string` of bytes into an IPv4 address.
+:zeek:id:`raw_bytes_to_v6_addr`: :zeek:type:`function`          Converts a :zeek:type:`string` of bytes into an IPv6 address.
+:zeek:id:`reading_live_traffic`: :zeek:type:`function`          Checks whether Zeek reads traffic from one or more network interfaces (as
+                                                                opposed to from a network trace in a file).
+:zeek:id:`reading_traces`: :zeek:type:`function`                Checks whether Zeek reads traffic from a trace file (as opposed to from a
+                                                                network interface).
+:zeek:id:`record_fields`: :zeek:type:`function`                 Generates metadata about a record's fields.
+:zeek:id:`record_type_to_vector`: :zeek:type:`function`         Converts a record type name to a vector of strings, where each element is
+                                                                the name of a record field.
+:zeek:id:`remask_addr`: :zeek:type:`function`                   Takes some top bits (such as a subnet address) from one address and the other
+                                                                bits (intra-subnet part) from a second address and merges them to get a new
+                                                                address.
+:zeek:id:`rename`: :zeek:type:`function`                        Renames a file from src_f to dst_f.
+:zeek:id:`resize`: :zeek:type:`function`                        Resizes a vector.
+:zeek:id:`rmdir`: :zeek:type:`function`                         Removes a directory.
+:zeek:id:`rotate_file`: :zeek:type:`function`                   Rotates a file.
+:zeek:id:`rotate_file_by_name`: :zeek:type:`function`           Rotates a file identified by its name.
+:zeek:id:`routing0_data_to_addrs`: :zeek:type:`function`        Converts the *data* field of :zeek:type:`ip6_routing` records that have
+                                                                *rtype* of 0 into a vector of addresses.
+:zeek:id:`same_object`: :zeek:type:`function`                   Checks whether two objects reference the same internal object.
+:zeek:id:`set_buf`: :zeek:type:`function`                       Alters the buffering behavior of a file.
+:zeek:id:`set_inactivity_timeout`: :zeek:type:`function`        Sets an individual inactivity timeout for a connection and thus
+                                                                overrides the global inactivity timeout.
+:zeek:id:`set_network_time`: :zeek:type:`function`              Sets the timestamp associated with the last packet processed.
+:zeek:id:`set_record_packets`: :zeek:type:`function`            Controls whether packet contents belonging to a connection should be
+                                                                recorded (when ``-w`` option is provided on the command line).
+:zeek:id:`setenv`: :zeek:type:`function`                        Sets a system environment variable.
+:zeek:id:`sha1_hash`: :zeek:type:`function`                     Computes the SHA1 hash value of the provided list of arguments.
+:zeek:id:`sha1_hash_finish`: :zeek:type:`function`              Returns the final SHA1 digest of an incremental hash computation.
+:zeek:id:`sha1_hash_init`: :zeek:type:`function`                Constructs an SHA1 handle to enable incremental hash computation.
+:zeek:id:`sha1_hash_update`: :zeek:type:`function`              Updates the SHA1 value associated with a given index.
+:zeek:id:`sha256_hash`: :zeek:type:`function`                   Computes the SHA256 hash value of the provided list of arguments.
+:zeek:id:`sha256_hash_finish`: :zeek:type:`function`            Returns the final SHA256 digest of an incremental hash computation.
+:zeek:id:`sha256_hash_init`: :zeek:type:`function`              Constructs an SHA256 handle to enable incremental hash computation.
+:zeek:id:`sha256_hash_update`: :zeek:type:`function`            Updates the SHA256 value associated with a given index.
+:zeek:id:`skip_further_processing`: :zeek:type:`function`       Informs Zeek that it should skip any further processing of the contents of
+                                                                a given connection.
+:zeek:id:`sort`: :zeek:type:`function`                          Sorts a vector in place.
+:zeek:id:`sqrt`: :zeek:type:`function`                          Computes the square root of a :zeek:type:`double`.
+:zeek:id:`srand`: :zeek:type:`function`                         Sets the seed for subsequent :zeek:id:`rand` calls.
+:zeek:id:`strftime`: :zeek:type:`function`                      Formats a given time value according to a format string.
+:zeek:id:`string_to_pattern`: :zeek:type:`function`             Converts a :zeek:type:`string` into a :zeek:type:`pattern`.
+:zeek:id:`strptime`: :zeek:type:`function`                      Parse a textual representation of a date/time value into a ``time`` type value.
+:zeek:id:`subnet_to_addr`: :zeek:type:`function`                Converts a :zeek:type:`subnet` to an :zeek:type:`addr` by
+                                                                extracting the prefix.
+:zeek:id:`subnet_width`: :zeek:type:`function`                  Returns the width of a :zeek:type:`subnet`.
+:zeek:id:`suspend_processing`: :zeek:type:`function`            Stops Zeek's packet processing.
+:zeek:id:`syslog`: :zeek:type:`function`                        Send a string to syslog.
+:zeek:id:`system`: :zeek:type:`function`                        Invokes a command via the ``system`` function of the OS.
+:zeek:id:`system_env`: :zeek:type:`function`                    Invokes a command via the ``system`` function of the OS with a prepared
+                                                                environment.
+:zeek:id:`table_keys`: :zeek:type:`function`                    Gets all keys from a table.
+:zeek:id:`table_pattern_matcher_stats`: :zeek:type:`function`   Return MatcherStats for a table[pattern] or set[pattern] value.
+:zeek:id:`table_values`: :zeek:type:`function`                  Gets all values from a table.
+:zeek:id:`terminate`: :zeek:type:`function`                     Gracefully shut down Zeek by terminating outstanding processing.
+:zeek:id:`time_to_double`: :zeek:type:`function`                Converts a :zeek:type:`time` value to a :zeek:type:`double`.
+:zeek:id:`to_addr`: :zeek:type:`function`                       Converts a :zeek:type:`string` to an :zeek:type:`addr`.
+:zeek:id:`to_count`: :zeek:type:`function`                      Converts a :zeek:type:`string` to a :zeek:type:`count`.
+:zeek:id:`to_double`: :zeek:type:`function`                     Converts a :zeek:type:`string` to a :zeek:type:`double`.
+:zeek:id:`to_int`: :zeek:type:`function`                        Converts a :zeek:type:`string` to an :zeek:type:`int`.
+:zeek:id:`to_json`: :zeek:type:`function`                       A function to convert arbitrary Zeek data into a JSON string.
+:zeek:id:`to_port`: :zeek:type:`function`                       Converts a :zeek:type:`string` to a :zeek:type:`port`.
+:zeek:id:`to_subnet`: :zeek:type:`function`                     Converts a :zeek:type:`string` to a :zeek:type:`subnet`.
+:zeek:id:`type_aliases`: :zeek:type:`function`                  Returns all type name aliases of a value or type.
+:zeek:id:`type_name`: :zeek:type:`function`                     Returns the type name of an arbitrary Zeek variable.
+:zeek:id:`uninstall_dst_addr_filter`: :zeek:type:`function`     Removes a destination address filter.
+:zeek:id:`uninstall_dst_net_filter`: :zeek:type:`function`      Removes a destination subnet filter.
+:zeek:id:`uninstall_src_addr_filter`: :zeek:type:`function`     Removes a source address filter.
+:zeek:id:`uninstall_src_net_filter`: :zeek:type:`function`      Removes a source subnet filter.
+:zeek:id:`unique_id`: :zeek:type:`function`                     Creates an identifier that is unique with high probability.
+:zeek:id:`unique_id_from`: :zeek:type:`function`                Creates an identifier that is unique with high probability.
+:zeek:id:`unlink`: :zeek:type:`function`                        Removes a file from a directory.
+:zeek:id:`uuid_to_string`: :zeek:type:`function`                Converts a bytes representation of a UUID into its string form.
+:zeek:id:`val_footprint`: :zeek:type:`function`                 Computes a value's "footprint": the number of objects the value contains
+                                                                either directly or indirectly.
+:zeek:id:`write_file`: :zeek:type:`function`                    Writes data to an open file.
+:zeek:id:`zeek_args`: :zeek:type:`function`                     Returns: list of command-line arguments (``argv``) used to run Zeek.
+:zeek:id:`zeek_is_terminating`: :zeek:type:`function`           Checks if Zeek is terminating.
+:zeek:id:`zeek_version`: :zeek:type:`function`                  Returns the Zeek version string.
+=============================================================== ========================================================================================
 
 
 Detailed Interface
@@ -271,14 +273,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: __init_secondary_bifs
-   :source-code: base/bif/zeek.bif.zeek 2438 2438
+   :source-code: base/bif/zeek.bif.zeek 2453 2453
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
    An internal function that helps initialize BIFs.
 
 .. zeek:id:: active_file
-   :source-code: base/bif/zeek.bif.zeek 2130 2130
+   :source-code: base/bif/zeek.bif.zeek 2145 2145
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`) : :zeek:type:`bool`
 
@@ -360,7 +362,7 @@ Functions
         Missing elements count as false.
 
 .. zeek:id:: anonymize_addr
-   :source-code: base/bif/zeek.bif.zeek 2491 2491
+   :source-code: base/bif/zeek.bif.zeek 2506 2506
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, cl: :zeek:type:`IPAddrAnonymizationClass`) : :zeek:type:`addr`
 
@@ -493,7 +495,7 @@ Functions
    .. zeek:see:: hexdump hexstr_to_bytestring
 
 .. zeek:id:: calc_next_rotate
-   :source-code: base/bif/zeek.bif.zeek 2173 2173
+   :source-code: base/bif/zeek.bif.zeek 2188 2188
 
    :Type: :zeek:type:`function` (i: :zeek:type:`interval`) : :zeek:type:`interval`
 
@@ -588,7 +590,7 @@ Functions
    :param v: The set or table
 
 .. zeek:id:: close
-   :source-code: base/bif/zeek.bif.zeek 2027 2027
+   :source-code: base/bif/zeek.bif.zeek 2042 2042
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`) : :zeek:type:`bool`
 
@@ -605,7 +607,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: compress_path
-   :source-code: base/bif/zeek.bif.zeek 2544 2544
+   :source-code: base/bif/zeek.bif.zeek 2559 2559
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -634,7 +636,7 @@ Functions
    .. zeek:see:: lookup_connection
 
 .. zeek:id:: continue_processing
-   :source-code: base/bif/zeek.bif.zeek 2405 2405
+   :source-code: base/bif/zeek.bif.zeek 2420 2420
 
    :Type: :zeek:type:`function` () : :zeek:type:`any`
 
@@ -814,7 +816,7 @@ Functions
    .. zeek:see:: decode_base64
 
 .. zeek:id:: disable_analyzer
-   :source-code: base/bif/zeek.bif.zeek 1932 1932
+   :source-code: base/bif/zeek.bif.zeek 1947 1947
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, aid: :zeek:type:`count`, err_if_no_conn: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`, prevent: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -843,7 +845,7 @@ Functions
    .. zeek:see:: Analyzer::schedule_analyzer Analyzer::name
 
 .. zeek:id:: disable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2594 2594
+   :source-code: base/bif/zeek.bif.zeek 2609 2609
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -859,7 +861,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: disable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2626 2626
+   :source-code: base/bif/zeek.bif.zeek 2641 2641
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1010,7 +1012,7 @@ Functions
    .. zeek:see:: get_matcher_stats
 
 .. zeek:id:: enable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2582 2582
+   :source-code: base/bif/zeek.bif.zeek 2597 2597
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1026,7 +1028,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2615 2615
+   :source-code: base/bif/zeek.bif.zeek 2630 2630
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1042,7 +1044,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_raw_output
-   :source-code: base/bif/zeek.bif.zeek 2188 2188
+   :source-code: base/bif/zeek.bif.zeek 2203 2203
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`) : :zeek:type:`any`
 
@@ -1204,7 +1206,7 @@ Functions
             ``rw[xsS]rw[xsS]rw[xtT]``.
 
 .. zeek:id:: file_size
-   :source-code: base/bif/zeek.bif.zeek 2181 2181
+   :source-code: base/bif/zeek.bif.zeek 2196 2196
 
    :Type: :zeek:type:`function` (f: :zeek:type:`string`) : :zeek:type:`double`
 
@@ -1282,7 +1284,7 @@ Functions
    .. zeek:see:: entropy_test_init entropy_test_add entropy_test_finish
 
 .. zeek:id:: find_in_zeekpath
-   :source-code: base/bif/zeek.bif.zeek 2676 2676
+   :source-code: base/bif/zeek.bif.zeek 2691 2691
 
    :Type: :zeek:type:`function` (p: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -1317,7 +1319,7 @@ Functions
    .. zeek:see:: ceil sqrt exp ln log2 log10 pow
 
 .. zeek:id:: flush_all
-   :source-code: base/bif/zeek.bif.zeek 2066 2066
+   :source-code: base/bif/zeek.bif.zeek 2081 2081
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1392,7 +1394,7 @@ Functions
    .. zeek:see:: hrw_weight
 
 .. zeek:id:: from_json
-   :source-code: base/bif/zeek.bif.zeek 2535 2535
+   :source-code: base/bif/zeek.bif.zeek 2550 2550
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, t: :zeek:type:`any`, key_func: :zeek:type:`string_mapper` :zeek:attr:`&default` = :zeek:see:`from_json_default_key_mapper` :zeek:attr:`&optional`) : :zeek:type:`from_json_result`
 
@@ -1430,7 +1432,7 @@ Functions
    .. zeek:see:: to_json
 
 .. zeek:id:: generate_all_events
-   :source-code: base/bif/zeek.bif.zeek 2432 2432
+   :source-code: base/bif/zeek.bif.zeek 2447 2447
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1505,7 +1507,7 @@ Functions
         See :zeek:see:`get_current_packet` for caveats.
 
 .. zeek:id:: get_file_name
-   :source-code: base/bif/zeek.bif.zeek 2140 2140
+   :source-code: base/bif/zeek.bif.zeek 2155 2155
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`) : :zeek:type:`string`
 
@@ -1612,7 +1614,7 @@ Functions
    Returns a set giving the names of all global options.
 
 .. zeek:id:: has_event_group
-   :source-code: base/bif/zeek.bif.zeek 2603 2603
+   :source-code: base/bif/zeek.bif.zeek 2618 2618
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1625,7 +1627,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: has_module_events
-   :source-code: base/bif/zeek.bif.zeek 2635 2635
+   :source-code: base/bif/zeek.bif.zeek 2650 2650
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1638,14 +1640,14 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: have_spicy
-   :source-code: base/bif/zeek.bif.zeek 2640 2640
+   :source-code: base/bif/zeek.bif.zeek 2655 2655
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
    Returns true if Zeek was built with support for using Spicy analyzers (which
 
 .. zeek:id:: have_spicy_analyzers
-   :source-code: base/bif/zeek.bif.zeek 2645 2645
+   :source-code: base/bif/zeek.bif.zeek 2660 2660
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1743,7 +1745,7 @@ Functions
    .. zeek:see:: file_magic
 
 .. zeek:id:: install_dst_addr_filter
-   :source-code: base/bif/zeek.bif.zeek 2318 2318
+   :source-code: base/bif/zeek.bif.zeek 2333 2333
 
    :Type: :zeek:type:`function` (ip: :zeek:type:`addr`, tcp_flags: :zeek:type:`count`, prob: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -1780,7 +1782,7 @@ Functions
    .. todo:: The return value should be changed to any.
 
 .. zeek:id:: install_dst_net_filter
-   :source-code: base/bif/zeek.bif.zeek 2345 2345
+   :source-code: base/bif/zeek.bif.zeek 2360 2360
 
    :Type: :zeek:type:`function` (snet: :zeek:type:`subnet`, tcp_flags: :zeek:type:`count`, prob: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -1814,7 +1816,7 @@ Functions
    .. todo:: The return value should be changed to any.
 
 .. zeek:id:: install_src_addr_filter
-   :source-code: base/bif/zeek.bif.zeek 2223 2223
+   :source-code: base/bif/zeek.bif.zeek 2238 2238
 
    :Type: :zeek:type:`function` (ip: :zeek:type:`addr`, tcp_flags: :zeek:type:`count`, prob: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -1850,7 +1852,7 @@ Functions
    .. todo:: The return value should be changed to any.
 
 .. zeek:id:: install_src_net_filter
-   :source-code: base/bif/zeek.bif.zeek 2250 2250
+   :source-code: base/bif/zeek.bif.zeek 2265 2265
 
    :Type: :zeek:type:`function` (snet: :zeek:type:`subnet`, tcp_flags: :zeek:type:`count`, prob: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -1927,7 +1929,7 @@ Functions
    .. zeek:see:: double_to_interval
 
 .. zeek:id:: is_file_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2560 2560
+   :source-code: base/bif/zeek.bif.zeek 2575 2575
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1968,7 +1970,7 @@ Functions
    :returns: True if *ip* belongs to a local interface.
 
 .. zeek:id:: is_packet_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2568 2568
+   :source-code: base/bif/zeek.bif.zeek 2583 2583
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1981,7 +1983,7 @@ Functions
    :returns: true if *atype* is a tag of a packet analyzer, else false.
 
 .. zeek:id:: is_processing_suspended
-   :source-code: base/bif/zeek.bif.zeek 2412 2412
+   :source-code: base/bif/zeek.bif.zeek 2427 2427
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1991,7 +1993,7 @@ Functions
                  continue_processing
 
 .. zeek:id:: is_protocol_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2552 2552
+   :source-code: base/bif/zeek.bif.zeek 2567 2567
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -2004,7 +2006,7 @@ Functions
    :returns: true if *atype* is a tag of a protocol analyzer, else false.
 
 .. zeek:id:: is_remote_event
-   :source-code: base/bif/zeek.bif.zeek 2389 2389
+   :source-code: base/bif/zeek.bif.zeek 2404 2404
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -2201,6 +2203,27 @@ Functions
    
    .. zeek:see:: connection_exists
 
+.. zeek:id:: lookup_connection_analyzer_id
+   :source-code: base/bif/zeek.bif.zeek 1926 1926
+
+   :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`count`
+
+   Returns the numeric ID of the requested protocol analyzer for the given
+   connection.
+   
+
+   :param cid: The connection identifier.
+   
+
+   :param atype: The analyzer tag, such as ``Analyzer::ANALYZER_HTTP``.
+   
+
+   :returns: a numeric identifier for the analyzer, valid for the given
+            connection. When no such analyzer exists the function returns
+            0, which is never a valid analyzer ID value.
+   
+   .. zeek:see:: disable_analyzer Analyzer::disabling_analyzer
+
 .. zeek:id:: lookup_hostname
    :source-code: base/bif/zeek.bif.zeek 1875 1875
 
@@ -2256,7 +2279,7 @@ Functions
    .. zeek:see:: remask_addr
 
 .. zeek:id:: match_signatures
-   :source-code: base/bif/zeek.bif.zeek 2423 2423
+   :source-code: base/bif/zeek.bif.zeek 2438 2438
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, pattern_type: :zeek:type:`int`, s: :zeek:type:`string`, bol: :zeek:type:`bool`, eol: :zeek:type:`bool`, from_orig: :zeek:type:`bool`, clear: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -2380,7 +2403,7 @@ Functions
       sha256_hash sha256_hash_init sha256_hash_update sha256_hash_finish
 
 .. zeek:id:: mkdir
-   :source-code: base/bif/zeek.bif.zeek 2079 2079
+   :source-code: base/bif/zeek.bif.zeek 2094 2094
 
    :Type: :zeek:type:`function` (f: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -2412,7 +2435,7 @@ Functions
    .. zeek:see:: current_time set_network_time
 
 .. zeek:id:: open
-   :source-code: base/bif/zeek.bif.zeek 2002 2002
+   :source-code: base/bif/zeek.bif.zeek 2017 2017
 
    :Type: :zeek:type:`function` (f: :zeek:type:`string`) : :zeek:type:`file`
 
@@ -2430,7 +2453,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: open_for_append
-   :source-code: base/bif/zeek.bif.zeek 2015 2015
+   :source-code: base/bif/zeek.bif.zeek 2030 2030
 
    :Type: :zeek:type:`function` (f: :zeek:type:`string`) : :zeek:type:`file`
 
@@ -2580,7 +2603,7 @@ Functions
    .. zeek:see:: floor ceil sqrt exp ln log2 log10
 
 .. zeek:id:: preserve_prefix
-   :source-code: base/bif/zeek.bif.zeek 2461 2461
+   :source-code: base/bif/zeek.bif.zeek 2476 2476
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, width: :zeek:type:`count`) : :zeek:type:`any`
 
@@ -2597,7 +2620,7 @@ Functions
    .. todo:: Currently dysfunctional.
 
 .. zeek:id:: preserve_subnet
-   :source-code: base/bif/zeek.bif.zeek 2471 2471
+   :source-code: base/bif/zeek.bif.zeek 2486 2486
 
    :Type: :zeek:type:`function` (a: :zeek:type:`subnet`) : :zeek:type:`any`
 
@@ -2779,7 +2802,7 @@ Functions
    .. zeek:see:: mask_addr
 
 .. zeek:id:: rename
-   :source-code: base/bif/zeek.bif.zeek 2120 2120
+   :source-code: base/bif/zeek.bif.zeek 2135 2135
 
    :Type: :zeek:type:`function` (src_f: :zeek:type:`string`, dst_f: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -2815,7 +2838,7 @@ Functions
    :returns: The old size of *aggr*, or 0 if *aggr* is not a :zeek:type:`vector`.
 
 .. zeek:id:: rmdir
-   :source-code: base/bif/zeek.bif.zeek 2093 2093
+   :source-code: base/bif/zeek.bif.zeek 2108 2108
 
    :Type: :zeek:type:`function` (d: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -2833,7 +2856,7 @@ Functions
                 mkdir unlink rename
 
 .. zeek:id:: rotate_file
-   :source-code: base/bif/zeek.bif.zeek 2151 2151
+   :source-code: base/bif/zeek.bif.zeek 2166 2166
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`) : :zeek:type:`rotate_info`
 
@@ -2849,7 +2872,7 @@ Functions
    .. zeek:see:: rotate_file_by_name calc_next_rotate
 
 .. zeek:id:: rotate_file_by_name
-   :source-code: base/bif/zeek.bif.zeek 2162 2162
+   :source-code: base/bif/zeek.bif.zeek 2177 2177
 
    :Type: :zeek:type:`function` (f: :zeek:type:`string`) : :zeek:type:`rotate_info`
 
@@ -2898,7 +2921,7 @@ Functions
    :returns: True if *o1* and *o2* are equal.
 
 .. zeek:id:: set_buf
-   :source-code: base/bif/zeek.bif.zeek 2056 2056
+   :source-code: base/bif/zeek.bif.zeek 2071 2071
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`, buffered: :zeek:type:`bool`) : :zeek:type:`any`
 
@@ -2918,7 +2941,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: set_inactivity_timeout
-   :source-code: base/bif/zeek.bif.zeek 1983 1983
+   :source-code: base/bif/zeek.bif.zeek 1998 1998
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, t: :zeek:type:`interval`) : :zeek:type:`interval`
 
@@ -2951,7 +2974,7 @@ Functions
    .. zeek:see:: current_time network_time
 
 .. zeek:id:: set_record_packets
-   :source-code: base/bif/zeek.bif.zeek 1972 1972
+   :source-code: base/bif/zeek.bif.zeek 1987 1987
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`, do_record: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -3166,7 +3189,7 @@ Functions
       sha256_hash sha256_hash_init sha256_hash_finish
 
 .. zeek:id:: skip_further_processing
-   :source-code: base/bif/zeek.bif.zeek 1949 1949
+   :source-code: base/bif/zeek.bif.zeek 1964 1964
 
    :Type: :zeek:type:`function` (cid: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
@@ -3325,7 +3348,7 @@ Functions
    .. zeek:see:: to_subnet
 
 .. zeek:id:: suspend_processing
-   :source-code: base/bif/zeek.bif.zeek 2398 2398
+   :source-code: base/bif/zeek.bif.zeek 2413 2413
 
    :Type: :zeek:type:`function` () : :zeek:type:`any`
 
@@ -3409,7 +3432,7 @@ Functions
    .. zeek:see:: table_values
 
 .. zeek:id:: table_pattern_matcher_stats
-   :source-code: base/bif/zeek.bif.zeek 2663 2663
+   :source-code: base/bif/zeek.bif.zeek 2678 2678
 
    :Type: :zeek:type:`function` (tbl: :zeek:type:`any`) : :zeek:type:`MatcherStats`
 
@@ -3536,7 +3559,7 @@ Functions
    .. zeek:see:: to_addr to_port to_subnet
 
 .. zeek:id:: to_json
-   :source-code: base/bif/zeek.bif.zeek 2504 2504
+   :source-code: base/bif/zeek.bif.zeek 2519 2519
 
    :Type: :zeek:type:`function` (val: :zeek:type:`any`, only_loggable: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`, field_escape_pattern: :zeek:type:`pattern` :zeek:attr:`&default` = ``/^?(^_)$?/`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -3624,7 +3647,7 @@ Functions
    :returns: The type name of *t*.
 
 .. zeek:id:: uninstall_dst_addr_filter
-   :source-code: base/bif/zeek.bif.zeek 2364 2364
+   :source-code: base/bif/zeek.bif.zeek 2379 2379
 
    :Type: :zeek:type:`function` (ip: :zeek:type:`addr`) : :zeek:type:`bool`
 
@@ -3648,7 +3671,7 @@ Functions
                 Pcap::error
 
 .. zeek:id:: uninstall_dst_net_filter
-   :source-code: base/bif/zeek.bif.zeek 2383 2383
+   :source-code: base/bif/zeek.bif.zeek 2398 2398
 
    :Type: :zeek:type:`function` (snet: :zeek:type:`subnet`) : :zeek:type:`bool`
 
@@ -3672,7 +3695,7 @@ Functions
                 Pcap::error
 
 .. zeek:id:: uninstall_src_addr_filter
-   :source-code: base/bif/zeek.bif.zeek 2269 2269
+   :source-code: base/bif/zeek.bif.zeek 2284 2284
 
    :Type: :zeek:type:`function` (ip: :zeek:type:`addr`) : :zeek:type:`bool`
 
@@ -3696,7 +3719,7 @@ Functions
                 Pcap::error
 
 .. zeek:id:: uninstall_src_net_filter
-   :source-code: base/bif/zeek.bif.zeek 2288 2288
+   :source-code: base/bif/zeek.bif.zeek 2303 2303
 
    :Type: :zeek:type:`function` (snet: :zeek:type:`subnet`) : :zeek:type:`bool`
 
@@ -3753,7 +3776,7 @@ Functions
    .. zeek:see:: unique_id
 
 .. zeek:id:: unlink
-   :source-code: base/bif/zeek.bif.zeek 2106 2106
+   :source-code: base/bif/zeek.bif.zeek 2121 2121
 
    :Type: :zeek:type:`function` (f: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -3801,7 +3824,7 @@ Functions
    .. zeek:see:: global_container_footprints
 
 .. zeek:id:: write_file
-   :source-code: base/bif/zeek.bif.zeek 2041 2041
+   :source-code: base/bif/zeek.bif.zeek 2056 2056
 
    :Type: :zeek:type:`function` (f: :zeek:type:`file`, data: :zeek:type:`string`) : :zeek:type:`bool`
 
