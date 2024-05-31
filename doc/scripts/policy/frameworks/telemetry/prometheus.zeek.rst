@@ -4,7 +4,7 @@ policy/frameworks/telemetry/prometheus.zeek
 ===========================================
 
 In a cluster configuration, open the port number for metrics
-from the cluster node configuration for exporting data t
+from the cluster node configuration for exporting data to
 Prometheus.
 
 For customization or disabling, redef the involved Telemetry options
