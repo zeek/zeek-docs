@@ -1425,7 +1425,7 @@ Redefinable Options
    
 
 .. zeek:id:: bits_per_uid
-   :source-code: base/init-bare.zeek 5878 5878
+   :source-code: base/init-bare.zeek 5898 5898
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1466,7 +1466,7 @@ Redefinable Options
    be reported via :zeek:see:`content_gap`.
 
 .. zeek:id:: digest_salt
-   :source-code: base/init-bare.zeek 5886 5886
+   :source-code: base/init-bare.zeek 5906 5906
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1644,7 +1644,7 @@ Redefinable Options
    means "forever", which resists evasion, but can lead to state accrual.
 
 .. zeek:id:: global_hash_seed
-   :source-code: base/init-bare.zeek 5873 5873
+   :source-code: base/init-bare.zeek 5893 5893
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1701,7 +1701,7 @@ Redefinable Options
    .. zeek:see:: conn_stats
 
 .. zeek:id:: io_poll_interval_default
-   :source-code: base/init-bare.zeek 5903 5903
+   :source-code: base/init-bare.zeek 5923 5923
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1720,7 +1720,7 @@ Redefinable Options
    .. zeek:see:: io_poll_interval_live
 
 .. zeek:id:: io_poll_interval_live
-   :source-code: base/init-bare.zeek 5918 5918
+   :source-code: base/init-bare.zeek 5938 5938
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1960,7 +1960,7 @@ Redefinable Options
    was observed.
 
 .. zeek:id:: max_find_all_string_length
-   :source-code: base/init-bare.zeek 5890 5890
+   :source-code: base/init-bare.zeek 5910 5910
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -2190,7 +2190,7 @@ Redefinable Options
    Time to wait before timing out an RPC request.
 
 .. zeek:id:: running_under_test
-   :source-code: base/init-bare.zeek 5922 5922
+   :source-code: base/init-bare.zeek 5942 5942
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -3361,7 +3361,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 5924 5924
+   :source-code: base/init-bare.zeek 5944 5944
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
@@ -7711,15 +7711,23 @@ Types
    The full list of TCP Option fields parsed from a TCP header.
 
 .. zeek:type:: Telemetry::HistogramMetric
-   :source-code: base/init-bare.zeek 5846 5862
+   :source-code: base/init-bare.zeek 5858 5882
 
    :Type: :zeek:type:`record`
 
       opts: :zeek:type:`Telemetry::MetricOpts`
          A :zeek:see:`Telemetry::MetricOpts` record describing this histogram.
 
-      labels: :zeek:type:`vector` of :zeek:type:`string`
-         The label values associated with this histogram, if any.
+      label_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+         The label names (also called dimensions) of the metric. When
+         instantiating or working with concrete metrics, corresponding
+         label values have to be provided. Examples of a label might
+         be the protocol a general observation applies to, the
+         directionality in a traffic flow, or protocol-specific
+         context like a particular message type.
+
+      label_values: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+         The label values associated with this metric, if any.
 
       values: :zeek:type:`vector` of :zeek:type:`double`
          Individual counters for each of the buckets as
@@ -7734,20 +7742,28 @@ Types
    Histograms returned by the :zeek:see:`Telemetry::collect_histogram_metrics` function.
 
 .. zeek:type:: Telemetry::HistogramMetricVector
-   :source-code: base/init-bare.zeek 5865 5865
+   :source-code: base/init-bare.zeek 5885 5885
 
    :Type: :zeek:type:`vector` of :zeek:type:`Telemetry::HistogramMetric`
 
 
 .. zeek:type:: Telemetry::Metric
-   :source-code: base/init-bare.zeek 5831 5843
+   :source-code: base/init-bare.zeek 5835 5855
 
    :Type: :zeek:type:`record`
 
       opts: :zeek:type:`Telemetry::MetricOpts`
          A :zeek:see:`Telemetry::MetricOpts` record describing this metric.
 
-      labels: :zeek:type:`vector` of :zeek:type:`string`
+      label_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+         The label names (also called dimensions) of the metric. When
+         instantiating or working with concrete metrics, corresponding
+         label values have to be provided. Examples of a label might
+         be the protocol a general observation applies to, the
+         directionality in a traffic flow, or protocol-specific
+         context like a particular message type.
+
+      label_values: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
          The label values associated with this metric, if any.
 
       value: :zeek:type:`double` :zeek:attr:`&optional`
@@ -7759,7 +7775,7 @@ Types
    Metrics returned by the :zeek:see:`Telemetry::collect_metrics` function.
 
 .. zeek:type:: Telemetry::MetricOpts
-   :source-code: base/init-bare.zeek 5784 5828
+   :source-code: base/init-bare.zeek 5784 5832
 
    :Type: :zeek:type:`record`
 
@@ -7783,13 +7799,17 @@ Types
       help_text: :zeek:type:`string` :zeek:attr:`&optional`
          Documentation for this metric.
 
-      labels: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+      label_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
          The label names (also called dimensions) of the metric. When
          instantiating or working with concrete metrics, corresponding
          label values have to be provided. Examples of a label might
          be the protocol a general observation applies to, the
          directionality in a traffic flow, or protocol-specific
-         context like a particular message type.
+         context like a particular message type. This field is only
+         used in the construction of new metrics and will not be
+         filled in when returned from
+         :zeek:see:`Telemetry::collect_metrics` or
+         :zeek:see:`Telemetry::collect_histogram_metrics`,
 
       is_total: :zeek:type:`bool` :zeek:attr:`&optional`
          Whether the metric represents something that is accumulating.
@@ -7822,7 +7842,7 @@ Types
 
 
 .. zeek:type:: Telemetry::MetricVector
-   :source-code: base/init-bare.zeek 5864 5864
+   :source-code: base/init-bare.zeek 5884 5884
 
    :Type: :zeek:type:`vector` of :zeek:type:`Telemetry::Metric`
 
