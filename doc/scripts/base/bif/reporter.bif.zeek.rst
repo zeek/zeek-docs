@@ -20,10 +20,10 @@ Summary
 ~~~~~~~
 Functions
 #########
-========================================================================== ========================================================================
+========================================================================== =========================================================================
 :zeek:id:`Reporter::conn_weird`: :zeek:type:`function`                     Generates a "conn" weird.
-:zeek:id:`Reporter::error`: :zeek:type:`function`                          Generates a non-fatal error indicative of a definite problem that should
-                                                                           be addressed.
+:zeek:id:`Reporter::error`: :zeek:type:`function`                          Generates a usually non-fatal error indicative of a definite problem that
+                                                                           should be addressed.
 :zeek:id:`Reporter::fatal`: :zeek:type:`function`                          Generates a fatal error on stderr and terminates program execution.
 :zeek:id:`Reporter::fatal_error_with_core`: :zeek:type:`function`          Generates a fatal error on stderr and terminates program execution
                                                                            after dumping a core file
@@ -42,7 +42,7 @@ Functions
 :zeek:id:`Reporter::set_weird_sampling_threshold`: :zeek:type:`function`   Sets the current weird sampling threshold
 :zeek:id:`Reporter::set_weird_sampling_whitelist`: :zeek:type:`function`   Sets the weird sampling whitelist
 :zeek:id:`Reporter::warning`: :zeek:type:`function`                        Generates a message that warns of a potential problem.
-========================================================================== ========================================================================
+========================================================================== =========================================================================
 
 
 Detailed Interface
@@ -50,7 +50,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Reporter::conn_weird
-   :source-code: base/bif/reporter.bif.zeek 95 95
+   :source-code: base/bif/reporter.bif.zeek 96 96
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, c: :zeek:type:`connection`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -69,12 +69,13 @@ Functions
    :returns: Always true.
 
 .. zeek:id:: Reporter::error
-   :source-code: base/bif/reporter.bif.zeek 46 46
+   :source-code: base/bif/reporter.bif.zeek 47 47
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`bool`
 
-   Generates a non-fatal error indicative of a definite problem that should
-   be addressed. Program execution does not terminate.
+   Generates a usually non-fatal error indicative of a definite problem that
+   should be addressed. Program execution does not terminate unless the error
+   is reported during initialization (e.g., :zeek:see:`zeek_init`).
    
 
    :param msg: The error message to report.
@@ -85,7 +86,7 @@ Functions
    .. zeek:see:: reporter_error
 
 .. zeek:id:: Reporter::fatal
-   :source-code: base/bif/reporter.bif.zeek 54 54
+   :source-code: base/bif/reporter.bif.zeek 55 55
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -98,7 +99,7 @@ Functions
    :returns: Always true.
 
 .. zeek:id:: Reporter::fatal_error_with_core
-   :source-code: base/bif/reporter.bif.zeek 63 63
+   :source-code: base/bif/reporter.bif.zeek 64 64
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -112,7 +113,7 @@ Functions
    :returns: Always true.
 
 .. zeek:id:: Reporter::file_weird
-   :source-code: base/bif/reporter.bif.zeek 107 107
+   :source-code: base/bif/reporter.bif.zeek 108 108
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, f: :zeek:type:`fa_file`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -131,7 +132,7 @@ Functions
    :returns: true if the file was still valid, else false.
 
 .. zeek:id:: Reporter::flow_weird
-   :source-code: base/bif/reporter.bif.zeek 83 83
+   :source-code: base/bif/reporter.bif.zeek 84 84
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, orig: :zeek:type:`addr`, resp: :zeek:type:`addr`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -150,7 +151,7 @@ Functions
    :returns: Always true.
 
 .. zeek:id:: Reporter::get_weird_sampling_duration
-   :source-code: base/bif/reporter.bif.zeek 170 170
+   :source-code: base/bif/reporter.bif.zeek 171 171
 
    :Type: :zeek:type:`function` () : :zeek:type:`interval`
 
@@ -160,7 +161,7 @@ Functions
    :returns: weird sampling duration.
 
 .. zeek:id:: Reporter::get_weird_sampling_global_list
-   :source-code: base/bif/reporter.bif.zeek 127 127
+   :source-code: base/bif/reporter.bif.zeek 128 128
 
    :Type: :zeek:type:`function` () : :zeek:type:`string_set`
 
@@ -170,7 +171,7 @@ Functions
    :returns: Current weird sampling global list
 
 .. zeek:id:: Reporter::get_weird_sampling_rate
-   :source-code: base/bif/reporter.bif.zeek 156 156
+   :source-code: base/bif/reporter.bif.zeek 157 157
 
    :Type: :zeek:type:`function` () : :zeek:type:`count`
 
@@ -180,7 +181,7 @@ Functions
    :returns: weird sampling rate.
 
 .. zeek:id:: Reporter::get_weird_sampling_threshold
-   :source-code: base/bif/reporter.bif.zeek 141 141
+   :source-code: base/bif/reporter.bif.zeek 142 142
 
    :Type: :zeek:type:`function` () : :zeek:type:`count`
 
@@ -190,7 +191,7 @@ Functions
    :returns: current weird sampling threshold.
 
 .. zeek:id:: Reporter::get_weird_sampling_whitelist
-   :source-code: base/bif/reporter.bif.zeek 113 113
+   :source-code: base/bif/reporter.bif.zeek 114 114
 
    :Type: :zeek:type:`function` () : :zeek:type:`string_set`
 
@@ -215,7 +216,7 @@ Functions
    .. zeek:see:: reporter_info
 
 .. zeek:id:: Reporter::net_weird
-   :source-code: base/bif/reporter.bif.zeek 71 71
+   :source-code: base/bif/reporter.bif.zeek 72 72
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, addl: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`, source: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -228,7 +229,7 @@ Functions
    :returns: Always true.
 
 .. zeek:id:: Reporter::set_weird_sampling_duration
-   :source-code: base/bif/reporter.bif.zeek 179 179
+   :source-code: base/bif/reporter.bif.zeek 180 180
 
    :Type: :zeek:type:`function` (weird_sampling_duration: :zeek:type:`interval`) : :zeek:type:`bool`
 
@@ -242,7 +243,7 @@ Functions
    :returns: always returns True
 
 .. zeek:id:: Reporter::set_weird_sampling_global_list
-   :source-code: base/bif/reporter.bif.zeek 135 135
+   :source-code: base/bif/reporter.bif.zeek 136 136
 
    :Type: :zeek:type:`function` (weird_sampling_global_list: :zeek:type:`string_set`) : :zeek:type:`bool`
 
@@ -255,7 +256,7 @@ Functions
    :returns: Always true.
 
 .. zeek:id:: Reporter::set_weird_sampling_rate
-   :source-code: base/bif/reporter.bif.zeek 164 164
+   :source-code: base/bif/reporter.bif.zeek 165 165
 
    :Type: :zeek:type:`function` (weird_sampling_rate: :zeek:type:`count`) : :zeek:type:`bool`
 
@@ -268,7 +269,7 @@ Functions
    :returns: Always returns true.
 
 .. zeek:id:: Reporter::set_weird_sampling_threshold
-   :source-code: base/bif/reporter.bif.zeek 149 149
+   :source-code: base/bif/reporter.bif.zeek 150 150
 
    :Type: :zeek:type:`function` (weird_sampling_threshold: :zeek:type:`count`) : :zeek:type:`bool`
 
@@ -281,7 +282,7 @@ Functions
    :returns: Always returns true;
 
 .. zeek:id:: Reporter::set_weird_sampling_whitelist
-   :source-code: base/bif/reporter.bif.zeek 121 121
+   :source-code: base/bif/reporter.bif.zeek 122 122
 
    :Type: :zeek:type:`function` (weird_sampling_whitelist: :zeek:type:`string_set`) : :zeek:type:`bool`
 
