@@ -841,6 +841,115 @@ processing:
 
 .. include:: autogen/zeek-functions.spicy
 
+... zeek_variables:
+
+Accessing Zeek Variables from Spicy
+===================================
+
+You can access Zeek-side global variables from inside Spicy, which is
+particularly handy for configuring Spicy analyzers from Zeek script
+code. The :ref:`zeek <spicy_functions>` module facilitates this
+through a set of functions coverting the current value of Zeek
+variables into corresponding Spicy values. For example, let's say you
+would like to provide a Zeek script option with a ``count`` value that
+your Spicy analyzer can leverage. On the Zeek side, you'd define the
+option like this:
+
+.. code-block:: zeek
+
+    module MyModule;
+
+    export {
+        option my_value: count &default=42;
+    }
+
+Then, in your Spicy code, you can access the value of that option
+like this:
+
+.. code-block:: spicy
+
+    import zeek;
+
+    ...
+    local my_value = zeek::get_count("MyModule::my_value");
+    ...
+
+
+This looks up the option by its global, fully-scoped ID and returns the
+Zeek-side ``count`` as a Spicy ``uint64``. If there are any errors,
+such as the global not existing or having the wrong type, the
+``get_count()`` would abort with an exception.
+
+There are corresponding conversion functions for most of Zeek's
+built-in types, see :ref:`spicy_functions` for the full list of
+``get_<TYPE>()`` functions.
+
+For Zeek container types (``map``, ``record``, ``set``, ``vector``),
+the ``get_<TYPE>()`` functions return an opaque value that can be used
+to then inspect the container further. For example, you can check
+membership in a ``set`` like this:
+
+.. code-block:: zeek
+
+   # Zeek module `MyModule`
+   option my_set: set[count] = { 1, 2, 3 };
+
+.. code-block:: spicy
+
+   # Spicy
+   local my_set = zeek::get_set("MyModule::my_set");
+
+   if ( zeek::set_contains(my_set, 2) )
+      print "Found 2 in the set";
+
+For retrieving values from containers, there are further ``as_<TYPE>``
+functions for conversion. Example accessing a record's field:
+
+.. code-block:: zeek
+
+   # Zeek module `MyModule`
+   option my_record: record {
+       a: count &default = 42;
+       b: string &default = "foo";
+   };
+
+.. code-block:: spicy
+
+   # Spicy
+   local my_record = zeek::get_record("MyModule::my_record");
+   local a = zeek::as_count(zeek::record_field(my_record, "a"));
+   local b = zeek::as_string(zeek::record_field(my_record, "b")); # returns "bytes" (not string)
+
+See :ref:`spicy_functions` again for the full list of ``as_<TYPE>()``
+and container accessor functions.
+
+The API provides only read access to Zeek variables, there's no way to
+change them from inside Spicy. This is both to simplify the API, and
+also conceptually to avoid offering a back channel into Zeek state
+that could end up producing a very tight coupling of Spicy and Zeek
+code. Use events to communicate from Spicy to Zeek instead.
+
+Access to a Zeek global can be relatively slow as it performs the ID
+lookup and data conversion. Accordingly, the mechanism is primarily
+meant for configuration-style data, not for transferring heaps of
+dynamic state. However, as a way to speed up repeated access slightly,
+you can use :ref:`zeek::get_value <spicy_get_value>` to cache the
+result of the ID lookup, then use ``as_<TYPE>()`` on the cached value
+to retrieve the actual value.
+
+.. note::
+
+    When accessing global Zeek variables from Spicy, take into account
+    whether their Zeek values might change over time. If you're
+    accessing a Zeek ``const``, you can be sure it won't change, so
+    you could just store its value inside a corresponding Spicy
+    ``global`` at initialization time, and hence avoid repeated
+    lookups during runtime. However, if you're accessing a Zeek
+    ``option``, those are designed to support runtime updates, so you
+    should *not* cache their values on the Spicy side. Likewise, any
+    Zeek ``global`` can of course change anytime. (In both cases, you
+    can still use ``get_value()`` to cache the ID lookup.)
+
 .. _spicy_dpd:
 
 Dynamic Protocol Detection (DPD)
