@@ -267,3 +267,438 @@ on to another analyzer. The index specifies the target, per the current dispatch
 
 Gets the network time from Zeek.
 
+.. _spicy_get_address:
+
+.. rubric:: ``function zeek::get_address(id: string) : addr``
+
+Returns the value of a global Zeek script variable of Zeek type ``addr``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_bool:
+
+.. rubric:: ``function zeek::get_bool(id: string) : bool``
+
+Returns the value of a global Zeek script variable of Zeek type ``bool``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_count:
+
+.. rubric:: ``function zeek::get_count(id: string) : uint64``
+
+Returns the value of a global Zeek script variable of Zeek type ``count``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_double:
+
+.. rubric:: ``function zeek::get_double(id: string) : real``
+
+Returns the value of a global Zeek script variable of Zeek type ``double``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_enum:
+
+.. rubric:: ``function zeek::get_enum(id: string) : string``
+
+Returns the value of a global Zeek script variable of Zeek type ``enum``.
+The value is returned as a string containing the enum's label name, without
+any scope. Throws an exception if there's no such Zeek of that name, or if
+it's not of the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_int:
+
+.. rubric:: ``function zeek::get_int(id: string) : int64``
+
+Returns the value of a global Zeek script variable of Zeek type ``int``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_interval:
+
+.. rubric:: ``function zeek::get_interval(id: string) : interval``
+
+Returns the value of a global Zeek script variable of Zeek type
+``interval``. Throws an exception if there's no such Zeek of that name, or
+if it's not of the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_port:
+
+.. rubric:: ``function zeek::get_port(id: string) : port``
+
+Returns the value of a global Zeek script variable of Zeek type ``port``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_record:
+
+.. rubric:: ``function zeek::get_record(id: string) : ZeekRecord``
+
+Returns the value of a global Zeek script variable of Zeek type ``record``.
+The value is returned as an opaque handle to the record, which can be used
+with the ``zeek::record_*()`` functions to access the record's fields.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_set:
+
+.. rubric:: ``function zeek::get_set(id: string) : ZeekSet``
+
+Returns the value of a global Zeek script variable of Zeek type ``set``. The
+value is returned as an opaque handle to the set, which can be used with the
+``zeek::set_*()`` functions to access the set's content. Throws an exception
+if there's no such Zeek of that name, or if it's not of the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_string:
+
+.. rubric:: ``function zeek::get_string(id: string) : bytes``
+
+Returns the value of a global Zeek script variable of Zeek type ``string``.
+The string's value is returned as a Spicy ``bytes`` value. Throws an
+exception if there's no such Zeek of that name, or if it's not of the
+expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_subnet:
+
+.. rubric:: ``function zeek::get_subnet(id: string) : network``
+
+Returns the value of a global Zeek script variable of Zeek type ``subnet``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_table:
+
+.. rubric:: ``function zeek::get_table(id: string) : ZeekTable``
+
+Returns the value of a global Zeek script variable of Zeek type ``table``.
+The value is returned as an opaque handle to the set, which can be used with
+the ``zeek::set_*()`` functions to access the set's content. Throws an
+exception if there's no such Zeek of that name, or if it's not of the
+expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_time:
+
+.. rubric:: ``function zeek::get_time(id: string) : time``
+
+Returns the value of a global Zeek script variable of Zeek type ``time``.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_vector:
+
+.. rubric:: ``function zeek::get_vector(id: string) : ZeekVector``
+
+Returns the value of a global Zeek script variable of Zeek type ``vector``.
+The value is returned as an opaque handle to the vector, which can be used
+with the ``zeek::vector_*()`` functions to access the vector's content.
+Throws an exception if there's no such Zeek of that name, or if it's not of
+the expected type.
+
+id: fully-qualified name of the global Zeek variable to retrieve
+
+.. _spicy_get_value:
+
+.. rubric:: ``function zeek::get_value(id: string) : ZeekVal``
+
+Returns an opaque handle to a global Zeek script variable. The handle can be
+used with the ``zeek::as_*()`` functions to access the variable's value.
+Throws an exception if there's no Zeek variable of that name.
+
+.. _spicy_as_address:
+
+.. rubric:: ``function zeek::as_address(v: ZeekVal) : addr``
+
+Returns a Zeek ``addr`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_bool:
+
+.. rubric:: ``function zeek::as_bool(v: ZeekVal) : bool``
+
+Returns a Zeek ``bool`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_count:
+
+.. rubric:: ``function zeek::as_count(v: ZeekVal) : uint64``
+
+Returns a Zeek ``count`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_double:
+
+.. rubric:: ``function zeek::as_double(v: ZeekVal) : real``
+
+Returns a Zeek ``double`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_enum:
+
+.. rubric:: ``function zeek::as_enum(v: ZeekVal) : string``
+
+Returns a Zeek ``enum`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_int:
+
+.. rubric:: ``function zeek::as_int(v: ZeekVal) : int64``
+
+Returns a Zeek ``int`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_interval:
+
+.. rubric:: ``function zeek::as_interval(v: ZeekVal) : interval``
+
+Returns a Zeek ``interval`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_port:
+
+.. rubric:: ``function zeek::as_port(v: ZeekVal) : port``
+
+Returns a Zeek ``port`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_record:
+
+.. rubric:: ``function zeek::as_record(v: ZeekVal) : ZeekRecord``
+
+Returns a Zeek ``record`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_set:
+
+.. rubric:: ``function zeek::as_set(v: ZeekVal) : ZeekSet``
+
+Returns a Zeek ``set`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_string:
+
+.. rubric:: ``function zeek::as_string(v: ZeekVal) : bytes``
+
+Returns a Zeek ``string`` value refereced by an opaque handle. The string's
+value is returned as a Spicy ``bytes`` value. Throws an exception if the
+referenced value is not of the expected type.
+
+.. _spicy_as_subnet:
+
+.. rubric:: ``function zeek::as_subnet(v: ZeekVal) : network``
+
+Returns a Zeek ``subnet`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_table:
+
+.. rubric:: ``function zeek::as_table(v: ZeekVal) : ZeekTable``
+
+Returns a Zeek ``table`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_time:
+
+.. rubric:: ``function zeek::as_time(v: ZeekVal) : time``
+
+Returns a Zeek ``time`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_as_vector:
+
+.. rubric:: ``function zeek::as_vector(v: ZeekVal) : ZeekVector``
+
+Returns a Zeek ``vector`` value refereced by an opaque handle. Throws an
+exception if the referenced value is not of the expected type.
+
+.. _spicy_set_contains:
+
+.. rubric:: ``function zeek::set_contains(id: string, v: any) : bool``
+
+Returns true if a Zeek set contains a given value. Throws an exception if
+the given ID does not exist, or does not have the expected type.
+
+id: fully-qualified name of the global Zeek set to check
+v: value to check for, which must be of the Spicy-side equivalent of the set's key type
+
+.. _spicy_set_contains_2:
+
+.. rubric:: ``function zeek::set_contains(s: ZeekSet, v: any) : bool``
+
+Returns true if a Zeek set contains a given value. Throws an exception if
+the set does not have the expected type.
+
+s: opaque handle to the Zeek set, as returned by other functions
+v: value to check for, which must be of the Spicy-side equivalent of the set's key type
+
+.. _spicy_table_contains:
+
+.. rubric:: ``function zeek::table_contains(id: string, v: any) : bool``
+
+Returns true if a Zeek table contains a given value. Throws an exception if
+the given ID does not exist, or does not have the expected type.
+
+id: fully-qualified name of the global Zeek table to check
+v: value to check for, which must be of the Spicy-side equivalent of the table's key type
+
+.. _spicy_table_contains_2:
+
+.. rubric:: ``function zeek::table_contains(t: ZeekTable, v: any) : bool``
+
+Returns true if a Zeek table contains a given value. Throws an exception if
+the given ID does not exist, or does not have the expected type.
+
+t: opaque handle to the Zeek table, as returned by other functions
+v: value to check for, which must be of the Spicy-side equivalent of the table's key type
+
+.. _spicy_table_lookup:
+
+.. rubric:: ``function zeek::table_lookup(id: string, v: any) : optional<ZeekVal>``
+
+Returns the value associated with a key in a Zeek table. Returns an error
+result if the key does not exist in the table. Throws an exception if the
+given table ID does not exist, or does not have the expected type.
+
+id: fully-qualified name of the global Zeek table to check
+v: value to lookup, which must be of the Spicy-side equivalent of the table's key type
+
+.. _spicy_table_lookup_2:
+
+.. rubric:: ``function zeek::table_lookup(t: ZeekTable, v: any) : optional<ZeekVal>``
+
+Returns the value associated with a key in a Zeek table. Returns an error
+result if the key does not exist in the table. Throws an exception if the
+given table ID does not exist, or does not have the expected type.
+
+t: opaque handle to the Zeek table, as returned by other functions
+v: value to lookup, which must be of the Spicy-side equivalent of the table's key type
+
+.. _spicy_record_has_value:
+
+.. rubric:: ``function zeek::record_has_value(id: string, field: string) : bool``
+
+Returns true if a Zeek record provides a value for a given field. This
+includes fields with `&default` values. Throws an exception if the given ID
+does not exist, or does not have the expected type.
+
+id: fully-qualified name of the global Zeek record to check field: name of
+the field to check
+
+.. _spicy_record_has_value_2:
+
+.. rubric:: ``function zeek::record_has_value(r: ZeekRecord, field: string) : bool``
+
+Returns true if a Zeek record provides a value for a given field.
+This includes fields with `&default` values.
+
+r: opaque handle to the Zeek record, as returned by other functions
+field: name of the field to check
+
+.. _spicy_record_has_field:
+
+.. rubric:: ``function zeek::record_has_field(id: string, field: string) : bool``
+
+Returns true if the type of a Zeek record has a field of a given name.
+Throws an exception if the given ID does not exist, or does not have the
+expected type.
+
+id: fully-qualified name of the global Zeek record to check
+field: name of the field to check
+
+.. _spicy_record_has_field_2:
+
+.. rubric:: ``function zeek::record_has_field(r: ZeekRecord, field: string) : bool``
+
+Returns true if the type of a Zeek record has a field of a given name.
+
+r: opaque handle to the Zeek record, as returned by other functions
+field: name of the field to check
+
+.. _spicy_record_field:
+
+.. rubric:: ``function zeek::record_field(id: string, field: string) : ZeekVal``
+
+Returns a field's value from a Zeek record. Throws an exception if the given
+ID does not exist, or does not have the expected type; or if there's no such
+field in the record type, or if the field does not have a value.
+
+id: fully-qualified name of the global Zeek record to check
+field: name of the field to retrieve
+
+.. _spicy_record_field_2:
+
+.. rubric:: ``function zeek::record_field(r: ZeekRecord, field: string) : ZeekVal``
+
+Returns a field's value from a Zeek record. Throws an exception if the given
+record does not have such a field, or if the field does not have a value.
+
+r: opaque handle to the Zeek record, as returned by other functions
+field: name of the field to retrieve
+
+.. _spicy_vector_index:
+
+.. rubric:: ``function zeek::vector_index(id: string, index: uint64) : ZeekVal``
+
+Returns the value of an index in a Zeek vector. Throws an exception if the
+given ID does not exist, or does not have the expected type; or if the index
+is out of bounds.
+
+id: fully-qualified name of the global Zeek vector to check
+index: index of the element to retrieve
+
+.. _spicy_vector_index_2:
+
+.. rubric:: ``function zeek::vector_index(v: ZeekVector, index: uint64) : ZeekVal``
+
+Returns the value of an index in a Zeek vector. Throws an exception if the
+index is out of bounds.
+
+v: opaque handle to the Zeek vector, as returned by other functions
+index: index of the element to retrieve
+
+.. _spicy_vector_size:
+
+.. rubric:: ``function zeek::vector_size(id: string) : uint64``
+
+Returns the size of a Zeek vector. Throws an exception if the given ID does
+not exist, or does not have the expected type.
+
+id: fully-qualified name of the global Zeek vector to check
+
+.. _spicy_vector_size_2:
+
+.. rubric:: ``function zeek::vector_size(v: ZeekVector) : uint64``
+
+Returns the size of a Zeek vector.
+
+v: opaque handle to the Zeek vector, as returned by other functions
+
