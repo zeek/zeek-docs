@@ -516,8 +516,10 @@ use is likely to be dictated by personal preference and readability.
    :linenos:
    :tab-width: 4
 
-Global Variables
-~~~~~~~~~~~~~~~~
+.. _globals-modules:
+
+Global Variables and Modules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A global variable is used when the state of variable needs to be
 tracked, not surprisingly, globally.  While there are some caveats,

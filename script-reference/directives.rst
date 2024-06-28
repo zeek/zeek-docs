@@ -223,6 +223,10 @@ Example:
         print "pi is defined";
     @endif
 
+:ref:`Modules <globals-modules>` are identifiers too, so this provides a
+convenient way to test whether a module is available. This can be useful for
+leveraging optional functionality, such as features provided by a Zeek package.
+
 
 .. zeek:keyword:: @ifndef
 
