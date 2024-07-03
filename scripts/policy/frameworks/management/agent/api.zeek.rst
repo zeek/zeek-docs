@@ -74,7 +74,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Agent::API::agent_standby_request
-   :source-code: policy/frameworks/management/agent/main.zeek 866 885
+   :source-code: policy/frameworks/management/agent/main.zeek 865 884
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -107,7 +107,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_request
-   :source-code: policy/frameworks/management/agent/main.zeek 852 864
+   :source-code: policy/frameworks/management/agent/main.zeek 851 863
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -212,7 +212,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::node_dispatch_request
-   :source-code: policy/frameworks/management/agent/main.zeek 756 850
+   :source-code: policy/frameworks/management/agent/main.zeek 755 849
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, action: :zeek:type:`vector` of :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -302,7 +302,7 @@ Events
 
 
 .. zeek:id:: Management::Agent::API::restart_request
-   :source-code: policy/frameworks/management/agent/main.zeek 929 1003
+   :source-code: policy/frameworks/management/agent/main.zeek 928 1002
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 

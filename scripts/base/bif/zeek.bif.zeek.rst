@@ -607,7 +607,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: compress_path
-   :source-code: base/bif/zeek.bif.zeek 2559 2559
+   :source-code: base/bif/zeek.bif.zeek 2565 2565
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -845,7 +845,7 @@ Functions
    .. zeek:see:: Analyzer::schedule_analyzer Analyzer::name
 
 .. zeek:id:: disable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2609 2609
+   :source-code: base/bif/zeek.bif.zeek 2615 2615
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -861,7 +861,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: disable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2641 2641
+   :source-code: base/bif/zeek.bif.zeek 2647 2647
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1012,7 +1012,7 @@ Functions
    .. zeek:see:: get_matcher_stats
 
 .. zeek:id:: enable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2597 2597
+   :source-code: base/bif/zeek.bif.zeek 2603 2603
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1028,7 +1028,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2630 2630
+   :source-code: base/bif/zeek.bif.zeek 2636 2636
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1284,7 +1284,7 @@ Functions
    .. zeek:see:: entropy_test_init entropy_test_add entropy_test_finish
 
 .. zeek:id:: find_in_zeekpath
-   :source-code: base/bif/zeek.bif.zeek 2691 2691
+   :source-code: base/bif/zeek.bif.zeek 2697 2697
 
    :Type: :zeek:type:`function` (p: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -1394,7 +1394,7 @@ Functions
    .. zeek:see:: hrw_weight
 
 .. zeek:id:: from_json
-   :source-code: base/bif/zeek.bif.zeek 2550 2550
+   :source-code: base/bif/zeek.bif.zeek 2556 2556
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, t: :zeek:type:`any`, key_func: :zeek:type:`string_mapper` :zeek:attr:`&default` = :zeek:see:`from_json_default_key_mapper` :zeek:attr:`&optional`) : :zeek:type:`from_json_result`
 
@@ -1614,7 +1614,7 @@ Functions
    Returns a set giving the names of all global options.
 
 .. zeek:id:: has_event_group
-   :source-code: base/bif/zeek.bif.zeek 2618 2618
+   :source-code: base/bif/zeek.bif.zeek 2624 2624
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1627,7 +1627,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: has_module_events
-   :source-code: base/bif/zeek.bif.zeek 2650 2650
+   :source-code: base/bif/zeek.bif.zeek 2656 2656
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1640,14 +1640,14 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: have_spicy
-   :source-code: base/bif/zeek.bif.zeek 2655 2655
+   :source-code: base/bif/zeek.bif.zeek 2661 2661
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
    Returns true if Zeek was built with support for using Spicy analyzers (which
 
 .. zeek:id:: have_spicy_analyzers
-   :source-code: base/bif/zeek.bif.zeek 2660 2660
+   :source-code: base/bif/zeek.bif.zeek 2666 2666
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1929,7 +1929,7 @@ Functions
    .. zeek:see:: double_to_interval
 
 .. zeek:id:: is_file_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2575 2575
+   :source-code: base/bif/zeek.bif.zeek 2581 2581
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1970,7 +1970,7 @@ Functions
    :returns: True if *ip* belongs to a local interface.
 
 .. zeek:id:: is_packet_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2583 2583
+   :source-code: base/bif/zeek.bif.zeek 2589 2589
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -1993,7 +1993,7 @@ Functions
                  continue_processing
 
 .. zeek:id:: is_protocol_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2567 2567
+   :source-code: base/bif/zeek.bif.zeek 2573 2573
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -3432,7 +3432,7 @@ Functions
    .. zeek:see:: table_values
 
 .. zeek:id:: table_pattern_matcher_stats
-   :source-code: base/bif/zeek.bif.zeek 2678 2678
+   :source-code: base/bif/zeek.bif.zeek 2684 2684
 
    :Type: :zeek:type:`function` (tbl: :zeek:type:`any`) : :zeek:type:`MatcherStats`
 
@@ -3559,7 +3559,7 @@ Functions
    .. zeek:see:: to_addr to_port to_subnet
 
 .. zeek:id:: to_json
-   :source-code: base/bif/zeek.bif.zeek 2519 2519
+   :source-code: base/bif/zeek.bif.zeek 2525 2525
 
    :Type: :zeek:type:`function` (val: :zeek:type:`any`, only_loggable: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`, field_escape_pattern: :zeek:type:`pattern` :zeek:attr:`&default` = ``/^?(^_)$?/`` :zeek:attr:`&optional`) : :zeek:type:`string`
 
@@ -3571,6 +3571,13 @@ Functions
 
    :param only_loggable: If the v value is a record this will only cause
                   fields with the &log attribute to be included in the JSON.
+   
+
+   :param field_escape_pattern: If the v value is a record, the given pattern is
+                         matched against the field names of its type, and
+                         the first match, if any, is stripped from the
+                         rendered name. The default pattern strips a leading
+                         underscore.
    
 
    :param returns: a JSON formatted string.
