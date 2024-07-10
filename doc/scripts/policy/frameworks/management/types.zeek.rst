@@ -48,7 +48,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Management::Configuration
-   :source-code: policy/frameworks/management/types.zeek 66 73
+   :source-code: policy/frameworks/management/types.zeek 67 74
 
    :Type: :zeek:type:`record`
 
@@ -88,7 +88,7 @@ Types
 
 
 .. zeek:type:: Management::Node
-   :source-code: policy/frameworks/management/types.zeek 52 63
+   :source-code: policy/frameworks/management/types.zeek 52 64
 
    :Type: :zeek:type:`record`
 
@@ -122,10 +122,13 @@ Types
       env: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          Custom environment vars
 
+      metrics_port: :zeek:type:`port` :zeek:attr:`&optional`
+         Metrics exposure port, for Prometheus
+
    Configuration describing a Cluster Node process.
 
 .. zeek:type:: Management::NodeOutputs
-   :source-code: policy/frameworks/management/types.zeek 119 122
+   :source-code: policy/frameworks/management/types.zeek 122 125
 
    :Type: :zeek:type:`record`
 
@@ -144,7 +147,7 @@ Types
    the failing node.
 
 .. zeek:type:: Management::NodeStatus
-   :source-code: policy/frameworks/management/types.zeek 77 91
+   :source-code: policy/frameworks/management/types.zeek 78 94
 
    :Type: :zeek:type:`record`
 
@@ -167,11 +170,14 @@ Types
       p: :zeek:type:`port` :zeek:attr:`&optional`
          The node's Broker peering listening port, if any.
 
+      metrics_port: :zeek:type:`port` :zeek:attr:`&optional`
+         The node's metrics port for Prometheus, if any.
+
    The status of a Supervisor-managed node, as reported to the client in
    a get_nodes_request/get_nodes_response transaction.
 
 .. zeek:type:: Management::NodeStatusVec
-   :source-code: policy/frameworks/management/types.zeek 93 93
+   :source-code: policy/frameworks/management/types.zeek 96 96
 
    :Type: :zeek:type:`vector` of :zeek:type:`Management::NodeStatus`
 
@@ -190,7 +196,7 @@ Types
    A Zeek-side option with value.
 
 .. zeek:type:: Management::Result
-   :source-code: policy/frameworks/management/types.zeek 101 108
+   :source-code: policy/frameworks/management/types.zeek 104 111
 
    :Type: :zeek:type:`record`
 
@@ -220,7 +226,7 @@ Types
    instance value, for example.
 
 .. zeek:type:: Management::ResultVec
-   :source-code: policy/frameworks/management/types.zeek 110 110
+   :source-code: policy/frameworks/management/types.zeek 113 113
 
    :Type: :zeek:type:`vector` of :zeek:type:`Management::Result`
 
@@ -287,7 +293,7 @@ Types
 Functions
 #########
 .. zeek:id:: Management::result_to_string
-   :source-code: policy/frameworks/management/types.zeek 133 157
+   :source-code: policy/frameworks/management/types.zeek 136 160
 
    :Type: :zeek:type:`function` (res: :zeek:type:`Management::Result`) : :zeek:type:`string`
 
@@ -295,7 +301,7 @@ Functions
    this function returns a string summarizing it.
 
 .. zeek:id:: Management::result_vec_to_string
-   :source-code: policy/frameworks/management/types.zeek 159 167
+   :source-code: policy/frameworks/management/types.zeek 162 170
 
    :Type: :zeek:type:`function` (res: :zeek:type:`Management::ResultVec`) : :zeek:type:`string`
 

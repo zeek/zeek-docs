@@ -74,7 +74,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Agent::API::agent_standby_request
-   :source-code: policy/frameworks/management/agent/main.zeek 865 884
+   :source-code: policy/frameworks/management/agent/main.zeek 871 890
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -107,7 +107,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_request
-   :source-code: policy/frameworks/management/agent/main.zeek 851 863
+   :source-code: policy/frameworks/management/agent/main.zeek 857 869
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -122,7 +122,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::agent_welcome_response
-   :source-code: policy/frameworks/management/controller/main.zeek 776 802
+   :source-code: policy/frameworks/management/controller/main.zeek 922 948
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -162,7 +162,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::deploy_response
-   :source-code: policy/frameworks/management/controller/main.zeek 820 876
+   :source-code: policy/frameworks/management/controller/main.zeek 966 1022
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
@@ -180,7 +180,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_request
-   :source-code: policy/frameworks/management/agent/main.zeek 586 595
+   :source-code: policy/frameworks/management/agent/main.zeek 588 597
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -194,7 +194,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::get_nodes_response
-   :source-code: policy/frameworks/management/controller/main.zeek 1027 1071
+   :source-code: policy/frameworks/management/controller/main.zeek 1161 1205
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, result: :zeek:type:`Management::Result`)
 
@@ -212,7 +212,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::node_dispatch_request
-   :source-code: policy/frameworks/management/agent/main.zeek 755 849
+   :source-code: policy/frameworks/management/agent/main.zeek 761 855
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, action: :zeek:type:`vector` of :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -238,7 +238,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::node_dispatch_response
-   :source-code: policy/frameworks/management/controller/main.zeek 1104 1169
+   :source-code: policy/frameworks/management/controller/main.zeek 1238 1303
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
@@ -259,7 +259,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::notify_agent_hello
-   :source-code: policy/frameworks/management/controller/main.zeek 711 774
+   :source-code: policy/frameworks/management/controller/main.zeek 857 920
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, id: :zeek:type:`string`, connecting: :zeek:type:`bool`, api_version: :zeek:type:`count`)
 
@@ -284,25 +284,25 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::notify_change
-   :source-code: policy/frameworks/management/controller/main.zeek 805 806
+   :source-code: policy/frameworks/management/controller/main.zeek 951 952
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, n: :zeek:type:`Management::Node`, old: :zeek:type:`Management::State`, new: :zeek:type:`Management::State`)
 
 
 .. zeek:id:: Management::Agent::API::notify_error
-   :source-code: policy/frameworks/management/controller/main.zeek 810 811
+   :source-code: policy/frameworks/management/controller/main.zeek 956 957
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: Management::Agent::API::notify_log
-   :source-code: policy/frameworks/management/controller/main.zeek 815 816
+   :source-code: policy/frameworks/management/controller/main.zeek 961 962
 
    :Type: :zeek:type:`event` (instance: :zeek:type:`string`, msg: :zeek:type:`string`, node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`)
 
 
 .. zeek:id:: Management::Agent::API::restart_request
-   :source-code: policy/frameworks/management/agent/main.zeek 928 1002
+   :source-code: policy/frameworks/management/agent/main.zeek 934 1008
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -324,7 +324,7 @@ Events
    
 
 .. zeek:id:: Management::Agent::API::restart_response
-   :source-code: policy/frameworks/management/controller/main.zeek 1250 1288
+   :source-code: policy/frameworks/management/controller/main.zeek 1384 1422
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, results: :zeek:type:`Management::ResultVec`)
 
