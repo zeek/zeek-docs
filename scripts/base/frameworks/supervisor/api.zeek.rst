@@ -58,7 +58,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Supervisor::ClusterEndpoint
-   :source-code: base/frameworks/supervisor/api.zeek 20 33
+   :source-code: base/frameworks/supervisor/api.zeek 20 35
 
    :Type: :zeek:type:`record`
 
@@ -78,6 +78,9 @@ Types
       pcap_file: :zeek:type:`string` :zeek:attr:`&optional`
          The PCAP file name from which the node will read/analyze packets.
          Typically used by worker nodes.
+
+      metrics_port: :zeek:type:`port` :zeek:attr:`&optional`
+         The TCP port at which the cluster node exposes metrics for Prometheus.
 
    Describes configuration of a supervised-node within Zeek's Cluster
    Framework.
@@ -100,7 +103,7 @@ Types
    The role a supervised-node will play in Zeek's Cluster Framework.
 
 .. zeek:type:: Supervisor::NodeConfig
-   :source-code: base/frameworks/supervisor/api.zeek 36 71
+   :source-code: base/frameworks/supervisor/api.zeek 38 73
 
    :Type: :zeek:type:`record`
 
@@ -153,7 +156,7 @@ Types
    Configuration options that influence behavior of a supervised Zeek node.
 
 .. zeek:type:: Supervisor::NodeStatus
-   :source-code: base/frameworks/supervisor/api.zeek 74 80
+   :source-code: base/frameworks/supervisor/api.zeek 76 82
 
    :Type: :zeek:type:`record`
 
@@ -167,7 +170,7 @@ Types
    The current status of a supervised node.
 
 .. zeek:type:: Supervisor::Status
-   :source-code: base/frameworks/supervisor/api.zeek 83 86
+   :source-code: base/frameworks/supervisor/api.zeek 85 88
 
    :Type: :zeek:type:`record`
 
@@ -179,7 +182,7 @@ Types
 Events
 ######
 .. zeek:id:: Supervisor::node_status
-   :source-code: base/frameworks/supervisor/api.zeek 172 172
+   :source-code: base/frameworks/supervisor/api.zeek 174 174
 
    :Type: :zeek:type:`event` (node: :zeek:type:`string`, pid: :zeek:type:`count`)
 

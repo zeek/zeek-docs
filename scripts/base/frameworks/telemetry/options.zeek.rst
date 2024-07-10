@@ -53,6 +53,6 @@ Redefinable Options
    :Default: ``0/unknown``
 
    Port used to make metric data available to Prometheus scrapers via
-   HTTP.
+   HTTP. The default value means Zeek won't expose the port.
 
 
