@@ -20,6 +20,7 @@ Runtime Options
                                                                                             include at most this many bytes of it in the log.
 :zeek:id:`Analyzer::Logging::ignore_analyzers`: :zeek:type:`set` :zeek:attr:`&redef`        Set of analyzers for which to not log confirmations or violations.
 :zeek:id:`Analyzer::Logging::include_confirmations`: :zeek:type:`bool` :zeek:attr:`&redef`  Enable analyzer_confirmation.
+:zeek:id:`Analyzer::Logging::include_disabling`: :zeek:type:`bool` :zeek:attr:`&redef`      Enable tracking of analyzers getting disabled.
 =========================================================================================== ==================================================================
 
 Types
@@ -58,7 +59,7 @@ Runtime Options
    when :zeek:see:`Analyzer::Logging::include_confirmations` is set.
 
 .. zeek:id:: Analyzer::Logging::failure_data_max_size
-   :source-code: base/frameworks/analyzer/logging.zeek 58 58
+   :source-code: base/frameworks/analyzer/logging.zeek 64 64
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -68,7 +69,7 @@ Runtime Options
    include at most this many bytes of it in the log.
 
 .. zeek:id:: Analyzer::Logging::ignore_analyzers
-   :source-code: base/frameworks/analyzer/logging.zeek 61 61
+   :source-code: base/frameworks/analyzer/logging.zeek 67 67
 
    :Type: :zeek:type:`set` [:zeek:type:`AllAnalyzers::Tag`]
    :Attributes: :zeek:attr:`&redef`
@@ -88,6 +89,18 @@ Runtime Options
    Setting this option may also generated multiple log entries per
    connection, minimally one for each conn.log entry with a populated
    service field.
+
+.. zeek:id:: Analyzer::Logging::include_disabling
+   :source-code: base/frameworks/analyzer/logging.zeek 60 60
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+   Enable tracking of analyzers getting disabled. This is mostly
+   interesting for troubleshooting of analyzers in DPD scenarios.
+   Setting this option may also generated multiple log entries per
+   connection.
 
 Types
 #####
