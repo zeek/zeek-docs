@@ -12,12 +12,15 @@ Summary
 ~~~~~~~
 Events
 ######
-======================================================== ================================================================
+======================================================== =================================================================
 :zeek:id:`LDAP::bind_request`: :zeek:type:`event`        Event generated for each LDAPMessage containing a BindRequest.
+:zeek:id:`LDAP::extended_request`: :zeek:type:`event`    Event generated for each ExtendedRequest in LDAP messages.
+:zeek:id:`LDAP::extended_response`: :zeek:type:`event`   Event generated for each ExtendedResponse in LDAP messages.
 :zeek:id:`LDAP::message`: :zeek:type:`event`             Event generated for each LDAPMessage (either direction).
 :zeek:id:`LDAP::search_request`: :zeek:type:`event`      Event generated for each LDAPMessage containing a SearchRequest.
 :zeek:id:`LDAP::search_result_entry`: :zeek:type:`event` Event generated for each SearchResultEntry in LDAP messages.
-======================================================== ================================================================
+:zeek:id:`LDAP::starttls`: :zeek:type:`event`            Event generated when a plaintext LDAP connection switched to TLS.
+======================================================== =================================================================
 
 
 Detailed Interface
@@ -25,7 +28,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: LDAP::bind_request
-   :source-code: base/protocols/ldap/main.zeek 359 380
+   :source-code: base/protocols/ldap/main.zeek 362 383
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, version: :zeek:type:`int`, name: :zeek:type:`string`, auth_type: :zeek:type:`LDAP::BindAuthType`, auth_info: :zeek:type:`string`)
 
@@ -49,8 +52,49 @@ Events
 
    :param auth_info: Additional information related to the used auth type.
 
+.. zeek:id:: LDAP::extended_request
+   :source-code: base/protocols/ldap/spicy-events.zeek 111 111
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, request_name: :zeek:type:`string`, request_value: :zeek:type:`string`)
+
+   Event generated for each ExtendedRequest in LDAP messages.
+   
+
+   :param c: The connection.
+   
+
+   :param message_id: The messageID element.
+   
+
+   :param request_name: The name of the extended request.
+   
+
+   :param request_value: The value of the extended request (empty if missing).
+
+.. zeek:id:: LDAP::extended_response
+   :source-code: base/protocols/ldap/spicy-events.zeek 129 129
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, result: :zeek:type:`LDAP::ResultCode`, response_name: :zeek:type:`string`, response_value: :zeek:type:`string`)
+
+   Event generated for each ExtendedResponse in LDAP messages.
+   
+
+   :param c: The connection.
+   
+
+   :param message_id: The messageID element.
+   
+
+   :param result: The result code of the response.
+   
+
+   :param response_name: The name of the extended response (empty if missing).
+   
+
+   :param response_value: The value of the extended response (empty if missing).
+
 .. zeek:id:: LDAP::message
-   :source-code: base/protocols/ldap/main.zeek 188 280
+   :source-code: base/protocols/ldap/main.zeek 188 283
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, opcode: :zeek:type:`LDAP::ProtocolOpcode`, result: :zeek:type:`LDAP::ResultCode`, matched_dn: :zeek:type:`string`, diagnostic_message: :zeek:type:`string`, object: :zeek:type:`string`, argument: :zeek:type:`string`)
 
@@ -81,7 +125,7 @@ Events
    :param argument: Additional arguments this message includes.
 
 .. zeek:id:: LDAP::search_request
-   :source-code: base/protocols/ldap/main.zeek 292 341
+   :source-code: base/protocols/ldap/main.zeek 295 344
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, base_object: :zeek:type:`string`, scope: :zeek:type:`LDAP::SearchScope`, deref: :zeek:type:`LDAP::SearchDerefAlias`, size_limit: :zeek:type:`int`, time_limit: :zeek:type:`int`, types_only: :zeek:type:`bool`, filter: :zeek:type:`string`, attributes: :zeek:type:`vector` of :zeek:type:`string`)
 
@@ -118,7 +162,7 @@ Events
    :param attributes: Additional attributes of the SearchRequest.
 
 .. zeek:id:: LDAP::search_result_entry
-   :source-code: base/protocols/ldap/main.zeek 346 351
+   :source-code: base/protocols/ldap/main.zeek 349 354
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, object_name: :zeek:type:`string`)
 
@@ -132,5 +176,16 @@ Events
    
 
    :param object_name: The object name in the SearchResultEntry.
+
+.. zeek:id:: LDAP::starttls
+   :source-code: base/protocols/ldap/spicy-events.zeek 141 141
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Event generated when a plaintext LDAP connection switched to TLS.
+   
+
+   :param c: The connection.
+   
 
 
