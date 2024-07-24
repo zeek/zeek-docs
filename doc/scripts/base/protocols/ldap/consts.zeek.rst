@@ -9,6 +9,12 @@ base/protocols/ldap/consts.zeek
 
 Summary
 ~~~~~~~
+Redefinable Options
+###################
+================================================================================================================ =
+:zeek:id:`LDAP::EXTENDED_REQUESTS`: :zeek:type:`table` :zeek:attr:`&default` = ``"unknown"`` :zeek:attr:`&redef` 
+================================================================================================================ =
+
 Constants
 #########
 =============================================================================================== =
@@ -23,6 +29,24 @@ Constants
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Redefinable Options
+###################
+.. zeek:id:: LDAP::EXTENDED_REQUESTS
+   :source-code: base/protocols/ldap/consts.zeek 124 124
+
+   :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string`
+   :Attributes: :zeek:attr:`&default` = ``"unknown"`` :zeek:attr:`&redef`
+   :Default:
+
+      ::
+
+         {
+            ["1.3.6.1.4.1.1466.20037"] = "StartTLS",
+            ["1.3.6.1.4.1.4203.1.11.3"] = "whoami"
+         }
+
+
+
 Constants
 #########
 .. zeek:id:: LDAP::BIND_SASL
