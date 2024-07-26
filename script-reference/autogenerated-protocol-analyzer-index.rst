@@ -8271,7 +8271,85 @@ Events
 
    :param username: The username supplied by the client
    
-   .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_server_version
+   .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_server_version mysql_ssl_request
+
+.. zeek:id:: mysql_ssl_request
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 109 109
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated for a short client handshake response packet with the CLIENT_SSL
+   flag set. Usually the client will initiate a TLS handshake afterwards.
+   See the MySQL `documentation <http://dev.mysql.com/doc/internals/en/client-server-protocol.html>`__
+   for more information about the MySQL protocol.
+   
+
+   :param c: The connection.
+   
+   .. zeek:see:: mysql_handshake
+
+.. zeek:id:: mysql_auth_plugin
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 125 125
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, name: :zeek:type:`string`, data: :zeek:type:`string`)
+
+   Generated for information about plugin authentication within handshake packets.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if this is from the client, false if from the server.
+   
+
+   :param name: Name of the authentication plugin.
+   
+
+   :param data: The initial auth data. From the server, it is the concatenation of
+         auth_plugin_data_part_1 and auth_plugin_data_part_2 in the handshake.
+         For the client it is the auth_response in the handshake response.
+   
+   .. zeek:see:: mysql_handshake mysql_auth_switch_request mysql_auth_more_data
+
+.. zeek:id:: mysql_auth_switch_request
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 137 137
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, name: :zeek:type:`string`, data: :zeek:type:`string`)
+
+   Generated for a server packet with an auth switch request.
+   
+
+   :param c: The connection.
+   
+
+   :param name: The plugin name.
+   
+
+   :param data: Initial authentication data for the plugin.
+   
+   .. zeek:see:: mysql_handshake mysql_auth_more_data
+
+.. zeek:id:: mysql_auth_more_data
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 153 153
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data: :zeek:type:`string`)
+
+   Generated for opaque authentication data exchanged between client and server
+   after the client's handshake packet, but before the server replied with
+   an OK_Packet
+   
+   Data is specific to the plugin auth mechanism used by client and server.
+   
+
+   :param c: The connection.
+   
+
+   :param is_orig: True if this is from the client, false if from the server.
+   
+
+   :param data: More authentication data.
+   
+   .. zeek:see:: mysql_handshake mysql_auth_switch_request
 
 .. _plugin-zeek-ncp:
 
