@@ -3,7 +3,7 @@ global log_writes_cf = Telemetry::register_counter_family([
 	$name="log_writes",
 	$unit="1",
 	$help_text="Number of log writes per stream",
-	$labels=vector("log_id")
+	$label_names=vector("log_id")
 ]);
 
 global log_writes: table[Log::ID] of count &default=0;
