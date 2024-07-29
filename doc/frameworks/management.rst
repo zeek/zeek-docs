@@ -633,11 +633,11 @@ All but the worker nodes in a Zeek cluster require a listening port, and you can
 specify one for each node as shown in the above configuration. If you'd rather
 not pick ports, the controller can auto-enumerate ports for you, as follows:
 
-* The :zeek:see:`Management::Controller::auto_assign_ports` Boolean, which defaults to
+* The :zeek:see:`Management::Controller::auto_assign_broker_ports` Boolean, which defaults to
   ``T``, controls whether port auto-enumeration is active. Redefining to ``F``
   disables the feature.
 
-* :zeek:see:`Management::Controller::auto_assign_start_port` defines the starting point
+* :zeek:see:`Management::Controller::auto_assign_broker_start_port` defines the starting point
   for port enumeration. This defaults to ``2200/tcp``.
 
 * Any nodes with explicitly configured ports will keep them.
@@ -654,6 +654,19 @@ not pick ports, the controller can auto-enumerate ports for you, as follows:
 
 By retrieving the deployed configuration from the controller (see the next two
 sections) you can examine which ports the controller selected.
+
+Configuration of the Telemetry framework
+----------------------------------------
+
+By default, the framework will enable Prometheus metrics exposition ports,
+including a service discovery endpoint on the mananger (refer to the
+:ref:`Telemetry Framework <framework-telemetry>` for details), and
+auto-assign them for you. Specifically, the controller will enumerate ports
+starting from
+:zeek:see:`Management::Controller::auto_assign_metrics_start_port`, which
+defaults to ``9000/tcp``. Any ports you define manually will be preserved.  To
+disable metrics port auto-assignment, redefine
+:zeek:see:`Management::Controller::auto_assign_metrics_ports` to ``F``.
 
 Staging and deploying configurations
 ------------------------------------

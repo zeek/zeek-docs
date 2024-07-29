@@ -4,7 +4,7 @@ global conn_durations_hf = Telemetry::register_histogram_family([
 	$unit="seconds",
 	$help_text="Duration of monitored connections",
 	$bounds=vector(0.1, 1.0, 10.0, 30.0, 60.0),
-	$labels=vector("proto", "service")
+	$label_names=vector("proto", "service")
 ]);
 
 event connection_state_remove(c: connection)
