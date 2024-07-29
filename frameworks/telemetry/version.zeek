@@ -3,7 +3,7 @@ global version_gf = Telemetry::register_gauge_family([
 	$name="version_info",
 	$unit="1",
 	$help_text="The Zeek version",
-	$labels=vector("version_number", "major", "minor", "patch", "commit", "beta", "debug","version_string")
+	$label_names=vector("version_number", "major", "minor", "patch", "commit", "beta", "debug","version_string")
 ]);
 
 event zeek_init()
