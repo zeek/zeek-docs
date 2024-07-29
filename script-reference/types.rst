@@ -1169,6 +1169,15 @@ as ``/.*foo.*/``.
 
 .. note::
 
+   The :zeek:attr:`&default` attribute is ignored for this type of lookup.
+   If none of the patterns matches a given string, the result will be an empty
+   :zeek:type:`vector`, regardless of :zeek:attr:`&default`. Neither is the
+   :zeek:attr:`&default_insert` attribute used. It's not an error to have
+   either of these attributes, however. They'll still be in effect when
+   indexing with :zeek:type:`pattern` values.
+
+.. note::
+
    Internally, Zeek matches a table's patterns in parallel using a lazily
    constructed deterministic finite automaton (DFA). This means that the nature
    of patterns in the table *and* the strings looked up in it can lead to
