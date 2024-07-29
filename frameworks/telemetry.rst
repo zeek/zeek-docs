@@ -1,8 +1,9 @@
 .. _histogram_quantile(): https://prometheus.io/docs/prometheus/latest/querying/functions/#histogram_quantile
+.. _Prometheus: https://prometheus.io
 .. _Prometheus Getting Started Guide: https://prometheus.io/docs/prometheus/latest/getting_started/
 .. _Prometheus Metric Types: https://prometheus.io/docs/concepts/metric_types/
 .. _Prometheus HTTP Service Discovery: https://prometheus.io/docs/prometheus/latest/http_sd/
-.. _CAF: https://github.com/actor-framework/actor-framework
+.. _prometheus-cpp: https://github.com/jupp0r/prometheus-cpp
 
 .. _framework-telemetry:
 
@@ -10,82 +11,234 @@
 Telemetry Framework
 ===================
 
-The telemetry framework can be used to record metrics. Such metrics can either
-revolve around Zeek's operational behavior, or describe characteristics of the
-monitored traffic.
+.. note::
 
-The telemetry framework is fairly Prometheus inspired. It supports the same
-metric types as most Prometheus client libraries with the exception of the
-Summary type.
+   This framework changed considerably with Zeek 7, and is not API-compatible
+   with earlier versions.  While earlier versions relied on an implementation
+   in :ref:`Broker <broker-framework>`, Zeek now maintains its
+   own implementation, building on `prometheus-cpp`_, with Broker adding its
+   telemetry to Zeek's internal registry of metrics.
 
-The actual implementation of the metrics and the registry is provided
-by :ref:`Broker <broker-framework>` and internally CAF_.
+The telemetry framework continuously collects metrics during Zeek's operation,
+and provides ways to export this telemetry to third-party consumers. Zeek ships
+with a pre-defined set of metrics and allows you to add your own, via
+script-layer and in-core APIs you use to instrument relevant parts of the
+code. Metrics target Zeek's operational behavior, or track characteristics of
+monitored traffic. Metrics are not an additional export vehicle for Zeek's
+various regular logs. Zeek's telemetry data model closely resembles that of
+`Prometheus`_, and supports its text-based exposition format for scraping by
+third-party collectors.
 
-This document outlines usage examples. Head to the :zeek:see:`Telemetry`
-API documentation for more details.
+This document outlines usage examples, and gives brief API examples for
+composing your own metrics. Head to the :zeek:see:`Telemetry` API documentation
+for more details.
 
 Metric Types
 ============
 
-The following metric types are supported.
+Zeek supports the following metric types:
 
   Counter
-    Continuously increasing, resets on process restart.
-    Examples for counters are number of log writes since process start,
+    A continuously increasing value, resetting on process restart.
+    Examples of counters are the number of log writes since process start,
     packets processed, or ``process_seconds`` representing CPU usage.
 
   Gauge
-    Gauge metric can increase and decrease.
-    Examples are table sizes or :zeek:see:`val_footprint` of Zeek script
-    values over the lifetime of the process. Temperature or memory usage
-    are other examples.
+    A gauge metric is a numerical value that can increase and decrease
+    over time. Examples are table sizes or the :zeek:see:`val_footprint`
+    of Zeek script values over the lifetime of the process. More general
+    examples include a temperature or memory usage.
 
   Histogram
-    Pre-configured buckets of observations.
-    Examples for histograms are connection durations, delays, transfer
+    Pre-configured buckets of observations with corresponding counts.
+    Examples of histograms are connection durations, delays, or transfer
     sizes. Generally, it is useful to know the expected range and distribution
-    as the histogram's buckets are pre-configured.
+    of such values, as the bounds of a histogram's buckets are defined when
+    this metric gets created.
+
+Zeek uses :zeek:type:`double` throughout to track metric values. Since
+terminology around telemetry can be complex, it helps to know a few additional
+terms:
+
+  Labels
+    A given metric sometimes doesn't exist in isolation, but comes with
+    additional labeling to disambiguate related observations. For example, Zeek
+    ships with gauge called ``zeek_active_sessions`` that labels counts for TCP,
+    UDP, and other transport protocols separately. Labels have a name (for
+    example, "protocol") to refer to value (such as "tcp"). A metric can have
+    multiple labels. Labels are thus a way to associate textual information with
+    the numerical values of metrics.
+
+  Family
+    The set of such metrics, differing only by their labeling, is a known as a
+    Family. Zeek's script-layer metrics API lets you operate on individual
+    metrics and families.
+
+Zeek has no equivalent to Prometheus's Summary type. A good reference to
+consult for more details is the official `Prometheus Metric Types`_
+documentation.
+
+Cluster Considerations
+======================
+
+When running Zeek as a cluster, every node maintains its own metrics registry,
+independently of the other nodes. Zeek does not automatically synchronize,
+centralize, or aggregate metrics across the cluster. Instead, it adds the name
+of the node a particular metric originated from at collection time, leaving any
+aggregation to post-processing where desired.
+
+.. note:
+
+   This is a departure from the design in earlier versions of Zeek, which could
+   (either by default, or after activation) centralize metrics in the cluster's
+   manager node.
+
+Accordingly, the :zeek:see:`Telemetry::collect_metrics` and
+:zeek:see:`Telemetry::collect_histogram_metrics` functions only return
+node-local metrics.
+
+Metrics Export
+==============
+
+Zeek supports two mechanisms for exporting telemetry: traditional logs, and
+Prometheus-compatible endpoints for scraping by a third-party service. We cover
+them in turn.
+
+Zeek Logs
+---------
+
+Zeek can export current metrics continuously via `telemetry.log` and
+`telemetry_histogram.log`. It does not do so by default. To enable, load the
+policy script ``frameworks/telemetry/log`` on the command line, or via
+``local.zeek``.
+
+The :zeek:see:`Telemetry::Info` and :zeek:see:`Telemetry::HistogramInfo` records
+define the logs.  Both records include a ``peer`` field that conveys the
+cluster node the metric originated from.
+
+By default, Zeek reports current telemetry every 60 seconds, as defined by the
+:zeek:see:`Telemetry::log_interval`, which you're free to adjust.
+
+Also, by default only metrics with the `prefix` (namespace) ``zeek`` and
+``process`` are included in above logs. If you add new metrics with your own
+prefix and expect these to be included, redefine the
+:zeek:see:`Telemetry::log_prefixes` option::
+
+    @load frameworks/telemetry/log
+
+    redef Telemetry::log_prefixes += { "my_prefix" };
+
+Clearing the set will cause all metrics to be logged. As with any logs, you may
+employ :ref:`policy hooks <logging-filtering-log-records>`,
+:zeek:see:`Telemetry::log_policy` and
+:zeek:see:`Telemetry::log_policy_histogram`, to define potentially more granular
+filtering.
+
+Native Prometheus Export
+------------------------
+
+Every Zeek process, regardless of whether it's running long-term standalone or
+as part of a cluster, can run an HTTP server that renders current telemetry in
+Prometheus's `text-based exposition format
+<https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#text-format-example>`_.
+
+The :zeek:see:`Telemetry::metrics_port` variable controls this behavior. Its
+default of ``0/unknown`` disables exposing the port; setting it to another TCP
+port will enable it. In clusterized operation, the cluster topology can specify
+each node's metrics port via the corresponding :zeek:see:`Cluster::Node` field,
+and the framework will adjust ``Telemetry::metrics_port`` accordingly.  Both
+zeekctl and the management framework let you define specific ports and can also
+auto-populate their values, similarly to Broker's listening ports.
+
+To query a node's telemetry, point an HTTP client or Prometheus scraper at the
+node's metrics port::
+
+  $ curl -s http://<node>:<node-metrics-port>/metrics
+  # HELP exposer_transferred_bytes_total Transferred bytes to metrics services
+  # TYPE exposer_transferred_bytes_total counter
+  exposer_transferred_bytes_total 0
+  ...
+  # HELP zeek_event_handler_invocations_total Number of times the given event handler was called
+  # TYPE zeek_event_handler_invocations_total counter
+  zeek_event_handler_invocations_total{endpoint="manager",name="run_sync_hook"} 2
+  ...
+
+To simplify telemetry collection from all nodes in a cluster, Zeek supports
+`Prometheus HTTP Service Discovery`_ on the manager node. In this approach, the
+endpoint ``http://<manager>:<manager-metrics-port>/services.json`` returns a
+JSON data structure that itemizes all metrics endpoints in the
+cluster. Prometheus scrapers supporting service discovery then proceed to
+collect telemetry from the listed endpoints in turn. See the `Prometheus Getting
+Started Guide`_ for additional information.
+
+.. note::
+
+   .. versionchanged:: 7.0
+
+   The built-in aggregation for Zeek telemetry to the manager node has been
+   removed, in favor of the Prometheus-compatible service discovery
+   endpoint. The new approach requires cluster administrators to manage access
+   to the additional ports. However, it allows Prometheus to conduct the
+   aggregation, instead of burdening the Zeek manager with it, which has
+   historically proved expensive.
+
+If these setups aren't right for your environment, there's the possibility to
+redefine the options in ``local.zeek`` to something more suitable. For example,
+the following snippet opens an individual Prometheus port for each Zeek process
+(relative to the port used in ``cluster-layout.zeek``)::
+
+    @load base/frameworks/cluster
+
+    global my_node = Cluster::nodes[Cluster::node];
+    global my_metrics_port = count_to_port(port_to_count(my_node$p) - 1000, tcp);
+
+    redef Telemetry::metrics_port = my_metrics_port;
+
+As a different example, to only change the port from 9911 to 1234 on the manager
+process, but keep the export and import of metrics enabled, use the following snippet::
+
+    @load base/frameworks/cluster
+
+    @ifdef ( Cluster::local_node_type() == Cluster::MANAGER )
+    redef Telemetry::metrics_port = 1234/tcp;
+    @endif
 
 
-A good reference to consult for more details is the official `Prometheus Metric Types`_ documentation.
-The next section provides examples using each of these types.
-
-
-Examples
-========
+Examples of Metrics Application
+===============================
 
 Counting Log Writes per Stream
 ------------------------------
 
 In combination with the :zeek:see:`Log::log_stream_policy` hook, it is
-straight forward to record :zeek:see:`Log::write` invocations over the
-dimension of the :zeek:see:`Log::ID` value.
+straightforward to record :zeek:see:`Log::write` invocations over the dimension
+of the :zeek:see:`Log::ID` value.  This section shows three different approaches
+to do this. Which approach is most applicable depends mostly on the expected
+script layer performance overhead for updating the metric.  For example, calling
+:zeek:see:`Telemetry::counter_with` and :zeek:see:`Telemetry::counter_inc`
+within a handler of a high-frequency event may be prohibitive, while for a
+low-frequency event it's unlikely to matter.
 
-This section shows three different approaches. Which approach is most
-applicable depends mostly on the expected script layer performance overhead
-for updating the metric.
-For example, calling :zeek:see:`Telemetry::counter_with` and
-:zeek:see:`Telemetry::counter_inc` within a handler of a high-frequency
-event may be prohibitive, while for a low-frequency event it's unlikely
-to be performance impacting.
-
-Assuming Zeek was started with ``BROKER_METRICS_PORT=4242`` being set in the
-environment, querying the Prometheus endpoint using ``curl`` provides the
-following metrics data for each of the three approaches.
+Assuming a :zeek:see:`Telemetry::metrics_port` of 9090, querying the Prometheus
+endpoint using ``curl`` provides output resembling the following for each of
+the three approaches.
 
 .. code-block::
 
-   $ curl -s localhost:4242/metrics | grep log_writes
+   $ curl -s localhost:9090/metrics | grep log_writes
    # HELP zeek_log_writes_total Number of log writes per stream
    # TYPE zeek_log_writes_total counter
-   zeek_log_writes_total{endpoint="zeek",log_id="packetfilter_log"} 1.000000 1658924926624
-   zeek_log_writes_total{endpoint="zeek",log_id="loadedscripts_log"} 477.000000 1658924926624
-   zeek_log_writes_total{endpoint="zeek",log_id="stats_log"} 1.000000 1658924926624
-   zeek_log_writes_total{endpoint="zeek",log_id="dns_log"} 200.000000 1658924926624
-   zeek_log_writes_total{endpoint="zeek",log_id="ssl_log"} 9.000000 1658924926624
-   zeek_log_writes_total{endpoint="zeek",log_id="conn_log"} 215.000000 1658924926624
-   zeek_log_writes_total{endpoint="zeek",log_id="captureloss_log"} 1.000000 1658924926624
+   zeek_log_writes_total{endpoint="zeek",log_id="packetfilter_log"} 1
+   zeek_log_writes_total{endpoint="zeek",log_id="loadedscripts_log"} 477
+   zeek_log_writes_total{endpoint="zeek",log_id="stats_log"} 1
+   zeek_log_writes_total{endpoint="zeek",log_id="dns_log"} 200
+   zeek_log_writes_total{endpoint="zeek",log_id="ssl_log"} 9
+   zeek_log_writes_total{endpoint="zeek",log_id="conn_log"} 215
+   zeek_log_writes_total{endpoint="zeek",log_id="captureloss_log"} 1
 
+The above shows a family of 7 ``zeek_log_writes_total`` metrics, each with an
+``endpoint`` label (here, ``zeek``, which would be a cluster node name if
+scraped from a Zeek cluster) and a ``log_id`` one.
 
 Immediate
 ^^^^^^^^^
@@ -136,7 +289,7 @@ variables directly. The following example counts the number of http requests.
 Sync
 ^^^^
 
-In case where the scripting overhead of this approach is still too high, the
+In case the scripting overhead of the previous approach is still too high,
 individual writes (or events) can be tracked in a table and then
 synchronized / mirrored during execution of the :zeek:see:`Telemetry::sync`
 hook.
@@ -156,9 +309,10 @@ up to the next :zeek:see:`Telemetry::sync_interval` using this method.
 Table sizes
 -----------
 
-It can be useful to expose the size of state holding tables as metrics.
+It can be useful to expose the size of tables as metrics, as they often
+indicate the approximate amount of state maintained in memory.
 As table sizes may increase and decrease, a :zeek:see:`Telemetry::Gauge`
-is used for this purpose.
+is appropriate for this purpose.
 
 The following example records the size of the :zeek:see:`Tunnel::active` table
 and its footprint with two gauges. The gauges are updated during the
@@ -175,13 +329,13 @@ Example representation of these metrics when querying the Prometheus endpoint:
 
 .. code-block::
 
-   $ curl -s localhost:4242/metrics | grep tunnel
+   $ curl -s localhost:9090/metrics | grep tunnel
    # HELP zeek_monitored_tunnels_active_footprint Footprint of the Tunnel::active table
    # TYPE zeek_monitored_tunnels_active_footprint gauge
-   zeek_monitored_tunnels_active_footprint{endpoint="zeek"} 324.000000 1658929821941
+   zeek_monitored_tunnels_active_footprint{endpoint="zeek"} 324
    # HELP zeek_monitored_tunnels_active Number of currently active tunnels as tracked in Tunnel::active
    # TYPE zeek_monitored_tunnels_active gauge
-   zeek_monitored_tunnels_active{endpoint="zeek"} 12.000000 1658929821941
+   zeek_monitored_tunnels_active{endpoint="zeek"} 12
 
 
 Instead of tracking footprints per variable, :zeek:see:`global_container_footprints`,
@@ -194,7 +348,7 @@ Connection Durations as Histogram
 To track the distribution of certain measurements, a :zeek:see:`Telemetry::Histogram`
 can be used. The histogram's buckets have to be preconfigured.
 
-Below example observes the duration of each connection that Zeek has
+The following example observes the duration of each connection that Zeek has
 monitored.
 
 .. literalinclude:: telemetry/connection-durations.zeek
@@ -205,27 +359,27 @@ monitored.
 
 Due to the way Prometheus represents histograms and the fact that durations
 are broken down by protocol and service in the given example, the resulting
-is rather verbose.
+representation becomes rather verbose.
 
 .. code-block::
 
-   $ curl -s localhost:4242/metrics | grep monitored_connection_duration
+   $ curl -s localhost:9090/metrics | grep monitored_connection_duration
    # HELP zeek_monitored_connection_duration_seconds Duration of monitored connections
    # TYPE zeek_monitored_connection_duration_seconds histogram
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="0.100000"} 970.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="1.000000"} 998.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="10.000000"} 1067.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="30.000000"} 1108.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="60.000000"} 1109.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="+Inf"} 1109.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_sum{endpoint="zeek",proto="udp",service="dns"} 1263.085691 1658931613557
-   zeek_monitored_connection_duration_seconds_count{endpoint="zeek",proto="udp",service="dns"} 1109.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="0.100000"} 16.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="1.000000"} 54.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="10.000000"} 56.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="30.000000"} 57.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="60.000000"} 57.000000 1658931613557
-   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="+Inf"} 57.000000 1658931613557
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="0.1"} 970
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="1"} 998
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="10"} 1067
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="30"} 1108
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="60"} 1109
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="udp",service="dns",le="+Inf"} 1109
+   zeek_monitored_connection_duration_seconds_sum{endpoint="zeek",proto="udp",service="dns"} 1263.085691
+   zeek_monitored_connection_duration_seconds_count{endpoint="zeek",proto="udp",service="dns"} 1109
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="0.1"} 16
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="1"} 54
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="10"} 56
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="30"} 57
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="60"} 57
+   zeek_monitored_connection_duration_seconds_bucket{endpoint="zeek",proto="tcp",service="http",le="+Inf"} 57
 
 
 To work with histogram data, Prometheus provides specialized query functions.
@@ -252,130 +406,17 @@ The following example does just that with a Zeek script:
    :linenos:
    :tab-width: 4
 
-This is exposed in Prometheus format as follows:
+In Prometheus's exposition format, this turns into the following:
 
 .. code-block::
 
-   $ curl -s localhost:4242/metrics | grep version
+   $ curl -s localhost:9090/metrics | grep version
    # HELP zeek_version_info The Zeek version
    # TYPE zeek_version_info gauge
-   zeek_version_info{beta="false",commit="289",debug="true",endpoint="zeek",major="5",minor="1",patch="0",version_number="50100",version_string="5.1.0-dev.289-debug"} 1.000000 1658936589580
+   zeek_version_info{beta="true",commit="0",debug="true",major="7",minor="0",patch="0",version_number="70000",version_string="7.0.0-rc4-debug"} 1
+   zeek_version_info{beta="false",commit="289",debug="true",endpoint="zeek",major="5",minor="1",patch="0",version_number="50100",version_string="5.1.0-dev.289-debug"} 1.000000
 
 
-Note, the `zeek_version_info` gauge is created by default in
-:doc:`/scripts/base/frameworks/telemetry/main.zeek`. There is no need
-to add above snippet to your site.
-
-Metrics Export
-==============
-
-Cluster Considerations
-----------------------
-
-In a Zeek cluster, every node has its own metric registry independent
-of the other nodes.
-
-As noted below in the Prometheus section, the Broker subsystem can be configured
-such that metrics from all nodes are imported to a single node for exposure
-via the Prometheus HTTP endpoint. Concretely, the `manager` process can be
-configured to import metrics from workers, proxies and loggers.
-
-No aggregation of metrics happens during the import process. Rather, the centralized
-metrics receive an additional "endpoint" label that can be used to identify
-the originating node.
-
-The :zeek:see:`Telemetry::collect_metrics` and :zeek:see:`Telemetry::collect_histogram_metrics`
-functions only return node local metrics. A node importing metrics will not
-expose metrics from other nodes to the scripting layer.
-
-When configuring the `telemetry.log` and `telemetry_histogram.log`, each node
-in a cluster is logging its own metrics. The logs contain a `peer` field that
-can be used to determine from which node the metrics originated from.
-
-
-Zeek Log
---------
-
-The metrics created using the telemetry module can be exported as
-`telemetry.log` and `telemetry_histogram.log` by loading the policy
-script ``frameworks/telemetry/log`` on the command line, or via
-``local.zeek``.
-
-The logs are documented through the :zeek:see:`Telemetry::Info`
-and :zeek:see:`Telemetry::HistogramInfo` records, respectively.
-
-By default, only metrics with the `prefix` (namespace) ``zeek`` and ``process``
-are included in above logs. If you add new metrics with your own prefix
-and expect these to be included, redefine the
-:zeek:see:`Telemetry::log_prefixes` option::
-
-    @load frameworks/telemetry/log
-
-    redef Telemetry::log_prefixes += { "my_prefix" };
-
-
-Native Prometheus Export
-------------------------
-
-When running a cluster of Zeek processes, all nodes can be configured to run an
-HTTP server for exporting data to Prometheus by loading the following policy script::
-
-    @load frameworks/telemetry/prometheus
-
-This script instructs the nodes to set the ``Telemetry::metrics_port`` variable
-based on the ``metrics_port`` value for each node in the cluster
-configuration. Querying each node's Prometheus endpoint (``curl
-http://node-ip:metrics-port/metrics``) then yields that node's metrics. The
-``endpoint`` label on the metrics can be used to differentiate the originator.
-
-The manager node also provides a `Prometheus HTTP Service Discovery`_ endpoint
-that exports a mapping of all of the nodes and their port numbers. This endpoint
-is ``http://manager-ip:metrics-port/services.json``. Prometheus can be
-configured to read that endpoint and automatically set up importing from all of
-the nodes at once.
-
-.. note::
-
-   .. versionchanged:: 6.0
-
-   This script was previously loaded by default. Due to adding extra processing
-   overhead to the manager process even if Prometheus is not used, this is not
-   the default anymore. Future improvements may allow to load the script by
-   default again.
-
-   .. versionchanged: 7.0
-
-   The built-in aggregation for Zeek telemetry to the manager node has been
-   removed, in favor of the service discovery endpoint.
-
-As shown with the ``curl`` examples in the previous section, a Prometheus
-server can be configured to scrape the Zeek node processes directly.
-See also the `Prometheus Getting Started Guide`_.
-
-The ``scripts/policy/frameworks/telemetry/prometheus.zeek`` script sets
-:zeek:see:`Telemetry::metrics_port` and
-:zeek:see:`Telemetry::metrics_endpoint_name` appropriately.
-
-.. above file isn't included in the docs as it's not loaded in the doc generation, can not use :doc:
-
-
-If this configuration isn't right for your environment, there's
-the possibility to redefine the options in ``local.zeek`` to something more
-suitable. For example, the following snippet opens an individual Prometheus
-port for each Zeek process (relative to the port used in ``cluster-layout.zeek``)::
-
-    @load base/frameworks/cluster
-
-    global my_node = Cluster::nodes[Cluster::node];
-    global my_metrics_port = count_to_port(port_to_count(my_node$p) - 1000, tcp);
-
-    redef Telemetry::metrics_port = my_metrics_port;
-
-As a different example, to only change the port from 9911 to 1234 on the manager
-process, but keep the export and import of metrics enabled, use the following snippet::
-
-    @load base/frameworks/cluster
-
-    @ifdef ( Cluster::local_node_type() == Cluster::MANAGER )
-    redef Telemetry::metrics_port = 1234/tcp;
-    @endif
+Zeek already ships with this gauge, via
+:doc:`/scripts/base/frameworks/telemetry/main.zeek`. There is no need to add
+above snippet to your site.
