@@ -121,6 +121,9 @@ Redefinable Options
                                                                                                                                   parsing of the connection is suspended.
 :zeek:id:`SSL::max_alerts_per_record`: :zeek:type:`count` :zeek:attr:`&redef`                                                     Maximum number of Alert messages parsed from an SSL record with
                                                                                                                                   content_type alert (21).
+:zeek:id:`Telemetry::callback_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                                 Maximum amount of time for CivetWeb HTTP threads to
+                                                                                                                                  wait for metric callbacks to complete on the IO loop.
+:zeek:id:`Telemetry::civetweb_threads`: :zeek:type:`count` :zeek:attr:`&redef`                                                    Number of CivetWeb threads to use.
 :zeek:id:`Threading::heartbeat_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                               The heartbeat interval used by the threading framework.
 :zeek:id:`Tunnel::delay_gtp_confirmation`: :zeek:type:`bool` :zeek:attr:`&redef`                                                  With this set, the GTP analyzer waits until the most-recent upflow
                                                                                                                                   and downflow packets are a valid GTPv1 encapsulation before
@@ -1244,6 +1247,25 @@ Redefinable Options
    content_type alert (21). The remaining alerts are discarded. For
    TLS 1.3 connections, this is implicitly 1 as defined by RFC 8446.
 
+.. zeek:id:: Telemetry::callback_timeout
+   :source-code: base/init-bare.zeek 5889 5889
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``5.0 secs``
+
+   Maximum amount of time for CivetWeb HTTP threads to
+   wait for metric callbacks to complete on the IO loop.
+
+.. zeek:id:: Telemetry::civetweb_threads
+   :source-code: base/init-bare.zeek 5892 5892
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``2``
+
+   Number of CivetWeb threads to use.
+
 .. zeek:id:: Threading::heartbeat_interval
    :source-code: base/init-bare.zeek 2913 2913
 
@@ -1425,7 +1447,7 @@ Redefinable Options
    
 
 .. zeek:id:: bits_per_uid
-   :source-code: base/init-bare.zeek 5898 5898
+   :source-code: base/init-bare.zeek 5905 5905
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1466,7 +1488,7 @@ Redefinable Options
    be reported via :zeek:see:`content_gap`.
 
 .. zeek:id:: digest_salt
-   :source-code: base/init-bare.zeek 5906 5906
+   :source-code: base/init-bare.zeek 5913 5913
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1644,7 +1666,7 @@ Redefinable Options
    means "forever", which resists evasion, but can lead to state accrual.
 
 .. zeek:id:: global_hash_seed
-   :source-code: base/init-bare.zeek 5893 5893
+   :source-code: base/init-bare.zeek 5900 5900
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1701,7 +1723,7 @@ Redefinable Options
    .. zeek:see:: conn_stats
 
 .. zeek:id:: io_poll_interval_default
-   :source-code: base/init-bare.zeek 5923 5923
+   :source-code: base/init-bare.zeek 5930 5930
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1720,7 +1742,7 @@ Redefinable Options
    .. zeek:see:: io_poll_interval_live
 
 .. zeek:id:: io_poll_interval_live
-   :source-code: base/init-bare.zeek 5938 5938
+   :source-code: base/init-bare.zeek 5945 5945
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1960,7 +1982,7 @@ Redefinable Options
    was observed.
 
 .. zeek:id:: max_find_all_string_length
-   :source-code: base/init-bare.zeek 5910 5910
+   :source-code: base/init-bare.zeek 5917 5917
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -2190,7 +2212,7 @@ Redefinable Options
    Time to wait before timing out an RPC request.
 
 .. zeek:id:: running_under_test
-   :source-code: base/init-bare.zeek 5942 5942
+   :source-code: base/init-bare.zeek 5949 5949
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -3361,7 +3383,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 5944 5944
+   :source-code: base/init-bare.zeek 5951 5951
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
