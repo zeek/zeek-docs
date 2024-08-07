@@ -24,7 +24,7 @@ package with a skeleton of everything needed for an analyzer.
 Before proceeding, make sure that your Zeek comes with Spicy support
 built-in---which is the default since Zeek version 5.0::
 
-    # zeek - N Zeek::Spicy
+    # zeek -N Zeek::Spicy
     Zeek::Spicy - Support for Spicy parsers (*.hlto) (built-in)
 
 You should also have ``spicyz`` in your ``PATH``::
@@ -82,7 +82,7 @@ protocol analyzer. We follow the same scheme here and put the
 following into ``tftp.evt``, the analyzer definition file:
 
 .. literalinclude:: autogen/tftp.evt
-    :lines: 3-5
+    :lines: 5-7
     :language: spicy-evt
 
 The first line provides our analyzer with a Zeek-side name
@@ -184,7 +184,7 @@ unit parameter, we can easily separate the two by gating event
 generation through an additional ``if`` condition:
 
 .. literalinclude:: autogen/tftp.evt
-    :lines: 9-10
+    :lines: 11-12
     :language: spicy-evt
 
 This now defines two separate events, each being generated only for
@@ -208,8 +208,16 @@ function that Spicy makes available once we have successfully parsed a
 request: :spicylink:`spicy::accept_input
 <programming/library.html#spicy-accept-input>`. That function signals
 the host application---i.e., Zeek in our case—--that the parser is
-processing the expected protocol. With that, our request looks like
-this now:
+processing the expected protocol.
+
+First, we need to make sure the Spicy standard library is imported
+in ``tftp.spicy``, so that we will have its functions available:
+
+.. code::
+
+   import spicy;
+
+With that, our request looks like this now:
 
 .. code-block::
 
@@ -241,7 +249,7 @@ events for them as well. The following is our complete ``tftp.evt``
 file:
 
 .. literalinclude:: autogen/tftp.evt
-    :lines: 3-
+    :lines: 5-
     :language: spicy-evt
 
 
