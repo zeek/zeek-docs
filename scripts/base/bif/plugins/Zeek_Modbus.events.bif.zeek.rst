@@ -53,7 +53,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: modbus_diagnostics_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 349 349
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 341 341
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, subfunction: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -72,7 +72,7 @@ Events
    :param data: The data passed in the diagnostics request.
 
 .. zeek:id:: modbus_diagnostics_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 361 361
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 353 353
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, subfunction: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -91,7 +91,7 @@ Events
    :param data: The data passed in the diagnostics response.
 
 .. zeek:id:: modbus_encap_interface_transport_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 373 373
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 365 365
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, mei_type: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -110,7 +110,7 @@ Events
    :param data: The MEI type specific data passed in the request.
 
 .. zeek:id:: modbus_encap_interface_transport_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 385 385
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 377 377
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, mei_type: :zeek:type:`count`, data: :zeek:type:`string`)
 
@@ -145,7 +145,7 @@ Events
    :param code: The exception code.
 
 .. zeek:id:: modbus_mask_write_register_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 276 276
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 268 268
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -167,7 +167,7 @@ Events
    :param or_mask: The value of the logical OR mask to apply to the register.
 
 .. zeek:id:: modbus_mask_write_register_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 290 290
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 282 282
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, address: :zeek:type:`count`, and_mask: :zeek:type:`count`, or_mask: :zeek:type:`count`)
 
@@ -276,7 +276,7 @@ Events
    :param coils: The coil values returned from the device.
 
 .. zeek:id:: modbus_read_fifo_queue_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 327 327
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 319 319
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, start_address: :zeek:type:`count`)
 
@@ -292,7 +292,7 @@ Events
    :param start_address: The address of the FIFO queue to read.
 
 .. zeek:id:: modbus_read_fifo_queue_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 337 337
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 329 329
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, fifos: :zeek:type:`ModbusRegisters`)
 
@@ -311,7 +311,6 @@ Events
    :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 218 218
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileRecordRequests`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus read file record request.
    
@@ -328,10 +327,9 @@ Events
    :param refs: A vector of reference records.
 
 .. zeek:id:: modbus_read_file_record_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 232 232
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 230 230
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileRecordResponses`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus read file record response.
    
@@ -418,7 +416,7 @@ Events
    :param registers: The register values returned from the device.
 
 .. zeek:id:: modbus_read_write_multiple_registers_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 306 306
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 298 298
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, read_start_address: :zeek:type:`count`, read_quantity: :zeek:type:`count`, write_start_address: :zeek:type:`count`, write_registers: :zeek:type:`ModbusRegisters`)
 
@@ -443,7 +441,7 @@ Events
    :param write_registers: The values to be written to the registers.
 
 .. zeek:id:: modbus_read_write_multiple_registers_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 317 317
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 309 309
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, written_registers: :zeek:type:`ModbusRegisters`)
 
@@ -460,10 +458,9 @@ Events
                       the request.
 
 .. zeek:id:: modbus_write_file_record_request
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 246 246
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 242 242
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileReferences`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus write file record request.
    
@@ -480,10 +477,9 @@ Events
    :param refs: A vector of reference records.
 
 .. zeek:id:: modbus_write_file_record_response
-   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 260 260
+   :source-code: base/bif/plugins/Zeek_Modbus.events.bif.zeek 254 254
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`, byte_count: :zeek:type:`count`, refs: :zeek:type:`ModbusFileReferences`)
-   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, headers: :zeek:type:`ModbusHeaders`)
 
    Generated for a Modbus write file record response.
    

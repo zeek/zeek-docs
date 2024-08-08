@@ -542,14 +542,12 @@
    policy/frameworks/software/version-changes.zeek </scripts/policy/frameworks/software/version-changes.zeek>
    policy/frameworks/software/vulnerable.zeek </scripts/policy/frameworks/software/vulnerable.zeek>
    policy/frameworks/software/windows-version-detection.zeek </scripts/policy/frameworks/software/windows-version-detection.zeek>
-   policy/frameworks/telemetry/prometheus.zeek </scripts/policy/frameworks/telemetry/prometheus.zeek>
    policy/frameworks/telemetry/log.zeek </scripts/policy/frameworks/telemetry/log.zeek>
    policy/integration/collective-intel/__load__.zeek </scripts/policy/integration/collective-intel/__load__.zeek>
    policy/integration/collective-intel/main.zeek </scripts/policy/integration/collective-intel/main.zeek>
    policy/misc/capture-loss.zeek </scripts/policy/misc/capture-loss.zeek>
    policy/misc/detect-traceroute/__load__.zeek </scripts/policy/misc/detect-traceroute/__load__.zeek>
    policy/misc/detect-traceroute/main.zeek </scripts/policy/misc/detect-traceroute/main.zeek>
-   policy/misc/load-balancing.zeek </scripts/policy/misc/load-balancing.zeek>
    policy/misc/loaded-scripts.zeek </scripts/policy/misc/loaded-scripts.zeek>
    policy/misc/profiling.zeek </scripts/policy/misc/profiling.zeek>
    policy/misc/stats.zeek </scripts/policy/misc/stats.zeek>
@@ -603,11 +601,6 @@
    policy/protocols/ssl/validate-ocsp.zeek </scripts/policy/protocols/ssl/validate-ocsp.zeek>
    policy/protocols/ssl/validate-sct.zeek </scripts/policy/protocols/ssl/validate-sct.zeek>
    policy/protocols/ssl/weak-keys.zeek </scripts/policy/protocols/ssl/weak-keys.zeek>
-   policy/tuning/__load__.zeek </scripts/policy/tuning/__load__.zeek>
-   policy/tuning/defaults/__load__.zeek </scripts/policy/tuning/defaults/__load__.zeek>
-   policy/tuning/defaults/extracted_file_limits.zeek </scripts/policy/tuning/defaults/extracted_file_limits.zeek>
-   policy/tuning/defaults/packet-fragments.zeek </scripts/policy/tuning/defaults/packet-fragments.zeek>
-   policy/tuning/defaults/warnings.zeek </scripts/policy/tuning/defaults/warnings.zeek>
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
    policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>
