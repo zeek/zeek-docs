@@ -13,36 +13,34 @@ Summary
 ~~~~~~~
 Redefinable Options
 ###################
-================================================================================================================================= =====================================================================================
-:zeek:id:`Management::Controller::auto_assign_broker_ports`: :zeek:type:`bool` :zeek:attr:`&redef`                                Whether the controller should auto-assign Broker listening ports to
-                                                                                                                                  cluster nodes that need them and don't have them explicitly specified
-                                                                                                                                  in cluster configurations.
-:zeek:id:`Management::Controller::auto_assign_broker_start_port`: :zeek:type:`port` :zeek:attr:`&redef`                           The TCP start port to use for auto-assigning cluster node listening
-                                                                                                                                  ports, if :zeek:see:`Management::Controller::auto_assign_broker_ports` is
-                                                                                                                                  enabled (the default) and nodes don't come with those ports assigned.
-:zeek:id:`Management::Controller::auto_assign_metrics_ports`: :zeek:type:`bool` :zeek:attr:`&redef`                               Whether the controller should auto-assign metrics ports for Prometheus
-                                                                                                                                  to nodes that need them and don't have them explicitly specified in
-                                                                                                                                  their cluster configurations.
-:zeek:id:`Management::Controller::auto_assign_metrics_start_port`: :zeek:type:`port` :zeek:attr:`&redef`                          The TCP start port to use for auto-assigning metrics exposition ports
-                                                                                                                                  for Prometheus, if :zeek:see:`Management::Controller::auto_assign_metrics_ports`
-                                                                                                                                  is enabled (the default).
-:zeek:id:`Management::Controller::auto_assign_ports`: :zeek:type:`bool` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *...*      
-:zeek:id:`Management::Controller::auto_assign_start_port`: :zeek:type:`port` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *...* 
-:zeek:id:`Management::Controller::default_port`: :zeek:type:`port` :zeek:attr:`&redef`                                            The fallback listen port if :zeek:see:`Management::Controller::listen_port`
-                                                                                                                                  remains empty.
-:zeek:id:`Management::Controller::default_port_websocket`: :zeek:type:`port` :zeek:attr:`&redef`                                  The fallback listen port if :zeek:see:`Management::Controller::listen_port_websocket`
-                                                                                                                                  remains empty.
-:zeek:id:`Management::Controller::directory`: :zeek:type:`string` :zeek:attr:`&redef`                                             An optional custom output directory for stdout/stderr.
-:zeek:id:`Management::Controller::listen_address`: :zeek:type:`string` :zeek:attr:`&redef`                                        The network address the controller listens on for Broker clients.
-:zeek:id:`Management::Controller::listen_address_websocket`: :zeek:type:`string` :zeek:attr:`&redef`                              The network address the controller listens on for websocket
-                                                                                                                                  clients.
-:zeek:id:`Management::Controller::listen_port`: :zeek:type:`string` :zeek:attr:`&redef`                                           The network port the controller listens on for Broker clients.
-:zeek:id:`Management::Controller::listen_port_websocket`: :zeek:type:`string` :zeek:attr:`&redef`                                 The network port the controller listens on for websocket clients.
-:zeek:id:`Management::Controller::name`: :zeek:type:`string` :zeek:attr:`&redef`                                                  The name of this controller.
-:zeek:id:`Management::Controller::stderr_file`: :zeek:type:`string` :zeek:attr:`&redef`                                           The controller's stderr log name.
-:zeek:id:`Management::Controller::stdout_file`: :zeek:type:`string` :zeek:attr:`&redef`                                           The controller's stdout log name.
-:zeek:id:`Management::Controller::topic`: :zeek:type:`string` :zeek:attr:`&redef`                                                 The controller's Broker topic.
-================================================================================================================================= =====================================================================================
+======================================================================================================== =====================================================================================
+:zeek:id:`Management::Controller::auto_assign_broker_ports`: :zeek:type:`bool` :zeek:attr:`&redef`       Whether the controller should auto-assign Broker listening ports to
+                                                                                                         cluster nodes that need them and don't have them explicitly specified
+                                                                                                         in cluster configurations.
+:zeek:id:`Management::Controller::auto_assign_broker_start_port`: :zeek:type:`port` :zeek:attr:`&redef`  The TCP start port to use for auto-assigning cluster node listening
+                                                                                                         ports, if :zeek:see:`Management::Controller::auto_assign_broker_ports` is
+                                                                                                         enabled (the default) and nodes don't come with those ports assigned.
+:zeek:id:`Management::Controller::auto_assign_metrics_ports`: :zeek:type:`bool` :zeek:attr:`&redef`      Whether the controller should auto-assign metrics ports for Prometheus
+                                                                                                         to nodes that need them and don't have them explicitly specified in
+                                                                                                         their cluster configurations.
+:zeek:id:`Management::Controller::auto_assign_metrics_start_port`: :zeek:type:`port` :zeek:attr:`&redef` The TCP start port to use for auto-assigning metrics exposition ports
+                                                                                                         for Prometheus, if :zeek:see:`Management::Controller::auto_assign_metrics_ports`
+                                                                                                         is enabled (the default).
+:zeek:id:`Management::Controller::default_port`: :zeek:type:`port` :zeek:attr:`&redef`                   The fallback listen port if :zeek:see:`Management::Controller::listen_port`
+                                                                                                         remains empty.
+:zeek:id:`Management::Controller::default_port_websocket`: :zeek:type:`port` :zeek:attr:`&redef`         The fallback listen port if :zeek:see:`Management::Controller::listen_port_websocket`
+                                                                                                         remains empty.
+:zeek:id:`Management::Controller::directory`: :zeek:type:`string` :zeek:attr:`&redef`                    An optional custom output directory for stdout/stderr.
+:zeek:id:`Management::Controller::listen_address`: :zeek:type:`string` :zeek:attr:`&redef`               The network address the controller listens on for Broker clients.
+:zeek:id:`Management::Controller::listen_address_websocket`: :zeek:type:`string` :zeek:attr:`&redef`     The network address the controller listens on for websocket
+                                                                                                         clients.
+:zeek:id:`Management::Controller::listen_port`: :zeek:type:`string` :zeek:attr:`&redef`                  The network port the controller listens on for Broker clients.
+:zeek:id:`Management::Controller::listen_port_websocket`: :zeek:type:`string` :zeek:attr:`&redef`        The network port the controller listens on for websocket clients.
+:zeek:id:`Management::Controller::name`: :zeek:type:`string` :zeek:attr:`&redef`                         The name of this controller.
+:zeek:id:`Management::Controller::stderr_file`: :zeek:type:`string` :zeek:attr:`&redef`                  The controller's stderr log name.
+:zeek:id:`Management::Controller::stdout_file`: :zeek:type:`string` :zeek:attr:`&redef`                  The controller's stdout log name.
+:zeek:id:`Management::Controller::topic`: :zeek:type:`string` :zeek:attr:`&redef`                        The controller's Broker topic.
+======================================================================================================== =====================================================================================
 
 Constants
 #########
@@ -82,7 +80,7 @@ Redefinable Options
    in cluster configurations.
 
 .. zeek:id:: Management::Controller::auto_assign_broker_start_port
-   :source-code: policy/frameworks/management/controller/config.zeek 73 73
+   :source-code: policy/frameworks/management/controller/config.zeek 72 72
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`
@@ -93,7 +91,7 @@ Redefinable Options
    enabled (the default) and nodes don't come with those ports assigned.
 
 .. zeek:id:: Management::Controller::auto_assign_metrics_ports
-   :source-code: policy/frameworks/management/controller/config.zeek 79 79
+   :source-code: policy/frameworks/management/controller/config.zeek 77 77
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -104,7 +102,7 @@ Redefinable Options
    their cluster configurations.
 
 .. zeek:id:: Management::Controller::auto_assign_metrics_start_port
-   :source-code: policy/frameworks/management/controller/config.zeek 84 84
+   :source-code: policy/frameworks/management/controller/config.zeek 82 82
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`
@@ -113,22 +111,6 @@ Redefinable Options
    The TCP start port to use for auto-assigning metrics exposition ports
    for Prometheus, if :zeek:see:`Management::Controller::auto_assign_metrics_ports`
    is enabled (the default).
-
-.. zeek:id:: Management::Controller::auto_assign_ports
-   :source-code: policy/frameworks/management/controller/config.zeek 68 68
-
-   :Type: :zeek:type:`bool`
-   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *"Remove in v7.1: replaced by auto_assign_broker_ports."*
-   :Default: ``T``
-
-
-.. zeek:id:: Management::Controller::auto_assign_start_port
-   :source-code: policy/frameworks/management/controller/config.zeek 74 74
-
-   :Type: :zeek:type:`port`
-   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *"Remove in v7.1: replaced by auto_assign_broker_start_port."*
-   :Default: ``2200/tcp``
-
 
 .. zeek:id:: Management::Controller::default_port
    :source-code: policy/frameworks/management/controller/config.zeek 44 44
@@ -155,7 +137,7 @@ Redefinable Options
    for websocket clients.
 
 .. zeek:id:: Management::Controller::directory
-   :source-code: policy/frameworks/management/controller/config.zeek 93 93
+   :source-code: policy/frameworks/management/controller/config.zeek 91 91
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -253,7 +235,7 @@ Redefinable Options
    :zeek:see:`Management::Log` module.
 
 .. zeek:id:: Management::Controller::topic
-   :source-code: policy/frameworks/management/controller/config.zeek 87 87
+   :source-code: policy/frameworks/management/controller/config.zeek 85 85
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -264,7 +246,7 @@ Redefinable Options
 Constants
 #########
 .. zeek:id:: Management::Controller::store_name
-   :source-code: policy/frameworks/management/controller/config.zeek 97 97
+   :source-code: policy/frameworks/management/controller/config.zeek 95 95
 
    :Type: :zeek:type:`string`
    :Default: ``"controller"``
@@ -275,7 +257,7 @@ Constants
 Functions
 #########
 .. zeek:id:: Management::Controller::endpoint_info
-   :source-code: policy/frameworks/management/controller/config.zeek 165 173
+   :source-code: policy/frameworks/management/controller/config.zeek 163 171
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
@@ -283,7 +265,7 @@ Functions
    controller's Broker connectivity.
 
 .. zeek:id:: Management::Controller::endpoint_info_websocket
-   :source-code: policy/frameworks/management/controller/config.zeek 175 183
+   :source-code: policy/frameworks/management/controller/config.zeek 173 181
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::EndpointInfo`
 
@@ -291,14 +273,14 @@ Functions
    controller's websocket connectivity.
 
 .. zeek:id:: Management::Controller::get_name
-   :source-code: policy/frameworks/management/controller/config.zeek 119 125
+   :source-code: policy/frameworks/management/controller/config.zeek 117 123
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
    Returns the effective name of the controller.
 
 .. zeek:id:: Management::Controller::network_info
-   :source-code: policy/frameworks/management/controller/config.zeek 127 144
+   :source-code: policy/frameworks/management/controller/config.zeek 125 142
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::NetworkInfo`
 
@@ -306,7 +288,7 @@ Functions
    controller's Broker connectivity.
 
 .. zeek:id:: Management::Controller::network_info_websocket
-   :source-code: policy/frameworks/management/controller/config.zeek 146 163
+   :source-code: policy/frameworks/management/controller/config.zeek 144 161
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::NetworkInfo`
 

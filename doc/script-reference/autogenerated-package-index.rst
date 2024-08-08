@@ -424,15 +424,6 @@
 
    Detect hosts that are running traceroute.
 
-:doc:`policy/tuning </scripts/policy/tuning/index>`
-
-   Miscellaneous tuning parameters.
-
-:doc:`policy/tuning/defaults </scripts/policy/tuning/defaults/index>`
-
-   Sets various defaults, and prints warning messages to stdout under
-   certain conditions.
-
 :doc:`policy/frameworks/management/node </scripts/policy/frameworks/management/node/index>`
 
 
