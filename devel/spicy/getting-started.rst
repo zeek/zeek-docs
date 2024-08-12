@@ -44,7 +44,7 @@ Now we can go ahead and add a new protocol analyzer to Zeek. We
 already got the Spicy grammar to parse our connection's payload, it's
 in ``my-http.spicy``. In order to use this with Zeek, we have two
 additional things to do: (1) We need to let Zeek know about our new
-protocol analyzer, including when to use it; and (2) we need to define
+protocol analyzer and (2) we need to define
 at least one Zeek event that we want our parser to generate, so that
 we can then write a Zeek script working with the information that it
 extracts.
@@ -56,16 +56,14 @@ We do both of these by creating an additional control file for Zeek:
     :linenos:
     :language: spicy-evt
 
-The first block (lines 1-3) tells Zeek that we have a new protocol
-analyzer to provide. The analyzer's Zeek-side name is
-``spicy::MyHTTP``, and it's meant to run on top of TCP connections
-(line 1). Lines 2-3 then provide Zeek with more specifics: The entry
+The first block (lines 1-2) tells Zeek that we have a new protocol
+analyzer to provide. Line 1 defines the analyzer's Zeek-side name as
+``spicy::MyHTTP`` and that it's meant to run on top of TCP connections.
+Line 2 provide Zeek with more specifics: The entry
 point for originator-side payload is the ``MyHTTP::RequestLine`` unit
-type that our Spicy grammar defines (line 2); and we want Zeek to
-activate our analyzer for all connections with a responder port of
-12345 (which, of course, matches the packet trace we created).
+type that our Spicy grammar defines.
 
-The second block (line 5) tells Zeek that we want to
+The second block (line 4) tells Zeek that we want to
 define one event. On the left-hand side of that line we give the unit
 that is to trigger the event. The right-hand side defines its name and
 arguments. What we are saying here is that every time a ``RequestLine``
@@ -79,8 +77,10 @@ generation of the current event). The first parameter, ``$conn``, is a
 connection ID (``conn_id``) to the event.
 
 Now we got everything in place that we need for our new protocol
-analyzer---except for a Zeek script actually doing something with the
-information we are parsing. Let's use this:
+analyzer---except for a Zeek script that: (1) Tells Zeek to activate
+our analyzer for all connections with a responder port of
+12345 (which matches the packet trace we created) and (2) actually
+does something with the information we are parsing. Let's use this:
 
 .. literalinclude:: examples/my-http.zeek
     :caption: my-http.zeek
@@ -90,6 +90,21 @@ You see an Zeek event handler for the event that we just defined,
 having the expected signature of four parameters matching the types of
 the parameter expressions that the ``*.evt`` file specifies. The
 handler's body then just prints out what it gets.
+
+Further, you see a ``zeek_init()`` event handler that calls the Analyzer
+framework's ``register_for_port()`` function. This call tells Zeek to
+enable the ``spicy::MyHTTP`` analyzer for connections on TCP port 12345.
+
+.. note::
+
+  .. versionchanged:: 7.1
+
+     In prior Zeek versions, the ``.evt`` file supported the keywords
+     ``port`` and ``ports`` to pass information about analyzer activation
+     to Zeek at ``.hlto`` loading time.
+
+     This functionality was deprecated with Zeek 7.0 and removed with Zeek 7.1
+     in favor of using explicit Zeek script side analyzer registration.
 
 .. _example_spicy_my_http:
 

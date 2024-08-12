@@ -96,6 +96,9 @@ properties are supported:
         ...`` and ``parse responder with ...``.
 
     ``port PORT`` or ``ports { PORT_1, ..., PORT_M }``
+
+        .. deprecated:: 7.0
+
         Specifies one or more well-known ports for which you want Zeek to
         automatically activate your analyzer with corresponding
         connections. Each port must be specified in Spicy's :spicylink:`syntax
@@ -110,6 +113,11 @@ properties are supported:
             property <programming/parsing.html#unit-meta-data>` that the responder-side
             ``SPICY_UNIT`` may define (as long as the attribute's
             direction is not ``originator``).
+
+        .. note::
+
+            Support for port and ports was removed with Zeek 7.1. Use
+            ``Analyzer::register_for_ports()`` within a Zeek script instead.
 
     ``replaces ANALYZER_NAME``
         Replaces a built-in analyzer that Zeek already provides with a
@@ -150,7 +158,6 @@ As a full example, here's what a new HTTP analyzer could look like:
     protocol analyzer spicy::HTTP over TCP:
         parse originator with HTTP::Requests,
         parse responder with HTTP::Replies,
-        port 80/tcp,
         replaces HTTP;
 
 

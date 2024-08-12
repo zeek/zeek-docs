@@ -82,17 +82,26 @@ protocol analyzer. We follow the same scheme here and put the
 following into ``tftp.evt``, the analyzer definition file:
 
 .. literalinclude:: autogen/tftp.evt
-    :lines: 5-7
+    :lines: 5-6
     :language: spicy-evt
 
 The first line provides our analyzer with a Zeek-side name
 (``spicy::TFTP``) and also tells Zeek that we are adding an
 application analyzer on top of UDP (``over UDP``). ``TFTP::Packet``
 provides the top-level entry point for parsing both sides of a TFTP
-connection. Furthermore, we want Zeek to automatically activate our
-analyzer for all sessions on UDP port 69 (i.e., TFTP's well known
-port). See :ref:`spicy_evt_analyzer_setup` for more details on defining
+connection. See :ref:`spicy_evt_analyzer_setup` for more details on defining
 such a ``protocol analyzer`` section.
+
+Furthermore, we want Zeek to automatically activate our analyzer for all
+sessions on UDP port 69 (i.e., TFTP's well known port) using the following
+script snippet:
+
+.. literalinclude:: examples/tftp-register-analyzer.zeek
+    :language: zeek
+
+This snippet can generally be assumed to be part of the analyzer's scripts.
+We'll reference it as ``tftp-register-analyzer.zeek`` below.
+
 
 With this in place, we can already employ the analyzer inside Zeek. It
 will not generate any events yet, but we can at least see the output of
@@ -101,15 +110,15 @@ grammar from earlier:
 
 .. code::
 
-    # zeek -r tftp_rrq.pcap tftp.hlto Spicy::enable_print=T
+    # zeek -r tftp_rrq.pcap tftp.hlto tftp-register-analyzer.zeek Spicy::enable_print=T
     [$opcode=Opcode::RRQ, $rrq=[$filename=b"rfc1350.txt", $mode=b"octet"], $wrq=(not set), $data=(not set), $ack=(not set), $error=(not set)]
 
-As by default, the Zeek plugin does not show the output of Spicy-side
-``print`` statements, we added ``Spicy::enable_print=T`` to the
+By default, Zeek does not show the output of Spicy-side
+``print`` statements. We added ``Spicy::enable_print=T`` to the
 command line to turn that on. We see that Zeek took care of the
 lower network layers, extracted the UDP payload from the Read Request,
 and passed that into our Spicy parser. (If you want to view more about
-the internals of what is happening here, there are a couple kinds of
+the internals of what is happening here, there are various kinds of
 :ref:`debug output available <spicy_debugging>`.)
 
 You might be wondering why there is only one line of output, even
@@ -129,7 +138,7 @@ TFTP is no exception. We start with an event for Read/Write Requests
 by adding this definition to ``tftp.evt``:
 
 .. literalinclude:: examples/tftp-single-request.evt
-    :lines: 5-7
+    :lines: 4-6
     :language: spicy-evt
 
 The first line makes our Spicy TFTP grammar available to the rest of
@@ -158,7 +167,7 @@ Running Zeek then gives us:
 Let's extend the event signature a bit by passing further arguments:
 
 .. literalinclude:: examples/tftp-single-request-more-args.evt
-    :lines: 5-7
+    :lines: 4-6
     :language: spicy-evt
 
 This shows how each parameter gets specified as a Spicy expression:
@@ -184,7 +193,7 @@ unit parameter, we can easily separate the two by gating event
 generation through an additional ``if`` condition:
 
 .. literalinclude:: autogen/tftp.evt
-    :lines: 11-12
+    :lines: 10-11
     :language: spicy-evt
 
 This now defines two separate events, each being generated only for
@@ -319,7 +328,8 @@ Zeek Script
 -----------
 
 Analyzers normally come along with a Zeek-side script that implements
-a set of standard base functionality, such as recording activity into
+a set of standard base functionality, such as registering the analyzer
+for well known ports and recording activity into
 a protocol specific log file. These scripts provide handlers for the
 analyzers' events, and collect and correlate their activity as
 desired. We have created such :download:`a script for TFTP

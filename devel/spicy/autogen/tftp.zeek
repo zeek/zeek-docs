@@ -40,6 +40,9 @@ export {
 
 	## Event that can be handled to access the TFTP logging record.
 	global log_tftp: event(rec: Info);
+
+	## The well known TFT ports to register the analyzer for.
+	global ports: set[port] = { 69/udp, } &redef;
 }
 
 # Maps a partial data connection ID to the request's Info record.
@@ -51,6 +54,8 @@ redef record connection += {
 
 event zeek_init() &priority=5
 	{
+	Analyzer::register_for_ports(Analyzer::ANALYZER_SPICY_TFTP, ports);
+
 	Log::create_stream(TFTP::LOG, [$columns = Info, $ev = log_tftp, $path="tftp"]);
 	}
 

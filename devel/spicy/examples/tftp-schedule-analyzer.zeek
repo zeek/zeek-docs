@@ -35,3 +35,8 @@ event tftp::error(c: connection, is_orig: bool, code: count, msg: string)
 	{
 	print "TFTP error", code, msg;
 	}
+
+event zeek_init()
+	{
+	Analyzer::register_for_ports(Analyzer::ANALYZER_SPICY_TFTP, set(69/udp));
+	}
