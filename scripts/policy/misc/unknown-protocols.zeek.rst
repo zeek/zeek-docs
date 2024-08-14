@@ -40,7 +40,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: UnknownProtocol::Info
-   :source-code: policy/misc/unknown-protocols.zeek 15 28
+   :source-code: policy/misc/unknown-protocols.zeek 15 33
 
    :Type: :zeek:type:`record`
 
@@ -56,6 +56,11 @@ Types
       first_bytes: :zeek:type:`string` :zeek:attr:`&log`
          A certain number of bytes at the start of the unknown protocol's
          header.
+
+      analyzer_history: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
+         The chain of packet analyzers that processed the packet up to this
+         point. This includes the history of encapsulating packets in case
+         of tunneling.
 
 
 Hooks

@@ -977,7 +977,7 @@ Events
    .. zeek:see:: new_packet tcp_packet
 
 .. zeek:id:: packet_not_processed
-   :source-code: base/bif/event.bif.zeek 962 962
+   :source-code: base/bif/event.bif.zeek 968 968
 
    :Type: :zeek:type:`event` (pkt: :zeek:type:`pcap_packet`)
 
@@ -1247,8 +1247,9 @@ Events
    .. zeek:see:: udp_contents udp_reply udp_request
 
 .. zeek:id:: unknown_protocol
-   :source-code: policy/misc/unknown-protocols.zeek 31 40
+   :source-code: policy/misc/unknown-protocols.zeek 37 47
 
+   :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`, analyzer_history: :zeek:type:`string_vec`)
    :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`)
 
    Generated when a packet analyzer attempts to forward a protocol that it doesn't
@@ -1262,6 +1263,11 @@ Events
    
 
    :param first_bytes: A certain number of bytes at the start of the unknown protocol's header.
+   
+
+   :param analyzer_history: The chain of packet analyzers that processed the packet up to this
+                     point. This includes the history of encapsulating packets in case
+                     of tunneling.
    
    .. zeek:see:: UnknownProtocol::first_bytes_count
 
