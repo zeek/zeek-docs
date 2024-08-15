@@ -17,6 +17,7 @@ Events
                                                          an OK_Packet
 :zeek:id:`mysql_auth_plugin`: :zeek:type:`event`         Generated for information about plugin authentication within handshake packets.
 :zeek:id:`mysql_auth_switch_request`: :zeek:type:`event` Generated for a server packet with an auth switch request.
+:zeek:id:`mysql_change_user`: :zeek:type:`event`         Generated for a change user command from a MySQL client.
 :zeek:id:`mysql_command_request`: :zeek:type:`event`     Generated for a command request from a MySQL client.
 :zeek:id:`mysql_eof`: :zeek:type:`event`                 Generated for a MySQL EOF packet.
 :zeek:id:`mysql_error`: :zeek:type:`event`               Generated for an unsuccessful MySQL response.
@@ -35,7 +36,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: mysql_auth_more_data
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 153 153
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 166 166
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, data: :zeek:type:`string`)
 
@@ -57,7 +58,7 @@ Events
    .. zeek:see:: mysql_handshake mysql_auth_switch_request
 
 .. zeek:id:: mysql_auth_plugin
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 125 125
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 138 138
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, name: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -80,7 +81,7 @@ Events
    .. zeek:see:: mysql_handshake mysql_auth_switch_request mysql_auth_more_data
 
 .. zeek:id:: mysql_auth_switch_request
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 137 137
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 150 150
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, name: :zeek:type:`string`, data: :zeek:type:`string`)
 
@@ -96,6 +97,24 @@ Events
    :param data: Initial authentication data for the plugin.
    
    .. zeek:see:: mysql_handshake mysql_auth_more_data
+
+.. zeek:id:: mysql_change_user
+   :source-code: base/protocols/mysql/main.zeek 87 90
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, username: :zeek:type:`string`)
+
+   Generated for a change user command from a MySQL client.
+   
+   See the MySQL `documentation <http://dev.mysql.com/doc/internals/en/client-server-protocol.html>`__
+   for more information about the MySQL protocol.
+   
+
+   :param c: The connection.
+   
+
+   :param username: The username supplied by the client
+   
+   .. zeek:see:: mysql_error mysql_ok mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_command_request
    :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 16 16
@@ -119,7 +138,7 @@ Events
    .. zeek:see:: mysql_error mysql_ok mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_eof
-   :source-code: base/protocols/mysql/main.zeek 115 132
+   :source-code: base/protocols/mysql/main.zeek 120 137
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_intermediate: :zeek:type:`bool`)
 
@@ -137,7 +156,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_error
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 31 31
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 44 44
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, code: :zeek:type:`count`, msg: :zeek:type:`string`)
 
@@ -177,7 +196,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_server_version mysql_ssl_request
 
 .. zeek:id:: mysql_ok
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 44 44
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 57 57
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, affected_rows: :zeek:type:`count`)
 
@@ -195,7 +214,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_server_version mysql_handshake
 
 .. zeek:id:: mysql_result_row
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 70 70
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 83 83
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, row: :zeek:type:`string_vec`)
 
@@ -231,7 +250,7 @@ Events
    .. zeek:see:: mysql_command_request mysql_error mysql_ok mysql_handshake
 
 .. zeek:id:: mysql_ssl_request
-   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 109 109
+   :source-code: base/bif/plugins/Zeek_MySQL.events.bif.zeek 122 122
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
