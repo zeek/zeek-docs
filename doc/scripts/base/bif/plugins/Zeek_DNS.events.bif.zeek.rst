@@ -41,6 +41,7 @@ Events
 :zeek:id:`dns_SRV_reply`: :zeek:type:`event`          Generated for DNS replies of type *SRV*.
 :zeek:id:`dns_SSHFP`: :zeek:type:`event`              Generated for DNS replies of type *BINDS*.
 :zeek:id:`dns_SVCB`: :zeek:type:`event`               Generated for DNS replies of type *SVCB* (General Purpose Service Endpoints).
+:zeek:id:`dns_TKEY`: :zeek:type:`event`               Generated for DNS replies of type *TKEY*.
 :zeek:id:`dns_TSIG_addl`: :zeek:type:`event`          Generated for DNS replies of type *TSIG*.
 :zeek:id:`dns_TXT_reply`: :zeek:type:`event`          Generated for DNS replies of type *TXT*.
 :zeek:id:`dns_WKS_reply`: :zeek:type:`event`          Generated for DNS replies of type *WKS*.
@@ -437,7 +438,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_HTTPS
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 790 790
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 808 808
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, https: :zeek:type:`dns_svcb_rr`)
 
@@ -804,7 +805,7 @@ Events
    :param binds: The parsed RDATA of BIND-Signing state record.
 
 .. zeek:id:: dns_SVCB
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 773 773
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 791 791
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, svcb: :zeek:type:`dns_svcb_rr`)
 
@@ -826,8 +827,32 @@ Events
 
    :param svcb: The parsed RDATA of SVCB type record.
 
+.. zeek:id:: dns_TKEY
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 623 623
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_tkey`)
+
+   Generated for DNS replies of type *TKEY*. For replies with multiple answers,
+   an individual event of the corresponding type is raised for each.
+   
+   See `Wikipedia <http://en.wikipedia.org/wiki/Domain_Name_System>`__ for more
+   information about the DNS protocol. See `RFC2930 <https://tools.ietf.org/html/rfc2930>`__
+   for more information about TKEY. Zeek analyzes both UDP and TCP DNS sessions.
+   
+
+   :param c: The connection, which may be UDP or TCP depending on the type of the
+      transport-layer session being analyzed.
+   
+
+   :param msg: The parsed DNS message header.
+   
+
+   :param ans: The parsed TKEY reply.
+   
+   .. zeek:see:: dns_TSIG_addl
+
 .. zeek:id:: dns_TSIG_addl
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 629 629
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 647 647
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_tsig_additional`)
 
@@ -920,7 +945,7 @@ Events
       dns_skip_addl dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_end
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 813 813
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 831 831
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`)
 
