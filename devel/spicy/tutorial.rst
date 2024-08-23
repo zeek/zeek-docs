@@ -94,6 +94,14 @@ analyzer for all sessions on UDP port 69 (i.e., TFTP's well known
 port). See :ref:`spicy_evt_analyzer_setup` for more details on defining
 such a ``protocol analyzer`` section.
 
+.. note::
+
+    We use the ``port`` attribute in the ``protocol analyzer`` section
+    mainly for convenience; it's not the only way to define the
+    well-known ports. For a production analyzer, it's more idiomatic
+    to use the a Zeek script instead; see :ref:`this note
+    <zeek_init_instead_of_port>` for more information.
+
 With this in place, we can already employ the analyzer inside Zeek. It
 will not generate any events yet, but we can at least see the output of
 the ``on %done { print self; }`` hook that still remains part of the
