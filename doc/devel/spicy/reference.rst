@@ -111,6 +111,38 @@ properties are supported:
             ``SPICY_UNIT`` may define (as long as the attribute's
             direction is not ``originator``).
 
+        .. note::
+
+            .. _zeek_init_instead_of_port:
+
+            While using ``port`` (or ``%port``) can be convinient, for
+            production analyzers we recommended to instead register
+            their well-known ports from inside a Zeek script, using a
+            snippet like this:
+
+            .. code-block:: zeek
+
+                module MyAnalyzer;
+
+                export {
+                    const ports = { 12345/tcp } &redef;
+                }
+
+                redef likely_server_ports += { ports };
+
+                event zeek_init() &priority=5
+                    {
+                    Analyzer::register_for_ports(Analyzer::ANALYZER_MY_ANALYZER, ports);
+                    }
+
+            This follows the idiomatic Zeek pattern for defining
+            well-known ports that allows users to customize them
+            through their own site-specific scripts (e.g., ``redef
+            MyAnalyzer::port += { 12346/tcp };``). The :ref:`package
+            template <zkg_create_package>` includes such code instead
+            of defining ports inside the EVT file.
+
+
     ``replaces ANALYZER_NAME``
         Replaces a built-in analyzer that Zeek already provides with a
         new Spicy version by internally disabling the existing
