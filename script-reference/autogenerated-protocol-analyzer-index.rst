@@ -16084,7 +16084,7 @@ Events
       ssl_extension_connection_id
 
 .. zeek:id:: ssl_ecdh_server_params
-   :source-code: base/protocols/ssl/main.zeek 328 333
+   :source-code: base/protocols/ssl/main.zeek 330 335
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, curve: :zeek:type:`count`, point: :zeek:type:`string`)
 
@@ -16433,7 +16433,7 @@ Events
       ssl_session_ticket_handshake x509_certificate
 
 .. zeek:id:: ssl_alert
-   :source-code: base/protocols/ssl/main.zeek 485 491
+   :source-code: base/protocols/ssl/main.zeek 487 493
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, level: :zeek:type:`count`, desc: :zeek:type:`count`)
 
@@ -16528,7 +16528,7 @@ Events
       ssl_alert ssl_encrypted_data
 
 .. zeek:id:: ssl_plaintext_data
-   :source-code: base/protocols/ssl/main.zeek 536 545
+   :source-code: base/protocols/ssl/main.zeek 538 547
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, record_version: :zeek:type:`count`, content_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -16664,7 +16664,7 @@ Events
    :param response: OCSP data.
 
 .. zeek:id:: ssl_handshake_message
-   :source-code: base/protocols/ssl/main.zeek 374 456
+   :source-code: base/protocols/ssl/main.zeek 376 458
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_client: :zeek:type:`bool`, msg_type: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -16709,7 +16709,7 @@ Events
       ssl_handshake_message
 
 .. zeek:id:: ssl_connection_flipped
-   :source-code: base/protocols/ssl/main.zeek 367 372
+   :source-code: base/protocols/ssl/main.zeek 369 374
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
