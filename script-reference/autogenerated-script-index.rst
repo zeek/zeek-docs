@@ -140,6 +140,7 @@
    base/frameworks/files/magic/__load__.zeek </scripts/base/frameworks/files/magic/__load__.zeek>
    base/frameworks/telemetry/options.zeek </scripts/base/frameworks/telemetry/options.zeek>
    base/bif/__load__.zeek </scripts/base/bif/__load__.zeek>
+   base/bif/consts.bif.zeek </scripts/base/bif/consts.bif.zeek>
    base/bif/telemetry.bif.zeek </scripts/base/bif/telemetry.bif.zeek>
    base/bif/zeekygen.bif.zeek </scripts/base/bif/zeekygen.bif.zeek>
    base/bif/pcap.bif.zeek </scripts/base/bif/pcap.bif.zeek>
