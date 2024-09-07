@@ -430,6 +430,10 @@
    base/protocols/ntp/main.zeek </scripts/base/protocols/ntp/main.zeek>
    base/protocols/ntp/consts.zeek </scripts/base/protocols/ntp/consts.zeek>
    base/protocols/pop3/__load__.zeek </scripts/base/protocols/pop3/__load__.zeek>
+   base/protocols/postgresql/__load__.zeek </scripts/base/protocols/postgresql/__load__.zeek>
+   base/protocols/postgresql/consts.zeek </scripts/base/protocols/postgresql/consts.zeek>
+   base/protocols/postgresql/spicy-events.zeek </scripts/base/protocols/postgresql/spicy-events.zeek>
+   base/protocols/postgresql/main.zeek </scripts/base/protocols/postgresql/main.zeek>
    base/protocols/quic/__load__.zeek </scripts/base/protocols/quic/__load__.zeek>
    base/protocols/quic/spicy-events.zeek </scripts/base/protocols/quic/spicy-events.zeek>
    base/protocols/quic/consts.zeek </scripts/base/protocols/quic/consts.zeek>

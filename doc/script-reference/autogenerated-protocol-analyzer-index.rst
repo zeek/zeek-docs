@@ -125,6 +125,8 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_LDAP_UDP Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_POSTGRESQL Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_QUIC Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_SYSLOG Analyzer::Tag
@@ -342,6 +344,8 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_TCP AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_LDAP_UDP AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_POSTGRESQL AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_QUIC AllAnalyzers::Tag
 

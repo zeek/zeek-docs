@@ -808,6 +808,11 @@ Types
          (present if :doc:`/scripts/base/protocols/ntp/main.zeek` is loaded)
 
 
+      .. zeek:enum:: PostgreSQL::LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/postgresql/main.zeek` is loaded)
+
+
       .. zeek:enum:: QUIC::LOG Log::ID
 
          (present if :doc:`/scripts/base/protocols/quic/main.zeek` is loaded)
