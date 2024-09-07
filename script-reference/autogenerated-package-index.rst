@@ -314,6 +314,9 @@
 
    Support for POP3 (Post Office Protocol) protocol analysis.
 
+:doc:`base/protocols/postgresql </scripts/base/protocols/postgresql/index>`
+
+
 :doc:`base/protocols/quic </scripts/base/protocols/quic/index>`
 
 

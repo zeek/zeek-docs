@@ -1878,6 +1878,12 @@ Redefinable Options
 
          NTP::ports
 
+   :Redefinition: from :doc:`/scripts/base/protocols/postgresql/main.zeek`
+
+      ``+=``::
+
+         PostgreSQL::ports
+
    :Redefinition: from :doc:`/scripts/base/protocols/radius/main.zeek`
 
       ``+=``::
@@ -8429,6 +8435,14 @@ Types
 
       ntp: :zeek:type:`NTP::Info` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/ntp/main.zeek` is loaded)
+
+
+      postgresql: :zeek:type:`PostgreSQL::Info` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/postgresql/main.zeek` is loaded)
+
+
+      postgresql_state: :zeek:type:`PostgreSQL::State` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/postgresql/main.zeek` is loaded)
 
 
       quic: :zeek:type:`QUIC::Info` :zeek:attr:`&optional`
