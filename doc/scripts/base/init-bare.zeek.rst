@@ -8318,6 +8318,10 @@ Types
       inner_vlan: :zeek:type:`int` :zeek:attr:`&optional`
          The inner VLAN, if applicable for this connection.
 
+      removal_hooks: :zeek:type:`set` [:zeek:type:`Conn::RemovalHook`] :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
+
+
       dpd: :zeek:type:`DPD::Info` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
@@ -8331,10 +8335,6 @@ Types
 
          The set of services (analyzers) for which Zeek has observed a
          violation after the same service had previously been confirmed.
-
-      removal_hooks: :zeek:type:`set` [:zeek:type:`Conn::RemovalHook`] :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
-
 
       conn: :zeek:type:`Conn::Info` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/conn/main.zeek` is loaded)

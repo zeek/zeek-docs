@@ -12,6 +12,7 @@ Summary
 Events
 ######
 ======================================================= ===============================================================
+:zeek:id:`new_teredo_state`: :zeek:type:`event`         Generated when per connection Teredo state is created.
 :zeek:id:`teredo_authentication`: :zeek:type:`event`    Generated for IPv6 packets encapsulated in a Teredo tunnel that
                                                         use the Teredo authentication encapsulation method.
 :zeek:id:`teredo_bubble`: :zeek:type:`event`            Generated for Teredo bubble packets.
@@ -25,8 +26,21 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Events
 ######
+.. zeek:id:: new_teredo_state
+   :source-code: base/packet-protocols/teredo/main.zeek 36 39
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated when per connection Teredo state is created.
+   
+   This is primarily useful to install a connection removal hook to clear
+   internal per-connection Teredo state.
+   
+
+   :param c: The Teredo tunnel connection.
+
 .. zeek:id:: teredo_authentication
-   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 30 30
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 42 42
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -46,7 +60,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_bubble
-   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 60 60
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 72 72
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -66,7 +80,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_origin_indication
-   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 45 45
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 57 57
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 
@@ -86,7 +100,7 @@ Events
       it may become particularly expensive for real-time analysis.
 
 .. zeek:id:: teredo_packet
-   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 15 15
+   :source-code: base/bif/plugins/Zeek_Teredo.events.bif.zeek 18 18
 
    :Type: :zeek:type:`event` (outer: :zeek:type:`connection`, inner: :zeek:type:`teredo_hdr`)
 

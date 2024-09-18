@@ -6,7 +6,7 @@ base/packet-protocols/gtpv1/main.zeek
 
 
 :Namespace: PacketAnalyzer::GTPV1
-:Imports: :doc:`base/bif/plugins/Zeek_GTPv1.functions.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.functions.bif.zeek>`, :doc:`base/frameworks/analyzer/main.zeek </scripts/base/frameworks/analyzer/main.zeek>`
+:Imports: :doc:`base/bif/plugins/Zeek_GTPv1.events.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek>`, :doc:`base/bif/plugins/Zeek_GTPv1.functions.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.functions.bif.zeek>`, :doc:`base/frameworks/analyzer/main.zeek </scripts/base/frameworks/analyzer/main.zeek>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`
 
 Summary
 ~~~~~~~
@@ -28,7 +28,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: PacketAnalyzer::GTPV1::default_analyzer
-   :source-code: base/packet-protocols/gtpv1/main.zeek 13 13
+   :source-code: base/packet-protocols/gtpv1/main.zeek 17 17
 
    :Type: :zeek:type:`PacketAnalyzer::Tag`
    :Attributes: :zeek:attr:`&redef`
