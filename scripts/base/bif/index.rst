@@ -90,7 +90,13 @@ Package: base/bif
 
    Internal functions and types used by the file analysis framework.
 
+:doc:`/scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_Teredo.functions.bif.zeek`
+
+
+:doc:`/scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_GTPv1.functions.bif.zeek`
@@ -456,12 +462,6 @@ Package: base/bif
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek`
-
-
-:doc:`/scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek`
 
 
 :doc:`/scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek`

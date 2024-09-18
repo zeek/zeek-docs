@@ -84,9 +84,12 @@
    base/packet-protocols/vxlan/main.zeek </scripts/base/packet-protocols/vxlan/main.zeek>
    base/packet-protocols/teredo/__load__.zeek </scripts/base/packet-protocols/teredo/__load__.zeek>
    base/packet-protocols/teredo/main.zeek </scripts/base/packet-protocols/teredo/main.zeek>
+   base/bif/plugins/Zeek_Teredo.events.bif.zeek </scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek>
    base/bif/plugins/Zeek_Teredo.functions.bif.zeek </scripts/base/bif/plugins/Zeek_Teredo.functions.bif.zeek>
+   base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>
    base/packet-protocols/gtpv1/__load__.zeek </scripts/base/packet-protocols/gtpv1/__load__.zeek>
    base/packet-protocols/gtpv1/main.zeek </scripts/base/packet-protocols/gtpv1/main.zeek>
+   base/bif/plugins/Zeek_GTPv1.events.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek>
    base/bif/plugins/Zeek_GTPv1.functions.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.functions.bif.zeek>
    base/frameworks/spicy/init-bare.zeek </scripts/base/frameworks/spicy/init-bare.zeek>
    builtin-plugins/__preload__.zeek </scripts/builtin-plugins/__preload__.zeek>
@@ -250,8 +253,6 @@
    base/bif/plugins/Zeek_ICMP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek>
    base/bif/plugins/Zeek_Geneve.events.bif.zeek </scripts/base/bif/plugins/Zeek_Geneve.events.bif.zeek>
    base/bif/plugins/Zeek_VXLAN.events.bif.zeek </scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek>
-   base/bif/plugins/Zeek_Teredo.events.bif.zeek </scripts/base/bif/plugins/Zeek_Teredo.events.bif.zeek>
-   base/bif/plugins/Zeek_GTPv1.events.bif.zeek </scripts/base/bif/plugins/Zeek_GTPv1.events.bif.zeek>
    base/bif/plugins/Zeek_FileEntropy.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek>
    base/bif/plugins/Zeek_FileExtract.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.events.bif.zeek>
    base/bif/plugins/Zeek_FileExtract.functions.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.functions.bif.zeek>
@@ -328,7 +329,6 @@
    base/frameworks/sumstats/non-cluster.zeek </scripts/base/frameworks/sumstats/non-cluster.zeek>
    base/frameworks/tunnels/__load__.zeek </scripts/base/frameworks/tunnels/__load__.zeek>
    base/frameworks/tunnels/main.zeek </scripts/base/frameworks/tunnels/main.zeek>
-   base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>
    base/frameworks/openflow/__load__.zeek </scripts/base/frameworks/openflow/__load__.zeek>
    base/frameworks/openflow/consts.zeek </scripts/base/frameworks/openflow/consts.zeek>
    base/frameworks/openflow/types.zeek </scripts/base/frameworks/openflow/types.zeek>
