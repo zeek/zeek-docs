@@ -180,6 +180,7 @@
    base/bif/plugins/Zeek_NTLM.events.bif.zeek </scripts/base/bif/plugins/Zeek_NTLM.events.bif.zeek>
    base/bif/plugins/Zeek_NTP.types.bif.zeek </scripts/base/bif/plugins/Zeek_NTP.types.bif.zeek>
    base/bif/plugins/Zeek_NTP.events.bif.zeek </scripts/base/bif/plugins/Zeek_NTP.events.bif.zeek>
+   base/bif/plugins/Zeek_POP3.consts.bif.zeek </scripts/base/bif/plugins/Zeek_POP3.consts.bif.zeek>
    base/bif/plugins/Zeek_POP3.events.bif.zeek </scripts/base/bif/plugins/Zeek_POP3.events.bif.zeek>
    base/bif/plugins/Zeek_RADIUS.events.bif.zeek </scripts/base/bif/plugins/Zeek_RADIUS.events.bif.zeek>
    base/bif/plugins/Zeek_RDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_RDP.events.bif.zeek>

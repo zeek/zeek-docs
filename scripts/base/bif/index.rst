@@ -260,6 +260,9 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_NTP.events.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_POP3.consts.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_POP3.events.bif.zeek`
 
 
