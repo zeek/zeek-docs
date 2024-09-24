@@ -77,10 +77,7 @@ function init_request(c: connection, is_orig: bool, fname: string, mode: string,
 	c$tftp = info;
 
 	# The data will come in from a different source port.
-        #
-	# TODO: Starting with Zeek 5.2, we will be able to use
-	# Analyzer::ANALYZER_SPICY_TFTP instead of get_tag(),
-	Analyzer::schedule_analyzer(c$id$resp_h, c$id$orig_h, c$id$orig_p, Analyzer::get_tag("Spicy_TFTP"), 1min);
+	Analyzer::schedule_analyzer(c$id$resp_h, c$id$orig_h, c$id$orig_p, Analyzer::ANALYZER_SPICY_TFTP, 1min);
 	expected_data_conns[c$id$resp_h, c$id$orig_p, c$id$orig_h] = info;
 	}
 
