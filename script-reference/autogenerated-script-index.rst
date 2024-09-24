@@ -562,6 +562,7 @@
    policy/protocols/conn/known-hosts.zeek </scripts/policy/protocols/conn/known-hosts.zeek>
    policy/protocols/conn/known-services.zeek </scripts/policy/protocols/conn/known-services.zeek>
    policy/protocols/conn/mac-logging.zeek </scripts/policy/protocols/conn/mac-logging.zeek>
+   policy/protocols/conn/protocol-strings.zeek </scripts/policy/protocols/conn/protocol-strings.zeek>
    policy/protocols/conn/vlan-logging.zeek </scripts/policy/protocols/conn/vlan-logging.zeek>
    policy/protocols/conn/weirds.zeek </scripts/policy/protocols/conn/weirds.zeek>
    policy/protocols/dhcp/msg-orig.zeek </scripts/policy/protocols/dhcp/msg-orig.zeek>

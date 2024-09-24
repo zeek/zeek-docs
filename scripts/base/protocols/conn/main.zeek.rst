@@ -54,7 +54,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::Info
-   :source-code: base/protocols/conn/main.zeek 21 161
+   :source-code: base/protocols/conn/main.zeek 21 164
 
    :Type: :zeek:type:`record`
 
@@ -210,6 +210,10 @@ Types
          *uid* values for any encapsulating parent connections
          used over the lifetime of this inner connection.
 
+      protocol_id: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+         The numeric identifier for the transport protocol for this
+         connection.
+
       community_id: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
          (present if :doc:`/scripts/policy/protocols/conn/community-id-logging.zeek` is loaded)
 
@@ -223,6 +227,11 @@ Types
          (present if :doc:`/scripts/policy/protocols/conn/mac-logging.zeek` is loaded)
 
          Link-layer address of the responder, if available.
+
+      protocol_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/protocols/conn/protocol-strings.zeek` is loaded)
+
+         A string version of the protocol_id field
 
       vlan: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/conn/vlan-logging.zeek` is loaded)
@@ -246,7 +255,7 @@ Types
 Events
 ######
 .. zeek:id:: Conn::log_conn
-   :source-code: base/protocols/conn/main.zeek 165 165
+   :source-code: base/protocols/conn/main.zeek 168 168
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Conn::Info`)
 
