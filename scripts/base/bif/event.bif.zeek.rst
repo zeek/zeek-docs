@@ -258,7 +258,7 @@ Events
    .. zeek:see:: connection_established new_connection
 
 .. zeek:id:: connection_reused
-   :source-code: base/protocols/ftp/main.zeek 455 459
+   :source-code: base/protocols/ftp/main.zeek 460 464
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -826,7 +826,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 5977 5979
+   :source-code: base/init-bare.zeek 6004 6006
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
