@@ -440,7 +440,7 @@ Constants
             }
             scope_sep="."
             ext_prefix="_"
-            ext_func=lambda_<2528247166937952945>
+            ext_func=lambda_<4692973652431675528>: function(path:string) : void
             ;
             interv=0 secs
             postprocessor=<uninitialized>

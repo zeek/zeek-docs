@@ -514,7 +514,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Cluster::create_store
-   :source-code: base/frameworks/cluster/main.zeek 426 501
+   :source-code: base/frameworks/cluster/main.zeek 442 517
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, persistent: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`Cluster::StoreInfo`
 
@@ -587,7 +587,7 @@ Functions
    :returns: The :zeek:type:`Cluster::NodeType` the calling node acts as.
 
 .. zeek:id:: Cluster::log
-   :source-code: base/frameworks/cluster/main.zeek 503 506
+   :source-code: base/frameworks/cluster/main.zeek 519 522
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`void`
 

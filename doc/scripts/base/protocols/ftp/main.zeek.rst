@@ -207,14 +207,14 @@ Events
 Hooks
 #####
 .. zeek:id:: FTP::finalize_ftp
-   :source-code: base/protocols/ftp/main.zeek 474 483
+   :source-code: base/protocols/ftp/main.zeek 479 488
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
    FTP finalization hook.  Remaining FTP info may get logged when it's called.
 
 .. zeek:id:: FTP::finalize_ftp_data
-   :source-code: base/protocols/ftp/main.zeek 461 471
+   :source-code: base/protocols/ftp/main.zeek 466 476
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`) : :zeek:type:`bool`
 
