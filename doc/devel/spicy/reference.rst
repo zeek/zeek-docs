@@ -115,7 +115,7 @@ properties are supported:
 
             .. _zeek_init_instead_of_port:
 
-            While using ``port`` (or ``%port``) can be convinient, for
+            While using ``port`` (or ``%port``) can be convenient, for
             production analyzers we recommended to instead register
             their well-known ports from inside a Zeek script, using a
             snippet like this:
