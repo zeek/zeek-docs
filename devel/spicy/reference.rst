@@ -342,9 +342,7 @@ Event Definitions
 To define a Zeek event that you want the Spicy analyzer to trigger, you
 add lines of the form::
 
-    on HOOK_ID -> event EVENT_NAME(ARG_1, ..., ARG_N);
-
-    on HOOK_ID if COND -> event EVENT_NAME(ARG_1, ..., ARG_N);
+    on HOOK_ID [if ( COND )] -> event EVENT_NAME(ARG_1, ..., ARG_N) [&priority=N];
 
 Zeek automatically derives from this everything it needs to
 register new events with Zeek, including a mapping of the arguments'
@@ -363,6 +361,12 @@ the pieces going into such an event definition:
     HTTP::Request::uri`` leads to an event each time the ``uri`` field
     has been parsed. (In the former example you may skip the
     ``%done``, actually: ``on HTTP::Request`` implicitly adds it.)
+
+``if ( COND )``
+    If given, events are only generated if the expression ``COND``
+    evaluates to true. Just like event arguments, the expression is
+    evaluated in the context of the current unit instance and has
+    access to ``self``.
 
 ``EVENT_NAME``
     The Zeek-side name of the event you want to generate, preferably
@@ -487,12 +491,9 @@ the pieces going into such an event definition:
         - List comprehension can be convenient to fill Zeek vectors:
           ``[some_func(i) for i in self.my_list]``.
 
-``if COND``
-    If given, events are only generated if the expression ``COND``
-    evaluates to true. Just like event arguments, the expression is
-    evaluated in the context of the current unit instance and has
-    access to ``self``.
-
+``&priority=N``
+    An optional priority, where events with higher priority are raised
+    before lower priority ones. The default priority is ``-1000``.
 
 .. _spicy_export_types:
 
