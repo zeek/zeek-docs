@@ -339,10 +339,24 @@ As a full example, here's what a new GIF analyzer could look like:
 Event Definitions
 -----------------
 
-To define a Zeek event that you want the Spicy analyzer to trigger, you
-add lines of the form::
+You can define a Zeek event that you want the Spicy analyzer to
+trigger::
+
+    on HOOK_ID -> event EVENT_NAME(ARG_1, ARG_2, ARG_3);
+
+With an optional condition::
+
+    on HOOK_ID if ( True ) -> event EVENT_NAME(ARG_1, ARG_2, ARG_3);
+
+Or with an optional priority::
+
+    on HOOK_ID -> event EVENT_NAME(ARG_1, ARG_2, ARG_3) &priority=0;
+
+The generic syntax is::
 
     on HOOK_ID [if ( COND )] -> event EVENT_NAME(ARG_1, ..., ARG_N) [&priority=N];
+
+where elements in square brackets ``[...]`` are optional.
 
 Zeek automatically derives from this everything it needs to
 register new events with Zeek, including a mapping of the arguments'
@@ -521,7 +535,11 @@ To have the Zeek create a type for your analyzer automatically,
 you need to ``export`` the Spicy type in your EVT file. The syntax for
 that is::
 
-    export SPICY_ID [as ZEEK_ID];
+    export SPICY_ID;
+
+Optionally, you may add a ``ZEEK_ID``::
+
+    export SPICY_ID as ZEEK_ID;
 
 Here, ``SPICY_ID`` is the fully-scoped type ID on the Spicy side, and
 ``ZEEK_ID`` is the fully-scoped type ID you want in Zeek. If you leave
