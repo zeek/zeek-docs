@@ -1040,7 +1040,7 @@ Redefinable Options
    enabled log streams.
    
    In earlier Zeek releases this was governed by :zeek:see:`Threading::heartbeat_interval`.
-   For Broker, see also :zeek::see:`Broker::log_batch_interval`.
+   For Broker, see also :zeek:see:`Broker::log_batch_interval`.
    
    .. :zeek:see:`Log::flush`
    .. :zeek:see:`Log::set_buf`
