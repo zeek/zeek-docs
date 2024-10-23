@@ -17,9 +17,9 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-============================================================================== ==================================================================
-:zeek:id:`Telemetry::sync_interval`: :zeek:type:`interval` :zeek:attr:`&redef` Interval at which the :zeek:see:`Telemetry::sync` hook is invoked.
-============================================================================== ==================================================================
+=============================================================================================================== ==================================================================
+:zeek:id:`Telemetry::sync_interval`: :zeek:type:`interval` :zeek:attr:`&deprecated` = *...* :zeek:attr:`&redef` Interval at which the :zeek:see:`Telemetry::sync` hook is invoked.
+=============================================================================================================== ==================================================================
 
 Types
 #####
@@ -32,12 +32,6 @@ Types
 :zeek:type:`Telemetry::HistogramFamily`: :zeek:type:`record` Type representing a family of histograms with uninitialized label values.
 :zeek:type:`Telemetry::labels_vector`: :zeek:type:`vector`   Alias for a vector of label values.
 ============================================================ =========================================================================
-
-Hooks
-#####
-============================================= ====================
-:zeek:id:`Telemetry::sync`: :zeek:type:`hook` Telemetry sync hook.
-============================================= ====================
 
 Functions
 #########
@@ -75,13 +69,20 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Telemetry::sync_interval
-   :source-code: base/frameworks/telemetry/main.zeek 281 281
+   :source-code: base/frameworks/telemetry/main.zeek 274 274
 
    :Type: :zeek:type:`interval`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``10.0 secs``
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in 8.1. If you require regular sync invocation, do so explicitly in a scheduled event."* :zeek:attr:`&redef`
+   :Default: ``0 secs``
 
    Interval at which the :zeek:see:`Telemetry::sync` hook is invoked.
+   
+   By default, the hook is invoked on demand, setting this option to
+   a positive interval allows to invoke it regularly, too. Regular
+   invocations are relative to Zeek's network time.
+   
+   Note that on-demand hook invocation will happen even if this
+   is set.
 
 Types
 #####
@@ -178,30 +179,10 @@ Types
 
    Alias for a vector of label values.
 
-Hooks
-#####
-.. zeek:id:: Telemetry::sync
-   :source-code: policy/misc/stats.zeek 135 151
-
-   :Type: :zeek:type:`hook` () : :zeek:type:`bool`
-
-   Telemetry sync hook.
-   
-   This hook is invoked every :zeek:see:`Telemetry::sync_interval`
-   for script writers to synchronize or mirror metrics with the
-   telemetry subsystem. For example, when tracking table or value
-   footprints with gauges, the value in question can be set on an actual
-   :zeek:see:`Telemetry::Gauge` instance during execution of this hook.
-   
-   Implementations should be lightweight, this hook may be called
-   multiple times per minute. The interval can increased by changing
-   :zeek:see:`Telemetry::sync_interval` at the cost of delaying
-   metric updates and thereby reducing granularity.
-
 Functions
 #########
 .. zeek:id:: Telemetry::collect_histogram_metrics
-   :source-code: base/frameworks/telemetry/main.zeek 488 491
+   :source-code: base/frameworks/telemetry/main.zeek 481 484
 
    :Type: :zeek:type:`function` (prefix: :zeek:type:`string` :zeek:attr:`&default` = ``"*"`` :zeek:attr:`&optional`, name: :zeek:type:`string` :zeek:attr:`&default` = ``"*"`` :zeek:attr:`&optional`) : :zeek:type:`vector` of :zeek:type:`Telemetry::HistogramMetric`
 
@@ -212,7 +193,7 @@ Functions
    all histogram metrics are returned.
 
 .. zeek:id:: Telemetry::collect_metrics
-   :source-code: base/frameworks/telemetry/main.zeek 483 486
+   :source-code: base/frameworks/telemetry/main.zeek 476 479
 
    :Type: :zeek:type:`function` (prefix: :zeek:type:`string` :zeek:attr:`&default` = ``"*"`` :zeek:attr:`&optional`, name: :zeek:type:`string` :zeek:attr:`&default` = ``"*"`` :zeek:attr:`&optional`) : :zeek:type:`vector` of :zeek:type:`Telemetry::Metric`
 
@@ -224,7 +205,7 @@ Functions
    all counters and gauges are returned.
 
 .. zeek:id:: Telemetry::counter_family_inc
-   :source-code: base/frameworks/telemetry/main.zeek 360 363
+   :source-code: base/frameworks/telemetry/main.zeek 353 356
 
    :Type: :zeek:type:`function` (cf: :zeek:type:`Telemetry::CounterFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`, amount: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -245,7 +226,7 @@ Functions
    :returns: True if the counter was incremented successfully.
 
 .. zeek:id:: Telemetry::counter_family_set
-   :source-code: base/frameworks/telemetry/main.zeek 365 368
+   :source-code: base/frameworks/telemetry/main.zeek 358 361
 
    :Type: :zeek:type:`function` (cf: :zeek:type:`Telemetry::CounterFamily`, label_values: :zeek:type:`Telemetry::labels_vector`, value: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -267,7 +248,7 @@ Functions
    :returns: True if the counter value was set successfully.
 
 .. zeek:id:: Telemetry::counter_inc
-   :source-code: base/frameworks/telemetry/main.zeek 344 347
+   :source-code: base/frameworks/telemetry/main.zeek 337 340
 
    :Type: :zeek:type:`function` (c: :zeek:type:`Telemetry::Counter`, amount: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -284,7 +265,7 @@ Functions
    :returns: True if the counter was incremented successfully.
 
 .. zeek:id:: Telemetry::counter_set
-   :source-code: base/frameworks/telemetry/main.zeek 349 358
+   :source-code: base/frameworks/telemetry/main.zeek 342 351
 
    :Type: :zeek:type:`function` (c: :zeek:type:`Telemetry::Counter`, value: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -304,14 +285,14 @@ Functions
    :returns: True if the counter value was set successfully.
 
 .. zeek:id:: Telemetry::counter_with
-   :source-code: base/frameworks/telemetry/main.zeek 331 342
+   :source-code: base/frameworks/telemetry/main.zeek 324 335
 
    :Type: :zeek:type:`function` (cf: :zeek:type:`Telemetry::CounterFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`) : :zeek:type:`Telemetry::Counter`
 
    Get a :zeek:see:`Telemetry::Counter` instance given family and label values.
 
 .. zeek:id:: Telemetry::gauge_dec
-   :source-code: base/frameworks/telemetry/main.zeek 407 410
+   :source-code: base/frameworks/telemetry/main.zeek 400 403
 
    :Type: :zeek:type:`function` (g: :zeek:type:`Telemetry::Gauge`, amount: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -327,7 +308,7 @@ Functions
    :returns: True if the gauge was incremented successfully.
 
 .. zeek:id:: Telemetry::gauge_family_dec
-   :source-code: base/frameworks/telemetry/main.zeek 428 431
+   :source-code: base/frameworks/telemetry/main.zeek 421 424
 
    :Type: :zeek:type:`function` (gf: :zeek:type:`Telemetry::GaugeFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`, value: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -348,7 +329,7 @@ Functions
    :returns: True if the gauge was incremented successfully.
 
 .. zeek:id:: Telemetry::gauge_family_inc
-   :source-code: base/frameworks/telemetry/main.zeek 423 426
+   :source-code: base/frameworks/telemetry/main.zeek 416 419
 
    :Type: :zeek:type:`function` (gf: :zeek:type:`Telemetry::GaugeFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`, value: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -370,7 +351,7 @@ Functions
    :returns: True if the gauge was incremented successfully.
 
 .. zeek:id:: Telemetry::gauge_family_set
-   :source-code: base/frameworks/telemetry/main.zeek 433 436
+   :source-code: base/frameworks/telemetry/main.zeek 426 429
 
    :Type: :zeek:type:`function` (gf: :zeek:type:`Telemetry::GaugeFamily`, label_values: :zeek:type:`Telemetry::labels_vector`, value: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -391,7 +372,7 @@ Functions
    :returns: True if the gauge value was set successfully.
 
 .. zeek:id:: Telemetry::gauge_inc
-   :source-code: base/frameworks/telemetry/main.zeek 402 405
+   :source-code: base/frameworks/telemetry/main.zeek 395 398
 
    :Type: :zeek:type:`function` (g: :zeek:type:`Telemetry::Gauge`, amount: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -407,7 +388,7 @@ Functions
    :returns: True if the gauge was incremented successfully.
 
 .. zeek:id:: Telemetry::gauge_set
-   :source-code: base/frameworks/telemetry/main.zeek 412 421
+   :source-code: base/frameworks/telemetry/main.zeek 405 414
 
    :Type: :zeek:type:`function` (g: :zeek:type:`Telemetry::Gauge`, value: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -423,14 +404,14 @@ Functions
    :returns: True if the gauge value was set successfully.
 
 .. zeek:id:: Telemetry::gauge_with
-   :source-code: base/frameworks/telemetry/main.zeek 390 400
+   :source-code: base/frameworks/telemetry/main.zeek 383 393
 
    :Type: :zeek:type:`function` (gf: :zeek:type:`Telemetry::GaugeFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`) : :zeek:type:`Telemetry::Gauge`
 
    Get a :zeek:see:`Telemetry::Gauge` instance given family and label values.
 
 .. zeek:id:: Telemetry::histogram_family_observe
-   :source-code: base/frameworks/telemetry/main.zeek 478 481
+   :source-code: base/frameworks/telemetry/main.zeek 471 474
 
    :Type: :zeek:type:`function` (hf: :zeek:type:`Telemetry::HistogramFamily`, label_values: :zeek:type:`Telemetry::labels_vector`, measurement: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -451,7 +432,7 @@ Functions
    :returns: True if measurement was observed successfully.
 
 .. zeek:id:: Telemetry::histogram_observe
-   :source-code: base/frameworks/telemetry/main.zeek 473 476
+   :source-code: base/frameworks/telemetry/main.zeek 466 469
 
    :Type: :zeek:type:`function` (h: :zeek:type:`Telemetry::Histogram`, measurement: :zeek:type:`double`) : :zeek:type:`bool`
 
@@ -467,28 +448,28 @@ Functions
    :returns: True if measurement was observed successfully.
 
 .. zeek:id:: Telemetry::histogram_with
-   :source-code: base/frameworks/telemetry/main.zeek 460 471
+   :source-code: base/frameworks/telemetry/main.zeek 453 464
 
    :Type: :zeek:type:`function` (hf: :zeek:type:`Telemetry::HistogramFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`) : :zeek:type:`Telemetry::Histogram`
 
    Get a :zeek:see:`Telemetry::Histogram` instance given family and label values.
 
 .. zeek:id:: Telemetry::register_counter_family
-   :source-code: base/frameworks/telemetry/main.zeek 311 321
+   :source-code: base/frameworks/telemetry/main.zeek 304 314
 
    :Type: :zeek:type:`function` (opts: :zeek:type:`Telemetry::MetricOpts`) : :zeek:type:`Telemetry::CounterFamily`
 
    Register a counter family.
 
 .. zeek:id:: Telemetry::register_gauge_family
-   :source-code: base/frameworks/telemetry/main.zeek 370 380
+   :source-code: base/frameworks/telemetry/main.zeek 363 373
 
    :Type: :zeek:type:`function` (opts: :zeek:type:`Telemetry::MetricOpts`) : :zeek:type:`Telemetry::GaugeFamily`
 
    Register a gauge family.
 
 .. zeek:id:: Telemetry::register_histogram_family
-   :source-code: base/frameworks/telemetry/main.zeek 438 449
+   :source-code: base/frameworks/telemetry/main.zeek 431 442
 
    :Type: :zeek:type:`function` (opts: :zeek:type:`Telemetry::MetricOpts`) : :zeek:type:`Telemetry::HistogramFamily`
 
