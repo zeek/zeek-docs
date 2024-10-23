@@ -780,6 +780,12 @@ Types
 :zeek:type:`x509_opaque_vector`: :zeek:type:`vector`                             A vector of x509 opaques.
 ================================================================================ =======================================================================================================================
 
+Hooks
+#####
+============================================= ====================
+:zeek:id:`Telemetry::sync`: :zeek:type:`hook` Telemetry sync hook.
+============================================= ====================
+
 Functions
 #########
 ============================================================== =========================================================
@@ -1314,7 +1320,7 @@ Redefinable Options
    TLS 1.3 connections, this is implicitly 1 as defined by RFC 8446.
 
 .. zeek:id:: Telemetry::callback_timeout
-   :source-code: base/init-bare.zeek 5941 5941
+   :source-code: base/init-bare.zeek 5956 5956
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -1324,7 +1330,7 @@ Redefinable Options
    wait for metric callbacks to complete on the IO loop.
 
 .. zeek:id:: Telemetry::civetweb_threads
-   :source-code: base/init-bare.zeek 5944 5944
+   :source-code: base/init-bare.zeek 5959 5959
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1513,7 +1519,7 @@ Redefinable Options
    
 
 .. zeek:id:: bits_per_uid
-   :source-code: base/init-bare.zeek 5957 5957
+   :source-code: base/init-bare.zeek 5972 5972
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1545,7 +1551,7 @@ Redefinable Options
    be reported via :zeek:see:`content_gap`.
 
 .. zeek:id:: digest_salt
-   :source-code: base/init-bare.zeek 5965 5965
+   :source-code: base/init-bare.zeek 5980 5980
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1723,7 +1729,7 @@ Redefinable Options
    means "forever", which resists evasion, but can lead to state accrual.
 
 .. zeek:id:: global_hash_seed
-   :source-code: base/init-bare.zeek 5952 5952
+   :source-code: base/init-bare.zeek 5967 5967
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1780,7 +1786,7 @@ Redefinable Options
    .. zeek:see:: conn_stats
 
 .. zeek:id:: io_poll_interval_default
-   :source-code: base/init-bare.zeek 5982 5982
+   :source-code: base/init-bare.zeek 5997 5997
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -1799,7 +1805,7 @@ Redefinable Options
    .. zeek:see:: io_poll_interval_live
 
 .. zeek:id:: io_poll_interval_live
-   :source-code: base/init-bare.zeek 5997 5997
+   :source-code: base/init-bare.zeek 6012 6012
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -2045,7 +2051,7 @@ Redefinable Options
    was observed.
 
 .. zeek:id:: max_find_all_string_length
-   :source-code: base/init-bare.zeek 5969 5969
+   :source-code: base/init-bare.zeek 5984 5984
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -2275,7 +2281,7 @@ Redefinable Options
    Time to wait before timing out an RPC request.
 
 .. zeek:id:: running_under_test
-   :source-code: base/init-bare.zeek 6001 6001
+   :source-code: base/init-bare.zeek 6016 6016
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -3437,7 +3443,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 6003 6003
+   :source-code: base/init-bare.zeek 6018 6018
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
@@ -7818,7 +7824,7 @@ Types
    Histograms returned by the :zeek:see:`Telemetry::collect_histogram_metrics` function.
 
 .. zeek:type:: Telemetry::HistogramMetricVector
-   :source-code: base/init-bare.zeek 5937 5937
+   :source-code: base/init-bare.zeek 5952 5952
 
    :Type: :zeek:type:`vector` of :zeek:type:`Telemetry::HistogramMetric`
 
@@ -7918,7 +7924,7 @@ Types
 
 
 .. zeek:type:: Telemetry::MetricVector
-   :source-code: base/init-bare.zeek 5936 5936
+   :source-code: base/init-bare.zeek 5951 5951
 
    :Type: :zeek:type:`vector` of :zeek:type:`Telemetry::Metric`
 
@@ -11403,6 +11409,27 @@ Types
    .. todo:: We need this type definition only for declaring builtin functions
       via ``bifcl``. We should extend ``bifcl`` to understand composite types
       directly and then remove this alias.
+
+Hooks
+#####
+.. zeek:id:: Telemetry::sync
+   :source-code: policy/misc/stats.zeek 144 162
+
+   :Type: :zeek:type:`hook` () : :zeek:type:`bool`
+
+   Telemetry sync hook.
+   
+   This hook is invoked when metrics are requested via functions
+   :zeek:see:`Telemetry::collect_metrics` and :zeek:see:`Telemetry::collect_histogram_metrics`,
+   or just before Zeek collects metrics when being scraped through
+   its Prometheus endpoint.
+   Script writers can use it to synchronize (or mirror) metrics with the
+   telemetry subsystem. For example, when tracking table or value
+   footprints with gauges, the value in question can be set on an actual
+   :zeek:see:`Telemetry::Gauge` instance during execution of this hook.
+   
+   Implementations should be lightweight, this hook may be called
+   multiple times per minute.
 
 Functions
 #########
