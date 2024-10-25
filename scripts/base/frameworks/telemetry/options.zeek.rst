@@ -4,6 +4,11 @@ base/frameworks/telemetry/options.zeek
 ======================================
 .. zeek:namespace:: Telemetry
 
+Configurable settings for the Telemetry framework.
+
+These reside separately from the main framework so that they can be loaded
+in bare mode without all of the framework. This allows things like the
+plugins.hooks test to see the options without needing the rest.
 
 :Namespace: Telemetry
 
@@ -25,7 +30,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Telemetry::metrics_address
-   :source-code: base/frameworks/telemetry/options.zeek 11 11
+   :source-code: base/frameworks/telemetry/options.zeek 12 12
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -35,7 +40,7 @@ Redefinable Options
    HTTP.
 
 .. zeek:id:: Telemetry::metrics_endpoint_name
-   :source-code: base/frameworks/telemetry/options.zeek 20 20
+   :source-code: base/frameworks/telemetry/options.zeek 21 21
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -46,7 +51,7 @@ Redefinable Options
    defaults to the name of the node in the cluster configuration.
 
 .. zeek:id:: Telemetry::metrics_port
-   :source-code: base/frameworks/telemetry/options.zeek 15 15
+   :source-code: base/frameworks/telemetry/options.zeek 16 16
 
    :Type: :zeek:type:`port`
    :Attributes: :zeek:attr:`&redef`

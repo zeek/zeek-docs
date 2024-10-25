@@ -1,7 +1,7 @@
 :tocdepth: 3
 
-base/bif/consts.bif.zeek
-========================
+base/bif/telemetry_consts.bif.zeek
+==================================
 .. zeek:namespace:: GLOBAL
 
 
