@@ -230,6 +230,7 @@ a given event.
        if ( kind == "sha1" && f?$info && f$info?$mime_type &&
             match_file_types in f$info$mime_type )
            do_mhr_lookup(hash, Notice::create_file_info(f));
+       }
 
 The workhorse of the script is contained in the event handler for
 ``file_hash``.  The :zeek:see:`file_hash` event allows scripts to access
