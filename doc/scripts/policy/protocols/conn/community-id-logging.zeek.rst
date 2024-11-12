@@ -3,10 +3,11 @@
 policy/protocols/conn/community-id-logging.zeek
 ===============================================
 .. zeek:namespace:: CommunityID
+.. zeek:namespace:: Conn
 
 Adds community hash IDs to conn.log.
 
-:Namespace: CommunityID
+:Namespaces: CommunityID, Conn
 :Imports: :doc:`base/protocols/conn </scripts/base/protocols/conn/index>`
 
 Summary
