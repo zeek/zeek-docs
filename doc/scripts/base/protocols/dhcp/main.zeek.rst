@@ -292,7 +292,7 @@ Events
    :zeek:see:`DHCP::log_info`.
 
 .. zeek:id:: DHCP::log_dhcp
-   :source-code: policy/protocols/dhcp/software.zeek 40 64
+   :source-code: policy/protocols/dhcp/software.zeek 40 65
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`DHCP::Info`)
 

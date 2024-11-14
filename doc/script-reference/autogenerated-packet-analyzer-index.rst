@@ -63,6 +63,8 @@ Packet Analyzers
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_UDP PacketAnalyzer::Tag
 
+      .. zeek:enum:: PacketAnalyzer::ANALYZER_UNKNOWN_IP_TRANSPORT PacketAnalyzer::Tag
+
       .. zeek:enum:: PacketAnalyzer::ANALYZER_VLAN PacketAnalyzer::Tag
 
       .. zeek:enum:: PacketAnalyzer::ANALYZER_VNTAG PacketAnalyzer::Tag

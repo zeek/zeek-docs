@@ -107,7 +107,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: Pcap::file_done
-   :source-code: base/bif/event.bif.zeek 946 946
+   :source-code: base/bif/event.bif.zeek 947 947
 
    :Type: :zeek:type:`event` (path: :zeek:type:`string`)
 
@@ -117,7 +117,7 @@ Events
    :param path: the filesystem path of the pcap file
 
 .. zeek:id:: analyzer_confirmation_info
-   :source-code: base/bif/event.bif.zeek 409 409
+   :source-code: base/bif/event.bif.zeek 410 410
 
    :Type: :zeek:type:`event` (atype: :zeek:type:`AllAnalyzers::Tag`, info: :zeek:type:`AnalyzerConfirmationInfo`)
 
@@ -141,7 +141,7 @@ Events
    .. zeek:see:: is_protocol_analyzer is_packet_analyzer is_file_analyzer
 
 .. zeek:id:: analyzer_violation_info
-   :source-code: base/bif/event.bif.zeek 422 422
+   :source-code: base/bif/event.bif.zeek 423 423
 
    :Type: :zeek:type:`event` (atype: :zeek:type:`AllAnalyzers::Tag`, info: :zeek:type:`AnalyzerViolationInfo`)
 
@@ -159,14 +159,14 @@ Events
    .. zeek:see:: is_protocol_analyzer is_packet_analyzer is_file_analyzer
 
 .. zeek:id:: anonymization_mapping
-   :source-code: base/bif/event.bif.zeek 940 940
+   :source-code: base/bif/event.bif.zeek 941 941
 
    :Type: :zeek:type:`event` (orig: :zeek:type:`addr`, mapped: :zeek:type:`addr`)
 
    Shows an IP address anonymization mapping.
 
 .. zeek:id:: conn_stats
-   :source-code: base/bif/event.bif.zeek 451 451
+   :source-code: base/bif/event.bif.zeek 452 452
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, os: :zeek:type:`endpoint_stats`, rs: :zeek:type:`endpoint_stats`)
 
@@ -186,7 +186,7 @@ Events
    .. zeek:see:: connection_state_remove
 
 .. zeek:id:: conn_weird
-   :source-code: base/bif/event.bif.zeek 477 477
+   :source-code: base/bif/event.bif.zeek 478 478
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, c: :zeek:type:`connection`, addl: :zeek:type:`string`)
@@ -220,7 +220,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: connection_flipped
-   :source-code: base/bif/event.bif.zeek 219 219
+   :source-code: base/bif/event.bif.zeek 220 220
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -236,7 +236,7 @@ Events
    .. zeek:see:: connection_established new_connection
 
 .. zeek:id:: connection_flow_label_changed
-   :source-code: base/bif/event.bif.zeek 234 234
+   :source-code: base/bif/event.bif.zeek 235 235
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, old_label: :zeek:type:`count`, new_label: :zeek:type:`count`)
 
@@ -277,7 +277,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_state_remove
-   :source-code: base/bif/event.bif.zeek 177 177
+   :source-code: base/bif/event.bif.zeek 178 178
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -297,10 +297,11 @@ Events
       connection_pending connection_rejected connection_reset connection_reused
       connection_status_update connection_timeout scheduled_analyzer_applied
       new_connection new_connection_contents partial_connection udp_inactivity_timeout
-      tcp_inactivity_timeout icmp_inactivity_timeout conn_stats
+      tcp_inactivity_timeout icmp_inactivity_timeout unknown_ip_inactivity_timeout
+      conn_stats
 
 .. zeek:id:: connection_status_update
-   :source-code: base/bif/event.bif.zeek 207 207
+   :source-code: base/bif/event.bif.zeek 208 208
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -349,7 +350,7 @@ Events
       connection may terminate).
 
 .. zeek:id:: content_gap
-   :source-code: base/bif/event.bif.zeek 390 390
+   :source-code: base/bif/event.bif.zeek 391 391
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, seq: :zeek:type:`count`, length: :zeek:type:`count`)
 
@@ -379,7 +380,7 @@ Events
       tap.
 
 .. zeek:id:: dns_mapping_altered
-   :source-code: base/bif/event.bif.zeek 924 924
+   :source-code: base/bif/event.bif.zeek 925 925
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`, old_addrs: :zeek:type:`addr_set`, new_addrs: :zeek:type:`addr_set`)
 
@@ -403,7 +404,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_lost_name
-   :source-code: base/bif/event.bif.zeek 891 891
+   :source-code: base/bif/event.bif.zeek 892 892
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -420,7 +421,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_name_changed
-   :source-code: base/bif/event.bif.zeek 906 906
+   :source-code: base/bif/event.bif.zeek 907 907
 
    :Type: :zeek:type:`event` (prev: :zeek:type:`dns_mapping`, latest: :zeek:type:`dns_mapping`)
 
@@ -439,7 +440,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_new_name
-   :source-code: base/bif/event.bif.zeek 878 878
+   :source-code: base/bif/event.bif.zeek 879 879
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -455,7 +456,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_unverified
-   :source-code: base/bif/event.bif.zeek 866 866
+   :source-code: base/bif/event.bif.zeek 867 867
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -472,7 +473,7 @@ Events
       dns_mapping_valid
 
 .. zeek:id:: dns_mapping_valid
-   :source-code: base/bif/event.bif.zeek 853 853
+   :source-code: base/bif/event.bif.zeek 854 854
 
    :Type: :zeek:type:`event` (dm: :zeek:type:`dns_mapping`)
 
@@ -488,7 +489,7 @@ Events
       dns_mapping_unverified
 
 .. zeek:id:: esp_packet
-   :source-code: base/bif/event.bif.zeek 320 320
+   :source-code: base/bif/event.bif.zeek 321 321
 
    :Type: :zeek:type:`event` (p: :zeek:type:`pkt_hdr`)
 
@@ -501,7 +502,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: event_queue_flush_point
-   :source-code: base/bif/event.bif.zeek 717 717
+   :source-code: base/bif/event.bif.zeek 718 718
 
    :Type: :zeek:type:`event` ()
 
@@ -550,7 +551,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: file_gap
-   :source-code: base/bif/event.bif.zeek 812 812
+   :source-code: base/bif/event.bif.zeek 813 813
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, offset: :zeek:type:`count`, len: :zeek:type:`count`)
 
@@ -569,7 +570,7 @@ Events
       file_sniff file_state_remove file_reassembly_overflow
 
 .. zeek:id:: file_new
-   :source-code: base/bif/event.bif.zeek 750 750
+   :source-code: base/bif/event.bif.zeek 751 751
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
@@ -589,7 +590,7 @@ Events
       file_sniff file_state_remove
 
 .. zeek:id:: file_opened
-   :source-code: base/bif/event.bif.zeek 713 713
+   :source-code: base/bif/event.bif.zeek 714 714
 
    :Type: :zeek:type:`event` (f: :zeek:type:`file`)
 
@@ -601,7 +602,7 @@ Events
    :param f: The opened file.
 
 .. zeek:id:: file_over_new_connection
-   :source-code: base/bif/event.bif.zeek 769 769
+   :source-code: base/bif/event.bif.zeek 770 770
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`)
 
@@ -626,7 +627,7 @@ Events
       file_state_remove
 
 .. zeek:id:: file_reassembly_overflow
-   :source-code: base/bif/event.bif.zeek 832 832
+   :source-code: base/bif/event.bif.zeek 833 833
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, offset: :zeek:type:`count`, skipped: :zeek:type:`count`)
 
@@ -652,7 +653,7 @@ Events
       Files::set_reassembly_buffer_size
 
 .. zeek:id:: file_sniff
-   :source-code: base/bif/event.bif.zeek 788 788
+   :source-code: base/bif/event.bif.zeek 789 789
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, meta: :zeek:type:`fa_metadata`)
 
@@ -676,7 +677,7 @@ Events
       file_state_remove
 
 .. zeek:id:: file_state_remove
-   :source-code: base/bif/event.bif.zeek 841 841
+   :source-code: base/bif/event.bif.zeek 842 842
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`)
 
@@ -797,7 +798,7 @@ Events
    .. zeek:see:: set_file_handle
 
 .. zeek:id:: ipv6_ext_headers
-   :source-code: base/bif/event.bif.zeek 311 311
+   :source-code: base/bif/event.bif.zeek 312 312
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`pkt_hdr`)
 
@@ -814,7 +815,7 @@ Events
    .. zeek:see:: new_packet tcp_packet packet_contents esp_packet
 
 .. zeek:id:: mobile_ipv6_message
-   :source-code: base/bif/event.bif.zeek 328 328
+   :source-code: base/bif/event.bif.zeek 329 329
 
    :Type: :zeek:type:`event` (p: :zeek:type:`pkt_hdr`)
 
@@ -826,7 +827,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 6015 6017
+   :source-code: base/init-bare.zeek 6179 6181
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
@@ -849,7 +850,7 @@ Events
       is not generated.
 
 .. zeek:id:: net_weird
-   :source-code: base/bif/event.bif.zeek 569 569
+   :source-code: base/bif/event.bif.zeek 570 570
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, addl: :zeek:type:`string`, source: :zeek:type:`string`)
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, addl: :zeek:type:`string`)
@@ -935,7 +936,7 @@ Events
    :param params: The event's parameters.
 
 .. zeek:id:: new_packet
-   :source-code: base/bif/event.bif.zeek 299 299
+   :source-code: base/bif/event.bif.zeek 300 300
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, p: :zeek:type:`pkt_hdr`)
 
@@ -957,7 +958,7 @@ Events
    .. zeek:see:: tcp_packet packet_contents raw_packet
 
 .. zeek:id:: packet_contents
-   :source-code: base/bif/event.bif.zeek 343 343
+   :source-code: base/bif/event.bif.zeek 344 344
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, contents: :zeek:type:`string`)
 
@@ -977,7 +978,7 @@ Events
    .. zeek:see:: new_packet tcp_packet
 
 .. zeek:id:: packet_not_processed
-   :source-code: base/bif/event.bif.zeek 974 974
+   :source-code: base/bif/event.bif.zeek 975 975
 
    :Type: :zeek:type:`event` (pkt: :zeek:type:`pcap_packet`)
 
@@ -990,7 +991,7 @@ Events
    :param pkt: Data for the unprocessed packet
 
 .. zeek:id:: profiling_update
-   :source-code: base/bif/event.bif.zeek 636 636
+   :source-code: base/bif/event.bif.zeek 637 637
 
    :Type: :zeek:type:`event` (f: :zeek:type:`file`, expensive: :zeek:type:`bool`)
 
@@ -1028,7 +1029,7 @@ Events
    .. zeek:see:: dpd_buffer_size dpd_max_packets
 
 .. zeek:id:: raw_packet
-   :source-code: base/bif/event.bif.zeek 282 282
+   :source-code: base/bif/event.bif.zeek 283 283
 
    :Type: :zeek:type:`event` (p: :zeek:type:`raw_pkt_hdr`)
 
@@ -1156,7 +1157,7 @@ Events
    .. zeek:see:: tcp_rexmit tcp_contents
 
 .. zeek:id:: scheduled_analyzer_applied
-   :source-code: base/bif/event.bif.zeek 270 270
+   :source-code: base/bif/event.bif.zeek 271 271
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, a: :zeek:type:`Analyzer::Tag`)
 
@@ -1186,7 +1187,7 @@ Events
       ``ANALYZER_*`` constants right now.
 
 .. zeek:id:: signature_match
-   :source-code: base/bif/event.bif.zeek 618 618
+   :source-code: base/bif/event.bif.zeek 619 619
 
    :Type: :zeek:type:`event` (state: :zeek:type:`signature_state`, msg: :zeek:type:`string`, data: :zeek:type:`string`, end_of_match: :zeek:type:`count`)
    :Type: :zeek:type:`event` (state: :zeek:type:`signature_state`, msg: :zeek:type:`string`, data: :zeek:type:`string`)
@@ -1235,7 +1236,7 @@ Events
    :param e: The new encapsulation.
 
 .. zeek:id:: udp_session_done
-   :source-code: base/bif/event.bif.zeek 245 245
+   :source-code: base/bif/event.bif.zeek 246 246
 
    :Type: :zeek:type:`event` (u: :zeek:type:`connection`)
 
