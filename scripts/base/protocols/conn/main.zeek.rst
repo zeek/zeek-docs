@@ -54,7 +54,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::Info
-   :source-code: base/protocols/conn/main.zeek 21 161
+   :source-code: base/protocols/conn/main.zeek 21 166
 
    :Type: :zeek:type:`record`
 
@@ -210,9 +210,20 @@ Types
          *uid* values for any encapsulating parent connections
          used over the lifetime of this inner connection.
 
+      ip_proto: :zeek:type:`count` :zeek:attr:`&optional`
+         For IP-based connections, this contains the protocol
+         identifier passed in the IP header. This is different
+         from the *proto* field in that this value comes
+         directly from the header.
+
       community_id: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
          (present if :doc:`/scripts/policy/protocols/conn/community-id-logging.zeek` is loaded)
 
+
+      ip_proto_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/protocols/conn/ip-proto-name-logging.zeek` is loaded)
+
+         A string version of the ip_proto field
 
       orig_l2_addr: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/conn/mac-logging.zeek` is loaded)
@@ -246,7 +257,7 @@ Types
 Events
 ######
 .. zeek:id:: Conn::log_conn
-   :source-code: base/protocols/conn/main.zeek 165 165
+   :source-code: base/protocols/conn/main.zeek 170 170
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Conn::Info`)
 
