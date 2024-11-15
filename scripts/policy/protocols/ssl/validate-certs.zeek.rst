@@ -109,7 +109,7 @@ State Variables
 Events
 ######
 .. zeek:id:: SSL::intermediate_add
-   :source-code: policy/protocols/ssl/validate-certs.zeek 55 55
+   :source-code: policy/protocols/ssl/validate-certs.zeek 72 75
 
    :Type: :zeek:type:`event` (key: :zeek:type:`string`, value: :zeek:type:`vector` of :zeek:type:`opaque` of x509)
 
@@ -117,7 +117,7 @@ Events
    intermediate.
 
 .. zeek:id:: SSL::new_intermediate
-   :source-code: policy/protocols/ssl/validate-certs.zeek 59 59
+   :source-code: policy/protocols/ssl/validate-certs.zeek 77 84
 
    :Type: :zeek:type:`event` (key: :zeek:type:`string`, value: :zeek:type:`vector` of :zeek:type:`opaque` of x509)
 

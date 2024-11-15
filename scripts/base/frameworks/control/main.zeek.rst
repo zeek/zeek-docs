@@ -165,7 +165,7 @@ Events
    This event is also a primary hooking point for the control framework.
 
 .. zeek:id:: Control::configuration_update_request
-   :source-code: policy/frameworks/control/controllee.zeek 67 77
+   :source-code: policy/frameworks/control/controllee.zeek 60 71
 
    :Type: :zeek:type:`event` ()
 
@@ -180,7 +180,7 @@ Events
    Message in response to a configuration update request.
 
 .. zeek:id:: Control::id_value_request
-   :source-code: policy/frameworks/control/controllee.zeek 33 37
+   :source-code: policy/frameworks/control/controllee.zeek 23 28
 
    :Type: :zeek:type:`event` (id: :zeek:type:`string`)
 
@@ -195,7 +195,7 @@ Events
    :zeek:id:`Control::id_value_request` event.
 
 .. zeek:id:: Control::net_stats_request
-   :source-code: policy/frameworks/control/controllee.zeek 59 65
+   :source-code: policy/frameworks/control/controllee.zeek 51 58
 
    :Type: :zeek:type:`event` ()
 
@@ -209,7 +209,7 @@ Events
    Returns the current net_stats.
 
 .. zeek:id:: Control::peer_status_request
-   :source-code: policy/frameworks/control/controllee.zeek 39 57
+   :source-code: policy/frameworks/control/controllee.zeek 30 49
 
    :Type: :zeek:type:`event` ()
 
@@ -223,7 +223,7 @@ Events
    Returns the current communication status.
 
 .. zeek:id:: Control::shutdown_request
-   :source-code: policy/frameworks/control/controllee.zeek 79 85
+   :source-code: policy/frameworks/control/controllee.zeek 73 80
 
    :Type: :zeek:type:`event` ()
 

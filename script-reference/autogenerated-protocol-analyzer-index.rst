@@ -1488,7 +1488,7 @@ Events
 ++++++
 
 .. zeek:id:: dhcp_message
-   :source-code: base/protocols/dhcp/main.zeek 308 311
+   :source-code: base/protocols/dhcp/main.zeek 301 308
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, msg: :zeek:type:`DHCP::Msg`, options: :zeek:type:`DHCP::Options`)
 
@@ -16994,7 +16994,7 @@ Events
       scheduled_analyzer_applied new_connection partial_connection
 
 .. zeek:id:: connection_attempt
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 546 550
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 531 535
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -17038,7 +17038,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: partial_connection
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 540 544
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 525 529
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -17117,7 +17117,7 @@ Events
       new_connection new_connection_contents partial_connection
 
 .. zeek:id:: connection_rejected
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 552 556
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 537 541
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -17143,7 +17143,7 @@ Events
       and then :zeek:id:`connection_reset`.
 
 .. zeek:id:: connection_reset
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 558 562
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 543 547
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -17163,7 +17163,7 @@ Events
       partial_connection
 
 .. zeek:id:: connection_pending
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 564 568
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 549 553
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
