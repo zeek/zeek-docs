@@ -293,7 +293,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: NetControl::catch_release_seen
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 462 526
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 447 511
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`void`
 
@@ -306,7 +306,7 @@ Functions
    :param a: The address that was seen and should be re-dropped if it is being watched.
 
 .. zeek:id:: NetControl::drop_address_catch_release
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 373 434
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 353 419
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, location: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`NetControl::BlockInfo`
 
@@ -333,7 +333,7 @@ Functions
             the inserted block.
 
 .. zeek:id:: NetControl::get_catch_release_info
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 365 371
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 345 351
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`) : :zeek:type:`NetControl::BlockInfo`
 
@@ -352,7 +352,7 @@ Functions
             the inserted block.
 
 .. zeek:id:: NetControl::unblock_address_catch_release
-   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 437 460
+   :source-code: policy/frameworks/netcontrol/catch-and-release.zeek 422 445
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, reason: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 

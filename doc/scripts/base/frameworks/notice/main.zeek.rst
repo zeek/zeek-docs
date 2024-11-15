@@ -69,15 +69,13 @@ Redefinitions
 
 Events
 ######
-================================================================ =========================================================================
-:zeek:id:`Notice::begin_suppression`: :zeek:type:`event`         This event is generated when a notice begins to be suppressed.
-:zeek:id:`Notice::log_notice`: :zeek:type:`event`                This event can be handled to access the :zeek:type:`Notice::Info`
-                                                                 record as it is sent on to the logging framework.
-:zeek:id:`Notice::manager_begin_suppression`: :zeek:type:`event` This is an internal event that is used to broadcast the begin_suppression
-                                                                 event over a cluster.
-:zeek:id:`Notice::suppressed`: :zeek:type:`event`                This event is generated on each occurrence of an event being
-                                                                 suppressed.
-================================================================ =========================================================================
+======================================================== =================================================================
+:zeek:id:`Notice::begin_suppression`: :zeek:type:`event` This event is generated when a notice begins to be suppressed.
+:zeek:id:`Notice::log_notice`: :zeek:type:`event`        This event can be handled to access the :zeek:type:`Notice::Info`
+                                                         record as it is sent on to the logging framework.
+:zeek:id:`Notice::suppressed`: :zeek:type:`event`        This event is generated on each occurrence of an event being
+                                                         suppressed.
+======================================================== =================================================================
 
 Hooks
 #####
@@ -897,7 +895,7 @@ Types
 Events
 ######
 .. zeek:id:: Notice::begin_suppression
-   :source-code: base/frameworks/notice/main.zeek 545 549
+   :source-code: base/frameworks/notice/main.zeek 549 553
 
    :Type: :zeek:type:`event` (ts: :zeek:type:`time`, suppress_for: :zeek:type:`interval`, note: :zeek:type:`Notice::Type`, identifier: :zeek:type:`string`)
 
@@ -916,7 +914,7 @@ Events
    :param identifier: The identifier string of the notice that should be suppressed.
 
 .. zeek:id:: Notice::log_notice
-   :source-code: base/frameworks/notice/main.zeek 335 335
+   :source-code: base/frameworks/notice/main.zeek 323 323
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Notice::Info`)
 
@@ -926,28 +924,8 @@ Events
 
    :param rec: The record containing notice data before it is logged.
 
-.. zeek:id:: Notice::manager_begin_suppression
-   :source-code: base/frameworks/notice/main.zeek 294 294
-
-   :Type: :zeek:type:`event` (ts: :zeek:type:`time`, suppress_for: :zeek:type:`interval`, note: :zeek:type:`Notice::Type`, identifier: :zeek:type:`string`)
-
-   This is an internal event that is used to broadcast the begin_suppression
-   event over a cluster.
-   
-
-   :param ts: time indicating then when the notice to be suppressed occurred.
-   
-
-   :param suppress_for: length of time that this notice should be suppressed.
-   
-
-   :param note: The :zeek:type:`Notice::Type` of the notice.
-   
-
-   :param identifier: The identifier string of the notice that should be suppressed.
-
 .. zeek:id:: Notice::suppressed
-   :source-code: base/frameworks/notice/main.zeek 306 306
+   :source-code: base/frameworks/notice/main.zeek 294 294
 
    :Type: :zeek:type:`event` (n: :zeek:type:`Notice::Info`)
 
@@ -997,20 +975,20 @@ Hooks
 Functions
 #########
 .. zeek:id:: NOTICE
-   :source-code: base/frameworks/notice/main.zeek 343 353
+   :source-code: base/frameworks/notice/main.zeek 331 341
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
 
 .. zeek:id:: Notice::apply_policy
-   :source-code: base/frameworks/notice/main.zeek 628 680
+   :source-code: base/frameworks/notice/main.zeek 611 663
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
    This is an internal function to populate policy records.
 
 .. zeek:id:: Notice::create_file_info
-   :source-code: base/frameworks/notice/main.zeek 583 601
+   :source-code: base/frameworks/notice/main.zeek 566 584
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`Notice::FileInfo`
 
@@ -1023,7 +1001,7 @@ Functions
    :returns: record containing a subset of fields copied from *f*.
 
 .. zeek:id:: Notice::email_headers
-   :source-code: base/frameworks/notice/main.zeek 408 418
+   :source-code: base/frameworks/notice/main.zeek 396 406
 
    :Type: :zeek:type:`function` (subject_desc: :zeek:type:`string`, dest: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -1041,7 +1019,7 @@ Functions
             appended.
 
 .. zeek:id:: Notice::email_notice_to
-   :source-code: base/frameworks/notice/main.zeek 425 493
+   :source-code: base/frameworks/notice/main.zeek 413 481
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`, dest: :zeek:type:`string`, extend: :zeek:type:`bool`) : :zeek:type:`void`
 
@@ -1060,7 +1038,7 @@ Functions
            ``email_body_sections`` field of *n*.
 
 .. zeek:id:: Notice::is_being_suppressed
-   :source-code: base/frameworks/notice/main.zeek 572 581
+   :source-code: base/frameworks/notice/main.zeek 555 564
 
    :Type: :zeek:type:`function` (n: :zeek:type:`Notice::Info`) : :zeek:type:`bool`
 
@@ -1070,7 +1048,7 @@ Functions
    :param n: The record containing the notice in question.
 
 .. zeek:id:: Notice::log_mailing_postprocessor
-   :source-code: base/frameworks/notice/main.zeek 377 392
+   :source-code: base/frameworks/notice/main.zeek 365 380
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool`
 
@@ -1085,7 +1063,7 @@ Functions
    :returns: True.
 
 .. zeek:id:: Notice::populate_file_info
-   :source-code: base/frameworks/notice/main.zeek 603 606
+   :source-code: base/frameworks/notice/main.zeek 586 589
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
@@ -1098,7 +1076,7 @@ Functions
    :param n: a notice record that needs file-related fields populated.
 
 .. zeek:id:: Notice::populate_file_info2
-   :source-code: base/frameworks/notice/main.zeek 608 623
+   :source-code: base/frameworks/notice/main.zeek 591 606
 
    :Type: :zeek:type:`function` (fi: :zeek:type:`Notice::FileInfo`, n: :zeek:type:`Notice::Info`) : :zeek:type:`void`
 
