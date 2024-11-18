@@ -164,12 +164,24 @@ node's metrics port::
   ...
 
 To simplify telemetry collection from all nodes in a cluster, Zeek supports
-`Prometheus HTTP Service Discovery`_ on the manager node. In this approach, the
+`Prometheus HTTP Service Discovery`_ on the manager node. Using this approach, the
 endpoint ``http://<manager>:<manager-metrics-port>/services.json`` returns a
 JSON data structure that itemizes all metrics endpoints in the
 cluster. Prometheus scrapers supporting service discovery then proceed to
-collect telemetry from the listed endpoints in turn. See the `Prometheus Getting
-Started Guide`_ for additional information.
+collect telemetry from the listed endpoints in turn.
+
+The following is an example service discovery scrape config entry within
+Prometheus server's ``prometheus.yml`` configuration file::
+
+    ...
+    scrape_configs:
+      - job_name: zeek-discovery
+        scrape_interval: 5s
+        http_sd_configs:
+          - url: http://localhost:9991/services.json
+            refresh_interval: 10s
+
+See the `Prometheus Getting Started Guide`_ for additional information.
 
 .. note::
 
