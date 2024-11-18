@@ -196,8 +196,8 @@ See the `Prometheus Getting Started Guide`_ for additional information.
 
 If these setups aren't right for your environment, there's the possibility to
 redefine the options in ``local.zeek`` to something more suitable. For example,
-the following snippet opens an individual Prometheus port for each Zeek process
-(relative to the port used in ``cluster-layout.zeek``)::
+the following snippet selects the metrics port of each Zeek process relative
+to the cluster port used in ``cluster-layout.zeek``::
 
     @load base/frameworks/cluster
 
@@ -205,15 +205,6 @@ the following snippet opens an individual Prometheus port for each Zeek process
     global my_metrics_port = count_to_port(port_to_count(my_node$p) - 1000, tcp);
 
     redef Telemetry::metrics_port = my_metrics_port;
-
-As a different example, to only change the port from 9911 to 1234 on the manager
-process, but keep the export and import of metrics enabled, use the following snippet::
-
-    @load base/frameworks/cluster
-
-    @ifdef ( Cluster::local_node_type() == Cluster::MANAGER )
-    redef Telemetry::metrics_port = 1234/tcp;
-    @endif
 
 
 Examples of Metrics Application
