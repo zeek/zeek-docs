@@ -103,6 +103,36 @@ from the log.
     }
 
 
+StartTLS
+========
+
+.. versionadded:: 7.0
+
+Zeek's LDAP analyzer supports the
+`extended StartTLS <https://datatracker.ietf.org/doc/html/rfc4511#section-4.14>`_
+operation, handing off analysis to Zeek's TLS analyzer. The following shows an
+example :file:`ldap.log` entry for the StartTLS request.
+
+.. code-block:: console
+
+    $ zeek -C LogAscii::use_json=T -r ldap-starttls.pcap
+    $ jq < ldap.log
+    {
+      "ts": 1721218680.158341,
+      "uid": "CW0qzo9A3QsrCWL4k",
+      "id.orig_h": "127.0.0.1",
+      "id.orig_p": 45936,
+      "id.resp_h": "127.0.1.1",
+      "id.resp_p": 389,
+      "message_id": 1,
+      "opcode": "extended",
+      "result": "success",
+      "object": "1.3.6.1.4.1.1466.20037 (StartTLS)"
+    }
+
+The :file:`conn.log`'s history field will contain ``ssl`` and ``ldap`` in
+the ``service`` field.
+
 Conclusion
 ==========
 
