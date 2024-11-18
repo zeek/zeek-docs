@@ -22,12 +22,3 @@ event my_event(msg: string, c: count)
 	if ( msg_count == 5 )
 		terminate();
 	}
-
-event my_auto_event(msg: string, c: count)
-	{
-	++msg_count;
-	print "got my_auto_event", msg, c;
-
-	if ( msg_count == 5 )
-		terminate();
-	}

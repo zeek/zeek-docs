@@ -334,12 +334,6 @@ function to publish events, including:
     - Standard function to send an event to all nodes subscribed to a given
       topic
 
-  * - :zeek:see:`Broker::auto_publish`
-    - Automatically send an otherwise generated Zeek event to any interested
-      peers whenever it is locally dispatched.
-    - Avoid, since it is somewhat “magical”, unless you’ve got code
-      compartmentalization running with ``@ifdef`` directives.
-
   * - :zeek:see:`Cluster::publish_hrw`
     - Publishes an event to a node within a pool according to
       Highest Random Weight (HRW) hashing strategy; see details below

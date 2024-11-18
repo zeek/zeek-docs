@@ -276,19 +276,11 @@ define any event handlers for events that peers will send.
    :linenos:
    :tab-width: 4
 
-There are two different ways to send events.
-
-The first is to call the :zeek:see:`Broker::publish` function which you can
+To send an event, call the :zeek:see:`Broker::publish` function which you can
 supply directly with the event and its arguments or give it the return value of
 :zeek:see:`Broker::make_event` in case you need to send the same event/args
 multiple times.  When publishing events like this, local event handlers for
-the event are not called.
-
-The second option is to call the :zeek:see:`Broker::auto_publish` function where
-you specify a particular event that will be automatically sent to peers
-whenever the event is called locally via the normal event invocation syntax.
-When auto-publishing events, local event handlers for the event are called
-in addition to sending the event to any subscribed peers.
+the event are not called, even if a matching subscription exists.
 
 .. literalinclude:: broker/events-connector.zeek
    :caption: events-connector.zeek
@@ -300,6 +292,20 @@ Note that the subscription model is prefix-based, meaning that if you subscribe
 to the ``zeek/events`` topic prefix you would receive events that are published
 to topic names ``zeek/events/foo`` and ``zeek/events/bar`` but not
 ``zeek/misc``.
+
+
+.. note::
+
+   In prior Zeek versions, :zeek:see:`Broker::auto_publish` was available to
+   automatically send events to peers whenever the events were called locally via
+   the normal event invocation syntax. When auto-publishing events, local
+   event handlers for the event were called in addition to sending the
+   event to any subscribed peers.
+
+   :zeek:see:`Broker::auto_publish` has been deprecated due to its
+   `implicit nature <https://github.com/zeek/zeek/discussions/3637>`_.
+
+   .. deprecated:: 7.1
 
 Remote Logging
 --------------
