@@ -508,7 +508,7 @@ Functions
    :param obs: The data point to send into the stream.
 
 .. zeek:id:: SumStats::request_key
-   :source-code: base/frameworks/sumstats/non-cluster.zeek 74 84
+   :source-code: base/frameworks/sumstats/non-cluster.zeek 90 100
 
    :Type: :zeek:type:`function` (ss_name: :zeek:type:`string`, key: :zeek:type:`SumStats::Key`) : :zeek:type:`SumStats::Result`
 
