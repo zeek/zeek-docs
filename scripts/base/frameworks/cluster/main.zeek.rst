@@ -78,12 +78,16 @@ State Variables
 Types
 #####
 ================================================================= ====================================================================
+:zeek:type:`Cluster::Event`: :zeek:type:`record`                  An event instance for cluster pub/sub.
 :zeek:type:`Cluster::Info`: :zeek:type:`record` :zeek:attr:`&log` The record type which contains the column fields of the cluster log.
 :zeek:type:`Cluster::NamedNode`: :zeek:type:`record`              Record to represent a cluster node including its name.
 :zeek:type:`Cluster::Node`: :zeek:type:`record`                   Record type to indicate a node in a cluster.
 :zeek:type:`Cluster::NodeType`: :zeek:type:`enum`                 Types of nodes that are allowed to participate in the cluster
                                                                   configuration.
 :zeek:type:`Cluster::StoreInfo`: :zeek:type:`record`              Information regarding a cluster-enabled data store.
+:zeek:type:`Cluster::BackendTag`: :zeek:type:`enum`               
+:zeek:type:`Cluster::EventSerializerTag`: :zeek:type:`enum`       
+:zeek:type:`Cluster::LogSerializerTag`: :zeek:type:`enum`         
 ================================================================= ====================================================================
 
 Redefinitions
@@ -340,6 +344,19 @@ State Variables
 
 Types
 #####
+.. zeek:type:: Cluster::Event
+   :source-code: base/frameworks/cluster/main.zeek 285 290
+
+   :Type: :zeek:type:`record`
+
+      ev: :zeek:type:`any`
+         The event handler to be invoked on the remote node.
+
+      args: :zeek:type:`vector` of :zeek:type:`any`
+         The arguments for the event.
+
+   An event instance for cluster pub/sub.
+
 .. zeek:type:: Cluster::Info
    :source-code: base/frameworks/cluster/main.zeek 138 145
 
@@ -474,10 +491,27 @@ Types
 
    Information regarding a cluster-enabled data store.
 
+.. zeek:type:: Cluster::BackendTag
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: Cluster::CLUSTER_BACKEND_BROKER Cluster::BackendTag
+
+
+.. zeek:type:: Cluster::EventSerializerTag
+
+   :Type: :zeek:type:`enum`
+
+
+.. zeek:type:: Cluster::LogSerializerTag
+
+   :Type: :zeek:type:`enum`
+
+
 Events
 ######
 .. zeek:id:: Cluster::hello
-   :source-code: base/frameworks/cluster/main.zeek 362 387
+   :source-code: base/frameworks/cluster/main.zeek 370 395
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -514,7 +548,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Cluster::create_store
-   :source-code: base/frameworks/cluster/main.zeek 442 517
+   :source-code: base/frameworks/cluster/main.zeek 450 525
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, persistent: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`Cluster::StoreInfo`
 
@@ -533,7 +567,7 @@ Functions
             be set until the node containing the master store has connected.
 
 .. zeek:id:: Cluster::get_active_node_count
-   :source-code: base/frameworks/cluster/main.zeek 317 320
+   :source-code: base/frameworks/cluster/main.zeek 325 328
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
@@ -542,7 +576,7 @@ Functions
    out how many nodes should be responding to requests.
 
 .. zeek:id:: Cluster::get_node_count
-   :source-code: base/frameworks/cluster/main.zeek 304 315
+   :source-code: base/frameworks/cluster/main.zeek 312 323
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
@@ -550,7 +584,7 @@ Functions
    node type.
 
 .. zeek:id:: Cluster::is_enabled
-   :source-code: base/frameworks/cluster/main.zeek 322 325
+   :source-code: base/frameworks/cluster/main.zeek 330 333
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -561,7 +595,7 @@ Functions
    :returns: True if :zeek:id:`Cluster::node` has been set.
 
 .. zeek:id:: Cluster::local_node_metrics_port
-   :source-code: base/frameworks/cluster/main.zeek 338 350
+   :source-code: base/frameworks/cluster/main.zeek 346 358
 
    :Type: :zeek:type:`function` () : :zeek:type:`port`
 
@@ -574,7 +608,7 @@ Functions
    :returns: The metrics port used by the calling node.
 
 .. zeek:id:: Cluster::local_node_type
-   :source-code: base/frameworks/cluster/main.zeek 327 336
+   :source-code: base/frameworks/cluster/main.zeek 335 344
 
    :Type: :zeek:type:`function` () : :zeek:type:`Cluster::NodeType`
 
@@ -587,14 +621,14 @@ Functions
    :returns: The :zeek:type:`Cluster::NodeType` the calling node acts as.
 
 .. zeek:id:: Cluster::log
-   :source-code: base/frameworks/cluster/main.zeek 519 522
+   :source-code: base/frameworks/cluster/main.zeek 527 530
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`void`
 
    Write a message to the cluster logging stream.
 
 .. zeek:id:: Cluster::node_topic
-   :source-code: base/frameworks/cluster/main.zeek 352 355
+   :source-code: base/frameworks/cluster/main.zeek 360 363
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -608,7 +642,7 @@ Functions
             a given cluster node.
 
 .. zeek:id:: Cluster::nodeid_topic
-   :source-code: base/frameworks/cluster/main.zeek 357 360
+   :source-code: base/frameworks/cluster/main.zeek 365 368
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`string`
 
