@@ -22,7 +22,7 @@ must also be sent and the cluster framework loaded as a package like
     introduce circular loading issues.
 
 :Namespace: Cluster
-:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`base/frameworks/control </scripts/base/frameworks/control/index>`
+:Imports: :doc:`base/bif/cluster.bif.zeek </scripts/base/bif/cluster.bif.zeek>`, :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`base/frameworks/control </scripts/base/frameworks/control/index>`
 
 Summary
 ~~~~~~~
@@ -124,6 +124,7 @@ Functions
                                                                    connected to.
 :zeek:id:`Cluster::get_node_count`: :zeek:type:`function`          Returns the number of nodes defined in the cluster layout for a given
                                                                    node type.
+:zeek:id:`Cluster::init`: :zeek:type:`function`                    Initialize the cluster backend.
 :zeek:id:`Cluster::is_enabled`: :zeek:type:`function`              This function can be called at any time to determine if the cluster
                                                                    framework is being enabled for this run.
 :zeek:id:`Cluster::local_node_metrics_port`: :zeek:type:`function` This function can be called at any time to determine the configured
@@ -133,6 +134,8 @@ Functions
 :zeek:id:`Cluster::log`: :zeek:type:`function`                     Write a message to the cluster logging stream.
 :zeek:id:`Cluster::node_topic`: :zeek:type:`function`              Retrieve the topic associated with a specific node in the cluster.
 :zeek:id:`Cluster::nodeid_topic`: :zeek:type:`function`            Retrieve the topic associated with a specific node in the cluster.
+:zeek:id:`Cluster::subscribe`: :zeek:type:`function`               Subscribe to the given topic.
+:zeek:id:`Cluster::unsubscribe`: :zeek:type:`function`             Unsubscribe from the given topic.
 ================================================================== =====================================================================
 
 
@@ -345,7 +348,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Cluster::Event
-   :source-code: base/frameworks/cluster/main.zeek 285 290
+   :source-code: base/frameworks/cluster/main.zeek 308 313
 
    :Type: :zeek:type:`record`
 
@@ -356,6 +359,8 @@ Types
          The arguments for the event.
 
    An event instance for cluster pub/sub.
+   
+   See :zeek:see:`Cluster::publish` and :zeek:see:`Cluster::make_event`.
 
 .. zeek:type:: Cluster::Info
    :source-code: base/frameworks/cluster/main.zeek 138 145
@@ -502,6 +507,10 @@ Types
 
    :Type: :zeek:type:`enum`
 
+      .. zeek:enum:: Cluster::EVENT_SERIALIZER_BROKER_BIN_V1 Cluster::EventSerializerTag
+
+      .. zeek:enum:: Cluster::EVENT_SERIALIZER_BROKER_JSON_V1 Cluster::EventSerializerTag
+
 
 .. zeek:type:: Cluster::LogSerializerTag
 
@@ -511,7 +520,7 @@ Types
 Events
 ######
 .. zeek:id:: Cluster::hello
-   :source-code: base/frameworks/cluster/main.zeek 370 395
+   :source-code: base/frameworks/cluster/main.zeek 397 422
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -548,7 +557,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Cluster::create_store
-   :source-code: base/frameworks/cluster/main.zeek 450 525
+   :source-code: base/frameworks/cluster/main.zeek 477 552
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, persistent: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`Cluster::StoreInfo`
 
@@ -567,7 +576,7 @@ Functions
             be set until the node containing the master store has connected.
 
 .. zeek:id:: Cluster::get_active_node_count
-   :source-code: base/frameworks/cluster/main.zeek 325 328
+   :source-code: base/frameworks/cluster/main.zeek 352 355
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
@@ -576,15 +585,27 @@ Functions
    out how many nodes should be responding to requests.
 
 .. zeek:id:: Cluster::get_node_count
-   :source-code: base/frameworks/cluster/main.zeek 312 323
+   :source-code: base/frameworks/cluster/main.zeek 339 350
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
    Returns the number of nodes defined in the cluster layout for a given
    node type.
 
+.. zeek:id:: Cluster::init
+   :source-code: base/frameworks/cluster/main.zeek 559 562
+
+   :Type: :zeek:type:`function` () : :zeek:type:`bool`
+
+   Initialize the cluster backend.
+   
+   Cluster backends usually invoke this from a :zeek:see:`zeek_init` handler.
+   
+
+   :returns: T on success, else F.
+
 .. zeek:id:: Cluster::is_enabled
-   :source-code: base/frameworks/cluster/main.zeek 330 333
+   :source-code: base/frameworks/cluster/main.zeek 357 360
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -595,7 +616,7 @@ Functions
    :returns: True if :zeek:id:`Cluster::node` has been set.
 
 .. zeek:id:: Cluster::local_node_metrics_port
-   :source-code: base/frameworks/cluster/main.zeek 346 358
+   :source-code: base/frameworks/cluster/main.zeek 373 385
 
    :Type: :zeek:type:`function` () : :zeek:type:`port`
 
@@ -608,7 +629,7 @@ Functions
    :returns: The metrics port used by the calling node.
 
 .. zeek:id:: Cluster::local_node_type
-   :source-code: base/frameworks/cluster/main.zeek 335 344
+   :source-code: base/frameworks/cluster/main.zeek 362 371
 
    :Type: :zeek:type:`function` () : :zeek:type:`Cluster::NodeType`
 
@@ -621,14 +642,14 @@ Functions
    :returns: The :zeek:type:`Cluster::NodeType` the calling node acts as.
 
 .. zeek:id:: Cluster::log
-   :source-code: base/frameworks/cluster/main.zeek 527 530
+   :source-code: base/frameworks/cluster/main.zeek 554 557
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`void`
 
    Write a message to the cluster logging stream.
 
 .. zeek:id:: Cluster::node_topic
-   :source-code: base/frameworks/cluster/main.zeek 360 363
+   :source-code: base/frameworks/cluster/main.zeek 387 390
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -642,7 +663,7 @@ Functions
             a given cluster node.
 
 .. zeek:id:: Cluster::nodeid_topic
-   :source-code: base/frameworks/cluster/main.zeek 365 368
+   :source-code: base/frameworks/cluster/main.zeek 392 395
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -655,5 +676,31 @@ Functions
 
    :returns: a topic string that may used to send a message exclusively to
             a given cluster node.
+
+.. zeek:id:: Cluster::subscribe
+   :source-code: base/frameworks/cluster/main.zeek 564 567
+
+   :Type: :zeek:type:`function` (topic: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Subscribe to the given topic.
+   
+
+   :param topic: The topic to subscribe to.
+   
+
+   :returns: T on success, else F.
+
+.. zeek:id:: Cluster::unsubscribe
+   :source-code: base/frameworks/cluster/main.zeek 569 572
+
+   :Type: :zeek:type:`function` (topic: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Unsubscribe from the given topic.
+   
+
+   :param topic: The topic to unsubscribe from.
+   
+
+   :returns: T on success, else F.
 
 

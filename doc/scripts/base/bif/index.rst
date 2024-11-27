@@ -133,6 +133,9 @@ Package: base/bif
 
    Internal functions and types used by the input framework.
 
+:doc:`/scripts/base/bif/cluster.bif.zeek`
+
+
 :doc:`/scripts/base/bif/__load__.zeek`
 
 
