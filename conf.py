@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #
 # Zeek documentation build configuration file, created by sphinx-quickstart
 #
@@ -10,7 +9,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import os
+import sys
 
 extensions = []
 
@@ -42,8 +42,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Zeek'
-copyright = u'2019-2023, The Zeek Project'
+project = 'Zeek'
+copyright = '2019-2023, The Zeek Project'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -52,19 +52,20 @@ copyright = u'2019-2023, The Zeek Project'
 # The short X.Y version.
 #
 
-version = u"source"
+version = "source"
 
 try:
     # Use the actual Zeek version if available
-    with open('../VERSION', 'r') as f:
+    with open('../VERSION') as f:
         version = f.readline().strip()
 except:
     try:
-        import git
         import re
 
+        import git
+
         repo = git.Repo(os.path.abspath('.'))
-        version = u"git/master"
+        version = "git/master"
 
         version_tag_re = r'v\d+\.\d+(\.\d+)?'
         version_tags = [t for t in repo.tags if
@@ -252,8 +253,8 @@ htmlhelp_basename = 'zeek-docs'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'Zeek.tex', u'Zeek Documentation',
-   u'The Zeek Project', 'manual'),
+  ('index', 'Zeek.tex', 'Zeek Documentation',
+   'The Zeek Project', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -284,8 +285,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'zeek', u'Zeek Documentation',
-     [u'The Zeek Project'], 1)
+    ('index', 'zeek', 'Zeek Documentation',
+     ['The Zeek Project'], 1)
 ]
 
 # -- Options for todo plugin --------------------------------------------
