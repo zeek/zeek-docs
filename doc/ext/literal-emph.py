@@ -1,5 +1,6 @@
-import sphinx
 import re
+
+import sphinx
 from docutils import nodes
 
 # This extension adds a 'literal-emph' directive that operates the same

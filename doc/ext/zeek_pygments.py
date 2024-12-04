@@ -1,5 +1,16 @@
-from pygments.lexer import RegexLexer, bygroups, include, words, bygroups
-from pygments.token import *
+from pygments.lexer import RegexLexer, bygroups, include, words
+from pygments.token import (
+    Comment,
+    Keyword,
+    Literal,
+    Name,
+    Number,
+    Operator,
+    Punctuation,
+    String,
+    Text,
+)
+
 
 def setup(Sphinx):
     return {
