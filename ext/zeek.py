@@ -11,22 +11,19 @@ def setup(Sphinx):
         'parallel_read_safe': True,
     }
 
-from sphinx import addnodes
-from sphinx.domains import Domain, ObjType, Index
-from sphinx.locale import _
+from sphinx import addnodes, version_info
 from sphinx.directives import ObjectDescription
+from sphinx.domains import Domain, Index, ObjType
+from sphinx.locale import _
 from sphinx.roles import XRefRole
-from sphinx.util import docfields
+from sphinx.util import docfields, logging
 from sphinx.util.nodes import make_refnode
-from sphinx import version_info
 
-from sphinx.util import logging
 logger = logging.getLogger(__name__)
 
 from docutils import nodes
-from docutils.parsers.rst import Directive
-from docutils.parsers.rst import directives
-from docutils.parsers.rst.roles import set_classes
+from docutils.parsers.rst import Directive, directives
+
 
 class see(nodes.General, nodes.Element):
     refs = []
@@ -125,11 +122,9 @@ class ZeekGeneric(ObjectDescription):
 
             if ( key in objects and self.get_obj_name() != "id" and
                  self.get_obj_name() != "type" ):
-                logger.warning('%s: duplicate description of %s %s, ' %
-                        (self.env.docname, self.get_obj_name(), name) +
-                        'other instance in ' +
-                        self.env.doc2path(objects[key]),
-                        self.lineno)
+                logger.warning('%s: duplicate description of %s %s, other instance in %s',
+                               self.env.docname, self.get_obj_name(), name,
+                               self.env.doc2path(objects[key]), self.lineno)
 
             objects[key] = self.env.docname
             self.update_type_map(name)
@@ -194,8 +189,8 @@ class ZeekNamespace(ZeekGeneric):
         self.indexnode['entries'].append(make_index_tuple('single', indextext,
                                           targetname, targetname))
         self.indexnode['entries'].append(make_index_tuple('single',
-                                          "namespaces; %s" % (sig),
-                                          targetname, targetname))
+                                                          f"namespaces; {sig}",
+                                                          targetname, targetname))
 
     def get_index_text(self, name):
         return _('%s (namespace); %s') % (name, self.env.docname)
@@ -216,7 +211,7 @@ class ZeekEnum(ZeekGeneric):
             objects[key] = self.env.docname
             self.update_type_map(name)
 
-        indextext = self.get_index_text(name)
+        #indextext = self.get_index_text(name)
         #self.indexnode['entries'].append(make_index_tuple('single', indextext,
         #                                  targetname, targetname))
         m = sig.split()
@@ -232,7 +227,7 @@ class ZeekEnum(ZeekGeneric):
                                 (m[0], self.env.docname, targetname))
 
         self.indexnode['entries'].append(make_index_tuple('single',
-                                          "%s (enum values); %s" % (m[1], m[0]),
+                                          f"{m[1]} (enum values); {m[0]}",
                                           targetname, targetname))
 
     def handle_signature(self, sig, signode):
@@ -272,7 +267,6 @@ class ZeekNative(ZeekGeneric):
     def run(self):
         ns = super().run()
         index_node = ns[0]
-        desc_sig_node = ns[1]
 
         target_id = self.get_obj_name() + '-' + self.native_name
         target_node = nodes.target('', '', ids=[target_id])
@@ -420,7 +414,6 @@ class ZeekDomain(Domain):
             Out[4]: True
 
         """
-        zeek_data = self.env.domaindata['zeek']
         for target, data in otherdata.items():
             if target == 'version':
                 continue
