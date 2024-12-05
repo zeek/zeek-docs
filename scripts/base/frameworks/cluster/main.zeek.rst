@@ -516,6 +516,8 @@ Types
 
    :Type: :zeek:type:`enum`
 
+      .. zeek:enum:: Cluster::LOG_SERIALIZER_ZEEK_BIN_V1 Cluster::LogSerializerTag
+
 
 Events
 ######
