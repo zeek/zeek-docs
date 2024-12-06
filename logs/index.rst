@@ -19,9 +19,10 @@ Zeek Logs
    ntp
    smb
    irc
-   rdp
    ldap
+   postgresql
    quic
+   rdp
    traceroute
    tunnel
    dpd

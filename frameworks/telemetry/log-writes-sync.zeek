@@ -12,6 +12,7 @@ hook Log::log_stream_policy(rec: any, id: Log::ID)
 	{
 	++log_writes[id];
 	}
+
 hook Telemetry::sync()
 	{
 	for ( id, v in log_writes )

@@ -164,12 +164,24 @@ node's metrics port::
   ...
 
 To simplify telemetry collection from all nodes in a cluster, Zeek supports
-`Prometheus HTTP Service Discovery`_ on the manager node. In this approach, the
+`Prometheus HTTP Service Discovery`_ on the manager node. Using this approach, the
 endpoint ``http://<manager>:<manager-metrics-port>/services.json`` returns a
 JSON data structure that itemizes all metrics endpoints in the
 cluster. Prometheus scrapers supporting service discovery then proceed to
-collect telemetry from the listed endpoints in turn. See the `Prometheus Getting
-Started Guide`_ for additional information.
+collect telemetry from the listed endpoints in turn.
+
+The following is an example service discovery scrape config entry within
+Prometheus server's ``prometheus.yml`` configuration file::
+
+    ...
+    scrape_configs:
+      - job_name: zeek-discovery
+        scrape_interval: 5s
+        http_sd_configs:
+          - url: http://localhost:9991/services.json
+            refresh_interval: 10s
+
+See the `Prometheus Getting Started Guide`_ for additional information.
 
 .. note::
 
@@ -184,8 +196,8 @@ Started Guide`_ for additional information.
 
 If these setups aren't right for your environment, there's the possibility to
 redefine the options in ``local.zeek`` to something more suitable. For example,
-the following snippet opens an individual Prometheus port for each Zeek process
-(relative to the port used in ``cluster-layout.zeek``)::
+the following snippet selects the metrics port of each Zeek process relative
+to the cluster port used in ``cluster-layout.zeek``::
 
     @load base/frameworks/cluster
 
@@ -193,15 +205,6 @@ the following snippet opens an individual Prometheus port for each Zeek process
     global my_metrics_port = count_to_port(port_to_count(my_node$p) - 1000, tcp);
 
     redef Telemetry::metrics_port = my_metrics_port;
-
-As a different example, to only change the port from 9911 to 1234 on the manager
-process, but keep the export and import of metrics enabled, use the following snippet::
-
-    @load base/frameworks/cluster
-
-    @ifdef ( Cluster::local_node_type() == Cluster::MANAGER )
-    redef Telemetry::metrics_port = 1234/tcp;
-    @endif
 
 
 Examples of Metrics Application
@@ -276,7 +279,7 @@ directly.
    :tab-width: 4
 
 
-For metrics without labels, the metric instances can also be *cached* as global
+For metrics without labels, the metric instances can also be cached as global
 variables directly. The following example counts the number of http requests.
 
 .. literalinclude:: telemetry/global-http-counter.zeek
@@ -290,9 +293,9 @@ Sync
 ^^^^
 
 In case the scripting overhead of the previous approach is still too high,
-individual writes (or events) can be tracked in a table and then
-synchronized / mirrored during execution of the :zeek:see:`Telemetry::sync`
-hook.
+individual writes (or events) can be tracked in a table or global variable
+and then synchronized / mirrored to concrete counter and gauge instances
+during execution of the :zeek:see:`Telemetry::sync` hook.
 
 .. literalinclude:: telemetry/log-writes-sync.zeek
    :caption: log-writes-sync.zeek
@@ -300,13 +303,29 @@ hook.
    :linenos:
    :tab-width: 4
 
-For the use-case of tracking log writes, this is unlikely to be required, but
-for updating metrics within high frequency events that otherwise have very
-low processing overhead it's a valuable approach. Note, metrics will be stale
-up to the next :zeek:see:`Telemetry::sync_interval` using this method.
+For tracking log writes, this is unlikely to be required (and Zeek exposes
+various logging natively through the framework already), but for updating
+metrics within high frequency events that otherwise have low script processing
+overhead, it's a valuable approach.
 
 
-Table sizes
+.. versionchanged:: 7.1
+
+The :zeek:see:`Telemetry::sync` hook is invoked on-demand only. Either when
+one of the :zeek:see:`Telemetry::collect_metrics`
+or :zeek:see:`Telemetry::collect_histogram_metrics` functions is invoked, or
+when querying Prometheus endpoint. It's an error to call either of the
+collection BiFs within the :zeek:see:`Telemetry::sync` hook and results
+in a reporter warning.
+
+
+.. note::
+
+   In versions before Zeek 7.1, :zeek:see:`Telemetry::sync` was invoked on a
+   fixed schedule, potentially resulting in stale metrics at collection time,
+   as well as generating small runtime overhead when metrics are not collected.
+
+Table Sizes
 -----------
 
 It can be useful to expose the size of tables as metrics, as they often

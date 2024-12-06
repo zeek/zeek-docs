@@ -39,6 +39,19 @@ triggered the match, ``msg`` is the string specified by the
 signature's event statement (``Found root!``), and data is the last
 piece of payload which triggered the pattern match.
 
+.. versionadded:: 7.1
+
+An alternative form of :zeek:id:`signature_match` has an additional ``end_of_match`` parameter.
+
+.. code-block:: zeek
+
+    event signature_match(state: signature_state, msg: string, data: string, end_of_match: count)
+
+The ``end_of_match`` parameter represents the offset into ``data`` where
+the match ended, or said differently, the length of the matching data within ``data``.
+If a signature matches across packet boundaries, ``data`` contains just the
+payload of the packet where a signature match triggered.
+
 To turn such :zeek:id:`signature_match` events into actual alarms, you can
 load Zeek's :doc:`/scripts/base/frameworks/signatures/main.zeek` script.
 This script contains a default event handler that raises
@@ -270,17 +283,20 @@ Actions define what to do if a signature matches. Currently, there are
 two actions defined, ``event`` and ``enable``.
 
 ``event <string>``
-    Raises a :zeek:id:`signature_match` event. The event handler has the
-    following type:
+    Raises a :zeek:id:`signature_match` event. The event handler has either
+    of the following types:
 
     .. code-block:: zeek
 
         event signature_match(state: signature_state, msg: string, data: string)
 
+        event signature_match(state: signature_state, msg: string, data: string, end_of_match: count)
+
     The given string is passed in as ``msg``, and data is the current
     part of the payload that has eventually lead to the signature
     match (this may be empty for signatures without content
-    conditions).
+    conditions). The ``end_of_match`` parameter represents the length of
+    the matching payload in ``data``.
 
 ``event event_name [string]``
 
@@ -304,6 +320,13 @@ two actions defined, ``event`` and ``enable``.
     .. code-block:: zeek
 
         event found_root(state: signature_state, data: string)
+
+    Like the :zeek:id:`signature_match` event, custom events can have an additional
+    ``end_of_match`` parameter.
+
+    .. code-block:: zeek
+
+        event found_root(state: signature_state, data: string, end_of_match: count)
 
     .. note::
 
