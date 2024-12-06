@@ -263,9 +263,9 @@ Redefinable Options
 :zeek:id:`tcp_partial_close_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                       Generate a :zeek:id:`connection_partial_close` event this much time after one
                                                                                                                     half of a partial connection closes, assuming there has been no subsequent
                                                                                                                     activity.
-:zeek:id:`tcp_reassembler_ports_orig`: :zeek:type:`set` :zeek:attr:`&redef`                                         For services without a handler, these sets define originator-side ports
+:zeek:id:`tcp_reassembler_ports_orig`: :zeek:type:`set` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *...*        For services without a handler, these sets define originator-side ports
                                                                                                                     that still trigger reassembly.
-:zeek:id:`tcp_reassembler_ports_resp`: :zeek:type:`set` :zeek:attr:`&redef`                                         For services without a handler, these sets define responder-side ports
+:zeek:id:`tcp_reassembler_ports_resp`: :zeek:type:`set` :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *...*        For services without a handler, these sets define responder-side ports
                                                                                                                     that still trigger reassembly.
 :zeek:id:`tcp_reset_delay`: :zeek:type:`interval` :zeek:attr:`&redef`                                               Upon seeing a RST, flush state after this much time.
 :zeek:id:`tcp_session_timer`: :zeek:type:`interval` :zeek:attr:`&redef`                                             After a connection has closed, wait this long for further activity
@@ -2758,7 +2758,7 @@ Redefinable Options
    :source-code: base/init-bare.zeek 1371 1371
 
    :Type: :zeek:type:`set` [:zeek:type:`port`]
-   :Attributes: :zeek:attr:`&redef`
+   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *"Remove in v8.1. Non-functional since v4.1"*
    :Default: ``{}``
 
    For services without a handler, these sets define originator-side ports
@@ -2770,7 +2770,7 @@ Redefinable Options
    :source-code: base/init-bare.zeek 1377 1377
 
    :Type: :zeek:type:`set` [:zeek:type:`port`]
-   :Attributes: :zeek:attr:`&redef`
+   :Attributes: :zeek:attr:`&redef` :zeek:attr:`&deprecated` = *"Remove in v8.1. Non-functional since v4.1"*
    :Default: ``{}``
 
    For services without a handler, these sets define responder-side ports
