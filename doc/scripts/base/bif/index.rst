@@ -434,6 +434,9 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_SSL.consts.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_StreamEvent.events.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_TCP.events.bif.zeek`
 
 
