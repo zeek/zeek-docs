@@ -20,7 +20,7 @@ Redefinitions
                                             :New Fields: :zeek:type:`SSL::Info`
                                             
                                               requested_client_certificate_authorities: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-                                                List of cient certificate CAs accepted by the server
+                                                List of client certificate CAs accepted by the server
 =========================================== ===============================================================================================================================
 
 
