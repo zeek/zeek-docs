@@ -370,7 +370,7 @@ Types
       requested_client_certificate_authorities: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
          (present if :doc:`/scripts/policy/protocols/ssl/certificate-request-info.zeek` is loaded)
 
-         List of cient certificate CAs accepted by the server
+         List of client certificate CAs accepted by the server
 
       client_random: :zeek:type:`string` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/ssl/decryption.zeek` is loaded)
