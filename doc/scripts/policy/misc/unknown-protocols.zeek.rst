@@ -40,7 +40,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: UnknownProtocol::Info
-   :source-code: policy/misc/unknown-protocols.zeek 15 33
+   :source-code: policy/misc/unknown-protocols.zeek 15 38
 
    :Type: :zeek:type:`record`
 
@@ -51,7 +51,12 @@ Types
          The string name of the analyzer attempting to forward the protocol.
 
       protocol_id: :zeek:type:`string` :zeek:attr:`&log`
-         The identifier of the protocol being forwarded.
+         The identifier of the protocol being forwarded in hex notation.
+
+      protocol_id_num: :zeek:type:`count`
+         The identifier of the protocol being forwarded as count.
+         Note: The count value is not logged by default. It is provided for
+         easy access in log policy hooks.
 
       first_bytes: :zeek:type:`string` :zeek:attr:`&log`
          A certain number of bytes at the start of the unknown protocol's

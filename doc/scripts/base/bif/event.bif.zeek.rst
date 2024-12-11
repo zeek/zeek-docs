@@ -827,7 +827,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 6192 6194
+   :source-code: base/init-bare.zeek 6193 6195
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
@@ -1251,7 +1251,7 @@ Events
    .. zeek:see:: udp_contents udp_reply udp_request
 
 .. zeek:id:: unknown_protocol
-   :source-code: policy/misc/unknown-protocols.zeek 37 47
+   :source-code: policy/misc/unknown-protocols.zeek 42 53
 
    :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`, analyzer_history: :zeek:type:`string_vec`)
    :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`)

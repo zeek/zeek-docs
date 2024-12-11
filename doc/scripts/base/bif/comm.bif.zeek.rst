@@ -19,15 +19,17 @@ Types
 
 Events
 ######
-=========================================================== ================================================================
+=========================================================== ======================================================================
 :zeek:id:`Broker::endpoint_discovered`: :zeek:type:`event`  Generated when a new Broker endpoint appeared.
 :zeek:id:`Broker::endpoint_unreachable`: :zeek:type:`event` Generated when the last path to a Broker endpoint has been lost.
 :zeek:id:`Broker::error`: :zeek:type:`event`                Generated when an error occurs in the Broker sub-system.
 :zeek:id:`Broker::peer_added`: :zeek:type:`event`           Generated when a new peering has been established.
-:zeek:id:`Broker::peer_lost`: :zeek:type:`event`            Generated when an existing peering has been lost.
-:zeek:id:`Broker::peer_removed`: :zeek:type:`event`         Generated when an existing peer has been removed.
-:zeek:id:`Broker::status`: :zeek:type:`event`               Generated when something changes in the Broker sub-system.
-=========================================================== ================================================================
+:zeek:id:`Broker::peer_lost`: :zeek:type:`event`            Generated when the local endpoint has lost its peering with another
+                                                            endpoint.
+:zeek:id:`Broker::peer_removed`: :zeek:type:`event`         Generated when the local endpoint has removed its peering with another
+                                                            endpoint.
+:zeek:id:`Broker::status`: :zeek:type:`event`               Generated when an unspecified change occurs in Broker.
+=========================================================== ======================================================================
 
 Functions
 #########
@@ -46,7 +48,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Broker::BrokerProtocol
-   :source-code: base/bif/comm.bif.zeek 77 77
+   :source-code: base/bif/comm.bif.zeek 139 139
 
    :Type: :zeek:type:`enum`
 
@@ -58,14 +60,14 @@ Types
 Events
 ######
 .. zeek:id:: Broker::endpoint_discovered
-   :source-code: base/bif/comm.bif.zeek 29 29
+   :source-code: base/bif/comm.bif.zeek 68 68
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
 
    Generated when a new Broker endpoint appeared.
 
 .. zeek:id:: Broker::endpoint_unreachable
-   :source-code: base/bif/comm.bif.zeek 33 33
+   :source-code: base/bif/comm.bif.zeek 72 72
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
 
@@ -76,70 +78,142 @@ Events
 
    :Type: :zeek:type:`event` (code: :zeek:type:`Broker::ErrorCode`, msg: :zeek:type:`string`)
 
-   Generated when an error occurs in the Broker sub-system.
+   Generated when an error occurs in the Broker sub-system. This event
+   reports local errors in Broker, as indicated by the provided
+   :zeek:type:`Broker::ErrorCode`.
+   
+
+   :param code: the type of error that triggered this event.
+   
+
+   :param msg: a message providing additional context.
+   
+   .. zeek:see:: Broker::peer_added Broker::peer_removed Broker::peer_lost
+      Broker::endpoint_discovered Broker::endpoint_unreachable Broker::status
 
 .. zeek:id:: Broker::peer_added
-   :source-code: base/bif/comm.bif.zeek 17 17
+   :source-code: base/bif/comm.bif.zeek 26 26
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
 
-   Generated when a new peering has been established.
+   Generated when a new peering has been established. Both sides of the peering
+   receive this event, created independently in each endpoint. For the endpoint
+   establishing the peering, the added endpoint's network information will match
+   the address and port provided to :zeek:see:`Broker::peer`; for the listening
+   endpoint it's the peer's TCP client's address and (likely ephemeral) TCP
+   port.
+   
+
+   :param endpoint: the added endpoint's Broker ID and connection information.
+   
+
+   :param msg: a message providing additional context.
+   
+   .. zeek:see:: Broker::peer_removed Broker::peer_lost
+      Broker::endpoint_discovered Broker::endpoint_unreachable
+      Broker::status Broker::error
 
 .. zeek:id:: Broker::peer_lost
-   :source-code: base/bif/comm.bif.zeek 25 25
+   :source-code: base/bif/comm.bif.zeek 64 64
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
 
-   Generated when an existing peering has been lost.
+   Generated when the local endpoint has lost its peering with another
+   endpoint. This event fires when the other endpoint stops or removes the
+   peering for some other reason. This event is independent of the original
+   directionality of connection establishment.
+   
+
+   :param endpoint: the lost endpoint's Broker ID and connection information.
+   
+
+   :param msg: a message providing additional context.
+   
+   .. zeek:see:: Broker::peer_added Broker::peer_removed
+      Broker::endpoint_discovered Broker::endpoint_unreachable
+      Broker::status Broker::error
 
 .. zeek:id:: Broker::peer_removed
-   :source-code: base/frameworks/broker/log.zeek 61 64
+   :source-code: base/bif/comm.bif.zeek 49 49
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
 
-   Generated when an existing peer has been removed.
+   Generated when the local endpoint has removed its peering with another
+   endpoint. This event can fire for multiple reasons, such as a local call to
+   :zeek:see:`Broker::unpeer`, or because Broker autonomously decides to
+   unpeer. One reason it might do this is message I/O backpressure overflow,
+   meaning that the remote peer cannot keep up with the stream of messages the
+   local endpoint sends it. Regardless of the cause, the remote endpoint will
+   locally trigger a corresponding :zeek:see:`Broker::peer_lost` event once the
+   peering ends. These events are independent of the original directionality of
+   TCP connection establishment and only reflect which endpoint terminates the
+   peering.
+   
+
+   :param endpoint: the removed endpoint's Broker ID and connection information.
+   
+
+   :param msg: a message providing additional context. If backpressure overflow
+        caused this unpeering, the message contains the string
+        *caf::sec::backpressure_overflow*.
+   
+   .. zeek:see:: Broker::peer_added Broker::peer_lost
+      Broker::endpoint_discovered Broker::endpoint_unreachable
+      Broker::status Broker::error
 
 .. zeek:id:: Broker::status
-   :source-code: base/bif/comm.bif.zeek 13 13
+   :source-code: base/bif/comm.bif.zeek 86 86
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Broker::EndpointInfo`, msg: :zeek:type:`string`)
 
-   Generated when something changes in the Broker sub-system.
+   Generated when an unspecified change occurs in Broker. This event only fires
+   when the status change isn't covered by more specific Broker events. The
+   provided message string may be empty.
+   
+
+   :param endpoint: the Broker ID and connection information, if available,
+             of the endpoint the update relates to.
+   
+
+   :param msg: a message providing additional context.
+   
+   .. zeek:see:: Broker::peer_added Broker::peer_removed Broker::peer_lost
+      Broker::endpoint_discovered Broker::endpoint_unreachable Broker::error
 
 Functions
 #########
 .. zeek:id:: Broker::__listen
-   :source-code: base/bif/comm.bif.zeek 83 83
+   :source-code: base/bif/comm.bif.zeek 145 145
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`, proto: :zeek:type:`Broker::BrokerProtocol`) : :zeek:type:`port`
 
 
 .. zeek:id:: Broker::__node_id
-   :source-code: base/bif/comm.bif.zeek 98 98
+   :source-code: base/bif/comm.bif.zeek 160 160
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
 
 .. zeek:id:: Broker::__peer
-   :source-code: base/bif/comm.bif.zeek 86 86
+   :source-code: base/bif/comm.bif.zeek 148 148
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`, retry: :zeek:type:`interval`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__peer_no_retry
-   :source-code: base/bif/comm.bif.zeek 89 89
+   :source-code: base/bif/comm.bif.zeek 151 151
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__peers
-   :source-code: base/bif/comm.bif.zeek 95 95
+   :source-code: base/bif/comm.bif.zeek 157 157
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::PeerInfos`
 
 
 .. zeek:id:: Broker::__unpeer
-   :source-code: base/bif/comm.bif.zeek 92 92
+   :source-code: base/bif/comm.bif.zeek 154 154
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
 
