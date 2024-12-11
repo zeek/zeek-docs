@@ -9,7 +9,6 @@ The most convenient way to access this are the Version::number
 and Version::info constants.
 
 :Namespace: Version
-:Imports: :doc:`base/frameworks/reporter </scripts/base/frameworks/reporter/index>`, :doc:`base/utils/strings.zeek </scripts/base/utils/strings.zeek>`
 
 Summary
 ~~~~~~~
@@ -40,14 +39,14 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: Version::info
-   :source-code: base/misc/version.zeek 125 125
+   :source-code: base/misc/version.zeek 122 122
 
    :Type: :zeek:type:`Version::VersionDescription`
 
    `VersionDescription` record pertaining to the currently running version of Zeek.
 
 .. zeek:id:: Version::number
-   :source-code: base/misc/version.zeek 131 131
+   :source-code: base/misc/version.zeek 128 128
 
    :Type: :zeek:type:`count`
 
@@ -59,7 +58,7 @@ Constants
 Types
 #####
 .. zeek:type:: Version::VersionDescription
-   :source-code: base/misc/version.zeek 12 41
+   :source-code: base/misc/version.zeek 9 38
 
    :Type: :zeek:type:`record`
 
@@ -105,7 +104,7 @@ Types
 Functions
 #########
 .. zeek:id:: Version::at_least
-   :source-code: base/misc/version.zeek 134 137
+   :source-code: base/misc/version.zeek 131 134
 
    :Type: :zeek:type:`function` (version_string: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -119,7 +118,7 @@ Functions
    :returns: True if running version greater or equal to the given version.
 
 .. zeek:id:: Version::parse
-   :source-code: base/misc/version.zeek 59 121
+   :source-code: base/misc/version.zeek 56 118
 
    :Type: :zeek:type:`function` (version_string: :zeek:type:`string`) : :zeek:type:`Version::VersionDescription`
 

@@ -113,6 +113,7 @@
    base/bif/data.bif.zeek </scripts/base/bif/data.bif.zeek>
    base/bif/store.bif.zeek </scripts/base/bif/store.bif.zeek>
    base/frameworks/broker/log.zeek </scripts/base/frameworks/broker/log.zeek>
+   base/frameworks/broker/backpressure.zeek </scripts/base/frameworks/broker/backpressure.zeek>
    base/frameworks/supervisor/__load__.zeek </scripts/base/frameworks/supervisor/__load__.zeek>
    base/frameworks/supervisor/control.zeek </scripts/base/frameworks/supervisor/control.zeek>
    base/frameworks/supervisor/main.zeek </scripts/base/frameworks/supervisor/main.zeek>

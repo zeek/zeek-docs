@@ -7,7 +7,7 @@ policy/misc/stats.zeek
 Log memory/packet/lag statistics.
 
 :Namespace: Stats
-:Imports: :doc:`base/frameworks/notice </scripts/base/frameworks/notice/index>`, :doc:`base/frameworks/telemetry </scripts/base/frameworks/telemetry/index>`
+:Imports: :doc:`base/frameworks/notice </scripts/base/frameworks/notice/index>`, :doc:`base/frameworks/telemetry </scripts/base/frameworks/telemetry/index>`, :doc:`base/utils/time.zeek </scripts/base/utils/time.zeek>`
 
 Summary
 ~~~~~~~
@@ -49,7 +49,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Stats::report_interval
-   :source-code: policy/misc/stats.zeek 14 14
+   :source-code: policy/misc/stats.zeek 15 15
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -60,7 +60,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: Stats::Info
-   :source-code: policy/misc/stats.zeek 16 85
+   :source-code: policy/misc/stats.zeek 17 86
 
    :Type: :zeek:type:`record`
 
@@ -155,7 +155,7 @@ Types
 Events
 ######
 .. zeek:id:: Stats::log_stats
-   :source-code: policy/misc/stats.zeek 88 88
+   :source-code: policy/misc/stats.zeek 89 89
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Stats::Info`)
 
@@ -164,7 +164,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Stats::log_policy
-   :source-code: policy/misc/stats.zeek 11 11
+   :source-code: policy/misc/stats.zeek 12 12
 
    :Type: :zeek:type:`Log::PolicyHook`
 
