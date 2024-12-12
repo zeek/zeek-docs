@@ -397,6 +397,9 @@
    purpose is to provide an easy way to load all known Zeek scripts plus any
    extra scripts needed or used by the documentation process.
 
+:doc:`policy/frameworks/cluster/backend/zeromq </scripts/policy/frameworks/cluster/backend/zeromq/index>`
+
+
 :doc:`policy/frameworks/management/agent </scripts/policy/frameworks/management/agent/index>`
 
 

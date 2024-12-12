@@ -19,6 +19,10 @@ Functions
 :zeek:id:`Cluster::make_event`: :zeek:type:`function`      Create a data structure that may be used to send a remote event via
                                                            :zeek:see:`Broker::publish`.
 :zeek:id:`Cluster::publish`: :zeek:type:`function`         Publishes an event to a given topic.
+:zeek:id:`Cluster::publish_hrw`: :zeek:type:`function`     Publishes an event to a node within a pool according to Rendezvous
+                                                           (Highest Random Weight) hashing strategy.
+:zeek:id:`Cluster::publish_rr`: :zeek:type:`function`      Publishes an event to a node within a pool according to Round-Robin
+                                                           distribution strategy.
 ========================================================== ===================================================================
 
 
@@ -74,6 +78,53 @@ Functions
    
 
    :param topic: a topic associated with the event message.
+   
+
+   :param args: Either the event arguments as already made by
+         :zeek:see:`Cluster::make_event` or the argument list to pass along
+         to it.
+   
+
+   :returns: true if the message is sent.
+
+.. zeek:id:: Cluster::publish_hrw
+   :source-code: base/bif/cluster.bif.zeek 80 80
+
+   :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
+
+   Publishes an event to a node within a pool according to Rendezvous
+   (Highest Random Weight) hashing strategy.
+   
+
+   :param pool: the pool of nodes that are eligible to receive the event.
+   
+
+   :param key: data used for input to the hashing function that will uniformly
+        distribute keys among available nodes.
+   
+
+   :param args: Either the event arguments as already made by
+         :zeek:see:`Broker::make_event` or the argument list to pass along
+         to it.
+   
+
+   :returns: true if the message is sent.
+
+.. zeek:id:: Cluster::publish_rr
+   :source-code: base/bif/cluster.bif.zeek 63 63
+
+   :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
+
+   Publishes an event to a node within a pool according to Round-Robin
+   distribution strategy.
+   
+
+   :param pool: the pool of nodes that are eligible to receive the event.
+   
+
+   :param key: an arbitrary string to identify the purpose for which you're
+        distributing the event.  e.g. consider using namespacing of your
+        script like "Intel::cluster_rr_key".
    
 
    :param args: Either the event arguments as already made by
