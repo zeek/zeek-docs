@@ -253,6 +253,7 @@
    base/bif/plugins/Zeek_WebSocket.functions.bif.zeek </scripts/base/bif/plugins/Zeek_WebSocket.functions.bif.zeek>
    base/bif/plugins/Zeek_WebSocket.types.bif.zeek </scripts/base/bif/plugins/Zeek_WebSocket.types.bif.zeek>
    base/bif/plugins/Zeek_XMPP.events.bif.zeek </scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek>
+   base/bif/plugins/Zeek_Cluster_Backend_ZeroMQ.cluster_backend_zeromq.bif.zeek </scripts/base/bif/plugins/Zeek_Cluster_Backend_ZeroMQ.cluster_backend_zeromq.bif.zeek>
    base/bif/plugins/Zeek_ARP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek>
    base/bif/plugins/Zeek_UDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek>
    base/bif/plugins/Zeek_ICMP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek>
@@ -495,6 +496,8 @@
    builtin-plugins/Zeek_AF_Packet/init.zeek </scripts/builtin-plugins/Zeek_AF_Packet/init.zeek>
    zeekygen/__load__.zeek </scripts/zeekygen/__load__.zeek>
    test-all-policy.zeek </scripts/test-all-policy.zeek>
+   policy/frameworks/cluster/backend/zeromq/__load__.zeek </scripts/policy/frameworks/cluster/backend/zeromq/__load__.zeek>
+   policy/frameworks/cluster/backend/zeromq/main.zeek </scripts/policy/frameworks/cluster/backend/zeromq/main.zeek>
    policy/frameworks/cluster/experimental.zeek </scripts/policy/frameworks/cluster/experimental.zeek>
    policy/frameworks/management/agent/__load__.zeek </scripts/policy/frameworks/management/agent/__load__.zeek>
    policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>
@@ -614,6 +617,7 @@
    policy/protocols/ssl/weak-keys.zeek </scripts/policy/protocols/ssl/weak-keys.zeek>
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
+   policy/frameworks/cluster/backend/zeromq/connect.zeek </scripts/policy/frameworks/cluster/backend/zeromq/connect.zeek>
    policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>
    policy/frameworks/control/controllee.zeek </scripts/policy/frameworks/control/controllee.zeek>
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>

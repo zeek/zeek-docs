@@ -91,6 +91,12 @@ State Variables
             exclusive=F
          }
 
+   :Redefinition: from :doc:`/scripts/policy/frameworks/cluster/backend/zeromq/main.zeek`
+
+      ``=``::
+
+         Cluster::PoolSpec($topic=zeek.cluster.pool.logger, $node_type=Cluster::LOGGER)
+
 
    The specification for :zeek:see:`Cluster::logger_pool`.
 
@@ -138,6 +144,12 @@ State Variables
             exclusive=F
          }
 
+   :Redefinition: from :doc:`/scripts/policy/frameworks/cluster/backend/zeromq/main.zeek`
+
+      ``=``::
+
+         Cluster::PoolSpec($topic=zeek.cluster.pool.proxy, $node_type=Cluster::PROXY)
+
 
    The specification for :zeek:see:`Cluster::proxy_pool`.
 
@@ -184,6 +196,12 @@ State Variables
             max_nodes=<uninitialized>
             exclusive=F
          }
+
+   :Redefinition: from :doc:`/scripts/policy/frameworks/cluster/backend/zeromq/main.zeek`
+
+      ``=``::
+
+         Cluster::PoolSpec($topic=zeek.cluster.pool.worker, $node_type=Cluster::WORKER)
 
 
    The specification for :zeek:see:`Cluster::worker_pool`.

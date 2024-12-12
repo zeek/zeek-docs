@@ -998,6 +998,12 @@ Redefinable Options
    :Type: :zeek:type:`Cluster::BackendTag`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``Cluster::CLUSTER_BACKEND_BROKER``
+   :Redefinition: from :doc:`/scripts/policy/frameworks/cluster/backend/zeromq/main.zeek`
+
+      ``=``::
+
+         Cluster::CLUSTER_BACKEND_ZEROMQ
+
 
    Cluster backend to use. Default is the broker backend.
 

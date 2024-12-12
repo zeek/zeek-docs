@@ -52,7 +52,7 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string` :zeek:attr:`&default` = ``Chd8EgFWk2j`` :zeek:attr:`&optional`
+      id: :zeek:type:`string` :zeek:attr:`&default` = ``fD0qxAnfwOe`` :zeek:attr:`&optional`
          Unique identifier for a particular configuration
 
       instances: :zeek:type:`set` [:zeek:type:`Management::Instance`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
