@@ -3978,7 +3978,7 @@ Types
    .. zeek:see:: get_broker_stats
 
 .. zeek:type:: Cluster::Pool
-   :source-code: base/frameworks/cluster/pools.zeek 44 59
+   :source-code: base/frameworks/cluster/pools.zeek 46 61
 
    :Type: :zeek:type:`record`
 
