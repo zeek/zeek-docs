@@ -115,6 +115,7 @@ Functions
 :zeek:id:`has_event_group`: :zeek:type:`function`               Does an attribute event group with this name exist?
 :zeek:id:`has_module_events`: :zeek:type:`function`             Does a module event group with this name exist?
 :zeek:id:`have_spicy`: :zeek:type:`function`                    Returns true if Zeek was built with support for using Spicy analyzers (which
+                                                                is the default).
 :zeek:id:`have_spicy_analyzers`: :zeek:type:`function`          Returns true if Zeek was built with support for its in-tree Spicy analyzers
                                                                 (which is the default if Spicy support is available).
 :zeek:id:`haversine_distance`: :zeek:type:`function`            Calculates distance between two geographic locations using the haversine
@@ -1645,6 +1646,7 @@ Functions
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
    Returns true if Zeek was built with support for using Spicy analyzers (which
+   is the default).
 
 .. zeek:id:: have_spicy_analyzers
    :source-code: base/bif/zeek.bif.zeek 2666 2666
