@@ -577,7 +577,7 @@ This script prints the following messages to stderr, as well as logging them to
 
 
 The logging behavior of failing assert statements can be customized using the
-:zeek:see:`assertion_failure` or zeek:see:`assertion_result` hook.
+:zeek:see:`assertion_failure` or :zeek:see:`assertion_result` hook.
 Using the :zeek:see:`break` statement in either hook allows for suppression
 of the the default log generation.
 The :zeek:see:`assertion_result` hook is targeted for testing frameworks as it
