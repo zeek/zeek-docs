@@ -329,10 +329,10 @@ function to publish events, including:
     - Description
     - Use
 
-  * - :zeek:see:`Broker::publish`
+  * - :zeek:see:`Cluster::publish`
     - Publishes an event at a given topic
     - Standard function to send an event to all nodes subscribed to a given
-      topic
+      topic.
 
   * - :zeek:see:`Cluster::publish_hrw`
     - Publishes an event to a node within a pool according to
@@ -344,6 +344,25 @@ function to publish events, including:
     - Publishes an event to a node within a pool according to Round-Robin
       distribution strategy.
     - Generally used inside Zeek for multiple logger nodes.
+
+  * - :zeek:see:`Broker::publish`
+    - Publishes an event at a given topic
+    - Standard function to send an event to all nodes subscribed to a given
+      topic.
+
+      Starting with Zeek 7.1, this function should only be used in
+      Broker-specific scripts. Use :zeek:see:`Cluster::publish` otherwise.
+
+
+.. note::
+
+   The ``Cluster::publish`` function was added in Zeek 7.1. In contrast to
+   ``Broker:publish``, it publishes events even when a non-Broker cluster
+   backend is in use. Going forward, ``Cluster:publish`` should be preferred
+   over ``Broker::publish``, unless the script is specific to the Broker backend,
+   e.g. when interacting with an external application using native Python
+   bindings for Broker.
+
 
 An example sending an event from worker to manager:
 
