@@ -2555,7 +2555,7 @@ Functions
 
    :returns: True if both paraglobs contain the same patterns, false otherwise.
    
-   ## .. zeek:see::paraglob_add paraglob_match paraglob_init
+   .. zeek:see:: paraglob_match paraglob_init
 
 .. zeek:id:: paraglob_init
    :source-code: base/bif/zeek.bif.zeek 389 389
@@ -2570,7 +2570,7 @@ Functions
 
    :returns: A new, compiled, paraglob with the patterns in *v*
    
-   .. zeek:see::paraglob_match paraglob_equals paraglob_add
+   .. zeek:see:: paraglob_match paraglob_equals
 
 .. zeek:id:: paraglob_match
    :source-code: base/bif/zeek.bif.zeek 401 401
@@ -2588,7 +2588,7 @@ Functions
 
    :returns: A vector of strings matching the input string.
    
-   ## .. zeek:see::paraglob_add paraglob_equals paraglob_init
+   .. zeek:see:: paraglob_equals paraglob_init
 
 .. zeek:id:: piped_exec
    :source-code: base/bif/zeek.bif.zeek 155 155
