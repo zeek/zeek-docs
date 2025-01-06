@@ -897,7 +897,7 @@ Events
    not correct; the client can send more handshake packets before the finished message, e.g.,
    when client certificates are used.
    
-   Note that :zeek:see::ssl_encrypted_data is also raised for these messages.
+   Note that :zeek:see:`ssl_encrypted_data` is also raised for these messages.
    
 
    :param c: The connection.
