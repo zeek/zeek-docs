@@ -108,10 +108,10 @@ We use the :program:`cat` command to show the contents of each log.
   #unset_field    -
   #path   conn
   #open   2020-06-05-14-48-32
-  #fields ts      uid     id.orig_h       id.orig_p       id.resp_h       id.resp_p       proto   service duration        orig_bytes      resp_bytes      conn_state    local_orig      local_resp      missed_bytes    history orig_pkts       orig_ip_bytes   resp_pkts       resp_ip_bytes   tunnel_parents
-  #types  time    string  addr    port    addr    port    enum    string  interval        count   count   string  bool    bool    count   string  count   count count    count   set[string]
-  1591367999.305988       CazOhH2qDUiJTWMCY       192.168.4.76    36844   192.168.4.1     53      udp     dns     0.066852        62      141     SF      -    -0       Dd      2       118     2       197     -
-  1591367999.430166       CLqEx41jYPOdfHF586      192.168.4.76    46378   31.3.245.133    80      tcp     http    0.254115        77      295     SF      -    -0       ShADadFf        6       397     4       511     -
+  #fields ts      uid     id.orig_h       id.orig_p       id.resp_h       id.resp_p       proto   service duration        orig_bytes      resp_bytes      conn_state    local_orig      local_resp      missed_bytes    history orig_pkts       orig_ip_bytes   resp_pkts       resp_ip_bytes   tunnel_parents  ip_proto
+  #types  time    string  addr    port    addr    port    enum    string  interval        count   count   string  bool    bool    count   string  count   count count    count   set[string]    count
+  1591367999.305988       CazOhH2qDUiJTWMCY       192.168.4.76    36844   192.168.4.1     53      udp     dns     0.066852        62      141     SF      -    -0       Dd      2       118     2       197     -       17
+  1591367999.430166       CLqEx41jYPOdfHF586      192.168.4.76    46378   31.3.245.133    80      tcp     http    0.254115        77      295     SF      -    -0       ShADadFf        6       397     4       511     -       6
   #close  2020-06-05-14-48-32
 
 Next we look at Zeek’s :file:`dns.log`.
@@ -434,11 +434,17 @@ First we look at :file:`packet_filter.log`.
 ::
 
   {"ts":1591368442.854585,"node":"zeek","filter":"ip or not ip","init":true,"success":true}
-  zeek@zeek:~/zeek-test/json$ cat conn.log
-  {"ts":1591367999.305988,"uid":"CMdzit1AMNsmfAIiQc","id.orig_h":"192.168.4.76","id.orig_p":36844,"id.resp_h":"192.168.4.1","id.resp_p":53,"proto":"udp","service":"dns","duration":0.06685185432434082,"orig_bytes":62,"resp_bytes":141,"conn_state":"SF","missed_bytes":0,"history":"Dd","orig_pkts":2,"orig_ip_bytes":118,"resp_pkts":2,"resp_ip_bytes":197}
-  {"ts":1591367999.430166,"uid":"C5bLoe2Mvxqhawzqqd","id.orig_h":"192.168.4.76","id.orig_p":46378,"id.resp_h":"31.3.245.133","id.resp_p":80,"proto":"tcp","service":"http","duration":0.25411510467529297,"orig_bytes":77,"resp_bytes":295,"conn_state":"SF","missed_bytes":0,"history":"ShADadFf","orig_pkts":6,"orig_ip_bytes":397,"resp_pkts":4,"resp_ip_bytes":511}
 
-Next we look at :file:`dns.log`.
+Next we look at :file:`conn.log` and :file:`dns.log`:
+
+.. code-block:: console
+
+  zeek@zeek:~/zeek-test/json$ cat conn.log
+
+::
+
+  {"ts":1591367999.305988,"uid":"CMdzit1AMNsmfAIiQc","id.orig_h":"192.168.4.76","id.orig_p":36844,"id.resp_h":"192.168.4.1","id.resp_p":53,"proto":"udp","service":"dns","duration":0.06685185432434082,"orig_bytes":62,"resp_bytes":141,"conn_state":"SF","missed_bytes":0,"history":"Dd","orig_pkts":2,"orig_ip_bytes":118,"resp_pkts":2,"resp_ip_bytes":197,"ip_proto":17}
+  {"ts":1591367999.430166,"uid":"C5bLoe2Mvxqhawzqqd","id.orig_h":"192.168.4.76","id.orig_p":46378,"id.resp_h":"31.3.245.133","id.resp_p":80,"proto":"tcp","service":"http","duration":0.25411510467529297,"orig_bytes":77,"resp_bytes":295,"conn_state":"SF","missed_bytes":0,"history":"ShADadFf","orig_pkts":6,"orig_ip_bytes":397,"resp_pkts":4,"resp_ip_bytes":511,"ip_proto":6}
 
 .. code-block:: console
 

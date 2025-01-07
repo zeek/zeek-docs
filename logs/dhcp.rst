@@ -346,7 +346,7 @@ source IP address, sending its search to the local network for a DHCP server.
     "orig_ip_bytes": 1323,
     "resp_pkts": 0,
     "resp_ip_bytes": 0,
-    "sensorname": "so16-enp0s8"
+    "ip_proto": 17
   }
 
 Notice that Zeek has tracked 4 “orig packets” here, which does not strictly
@@ -384,7 +384,7 @@ client, and ``192.168.4.1``, the DHCP server.
     "orig_ip_bytes": 0,
     "resp_pkts": 2,
     "resp_ip_bytes": 660,
-    "sensorname": "so16-enp0s8"
+    "ip_proto": 17
   }
 
 Here the count of 2 ``resp_pkts`` is correct.
