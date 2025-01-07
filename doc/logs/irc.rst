@@ -118,7 +118,8 @@ Zeek generated the following :file:`conn.log` entry for the example traffic.
     "orig_pkts": 41,
     "orig_ip_bytes": 1963,
     "resp_pkts": 185,
-    "resp_ip_bytes": 246742
+    "resp_ip_bytes": 246742,
+    "ip_proto": 6
   }
 
 We see that Zeek correctly identified this traffic as IRC. We can expect to see

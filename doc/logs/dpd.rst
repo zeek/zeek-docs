@@ -248,7 +248,8 @@ Here is the :file:`conn.log` that Zeek generated for this activity:
     "orig_pkts": 6,
     "orig_ip_bytes": 776,
     "resp_pkts": 5,
-    "resp_ip_bytes": 675
+    "resp_ip_bytes": 675,
+    "ip_proto": 6
   }
 
 The :file:`conn.log` entry is fairly normal.

@@ -146,7 +146,8 @@ The :file:`conn.log` for this traffic contains the following:
     "orig_pkts": 1,
     "orig_ip_bytes": 89,
     "resp_pkts": 1,
-    "resp_ip_bytes": 137
+    "resp_ip_bytes": 137,
+    "ip_proto": 17
   }
 
 This first :file:`conn.log` entry addresses frames 2 and 3 in the original packet
@@ -172,7 +173,8 @@ shortly.
     "orig_pkts": 1,
     "orig_ip_bytes": 89,
     "resp_pkts": 0,
-    "resp_ip_bytes": 0
+    "resp_ip_bytes": 0,
+    "ip_proto": 17
   }
 
 This second :file:`conn.log` entry refers to frame 1 in the packet capture.
@@ -196,7 +198,8 @@ Note the ``uid`` field. It will appear again shortly as well.
     "resp_ip_bytes": 0,
     "tunnel_parents": [
       **"CO9T0A3FPac5ig4hud"**
-    ]
+    ],
+    "ip_proto": 1
   }
 
 Here Zeek has created a new :file:`conn.log` entry for the ICMPv6 traffic
