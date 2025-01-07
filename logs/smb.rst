@@ -118,7 +118,8 @@ traffic.
     "orig_pkts": 78,
     "orig_ip_bytes": 19403,
     "resp_pkts": 77,
-    "resp_ip_bytes": 16812
+    "resp_ip_bytes": 16812,
+    "ip_proto": 6
   }
 
 We see that ``192.168.10.31`` initiated a connection to ``192.168.10.10``. The
@@ -376,7 +377,8 @@ The :file:`conn.log` has two entries:
     "orig_pkts": 66,
     "orig_ip_bytes": 816703,
     "resp_pkts": 91,
-    "resp_ip_bytes": 15309
+    "resp_ip_bytes": 15309,
+    "ip_proto": 6
   }
   {
     "ts": 1507565425.183882,
@@ -392,7 +394,8 @@ The :file:`conn.log` has two entries:
     "orig_pkts": 1,
     "orig_ip_bytes": 207,
     "resp_pkts": 0,
-    "resp_ip_bytes": 0
+    "resp_ip_bytes": 0,
+    "ip_proto": 17
   }
 
 The first entry shows a connection initiated by ``192.168.10.31`` to
@@ -790,7 +793,8 @@ The :file:`conn.log` for this case has only one entry:
     "orig_pkts": 74,
     "orig_ip_bytes": 8734,
     "resp_pkts": 575,
-    "resp_ip_bytes": 835740
+    "resp_ip_bytes": 835740,
+    "ip_proto": 6
   }
 
 We see the same pattern: ``192.168.10.31`` initiated a connection to
@@ -1028,7 +1032,8 @@ Looking at the :file:`conn.log`, we see one entry:
     "orig_pkts": 11,
     "orig_ip_bytes": 1595,
     "resp_pkts": 9,
-    "resp_ip_bytes": 1397
+    "resp_ip_bytes": 1397,
+    "ip_proto": 6
   }
 
 We see ``192.168.10.31`` initiated a connection to ``192.168.10.30``, port 445

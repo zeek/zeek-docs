@@ -63,6 +63,7 @@ for easier viewing.
     "orig_ip_bytes": 1232,
     "resp_pkts": 17,
     "resp_ip_bytes": 1343,
+    "ip_proto": 6,
     "community_id": "1:lEESxqaSVYqFZvWNb4OccTa9sTs="
   }
   {
@@ -296,6 +297,7 @@ IP addresses too.
     "orig_ip_bytes": 216,
     "resp_pkts": 4,
     "resp_ip_bytes": 290,
+    "ip_proto": 6,
     "community_id": "1:DNwvGR6Ots6pISvsdXBUIaG8y3Q="
   }
 

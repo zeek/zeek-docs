@@ -14,7 +14,7 @@ Starting with :file:`conn.log`
 ==============================
 
 This example starts with the :file:`conn.log`. It’s not strictly necessary to
-explain the :file:`pe.log`, although I wanted to include a very recent example
+explain the :file:`pe.log`, although I wanted to include a recent example
 of a modern application conducting activities via HTTP.
 
 .. literal-emph::
@@ -40,6 +40,7 @@ of a modern application conducting activities via HTTP.
     "orig_ip_bytes": 29041,
     "resp_pkts": 1367,
     "resp_ip_bytes": 2030409,
+    "ip_proto": 6
   }
 
 This example shows a host, ``192.168.4.152``, conducting a HTTP session with
