@@ -34,9 +34,9 @@ stored traffic. We use the :program:`jq` utility to review the contents.
 
 ::
 
-  {"ts":1591367999.305988,"uid":"CMdzit1AMNsmfAIiQc","id.orig_h":"192.168.4.76","id.orig_p":36844,"id.resp_h":"192.168.4.1","id.resp_p":53,"proto":"udp","service":"dns","duration":0.06685185432434082,"orig_bytes":62,"resp_bytes":141,"conn_state":"SF","missed_bytes":0,"history":"Dd","orig_pkts":2,"orig_ip_bytes":118,"resp_pkts":2,"resp_ip_bytes":197}
+  {"ts":1591367999.305988,"uid":"CMdzit1AMNsmfAIiQc","id.orig_h":"192.168.4.76","id.orig_p":36844,"id.resp_h":"192.168.4.1","id.resp_p":53,"proto":"udp","service":"dns","duration":0.06685185432434082,"orig_bytes":62,"resp_bytes":141,"conn_state":"SF","missed_bytes":0,"history":"Dd","orig_pkts":2,"orig_ip_bytes":118,"resp_pkts":2,"resp_ip_bytes":197,"ip_proto":17}
 
-  {"ts":1591367999.430166,"uid":"C5bLoe2Mvxqhawzqqd","id.orig_h":"192.168.4.76","id.orig_p":46378,"id.resp_h":"31.3.245.133","id.resp_p":80,"proto":"tcp","service":"http","duration":0.25411510467529297,"orig_bytes":77,"resp_bytes":295,"conn_state":"SF","missed_bytes":0,"history":"ShADadFf","orig_pkts":6,"orig_ip_bytes":397,"resp_pkts":4,"resp_ip_bytes":511}
+  {"ts":1591367999.430166,"uid":"C5bLoe2Mvxqhawzqqd","id.orig_h":"192.168.4.76","id.orig_p":46378,"id.resp_h":"31.3.245.133","id.resp_p":80,"proto":"tcp","service":"http","duration":0.25411510467529297,"orig_bytes":77,"resp_bytes":295,"conn_state":"SF","missed_bytes":0,"history":"ShADadFf","orig_pkts":6,"orig_ip_bytes":397,"resp_pkts":4,"resp_ip_bytes":511,"ip_proto":6}
 
 Alternatively, we could see each field printed on its own line:
 
@@ -64,7 +64,8 @@ Alternatively, we could see each field printed on its own line:
     "orig_pkts": 2,
     "orig_ip_bytes": 118,
     "resp_pkts": 2,
-    "resp_ip_bytes": 197
+    "resp_ip_bytes": 197,
+    "ip_proto": 17
   }
   {
     "ts": 1591367999.430166,
@@ -84,7 +85,8 @@ Alternatively, we could see each field printed on its own line:
     "orig_pkts": 6,
     "orig_ip_bytes": 397,
     "resp_pkts": 4,
-    "resp_ip_bytes": 511
+    "resp_ip_bytes": 511,
+    "ip_proto": 6
   }
 
 What an analyst derives from any log is a function of the questions that he or
@@ -119,7 +121,8 @@ the following:
     "orig_pkts": 6,
     "orig_ip_bytes": 397,
     "resp_pkts": 4,
-    "resp_ip_bytes": 511
+    "resp_ip_bytes": 511,
+    "ip_proto": 6
   }
 
 For the second log, ``192.168.4.76`` talked to ``31.3.245.133``.
@@ -264,6 +267,10 @@ In the highlighted output, we see that :program:`tshark` notes 77 bytes of data
 carried by TCP from ``192.168.4.76``. I highlighted what that data was,
 beginning with a GET request.
 
+The ``orig_pkts`` and ``resp_pkts`` fields report the number of IP packets
+transferred in the respective directions. The ``orig_ip_bytes`` and
+``resp_ip_bytes`` indicate the total IP packet-level byte counts, respectively.
+
 Another way to look at this TCP segment is to dump the hex contents using a
 different :program:`tshark` option, as shown below.
 
@@ -339,7 +346,8 @@ reference.
     "orig_pkts": 2,
     "orig_ip_bytes": 118,
     "resp_pkts": 2,
-    "resp_ip_bytes": 197
+    "resp_ip_bytes": 197,
+    "ip_proto": 17
   }
 
 For the first entry, ``192.168.4.76`` talked to ``192.168.4.1``.
@@ -369,6 +377,52 @@ the conversations as “normal establishment and termination” of the
 
 Similarly, the ``history`` field is simply ``Dd``, indicating that each party
 to the conversation sent data to the other.
+
+The ``ip_proto`` Field
+======================
+
+.. versionadded:: 7.1
+
+The numeric ``ip_proto`` field reports the `IP protocol number
+<https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml>`_ of
+the connection. It relates to the ``proto`` field, but while the former
+represents a :zeek:type:`transport_proto` value that exclusively covers
+*transport* protocols Zeek knows how to parse (and ties into Zeek's
+:zeek:type:`port` type), the ``ip_proto`` field is always present, including for
+non-transport IP packet flows such as IGMP or OSPF. For example, an OSPF flow
+might look as follows:
+
+::
+
+  {
+    "ts": 1098361214.420459,
+    "uid": "C9EV8R4fN8bfSj08f",
+    "id.orig_h": "192.168.170.2",
+    "id.orig_p": 0,
+    "id.resp_h": "224.0.0.6",
+    "id.resp_p": 0,
+    "proto": "unknown_transport",
+    "duration": 6.437546968460083,
+    "orig_bytes": 0,
+    "resp_bytes": 0,
+    "conn_state": "OTH",
+    "local_orig": true,
+    "local_resp": false,
+    "missed_bytes": 0,
+    "orig_pkts": 4,
+    "orig_ip_bytes": 768,
+    "resp_pkts": 0,
+    "resp_ip_bytes": 0,
+    "ip_proto": 89
+  }
+
+You can adapt this feature in several ways. Load the
+:doc:`/scripts/policy/protocols/conn/ip-proto-name-logging.zeek` policy script
+to add an ``ip_proto_name`` column with a string version of the ``ip_proto``
+value. Also, you may disable the whole feature by loading the
+:doc:`/scripts/policy/protocols/conn/disable-unknown-ip-proto-support.zeek`
+script, returning conn.log to its pre-7.1 state. Zeek's :ref:`logging framework
+<framework-logging>` supports additional customizations.
 
 The ``uid`` and Other Fields
 ============================
