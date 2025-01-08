@@ -718,29 +718,29 @@ Example:
 .. code-block:: zeek
 
     local myset = set(80/tcp, 81/tcp);
-    local mytable = table([10.0.0.1, 80/tcp]="s1", [10.0.0.2, 81/tcp]="s2");
-    local myvector = vector("zero", "one, "two");
+    local mytable = table([ 10.0.0.1, 80/tcp ] = "s1", [ 10.0.0.2, 81/tcp ] = "s2");
+    local myvector = vector("zero", "one", "two");
 
     for ( p in myset )
         print p;
 
-    for ( [i,j], val in mytable )
+    for ( [ip, p], val in mytable )
         {
-        if (val == "done")
+        if ( val == "done" )
             break;
-        if (val == "skip")
+        if ( val == "skip" )
             next;
-        print i,j;
+        print ip, p;
         }
 
     for ( _, val in mytable )
         print val;
 
-    for ( [i,_], _ in mytable )
-        print i;
+    for ( [ip, _], _ in mytable )
+        print ip;
 
     for ( i, val in myvector )
-        print i,val;
+        print i, val;
 
     for ( _, val in myvector )
         print val;
