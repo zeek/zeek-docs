@@ -49,7 +49,7 @@ master_doc = "index"
 
 # General information about the project.
 project = "Zeek"
-copyright = "2019-2023, The Zeek Project"
+copyright = "by the Zeek Project"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
