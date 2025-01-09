@@ -175,7 +175,7 @@ development headers for libraries:
     * Libpcap (http://www.tcpdump.org)
     * Make
     * OpenSSL (http://www.openssl.org)
-    * Python 3.7 or greater (https://www.python.org/)
+    * Python 3.9 or greater (https://www.python.org/)
     * SWIG (http://www.swig.org)
     * Zlib (https://zlib.net/)
 
