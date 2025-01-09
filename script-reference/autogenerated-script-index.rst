@@ -153,6 +153,7 @@
    base/bif/bloom-filter.bif.zeek </scripts/base/bif/bloom-filter.bif.zeek>
    base/bif/cardinality-counter.bif.zeek </scripts/base/bif/cardinality-counter.bif.zeek>
    base/bif/top-k.bif.zeek </scripts/base/bif/top-k.bif.zeek>
+   base/bif/storage.bif.zeek </scripts/base/bif/storage.bif.zeek>
    base/bif/spicy.bif.zeek </scripts/base/bif/spicy.bif.zeek>
    base/bif/plugins/__load__.zeek </scripts/base/bif/plugins/__load__.zeek>
    base/bif/plugins/Zeek_BitTorrent.events.bif.zeek </scripts/base/bif/plugins/Zeek_BitTorrent.events.bif.zeek>
@@ -360,6 +361,8 @@
    base/frameworks/telemetry/__load__.zeek </scripts/base/frameworks/telemetry/__load__.zeek>
    base/frameworks/telemetry/main.zeek </scripts/base/frameworks/telemetry/main.zeek>
    base/misc/version.zeek </scripts/base/misc/version.zeek>
+   base/frameworks/storage/__load__.zeek </scripts/base/frameworks/storage/__load__.zeek>
+   base/frameworks/storage/main.zeek </scripts/base/frameworks/storage/main.zeek>
    base/frameworks/spicy/__load__.zeek </scripts/base/frameworks/spicy/__load__.zeek>
    base/frameworks/spicy/main.zeek </scripts/base/frameworks/spicy/main.zeek>
    base/protocols/conn/__load__.zeek </scripts/base/protocols/conn/__load__.zeek>

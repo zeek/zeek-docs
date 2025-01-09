@@ -161,6 +161,9 @@ Package: base/bif
 
    Functions to probabilistically determine top-k elements.
 
+:doc:`/scripts/base/bif/storage.bif.zeek`
+
+
 :doc:`/scripts/base/bif/spicy.bif.zeek`
 
 

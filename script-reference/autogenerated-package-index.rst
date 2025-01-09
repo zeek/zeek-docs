@@ -224,6 +224,9 @@
 :doc:`base/frameworks/telemetry </scripts/base/frameworks/telemetry/index>`
 
 
+:doc:`base/frameworks/storage </scripts/base/frameworks/storage/index>`
+
+
 :doc:`base/frameworks/spicy </scripts/base/frameworks/spicy/index>`
 
 
