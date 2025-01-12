@@ -3235,6 +3235,10 @@ Types
 
       .. zeek:enum:: spicy::Charset_UTF8 spicy::Charset
 
+      .. zeek:enum:: spicy::Charset_UTF16LE spicy::Charset
+
+      .. zeek:enum:: spicy::Charset_UTF16BE spicy::Charset
+
       .. zeek:enum:: spicy::Charset_Undef spicy::Charset
 
 
