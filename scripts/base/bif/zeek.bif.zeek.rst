@@ -138,6 +138,7 @@ Functions
 :zeek:id:`int_to_count`: :zeek:type:`function`                  Converts a (positive) :zeek:type:`int` to a :zeek:type:`count`.
 :zeek:id:`int_to_double`: :zeek:type:`function`                 Converts an :zeek:type:`int` to a :zeek:type:`double`.
 :zeek:id:`interval_to_double`: :zeek:type:`function`            Converts an :zeek:type:`interval` to a :zeek:type:`double`.
+:zeek:id:`is_event_handled`: :zeek:type:`function`              Check if an event is handled.
 :zeek:id:`is_file_analyzer`: :zeek:type:`function`              Returns true if the given tag belongs to a file analyzer.
 :zeek:id:`is_icmp_port`: :zeek:type:`function`                  Checks whether a given :zeek:type:`port` has ICMP as transport protocol.
 :zeek:id:`is_local_interface`: :zeek:type:`function`            Checks whether a given IP address belongs to a local interface.
@@ -278,7 +279,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: __init_secondary_bifs
-   :source-code: base/bif/zeek.bif.zeek 2495 2495
+   :source-code: base/bif/zeek.bif.zeek 2507 2507
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -367,7 +368,7 @@ Functions
         Missing elements count as false.
 
 .. zeek:id:: anonymize_addr
-   :source-code: base/bif/zeek.bif.zeek 2548 2548
+   :source-code: base/bif/zeek.bif.zeek 2560 2560
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, cl: :zeek:type:`IPAddrAnonymizationClass`) : :zeek:type:`addr`
 
@@ -612,7 +613,7 @@ Functions
                 rmdir unlink rename
 
 .. zeek:id:: compress_path
-   :source-code: base/bif/zeek.bif.zeek 2611 2611
+   :source-code: base/bif/zeek.bif.zeek 2623 2623
 
    :Type: :zeek:type:`function` (dir: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -850,7 +851,7 @@ Functions
    .. zeek:see:: Analyzer::schedule_analyzer Analyzer::name
 
 .. zeek:id:: disable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2661 2661
+   :source-code: base/bif/zeek.bif.zeek 2673 2673
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -866,7 +867,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: disable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2693 2693
+   :source-code: base/bif/zeek.bif.zeek 2705 2705
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1017,7 +1018,7 @@ Functions
    .. zeek:see:: get_matcher_stats
 
 .. zeek:id:: enable_event_group
-   :source-code: base/bif/zeek.bif.zeek 2649 2649
+   :source-code: base/bif/zeek.bif.zeek 2661 2661
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1033,7 +1034,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: enable_module_events
-   :source-code: base/bif/zeek.bif.zeek 2682 2682
+   :source-code: base/bif/zeek.bif.zeek 2694 2694
 
    :Type: :zeek:type:`function` (module_name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1289,7 +1290,7 @@ Functions
    .. zeek:see:: entropy_test_init entropy_test_add entropy_test_finish
 
 .. zeek:id:: find_in_zeekpath
-   :source-code: base/bif/zeek.bif.zeek 2743 2743
+   :source-code: base/bif/zeek.bif.zeek 2755 2755
 
    :Type: :zeek:type:`function` (p: :zeek:type:`string`) : :zeek:type:`string`
 
@@ -1413,7 +1414,7 @@ Functions
    :returns: The hashed value.
 
 .. zeek:id:: from_json
-   :source-code: base/bif/zeek.bif.zeek 2602 2602
+   :source-code: base/bif/zeek.bif.zeek 2614 2614
 
    :Type: :zeek:type:`function` (s: :zeek:type:`string`, t: :zeek:type:`any`, key_func: :zeek:type:`string_mapper` :zeek:attr:`&default` = :zeek:see:`from_json_default_key_mapper` :zeek:attr:`&optional`) : :zeek:type:`from_json_result`
 
@@ -1653,7 +1654,7 @@ Functions
    Returns a set giving the names of all global options.
 
 .. zeek:id:: has_event_group
-   :source-code: base/bif/zeek.bif.zeek 2670 2670
+   :source-code: base/bif/zeek.bif.zeek 2682 2682
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1666,7 +1667,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: has_module_events
-   :source-code: base/bif/zeek.bif.zeek 2702 2702
+   :source-code: base/bif/zeek.bif.zeek 2714 2714
 
    :Type: :zeek:type:`function` (group: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1679,7 +1680,7 @@ Functions
                  enable_module_events disable_module_events has_module_events
 
 .. zeek:id:: have_spicy
-   :source-code: base/bif/zeek.bif.zeek 2707 2707
+   :source-code: base/bif/zeek.bif.zeek 2719 2719
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1687,7 +1688,7 @@ Functions
    is the default).
 
 .. zeek:id:: have_spicy_analyzers
-   :source-code: base/bif/zeek.bif.zeek 2712 2712
+   :source-code: base/bif/zeek.bif.zeek 2724 2724
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -1968,8 +1969,25 @@ Functions
    
    .. zeek:see:: double_to_interval
 
+.. zeek:id:: is_event_handled
+   :source-code: base/bif/zeek.bif.zeek 2501 2501
+
+   :Type: :zeek:type:`function` (event_name: :zeek:type:`string`) : :zeek:type:`bool`
+
+   Check if an event is handled. Typically this means that a script defines an event.
+   This currently is mainly used to warn when events are defined that will not be used
+   in certain conditions.
+   
+   Raises an error if the named event does not exist.
+   
+
+   :param event_name: event name to check
+   
+
+   :param returns: true if the named event is handled.
+
 .. zeek:id:: is_file_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2627 2627
+   :source-code: base/bif/zeek.bif.zeek 2639 2639
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -2010,7 +2028,7 @@ Functions
    :returns: True if *ip* belongs to a local interface.
 
 .. zeek:id:: is_packet_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2635 2635
+   :source-code: base/bif/zeek.bif.zeek 2647 2647
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -2033,7 +2051,7 @@ Functions
                  continue_processing
 
 .. zeek:id:: is_protocol_analyzer
-   :source-code: base/bif/zeek.bif.zeek 2619 2619
+   :source-code: base/bif/zeek.bif.zeek 2631 2631
 
    :Type: :zeek:type:`function` (atype: :zeek:type:`AllAnalyzers::Tag`) : :zeek:type:`bool`
 
@@ -2643,7 +2661,7 @@ Functions
    .. zeek:see:: floor ceil sqrt exp ln log2 log10
 
 .. zeek:id:: preserve_prefix
-   :source-code: base/bif/zeek.bif.zeek 2518 2518
+   :source-code: base/bif/zeek.bif.zeek 2530 2530
 
    :Type: :zeek:type:`function` (a: :zeek:type:`addr`, width: :zeek:type:`count`) : :zeek:type:`any`
 
@@ -2660,7 +2678,7 @@ Functions
    .. todo:: Currently dysfunctional.
 
 .. zeek:id:: preserve_subnet
-   :source-code: base/bif/zeek.bif.zeek 2528 2528
+   :source-code: base/bif/zeek.bif.zeek 2540 2540
 
    :Type: :zeek:type:`function` (a: :zeek:type:`subnet`) : :zeek:type:`any`
 
@@ -3492,7 +3510,7 @@ Functions
    .. zeek:see:: table_values
 
 .. zeek:id:: table_pattern_matcher_stats
-   :source-code: base/bif/zeek.bif.zeek 2730 2730
+   :source-code: base/bif/zeek.bif.zeek 2742 2742
 
    :Type: :zeek:type:`function` (tbl: :zeek:type:`any`) : :zeek:type:`MatcherStats`
 
@@ -3619,7 +3637,7 @@ Functions
    .. zeek:see:: to_addr to_port to_subnet
 
 .. zeek:id:: to_json
-   :source-code: base/bif/zeek.bif.zeek 2570 2570
+   :source-code: base/bif/zeek.bif.zeek 2582 2582
 
    :Type: :zeek:type:`function` (val: :zeek:type:`any`, only_loggable: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`, field_escape_pattern: :zeek:type:`pattern` :zeek:attr:`&default` = ``/^?(^_)$?/`` :zeek:attr:`&optional`, interval_as_double: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`string`
 

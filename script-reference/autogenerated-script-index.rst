@@ -380,6 +380,7 @@
    base/protocols/dns/__load__.zeek </scripts/base/protocols/dns/__load__.zeek>
    base/protocols/dns/consts.zeek </scripts/base/protocols/dns/consts.zeek>
    base/protocols/dns/main.zeek </scripts/base/protocols/dns/main.zeek>
+   base/protocols/dns/check-event-handlers.zeek </scripts/base/protocols/dns/check-event-handlers.zeek>
    base/protocols/finger/__load__.zeek </scripts/base/protocols/finger/__load__.zeek>
    base/protocols/finger/spicy-events.zeek </scripts/base/protocols/finger/spicy-events.zeek>
    base/protocols/finger/main.zeek </scripts/base/protocols/finger/main.zeek>
