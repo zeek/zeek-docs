@@ -2695,7 +2695,7 @@ Events
       dns_TSIG_addl dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_SRV_reply dns_end
 
 .. zeek:id:: dns_EDNS_addl
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 529 529
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 534 534
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_edns_additional`)
 
@@ -2716,6 +2716,11 @@ Events
 
    :param ans: The parsed EDNS reply.
    
+   .. note::
+   
+        Note that this event will only be raised if :zeek:see:`dns_skip_all_addl`
+        is set to false.
+   
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
       dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end dns_mapping_altered
@@ -2725,7 +2730,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_ecs
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 553 553
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 563 563
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_ecs`)
 
@@ -2746,6 +2751,11 @@ Events
 
    :param opt: The parsed EDNS option.
    
+   .. note::
+   
+        Note that this event will only be raised if :zeek:see:`dns_skip_all_addl`
+        is set to false.
+   
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
       dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end dns_mapping_altered
@@ -2755,7 +2765,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_tcp_keepalive
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 579 579
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 594 594
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_tcp_keepalive`)
 
@@ -2778,6 +2788,11 @@ Events
 
    :param opt: The parsed EDNS Keepalive option.
    
+   .. note::
+   
+        Note that this event will only be raised if :zeek:see:`dns_skip_all_addl`
+        is set to false.
+   
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
       dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end dns_mapping_altered
@@ -2787,7 +2802,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_EDNS_cookie
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 605 605
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 625 625
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, opt: :zeek:type:`dns_edns_cookie`)
 
@@ -2810,6 +2825,11 @@ Events
 
    :param opt: The parsed EDNS Cookie option.
    
+   .. note::
+   
+        Note that this event will only be raised if :zeek:see:`dns_skip_all_addl`
+        is set to false.
+   
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_HINFO_reply dns_MX_reply
       dns_NS_reply dns_PTR_reply dns_SOA_reply dns_SRV_reply dns_TSIG_addl
       dns_TXT_reply dns_SPF_reply dns_WKS_reply dns_end dns_mapping_altered
@@ -2819,7 +2839,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_TKEY
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 623 623
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 648 648
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_tkey`)
 
@@ -2840,10 +2860,15 @@ Events
 
    :param ans: The parsed TKEY reply.
    
+   .. note::
+   
+        Note that ``ans`` will only be populated if :zeek:see:`dns_skip_all_addl`
+        is set to false.
+   
    .. zeek:see:: dns_TSIG_addl
 
 .. zeek:id:: dns_TSIG_addl
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 647 647
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 677 677
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_tsig_additional`)
 
@@ -2863,6 +2888,11 @@ Events
    
 
    :param ans: The parsed TSIG reply.
+   
+   .. note::
+   
+        Note that this event will only be raised if :zeek:see:`dns_skip_all_addl`
+        is set to false.
    
    .. zeek:see:: dns_AAAA_reply dns_A_reply dns_CNAME_reply dns_EDNS_addl
       dns_HINFO_reply dns_MX_reply dns_NS_reply dns_PTR_reply dns_SOA_reply
@@ -3065,7 +3095,7 @@ Events
    :param loc: The parsed RDATA of LOC type record.
 
 .. zeek:id:: dns_SVCB
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 791 791
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 821 821
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, svcb: :zeek:type:`dns_svcb_rr`)
 
@@ -3088,7 +3118,7 @@ Events
    :param svcb: The parsed RDATA of SVCB type record.
 
 .. zeek:id:: dns_HTTPS
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 808 808
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 838 838
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, https: :zeek:type:`dns_svcb_rr`)
 
@@ -3112,7 +3142,7 @@ Events
    :param https: The parsed RDATA of HTTPS type record.
 
 .. zeek:id:: dns_end
-   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 831 831
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 861 861
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`)
 

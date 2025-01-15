@@ -18,3 +18,8 @@ Support for Domain Name System (DNS) protocol analysis.
    Base DNS analysis script which tracks and logs DNS queries along with
    their responses.
 
+:doc:`/scripts/base/protocols/dns/check-event-handlers.zeek`
+
+   This script checks if DNS event handlers that will not be raised
+   are used and raises a warning in those cases.
+
