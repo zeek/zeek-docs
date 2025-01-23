@@ -17,9 +17,9 @@
    base/bif/mmdb.bif.zeek </scripts/base/bif/mmdb.bif.zeek>
    base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>
    base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>
-   base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>
    base/bif/telemetry_functions.bif.zeek </scripts/base/bif/telemetry_functions.bif.zeek>
    base/bif/telemetry_types.bif.zeek </scripts/base/bif/telemetry_types.bif.zeek>
+   base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>
    base/packet-protocols/__load__.zeek </scripts/base/packet-protocols/__load__.zeek>
    base/packet-protocols/main.zeek </scripts/base/packet-protocols/main.zeek>
    base/frameworks/analyzer/main.zeek </scripts/base/frameworks/analyzer/main.zeek>
