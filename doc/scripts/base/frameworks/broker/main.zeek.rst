@@ -21,7 +21,7 @@ Runtime Options
 
 Redefinable Options
 ###################
-============================================================================================ =======================================================================
+============================================================================================ ===========================================================================
 :zeek:id:`Broker::aggressive_interval`: :zeek:type:`count` :zeek:attr:`&redef`               Frequency of work-stealing polling attempts for Broker/CAF threads
                                                                                              in "aggressive" mode.
 :zeek:id:`Broker::aggressive_polls`: :zeek:type:`count` :zeek:attr:`&redef`                  Number of work-stealing polling attempts for Broker/CAF threads
@@ -67,9 +67,9 @@ Redefinable Options
                                                                                              certificate.
 :zeek:id:`Broker::ssl_passphrase`: :zeek:type:`string` :zeek:attr:`&redef`                   Passphrase to decrypt the private key specified by
                                                                                              :zeek:see:`Broker::ssl_keyfile`.
-:zeek:id:`Broker::web_socket_buffer_size`: :zeek:type:`count` :zeek:attr:`&redef`            Same as `peer_buffer_size` but for WebSocket clients.
-:zeek:id:`Broker::web_socket_overflow_policy`: :zeek:type:`string` :zeek:attr:`&redef`       Same as `peer_overflow_policy` but for WebSocket clients.
-============================================================================================ =======================================================================
+:zeek:id:`Broker::web_socket_buffer_size`: :zeek:type:`count` :zeek:attr:`&redef`            Same as :zeek:see:`Broker::peer_buffer_size` but for WebSocket clients.
+:zeek:id:`Broker::web_socket_overflow_policy`: :zeek:type:`string` :zeek:attr:`&redef`       Same as :zeek:see:`Broker::peer_overflow_policy` but for WebSocket clients.
+============================================================================================ ===========================================================================
 
 Types
 #####
@@ -299,7 +299,7 @@ Redefinable Options
    :Default: ``1``
 
    Max number of threads to use for Broker/CAF functionality.  The
-   ZEEK_BROKER_MAX_THREADS environment variable overrides this setting.
+   ``ZEEK_BROKER_MAX_THREADS`` environment variable overrides this setting.
 
 .. zeek:id:: Broker::moderate_interval
    :source-code: base/frameworks/broker/main.zeek 140 140
@@ -340,7 +340,7 @@ Redefinable Options
 
    Max number of items we buffer at most per peer. What action to take when
    the buffer reaches its maximum size is determined by
-   `peer_overflow_policy`.
+   :zeek:see:`Broker::peer_overflow_policy`.
 
 .. zeek:id:: Broker::peer_overflow_policy
    :source-code: base/frameworks/broker/main.zeek 99 99
@@ -454,7 +454,7 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``512``
 
-   Same as `peer_buffer_size` but for WebSocket clients.
+   Same as :zeek:see:`Broker::peer_buffer_size` but for WebSocket clients.
 
 .. zeek:id:: Broker::web_socket_overflow_policy
    :source-code: base/frameworks/broker/main.zeek 105 105
@@ -463,7 +463,7 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``"disconnect"``
 
-   Same as `peer_overflow_policy` but for WebSocket clients.
+   Same as :zeek:see:`Broker::peer_overflow_policy` but for WebSocket clients.
 
 Types
 #####

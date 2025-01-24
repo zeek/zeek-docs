@@ -4,9 +4,9 @@ base/misc/version.zeek
 ======================
 .. zeek:namespace:: Version
 
-Provide information about the currently running Zeek version.
-The most convenient way to access this are the Version::number
-and Version::info constants.
+Provide information about the currently running Zeek version.  The most
+convenient way to access this are the :zeek:see:`Version::number` and
+:zeek:see:`Version::info` constants.
 
 :Namespace: Version
 
@@ -14,10 +14,12 @@ Summary
 ~~~~~~~
 Constants
 #########
-================================================================== ====================================================================================
-:zeek:id:`Version::info`: :zeek:type:`Version::VersionDescription` `VersionDescription` record pertaining to the currently running version of Zeek.
-:zeek:id:`Version::number`: :zeek:type:`count`                     version number of the currently running version of Zeek as a numeric representation.
-================================================================== ====================================================================================
+================================================================== ==========================================================================
+:zeek:id:`Version::info`: :zeek:type:`Version::VersionDescription` :zeek:see:`Version::VersionDescription` record pertaining to the currently
+                                                                   running version of Zeek.
+:zeek:id:`Version::number`: :zeek:type:`count`                     version number of the currently running version of Zeek as a numeric
+                                                                   representation.
+================================================================== ==========================================================================
 
 Types
 #####
@@ -27,11 +29,11 @@ Types
 
 Functions
 #########
-=================================================== ====================================================================================
-:zeek:id:`Version::at_least`: :zeek:type:`function` Test if the current running version of Zeek is greater or equal to the given version
-                                                    string.
+=================================================== ==================================================================
+:zeek:id:`Version::at_least`: :zeek:type:`function` Test if the current running version of Zeek is greater or equal to
+                                                    the given version string.
 :zeek:id:`Version::parse`: :zeek:type:`function`    Parse a given version string.
-=================================================== ====================================================================================
+=================================================== ==================================================================
 
 
 Detailed Interface
@@ -39,21 +41,23 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: Version::info
-   :source-code: base/misc/version.zeek 122 122
+   :source-code: base/misc/version.zeek 123 123
 
    :Type: :zeek:type:`Version::VersionDescription`
 
-   `VersionDescription` record pertaining to the currently running version of Zeek.
+   :zeek:see:`Version::VersionDescription` record pertaining to the currently
+   running version of Zeek.
 
 .. zeek:id:: Version::number
-   :source-code: base/misc/version.zeek 128 128
+   :source-code: base/misc/version.zeek 130 130
 
    :Type: :zeek:type:`count`
 
-   version number of the currently running version of Zeek as a numeric representation.
-   The format of the number is ABBCC with A being the major version,
-   bb being the minor version (2 digits) and CC being the patchlevel (2 digits).
-   As an example, Zeek 2.4.1 results in the number 20401
+   version number of the currently running version of Zeek as a numeric
+   representation.  The format of the number is ABBCC with A being the
+   major version, bb being the minor version (2 digits) and CC being the
+   patchlevel (2 digits).  As an example, Zeek 2.4.1 results in the
+   number 20401
 
 Types
 #####
@@ -104,12 +108,12 @@ Types
 Functions
 #########
 .. zeek:id:: Version::at_least
-   :source-code: base/misc/version.zeek 131 134
+   :source-code: base/misc/version.zeek 133 136
 
    :Type: :zeek:type:`function` (version_string: :zeek:type:`string`) : :zeek:type:`bool`
 
-   Test if the current running version of Zeek is greater or equal to the given version
-   string.
+   Test if the current running version of Zeek is greater or equal to
+   the given version string.
    
 
    :param version_string: Version to check against the current running version.
@@ -128,6 +132,6 @@ Functions
    :param version_string: Zeek version string.
    
 
-   :returns: `VersionDescription` record.
+   :returns: :zeek:see:`Version::VersionDescription` record.
 
 

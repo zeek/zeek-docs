@@ -213,7 +213,7 @@ Redefinable Options
    on rotation with :zeek:enum:`Notice::ACTION_ALARM`.
    
    Note that this is overridden by the ZeekControl MailTo option or by
-   the `email_dest` field in the :zeek:see:`Notice::Info` record.
+   the ``email_dest`` field in the :zeek:see:`Notice::Info` record.
 
 .. zeek:id:: Notice::max_email_delay
    :source-code: base/frameworks/notice/main.zeek 221 221
@@ -607,7 +607,7 @@ Types
 
 
          Limitations in BPF make shunting some connections with BPF
-         impossible.  This notice encompasses those various cases.
+         impossible. This notice encompasses those various cases.
 
       .. zeek:enum:: Software::Software_Version_Change Notice::Type
 

@@ -27,9 +27,9 @@ Constants
 
 Types
 #####
-====================================================== ==========================================
-:zeek:type:`Spicy::ResourceUsage`: :zeek:type:`record` Result type for `Spicy::resource_usage()`.
-====================================================== ==========================================
+====================================================== ==================================================
+:zeek:type:`Spicy::ResourceUsage`: :zeek:type:`record` Result type for :zeek:see:`Spicy::resource_usage`.
+====================================================== ==================================================
 
 
 Detailed Interface
@@ -118,7 +118,7 @@ Types
       cached_fibers: :zeek:type:`count`
          number of fibers currently cached
 
-   Result type for `Spicy::resource_usage()`. The values reflect resource
+   Result type for :zeek:see:`Spicy::resource_usage`. The values reflect resource
    usage as reported by the Spicy runtime system.
 
 

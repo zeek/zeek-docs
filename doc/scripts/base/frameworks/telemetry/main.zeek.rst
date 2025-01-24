@@ -41,18 +41,18 @@ Functions
 :zeek:id:`Telemetry::collect_metrics`: :zeek:type:`function`           Collect all counter and gauge metrics matching the given *name* and *prefix*.
 :zeek:id:`Telemetry::counter_family_inc`: :zeek:type:`function`        Increment a :zeek:see:`Telemetry::Counter` through the :zeek:see:`Telemetry::CounterFamily`.
 :zeek:id:`Telemetry::counter_family_set`: :zeek:type:`function`        Set a :zeek:see:`Telemetry::Counter` through the :zeek:see:`Telemetry::CounterFamily`.
-:zeek:id:`Telemetry::counter_inc`: :zeek:type:`function`               Increment a :zeek:see:`Telemetry::Counter` by `amount`.
-:zeek:id:`Telemetry::counter_set`: :zeek:type:`function`               Helper to set a :zeek:see:`Telemetry::Counter` to the given `value`.
+:zeek:id:`Telemetry::counter_inc`: :zeek:type:`function`               Increment a :zeek:see:`Telemetry::Counter` by ``amount``.
+:zeek:id:`Telemetry::counter_set`: :zeek:type:`function`               Helper to set a :zeek:see:`Telemetry::Counter` to the given ``value``.
 :zeek:id:`Telemetry::counter_with`: :zeek:type:`function`              Get a :zeek:see:`Telemetry::Counter` instance given family and label values.
-:zeek:id:`Telemetry::gauge_dec`: :zeek:type:`function`                 Decrement a :zeek:see:`Telemetry::Gauge` by `amount`.
-:zeek:id:`Telemetry::gauge_family_dec`: :zeek:type:`function`          Decrement a :zeek:see:`Telemetry::Gauge` by the given `amount` through
+:zeek:id:`Telemetry::gauge_dec`: :zeek:type:`function`                 Decrement a :zeek:see:`Telemetry::Gauge` by ``amount``.
+:zeek:id:`Telemetry::gauge_family_dec`: :zeek:type:`function`          Decrement a :zeek:see:`Telemetry::Gauge` by the given ``amount`` through
                                                                        the :zeek:see:`Telemetry::GaugeFamily`.
-:zeek:id:`Telemetry::gauge_family_inc`: :zeek:type:`function`          Increment a :zeek:see:`Telemetry::Gauge` by the given `amount` through
+:zeek:id:`Telemetry::gauge_family_inc`: :zeek:type:`function`          Increment a :zeek:see:`Telemetry::Gauge` by the given ``amount`` through
                                                                        the :zeek:see:`Telemetry::GaugeFamily`.
-:zeek:id:`Telemetry::gauge_family_set`: :zeek:type:`function`          Set a :zeek:see:`Telemetry::Gauge` to the given `value` through
+:zeek:id:`Telemetry::gauge_family_set`: :zeek:type:`function`          Set a :zeek:see:`Telemetry::Gauge` to the given ``value`` through
                                                                        the :zeek:see:`Telemetry::GaugeFamily`.
-:zeek:id:`Telemetry::gauge_inc`: :zeek:type:`function`                 Increment a :zeek:see:`Telemetry::Gauge` by `amount`.
-:zeek:id:`Telemetry::gauge_set`: :zeek:type:`function`                 Helper to set a :zeek:see:`Telemetry::Gauge` to the given `value`.
+:zeek:id:`Telemetry::gauge_inc`: :zeek:type:`function`                 Increment a :zeek:see:`Telemetry::Gauge` by ``amount``.
+:zeek:id:`Telemetry::gauge_set`: :zeek:type:`function`                 Helper to set a :zeek:see:`Telemetry::Gauge` to the given ``value``.
 :zeek:id:`Telemetry::gauge_with`: :zeek:type:`function`                Get a :zeek:see:`Telemetry::Gauge` instance given family and label values.
 :zeek:id:`Telemetry::histogram_family_observe`: :zeek:type:`function`  Observe a measurement for a :zeek:see:`Telemetry::Histogram` through
                                                                        the :zeek:see:`Telemetry::HistogramFamily`.
@@ -252,8 +252,8 @@ Functions
 
    :Type: :zeek:type:`function` (c: :zeek:type:`Telemetry::Counter`, amount: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
-   Increment a :zeek:see:`Telemetry::Counter` by `amount`.
-   Using a negative `amount` is an error.
+   Increment a :zeek:see:`Telemetry::Counter` by ``amount``.
+   Using a negative ``amount`` is an error.
    
 
    :param c: The counter instance.
@@ -269,7 +269,7 @@ Functions
 
    :Type: :zeek:type:`function` (c: :zeek:type:`Telemetry::Counter`, value: :zeek:type:`double`) : :zeek:type:`bool`
 
-   Helper to set a :zeek:see:`Telemetry::Counter` to the given `value`.
+   Helper to set a :zeek:see:`Telemetry::Counter` to the given ``value``.
    This can be useful for mirroring counter metrics in an
    :zeek:see:`Telemetry::sync` hook implementation.
    Setting a value that is less than the current value of the
@@ -296,7 +296,7 @@ Functions
 
    :Type: :zeek:type:`function` (g: :zeek:type:`Telemetry::Gauge`, amount: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
-   Decrement a :zeek:see:`Telemetry::Gauge` by `amount`.
+   Decrement a :zeek:see:`Telemetry::Gauge` by ``amount``.
    
 
    :param g: The gauge instance.
@@ -312,7 +312,7 @@ Functions
 
    :Type: :zeek:type:`function` (gf: :zeek:type:`Telemetry::GaugeFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`, value: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
-   Decrement a :zeek:see:`Telemetry::Gauge` by the given `amount` through
+   Decrement a :zeek:see:`Telemetry::Gauge` by the given ``amount`` through
    the :zeek:see:`Telemetry::GaugeFamily`.
    This is a short-cut for :zeek:see:`Telemetry::gauge_dec`.
    
@@ -333,7 +333,7 @@ Functions
 
    :Type: :zeek:type:`function` (gf: :zeek:type:`Telemetry::GaugeFamily`, label_values: :zeek:type:`Telemetry::labels_vector` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`, value: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
-   Increment a :zeek:see:`Telemetry::Gauge` by the given `amount` through
+   Increment a :zeek:see:`Telemetry::Gauge` by the given ``amount`` through
    the :zeek:see:`Telemetry::GaugeFamily`.
    This is a short-cut for :zeek:see:`Telemetry::gauge_inc`.
    Using a negative amount is an error.
@@ -355,7 +355,7 @@ Functions
 
    :Type: :zeek:type:`function` (gf: :zeek:type:`Telemetry::GaugeFamily`, label_values: :zeek:type:`Telemetry::labels_vector`, value: :zeek:type:`double`) : :zeek:type:`bool`
 
-   Set a :zeek:see:`Telemetry::Gauge` to the given `value` through
+   Set a :zeek:see:`Telemetry::Gauge` to the given ``value`` through
    the :zeek:see:`Telemetry::GaugeFamily`.
    This is a short-cut for :zeek:see:`Telemetry::gauge_set`.
    
@@ -376,7 +376,7 @@ Functions
 
    :Type: :zeek:type:`function` (g: :zeek:type:`Telemetry::Gauge`, amount: :zeek:type:`double` :zeek:attr:`&default` = ``1.0`` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
-   Increment a :zeek:see:`Telemetry::Gauge` by `amount`.
+   Increment a :zeek:see:`Telemetry::Gauge` by ``amount``.
    
 
    :param g: The gauge instance.
@@ -392,7 +392,7 @@ Functions
 
    :Type: :zeek:type:`function` (g: :zeek:type:`Telemetry::Gauge`, value: :zeek:type:`double`) : :zeek:type:`bool`
 
-   Helper to set a :zeek:see:`Telemetry::Gauge` to the given `value`.
+   Helper to set a :zeek:see:`Telemetry::Gauge` to the given ``value``.
    
 
    :param g: The gauge instance.

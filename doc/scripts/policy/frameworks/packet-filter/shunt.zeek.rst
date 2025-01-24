@@ -41,9 +41,9 @@ Functions
 :zeek:id:`PacketFilter::shunt_conn`: :zeek:type:`function`                 Call this function to use BPF to shunt a connection (to prevent the
                                                                            data packets from reaching Zeek).
 :zeek:id:`PacketFilter::shunt_host_pair`: :zeek:type:`function`            This function will use a BPF expression to shunt traffic between
-                                                                           the two hosts given in the `conn_id` so that the traffic is never
+                                                                           the two hosts given in the ``conn_id`` so that the traffic is never
                                                                            exposed to Zeek's traffic processing.
-:zeek:id:`PacketFilter::unshunt_host_pair`: :zeek:type:`function`          Remove shunting for a host pair given as a `conn_id`.
+:zeek:id:`PacketFilter::unshunt_host_pair`: :zeek:type:`function`          Remove shunting for a host pair given as a ``conn_id``.
 ========================================================================== ============================================================================
 
 
@@ -90,7 +90,7 @@ Functions
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
    Call this function to use BPF to shunt a connection (to prevent the
-   data packets from reaching Zeek).  For TCP connections, control
+   data packets from reaching Zeek). For TCP connections, control
    packets are still allowed through so that Zeek can continue logging
    the connection and it can stop shunting once the connection ends.
 
@@ -100,7 +100,7 @@ Functions
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
    This function will use a BPF expression to shunt traffic between
-   the two hosts given in the `conn_id` so that the traffic is never
+   the two hosts given in the ``conn_id`` so that the traffic is never
    exposed to Zeek's traffic processing.
 
 .. zeek:id:: PacketFilter::unshunt_host_pair
@@ -108,8 +108,8 @@ Functions
 
    :Type: :zeek:type:`function` (id: :zeek:type:`conn_id`) : :zeek:type:`bool`
 
-   Remove shunting for a host pair given as a `conn_id`.  The filter
+   Remove shunting for a host pair given as a ``conn_id``.  The filter
    is not immediately removed.  It waits for the occasional filter
-   update done by the `PacketFilter` framework.
+   update done by the ``PacketFilter`` framework.
 
 

@@ -29,10 +29,10 @@ Functions
    :param s: The string to search for a number.
    
 
-   :param get_first: Provide `F` if you would like the last number found.
+   :param get_first: Provide ``F`` if you would like the last number found.
    
 
-   :returns: The request integer from the given string or 0 if
+   :returns: The request integer from the given string or ``0`` if
             no integer was found.
 
 
