@@ -87,7 +87,7 @@ centralize, or aggregate metrics across the cluster. Instead, it adds the name
 of the node a particular metric originated from at collection time, leaving any
 aggregation to post-processing where desired.
 
-.. note:
+.. note::
 
    This is a departure from the design in earlier versions of Zeek, which could
    (either by default, or after activation) centralize metrics in the cluster's
