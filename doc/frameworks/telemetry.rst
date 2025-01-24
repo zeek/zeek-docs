@@ -87,7 +87,7 @@ centralize, or aggregate metrics across the cluster. Instead, it adds the name
 of the node a particular metric originated from at collection time, leaving any
 aggregation to post-processing where desired.
 
-.. note:
+.. note::
 
    This is a departure from the design in earlier versions of Zeek, which could
    (either by default, or after activation) centralize metrics in the cluster's
@@ -107,8 +107,8 @@ them in turn.
 Zeek Logs
 ---------
 
-Zeek can export current metrics continuously via `telemetry.log` and
-`telemetry_histogram.log`. It does not do so by default. To enable, load the
+Zeek can export current metrics continuously via :file:`telemetry.log` and
+:file:`telemetry_histogram.log`. It does not do so by default. To enable, load the
 policy script ``frameworks/telemetry/log`` on the command line, or via
 ``local.zeek``.
 
@@ -119,7 +119,7 @@ cluster node the metric originated from.
 By default, Zeek reports current telemetry every 60 seconds, as defined by the
 :zeek:see:`Telemetry::log_interval`, which you're free to adjust.
 
-Also, by default only metrics with the `prefix` (namespace) ``zeek`` and
+Also, by default only metrics with the ``prefix`` (namespace) ``zeek`` and
 ``process`` are included in above logs. If you add new metrics with your own
 prefix and expect these to be included, redefine the
 :zeek:see:`Telemetry::log_prefixes` option::
@@ -404,7 +404,7 @@ representation becomes rather verbose.
 To work with histogram data, Prometheus provides specialized query functions.
 For example `histogram_quantile()`_.
 
-Note, when using data from `conn.log` and post-processing, a proper
+Note, when using data from :file:`conn.log` and post-processing, a proper
 histogram of connection durations can be calculated and possibly preferred.
 The above example is meant for demonstration purposes. Histograms may be
 primarily be useful for Zeek operational metrics such as processing times

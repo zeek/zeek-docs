@@ -561,7 +561,7 @@ Example:
    :tab-width: 4
 
 This script prints the following messages to stderr, as well as logging them to
-``reporter.log``.
+:file:`reporter.log`.
 
 .. code-block:: console
 

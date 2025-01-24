@@ -272,7 +272,7 @@ which then stores metrics data for later visualization.
    process_resident_memory_bytes{endpoint=""} 268935168 1684826824560
 
 
-If you prefer to consume metrics via logs, the ``telemetry.log``
+If you prefer to consume metrics via logs, the :file:`telemetry.log`
 (:zeek:see:`Telemetry::Info`) may work. Its
 format is a bit unusual, however. See the :ref:`framework-telemetry`'s
 documentation for more details about the log and how to add further metrics
@@ -281,11 +281,11 @@ from your own Zeek scripts.
 .. _Prometheus server: https://prometheus.io/
 
 
-stats.log
----------
+:file:`stats.log`
+-----------------
 
-The ``stats.log`` is enabled when loading the :doc:`/scripts/policy/misc/stats.zeek` script.
-This is the default with the stock ``local.zeek`` included with Zeek. This
+The :file:`stats.log` is enabled when loading the :doc:`/scripts/policy/misc/stats.zeek` script.
+This is the default with the stock :file:`local.zeek` included with Zeek. This
 log provides stats about Zeek's operational behavior in a structured log format.
 
 See the :zeek:see:`Stats::Info` record documentation for a description of
@@ -309,7 +309,7 @@ metrics to continuously grow and compute rates or delta values on the fly.
    always be derived from two absolute values. The inverse is not true.
    Popular metrics systems usually assume absolute counter values, too.
 
-Following an example of a ``stats.log`` entry:
+Following an example of a :file:`stats.log` entry:
 
 .. code-block:: console
 
@@ -345,23 +345,23 @@ Following an example of a ``stats.log`` entry:
        "reassem_unknown_size": 0
    }
 
-prof.log
---------
+:file:`prof.log`
+----------------
 
-The ``prof.log`` provides aggregated information about Zeek's runtime status
+The :file:`prof.log` provides aggregated information about Zeek's runtime status
 in a fairly non-structured text format.
 Likely future metrics will be added through the Telemetry framework mentioned
 above, but as of now it does contain information about queue sizes within
 the threading subsystem and other details that are not yet exposed otherwise.
 
-To enable ``prof.log``, load the :doc:`/scripts/policy/misc/profiling.zeek` script
-in ``local.zeek`` or start Zeek with ``misc/profiling`` on the command-line:
+To enable :file:`prof.log`, load the :doc:`/scripts/policy/misc/profiling.zeek` script
+in :file:`local.zeek` or start Zeek with ``misc/profiling`` on the command-line:
 
 .. code-block:: console
 
    $ zeek -C -i eth0 misc/profiling
 
-The following provides an example of ``prof.log`` content:
+The following provides an example of :file:`prof.log` content:
 
 .. code-block:: console
 

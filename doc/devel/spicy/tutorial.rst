@@ -208,7 +208,7 @@ the corresponding value of ``is_read``. Let's try it with a new
     # zeek -r tftp_rrq.pcap tftp.hlto tftp.zeek
     TFTP read request, [orig_h=192.168.0.253, orig_p=50618/udp, resp_h=192.168.0.10, resp_p=69/udp], T, rfc1350.txt, octet
 
-If we look at the ``conn.log`` that Zeek produces during this run, we
+If we look at the :file:`conn.log` that Zeek produces during this run, we
 will see that the ``service`` field is not filled in yet. That's
 because our analyzer does not yet confirm to Zeek that it has been
 successful in parsing the content. To do that, we can call a library
@@ -333,7 +333,7 @@ analyzers' events, and collect and correlate their activity as
 desired. We have created such :download:`a script for TFTP
 <autogen/tftp.zeek>`, based on the events that our Spicy analyzer
 generates. Once we add that to the Zeek command line, we will see a
-new ``tftp.log``:
+new :file:`tftp.log`:
 
 .. code::
 
@@ -346,7 +346,7 @@ new ``tftp.log``:
 The TFTP script also labels the second session as TFTP data by
 adding a corresponding entry to the ``service`` field inside the
 Zeek-side connection record. With that, we are now seeing this in
-``conn.log``:
+:file:`conn.log`:
 
 .. code::
 

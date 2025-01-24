@@ -145,7 +145,7 @@ They spoke the HyperText Transfer Protocol (HTTP), identified by Zeek as HTTP
 over TCP using TCP port 80 listening on ``31.3.245.133``.
 
 If we wanted to move beyond who talked with whom, when, for how long, and with
-what protocol, the second conn.log entry offers a few more items of interest.
+what protocol, the second :file:`conn.log` entry offers a few more items of interest.
 For example, we know that ``192.168.4.76`` sent 77 bytes of data in its application
 layer payload, and 397 bytes in its IP layer payload.
 
@@ -421,7 +421,7 @@ You can adapt this feature in several ways. Load the
 to add an ``ip_proto_name`` column with a string version of the ``ip_proto``
 value. Also, you may disable the whole feature by loading the
 :doc:`/scripts/policy/protocols/conn/disable-unknown-ip-proto-support.zeek`
-script, returning conn.log to its pre-7.1 state. Zeek's :ref:`logging framework
+script, returning :file:`conn.log` to its pre-7.1 state. Zeek's :ref:`logging framework
 <framework-logging>` supports additional customizations.
 
 The ``uid`` and Other Fields

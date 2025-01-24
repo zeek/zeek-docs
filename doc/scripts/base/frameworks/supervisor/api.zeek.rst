@@ -206,7 +206,7 @@ Hooks
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 
    Hooks into the stderr stream for all supervisor's child processes.
-   If a hook terminates with `break`, that will suppress output to the
+   If a hook terminates with ``break``, that will suppress output to the
    associated stream.
    
 
@@ -226,7 +226,7 @@ Hooks
    :Type: :zeek:type:`hook` (node: :zeek:type:`string`, msg: :zeek:type:`string`) : :zeek:type:`bool`
 
    Hooks into the stdout stream for all supervisor's child processes.
-   If a hook terminates with `break`, that will suppress output to the
+   If a hook terminates with ``break``, that will suppress output to the
    associated stream.
    
 

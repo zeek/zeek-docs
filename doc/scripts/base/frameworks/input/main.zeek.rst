@@ -72,7 +72,7 @@ Runtime Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``Input::MANUAL``
 
-   The default reader mode used. Defaults to `MANUAL`.
+   The default reader mode used. Defaults to :zeek:see:`Input::MANUAL`.
 
 .. zeek:id:: Input::default_reader
    :source-code: base/frameworks/input/main.zeek 28 28
@@ -81,7 +81,7 @@ Runtime Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``Input::READER_ASCII``
 
-   The default input reader used. Defaults to `READER_ASCII`.
+   The default input reader used. Defaults to :zeek:see:`Input::READER_ASCII`.
 
 Redefinable Options
 ###################
@@ -149,7 +149,7 @@ Types
 
       source: :zeek:type:`string`
          String that allows the reader to find the source.
-         For `READER_ASCII`, this is the filename.
+         For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
       reader: :zeek:type:`Input::Reader` :zeek:attr:`&default` = ``Input::READER_BINARY`` :zeek:attr:`&optional`
          Reader to use for this stream.  Compatible readers must be
@@ -200,7 +200,7 @@ Types
 
       source: :zeek:type:`string`
          String that allows the reader to find the source.
-         For `READER_ASCII`, this is the filename.
+         For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
       reader: :zeek:type:`Input::Reader` :zeek:attr:`&default` = :zeek:see:`Input::default_reader` :zeek:attr:`&optional`
          Reader to use for this stream.
@@ -223,8 +223,8 @@ Types
 
       ev: :zeek:type:`any`
          The event that is raised each time a new line is received from the
-         reader. The event will receive an Input::EventDescription record
-         as the first argument, an Input::Event enum as the second
+         reader. The event will receive an :zeek:see:`Input::EventDescription` record
+         as the first argument, an :zeek:see:`Input::Event` enum as the second
          argument, and the fields (as specified in *fields*) as the following
          arguments (this will either be a single record value containing
          all fields, or each field value as a separate argument).
@@ -233,12 +233,12 @@ Types
          Error event that is raised when an information, warning or error
          is raised by the input stream. If the level is error, the stream will automatically
          be closed.
-         The event receives the Input::EventDescription as the first argument, the
-         message as the second argument and the Reporter::Level as the third argument.
+         The event receives the :zeek:see:`Input::EventDescription` as the first argument, the
+         message as the second argument and the :zeek:see:`Reporter::Level` as the third argument.
          
          The event is raised like it had been declared as follows:
          error_ev: function(desc: EventDescription, message: string, level: Reporter::Level) &optional;
-         The actual declaration uses the ``any`` type because of deficiencies of the Zeek type system.
+         The actual declaration uses the :zeek:type:`any` type because of deficiencies of the Zeek type system.
 
       config: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          A key/value table that will be passed to the reader.
@@ -273,7 +273,7 @@ Types
 
       source: :zeek:type:`string`
          String that allows the reader to find the source of the data.
-         For `READER_ASCII`, this is the filename.
+         For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
       reader: :zeek:type:`Input::Reader` :zeek:attr:`&default` = :zeek:see:`Input::default_reader` :zeek:attr:`&optional`
          Reader to use for this stream.
@@ -323,7 +323,7 @@ Types
          
          The event is raised like if it had been declared as follows:
          error_ev: function(desc: TableDescription, message: string, level: Reporter::Level) &optional;
-         The actual declaration uses the ``any`` type because of deficiencies of the Zeek type system.
+         The actual declaration uses the :zeek:type:`any` type because of deficiencies of the Zeek type system.
 
       config: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
          A key/value table that will be passed to the reader.
@@ -390,7 +390,7 @@ Functions
    Create a new event input stream from a given source.
    
 
-   :param description: `EventDescription` record describing the source.
+   :param description: :zeek:see:`Input::EventDescription` record describing the source.
    
 
    :returns: true on success.
@@ -403,7 +403,7 @@ Functions
    Create a new table input stream from a given source.
    
 
-   :param description: `TableDescription` record describing the source.
+   :param description: :zeek:see:`Input::TableDescription` record describing the source.
    
 
    :returns: true on success.

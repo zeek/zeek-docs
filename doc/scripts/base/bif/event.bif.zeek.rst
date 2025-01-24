@@ -662,8 +662,8 @@ Events
    of the file.  The analysis can be augmented at this time via
    :zeek:see:`Files::add_analyzer`.  The amount of data fed into the file
    sniffing can be increased or decreased by changing either
-   :zeek:see:`default_file_bof_buffer_size` or the `bof_buffer_size` field
-   in an `fa_file` record. The event will be raised even if content inspection
+   :zeek:see:`default_file_bof_buffer_size` or the ``bof_buffer_size`` field
+   in an :zeek:type:`fa_file` record. The event will be raised even if content inspection
    has been unable to infer any metadata, in which case the fields in *meta*
    will be left all unset.
    
