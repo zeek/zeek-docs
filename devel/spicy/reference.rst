@@ -305,7 +305,7 @@ File analyzers support the following properties:
             "content sniffing" (i.e., similar to libmagic), and
             usually not by protocol-level headers (e.g., *not* through
             HTTP's ``Content-Type`` header). If in doubt, examine
-            ``files.log`` for what it records as a file's type.
+            :file:`files.log` for what it records as a file's type.
 
     ``replaces ANALYZER_NAME``
         Disables an existing file analyzer that Zeek already provides
@@ -1103,7 +1103,7 @@ see what it's doing at runtime. You'll need a debug version of Zeek
 for that, as well as a small trace with traffic that you expect your
 analyzer to process. Run Zeek with ``-B dpd`` (or ``-B file_analysis``
 if you're debugging a file analyzer) on your trace to record the
-analyzer activity into ``debug.log``. For example, with the same HTTP
+analyzer activity into :file:`debug.log`. For example, with the same HTTP
 example, we get:
 
 .. code-block:: text
@@ -1189,4 +1189,3 @@ their full Zeek-side values::
                   [2] uri: string        = /index.html
                   [3] version: string    = 1.0
     [...]
-

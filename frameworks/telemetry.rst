@@ -107,8 +107,8 @@ them in turn.
 Zeek Logs
 ---------
 
-Zeek can export current metrics continuously via `telemetry.log` and
-`telemetry_histogram.log`. It does not do so by default. To enable, load the
+Zeek can export current metrics continuously via :file:`telemetry.log` and
+:file:`telemetry_histogram.log`. It does not do so by default. To enable, load the
 policy script ``frameworks/telemetry/log`` on the command line, or via
 ``local.zeek``.
 
@@ -404,7 +404,7 @@ representation becomes rather verbose.
 To work with histogram data, Prometheus provides specialized query functions.
 For example `histogram_quantile()`_.
 
-Note, when using data from `conn.log` and post-processing, a proper
+Note, when using data from :file:`conn.log` and post-processing, a proper
 histogram of connection durations can be calculated and possibly preferred.
 The above example is meant for demonstration purposes. Histograms may be
 primarily be useful for Zeek operational metrics such as processing times

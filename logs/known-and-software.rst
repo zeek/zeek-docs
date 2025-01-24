@@ -129,7 +129,7 @@ These examples show an SSH server and two different SSH clients.
 Conclusion
 ==========
 
-Details recorded in :file:`known_certs.log`, :file:`known_hosts,log`,
+Details recorded in :file:`known_certs.log`, :file:`known_hosts.log`,
 :file:`known_services.log`, and :file:`software.log` files can help network and
 security analysts better understand the nature of the activity in their
 environment. Some of this information relies on capturing clear text, while

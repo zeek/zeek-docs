@@ -449,7 +449,7 @@ If your plugin isn't loading as expected, Zeek's debugging facilities
 can help illuminate what's going on. To enable, recompile Zeek
 with debugging support (``./configure --enable-debug``), and
 afterwards rebuild your plugin as well. If you then run Zeek with ``-B
-plugins``, it will produce a file ``debug.log`` that records details
+plugins``, it will produce a file :file:`debug.log` that records details
 about the process for searching, loading, and activating plugins.
 
 To generate your own debugging output from inside your plugin, you can
@@ -463,7 +463,7 @@ your plugin's debugging output with ``-B plugin-<name>``, where
 ``Configure()`` method, yet with the namespace-separator ``::``
 replaced with a simple dash. Example: If the plugin is called
 ``Demo::Rot13``, use ``-B plugin-Demo-Rot13``. As usual, the debugging
-output will be recorded to ``debug.log`` if Zeek's compiled in debug
+output will be recorded to :file:`debug.log` if Zeek's compiled in debug
 mode.
 
 Building Plugins Statically

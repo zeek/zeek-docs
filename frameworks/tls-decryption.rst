@@ -70,14 +70,14 @@ will perform the conversion:
    	echo "Script expects one argument (key log filename)" >/dev/stderr
    	exit -1
    fi
-   
+
    FILE=$1
-   
+
    if [ ! -f ${FILE} ]; then
    	echo "${FILE} does not exist or is not readable" >/dev/stderr
    	exit -1
    fi
-   
+
    echo "#fields	client_random	secret"
    grep CLIENT_RANDOM ${FILE} | sed 's/^CLIENT_RANDOM ........\(.*\) \(.*\)$/\1	\2/' | sed 's/[A-Za-z0-9][A-Za-z0-9]/\\x&/g'
 
@@ -123,7 +123,7 @@ stops processing while the TLS keylog file is loaded. It also loads the required
    #types	time	string	addr	port	addr	port	enum	string	interval	count	count	string	bool	bool	count	string	count	count	count	count	set[string]
    1646150638.631834	CTy5Us4OUaTOcyrPvc	192.168.20.12	60679	193.99.144.85	443	tcp	http,ssl	7.246461	10853	151695	SF	-	-	0	ShADadFf	98	15961	139	158931	-
    #close	2022-03-01-16-57-26
-   
+
    $ cat http.log
    #separator \x09
    #set_separator	,
@@ -138,7 +138,7 @@ stops processing while the TLS keylog file is loaded. It also loads the required
    1646150638.976118	CTy5Us4OUaTOcyrPvc	192.168.20.12	60679	193.99.144.85	443	3	GET	www.heise.de	/assets/heise/hobell/css/hobell.css?.ltc.3746e7e49abafa23b5fb	https://www.heise.de/	1.1	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:97.0) Gecko/20100101 Firefox/97.0	-	0	85280	200	OK	-	-	(empty)	-	-	-	-	-	-	FyvBkl2nwRXf0hkDO1	-	text/plain
    ...
 
-Now ``conn.log`` shows that the HTTP as well as the SSL analyzers were attached. ``http.log`` shows the
+Now :file:`conn.log` shows that the HTTP as well as the SSL analyzers were attached. :file:`http.log` shows the
 information from the decrypted HTTP session.
 
 If you try this yourself note that today a lot of encrypted Internet traffic uses HTTP/2. Zeek currently does not

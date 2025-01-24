@@ -139,7 +139,7 @@ for additional APIs and data structures.
 
 Regardless of which file analyzers end up acting on a file, general
 information about the file (e.g. size, time of last data transferred,
-MIME type, etc.) is logged in ``files.log``.
+MIME type, etc.) is logged in :file:`files.log`.
 
 Protocol-specific state
 -----------------------

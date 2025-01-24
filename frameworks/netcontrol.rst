@@ -141,7 +141,7 @@ sees being established:
 
 Running this script on a file containing one connection will cause the debug
 plugin to print one line to the standard output, which contains information
-about the rule that was added. It will also cause creation of `netcontrol.log`,
+about the rule that was added. It will also cause creation of :file:`netcontrol.log`,
 which contains information about all actions that are taken by NetControl:
 
 .. code-block:: console
@@ -166,7 +166,7 @@ which contains information about all actions that are taken by NetControl:
    1398529018.678276 2       NetControl::RULE        ADD     NetControl::SUCCEEDED   NetControl::DROP        NetControl::FORWARD     NetControl::CONNECTION  192.168.18.50/56981<->74.125.239.97/443 -       -       0       20.000000       -       Debug-All
    #close    2018-12-14-18-50-53
 
-In our case, `netcontrol.log` contains several :zeek:see:`NetControl::MESSAGE`
+In our case, :file:`netcontrol.log` contains several :zeek:see:`NetControl::MESSAGE`
 entries, which show that the debug plugin has been initialized and added.
 Afterwards, there are two :zeek:see:`NetControl::RULE` entries; the first shows
 that the addition of a rule has been requested (state is
@@ -175,8 +175,8 @@ successfully added (the state is :zeek:see:`NetControl::SUCCEEDED`). The
 remainder of the log line gives more information about the added rule, which in
 our case applies to a specific 5-tuple.
 
-In addition to the netcontrol.log, the drop commands also create a second,
-additional log called `netcontrol_drop.log`. This log file is much more succinct and
+In addition to the :file:`netcontrol.log`, the drop commands also create a second,
+additional log called :file:`netcontrol_drop.log`. This log file is much more succinct and
 only contains information that is specific to drops that are enacted by
 NetControl:
 
@@ -259,7 +259,7 @@ the :zeek:see:`Notice::ACTION_DROP` action of the notice framework:
    #close    2018-12-14-18-50-55
 
 Using the :zeek:see:`Notice::ACTION_DROP` action of the notice framework also
-will cause the `dropped` column in `notice.log` to be set to true each time that
+will cause the `dropped` column in :file:`notice.log` to be set to true each time that
 the NetControl framework enacts a block:
 
 .. code-block:: console
@@ -540,7 +540,7 @@ for 10 minutes and monitored for 1 hour. If the address reappears after the
 first 10 minutes, it is blocked for 1 hour and then monitored for 24 hours, etc.
 
 Catch and release adds its own new logfile in addition to the already existing
-ones (netcontrol_catch_release.log):
+ones (:file:`netcontrol_catch_release.log`):
 
 .. code-block:: console
 
@@ -660,7 +660,7 @@ rule if the rule matches the subnet that the specific switch is responsible for.
 To give an example, the following script adds two backends to NetControl. One
 backend is the NetControl debug backend, which just outputs the rules to the
 console. The second backend is an OpenFlow backend, which uses the OpenFlow
-debug mode that outputs the openflow rules to openflow.log. The OpenFlow
+debug mode that outputs the openflow rules to :file:`openflow.log`. The OpenFlow
 backend uses a predicate function to only accept rules with a source address in
 the 192.168.17.0/24 network; all other rules will be passed on to the debug
 plugin. We manually block a few addresses in the
@@ -680,7 +680,7 @@ plugin. We manually block a few addresses in the
 
 As you can see, only the single block affecting the 192.168.17.0/24 network is
 output to the command line. The other two lines are handled by the OpenFlow
-plugin. We can verify this by looking at netcontrol.log. The plugin column shows
+plugin. We can verify this by looking at :file:`netcontrol.log`. The plugin column shows
 which plugin handled a rule and reveals that two rules were handled by OpenFlow:
 
 .. code-block:: console
@@ -707,7 +707,7 @@ which plugin handled a rule and reveals that two rules were handled by OpenFlow:
    1544813458.913148 4       NetControl::RULE        ADD     NetControl::SUCCEEDED   NetControl::DROP        NetControl::FORWARD     NetControl::ADDRESS     192.168.18.2/32 -       -       0       60.000000       -       Openflow-Log-42
    #close    2018-12-14-18-50-58
 
-Furthermore, openflow.log also shows the two added rules, converted to OpenFlow
+Furthermore, :file:`openflow.log` also shows the two added rules, converted to OpenFlow
 flow mods:
 
 .. code-block:: console
