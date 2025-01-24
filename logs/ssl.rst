@@ -26,7 +26,7 @@ following command to search hundreds of days of Zeek :file:`ssl.log` entries:
 
 .. code-block:: console
 
-  $ for i in `find . -name ssl*.log.gz`; do zcat $i; done | jq '[."version"]' | grep -v "\]" | grep -v "\[" | sort -n | uniq -c | sort -rn
+  $ for i in $(find . -name ssl*.log.gz); do zcat $i; done | jq '[."version"]' | grep -v "\]" | grep -v "\[" | sort -n | uniq -c | sort -rn
 
 ::
 
@@ -49,7 +49,7 @@ command to search 10 days of Zeek :file:`ssl.log` entries:
 
 .. code-block:: console
 
-  $ for i in `find ./2020-08-1* -name ssl*.log.gz`; do zcat $i; done | jq -c '[."version", ."next_protocol"]' | sort -n | uniq -c | sort -rn
+  $ for i in $(find ./2020-08-1* -name ssl*.log.gz); do zcat $i; done | jq -c '[."version", ."next_protocol"]' | sort -n | uniq -c | sort -rn
 
 ::
 

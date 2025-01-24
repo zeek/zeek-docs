@@ -41,8 +41,8 @@ For details on every element of the :file:`ldap.log` and :file:`ldap_search.log`
 refer to :zeek:see:`LDAP::MessageInfo` and :zeek:see:`LDAP::SearchInfo`, respectively.
 Below is an inspection of the :file:`ldap.log` and :file:`ldap_search.log` in JSON format.
 
-ldap.log
-========
+:file:`ldap.log`
+================
 
 An example of an :file:`ldap.log`.
 
@@ -69,8 +69,8 @@ An example of an :file:`ldap.log`.
     }
 
 
-ldap_search.log
-===============
+:file:`ldap_search.log`
+=======================
 
 An example of an :file:`ldap_search.log`. Note the default for
 :zeek:see:`LDAP::default_log_search_attributes` is F, excluding attributes

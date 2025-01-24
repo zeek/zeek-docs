@@ -58,8 +58,8 @@ by the IRC client. The server sent the remaining text.
   :barjavel.freenode.net 265 zeektest 3809 5891 :Current local users 3809, max 5891
   :barjavel.freenode.net 266 zeektest 82182 90930 :Current global users 82182, max 90930
   :barjavel.freenode.net 250 zeektest :Highest connection count: 5892 (5891 clients) (1543159 connections received)
-  :barjavel.freenode.net 375 zeektest :- barjavel.freenode.net Message of the Day - 
-  :barjavel.freenode.net 372 zeektest :- Welcome to barjavel.freenode.net in Paris, FR, EU. 
+  :barjavel.freenode.net 375 zeektest :- barjavel.freenode.net Message of the Day -
+  :barjavel.freenode.net 372 zeektest :- Welcome to barjavel.freenode.net in Paris, FR, EU.
   ...edited…
   :barjavel.freenode.net 372 zeektest :- Thank you for using freenode!
   :barjavel.freenode.net 376 zeektest :End of /MOTD command.
@@ -401,7 +401,7 @@ control of the Muhstihk botnet. More details are available in this blog post:
 
 https://blog.netlab.360.com/botnet-muhstik-is-actively-exploiting-drupal-cve-2018-7600-in-a-worm-style-en/
 
-Here is a summary of the conn.log for the malicious IRC traffic.
+Here is a summary of the :file:`conn.log` for the malicious IRC traffic.
 
 .. code-block:: console
 

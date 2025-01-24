@@ -582,7 +582,7 @@ table.
 .. warning::
 
     Storing complex types in Broker backed store comes with severe restrictions.
-    When you modify a stored complex type after inserting it into a table, that change in a stored complex type 
+    When you modify a stored complex type after inserting it into a table, that change in a stored complex type
     will *not propagate* to Broker. Hence to send out the new value, so that it will be persisted/synchronized
     over the cluster, you will have to re-insert the complex type into the local zeek table.
 
@@ -768,10 +768,10 @@ For cases where it's desirable to suppress the warning, the
 &group
 ------
 
-The `&group` attribute can be used on event handlers and hooks to add them
+The ``&group`` attribute can be used on event handlers and hooks to add them
 into event groups.
 By default, all event groups are enabled. Disabling an event group disables
-all event handlers and hooks with a matching `&group` attribute. When an
+all event handlers and hooks with a matching ``&group`` attribute. When an
 event handler or hook is part of multiple groups it is enabled only if all
 groups are enabled.
 

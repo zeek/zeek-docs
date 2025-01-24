@@ -643,7 +643,7 @@ Zeek creates a single :file:`conn.log` entry for this traffic:
     ]
   }
 
-As with the previous example, the only conn.log entry lists the encapsulated
+As with the previous example, the only :file:`conn.log` entry lists the encapsulated
 source and destination IP addresses for the traffic, i.e., ``1.1.1.1`` and
 ``2.2.2.2``.  To see the outer IP addresses, we need to look for the
 ``tunnel_parents`` connection in the :file:`tunnel.log`.

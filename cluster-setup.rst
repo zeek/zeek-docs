@@ -177,7 +177,7 @@ Offloading and ethtool tuning
 While not specific to AF_PACKET, it is recommended to disable any offloading
 features provided by the network card or Linux networking stack when running
 Zeek. This allows to see network packets as they arrive on the wire.
-See this `blog post <https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html`>_
+See this `blog post <https://blog.securityonion.net/2011/10/when-is-full-packet-capture-not-full.html>`_
 for more background
 
 Toggling these features can be done with the ``ethtool -K`` command, for example::
@@ -600,4 +600,3 @@ same packets multiple times with different tools.
 
        This issue has been fixed in all stable kernels for at least 5 years.
        You're unlikely to be affected.
-

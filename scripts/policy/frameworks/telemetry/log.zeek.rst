@@ -4,8 +4,8 @@ policy/frameworks/telemetry/log.zeek
 ====================================
 .. zeek:namespace:: Telemetry
 
-Implementation of a telemetry.log and telemetry_histogram.log file
-using metrics accessible via the Telemetry module.
+Implementation of a :file:`telemetry.log` and :file:`telemetry_histogram.log`
+file using metrics accessible via the Telemetry module.
 
 :Namespace: Telemetry
 :Imports: :doc:`base/frameworks/telemetry </scripts/base/frameworks/telemetry/index>`
@@ -17,7 +17,8 @@ Runtime Options
 ============================================================================= ===============================================================
 :zeek:id:`Telemetry::log_interval`: :zeek:type:`interval` :zeek:attr:`&redef` How often metrics are reported.
 :zeek:id:`Telemetry::log_prefixes`: :zeek:type:`set` :zeek:attr:`&redef`      Only metrics with prefixes in this set will be included in the
-                                                                              `telemetry.log` and `telemetry_histogram.log` files by default.
+                                                                              :file:`telemetry.log` and :file:`telemetry_histogram.log` files
+                                                                              by default.
 ============================================================================= ===============================================================
 
 Types
@@ -66,7 +67,7 @@ Runtime Options
    How often metrics are reported.
 
 .. zeek:id:: Telemetry::log_prefixes
-   :source-code: policy/frameworks/telemetry/log.zeek 22 22
+   :source-code: policy/frameworks/telemetry/log.zeek 23 23
 
    :Type: :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -81,8 +82,9 @@ Runtime Options
 
 
    Only metrics with prefixes in this set will be included in the
-   `telemetry.log` and `telemetry_histogram.log` files by default.
-   Setting this option to an empty set includes all prefixes.
+   :file:`telemetry.log` and :file:`telemetry_histogram.log` files
+   by default. Setting this option to an empty set includes all
+   prefixes.
    
    For more fine-grained customization, setting this option to an
    empty set and implementing the :zeek:see:`Telemetry::log_policy`
@@ -92,7 +94,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: Telemetry::HistogramInfo
-   :source-code: policy/frameworks/telemetry/log.zeek 50 77
+   :source-code: policy/frameworks/telemetry/log.zeek 51 78
 
    :Type: :zeek:type:`record`
 
@@ -126,7 +128,7 @@ Types
    Record type used for logging histogram metrics.
 
 .. zeek:type:: Telemetry::Info
-   :source-code: policy/frameworks/telemetry/log.zeek 25 47
+   :source-code: policy/frameworks/telemetry/log.zeek 26 48
 
    :Type: :zeek:type:`record`
 
@@ -157,14 +159,14 @@ Types
 Events
 ######
 .. zeek:id:: Telemetry::log_telemetry
-   :source-code: policy/frameworks/telemetry/log.zeek 86 86
+   :source-code: policy/frameworks/telemetry/log.zeek 87 87
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Telemetry::Info`)
 
    Event triggered for every record in the stream.
 
 .. zeek:id:: Telemetry::log_telemetry_histogram
-   :source-code: policy/frameworks/telemetry/log.zeek 89 89
+   :source-code: policy/frameworks/telemetry/log.zeek 90 90
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Telemetry::HistogramInfo`)
 
@@ -173,14 +175,14 @@ Events
 Hooks
 #####
 .. zeek:id:: Telemetry::log_policy
-   :source-code: policy/frameworks/telemetry/log.zeek 80 80
+   :source-code: policy/frameworks/telemetry/log.zeek 81 81
 
    :Type: :zeek:type:`Log::PolicyHook`
 
    A default logging policy hook for the stream.
 
 .. zeek:id:: Telemetry::log_policy_histogram
-   :source-code: policy/frameworks/telemetry/log.zeek 83 83
+   :source-code: policy/frameworks/telemetry/log.zeek 84 84
 
    :Type: :zeek:type:`Log::PolicyHook`
 

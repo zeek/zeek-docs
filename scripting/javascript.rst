@@ -237,8 +237,8 @@ will keep it alive within Zeek even if Zeek itself does not reference
 it anymore. Updates to fields in Zeek become visible within JavaScript.
 Updates to properties of such objects in JavaScript become visible in Zeek.
 
-On the other hand, normal JavaScript objects (`{}` or `Object()`) are passed
-from JavaScript to Zeek are passed by copy as new Zeek record values. Changes
+On the other hand, normal JavaScript objects (``{}`` or ``Object()``) are passed
+from JavaScript to Zeek as new Zeek record values. Changes
 to the original JavaScript object will not be reflected within Zeek.
 In the example below, the ``intel_item`` JavaScript object will be converted to
 a new :zeek:see:`Intel::Item` Zeek record which is then
@@ -295,7 +295,7 @@ Set and vector values
 The :zeek:see:`set` and :zeek:see:`vector` types are currently copied from
 Zeek to JavaScript as `Array`_ objects. These objects don't reference the
 original set or vector on the Zeek side. This means that mutation of the
-JavaScript side objects via accessors on the `Array` do not modify the
+JavaScript side objects via accessors on ``Array`` do not modify the
 Zeek side value. However, objects referencing the Zeek record values within
 these arrays are mutable.
 
@@ -366,8 +366,7 @@ debug stream may provide some helpful clues.
             0.000000/1685018723.551120 [plugin Zeek::JavaScript] Registered zeek_init
    1685018723.601898/1685018723.621106 [plugin Zeek::JavaScript] ZeekInvoke: invoke for zeek_version
    1685018723.601898/1685018723.621177 [plugin Zeek::JavaScript] Invoke zeek_version with 0 args
-   1685018723.601898/1685018723.621212 [plugin Zeek::JavaScript] ZeekInvoke: invoke for zeek_version returned: 
-   Hello, Zeek 6.0.0-dev.636-debug!
+   1685018723.601898/1685018723.621212 [plugin Zeek::JavaScript] ZeekInvoke: invoke for zeek_version returned: Hello, Zeek 6.0.0-dev.636-debug!
    1685018723.644485/1685018723.644726 [plugin Zeek::JavaScript] Done...
    1685018723.644485/1685018723.644754 [plugin Zeek::JavaScript] Done: uv_loop not alive anymore on iteration 0
 

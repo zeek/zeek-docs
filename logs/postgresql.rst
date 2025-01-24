@@ -60,7 +60,7 @@ TLS
 
 The PostgreSQL protocol provides a mechanism to upgrade client-server connections
 to TLS. The analyzer detects this mechanism and hands off analysis to Zeek's
-TLS analyzer. The ``postgresql.log`` and ``conn.log`` files will look
+TLS analyzer. The :file:`postgresql.log` and :file:`conn.log` files will look
 as follows:
 
 .. code-block:: console

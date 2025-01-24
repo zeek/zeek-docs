@@ -3,7 +3,7 @@ ftp.log
 =======
 
 Zeek’s :file:`ftp.log` summarizes activity using the File Transfer Protocol
-(FTP).  Similar to the http.log, :file:`ftp.log` captures the essential
+(FTP).  Similar to the :file:`http.log`, :file:`ftp.log` captures the essential
 information an analyst would likely need to understand how a client and server
 interact using FTP.
 
@@ -196,8 +196,8 @@ Reading this transcript, some important items include the following:
 
 With this understanding in place, let’s see how Zeek represents this activity.
 
-Inspecting the ftp.log
-======================
+Inspecting the :file:`ftp.log`
+==============================
 
 Let’s take a second look at the two :file:`ftp.log` entries.
 

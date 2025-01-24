@@ -331,7 +331,7 @@ two actions defined, ``event`` and ``enable``.
     .. note::
 
       Matches for signatures that use custom events do not appear
-      in ``signatures.log``.
+      in :file:`signatures.log`.
 
 
 ``enable <string>``
@@ -484,4 +484,3 @@ the two systems are just too different. We therefore stopped maintaining
 the ``snort2bro`` script, and there are now many newer Snort options
 which it doesn't support. The script is now no longer part of the Zeek
 distribution.
-
