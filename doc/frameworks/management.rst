@@ -764,7 +764,7 @@ Retrieving configurations
 -------------------------
 
 The client's ``get-config`` command lets you retrieve staged and deployed
-configurations from the controller, in JSON or `.ini` form. This is helpful for
+configurations from the controller, in JSON or :file:`.ini` form. This is helpful for
 examining the differences between the two. Following the successful deployment
 shown above, we have:
 

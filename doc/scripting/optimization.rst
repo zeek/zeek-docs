@@ -14,7 +14,7 @@ Script Optimization
 Introduction
 ============
 
-The `Zeek Abstract Machine`, "ZAM", is an optional script optimization engine
+The *Zeek Abstract Machine* (ZAM) is an optional script optimization engine
 built into Zeek. Using ZAM changes the basic execution model for Zeek scripts in
 an effort to gain higher performance.  Normally, Zeek parses scripts into
 abstract syntax trees that it then executes by recursively interpreting each
@@ -44,7 +44,7 @@ depends heavily on several factors:
 .. note::
 
    At startup, ZAM takes a few seconds to generate the low-level code for the
-   loaded set of scripts, unless you're using Zeek's `bare mode` (via the
+   loaded set of scripts, unless you're using Zeek's *bare mode* (via the
    ``-b`` command-line option), which loads only a minimal set of scripts. Keep
    this in mind when comparing Zeek runtimes, to ensure you're comparing only
    actual script execution time.

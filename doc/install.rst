@@ -453,14 +453,14 @@ following:
   # The CMAKE_STAGING_PREFIX option may not work.
   # Given that Zeek is configured:
   #
-  #   `./configure --prefix=<dir>`
+  #   ``./configure --prefix=<dir>``
   #
   # The options are:
   #
-  #   (1) `make install` and then copy over the --prefix dir from host to
+  #   (1) ``make install`` and then copy over the --prefix dir from host to
   #       target system.
   #
-  #   (2) `DESTDIR=<staging_dir> make install` and then copy over the
+  #   (2) ``DESTDIR=<staging_dir> make install`` and then copy over the
   #       contents of that staging directory.
 
   set(toolchain /home/jon/x-tools/arm-rpi-linux-gnueabihf)

@@ -84,12 +84,12 @@ File Type Identification
 Zeek ships with its own library of content signatures to determine the type of a
 file, conveyed as MIME types in the :zeek:see:`file_sniff` event. You can find
 those signatures in the Zeek distribution's ``scripts/base/frameworks/files/magic/``
-directory. (Despite the name, Zeek does `not` rely on libmagic for content analysis.)
+directory. (Despite the name, Zeek does *not* rely on libmagic for content analysis.)
 
 Adding Analysis
 ===============
 
-Zeek supports customized file analysis via `file analyzers` that users can
+Zeek supports customized file analysis via *file analyzers* that users can
 attach to observed files. You can attach analyzers selectively to individual
 files, or register them for auto-attachment under certain conditions. Once
 attached, file analyzers start receiving the contents of files as Zeek parses
@@ -207,8 +207,8 @@ customized analysis. Since observed files can be very large, Zeek cannot buffer
 these files and provide their entire content to the script layer once
 complete. Instead, the ``FileDataEvent`` analyzer reflects the incremental
 nature of file content as Zeek observes it, and supports two types of events to
-allow you to process it: user-provided `stream events` receive new file content
-as supplied by connection-oriented protocols, while `chunk events` receive
+allow you to process it: user-provided *stream events* receive new file content
+as supplied by connection-oriented protocols, while *chunk events* receive
 observed data as provided by protocols that do not feature stream semantics.
 
 The following example manually computes the SHA256 hash of each observed file by

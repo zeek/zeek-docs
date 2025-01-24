@@ -119,7 +119,7 @@ cluster node the metric originated from.
 By default, Zeek reports current telemetry every 60 seconds, as defined by the
 :zeek:see:`Telemetry::log_interval`, which you're free to adjust.
 
-Also, by default only metrics with the `prefix` (namespace) ``zeek`` and
+Also, by default only metrics with the ``prefix`` (namespace) ``zeek`` and
 ``process`` are included in above logs. If you add new metrics with your own
 prefix and expect these to be included, redefine the
 :zeek:see:`Telemetry::log_prefixes` option::
