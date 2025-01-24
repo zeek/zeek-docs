@@ -286,14 +286,14 @@ package helps you with that.
 Long Connections
 ----------------
 
-Zeek logs connection entries into the ``conn.log`` only upon termination
+Zeek logs connection entries into the :file:`conn.log` only upon termination
 or due to expiration of inactivity timeouts. Depending on the protocol and
 chosen timeout values this can significantly delay the appearance of a log
 entry for a given connection. The delay may be up to an hour for lingering
 SSH connections or connections where the final FIN or RST packets were missed.
 
-The `zeek-long-connections`_ package alleviates this by creating a ``conn_long.log``
-log with the same format as ``conn.log``, but containing entries for connections
+The `zeek-long-connections`_ package alleviates this by creating a :file:`conn_long.log`
+log with the same format as :file:`conn.log`, but containing entries for connections
 that have been existing for configurable intervals.
 By default, the first entry for a connection is logged after 10mins. Depending on
 the environment, this can be lowered as even a 10 minute delay may be significant

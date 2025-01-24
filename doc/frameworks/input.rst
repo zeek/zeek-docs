@@ -318,7 +318,7 @@ Broken input data
 -----------------
 
 The input framework notifies you of problems during data ingestion in two ways.
-First, reporter messages, ending up in reporter.log, indicate the type of
+First, reporter messages, ending up in :file:`reporter.log`, indicate the type of
 problem and the file in which the problem occurred::
 
   #fields ts      level   message location

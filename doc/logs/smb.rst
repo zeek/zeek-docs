@@ -1414,7 +1414,7 @@ all 20 entries.
 The first entry shows a call to the Windows endpoint mapper, ``epmapper``, on
 port 135 TCP on ``192.168.10.30``. The response from this service directs the
 client ``192.168.10.31`` to port 49155 TCP on ``192.168.10.30``. The second and
-subsequent dce_rpc.log entries involve port 49155 TCP on the target, which is
+subsequent :file:`dce_rpc.log` entries involve port 49155 TCP on the target, which is
 offering ``svcctrl``.
 
 We see the target IP address is ``192.168.10.30``, confirming the activity in

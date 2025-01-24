@@ -19,7 +19,8 @@ written to disk.
 In the following example, an analyst has configured Zeek to extract files of
 MIME type ``application/x-dosexec`` and write them to disk. To understand the
 chain of events that result in having a file on disk, we will start with the
-conn.log, progress to the :file:`http.log`, and conclude with the :file:`files.log`.
+:file:`conn.log`, progress to the :file:`http.log`, and conclude with the
+:file:`files.log`.
 
 The Zeek scripting manual, derived from the Zeek source code, completely
 explains the meaning of each field in the :file:`files.log` (and other logs).

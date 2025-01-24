@@ -261,7 +261,7 @@ Disable a Stream
 ----------------
 
 One way to “turn off” a log is to completely disable the stream. For example,
-the following example will prevent the conn.log from being written:
+the following example will prevent the :file:`conn.log` from being written:
 
 .. code-block:: zeek
 
