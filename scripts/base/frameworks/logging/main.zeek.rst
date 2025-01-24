@@ -29,7 +29,7 @@ Redefinable Options
 ###################
 =========================================================================================== =====================================================================
 :zeek:id:`Log::default_ext_prefix`: :zeek:type:`string` :zeek:attr:`&redef`                 A prefix for extension fields which can be optionally prefixed
-                                                                                            on all log lines by setting the `ext_func` field in the
+                                                                                            on all log lines by setting the ``ext_func`` field in the
                                                                                             log filter.
 :zeek:id:`Log::default_field_name_map`: :zeek:type:`table` :zeek:attr:`&redef`              Default field name mapping for renaming fields in a logging framework
                                                                                             filter.
@@ -199,7 +199,7 @@ Redefinable Options
    :Default: ``"_"``
 
    A prefix for extension fields which can be optionally prefixed
-   on all log lines by setting the `ext_func` field in the
+   on all log lines by setting the ``ext_func`` field in the
    log filter.
 
 .. zeek:id:: Log::default_field_name_map
@@ -326,8 +326,8 @@ Redefinable Options
 
    Default separator for log field scopes when logs are unrolled and
    flattened.  This will be the string between field name components.
-   For example, setting this to "_" will cause the typical field
-   "id.orig_h" to turn into "id_orig_h".
+   For example, setting this to ``_`` will cause the typical field
+   ``id.orig_h`` to turn into ``id_orig_h``.
 
 .. zeek:id:: Log::default_writer
    :source-code: base/frameworks/logging/main.zeek 27 27
