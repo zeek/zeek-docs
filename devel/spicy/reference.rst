@@ -942,7 +942,7 @@ membership in a ``set`` like this:
 
 .. code-block:: zeek
 
-   # Zeek module `MyModule`
+   # Zeek module MyModule
    option my_set: set[count] = { 1, 2, 3 };
 
 .. code-block:: spicy
@@ -958,7 +958,7 @@ functions for conversion. Example accessing a record's field:
 
 .. code-block:: zeek
 
-   # Zeek module `MyModule`
+   # Zeek module MyModule
    option my_record: record {
        a: count &default = 42;
        b: string &default = "foo";

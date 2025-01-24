@@ -259,7 +259,7 @@ the :zeek:see:`Notice::ACTION_DROP` action of the notice framework:
    #close    2018-12-14-18-50-55
 
 Using the :zeek:see:`Notice::ACTION_DROP` action of the notice framework also
-will cause the `dropped` column in :file:`notice.log` to be set to true each time that
+will cause the ``dropped`` column in :file:`notice.log` to be set to true each time that
 the NetControl framework enacts a block:
 
 .. code-block:: console
@@ -631,7 +631,7 @@ use the plugin, we first had to instantiate it by calling
 calling :zeek:see:`NetControl::activate`.
 
 As we already hinted before, NetControl supports having several plugins that are
-active at the same time. The second argument to the `NetControl::activate`
+active at the same time. The second argument to the :zeek:see:`NetControl::activate`
 function is the priority of the backend that was just added. Each rule is sent
 to all plugins in order, from highest priority to lowest priority. The backend
 can then choose if it accepts the rule and pushes it out to the hardware that it
@@ -646,7 +646,7 @@ network with two OpenFlow switches. The first switch forwards packets from the
 network to the external world, the second switch sits in front of your Zeek
 cluster to provide packet shunting. In this case, you can add two OpenFlow
 backends to NetControl. When you create the instances using
-:zeek:see:`NetControl::create_openflow`, you set the `monitor` and `forward`
+:zeek:see:`NetControl::create_openflow`, you set the ``monitor`` and ``forward``
 attributes of the configuration in :zeek:see:`NetControl::OfConfig`
 appropriately. Afterwards, one of the backends will only accept rules for the
 monitor path; the other backend will only accept rules for the forward path.
@@ -758,13 +758,13 @@ communicate with the Switch.
     NetControl and OpenFlow architecture (click to enlarge).
 
 The Python scripts that are used to interface with the available NetControl
-plugins are contained in the `zeek-netcontrol` repository (`github link <https://github.com/zeek/zeek-netcontrol>`_).
+plugins are contained in the ``zeek-netcontrol`` repository (`github link <https://github.com/zeek/zeek-netcontrol>`_).
 The repository contains scripts for the OpenFlow as well as the acld plugin.
 Furthermore, it contains a script for the broker plugin which can be used to
 call configurable command-line programs when used with the broker plugin.
 
 The repository also contains documentation on how to install these connectors.
-The `netcontrol` directory contains an API that allows you to write your own
+The ``netcontrol`` directory contains an API that allows you to write your own
 connectors to the broker plugin.
 
 Writing plugins

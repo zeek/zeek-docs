@@ -359,7 +359,7 @@ Configuring Notice Emails
 If :zeek:see:`Notice::mail_dest` is set, notices with an associated
 e-mail action will be sent to that address. For additional
 customization, users can use the :zeek:see:`Notice::policy` hook to
-modify the `email_dest` field. The following example would result in 3
+modify the ``email_dest`` field. The following example would result in three
 separate e-mails:
 
 .. code-block:: zeek
@@ -375,7 +375,7 @@ separate e-mails:
 
 You can also use :zeek:see:`Notice::policy` hooks to add extra information to
 emails. The :zeek:see:`Notice::Info` record contains a vector of strings named
-`$email_body_sections` which Zeek will include verbatim when sending email.
+``email_body_sections`` which Zeek will include verbatim when sending email.
 An example of including some information from an HTTP request is included below.
 
 .. code-block:: zeek
