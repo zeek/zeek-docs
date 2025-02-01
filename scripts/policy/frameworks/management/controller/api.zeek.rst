@@ -84,7 +84,7 @@ Constants
 Events
 ######
 .. zeek:id:: Management::Controller::API::deploy_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1076 1116
+   :source-code: policy/frameworks/management/controller/main.zeek 1087 1127
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -123,7 +123,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1051 1074
+   :source-code: policy/frameworks/management/controller/main.zeek 1062 1085
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, deployed: :zeek:type:`bool`)
 
@@ -159,7 +159,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_id_value_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1285 1362
+   :source-code: policy/frameworks/management/controller/main.zeek 1296 1373
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, id: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -204,7 +204,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_instances_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1118 1139
+   :source-code: policy/frameworks/management/controller/main.zeek 1129 1150
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -233,7 +233,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::get_nodes_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1187 1216
+   :source-code: policy/frameworks/management/controller/main.zeek 1198 1227
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`)
 
@@ -270,7 +270,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::notify_agents_ready
-   :source-code: policy/frameworks/management/controller/main.zeek 810 842
+   :source-code: policy/frameworks/management/controller/main.zeek 800 832
 
    :Type: :zeek:type:`event` (instances: :zeek:type:`set` [:zeek:type:`string`])
 
@@ -285,7 +285,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::restart_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1404 1497
+   :source-code: policy/frameworks/management/controller/main.zeek 1415 1508
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, nodes: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`)
 
@@ -327,7 +327,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::stage_configuration_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1011 1049
+   :source-code: policy/frameworks/management/controller/main.zeek 1001 1060
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, config: :zeek:type:`Management::Configuration`)
 
@@ -367,7 +367,7 @@ Events
    
 
 .. zeek:id:: Management::Controller::API::test_timeout_request
-   :source-code: policy/frameworks/management/controller/main.zeek 1576 1587
+   :source-code: policy/frameworks/management/controller/main.zeek 1587 1598
 
    :Type: :zeek:type:`event` (reqid: :zeek:type:`string`, with_state: :zeek:type:`bool`)
 
