@@ -680,7 +680,7 @@ Functions
    Write a message to the cluster logging stream.
 
 .. zeek:id:: Cluster::node_id
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 230 232
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 231 233
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -692,7 +692,7 @@ Functions
    a short lived identifier that resets when a node is restarted.
 
 .. zeek:id:: Cluster::node_topic
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 219 221
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 220 222
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -722,7 +722,7 @@ Functions
             known, otherwise a "null" instance with an empty name field.
 
 .. zeek:id:: Cluster::nodeid_topic
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 223 225
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 224 226
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
