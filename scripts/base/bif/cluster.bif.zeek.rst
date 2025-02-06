@@ -33,7 +33,7 @@ Functions
 .. zeek:id:: Cluster::Backend::__init
    :source-code: base/bif/cluster.bif.zeek 44 44
 
-   :Type: :zeek:type:`function` () : :zeek:type:`bool`
+   :Type: :zeek:type:`function` (nid: :zeek:type:`string`) : :zeek:type:`bool`
 
    Initialize the global cluster backend.
    

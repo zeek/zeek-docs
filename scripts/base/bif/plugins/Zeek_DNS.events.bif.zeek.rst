@@ -93,7 +93,7 @@ Events
       dns_skip_all_addl dns_skip_all_auth dns_skip_auth
 
 .. zeek:id:: dns_AAAA_reply
-   :source-code: base/protocols/dns/main.zeek 494 497
+   :source-code: base/bif/plugins/Zeek_DNS.events.bif.zeek 175 175
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, msg: :zeek:type:`dns_msg`, ans: :zeek:type:`dns_answer`, a: :zeek:type:`addr`)
 

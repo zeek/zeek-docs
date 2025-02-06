@@ -14,6 +14,12 @@ this detection.
 
 Summary
 ~~~~~~~
+Runtime Options
+###############
+=============================================================================== =====================================
+:zeek:id:`DNS::skip_resp_host_port_pairs`: :zeek:type:`set` :zeek:attr:`&redef` Default is to ignore mDNS broadcasts.
+=============================================================================== =====================================
+
 Redefinitions
 #############
 ============================================ ===========================================================
@@ -27,4 +33,23 @@ Redefinitions
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Runtime Options
+###############
+.. zeek:id:: DNS::skip_resp_host_port_pairs
+   :source-code: policy/protocols/dns/detect-external-names.zeek 20 20
+
+   :Type: :zeek:type:`set` [:zeek:type:`addr`, :zeek:type:`port`]
+   :Attributes: :zeek:attr:`&redef`
+   :Default:
+
+      ::
+
+         {
+            [224.0.0.251, 5353/udp] ,
+            [ff02::fb, 5353/udp] 
+         }
+
+
+   Default is to ignore mDNS broadcasts.
+
 
