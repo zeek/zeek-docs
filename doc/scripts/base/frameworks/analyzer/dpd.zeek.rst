@@ -13,18 +13,18 @@ Summary
 ~~~~~~~
 Runtime Options
 ###############
-=========================================================================================================================== =======================================================================
-:zeek:id:`DPD::ignore_violations`: :zeek:type:`set` :zeek:attr:`&redef`                                                     Analyzers which you don't want to throw
-:zeek:id:`DPD::ignore_violations_after`: :zeek:type:`count` :zeek:attr:`&redef`                                             Ignore violations which go this many bytes into the connection.
-:zeek:id:`DPD::max_violations`: :zeek:type:`table` :zeek:attr:`&default` = ``5`` :zeek:attr:`&optional` :zeek:attr:`&redef` Number of protocol violations to tolerate before disabling an analyzer.
-=========================================================================================================================== =======================================================================
+============================================================================================================================================================ =========================================================================
+:zeek:id:`DPD::ignore_violations`: :zeek:type:`set` :zeek:attr:`&redef`                                                                                      Analyzers which you don't want to throw
+:zeek:id:`DPD::ignore_violations_after`: :zeek:type:`count` :zeek:attr:`&redef`                                                                              Ignore violations which go this many bytes into the connection.
+:zeek:id:`DPD::max_violations`: :zeek:type:`table` :zeek:attr:`&deprecated` = *...* :zeek:attr:`&default` = ``5`` :zeek:attr:`&optional` :zeek:attr:`&redef` Deprecated, please see https://github.com/zeek/zeek/pull/4200 for details
+:zeek:id:`DPD::track_removed_services_in_connection`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                  Add removed services to conn.log, with a - in front of them.
+============================================================================================================================================================ =========================================================================
 
 Types
 #####
-============================================ ======================================================================
-:zeek:type:`DPD::Info`: :zeek:type:`record`  The record type defining the columns to log in the DPD logging stream.
-:zeek:type:`DPD::State`: :zeek:type:`record` Ongoing DPD state tracking information.
-============================================ ======================================================================
+=========================================== ======================================================================
+:zeek:type:`DPD::Info`: :zeek:type:`record` The record type defining the columns to log in the DPD logging stream.
+=========================================== ======================================================================
 
 Redefinitions
 #############
@@ -37,8 +37,6 @@ Redefinitions
                                              :New Fields: :zeek:type:`connection`
                                              
                                                dpd: :zeek:type:`DPD::Info` :zeek:attr:`&optional`
-                                             
-                                               dpd_state: :zeek:type:`DPD::State` :zeek:attr:`&optional`
                                              
                                                service_violation: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
                                                  The set of services (analyzers) for which Zeek has observed a
@@ -57,7 +55,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DPD::ignore_violations
-   :source-code: base/frameworks/analyzer/dpd.zeek 39 39
+   :source-code: base/frameworks/analyzer/dpd.zeek 33 33
 
    :Type: :zeek:type:`set` [:zeek:type:`Analyzer::Tag`]
    :Attributes: :zeek:attr:`&redef`
@@ -78,7 +76,7 @@ Runtime Options
    Analyzers which you don't want to throw
 
 .. zeek:id:: DPD::ignore_violations_after
-   :source-code: base/frameworks/analyzer/dpd.zeek 43 43
+   :source-code: base/frameworks/analyzer/dpd.zeek 37 37
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -88,13 +86,22 @@ Runtime Options
    Set to 0 to never ignore protocol violations.
 
 .. zeek:id:: DPD::max_violations
-   :source-code: base/frameworks/analyzer/dpd.zeek 36 36
+   :source-code: base/frameworks/analyzer/dpd.zeek 30 30
 
    :Type: :zeek:type:`table` [:zeek:type:`Analyzer::Tag`] of :zeek:type:`count`
-   :Attributes: :zeek:attr:`&default` = ``5`` :zeek:attr:`&optional` :zeek:attr:`&redef`
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v8.1: This has become non-functional in Zeek 7.2, see PR #4200"* :zeek:attr:`&default` = ``5`` :zeek:attr:`&optional` :zeek:attr:`&redef`
    :Default: ``{}``
 
-   Number of protocol violations to tolerate before disabling an analyzer.
+   Deprecated, please see https://github.com/zeek/zeek/pull/4200 for details
+
+.. zeek:id:: DPD::track_removed_services_in_connection
+   :source-code: base/frameworks/analyzer/dpd.zeek 40 40
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+   Add removed services to conn.log, with a - in front of them.
 
 Types
 #####
@@ -128,16 +135,6 @@ Types
          analyzer violation.
 
    The record type defining the columns to log in the DPD logging stream.
-
-.. zeek:type:: DPD::State
-   :source-code: base/frameworks/analyzer/dpd.zeek 30 33
-
-   :Type: :zeek:type:`record`
-
-      violations: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`count`
-         Current number of protocol violations seen per analyzer instance.
-
-   Ongoing DPD state tracking information.
 
 Hooks
 #####
