@@ -54,7 +54,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Conn::Info
-   :source-code: base/protocols/conn/main.zeek 21 166
+   :source-code: base/protocols/conn/main.zeek 21 168
 
    :Type: :zeek:type:`record`
 
@@ -71,8 +71,10 @@ Types
          The transport layer protocol of the connection.
 
       service: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         An identification of an application protocol being sent over
-         the connection.
+         A comma-separated list of confirmed protocol(s).
+         With :zeek:see:DPD::track_removed_services_in_connection, the list
+         includes the same protocols prefixed with "-" to record that Zeek
+         dropped them due to parsing violations."
 
       duration: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
          How long the connection lasted.
@@ -220,6 +222,13 @@ Types
          (present if :doc:`/scripts/policy/protocols/conn/community-id-logging.zeek` is loaded)
 
 
+      failed_service: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional` :zeek:attr:`&ordered`
+         (present if :doc:`/scripts/policy/protocols/conn/failed-service-logging.zeek` is loaded)
+
+         List of analyzers in a connection that raised violations
+         causing their removal.
+         Analyzers are listed in order that they were removed.
+
       ip_proto_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          (present if :doc:`/scripts/policy/protocols/conn/ip-proto-name-logging.zeek` is loaded)
 
@@ -257,7 +266,7 @@ Types
 Events
 ######
 .. zeek:id:: Conn::log_conn
-   :source-code: base/protocols/conn/main.zeek 170 170
+   :source-code: base/protocols/conn/main.zeek 172 172
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Conn::Info`)
 
