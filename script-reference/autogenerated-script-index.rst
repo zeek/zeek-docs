@@ -362,7 +362,9 @@
    base/frameworks/telemetry/main.zeek </scripts/base/frameworks/telemetry/main.zeek>
    base/misc/version.zeek </scripts/base/misc/version.zeek>
    base/frameworks/storage/__load__.zeek </scripts/base/frameworks/storage/__load__.zeek>
+   base/frameworks/storage/async.zeek </scripts/base/frameworks/storage/async.zeek>
    base/frameworks/storage/main.zeek </scripts/base/frameworks/storage/main.zeek>
+   base/frameworks/storage/sync.zeek </scripts/base/frameworks/storage/sync.zeek>
    base/frameworks/spicy/__load__.zeek </scripts/base/frameworks/spicy/__load__.zeek>
    base/frameworks/spicy/main.zeek </scripts/base/frameworks/spicy/main.zeek>
    base/protocols/conn/__load__.zeek </scripts/base/protocols/conn/__load__.zeek>
