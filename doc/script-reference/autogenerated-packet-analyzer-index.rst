@@ -248,6 +248,21 @@ Events
    .. note:: Since this event may be raised on a per-packet basis, handling
       it may become particularly expensive for real-time analysis.
 
+Functions
++++++++++
+
+.. zeek:id:: PacketAnalyzer::Geneve::get_options
+   :source-code: base/bif/plugins/Zeek_Geneve.functions.bif.zeek 15 15
+
+   :Type: :zeek:type:`function` () : :zeek:type:`geneve_options_vec_vec`
+
+   Returns all Geneve options from all layers of the current packet.
+   
+   The last entry in the outer vector are the options of the most
+   inner Geneve header.
+   
+   Returns a vector of vector of zeek::see:`PacketAnalyzer::Geneve::Option` records.
+
 .. _plugin-zeek-gre:
 
 Zeek::GRE

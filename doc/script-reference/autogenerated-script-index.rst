@@ -258,6 +258,7 @@
    base/bif/plugins/Zeek_UDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek>
    base/bif/plugins/Zeek_ICMP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek>
    base/bif/plugins/Zeek_Geneve.events.bif.zeek </scripts/base/bif/plugins/Zeek_Geneve.events.bif.zeek>
+   base/bif/plugins/Zeek_Geneve.functions.bif.zeek </scripts/base/bif/plugins/Zeek_Geneve.functions.bif.zeek>
    base/bif/plugins/Zeek_VXLAN.events.bif.zeek </scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek>
    base/bif/plugins/Zeek_FileEntropy.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileEntropy.events.bif.zeek>
    base/bif/plugins/Zeek_FileExtract.events.bif.zeek </scripts/base/bif/plugins/Zeek_FileExtract.events.bif.zeek>

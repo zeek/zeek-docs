@@ -476,6 +476,9 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_Geneve.events.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_Geneve.functions.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_VXLAN.events.bif.zeek`
 
 
