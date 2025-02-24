@@ -261,7 +261,7 @@ Functions
    The last entry in the outer vector are the options of the most
    inner Geneve header.
    
-   Returns a vector of vector of zeek::see:`PacketAnalyzer::Geneve::Option` records.
+   Returns a vector of vector of :zeek:see:`PacketAnalyzer::Geneve::Option` records.
 
 .. _plugin-zeek-gre:
 
