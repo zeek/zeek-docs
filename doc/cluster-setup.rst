@@ -336,15 +336,6 @@ For using ``lb`` or libpcap with netmap support, refer to the commands shown
 in the FreeBSD section - these are essentially the same.
 
 
-Click! Software Router
-^^^^^^^^^^^^^^^^^^^^^^
-
-Click! can be used for flow based load balancing with a simple configuration.
-This solution is not recommended on
-Linux due to Zeek's PF_RING support and only as a last resort on other
-operating systems since it causes a lot of overhead due to context switching
-back and forth between kernel and userland several times per packet.
-
 .. _cluster-configuration:
 
 Cluster Configuration
