@@ -307,6 +307,7 @@ Optional Dependencies
 Zeek can make use of some optional libraries and tools if they are found at
 build time:
 
+    * ZeroMQ (for the ZeroMQ cluster backend)
     * libmaxminddb (for geolocating IP addresses)
     * sendmail (enables Zeek and ZeekControl to send mail)
     * curl (used by a Zeek script that implements active HTTP)
@@ -315,6 +316,11 @@ build time:
     * PF_RING (Linux only, see :ref:`pf-ring-config`)
     * krb5 libraries and headers
     * ipsumdump (for trace-summary; https://github.com/kohler/ipsumdump)
+
+ZeroMQ (e.g., libzmq3-dev on Debian/Ubuntu or cppzmq-devel on Fedora) is a
+requirement for developers working on core Zeek as some of Zeek's central
+tests require it to be available. Otherwise, for operating Zeek, ZeroMQ
+is optional unless you want to test with the :ref:`cluster_backend_zeromq`.
 
 Geolocation is probably the most interesting and can be installed on most
 platforms by following the instructions for :ref:`address geolocation and AS
