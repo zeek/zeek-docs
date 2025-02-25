@@ -3593,7 +3593,7 @@ Functions
 .. zeek:id:: to_count
    :source-code: base/bif/zeek.bif.zeek 1288 1288
 
-   :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`count`
+   :Type: :zeek:type:`function` (str: :zeek:type:`string`, base: :zeek:type:`count` :zeek:attr:`&default` = ``10`` :zeek:attr:`&optional`) : :zeek:type:`count`
 
    Converts a :zeek:type:`string` to a :zeek:type:`count`.
    
@@ -3624,7 +3624,7 @@ Functions
 .. zeek:id:: to_int
    :source-code: base/bif/zeek.bif.zeek 1247 1247
 
-   :Type: :zeek:type:`function` (str: :zeek:type:`string`) : :zeek:type:`int`
+   :Type: :zeek:type:`function` (str: :zeek:type:`string`, base: :zeek:type:`count` :zeek:attr:`&default` = ``10`` :zeek:attr:`&optional`) : :zeek:type:`int`
 
    Converts a :zeek:type:`string` to an :zeek:type:`int`.
    
