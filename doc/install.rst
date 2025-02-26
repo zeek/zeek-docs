@@ -140,7 +140,7 @@ These packages are not maintained by the Zeek project.
 OpenBSD
 -------
 
-Zeek is available from the `OpenBSD ports collection <https://openports.se/net/bro>`_.
+Zeek is available from the `OpenBSD ports collection <https://ports.to/path/net/bro.html>`_.
 To install:
 
   .. code-block:: console
