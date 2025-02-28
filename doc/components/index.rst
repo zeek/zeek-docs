@@ -6,6 +6,8 @@ Subcomponents
 To find documentation for the various subcomponents of Zeek, see their
 respective GitHub repositories or documentation:
 
+* `Spicy <https://docs.zeek.org/projects/spicy>`__
+  - C++ parser generator for dissecting protocols & files.
 * `BinPAC <https://github.com/zeek/binpac>`__
   - A protocol parser generator
 * `ZeekControl <https://github.com/zeek/zeekctl>`__
