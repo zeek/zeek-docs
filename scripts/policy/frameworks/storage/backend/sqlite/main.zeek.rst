@@ -4,17 +4,28 @@ policy/frameworks/storage/backend/sqlite/main.zeek
 ==================================================
 .. zeek:namespace:: Storage::Backend::SQLite
 
+SQLite storage backend support
 
 :Namespace: Storage::Backend::SQLite
+:Imports: :doc:`base/frameworks/storage/main.zeek </scripts/base/frameworks/storage/main.zeek>`
 
 Summary
 ~~~~~~~
 Types
 #####
 =================================================================== ===============================================
-:zeek:type:`Storage::Backend::SQLite::Options`: :zeek:type:`record` SQLite storage backend support
-                                                                    Options record for the built-in SQLite backend.
+:zeek:type:`Storage::Backend::SQLite::Options`: :zeek:type:`record` Options record for the built-in SQLite backend.
 =================================================================== ===============================================
+
+Redefinitions
+#############
+========================================================= ===============================================================================
+:zeek:type:`Storage::BackendOptions`: :zeek:type:`record` 
+                                                          
+                                                          :New Fields: :zeek:type:`Storage::BackendOptions`
+                                                          
+                                                            sqlite: :zeek:type:`Storage::Backend::SQLite::Options` :zeek:attr:`&optional`
+========================================================= ===============================================================================
 
 
 Detailed Interface
@@ -22,7 +33,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Storage::Backend::SQLite::Options
-   :source-code: policy/frameworks/storage/backend/sqlite/main.zeek 7 23
+   :source-code: policy/frameworks/storage/backend/sqlite/main.zeek 9 25
 
    :Type: :zeek:type:`record`
 
@@ -38,7 +49,6 @@ Types
          the database.  These must be pairs that can be passed to the
          ``pragma`` command in sqlite.
 
-   SQLite storage backend support
    Options record for the built-in SQLite backend.
 
 
