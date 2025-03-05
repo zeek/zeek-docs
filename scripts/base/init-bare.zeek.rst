@@ -35,6 +35,7 @@ base/init-bare.zeek
 .. zeek:namespace:: SOCKS
 .. zeek:namespace:: SSH
 .. zeek:namespace:: SSL
+.. zeek:namespace:: Storage
 .. zeek:namespace:: TCP
 .. zeek:namespace:: Telemetry
 .. zeek:namespace:: Threading
@@ -45,7 +46,7 @@ base/init-bare.zeek
 .. zeek:namespace:: X509
 
 
-:Namespaces: Analyzer, BinPAC, Cluster, DCE_RPC, DHCP, FTP, GLOBAL, HTTP, IP, JSON, KRB, Log, MIME, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, POP3, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SMTP, SNMP, SOCKS, SSH, SSL, TCP, Telemetry, Threading, Tunnel, UnknownProtocol, WebSocket, Weird, X509
+:Namespaces: Analyzer, BinPAC, Cluster, DCE_RPC, DHCP, FTP, GLOBAL, HTTP, IP, JSON, KRB, Log, MIME, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, POP3, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SMTP, SNMP, SOCKS, SSH, SSL, Storage, TCP, Telemetry, Threading, Tunnel, UnknownProtocol, WebSocket, Weird, X509
 :Imports: :doc:`base/bif/CPP-load.bif.zeek </scripts/base/bif/CPP-load.bif.zeek>`, :doc:`base/bif/communityid.bif.zeek </scripts/base/bif/communityid.bif.zeek>`, :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/mmdb.bif.zeek </scripts/base/bif/mmdb.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/packet_analysis.bif.zeek </scripts/base/bif/packet_analysis.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/telemetry_functions.bif.zeek </scripts/base/bif/telemetry_functions.bif.zeek>`, :doc:`base/bif/telemetry_types.bif.zeek </scripts/base/bif/telemetry_types.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/spicy/init-bare.zeek </scripts/base/frameworks/spicy/init-bare.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`, :doc:`base/packet-protocols </scripts/base/packet-protocols/index>`
 
 Summary
@@ -138,6 +139,8 @@ Redefinable Options
                                                                                                                     parsing of the connection is suspended.
 :zeek:id:`SSL::max_alerts_per_record`: :zeek:type:`count` :zeek:attr:`&redef`                                       Maximum number of Alert messages parsed from an SSL record with
                                                                                                                     content_type alert (21).
+:zeek:id:`Storage::expire_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                      The interval used by the storage framework for automatic expiration
+                                                                                                                    of elements in all backends that don't support it natively.
 :zeek:id:`Telemetry::callback_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                   Maximum amount of time for CivetWeb HTTP threads to
                                                                                                                     wait for metric callbacks to complete on the IO loop.
 :zeek:id:`Telemetry::civetweb_threads`: :zeek:type:`count` :zeek:attr:`&redef`                                      Number of CivetWeb threads to use.
@@ -1546,6 +1549,16 @@ Redefinable Options
    Maximum number of Alert messages parsed from an SSL record with
    content_type alert (21). The remaining alerts are discarded. For
    TLS 1.3 connections, this is implicitly 1 as defined by RFC 8446.
+
+.. zeek:id:: Storage::expire_interval
+   :source-code: base/init-bare.zeek 6218 6218
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``5.0 secs``
+
+   The interval used by the storage framework for automatic expiration
+   of elements in all backends that don't support it natively.
 
 .. zeek:id:: Telemetry::callback_timeout
    :source-code: base/init-bare.zeek 6050 6050
@@ -3679,7 +3692,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 6217 6217
+   :source-code: base/init-bare.zeek 6225 6225
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
