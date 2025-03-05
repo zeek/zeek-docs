@@ -112,7 +112,7 @@ Events
    :param c: The connection record for the underlying transport-layer session/flow.
    
 
-   :param cookie: The cookie included in the request.
+   :param cookie: The cookie included in the request; empty if no cookie was provided.
    
 
    :param flags: The flags set by the client.

@@ -46,7 +46,7 @@ Redefinable Options
 :zeek:id:`Cluster::Backend::ZeroMQ::listen_xpub_endpoint`: :zeek:type:`string` :zeek:attr:`&redef`  XPUB listen endpoint for the central broker.
 :zeek:id:`Cluster::Backend::ZeroMQ::listen_xpub_nodrop`: :zeek:type:`bool` :zeek:attr:`&redef`      Do not silently drop messages if high-water-mark is reached.
 :zeek:id:`Cluster::Backend::ZeroMQ::listen_xsub_endpoint`: :zeek:type:`string` :zeek:attr:`&redef`  XSUB listen endpoint for the central broker.
-:zeek:id:`Cluster::Backend::ZeroMQ::log_immediate`: :zeek:type:`bool` :zeek:attr:`&redef`           Configure ZeroMQ's immedidate setting on PUSH sockets
+:zeek:id:`Cluster::Backend::ZeroMQ::log_immediate`: :zeek:type:`bool` :zeek:attr:`&redef`           Configure ZeroMQ's immediate setting on PUSH sockets
 :zeek:id:`Cluster::Backend::ZeroMQ::log_rcvbuf`: :zeek:type:`int` :zeek:attr:`&redef`               Kernel receive buffer size for log sockets.
 :zeek:id:`Cluster::Backend::ZeroMQ::log_rcvhwm`: :zeek:type:`int` :zeek:attr:`&redef`               Receive high water mark value for the log PULL sockets.
 :zeek:id:`Cluster::Backend::ZeroMQ::log_sndbuf`: :zeek:type:`int` :zeek:attr:`&redef`               Kernel transmit buffer size for log sockets.
@@ -245,7 +245,7 @@ Redefinable Options
    :Attributes: :zeek:attr:`&redef`
    :Default: ``F``
 
-   Configure ZeroMQ's immedidate setting on PUSH sockets
+   Configure ZeroMQ's immediate setting on PUSH sockets
    
    Setting this to ``T`` will queue log writes only to completed
    connections. By default, log writes are queued to all potential
