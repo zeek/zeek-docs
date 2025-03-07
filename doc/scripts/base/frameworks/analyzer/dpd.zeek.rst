@@ -17,7 +17,8 @@ Runtime Options
 :zeek:id:`DPD::ignore_violations`: :zeek:type:`set` :zeek:attr:`&redef`                                                                                      Analyzers which you don't want to throw
 :zeek:id:`DPD::ignore_violations_after`: :zeek:type:`count` :zeek:attr:`&redef`                                                                              Ignore violations which go this many bytes into the connection.
 :zeek:id:`DPD::max_violations`: :zeek:type:`table` :zeek:attr:`&deprecated` = *...* :zeek:attr:`&default` = ``5`` :zeek:attr:`&optional` :zeek:attr:`&redef` Deprecated, please see https://github.com/zeek/zeek/pull/4200 for details
-:zeek:id:`DPD::track_removed_services_in_connection`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                  Add removed services to conn.log, with a - in front of them.
+:zeek:id:`DPD::track_removed_services_in_connection`: :zeek:type:`bool` :zeek:attr:`&redef`                                                                  Change behavior of service field in conn.log:
+                                                                                                                                                             Failed services are no longer removed.
 ============================================================================================================================================================ =========================================================================
 
 Types
@@ -95,13 +96,17 @@ Runtime Options
    Deprecated, please see https://github.com/zeek/zeek/pull/4200 for details
 
 .. zeek:id:: DPD::track_removed_services_in_connection
-   :source-code: base/frameworks/analyzer/dpd.zeek 40 40
+   :source-code: base/frameworks/analyzer/dpd.zeek 44 44
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
    :Default: ``F``
 
-   Add removed services to conn.log, with a - in front of them.
+   Change behavior of service field in conn.log:
+   Failed services are no longer removed. Instead, for a failed
+   service, a second entry with a "-" in front of it is added.
+   E.g. a http connection with a violation would be logged as
+   "http,-http".
 
 Types
 #####
