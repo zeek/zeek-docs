@@ -68,8 +68,8 @@ Functions
 :zeek:id:`disable_event_group`: :zeek:type:`function`           Disabled the given event group.
 :zeek:id:`disable_module_events`: :zeek:type:`function`         Disable all event handlers and hooks in the given module.
 :zeek:id:`do_profiling`: :zeek:type:`function`                  Enables detailed collection of profiling statistics.
-:zeek:id:`double_to_count`: :zeek:type:`function`               Converts a :zeek:type:`double` to a :zeek:type:`int`.
-:zeek:id:`double_to_int`: :zeek:type:`function`                 Converts a :zeek:type:`double` to a :zeek:type:`count`.
+:zeek:id:`double_to_count`: :zeek:type:`function`               Converts a :zeek:type:`double` to a :zeek:type:`count`.
+:zeek:id:`double_to_int`: :zeek:type:`function`                 Converts a :zeek:type:`double` to a :zeek:type:`int`.
 :zeek:id:`double_to_interval`: :zeek:type:`function`            Converts a :zeek:type:`double` to an :zeek:type:`interval`.
 :zeek:id:`double_to_time`: :zeek:type:`function`                Converts a :zeek:type:`double` value to a :zeek:type:`time`.
 :zeek:id:`dump_current_packet`: :zeek:type:`function`           Writes the current packet to a file.
@@ -931,7 +931,7 @@ Functions
 
    :Type: :zeek:type:`function` (d: :zeek:type:`double`) : :zeek:type:`count`
 
-   Converts a :zeek:type:`double` to a :zeek:type:`int`.
+   Converts a :zeek:type:`double` to a :zeek:type:`count`.
    
 
    :param d: The :zeek:type:`double` to convert.
@@ -947,7 +947,7 @@ Functions
 
    :Type: :zeek:type:`function` (d: :zeek:type:`double`) : :zeek:type:`int`
 
-   Converts a :zeek:type:`double` to a :zeek:type:`count`.
+   Converts a :zeek:type:`double` to a :zeek:type:`int`.
    
 
    :param d: The :zeek:type:`double` to convert.
