@@ -12,18 +12,19 @@ Summary
 ~~~~~~~
 Functions
 #########
-========================================================== ===================================================================
-:zeek:id:`Cluster::Backend::__init`: :zeek:type:`function` Initialize the global cluster backend.
-:zeek:id:`Cluster::__subscribe`: :zeek:type:`function`     
-:zeek:id:`Cluster::__unsubscribe`: :zeek:type:`function`   
-:zeek:id:`Cluster::make_event`: :zeek:type:`function`      Create a data structure that may be used to send a remote event via
-                                                           :zeek:see:`Broker::publish`.
-:zeek:id:`Cluster::publish`: :zeek:type:`function`         Publishes an event to a given topic.
-:zeek:id:`Cluster::publish_hrw`: :zeek:type:`function`     Publishes an event to a node within a pool according to Rendezvous
-                                                           (Highest Random Weight) hashing strategy.
-:zeek:id:`Cluster::publish_rr`: :zeek:type:`function`      Publishes an event to a node within a pool according to Round-Robin
-                                                           distribution strategy.
-========================================================== ===================================================================
+============================================================= ===================================================================
+:zeek:id:`Cluster::Backend::__init`: :zeek:type:`function`    Initialize the global cluster backend.
+:zeek:id:`Cluster::__listen_websocket`: :zeek:type:`function` 
+:zeek:id:`Cluster::__subscribe`: :zeek:type:`function`        
+:zeek:id:`Cluster::__unsubscribe`: :zeek:type:`function`      
+:zeek:id:`Cluster::make_event`: :zeek:type:`function`         Create a data structure that may be used to send a remote event via
+                                                              :zeek:see:`Broker::publish`.
+:zeek:id:`Cluster::publish`: :zeek:type:`function`            Publishes an event to a given topic.
+:zeek:id:`Cluster::publish_hrw`: :zeek:type:`function`        Publishes an event to a node within a pool according to Rendezvous
+                                                              (Highest Random Weight) hashing strategy.
+:zeek:id:`Cluster::publish_rr`: :zeek:type:`function`         Publishes an event to a node within a pool according to Round-Robin
+                                                              distribution strategy.
+============================================================= ===================================================================
 
 
 Detailed Interface
@@ -31,7 +32,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Cluster::Backend::__init
-   :source-code: base/bif/cluster.bif.zeek 44 44
+   :source-code: base/bif/cluster.bif.zeek 45 45
 
    :Type: :zeek:type:`function` (nid: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -40,20 +41,26 @@ Functions
 
    :returns: true on success.
 
+.. zeek:id:: Cluster::__listen_websocket
+   :source-code: base/bif/cluster.bif.zeek 84 84
+
+   :Type: :zeek:type:`function` (options: :zeek:type:`Cluster::WebSocketServerOptions`) : :zeek:type:`bool`
+
+
 .. zeek:id:: Cluster::__subscribe
-   :source-code: base/bif/cluster.bif.zeek 35 35
+   :source-code: base/bif/cluster.bif.zeek 36 36
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Cluster::__unsubscribe
-   :source-code: base/bif/cluster.bif.zeek 38 38
+   :source-code: base/bif/cluster.bif.zeek 39 39
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Cluster::make_event
-   :source-code: base/bif/cluster.bif.zeek 32 32
+   :source-code: base/bif/cluster.bif.zeek 33 33
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`Cluster::Event`
 
@@ -70,7 +77,7 @@ Functions
             or :zeek:see:`Cluster::publish_hrw`.
 
 .. zeek:id:: Cluster::publish
-   :source-code: base/bif/cluster.bif.zeek 20 20
+   :source-code: base/bif/cluster.bif.zeek 21 21
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 
@@ -88,7 +95,7 @@ Functions
    :returns: true if the message is sent.
 
 .. zeek:id:: Cluster::publish_hrw
-   :source-code: base/bif/cluster.bif.zeek 80 80
+   :source-code: base/bif/cluster.bif.zeek 81 81
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 
@@ -111,7 +118,7 @@ Functions
    :returns: true if the message is sent.
 
 .. zeek:id:: Cluster::publish_rr
-   :source-code: base/bif/cluster.bif.zeek 63 63
+   :source-code: base/bif/cluster.bif.zeek 64 64
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 

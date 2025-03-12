@@ -22,6 +22,9 @@ Package: base/bif/plugins
 :doc:`/scripts/base/bif/plugins/Zeek_GTPv1.functions.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_Cluster_WebSocket.events.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/__load__.zeek`
 
 

@@ -708,6 +708,42 @@ Events
       bittorrent_peer_port bittorrent_peer_request bittorrent_peer_unchoke
       bittorrent_peer_unknown bittorrent_peer_weird
 
+.. _plugin-zeek-cluster-websocket:
+
+Zeek::Cluster_WebSocket
+-----------------------
+
+Provides WebSocket access to a Zeek cluster
+
+Components
+++++++++++
+
+Events
+++++++
+
+.. zeek:id:: Cluster::websocket_client_added
+   :source-code: base/frameworks/cluster/main.zeek 657 662
+
+   :Type: :zeek:type:`event` (endpoint: :zeek:type:`Cluster::EndpointInfo`, subscriptions: :zeek:type:`string_vec`)
+
+   Generated when a new WebSocket client has connected.
+   
+
+   :param endpoint: Various information about the WebSocket client.
+   
+
+   :param subscriptions: The WebSocket client's subscriptions as provided in the handshake.
+
+.. zeek:id:: Cluster::websocket_client_lost
+   :source-code: base/frameworks/cluster/main.zeek 664 669
+
+   :Type: :zeek:type:`event` (endpoint: :zeek:type:`Cluster::EndpointInfo`)
+
+   Generated when a WebSocket client was lost.
+   
+
+   :param endpoint: Various information about the WebSocket client.
+
 .. _plugin-zeek-connsize:
 
 Zeek::ConnSize
