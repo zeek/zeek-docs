@@ -38,6 +38,7 @@ Redefinable Options
 =================================================================================================== ==================================================================
 :zeek:id:`Cluster::Backend::ZeroMQ::connect_log_endpoints`: :zeek:type:`vector` :zeek:attr:`&redef` Vector of ZeroMQ endpoints to connect to for logging.
 :zeek:id:`Cluster::Backend::ZeroMQ::connect_xpub_endpoint`: :zeek:type:`string` :zeek:attr:`&redef` The central broker's XPUB endpoint to connect to.
+:zeek:id:`Cluster::Backend::ZeroMQ::connect_xpub_nodrop`: :zeek:type:`bool` :zeek:attr:`&redef`     Do not silently drop messages if high-water-mark is reached.
 :zeek:id:`Cluster::Backend::ZeroMQ::connect_xsub_endpoint`: :zeek:type:`string` :zeek:attr:`&redef` The central broker's XSUB endpoint to connect to.
 :zeek:id:`Cluster::Backend::ZeroMQ::debug_flags`: :zeek:type:`count` :zeek:attr:`&redef`            Bitmask to enable low-level stderr based debug printing.
 :zeek:id:`Cluster::Backend::ZeroMQ::hello_expiration`: :zeek:type:`interval` :zeek:attr:`&redef`    Expiration for hello state.
@@ -52,8 +53,9 @@ Redefinable Options
 :zeek:id:`Cluster::Backend::ZeroMQ::log_sndbuf`: :zeek:type:`int` :zeek:attr:`&redef`               Kernel transmit buffer size for log sockets.
 :zeek:id:`Cluster::Backend::ZeroMQ::log_sndhwm`: :zeek:type:`int` :zeek:attr:`&redef`               Send high water mark value for the log PUSH sockets.
 :zeek:id:`Cluster::Backend::ZeroMQ::poll_max_messages`: :zeek:type:`count` :zeek:attr:`&redef`      Messages to receive before yielding.
+:zeek:id:`Cluster::Backend::ZeroMQ::proxy_io_threads`: :zeek:type:`count` :zeek:attr:`&redef`       How many IO threads to configure for the ZeroMQ context that
+                                                                                                    acts as a central broker.
 :zeek:id:`Cluster::Backend::ZeroMQ::run_proxy_thread`: :zeek:type:`bool` :zeek:attr:`&redef`        Toggle for running a central ZeroMQ XPUB-XSUB broker on this node.
-:zeek:id:`Cluster::Backend::ZeroMQ::xpub_nodrop`: :zeek:type:`bool` :zeek:attr:`&redef`             Do not silently drop messages if high-water-mark is reached.
 =================================================================================================== ==================================================================
 
 State Variables
@@ -122,6 +124,22 @@ Redefinable Options
    A node connects with its XSUB socket to the XPUB socket
    of the central broker.
 
+.. zeek:id:: Cluster::Backend::ZeroMQ::connect_xpub_nodrop
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 150 150
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   Do not silently drop messages if high-water-mark is reached.
+   
+   Whether to configure ``ZMQ_XPUB_NODROP`` on the XPUB socket
+   connecting to the proxy to detect when sending a message fails
+   due to reaching the high-water-mark.
+   
+   See ZeroMQ's `ZMQ_XPUB_NODROP documentation <http://api.zeromq.org/4-2:zmq-setsockopt#toc61>`_
+   for more details.
+
 .. zeek:id:: Cluster::Backend::ZeroMQ::connect_xsub_endpoint
    :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 39 39
 
@@ -135,7 +153,7 @@ Redefinable Options
    of the central broker.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::debug_flags
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 172 172
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 180 180
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -152,7 +170,7 @@ Redefinable Options
    will produce output on stderr.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::hello_expiration
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 212 212
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 220 220
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -165,7 +183,7 @@ Redefinable Options
    nodes. These expirations trigger reporter warnings.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::linger_ms
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 87 87
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 95 95
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -184,7 +202,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_log_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 74 74
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 82 82
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -196,7 +214,7 @@ Redefinable Options
    a ZeroMQ address to bind to. E.g., ``tcp://127.0.0.1:5555``.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_xpub_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 68 68
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 76 76
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -208,7 +226,7 @@ Redefinable Options
    when :zeek:see:`Cluster::Backend::ZeroMQ::run_proxy_thread` is ``T``.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_xpub_nodrop
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 155 155
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 163 163
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -227,7 +245,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_xsub_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 62 62
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 70 70
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -239,7 +257,7 @@ Redefinable Options
    when :zeek:see:`Cluster::Backend::ZeroMQ::run_proxy_thread` is ``T``.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_immediate
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 97 97
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 105 105
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -255,7 +273,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_rcvbuf
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 132 132
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 140 140
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -269,7 +287,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_rcvhwm
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 117 117
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 125 125
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -285,7 +303,7 @@ Redefinable Options
    TODO: Make action configurable (block vs drop)
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_sndbuf
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 124 124
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 132 132
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -298,7 +316,7 @@ Redefinable Options
    See ZeroMQ's `ZMQ_SNDBUF documentation <http://api.zeromq.org/4-2:zmq-setsockopt#toc45>`_.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_sndhwm
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 107 107
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 115 115
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -314,7 +332,7 @@ Redefinable Options
    TODO: Make action configurable (block vs drop)
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::poll_max_messages
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 161 161
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 169 169
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -324,6 +342,19 @@ Redefinable Options
    
    Yield from the receive loop when this many messages have been
    received from one of the used sockets.
+
+.. zeek:id:: Cluster::Backend::ZeroMQ::proxy_io_threads
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 64 64
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``2``
+
+   How many IO threads to configure for the ZeroMQ context that
+   acts as a central broker.
+   See ZeroMQ's `ZMQ_IO_THREADS documentation <http://api.zeromq.org/4-2:zmq-ctx-set#toc4>`_
+   and the `I/O threads <https://zguide.zeromq.org/docs/chapter2/#I-O-Threads>`
+   section in the ZeroMQ guide for details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::run_proxy_thread
    :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 56 56
@@ -348,26 +379,10 @@ Redefinable Options
    
    By default, this is set to ``T`` on the manager and ``F`` elsewhere.
 
-.. zeek:id:: Cluster::Backend::ZeroMQ::xpub_nodrop
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 142 142
-
-   :Type: :zeek:type:`bool`
-   :Attributes: :zeek:attr:`&redef`
-   :Default: ``T``
-
-   Do not silently drop messages if high-water-mark is reached.
-   
-   Whether to configure ``ZMQ_XPUB_NODROP`` on the XPUB socket
-   to detect when sending a message fails due to reaching
-   the high-water-mark.
-   
-   See ZeroMQ's `ZMQ_XPUB_NODROP documentation <http://api.zeromq.org/4-2:zmq-setsockopt#toc61>`_
-   for more details.
-
 State Variables
 ###############
 .. zeek:id:: Cluster::Backend::ZeroMQ::node_topic_prefix
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 175 175
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 183 183
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -376,7 +391,7 @@ State Variables
    The node topic prefix to use.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::nodeid_topic_prefix
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 178 178
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 186 186
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -387,7 +402,7 @@ State Variables
 Events
 ######
 .. zeek:id:: Cluster::Backend::ZeroMQ::hello
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 364 401
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 372 409
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -400,7 +415,7 @@ Events
    :param id: The sending node's identifier, as generated by :zeek:see:`Cluster::node_id`.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::subscription
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 333 359
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 341 367
 
    :Type: :zeek:type:`event` (topic: :zeek:type:`string`)
 
@@ -415,7 +430,7 @@ Events
    :param topic: The topic.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::unsubscription
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 406 425
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 414 433
 
    :Type: :zeek:type:`event` (topic: :zeek:type:`string`)
 

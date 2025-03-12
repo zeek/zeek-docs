@@ -136,6 +136,9 @@ Package: base/bif
 :doc:`/scripts/base/bif/cluster.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_Cluster_WebSocket.events.bif.zeek`
+
+
 :doc:`/scripts/base/bif/__load__.zeek`
 
 

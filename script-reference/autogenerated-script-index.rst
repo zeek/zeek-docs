@@ -131,6 +131,7 @@
    base/frameworks/control/__load__.zeek </scripts/base/frameworks/control/__load__.zeek>
    base/frameworks/control/main.zeek </scripts/base/frameworks/control/main.zeek>
    base/bif/cluster.bif.zeek </scripts/base/bif/cluster.bif.zeek>
+   base/bif/plugins/Zeek_Cluster_WebSocket.events.bif.zeek </scripts/base/bif/plugins/Zeek_Cluster_WebSocket.events.bif.zeek>
    base/frameworks/cluster/pools.zeek </scripts/base/frameworks/cluster/pools.zeek>
    base/utils/hash_hrw.zeek </scripts/base/utils/hash_hrw.zeek>
    base/frameworks/config/__load__.zeek </scripts/base/frameworks/config/__load__.zeek>
