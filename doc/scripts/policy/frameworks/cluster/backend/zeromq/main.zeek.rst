@@ -353,7 +353,7 @@ Redefinable Options
    How many IO threads to configure for the ZeroMQ context that
    acts as a central broker.
    See ZeroMQ's `ZMQ_IO_THREADS documentation <http://api.zeromq.org/4-2:zmq-ctx-set#toc4>`_
-   and the `I/O threads <https://zguide.zeromq.org/docs/chapter2/#I-O-Threads>`
+   and the `I/O threads <https://zguide.zeromq.org/docs/chapter2/#I-O-Threads>`_
    section in the ZeroMQ guide for details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::run_proxy_thread
