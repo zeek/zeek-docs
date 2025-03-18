@@ -154,6 +154,9 @@
    base/bif/bloom-filter.bif.zeek </scripts/base/bif/bloom-filter.bif.zeek>
    base/bif/cardinality-counter.bif.zeek </scripts/base/bif/cardinality-counter.bif.zeek>
    base/bif/top-k.bif.zeek </scripts/base/bif/top-k.bif.zeek>
+   base/bif/storage-async.bif.zeek </scripts/base/bif/storage-async.bif.zeek>
+   base/bif/storage-events.bif.zeek </scripts/base/bif/storage-events.bif.zeek>
+   base/bif/storage-sync.bif.zeek </scripts/base/bif/storage-sync.bif.zeek>
    base/bif/spicy.bif.zeek </scripts/base/bif/spicy.bif.zeek>
    base/bif/plugins/__load__.zeek </scripts/base/bif/plugins/__load__.zeek>
    base/bif/plugins/Zeek_BitTorrent.events.bif.zeek </scripts/base/bif/plugins/Zeek_BitTorrent.events.bif.zeek>
@@ -362,6 +365,10 @@
    base/frameworks/telemetry/__load__.zeek </scripts/base/frameworks/telemetry/__load__.zeek>
    base/frameworks/telemetry/main.zeek </scripts/base/frameworks/telemetry/main.zeek>
    base/misc/version.zeek </scripts/base/misc/version.zeek>
+   base/frameworks/storage/__load__.zeek </scripts/base/frameworks/storage/__load__.zeek>
+   base/frameworks/storage/async.zeek </scripts/base/frameworks/storage/async.zeek>
+   base/frameworks/storage/main.zeek </scripts/base/frameworks/storage/main.zeek>
+   base/frameworks/storage/sync.zeek </scripts/base/frameworks/storage/sync.zeek>
    base/frameworks/spicy/__load__.zeek </scripts/base/frameworks/spicy/__load__.zeek>
    base/frameworks/spicy/main.zeek </scripts/base/frameworks/spicy/main.zeek>
    base/protocols/conn/__load__.zeek </scripts/base/protocols/conn/__load__.zeek>
@@ -557,6 +564,10 @@
    policy/frameworks/software/version-changes.zeek </scripts/policy/frameworks/software/version-changes.zeek>
    policy/frameworks/software/vulnerable.zeek </scripts/policy/frameworks/software/vulnerable.zeek>
    policy/frameworks/software/windows-version-detection.zeek </scripts/policy/frameworks/software/windows-version-detection.zeek>
+   policy/frameworks/storage/backend/redis/__load__.zeek </scripts/policy/frameworks/storage/backend/redis/__load__.zeek>
+   policy/frameworks/storage/backend/redis/main.zeek </scripts/policy/frameworks/storage/backend/redis/main.zeek>
+   policy/frameworks/storage/backend/sqlite/__load__.zeek </scripts/policy/frameworks/storage/backend/sqlite/__load__.zeek>
+   policy/frameworks/storage/backend/sqlite/main.zeek </scripts/policy/frameworks/storage/backend/sqlite/main.zeek>
    policy/frameworks/telemetry/log.zeek </scripts/policy/frameworks/telemetry/log.zeek>
    policy/integration/collective-intel/__load__.zeek </scripts/policy/integration/collective-intel/__load__.zeek>
    policy/integration/collective-intel/main.zeek </scripts/policy/integration/collective-intel/main.zeek>
