@@ -224,6 +224,9 @@
 :doc:`base/frameworks/telemetry </scripts/base/frameworks/telemetry/index>`
 
 
+:doc:`base/frameworks/storage </scripts/base/frameworks/storage/index>`
+
+
 :doc:`base/frameworks/spicy </scripts/base/frameworks/spicy/index>`
 
 
@@ -417,6 +420,12 @@
    Scripts that send data to the intelligence framework.
 
 :doc:`policy/frameworks/notice </scripts/policy/frameworks/notice/index>`
+
+
+:doc:`policy/frameworks/storage/backend/redis </scripts/policy/frameworks/storage/backend/redis/index>`
+
+
+:doc:`policy/frameworks/storage/backend/sqlite </scripts/policy/frameworks/storage/backend/sqlite/index>`
 
 
 :doc:`policy/integration/collective-intel </scripts/policy/integration/collective-intel/index>`
