@@ -35,6 +35,7 @@ base/init-bare.zeek
 .. zeek:namespace:: SOCKS
 .. zeek:namespace:: SSH
 .. zeek:namespace:: SSL
+.. zeek:namespace:: Storage
 .. zeek:namespace:: TCP
 .. zeek:namespace:: Telemetry
 .. zeek:namespace:: Threading
@@ -45,7 +46,7 @@ base/init-bare.zeek
 .. zeek:namespace:: X509
 
 
-:Namespaces: Analyzer, BinPAC, Cluster, DCE_RPC, DHCP, FTP, GLOBAL, HTTP, IP, JSON, KRB, Log, MIME, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, POP3, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SMTP, SNMP, SOCKS, SSH, SSL, TCP, Telemetry, Threading, Tunnel, UnknownProtocol, WebSocket, Weird, X509
+:Namespaces: Analyzer, BinPAC, Cluster, DCE_RPC, DHCP, FTP, GLOBAL, HTTP, IP, JSON, KRB, Log, MIME, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, POP3, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SMTP, SNMP, SOCKS, SSH, SSL, Storage, TCP, Telemetry, Threading, Tunnel, UnknownProtocol, WebSocket, Weird, X509
 :Imports: :doc:`base/bif/CPP-load.bif.zeek </scripts/base/bif/CPP-load.bif.zeek>`, :doc:`base/bif/communityid.bif.zeek </scripts/base/bif/communityid.bif.zeek>`, :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/mmdb.bif.zeek </scripts/base/bif/mmdb.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/packet_analysis.bif.zeek </scripts/base/bif/packet_analysis.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/telemetry_functions.bif.zeek </scripts/base/bif/telemetry_functions.bif.zeek>`, :doc:`base/bif/telemetry_types.bif.zeek </scripts/base/bif/telemetry_types.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/spicy/init-bare.zeek </scripts/base/frameworks/spicy/init-bare.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`, :doc:`base/packet-protocols </scripts/base/packet-protocols/index>`
 
 Summary
@@ -138,6 +139,9 @@ Redefinable Options
                                                                                                                     parsing of the connection is suspended.
 :zeek:id:`SSL::max_alerts_per_record`: :zeek:type:`count` :zeek:attr:`&redef`                                       Maximum number of Alert messages parsed from an SSL record with
                                                                                                                     content_type alert (21).
+:zeek:id:`Storage::expire_interval`: :zeek:type:`interval` :zeek:attr:`&redef`                                      The interval used by the storage framework for automatic expiration
+                                                                                                                    of elements in all backends that don't support it natively, or if
+                                                                                                                    using expiration while reading pcap files.
 :zeek:id:`Telemetry::callback_timeout`: :zeek:type:`interval` :zeek:attr:`&redef`                                   Maximum amount of time for CivetWeb HTTP threads to
                                                                                                                     wait for metric callbacks to complete on the IO loop.
 :zeek:id:`Telemetry::civetweb_threads`: :zeek:type:`count` :zeek:attr:`&redef`                                      Number of CivetWeb threads to use.
@@ -605,6 +609,8 @@ Types
 :zeek:type:`SSL::PSKIdentity`: :zeek:type:`record`                               
 :zeek:type:`SSL::SignatureAndHashAlgorithm`: :zeek:type:`record`                 
 :zeek:type:`SYN_packet`: :zeek:type:`record`                                     Fields of a SYN packet.
+:zeek:type:`Storage::OperationResult`: :zeek:type:`record`                       Returned as the result of the various storage operations.
+:zeek:type:`Storage::ReturnCode`: :zeek:type:`enum` :zeek:attr:`&redef`          Common set of statuses that can be returned by storage operations.
 :zeek:type:`TCP::Option`: :zeek:type:`record`                                    A TCP Option field parsed from a TCP header.
 :zeek:type:`TCP::OptionList`: :zeek:type:`vector`                                The full list of TCP Option fields parsed from a TCP header.
 :zeek:type:`Telemetry::HistogramMetric`: :zeek:type:`record`                     Histograms returned by the :zeek:see:`Telemetry::collect_histogram_metrics` function.
@@ -1546,6 +1552,17 @@ Redefinable Options
    Maximum number of Alert messages parsed from an SSL record with
    content_type alert (21). The remaining alerts are discarded. For
    TLS 1.3 connections, this is implicitly 1 as defined by RFC 8446.
+
+.. zeek:id:: Storage::expire_interval
+   :source-code: base/init-bare.zeek 6219 6219
+
+   :Type: :zeek:type:`interval`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``15.0 secs``
+
+   The interval used by the storage framework for automatic expiration
+   of elements in all backends that don't support it natively, or if
+   using expiration while reading pcap files.
 
 .. zeek:id:: Telemetry::callback_timeout
    :source-code: base/init-bare.zeek 6050 6050
@@ -3679,7 +3696,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 6217 6217
+   :source-code: base/init-bare.zeek 6273 6273
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
@@ -7997,6 +8014,89 @@ Types
    Fields of a SYN packet.
    
    .. zeek:see:: connection_SYN_packet
+
+.. zeek:type:: Storage::OperationResult
+   :source-code: base/init-bare.zeek 6257 6266
+
+   :Type: :zeek:type:`record`
+
+      code: :zeek:type:`Storage::ReturnCode`
+         One of a set of backend-redefinable return codes.
+
+      error_str: :zeek:type:`string` :zeek:attr:`&optional`
+         An optional error string. This should be set when the
+         ``code`` field is not set ``SUCCESS``.
+
+      value: :zeek:type:`any` :zeek:attr:`&optional`
+         An optional value returned by ``get`` operations when a match
+         was found the key requested.
+
+   Returned as the result of the various storage operations.
+
+.. zeek:type:: Storage::ReturnCode
+   :source-code: base/init-bare.zeek 6223 6255
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: Storage::SUCCESS Storage::ReturnCode
+
+         Operation succeeded.
+
+      .. zeek:enum:: Storage::VAL_TYPE_MISMATCH Storage::ReturnCode
+
+         Type of value passed to operation does not match type of
+         value passed when opening backend.
+
+      .. zeek:enum:: Storage::KEY_TYPE_MISMATCH Storage::ReturnCode
+
+         Type of key passed to operation does not match type of
+         key passed when opening backend.
+
+      .. zeek:enum:: Storage::NOT_CONNECTED Storage::ReturnCode
+
+         Backend is not connected.
+
+      .. zeek:enum:: Storage::TIMEOUT Storage::ReturnCode
+
+         Operation timed out.
+
+      .. zeek:enum:: Storage::CONNECTION_LOST Storage::ReturnCode
+
+         Connection to backed was lost unexpectedly.
+
+      .. zeek:enum:: Storage::OPERATION_FAILED Storage::ReturnCode
+
+         Generic operation failed.
+
+      .. zeek:enum:: Storage::KEY_NOT_FOUND Storage::ReturnCode
+
+         Key requested was not found in backend.
+
+      .. zeek:enum:: Storage::KEY_EXISTS Storage::ReturnCode
+
+         Key requested for overwrite already exists.
+
+      .. zeek:enum:: Storage::CONNECTION_FAILED Storage::ReturnCode
+
+         Generic connection-setup failure. This is not if the connection
+         was lost, but if it failed to be setup in the first place.
+
+      .. zeek:enum:: Storage::DISCONNECTION_FAILED Storage::ReturnCode
+
+         Generic disconnection failure.
+
+      .. zeek:enum:: Storage::INITIALIZATION_FAILED Storage::ReturnCode
+
+         Generic initialization failure.
+
+      .. zeek:enum:: Storage::IN_PROGRESS Storage::ReturnCode
+
+         Returned from async operations when the backend is waiting
+         for a result.
+   :Attributes: :zeek:attr:`&redef`
+
+   Common set of statuses that can be returned by storage operations. Backend plugins
+   can add to this enum if custom values are needed.
 
 .. zeek:type:: TCP::Option
    :source-code: base/init-bare.zeek 603 630
