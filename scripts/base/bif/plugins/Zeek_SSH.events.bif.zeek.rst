@@ -11,46 +11,48 @@ Summary
 ~~~~~~~
 Events
 ######
-==================================================== ==================================================================
-:zeek:id:`ssh1_server_host_key`: :zeek:type:`event`  During the :abbr:`SSH (Secure Shell)` key exchange, the server
-                                                     supplies its public host key.
-:zeek:id:`ssh2_dh_gex_init`: :zeek:type:`event`      Generated if the connection uses a Diffie-Hellman Group Exchange
-                                                     key exchange method.
-:zeek:id:`ssh2_dh_server_params`: :zeek:type:`event` Generated if the connection uses a Diffie-Hellman Group Exchange
-                                                     key exchange method.
-:zeek:id:`ssh2_ecc_init`: :zeek:type:`event`         The :abbr:`ECDH (Elliptic Curve Diffie-Hellman)` and
-                                                     :abbr:`ECMQV (Elliptic Curve Menezes-Qu-Vanstone)` key exchange
-                                                     algorithms use two ephemeral key pairs to generate a shared
-                                                     secret.
-:zeek:id:`ssh2_ecc_key`: :zeek:type:`event`          The :abbr:`ECDH (Elliptic Curve Diffie-Hellman)` and
-                                                     :abbr:`ECMQV (Elliptic Curve Menezes-Qu-Vanstone)` key exchange
-                                                     algorithms use two ephemeral key pairs to generate a shared
-                                                     secret.
-:zeek:id:`ssh2_gss_error`: :zeek:type:`event`        In the event of a GSS-API error on the server, the server MAY send
-                                                     send an error message with some additional details.
-:zeek:id:`ssh2_gss_init`: :zeek:type:`event`         In the event of a GSS-API key exchange, this event is raised on
-                                                     SSH_MSG_KEXGSS_INIT message.
-:zeek:id:`ssh2_rsa_secret`: :zeek:type:`event`       In the event of a GSS-API key exchange, this event is raised on
-                                                     SSH_MSG_KEXRSA_PUBKEY message.
-:zeek:id:`ssh2_server_host_key`: :zeek:type:`event`  During the :abbr:`SSH (Secure Shell)` key exchange, the server
-                                                     supplies its public host key.
-:zeek:id:`ssh_auth_attempted`: :zeek:type:`event`    This event is generated when an :abbr:`SSH (Secure Shell)`
-                                                     connection was determined to have had an authentication attempt.
-:zeek:id:`ssh_auth_successful`: :zeek:type:`event`   This event is generated when an :abbr:`SSH (Secure Shell)`
-                                                     connection was determined to have had a successful
-                                                     authentication.
-:zeek:id:`ssh_capabilities`: :zeek:type:`event`      During the initial :abbr:`SSH (Secure Shell)` key exchange, each
-                                                     endpoint lists the algorithms that it supports, in order of
-                                                     preference.
-:zeek:id:`ssh_client_version`: :zeek:type:`event`    An :abbr:`SSH (Secure Shell)` Protocol Version Exchange message
-                                                     from the client.
-:zeek:id:`ssh_encrypted_packet`: :zeek:type:`event`  This event is generated when an :abbr:`SSH (Secure Shell)`
-                                                     encrypted packet is seen.
-:zeek:id:`ssh_server_host_key`: :zeek:type:`event`   During the :abbr:`SSH (Secure Shell)` key exchange, the server
-                                                     supplies its public host key.
-:zeek:id:`ssh_server_version`: :zeek:type:`event`    An :abbr:`SSH (Secure Shell)` Protocol Version Exchange message
-                                                     from the server.
-==================================================== ==================================================================
+========================================================= ==================================================================
+:zeek:id:`ssh1_server_host_key`: :zeek:type:`event`       During the :abbr:`SSH (Secure Shell)` key exchange, the server
+                                                          supplies its public host key.
+:zeek:id:`ssh2_dh_gex_init`: :zeek:type:`event`           Generated if the connection uses a Diffie-Hellman Group Exchange
+                                                          key exchange method.
+:zeek:id:`ssh2_dh_server_params`: :zeek:type:`event`      Generated if the connection uses a Diffie-Hellman Group Exchange
+                                                          key exchange method.
+:zeek:id:`ssh2_ecc_init`: :zeek:type:`event`              The :abbr:`ECDH (Elliptic Curve Diffie-Hellman)` and
+                                                          :abbr:`ECMQV (Elliptic Curve Menezes-Qu-Vanstone)` key exchange
+                                                          algorithms use two ephemeral key pairs to generate a shared
+                                                          secret.
+:zeek:id:`ssh2_ecc_key`: :zeek:type:`event`               The :abbr:`ECDH (Elliptic Curve Diffie-Hellman)` and
+                                                          :abbr:`ECMQV (Elliptic Curve Menezes-Qu-Vanstone)` key exchange
+                                                          algorithms use two ephemeral key pairs to generate a shared
+                                                          secret.
+:zeek:id:`ssh2_gss_error`: :zeek:type:`event`             In the event of a GSS-API error on the server, the server MAY send
+                                                          send an error message with some additional details.
+:zeek:id:`ssh2_gss_init`: :zeek:type:`event`              In the event of a GSS-API key exchange, this event is raised on
+                                                          SSH_MSG_KEXGSS_INIT message.
+:zeek:id:`ssh2_rsa_secret`: :zeek:type:`event`            In the event of a GSS-API key exchange, this event is raised on
+                                                          SSH_MSG_KEXRSA_PUBKEY message.
+:zeek:id:`ssh2_server_host_key`: :zeek:type:`event`       During the :abbr:`SSH (Secure Shell)` key exchange, the server
+                                                          supplies its public host key.
+:zeek:id:`ssh_auth_attempted`: :zeek:type:`event`         This event is generated when an :abbr:`SSH (Secure Shell)`
+                                                          connection was determined to have had an authentication attempt.
+:zeek:id:`ssh_auth_successful`: :zeek:type:`event`        This event is generated when an :abbr:`SSH (Secure Shell)`
+                                                          connection was determined to have had a successful
+                                                          authentication.
+:zeek:id:`ssh_capabilities`: :zeek:type:`event`           During the initial :abbr:`SSH (Secure Shell)` key exchange, each
+                                                          endpoint lists the algorithms that it supports, in order of
+                                                          preference.
+:zeek:id:`ssh_client_version`: :zeek:type:`event`         An :abbr:`SSH (Secure Shell)` Protocol Version Exchange message
+                                                          from the client.
+:zeek:id:`ssh_encrypted_packet`: :zeek:type:`event`       This event is generated when an :abbr:`SSH (Secure Shell)`
+                                                          encrypted packet is seen.
+:zeek:id:`ssh_server_host_key`: :zeek:type:`event`        During the :abbr:`SSH (Secure Shell)` key exchange, the server
+                                                          supplies its public host key.
+:zeek:id:`ssh_server_pre_banner_data`: :zeek:type:`event` SSH servers can send textual data to the client before sending
+                                                          a banner.
+:zeek:id:`ssh_server_version`: :zeek:type:`event`         An :abbr:`SSH (Secure Shell)` Protocol Version Exchange message
+                                                          from the server.
+========================================================= ==================================================================
 
 
 Detailed Interface
@@ -478,6 +480,27 @@ Events
       ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
       ssh2_gss_init ssh2_rsa_secret
 
+.. zeek:id:: ssh_server_pre_banner_data
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 372 372
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`string`)
+
+   SSH servers can send textual data to the client before sending
+   a banner. The primary use case of this are error messages of TCP
+   wrappers.
+   
+   As this event happens before the SSH banner is exchanged, it is
+   possible that it contains data from different protocols; e.g. if
+   an SSH client connects to a non-SSH-server.
+   
+
+   :param c: The connection.
+   
+
+   :param data: The pre-banner data.
+   
+   .. zeek:see:: ssh_server_version
+
 .. zeek:id:: ssh_server_version
    :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 19 19
 
@@ -499,6 +522,6 @@ Events
       ssh_capabilities ssh2_server_host_key ssh1_server_host_key
       ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
       ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
-      ssh2_gss_init ssh2_rsa_secret
+      ssh2_gss_init ssh2_rsa_secret ssh_server_pre_banner_data
 
 

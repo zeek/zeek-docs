@@ -15387,7 +15387,7 @@ Events
       ssh_capabilities ssh2_server_host_key ssh1_server_host_key
       ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
       ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
-      ssh2_gss_init ssh2_rsa_secret
+      ssh2_gss_init ssh2_rsa_secret ssh_server_pre_banner_data
 
 .. zeek:id:: ssh_client_version
    :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 37 37
@@ -15809,6 +15809,27 @@ Events
       ssh_server_host_key ssh_encrypted_packet ssh2_dh_server_params
       ssh2_gss_error ssh2_ecc_key ssh2_ecc_init ssh2_dh_gex_init
       ssh2_gss_init ssh2_rsa_secret
+
+.. zeek:id:: ssh_server_pre_banner_data
+   :source-code: base/bif/plugins/Zeek_SSH.events.bif.zeek 372 372
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`string`)
+
+   SSH servers can send textual data to the client before sending
+   a banner. The primary use case of this are error messages of TCP
+   wrappers.
+   
+   As this event happens before the SSH banner is exchanged, it is
+   possible that it contains data from different protocols; e.g. if
+   an SSH client connects to a non-SSH-server.
+   
+
+   :param c: The connection.
+   
+
+   :param data: The pre-banner data.
+   
+   .. zeek:see:: ssh_server_version
 
 .. _plugin-zeek-ssl:
 
