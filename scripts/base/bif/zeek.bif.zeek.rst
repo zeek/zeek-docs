@@ -67,8 +67,8 @@ Functions
 :zeek:id:`disable_event_group`: :zeek:type:`function`           Disabled the given event group.
 :zeek:id:`disable_module_events`: :zeek:type:`function`         Disable all event handlers and hooks in the given module.
 :zeek:id:`do_profiling`: :zeek:type:`function`                  Enables detailed collection of profiling statistics.
-:zeek:id:`double_to_count`: :zeek:type:`function`               Converts a :zeek:type:`double` to a :zeek:type:`int`.
-:zeek:id:`double_to_int`: :zeek:type:`function`                 Converts a :zeek:type:`double` to a :zeek:type:`count`.
+:zeek:id:`double_to_count`: :zeek:type:`function`               Converts a :zeek:type:`double` to a :zeek:type:`count`.
+:zeek:id:`double_to_int`: :zeek:type:`function`                 Converts a :zeek:type:`double` to a :zeek:type:`int`.
 :zeek:id:`double_to_interval`: :zeek:type:`function`            Converts a :zeek:type:`double` to an :zeek:type:`interval`.
 :zeek:id:`double_to_time`: :zeek:type:`function`                Converts a :zeek:type:`double` value to a :zeek:type:`time`.
 :zeek:id:`dump_current_packet`: :zeek:type:`function`           Writes the current packet to a file.
@@ -907,6 +907,21 @@ Functions
 
    :Type: :zeek:type:`function` (d: :zeek:type:`double`) : :zeek:type:`count`
 
+   Converts a :zeek:type:`double` to a :zeek:type:`count`.
+   
+
+   :param d: The :zeek:type:`double` to convert.
+   
+
+   :returns: The :zeek:type:`double` *d* as unsigned integer, or 0 if *d* < 0.0.
+            The value returned follows typical rounding rules, as implemented
+            by rint().
+
+.. zeek:id:: double_to_int
+   :source-code: base/bif/zeek.bif.zeek 1267 1267
+
+   :Type: :zeek:type:`function` (d: :zeek:type:`double`) : :zeek:type:`int`
+
    Converts a :zeek:type:`double` to a :zeek:type:`int`.
    
 
@@ -917,21 +932,6 @@ Functions
             follows typical rounding rules, as implemented by rint().
    
    .. zeek:see:: double_to_time
-
-.. zeek:id:: double_to_int
-   :source-code: base/bif/zeek.bif.zeek 1266 1266
-
-   :Type: :zeek:type:`function` (d: :zeek:type:`double`) : :zeek:type:`int`
-
-   Converts a :zeek:type:`double` to a :zeek:type:`count`.
-   
-
-   :param d: The :zeek:type:`double` to convert.
-   
-
-   :returns: The :zeek:type:`double` *d* as unsigned integer, or 0 if *d* < 0.0.
-            The value returned follows typical rounding rules, as implemented
-            by rint().
 
 .. zeek:id:: double_to_interval
    :source-code: base/bif/zeek.bif.zeek 1348 1348
