@@ -64,6 +64,8 @@ Types
 
    :Type: :zeek:type:`enum`
 
+      .. zeek:enum:: Storage::REDIS Storage::Backend
+
       .. zeek:enum:: Storage::SQLITE Storage::Backend
 
 
