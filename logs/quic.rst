@@ -9,7 +9,7 @@ Overview
 
 The QUIC protocol integrates encryption, stream multiplexing and flow control at
 the transport layer. QUIC uses TLS 1.3 by default. Zeek's QUIC analyzer
-provides greater observability into the protocols TLS handshake.
+provides greater observability into the protocol's TLS handshake.
 
 
 Example
@@ -43,40 +43,35 @@ An example of a :file:`quic.log`.
 :zeek:see:`QUIC::Info` provides further details on the current output of the
 :file:`quic.log`. Current fields include:
 
-- **version**: The version of QUIC that was identified.
-
+- **version**: A string interpretation of the QUIC version number, usually "1"
+  or "quicv2".
 
 - **client_initial_dcid**: When QUIC initiates a connection it uses Random
   Number Generators to create the first Destination Connection ID (DCID). This
   DCID is subsequently used for routing and packet protection by client and
   server.
 
+- **server_scid**: A QUIC-supported server responds to a DCID by selecting a
+  Source Connection ID (SCID). This usually occurs within the server’s first
+  ``INITIAL`` packet. This is typically used by the client in subsequent
+  packets, although the SCID can change to adapt to new network conditions.
 
-- **server_scid**: A QUIC supported server responds to a DCID by
-  selecting a Source Connection ID (SCID). This usually occurs within the
-  server’s first INITIAL packet. This is typically used by the client in
-  subsequent packets, although the SCID can change to adapt to new network
-  conditions.
-
-
-- **client_protocol**: If the ClientHello packet is successfully extracted
+- **client_protocol**: If the ``ClientHello`` packet is successfully extracted
   and contains the ALPN extension, the extension's first entry is placed in
-  client_protocol.
+  ``client_protocol``.
 
-
-- **history**: An experimental feature provides a history of the QUIC
-  protocol usage. In the example above the history outlines:
+- **history**: Provides a history of QUIC protocol activity in a connection,
+  similar to the history fields in conn.log and ssh.log. See the
+  :zeek:see:`QUIC::Info` documentation for details. In the example above,
+  the history outlines:
 
     + An initial packet from the client (I) - a new connection
 
-
-    + An TLS ClientHello from the client (S) - the start of a
+    + An TLS ``ClientHello`` from the client (S) - the start of a
       TLS handshake
-
 
     + An initial packet from the server (i) - an acknowledgement
       from the server of the new connection
-
 
     + A TLS ServerHello response from the server (s) - the
       selection  of a cipher suite from the options provided by the
@@ -85,12 +80,9 @@ An example of a :file:`quic.log`.
     + A handshake packet from the client (H)
 
 
-
 Conclusion
 ==========
 
-The QUIC analyzer is an initial attempt to provide observability into QUIC
-network traffic. In Zeek 6.1, although included by default, the QUIC analyzer is
-still considered experimental. Contributions, feedback and issues can be reported
-via `Github, Slack or the forum <https://zeek.org/community/>`_.
-
+The QUIC analyzer provides some observability into QUIC network traffic,
+particularly around connection establishment. Introduced in version 6.1, it's
+one of Zeek's newer parsers, so feedback is particularly welcome.
