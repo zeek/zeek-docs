@@ -105,7 +105,7 @@ Types
          packet if available.
 
       history: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Experimental QUIC history.
+         QUIC history.
          
          Letters have the following meaning with client-sent
          letters being capitalized:
