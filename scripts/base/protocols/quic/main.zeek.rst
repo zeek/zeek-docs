@@ -4,7 +4,7 @@ base/protocols/quic/main.zeek
 =============================
 .. zeek:namespace:: QUIC
 
-Initial idea for a quic.log.
+Implements base functionality for QUIC analysis. Generates quic.log.
 
 :Namespace: QUIC
 :Imports: :doc:`base/frameworks/notice/weird.zeek </scripts/base/frameworks/notice/weird.zeek>`, :doc:`base/protocols/conn/removal-hooks.zeek </scripts/base/protocols/conn/removal-hooks.zeek>`, :doc:`base/protocols/quic/consts.zeek </scripts/base/protocols/quic/consts.zeek>`
@@ -55,7 +55,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: QUIC::max_history_length
-   :source-code: base/protocols/quic/main.zeek 77 77
+   :source-code: base/protocols/quic/main.zeek 79 79
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -66,7 +66,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: QUIC::Info
-   :source-code: base/protocols/quic/main.zeek 13 68
+   :source-code: base/protocols/quic/main.zeek 13 70
 
    :Type: :zeek:type:`record`
 
@@ -81,7 +81,8 @@ Types
 
       version: :zeek:type:`string` :zeek:attr:`&log`
          QUIC version as found in the first INITIAL packet from
-         the client.
+         the client. This will often be "1" or "quicv2", but see
+         the :zeek:see:`QUIC::version_strings` table for details.
 
       client_initial_dcid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
          First Destination Connection ID used by client. This is
@@ -119,6 +120,7 @@ Types
          R       RETRY packet
          C       CONNECTION_CLOSE packet
          S       SSL Client/Server Hello
+         U       Unfamiliar QUIC version
          ======  ====================================================
 
       history_state: :zeek:type:`vector` of :zeek:type:`string`
@@ -129,7 +131,7 @@ Types
 Events
 ######
 .. zeek:id:: QUIC::log_quic
-   :source-code: base/protocols/quic/main.zeek 70 70
+   :source-code: base/protocols/quic/main.zeek 72 72
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`QUIC::Info`)
 
@@ -137,13 +139,13 @@ Events
 Hooks
 #####
 .. zeek:id:: QUIC::finalize_quic
-   :source-code: base/protocols/quic/main.zeek 227 233
+   :source-code: base/protocols/quic/main.zeek 229 235
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
 
 .. zeek:id:: QUIC::log_policy
-   :source-code: base/protocols/quic/main.zeek 72 72
+   :source-code: base/protocols/quic/main.zeek 74 74
 
    :Type: :zeek:type:`Log::PolicyHook`
 

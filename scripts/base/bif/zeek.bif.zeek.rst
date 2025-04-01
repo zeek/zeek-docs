@@ -146,7 +146,7 @@ Functions
 :zeek:id:`is_packet_analyzer`: :zeek:type:`function`            Returns true if the given tag belongs to a packet analyzer.
 :zeek:id:`is_processing_suspended`: :zeek:type:`function`       Returns whether or not processing is currently suspended.
 :zeek:id:`is_protocol_analyzer`: :zeek:type:`function`          Returns true if the given tag belongs to a protocol analyzer.
-:zeek:id:`is_remote_event`: :zeek:type:`function`               Checks whether the last raised event came from a remote peer.
+:zeek:id:`is_remote_event`: :zeek:type:`function`               Checks whether the current event came from a remote peer.
 :zeek:id:`is_tcp_port`: :zeek:type:`function`                   Checks whether a given :zeek:type:`port` has TCP as transport protocol.
 :zeek:id:`is_udp_port`: :zeek:type:`function`                   Checks whether a given :zeek:type:`port` has UDP as transport protocol.
 :zeek:id:`is_v4_addr`: :zeek:type:`function`                    Returns whether an address is IPv4 or not.
@@ -2092,10 +2092,10 @@ Functions
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
-   Checks whether the last raised event came from a remote peer.
+   Checks whether the current event came from a remote peer.
    
 
-   :returns: True if the last raised event came from a remote peer.
+   :returns: True if the current event came from a remote peer.
 
 .. zeek:id:: is_tcp_port
    :source-code: base/bif/zeek.bif.zeek 1744 1744

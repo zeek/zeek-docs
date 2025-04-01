@@ -37,7 +37,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Broker::Info
-   :source-code: base/frameworks/broker/log.zeek 21 33
+   :source-code: base/frameworks/broker/log.zeek 33 45
 
    :Type: :zeek:type:`record`
 
@@ -60,7 +60,7 @@ Types
    A record type containing the column fields of the Broker log.
 
 .. zeek:type:: Broker::Type
-   :source-code: base/frameworks/broker/log.zeek 13 19
+   :source-code: base/frameworks/broker/log.zeek 13 31
 
    :Type: :zeek:type:`enum`
 
@@ -71,6 +71,30 @@ Types
       .. zeek:enum:: Broker::ERROR Broker::Type
 
          An error situation.
+
+      .. zeek:enum:: Broker::CRITICAL_EVENT Broker::Type
+
+         Fatal event, normal operation has most likely broken down.
+
+      .. zeek:enum:: Broker::ERROR_EVENT Broker::Type
+
+         Unrecoverable event that imparts at least part of the system.
+
+      .. zeek:enum:: Broker::WARNING_EVENT Broker::Type
+
+         Unexpected or conspicuous event that may still be recoverable.
+
+      .. zeek:enum:: Broker::INFO_EVENT Broker::Type
+
+         Noteworthy event during normal operation.
+
+      .. zeek:enum:: Broker::VERBOSE_EVENT Broker::Type
+
+         Information that might be relevant for a user to understand system behavior.
+
+      .. zeek:enum:: Broker::DEBUG_EVENT Broker::Type
+
+         An event that is relevant only for troubleshooting and debugging.
 
    The type of a Broker activity being logged.
 
