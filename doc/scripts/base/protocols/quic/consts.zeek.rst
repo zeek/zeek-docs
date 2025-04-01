@@ -11,9 +11,9 @@ Summary
 ~~~~~~~
 Constants
 #########
-================================================================================================== =
-:zeek:id:`QUIC::version_strings`: :zeek:type:`table` :zeek:attr:`&default` = :zeek:type:`function` 
-================================================================================================== =
+================================================================================================== ==============================================================
+:zeek:id:`QUIC::version_strings`: :zeek:type:`table` :zeek:attr:`&default` = :zeek:type:`function` A mapping from QUIC's raw version numbers to readable strings.
+================================================================================================== ==============================================================
 
 
 Detailed Interface
@@ -21,7 +21,7 @@ Detailed Interface
 Constants
 #########
 .. zeek:id:: QUIC::version_strings
-   :source-code: base/protocols/quic/consts.zeek 4 4
+   :source-code: base/protocols/quic/consts.zeek 7 7
 
    :Type: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string`
    :Attributes: :zeek:attr:`&default` = :zeek:type:`function`
@@ -54,5 +54,8 @@ Constants
          }
 
 
+   A mapping from QUIC's raw version numbers to readable strings.
+   Unexpected versions become "unknown-<hex>", with a hexadecimal
+   rendering of the version number.
 
 

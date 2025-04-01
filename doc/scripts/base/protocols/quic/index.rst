@@ -18,5 +18,5 @@ Package: base/protocols/quic
 
 :doc:`/scripts/base/protocols/quic/main.zeek`
 
-   Initial idea for a quic.log.
+   Implements base functionality for QUIC analysis. Generates quic.log.
 

@@ -9697,7 +9697,7 @@ Events
 ++++++
 
 .. zeek:id:: QUIC::initial_packet
-   :source-code: base/protocols/quic/main.zeek 134 138
+   :source-code: base/protocols/quic/main.zeek 136 140
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
 
@@ -9720,7 +9720,7 @@ Events
    
 
 .. zeek:id:: QUIC::retry_packet
-   :source-code: base/protocols/quic/main.zeek 153 163
+   :source-code: base/protocols/quic/main.zeek 155 165
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`, retry_token: :zeek:type:`string`, retry_integrity_tag: :zeek:type:`string`)
 
@@ -9748,7 +9748,7 @@ Events
    :param integrity_tag: The Retry Integrity Tag field.
 
 .. zeek:id:: QUIC::handshake_packet
-   :source-code: base/protocols/quic/main.zeek 140 144
+   :source-code: base/protocols/quic/main.zeek 142 146
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
 
@@ -9770,7 +9770,7 @@ Events
    :param scid: The Source Connection ID field.
 
 .. zeek:id:: QUIC::zero_rtt_packet
-   :source-code: base/protocols/quic/main.zeek 146 150
+   :source-code: base/protocols/quic/main.zeek 148 152
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
 
@@ -9792,7 +9792,7 @@ Events
    :param scid: The Source Connection ID field.
 
 .. zeek:id:: QUIC::connection_close_frame
-   :source-code: base/protocols/quic/main.zeek 180 190
+   :source-code: base/protocols/quic/main.zeek 182 192
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`, error_code: :zeek:type:`count`, reason_phrase: :zeek:type:`string`)
 
@@ -9822,7 +9822,7 @@ Events
    .. note:: Packets with CONNECTION_CLOSE frames are usually encrypted after connection establishment and not visible to Zeek.
 
 .. zeek:id:: QUIC::unhandled_version
-   :source-code: base/protocols/quic/main.zeek 166 176
+   :source-code: base/protocols/quic/main.zeek 168 178
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, version: :zeek:type:`count`, dcid: :zeek:type:`string`, scid: :zeek:type:`string`)
 
