@@ -27,7 +27,7 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: Storage::Async::close_backend
-   :source-code: base/frameworks/storage/async.zeek 89 92
+   :source-code: base/frameworks/storage/async.zeek 88 91
 
    :Type: :zeek:type:`function` (backend: :zeek:type:`opaque` of Storage::BackendHandle) : :zeek:type:`Storage::OperationResult`
 
@@ -42,7 +42,7 @@ Functions
             string for failures.
 
 .. zeek:id:: Storage::Async::erase
-   :source-code: base/frameworks/storage/async.zeek 108 111
+   :source-code: base/frameworks/storage/async.zeek 107 110
 
    :Type: :zeek:type:`function` (backend: :zeek:type:`opaque` of Storage::BackendHandle, key: :zeek:type:`any`) : :zeek:type:`Storage::OperationResult`
 
@@ -60,7 +60,7 @@ Functions
             string for failures.
 
 .. zeek:id:: Storage::Async::get
-   :source-code: base/frameworks/storage/async.zeek 102 105
+   :source-code: base/frameworks/storage/async.zeek 101 104
 
    :Type: :zeek:type:`function` (backend: :zeek:type:`opaque` of Storage::BackendHandle, key: :zeek:type:`any`) : :zeek:type:`Storage::OperationResult`
 
@@ -80,7 +80,7 @@ Functions
             :zeek:see:`Storage::Async::open_backend`.
 
 .. zeek:id:: Storage::Async::open_backend
-   :source-code: base/frameworks/storage/async.zeek 83 86
+   :source-code: base/frameworks/storage/async.zeek 82 85
 
    :Type: :zeek:type:`function` (btype: :zeek:type:`Storage::Backend`, options: :zeek:type:`Storage::BackendOptions`, key_type: :zeek:type:`any`, val_type: :zeek:type:`any`) : :zeek:type:`Storage::OperationResult`
 
@@ -111,7 +111,7 @@ Functions
             be an ``opaque of BackendHandle``.
 
 .. zeek:id:: Storage::Async::put
-   :source-code: base/frameworks/storage/async.zeek 95 99
+   :source-code: base/frameworks/storage/async.zeek 94 98
 
    :Type: :zeek:type:`function` (backend: :zeek:type:`opaque` of Storage::BackendHandle, args: :zeek:type:`Storage::PutArgs`) : :zeek:type:`Storage::OperationResult`
 
