@@ -19,3 +19,6 @@ Package: builtin-plugins
    
    Note: This module is in testing and is not yet considered stable!
 
+:doc:`/scripts/builtin-plugins/Zeek_JavaScript/__load__.zeek`
+
+
