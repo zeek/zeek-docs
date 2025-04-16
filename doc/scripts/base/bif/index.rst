@@ -555,3 +555,6 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_AF_Packet.af_packet.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_JavaScript.zeekjs.bif.zeek`
+
+
