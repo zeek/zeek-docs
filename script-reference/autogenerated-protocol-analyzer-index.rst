@@ -5411,6 +5411,16 @@ Events
 
    :param c: The connection.
 
+.. _plugin-zeek-javascript:
+
+Zeek::JavaScript
+----------------
+
+Experimental JavaScript support for Zeek
+
+Components
+++++++++++
+
 .. _plugin-zeek-krb:
 
 Zeek::KRB

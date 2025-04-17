@@ -15,3 +15,4 @@ repos:
     stages: ["pre-commit"]
   - id: rst-backticks
     stages: ["pre-commit"]
+    exclude: 'scripts/builtin-plugins/Zeek_JavaScript/__load__.zeek.rst'
