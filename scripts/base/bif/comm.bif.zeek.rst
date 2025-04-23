@@ -34,14 +34,15 @@ Events
 
 Functions
 #########
-========================================================= =
-:zeek:id:`Broker::__listen`: :zeek:type:`function`        
-:zeek:id:`Broker::__node_id`: :zeek:type:`function`       
-:zeek:id:`Broker::__peer`: :zeek:type:`function`          
-:zeek:id:`Broker::__peer_no_retry`: :zeek:type:`function` 
-:zeek:id:`Broker::__peers`: :zeek:type:`function`         
-:zeek:id:`Broker::__unpeer`: :zeek:type:`function`        
-========================================================= =
+=============================================================== =
+:zeek:id:`Broker::__is_outbound_peering`: :zeek:type:`function` 
+:zeek:id:`Broker::__listen`: :zeek:type:`function`              
+:zeek:id:`Broker::__node_id`: :zeek:type:`function`             
+:zeek:id:`Broker::__peer`: :zeek:type:`function`                
+:zeek:id:`Broker::__peer_no_retry`: :zeek:type:`function`       
+:zeek:id:`Broker::__peers`: :zeek:type:`function`               
+:zeek:id:`Broker::__unpeer`: :zeek:type:`function`              
+=============================================================== =
 
 
 Detailed Interface
@@ -199,6 +200,12 @@ Events
 
 Functions
 #########
+.. zeek:id:: Broker::__is_outbound_peering
+   :source-code: base/bif/comm.bif.zeek 167 167
+
+   :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
+
+
 .. zeek:id:: Broker::__listen
    :source-code: base/bif/comm.bif.zeek 155 155
 
@@ -206,7 +213,7 @@ Functions
 
 
 .. zeek:id:: Broker::__node_id
-   :source-code: base/bif/comm.bif.zeek 170 170
+   :source-code: base/bif/comm.bif.zeek 173 173
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
@@ -224,7 +231,7 @@ Functions
 
 
 .. zeek:id:: Broker::__peers
-   :source-code: base/bif/comm.bif.zeek 167 167
+   :source-code: base/bif/comm.bif.zeek 170 170
 
    :Type: :zeek:type:`function` () : :zeek:type:`Broker::PeerInfos`
 
