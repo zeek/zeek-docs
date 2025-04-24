@@ -494,7 +494,7 @@ and user-space DNA (Direct NIC Access) for fast packet capture/transmission.
 .. note::
 
    Unless you have evaluated to specifically require PF_RING, consider using
-   AF_PACKET first and test if it fullfills your requirements. AF_PACKET has
+   AF_PACKET first and test if it fulfills your requirements. AF_PACKET has
    been integrated into Zeek since version 5.2. It's a bit easier to get
    started with as it does not require an out of tree Linux kernel module.
 

@@ -900,7 +900,7 @@ Accessing Zeek Variables from Spicy
 You can access Zeek-side global variables from inside Spicy, which is
 particularly handy for configuring Spicy analyzers from Zeek script
 code. The :ref:`zeek <spicy_functions>` module facilitates this
-through a set of functions coverting the current value of Zeek
+through a set of functions converting the current value of Zeek
 variables into corresponding Spicy values. For example, let's say you
 would like to provide a Zeek script option with a ``count`` value that
 your Spicy analyzer can leverage. On the Zeek side, you'd define the
