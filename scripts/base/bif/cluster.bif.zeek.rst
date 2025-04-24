@@ -3,13 +3,20 @@
 base/bif/cluster.bif.zeek
 =========================
 .. zeek:namespace:: Cluster
+.. zeek:namespace:: Cluster::Backend
 .. zeek:namespace:: GLOBAL
 
 
-:Namespaces: Cluster, GLOBAL
+:Namespaces: Cluster, Cluster::Backend, GLOBAL
 
 Summary
 ~~~~~~~
+Events
+######
+====================================================== ===================================
+:zeek:id:`Cluster::Backend::error`: :zeek:type:`event` Generated on cluster backend error.
+====================================================== ===================================
+
 Functions
 #########
 ============================================================= ===================================================================
@@ -29,6 +36,21 @@ Functions
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Events
+######
+.. zeek:id:: Cluster::Backend::error
+   :source-code: base/frameworks/cluster/main.zeek 684 688
+
+   :Type: :zeek:type:`event` (tag: :zeek:type:`string`, message: :zeek:type:`string`)
+
+   Generated on cluster backend error.
+   
+
+   :param tag: A structured tag, not further specified.
+   
+
+   :param message: A free form message with more details about the error.
+
 Functions
 #########
 .. zeek:id:: Cluster::Backend::__init

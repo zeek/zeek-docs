@@ -23,7 +23,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: Cluster::websocket_client_added
-   :source-code: base/frameworks/cluster/main.zeek 657 662
+   :source-code: base/frameworks/cluster/main.zeek 669 674
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Cluster::EndpointInfo`, subscriptions: :zeek:type:`string_vec`)
 
@@ -36,7 +36,7 @@ Events
    :param subscriptions: The WebSocket client's subscriptions as provided in the handshake.
 
 .. zeek:id:: Cluster::websocket_client_lost
-   :source-code: base/frameworks/cluster/main.zeek 664 669
+   :source-code: base/frameworks/cluster/main.zeek 676 681
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Cluster::EndpointInfo`)
 
