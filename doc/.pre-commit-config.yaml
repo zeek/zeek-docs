@@ -16,3 +16,8 @@ repos:
   - id: rst-backticks
     stages: ["pre-commit"]
     exclude: 'scripts/builtin-plugins/Zeek_JavaScript/__load__.zeek.rst'
+
+- repo: https://github.com/crate-ci/typos
+  rev: v1.30.1
+  hooks:
+    - id: typos
