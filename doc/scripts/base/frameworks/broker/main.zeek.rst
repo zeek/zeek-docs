@@ -92,30 +92,30 @@ Types
 
 Functions
 #########
-========================================================================================= =======================================================================
-:zeek:id:`Broker::auto_publish`: :zeek:type:`function` :zeek:attr:`&deprecated` = *...*   Automatically send an event to any interested peers whenever it is
-                                                                                          locally dispatched.
-:zeek:id:`Broker::auto_unpublish`: :zeek:type:`function` :zeek:attr:`&deprecated` = *...* Stop automatically sending an event to peers upon local dispatch.
-:zeek:id:`Broker::default_log_topic`: :zeek:type:`function`                               The default implementation for :zeek:see:`Broker::log_topic`.
-:zeek:id:`Broker::flush_logs`: :zeek:type:`function`                                      Sends all pending log messages to remote peers.
-:zeek:id:`Broker::forward`: :zeek:type:`function`                                         Register a topic prefix subscription for events that should only be
-                                                                                          forwarded to any subscribing peers and not raise any event handlers
-                                                                                          on the receiving/forwarding node.
-:zeek:id:`Broker::is_outbound_peering`: :zeek:type:`function`                             Whether the local node originally initiated the peering with the
-                                                                                          given endpoint.
-:zeek:id:`Broker::listen`: :zeek:type:`function`                                          Listen for remote connections using the native Broker protocol.
-:zeek:id:`Broker::listen_websocket`: :zeek:type:`function`                                Listen for remote connections using WebSocket.
-:zeek:id:`Broker::log_topic`: :zeek:type:`function` :zeek:attr:`&redef`                   A function that will be called for each log entry to determine what
-                                                                                          broker topic string will be used for sending it to peers.
-:zeek:id:`Broker::node_id`: :zeek:type:`function`                                         Get a unique identifier for the local broker endpoint.
-:zeek:id:`Broker::peer`: :zeek:type:`function`                                            Initiate a remote connection.
-:zeek:id:`Broker::peers`: :zeek:type:`function`                                           Get a list of all peer connections.
-:zeek:id:`Broker::publish_id`: :zeek:type:`function`                                      Publishes the value of an identifier to a given topic.
-:zeek:id:`Broker::subscribe`: :zeek:type:`function`                                       Register interest in all peer event messages that use a certain topic
-                                                                                          prefix.
-:zeek:id:`Broker::unpeer`: :zeek:type:`function`                                          Remove a remote connection.
-:zeek:id:`Broker::unsubscribe`: :zeek:type:`function`                                     Unregister interest in all peer event messages that use a topic prefix.
-========================================================================================= =======================================================================
+=========================================================================================== =======================================================================
+:zeek:id:`Broker::auto_publish`: :zeek:type:`function` :zeek:attr:`&deprecated` = *...*     Automatically send an event to any interested peers whenever it is
+                                                                                            locally dispatched.
+:zeek:id:`Broker::auto_unpublish`: :zeek:type:`function` :zeek:attr:`&deprecated` = *...*   Stop automatically sending an event to peers upon local dispatch.
+:zeek:id:`Broker::default_log_topic`: :zeek:type:`function`                                 The default implementation for :zeek:see:`Broker::log_topic`.
+:zeek:id:`Broker::flush_logs`: :zeek:type:`function`                                        Sends all pending log messages to remote peers.
+:zeek:id:`Broker::forward`: :zeek:type:`function`                                           Register a topic prefix subscription for events that should only be
+                                                                                            forwarded to any subscribing peers and not raise any event handlers
+                                                                                            on the receiving/forwarding node.
+:zeek:id:`Broker::is_outbound_peering`: :zeek:type:`function`                               Whether the local node originally initiated the peering with the
+                                                                                            given endpoint.
+:zeek:id:`Broker::listen`: :zeek:type:`function`                                            Listen for remote connections using the native Broker protocol.
+:zeek:id:`Broker::listen_websocket`: :zeek:type:`function` :zeek:attr:`&deprecated` = *...* Listen for remote connections using WebSocket.
+:zeek:id:`Broker::log_topic`: :zeek:type:`function` :zeek:attr:`&redef`                     A function that will be called for each log entry to determine what
+                                                                                            broker topic string will be used for sending it to peers.
+:zeek:id:`Broker::node_id`: :zeek:type:`function`                                           Get a unique identifier for the local broker endpoint.
+:zeek:id:`Broker::peer`: :zeek:type:`function`                                              Initiate a remote connection.
+:zeek:id:`Broker::peers`: :zeek:type:`function`                                             Get a list of all peer connections.
+:zeek:id:`Broker::publish_id`: :zeek:type:`function`                                        Publishes the value of an identifier to a given topic.
+:zeek:id:`Broker::subscribe`: :zeek:type:`function`                                         Register interest in all peer event messages that use a certain topic
+                                                                                            prefix.
+:zeek:id:`Broker::unpeer`: :zeek:type:`function`                                            Remove a remote connection.
+:zeek:id:`Broker::unsubscribe`: :zeek:type:`function`                                       Unregister interest in all peer event messages that use a topic prefix.
+=========================================================================================== =======================================================================
 
 
 Detailed Interface
@@ -742,10 +742,10 @@ Types
 Functions
 #########
 .. zeek:id:: Broker::auto_publish
-   :source-code: base/frameworks/broker/main.zeek 579 582
+   :source-code: base/frameworks/broker/main.zeek 582 585
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
-   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v8.1. Switch to explicit Broker::publish() calls. Auto-publish won't work with all cluster backends."*
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v8.1. Switch to explicit Cluster::publish() calls. Auto-publish won't work with all cluster backends."*
 
    Automatically send an event to any interested peers whenever it is
    locally dispatched. (For example, using "event my_event(...);" in a
@@ -763,7 +763,7 @@ Functions
    :returns: true if automatic event sending is now enabled.
 
 .. zeek:id:: Broker::auto_unpublish
-   :source-code: base/frameworks/broker/main.zeek 584 587
+   :source-code: base/frameworks/broker/main.zeek 587 590
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
    :Attributes: :zeek:attr:`&deprecated` = *"Remove in v8.1. See Broker::auto_publish()"*
@@ -788,7 +788,7 @@ Functions
    The default implementation for :zeek:see:`Broker::log_topic`.
 
 .. zeek:id:: Broker::flush_logs
-   :source-code: base/frameworks/broker/main.zeek 554 557
+   :source-code: base/frameworks/broker/main.zeek 557 560
 
    :Type: :zeek:type:`function` () : :zeek:type:`count`
 
@@ -796,7 +796,7 @@ Functions
    doesn't need to be used except for test cases that are time-sensitive.
 
 .. zeek:id:: Broker::forward
-   :source-code: base/frameworks/broker/main.zeek 569 572
+   :source-code: base/frameworks/broker/main.zeek 572 575
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -816,7 +816,7 @@ Functions
    :returns: true if a new event forwarding/subscription is now registered.
 
 .. zeek:id:: Broker::is_outbound_peering
-   :source-code: base/frameworks/broker/main.zeek 539 542
+   :source-code: base/frameworks/broker/main.zeek 542 545
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
 
@@ -832,7 +832,7 @@ Functions
    Returns:: True if this node initiated the peering.
 
 .. zeek:id:: Broker::listen
-   :source-code: base/frameworks/broker/main.zeek 488 504
+   :source-code: base/frameworks/broker/main.zeek 489 505
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Broker::default_listen_address` :zeek:attr:`&optional`, p: :zeek:type:`port` :zeek:attr:`&default` = :zeek:see:`Broker::default_port` :zeek:attr:`&optional`, retry: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_listen_retry` :zeek:attr:`&optional`) : :zeek:type:`port`
 
@@ -858,9 +858,10 @@ Functions
    .. zeek:see:: Broker::status
 
 .. zeek:id:: Broker::listen_websocket
-   :source-code: base/frameworks/broker/main.zeek 511 527
+   :source-code: base/frameworks/broker/main.zeek 514 530
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Broker::default_listen_address_websocket` :zeek:attr:`&optional`, p: :zeek:type:`port` :zeek:attr:`&default` = :zeek:see:`Broker::default_port_websocket` :zeek:attr:`&optional`, retry: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_listen_retry` :zeek:attr:`&optional`) : :zeek:type:`port`
+   :Attributes: :zeek:attr:`&deprecated` = *"Remove in v8.1. Switch to Cluster::listen_websocket() instead."*
 
    Listen for remote connections using WebSocket.
    
@@ -905,7 +906,7 @@ Functions
             will be sent.
 
 .. zeek:id:: Broker::node_id
-   :source-code: base/frameworks/broker/main.zeek 549 552
+   :source-code: base/frameworks/broker/main.zeek 552 555
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
 
@@ -915,7 +916,7 @@ Functions
    :returns: a unique identifier for the local broker endpoint.
 
 .. zeek:id:: Broker::peer
-   :source-code: base/frameworks/broker/main.zeek 529 532
+   :source-code: base/frameworks/broker/main.zeek 532 535
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port` :zeek:attr:`&default` = :zeek:see:`Broker::default_port` :zeek:attr:`&optional`, retry: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_connect_retry` :zeek:attr:`&optional`) : :zeek:type:`bool`
 
@@ -942,7 +943,7 @@ Functions
    .. zeek:see:: Broker::status
 
 .. zeek:id:: Broker::peers
-   :source-code: base/frameworks/broker/main.zeek 544 547
+   :source-code: base/frameworks/broker/main.zeek 547 550
 
    :Type: :zeek:type:`function` () : :zeek:type:`vector` of :zeek:type:`Broker::PeerInfo`
 
@@ -952,7 +953,7 @@ Functions
    :returns: a list of all peer connections.
 
 .. zeek:id:: Broker::publish_id
-   :source-code: base/frameworks/broker/main.zeek 559 562
+   :source-code: base/frameworks/broker/main.zeek 562 565
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`, id: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -969,7 +970,7 @@ Functions
    :returns: true if the message is sent.
 
 .. zeek:id:: Broker::subscribe
-   :source-code: base/frameworks/broker/main.zeek 564 567
+   :source-code: base/frameworks/broker/main.zeek 567 570
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -986,7 +987,7 @@ Functions
    :returns: true if it's a new event subscription and it is now registered.
 
 .. zeek:id:: Broker::unpeer
-   :source-code: base/frameworks/broker/main.zeek 534 537
+   :source-code: base/frameworks/broker/main.zeek 537 540
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
 
@@ -1010,7 +1011,7 @@ Functions
    :param TODO: We do not have a function yet to terminate a connection.
 
 .. zeek:id:: Broker::unsubscribe
-   :source-code: base/frameworks/broker/main.zeek 574 577
+   :source-code: base/frameworks/broker/main.zeek 577 580
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
