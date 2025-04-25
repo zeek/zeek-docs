@@ -332,7 +332,7 @@ Redefinable Options
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
-   :Default: ``1.0 min``
+   :Default: ``1.0 sec``
 
    Interval for retrying failed connections between cluster nodes.
    If set, the ZEEK_DEFAULT_CONNECT_RETRY (given in number of seconds)
@@ -788,7 +788,7 @@ Functions
    Write a message to the cluster logging stream.
 
 .. zeek:id:: Cluster::node_id
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 239 241
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 251 253
 
    :Type: :zeek:type:`function` () : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -800,7 +800,7 @@ Functions
    a short lived identifier that resets when a node is restarted.
 
 .. zeek:id:: Cluster::node_topic
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 228 230
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 240 242
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`) : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -830,7 +830,7 @@ Functions
             known, otherwise a "null" instance with an empty name field.
 
 .. zeek:id:: Cluster::nodeid_topic
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 232 234
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 244 246
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`

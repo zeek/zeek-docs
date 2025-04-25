@@ -40,6 +40,7 @@ Functions
 :zeek:id:`Broker::__node_id`: :zeek:type:`function`             
 :zeek:id:`Broker::__peer`: :zeek:type:`function`                
 :zeek:id:`Broker::__peer_no_retry`: :zeek:type:`function`       
+:zeek:id:`Broker::__peering_stats`: :zeek:type:`function`       
 :zeek:id:`Broker::__peers`: :zeek:type:`function`               
 :zeek:id:`Broker::__unpeer`: :zeek:type:`function`              
 =============================================================== =
@@ -228,6 +229,12 @@ Functions
    :source-code: base/bif/comm.bif.zeek 161 161
 
    :Type: :zeek:type:`function` (a: :zeek:type:`string`, p: :zeek:type:`port`) : :zeek:type:`bool`
+
+
+.. zeek:id:: Broker::__peering_stats
+   :source-code: base/bif/comm.bif.zeek 176 176
+
+   :Type: :zeek:type:`function` () : :zeek:type:`BrokerPeeringStatsTable`
 
 
 .. zeek:id:: Broker::__peers
