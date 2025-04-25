@@ -827,7 +827,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 6274 6277
+   :source-code: base/init-bare.zeek 6290 6293
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
