@@ -54,9 +54,7 @@ file that looks like this::
         PROPERTY_N;
 
 Here, ``ANALYZER_NAME`` is a name to identify your analyzer inside
-Zeek. You can choose names arbitrarily as long as they are unique. As
-a convention, however, we recommend name with a ``spicy::*`` prefix
-(e.g., ``spicy::BitTorrent``).
+Zeek. You can choose names arbitrarily as long as they are unique.
 
 On the Zeek-side, through some normalization, these names
 automatically turn into tags added to Zeek's ``Analyzer::Tag`` enum.
@@ -900,7 +898,7 @@ Accessing Zeek Variables from Spicy
 You can access Zeek-side global variables from inside Spicy, which is
 particularly handy for configuring Spicy analyzers from Zeek script
 code. The :ref:`zeek <spicy_functions>` module facilitates this
-through a set of functions coverting the current value of Zeek
+through a set of functions converting the current value of Zeek
 variables into corresponding Spicy values. For example, let's say you
 would like to provide a Zeek script option with a ``count`` value that
 your Spicy analyzer can leverage. On the Zeek side, you'd define the
