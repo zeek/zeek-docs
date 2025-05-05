@@ -341,7 +341,7 @@ Enumerations may assign :zeek:type:`count` values explicitly:
     type color: enum { Red = 10, White = 20, Blue = 30 };
 
 Without explicit assignment, Zeek numbers enumerations sequentially starting
-from 0. You may not mix explicit and implicit assignment.
+from 0. You may not mix explicit and implicit assignments.
 
 The only operations allowed on enumerations are equality comparisons (``==``,
 ``!=``) and assignment (``=``). Enumerations do not automatically yield their
@@ -435,7 +435,7 @@ different methods:
 
 Multiple event handler bodies can be defined for the same event handler
 identifier and the body of each will be executed in turn.  Ordering
-of execution can be influenced with :zeek:attr:`&priority`.
+of their execution can be influenced with :zeek:attr:`&priority`.
 
 Multiple alternate event prototype declarations are allowed, but the
 alternates must be some subset of the first, canonical prototype and
@@ -1069,7 +1069,7 @@ matching, as follows:
     - Matches one or more instances of ``expr``.
 
   * - ``<expr>?``
-    - Matches zero or one instances of ``expr``.
+    - Matches zero or one instance of ``expr``.
 
   * - ``<expr>{n}``
     - Matches ``expr`` ``n`` times, where ``n`` is a non-negative integer.
@@ -1182,7 +1182,7 @@ Zeek also supports the following pattern-level operators and modifiers:
     - Meaning
 
   * - ``/<expr1>/ | /<expr2>/``
-    - Succeeds when either pattern matches the the input.
+    - Succeeds when either pattern matches the input.
 
   * - ``/<expr1>/ & /<expr2>/``
     - Succeeds when the concatenation of both patterns matches the input. Note
@@ -2065,7 +2065,7 @@ The resulting vector contains the result of the operation applied to each
 of the elements in the operand vectors.
 
 Vectors of :zeek:type:`bool` can be operands of the logical "and" (``&&``) and logical
-"or" (``||``) operators (both operands must have same number of elements).
+"or" (``||``) operators (both operands must have the same number of elements).
 The resulting ``vector of bool`` is the logical "and" (or logical "or") of
 each element of the operand vectors.
 
