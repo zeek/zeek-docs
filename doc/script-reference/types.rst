@@ -49,6 +49,102 @@ The Zeek scripting language supports the following built-in types:
 
 Here is a more detailed description of each type:
 
+
+.. zeek:native-type:: addr
+
+addr
+----
+
+A type representing an IP address.
+
+IPv4 address constants are written in "dotted quad" format,
+``A1.A2.A3.A4``, where ``A1``-``A4`` all lie between 0 and 255.
+
+IPv6 address constants are written as colon-separated hexadecimal form
+as described by :rfc:`2373` (including the mixed notation with embedded
+IPv4 addresses as dotted-quads in the lower 32 bits), but additionally
+encased in square brackets.  Some examples: ``[2001:db8::1]``,
+``[::ffff:192.168.1.100]``, or
+``[aaaa:bbbb:cccc:dddd:eeee:ffff:1111:2222]``.
+
+Note that IPv4-mapped IPv6 addresses (i.e., addresses with the first 80
+bits zero, the next 16 bits one, and the remaining 32 bits are the IPv4
+address) are treated internally as IPv4 addresses (for example,
+``[::ffff:192.168.1.100]`` is equal to ``192.168.1.100``).
+
+Addresses can be compared for equality (``==``, ``!=``),
+and also for ordering (``<``, ``<=``, ``>``, ``>=``).  The absolute value
+of an address gives the size in bits (32 for IPv4, and 128 for IPv6).
+Addresses can also be masked with ``/`` to produce a :zeek:type:`subnet`:
+
+.. code-block:: zeek
+
+    local a: addr = 192.168.1.100;
+    local s: subnet = 192.168.0.0/16;
+
+    if ( a/16 == s )
+        print "true";
+
+And checked for inclusion within a :zeek:type:`subnet` using ``in``
+or ``!in``:
+
+.. code-block:: zeek
+
+    local a: addr = 192.168.1.100;
+    local s: subnet = 192.168.0.0/16;
+
+    if ( a in s )
+        print "true";
+
+You can check if a given ``addr`` is IPv4 or IPv6 using
+the :zeek:id:`is_v4_addr` and :zeek:id:`is_v6_addr` built-in functions.
+
+Note that hostname constants can also be used, but since a hostname can
+correspond to multiple IP addresses, the type of such a variable is
+``set[addr]``. For example:
+
+.. code-block:: zeek
+
+    local a = www.google.com;
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+   * - :zeek:see:`subnet`
+     - :zeek:see:`addr_to_subnet` BIF
+     - ``addr_to_subnet([::1])``
+
+
+.. zeek:native-type:: any
+
+any
+---
+
+Used to bypass strong typing.  For example, a function can take an
+argument of type ``any`` when it may be of different types.
+The only operation allowed on a variable of type ``any`` is assignment.
+
+Note that users aren't expected to use this type.  It's provided mainly
+for use by some built-in functions and scripts included with Zeek. For
+example, passing a vector into a ``.bif`` function is best accomplished by
+taking :zeek:type:`any` as an argument and casting it to a vector.
+
+
 .. zeek:native-type:: bool
 
 bool
@@ -84,86 +180,6 @@ Type Conversions
      - :zeek:see:`fmt` BIF for additional control over the formatting
      - ``fmt("%s", F)``
 
-.. zeek:native-type:: int
-
-int
----
-
-A numeric type representing a 64-bit signed integer.  An ``int`` constant
-is a string of digits preceded by a ``+`` or ``-`` sign, e.g.
-``-42`` or ``+5`` (the ``+`` sign is optional but see note about type
-inferencing below).  An ``int`` constant can also be written in
-hexadecimal notation (in which case ``0x`` must be between the sign and
-the hex digits), e.g. ``-0xFF`` or ``+0xabc123``.
-
-The ``int`` type supports the following operators:  arithmetic
-operators (``+``, ``-``, ``*``, ``/``, ``%``), comparison operators
-(``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), assignment operators
-(``=``, ``+=``, ``-=``), pre-increment (``++``), pre-decrement
-(``--``), unary plus and minus (``+``, ``-``), absolute value
-(e.g., ``|-3|`` is 3, but the result type is :zeek:type:`count`), and
-bitwise shift operations (``<<``, ``>>``).
-
-When using type inferencing, use care so that the
-intended type is inferred, e.g. ``local size_difference = 0`` will
-infer :zeek:type:`count`, while ``local size_difference = +0``
-will infer ``int``.
-
-For signed-integer arithmetic involving ``int`` types that cause overflows
-(results that exceed the numeric limits of representable values in either
-direction), Zeek's behavior is generally undefined  and one should not rely on
-any observed behavior being consistent across compilers, platforms, time, etc.
-The reason for this is that the C++ standard also deems this as undefined
-behavior and Zeek does not currently attempt to detect such overflows within
-its underlying C++ implementation (some limited cases may try to statically
-determine at parse-time that an overflow will definitely occur and reject them
-an error, but don't rely on that).
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`bool`
-     - Relational operator
-     - ``foo != 0``
-
-   * - :zeek:see:`count`
-     - Absolute value operator
-     - ``|foo|``
-
-   * - :zeek:see:`count`
-     - :zeek:see:`int_to_count` BIF
-     - ``int_to_count(42)``
-
-   * - :zeek:see:`double`
-     - :zeek:see:`int_to_double` BIF
-     - ``int_to_double(foo)``
-
-   * - :zeek:see:`double`
-     - Addition operator
-     - ``foo + 0.0``
-
-   * - :zeek:see:`double`
-     - Division operator
-     - ``foo / 1.0``
-
-   * - :zeek:see:`double`
-     - Multiplication operator
-     - ``foo * 1.0``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`cat` BIF
-     - ``cat(-10)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`fmt` BIF for additional control over the formatting
-     - ``fmt("%s", 0)``
 
 .. zeek:native-type:: count
 
@@ -248,6 +264,7 @@ Type Conversions
      - :zeek:see:`fmt` BIF for additional control over the formatting
      - ``fmt("%x", 3735928559)``
 
+
 .. zeek:native-type:: double
 
 double
@@ -300,624 +317,6 @@ Type Conversions
      - :zeek:see:`fmt` BIF for additional control over the formatting
      - ``fmt("%.2f", 3.14159265)``
 
-.. zeek:native-type:: time
-
-time
-----
-
-A temporal type representing an absolute time.  There is currently
-no way to specify a ``time`` constant, but one can use the
-:zeek:id:`double_to_time`, :zeek:id:`current_time`, or :zeek:id:`network_time`
-built-in functions to assign a value to a ``time``-typed variable.
-
-Time values support the comparison operators (``==``, ``!=``, ``<``,
-``<=``, ``>``, ``>=``).  A ``time`` value can be subtracted from
-another ``time`` value to produce an :zeek:type:`interval` value.  An
-``interval`` value can be added to, or subtracted from, a ``time`` value
-to produce a ``time`` value.  The absolute value of a ``time`` value is
-a :zeek:type:`double` with the same numeric value.
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`double`
-     - :zeek:see:`time_to_double` BIF
-     - ``time_to_double(foo)``
-
-   * - :zeek:see:`double`
-     - Absolute value operator
-     - ``|foo|``
-
-   * - :zeek:see:`interval`
-     - Subtraction operator
-     - ``end_time - start_time``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`cat` BIF
-     - ``cat(foo)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`fmt` BIF for additional control over the formatting
-     - ``fmt("%s", foo)``
-
-.. zeek:native-type:: interval
-
-interval
---------
-
-A temporal type representing a relative time.  An ``interval``
-constant can be written as a numeric constant followed by a time
-unit where the time unit is one of ``usec``, ``msec``, ``sec``, ``min``,
-``hr``, or ``day`` which respectively represent microseconds, milliseconds,
-seconds, minutes, hours, and days.  Whitespace between the numeric
-constant and time unit is optional.  Appending the letter ``s`` to the
-time unit in order to pluralize it is also optional (to no semantic
-effect).  Examples of ``interval`` constants are ``3.5 min`` and
-``3.5mins``.  An ``interval`` can also be negated, for example
-``-12 hr`` represents "twelve hours in the past".
-
-Intervals support addition and subtraction, the comparison operators
-(``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), the assignment
-operators (``=``, ``+=``, ``-=``), and unary plus and minus (``+``, ``-``).
-
-Intervals also support division (in which case the result is a
-:zeek:type:`double` value).  An ``interval`` can be multiplied or divided
-by an arithmetic type (``count``, ``int``, or ``double``) to produce
-an ``interval`` value.  The absolute value of an ``interval`` is a
-``double`` value equal to the number of seconds in the ``interval``
-(e.g., ``|-1 min|`` is 60.0).
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`double`
-     - :zeek:see:`interval_to_double` BIF
-     - ``interval_to_double(5mins)``
-
-   * - :zeek:see:`double`
-     - Absolute value operator
-     - ``|foo|``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`cat` BIF
-     - ``cat(foo)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`fmt` BIF for additional control over the formatting
-     - ``fmt("%s", foo)``
-
-   * - :zeek:see:`time`
-     - Addition operator
-     - ``5 mins + start_time``
-
-   * - :zeek:see:`time`
-     - Subtraction operator
-     - ``start_time - 60 secs``
-
-.. zeek:native-type:: string
-
-string
-------
-
-A type used to hold bytes which represent text and also can hold
-arbitrary binary data.
-
-String constants are created by enclosing text within a pair of double
-quotes (``"``).  A string constant cannot span multiple lines in a Zeek script.
-The backslash character (\\) introduces escape sequences. Zeek recognizes
-the following escape sequences: ``\\``, ``\n``, ``\t``, ``\v``, ``\b``,
-``\r``, ``\f``, ``\a``, ``\ooo`` (where each 'o' is an octal digit),
-``\xhh`` (where each 'h' is a hexadecimal digit).  If Zeek does not
-recognize an escape sequence, Zeek will ignore the backslash
-(``\\g`` becomes ``g``).
-
-Strings support concatenation (``+``), and assignment (``=``, ``+=``).
-Strings also support the comparison operators (``==``, ``!=``, ``<``,
-``<=``, ``>``, ``>=``).  The number of characters in a string can be
-found by enclosing the string within pipe characters (e.g., ``|"abc"|``
-is 3).  Substring searching can be performed using the ``in`` or ``!in``
-operators (e.g., ``"bar" in "foobar"`` yields true).
-
-The subscript operator can extract a substring of a string.  To do this,
-specify the starting index to extract (if the starting index is omitted,
-then zero is assumed), followed by a colon and index
-one past the last character to extract (if the last index is omitted,
-then the extracted substring will go to the end of the original string).
-However, if both the colon and last index are omitted, then a string of
-length one is extracted.  String indexing is zero-based, but an index
-of -1 refers to the last character in the string, and -2 refers to the
-second-to-last character, etc.  Here are a few examples:
-
-.. code-block:: zeek
-
-    local orig = "0123456789";
-    local second_char = orig[1];         # "1"
-    local last_char = orig[-1];          # "9"
-    local first_two_chars = orig[:2];    # "01"
-    local last_two_chars = orig[8:];     # "89"
-    local no_first_and_last = orig[1:9]; # "12345678"
-    local no_first = orig[1:];           # "123456789"
-    local no_last = orig[:-1];           # "012345678"
-    local copy_orig = orig[:];           # "0123456789"
-
-Note that the subscript operator cannot be used to modify a string (i.e.,
-it cannot be on the left side of an assignment operator).
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`addr`
-     - :zeek:see:`to_addr` BIF
-     - ``to_addr("127.0.0.1")``
-
-   * - :zeek:see:`addr`
-     - :zeek:see:`raw_bytes_to_v4_addr` BIF
-     - ``raw_bytes_to_v4_addr("\x7f\x0\x0\x1")``
-
-   * - :zeek:see:`addr`
-     - :zeek:see:`raw_bytes_to_v6_addr` BIF
-     - ``raw_bytes_to_v6_addr("\xda\xda\xbe\xef\x00\x00AAAAAAAAAA")``
-
-   * - :zeek:see:`bool`
-     - Relational operator
-     - ``foo != ""``
-
-   * - :zeek:see:`count`
-     - :zeek:see:`to_count` BIF
-     - ``to_count("42")``
-
-   * - :zeek:see:`count`
-     - :zeek:see:`bytestring_to_count` BIF
-     - ``bytestring_to_count("\xde\xad\xbe\xef")``
-
-   * - :zeek:see:`double`
-     - :zeek:see:`to_double` BIF
-     - ``to_double("0.001")``
-
-   * - :zeek:see:`double`
-     - :zeek:see:`bytestring_to_double` BIF
-     - ``bytestring_to_double("\x43\x26\x4f\xa0\x71\x30\x80\x00")``
-
-   * - :zeek:see:`int`
-     - :zeek:see:`to_int` BIF
-     - ``to_int("-42")``
-
-   * - :zeek:see:`pattern`
-     - :zeek:see:`string_to_pattern` BIF
-     - ``string_to_pattern("rsh .*", F)``
-
-   * - :zeek:see:`port`
-     - :zeek:see:`to_port` BIF
-     - ``to_port("53/udp")``
-
-   * - :zeek:see:`subnet`
-     - :zeek:see:`to_subnet` BIF
-     - ``to_subnet("::1/128")``
-
-.. zeek:native-type:: pattern
-
-pattern
--------
-
-A type representing regular-expression patterns that can be used for fast
-text-searching operations.  Pattern constants are created by enclosing text
-within forward slashes (``/``) and support a large subset of the `flex lexical
-analyzer <http://westes.github.io/flex/manual/Patterns.html>`_ syntax.  As in
-other implementations, patterns consist of ordinary and special characters.
-Patterns such as ``/a/`` or ``/A0123/`` match that specific character byte or
-character sequence, case-sensitively. Special characters and modifiers customize
-matching, as follows:
-
-.. list-table::
-  :header-rows: 1
-
-  * - Syntax
-    - Meaning
-
-  * - ``^``
-    - Matches the beginning of the input.
-
-  * - ``$``
-    - Matches the end of the input.
-
-  * - ``.``
-    - Matches any character except newline (but see the ``(?s:`` and ``/s`` modifiers).
-
-  * - ``<expr>*``
-    - Matches zero or more instances of ``expr``.
-
-  * - ``<expr>+``
-    - Matches one or more instances of ``expr``.
-
-  * - ``<expr>?``
-    - Matches zero or one instances of ``expr``.
-
-  * - ``<expr>{n}``
-    - Matches ``expr`` ``n`` times, where ``n`` is a non-negative integer.
-
-  * - ``<expr>{n,}``
-    - Matches ``expr`` ``n`` or more times, where ``n`` is a non-negative integer.
-
-  * - ``<expr>{n,m}``
-    - Matches ``expr`` between ``n`` and ``m`` times, inclusively, where ``n``
-      and ``m`` are non-negative integers and ``m >= n``.
-
-  * - ``<expr1>|<expr2>``
-    - Matches either ``expr1`` or ``expr2``.
-
-  * - ``(<expr>)``
-    - Groups the contained expression to form a building-block of a more complex
-      one.
-
-  * - ``"<chars>"``
-    - Matches literal strings, without the quotation marks. These always match
-      as given, even if case-insensitivity is active.
-
-  * - ``[<chars>]``
-    - Defines a character class, matching any of the contained characters.
-
-  * - ``[^<chars>]``
-    - Defines a negated character class, matching any but the contained
-      characters.
-
-  * - ``<char1>-<char2>``
-    - Inside a character class this specifies a range, matching any character
-      between ``<char1>`` and ``<char2>``, inclusively. Outside a character
-      class it matches the literal string.
-
-  * - ``(?i:<expr>)``
-    - Matches the expression case-insensitively.
-
-  * - ``(?s:<expr>)``
-    - Treats the input as a single line: the ``.`` character also matches
-      newlines.
-
-Zeek supports the following pre-defined character classes:
-
-.. list-table::
-  :header-rows: 1
-  :widths: 20 20 60
-
-  * - Shorthand
-    - Equivalent to
-    - Meaning
-
-  * - ``[:alnum:]``
-    - ``[A-Za-z0-9]``
-    - Upper- and lowercase letters plus digits.
-
-  * - ``[:alpha:]``
-    - ``[A-Za-z]``
-    - Upper- and lowercase letters.
-
-  * - ``[:blank:]``
-    - ``[ \t]``
-    - The space or tab character.
-
-  * - ``[:cntrl:]``
-    -
-    - Non-printable characters, a.k.a. control characters. See
-      `iscntrl() <https://cplusplus.com/reference/cctype/iscntrl/>`_ for details.
-
-  * - ``[:digit:]``
-    - ``[0-9]``
-    - Digits.
-
-  * - ``[:graph:]``
-    - ``[^ [:cntrl:]]``
-    - Characters with graphic representation: everything other than space
-      and control characters.
-
-  * - ``[:print:]``
-    - ``[^[:cntrl:]]``
-    - Printable characters: those with  graphic representation, plus the space character.
-
-  * - ``[:punct:]``
-    -
-    - Punctuation: any characters with graphic representation that are not alphanumeric.
-
-  * - ``[:space:]``
-    - ``[ \t\n\r\f\v]``
-    - Whitespace characters.
-
-  * - ``[:xdigit:]``
-    - ``[A-Fa-f0-9]``
-    - Hexadecimal characters.
-
-  * - ``[:lower:]``
-    - ``[a-z]``
-    - Lowercase letters.
-
-  * - ``[:upper:]``
-    - ``[A-Z]``
-    - Uppercase letters.
-
-To match special characters, escape them with a backslash (``\``).
-
-Zeek also supports the following pattern-level operators and modifiers:
-
-.. list-table::
-  :header-rows: 1
-
-  * - Example
-    - Meaning
-
-  * - ``/<expr1>/ | /<expr2>/``
-    - Succeeds when either pattern matches the the input.
-
-  * - ``/<expr1>/ & /<expr2>/``
-    - Succeeds when the concatenation of both patterns matches the input. Note
-      that this differs from a logical "AND"; ordering matters.
-
-  * - ``/<expr>/i``
-    - Matches the expression case-insensitively, like ``(?i:<expr>)``. Use the
-      latter when you need it to apply to only a part of a larger expression.
-
-  * - ``/<expr>/s``
-    - Treats the input as a single line, like ``(?s:<expr>)``. Use the
-      latter when you need it to apply to only a part of a larger expression.
-
-The speed of regular expression matching does not depend on the complexity or
-size of the patterns.
-
-Patterns support two types of matching, exact and embedded.
-In exact matching the ``==`` equality relational operator is used
-with one ``pattern`` operand and one :zeek:type:`string`
-operand (order of operands does not matter) to check whether the full
-string exactly matches the pattern.  In exact matching, the ``^``
-beginning-of-line and ``$`` end-of-line anchors are redundant since
-the pattern is implicitly anchored to the beginning and end of the
-line to facilitate an exact match.  For example:
-
-.. code-block:: zeek
-
-    /foo|bar/ == "foo"
-
-yields true, while:
-
-.. code-block:: zeek
-
-    /foo|bar/ == "foobar"
-
-yields false.  The ``!=`` operator would yield the negation of ``==``.
-
-In embedded matching the ``in`` operator is used with one
-``pattern`` operand (which must be on the left-hand side) and
-one :zeek:type:`string` operand, but tests whether the pattern
-appears anywhere within the given string.  For example:
-
-.. code-block:: zeek
-
-    /foo|bar/ in "foobar"
-
-yields true, while:
-
-.. code-block:: zeek
-
-    /^oob/ in "foobar"
-
-is false since ``"oob"`` does not appear at the start of ``"foobar"``.  The
-``!in`` operator would yield the negation of ``in``.
-
-Additional examples:
-
-- ``/foo+bar/`` matches ``"foobar"`` and ``"fooooobar"``, but not ``"fobar"``.
-- ``/foo*bar/`` matches ``"fobar"``, ``"foobar"``, and ``"fooooobar"``.
-- ``/foo?bar/`` matches ``"fobar"`` and ``"foobar"``, but not ``"fooooobar"``.
-- ``/foo[b-d]ar/`` matches ``"foobar"``, ``"foocar"``, and ``"foodar"``.
-- ``/foo/ | /bar/ in "foobar"`` yields true.
-- ``/foo/ & /bar/ in "foobar"`` yields true, since ``/(foo)(bar)/`` appears in ``"foobar"``.
-- ``/foo|bar/`` matches ``"foo"`` and ``"bar"``.
-- ``/fo(o|b)ar/`` matches ``"fooar"`` and ``"fobar"``, but not ``"foo"`` or ``"bar"``.
-- ``/foo|bar/i`` matches ``"foo"``, ``"Foo"``, ``"BaR"``, etc.
-- ``/foo|(?i:bar)/`` matches ``"foo"`` and ``"BaR"``, but *not* ``"Foo"``.
-- ``/"foo"/i`` matches ``"foo"``, but *not* ``"Foo"``.
-- ``/foo.bar/`` doesn't match ``"foo\nbar"``, while ``/foo.bar/s`` does.
-
-The ``i`` and ``s`` modifiers can also be combined in a single pattern
-such as ``/foo/is`` or ``/bar/si``. In this case, both case-insensitivity
-and single-line mode will apply to the pattern.
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`string`
-     - :zeek:see:`cat` BIF
-     - ``cat(foo)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`fmt` BIF for additional control over the formatting
-     - ``fmt("%s", foo)``
-
-.. zeek:native-type:: port
-
-port
-----
-
-A type representing transport-level port numbers (besides TCP and
-UDP ports, there is a concept of an ICMP ``port`` where the source
-port is the ICMP message type and the destination port the ICMP
-message code).  A ``port`` constant is written as an unsigned integer
-followed by one of ``/tcp``, ``/udp``, ``/icmp``, or ``/unknown``.
-
-Ports support the comparison operators (``==``, ``!=``, ``<``, ``<=``,
-``>``, ``>=``).  When comparing order across transport-level protocols,
-``unknown`` < ``tcp`` < ``udp`` < ``icmp``, for example ``65535/tcp``
-is smaller than ``0/udp``.
-
-Note that you can obtain the transport-level protocol type of a ``port``
-with the :zeek:id:`get_port_transport_proto` built-in function, and
-the numeric value of a ``port`` with the :zeek:id:`port_to_count`
-built-in function.
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`count`
-     - :zeek:see:`port_to_count` BIF
-     - ``port_to_count(53/udp)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`cat` BIF
-     - ``cat(foo)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`fmt` BIF for additional control over the formatting
-     - ``fmt("%s", foo)``
-
-.. zeek:native-type:: addr
-
-addr
-----
-
-A type representing an IP address.
-
-IPv4 address constants are written in "dotted quad" format,
-``A1.A2.A3.A4``, where ``A1``-``A4`` all lie between 0 and 255.
-
-IPv6 address constants are written as colon-separated hexadecimal form
-as described by :rfc:`2373` (including the mixed notation with embedded
-IPv4 addresses as dotted-quads in the lower 32 bits), but additionally
-encased in square brackets.  Some examples: ``[2001:db8::1]``,
-``[::ffff:192.168.1.100]``, or
-``[aaaa:bbbb:cccc:dddd:eeee:ffff:1111:2222]``.
-
-Note that IPv4-mapped IPv6 addresses (i.e., addresses with the first 80
-bits zero, the next 16 bits one, and the remaining 32 bits are the IPv4
-address) are treated internally as IPv4 addresses (for example,
-``[::ffff:192.168.1.100]`` is equal to ``192.168.1.100``).
-
-Addresses can be compared for equality (``==``, ``!=``),
-and also for ordering (``<``, ``<=``, ``>``, ``>=``).  The absolute value
-of an address gives the size in bits (32 for IPv4, and 128 for IPv6).
-Addresses can also be masked with ``/`` to produce a :zeek:type:`subnet`:
-
-.. code-block:: zeek
-
-    local a: addr = 192.168.1.100;
-    local s: subnet = 192.168.0.0/16;
-
-    if ( a/16 == s )
-        print "true";
-
-And checked for inclusion within a :zeek:type:`subnet` using ``in``
-or ``!in``:
-
-.. code-block:: zeek
-
-    local a: addr = 192.168.1.100;
-    local s: subnet = 192.168.0.0/16;
-
-    if ( a in s )
-        print "true";
-
-You can check if a given ``addr`` is IPv4 or IPv6 using
-the :zeek:id:`is_v4_addr` and :zeek:id:`is_v6_addr` built-in functions.
-
-Note that hostname constants can also be used, but since a hostname can
-correspond to multiple IP addresses, the type of such a variable is
-``set[addr]``. For example:
-
-.. code-block:: zeek
-
-    local a = www.google.com;
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`string`
-     - :zeek:see:`cat` BIF
-     - ``cat(foo)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`fmt` BIF for additional control over the formatting
-     - ``fmt("%s", foo)``
-
-   * - :zeek:see:`subnet`
-     - :zeek:see:`addr_to_subnet` BIF
-     - ``addr_to_subnet([::1])``
-
-.. zeek:native-type:: subnet
-
-subnet
-------
-
-A type representing a block of IP addresses in CIDR notation.  A
-``subnet`` constant is written as an :zeek:type:`addr` followed by a
-slash (``/``) and then the network prefix size specified as a decimal
-number.  For example, ``192.168.0.0/16`` or ``[fe80::]/64``.
-
-Subnets can be compared for equality (``==``, ``!=``).  An
-:zeek:type:`addr` can be checked for inclusion in a subnet using
-the ``in`` or ``!in`` operators.
-
-Type Conversions
-^^^^^^^^^^^^^^^^
-
-.. list-table::
-   :header-rows: 1
-
-   * - To
-     - Description
-     - Example
-
-   * - :zeek:see:`addr`
-     - :zeek:see:`subnet_to_addr` BIF
-     - ``subnet_to_addr([::1]/120)``
-
-   * - :zeek:see:`double`
-     - Absolute value operator
-     - ``|1.2.3.0/24|``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`cat` BIF
-     - ``cat(foo)``
-
-   * - :zeek:see:`string`
-     - :zeek:see:`fmt` BIF for additional control over the formatting
-     - ``fmt("%s", foo)``
 
 .. zeek:native-type:: enum
 
@@ -942,7 +341,7 @@ Enumerations may assign :zeek:type:`count` values explicitly:
     type color: enum { Red = 10, White = 20, Blue = 30 };
 
 Without explicit assignment, Zeek numbers enumerations sequentially starting
-from 0. You may not mix explicit and implicit assignment.
+from 0. You may not mix explicit and implicit assignments.
 
 The only operations allowed on enumerations are equality comparisons (``==``,
 ``!=``) and assignment (``=``). Enumerations do not automatically yield their
@@ -982,585 +381,126 @@ Type Conversions
      - :zeek:see:`fmt` BIF for additional control over the formatting
      - ``fmt("%s", foo)``
 
-.. zeek:native-type:: table
 
-table
+.. zeek:native-type:: event
+
+event
 -----
 
-An associate array that maps from one set of values to another.  The
-values being mapped are termed the *index* or *indices* and the
-result of the mapping is called the *yield*.  Indexing into tables
-is very efficient, and internally it is just a single hash table
-lookup.
+Event handlers are nearly identical in both syntax and semantics to
+a :zeek:type:`function`, with the two differences being that event
+handlers have no return type since they never return a value, and
+you cannot call an event handler.
 
-Declaration and initialization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The table declaration syntax is::
-
-    table [ type^+ ] of type
-
-where ``type^+`` is one or more types, separated by commas.  The
-index type cannot be any of the following types:  :zeek:type:`file`,
-:zeek:type:`opaque`, :zeek:type:`any`.
-
-Here is an example of declaring a table indexed by :zeek:type:`count` values
-and yielding :zeek:type:`string` values:
+Example:
 
 .. code-block:: zeek
 
-    global a: table[count] of string;
+    event my_event(r: bool, s: string)
+        {
+        print "my_event", r, s;
+        }
 
-The yield type can also be more complex:
+Instead of directly calling an event handler from a script, event
+handler bodies are executed when they are invoked by one of three
+different methods:
 
-.. code-block:: zeek
+- From the event engine
 
-    global a: table[count] of table[addr, port] of string;
+    When the event engine detects an event for which you have
+    defined a corresponding event handler, it queues an event for
+    that handler.  The handler is invoked as soon as the event
+    engine finishes processing the current packet and flushing the
+    invocation of other event handlers that were queued first.
 
-which declares a table indexed by :zeek:type:`count` and yielding
-another ``table`` which is indexed by an :zeek:type:`addr`
-and :zeek:type:`port` to yield a :zeek:type:`string`.
+- With the ``event`` statement from a script
 
-One way to initialize a table is by enclosing a set of initializers within
-braces, for example:
+    Immediately queuing invocation of an event handler occurs like:
 
-.. code-block:: zeek
+    .. code-block:: zeek
 
-    global t: table[count] of string = {
-        [11] = "eleven",
-        [5] = "five",
-    };
+        event password_exposed(user, password);
 
-A table constructor can also be used to create a table:
+    This assumes that ``password_exposed`` was previously declared
+    as an event handler type with compatible arguments.
 
-.. code-block:: zeek
+- Via the :zeek:keyword:`schedule` expression in a script
 
-    global t2 = table(
-        [192.168.0.2, 22/tcp] = "ssh",
-        [192.168.0.3, 80/tcp] = "http"
-    );
+    This delays the invocation of event handlers until some time in
+    the future.  For example:
 
-Table constructors can also be explicitly named by a type, which is
-useful when a more complex index type could otherwise be
-ambiguous:
+    .. code-block:: zeek
 
-.. code-block:: zeek
+        schedule 5 secs { password_exposed(user, password) };
 
-    type MyRec: record {
-        a: count &optional;
-        b: count;
-    };
+Multiple event handler bodies can be defined for the same event handler
+identifier and the body of each will be executed in turn.  Ordering
+of their execution can be influenced with :zeek:attr:`&priority`.
 
-    type MyTable: table[MyRec] of string;
-
-    global t3 = MyTable([[$b=5]] = "b5", [[$b=7]] = "b7");
-
-Insertion and removal
-^^^^^^^^^^^^^^^^^^^^^
-
-Add or overwrite individual table elements by assignment:
+Multiple alternate event prototype declarations are allowed, but the
+alternates must be some subset of the first, canonical prototype and
+arguments must match by name and type.  This allows users to define
+handlers for any such prototype they may find convenient or for the core
+set of handlers to be extended, changed, or deprecated without breaking
+existing handlers a user may have written.  Example:
 
 .. code-block:: zeek
 
-    t[13] = "thirteen";
+    # Event Prototype Declarations
+    global my_event: event(s: string, c: count);
+    global my_event: event(c: count);
+    global my_event: event();
 
-Remove individual table elements with :zeek:keyword:`delete`:
+    # Event Handler Definitions
+    event my_event(s: string, c: count)
+        {
+        print "my event", s, c;
+        }
 
-.. code-block:: zeek
+    event my_event(c: count)
+        {
+        print "my event", c;
+        }
 
-    delete t[13];
+    event my_event()
+        {
+        print "my event";
+        }
 
-Nothing happens if the element with index value ``13`` isn't present in
-the table.
+By using alternate event prototypes, handlers are allowed to consume a
+subset of the full argument list as given by the first prototype
+declaration.  It also even allows arguments to be ordered differently
+from the canonical prototype.
 
-.. versionadded:: 7.0
+To use :zeek:attr:`&default` on event arguments, it must appear on the
+first, canonical prototype.
 
-Removing all table elements can be done with the :zeek:keyword:`delete`, too:
+Employing its static analysis capabilities, Zeek will warn if it cannot
+determine that an event will ever be triggered. In case the warning is not
+appropriate (e.g., the event might be triggered remotely via broker),
+:zeek:attr:`&is_used` can be applied to suppress the warning.
 
-.. code-block:: zeek
 
-    delete t;
+.. zeek:native-type:: file
 
-.. note::
+file
+----
 
-   Indexing with complex types (such as records or sets) happens via hashing of
-   the provided index value at the time of table access. Subsequent
-   modifications to the index value do not affect the table. For example:
-
-   .. code-block:: zeek
-
-       local t: table[set[port]] of string = table();
-       local s: set[port] = { 80/tcp, 8000/tcp };
-
-       t[s] = "http";
-
-       add s[8080/tcp];
-
-       print t[set(80/tcp, 8000/tcp)]; # prints "http"
-       print t[s]; # error: no such index
-
-Lookup and iteration
-^^^^^^^^^^^^^^^^^^^^
-
-Accessing table elements is provided by enclosing index values within
-square brackets (``[]``), for example:
-
-.. code-block:: zeek
-
-    print t[11];
-
-Membership can be tested with ``in`` or ``!in``:
+Zeek supports writing to files, but not reading from them (to read from
+files see the :doc:`/frameworks/input`).  Files
+can be opened using either the :zeek:id:`open` or :zeek:id:`open_for_append`
+built-in functions, and closed using the :zeek:id:`close` built-in
+function.  For example, declare, open, and write to a file and finally
+close it like:
 
 .. code-block:: zeek
 
-    if ( 13 in t )
-        ...
-    if ( [192.168.0.2, 22/tcp] in t2 )
-        ...
-
-See the :zeek:keyword:`for` statement for information on how to iterate over
-the elements in a table.
-
-.. _table-special-lookups:
-
-Special lookups
-^^^^^^^^^^^^^^^
-
-Zeek supports two forms of special table lookups. The first is for tables
-with an index type of :zeek:type:`subnet`. When indexed with an
-:zeek:type:`addr` value, these tables produce the yield associated with
-the closest (narrowest) subnet. For example:
-
-.. code-block:: zeek
-
-    global st: table[subnet] of count;
-    st[1.2.3.4/24] = 5;
-    st[1.2.3.4/29] = 9;
-    print st[1.2.3.4], st[1.2.3.251];
-
-will print ``9, 5``. Attempting to look up an address that doesn't match
-any of the subnet indices results in a run-time error.
-
-.. versionadded:: 6.2
-
-In addition, :zeek:type:`string` lookups for tables that have an index type of
-:zeek:type:`pattern` return a (possibly empty)
-:zeek:type:`vector` containing the values corresponding to each of the
-patterns matching the given string. The order of entries in the resulting
-vector is non-deterministic. For example:
-
-.. code-block:: zeek
-
-    global pt: table[pattern] of count;
-    pt[/foo/] = 1;
-    pt[/bar/] = 2;
-    pt[/(foo|bletch)/] = 3;
-    print pt["foo"];
-
-will print either ``[1, 3]`` or ``[3, 1]``.
-Indexing with a string that matches only one pattern returns a
-one-element :zeek:type:`vector`, and indexing with a string that no
-pattern matches returns an empty :zeek:type:`vector`.
-
-Note that these pattern matches are all *exact*: the pattern must match
-the entire string. If you want the pattern to match if it's *anywhere*
-in the string, you can use the usual regular expression operators such
-as ``/.*foo.*/``.
-
-.. note::
-
-   The :zeek:attr:`&default` attribute is ignored for this type of lookup.
-   If none of the patterns matches a given string, the result will be an empty
-   :zeek:type:`vector`, regardless of :zeek:attr:`&default`. Neither is the
-   :zeek:attr:`&default_insert` attribute used. It's not an error to have
-   either of these attributes, however. They'll still be in effect when
-   indexing with :zeek:type:`pattern` values.
-
-.. note::
-
-   Internally, Zeek matches a table's patterns in parallel using a lazily
-   constructed deterministic finite automaton (DFA). This means that the nature
-   of patterns in the table *and* the strings looked up in it can lead to
-   varying degrees of runtime memory growth.
-
-   Users are advised to test scripts using this feature with a wide range of
-   input data. Script developers can reset the DFA's state by removal or
-   addition of a single pattern. For observability, the
-   :zeek:see:`table_pattern_matcher_stats` function returns a
-   :zeek:see:`MatcherStats` record with details about a table's DFA state.
-
-
-Additional operations
-^^^^^^^^^^^^^^^^^^^^^
-
-The number of elements in a table can be obtained by placing the table
-identifier between vertical pipe characters:
-
-.. code-block:: zeek
-
-    |t|
-
-It's common to extend the behavior of table lookup and membership lifetimes
-via :doc:`attributes <attributes>` but note that it's also a :ref:`confusing
-pitfall <attribute-propagation-pitfalls>` that attributes bind to initial
-*values* instead of *type* or *variable* and do not currently propagate to
-any new *value* subsequently re-assigned to the table *variable*.
-
-
-.. zeek:native-type:: set
-
-set
----
-
-A set is like a :zeek:type:`table`, but it is a collection of indices
-that do not map to any yield value.
-
-Declaration and initialization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Sets are declared with the syntax::
-
-    set [ type^+ ]
-
-where ``type^+`` is one or more types separated by commas.  The index type
-cannot be any of the following types: :zeek:type:`file`, :zeek:type:`opaque`,
-:zeek:type:`any`.
-
-Sets can be initialized by listing elements enclosed by curly braces:
-
-.. code-block:: zeek
-
-    global s: set[port] = { 21/tcp, 23/tcp, 80/tcp, 443/tcp };
-    global s2: set[port, string] = { [21/tcp, "ftp"], [23/tcp, "telnet"] };
-
-A set constructor (equivalent to above example) can also be used to
-create a set:
-
-.. code-block:: zeek
-
-    global s3 = set(21/tcp, 23/tcp, 80/tcp, 443/tcp);
-
-Set constructors can also be explicitly named by a type, which is
-useful when a more complex index type could otherwise be
-ambiguous:
-
-.. code-block:: zeek
-
-    type MyRec: record {
-        a: count &optional;
-        b: count;
-    };
-
-    type MySet: set[MyRec];
-
-    global s4 = MySet([$b=1], [$b=2]);
-
-Insertion and removal
-^^^^^^^^^^^^^^^^^^^^^
-
-Elements are added with :zeek:keyword:`add`:
-
-.. code-block:: zeek
-
-    add s[22/tcp];
-
-Nothing happens if the element with value ``22/tcp`` was already present in
-the set.
-
-Elements are removed with :zeek:keyword:`delete`:
-
-.. code-block:: zeek
-
-    delete s[21/tcp];
-
-.. versionadded:: 7.0
-
-Removing all set elements can be done with the :zeek:keyword:`delete`, too:
-
-.. code-block:: zeek
-
-    delete s;
-
-
-Nothing happens if the element with value ``21/tcp`` isn't present in
-the set.
-
-Sets behave like tables when it comes to complex member types: indexing happens
-via hashing at access time. See :zeek:type:`table` for details.
-
-Lookup and iteration
-^^^^^^^^^^^^^^^^^^^^
-
-Set membership is tested with ``in`` or ``!in``:
-
-.. code-block:: zeek
-
-    if ( 21/tcp in s )
-        ...
-
-    if ( [21/tcp, "ftp"] !in s2 )
-        ...
-
-See the :zeek:keyword:`for` statement for info on how to iterate over
-the elements in a set.
-
-Set operations
-^^^^^^^^^^^^^^
-
-You can compute the union, intersection, or difference of two sets
-using the ``|``, ``&``, and ``-`` operators.
-
-.. note::
-
-   Use ``+=`` instead of ``|`` to grow an existing set. That is,
-   say ``s += new_s`` instead of ``s = s | new_s``. The latter requires
-   copying both input sets and thus quickly deteriorates runtime. See
-   :ref:`assignment-operators` for details.
-
-You can compare sets for equality (they have exactly the same elements)
-using ``==``.  The ``<`` operator returns ``T`` if the lefthand operand
-is a proper subset of the righthand operand.  Similarly, ``<=``
-returns ``T`` if the lefthand operator is a subset (not necessarily proper,
-i.e., it may be equal to the righthand operand).  The operators ``!=``,
-``>`` and ``>=`` provide the expected complementary operations.
-
-Additional operations
-^^^^^^^^^^^^^^^^^^^^^
-
-The number of elements in a set can be obtained by placing the set
-identifier between vertical pipe characters:
-
-.. code-block:: zeek
-
-    |s|
-
-
-The :ref:`table's special lookups <table-special-lookups>` extend to the
-set ``in`` operator: Using ``in`` with ``addr`` and ``set[subnet]``
-or ``string`` and ``set[pattern]`` yields ``T`` if any of the subnets
-or patterns the set holds contain or match the given value.
-
-.. zeek:native-type:: vector
-
-vector
-------
-
-A vector is like a :zeek:type:`table`, except its indices are non-negative
-integers, starting from zero.
-
-Declaration and initialization
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-A vector is declared as follows:
-
-.. code-block:: zeek
-
-    global v: vector of string;
-
-Vectors can be initialized with the vector constructor:
-
-.. code-block:: zeek
-
-    local v = vector("one", "two", "three");
-
-Vector constructors can also be explicitly named by a type, which
-is useful for when a more complex yield type could otherwise be
-ambiguous.
-
-.. code-block:: zeek
-
-    type MyRec: record {
-        a: count &optional;
-        b: count;
-    };
-
-    type MyVec: vector of MyRec;
-
-    global v2 = MyVec([$b=1], [$b=2], [$b=3]);
-
-Insertion
-^^^^^^^^^
-
-An element can be added to a vector by assigning the value (a value
-that already exists at that index will be overwritten):
-
-.. code-block:: zeek
-
-    v[3] = "four";
-
-A range of elements can be *replaced* by assigning to a vector slice:
-
-.. code-block:: zeek
-
-    # Note that the number of elements in the slice being replaced
-    # may differ from the number of elements being inserted.  This
-    # causes the vector to grow or shrink accordingly.
-    v[0:2] = vector("five", "six", "seven");
-
-A particularly common operation on a vector is to append an element
-to its end.  You can do so using:
-
-.. code-block:: zeek
-
-    v += e;
-
-where if *e*'s type is ``X``, *v*'s type is ``vector of X``.  Note that
-this expression is equivalent to:
-
-.. code-block:: zeek
-
-    v[|v|] = e;
-
-In addition, if *e*'s type is ``vector of X`` and so is *v*'s type, then
-
-.. code-block:: zeek
-
-    v += e;
-
-instead appends each element of *e* to *v*.  (In this case the expression
-is *not* equivalent to ``v[|v|] = e``, which will generate an error because
-*e*'s type is not compatible with ``X``.)
-
-Lookup and iteration
-^^^^^^^^^^^^^^^^^^^^
-
-Access individual vector elements by enclosing index values within
-square brackets (``[]``), for example:
-
-.. code-block:: zeek
-
-    print v[2];
-
-Access a slice of vector elements by enclosing a range of indices,
-delimited by a colon, within square brackets (``[x:y]``).  For example,
-this will print a vector containing the first and second elements:
-
-.. code-block:: zeek
-
-    print v[0:2];
-
-The slicing notation is the same as what is permitted by the
-:zeek:see:`string` substring extraction operations.
-
-The ``in`` operator can be used to check if a value has been assigned at a
-specified index value in the vector.  For example, if a vector has size 4,
-then the expression ``3 in v`` would yield true and ``4 in v`` would yield
-false.
-
-See the :zeek:keyword:`for` statement for info on how to iterate over
-the elements in a vector.
-
-.. versionadded:: 7.0
-
-The :zeek:keyword:`delete` statement can be used to delete all elements
-from a vector.
-
-Vectorized operations
-^^^^^^^^^^^^^^^^^^^^^
-
-Vectors of integral types (:zeek:type:`int` or :zeek:type:`count`) support the pre-increment
-(``++``) and pre-decrement operators (``--``), which will increment or
-decrement each element in the vector.
-
-Vectors of arithmetic types (:zeek:type:`int` or :zeek:type:`count`, or :zeek:type:`double`) can be
-operands of the arithmetic operators (``+``, ``-``, ``*``, ``/``, ``%``),
-but both operands must have the same number of elements (and the modulus
-operator ``%`` cannot be used if either operand is a ``vector of double``).
-The resulting vector contains the result of the operation applied to each
-of the elements in the operand vectors.
-
-Vectors of :zeek:type:`bool` can be operands of the logical "and" (``&&``) and logical
-"or" (``||``) operators (both operands must have same number of elements).
-The resulting ``vector of bool`` is the logical "and" (or logical "or") of
-each element of the operand vectors.
-
-Vectors of :zeek:type:`count` can also be operands for the bitwise and/or/xor
-operators, ``&``, ``|`` and ``^``.
-
-Vectors of :zeek:type:`string` can be concatenated element-wise through
-the ``+`` operator, yielding a new ``vector of string`` containing the
-resulting values. Both operand vectors must be of the same length. A
-vector of type :zeek:type:`string` can also be paired with a scalar operand
-using any operator that supports string/scalar operations (i.e.,
-concatenation and comparisons). The resulting vector will contain the
-result of the operator applied to each of the elements.
-
-.. note::
-
-   As a quirk of the language, for a string vector ``v`` there is a
-   difference between ``v = v + "foo"`` and ``v += "foo"``: the former
-   extends each element, while the latter appends a new element to the
-   vector.)
-
-Additional operations
-^^^^^^^^^^^^^^^^^^^^^
-
-The size of a vector (this is one greater than the highest index value, and
-is normally equal to the number of elements in the vector) can be obtained
-by placing the vector identifier between vertical pipe characters:
-
-.. code-block:: zeek
-
-    |v|
-
-
-.. zeek:native-type:: record
-
-record
-------
-
-A ``record`` is a collection of values.  Each value has a field name
-and a type.  Values do not need to have the same type and the types
-have no restrictions.  Field names must follow the same syntax as
-regular variable names (except that field names are allowed to be the
-same as local or global variables).  An example record type
-definition:
-
-.. code-block:: zeek
-
-    type MyRecordType: record {
-        c: count;
-        s: string &optional;
-    };
-
-Records can be initialized or assigned as a whole in three different ways.
-When assigning a whole record value, all fields that are not
-:zeek:attr:`&optional` or have a :zeek:attr:`&default` attribute must
-be specified.  First, there's a constructor syntax:
-
-.. code-block:: zeek
-
-    local r: MyRecordType = record($c = 7);
-
-And the constructor can be explicitly named by type, too, which
-is arguably more readable:
-
-.. code-block:: zeek
-
-    local r = MyRecordType($c = 42);
-
-And the third way is like this:
-
-.. code-block:: zeek
-
-    local r: MyRecordType = [$c = 13, $s = "thirteen"];
-
-Access to a record field uses the dollar sign (``$``) operator, and
-record fields can be assigned with this:
-
-.. code-block:: zeek
-
-    local r: MyRecordType;
-    r$c = 13;
-
-To test if a field that is :zeek:attr:`&optional` has been assigned a
-value, use the ``?$`` operator (it returns a :zeek:type:`bool` value of
-``T`` if the field has been assigned a value, or ``F`` if not):
-
-.. code-block:: zeek
-
-    if ( r ?$ s )
-        ...
+    local f = open("myfile");
+    print f, "hello, world";
+    close(f);
+
+Writing to files like this for logging usually isn't recommended, for better
+logging support see :doc:`/frameworks/logging`.
 
 
 .. zeek:native-type:: function
@@ -1794,103 +734,6 @@ will return its result at a later time, when an underlying condition becomes
 fulfilled. See :zeek:keyword:`when` and the description of :ref:`asynchronous
 returns <asynchronous-return>` for details.
 
-.. zeek:native-type:: event
-
-event
------
-
-Event handlers are nearly identical in both syntax and semantics to
-a :zeek:type:`function`, with the two differences being that event
-handlers have no return type since they never return a value, and
-you cannot call an event handler.
-
-Example:
-
-.. code-block:: zeek
-
-    event my_event(r: bool, s: string)
-        {
-        print "my_event", r, s;
-        }
-
-Instead of directly calling an event handler from a script, event
-handler bodies are executed when they are invoked by one of three
-different methods:
-
-- From the event engine
-
-    When the event engine detects an event for which you have
-    defined a corresponding event handler, it queues an event for
-    that handler.  The handler is invoked as soon as the event
-    engine finishes processing the current packet and flushing the
-    invocation of other event handlers that were queued first.
-
-- With the ``event`` statement from a script
-
-    Immediately queuing invocation of an event handler occurs like:
-
-    .. code-block:: zeek
-
-        event password_exposed(user, password);
-
-    This assumes that ``password_exposed`` was previously declared
-    as an event handler type with compatible arguments.
-
-- Via the :zeek:keyword:`schedule` expression in a script
-
-    This delays the invocation of event handlers until some time in
-    the future.  For example:
-
-    .. code-block:: zeek
-
-        schedule 5 secs { password_exposed(user, password) };
-
-Multiple event handler bodies can be defined for the same event handler
-identifier and the body of each will be executed in turn.  Ordering
-of execution can be influenced with :zeek:attr:`&priority`.
-
-Multiple alternate event prototype declarations are allowed, but the
-alternates must be some subset of the first, canonical prototype and
-arguments must match by name and type.  This allows users to define
-handlers for any such prototype they may find convenient or for the core
-set of handlers to be extended, changed, or deprecated without breaking
-existing handlers a user may have written.  Example:
-
-.. code-block:: zeek
-
-    # Event Prototype Declarations
-    global my_event: event(s: string, c: count);
-    global my_event: event(c: count);
-    global my_event: event();
-
-    # Event Handler Definitions
-    event my_event(s: string, c: count)
-        {
-        print "my event", s, c;
-        }
-
-    event my_event(c: count)
-        {
-        print "my event", c;
-        }
-
-    event my_event()
-        {
-        print "my event";
-        }
-
-By using alternate event prototypes, handlers are allowed to consume a
-subset of the full argument list as given by the first prototype
-declaration.  It also even allows arguments to be ordered differently
-from the canonical prototype.
-
-To use :zeek:attr:`&default` on event arguments, it must appear on the
-first, canonical prototype.
-
-Employing its static analysis capabilities, Zeek will warn if it cannot
-determine that an event will ever be triggered. In case the warning is not
-appropriate (e.g., the event might be triggered remotely via broker),
-:zeek:attr:`&is_used` can be applied to suppress the warning.
 
 .. zeek:native-type:: hook
 
@@ -1983,26 +826,148 @@ Hooks are also allowed to have multiple/alternate prototype declarations,
 just like an :zeek:see:`event`.
 
 
-.. zeek:native-type:: file
+.. zeek:native-type:: int
 
-file
-----
+int
+---
 
-Zeek supports writing to files, but not reading from them (to read from
-files see the :doc:`/frameworks/input`).  Files
-can be opened using either the :zeek:id:`open` or :zeek:id:`open_for_append`
-built-in functions, and closed using the :zeek:id:`close` built-in
-function.  For example, declare, open, and write to a file and finally
-close it like:
+A numeric type representing a 64-bit signed integer.  An ``int`` constant
+is a string of digits preceded by a ``+`` or ``-`` sign, e.g.
+``-42`` or ``+5`` (the ``+`` sign is optional but see note about type
+inferencing below).  An ``int`` constant can also be written in
+hexadecimal notation (in which case ``0x`` must be between the sign and
+the hex digits), e.g. ``-0xFF`` or ``+0xabc123``.
 
-.. code-block:: zeek
+The ``int`` type supports the following operators:  arithmetic
+operators (``+``, ``-``, ``*``, ``/``, ``%``), comparison operators
+(``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), assignment operators
+(``=``, ``+=``, ``-=``), pre-increment (``++``), pre-decrement
+(``--``), unary plus and minus (``+``, ``-``), absolute value
+(e.g., ``|-3|`` is 3, but the result type is :zeek:type:`count`), and
+bitwise shift operations (``<<``, ``>>``).
 
-    local f = open("myfile");
-    print f, "hello, world";
-    close(f);
+When using type inferencing, use care so that the
+intended type is inferred, e.g. ``local size_difference = 0`` will
+infer :zeek:type:`count`, while ``local size_difference = +0``
+will infer ``int``.
 
-Writing to files like this for logging usually isn't recommended, for better
-logging support see :doc:`/frameworks/logging`.
+For signed-integer arithmetic involving ``int`` types that cause overflows
+(results that exceed the numeric limits of representable values in either
+direction), Zeek's behavior is generally undefined  and one should not rely on
+any observed behavior being consistent across compilers, platforms, time, etc.
+The reason for this is that the C++ standard also deems this as undefined
+behavior and Zeek does not currently attempt to detect such overflows within
+its underlying C++ implementation (some limited cases may try to statically
+determine at parse-time that an overflow will definitely occur and reject them
+an error, but don't rely on that).
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`bool`
+     - Relational operator
+     - ``foo != 0``
+
+   * - :zeek:see:`count`
+     - Absolute value operator
+     - ``|foo|``
+
+   * - :zeek:see:`count`
+     - :zeek:see:`int_to_count` BIF
+     - ``int_to_count(42)``
+
+   * - :zeek:see:`double`
+     - :zeek:see:`int_to_double` BIF
+     - ``int_to_double(foo)``
+
+   * - :zeek:see:`double`
+     - Addition operator
+     - ``foo + 0.0``
+
+   * - :zeek:see:`double`
+     - Division operator
+     - ``foo / 1.0``
+
+   * - :zeek:see:`double`
+     - Multiplication operator
+     - ``foo * 1.0``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(-10)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", 0)``
+
+
+.. zeek:native-type:: interval
+
+interval
+--------
+
+A temporal type representing a relative time.  An ``interval``
+constant can be written as a numeric constant followed by a time
+unit where the time unit is one of ``usec``, ``msec``, ``sec``, ``min``,
+``hr``, or ``day`` which respectively represent microseconds, milliseconds,
+seconds, minutes, hours, and days.  Whitespace between the numeric
+constant and time unit is optional.  Appending the letter ``s`` to the
+time unit in order to pluralize it is also optional (to no semantic
+effect).  Examples of ``interval`` constants are ``3.5 min`` and
+``3.5mins``.  An ``interval`` can also be negated, for example
+``-12 hr`` represents "twelve hours in the past".
+
+Intervals support addition and subtraction, the comparison operators
+(``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=``), the assignment
+operators (``=``, ``+=``, ``-=``), and unary plus and minus (``+``, ``-``).
+
+Intervals also support division (in which case the result is a
+:zeek:type:`double` value).  An ``interval`` can be multiplied or divided
+by an arithmetic type (``count``, ``int``, or ``double``) to produce
+an ``interval`` value.  The absolute value of an ``interval`` is a
+``double`` value equal to the number of seconds in the ``interval``
+(e.g., ``|-1 min|`` is 60.0).
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`double`
+     - :zeek:see:`interval_to_double` BIF
+     - ``interval_to_double(5mins)``
+
+   * - :zeek:see:`double`
+     - Absolute value operator
+     - ``|foo|``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+   * - :zeek:see:`time`
+     - Addition operator
+     - ``5 mins + start_time``
+
+   * - :zeek:see:`time`
+     - Subtraction operator
+     - ``start_time - 60 secs``
 
 
 .. zeek:native-type:: opaque
@@ -2068,19 +1033,1070 @@ add an entire new type to the scripting language.
               hll_cardinality_add bloomfilter_basic_init
 
 
-.. zeek:native-type:: any
+.. zeek:native-type:: pattern
 
-any
+pattern
+-------
+
+A type representing regular-expression patterns that can be used for fast
+text-searching operations.  Pattern constants are created by enclosing text
+within forward slashes (``/``) and support a large subset of the `flex lexical
+analyzer <http://westes.github.io/flex/manual/Patterns.html>`_ syntax.  As in
+other implementations, patterns consist of ordinary and special characters.
+Patterns such as ``/a/`` or ``/A0123/`` match that specific character byte or
+character sequence, case-sensitively. Special characters and modifiers customize
+matching, as follows:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Syntax
+    - Meaning
+
+  * - ``^``
+    - Matches the beginning of the input.
+
+  * - ``$``
+    - Matches the end of the input.
+
+  * - ``.``
+    - Matches any character except newline (but see the ``(?s:`` and ``/s`` modifiers).
+
+  * - ``<expr>*``
+    - Matches zero or more instances of ``expr``.
+
+  * - ``<expr>+``
+    - Matches one or more instances of ``expr``.
+
+  * - ``<expr>?``
+    - Matches zero or one instance of ``expr``.
+
+  * - ``<expr>{n}``
+    - Matches ``expr`` ``n`` times, where ``n`` is a non-negative integer.
+
+  * - ``<expr>{n,}``
+    - Matches ``expr`` ``n`` or more times, where ``n`` is a non-negative integer.
+
+  * - ``<expr>{n,m}``
+    - Matches ``expr`` between ``n`` and ``m`` times, inclusively, where ``n``
+      and ``m`` are non-negative integers and ``m >= n``.
+
+  * - ``<expr1>|<expr2>``
+    - Matches either ``expr1`` or ``expr2``.
+
+  * - ``(<expr>)``
+    - Groups the contained expression to form a building-block of a more complex
+      one.
+
+  * - ``"<chars>"``
+    - Matches literal strings, without the quotation marks. These always match
+      as given, even if case-insensitivity is active.
+
+  * - ``[<chars>]``
+    - Defines a character class, matching any of the contained characters.
+
+  * - ``[^<chars>]``
+    - Defines a negated character class, matching any but the contained
+      characters.
+
+  * - ``<char1>-<char2>``
+    - Inside a character class this specifies a range, matching any character
+      between ``<char1>`` and ``<char2>``, inclusively. Outside a character
+      class it matches the literal string.
+
+  * - ``(?i:<expr>)``
+    - Matches the expression case-insensitively.
+
+  * - ``(?s:<expr>)``
+    - Treats the input as a single line: the ``.`` character also matches
+      newlines.
+
+Zeek supports the following pre-defined character classes:
+
+.. list-table::
+  :header-rows: 1
+  :widths: 20 20 60
+
+  * - Shorthand
+    - Equivalent to
+    - Meaning
+
+  * - ``[:alnum:]``
+    - ``[A-Za-z0-9]``
+    - Upper- and lowercase letters plus digits.
+
+  * - ``[:alpha:]``
+    - ``[A-Za-z]``
+    - Upper- and lowercase letters.
+
+  * - ``[:blank:]``
+    - ``[ \t]``
+    - The space or tab character.
+
+  * - ``[:cntrl:]``
+    -
+    - Non-printable characters, a.k.a. control characters. See
+      `iscntrl() <https://cplusplus.com/reference/cctype/iscntrl/>`_ for details.
+
+  * - ``[:digit:]``
+    - ``[0-9]``
+    - Digits.
+
+  * - ``[:graph:]``
+    - ``[^ [:cntrl:]]``
+    - Characters with graphic representation: everything other than space
+      and control characters.
+
+  * - ``[:print:]``
+    - ``[^[:cntrl:]]``
+    - Printable characters: those with  graphic representation, plus the space character.
+
+  * - ``[:punct:]``
+    -
+    - Punctuation: any characters with graphic representation that are not alphanumeric.
+
+  * - ``[:space:]``
+    - ``[ \t\n\r\f\v]``
+    - Whitespace characters.
+
+  * - ``[:xdigit:]``
+    - ``[A-Fa-f0-9]``
+    - Hexadecimal characters.
+
+  * - ``[:lower:]``
+    - ``[a-z]``
+    - Lowercase letters.
+
+  * - ``[:upper:]``
+    - ``[A-Z]``
+    - Uppercase letters.
+
+To match special characters, escape them with a backslash (``\``).
+
+Zeek also supports the following pattern-level operators and modifiers:
+
+.. list-table::
+  :header-rows: 1
+
+  * - Example
+    - Meaning
+
+  * - ``/<expr1>/ | /<expr2>/``
+    - Succeeds when either pattern matches the input.
+
+  * - ``/<expr1>/ & /<expr2>/``
+    - Succeeds when the concatenation of both patterns matches the input. Note
+      that this differs from a logical "AND"; ordering matters.
+
+  * - ``/<expr>/i``
+    - Matches the expression case-insensitively, like ``(?i:<expr>)``. Use the
+      latter when you need it to apply to only a part of a larger expression.
+
+  * - ``/<expr>/s``
+    - Treats the input as a single line, like ``(?s:<expr>)``. Use the
+      latter when you need it to apply to only a part of a larger expression.
+
+The speed of regular expression matching does not depend on the complexity or
+size of the patterns.
+
+Patterns support two types of matching, exact and embedded.
+In exact matching the ``==`` equality relational operator is used
+with one ``pattern`` operand and one :zeek:type:`string`
+operand (order of operands does not matter) to check whether the full
+string exactly matches the pattern.  In exact matching, the ``^``
+beginning-of-line and ``$`` end-of-line anchors are redundant since
+the pattern is implicitly anchored to the beginning and end of the
+line to facilitate an exact match.  For example:
+
+.. code-block:: zeek
+
+    /foo|bar/ == "foo"
+
+yields true, while:
+
+.. code-block:: zeek
+
+    /foo|bar/ == "foobar"
+
+yields false.  The ``!=`` operator would yield the negation of ``==``.
+
+In embedded matching the ``in`` operator is used with one
+``pattern`` operand (which must be on the left-hand side) and
+one :zeek:type:`string` operand, but tests whether the pattern
+appears anywhere within the given string.  For example:
+
+.. code-block:: zeek
+
+    /foo|bar/ in "foobar"
+
+yields true, while:
+
+.. code-block:: zeek
+
+    /^oob/ in "foobar"
+
+is false since ``"oob"`` does not appear at the start of ``"foobar"``.  The
+``!in`` operator would yield the negation of ``in``.
+
+Additional examples:
+
+- ``/foo+bar/`` matches ``"foobar"`` and ``"fooooobar"``, but not ``"fobar"``.
+- ``/foo*bar/`` matches ``"fobar"``, ``"foobar"``, and ``"fooooobar"``.
+- ``/foo?bar/`` matches ``"fobar"`` and ``"foobar"``, but not ``"fooooobar"``.
+- ``/foo[b-d]ar/`` matches ``"foobar"``, ``"foocar"``, and ``"foodar"``.
+- ``/foo/ | /bar/ in "foobar"`` yields true.
+- ``/foo/ & /bar/ in "foobar"`` yields true, since ``/(foo)(bar)/`` appears in ``"foobar"``.
+- ``/foo|bar/`` matches ``"foo"`` and ``"bar"``.
+- ``/fo(o|b)ar/`` matches ``"fooar"`` and ``"fobar"``, but not ``"foo"`` or ``"bar"``.
+- ``/foo|bar/i`` matches ``"foo"``, ``"Foo"``, ``"BaR"``, etc.
+- ``/foo|(?i:bar)/`` matches ``"foo"`` and ``"BaR"``, but *not* ``"Foo"``.
+- ``/"foo"/i`` matches ``"foo"``, but *not* ``"Foo"``.
+- ``/foo.bar/`` doesn't match ``"foo\nbar"``, while ``/foo.bar/s`` does.
+
+The ``i`` and ``s`` modifiers can also be combined in a single pattern
+such as ``/foo/is`` or ``/bar/si``. In this case, both case-insensitivity
+and single-line mode will apply to the pattern.
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+
+.. zeek:native-type:: port
+
+port
+----
+
+A type representing transport-level port numbers (besides TCP and
+UDP ports, there is a concept of an ICMP ``port`` where the source
+port is the ICMP message type and the destination port the ICMP
+message code).  A ``port`` constant is written as an unsigned integer
+followed by one of ``/tcp``, ``/udp``, ``/icmp``, or ``/unknown``.
+
+Ports support the comparison operators (``==``, ``!=``, ``<``, ``<=``,
+``>``, ``>=``).  When comparing order across transport-level protocols,
+``unknown`` < ``tcp`` < ``udp`` < ``icmp``, for example ``65535/tcp``
+is smaller than ``0/udp``.
+
+Note that you can obtain the transport-level protocol type of a ``port``
+with the :zeek:id:`get_port_transport_proto` built-in function, and
+the numeric value of a ``port`` with the :zeek:id:`port_to_count`
+built-in function.
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`count`
+     - :zeek:see:`port_to_count` BIF
+     - ``port_to_count(53/udp)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+
+.. zeek:native-type:: record
+
+record
+------
+
+A ``record`` is a collection of values.  Each value has a field name
+and a type.  Values do not need to have the same type and the types
+have no restrictions.  Field names must follow the same syntax as
+regular variable names (except that field names are allowed to be the
+same as local or global variables).  An example record type
+definition:
+
+.. code-block:: zeek
+
+    type MyRecordType: record {
+        c: count;
+        s: string &optional;
+    };
+
+Records can be initialized or assigned as a whole in three different ways.
+When assigning a whole record value, all fields that are not
+:zeek:attr:`&optional` or have a :zeek:attr:`&default` attribute must
+be specified.  First, there's a constructor syntax:
+
+.. code-block:: zeek
+
+    local r: MyRecordType = record($c = 7);
+
+And the constructor can be explicitly named by type, too, which
+is arguably more readable:
+
+.. code-block:: zeek
+
+    local r = MyRecordType($c = 42);
+
+And the third way is like this:
+
+.. code-block:: zeek
+
+    local r: MyRecordType = [$c = 13, $s = "thirteen"];
+
+Access to a record field uses the dollar sign (``$``) operator, and
+record fields can be assigned with this:
+
+.. code-block:: zeek
+
+    local r: MyRecordType;
+    r$c = 13;
+
+To test if a field that is :zeek:attr:`&optional` has been assigned a
+value, use the ``?$`` operator (it returns a :zeek:type:`bool` value of
+``T`` if the field has been assigned a value, or ``F`` if not):
+
+.. code-block:: zeek
+
+    if ( r ?$ s )
+        ...
+
+
+.. zeek:native-type:: set
+
+set
 ---
 
-Used to bypass strong typing.  For example, a function can take an
-argument of type ``any`` when it may be of different types.
-The only operation allowed on a variable of type ``any`` is assignment.
+A set is like a :zeek:type:`table`, but it is a collection of indices
+that do not map to any yield value.
 
-Note that users aren't expected to use this type.  It's provided mainly
-for use by some built-in functions and scripts included with Zeek. For
-example, passing a vector into a ``.bif`` function is best accomplished by
-taking :zeek:type:`any` as an argument and casting it to a vector.
+Declaration and initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sets are declared with the syntax::
+
+    set [ type^+ ]
+
+where ``type^+`` is one or more types separated by commas.  The index type
+cannot be any of the following types: :zeek:type:`file`, :zeek:type:`opaque`,
+:zeek:type:`any`.
+
+Sets can be initialized by listing elements enclosed by curly braces:
+
+.. code-block:: zeek
+
+    global s: set[port] = { 21/tcp, 23/tcp, 80/tcp, 443/tcp };
+    global s2: set[port, string] = { [21/tcp, "ftp"], [23/tcp, "telnet"] };
+
+A set constructor (equivalent to above example) can also be used to
+create a set:
+
+.. code-block:: zeek
+
+    global s3 = set(21/tcp, 23/tcp, 80/tcp, 443/tcp);
+
+Set constructors can also be explicitly named by a type, which is
+useful when a more complex index type could otherwise be
+ambiguous:
+
+.. code-block:: zeek
+
+    type MyRec: record {
+        a: count &optional;
+        b: count;
+    };
+
+    type MySet: set[MyRec];
+
+    global s4 = MySet([$b=1], [$b=2]);
+
+Insertion and removal
+^^^^^^^^^^^^^^^^^^^^^
+
+Elements are added with :zeek:keyword:`add`:
+
+.. code-block:: zeek
+
+    add s[22/tcp];
+
+Nothing happens if the element with value ``22/tcp`` was already present in
+the set.
+
+Elements are removed with :zeek:keyword:`delete`:
+
+.. code-block:: zeek
+
+    delete s[21/tcp];
+
+.. versionadded:: 7.0
+
+Removing all set elements can be done with the :zeek:keyword:`delete`, too:
+
+.. code-block:: zeek
+
+    delete s;
+
+
+Nothing happens if the element with value ``21/tcp`` isn't present in
+the set.
+
+Sets behave like tables when it comes to complex member types: indexing happens
+via hashing at access time. See :zeek:type:`table` for details.
+
+Lookup and iteration
+^^^^^^^^^^^^^^^^^^^^
+
+Set membership is tested with ``in`` or ``!in``:
+
+.. code-block:: zeek
+
+    if ( 21/tcp in s )
+        ...
+
+    if ( [21/tcp, "ftp"] !in s2 )
+        ...
+
+See the :zeek:keyword:`for` statement for info on how to iterate over
+the elements in a set.
+
+Set operations
+^^^^^^^^^^^^^^
+
+You can compute the union, intersection, or difference of two sets
+using the ``|``, ``&``, and ``-`` operators.
+
+.. note::
+
+   Use ``+=`` instead of ``|`` to grow an existing set. That is,
+   say ``s += new_s`` instead of ``s = s | new_s``. The latter requires
+   copying both input sets and thus quickly deteriorates runtime. See
+   :ref:`assignment-operators` for details.
+
+You can compare sets for equality (they have exactly the same elements)
+using ``==``.  The ``<`` operator returns ``T`` if the lefthand operand
+is a proper subset of the righthand operand.  Similarly, ``<=``
+returns ``T`` if the lefthand operator is a subset (not necessarily proper,
+i.e., it may be equal to the righthand operand).  The operators ``!=``,
+``>`` and ``>=`` provide the expected complementary operations.
+
+Additional operations
+^^^^^^^^^^^^^^^^^^^^^
+
+The number of elements in a set can be obtained by placing the set
+identifier between vertical pipe characters:
+
+.. code-block:: zeek
+
+    |s|
+
+
+The :ref:`table's special lookups <table-special-lookups>` extend to the
+set ``in`` operator: Using ``in`` with ``addr`` and ``set[subnet]``
+or ``string`` and ``set[pattern]`` yields ``T`` if any of the subnets
+or patterns the set holds contain or match the given value.
+
+
+.. zeek:native-type:: string
+
+string
+------
+
+A type used to hold bytes which represent text and also can hold
+arbitrary binary data.
+
+String constants are created by enclosing text within a pair of double
+quotes (``"``).  A string constant cannot span multiple lines in a Zeek script.
+The backslash character (\\) introduces escape sequences. Zeek recognizes
+the following escape sequences: ``\\``, ``\n``, ``\t``, ``\v``, ``\b``,
+``\r``, ``\f``, ``\a``, ``\ooo`` (where each 'o' is an octal digit),
+``\xhh`` (where each 'h' is a hexadecimal digit).  If Zeek does not
+recognize an escape sequence, Zeek will ignore the backslash
+(``\\g`` becomes ``g``).
+
+Strings support concatenation (``+``), and assignment (``=``, ``+=``).
+Strings also support the comparison operators (``==``, ``!=``, ``<``,
+``<=``, ``>``, ``>=``).  The number of characters in a string can be
+found by enclosing the string within pipe characters (e.g., ``|"abc"|``
+is 3).  Substring searching can be performed using the ``in`` or ``!in``
+operators (e.g., ``"bar" in "foobar"`` yields true).
+
+The subscript operator can extract a substring of a string.  To do this,
+specify the starting index to extract (if the starting index is omitted,
+then zero is assumed), followed by a colon and index
+one past the last character to extract (if the last index is omitted,
+then the extracted substring will go to the end of the original string).
+However, if both the colon and last index are omitted, then a string of
+length one is extracted.  String indexing is zero-based, but an index
+of -1 refers to the last character in the string, and -2 refers to the
+second-to-last character, etc.  Here are a few examples:
+
+.. code-block:: zeek
+
+    local orig = "0123456789";
+    local second_char = orig[1];         # "1"
+    local last_char = orig[-1];          # "9"
+    local first_two_chars = orig[:2];    # "01"
+    local last_two_chars = orig[8:];     # "89"
+    local no_first_and_last = orig[1:9]; # "12345678"
+    local no_first = orig[1:];           # "123456789"
+    local no_last = orig[:-1];           # "012345678"
+    local copy_orig = orig[:];           # "0123456789"
+
+Note that the subscript operator cannot be used to modify a string (i.e.,
+it cannot be on the left side of an assignment operator).
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`to_addr` BIF
+     - ``to_addr("127.0.0.1")``
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`raw_bytes_to_v4_addr` BIF
+     - ``raw_bytes_to_v4_addr("\x7f\x0\x0\x1")``
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`raw_bytes_to_v6_addr` BIF
+     - ``raw_bytes_to_v6_addr("\xda\xda\xbe\xef\x00\x00AAAAAAAAAA")``
+
+   * - :zeek:see:`bool`
+     - Relational operator
+     - ``foo != ""``
+
+   * - :zeek:see:`count`
+     - :zeek:see:`to_count` BIF
+     - ``to_count("42")``
+
+   * - :zeek:see:`count`
+     - :zeek:see:`bytestring_to_count` BIF
+     - ``bytestring_to_count("\xde\xad\xbe\xef")``
+
+   * - :zeek:see:`double`
+     - :zeek:see:`to_double` BIF
+     - ``to_double("0.001")``
+
+   * - :zeek:see:`double`
+     - :zeek:see:`bytestring_to_double` BIF
+     - ``bytestring_to_double("\x43\x26\x4f\xa0\x71\x30\x80\x00")``
+
+   * - :zeek:see:`int`
+     - :zeek:see:`to_int` BIF
+     - ``to_int("-42")``
+
+   * - :zeek:see:`pattern`
+     - :zeek:see:`string_to_pattern` BIF
+     - ``string_to_pattern("rsh .*", F)``
+
+   * - :zeek:see:`port`
+     - :zeek:see:`to_port` BIF
+     - ``to_port("53/udp")``
+
+   * - :zeek:see:`subnet`
+     - :zeek:see:`to_subnet` BIF
+     - ``to_subnet("::1/128")``
+
+
+.. zeek:native-type:: subnet
+
+subnet
+------
+
+A type representing a block of IP addresses in CIDR notation.  A
+``subnet`` constant is written as an :zeek:type:`addr` followed by a
+slash (``/``) and then the network prefix size specified as a decimal
+number.  For example, ``192.168.0.0/16`` or ``[fe80::]/64``.
+
+Subnets can be compared for equality (``==``, ``!=``).  An
+:zeek:type:`addr` can be checked for inclusion in a subnet using
+the ``in`` or ``!in`` operators.
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`addr`
+     - :zeek:see:`subnet_to_addr` BIF
+     - ``subnet_to_addr([::1]/120)``
+
+   * - :zeek:see:`double`
+     - Absolute value operator
+     - ``|1.2.3.0/24|``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+
+.. zeek:native-type:: table
+
+table
+-----
+
+An associate array that maps from one set of values to another.  The
+values being mapped are termed the *index* or *indices* and the
+result of the mapping is called the *yield*.  Indexing into tables
+is very efficient, and internally it is just a single hash table
+lookup.
+
+Declaration and initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The table declaration syntax is::
+
+    table [ type^+ ] of type
+
+where ``type^+`` is one or more types, separated by commas.  The
+index type cannot be any of the following types:  :zeek:type:`file`,
+:zeek:type:`opaque`, :zeek:type:`any`.
+
+Here is an example of declaring a table indexed by :zeek:type:`count` values
+and yielding :zeek:type:`string` values:
+
+.. code-block:: zeek
+
+    global a: table[count] of string;
+
+The yield type can also be more complex:
+
+.. code-block:: zeek
+
+    global a: table[count] of table[addr, port] of string;
+
+which declares a table indexed by :zeek:type:`count` and yielding
+another ``table`` which is indexed by an :zeek:type:`addr`
+and :zeek:type:`port` to yield a :zeek:type:`string`.
+
+One way to initialize a table is by enclosing a set of initializers within
+braces, for example:
+
+.. code-block:: zeek
+
+    global t: table[count] of string = {
+        [11] = "eleven",
+        [5] = "five",
+    };
+
+A table constructor can also be used to create a table:
+
+.. code-block:: zeek
+
+    global t2 = table(
+        [192.168.0.2, 22/tcp] = "ssh",
+        [192.168.0.3, 80/tcp] = "http"
+    );
+
+Table constructors can also be explicitly named by a type, which is
+useful when a more complex index type could otherwise be
+ambiguous:
+
+.. code-block:: zeek
+
+    type MyRec: record {
+        a: count &optional;
+        b: count;
+    };
+
+    type MyTable: table[MyRec] of string;
+
+    global t3 = MyTable([[$b=5]] = "b5", [[$b=7]] = "b7");
+
+Insertion and removal
+^^^^^^^^^^^^^^^^^^^^^
+
+Add or overwrite individual table elements by assignment:
+
+.. code-block:: zeek
+
+    t[13] = "thirteen";
+
+Remove individual table elements with :zeek:keyword:`delete`:
+
+.. code-block:: zeek
+
+    delete t[13];
+
+Nothing happens if the element with index value ``13`` isn't present in
+the table.
+
+.. versionadded:: 7.0
+
+Removing all table elements can be done with the :zeek:keyword:`delete`, too:
+
+.. code-block:: zeek
+
+    delete t;
+
+.. note::
+
+   Indexing with complex types (such as records or sets) happens via hashing of
+   the provided index value at the time of table access. Subsequent
+   modifications to the index value do not affect the table. For example:
+
+   .. code-block:: zeek
+
+       local t: table[set[port]] of string = table();
+       local s: set[port] = { 80/tcp, 8000/tcp };
+
+       t[s] = "http";
+
+       add s[8080/tcp];
+
+       print t[set(80/tcp, 8000/tcp)]; # prints "http"
+       print t[s]; # error: no such index
+
+Lookup and iteration
+^^^^^^^^^^^^^^^^^^^^
+
+Accessing table elements is provided by enclosing index values within
+square brackets (``[]``), for example:
+
+.. code-block:: zeek
+
+    print t[11];
+
+Membership can be tested with ``in`` or ``!in``:
+
+.. code-block:: zeek
+
+    if ( 13 in t )
+        ...
+    if ( [192.168.0.2, 22/tcp] in t2 )
+        ...
+
+See the :zeek:keyword:`for` statement for information on how to iterate over
+the elements in a table.
+
+.. _table-special-lookups:
+
+Special lookups
+^^^^^^^^^^^^^^^
+
+Zeek supports two forms of special table lookups. The first is for tables
+with an index type of :zeek:type:`subnet`. When indexed with an
+:zeek:type:`addr` value, these tables produce the yield associated with
+the closest (narrowest) subnet. For example:
+
+.. code-block:: zeek
+
+    global st: table[subnet] of count;
+    st[1.2.3.4/24] = 5;
+    st[1.2.3.4/29] = 9;
+    print st[1.2.3.4], st[1.2.3.251];
+
+will print ``9, 5``. Attempting to look up an address that doesn't match
+any of the subnet indices results in a run-time error.
+
+.. versionadded:: 6.2
+
+In addition, :zeek:type:`string` lookups for tables that have an index type of
+:zeek:type:`pattern` return a (possibly empty)
+:zeek:type:`vector` containing the values corresponding to each of the
+patterns matching the given string. The order of entries in the resulting
+vector is non-deterministic. For example:
+
+.. code-block:: zeek
+
+    global pt: table[pattern] of count;
+    pt[/foo/] = 1;
+    pt[/bar/] = 2;
+    pt[/(foo|bletch)/] = 3;
+    print pt["foo"];
+
+will print either ``[1, 3]`` or ``[3, 1]``.
+Indexing with a string that matches only one pattern returns a
+one-element :zeek:type:`vector`, and indexing with a string that no
+pattern matches returns an empty :zeek:type:`vector`.
+
+Note that these pattern matches are all *exact*: the pattern must match
+the entire string. If you want the pattern to match if it's *anywhere*
+in the string, you can use the usual regular expression operators such
+as ``/.*foo.*/``.
+
+.. note::
+
+   The :zeek:attr:`&default` attribute is ignored for this type of lookup.
+   If none of the patterns matches a given string, the result will be an empty
+   :zeek:type:`vector`, regardless of :zeek:attr:`&default`. Neither is the
+   :zeek:attr:`&default_insert` attribute used. It's not an error to have
+   either of these attributes, however. They'll still be in effect when
+   indexing with :zeek:type:`pattern` values.
+
+.. note::
+
+   Internally, Zeek matches a table's patterns in parallel using a lazily
+   constructed deterministic finite automaton (DFA). This means that the nature
+   of patterns in the table *and* the strings looked up in it can lead to
+   varying degrees of runtime memory growth.
+
+   Users are advised to test scripts using this feature with a wide range of
+   input data. Script developers can reset the DFA's state by removal or
+   addition of a single pattern. For observability, the
+   :zeek:see:`table_pattern_matcher_stats` function returns a
+   :zeek:see:`MatcherStats` record with details about a table's DFA state.
+
+
+Additional operations
+^^^^^^^^^^^^^^^^^^^^^
+
+The number of elements in a table can be obtained by placing the table
+identifier between vertical pipe characters:
+
+.. code-block:: zeek
+
+    |t|
+
+It's common to extend the behavior of table lookup and membership lifetimes
+via :doc:`attributes <attributes>` but note that it's also a :ref:`confusing
+pitfall <attribute-propagation-pitfalls>` that attributes bind to initial
+*values* instead of *type* or *variable* and do not currently propagate to
+any new *value* subsequently re-assigned to the table *variable*.
+
+
+.. zeek:native-type:: time
+
+time
+----
+
+A temporal type representing an absolute time.  There is currently
+no way to specify a ``time`` constant, but one can use the
+:zeek:id:`double_to_time`, :zeek:id:`current_time`, or :zeek:id:`network_time`
+built-in functions to assign a value to a ``time``-typed variable.
+
+Time values support the comparison operators (``==``, ``!=``, ``<``,
+``<=``, ``>``, ``>=``).  A ``time`` value can be subtracted from
+another ``time`` value to produce an :zeek:type:`interval` value.  An
+``interval`` value can be added to, or subtracted from, a ``time`` value
+to produce a ``time`` value.  The absolute value of a ``time`` value is
+a :zeek:type:`double` with the same numeric value.
+
+Type Conversions
+^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - To
+     - Description
+     - Example
+
+   * - :zeek:see:`double`
+     - :zeek:see:`time_to_double` BIF
+     - ``time_to_double(foo)``
+
+   * - :zeek:see:`double`
+     - Absolute value operator
+     - ``|foo|``
+
+   * - :zeek:see:`interval`
+     - Subtraction operator
+     - ``end_time - start_time``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`cat` BIF
+     - ``cat(foo)``
+
+   * - :zeek:see:`string`
+     - :zeek:see:`fmt` BIF for additional control over the formatting
+     - ``fmt("%s", foo)``
+
+
+.. zeek:native-type:: vector
+
+vector
+------
+
+A vector is like a :zeek:type:`table`, except its indices are non-negative
+integers, starting from zero.
+
+Declaration and initialization
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A vector is declared as follows:
+
+.. code-block:: zeek
+
+    global v: vector of string;
+
+Vectors can be initialized with the vector constructor:
+
+.. code-block:: zeek
+
+    local v = vector("one", "two", "three");
+
+Vector constructors can also be explicitly named by a type, which
+is useful for when a more complex yield type could otherwise be
+ambiguous.
+
+.. code-block:: zeek
+
+    type MyRec: record {
+        a: count &optional;
+        b: count;
+    };
+
+    type MyVec: vector of MyRec;
+
+    global v2 = MyVec([$b=1], [$b=2], [$b=3]);
+
+Insertion
+^^^^^^^^^
+
+An element can be added to a vector by assigning the value (a value
+that already exists at that index will be overwritten):
+
+.. code-block:: zeek
+
+    v[3] = "four";
+
+A range of elements can be *replaced* by assigning to a vector slice:
+
+.. code-block:: zeek
+
+    # Note that the number of elements in the slice being replaced
+    # may differ from the number of elements being inserted.  This
+    # causes the vector to grow or shrink accordingly.
+    v[0:2] = vector("five", "six", "seven");
+
+A particularly common operation on a vector is to append an element
+to its end.  You can do so using:
+
+.. code-block:: zeek
+
+    v += e;
+
+where if *e*'s type is ``X``, *v*'s type is ``vector of X``.  Note that
+this expression is equivalent to:
+
+.. code-block:: zeek
+
+    v[|v|] = e;
+
+In addition, if *e*'s type is ``vector of X`` and so is *v*'s type, then
+
+.. code-block:: zeek
+
+    v += e;
+
+instead appends each element of *e* to *v*.  (In this case the expression
+is *not* equivalent to ``v[|v|] = e``, which will generate an error because
+*e*'s type is not compatible with ``X``.)
+
+Lookup and iteration
+^^^^^^^^^^^^^^^^^^^^
+
+Access individual vector elements by enclosing index values within
+square brackets (``[]``), for example:
+
+.. code-block:: zeek
+
+    print v[2];
+
+Access a slice of vector elements by enclosing a range of indices,
+delimited by a colon, within square brackets (``[x:y]``).  For example,
+this will print a vector containing the first and second elements:
+
+.. code-block:: zeek
+
+    print v[0:2];
+
+The slicing notation is the same as what is permitted by the
+:zeek:see:`string` substring extraction operations.
+
+The ``in`` operator can be used to check if a value has been assigned at a
+specified index value in the vector.  For example, if a vector has size 4,
+then the expression ``3 in v`` would yield true and ``4 in v`` would yield
+false.
+
+See the :zeek:keyword:`for` statement for info on how to iterate over
+the elements in a vector.
+
+.. versionadded:: 7.0
+
+The :zeek:keyword:`delete` statement can be used to delete all elements
+from a vector.
+
+Vectorized operations
+^^^^^^^^^^^^^^^^^^^^^
+
+Vectors of integral types (:zeek:type:`int` or :zeek:type:`count`) support the pre-increment
+(``++``) and pre-decrement operators (``--``), which will increment or
+decrement each element in the vector.
+
+Vectors of arithmetic types (:zeek:type:`int` or :zeek:type:`count`, or :zeek:type:`double`) can be
+operands of the arithmetic operators (``+``, ``-``, ``*``, ``/``, ``%``),
+but both operands must have the same number of elements (and the modulus
+operator ``%`` cannot be used if either operand is a ``vector of double``).
+The resulting vector contains the result of the operation applied to each
+of the elements in the operand vectors.
+
+Vectors of :zeek:type:`bool` can be operands of the logical "and" (``&&``) and logical
+"or" (``||``) operators (both operands must have the same number of elements).
+The resulting ``vector of bool`` is the logical "and" (or logical "or") of
+each element of the operand vectors.
+
+Vectors of :zeek:type:`count` can also be operands for the bitwise and/or/xor
+operators, ``&``, ``|`` and ``^``.
+
+Vectors of :zeek:type:`string` can be concatenated element-wise through
+the ``+`` operator, yielding a new ``vector of string`` containing the
+resulting values. Both operand vectors must be of the same length. A
+vector of type :zeek:type:`string` can also be paired with a scalar operand
+using any operator that supports string/scalar operations (i.e.,
+concatenation and comparisons). The resulting vector will contain the
+result of the operator applied to each of the elements.
+
+.. note::
+
+   As a quirk of the language, for a string vector ``v`` there is a
+   difference between ``v = v + "foo"`` and ``v += "foo"``: the former
+   extends each element, while the latter appends a new element to the
+   vector.)
+
+Additional operations
+^^^^^^^^^^^^^^^^^^^^^
+
+The size of a vector (this is one greater than the highest index value, and
+is normally equal to the number of elements in the vector) can be obtained
+by placing the vector identifier between vertical pipe characters:
+
+.. code-block:: zeek
+
+    |v|
 
 
 .. zeek:native-type:: void
