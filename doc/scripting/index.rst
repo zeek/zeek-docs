@@ -9,5 +9,6 @@ Introduction to Scripting
    basics
    usage
    event-groups
+   tracing-events
    optimization
    javascript
