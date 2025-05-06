@@ -308,7 +308,7 @@ the ``&log`` attribute.
 .. note::
 
    The :ref:`logging framework <framework-logging>` provides a separate
-   mechanism to exlude columns from logs by means of the ``exclude`` field
+   mechanism to exclude columns from logs by means of the ``exclude`` field
    on :zeek:see:`Log::Filter` instances.
 
 Examples:

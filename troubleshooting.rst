@@ -53,7 +53,7 @@ has it enabled while Fedora 38 does not. You're advised to verify the
 
 You can either build Zeek from source and pass the ``--enable-jemalloc`` flag
 (possibly with ``--with-jemalloc=/usr/local/`` for a custom build) to always
-use the jemalloc allocater (recommended), or set ``LD_PRELOAD`` as shown above.
+use the jemalloc allocator (recommended), or set ``LD_PRELOAD`` as shown above.
 Using ``LD_PRELOAD`` can be convenient if you're not
 in a position to rebuild Zeek or you're consuming upstream binary packages that
 did not use ``--enable-jemalloc``, or you want to use a custom ad-hoc/patched
@@ -381,7 +381,7 @@ The following provides an example of :file:`prof.log` content:
    1684828262.344351 TCP-States:Rst.                                    16      64              
    1684828262.344351 Connections expired due to inactivity: 2426
    1684828262.344351 Timers: current=47708 max=47896 lag=0.00s
-   1684828262.344351 DNS_Mgr: requests=1596 succesful=1596 failed=0 pending=0 cached_hosts=0 cached_addrs=1207
+   1684828262.344351 DNS_Mgr: requests=1596 successful=1596 failed=0 pending=0 cached_hosts=0 cached_addrs=1207
    1684828262.344351 Triggers: total=4900 pending=0
    1684828262.344351         ConnectionDeleteTimer = 905
    1684828262.344351         ConnectionInactivityTimer = 6759

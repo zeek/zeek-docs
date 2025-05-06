@@ -491,7 +491,7 @@ Compatibility
 Zeek 5.2 switched client/controller communication from Broker's native wire
 format to the newer `WebSocket data transport
 <https://docs.zeek.org/projects/broker/en/current/web-socket.html>`_, with
-``zeek-client`` 1.2.0 being the first version to exlusively use WebSockets.
+``zeek-client`` 1.2.0 being the first version to exclusively use WebSockets.
 This has a few implications:
 
 * Since Broker dedicates separate ports to the respective wire formats, the
@@ -659,7 +659,7 @@ Configuration of the Telemetry framework
 ----------------------------------------
 
 By default, the framework will enable Prometheus metrics exposition ports,
-including a service discovery endpoint on the mananger (refer to the
+including a service discovery endpoint on the manager (refer to the
 :ref:`Telemetry Framework <framework-telemetry>` for details), and
 auto-assign them for you. Specifically, the controller will enumerate ports
 starting from
