@@ -206,7 +206,7 @@ Events
 Hooks
 #####
 .. zeek:id:: LDAP::finalize_ldap
-   :source-code: base/protocols/ldap/main.zeek 386 405
+   :source-code: base/protocols/ldap/main.zeek 396 415
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

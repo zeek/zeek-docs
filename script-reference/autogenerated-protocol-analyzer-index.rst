@@ -6052,6 +6052,12 @@ Types
 
       .. zeek:enum:: LDAP::BindAuthType_BIND_AUTH_SASL LDAP::BindAuthType
 
+      .. zeek:enum:: LDAP::BindAuthType_SICILY_PACKAGE_DISCOVERY LDAP::BindAuthType
+
+      .. zeek:enum:: LDAP::BindAuthType_SICILY_NEGOTIATE LDAP::BindAuthType
+
+      .. zeek:enum:: LDAP::BindAuthType_SICILY_RESPONSE LDAP::BindAuthType
+
       .. zeek:enum:: LDAP::BindAuthType_Undef LDAP::BindAuthType
 
 
@@ -6196,7 +6202,7 @@ Events
    :param argument: Additional arguments this message includes.
 
 .. zeek:id:: LDAP::bind_request
-   :source-code: base/protocols/ldap/main.zeek 362 383
+   :source-code: base/protocols/ldap/main.zeek 362 393
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, message_id: :zeek:type:`int`, version: :zeek:type:`int`, name: :zeek:type:`string`, auth_type: :zeek:type:`LDAP::BindAuthType`, auth_info: :zeek:type:`string`)
 
