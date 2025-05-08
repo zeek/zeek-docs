@@ -24,7 +24,7 @@ to connect with the community.
    :maxdepth: 2
    :caption: Table of Contents
 
-   get-started
+   get-started/index
    about
    monitoring
    log-formats
