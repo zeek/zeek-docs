@@ -8,3 +8,4 @@ Get Started
    install
    quickstart
    cluster-setup
+   building-from-source
