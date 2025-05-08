@@ -40,9 +40,9 @@ development headers for libraries:
     * C/C++ compiler with C++17 support (GCC 8+ or Clang 9+)
     * CMake 3.15 or greater (https://www.cmake.org)
     * Flex (lexical analyzer generator) 2.6 or greater (https://github.com/westes/flex)
-    * Libpcap (http://www.tcpdump.org)
+    * Libpcap (https://www.tcpdump.org)
     * Make
-    * OpenSSL (http://www.openssl.org)
+    * OpenSSL (https://www.openssl.org)
     * Python 3.9 or greater (https://www.python.org/)
     * SWIG (https://www.swig.org)
     * Zlib (https://zlib.net/)
