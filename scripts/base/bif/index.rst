@@ -164,6 +164,10 @@ Package: base/bif
 
    Functions to probabilistically determine top-k elements.
 
+:doc:`/scripts/base/bif/storage.bif.zeek`
+
+   Functions related to general storage operations. These are not specific to async or sync.
+
 :doc:`/scripts/base/bif/storage-async.bif.zeek`
 
    Functions related to asynchronous storage operations.
