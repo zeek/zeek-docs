@@ -503,7 +503,7 @@ Head over to :ref:`cluster-pf-ring` for more details.
 .. toctree::
    :hidden:
 
-   cluster/pf_ring
+   ../cluster/pf_ring
 
 
 .. [#] Some Linux kernel versions between 3.10 and 4.7 might exhibit
