@@ -31,6 +31,7 @@ sections cover them in detail.
    notice
    packet-analysis
    signatures
+   storage
    sumstats
    supervisor
    telemetry
