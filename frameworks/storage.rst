@@ -186,3 +186,26 @@ opening and closing a backend <storage-opening-closing>`, but an additional poin
 be made about the :zeek:see:`Storage::backend_lost` event. This event is also raised when
 a connection is lost unexpectedly. This gives users information about connection failures,
 as well an opportunity to handle those failures by reconnecting.
+
+Notes for Built-in Backends
+===========================
+
+Redis
+-----
+
+- Redis server version 6.2.0 or later (or a third-party server implementing the equivalent
+  level of the Redis API) is required. This is due to some API features the backend uses
+  not being implemented until that version.
+
+SQLite
+------
+
+- The default batch of pragmas in :zeek:see:`Storage::Backend::SQLite::Options` set
+  ``journal_mode`` to ``WAL``. ``WAL`` mode does not work over network filesystems. If
+  this mode is used, the database file must be stored on the same computer as all of the
+  Zeek processes opening it. See the documentation in https://www.sqlite.org/wal.html for
+  more information.
+
+- Usage of in-memory databases (i.e. passing ``:memory:`` as the database path) will
+  result in data not being synced between nodes. Each process will open its own database
+  within that process's memory space.
