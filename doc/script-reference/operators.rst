@@ -202,7 +202,7 @@ For :zeek:type:`table` and :zeek:type:`set` values,
 each of the RHS elements are added to the
 table or set.  For :zeek:type:`vector`, the RHS elements are appended to
 the end of the vector.  For :zeek:type:`pattern` values, the pattern is
-modified to include the RHS pattern as an alterantive (regular expression ``|``
+modified to include the RHS pattern as an alternative (regular expression ``|``
 operator).
 
 The ``-=`` operator provides analogous functionality for :zeek:type:`table`

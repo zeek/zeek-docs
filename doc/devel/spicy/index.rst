@@ -45,7 +45,7 @@ finger;``.
 
 .. note::
 
-   This documentation focusses on writing *external* Spicy analyzers
+   This documentation focuses on writing *external* Spicy analyzers
    that you can load into Zeek at startup. Zeek also comes with the
    infrastructure to build Spicy analyzers directly into the
    executable itself, just like traditional built-in analyzers. We
