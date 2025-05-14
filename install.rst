@@ -294,7 +294,7 @@ To install these, you can use:
   Note: By default, Windows links against the standard libpcap library from
   vcpkg. This version of libpcap does not support packet capture on Windows,
   unlike other platforms. In order to capture packets from live interfaces on
-  Windows, you will need to link against the Npcap_ libary. This library is free
+  Windows, you will need to link against the Npcap_ library. This library is free
   for personal use, but requires a paid license for commercial use or
   redistribution. To link against Npcap, download the SDK from their website,
   unzip it, and then pass ``-DPCAP_ROOT_DIR="<path to npcap sdk>"`` to the
