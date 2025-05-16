@@ -1,5 +1,7 @@
 .. _framework-storage:
 
+.. versionadded:: 7.2
+
 =================
 Storage Framework
 =================
