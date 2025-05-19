@@ -18,3 +18,10 @@ Traces used in the examples of the docs.
 * get.trace
 
   That's the zeek/testing/btest/Traces/http/get.trace one.
+
+* ../get-started/quickstart.pcap
+
+  From curl commands:
+
+  curl -X GET http://zeek.org
+  curl -X WEIRD http://zeek.org
