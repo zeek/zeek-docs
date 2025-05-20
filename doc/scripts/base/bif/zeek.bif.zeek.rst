@@ -1471,7 +1471,7 @@ Functions
              keywords like **port** or **type**.
    
 
-   :param returns: A value of type t.
+   :param returns: A record with the result of the conversion, containing either a value or an error message.
    
    .. zeek:see:: to_json
 
