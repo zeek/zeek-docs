@@ -124,6 +124,9 @@ want to monitor traffic on):
 
      $ zeek -i en0 -C
 
+Root access is typically required to run commands which monitor a network
+device.
+
 In another terminal, create the same two HTTP requests we saw earlier via
 ``curl``:
 
@@ -249,7 +252,6 @@ Then return to the ZeekControl prompt and stop it:
 
      [ZeekControl] > stop
      stopping zeek ...
-     [ZeekControl] > exit
 
 And exit from ``zeekctl``:
 
