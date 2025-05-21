@@ -42,5 +42,5 @@ event zeek_init()
     });
 
     # Trigger the change handler, once.
-    Config::set_value("Debug::http_print_debugging", F);
+    Config::set_value("Debug::http_print_debugging", http_print_debugging);
     }
