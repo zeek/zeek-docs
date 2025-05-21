@@ -42,6 +42,6 @@ event zeek_init()
     Option::set_change_handler("Packages::community_id_enabled", package_change_handler);
     Option::set_change_handler("Packages::ja3_enabled", package_change_handler);
 
-    Config::set_value("Packages::community_id_enabled", F);
-    Config::set_value("Packages::ja3_enabled", F);
+    Config::set_value("Packages::community_id_enabled", community_id_enabled);
+    Config::set_value("Packages::ja3_enabled", ja3_enabled);
     }
