@@ -354,27 +354,10 @@ Types
 
       .. zeek:enum:: HTTP::URI_SQLI HTTP::Tags
 
-         (present if :doc:`/scripts/policy/protocols/http/detect-sqli.zeek` is loaded)
+         (present if :doc:`/scripts/policy/protocols/http/detect-sql-injection.zeek` is loaded)
 
 
          Indicator of a URI based SQL injection attack.
-
-      .. zeek:enum:: HTTP::POST_SQLI HTTP::Tags
-
-         (present if :doc:`/scripts/policy/protocols/http/detect-sqli.zeek` is loaded)
-
-
-         Indicator of client body based SQL injection attack.  This is
-         typically the body content of a POST request. Not implemented
-         yet.
-
-      .. zeek:enum:: HTTP::COOKIE_SQLI HTTP::Tags
-
-         (present if :doc:`/scripts/policy/protocols/http/detect-sqli.zeek` is loaded)
-
-
-         Indicator of a cookie based SQL injection attack. Not
-         implemented yet.
 
    Indicate a type of attack or compromise in the record to be logged.
 
