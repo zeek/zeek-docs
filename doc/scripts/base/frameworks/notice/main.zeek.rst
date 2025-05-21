@@ -692,7 +692,7 @@ Types
 
       .. zeek:enum:: HTTP::SQL_Injection_Attacker Notice::Type
 
-         (present if :doc:`/scripts/policy/protocols/http/detect-sqli.zeek` is loaded)
+         (present if :doc:`/scripts/policy/protocols/http/detect-sql-injection.zeek` is loaded)
 
 
          Indicates that a host performing SQL injection attacks was
@@ -700,7 +700,7 @@ Types
 
       .. zeek:enum:: HTTP::SQL_Injection_Victim Notice::Type
 
-         (present if :doc:`/scripts/policy/protocols/http/detect-sqli.zeek` is loaded)
+         (present if :doc:`/scripts/policy/protocols/http/detect-sql-injection.zeek` is loaded)
 
 
          Indicates that a host was seen to have SQL injection attacks

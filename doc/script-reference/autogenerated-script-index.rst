@@ -600,7 +600,7 @@
    policy/protocols/ftp/detect-bruteforcing.zeek </scripts/policy/protocols/ftp/detect-bruteforcing.zeek>
    policy/protocols/ftp/detect.zeek </scripts/policy/protocols/ftp/detect.zeek>
    policy/protocols/ftp/software.zeek </scripts/policy/protocols/ftp/software.zeek>
-   policy/protocols/http/detect-sqli.zeek </scripts/policy/protocols/http/detect-sqli.zeek>
+   policy/protocols/http/detect-sql-injection.zeek </scripts/policy/protocols/http/detect-sql-injection.zeek>
    policy/protocols/http/detect-webapps.zeek </scripts/policy/protocols/http/detect-webapps.zeek>
    policy/protocols/http/header-names.zeek </scripts/policy/protocols/http/header-names.zeek>
    policy/protocols/http/software-browser-plugins.zeek </scripts/policy/protocols/http/software-browser-plugins.zeek>

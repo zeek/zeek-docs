@@ -182,6 +182,10 @@ Types
       str: :zeek:type:`string` :zeek:attr:`&optional`
          String value.
 
+      uid: :zeek:type:`string` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/policy/protocols/http/detect-sql-injection.zeek` is loaded)
+
+
    Represents data being added for a single observation.
    Only supply a single field at a time!
 
