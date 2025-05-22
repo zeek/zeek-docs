@@ -16,7 +16,7 @@ install from pre-built binary packages, or :doc:`building-from-source` in order
 to build Zeek from source.
 
 We will first analyze previously captured network traffic from a ``pcap`` file -
-:download:`quickstart.pcap`. Later, we will use Zeek to monitor live traffic.
+:download:`quickstart.pcap <traces/quickstart.pcap>`. Later, we will use Zeek to monitor live traffic.
 
 Running Zeek
 ============
@@ -99,8 +99,8 @@ request and one with a ``WEIRD`` request. The ``WEIRD`` request was rightfully
 classified as a "weird" by Zeek.
 
 More information on the various logs and what they report can be found in the
-:doc:`../logs/index` section. More information on working with logs can be found in
-the :doc:`../log-formats` section.
+:doc:`logs/index` section. More information on working with logs can be found in
+the :doc:`log-formats` section.
 
 
 .. note::
@@ -191,7 +191,7 @@ In another terminal, run the two ``curl`` commands from before:
 The terminal running Zeek will print each command as it gets processed.
 
 More information on how to use Zeek’s scripting language can be found in the
-:doc:`../scripting/index` section.
+:doc:`scripting/index` section.
 
 Managing Zeek
 =============

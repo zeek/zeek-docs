@@ -1,3 +1,7 @@
+# WARNING: New redirects cannot be added, since RTD introduced a cap of 100
+# redirects. You can, however, manually edit and remove redirects in the UI.
+# When doing so, modify this file as well for documentation.
+#
 # These are all the Page Redirects required for RTD project at docs.zeek.org.
 # A nice thing about RTD redirects is that they are only utilized if a page
 # 404s, so redirects can be added as soon as a broken link needs to be fixed in
@@ -11,18 +15,17 @@
 
 redirects:
   # "Book of Zeek" revisions.
-  "/configuration/index.html": "/get-started/cluster-setup.html#cluster-configuration"
-  "/configuration/": "/get-started/cluster-setup.html#cluster-configuration"
-  "/install/guidelines.html": "/get-started/install.html"
+  "/configuration/index.html": "/cluster-setup.html#cluster-configuration"
+  "/configuration/": "/cluster-setup.html#cluster-configuration"
+  "/install/guidelines.html": "/install.html"
   "/install/NEWS.html": "https://github.com/zeek/zeek/blob/master/NEWS"
   "/install/release-notes.html": "https://github.com/zeek/zeek/blob/master/NEWS"
   "/install/changes.html": "https://github.com/zeek/zeek/blob/master/CHANGES"
-  "/install/install.html": "/get-started/install.html"
-  "/install/upgrade.html": "/get-started/install.html"
-  "/install/cross-compiling.html": "/get-started/building-from-source.html#cross-compiling"
-  "/install/index.html": "/get-started/install.html"
-  "/install/": "/get-started/install.html"
-  "/install.html": "/get-started/install.html"
+  "/install/install.html": "/install.html"
+  "/install/upgrade.html": "/install.html"
+  "/install/cross-compiling.html": "/building-from-source.html#cross-compiling"
+  "/install/index.html": "/install.html"
+  "/install/": "/install.html"
   "/examples/index.html": "/index.html"
   "/examples/": "/index.html"
   "/examples/ids/index.html": "/scripting/index.html"
@@ -35,12 +38,10 @@ redirects:
   "/examples/httpmonitor/": "/logs/http.html"
   "/examples/logs/index.html": "/log-formats.html"
   "/examples/logs/": "/log-formats.html"
-  "/cluster/index.html": "/get-started/cluster-setup.html"
-  "/cluster/": "/get-started/cluster-setup.html"
-  "/cluster.html": "/get-started/cluster-setup.html"
-  "/quickstart/index.html": "/get-started/quickstart.html"
-  "/quickstart/": "/get-started/quickstart.html"
-  "/quickstart.html": "/get-started/quickstart.html"
+  "/cluster/index.html": "/cluster-setup.html"
+  "/cluster/": "/cluster-setup.html"
+  "/quickstart/index.html": "/quickstart.html"
+  "/quickstart/": "/quickstart.html"
   "/devel/maintainers/index.html": "/devel/maintainers.html"
   "/devel/maintainers/": "/devel/maintainers.html"
   "/devel/maintainers/release-process.html": "/devel/maintainers.html"
