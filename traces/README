@@ -19,7 +19,7 @@ Traces used in the examples of the docs.
 
   That's the zeek/testing/btest/Traces/http/get.trace one.
 
-* ../get-started/quickstart.pcap
+* quickstart.pcap
 
   From curl commands:
 

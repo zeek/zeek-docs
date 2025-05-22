@@ -48,7 +48,7 @@ you can skip down to the next :ref:`Local Previewing <local-doc-preview>` sectio
 
 The Zeekygen documentation-generation feature is a part of Zeek itself, so
 you'll want to obtain the `Zeek repo`_ from Git, read the :doc:`INSTALL
-<get-started/install>` file directions to install required dependencies, and build Zeek::
+</install>` file directions to install required dependencies, and build Zeek::
 
   git clone --recursive https://github.com/zeek/zeek
   cd zeek
