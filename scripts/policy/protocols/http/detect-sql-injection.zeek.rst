@@ -6,6 +6,10 @@ policy/protocols/http/detect-sql-injection.zeek
 
 SQL injection attack detection in HTTP.
 
+The script annotates the notices it generates with an associated $uid
+connection identifier; always provides an attacker IP address in the
+$src field; and always provides a victim IP address in the $dst field.
+
 :Namespace: HTTP
 :Imports: :doc:`base/frameworks/notice </scripts/base/frameworks/notice/index>`, :doc:`base/frameworks/sumstats </scripts/base/frameworks/sumstats/index>`, :doc:`base/protocols/http </scripts/base/protocols/http/index>`
 
@@ -24,14 +28,12 @@ Redefinable Options
 
 Redefinitions
 #############
-======================================================= ======================================================================
+======================================================= ==============================================================
 :zeek:type:`HTTP::Tags`: :zeek:type:`enum`              
                                                         
                                                         * :zeek:enum:`HTTP::URI_SQLI`:
                                                           Indicator of a URI based SQL injection attack.
-:zeek:type:`Notice::Type`: :zeek:type:`enum`            The script annotates the notices it generates with an associated $uid
-                                                        connection identifier; always provides an attacker IP address in the
-                                                        $src field; and always provides a victim IP address in the $dst field.
+:zeek:type:`Notice::Type`: :zeek:type:`enum`            
                                                         
                                                         * :zeek:enum:`HTTP::SQL_Injection_Attacker`:
                                                           Indicates that a host performing SQL injection attacks was
@@ -45,7 +47,7 @@ Redefinitions
                                                         :New Fields: :zeek:type:`SumStats::Observation`
                                                         
                                                           uid: :zeek:type:`string` :zeek:attr:`&optional`
-======================================================= ======================================================================
+======================================================= ==============================================================
 
 Hooks
 #####
