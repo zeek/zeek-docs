@@ -33,7 +33,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Storage::Backend::SQLite::Options
-   :source-code: policy/frameworks/storage/backend/sqlite/main.zeek 9 31
+   :source-code: policy/frameworks/storage/backend/sqlite/main.zeek 9 45
 
    :Type: :zeek:type:`record`
 
@@ -50,10 +50,22 @@ Types
          database file for two separate tables, as long as the this value is
          different between the two.
 
-      tuning_params: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = *{ 	[synchronous] = normal, 	[temp_store] = memory, 	[journal_mode] = WAL }* :zeek:attr:`&optional`
-         Key/value table for passing tuning parameters when opening the
-         database.  These must be pairs that can be passed to the ``pragma``
-         command in sqlite.
+      pragma_commands: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&ordered` :zeek:attr:`&default` = *{ 	[integrity_check] = , 	[busy_timeout] = 5000, 	[journal_mode] = WAL, 	[synchronous] = normal, 	[temp_store] = memory }* :zeek:attr:`&optional`
+         Key/value table for passing pragma commands when opening the database.
+         These must be pairs that can be passed to the ``pragma`` command in
+         sqlite. The ``integrity_check`` pragma is run automatically and does
+         not need to be included here. For pragmas without a second argument,
+         set the value to an empty string.
+
+      pragma_timeout: :zeek:type:`interval` :zeek:attr:`&default` = ``500.0 msecs`` :zeek:attr:`&optional`
+         The total amount of time that an SQLite backend will spend attempting
+         to run an individual pragma command before giving up and returning an
+         initialization error. Setting this to zero will result in the backend
+         attempting forever until success.
+
+      pragma_wait_on_busy: :zeek:type:`interval` :zeek:attr:`&default` = ``5.0 msecs`` :zeek:attr:`&optional`
+         The amount of time that at SQLite backend will wait between failures
+         to run an individual pragma command.
 
    Options record for the built-in SQLite backend.
 
