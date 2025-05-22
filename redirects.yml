@@ -1,3 +1,7 @@
+# WARNING: New redirects cannot be added, since RTD introduced a cap of 100
+# redirects. You can, however, manually edit and remove redirects in the UI.
+# When doing so, modify this file as well for documentation.
+#
 # These are all the Page Redirects required for RTD project at docs.zeek.org.
 # A nice thing about RTD redirects is that they are only utilized if a page
 # 404s, so redirects can be added as soon as a broken link needs to be fixed in
@@ -19,7 +23,7 @@ redirects:
   "/install/changes.html": "https://github.com/zeek/zeek/blob/master/CHANGES"
   "/install/install.html": "/install.html"
   "/install/upgrade.html": "/install.html"
-  "/install/cross-compiling.html": "/install.html#cross-compiling"
+  "/install/cross-compiling.html": "/building-from-source.html#cross-compiling"
   "/install/index.html": "/install.html"
   "/install/": "/install.html"
   "/examples/index.html": "/index.html"
