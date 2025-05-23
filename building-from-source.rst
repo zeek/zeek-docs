@@ -184,6 +184,7 @@ build time:
     * PF_RING (Linux only, see :ref:`pf-ring-config`)
     * krb5 libraries and headers
     * ipsumdump (for trace-summary; https://github.com/kohler/ipsumdump)
+    * hiredis (for the Redis storage backend)
 
 ZeroMQ (e.g., libzmq3-dev on Debian/Ubuntu or cppzmq-devel on Fedora) is a
 requirement for developers working on core Zeek as some of Zeek's central
