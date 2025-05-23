@@ -195,6 +195,9 @@ Notes for Built-in Backends
 Redis
 -----
 
+- The Redis backend requires the ``hiredis`` library to installed on the system in order
+  to build. At least version 1.1.0 (Released Nov 2022) is required.
+
 - Redis server version 6.2.0 or later (or a third-party server implementing the equivalent
   level of the Redis API) is required. This is due to some API features the backend uses
   not being implemented until that version.
