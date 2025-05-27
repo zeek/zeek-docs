@@ -319,6 +319,20 @@ class ZeekNativeType(ZeekNative):
         return "type"
 
 
+class ZeekRecFieldXRefRole(XRefRole):
+    def process_link(self, env, refnode, has_explicit_title, title, target):
+        title, target = super().process_link(
+            env, refnode, has_explicit_title, title, target
+        )
+
+        parts = title.split("$")
+        if len(parts) == 2 and parts[0] and parts[1]:
+            # If a recfield is in Type$field, form, strip Type.
+            title = parts[1]
+
+        return title, target
+
+
 class ZeekNotices(Index):
     """
     Index subclass to provide the Zeek notices index.
@@ -358,6 +372,7 @@ class ZeekDomain(Domain):
         "keyword": ObjType(_("keyword"), "keyword"),
         "enum": ObjType(_("enum"), "enum"),
         "attr": ObjType(_("attr"), "attr"),
+        "recfield": ObjType(_("recordfield"), "recfield"),
     }
 
     directives = {
@@ -378,6 +393,7 @@ class ZeekDomain(Domain):
         "enum": XRefRole(),
         "attr": XRefRole(),
         "see": XRefRole(),
+        "recfield": ZeekRecFieldXRefRole(),
     }
 
     indices = [
@@ -416,6 +432,27 @@ class ZeekDomain(Domain):
                 contnode,
                 target + " " + objtype,
             )
+        elif typ == "recfield":
+            parts = target.split("$")
+            if len(parts) == 1:
+                # If the recfield target is just the field name, do
+                # not create an xref
+                return None
+            elif len(parts) == 2 and parts[0]:
+                # If a recfield is in Type$field form, produce a link to the
+                # record type.
+                #
+                # We don't currently have anchors on individual record fields
+                # so that's the best we can do. This could be improved by teaching
+                # zeekygen to render record types in a way that we could directly
+                # target the field definition instead.
+                rectype, _ = parts
+                return self.resolve_xref(
+                    env, fromdocname, builder, "type", rectype, node, contnode
+                )
+
+            logger.warning("%s: invalid recfield: %s", fromdocname, target)
+            return None
         else:
             objtypes = self.objtypes_for_role(typ)
 
