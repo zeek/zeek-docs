@@ -462,6 +462,9 @@
    base/protocols/rdp/__load__.zeek </scripts/base/protocols/rdp/__load__.zeek>
    base/protocols/rdp/consts.zeek </scripts/base/protocols/rdp/consts.zeek>
    base/protocols/rdp/main.zeek </scripts/base/protocols/rdp/main.zeek>
+   base/protocols/redis/__load__.zeek </scripts/base/protocols/redis/__load__.zeek>
+   base/protocols/redis/spicy-events.zeek </scripts/base/protocols/redis/spicy-events.zeek>
+   base/protocols/redis/main.zeek </scripts/base/protocols/redis/main.zeek>
    base/protocols/rfb/__load__.zeek </scripts/base/protocols/rfb/__load__.zeek>
    base/protocols/rfb/main.zeek </scripts/base/protocols/rfb/main.zeek>
    base/protocols/sip/__load__.zeek </scripts/base/protocols/sip/__load__.zeek>

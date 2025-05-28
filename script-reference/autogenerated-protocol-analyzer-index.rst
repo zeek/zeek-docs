@@ -129,6 +129,8 @@ Protocol Analyzers
 
       .. zeek:enum:: Analyzer::ANALYZER_QUIC Analyzer::Tag
 
+      .. zeek:enum:: Analyzer::ANALYZER_REDIS Analyzer::Tag
+
       .. zeek:enum:: Analyzer::ANALYZER_SYSLOG Analyzer::Tag
 
       .. zeek:enum:: Analyzer::ANALYZER_SPICY_WEBSOCKET Analyzer::Tag
@@ -352,6 +354,8 @@ Protocol Analyzers
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_POSTGRESQL AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_QUIC AllAnalyzers::Tag
+
+      .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_REDIS AllAnalyzers::Tag
 
       .. zeek:enum:: AllAnalyzers::ANALYZER_ANALYZER_SYSLOG AllAnalyzers::Tag
 
@@ -3518,6 +3522,18 @@ Events
    
    .. zeek:see:: ftp_request fmt_ftp_port parse_eftp_port
       parse_ftp_epsv parse_ftp_pasv parse_ftp_port
+
+.. zeek:id:: ftp_starttls
+   :source-code: base/bif/plugins/Zeek_FTP.events.bif.zeek 46 46
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated if an FTP connection switched to TLS using AUTH TLS. After this
+   event no more FTP events will be raised for the connection. See the SSL
+   analyzer for related SSL events, which will now be generated.
+   
+
+   :param c: The connection.
 
 Functions
 +++++++++
@@ -15323,6 +15339,98 @@ Zeek::Spicy
 -----------
 
 Support for Spicy parsers (.hlto)
+
+Types
++++++
+
+.. zeek:type:: Redis::KnownCommand
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: Redis::KnownCommand_APPEND Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_AUTH Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BITCOUNT Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BITFIELD Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BITFIELD_RO Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BITOP Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BITPOS Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BLMPOP Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BLPOP Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_BRPOP Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_CLIENT Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_COPY Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_DECR Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_DECRBY Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_DEL Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_DUMP Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_EXISTS Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_EXPIRE Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_EXPIREAT Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_EXPIRETIME Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_GET Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_GETBIT Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_GETDEL Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_GETEX Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_GETRANGE Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_GETSET Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_HDEL Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_HGET Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_HSET Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_INCR Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_INCRBY Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_KEYS Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_MGET Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_MOVE Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_MSET Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_PERSIST Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_RENAME Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_SET Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_STRLEN Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_TTL Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_TYPE Redis::KnownCommand
+
+      .. zeek:enum:: Redis::KnownCommand_Undef Redis::KnownCommand
+
 
 .. _plugin-zeek-ssh:
 

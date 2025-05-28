@@ -331,6 +331,9 @@
 
    Support for Remote Desktop Protocol (RDP) analysis.
 
+:doc:`base/protocols/redis </scripts/base/protocols/redis/index>`
+
+
 :doc:`base/protocols/rfb </scripts/base/protocols/rfb/index>`
 
    Support for Remote FrameBuffer analysis.  This includes all VNC servers.

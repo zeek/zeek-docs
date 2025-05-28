@@ -11,10 +11,11 @@ Summary
 ~~~~~~~
 Events
 ######
-========================================== =======================================
-:zeek:id:`ftp_reply`: :zeek:type:`event`   Generated for server-side FTP replies.
-:zeek:id:`ftp_request`: :zeek:type:`event` Generated for client-side FTP commands.
-========================================== =======================================
+=========================================== ==============================================================
+:zeek:id:`ftp_reply`: :zeek:type:`event`    Generated for server-side FTP replies.
+:zeek:id:`ftp_request`: :zeek:type:`event`  Generated for client-side FTP commands.
+:zeek:id:`ftp_starttls`: :zeek:type:`event` Generated if an FTP connection switched to TLS using AUTH TLS.
+=========================================== ==============================================================
 
 
 Detailed Interface
@@ -70,5 +71,17 @@ Events
    
    .. zeek:see:: ftp_reply fmt_ftp_port parse_eftp_port
       parse_ftp_epsv parse_ftp_pasv parse_ftp_port
+
+.. zeek:id:: ftp_starttls
+   :source-code: base/bif/plugins/Zeek_FTP.events.bif.zeek 46 46
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
+
+   Generated if an FTP connection switched to TLS using AUTH TLS. After this
+   event no more FTP events will be raised for the connection. See the SSL
+   analyzer for related SSL events, which will now be generated.
+   
+
+   :param c: The connection.
 
 
