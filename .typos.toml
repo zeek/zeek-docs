@@ -50,6 +50,8 @@ RpcDeletePrintProvidor = "RpcDeletePrintProvidor"
 THA = "THA"
 tha = "tha"
 uses_seh = "uses_seh"
+exat = "exat"
+EXAT = "EXAT"
 
 [default.extend-words]
 caf = "caf"
