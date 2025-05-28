@@ -310,21 +310,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fuid: :zeek:type:`string`
-         File UID.
 
-      desc: :zeek:type:`string`
-         File description from e.g.
-         :zeek:see:`Files::describe`.
+   .. zeek:field:: fuid :zeek:type:`string`
 
-      mime: :zeek:type:`string` :zeek:attr:`&optional`
-         Strongest mime type match for file.
+      File UID.
 
-      cid: :zeek:type:`conn_id` :zeek:attr:`&optional`
-         Connection tuple over which file is sent.
 
-      cuid: :zeek:type:`string` :zeek:attr:`&optional`
-         Connection UID over which file is sent.
+   .. zeek:field:: desc :zeek:type:`string`
+
+      File description from e.g.
+      :zeek:see:`Files::describe`.
+
+
+   .. zeek:field:: mime :zeek:type:`string` :zeek:attr:`&optional`
+
+      Strongest mime type match for file.
+
+
+   .. zeek:field:: cid :zeek:type:`conn_id` :zeek:attr:`&optional`
+
+      Connection tuple over which file is sent.
+
+
+   .. zeek:field:: cuid :zeek:type:`string` :zeek:attr:`&optional`
+
+      Connection UID over which file is sent.
+
 
    Contains a portion of :zeek:see:`fa_file` that's also contained in
    :zeek:see:`Notice::Info`.
@@ -334,139 +345,193 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         An absolute time indicating when the notice occurred,
-         defaults to the current network time.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A connection UID which uniquely identifies the endpoints
-         concerned with the notice.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A connection 4-tuple identifying the endpoints concerned
-         with the notice.
+      An absolute time indicating when the notice occurred,
+      defaults to the current network time.
 
-      conn: :zeek:type:`connection` :zeek:attr:`&optional`
-         A shorthand way of giving the uid and id to a notice.  The
-         reference to the actual connection will be deleted after
-         applying the notice policy.
 
-      f: :zeek:type:`fa_file` :zeek:attr:`&optional`
-         A file record if the notice is related to a file.  The
-         reference to the actual fa_file record will be deleted after
-         applying the notice policy.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A file unique ID if this notice is related to a file.  If
-         the *f* field is provided, this will be automatically filled
-         out.
+      A connection UID which uniquely identifies the endpoints
+      concerned with the notice.
 
-      file_mime_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A mime type if the notice is related to a file.  If the *f*
-         field is provided, this will be automatically filled out.
 
-      file_desc: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Frequently files can be "described" to give a bit more
-         context.  This field will typically be automatically filled
-         out from an fa_file record.  For example, if a notice was
-         related to a file over HTTP, the URL of the request would
-         be shown.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      proto: :zeek:type:`transport_proto` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The transport protocol. Filled automatically when either
-         *conn* or *p* is specified.
+      A connection 4-tuple identifying the endpoints concerned
+      with the notice.
 
-      note: :zeek:type:`Notice::Type` :zeek:attr:`&log`
-         The :zeek:type:`Notice::Type` of the notice.
 
-      msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The human readable message for the notice.
+   .. zeek:field:: conn :zeek:type:`connection` :zeek:attr:`&optional`
 
-      sub: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The human readable sub-message.
+      A shorthand way of giving the uid and id to a notice.  The
+      reference to the actual connection will be deleted after
+      applying the notice policy.
 
-      src: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Source address, if we don't have a :zeek:type:`conn_id`.
 
-      dst: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Destination address.
+   .. zeek:field:: f :zeek:type:`fa_file` :zeek:attr:`&optional`
 
-      p: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Associated port, if we don't have a :zeek:type:`conn_id`.
+      A file record if the notice is related to a file.  The
+      reference to the actual fa_file record will be deleted after
+      applying the notice policy.
 
-      n: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Associated count, or perhaps a status code.
 
-      peer_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Name of remote peer that raised this notice.
+   .. zeek:field:: fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      peer_descr: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Textual description for the peer that raised this notice,
-         including name, host address and port.
+      A file unique ID if this notice is related to a file.  If
+      the *f* field is provided, this will be automatically filled
+      out.
 
-      actions: :zeek:type:`Notice::ActionSet` :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         The actions which have been applied to this notice.
 
-      email_dest: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         The email address(es) where to send this notice
+   .. zeek:field:: file_mime_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      email_body_sections: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         By adding chunks of text into this element, other scripts
-         can expand on notices that are being emailed.  The normal
-         way to add text is to extend the vector by handling the
-         :zeek:id:`Notice::notice` event and modifying the notice in
-         place.
+      A mime type if the notice is related to a file.  If the *f*
+      field is provided, this will be automatically filled out.
 
-      email_delay_tokens: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
-         Adding a string "token" to this set will cause the notice
-         framework's built-in emailing functionality to delay sending
-         the email until either the token has been removed or the
-         email has been delayed for :zeek:id:`Notice::max_email_delay`.
 
-      identifier: :zeek:type:`string` :zeek:attr:`&optional`
-         This field is to be provided when a notice is generated for
-         the purpose of deduplicating notices.  The identifier string
-         should be unique for a single instance of the notice.  This
-         field should be filled out in almost all cases when
-         generating notices to define when a notice is conceptually
-         a duplicate of a previous notice.
-         
-         For example, an SSL certificate that is going to expire soon
-         should always have the same identifier no matter the client
-         IP address that connected and resulted in the certificate
-         being exposed.  In this case, the resp_h, resp_p, and hash
-         of the certificate would be used to create this value.  The
-         hash of the cert is included because servers can return
-         multiple certificates on the same port.
-         
-         Another example might be a host downloading a file which
-         triggered a notice because the MD5 sum of the file it
-         downloaded was known by some set of intelligence.  In that
-         case, the orig_h (client) and MD5 sum would be used in this
-         field to dedup because if the same file is downloaded over
-         and over again you really only want to know about it a
-         single time.  This makes it possible to send those notices
-         to email without worrying so much about sending thousands
-         of emails.
+   .. zeek:field:: file_desc :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      suppress_for: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = :zeek:see:`Notice::default_suppression_interval` :zeek:attr:`&optional`
-         This field indicates the length of time that this
-         unique notice should be suppressed.
+      Frequently files can be "described" to give a bit more
+      context.  This field will typically be automatically filled
+      out from an fa_file record.  For example, if a notice was
+      related to a file over HTTP, the URL of the request would
+      be shown.
 
-      remote_location: :zeek:type:`geo_location` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/notice/actions/add-geodata.zeek` is loaded)
 
-         If GeoIP support is built in, notices can have geographic
-         information attached to them.
+   .. zeek:field:: proto :zeek:type:`transport_proto` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      dropped: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/notice/actions/drop.zeek` is loaded)
+      The transport protocol. Filled automatically when either
+      *conn* or *p* is specified.
 
-         Indicate if the $src IP address was dropped and denied
-         network access.
 
-      community_id: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/frameworks/notice/community-id.zeek` is loaded)
+   .. zeek:field:: note :zeek:type:`Notice::Type` :zeek:attr:`&log`
+
+      The :zeek:type:`Notice::Type` of the notice.
+
+
+   .. zeek:field:: msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The human readable message for the notice.
+
+
+   .. zeek:field:: sub :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The human readable sub-message.
+
+
+   .. zeek:field:: src :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Source address, if we don't have a :zeek:type:`conn_id`.
+
+
+   .. zeek:field:: dst :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Destination address.
+
+
+   .. zeek:field:: p :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Associated port, if we don't have a :zeek:type:`conn_id`.
+
+
+   .. zeek:field:: n :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Associated count, or perhaps a status code.
+
+
+   .. zeek:field:: peer_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name of remote peer that raised this notice.
+
+
+   .. zeek:field:: peer_descr :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Textual description for the peer that raised this notice,
+      including name, host address and port.
+
+
+   .. zeek:field:: actions :zeek:type:`Notice::ActionSet` :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      The actions which have been applied to this notice.
+
+
+   .. zeek:field:: email_dest :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      The email address(es) where to send this notice
+
+
+   .. zeek:field:: email_body_sections :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      By adding chunks of text into this element, other scripts
+      can expand on notices that are being emailed.  The normal
+      way to add text is to extend the vector by handling the
+      :zeek:id:`Notice::notice` event and modifying the notice in
+      place.
+
+
+   .. zeek:field:: email_delay_tokens :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
+
+      Adding a string "token" to this set will cause the notice
+      framework's built-in emailing functionality to delay sending
+      the email until either the token has been removed or the
+      email has been delayed for :zeek:id:`Notice::max_email_delay`.
+
+
+   .. zeek:field:: identifier :zeek:type:`string` :zeek:attr:`&optional`
+
+      This field is to be provided when a notice is generated for
+      the purpose of deduplicating notices.  The identifier string
+      should be unique for a single instance of the notice.  This
+      field should be filled out in almost all cases when
+      generating notices to define when a notice is conceptually
+      a duplicate of a previous notice.
+      
+      For example, an SSL certificate that is going to expire soon
+      should always have the same identifier no matter the client
+      IP address that connected and resulted in the certificate
+      being exposed.  In this case, the resp_h, resp_p, and hash
+      of the certificate would be used to create this value.  The
+      hash of the cert is included because servers can return
+      multiple certificates on the same port.
+      
+      Another example might be a host downloading a file which
+      triggered a notice because the MD5 sum of the file it
+      downloaded was known by some set of intelligence.  In that
+      case, the orig_h (client) and MD5 sum would be used in this
+      field to dedup because if the same file is downloaded over
+      and over again you really only want to know about it a
+      single time.  This makes it possible to send those notices
+      to email without worrying so much about sending thousands
+      of emails.
+
+
+   .. zeek:field:: suppress_for :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = :zeek:see:`Notice::default_suppression_interval` :zeek:attr:`&optional`
+
+      This field indicates the length of time that this
+      unique notice should be suppressed.
+
+
+   .. zeek:field:: remote_location :zeek:type:`geo_location` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/notice/actions/add-geodata.zeek` is loaded)
+
+      If GeoIP support is built in, notices can have geographic
+      information attached to them.
+
+
+   .. zeek:field:: dropped :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/notice/actions/drop.zeek` is loaded)
+
+      Indicate if the $src IP address was dropped and denied
+      network access.
+
+
+   .. zeek:field:: community_id :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/policy/frameworks/notice/community-id.zeek` is loaded)
 
 
    The record type that is used for representing and logging notices.

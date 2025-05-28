@@ -42,11 +42,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      username: :zeek:type:`string` :zeek:attr:`&optional`
-         The username getting authenticated.
 
-      password: :zeek:type:`string`
-         The password authenticated with.
+   .. zeek:field:: username :zeek:type:`string` :zeek:attr:`&optional`
+
+      The username getting authenticated.
+
+
+   .. zeek:field:: password :zeek:type:`string`
+
+      The password authenticated with.
+
 
    The Redis AUTH command.
 
@@ -55,21 +60,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      raw: :zeek:type:`vector` of :zeek:type:`string`
-         The raw command, exactly as parsed
 
-      name: :zeek:type:`string` :zeek:attr:`&log`
-         The first element of the command. Some commands are two strings, meaning
-         this is inaccurate for those cases.
+   .. zeek:field:: raw :zeek:type:`vector` of :zeek:type:`string`
 
-      key: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The key, if this command is known to have a key
+      The raw command, exactly as parsed
 
-      value: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The value, if this command is known to have a value
 
-      known: :zeek:type:`Redis::KnownCommand` :zeek:attr:`&optional`
-         The command in an enum if it was known
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log`
+
+      The first element of the command. Some commands are two strings, meaning
+      this is inaccurate for those cases.
+
+
+   .. zeek:field:: key :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The key, if this command is known to have a key
+
+
+   .. zeek:field:: value :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The value, if this command is known to have a value
+
+
+   .. zeek:field:: known :zeek:type:`Redis::KnownCommand` :zeek:attr:`&optional`
+
+      The command in an enum if it was known
+
 
    A generic Redis command from the client.
 
@@ -78,7 +94,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      value: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+   .. zeek:field:: value :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
 
    A generic Redis reply from the client.
 
@@ -87,37 +105,58 @@ Types
 
    :Type: :zeek:type:`record`
 
-      key: :zeek:type:`string` :zeek:attr:`&log`
-         The key the SET command is setting.
 
-      value: :zeek:type:`string` :zeek:attr:`&log`
-         The value the SET command is setting key to.
+   .. zeek:field:: key :zeek:type:`string` :zeek:attr:`&log`
 
-      nx: :zeek:type:`bool`
-         If NX is set -- only set the key if it does not exist.
+      The key the SET command is setting.
 
-      xx: :zeek:type:`bool`
-         If XX is set -- only set the key if it already exists.
 
-      get: :zeek:type:`bool`
-         If GET is set -- return the old string stored at key.
+   .. zeek:field:: value :zeek:type:`string` :zeek:attr:`&log`
 
-      ex: :zeek:type:`count` :zeek:attr:`&optional`
-         EX option -- set the specified expire time, in seconds.
+      The value the SET command is setting key to.
 
-      px: :zeek:type:`count` :zeek:attr:`&optional`
-         PX option -- set the specified expire time, in milliseconds.
 
-      exat: :zeek:type:`count` :zeek:attr:`&optional`
-         EXAT option-- set the specified Unix time at which the key will
-         expire, in seconds.
+   .. zeek:field:: nx :zeek:type:`bool`
 
-      pxat: :zeek:type:`count` :zeek:attr:`&optional`
-         PXAT option -- set the specified Unix time at which the key will
-         expire, in milliseconds.
+      If NX is set -- only set the key if it does not exist.
 
-      keep_ttl: :zeek:type:`bool`
-         If KEEPTTL is set -- retain the time to live associated with the key.
+
+   .. zeek:field:: xx :zeek:type:`bool`
+
+      If XX is set -- only set the key if it already exists.
+
+
+   .. zeek:field:: get :zeek:type:`bool`
+
+      If GET is set -- return the old string stored at key.
+
+
+   .. zeek:field:: ex :zeek:type:`count` :zeek:attr:`&optional`
+
+      EX option -- set the specified expire time, in seconds.
+
+
+   .. zeek:field:: px :zeek:type:`count` :zeek:attr:`&optional`
+
+      PX option -- set the specified expire time, in milliseconds.
+
+
+   .. zeek:field:: exat :zeek:type:`count` :zeek:attr:`&optional`
+
+      EXAT option-- set the specified Unix time at which the key will
+      expire, in seconds.
+
+
+   .. zeek:field:: pxat :zeek:type:`count` :zeek:attr:`&optional`
+
+      PXAT option -- set the specified Unix time at which the key will
+      expire, in milliseconds.
+
+
+   .. zeek:field:: keep_ttl :zeek:type:`bool`
+
+      If KEEPTTL is set -- retain the time to live associated with the key.
+
 
    The Redis SET command.
 

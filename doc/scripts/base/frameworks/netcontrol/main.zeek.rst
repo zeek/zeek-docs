@@ -111,50 +111,81 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time at which the recorded activity occurred.
 
-      rule_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         ID of the rule; unique during each Zeek run.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      category: :zeek:type:`NetControl::InfoCategory` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Type of the log entry.
+      Time at which the recorded activity occurred.
 
-      cmd: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The command the log entry is about.
 
-      state: :zeek:type:`NetControl::InfoState` :zeek:attr:`&log` :zeek:attr:`&optional`
-         State the log entry reflects.
+   .. zeek:field:: rule_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      action: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         String describing an action the entry is about.
+      ID of the rule; unique during each Zeek run.
 
-      target: :zeek:type:`NetControl::TargetType` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The target type of the action.
 
-      entity_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Type of the entity the log entry is about.
+   .. zeek:field:: category :zeek:type:`NetControl::InfoCategory` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      entity: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         String describing the entity the log entry is about.
+      Type of the log entry.
 
-      mod: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         String describing the optional modification of the entry (e.h. redirect)
 
-      msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         String with an additional message.
+   .. zeek:field:: cmd :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      priority: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Number describing the priority of the log entry.
+      The command the log entry is about.
 
-      expire: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Expiry time of the log entry.
 
-      location: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Location where the underlying action was triggered.
+   .. zeek:field:: state :zeek:type:`NetControl::InfoState` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      plugin: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Plugin triggering the log entry.
+      State the log entry reflects.
+
+
+   .. zeek:field:: action :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      String describing an action the entry is about.
+
+
+   .. zeek:field:: target :zeek:type:`NetControl::TargetType` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The target type of the action.
+
+
+   .. zeek:field:: entity_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Type of the entity the log entry is about.
+
+
+   .. zeek:field:: entity :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      String describing the entity the log entry is about.
+
+
+   .. zeek:field:: mod :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      String describing the optional modification of the entry (e.h. redirect)
+
+
+   .. zeek:field:: msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      String with an additional message.
+
+
+   .. zeek:field:: priority :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Number describing the priority of the log entry.
+
+
+   .. zeek:field:: expire :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Expiry time of the log entry.
+
+
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Location where the underlying action was triggered.
+
+
+   .. zeek:field:: plugin :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Plugin triggering the log entry.
+
 
    The record type defining the column fields of the NetControl log.
 

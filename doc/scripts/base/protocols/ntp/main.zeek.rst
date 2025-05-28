@@ -52,59 +52,92 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      version: :zeek:type:`count` :zeek:attr:`&log`
-         The NTP version number (1, 2, 3, 4).
 
-      mode: :zeek:type:`count` :zeek:attr:`&log`
-         The NTP mode being used.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      stratum: :zeek:type:`count` :zeek:attr:`&log`
-         The stratum (primary server, secondary server, etc.).
+      Unique ID for the connection.
 
-      poll: :zeek:type:`interval` :zeek:attr:`&log`
-         The maximum interval between successive messages.
 
-      precision: :zeek:type:`interval` :zeek:attr:`&log`
-         The precision of the system clock.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      root_delay: :zeek:type:`interval` :zeek:attr:`&log`
-         Total round-trip delay to the reference clock.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      root_disp: :zeek:type:`interval` :zeek:attr:`&log`
-         Total dispersion to the reference clock.
 
-      ref_id: :zeek:type:`string` :zeek:attr:`&log`
-         For stratum 0, 4 character string used for debugging.
-         For stratum 1, ID assigned to the reference clock by IANA.
-         Above stratum 1, when using IPv4, the IP address of the reference
-         clock.  Note that the NTP protocol did not originally specify a
-         large enough field to represent IPv6 addresses, so they use
-         the first four bytes of the MD5 hash of the reference clock's
-         IPv6 address (i.e. an IPv4 address here is not necessarily IPv4).
+   .. zeek:field:: version :zeek:type:`count` :zeek:attr:`&log`
 
-      ref_time: :zeek:type:`time` :zeek:attr:`&log`
-         Time when the system clock was last set or correct.
+      The NTP version number (1, 2, 3, 4).
 
-      org_time: :zeek:type:`time` :zeek:attr:`&log`
-         Time at the client when the request departed for the NTP server.
 
-      rec_time: :zeek:type:`time` :zeek:attr:`&log`
-         Time at the server when the request arrived from the NTP client.
+   .. zeek:field:: mode :zeek:type:`count` :zeek:attr:`&log`
 
-      xmt_time: :zeek:type:`time` :zeek:attr:`&log`
-         Time at the server when the response departed for the NTP client.
+      The NTP mode being used.
 
-      num_exts: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Number of extension fields (which are not currently parsed).
+
+   .. zeek:field:: stratum :zeek:type:`count` :zeek:attr:`&log`
+
+      The stratum (primary server, secondary server, etc.).
+
+
+   .. zeek:field:: poll :zeek:type:`interval` :zeek:attr:`&log`
+
+      The maximum interval between successive messages.
+
+
+   .. zeek:field:: precision :zeek:type:`interval` :zeek:attr:`&log`
+
+      The precision of the system clock.
+
+
+   .. zeek:field:: root_delay :zeek:type:`interval` :zeek:attr:`&log`
+
+      Total round-trip delay to the reference clock.
+
+
+   .. zeek:field:: root_disp :zeek:type:`interval` :zeek:attr:`&log`
+
+      Total dispersion to the reference clock.
+
+
+   .. zeek:field:: ref_id :zeek:type:`string` :zeek:attr:`&log`
+
+      For stratum 0, 4 character string used for debugging.
+      For stratum 1, ID assigned to the reference clock by IANA.
+      Above stratum 1, when using IPv4, the IP address of the reference
+      clock.  Note that the NTP protocol did not originally specify a
+      large enough field to represent IPv6 addresses, so they use
+      the first four bytes of the MD5 hash of the reference clock's
+      IPv6 address (i.e. an IPv4 address here is not necessarily IPv4).
+
+
+   .. zeek:field:: ref_time :zeek:type:`time` :zeek:attr:`&log`
+
+      Time when the system clock was last set or correct.
+
+
+   .. zeek:field:: org_time :zeek:type:`time` :zeek:attr:`&log`
+
+      Time at the client when the request departed for the NTP server.
+
+
+   .. zeek:field:: rec_time :zeek:type:`time` :zeek:attr:`&log`
+
+      Time at the server when the request arrived from the NTP client.
+
+
+   .. zeek:field:: xmt_time :zeek:type:`time` :zeek:attr:`&log`
+
+      Time at the server when the response departed for the NTP client.
+
+
+   .. zeek:field:: num_exts :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Number of extension fields (which are not currently parsed).
+
 
 
 Events

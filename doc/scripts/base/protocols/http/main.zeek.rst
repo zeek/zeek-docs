@@ -155,169 +155,246 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the request happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the request happened.
 
-      trans_depth: :zeek:type:`count` :zeek:attr:`&log`
-         Represents the pipelined depth into the connection of this
-         request/response transaction.
 
-      method: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Verb used in the HTTP request (GET, POST, HEAD, etc.).
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      host: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value of the HOST header.
+      Unique ID for the connection.
 
-      uri: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         URI used in the request.
 
-      referrer: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value of the "referer" header.  The comment is deliberately
-         misspelled like the standard declares, but the name used here
-         is "referrer", spelled correctly.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value of the version portion of the reply. If you require
-         message-level detail, consider the :zeek:see:`http_request` and
-         :zeek:see:`http_reply` events, which report each message's
-         version string.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      user_agent: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value of the User-Agent header from the client.
 
-      origin: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value of the Origin header from the client.
+   .. zeek:field:: trans_depth :zeek:type:`count` :zeek:attr:`&log`
 
-      request_body_len: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Actual uncompressed content size of the data transferred from
-         the client.
+      Represents the pipelined depth into the connection of this
+      request/response transaction.
 
-      response_body_len: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Actual uncompressed content size of the data transferred from
-         the server.
 
-      status_code: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Status code returned by the server.
+   .. zeek:field:: method :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      status_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Status message returned by the server.
+      Verb used in the HTTP request (GET, POST, HEAD, etc.).
 
-      info_code: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Last seen 1xx informational reply code returned by the server.
 
-      info_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Last seen 1xx informational reply message returned by the server.
+   .. zeek:field:: host :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      tags: :zeek:type:`set` [:zeek:type:`HTTP::Tags`] :zeek:attr:`&log`
-         A set of indicators of various attributes discovered and
-         related to a particular request/response pair.
+      Value of the HOST header.
 
-      username: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Username if basic-auth is performed for the request.
 
-      password: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Password if basic-auth is performed for the request.
+   .. zeek:field:: uri :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      capture_password: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`HTTP::default_capture_password` :zeek:attr:`&optional`
-         Determines if the password will be captured for this request.
+      URI used in the request.
 
-      proxied: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
-         All of the headers that may indicate if the request was proxied.
 
-      range_request: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if this request can assume 206 partial content in
-         response.
+   .. zeek:field:: referrer :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      orig_fuids: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+      Value of the "referer" header.  The comment is deliberately
+      misspelled like the standard declares, but the name used here
+      is "referrer", spelled correctly.
 
-         An ordered vector of file unique IDs.
-         Limited to :zeek:see:`HTTP::max_files_orig` entries.
 
-      orig_filenames: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+   .. zeek:field:: version :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         An ordered vector of filenames from the client.
-         Limited to :zeek:see:`HTTP::max_files_orig` entries.
+      Value of the version portion of the reply. If you require
+      message-level detail, consider the :zeek:see:`http_request` and
+      :zeek:see:`http_reply` events, which report each message's
+      version string.
 
-      orig_mime_types: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
 
-         An ordered vector of mime types.
-         Limited to :zeek:see:`HTTP::max_files_orig` entries.
+   .. zeek:field:: user_agent :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      resp_fuids: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+      Value of the User-Agent header from the client.
 
-         An ordered vector of file unique IDs.
-         Limited to :zeek:see:`HTTP::max_files_resp` entries.
 
-      resp_filenames: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+   .. zeek:field:: origin :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         An ordered vector of filenames from the server.
-         Limited to :zeek:see:`HTTP::max_files_resp` entries.
+      Value of the Origin header from the client.
 
-      resp_mime_types: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
 
-         An ordered vector of mime types.
-         Limited to :zeek:see:`HTTP::max_files_resp` entries.
+   .. zeek:field:: request_body_len :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      current_entity: :zeek:type:`HTTP::Entity` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+      Actual uncompressed content size of the data transferred from
+      the client.
 
-         The current entity.
 
-      orig_mime_depth: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+   .. zeek:field:: response_body_len :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-         Current number of MIME entities in the HTTP request message
-         body.
+      Actual uncompressed content size of the data transferred from
+      the server.
 
-      resp_mime_depth: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
 
-         Current number of MIME entities in the HTTP response message
-         body.
+   .. zeek:field:: status_code :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      client_header_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/http/header-names.zeek` is loaded)
+      Status code returned by the server.
 
-         The vector of HTTP header names sent by the client.  No
-         header values are included here, just the header names.
 
-      server_header_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/http/header-names.zeek` is loaded)
+   .. zeek:field:: status_msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         The vector of HTTP header names sent by the server.  No
-         header values are included here, just the header names.
+      Status message returned by the server.
 
-      omniture: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/http/software-browser-plugins.zeek` is loaded)
 
-         Indicates if the server is an omniture advertising server.
+   .. zeek:field:: info_code :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      flash_version: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/http/software-browser-plugins.zeek` is loaded)
+      Last seen 1xx informational reply code returned by the server.
 
-         The unparsed Flash version, if detected.
 
-      cookie_vars: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/protocols/http/var-extraction-cookies.zeek` is loaded)
+   .. zeek:field:: info_msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         Variable names extracted from all cookies.
+      Last seen 1xx informational reply message returned by the server.
 
-      uri_vars: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/protocols/http/var-extraction-uri.zeek` is loaded)
 
-         Variable names from the URI.
+   .. zeek:field:: tags :zeek:type:`set` [:zeek:type:`HTTP::Tags`] :zeek:attr:`&log`
+
+      A set of indicators of various attributes discovered and
+      related to a particular request/response pair.
+
+
+   .. zeek:field:: username :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Username if basic-auth is performed for the request.
+
+
+   .. zeek:field:: password :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Password if basic-auth is performed for the request.
+
+
+   .. zeek:field:: capture_password :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`HTTP::default_capture_password` :zeek:attr:`&optional`
+
+      Determines if the password will be captured for this request.
+
+
+   .. zeek:field:: proxied :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      All of the headers that may indicate if the request was proxied.
+
+
+   .. zeek:field:: range_request :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if this request can assume 206 partial content in
+      response.
+
+
+   .. zeek:field:: orig_fuids :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      An ordered vector of file unique IDs.
+      Limited to :zeek:see:`HTTP::max_files_orig` entries.
+
+
+   .. zeek:field:: orig_filenames :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      An ordered vector of filenames from the client.
+      Limited to :zeek:see:`HTTP::max_files_orig` entries.
+
+
+   .. zeek:field:: orig_mime_types :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      An ordered vector of mime types.
+      Limited to :zeek:see:`HTTP::max_files_orig` entries.
+
+
+   .. zeek:field:: resp_fuids :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      An ordered vector of file unique IDs.
+      Limited to :zeek:see:`HTTP::max_files_resp` entries.
+
+
+   .. zeek:field:: resp_filenames :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      An ordered vector of filenames from the server.
+      Limited to :zeek:see:`HTTP::max_files_resp` entries.
+
+
+   .. zeek:field:: resp_mime_types :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      An ordered vector of mime types.
+      Limited to :zeek:see:`HTTP::max_files_resp` entries.
+
+
+   .. zeek:field:: current_entity :zeek:type:`HTTP::Entity` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      The current entity.
+
+
+   .. zeek:field:: orig_mime_depth :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      Current number of MIME entities in the HTTP request message
+      body.
+
+
+   .. zeek:field:: resp_mime_depth :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+      Current number of MIME entities in the HTTP response message
+      body.
+
+
+   .. zeek:field:: client_header_names :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/http/header-names.zeek` is loaded)
+
+      The vector of HTTP header names sent by the client.  No
+      header values are included here, just the header names.
+
+
+   .. zeek:field:: server_header_names :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/http/header-names.zeek` is loaded)
+
+      The vector of HTTP header names sent by the server.  No
+      header values are included here, just the header names.
+
+
+   .. zeek:field:: omniture :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/http/software-browser-plugins.zeek` is loaded)
+
+      Indicates if the server is an omniture advertising server.
+
+
+   .. zeek:field:: flash_version :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/http/software-browser-plugins.zeek` is loaded)
+
+      The unparsed Flash version, if detected.
+
+
+   .. zeek:field:: cookie_vars :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/policy/protocols/http/var-extraction-cookies.zeek` is loaded)
+
+      Variable names extracted from all cookies.
+
+
+   .. zeek:field:: uri_vars :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/policy/protocols/http/var-extraction-uri.zeek` is loaded)
+
+      Variable names from the URI.
+
 
    The record type which contains the fields of the HTTP log.
 
@@ -326,19 +403,28 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pending: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`HTTP::Info`
-         Pending requests.
 
-      current_request: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Current request in the pending queue.
+   .. zeek:field:: pending :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`HTTP::Info`
 
-      current_response: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Current response in the pending queue.
+      Pending requests.
 
-      trans_depth: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Track the current deepest transaction.
-         This is meant to cope with missing requests
-         and responses.
+
+   .. zeek:field:: current_request :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Current request in the pending queue.
+
+
+   .. zeek:field:: current_response :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Current response in the pending queue.
+
+
+   .. zeek:field:: trans_depth :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Track the current deepest transaction.
+      This is meant to cope with missing requests
+      and responses.
+
 
    Structure to maintain state for an HTTP connection with multiple
    requests and responses.

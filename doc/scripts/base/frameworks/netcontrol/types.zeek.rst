@@ -78,20 +78,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ty: :zeek:type:`NetControl::EntityType`
-         Type of entity.
 
-      conn: :zeek:type:`conn_id` :zeek:attr:`&optional`
-         Used with :zeek:enum:`NetControl::CONNECTION`.
+   .. zeek:field:: ty :zeek:type:`NetControl::EntityType`
 
-      flow: :zeek:type:`NetControl::Flow` :zeek:attr:`&optional`
-         Used with :zeek:enum:`NetControl::FLOW`.
+      Type of entity.
 
-      ip: :zeek:type:`subnet` :zeek:attr:`&optional`
-         Used with :zeek:enum:`NetControl::ADDRESS` to specify a CIDR subnet.
 
-      mac: :zeek:type:`string` :zeek:attr:`&optional`
-         Used with :zeek:enum:`NetControl::MAC`.
+   .. zeek:field:: conn :zeek:type:`conn_id` :zeek:attr:`&optional`
+
+      Used with :zeek:enum:`NetControl::CONNECTION`.
+
+
+   .. zeek:field:: flow :zeek:type:`NetControl::Flow` :zeek:attr:`&optional`
+
+      Used with :zeek:enum:`NetControl::FLOW`.
+
+
+   .. zeek:field:: ip :zeek:type:`subnet` :zeek:attr:`&optional`
+
+      Used with :zeek:enum:`NetControl::ADDRESS` to specify a CIDR subnet.
+
+
+   .. zeek:field:: mac :zeek:type:`string` :zeek:attr:`&optional`
+
+      Used with :zeek:enum:`NetControl::MAC`.
+
 
    Type defining the entity a rule is operating on.
 
@@ -123,23 +134,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      src_h: :zeek:type:`subnet` :zeek:attr:`&optional`
-         The source IP address/subnet.
 
-      src_p: :zeek:type:`port` :zeek:attr:`&optional`
-         The source port number.
+   .. zeek:field:: src_h :zeek:type:`subnet` :zeek:attr:`&optional`
 
-      dst_h: :zeek:type:`subnet` :zeek:attr:`&optional`
-         The destination IP address/subnet.
+      The source IP address/subnet.
 
-      dst_p: :zeek:type:`port` :zeek:attr:`&optional`
-         The destination port number.
 
-      src_m: :zeek:type:`string` :zeek:attr:`&optional`
-         The source MAC address.
+   .. zeek:field:: src_p :zeek:type:`port` :zeek:attr:`&optional`
 
-      dst_m: :zeek:type:`string` :zeek:attr:`&optional`
-         The destination MAC address.
+      The source port number.
+
+
+   .. zeek:field:: dst_h :zeek:type:`subnet` :zeek:attr:`&optional`
+
+      The destination IP address/subnet.
+
+
+   .. zeek:field:: dst_p :zeek:type:`port` :zeek:attr:`&optional`
+
+      The destination port number.
+
+
+   .. zeek:field:: src_m :zeek:type:`string` :zeek:attr:`&optional`
+
+      The source MAC address.
+
+
+   .. zeek:field:: dst_m :zeek:type:`string` :zeek:attr:`&optional`
+
+      The destination MAC address.
+
 
    Flow is used in :zeek:type:`NetControl::Entity` together with :zeek:enum:`NetControl::FLOW` to specify
    a uni-directional flow that a rule applies to.
@@ -151,14 +175,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      duration: :zeek:type:`interval` :zeek:attr:`&optional`
-         Total duration of the rule.
 
-      packet_count: :zeek:type:`count` :zeek:attr:`&optional`
-         Number of packets exchanged over connections matched by the rule.
+   .. zeek:field:: duration :zeek:type:`interval` :zeek:attr:`&optional`
 
-      byte_count: :zeek:type:`count` :zeek:attr:`&optional`
-         Total bytes exchanged over connections matched by the rule.
+      Total duration of the rule.
+
+
+   .. zeek:field:: packet_count :zeek:type:`count` :zeek:attr:`&optional`
+
+      Number of packets exchanged over connections matched by the rule.
+
+
+   .. zeek:field:: byte_count :zeek:type:`count` :zeek:attr:`&optional`
+
+      Total bytes exchanged over connections matched by the rule.
+
 
    Information of a flow that can be provided by switches when the flow times out.
    Currently this is heavily influenced by the data that OpenFlow returns by default.
@@ -170,25 +201,39 @@ Types
 
    :Type: :zeek:type:`record`
 
-      src_h: :zeek:type:`addr` :zeek:attr:`&optional`
-         The source IP address.
 
-      src_p: :zeek:type:`count` :zeek:attr:`&optional`
-         The source port number.
+   .. zeek:field:: src_h :zeek:type:`addr` :zeek:attr:`&optional`
 
-      dst_h: :zeek:type:`addr` :zeek:attr:`&optional`
-         The destination IP address.
+      The source IP address.
 
-      dst_p: :zeek:type:`count` :zeek:attr:`&optional`
-         The destination port number.
 
-      src_m: :zeek:type:`string` :zeek:attr:`&optional`
-         The source MAC address.
+   .. zeek:field:: src_p :zeek:type:`count` :zeek:attr:`&optional`
 
-      dst_m: :zeek:type:`string` :zeek:attr:`&optional`
-         The destination MAC address.
+      The source port number.
 
-      redirect_port: :zeek:type:`count` :zeek:attr:`&optional`
+
+   .. zeek:field:: dst_h :zeek:type:`addr` :zeek:attr:`&optional`
+
+      The destination IP address.
+
+
+   .. zeek:field:: dst_p :zeek:type:`count` :zeek:attr:`&optional`
+
+      The destination port number.
+
+
+   .. zeek:field:: src_m :zeek:type:`string` :zeek:attr:`&optional`
+
+      The source MAC address.
+
+
+   .. zeek:field:: dst_m :zeek:type:`string` :zeek:attr:`&optional`
+
+      The destination MAC address.
+
+
+   .. zeek:field:: redirect_port :zeek:type:`count` :zeek:attr:`&optional`
+
 
    Type for defining a flow modification action.
 
@@ -197,55 +242,84 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ty: :zeek:type:`NetControl::RuleType`
-         Type of rule.
 
-      target: :zeek:type:`NetControl::TargetType`
-         Where to apply rule.
+   .. zeek:field:: ty :zeek:type:`NetControl::RuleType`
 
-      entity: :zeek:type:`NetControl::Entity`
-         Entity to apply rule to.
+      Type of rule.
 
-      expire: :zeek:type:`interval` :zeek:attr:`&optional`
-         Timeout after which to expire the rule.
 
-      priority: :zeek:type:`int` :zeek:attr:`&default` = :zeek:see:`NetControl::default_priority` :zeek:attr:`&optional`
-         Priority if multiple rules match an entity (larger value is higher priority).
+   .. zeek:field:: target :zeek:type:`NetControl::TargetType`
 
-      location: :zeek:type:`string` :zeek:attr:`&optional`
-         Optional string describing where/what installed the rule.
+      Where to apply rule.
 
-      out_port: :zeek:type:`count` :zeek:attr:`&optional`
-         Argument for :zeek:enum:`NetControl::REDIRECT` rules.
 
-      mod: :zeek:type:`NetControl::FlowMod` :zeek:attr:`&optional`
-         Argument for :zeek:enum:`NetControl::MODIFY` rules.
+   .. zeek:field:: entity :zeek:type:`NetControl::Entity`
 
-      id: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Internally determined unique ID for this rule. Will be set when added.
+      Entity to apply rule to.
 
-      cid: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Internally determined unique numeric ID for this rule. Set when added.
 
-      _plugin_ids: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
+   .. zeek:field:: expire :zeek:type:`interval` :zeek:attr:`&optional`
 
-         Internally set to the plugins handling the rule.
+      Timeout after which to expire the rule.
 
-      _active_plugin_ids: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
 
-         Internally set to the plugins on which the rule is currently active.
+   .. zeek:field:: priority :zeek:type:`int` :zeek:attr:`&default` = :zeek:see:`NetControl::default_priority` :zeek:attr:`&optional`
 
-      _no_expire_plugins: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
+      Priority if multiple rules match an entity (larger value is higher priority).
 
-         Internally set to plugins where the rule should not be removed upon timeout.
 
-      _added: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&optional`
 
-         Track if the rule was added successfully by all responsible plugins.
+      Optional string describing where/what installed the rule.
+
+
+   .. zeek:field:: out_port :zeek:type:`count` :zeek:attr:`&optional`
+
+      Argument for :zeek:enum:`NetControl::REDIRECT` rules.
+
+
+   .. zeek:field:: mod :zeek:type:`NetControl::FlowMod` :zeek:attr:`&optional`
+
+      Argument for :zeek:enum:`NetControl::MODIFY` rules.
+
+
+   .. zeek:field:: id :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      Internally determined unique ID for this rule. Will be set when added.
+
+
+   .. zeek:field:: cid :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Internally determined unique numeric ID for this rule. Set when added.
+
+
+   .. zeek:field:: _plugin_ids :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
+
+      Internally set to the plugins handling the rule.
+
+
+   .. zeek:field:: _active_plugin_ids :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
+
+      Internally set to the plugins on which the rule is currently active.
+
+
+   .. zeek:field:: _no_expire_plugins :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
+
+      Internally set to plugins where the rule should not be removed upon timeout.
+
+
+   .. zeek:field:: _added :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/netcontrol/main.zeek` is loaded)
+
+      Track if the rule was added successfully by all responsible plugins.
+
 
    A rule for the framework to put in place. Of all rules currently in
    place, the first match will be taken, sorted by priority. All

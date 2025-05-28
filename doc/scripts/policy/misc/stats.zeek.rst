@@ -64,92 +64,147 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for the measurement.
 
-      peer: :zeek:type:`string` :zeek:attr:`&log`
-         Peer that generated this log.  Mostly for clusters.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      mem: :zeek:type:`count` :zeek:attr:`&log`
-         Amount of memory currently in use in MB.
+      Timestamp for the measurement.
 
-      pkts_proc: :zeek:type:`count` :zeek:attr:`&log`
-         Number of packets processed since the last stats interval.
 
-      bytes_recv: :zeek:type:`count` :zeek:attr:`&log`
-         Number of bytes received since the last stats interval if
-         reading live traffic.
+   .. zeek:field:: peer :zeek:type:`string` :zeek:attr:`&log`
 
-      pkts_dropped: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Number of packets dropped since the last stats interval if
-         reading live traffic.
+      Peer that generated this log.  Mostly for clusters.
 
-      pkts_link: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Number of packets seen on the link since the last stats
-         interval if reading live traffic.
 
-      pkt_lag: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Lag between the wall clock and packet timestamps if reading
-         live traffic.
+   .. zeek:field:: mem :zeek:type:`count` :zeek:attr:`&log`
 
-      pkts_filtered: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Number of packets filtered from the link since the last
-         stats interval if reading live traffic.
+      Amount of memory currently in use in MB.
 
-      events_proc: :zeek:type:`count` :zeek:attr:`&log`
-         Number of events processed since the last stats interval.
 
-      events_queued: :zeek:type:`count` :zeek:attr:`&log`
-         Number of events that have been queued since the last stats
-         interval.
+   .. zeek:field:: pkts_proc :zeek:type:`count` :zeek:attr:`&log`
 
-      active_tcp_conns: :zeek:type:`count` :zeek:attr:`&log`
-         TCP connections currently in memory.
+      Number of packets processed since the last stats interval.
 
-      active_udp_conns: :zeek:type:`count` :zeek:attr:`&log`
-         UDP connections currently in memory.
 
-      active_icmp_conns: :zeek:type:`count` :zeek:attr:`&log`
-         ICMP connections currently in memory.
+   .. zeek:field:: bytes_recv :zeek:type:`count` :zeek:attr:`&log`
 
-      tcp_conns: :zeek:type:`count` :zeek:attr:`&log`
-         TCP connections seen since last stats interval.
+      Number of bytes received since the last stats interval if
+      reading live traffic.
 
-      udp_conns: :zeek:type:`count` :zeek:attr:`&log`
-         UDP connections seen since last stats interval.
 
-      icmp_conns: :zeek:type:`count` :zeek:attr:`&log`
-         ICMP connections seen since last stats interval.
+   .. zeek:field:: pkts_dropped :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      timers: :zeek:type:`count` :zeek:attr:`&log`
-         Number of timers scheduled since last stats interval.
+      Number of packets dropped since the last stats interval if
+      reading live traffic.
 
-      active_timers: :zeek:type:`count` :zeek:attr:`&log`
-         Current number of scheduled timers.
 
-      files: :zeek:type:`count` :zeek:attr:`&log`
-         Number of files seen since last stats interval.
+   .. zeek:field:: pkts_link :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      active_files: :zeek:type:`count` :zeek:attr:`&log`
-         Current number of files actively being seen.
+      Number of packets seen on the link since the last stats
+      interval if reading live traffic.
 
-      dns_requests: :zeek:type:`count` :zeek:attr:`&log`
-         Number of DNS requests seen since last stats interval.
 
-      active_dns_requests: :zeek:type:`count` :zeek:attr:`&log`
-         Current number of DNS requests awaiting a reply.
+   .. zeek:field:: pkt_lag :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      reassem_tcp_size: :zeek:type:`count` :zeek:attr:`&log`
-         Current size of TCP data in reassembly.
+      Lag between the wall clock and packet timestamps if reading
+      live traffic.
 
-      reassem_file_size: :zeek:type:`count` :zeek:attr:`&log`
-         Current size of File data in reassembly.
 
-      reassem_frag_size: :zeek:type:`count` :zeek:attr:`&log`
-         Current size of packet fragment data in reassembly.
+   .. zeek:field:: pkts_filtered :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      reassem_unknown_size: :zeek:type:`count` :zeek:attr:`&log`
-         Current size of unknown data in reassembly (this is only PIA buffer right now).
+      Number of packets filtered from the link since the last
+      stats interval if reading live traffic.
+
+
+   .. zeek:field:: events_proc :zeek:type:`count` :zeek:attr:`&log`
+
+      Number of events processed since the last stats interval.
+
+
+   .. zeek:field:: events_queued :zeek:type:`count` :zeek:attr:`&log`
+
+      Number of events that have been queued since the last stats
+      interval.
+
+
+   .. zeek:field:: active_tcp_conns :zeek:type:`count` :zeek:attr:`&log`
+
+      TCP connections currently in memory.
+
+
+   .. zeek:field:: active_udp_conns :zeek:type:`count` :zeek:attr:`&log`
+
+      UDP connections currently in memory.
+
+
+   .. zeek:field:: active_icmp_conns :zeek:type:`count` :zeek:attr:`&log`
+
+      ICMP connections currently in memory.
+
+
+   .. zeek:field:: tcp_conns :zeek:type:`count` :zeek:attr:`&log`
+
+      TCP connections seen since last stats interval.
+
+
+   .. zeek:field:: udp_conns :zeek:type:`count` :zeek:attr:`&log`
+
+      UDP connections seen since last stats interval.
+
+
+   .. zeek:field:: icmp_conns :zeek:type:`count` :zeek:attr:`&log`
+
+      ICMP connections seen since last stats interval.
+
+
+   .. zeek:field:: timers :zeek:type:`count` :zeek:attr:`&log`
+
+      Number of timers scheduled since last stats interval.
+
+
+   .. zeek:field:: active_timers :zeek:type:`count` :zeek:attr:`&log`
+
+      Current number of scheduled timers.
+
+
+   .. zeek:field:: files :zeek:type:`count` :zeek:attr:`&log`
+
+      Number of files seen since last stats interval.
+
+
+   .. zeek:field:: active_files :zeek:type:`count` :zeek:attr:`&log`
+
+      Current number of files actively being seen.
+
+
+   .. zeek:field:: dns_requests :zeek:type:`count` :zeek:attr:`&log`
+
+      Number of DNS requests seen since last stats interval.
+
+
+   .. zeek:field:: active_dns_requests :zeek:type:`count` :zeek:attr:`&log`
+
+      Current number of DNS requests awaiting a reply.
+
+
+   .. zeek:field:: reassem_tcp_size :zeek:type:`count` :zeek:attr:`&log`
+
+      Current size of TCP data in reassembly.
+
+
+   .. zeek:field:: reassem_file_size :zeek:type:`count` :zeek:attr:`&log`
+
+      Current size of File data in reassembly.
+
+
+   .. zeek:field:: reassem_frag_size :zeek:type:`count` :zeek:attr:`&log`
+
+      Current size of packet fragment data in reassembly.
+
+
+   .. zeek:field:: reassem_unknown_size :zeek:type:`count` :zeek:attr:`&log`
+
+      Current size of unknown data in reassembly (this is only PIA buffer right now).
+
 
 
 Events

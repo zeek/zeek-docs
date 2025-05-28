@@ -122,25 +122,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time at which some tunnel activity occurred.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The unique identifier for the tunnel, which may correspond
-         to a :zeek:type:`connection`'s *uid* field for non-IP-in-IP tunnels.
-         This is optional because there could be numerous connections
-         for payload proxies like SOCKS but we should treat it as a
-         single tunnel.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The tunnel "connection" 4-tuple of endpoint addresses/ports.
-         For an IP tunnel, the ports will be 0.
+      Time at which some tunnel activity occurred.
 
-      tunnel_type: :zeek:type:`Tunnel::Type` :zeek:attr:`&log`
-         The type of tunnel.
 
-      action: :zeek:type:`Tunnel::Action` :zeek:attr:`&log`
-         The type of activity that occurred.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The unique identifier for the tunnel, which may correspond
+      to a :zeek:type:`connection`'s *uid* field for non-IP-in-IP tunnels.
+      This is optional because there could be numerous connections
+      for payload proxies like SOCKS but we should treat it as a
+      single tunnel.
+
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      The tunnel "connection" 4-tuple of endpoint addresses/ports.
+      For an IP tunnel, the ports will be 0.
+
+
+   .. zeek:field:: tunnel_type :zeek:type:`Tunnel::Type` :zeek:attr:`&log`
+
+      The type of tunnel.
+
+
+   .. zeek:field:: action :zeek:type:`Tunnel::Action` :zeek:attr:`&log`
+
+      The type of activity that occurred.
+
 
    The record type which contains column fields of the tunnel log.
 

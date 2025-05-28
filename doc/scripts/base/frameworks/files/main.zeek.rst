@@ -147,46 +147,57 @@ Types
 
    :Type: :zeek:type:`record`
 
-      chunk_event: :zeek:type:`event` (f: :zeek:type:`fa_file`, data: :zeek:type:`string`, off: :zeek:type:`count`) :zeek:attr:`&optional`
-         An event which will be generated for all new file contents,
-         chunk-wise.  Used when *tag* (in the
-         :zeek:see:`Files::add_analyzer` function) is
-         :zeek:see:`Files::ANALYZER_DATA_EVENT`.
 
-      stream_event: :zeek:type:`event` (f: :zeek:type:`fa_file`, data: :zeek:type:`string`) :zeek:attr:`&optional`
-         An event which will be generated for all new file contents,
-         stream-wise.  Used when *tag* is
-         :zeek:see:`Files::ANALYZER_DATA_EVENT`.
+   .. zeek:field:: chunk_event :zeek:type:`event` (f: :zeek:type:`fa_file`, data: :zeek:type:`string`, off: :zeek:type:`count`) :zeek:attr:`&optional`
 
-      extract_filename: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+      An event which will be generated for all new file contents,
+      chunk-wise.  Used when *tag* (in the
+      :zeek:see:`Files::add_analyzer` function) is
+      :zeek:see:`Files::ANALYZER_DATA_EVENT`.
 
-         The local filename to which to write an extracted file.
-         This field is used in the core by the extraction plugin
-         to know where to write the file to.  If not specified, then
-         a filename in the format "extract-<source>-<id>" is
-         automatically assigned (using the *source* and *id*
-         fields of :zeek:see:`fa_file`).
 
-      extract_limit: :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+   .. zeek:field:: stream_event :zeek:type:`event` (f: :zeek:type:`fa_file`, data: :zeek:type:`string`) :zeek:attr:`&optional`
 
-         The maximum allowed file size in bytes of *extract_filename*.
-         Once reached, a :zeek:see:`file_extraction_limit` event is
-         raised and the analyzer will be removed unless
-         :zeek:see:`FileExtract::set_limit` is called to increase the
-         limit.  A value of zero means "no limit".
+      An event which will be generated for all new file contents,
+      stream-wise.  Used when *tag* is
+      :zeek:see:`Files::ANALYZER_DATA_EVENT`.
 
-      extract_limit_includes_missing: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit_includes_missing` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
 
-         By default, missing bytes in files count towards the extract file size.
-         Missing bytes can, e.g., occur due to missed traffic, or offsets
-         used when downloading files.
-         Setting this option to false changes this behavior so that holes
-         in files do no longer count towards these limits. Files with
-         holes are created as sparse files on disk. Their apparent size
-         can exceed this file size limit.
+   .. zeek:field:: extract_filename :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+
+      The local filename to which to write an extracted file.
+      This field is used in the core by the extraction plugin
+      to know where to write the file to.  If not specified, then
+      a filename in the format "extract-<source>-<id>" is
+      automatically assigned (using the *source* and *id*
+      fields of :zeek:see:`fa_file`).
+
+
+   .. zeek:field:: extract_limit :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+
+      The maximum allowed file size in bytes of *extract_filename*.
+      Once reached, a :zeek:see:`file_extraction_limit` event is
+      raised and the analyzer will be removed unless
+      :zeek:see:`FileExtract::set_limit` is called to increase the
+      limit.  A value of zero means "no limit".
+
+
+   .. zeek:field:: extract_limit_includes_missing :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`FileExtract::default_limit_includes_missing` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+
+      By default, missing bytes in files count towards the extract file size.
+      Missing bytes can, e.g., occur due to missed traffic, or offsets
+      used when downloading files.
+      Setting this option to false changes this behavior so that holes
+      in files do no longer count towards these limits. Files with
+      holes are created as sparse files on disk. Their apparent size
+      can exceed this file size limit.
+
    :Attributes: :zeek:attr:`&redef`
 
    A structure which parameterizes a type of file analysis.
@@ -196,127 +207,180 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The time when the file was first seen.
 
-      fuid: :zeek:type:`string` :zeek:attr:`&log`
-         An identifier associated with a single file.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      uid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If this file, or parts of it, were transferred over a
-         network connection, this is the uid for the connection.
+      The time when the file was first seen.
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If this file, or parts of it, were transferred over a
-         network connection, this shows the connection.
 
-      source: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         An identification of the source of the file data.  E.g. it
-         may be a network protocol over which it was transferred, or a
-         local file path which was read, or some other input source.
+   .. zeek:field:: fuid :zeek:type:`string` :zeek:attr:`&log`
 
-      depth: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         A value to represent the depth of this file in relation
-         to its source.  In SMTP, it is the depth of the MIME
-         attachment on the message.  In HTTP, it is the depth of the
-         request within the TCP connection.
+      An identifier associated with a single file.
 
-      analyzers: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         A set of analysis types done during the file analysis.
 
-      mime_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A mime type provided by the strongest file magic signature
-         match against the *bof_buffer* field of :zeek:see:`fa_file`,
-         or in the cases where no buffering of the beginning of file
-         occurs, an initial guess of the mime type based on the first
-         data seen.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      filename: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A filename for the file if one is available from the source
-         for the file.  These will frequently come from
-         "Content-Disposition" headers in network protocols.
+      If this file, or parts of it, were transferred over a
+      network connection, this is the uid for the connection.
 
-      duration: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
-         The duration the file was analyzed for.
 
-      local_orig: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the source of this file is a network connection, this field
-         indicates if the data originated from the local network or not as
-         determined by the configured :zeek:see:`Site::local_nets`.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      is_orig: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the source of this file is a network connection, this field
-         indicates if the file is being sent by the originator of the
-         connection or the responder.
+      If this file, or parts of it, were transferred over a
+      network connection, this shows the connection.
 
-      seen_bytes: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Number of bytes provided to the file analysis engine for the file.
-         The value refers to the total number of bytes processed for this
-         file across all connections seen by the current Zeek instance.
 
-      total_bytes: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Total number of bytes that are supposed to comprise the full file.
+   .. zeek:field:: source :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      missing_bytes: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of bytes in the file stream that were completely missed
-         during the process of analysis e.g. due to dropped packets.
-         The value refers to number of bytes missed for this file
-         across all connections seen by the current Zeek instance.
+      An identification of the source of the file data.  E.g. it
+      may be a network protocol over which it was transferred, or a
+      local file path which was read, or some other input source.
 
-      overflow_bytes: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of bytes in the file stream that were not delivered to
-         stream file analyzers.  This could be overlapping bytes or
-         bytes that couldn't be reassembled.
 
-      timedout: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether the file analysis timed out at least once for the file.
+   .. zeek:field:: depth :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      parent_fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Identifier associated with a container file from which this one was
-         extracted as part of the file analysis.
+      A value to represent the depth of this file in relation
+      to its source.  In SMTP, it is the depth of the MIME
+      attachment on the message.  In HTTP, it is the depth of the
+      request within the TCP connection.
 
-      md5: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/hash/main.zeek` is loaded)
 
-         An MD5 digest of the file contents.
+   .. zeek:field:: analyzers :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      sha1: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/hash/main.zeek` is loaded)
+      A set of analysis types done during the file analysis.
 
-         A SHA1 digest of the file contents.
 
-      sha256: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/hash/main.zeek` is loaded)
+   .. zeek:field:: mime_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         A SHA256 digest of the file contents.
+      A mime type provided by the strongest file magic signature
+      match against the *bof_buffer* field of :zeek:see:`fa_file`,
+      or in the cases where no buffering of the beginning of file
+      occurs, an initial guess of the mime type based on the first
+      data seen.
 
-      x509: :zeek:type:`X509::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/x509/main.zeek` is loaded)
 
-         Information about X509 certificates. This is used to keep
-         certificate information until all events have been received.
+   .. zeek:field:: filename :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      extracted: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+      A filename for the file if one is available from the source
+      for the file.  These will frequently come from
+      "Content-Disposition" headers in network protocols.
 
-         Local filename of extracted file.
 
-      extracted_cutoff: :zeek:type:`bool` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+   .. zeek:field:: duration :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
 
-         Set to true if the file being extracted was cut off
-         so the whole file was not logged.
+      The duration the file was analyzed for.
 
-      extracted_size: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
 
-         The number of bytes extracted to disk.
+   .. zeek:field:: local_orig :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      entropy: :zeek:type:`double` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/files/entropy-test-all-files.zeek` is loaded)
+      If the source of this file is a network connection, this field
+      indicates if the data originated from the local network or not as
+      determined by the configured :zeek:see:`Site::local_nets`.
 
-         The information density of the contents of the file,
-         expressed as a number of bits per character.
+
+   .. zeek:field:: is_orig :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      If the source of this file is a network connection, this field
+      indicates if the file is being sent by the originator of the
+      connection or the responder.
+
+
+   .. zeek:field:: seen_bytes :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Number of bytes provided to the file analysis engine for the file.
+      The value refers to the total number of bytes processed for this
+      file across all connections seen by the current Zeek instance.
+
+
+   .. zeek:field:: total_bytes :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Total number of bytes that are supposed to comprise the full file.
+
+
+   .. zeek:field:: missing_bytes :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of bytes in the file stream that were completely missed
+      during the process of analysis e.g. due to dropped packets.
+      The value refers to number of bytes missed for this file
+      across all connections seen by the current Zeek instance.
+
+
+   .. zeek:field:: overflow_bytes :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of bytes in the file stream that were not delivered to
+      stream file analyzers.  This could be overlapping bytes or
+      bytes that couldn't be reassembled.
+
+
+   .. zeek:field:: timedout :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether the file analysis timed out at least once for the file.
+
+
+   .. zeek:field:: parent_fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Identifier associated with a container file from which this one was
+      extracted as part of the file analysis.
+
+
+   .. zeek:field:: md5 :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/hash/main.zeek` is loaded)
+
+      An MD5 digest of the file contents.
+
+
+   .. zeek:field:: sha1 :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/hash/main.zeek` is loaded)
+
+      A SHA1 digest of the file contents.
+
+
+   .. zeek:field:: sha256 :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/hash/main.zeek` is loaded)
+
+      A SHA256 digest of the file contents.
+
+
+   .. zeek:field:: x509 :zeek:type:`X509::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/x509/main.zeek` is loaded)
+
+      Information about X509 certificates. This is used to keep
+      certificate information until all events have been received.
+
+
+   .. zeek:field:: extracted :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+
+      Local filename of extracted file.
+
+
+   .. zeek:field:: extracted_cutoff :zeek:type:`bool` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+
+      Set to true if the file being extracted was cut off
+      so the whole file was not logged.
+
+
+   .. zeek:field:: extracted_size :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/base/files/extract/main.zeek` is loaded)
+
+      The number of bytes extracted to disk.
+
+
+   .. zeek:field:: entropy :zeek:type:`double` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/files/entropy-test-all-files.zeek` is loaded)
+
+      The information density of the contents of the file,
+      expressed as a number of bits per character.
+
    :Attributes: :zeek:attr:`&redef`
 
    Contains all metadata related to the analysis of a given file.
@@ -328,14 +392,19 @@ Types
 
    :Type: :zeek:type:`record`
 
-      get_file_handle: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
-         A callback to generate a file handle on demand when
-         one is needed by the core.
 
-      describe: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string` :zeek:attr:`&default` = :zeek:type:`function` :zeek:attr:`&optional`
-         A callback to "describe" a file.  In the case of an HTTP
-         transfer the most obvious description would be the URL.
-         It's like an extremely compressed version of the normal log.
+   .. zeek:field:: get_file_handle :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
+
+      A callback to generate a file handle on demand when
+      one is needed by the core.
+
+
+   .. zeek:field:: describe :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string` :zeek:attr:`&default` = :zeek:type:`function` :zeek:attr:`&optional`
+
+      A callback to "describe" a file.  In the case of an HTTP
+      transfer the most obvious description would be the URL.
+      It's like an extremely compressed version of the normal log.
+
 
 
 Events

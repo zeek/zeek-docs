@@ -96,9 +96,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      info: :zeek:type:`DCE_RPC::Info`
 
-      state: :zeek:type:`DCE_RPC::State`
+   .. zeek:field:: info :zeek:type:`DCE_RPC::Info`
+
+
+   .. zeek:field:: state :zeek:type:`DCE_RPC::State`
+
 
 
 .. zeek:type:: DCE_RPC::Info
@@ -106,28 +109,43 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      rtt: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Round trip time from the request to the response.
-         If either the request or response wasn't seen,
-         this will be null.
 
-      named_pipe: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Remote pipe name.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      endpoint: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Endpoint name looked up from the uuid.
+      Unique ID for the connection.
 
-      operation: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Operation seen in the call.
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      The connection's 4-tuple of endpoint addresses/ports.
+
+
+   .. zeek:field:: rtt :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Round trip time from the request to the response.
+      If either the request or response wasn't seen,
+      this will be null.
+
+
+   .. zeek:field:: named_pipe :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Remote pipe name.
+
+
+   .. zeek:field:: endpoint :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Endpoint name looked up from the uuid.
+
+
+   .. zeek:field:: operation :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Operation seen in the call.
+
 
 
 .. zeek:type:: DCE_RPC::State
@@ -135,11 +153,15 @@ Types
 
    :Type: :zeek:type:`record`
 
-      uuid: :zeek:type:`string` :zeek:attr:`&optional`
 
-      named_pipe: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: uuid :zeek:type:`string` :zeek:attr:`&optional`
 
-      ctx_to_uuid: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
+
+   .. zeek:field:: named_pipe :zeek:type:`string` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: ctx_to_uuid :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
+
 
 
 Hooks

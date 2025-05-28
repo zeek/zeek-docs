@@ -271,46 +271,71 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The network time at which a signature matching type of event
-         to be logged has occurred.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A unique identifier of the connection which triggered the
-         signature match event.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      src_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The host which triggered the signature match event.
+      The network time at which a signature matching type of event
+      to be logged has occurred.
 
-      src_port: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The host port on which the signature-matching activity
-         occurred.
 
-      dst_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The destination host which was sent the payload that
-         triggered the signature match.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      dst_port: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The destination host port which was sent the payload that
-         triggered the signature match.
+      A unique identifier of the connection which triggered the
+      signature match event.
 
-      note: :zeek:type:`Notice::Type` :zeek:attr:`&log`
-         Notice associated with signature event.
 
-      sig_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The name of the signature that matched.
+   .. zeek:field:: src_addr :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      event_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A more descriptive message of the signature-matching event.
+      The host which triggered the signature match event.
 
-      sub_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Extracted payload data or extra message.
 
-      sig_count: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Number of sigs, usually from summary count.
+   .. zeek:field:: src_port :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      host_count: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Number of hosts, from a summary count.
+      The host port on which the signature-matching activity
+      occurred.
+
+
+   .. zeek:field:: dst_addr :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The destination host which was sent the payload that
+      triggered the signature match.
+
+
+   .. zeek:field:: dst_port :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The destination host port which was sent the payload that
+      triggered the signature match.
+
+
+   .. zeek:field:: note :zeek:type:`Notice::Type` :zeek:attr:`&log`
+
+      Notice associated with signature event.
+
+
+   .. zeek:field:: sig_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The name of the signature that matched.
+
+
+   .. zeek:field:: event_msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      A more descriptive message of the signature-matching event.
+
+
+   .. zeek:field:: sub_msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Extracted payload data or extra message.
+
+
+   .. zeek:field:: sig_count :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Number of sigs, usually from summary count.
+
+
+   .. zeek:field:: host_count :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Number of hosts, from a summary count.
+
 
    The record type which contains the column fields of the signature log.
 

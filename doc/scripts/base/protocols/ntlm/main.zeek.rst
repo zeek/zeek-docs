@@ -47,39 +47,62 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      username: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Username given by the client.
 
-      hostname: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Hostname given by the client.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      domainname: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Domainname given by the client.
+      Unique ID for the connection.
 
-      server_nb_computer_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         NetBIOS name given by the server in a CHALLENGE.
 
-      server_dns_computer_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         DNS name given by the server in a CHALLENGE.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      server_tree_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Tree name given by the server in a CHALLENGE.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Indicate whether or not the authentication was successful.
 
-      done: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Internally used field to indicate if the login attempt
-         has already been logged.
+   .. zeek:field:: username :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Username given by the client.
+
+
+   .. zeek:field:: hostname :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Hostname given by the client.
+
+
+   .. zeek:field:: domainname :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Domainname given by the client.
+
+
+   .. zeek:field:: server_nb_computer_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      NetBIOS name given by the server in a CHALLENGE.
+
+
+   .. zeek:field:: server_dns_computer_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      DNS name given by the server in a CHALLENGE.
+
+
+   .. zeek:field:: server_tree_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Tree name given by the server in a CHALLENGE.
+
+
+   .. zeek:field:: success :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Indicate whether or not the authentication was successful.
+
+
+   .. zeek:field:: done :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Internally used field to indicate if the login attempt
+      has already been logged.
+
 
 
 Hooks

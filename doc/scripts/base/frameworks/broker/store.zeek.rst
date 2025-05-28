@@ -182,7 +182,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      sqlite: :zeek:type:`Broker::SQLiteOptions` :zeek:attr:`&default` = *[path=, synchronous=<uninitialized>, journal_mode=<uninitialized>, failure_mode=Broker::SQLITE_FAILURE_MODE_FAIL, integrity_check=F]* :zeek:attr:`&optional`
+
+   .. zeek:field:: sqlite :zeek:type:`Broker::SQLiteOptions` :zeek:attr:`&default` = *...* :zeek:attr:`&optional`
+
 
    Options to tune the particular storage backends.
 
@@ -202,13 +204,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      status: :zeek:type:`Broker::QueryStatus`
-         Whether the query completed or not.
 
-      result: :zeek:type:`Broker::Data`
-         The result of the query.  Certain queries may use a particular
-         data type (e.g. querying store size always returns a count, but
-         a lookup may return various data types).
+   .. zeek:field:: status :zeek:type:`Broker::QueryStatus`
+
+      Whether the query completed or not.
+
+
+   .. zeek:field:: result :zeek:type:`Broker::Data`
+
+      The result of the query.  Certain queries may use a particular
+      data type (e.g. querying store size always returns a count, but
+      a lookup may return various data types).
+
 
    The result of a data store query.
 
@@ -255,39 +262,50 @@ Types
 
    :Type: :zeek:type:`record`
 
-      path: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         File system path of the database.
-         If left empty, will be derived from the name of the store,
-         and use the '.sqlite' file suffix.
 
-      synchronous: :zeek:type:`Broker::SQLiteSynchronous` :zeek:attr:`&optional`
-         If set, runs the PRAGMA synchronous statement with the
-         provided value after connecting to the SQLite database. See
-         `SQLite's synchronous documentation <https://www.sqlite.org/pragma.html#pragma_synchronous>`_
-         for more details around performance and data safety trade offs.
+   .. zeek:field:: path :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
 
-      journal_mode: :zeek:type:`Broker::SQLiteJournalMode` :zeek:attr:`&optional`
-         If set, runs the PRAGMA journal_mode statement with the
-         provided value after connecting to the SQLite database. See
-         `SQLite's journal_mode documentation <https://www.sqlite.org/pragma.html#pragma_journal_mode>`_
-         for more details around performance, data safety trade offs
-         and interaction with the PRAGMA synchronous statement.
+      File system path of the database.
+      If left empty, will be derived from the name of the store,
+      and use the '.sqlite' file suffix.
 
-      failure_mode: :zeek:type:`Broker::SQLiteFailureMode` :zeek:attr:`&default` = ``Broker::SQLITE_FAILURE_MODE_FAIL`` :zeek:attr:`&optional`
-         What to do when the database is found corrupt during
-         initialization. When set to SQLITE_FAILURE_MODE_DELETE,
-         the old file is deleted to allow creation of a new and empty
-         database. By default, an error is reported, the corrupt
-         database file left in place and the data store is in a
-         non-functional state.
 
-      integrity_check: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         When true, run the PRAGMA integrity_check statement after
-         opening the database and fail according to ``failure_mode``.
-         PRAGMA integrity_check may take a non-negligible amount of time,
-         so you are advised to experiment with the expected sizes
-         of your databases if that is acceptable. Corrupted databases
-         should be reliably detected when this setting is ``T``.
+   .. zeek:field:: synchronous :zeek:type:`Broker::SQLiteSynchronous` :zeek:attr:`&optional`
+
+      If set, runs the PRAGMA synchronous statement with the
+      provided value after connecting to the SQLite database. See
+      `SQLite's synchronous documentation <https://www.sqlite.org/pragma.html#pragma_synchronous>`_
+      for more details around performance and data safety trade offs.
+
+
+   .. zeek:field:: journal_mode :zeek:type:`Broker::SQLiteJournalMode` :zeek:attr:`&optional`
+
+      If set, runs the PRAGMA journal_mode statement with the
+      provided value after connecting to the SQLite database. See
+      `SQLite's journal_mode documentation <https://www.sqlite.org/pragma.html#pragma_journal_mode>`_
+      for more details around performance, data safety trade offs
+      and interaction with the PRAGMA synchronous statement.
+
+
+   .. zeek:field:: failure_mode :zeek:type:`Broker::SQLiteFailureMode` :zeek:attr:`&default` = ``Broker::SQLITE_FAILURE_MODE_FAIL`` :zeek:attr:`&optional`
+
+      What to do when the database is found corrupt during
+      initialization. When set to SQLITE_FAILURE_MODE_DELETE,
+      the old file is deleted to allow creation of a new and empty
+      database. By default, an error is reported, the corrupt
+      database file left in place and the data store is in a
+      non-functional state.
+
+
+   .. zeek:field:: integrity_check :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      When true, run the PRAGMA integrity_check statement after
+      opening the database and fail according to ``failure_mode``.
+      PRAGMA integrity_check may take a non-negligible amount of time,
+      so you are advised to experiment with the expected sizes
+      of your databases if that is acceptable. Corrupted databases
+      should be reliably detected when this setting is ``T``.
+
 
    Options to tune the SQLite storage backend.
 

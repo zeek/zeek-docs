@@ -41,10 +41,13 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string` :zeek:attr:`&log`
-         Name of the script loaded potentially with spaces included
-         before the file name to indicate load depth.  The convention
-         is two spaces per level of depth.
+
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log`
+
+      Name of the script loaded potentially with spaces included
+      before the file name to indicate load depth.  The convention
+      is two spaces per level of depth.
+
 
 
 Hooks

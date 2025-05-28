@@ -44,28 +44,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the measurement occurred.
 
-      analyzer: :zeek:type:`string` :zeek:attr:`&log`
-         The string name of the analyzer attempting to forward the protocol.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      protocol_id: :zeek:type:`string` :zeek:attr:`&log`
-         The identifier of the protocol being forwarded in hex notation.
+      Timestamp for when the measurement occurred.
 
-      protocol_id_num: :zeek:type:`count`
-         The identifier of the protocol being forwarded as count.
-         Note: The count value is not logged by default. It is provided for
-         easy access in log policy hooks.
 
-      first_bytes: :zeek:type:`string` :zeek:attr:`&log`
-         A certain number of bytes at the start of the unknown protocol's
-         header.
+   .. zeek:field:: analyzer :zeek:type:`string` :zeek:attr:`&log`
 
-      analyzer_history: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
-         The chain of packet analyzers that processed the packet up to this
-         point. This includes the history of encapsulating packets in case
-         of tunneling.
+      The string name of the analyzer attempting to forward the protocol.
+
+
+   .. zeek:field:: protocol_id :zeek:type:`string` :zeek:attr:`&log`
+
+      The identifier of the protocol being forwarded in hex notation.
+
+
+   .. zeek:field:: protocol_id_num :zeek:type:`count`
+
+      The identifier of the protocol being forwarded as count.
+      Note: The count value is not logged by default. It is provided for
+      easy access in log policy hooks.
+
+
+   .. zeek:field:: first_bytes :zeek:type:`string` :zeek:attr:`&log`
+
+      A certain number of bytes at the start of the unknown protocol's
+      header.
+
+
+   .. zeek:field:: analyzer_history :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
+
+      The chain of packet analyzers that processed the packet up to this
+      point. This includes the history of encapsulating packets in case
+      of tunneling.
+
 
 
 Hooks

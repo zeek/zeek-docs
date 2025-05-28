@@ -284,47 +284,76 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`count` :zeek:attr:`&log`
-         Version number.
 
-      serial: :zeek:type:`string` :zeek:attr:`&log`
-         Serial number.
+   .. zeek:field:: version :zeek:type:`count` :zeek:attr:`&log`
 
-      subject: :zeek:type:`string` :zeek:attr:`&log`
-         Subject.
+      Version number.
 
-      issuer: :zeek:type:`string` :zeek:attr:`&log`
-         Issuer.
 
-      cn: :zeek:type:`string` :zeek:attr:`&optional`
-         Last (most specific) common name.
+   .. zeek:field:: serial :zeek:type:`string` :zeek:attr:`&log`
 
-      not_valid_before: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp before when certificate is not valid.
+      Serial number.
 
-      not_valid_after: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp after when certificate is not valid.
 
-      key_alg: :zeek:type:`string` :zeek:attr:`&log`
-         Name of the key algorithm
+   .. zeek:field:: subject :zeek:type:`string` :zeek:attr:`&log`
 
-      sig_alg: :zeek:type:`string` :zeek:attr:`&log`
-         Name of the signature algorithm
+      Subject.
 
-      key_type: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Key type, if key parseable by openssl (either rsa, dsa or ec)
 
-      key_length: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Key length in bits
+   .. zeek:field:: issuer :zeek:type:`string` :zeek:attr:`&log`
 
-      exponent: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Exponent, if RSA-certificate
+      Issuer.
 
-      curve: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Curve, if EC-certificate
 
-      tbs_sig_alg: :zeek:type:`string`
-         Name of the signature algorithm given inside the tbsCertificate. Should be equivalent to `sig_alg`.
+   .. zeek:field:: cn :zeek:type:`string` :zeek:attr:`&optional`
+
+      Last (most specific) common name.
+
+
+   .. zeek:field:: not_valid_before :zeek:type:`time` :zeek:attr:`&log`
+
+      Timestamp before when certificate is not valid.
+
+
+   .. zeek:field:: not_valid_after :zeek:type:`time` :zeek:attr:`&log`
+
+      Timestamp after when certificate is not valid.
+
+
+   .. zeek:field:: key_alg :zeek:type:`string` :zeek:attr:`&log`
+
+      Name of the key algorithm
+
+
+   .. zeek:field:: sig_alg :zeek:type:`string` :zeek:attr:`&log`
+
+      Name of the signature algorithm
+
+
+   .. zeek:field:: key_type :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Key type, if key parseable by openssl (either rsa, dsa or ec)
+
+
+   .. zeek:field:: key_length :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Key length in bits
+
+
+   .. zeek:field:: exponent :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Exponent, if RSA-certificate
+
+
+   .. zeek:field:: curve :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Curve, if EC-certificate
+
+
+   .. zeek:field:: tbs_sig_alg :zeek:type:`string`
+
+      Name of the signature algorithm given inside the tbsCertificate. Should be equivalent to `sig_alg`.
+
 
 
 .. zeek:type:: X509::Extension
@@ -332,20 +361,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         Long name of extension. oid if name not known
 
-      short_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Short name of extension if known
+   .. zeek:field:: name :zeek:type:`string`
 
-      oid: :zeek:type:`string`
-         Oid of extension
+      Long name of extension. oid if name not known
 
-      critical: :zeek:type:`bool`
-         True if extension is critical
 
-      value: :zeek:type:`string`
-         Extension content parsed to string for known extensions. Raw data otherwise.
+   .. zeek:field:: short_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Short name of extension if known
+
+
+   .. zeek:field:: oid :zeek:type:`string`
+
+      Oid of extension
+
+
+   .. zeek:field:: critical :zeek:type:`bool`
+
+      True if extension is critical
+
+
+   .. zeek:field:: value :zeek:type:`string`
+
+      Extension content parsed to string for known extensions. Raw data otherwise.
+
 
 
 .. zeek:type:: X509::BasicConstraints
@@ -353,11 +393,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ca: :zeek:type:`bool` :zeek:attr:`&log`
-         CA flag set?
 
-      path_len: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Maximum path length
+   .. zeek:field:: ca :zeek:type:`bool` :zeek:attr:`&log`
+
+      CA flag set?
+
+
+   .. zeek:field:: path_len :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Maximum path length
+
    :Attributes: :zeek:attr:`&log`
 
 
@@ -366,20 +411,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dns: :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of DNS entries in SAN
 
-      uri: :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of URI entries in SAN
+   .. zeek:field:: dns :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      email: :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of email entries in SAN
+      List of DNS entries in SAN
 
-      ip: :zeek:type:`addr_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of IP entries in SAN
 
-      other_fields: :zeek:type:`bool`
-         True if the certificate contained other, not recognized or parsed name fields
+   .. zeek:field:: uri :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      List of URI entries in SAN
+
+
+   .. zeek:field:: email :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      List of email entries in SAN
+
+
+   .. zeek:field:: ip :zeek:type:`addr_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      List of IP entries in SAN
+
+
+   .. zeek:field:: other_fields :zeek:type:`bool`
+
+      True if the certificate contained other, not recognized or parsed name fields
+
 
 
 .. zeek:type:: X509::Result
@@ -387,14 +443,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      result: :zeek:type:`int`
-         OpenSSL result code
 
-      result_string: :zeek:type:`string`
-         Result as string
+   .. zeek:field:: result :zeek:type:`int`
 
-      chain_certs: :zeek:type:`vector` of :zeek:type:`opaque` of x509 :zeek:attr:`&optional`
-         References to the final certificate chain, if verification successful. End-host certificate is first.
+      OpenSSL result code
+
+
+   .. zeek:field:: result_string :zeek:type:`string`
+
+      Result as string
+
+
+   .. zeek:field:: chain_certs :zeek:type:`vector` of :zeek:type:`opaque` of x509 :zeek:attr:`&optional`
+
+      References to the final certificate chain, if verification successful. End-host certificate is first.
+
 
    Result of an X509 certificate chain verification
 

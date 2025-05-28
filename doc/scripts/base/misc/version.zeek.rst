@@ -66,42 +66,61 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version_number: :zeek:type:`count`
-         Number representing the version which can be used for easy comparison.
-         The format of the number is ABBCC with A being the major version,
-         bb being the minor version (2 digits) and CC being the patchlevel (2 digits).
-         As an example, Zeek 2.4.1 results in the number 20401.
 
-      major: :zeek:type:`count`
-         Major version number (e.g. 2 for 2.5)
+   .. zeek:field:: version_number :zeek:type:`count`
 
-      minor: :zeek:type:`count`
-         Minor version number (e.g. 5 for 2.5)
+      Number representing the version which can be used for easy comparison.
+      The format of the number is ABBCC with A being the major version,
+      bb being the minor version (2 digits) and CC being the patchlevel (2 digits).
+      As an example, Zeek 2.4.1 results in the number 20401.
 
-      patch: :zeek:type:`count`
-         Patch version number (e.g. 0 for 2.5 or 1 for 2.4.1)
 
-      commit: :zeek:type:`count`
-         Commit number for development versions, Versions prior to 3.0.0,
-         like "2.4-12", use a post-release commit number (12 commits
-         after the 2.4 release).  Versions after 3.0.0, like
-         "3.1.0-dev.37", use a pre-release commit number (37 commits
-         into the development cycle for 3.1.0).  For non-development version
-         this number will be zero.
+   .. zeek:field:: major :zeek:type:`count`
 
-      beta: :zeek:type:`bool`
-         If set to true, the version is a beta build of Zeek.  These versions
-         may start like "2.6-beta" or "3.0.0-rc" (the "rc" form started
-         being used for 3.0.0 and later).
+      Major version number (e.g. 2 for 2.5)
 
-      debug: :zeek:type:`bool`
-         If set to true, the version is a debug build
 
-      localversion: :zeek:type:`string`
-         Local version portion of the version string
+   .. zeek:field:: minor :zeek:type:`count`
 
-      version_string: :zeek:type:`string`
-         String representation of this version
+      Minor version number (e.g. 5 for 2.5)
+
+
+   .. zeek:field:: patch :zeek:type:`count`
+
+      Patch version number (e.g. 0 for 2.5 or 1 for 2.4.1)
+
+
+   .. zeek:field:: commit :zeek:type:`count`
+
+      Commit number for development versions, Versions prior to 3.0.0,
+      like "2.4-12", use a post-release commit number (12 commits
+      after the 2.4 release).  Versions after 3.0.0, like
+      "3.1.0-dev.37", use a pre-release commit number (37 commits
+      into the development cycle for 3.1.0).  For non-development version
+      this number will be zero.
+
+
+   .. zeek:field:: beta :zeek:type:`bool`
+
+      If set to true, the version is a beta build of Zeek.  These versions
+      may start like "2.6-beta" or "3.0.0-rc" (the "rc" form started
+      being used for 3.0.0 and later).
+
+
+   .. zeek:field:: debug :zeek:type:`bool`
+
+      If set to true, the version is a debug build
+
+
+   .. zeek:field:: localversion :zeek:type:`string`
+
+      Local version portion of the version string
+
+
+   .. zeek:field:: version_string :zeek:type:`string`
+
+      String representation of this version
+
 
    A type exactly describing a Zeek version
 

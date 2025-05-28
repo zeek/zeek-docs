@@ -59,9 +59,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nodes_pending: :zeek:type:`set` [:zeek:type:`string`]
-         Zeek cluster nodes the provided configuration requested
-         and which have not yet checked in with the agent.
+
+   .. zeek:field:: nodes_pending :zeek:type:`set` [:zeek:type:`string`]
+
+      Zeek cluster nodes the provided configuration requested
+      and which have not yet checked in with the agent.
+
 
    Request state for deploy requests.
 
@@ -70,12 +73,17 @@ Types
 
    :Type: :zeek:type:`record`
 
-      action: :zeek:type:`vector` of :zeek:type:`string`
-         The dispatched action. The first string is a command,
-         any remaining strings its arguments.
 
-      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Request state for every node managed by this agent.
+   .. zeek:field:: action :zeek:type:`vector` of :zeek:type:`string`
+
+      The dispatched action. The first string is a command,
+      any remaining strings its arguments.
+
+
+   .. zeek:field:: requests :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Request state for every node managed by this agent.
+
 
    Request state for node dispatches, tracking the requested action
    as well as received responses.
@@ -85,9 +93,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Request state for every node the agent asks the Supervisor
-         to restart.
+
+   .. zeek:field:: requests :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Request state for every node the agent asks the Supervisor
+      to restart.
+
 
    Request state for restart requests, tracking received responses.
 
@@ -96,14 +107,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      node: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Name of the node the Supervisor is acting on, if applicable.
 
-      status: :zeek:type:`Supervisor::Status` :zeek:attr:`&optional`
-         The result of a status request.
+   .. zeek:field:: node :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
 
-      restart_result: :zeek:type:`bool` :zeek:attr:`&optional`
-         The result of a restart request.
+      Name of the node the Supervisor is acting on, if applicable.
+
+
+   .. zeek:field:: status :zeek:type:`Supervisor::Status` :zeek:attr:`&optional`
+
+      The result of a status request.
+
+
+   .. zeek:field:: restart_result :zeek:type:`bool` :zeek:attr:`&optional`
+
+      The result of a restart request.
+
 
    Request state specific to the agent's Supervisor interactions.
 

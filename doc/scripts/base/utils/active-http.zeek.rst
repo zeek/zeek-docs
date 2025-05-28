@@ -63,24 +63,35 @@ Types
 
    :Type: :zeek:type:`record`
 
-      url: :zeek:type:`string`
-         The URL being requested.
 
-      method: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`ActiveHTTP::default_method` :zeek:attr:`&optional`
-         The HTTP method/verb to use for the request.
+   .. zeek:field:: url :zeek:type:`string`
 
-      client_data: :zeek:type:`string` :zeek:attr:`&optional`
-         Data to send to the server in the client body.  Keep in
-         mind that you will probably need to set the *method* field
-         to "POST" or "PUT".
+      The URL being requested.
 
-      max_time: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`ActiveHTTP::default_max_time` :zeek:attr:`&optional`
-         Timeout for the request.
 
-      addl_curl_args: :zeek:type:`string` :zeek:attr:`&optional`
-         Additional curl command line arguments.  Be very careful
-         with this option since shell injection could take place
-         if careful handling of untrusted data is not applied.
+   .. zeek:field:: method :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`ActiveHTTP::default_method` :zeek:attr:`&optional`
+
+      The HTTP method/verb to use for the request.
+
+
+   .. zeek:field:: client_data :zeek:type:`string` :zeek:attr:`&optional`
+
+      Data to send to the server in the client body.  Keep in
+      mind that you will probably need to set the *method* field
+      to "POST" or "PUT".
+
+
+   .. zeek:field:: max_time :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`ActiveHTTP::default_max_time` :zeek:attr:`&optional`
+
+      Timeout for the request.
+
+
+   .. zeek:field:: addl_curl_args :zeek:type:`string` :zeek:attr:`&optional`
+
+      Additional curl command line arguments.  Be very careful
+      with this option since shell injection could take place
+      if careful handling of untrusted data is not applied.
+
 
 
 .. zeek:type:: ActiveHTTP::Response
@@ -88,17 +99,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      code: :zeek:type:`count`
-         Numeric response code from the server.
 
-      msg: :zeek:type:`string`
-         String response message from the server.
+   .. zeek:field:: code :zeek:type:`count`
 
-      body: :zeek:type:`string` :zeek:attr:`&optional`
-         Full body of the response.
+      Numeric response code from the server.
 
-      headers: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&optional`
-         All headers returned by the server.
+
+   .. zeek:field:: msg :zeek:type:`string`
+
+      String response message from the server.
+
+
+   .. zeek:field:: body :zeek:type:`string` :zeek:attr:`&optional`
+
+      Full body of the response.
+
+
+   .. zeek:field:: headers :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&optional`
+
+      All headers returned by the server.
+
 
 
 Functions

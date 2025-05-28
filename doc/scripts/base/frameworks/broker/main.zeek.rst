@@ -508,7 +508,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      data: :zeek:type:`opaque` of Broker::Data :zeek:attr:`&optional`
+
+   .. zeek:field:: data :zeek:type:`opaque` of Broker::Data :zeek:attr:`&optional`
+
 
    Opaque communication data.
 
@@ -524,11 +526,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string`
-         A unique identifier of the node.
 
-      network: :zeek:type:`Broker::NetworkInfo` :zeek:attr:`&optional`
-         Network-level information.
+   .. zeek:field:: id :zeek:type:`string`
+
+      A unique identifier of the node.
+
+
+   .. zeek:field:: network :zeek:type:`Broker::NetworkInfo` :zeek:attr:`&optional`
+
+      Network-level information.
+
 
 
 .. zeek:type:: Broker::ErrorCode
@@ -638,11 +645,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string` :zeek:attr:`&optional`
-         The name of the event.  Not set if invalid event or arguments.
 
-      args: :zeek:type:`Broker::DataVector`
-         The arguments to the event.
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The name of the event.  Not set if invalid event or arguments.
+
+
+   .. zeek:field:: args :zeek:type:`Broker::DataVector`
+
+      The arguments to the event.
+
 
    Opaque event communication data.
 
@@ -682,11 +694,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      address: :zeek:type:`string` :zeek:attr:`&log`
-         The IP address or hostname where the endpoint listens.
 
-      bound_port: :zeek:type:`port` :zeek:attr:`&log`
-         The port where the endpoint is bound to.
+   .. zeek:field:: address :zeek:type:`string` :zeek:attr:`&log`
+
+      The IP address or hostname where the endpoint listens.
+
+
+   .. zeek:field:: bound_port :zeek:type:`port` :zeek:attr:`&log`
+
+      The port where the endpoint is bound to.
+
 
 
 .. zeek:type:: Broker::PeerInfo
@@ -694,13 +711,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      peer: :zeek:type:`Broker::EndpointInfo`
 
-      status: :zeek:type:`Broker::PeerStatus`
+   .. zeek:field:: peer :zeek:type:`Broker::EndpointInfo`
 
-      is_outbound: :zeek:type:`bool`
-         Whether the local node created the peering, as opposed to a
-         remote establishing it by connecting to us.
+
+   .. zeek:field:: status :zeek:type:`Broker::PeerStatus`
+
+
+   .. zeek:field:: is_outbound :zeek:type:`bool`
+
+      Whether the local node created the peering, as opposed to a
+      remote establishing it by connecting to us.
+
 
 
 .. zeek:type:: Broker::PeerInfos
@@ -745,9 +767,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      key: :zeek:type:`Broker::Data`
 
-      val: :zeek:type:`Broker::Data`
+   .. zeek:field:: key :zeek:type:`Broker::Data`
+
+
+   .. zeek:field:: val :zeek:type:`Broker::Data`
+
 
    Opaque communication data used as a convenient way to wrap key-value
    pairs that comprise table entries.

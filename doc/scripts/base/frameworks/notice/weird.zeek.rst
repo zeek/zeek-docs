@@ -388,43 +388,64 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The time when the weird occurred.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If a connection is associated with this weird, this will be
-         the connection's unique ID.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
-         conn_id for the optional connection.
+      The time when the weird occurred.
 
-      conn: :zeek:type:`connection` :zeek:attr:`&optional`
-         A shorthand way of giving the uid and id to a weird.
 
-      name: :zeek:type:`string` :zeek:attr:`&log`
-         The name of the weird that occurred.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      addl: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Additional information accompanying the weird if any.
+      If a connection is associated with this weird, this will be
+      the connection's unique ID.
 
-      notice: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicate if this weird was also turned into a notice.
 
-      peer: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional` :zeek:attr:`&default` = :zeek:see:`peer_description`
-         The peer that originated this weird.  This is helpful in
-         cluster deployments if a particular cluster node is having
-         trouble to help identify which node is having trouble.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      source: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The source of the weird. When reported by an analyzer, this
-         should be the name of the analyzer.
+      conn_id for the optional connection.
 
-      identifier: :zeek:type:`string` :zeek:attr:`&optional`
-         This field is to be provided when a weird is generated for
-         the purpose of deduplicating weirds. The identifier string
-         should be unique for a single instance of the weird. This field
-         is used to define when a weird is conceptually a duplicate of
-         a previous weird.
+
+   .. zeek:field:: conn :zeek:type:`connection` :zeek:attr:`&optional`
+
+      A shorthand way of giving the uid and id to a weird.
+
+
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log`
+
+      The name of the weird that occurred.
+
+
+   .. zeek:field:: addl :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Additional information accompanying the weird if any.
+
+
+   .. zeek:field:: notice :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicate if this weird was also turned into a notice.
+
+
+   .. zeek:field:: peer :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional` :zeek:attr:`&default` = :zeek:see:`peer_description`
+
+      The peer that originated this weird.  This is helpful in
+      cluster deployments if a particular cluster node is having
+      trouble to help identify which node is having trouble.
+
+
+   .. zeek:field:: source :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The source of the weird. When reported by an analyzer, this
+      should be the name of the analyzer.
+
+
+   .. zeek:field:: identifier :zeek:type:`string` :zeek:attr:`&optional`
+
+      This field is to be provided when a weird is generated for
+      the purpose of deduplicating weirds. The identifier string
+      should be unique for a single instance of the weird. This field
+      is used to define when a weird is conceptually a duplicate of
+      a previous weird.
+
 
    The record which is used for representing and logging weirds.
 
