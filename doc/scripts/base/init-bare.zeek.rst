@@ -2236,6 +2236,12 @@ Redefinable Options
 
          RDP::rdp_ports, RDP::rdpeudp_ports
 
+   :Redefinition: from :doc:`/scripts/base/protocols/redis/main.zeek`
+
+      ``+=``::
+
+         Redis::ports
+
    :Redefinition: from :doc:`/scripts/base/protocols/sip/main.zeek`
 
       ``+=``::
@@ -8942,6 +8948,14 @@ Types
 
       rdp: :zeek:type:`RDP::Info` :zeek:attr:`&optional`
          (present if :doc:`/scripts/base/protocols/rdp/main.zeek` is loaded)
+
+
+      redis: :zeek:type:`Redis::Info` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/redis/main.zeek` is loaded)
+
+
+      redis_state: :zeek:type:`Redis::State` :zeek:attr:`&optional`
+         (present if :doc:`/scripts/base/protocols/redis/main.zeek` is loaded)
 
 
       rfb: :zeek:type:`RFB::Info` :zeek:attr:`&optional`

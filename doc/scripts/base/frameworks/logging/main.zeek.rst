@@ -828,6 +828,11 @@ Types
          (present if :doc:`/scripts/base/protocols/rdp/main.zeek` is loaded)
 
 
+      .. zeek:enum:: Redis::LOG Log::ID
+
+         (present if :doc:`/scripts/base/protocols/redis/main.zeek` is loaded)
+
+
       .. zeek:enum:: RFB::LOG Log::ID
 
          (present if :doc:`/scripts/base/protocols/rfb/main.zeek` is loaded)
