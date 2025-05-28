@@ -45,13 +45,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      filename: :zeek:type:`string` :zeek:attr:`&optional`
-         Filename for the entity if discovered from a header.
 
-      excerpt: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/smtp/entities-excerpt.zeek` is loaded)
+   .. zeek:field:: filename :zeek:type:`string` :zeek:attr:`&optional`
 
-         The entity body excerpt.
+      Filename for the entity if discovered from a header.
+
+
+   .. zeek:field:: excerpt :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/smtp/entities-excerpt.zeek` is loaded)
+
+      The entity body excerpt.
+
 
 
 

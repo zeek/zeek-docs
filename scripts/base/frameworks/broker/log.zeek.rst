@@ -41,21 +41,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The network time at which a Broker event occurred.
 
-      ty: :zeek:type:`Broker::Type` :zeek:attr:`&log`
-         The type of the Broker event.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      ev: :zeek:type:`string` :zeek:attr:`&log`
-         The event being logged.
+      The network time at which a Broker event occurred.
 
-      peer: :zeek:type:`Broker::NetworkInfo` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The peer (if any) with which a Broker event is
-         concerned.
 
-      message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         An optional message describing the Broker event in more detail
+   .. zeek:field:: ty :zeek:type:`Broker::Type` :zeek:attr:`&log`
+
+      The type of the Broker event.
+
+
+   .. zeek:field:: ev :zeek:type:`string` :zeek:attr:`&log`
+
+      The event being logged.
+
+
+   .. zeek:field:: peer :zeek:type:`Broker::NetworkInfo` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The peer (if any) with which a Broker event is
+      concerned.
+
+
+   .. zeek:field:: message :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      An optional message describing the Broker event in more detail
+
 
    A record type containing the column fields of the Broker log.
 

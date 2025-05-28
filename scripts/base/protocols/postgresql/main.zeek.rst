@@ -80,35 +80,54 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the activity happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the activity happened.
 
-      user: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The user as found in the StartupMessage.
 
-      database: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The database as found in the StartupMessage.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      application_name: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The application name as found in the StartupMessage.
+      Unique ID for the connection.
 
-      frontend: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      frontend_arg: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      backend: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      backend_arg: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      success: :zeek:type:`bool` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: user :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      rows: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+      The user as found in the StartupMessage.
+
+
+   .. zeek:field:: database :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      The database as found in the StartupMessage.
+
+
+   .. zeek:field:: application_name :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      The application name as found in the StartupMessage.
+
+
+   .. zeek:field:: frontend :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: frontend_arg :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: backend :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: backend_arg :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: success :zeek:type:`bool` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: rows :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
 
    Record type containing the column fields of the PostgreSQL log.
 
@@ -117,17 +136,24 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`PostgreSQL::Version` :zeek:attr:`&optional`
 
-      user: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: version :zeek:type:`PostgreSQL::Version` :zeek:attr:`&optional`
 
-      database: :zeek:type:`string` :zeek:attr:`&optional`
 
-      application_name: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: user :zeek:type:`string` :zeek:attr:`&optional`
 
-      rows: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      errors: :zeek:type:`vector` of :zeek:type:`string`
+   .. zeek:field:: database :zeek:type:`string` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: application_name :zeek:type:`string` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: rows :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: errors :zeek:type:`vector` of :zeek:type:`string`
+
 
 
 .. zeek:type:: PostgreSQL::Version
@@ -135,9 +161,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      major: :zeek:type:`count`
 
-      minor: :zeek:type:`count`
+   .. zeek:field:: major :zeek:type:`count`
+
+
+   .. zeek:field:: minor :zeek:type:`count`
+
 
 
 Events

@@ -54,20 +54,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time at which the recorded activity occurred.
 
-      rule_id: :zeek:type:`string` :zeek:attr:`&log`
-         ID of the rule; unique during each Zeek run.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      f: :zeek:type:`flow_id` :zeek:attr:`&log`
-         Flow ID of the shunted flow.
+      Time at which the recorded activity occurred.
 
-      expire: :zeek:type:`interval` :zeek:attr:`&log`
-         Expiry time of the shunt.
 
-      location: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Location where the underlying action was triggered.
+   .. zeek:field:: rule_id :zeek:type:`string` :zeek:attr:`&log`
+
+      ID of the rule; unique during each Zeek run.
+
+
+   .. zeek:field:: f :zeek:type:`flow_id` :zeek:attr:`&log`
+
+      Flow ID of the shunted flow.
+
+
+   .. zeek:field:: expire :zeek:type:`interval` :zeek:attr:`&log`
+
+      Expiry time of the shunt.
+
+
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Location where the underlying action was triggered.
+
 
 
 Events

@@ -56,49 +56,74 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp when the command was seen.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp when the command was seen.
 
-      nick: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Nickname given for the connection.
 
-      user: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Username given for the connection.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      command: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Command given by the client.
+      Unique ID for the connection.
 
-      value: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value for the command given by the client.
 
-      addl: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Any additional data for the command.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      dcc_file_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/irc/dcc-send.zeek` is loaded)
+      The connection's 4-tuple of endpoint addresses/ports.
 
-         DCC filename requested.
 
-      dcc_file_size: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/irc/dcc-send.zeek` is loaded)
+   .. zeek:field:: nick :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         Size of the DCC transfer as indicated by the sender.
+      Nickname given for the connection.
 
-      dcc_mime_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/irc/dcc-send.zeek` is loaded)
 
-         Sniffed mime type of the file.
+   .. zeek:field:: user :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/irc/files.zeek` is loaded)
+      Username given for the connection.
 
-         File unique ID.
+
+   .. zeek:field:: command :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Command given by the client.
+
+
+   .. zeek:field:: value :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Value for the command given by the client.
+
+
+   .. zeek:field:: addl :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Any additional data for the command.
+
+
+   .. zeek:field:: dcc_file_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/irc/dcc-send.zeek` is loaded)
+
+      DCC filename requested.
+
+
+   .. zeek:field:: dcc_file_size :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/irc/dcc-send.zeek` is loaded)
+
+      Size of the DCC transfer as indicated by the sender.
+
+
+   .. zeek:field:: dcc_mime_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/irc/dcc-send.zeek` is loaded)
+
+      Sniffed mime type of the file.
+
+
+   .. zeek:field:: fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/irc/files.zeek` is loaded)
+
+      File unique ID.
+
 
 
 Events

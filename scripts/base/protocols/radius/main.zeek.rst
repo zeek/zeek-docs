@@ -55,50 +55,75 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      username: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The username, if present.
 
-      mac: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         MAC address, if present.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      framed_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The address given to the network access server, if
-         present.  This is only a hint from the RADIUS server
-         and the network access server is not required to honor
-         the address.
+      Unique ID for the connection.
 
-      tunnel_client: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Address (IPv4, IPv6, or FQDN) of the initiator end of the tunnel,
-         if present.  This is collected from the Tunnel-Client-Endpoint
-         attribute.
 
-      connect_info: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Connect info, if present.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      reply_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Reply message from the server challenge. This is
-         frequently shown to the user authenticating.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Successful or failed authentication.
 
-      ttl: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The duration between the first request and
-         either the "Access-Accept" message or an error.
-         If the field is empty, it means that either
-         the request or response was not seen.
+   .. zeek:field:: username :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      logged: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether this has already been logged and can be ignored.
+      The username, if present.
+
+
+   .. zeek:field:: mac :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      MAC address, if present.
+
+
+   .. zeek:field:: framed_addr :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The address given to the network access server, if
+      present.  This is only a hint from the RADIUS server
+      and the network access server is not required to honor
+      the address.
+
+
+   .. zeek:field:: tunnel_client :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Address (IPv4, IPv6, or FQDN) of the initiator end of the tunnel,
+      if present.  This is collected from the Tunnel-Client-Endpoint
+      attribute.
+
+
+   .. zeek:field:: connect_info :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Connect info, if present.
+
+
+   .. zeek:field:: reply_msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Reply message from the server challenge. This is
+      frequently shown to the user authenticating.
+
+
+   .. zeek:field:: result :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Successful or failed authentication.
+
+
+   .. zeek:field:: ttl :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The duration between the first request and
+      either the "Access-Accept" message or an error.
+      If the field is empty, it means that either
+      the request or response was not seen.
+
+
+   .. zeek:field:: logged :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether this has already been logged and can be ignored.
+
 
 
 Events

@@ -376,21 +376,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time`
-         Time when the command was sent.
 
-      cmd: :zeek:type:`string` :zeek:attr:`&default` = ``"<unknown>"`` :zeek:attr:`&optional`
-         Command.
+   .. zeek:field:: ts :zeek:type:`time`
 
-      arg: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Argument for the command if one was given.
+      Time when the command was sent.
 
-      seq: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Counter to track how many commands have been executed.
 
-      cwd_consumed: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Flag indicating if the arg of this CmdArg has been used
-         to update cwd of c$ftp.
+   .. zeek:field:: cmd :zeek:type:`string` :zeek:attr:`&default` = ``"<unknown>"`` :zeek:attr:`&optional`
+
+      Command.
+
+
+   .. zeek:field:: arg :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      Argument for the command if one was given.
+
+
+   .. zeek:field:: seq :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Counter to track how many commands have been executed.
+
+
+   .. zeek:field:: cwd_consumed :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Flag indicating if the arg of this CmdArg has been used
+      to update cwd of c$ftp.
+
 
 
 .. zeek:type:: FTP::PendingCmds

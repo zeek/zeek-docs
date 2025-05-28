@@ -70,62 +70,85 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp of first QUIC packet for this entry.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp of first QUIC packet for this entry.
 
-      version: :zeek:type:`string` :zeek:attr:`&log`
-         QUIC version as found in the first INITIAL packet from
-         the client. This will often be "1" or "quicv2", but see
-         the :zeek:see:`QUIC::version_strings` table for details.
 
-      client_initial_dcid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         First Destination Connection ID used by client. This is
-         random and unpredictable, but used for packet protection
-         by client and server.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      client_scid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Client's Source Connection ID from the first INITIAL packet.
+      Unique ID for the connection.
 
-      server_scid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Server chosen Connection ID usually from server's first
-         INITIAL packet. This is to be used by the client in
-         subsequent packets.
 
-      server_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Server name extracted from SNI extension in ClientHello
-         packet if available.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      client_protocol: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         First protocol extracted from ALPN extension in ClientHello
-         packet if available.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      history: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         QUIC history.
-         
-         Letters have the following meaning with client-sent
-         letters being capitalized:
-         
-         ======  ====================================================
-         Letter  Meaning
-         ======  ====================================================
-         I       INIT packet
-         H       HANDSHAKE packet
-         Z       0RTT packet
-         R       RETRY packet
-         C       CONNECTION_CLOSE packet
-         S       SSL Client/Server Hello
-         U       Unfamiliar QUIC version
-         ======  ====================================================
 
-      history_state: :zeek:type:`vector` of :zeek:type:`string`
+   .. zeek:field:: version :zeek:type:`string` :zeek:attr:`&log`
 
-      logged: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+      QUIC version as found in the first INITIAL packet from
+      the client. This will often be "1" or "quicv2", but see
+      the :zeek:see:`QUIC::version_strings` table for details.
+
+
+   .. zeek:field:: client_initial_dcid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      First Destination Connection ID used by client. This is
+      random and unpredictable, but used for packet protection
+      by client and server.
+
+
+   .. zeek:field:: client_scid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Client's Source Connection ID from the first INITIAL packet.
+
+
+   .. zeek:field:: server_scid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Server chosen Connection ID usually from server's first
+      INITIAL packet. This is to be used by the client in
+      subsequent packets.
+
+
+   .. zeek:field:: server_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Server name extracted from SNI extension in ClientHello
+      packet if available.
+
+
+   .. zeek:field:: client_protocol :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      First protocol extracted from ALPN extension in ClientHello
+      packet if available.
+
+
+   .. zeek:field:: history :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      QUIC history.
+      
+      Letters have the following meaning with client-sent
+      letters being capitalized:
+      
+      ======  ====================================================
+      Letter  Meaning
+      ======  ====================================================
+      I       INIT packet
+      H       HANDSHAKE packet
+      Z       0RTT packet
+      R       RETRY packet
+      C       CONNECTION_CLOSE packet
+      S       SSL Client/Server Hello
+      U       Unfamiliar QUIC version
+      ======  ====================================================
+
+
+   .. zeek:field:: history_state :zeek:type:`vector` of :zeek:type:`string`
+
+
+   .. zeek:field:: logged :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
 
 
 Events

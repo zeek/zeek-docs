@@ -481,111 +481,144 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         Descriptive name to reference this filter.
 
-      writer: :zeek:type:`Log::Writer` :zeek:attr:`&default` = :zeek:see:`Log::default_writer` :zeek:attr:`&optional`
-         The logging writer implementation to use.
+   .. zeek:field:: name :zeek:type:`string`
 
-      path: :zeek:type:`string` :zeek:attr:`&optional`
-         Output path for recording entries matching this
-         filter.
-         
-         The specific interpretation of the string is up to the
-         logging writer, and may for example be the destination
-         file name. Generally, filenames are expected to be given
-         without any extensions; writers will add appropriate
-         extensions automatically.
-         
-         If this path is found to conflict with another filter's
-         for the same writer type, it is automatically corrected
-         by appending "-N", where N is the smallest integer greater
-         or equal to 2 that allows the corrected path name to not
-         conflict with another filter's.
+      Descriptive name to reference this filter.
 
-      path_func: :zeek:type:`function` (id: :zeek:type:`Log::ID`, path: :zeek:type:`string`, rec: :zeek:type:`any`) : :zeek:type:`string` :zeek:attr:`&optional`
-         A function returning the output path for recording entries
-         matching this filter. This is similar to *path* yet allows
-         to compute the string dynamically. It is ok to return
-         different strings for separate calls, but be careful: it's
-         easy to flood the disk by returning a new string for each
-         connection.  Upon adding a filter to a stream, if neither
-         ``path`` nor ``path_func`` is explicitly set by them, then
-         :zeek:see:`Log::default_path_func` is used.
-         
 
-         :param id: The ID associated with the log stream.
-         
+   .. zeek:field:: writer :zeek:type:`Log::Writer` :zeek:attr:`&default` = :zeek:see:`Log::default_writer` :zeek:attr:`&optional`
 
-         :param path: A suggested path value, which may be either the filter's
-               ``path`` if defined, else a previous result from the
-               function.  If no ``path`` is defined for the filter,
-               then the first call to the function will contain an
-               empty string.
-         
+      The logging writer implementation to use.
 
-         :param rec: An instance of the stream's ``columns`` type with its
-              fields set to the values to be logged.
-         
 
-         :returns: The path to be used for the filter, which will be
-                  subject to the same automatic correction rules as
-                  the *path* field of :zeek:type:`Log::Filter` in the
-                  case of conflicts with other filters trying to use
-                  the same writer/path pair.
+   .. zeek:field:: path :zeek:type:`string` :zeek:attr:`&optional`
 
-      include: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
-         Subset of column names to record. If not given, all
-         columns are recorded.
+      Output path for recording entries matching this
+      filter.
+      
+      The specific interpretation of the string is up to the
+      logging writer, and may for example be the destination
+      file name. Generally, filenames are expected to be given
+      without any extensions; writers will add appropriate
+      extensions automatically.
+      
+      If this path is found to conflict with another filter's
+      for the same writer type, it is automatically corrected
+      by appending "-N", where N is the smallest integer greater
+      or equal to 2 that allows the corrected path name to not
+      conflict with another filter's.
 
-      exclude: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
-         Subset of column names to exclude from recording. If not
-         given, all columns are recorded.
 
-      log_local: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Log::enable_local_logging` :zeek:attr:`&optional`
-         If true, entries are recorded locally.
+   .. zeek:field:: path_func :zeek:type:`function` (id: :zeek:type:`Log::ID`, path: :zeek:type:`string`, rec: :zeek:type:`any`) : :zeek:type:`string` :zeek:attr:`&optional`
 
-      log_remote: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Log::enable_remote_logging` :zeek:attr:`&optional`
-         If true, entries are passed on to remote peers.
+      A function returning the output path for recording entries
+      matching this filter. This is similar to *path* yet allows
+      to compute the string dynamically. It is ok to return
+      different strings for separate calls, but be careful: it's
+      easy to flood the disk by returning a new string for each
+      connection.  Upon adding a filter to a stream, if neither
+      ``path`` nor ``path_func`` is explicitly set by them, then
+      :zeek:see:`Log::default_path_func` is used.
+      
 
-      field_name_map: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_field_name_map` :zeek:attr:`&optional`
-         Field name map to rename fields before the fields are written
-         to the output.
+      :param id: The ID associated with the log stream.
+      
 
-      scope_sep: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_scope_sep` :zeek:attr:`&optional`
-         A string that is used for unrolling and flattening field names
-         for nested record types.
+      :param path: A suggested path value, which may be either the filter's
+            ``path`` if defined, else a previous result from the
+            function.  If no ``path`` is defined for the filter,
+            then the first call to the function will contain an
+            empty string.
+      
 
-      ext_prefix: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_ext_prefix` :zeek:attr:`&optional`
-         Default prefix for all extension fields. It's typically
-         prudent to set this to something that Zeek's logging
-         framework can't normally write out in a field name.
+      :param rec: An instance of the stream's ``columns`` type with its
+           fields set to the values to be logged.
+      
 
-      ext_func: :zeek:type:`function` (path: :zeek:type:`string`) : :zeek:type:`any` :zeek:attr:`&default` = :zeek:see:`Log::default_ext_func` :zeek:attr:`&optional`
-         Function to collect a log extension value.  If not specified,
-         no log extension will be provided for the log.
-         The return value from the function *must* be a record.
+      :returns: The path to be used for the filter, which will be
+               subject to the same automatic correction rules as
+               the *path* field of :zeek:type:`Log::Filter` in the
+               case of conflicts with other filters trying to use
+               the same writer/path pair.
 
-      interv: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Log::default_rotation_interval` :zeek:attr:`&optional`
-         Rotation interval. Zero disables rotation.
 
-      postprocessor: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         Callback function to trigger for rotated files. If not set, the
-         default comes out of :zeek:id:`Log::default_rotation_postprocessors`.
+   .. zeek:field:: include :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
 
-      config: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         A key/value table that will be passed on to the writer.
-         Interpretation of the values is left to the writer, but
-         usually they will be used for configuration purposes.
+      Subset of column names to record. If not given, all
+      columns are recorded.
 
-      policy: :zeek:type:`Log::PolicyHook` :zeek:attr:`&optional`
-         Policy hooks can adjust log entry values and veto
-         the writing of a log entry for the record passed
-         into it. Any hook that breaks from its body signals
-         that Zeek won't log the entry passed into it.
-         
-         When no policy hook is defined, the filter inherits
-         the hook from the stream it's associated with.
+
+   .. zeek:field:: exclude :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
+
+      Subset of column names to exclude from recording. If not
+      given, all columns are recorded.
+
+
+   .. zeek:field:: log_local :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Log::enable_local_logging` :zeek:attr:`&optional`
+
+      If true, entries are recorded locally.
+
+
+   .. zeek:field:: log_remote :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Log::enable_remote_logging` :zeek:attr:`&optional`
+
+      If true, entries are passed on to remote peers.
+
+
+   .. zeek:field:: field_name_map :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_field_name_map` :zeek:attr:`&optional`
+
+      Field name map to rename fields before the fields are written
+      to the output.
+
+
+   .. zeek:field:: scope_sep :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_scope_sep` :zeek:attr:`&optional`
+
+      A string that is used for unrolling and flattening field names
+      for nested record types.
+
+
+   .. zeek:field:: ext_prefix :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_ext_prefix` :zeek:attr:`&optional`
+
+      Default prefix for all extension fields. It's typically
+      prudent to set this to something that Zeek's logging
+      framework can't normally write out in a field name.
+
+
+   .. zeek:field:: ext_func :zeek:type:`function` (path: :zeek:type:`string`) : :zeek:type:`any` :zeek:attr:`&default` = :zeek:see:`Log::default_ext_func` :zeek:attr:`&optional`
+
+      Function to collect a log extension value.  If not specified,
+      no log extension will be provided for the log.
+      The return value from the function *must* be a record.
+
+
+   .. zeek:field:: interv :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Log::default_rotation_interval` :zeek:attr:`&optional`
+
+      Rotation interval. Zero disables rotation.
+
+
+   .. zeek:field:: postprocessor :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`) : :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Callback function to trigger for rotated files. If not set, the
+      default comes out of :zeek:id:`Log::default_rotation_postprocessors`.
+
+
+   .. zeek:field:: config :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      A key/value table that will be passed on to the writer.
+      Interpretation of the values is left to the writer, but
+      usually they will be used for configuration purposes.
+
+
+   .. zeek:field:: policy :zeek:type:`Log::PolicyHook` :zeek:attr:`&optional`
+
+      Policy hooks can adjust log entry values and veto
+      the writing of a log entry for the record passed
+      into it. Any hook that breaks from its body signals
+      that Zeek won't log the entry passed into it.
+      
+      When no policy hook is defined, the filter inherits
+      the hook from the stream it's associated with.
+
 
    A filter type describes how to customize logging streams.
 
@@ -1021,11 +1054,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The network time at which the print statement was executed.
 
-      vals: :zeek:type:`string_vec` :zeek:attr:`&log`
-         Set of strings passed to the print statement.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
+
+      The network time at which the print statement was executed.
+
+
+   .. zeek:field:: vals :zeek:type:`string_vec` :zeek:attr:`&log`
+
+      Set of strings passed to the print statement.
+
 
    If :zeek:see:`Log::print_to_log` is set to redirect, ``print`` statements will
    automatically populate log entries with the fields contained in this record.
@@ -1055,23 +1093,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      writer: :zeek:type:`Log::Writer`
-         The log writer being used.
 
-      path: :zeek:type:`string`
-         Original path value.
+   .. zeek:field:: writer :zeek:type:`Log::Writer`
 
-      open: :zeek:type:`time`
-         Time when opened.
+      The log writer being used.
 
-      close: :zeek:type:`time`
-         Time when closed.
 
-      terminating: :zeek:type:`bool`
-         True if rotation occurred due to Zeek shutting down.
+   .. zeek:field:: path :zeek:type:`string`
 
-      postprocessor: :zeek:type:`Log::RotationPostProcessorFunc` :zeek:attr:`&optional`
-         The postprocessor function that will be called after rotation.
+      Original path value.
+
+
+   .. zeek:field:: open :zeek:type:`time`
+
+      Time when opened.
+
+
+   .. zeek:field:: close :zeek:type:`time`
+
+      Time when closed.
+
+
+   .. zeek:field:: terminating :zeek:type:`bool`
+
+      True if rotation occurred due to Zeek shutting down.
+
+
+   .. zeek:field:: postprocessor :zeek:type:`Log::RotationPostProcessorFunc` :zeek:attr:`&optional`
+
+      The postprocessor function that will be called after rotation.
+
 
    Information passed into rotation format callback function given by
    :zeek:see:`Log::rotation_format_func`.
@@ -1081,23 +1132,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      writer: :zeek:type:`Log::Writer`
-         The log writer being used.
 
-      fname: :zeek:type:`string`
-         Full name of the rotated file.
+   .. zeek:field:: writer :zeek:type:`Log::Writer`
 
-      path: :zeek:type:`string`
-         Original path value.
+      The log writer being used.
 
-      open: :zeek:type:`time`
-         Time when opened.
 
-      close: :zeek:type:`time`
-         Time when closed.
+   .. zeek:field:: fname :zeek:type:`string`
 
-      terminating: :zeek:type:`bool`
-         True if rotation occurred due to Zeek shutting down.
+      Full name of the rotated file.
+
+
+   .. zeek:field:: path :zeek:type:`string`
+
+      Original path value.
+
+
+   .. zeek:field:: open :zeek:type:`time`
+
+      Time when opened.
+
+
+   .. zeek:field:: close :zeek:type:`time`
+
+      Time when closed.
+
+
+   .. zeek:field:: terminating :zeek:type:`bool`
+
+      True if rotation occurred due to Zeek shutting down.
+
 
    Information passed into rotation callback functions.
 
@@ -1106,23 +1170,28 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dir: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_rotation_dir` :zeek:attr:`&optional`
-         A directory to rotate the log to.  This directory is created
-         just-in-time, as the log rotation is about to happen.  If it
-         cannot be created, an error is emitted and the rotation process
-         tries to proceed with rotation inside the working directory.  When
-         setting this field, beware that renaming files across file systems
-         will generally fail.
 
-      file_basename: :zeek:type:`string`
-         A base name to use for the rotated log.  Log writers may later
-         append a file extension of their choosing to this user-chosen
-         base (e.g. if using the default ASCII writer and you want
-         rotated files of the format "foo-<date>.log", then this basename
-         can be set to "foo-<date>" and the ".log" is added later (there's
-         also generally means of customizing the file extension, too,
-         like the ``ZEEK_LOG_SUFFIX`` environment variable or
-         writer-dependent configuration options.
+   .. zeek:field:: dir :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Log::default_rotation_dir` :zeek:attr:`&optional`
+
+      A directory to rotate the log to.  This directory is created
+      just-in-time, as the log rotation is about to happen.  If it
+      cannot be created, an error is emitted and the rotation process
+      tries to proceed with rotation inside the working directory.  When
+      setting this field, beware that renaming files across file systems
+      will generally fail.
+
+
+   .. zeek:field:: file_basename :zeek:type:`string`
+
+      A base name to use for the rotated log.  Log writers may later
+      append a file extension of their choosing to this user-chosen
+      base (e.g. if using the default ASCII writer and you want
+      rotated files of the format "foo-<date>.log", then this basename
+      can be set to "foo-<date>" and the ".log" is added later (there's
+      also generally means of customizing the file extension, too,
+      like the ``ZEEK_LOG_SUFFIX`` environment variable or
+      writer-dependent configuration options.
+
 
    A log file rotation path specification that's returned by the
    user-customizable :zeek:see:`Log::rotation_format_func`.
@@ -1139,60 +1208,75 @@ Types
 
    :Type: :zeek:type:`record`
 
-      columns: :zeek:type:`any`
-         A record type defining the log's columns.
 
-      ev: :zeek:type:`any` :zeek:attr:`&optional`
-         Event that will be raised once for each log entry.
-         The event receives a single same parameter, an instance of
-         type ``columns``.
+   .. zeek:field:: columns :zeek:type:`any`
 
-      path: :zeek:type:`string` :zeek:attr:`&optional`
-         A path that will be inherited by any filters added to the
-         stream which do not already specify their own path.
+      A record type defining the log's columns.
 
-      policy: :zeek:type:`Log::PolicyHook` :zeek:attr:`&optional`
-         Policy hooks can adjust log records and veto their
-         writing. Any hook handler that breaks from its body
-         signals that Zeek won't log the entry passed into
-         it. You can pass arbitrary state into the hook via
-         the filter instance and its config table.
-         
-         New Filters created for this stream will inherit
-         this policy hook, unless they provide their own.
 
-      event_groups: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Event groups associated with this stream that are disabled
-         when :zeek:see:`Log::disable_stream` is invoked and
-         re-enabled during :zeek:see:`Log::enable_stream`.
-         
-         This field can be used to short-circuit event handlers that
-         are solely responsible for logging functionality at runtime
-         when a log stream is disabled.
-         
-         This field allows for both, attribute event groups and module
-         event groups. If the given group names exists as attribute
-         or module or either event group, they are disabled when the
-         log stream is disabled and enabled when the stream is
-         enabled again.
+   .. zeek:field:: ev :zeek:type:`any` :zeek:attr:`&optional`
 
-      max_delay_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Log::default_max_delay_interval` :zeek:attr:`&optional`
-         Maximum delay interval for this stream.
-         
-         This value can be increased using :zeek:see:`Log::set_max_delay_interval`
-         after the stream has been created.
-         
-         .. :zeek:see:`Log::default_max_delay_interval`
-         .. :zeek:see:`Log::set_max_delay_interval`
+      Event that will be raised once for each log entry.
+      The event receives a single same parameter, an instance of
+      type ``columns``.
 
-      max_delay_queue_size: :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Log::default_max_delay_queue_size` :zeek:attr:`&optional`
-         Maximum delay queue size of this stream.
-         
-         This value can be changed using :zeek:see:`Log::set_max_delay_queue_size`
-         after the stream has been created.
-         
-         .. :zeek:see:`Log::default_max_delay_queue_size`
-         .. :zeek:see:`Log::set_max_delay_queue_size`
+
+   .. zeek:field:: path :zeek:type:`string` :zeek:attr:`&optional`
+
+      A path that will be inherited by any filters added to the
+      stream which do not already specify their own path.
+
+
+   .. zeek:field:: policy :zeek:type:`Log::PolicyHook` :zeek:attr:`&optional`
+
+      Policy hooks can adjust log records and veto their
+      writing. Any hook handler that breaks from its body
+      signals that Zeek won't log the entry passed into
+      it. You can pass arbitrary state into the hook via
+      the filter instance and its config table.
+      
+      New Filters created for this stream will inherit
+      this policy hook, unless they provide their own.
+
+
+   .. zeek:field:: event_groups :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Event groups associated with this stream that are disabled
+      when :zeek:see:`Log::disable_stream` is invoked and
+      re-enabled during :zeek:see:`Log::enable_stream`.
+      
+      This field can be used to short-circuit event handlers that
+      are solely responsible for logging functionality at runtime
+      when a log stream is disabled.
+      
+      This field allows for both, attribute event groups and module
+      event groups. If the given group names exists as attribute
+      or module or either event group, they are disabled when the
+      log stream is disabled and enabled when the stream is
+      enabled again.
+
+
+   .. zeek:field:: max_delay_interval :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Log::default_max_delay_interval` :zeek:attr:`&optional`
+
+      Maximum delay interval for this stream.
+      
+      This value can be increased using :zeek:see:`Log::set_max_delay_interval`
+      after the stream has been created.
+      
+      .. :zeek:see:`Log::default_max_delay_interval`
+      .. :zeek:see:`Log::set_max_delay_interval`
+
+
+   .. zeek:field:: max_delay_queue_size :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Log::default_max_delay_queue_size` :zeek:attr:`&optional`
+
+      Maximum delay queue size of this stream.
+      
+      This value can be changed using :zeek:see:`Log::set_max_delay_queue_size`
+      after the stream has been created.
+      
+      .. :zeek:see:`Log::default_max_delay_queue_size`
+      .. :zeek:see:`Log::set_max_delay_queue_size`
+
 
    Type defining the content of a logging stream.
 

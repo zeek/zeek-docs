@@ -91,7 +91,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      __metric: :zeek:type:`opaque` of counter_metric
+
+   .. zeek:field:: __metric :zeek:type:`opaque` of counter_metric
+
 
    Type representing a counter metric with initialized label values.
    
@@ -107,9 +109,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      __family: :zeek:type:`opaque` of counter_metric_family
 
-      __labels: :zeek:type:`vector` of :zeek:type:`string`
+   .. zeek:field:: __family :zeek:type:`opaque` of counter_metric_family
+
+
+   .. zeek:field:: __labels :zeek:type:`vector` of :zeek:type:`string`
+
 
    Type representing a family of counters with uninitialized label values.
    
@@ -122,7 +127,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      __metric: :zeek:type:`opaque` of gauge_metric
+
+   .. zeek:field:: __metric :zeek:type:`opaque` of gauge_metric
+
 
    Type representing a gauge metric with initialized label values.
    
@@ -137,9 +144,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      __family: :zeek:type:`opaque` of gauge_metric_family
 
-      __labels: :zeek:type:`vector` of :zeek:type:`string`
+   .. zeek:field:: __family :zeek:type:`opaque` of gauge_metric_family
+
+
+   .. zeek:field:: __labels :zeek:type:`vector` of :zeek:type:`string`
+
 
    Type representing a family of gauges with uninitialized label values.
    
@@ -153,7 +163,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      __metric: :zeek:type:`opaque` of histogram_metric
+
+   .. zeek:field:: __metric :zeek:type:`opaque` of histogram_metric
+
 
    Type representing a histogram metric with initialized label values.
    Use :zeek:see:`Telemetry::histogram_observe` to make observations.
@@ -163,9 +175,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      __family: :zeek:type:`opaque` of histogram_metric_family
 
-      __labels: :zeek:type:`vector` of :zeek:type:`string`
+   .. zeek:field:: __family :zeek:type:`opaque` of histogram_metric_family
+
+
+   .. zeek:field:: __labels :zeek:type:`vector` of :zeek:type:`string`
+
 
    Type representing a family of histograms with uninitialized label values.
    Create concrete :zeek:see:`Telemetry::Histogram` instances with

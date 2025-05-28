@@ -91,27 +91,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for the detected register change.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         Connection ID.
+      Timestamp for the detected register change.
 
-      register: :zeek:type:`count` :zeek:attr:`&log`
-         The device memory offset.
 
-      old_val: :zeek:type:`count` :zeek:attr:`&log`
-         The old value stored in the register.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      new_val: :zeek:type:`count` :zeek:attr:`&log`
-         The new value stored in the register.
+      Unique ID for the connection.
 
-      delta: :zeek:type:`interval` :zeek:attr:`&log`
-         The time delta between when the *old_val* and *new_val* were
-         seen.
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      Connection ID.
+
+
+   .. zeek:field:: register :zeek:type:`count` :zeek:attr:`&log`
+
+      The device memory offset.
+
+
+   .. zeek:field:: old_val :zeek:type:`count` :zeek:attr:`&log`
+
+      The old value stored in the register.
+
+
+   .. zeek:field:: new_val :zeek:type:`count` :zeek:attr:`&log`
+
+      The new value stored in the register.
+
+
+   .. zeek:field:: delta :zeek:type:`interval` :zeek:attr:`&log`
+
+      The time delta between when the *old_val* and *new_val* were
+      seen.
+
 
 
 .. zeek:type:: Modbus::RegisterValue
@@ -119,9 +134,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      last_set: :zeek:type:`time`
 
-      value: :zeek:type:`count`
+   .. zeek:field:: last_set :zeek:type:`time`
+
+
+   .. zeek:field:: value :zeek:type:`count`
+
 
 
 .. zeek:type:: Modbus::Registers

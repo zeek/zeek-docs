@@ -81,50 +81,75 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp of first packet belonging to the SNMP session.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         The unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 5-tuple of addresses/ports (ports inherently
-         include transport protocol information)
+      Timestamp of first packet belonging to the SNMP session.
 
-      duration: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
-         The amount of time between the first packet belonging to
-         the SNMP session and the latest one seen.
 
-      version: :zeek:type:`string` :zeek:attr:`&log`
-         The version of SNMP being used.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      community: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The community string of the first SNMP packet associated with
-         the session.  This is used as part of SNMP's (v1 and v2c)
-         administrative/security framework.  See :rfc:`1157` or :rfc:`1901`.
+      The unique ID for the connection.
 
-      get_requests: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of variable bindings in GetRequest/GetNextRequest PDUs
-         seen for the session.
 
-      get_bulk_requests: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of variable bindings in GetBulkRequest PDUs seen for
-         the session.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      get_responses: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of variable bindings in GetResponse/Response PDUs seen
-         for the session.
+      The connection's 5-tuple of addresses/ports (ports inherently
+      include transport protocol information)
 
-      set_requests: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of variable bindings in SetRequest PDUs seen for
-         the session.
 
-      display_string: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A system description of the SNMP responder endpoint.
+   .. zeek:field:: duration :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
 
-      up_since: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The time at which the SNMP responder endpoint claims it's been
-         up since.
+      The amount of time between the first packet belonging to
+      the SNMP session and the latest one seen.
+
+
+   .. zeek:field:: version :zeek:type:`string` :zeek:attr:`&log`
+
+      The version of SNMP being used.
+
+
+   .. zeek:field:: community :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The community string of the first SNMP packet associated with
+      the session.  This is used as part of SNMP's (v1 and v2c)
+      administrative/security framework.  See :rfc:`1157` or :rfc:`1901`.
+
+
+   .. zeek:field:: get_requests :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of variable bindings in GetRequest/GetNextRequest PDUs
+      seen for the session.
+
+
+   .. zeek:field:: get_bulk_requests :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of variable bindings in GetBulkRequest PDUs seen for
+      the session.
+
+
+   .. zeek:field:: get_responses :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of variable bindings in GetResponse/Response PDUs seen
+      for the session.
+
+
+   .. zeek:field:: set_requests :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of variable bindings in SetRequest PDUs seen for
+      the session.
+
+
+   .. zeek:field:: display_string :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      A system description of the SNMP responder endpoint.
+
+
+   .. zeek:field:: up_since :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The time at which the SNMP responder endpoint claims it's been
+      up since.
+
 
    Information tracked per SNMP session.
 

@@ -116,25 +116,38 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the measurement occurred.
 
-      ts_delta: :zeek:type:`interval` :zeek:attr:`&log`
-         The time delay between this measurement and the last.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      peer: :zeek:type:`string` :zeek:attr:`&log`
-         In the event that there are multiple Zeek instances logging
-         to the same host, this distinguishes each peer with its
-         individual name.
+      Timestamp for when the measurement occurred.
 
-      gaps: :zeek:type:`count` :zeek:attr:`&log`
-         Number of missed ACKs from the previous measurement interval.
 
-      acks: :zeek:type:`count` :zeek:attr:`&log`
-         Total number of ACKs seen in the previous measurement interval.
+   .. zeek:field:: ts_delta :zeek:type:`interval` :zeek:attr:`&log`
 
-      percent_lost: :zeek:type:`double` :zeek:attr:`&log`
-         Percentage of ACKs seen where the data being ACKed wasn't seen.
+      The time delay between this measurement and the last.
+
+
+   .. zeek:field:: peer :zeek:type:`string` :zeek:attr:`&log`
+
+      In the event that there are multiple Zeek instances logging
+      to the same host, this distinguishes each peer with its
+      individual name.
+
+
+   .. zeek:field:: gaps :zeek:type:`count` :zeek:attr:`&log`
+
+      Number of missed ACKs from the previous measurement interval.
+
+
+   .. zeek:field:: acks :zeek:type:`count` :zeek:attr:`&log`
+
+      Total number of ACKs seen in the previous measurement interval.
+
+
+   .. zeek:field:: percent_lost :zeek:type:`double` :zeek:attr:`&log`
+
+      Percentage of ACKs seen where the data being ACKed wasn't seen.
+
 
 
 Hooks

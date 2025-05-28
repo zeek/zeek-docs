@@ -178,12 +178,17 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The timestamp at which the host was detected.
 
-      host: :zeek:type:`addr` :zeek:attr:`&log`
-         The address that was detected originating or responding to a
-         TCP connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
+
+      The timestamp at which the host was detected.
+
+
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&log`
+
+      The address that was detected originating or responding to a
+      TCP connection.
+
 
    The record type which contains the column fields of the known-hosts log.
 

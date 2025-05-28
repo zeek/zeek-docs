@@ -501,9 +501,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string`
 
-      desc: :zeek:type:`string`
+   .. zeek:field:: id :zeek:type:`string`
+
+
+   .. zeek:field:: desc :zeek:type:`string`
+
 
 
 .. zeek:type:: SMB::rpc_cmd_table

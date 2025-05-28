@@ -110,72 +110,109 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time when the SSH connection began.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Time when the SSH connection began.
 
-      version: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         SSH major version (1, 2, or unset). The version can be unset if the
-         client and server version strings are unset, malformed or incompatible
-         so no common version can be extracted. If no version can be extracted
-         even though both client and server versions are set a weird
-         will be generated.
 
-      auth_success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Authentication result (T=success, F=failure, unset=unknown)
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      auth_attempts: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of authentication attempts we observed. There's always
-         at least one, since some servers might support no authentication at all.
-         It's important to note that not all of these are failures, since
-         some servers require two-factor auth (e.g. password AND pubkey)
+      Unique ID for the connection.
 
-      direction: :zeek:type:`Direction` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Direction of the connection. If the client was a local host
-         logging into an external host, this would be OUTBOUND. INBOUND
-         would be set for the opposite situation.
 
-      client: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The client's version string
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      server: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The server's version string
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      cipher_alg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The encryption algorithm in use
 
-      mac_alg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The signing (MAC) algorithm in use
+   .. zeek:field:: version :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      compression_alg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The compression algorithm in use
+      SSH major version (1, 2, or unset). The version can be unset if the
+      client and server version strings are unset, malformed or incompatible
+      so no common version can be extracted. If no version can be extracted
+      even though both client and server versions are set a weird
+      will be generated.
 
-      kex_alg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The key exchange algorithm in use
 
-      host_key_alg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The server host key's algorithm
+   .. zeek:field:: auth_success :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      host_key: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The server's key fingerprint
+      Authentication result (T=success, F=failure, unset=unknown)
 
-      logged: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
-      capabilities: :zeek:type:`SSH::Capabilities` :zeek:attr:`&optional`
+   .. zeek:field:: auth_attempts :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
-         Analyzer ID
+      The number of authentication attempts we observed. There's always
+      at least one, since some servers might support no authentication at all.
+      It's important to note that not all of these are failures, since
+      some servers require two-factor auth (e.g. password AND pubkey)
 
-      remote_location: :zeek:type:`geo_location` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/ssh/geo-data.zeek` is loaded)
 
-         Add geographic data related to the "remote" host of the
-         connection.
+   .. zeek:field:: direction :zeek:type:`Direction` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Direction of the connection. If the client was a local host
+      logging into an external host, this would be OUTBOUND. INBOUND
+      would be set for the opposite situation.
+
+
+   .. zeek:field:: client :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The client's version string
+
+
+   .. zeek:field:: server :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The server's version string
+
+
+   .. zeek:field:: cipher_alg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The encryption algorithm in use
+
+
+   .. zeek:field:: mac_alg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The signing (MAC) algorithm in use
+
+
+   .. zeek:field:: compression_alg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The compression algorithm in use
+
+
+   .. zeek:field:: kex_alg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The key exchange algorithm in use
+
+
+   .. zeek:field:: host_key_alg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The server host key's algorithm
+
+
+   .. zeek:field:: host_key :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The server's key fingerprint
+
+
+   .. zeek:field:: logged :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: capabilities :zeek:type:`SSH::Capabilities` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: analyzer_id :zeek:type:`count` :zeek:attr:`&optional`
+
+      Analyzer ID
+
+
+   .. zeek:field:: remote_location :zeek:type:`geo_location` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/ssh/geo-data.zeek` is loaded)
+
+      Add geographic data related to the "remote" host of the
+      connection.
+
 
    The record type which contains the fields of the SSH log.
 

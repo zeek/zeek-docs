@@ -100,48 +100,68 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp when the data was discovered.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If a connection was associated with this intelligence hit,
-         this is the uid for the connection
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If a connection was associated with this intelligence hit,
-         this is the conn_id for the connection.
+      Timestamp when the data was discovered.
 
-      seen: :zeek:type:`Intel::Seen` :zeek:attr:`&log`
-         Where the data was seen.
 
-      matched: :zeek:type:`Intel::TypeSet` :zeek:attr:`&log`
-         Which indicator types matched.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      sources: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Sources which supplied data that resulted in this match.
+      If a connection was associated with this intelligence hit,
+      this is the uid for the connection
 
-      fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
 
-         If a file was associated with this intelligence hit,
-         this is the uid for the file.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      file_mime_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+      If a connection was associated with this intelligence hit,
+      this is the conn_id for the connection.
 
-         A mime type if the intelligence hit is related to a file.
-         If the $f field is provided this will be automatically filled
-         out.
 
-      file_desc: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+   .. zeek:field:: seen :zeek:type:`Intel::Seen` :zeek:attr:`&log`
 
-         Frequently files can be "described" to give a bit more context.
-         If the $f field is provided this field will be automatically
-         filled out.
+      Where the data was seen.
 
-      cif: :zeek:type:`Intel::CIF` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+
+   .. zeek:field:: matched :zeek:type:`Intel::TypeSet` :zeek:attr:`&log`
+
+      Which indicator types matched.
+
+
+   .. zeek:field:: sources :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Sources which supplied data that resulted in this match.
+
+
+   .. zeek:field:: fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+
+      If a file was associated with this intelligence hit,
+      this is the uid for the file.
+
+
+   .. zeek:field:: file_mime_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+
+      A mime type if the intelligence hit is related to a file.
+      If the $f field is provided this will be automatically filled
+      out.
+
+
+   .. zeek:field:: file_desc :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+
+      Frequently files can be "described" to give a bit more context.
+      If the $f field is provided this field will be automatically
+      filled out.
+
+
+   .. zeek:field:: cif :zeek:type:`Intel::CIF` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
 
 
    Record used for the logging framework representing a positive
@@ -152,15 +172,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      indicator: :zeek:type:`string`
-         The intelligence indicator.
 
-      indicator_type: :zeek:type:`Intel::Type`
-         The type of data that the indicator field represents.
+   .. zeek:field:: indicator :zeek:type:`string`
 
-      meta: :zeek:type:`Intel::MetaData`
-         Metadata for the item. Typically represents more deeply
-         descriptive data for a piece of intelligence.
+      The intelligence indicator.
+
+
+   .. zeek:field:: indicator_type :zeek:type:`Intel::Type`
+
+      The type of data that the indicator field represents.
+
+
+   .. zeek:field:: meta :zeek:type:`Intel::MetaData`
+
+      Metadata for the item. Typically represents more deeply
+      descriptive data for a piece of intelligence.
+
 
    Represents a piece of intelligence.
 
@@ -169,70 +196,97 @@ Types
 
    :Type: :zeek:type:`record`
 
-      source: :zeek:type:`string`
-         An arbitrary string value representing the data source. This
-         value is used as unique key to identify a metadata record in
-         the scope of a single intelligence item.
 
-      desc: :zeek:type:`string` :zeek:attr:`&optional`
-         A freeform description for the data.
+   .. zeek:field:: source :zeek:type:`string`
 
-      url: :zeek:type:`string` :zeek:attr:`&optional`
-         A URL for more information about the data.
+      An arbitrary string value representing the data source. This
+      value is used as unique key to identify a metadata record in
+      the scope of a single intelligence item.
 
-      do_notice: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/intel/do_notice.zeek` is loaded)
 
-         A boolean value to allow the data itself to represent
-         if the indicator that this metadata is attached to
-         is notice worthy.
+   .. zeek:field:: desc :zeek:type:`string` :zeek:attr:`&optional`
 
-      if_in: :zeek:type:`Intel::Where` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/intel/do_notice.zeek` is loaded)
+      A freeform description for the data.
 
-         Restrictions on when notices are created to only create
-         them if the *do_notice* field is T and the notice was
-         seen in the indicated location.
 
-      whitelist: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/intel/whitelist.zeek` is loaded)
+   .. zeek:field:: url :zeek:type:`string` :zeek:attr:`&optional`
 
-         A boolean value to indicate whether the item is whitelisted.
+      A URL for more information about the data.
 
-      remove: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/intel/removal.zeek` is loaded)
 
-         A boolean value to indicate whether the item should be removed.
+   .. zeek:field:: do_notice :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
-      cif_tags: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+      (present if :doc:`/scripts/policy/frameworks/intel/do_notice.zeek` is loaded)
 
-         Maps to the 'tags' fields in CIF
+      A boolean value to allow the data itself to represent
+      if the indicator that this metadata is attached to
+      is notice worthy.
 
-      cif_confidence: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
 
-         Maps to the 'confidence' field in CIF
+   .. zeek:field:: if_in :zeek:type:`Intel::Where` :zeek:attr:`&optional`
 
-      cif_source: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+      (present if :doc:`/scripts/policy/frameworks/intel/do_notice.zeek` is loaded)
 
-         Maps to the 'source' field in CIF
+      Restrictions on when notices are created to only create
+      them if the *do_notice* field is T and the notice was
+      seen in the indicated location.
 
-      cif_description: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
 
-         Maps to the 'description' field in CIF
+   .. zeek:field:: whitelist :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
-      cif_firstseen: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+      (present if :doc:`/scripts/policy/frameworks/intel/whitelist.zeek` is loaded)
 
-         Maps to the 'firstseen' field in CIF
+      A boolean value to indicate whether the item is whitelisted.
 
-      cif_lastseen: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
 
-         Maps to the 'lastseen' field in CIF
+   .. zeek:field:: remove :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/intel/removal.zeek` is loaded)
+
+      A boolean value to indicate whether the item should be removed.
+
+
+   .. zeek:field:: cif_tags :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+
+      Maps to the 'tags' fields in CIF
+
+
+   .. zeek:field:: cif_confidence :zeek:type:`double` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+
+      Maps to the 'confidence' field in CIF
+
+
+   .. zeek:field:: cif_source :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+
+      Maps to the 'source' field in CIF
+
+
+   .. zeek:field:: cif_description :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+
+      Maps to the 'description' field in CIF
+
+
+   .. zeek:field:: cif_firstseen :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+
+      Maps to the 'firstseen' field in CIF
+
+
+   .. zeek:field:: cif_lastseen :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/integration/collective-intel/main.zeek` is loaded)
+
+      Maps to the 'lastseen' field in CIF
+
 
    Data about an :zeek:type:`Intel::Item`.
 
@@ -241,44 +295,63 @@ Types
 
    :Type: :zeek:type:`record`
 
-      indicator: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The string if the data is about a string.
 
-      indicator_type: :zeek:type:`Intel::Type` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The type of data that the indicator represents.
+   .. zeek:field:: indicator :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      host: :zeek:type:`addr` :zeek:attr:`&optional`
-         If the indicator type was :zeek:enum:`Intel::ADDR`, then this
-         field will be present.
+      The string if the data is about a string.
 
-      where: :zeek:type:`Intel::Where` :zeek:attr:`&log`
-         Where the data was discovered.
 
-      node: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The name of the node where the match was discovered.
+   .. zeek:field:: indicator_type :zeek:type:`Intel::Type` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      conn: :zeek:type:`connection` :zeek:attr:`&optional`
-         If the data was discovered within a connection, the
-         connection record should go here to give context to the data.
+      The type of data that the indicator represents.
 
-      uid: :zeek:type:`string` :zeek:attr:`&optional`
-         If the data was discovered within a connection, the
-         connection uid should go here to give context to the data.
-         If the *conn* field is provided, this will be automatically
-         filled out.
 
-      f: :zeek:type:`fa_file` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&optional`
 
-         If the data was discovered within a file, the file record
-         should go here to provide context to the data.
+      If the indicator type was :zeek:enum:`Intel::ADDR`, then this
+      field will be present.
 
-      fuid: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
 
-         If the data was discovered within a file, the file uid should
-         go here to provide context to the data. If the file record *f*
-         is provided, this will be automatically filled out.
+   .. zeek:field:: where :zeek:type:`Intel::Where` :zeek:attr:`&log`
+
+      Where the data was discovered.
+
+
+   .. zeek:field:: node :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      The name of the node where the match was discovered.
+
+
+   .. zeek:field:: conn :zeek:type:`connection` :zeek:attr:`&optional`
+
+      If the data was discovered within a connection, the
+      connection record should go here to give context to the data.
+
+
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&optional`
+
+      If the data was discovered within a connection, the
+      connection uid should go here to give context to the data.
+      If the *conn* field is provided, this will be automatically
+      filled out.
+
+
+   .. zeek:field:: f :zeek:type:`fa_file` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+
+      If the data was discovered within a file, the file record
+      should go here to provide context to the data.
+
+
+   .. zeek:field:: fuid :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/intel/files.zeek` is loaded)
+
+      If the data was discovered within a file, the file uid should
+      go here to provide context to the data. If the file record *f*
+      is provided, this will be automatically filled out.
+
 
    Information about a piece of "seen" data.
 

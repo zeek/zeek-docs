@@ -59,41 +59,66 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp
 
-      host: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Same as in the HTTP log.
 
-      uri: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Same as in the HTTP log.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      user_agent: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Same as in the HTTP log.
+      Unique ID for the connection.
 
-      subprotocol: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The WebSocket subprotocol as selected by the server.
 
-      client_protocols: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The protocols requested by the client, if any.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      server_extensions: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The extensions selected by the the server, if any.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      client_extensions: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The extensions requested by the client, if any.
 
-      client_key: :zeek:type:`string` :zeek:attr:`&optional`
-         The Sec-WebSocket-Key header from the client.
+   .. zeek:field:: host :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      server_accept: :zeek:type:`string` :zeek:attr:`&optional`
-         The Sec-WebSocket-Accept header from the server.
+      Same as in the HTTP log.
+
+
+   .. zeek:field:: uri :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Same as in the HTTP log.
+
+
+   .. zeek:field:: user_agent :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Same as in the HTTP log.
+
+
+   .. zeek:field:: subprotocol :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The WebSocket subprotocol as selected by the server.
+
+
+   .. zeek:field:: client_protocols :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The protocols requested by the client, if any.
+
+
+   .. zeek:field:: server_extensions :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The extensions selected by the the server, if any.
+
+
+   .. zeek:field:: client_extensions :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The extensions requested by the client, if any.
+
+
+   .. zeek:field:: client_key :zeek:type:`string` :zeek:attr:`&optional`
+
+      The Sec-WebSocket-Key header from the client.
+
+
+   .. zeek:field:: server_accept :zeek:type:`string` :zeek:attr:`&optional`
+
+      The Sec-WebSocket-Accept header from the server.
+
 
    The record type for the WebSocket log.
 

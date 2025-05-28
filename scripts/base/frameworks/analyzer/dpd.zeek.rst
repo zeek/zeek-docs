@@ -115,29 +115,44 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when protocol analysis failed.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Connection unique ID.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         Connection ID containing the 4-tuple which identifies endpoints.
+      Timestamp for when protocol analysis failed.
 
-      proto: :zeek:type:`transport_proto` :zeek:attr:`&log`
-         Transport protocol for the violation.
 
-      analyzer: :zeek:type:`string` :zeek:attr:`&log`
-         The analyzer that generated the violation.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      failure_reason: :zeek:type:`string` :zeek:attr:`&log`
-         The textual reason for the analysis failure.
+      Connection unique ID.
 
-      packet_segment: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/frameworks/dpd/packet-segment-logging.zeek` is loaded)
 
-         A chunk of the payload that most likely resulted in the
-         analyzer violation.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      Connection ID containing the 4-tuple which identifies endpoints.
+
+
+   .. zeek:field:: proto :zeek:type:`transport_proto` :zeek:attr:`&log`
+
+      Transport protocol for the violation.
+
+
+   .. zeek:field:: analyzer :zeek:type:`string` :zeek:attr:`&log`
+
+      The analyzer that generated the violation.
+
+
+   .. zeek:field:: failure_reason :zeek:type:`string` :zeek:attr:`&log`
+
+      The textual reason for the analysis failure.
+
+
+   .. zeek:field:: packet_segment :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/policy/frameworks/dpd/packet-segment-logging.zeek` is loaded)
+
+      A chunk of the payload that most likely resulted in the
+      analyzer violation.
+
 
    The record type defining the columns to log in the DPD logging stream.
 

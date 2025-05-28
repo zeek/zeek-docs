@@ -87,9 +87,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
 
-      version: :zeek:type:`Software::Version`
+   .. zeek:field:: name :zeek:type:`string`
+
+
+   .. zeek:field:: version :zeek:type:`Software::Version`
+
 
 
 

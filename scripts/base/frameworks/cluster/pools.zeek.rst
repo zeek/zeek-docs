@@ -213,21 +213,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         The node name (e.g. "manager").
 
-      alias: :zeek:type:`string`
-         An alias of *name* used to prevent hashing collisions when creating
-         *site_id*.
+   .. zeek:field:: name :zeek:type:`string`
 
-      site_id: :zeek:type:`count`
-         A 32-bit unique identifier for the pool node, derived from name/alias.
+      The node name (e.g. "manager").
 
-      alive: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether the node is currently alive and can receive work.
 
-      topic: :zeek:type:`string`
-         The pre-computed result from Cluster::node_topic
+   .. zeek:field:: alias :zeek:type:`string`
+
+      An alias of *name* used to prevent hashing collisions when creating
+      *site_id*.
+
+
+   .. zeek:field:: site_id :zeek:type:`count`
+
+      A 32-bit unique identifier for the pool node, derived from name/alias.
+
+
+   .. zeek:field:: alive :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether the node is currently alive and can receive work.
+
+
+   .. zeek:field:: topic :zeek:type:`string`
+
+      The pre-computed result from Cluster::node_topic
+
 
    Store state of a cluster within the context of a work pool.
 
@@ -242,22 +253,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      topic: :zeek:type:`string`
-         A topic string that can be used to reach all nodes within a pool.
 
-      node_type: :zeek:type:`Cluster::NodeType`
-         The type of nodes that are contained within the pool.
+   .. zeek:field:: topic :zeek:type:`string`
 
-      max_nodes: :zeek:type:`count` :zeek:attr:`&optional`
-         The maximum number of nodes that may belong to the pool.
-         If not set, then all available nodes will be added to the pool,
-         else the cluster framework will automatically limit the pool
-         membership according to the threshold.
+      A topic string that can be used to reach all nodes within a pool.
 
-      exclusive: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether the pool requires exclusive access to nodes.  If true,
-         then *max_nodes* nodes will not be assigned to any other pool.
-         When using this flag, *max_nodes* must also be set.
+
+   .. zeek:field:: node_type :zeek:type:`Cluster::NodeType`
+
+      The type of nodes that are contained within the pool.
+
+
+   .. zeek:field:: max_nodes :zeek:type:`count` :zeek:attr:`&optional`
+
+      The maximum number of nodes that may belong to the pool.
+      If not set, then all available nodes will be added to the pool,
+      else the cluster framework will automatically limit the pool
+      membership according to the threshold.
+
+
+   .. zeek:field:: exclusive :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether the pool requires exclusive access to nodes.  If true,
+      then *max_nodes* nodes will not be assigned to any other pool.
+      When using this flag, *max_nodes* must also be set.
+
 
    A pool specification.
 

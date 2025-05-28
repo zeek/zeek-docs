@@ -54,29 +54,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      cmd: :zeek:type:`string` :zeek:attr:`&log`
-         The command that was issued
 
-      arg: :zeek:type:`string` :zeek:attr:`&log`
-         The argument issued to the command
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Did the server tell us that the command succeeded?
+      Unique ID for the connection.
 
-      rows: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The number of affected rows, if any
 
-      response: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Server message, if any
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      The connection's 4-tuple of endpoint addresses/ports.
+
+
+   .. zeek:field:: cmd :zeek:type:`string` :zeek:attr:`&log`
+
+      The command that was issued
+
+
+   .. zeek:field:: arg :zeek:type:`string` :zeek:attr:`&log`
+
+      The argument issued to the command
+
+
+   .. zeek:field:: success :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Did the server tell us that the command succeeded?
+
+
+   .. zeek:field:: rows :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The number of affected rows, if any
+
+
+   .. zeek:field:: response :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Server message, if any
+
 
 
 Events

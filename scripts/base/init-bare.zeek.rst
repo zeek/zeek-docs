@@ -3930,19 +3930,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      c: :zeek:type:`connection` :zeek:attr:`&optional`
-         The connection related to this confirmation, if any.
-         This field may be set if there's any connection related information
-         available for this confirmation. For protocol analyzers it is guaranteed
-         to be set, but may also be added by file analyzers as additional
-         contextual information.
 
-      f: :zeek:type:`fa_file` :zeek:attr:`&optional`
-         The file object related to this confirmation, if any.
+   .. zeek:field:: c :zeek:type:`connection` :zeek:attr:`&optional`
 
-      aid: :zeek:type:`count` :zeek:attr:`&optional`
-         Specific analyzer instance that can be used to reference the analyzer
-         when using builtin functions like :zeek:id:`disable_analyzer`.
+      The connection related to this confirmation, if any.
+      This field may be set if there's any connection related information
+      available for this confirmation. For protocol analyzers it is guaranteed
+      to be set, but may also be added by file analyzers as additional
+      contextual information.
+
+
+   .. zeek:field:: f :zeek:type:`fa_file` :zeek:attr:`&optional`
+
+      The file object related to this confirmation, if any.
+
+
+   .. zeek:field:: aid :zeek:type:`count` :zeek:attr:`&optional`
+
+      Specific analyzer instance that can be used to reference the analyzer
+      when using builtin functions like :zeek:id:`disable_analyzer`.
+
 
    Generic analyzer confirmation info record.
    
@@ -3953,25 +3960,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      reason: :zeek:type:`string`
-         The reason for the violation - should be user readable.
 
-      c: :zeek:type:`connection` :zeek:attr:`&optional`
-         The connection related to this violation, if any.
-         This field may be set if there's any connection related information
-         available for this violation. For protocol analyzers it is guaranteed
-         to be set, but may also be added by file analyzers as additional
-         contextual information.
+   .. zeek:field:: reason :zeek:type:`string`
 
-      f: :zeek:type:`fa_file` :zeek:attr:`&optional`
-         The file object related to this violation, if any.
+      The reason for the violation - should be user readable.
 
-      aid: :zeek:type:`count` :zeek:attr:`&optional`
-         Specific analyzer instance that can be used to reference the analyzer
-         when using builtin functions like :zeek:id:`disable_analyzer`.
 
-      data: :zeek:type:`string` :zeek:attr:`&optional`
-         Piece of binary data that was parsed and caused the violation.
+   .. zeek:field:: c :zeek:type:`connection` :zeek:attr:`&optional`
+
+      The connection related to this violation, if any.
+      This field may be set if there's any connection related information
+      available for this violation. For protocol analyzers it is guaranteed
+      to be set, but may also be added by file analyzers as additional
+      contextual information.
+
+
+   .. zeek:field:: f :zeek:type:`fa_file` :zeek:attr:`&optional`
+
+      The file object related to this violation, if any.
+
+
+   .. zeek:field:: aid :zeek:type:`count` :zeek:attr:`&optional`
+
+      Specific analyzer instance that can be used to reference the analyzer
+      when using builtin functions like :zeek:id:`disable_analyzer`.
+
+
+   .. zeek:field:: data :zeek:type:`string` :zeek:attr:`&optional`
+
+      Piece of binary data that was parsed and caused the violation.
+
 
    Generic analyzer violation info record.
    
@@ -3991,17 +4009,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      function_name: :zeek:type:`string`
-         The name of the function being called at this point in the call stack.
 
-      function_args: :zeek:type:`call_argument_vector`
-         The arguments passed to the function being called.
+   .. zeek:field:: function_name :zeek:type:`string`
 
-      file_location: :zeek:type:`string` :zeek:attr:`&optional`
-         The file in which the function call is being made.
+      The name of the function being called at this point in the call stack.
 
-      line_location: :zeek:type:`count` :zeek:attr:`&optional`
-         The line number at which the function call is being made.
+
+   .. zeek:field:: function_args :zeek:type:`call_argument_vector`
+
+      The arguments passed to the function being called.
+
+
+   .. zeek:field:: file_location :zeek:type:`string` :zeek:attr:`&optional`
+
+      The file in which the function call is being made.
+
+
+   .. zeek:field:: line_location :zeek:type:`count` :zeek:attr:`&optional`
+
+      The line number at which the function call is being made.
+
 
    A representation of an element in a Zeek script's call stack.
    
@@ -4012,15 +4039,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      num_queued: :zeek:type:`count`
-         The number of messages currently queued locally for transmission.
 
-      max_queued_recently: :zeek:type:`count`
-         The maximum number of messages queued in the recent
-         :zeek:see:`Broker::buffer_stats_reset_interval` time interval.
+   .. zeek:field:: num_queued :zeek:type:`count`
 
-      num_overflows: :zeek:type:`count`
-         The number of times the send buffer has overflowed.
+      The number of messages currently queued locally for transmission.
+
+
+   .. zeek:field:: max_queued_recently :zeek:type:`count`
+
+      The maximum number of messages queued in the recent
+      :zeek:see:`Broker::buffer_stats_reset_interval` time interval.
+
+
+   .. zeek:field:: num_overflows :zeek:type:`count`
+
+      The number of times the send buffer has overflowed.
+
 
    Broker statistics for an individual peering.
    
@@ -4036,31 +4070,49 @@ Types
 
    :Type: :zeek:type:`record`
 
-      num_peers: :zeek:type:`count`
 
-      num_stores: :zeek:type:`count`
-         Number of active data stores.
+   .. zeek:field:: num_peers :zeek:type:`count`
 
-      num_pending_queries: :zeek:type:`count`
-         Number of pending data store queries.
 
-      num_events_incoming: :zeek:type:`count`
-         Number of total log messages received.
+   .. zeek:field:: num_stores :zeek:type:`count`
 
-      num_events_outgoing: :zeek:type:`count`
-         Number of total log messages sent.
+      Number of active data stores.
 
-      num_logs_incoming: :zeek:type:`count`
-         Number of total log records received.
 
-      num_logs_outgoing: :zeek:type:`count`
-         Number of total log records sent.
+   .. zeek:field:: num_pending_queries :zeek:type:`count`
 
-      num_ids_incoming: :zeek:type:`count`
-         Number of total identifiers received.
+      Number of pending data store queries.
 
-      num_ids_outgoing: :zeek:type:`count`
-         Number of total identifiers sent.
+
+   .. zeek:field:: num_events_incoming :zeek:type:`count`
+
+      Number of total log messages received.
+
+
+   .. zeek:field:: num_events_outgoing :zeek:type:`count`
+
+      Number of total log messages sent.
+
+
+   .. zeek:field:: num_logs_incoming :zeek:type:`count`
+
+      Number of total log records received.
+
+
+   .. zeek:field:: num_logs_outgoing :zeek:type:`count`
+
+      Number of total log records sent.
+
+
+   .. zeek:field:: num_ids_incoming :zeek:type:`count`
+
+      Number of total identifiers received.
+
+
+   .. zeek:field:: num_ids_outgoing :zeek:type:`count`
+
+      Number of total identifiers sent.
+
 
    Statistics about Broker communication.
    
@@ -4071,37 +4123,50 @@ Types
 
    :Type: :zeek:type:`record`
 
-      spec: :zeek:type:`Cluster::PoolSpec`
-         (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
 
-         The specification of the pool that was used when registering it.
+   .. zeek:field:: spec :zeek:type:`Cluster::PoolSpec`
 
-      nodes: :zeek:type:`Cluster::PoolNodeTable` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
 
-         Nodes in the pool, indexed by their name (e.g. "manager").
+      The specification of the pool that was used when registering it.
 
-      node_list: :zeek:type:`vector` of :zeek:type:`Cluster::PoolNode` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
 
-         A list of nodes in the pool in a deterministic order.
+   .. zeek:field:: nodes :zeek:type:`Cluster::PoolNodeTable` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
 
-      hrw_pool: :zeek:type:`HashHRW::Pool` :zeek:attr:`&default` = ``[sites={  }]`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
 
-         The Rendezvous hashing structure.
+      Nodes in the pool, indexed by their name (e.g. "manager").
 
-      rr_key_seq: :zeek:type:`Cluster::RoundRobinTable` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
 
-         Round-Robin table indexed by arbitrary key and storing the next
-         index of *node_list* that will be eligible to receive work (if it's
-         alive at the time of next request).
+   .. zeek:field:: node_list :zeek:type:`vector` of :zeek:type:`Cluster::PoolNode` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
 
-      alive_count: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
 
-         Number of pool nodes that are currently alive.
+      A list of nodes in the pool in a deterministic order.
+
+
+   .. zeek:field:: hrw_pool :zeek:type:`HashHRW::Pool` :zeek:attr:`&default` = ``[sites={  }]`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
+
+      The Rendezvous hashing structure.
+
+
+   .. zeek:field:: rr_key_seq :zeek:type:`Cluster::RoundRobinTable` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
+
+      Round-Robin table indexed by arbitrary key and storing the next
+      index of *node_list* that will be eligible to receive work (if it's
+      alive at the time of next request).
+
+
+   .. zeek:field:: alive_count :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/cluster/pools.zeek` is loaded)
+
+      Number of pool nodes that are currently alive.
+
 
    A pool used for distributing data/work among a set of cluster nodes.
 
@@ -4110,49 +4175,78 @@ Types
 
    :Type: :zeek:type:`record`
 
-      total_conns: :zeek:type:`count`
-         
 
-      current_conns: :zeek:type:`count`
-         
+   .. zeek:field:: total_conns :zeek:type:`count`
 
-      sess_current_conns: :zeek:type:`count`
-         
+      
 
-      num_packets: :zeek:type:`count`
 
-      num_fragments: :zeek:type:`count`
+   .. zeek:field:: current_conns :zeek:type:`count`
 
-      max_fragments: :zeek:type:`count`
+      
 
-      num_tcp_conns: :zeek:type:`count`
-         Current number of TCP connections in memory.
 
-      max_tcp_conns: :zeek:type:`count`
-         Maximum number of concurrent TCP connections so far.
+   .. zeek:field:: sess_current_conns :zeek:type:`count`
 
-      cumulative_tcp_conns: :zeek:type:`count`
-         Total number of TCP connections so far.
+      
 
-      num_udp_conns: :zeek:type:`count`
-         Current number of UDP flows in memory.
 
-      max_udp_conns: :zeek:type:`count`
-         Maximum number of concurrent UDP flows so far.
+   .. zeek:field:: num_packets :zeek:type:`count`
 
-      cumulative_udp_conns: :zeek:type:`count`
-         Total number of UDP flows so far.
 
-      num_icmp_conns: :zeek:type:`count`
-         Current number of ICMP flows in memory.
+   .. zeek:field:: num_fragments :zeek:type:`count`
 
-      max_icmp_conns: :zeek:type:`count`
-         Maximum number of concurrent ICMP flows so far.
 
-      cumulative_icmp_conns: :zeek:type:`count`
-         Total number of ICMP flows so far.
+   .. zeek:field:: max_fragments :zeek:type:`count`
 
-      killed_by_inactivity: :zeek:type:`count`
+
+   .. zeek:field:: num_tcp_conns :zeek:type:`count`
+
+      Current number of TCP connections in memory.
+
+
+   .. zeek:field:: max_tcp_conns :zeek:type:`count`
+
+      Maximum number of concurrent TCP connections so far.
+
+
+   .. zeek:field:: cumulative_tcp_conns :zeek:type:`count`
+
+      Total number of TCP connections so far.
+
+
+   .. zeek:field:: num_udp_conns :zeek:type:`count`
+
+      Current number of UDP flows in memory.
+
+
+   .. zeek:field:: max_udp_conns :zeek:type:`count`
+
+      Maximum number of concurrent UDP flows so far.
+
+
+   .. zeek:field:: cumulative_udp_conns :zeek:type:`count`
+
+      Total number of UDP flows so far.
+
+
+   .. zeek:field:: num_icmp_conns :zeek:type:`count`
+
+      Current number of ICMP flows in memory.
+
+
+   .. zeek:field:: max_icmp_conns :zeek:type:`count`
+
+      Maximum number of concurrent ICMP flows so far.
+
+
+   .. zeek:field:: cumulative_icmp_conns :zeek:type:`count`
+
+      Total number of ICMP flows so far.
+
+
+   .. zeek:field:: killed_by_inactivity :zeek:type:`count`
+
 
 
 .. zeek:type:: DHCP::Addrs
@@ -4170,18 +4264,27 @@ Types
 
    :Type: :zeek:type:`record`
 
-      flags: :zeek:type:`count`
-         An unparsed bitfield of flags (refer to RFC 4702).
 
-      rcode1: :zeek:type:`count`
-         This field is deprecated in the standard.
+   .. zeek:field:: flags :zeek:type:`count`
 
-      rcode2: :zeek:type:`count`
-         This field is deprecated in the standard.
+      An unparsed bitfield of flags (refer to RFC 4702).
 
-      domain_name: :zeek:type:`string`
-         The Domain Name part of the option carries all or part of the FQDN
-         of a DHCP client.
+
+   .. zeek:field:: rcode1 :zeek:type:`count`
+
+      This field is deprecated in the standard.
+
+
+   .. zeek:field:: rcode2 :zeek:type:`count`
+
+      This field is deprecated in the standard.
+
+
+   .. zeek:field:: domain_name :zeek:type:`string`
+
+      The Domain Name part of the option carries all or part of the FQDN
+      of a DHCP client.
+
 
    DHCP Client FQDN Option information (Option 81)
 
@@ -4190,9 +4293,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      hwtype: :zeek:type:`count`
 
-      hwaddr: :zeek:type:`string`
+   .. zeek:field:: hwtype :zeek:type:`count`
+
+
+   .. zeek:field:: hwaddr :zeek:type:`string`
+
 
    DHCP Client Identifier (Option 61)
    
@@ -4203,41 +4309,65 @@ Types
 
    :Type: :zeek:type:`record`
 
-      op: :zeek:type:`count`
-         Message OP code. 1 = BOOTREQUEST, 2 = BOOTREPLY
 
-      m_type: :zeek:type:`count`
-         The type of DHCP message.
+   .. zeek:field:: op :zeek:type:`count`
 
-      xid: :zeek:type:`count`
-         Transaction ID of a DHCP session.
+      Message OP code. 1 = BOOTREQUEST, 2 = BOOTREPLY
 
-      secs: :zeek:type:`interval`
-         Number of seconds since client began address acquisition
-         or renewal process
 
-      flags: :zeek:type:`count`
+   .. zeek:field:: m_type :zeek:type:`count`
 
-      ciaddr: :zeek:type:`addr`
-         Original IP address of the client.
+      The type of DHCP message.
 
-      yiaddr: :zeek:type:`addr`
-         IP address assigned to the client.
 
-      siaddr: :zeek:type:`addr`
-         IP address of the server.
+   .. zeek:field:: xid :zeek:type:`count`
 
-      giaddr: :zeek:type:`addr`
-         IP address of the relaying gateway.
+      Transaction ID of a DHCP session.
 
-      chaddr: :zeek:type:`string`
-         Client hardware address.
 
-      sname: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Server host name.
+   .. zeek:field:: secs :zeek:type:`interval`
 
-      file_n: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Boot file name.
+      Number of seconds since client began address acquisition
+      or renewal process
+
+
+   .. zeek:field:: flags :zeek:type:`count`
+
+
+   .. zeek:field:: ciaddr :zeek:type:`addr`
+
+      Original IP address of the client.
+
+
+   .. zeek:field:: yiaddr :zeek:type:`addr`
+
+      IP address assigned to the client.
+
+
+   .. zeek:field:: siaddr :zeek:type:`addr`
+
+      IP address of the server.
+
+
+   .. zeek:field:: giaddr :zeek:type:`addr`
+
+      IP address of the relaying gateway.
+
+
+   .. zeek:field:: chaddr :zeek:type:`string`
+
+      Client hardware address.
+
+
+   .. zeek:field:: sname :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      Server host name.
+
+
+   .. zeek:field:: file_n :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      Boot file name.
+
 
    A DHCP message.
    
@@ -4248,103 +4378,162 @@ Types
 
    :Type: :zeek:type:`record`
 
-      options: :zeek:type:`index_vec` :zeek:attr:`&optional`
-         The ordered list of all DHCP option numbers.
 
-      subnet_mask: :zeek:type:`addr` :zeek:attr:`&optional`
-         Subnet Mask Value (option 1)
+   .. zeek:field:: options :zeek:type:`index_vec` :zeek:attr:`&optional`
 
-      routers: :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
-         Router addresses (option 3)
+      The ordered list of all DHCP option numbers.
 
-      dns_servers: :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
-         DNS Server addresses (option 6)
 
-      host_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The Hostname of the client (option 12)
+   .. zeek:field:: subnet_mask :zeek:type:`addr` :zeek:attr:`&optional`
 
-      domain_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The DNS domain name of the client (option 15)
+      Subnet Mask Value (option 1)
 
-      forwarding: :zeek:type:`bool` :zeek:attr:`&optional`
-         Enable/Disable IP Forwarding (option 19)
 
-      broadcast: :zeek:type:`addr` :zeek:attr:`&optional`
-         Broadcast Address (option 28)
+   .. zeek:field:: routers :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
 
-      vendor: :zeek:type:`string` :zeek:attr:`&optional`
-         Vendor specific data. This can frequently
-         be unparsed binary data. (option 43)
+      Router addresses (option 3)
 
-      nbns: :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
-         NETBIOS name server list (option 44)
 
-      addr_request: :zeek:type:`addr` :zeek:attr:`&optional`
-         Address requested by the client (option 50)
+   .. zeek:field:: dns_servers :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
 
-      lease: :zeek:type:`interval` :zeek:attr:`&optional`
-         Lease time offered by the server. (option 51)
+      DNS Server addresses (option 6)
 
-      serv_addr: :zeek:type:`addr` :zeek:attr:`&optional`
-         Server address to allow clients to distinguish
-         between lease offers. (option 54)
 
-      param_list: :zeek:type:`index_vec` :zeek:attr:`&optional`
-         DHCP Parameter Request list (option 55)
+   .. zeek:field:: host_name :zeek:type:`string` :zeek:attr:`&optional`
 
-      message: :zeek:type:`string` :zeek:attr:`&optional`
-         Textual error message (option 56)
+      The Hostname of the client (option 12)
 
-      max_msg_size: :zeek:type:`count` :zeek:attr:`&optional`
-         Maximum Message Size (option 57)
 
-      renewal_time: :zeek:type:`interval` :zeek:attr:`&optional`
-         This option specifies the time interval from address
-         assignment until the client transitions to the
-         RENEWING state. (option 58)
+   .. zeek:field:: domain_name :zeek:type:`string` :zeek:attr:`&optional`
 
-      rebinding_time: :zeek:type:`interval` :zeek:attr:`&optional`
-         This option specifies the time interval from address
-         assignment until the client transitions to the
-         REBINDING state. (option 59)
+      The DNS domain name of the client (option 15)
 
-      vendor_class: :zeek:type:`string` :zeek:attr:`&optional`
-         This option is used by DHCP clients to optionally
-         identify the vendor type and configuration of a DHCP
-         client. (option 60)
 
-      client_id: :zeek:type:`DHCP::ClientID` :zeek:attr:`&optional`
-         DHCP Client Identifier (Option 61)
+   .. zeek:field:: forwarding :zeek:type:`bool` :zeek:attr:`&optional`
 
-      user_class: :zeek:type:`string` :zeek:attr:`&optional`
-         User Class opaque value (Option 77)
+      Enable/Disable IP Forwarding (option 19)
 
-      client_fqdn: :zeek:type:`DHCP::ClientFQDN` :zeek:attr:`&optional`
-         DHCP Client FQDN (Option 81)
 
-      sub_opt: :zeek:type:`DHCP::SubOpts` :zeek:attr:`&optional`
-         DHCP Relay Agent Information Option (Option 82)
+   .. zeek:field:: broadcast :zeek:type:`addr` :zeek:attr:`&optional`
 
-      auto_config: :zeek:type:`bool` :zeek:attr:`&optional`
-         Auto Config option to let host know if it's allowed to
-         auto assign an IP address. (Option 116)
+      Broadcast Address (option 28)
 
-      auto_proxy_config: :zeek:type:`string` :zeek:attr:`&optional`
-         URL to find a proxy.pac for auto proxy config (Option 252)
 
-      time_offset: :zeek:type:`int` :zeek:attr:`&optional`
-         The offset of the client's subnet in seconds from UTC. (Option 2)
+   .. zeek:field:: vendor :zeek:type:`string` :zeek:attr:`&optional`
 
-      time_servers: :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
-         A list of :rfc:`868` time servers available to the client.
-         (Option 4)
+      Vendor specific data. This can frequently
+      be unparsed binary data. (option 43)
 
-      name_servers: :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
-         A list of IEN 116 name servers available to the client. (Option 5)
 
-      ntp_servers: :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
-         A list of IP addresses indicating NTP servers available to the
-         client. (Option 42)
+   .. zeek:field:: nbns :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
+
+      NETBIOS name server list (option 44)
+
+
+   .. zeek:field:: addr_request :zeek:type:`addr` :zeek:attr:`&optional`
+
+      Address requested by the client (option 50)
+
+
+   .. zeek:field:: lease :zeek:type:`interval` :zeek:attr:`&optional`
+
+      Lease time offered by the server. (option 51)
+
+
+   .. zeek:field:: serv_addr :zeek:type:`addr` :zeek:attr:`&optional`
+
+      Server address to allow clients to distinguish
+      between lease offers. (option 54)
+
+
+   .. zeek:field:: param_list :zeek:type:`index_vec` :zeek:attr:`&optional`
+
+      DHCP Parameter Request list (option 55)
+
+
+   .. zeek:field:: message :zeek:type:`string` :zeek:attr:`&optional`
+
+      Textual error message (option 56)
+
+
+   .. zeek:field:: max_msg_size :zeek:type:`count` :zeek:attr:`&optional`
+
+      Maximum Message Size (option 57)
+
+
+   .. zeek:field:: renewal_time :zeek:type:`interval` :zeek:attr:`&optional`
+
+      This option specifies the time interval from address
+      assignment until the client transitions to the
+      RENEWING state. (option 58)
+
+
+   .. zeek:field:: rebinding_time :zeek:type:`interval` :zeek:attr:`&optional`
+
+      This option specifies the time interval from address
+      assignment until the client transitions to the
+      REBINDING state. (option 59)
+
+
+   .. zeek:field:: vendor_class :zeek:type:`string` :zeek:attr:`&optional`
+
+      This option is used by DHCP clients to optionally
+      identify the vendor type and configuration of a DHCP
+      client. (option 60)
+
+
+   .. zeek:field:: client_id :zeek:type:`DHCP::ClientID` :zeek:attr:`&optional`
+
+      DHCP Client Identifier (Option 61)
+
+
+   .. zeek:field:: user_class :zeek:type:`string` :zeek:attr:`&optional`
+
+      User Class opaque value (Option 77)
+
+
+   .. zeek:field:: client_fqdn :zeek:type:`DHCP::ClientFQDN` :zeek:attr:`&optional`
+
+      DHCP Client FQDN (Option 81)
+
+
+   .. zeek:field:: sub_opt :zeek:type:`DHCP::SubOpts` :zeek:attr:`&optional`
+
+      DHCP Relay Agent Information Option (Option 82)
+
+
+   .. zeek:field:: auto_config :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Auto Config option to let host know if it's allowed to
+      auto assign an IP address. (Option 116)
+
+
+   .. zeek:field:: auto_proxy_config :zeek:type:`string` :zeek:attr:`&optional`
+
+      URL to find a proxy.pac for auto proxy config (Option 252)
+
+
+   .. zeek:field:: time_offset :zeek:type:`int` :zeek:attr:`&optional`
+
+      The offset of the client's subnet in seconds from UTC. (Option 2)
+
+
+   .. zeek:field:: time_servers :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
+
+      A list of :rfc:`868` time servers available to the client.
+      (Option 4)
+
+
+   .. zeek:field:: name_servers :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
+
+      A list of IEN 116 name servers available to the client. (Option 5)
+
+
+   .. zeek:field:: ntp_servers :zeek:type:`DHCP::Addrs` :zeek:attr:`&optional`
+
+      A list of IP addresses indicating NTP servers available to the
+      client. (Option 42)
+
 
 
 .. zeek:type:: DHCP::SubOpt
@@ -4352,9 +4541,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      code: :zeek:type:`count`
 
-      value: :zeek:type:`string`
+   .. zeek:field:: code :zeek:type:`count`
+
+
+   .. zeek:field:: value :zeek:type:`string`
+
 
    DHCP Relay Agent Information Option (Option 82)
    
@@ -4371,29 +4563,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      requests: :zeek:type:`count`
-         Number of DNS requests made
 
-      successful: :zeek:type:`count`
-         Number of successful DNS replies.
+   .. zeek:field:: requests :zeek:type:`count`
 
-      failed: :zeek:type:`count`
-         Number of DNS reply failures.
+      Number of DNS requests made
 
-      pending: :zeek:type:`count`
-         Current pending queries.
 
-      cached_hosts: :zeek:type:`count`
-         Number of cached hosts.
+   .. zeek:field:: successful :zeek:type:`count`
 
-      cached_addresses: :zeek:type:`count`
-         Number of cached addresses.
+      Number of successful DNS replies.
 
-      cached_texts: :zeek:type:`count`
-         Number of cached text entries.
 
-      cached_total: :zeek:type:`count`
-         Total number of cached entries.
+   .. zeek:field:: failed :zeek:type:`count`
+
+      Number of DNS reply failures.
+
+
+   .. zeek:field:: pending :zeek:type:`count`
+
+      Current pending queries.
+
+
+   .. zeek:field:: cached_hosts :zeek:type:`count`
+
+      Number of cached hosts.
+
+
+   .. zeek:field:: cached_addresses :zeek:type:`count`
+
+      Number of cached addresses.
+
+
+   .. zeek:field:: cached_texts :zeek:type:`count`
+
+      Number of cached text entries.
+
+
+   .. zeek:field:: cached_total :zeek:type:`count`
+
+      Total number of cached entries.
+
 
    Statistics related to Zeek's active use of DNS.  These numbers are
    about Zeek performing DNS queries on it's own, not traffic
@@ -4418,11 +4627,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`EventMetadata::ID`
-         The registered :zeek:see:`EventMetadata::ID` value.
 
-      val: :zeek:type:`any`
-         The value. Its type matches what was passed to :zeek:see:`EventMetadata::register`.
+   .. zeek:field:: id :zeek:type:`EventMetadata::ID`
+
+      The registered :zeek:see:`EventMetadata::ID` value.
+
+
+   .. zeek:field:: val :zeek:type:`any`
+
+      The value. Its type matches what was passed to :zeek:see:`EventMetadata::register`.
+
 
    A event metadata entry.
 
@@ -4440,11 +4654,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string` :zeek:attr:`&log`
-         Name of the zeek event.
 
-      times_called: :zeek:type:`count` :zeek:attr:`&log`
-         Times it was called, as counted by the event handlers.
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log`
+
+      Name of the zeek event.
+
+
+   .. zeek:field:: times_called :zeek:type:`count` :zeek:attr:`&log`
+
+      Times it was called, as counted by the event handlers.
+
    :Attributes: :zeek:attr:`&log`
 
    Statistics about how many times each event name is queued.
@@ -4462,11 +4681,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      queued: :zeek:type:`count`
-         Total number of events queued so far.
 
-      dispatched: :zeek:type:`count`
-         Total number of events dispatched so far.
+   .. zeek:field:: queued :zeek:type:`count`
+
+      Total number of events queued so far.
+
+
+   .. zeek:field:: dispatched :zeek:type:`count`
+
+      Total number of events dispatched so far.
+
 
 
 .. zeek:type:: FileAnalysisStats
@@ -4474,14 +4698,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      current: :zeek:type:`count`
-         Current number of files being analyzed.
 
-      max: :zeek:type:`count`
-         Maximum number of concurrent files so far.
+   .. zeek:field:: current :zeek:type:`count`
 
-      cumulative: :zeek:type:`count`
-         Cumulative number of files analyzed.
+      Current number of files being analyzed.
+
+
+   .. zeek:field:: max :zeek:type:`count`
+
+      Maximum number of concurrent files so far.
+
+
+   .. zeek:field:: cumulative :zeek:type:`count`
+
+      Cumulative number of files analyzed.
+
 
    Statistics of file analysis.
    
@@ -4492,17 +4723,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ack_events: :zeek:type:`count`
-         How many ack events *could* have had gaps.
 
-      ack_bytes: :zeek:type:`count`
-         How many bytes those covered.
+   .. zeek:field:: ack_events :zeek:type:`count`
 
-      gap_events: :zeek:type:`count`
-         How many *did* have gaps.
+      How many ack events *could* have had gaps.
 
-      gap_bytes: :zeek:type:`count`
-         How many bytes were missing in the gaps.
+
+   .. zeek:field:: ack_bytes :zeek:type:`count`
+
+      How many bytes those covered.
+
+
+   .. zeek:field:: gap_events :zeek:type:`count`
+
+      How many *did* have gaps.
+
+
+   .. zeek:field:: gap_bytes :zeek:type:`count`
+
+      How many bytes were missing in the gaps.
+
 
    Statistics about number of gaps in TCP connections.
    
@@ -4567,11 +4807,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      use_session_key: :zeek:type:`bool`
-         Indicates that user-to-user-authentication is in use
 
-      mutual_required: :zeek:type:`bool`
-         Mutual authentication is required
+   .. zeek:field:: use_session_key :zeek:type:`bool`
+
+      Indicates that user-to-user-authentication is in use
+
+
+   .. zeek:field:: mutual_required :zeek:type:`bool`
+
+      Mutual authentication is required
+
 
    AP Options. See :rfc:`4120`
 
@@ -4580,14 +4825,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      kvno: :zeek:type:`count` :zeek:attr:`&optional`
-         The key version number
 
-      cipher: :zeek:type:`count`
-         The cipher the data was encrypted with
+   .. zeek:field:: kvno :zeek:type:`count` :zeek:attr:`&optional`
 
-      ciphertext: :zeek:type:`string`
-         The encrypted data
+      The key version number
+
+
+   .. zeek:field:: cipher :zeek:type:`count`
+
+      The cipher the data was encrypted with
+
+
+   .. zeek:field:: ciphertext :zeek:type:`string`
+
+      The encrypted data
+
 
 
 .. zeek:type:: KRB::Error_Msg
@@ -4595,38 +4847,61 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pvno: :zeek:type:`count` :zeek:attr:`&optional`
-         Protocol version number (5 for KRB5)
 
-      msg_type: :zeek:type:`count` :zeek:attr:`&optional`
-         The message type (30 for ERROR_MSG)
+   .. zeek:field:: pvno :zeek:type:`count` :zeek:attr:`&optional`
 
-      client_time: :zeek:type:`time` :zeek:attr:`&optional`
-         Current time on the client
+      Protocol version number (5 for KRB5)
 
-      server_time: :zeek:type:`time` :zeek:attr:`&optional`
-         Current time on the server
 
-      error_code: :zeek:type:`count`
-         The specific error code
+   .. zeek:field:: msg_type :zeek:type:`count` :zeek:attr:`&optional`
 
-      client_realm: :zeek:type:`string` :zeek:attr:`&optional`
-         Realm of the ticket
+      The message type (30 for ERROR_MSG)
 
-      client_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Name on the ticket
 
-      service_realm: :zeek:type:`string` :zeek:attr:`&optional`
-         Realm of the service
+   .. zeek:field:: client_time :zeek:type:`time` :zeek:attr:`&optional`
 
-      service_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Name of the service
+      Current time on the client
 
-      error_text: :zeek:type:`string` :zeek:attr:`&optional`
-         Additional text to explain the error
 
-      pa_data: :zeek:type:`vector` of :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
-         Optional pre-authentication data
+   .. zeek:field:: server_time :zeek:type:`time` :zeek:attr:`&optional`
+
+      Current time on the server
+
+
+   .. zeek:field:: error_code :zeek:type:`count`
+
+      The specific error code
+
+
+   .. zeek:field:: client_realm :zeek:type:`string` :zeek:attr:`&optional`
+
+      Realm of the ticket
+
+
+   .. zeek:field:: client_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name on the ticket
+
+
+   .. zeek:field:: service_realm :zeek:type:`string` :zeek:attr:`&optional`
+
+      Realm of the service
+
+
+   .. zeek:field:: service_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name of the service
+
+
+   .. zeek:field:: error_text :zeek:type:`string` :zeek:attr:`&optional`
+
+      Additional text to explain the error
+
+
+   .. zeek:field:: pa_data :zeek:type:`vector` of :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
+
+      Optional pre-authentication data
+
 
    The data from the ERROR_MSG message. See :rfc:`4120`.
 
@@ -4635,14 +4910,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ip: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         IPv4 or IPv6 address
 
-      netbios: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         NetBIOS address
+   .. zeek:field:: ip :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      unknown: :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
-         Some other type that we don't support yet
+      IPv4 or IPv6 address
+
+
+   .. zeek:field:: netbios :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      NetBIOS address
+
+
+   .. zeek:field:: unknown :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
+
+      Some other type that we don't support yet
+
 
    A Kerberos host address See :rfc:`4120`.
 
@@ -4657,48 +4939,75 @@ Types
 
    :Type: :zeek:type:`record`
 
-      forwardable: :zeek:type:`bool`
-         The ticket to be issued should have its forwardable flag set.
 
-      forwarded: :zeek:type:`bool`
-         A (TGT) request for forwarding.
+   .. zeek:field:: forwardable :zeek:type:`bool`
 
-      proxiable: :zeek:type:`bool`
-         The ticket to be issued should have its proxiable flag set.
+      The ticket to be issued should have its forwardable flag set.
 
-      proxy: :zeek:type:`bool`
-         A request for a proxy.
 
-      allow_postdate: :zeek:type:`bool`
-         The ticket to be issued should have its may-postdate flag set.
+   .. zeek:field:: forwarded :zeek:type:`bool`
 
-      postdated: :zeek:type:`bool`
-         A request for a postdated ticket.
+      A (TGT) request for forwarding.
 
-      renewable: :zeek:type:`bool`
-         The ticket to be issued should have its renewable  flag set.
 
-      opt_hardware_auth: :zeek:type:`bool`
-         Reserved for opt_hardware_auth
+   .. zeek:field:: proxiable :zeek:type:`bool`
 
-      disable_transited_check: :zeek:type:`bool`
-         Request that the KDC not check the transited field of a TGT against
-         the policy of the local realm before it will issue derivative tickets
-         based on the TGT.
+      The ticket to be issued should have its proxiable flag set.
 
-      renewable_ok: :zeek:type:`bool`
-         If a ticket with the requested lifetime cannot be issued, a renewable
-         ticket is acceptable
 
-      enc_tkt_in_skey: :zeek:type:`bool`
-         The ticket for the end server is to be encrypted in the session key
-         from the additional TGT provided
+   .. zeek:field:: proxy :zeek:type:`bool`
 
-      renew: :zeek:type:`bool`
-         The request is for a renewal
+      A request for a proxy.
 
-      validate: :zeek:type:`bool`
-         The request is to validate a postdated ticket.
+
+   .. zeek:field:: allow_postdate :zeek:type:`bool`
+
+      The ticket to be issued should have its may-postdate flag set.
+
+
+   .. zeek:field:: postdated :zeek:type:`bool`
+
+      A request for a postdated ticket.
+
+
+   .. zeek:field:: renewable :zeek:type:`bool`
+
+      The ticket to be issued should have its renewable  flag set.
+
+
+   .. zeek:field:: opt_hardware_auth :zeek:type:`bool`
+
+      Reserved for opt_hardware_auth
+
+
+   .. zeek:field:: disable_transited_check :zeek:type:`bool`
+
+      Request that the KDC not check the transited field of a TGT against
+      the policy of the local realm before it will issue derivative tickets
+      based on the TGT.
+
+
+   .. zeek:field:: renewable_ok :zeek:type:`bool`
+
+      If a ticket with the requested lifetime cannot be issued, a renewable
+      ticket is acceptable
+
+
+   .. zeek:field:: enc_tkt_in_skey :zeek:type:`bool`
+
+      The ticket for the end server is to be encrypted in the session key
+      from the additional TGT provided
+
+
+   .. zeek:field:: renew :zeek:type:`bool`
+
+      The request is for a renewal
+
+
+   .. zeek:field:: validate :zeek:type:`bool`
+
+      The request is to validate a postdated ticket.
+
 
    KDC Options. See :rfc:`4120`
 
@@ -4707,47 +5016,76 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pvno: :zeek:type:`count`
-         Protocol version number (5 for KRB5)
 
-      msg_type: :zeek:type:`count`
-         The message type (10 for AS_REQ, 12 for TGS_REQ)
+   .. zeek:field:: pvno :zeek:type:`count`
 
-      pa_data: :zeek:type:`vector` of :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
-         Optional pre-authentication data
+      Protocol version number (5 for KRB5)
 
-      kdc_options: :zeek:type:`KRB::KDC_Options` :zeek:attr:`&optional`
-         Options specified in the request
 
-      client_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Name on the ticket
+   .. zeek:field:: msg_type :zeek:type:`count`
 
-      service_realm: :zeek:type:`string` :zeek:attr:`&optional`
-         Realm of the service
+      The message type (10 for AS_REQ, 12 for TGS_REQ)
 
-      service_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Name of the service
 
-      from: :zeek:type:`time` :zeek:attr:`&optional`
-         Time the ticket is good from
+   .. zeek:field:: pa_data :zeek:type:`vector` of :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
 
-      till: :zeek:type:`time` :zeek:attr:`&optional`
-         Time the ticket is good till
+      Optional pre-authentication data
 
-      rtime: :zeek:type:`time` :zeek:attr:`&optional`
-         The requested renew-till time
 
-      nonce: :zeek:type:`count` :zeek:attr:`&optional`
-         A random nonce generated by the client
+   .. zeek:field:: kdc_options :zeek:type:`KRB::KDC_Options` :zeek:attr:`&optional`
 
-      encryption_types: :zeek:type:`vector` of :zeek:type:`count` :zeek:attr:`&optional`
-         The desired encryption algorithms, in order of preference
+      Options specified in the request
 
-      host_addrs: :zeek:type:`vector` of :zeek:type:`KRB::Host_Address` :zeek:attr:`&optional`
-         Any additional addresses the ticket should be valid for
 
-      additional_tickets: :zeek:type:`vector` of :zeek:type:`KRB::Ticket` :zeek:attr:`&optional`
-         Additional tickets may be included for certain transactions
+   .. zeek:field:: client_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name on the ticket
+
+
+   .. zeek:field:: service_realm :zeek:type:`string` :zeek:attr:`&optional`
+
+      Realm of the service
+
+
+   .. zeek:field:: service_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name of the service
+
+
+   .. zeek:field:: from :zeek:type:`time` :zeek:attr:`&optional`
+
+      Time the ticket is good from
+
+
+   .. zeek:field:: till :zeek:type:`time` :zeek:attr:`&optional`
+
+      Time the ticket is good till
+
+
+   .. zeek:field:: rtime :zeek:type:`time` :zeek:attr:`&optional`
+
+      The requested renew-till time
+
+
+   .. zeek:field:: nonce :zeek:type:`count` :zeek:attr:`&optional`
+
+      A random nonce generated by the client
+
+
+   .. zeek:field:: encryption_types :zeek:type:`vector` of :zeek:type:`count` :zeek:attr:`&optional`
+
+      The desired encryption algorithms, in order of preference
+
+
+   .. zeek:field:: host_addrs :zeek:type:`vector` of :zeek:type:`KRB::Host_Address` :zeek:attr:`&optional`
+
+      Any additional addresses the ticket should be valid for
+
+
+   .. zeek:field:: additional_tickets :zeek:type:`vector` of :zeek:type:`KRB::Ticket` :zeek:attr:`&optional`
+
+      Additional tickets may be included for certain transactions
+
 
    The data from the AS_REQ and TGS_REQ messages. See :rfc:`4120`.
 
@@ -4756,26 +5094,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pvno: :zeek:type:`count`
-         Protocol version number (5 for KRB5)
 
-      msg_type: :zeek:type:`count`
-         The message type (11 for AS_REP, 13 for TGS_REP)
+   .. zeek:field:: pvno :zeek:type:`count`
 
-      pa_data: :zeek:type:`vector` of :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
-         Optional pre-authentication data
+      Protocol version number (5 for KRB5)
 
-      client_realm: :zeek:type:`string` :zeek:attr:`&optional`
-         Realm on the ticket
 
-      client_name: :zeek:type:`string`
-         Name on the service
+   .. zeek:field:: msg_type :zeek:type:`count`
 
-      ticket: :zeek:type:`KRB::Ticket`
-         The ticket that was issued
+      The message type (11 for AS_REP, 13 for TGS_REP)
 
-      enc_part: :zeek:type:`KRB::Encrypted_Data`
-         The encrypted session key for the client
+
+   .. zeek:field:: pa_data :zeek:type:`vector` of :zeek:type:`KRB::Type_Value` :zeek:attr:`&optional`
+
+      Optional pre-authentication data
+
+
+   .. zeek:field:: client_realm :zeek:type:`string` :zeek:attr:`&optional`
+
+      Realm on the ticket
+
+
+   .. zeek:field:: client_name :zeek:type:`string`
+
+      Name on the service
+
+
+   .. zeek:field:: ticket :zeek:type:`KRB::Ticket`
+
+      The ticket that was issued
+
+
+   .. zeek:field:: enc_part :zeek:type:`KRB::Encrypted_Data`
+
+      The encrypted session key for the client
+
 
    The data from the AS_REQ and TGS_REQ messages. See :rfc:`4120`.
 
@@ -4784,27 +5137,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pvno: :zeek:type:`count`
-         Protocol version number (5 for KRB5)
 
-      msg_type: :zeek:type:`count`
-         The message type (20 for SAFE_MSG)
+   .. zeek:field:: pvno :zeek:type:`count`
 
-      data: :zeek:type:`string`
-         The application-specific data that is being passed
-         from the sender to the receiver
+      Protocol version number (5 for KRB5)
 
-      timestamp: :zeek:type:`time` :zeek:attr:`&optional`
-         Current time from the sender of the message
 
-      seq: :zeek:type:`count` :zeek:attr:`&optional`
-         Sequence number used to detect replays
+   .. zeek:field:: msg_type :zeek:type:`count`
 
-      sender: :zeek:type:`KRB::Host_Address` :zeek:attr:`&optional`
-         Sender address
+      The message type (20 for SAFE_MSG)
 
-      recipient: :zeek:type:`KRB::Host_Address` :zeek:attr:`&optional`
-         Recipient address
+
+   .. zeek:field:: data :zeek:type:`string`
+
+      The application-specific data that is being passed
+      from the sender to the receiver
+
+
+   .. zeek:field:: timestamp :zeek:type:`time` :zeek:attr:`&optional`
+
+      Current time from the sender of the message
+
+
+   .. zeek:field:: seq :zeek:type:`count` :zeek:attr:`&optional`
+
+      Sequence number used to detect replays
+
+
+   .. zeek:field:: sender :zeek:type:`KRB::Host_Address` :zeek:attr:`&optional`
+
+      Sender address
+
+
+   .. zeek:field:: recipient :zeek:type:`KRB::Host_Address` :zeek:attr:`&optional`
+
+      Recipient address
+
 
    The data from the SAFE message. See :rfc:`4120`.
 
@@ -4813,23 +5181,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pvno: :zeek:type:`count`
-         Protocol version number (5 for KRB5)
 
-      realm: :zeek:type:`string`
-         Realm
+   .. zeek:field:: pvno :zeek:type:`count`
 
-      service_name: :zeek:type:`string`
-         Name of the service
+      Protocol version number (5 for KRB5)
 
-      cipher: :zeek:type:`count`
-         Cipher the ticket was encrypted with
 
-      ciphertext: :zeek:type:`string` :zeek:attr:`&optional`
-         Cipher text of the ticket
+   .. zeek:field:: realm :zeek:type:`string`
 
-      authenticationinfo: :zeek:type:`string` :zeek:attr:`&optional`
-         Authentication info
+      Realm
+
+
+   .. zeek:field:: service_name :zeek:type:`string`
+
+      Name of the service
+
+
+   .. zeek:field:: cipher :zeek:type:`count`
+
+      Cipher the ticket was encrypted with
+
+
+   .. zeek:field:: ciphertext :zeek:type:`string` :zeek:attr:`&optional`
+
+      Cipher text of the ticket
+
+
+   .. zeek:field:: authenticationinfo :zeek:type:`string` :zeek:attr:`&optional`
+
+      Authentication info
+
 
    A Kerberos ticket. See :rfc:`4120`.
 
@@ -4844,11 +5225,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      data_type: :zeek:type:`count`
-         The data type
 
-      val: :zeek:type:`string`
-         The data value
+   .. zeek:field:: data_type :zeek:type:`count`
+
+      The data type
+
+
+   .. zeek:field:: val :zeek:type:`string`
+
+      The data value
+
 
    Used in a few places in the Kerberos analyzer for elements
    that have a type and a string value.
@@ -4864,8 +5250,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dirname: :zeek:type:`string`
-         Name of directory to mount
+
+   .. zeek:field:: dirname :zeek:type:`string`
+
+      Name of directory to mount
+
 
    MOUNT *mnt* arguments.
    
@@ -4876,44 +5265,71 @@ Types
 
    :Type: :zeek:type:`record`
 
-      rpc_stat: :zeek:type:`rpc_status`
-         The RPC status.
 
-      mnt_stat: :zeek:type:`MOUNT3::status_t`
-         The MOUNT status.
+   .. zeek:field:: rpc_stat :zeek:type:`rpc_status`
 
-      req_start: :zeek:type:`time`
-         The start time of the request.
+      The RPC status.
 
-      req_dur: :zeek:type:`interval`
-         The duration of the request.
 
-      req_len: :zeek:type:`count`
-         The length in bytes of the request.
+   .. zeek:field:: mnt_stat :zeek:type:`MOUNT3::status_t`
 
-      rep_start: :zeek:type:`time`
-         The start time of the reply.
+      The MOUNT status.
 
-      rep_dur: :zeek:type:`interval`
-         The duration of the reply.
 
-      rep_len: :zeek:type:`count`
-         The length in bytes of the reply.
+   .. zeek:field:: req_start :zeek:type:`time`
 
-      rpc_uid: :zeek:type:`count`
-         The user id of the reply.
+      The start time of the request.
 
-      rpc_gid: :zeek:type:`count`
-         The group id of the reply.
 
-      rpc_stamp: :zeek:type:`count`
-         The stamp of the reply.
+   .. zeek:field:: req_dur :zeek:type:`interval`
 
-      rpc_machine_name: :zeek:type:`string`
-         The machine name of the reply.
+      The duration of the request.
 
-      rpc_auxgids: :zeek:type:`index_vec`
-         The auxiliary ids of the reply.
+
+   .. zeek:field:: req_len :zeek:type:`count`
+
+      The length in bytes of the request.
+
+
+   .. zeek:field:: rep_start :zeek:type:`time`
+
+      The start time of the reply.
+
+
+   .. zeek:field:: rep_dur :zeek:type:`interval`
+
+      The duration of the reply.
+
+
+   .. zeek:field:: rep_len :zeek:type:`count`
+
+      The length in bytes of the reply.
+
+
+   .. zeek:field:: rpc_uid :zeek:type:`count`
+
+      The user id of the reply.
+
+
+   .. zeek:field:: rpc_gid :zeek:type:`count`
+
+      The group id of the reply.
+
+
+   .. zeek:field:: rpc_stamp :zeek:type:`count`
+
+      The stamp of the reply.
+
+
+   .. zeek:field:: rpc_machine_name :zeek:type:`string`
+
+      The machine name of the reply.
+
+
+   .. zeek:field:: rpc_auxgids :zeek:type:`index_vec`
+
+      The auxiliary ids of the reply.
+
 
    Record summarizing the general results and status of MOUNT3
    request/reply pairs.
@@ -4927,11 +5343,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dirfh: :zeek:type:`string` :zeek:attr:`&optional`
-         Dir handle
 
-      auth_flavors: :zeek:type:`vector` of :zeek:type:`MOUNT3::auth_flavor_t` :zeek:attr:`&optional`
-         Returned authentication flavors
+   .. zeek:field:: dirfh :zeek:type:`string` :zeek:attr:`&optional`
+
+      Dir handle
+
+
+   .. zeek:field:: auth_flavors :zeek:type:`vector` of :zeek:type:`MOUNT3::auth_flavor_t` :zeek:attr:`&optional`
+
+      Returned authentication flavors
+
 
    MOUNT lookup reply. If the mount failed, *dir_attr* may be set. If the
    mount succeeded, *fh* is always set.
@@ -4943,14 +5364,19 @@ Types
 
    :Type: :zeek:type:`record`
 
-      return_code: :zeek:type:`count`
-         Return code from the connack message
 
-      session_present: :zeek:type:`bool`
-         The Session present flag helps the client
-         establish whether the Client and Server
-         have a consistent view about whether there
-         is already stored Session state.
+   .. zeek:field:: return_code :zeek:type:`count`
+
+      Return code from the connack message
+
+
+   .. zeek:field:: session_present :zeek:type:`bool`
+
+      The Session present flag helps the client
+      establish whether the Client and Server
+      have a consistent view about whether there
+      is already stored Session state.
+
 
 
 .. zeek:type:: MQTT::ConnectMsg
@@ -4958,41 +5384,64 @@ Types
 
    :Type: :zeek:type:`record`
 
-      protocol_name: :zeek:type:`string`
-         Protocol name
 
-      protocol_version: :zeek:type:`count`
-         Protocol version
+   .. zeek:field:: protocol_name :zeek:type:`string`
 
-      client_id: :zeek:type:`string`
-         Identifies the Client to the Server.
+      Protocol name
 
-      keep_alive: :zeek:type:`interval`
-         The maximum time interval that is permitted to elapse between the
-         point at which the Client finishes transmitting one Control Packet
-         and the point it starts sending the next.
 
-      clean_session: :zeek:type:`bool`
-         The clean_session flag indicates if the server should or shouldn't
-         use a clean session or use existing previous session state.
+   .. zeek:field:: protocol_version :zeek:type:`count`
 
-      will_retain: :zeek:type:`bool`
-         Specifies if the Will Message is to be retained when it is published.
+      Protocol version
 
-      will_qos: :zeek:type:`count`
-         Specifies the QoS level to be used when publishing the Will Message.
 
-      will_topic: :zeek:type:`string` :zeek:attr:`&optional`
-         Topic to publish the Will message to.
+   .. zeek:field:: client_id :zeek:type:`string`
 
-      will_msg: :zeek:type:`string` :zeek:attr:`&optional`
-         The actual Will message to publish.
+      Identifies the Client to the Server.
 
-      username: :zeek:type:`string` :zeek:attr:`&optional`
-         Username to use for authentication to the server.
 
-      password: :zeek:type:`string` :zeek:attr:`&optional`
-         Pass to use for authentication to the server.
+   .. zeek:field:: keep_alive :zeek:type:`interval`
+
+      The maximum time interval that is permitted to elapse between the
+      point at which the Client finishes transmitting one Control Packet
+      and the point it starts sending the next.
+
+
+   .. zeek:field:: clean_session :zeek:type:`bool`
+
+      The clean_session flag indicates if the server should or shouldn't
+      use a clean session or use existing previous session state.
+
+
+   .. zeek:field:: will_retain :zeek:type:`bool`
+
+      Specifies if the Will Message is to be retained when it is published.
+
+
+   .. zeek:field:: will_qos :zeek:type:`count`
+
+      Specifies the QoS level to be used when publishing the Will Message.
+
+
+   .. zeek:field:: will_topic :zeek:type:`string` :zeek:attr:`&optional`
+
+      Topic to publish the Will message to.
+
+
+   .. zeek:field:: will_msg :zeek:type:`string` :zeek:attr:`&optional`
+
+      The actual Will message to publish.
+
+
+   .. zeek:field:: username :zeek:type:`string` :zeek:attr:`&optional`
+
+      Username to use for authentication to the server.
+
+
+   .. zeek:field:: password :zeek:type:`string` :zeek:attr:`&optional`
+
+      Pass to use for authentication to the server.
+
 
 
 .. zeek:type:: MQTT::PublishMsg
@@ -5000,27 +5449,40 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dup: :zeek:type:`bool`
-         Indicates if this is the first attempt at publishing the message.
 
-      qos: :zeek:type:`count`
-         Indicates what level of QoS is enabled for this message.
+   .. zeek:field:: dup :zeek:type:`bool`
 
-      retain: :zeek:type:`bool`
-         Indicates if the server should retain this message so that clients
-         subscribing to the topic in the future will receive this message
-         automatically.
+      Indicates if this is the first attempt at publishing the message.
 
-      topic: :zeek:type:`string`
-         Name of the topic the published message is directed into.
 
-      payload: :zeek:type:`string`
-         Payload of the published message.
+   .. zeek:field:: qos :zeek:type:`count`
 
-      payload_len: :zeek:type:`count`
-         The actual length of the payload in the case the *payload*
-         field's contents were truncated according to
-         :zeek:see:`MQTT::max_payload_size`.
+      Indicates what level of QoS is enabled for this message.
+
+
+   .. zeek:field:: retain :zeek:type:`bool`
+
+      Indicates if the server should retain this message so that clients
+      subscribing to the topic in the future will receive this message
+      automatically.
+
+
+   .. zeek:field:: topic :zeek:type:`string`
+
+      Name of the topic the published message is directed into.
+
+
+   .. zeek:field:: payload :zeek:type:`string`
+
+      Payload of the published message.
+
+
+   .. zeek:field:: payload_len :zeek:type:`count`
+
+      The actual length of the payload in the case the *payload*
+      field's contents were truncated according to
+      :zeek:see:`MQTT::max_payload_size`.
+
 
 
 .. zeek:type:: MatcherStats
@@ -5028,26 +5490,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      matchers: :zeek:type:`count`
-         Number of distinct RE matchers.
 
-      nfa_states: :zeek:type:`count`
-         Number of NFA states across all matchers.
+   .. zeek:field:: matchers :zeek:type:`count`
 
-      dfa_states: :zeek:type:`count`
-         Number of DFA states across all matchers.
+      Number of distinct RE matchers.
 
-      computed: :zeek:type:`count`
-         Number of computed DFA state transitions.
 
-      mem: :zeek:type:`count`
-         Number of bytes used by DFA states.
+   .. zeek:field:: nfa_states :zeek:type:`count`
 
-      hits: :zeek:type:`count`
-         Number of cache hits.
+      Number of NFA states across all matchers.
 
-      misses: :zeek:type:`count`
-         Number of cache misses.
+
+   .. zeek:field:: dfa_states :zeek:type:`count`
+
+      Number of DFA states across all matchers.
+
+
+   .. zeek:field:: computed :zeek:type:`count`
+
+      Number of computed DFA state transitions.
+
+
+   .. zeek:field:: mem :zeek:type:`count`
+
+      Number of bytes used by DFA states.
+
+
+   .. zeek:field:: hits :zeek:type:`count`
+
+      Number of cache hits.
+
+
+   .. zeek:field:: misses :zeek:type:`count`
+
+      Number of cache misses.
+
 
    Statistics of all regular expression matchers.
    
@@ -5066,13 +5543,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ref_type: :zeek:type:`count`
 
-      file_num: :zeek:type:`count`
+   .. zeek:field:: ref_type :zeek:type:`count`
 
-      record_num: :zeek:type:`count`
 
-      record_len: :zeek:type:`count`
+   .. zeek:field:: file_num :zeek:type:`count`
+
+
+   .. zeek:field:: record_num :zeek:type:`count`
+
+
+   .. zeek:field:: record_len :zeek:type:`count`
+
 
 
 .. zeek:type:: ModbusFileRecordRequests
@@ -5086,11 +5568,15 @@ Types
 
    :Type: :zeek:type:`record`
 
-      file_len: :zeek:type:`count`
 
-      ref_type: :zeek:type:`count`
+   .. zeek:field:: file_len :zeek:type:`count`
 
-      record_data: :zeek:type:`string`
+
+   .. zeek:field:: ref_type :zeek:type:`count`
+
+
+   .. zeek:field:: record_data :zeek:type:`string`
+
 
 
 .. zeek:type:: ModbusFileRecordResponses
@@ -5104,15 +5590,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ref_type: :zeek:type:`count`
 
-      file_num: :zeek:type:`count`
+   .. zeek:field:: ref_type :zeek:type:`count`
 
-      record_num: :zeek:type:`count`
 
-      record_len: :zeek:type:`count`
+   .. zeek:field:: file_num :zeek:type:`count`
 
-      record_data: :zeek:type:`string`
+
+   .. zeek:field:: record_num :zeek:type:`count`
+
+
+   .. zeek:field:: record_len :zeek:type:`count`
+
+
+   .. zeek:field:: record_data :zeek:type:`string`
+
 
 
 .. zeek:type:: ModbusFileReferences
@@ -5126,21 +5618,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      tid: :zeek:type:`count`
-         Transaction identifier
 
-      pid: :zeek:type:`count`
-         Protocol identifier
+   .. zeek:field:: tid :zeek:type:`count`
 
-      uid: :zeek:type:`count`
-         Unit identifier (previously 'slave address')
+      Transaction identifier
 
-      function_code: :zeek:type:`count`
-         MODBUS function code
 
-      len: :zeek:type:`count`
-         Length of the application PDU following the header plus
-         one byte for the uid field.
+   .. zeek:field:: pid :zeek:type:`count`
+
+      Protocol identifier
+
+
+   .. zeek:field:: uid :zeek:type:`count`
+
+      Unit identifier (previously 'slave address')
+
+
+   .. zeek:field:: function_code :zeek:type:`count`
+
+      MODBUS function code
+
+
+   .. zeek:field:: len :zeek:type:`count`
+
+      Length of the application PDU following the header plus
+      one byte for the uid field.
+
 
 
 .. zeek:type:: ModbusRegisters
@@ -5156,11 +5659,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dir_pre_attr: :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ dir.
 
-      dir_post_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ dir.
+   .. zeek:field:: dir_pre_attr :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ dir.
+
+
+   .. zeek:field:: dir_post_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ dir.
+
 
    NFS reply for *remove*, *rmdir*. Corresponds to *wcc_data* in the spec.
    
@@ -5171,20 +5679,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fileid: :zeek:type:`count`
-         E.g., inode number.
 
-      fname: :zeek:type:`string`
-         Filename.
+   .. zeek:field:: fileid :zeek:type:`count`
 
-      cookie: :zeek:type:`count`
-         Cookie value.
+      E.g., inode number.
 
-      attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         *readdirplus*: the *fh* attributes for the entry.
 
-      fh: :zeek:type:`string` :zeek:attr:`&optional`
-         *readdirplus*: the *fh* for the entry
+   .. zeek:field:: fname :zeek:type:`string`
+
+      Filename.
+
+
+   .. zeek:field:: cookie :zeek:type:`count`
+
+      Cookie value.
+
+
+   .. zeek:field:: attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      *readdirplus*: the *fh* attributes for the entry.
+
+
+   .. zeek:field:: fh :zeek:type:`string` :zeek:attr:`&optional`
+
+      *readdirplus*: the *fh* for the entry
+
 
    NFS *direntry*.  *fh* and *attr* are used for *readdirplus*. However,
    even for *readdirplus* they may not be filled out.
@@ -5205,11 +5724,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dirfh: :zeek:type:`string`
-         The file handle of the directory.
 
-      fname: :zeek:type:`string`
-         The name of the file we are interested in.
+   .. zeek:field:: dirfh :zeek:type:`string`
+
+      The file handle of the directory.
+
+
+   .. zeek:field:: fname :zeek:type:`string`
+
+      The name of the file we are interested in.
+
 
    NFS *readdir* arguments.
    
@@ -5220,47 +5744,76 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ftype: :zeek:type:`NFS3::file_type_t`
-         File type.
 
-      mode: :zeek:type:`count`
-         Mode
+   .. zeek:field:: ftype :zeek:type:`NFS3::file_type_t`
 
-      nlink: :zeek:type:`count`
-         Number of links.
+      File type.
 
-      uid: :zeek:type:`count`
-         User ID.
 
-      gid: :zeek:type:`count`
-         Group ID.
+   .. zeek:field:: mode :zeek:type:`count`
 
-      size: :zeek:type:`count`
-         Size.
+      Mode
 
-      used: :zeek:type:`count`
-         TODO.
 
-      rdev1: :zeek:type:`count`
-         TODO.
+   .. zeek:field:: nlink :zeek:type:`count`
 
-      rdev2: :zeek:type:`count`
-         TODO.
+      Number of links.
 
-      fsid: :zeek:type:`count`
-         TODO.
 
-      fileid: :zeek:type:`count`
-         TODO.
+   .. zeek:field:: uid :zeek:type:`count`
 
-      atime: :zeek:type:`time`
-         Time of last access.
+      User ID.
 
-      mtime: :zeek:type:`time`
-         Time of last modification.
 
-      ctime: :zeek:type:`time`
-         Time of creation.
+   .. zeek:field:: gid :zeek:type:`count`
+
+      Group ID.
+
+
+   .. zeek:field:: size :zeek:type:`count`
+
+      Size.
+
+
+   .. zeek:field:: used :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: rdev1 :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: rdev2 :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: fsid :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: fileid :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: atime :zeek:type:`time`
+
+      Time of last access.
+
+
+   .. zeek:field:: mtime :zeek:type:`time`
+
+      Time of last modification.
+
+
+   .. zeek:field:: ctime :zeek:type:`time`
+
+      Time of creation.
+
 
    NFS file attributes. Field names are based on RFC 1813.
    
@@ -5271,29 +5824,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      attrs: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Attributes.
 
-      tbytes: :zeek:type:`double`
-         TODO.
+   .. zeek:field:: attrs :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
 
-      fbytes: :zeek:type:`double`
-         TODO.
+      Attributes.
 
-      abytes: :zeek:type:`double`
-         TODO.
 
-      tfiles: :zeek:type:`double`
-         TODO.
+   .. zeek:field:: tbytes :zeek:type:`double`
 
-      ffiles: :zeek:type:`double`
-         TODO.
+      TODO.
 
-      afiles: :zeek:type:`double`
-         TODO.
 
-      invarsec: :zeek:type:`interval`
-         TODO.
+   .. zeek:field:: fbytes :zeek:type:`double`
+
+      TODO.
+
+
+   .. zeek:field:: abytes :zeek:type:`double`
+
+      TODO.
+
+
+   .. zeek:field:: tfiles :zeek:type:`double`
+
+      TODO.
+
+
+   .. zeek:field:: ffiles :zeek:type:`double`
+
+      TODO.
+
+
+   .. zeek:field:: afiles :zeek:type:`double`
+
+      TODO.
+
+
+   .. zeek:field:: invarsec :zeek:type:`interval`
+
+      TODO.
+
 
    NFS *fsstat*.
 
@@ -5302,44 +5872,71 @@ Types
 
    :Type: :zeek:type:`record`
 
-      rpc_stat: :zeek:type:`rpc_status`
-         The RPC status.
 
-      nfs_stat: :zeek:type:`NFS3::status_t`
-         The NFS status.
+   .. zeek:field:: rpc_stat :zeek:type:`rpc_status`
 
-      req_start: :zeek:type:`time`
-         The start time of the request.
+      The RPC status.
 
-      req_dur: :zeek:type:`interval`
-         The duration of the request.
 
-      req_len: :zeek:type:`count`
-         The length in bytes of the request.
+   .. zeek:field:: nfs_stat :zeek:type:`NFS3::status_t`
 
-      rep_start: :zeek:type:`time`
-         The start time of the reply.
+      The NFS status.
 
-      rep_dur: :zeek:type:`interval`
-         The duration of the reply.
 
-      rep_len: :zeek:type:`count`
-         The length in bytes of the reply.
+   .. zeek:field:: req_start :zeek:type:`time`
 
-      rpc_uid: :zeek:type:`count`
-         The user id of the reply.
+      The start time of the request.
 
-      rpc_gid: :zeek:type:`count`
-         The group id of the reply.
 
-      rpc_stamp: :zeek:type:`count`
-         The stamp of the reply.
+   .. zeek:field:: req_dur :zeek:type:`interval`
 
-      rpc_machine_name: :zeek:type:`string`
-         The machine name of the reply.
+      The duration of the request.
 
-      rpc_auxgids: :zeek:type:`index_vec`
-         The auxiliary ids of the reply.
+
+   .. zeek:field:: req_len :zeek:type:`count`
+
+      The length in bytes of the request.
+
+
+   .. zeek:field:: rep_start :zeek:type:`time`
+
+      The start time of the reply.
+
+
+   .. zeek:field:: rep_dur :zeek:type:`interval`
+
+      The duration of the reply.
+
+
+   .. zeek:field:: rep_len :zeek:type:`count`
+
+      The length in bytes of the reply.
+
+
+   .. zeek:field:: rpc_uid :zeek:type:`count`
+
+      The user id of the reply.
+
+
+   .. zeek:field:: rpc_gid :zeek:type:`count`
+
+      The group id of the reply.
+
+
+   .. zeek:field:: rpc_stamp :zeek:type:`count`
+
+      The stamp of the reply.
+
+
+   .. zeek:field:: rpc_machine_name :zeek:type:`string`
+
+      The machine name of the reply.
+
+
+   .. zeek:field:: rpc_auxgids :zeek:type:`index_vec`
+
+      The auxiliary ids of the reply.
+
 
    Record summarizing the general results and status of NFSv3
    request/reply pairs.
@@ -5362,14 +5959,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      post_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional post-operation attributes of the file system object identified by file
 
-      preattr: :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ file.
+   .. zeek:field:: post_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
 
-      postattr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ file.
+      Optional post-operation attributes of the file system object identified by file
+
+
+   .. zeek:field:: preattr :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ file.
+
+
+   .. zeek:field:: postattr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ file.
+
 
    NFS *link* reply.
    
@@ -5380,11 +5984,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fh: :zeek:type:`string`
-         The file handle for the existing file system object.
 
-      link: :zeek:type:`NFS3::diropargs_t`
-         The location of the link to be created.
+   .. zeek:field:: fh :zeek:type:`string`
+
+      The file handle for the existing file system object.
+
+
+   .. zeek:field:: link :zeek:type:`NFS3::diropargs_t`
+
+      The location of the link to be created.
+
 
    NFS *link* arguments.
    
@@ -5395,14 +6004,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fh: :zeek:type:`string` :zeek:attr:`&optional`
-         File handle of object looked up.
 
-      obj_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ file
+   .. zeek:field:: fh :zeek:type:`string` :zeek:attr:`&optional`
 
-      dir_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ dir.
+      File handle of object looked up.
+
+
+   .. zeek:field:: obj_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ file
+
+
+   .. zeek:field:: dir_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ dir.
+
 
    NFS lookup reply. If the lookup failed, *dir_attr* may be set. If the
    lookup succeeded, *fh* is always set and *obj_attr* and *dir_attr*
@@ -5415,17 +6031,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fh: :zeek:type:`string` :zeek:attr:`&optional`
-         File handle of object created.
 
-      obj_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ new object.
+   .. zeek:field:: fh :zeek:type:`string` :zeek:attr:`&optional`
 
-      dir_pre_attr: :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ dir.
+      File handle of object created.
 
-      dir_post_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ dir.
+
+   .. zeek:field:: obj_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ new object.
+
+
+   .. zeek:field:: dir_pre_attr :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ dir.
+
+
+   .. zeek:field:: dir_post_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ dir.
+
 
    NFS reply for *create*, *mkdir*, and *symlink*. If the proc
    failed, *dir_\*_attr* may be set. If the proc succeeded, *fh* and the
@@ -5439,17 +6064,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Attributes.
 
-      size: :zeek:type:`count` :zeek:attr:`&optional`
-         Number of bytes read.
+   .. zeek:field:: attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
 
-      eof: :zeek:type:`bool` :zeek:attr:`&optional`
-         Sid the read end at EOF.
+      Attributes.
 
-      data: :zeek:type:`string` :zeek:attr:`&optional`
-         The actual data; not yet implemented.
+
+   .. zeek:field:: size :zeek:type:`count` :zeek:attr:`&optional`
+
+      Number of bytes read.
+
+
+   .. zeek:field:: eof :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Sid the read end at EOF.
+
+
+   .. zeek:field:: data :zeek:type:`string` :zeek:attr:`&optional`
+
+      The actual data; not yet implemented.
+
 
    NFS *read* reply. If the lookup fails, *attr* may be set. If the
    lookup succeeds, *attr* may be set and all other fields are set.
@@ -5459,14 +6093,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fh: :zeek:type:`string`
-         File handle to read from.
 
-      offset: :zeek:type:`count`
-         Offset in file.
+   .. zeek:field:: fh :zeek:type:`string`
 
-      size: :zeek:type:`count`
-         Number of bytes to read.
+      File handle to read from.
+
+
+   .. zeek:field:: offset :zeek:type:`count`
+
+      Offset in file.
+
+
+   .. zeek:field:: size :zeek:type:`count`
+
+      Number of bytes to read.
+
 
    NFS *read* arguments.
    
@@ -5477,20 +6118,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      isplus: :zeek:type:`bool`
-         True if the reply for a *readdirplus* request.
 
-      dir_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Directory attributes.
+   .. zeek:field:: isplus :zeek:type:`bool`
 
-      cookieverf: :zeek:type:`count` :zeek:attr:`&optional`
-         TODO.
+      True if the reply for a *readdirplus* request.
 
-      entries: :zeek:type:`NFS3::direntry_vec_t` :zeek:attr:`&optional`
-         Returned directory entries.
 
-      eof: :zeek:type:`bool`
-         If true, no more entries in directory.
+   .. zeek:field:: dir_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Directory attributes.
+
+
+   .. zeek:field:: cookieverf :zeek:type:`count` :zeek:attr:`&optional`
+
+      TODO.
+
+
+   .. zeek:field:: entries :zeek:type:`NFS3::direntry_vec_t` :zeek:attr:`&optional`
+
+      Returned directory entries.
+
+
+   .. zeek:field:: eof :zeek:type:`bool`
+
+      If true, no more entries in directory.
+
 
    NFS *readdir* reply. Used for *readdir* and *readdirplus*. If an is
    returned, *dir_attr* might be set. On success, *dir_attr* may be set,
@@ -5501,23 +6153,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      isplus: :zeek:type:`bool`
-         Is this a readdirplus request?
 
-      dirfh: :zeek:type:`string`
-         The directory filehandle.
+   .. zeek:field:: isplus :zeek:type:`bool`
 
-      cookie: :zeek:type:`count`
-         Cookie / pos in dir; 0 for first call.
+      Is this a readdirplus request?
 
-      cookieverf: :zeek:type:`count`
-         The cookie verifier.
 
-      dircount: :zeek:type:`count`
-         "count" field for readdir; maxcount otherwise (in bytes).
+   .. zeek:field:: dirfh :zeek:type:`string`
 
-      maxcount: :zeek:type:`count` :zeek:attr:`&optional`
-         Only used for readdirplus. in bytes.
+      The directory filehandle.
+
+
+   .. zeek:field:: cookie :zeek:type:`count`
+
+      Cookie / pos in dir; 0 for first call.
+
+
+   .. zeek:field:: cookieverf :zeek:type:`count`
+
+      The cookie verifier.
+
+
+   .. zeek:field:: dircount :zeek:type:`count`
+
+      "count" field for readdir; maxcount otherwise (in bytes).
+
+
+   .. zeek:field:: maxcount :zeek:type:`count` :zeek:attr:`&optional`
+
+      Only used for readdirplus. in bytes.
+
 
    NFS *readdir* arguments. Used for both *readdir* and *readdirplus*.
    
@@ -5528,11 +6193,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Attributes.
 
-      nfspath: :zeek:type:`string` :zeek:attr:`&optional`
-         Contents of the symlink; in general a pathname as text.
+   .. zeek:field:: attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Attributes.
+
+
+   .. zeek:field:: nfspath :zeek:type:`string` :zeek:attr:`&optional`
+
+      Contents of the symlink; in general a pathname as text.
+
 
    NFS *readline* reply. If the request fails, *attr* may be set. If the
    request succeeds, *attr* may be set and all other fields are set.
@@ -5544,13 +6214,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      src_dir_pre_attr: :zeek:type:`NFS3::wcc_attr_t`
 
-      src_dir_post_attr: :zeek:type:`NFS3::fattr_t`
+   .. zeek:field:: src_dir_pre_attr :zeek:type:`NFS3::wcc_attr_t`
 
-      dst_dir_pre_attr: :zeek:type:`NFS3::wcc_attr_t`
 
-      dst_dir_post_attr: :zeek:type:`NFS3::fattr_t`
+   .. zeek:field:: src_dir_post_attr :zeek:type:`NFS3::fattr_t`
+
+
+   .. zeek:field:: dst_dir_pre_attr :zeek:type:`NFS3::wcc_attr_t`
+
+
+   .. zeek:field:: dst_dir_post_attr :zeek:type:`NFS3::fattr_t`
+
 
    NFS reply for *rename*. Corresponds to *wcc_data* in the spec.
    
@@ -5561,13 +6236,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      src_dirfh: :zeek:type:`string`
 
-      src_fname: :zeek:type:`string`
+   .. zeek:field:: src_dirfh :zeek:type:`string`
 
-      dst_dirfh: :zeek:type:`string`
 
-      dst_fname: :zeek:type:`string`
+   .. zeek:field:: src_fname :zeek:type:`string`
+
+
+   .. zeek:field:: dst_dirfh :zeek:type:`string`
+
+
+   .. zeek:field:: dst_fname :zeek:type:`string`
+
 
    NFS *rename* arguments.
    
@@ -5578,11 +6258,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dir_pre_attr: :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ dir.
 
-      dir_post_attr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Optional attributes associated w/ dir.
+   .. zeek:field:: dir_pre_attr :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ dir.
+
+
+   .. zeek:field:: dir_post_attr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Optional attributes associated w/ dir.
+
 
    NFS *sattr* reply. If the request fails, *pre|post* attr may be set.
    If the request succeeds, *pre|post* attr are set.
@@ -5593,23 +6278,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      mode: :zeek:type:`count` :zeek:attr:`&optional`
-         Mode
 
-      uid: :zeek:type:`count` :zeek:attr:`&optional`
-         User ID.
+   .. zeek:field:: mode :zeek:type:`count` :zeek:attr:`&optional`
 
-      gid: :zeek:type:`count` :zeek:attr:`&optional`
-         Group ID.
+      Mode
 
-      size: :zeek:type:`count` :zeek:attr:`&optional`
-         Size.
 
-      atime: :zeek:type:`NFS3::time_how_t` :zeek:attr:`&optional`
-         Time of last access.
+   .. zeek:field:: uid :zeek:type:`count` :zeek:attr:`&optional`
 
-      mtime: :zeek:type:`NFS3::time_how_t` :zeek:attr:`&optional`
-         Time of last modification.
+      User ID.
+
+
+   .. zeek:field:: gid :zeek:type:`count` :zeek:attr:`&optional`
+
+      Group ID.
+
+
+   .. zeek:field:: size :zeek:type:`count` :zeek:attr:`&optional`
+
+      Size.
+
+
+   .. zeek:field:: atime :zeek:type:`NFS3::time_how_t` :zeek:attr:`&optional`
+
+      Time of last access.
+
+
+   .. zeek:field:: mtime :zeek:type:`NFS3::time_how_t` :zeek:attr:`&optional`
+
+      Time of last modification.
+
 
    NFS file attributes. Field names are based on RFC 1813.
    
@@ -5620,11 +6318,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fh: :zeek:type:`string`
-         The file handle for the existing file system object.
 
-      new_attributes: :zeek:type:`NFS3::sattr_t`
-         The new attributes for the file.
+   .. zeek:field:: fh :zeek:type:`string`
+
+      The file handle for the existing file system object.
+
+
+   .. zeek:field:: new_attributes :zeek:type:`NFS3::sattr_t`
+
+      The new attributes for the file.
+
 
    NFS *sattr* arguments.
    
@@ -5635,11 +6338,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      link: :zeek:type:`NFS3::diropargs_t`
-         The location of the link to be created.
 
-      symlinkdata: :zeek:type:`NFS3::symlinkdata_t`
-         The symbolic link to be created.
+   .. zeek:field:: link :zeek:type:`NFS3::diropargs_t`
+
+      The location of the link to be created.
+
+
+   .. zeek:field:: symlinkdata :zeek:type:`NFS3::symlinkdata_t`
+
+      The symbolic link to be created.
+
 
    NFS *symlink* arguments.
    
@@ -5650,11 +6358,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      symlink_attributes: :zeek:type:`NFS3::sattr_t`
-         The initial attributes for the symbolic link
 
-      nfspath: :zeek:type:`string` :zeek:attr:`&optional`
-         The string containing the symbolic link data.
+   .. zeek:field:: symlink_attributes :zeek:type:`NFS3::sattr_t`
+
+      The initial attributes for the symbolic link
+
+
+   .. zeek:field:: nfspath :zeek:type:`string` :zeek:attr:`&optional`
+
+      The string containing the symbolic link data.
+
 
    NFS symlinkdata attributes. Field names are based on RFC 1813
    
@@ -5665,14 +6378,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      size: :zeek:type:`count`
-         The size.
 
-      atime: :zeek:type:`time`
-         Access time.
+   .. zeek:field:: size :zeek:type:`count`
 
-      mtime: :zeek:type:`time`
-         Modification time.
+      The size.
+
+
+   .. zeek:field:: atime :zeek:type:`time`
+
+      Access time.
+
+
+   .. zeek:field:: mtime :zeek:type:`time`
+
+      Modification time.
+
 
    NFS *wcc* attributes.
    
@@ -5683,20 +6403,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      preattr: :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
-         Pre operation attributes.
 
-      postattr: :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
-         Post operation attributes.
+   .. zeek:field:: preattr :zeek:type:`NFS3::wcc_attr_t` :zeek:attr:`&optional`
 
-      size: :zeek:type:`count` :zeek:attr:`&optional`
-         Size.
+      Pre operation attributes.
 
-      commited: :zeek:type:`NFS3::stable_how_t` :zeek:attr:`&optional`
-         TODO.
 
-      verf: :zeek:type:`count` :zeek:attr:`&optional`
-         Write verifier cookie.
+   .. zeek:field:: postattr :zeek:type:`NFS3::fattr_t` :zeek:attr:`&optional`
+
+      Post operation attributes.
+
+
+   .. zeek:field:: size :zeek:type:`count` :zeek:attr:`&optional`
+
+      Size.
+
+
+   .. zeek:field:: commited :zeek:type:`NFS3::stable_how_t` :zeek:attr:`&optional`
+
+      TODO.
+
+
+   .. zeek:field:: verf :zeek:type:`count` :zeek:attr:`&optional`
+
+      Write verifier cookie.
+
 
    NFS *write* reply. If the request fails, *pre|post* attr may be set.
    If the request succeeds, *pre|post* attr may be set and all other
@@ -5709,20 +6440,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fh: :zeek:type:`string`
-         File handle to write to.
 
-      offset: :zeek:type:`count`
-         Offset in file.
+   .. zeek:field:: fh :zeek:type:`string`
 
-      size: :zeek:type:`count`
-         Number of bytes to write.
+      File handle to write to.
 
-      stable: :zeek:type:`NFS3::stable_how_t`
-         How and when data is committed.
 
-      data: :zeek:type:`string` :zeek:attr:`&optional`
-         The actual data; not implemented yet.
+   .. zeek:field:: offset :zeek:type:`count`
+
+      Offset in file.
+
+
+   .. zeek:field:: size :zeek:type:`count`
+
+      Number of bytes to write.
+
+
+   .. zeek:field:: stable :zeek:type:`NFS3::stable_how_t`
+
+      How and when data is committed.
+
+
+   .. zeek:field:: data :zeek:type:`string` :zeek:attr:`&optional`
+
+      The actual data; not implemented yet.
+
 
    NFS *write* arguments.
    
@@ -5733,35 +6475,54 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nb_computer_name: :zeek:type:`string`
-         The server's NetBIOS computer name
 
-      nb_domain_name: :zeek:type:`string`
-         The server's NetBIOS domain name
+   .. zeek:field:: nb_computer_name :zeek:type:`string`
 
-      dns_computer_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The FQDN of the computer
+      The server's NetBIOS computer name
 
-      dns_domain_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The FQDN of the domain
 
-      dns_tree_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The FQDN of the forest
+   .. zeek:field:: nb_domain_name :zeek:type:`string`
 
-      constrained_auth: :zeek:type:`bool` :zeek:attr:`&optional`
-         Indicates to the client that the account
-         authentication is constrained
+      The server's NetBIOS domain name
 
-      timestamp: :zeek:type:`time` :zeek:attr:`&optional`
-         The associated timestamp, if present
 
-      single_host_id: :zeek:type:`count` :zeek:attr:`&optional`
-         Indicates that the client is providing
-         a machine ID created at computer startup to
-         identify the calling machine
+   .. zeek:field:: dns_computer_name :zeek:type:`string` :zeek:attr:`&optional`
 
-      target_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The SPN of the target server
+      The FQDN of the computer
+
+
+   .. zeek:field:: dns_domain_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The FQDN of the domain
+
+
+   .. zeek:field:: dns_tree_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The FQDN of the forest
+
+
+   .. zeek:field:: constrained_auth :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Indicates to the client that the account
+      authentication is constrained
+
+
+   .. zeek:field:: timestamp :zeek:type:`time` :zeek:attr:`&optional`
+
+      The associated timestamp, if present
+
+
+   .. zeek:field:: single_host_id :zeek:type:`count` :zeek:attr:`&optional`
+
+      Indicates that the client is providing
+      a machine ID created at computer startup to
+      identify the calling machine
+
+
+   .. zeek:field:: target_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The SPN of the target server
+
 
 
 .. zeek:type:: NTLM::Authenticate
@@ -5769,26 +6530,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      flags: :zeek:type:`NTLM::NegotiateFlags`
-         The negotiate flags
 
-      domain_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The domain or computer name hosting the account
+   .. zeek:field:: flags :zeek:type:`NTLM::NegotiateFlags`
 
-      user_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The name of the user to be authenticated.
+      The negotiate flags
 
-      workstation: :zeek:type:`string` :zeek:attr:`&optional`
-         The name of the computer to which the user was logged on.
 
-      session_key: :zeek:type:`string` :zeek:attr:`&optional`
-         The session key
+   .. zeek:field:: domain_name :zeek:type:`string` :zeek:attr:`&optional`
 
-      version: :zeek:type:`NTLM::Version` :zeek:attr:`&optional`
-         The Windows version information, if supplied
+      The domain or computer name hosting the account
 
-      response: :zeek:type:`string` :zeek:attr:`&optional`
-         The client's response for the challenge
+
+   .. zeek:field:: user_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The name of the user to be authenticated.
+
+
+   .. zeek:field:: workstation :zeek:type:`string` :zeek:attr:`&optional`
+
+      The name of the computer to which the user was logged on.
+
+
+   .. zeek:field:: session_key :zeek:type:`string` :zeek:attr:`&optional`
+
+      The session key
+
+
+   .. zeek:field:: version :zeek:type:`NTLM::Version` :zeek:attr:`&optional`
+
+      The Windows version information, if supplied
+
+
+   .. zeek:field:: response :zeek:type:`string` :zeek:attr:`&optional`
+
+      The client's response for the challenge
+
 
 
 .. zeek:type:: NTLM::Challenge
@@ -5796,23 +6572,34 @@ Types
 
    :Type: :zeek:type:`record`
 
-      flags: :zeek:type:`NTLM::NegotiateFlags`
-         The negotiate flags
 
-      challenge: :zeek:type:`count`
-         A 64-bit value that contains the NTLM challenge.
+   .. zeek:field:: flags :zeek:type:`NTLM::NegotiateFlags`
 
-      target_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The server authentication realm. If the server is
-         domain-joined, the name of the domain. Otherwise
-         the server name. See flags.target_type_domain
-         and flags.target_type_server
+      The negotiate flags
 
-      version: :zeek:type:`NTLM::Version` :zeek:attr:`&optional`
-         The Windows version information, if supplied
 
-      target_info: :zeek:type:`NTLM::AVs` :zeek:attr:`&optional`
-         Attribute-value pairs specified by the server
+   .. zeek:field:: challenge :zeek:type:`count`
+
+      A 64-bit value that contains the NTLM challenge.
+
+
+   .. zeek:field:: target_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The server authentication realm. If the server is
+      domain-joined, the name of the domain. Otherwise
+      the server name. See flags.target_type_domain
+      and flags.target_type_server
+
+
+   .. zeek:field:: version :zeek:type:`NTLM::Version` :zeek:attr:`&optional`
+
+      The Windows version information, if supplied
+
+
+   .. zeek:field:: target_info :zeek:type:`NTLM::AVs` :zeek:attr:`&optional`
+
+      Attribute-value pairs specified by the server
+
 
 
 .. zeek:type:: NTLM::Negotiate
@@ -5820,17 +6607,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      flags: :zeek:type:`NTLM::NegotiateFlags`
-         The negotiate flags
 
-      domain_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The domain name of the client, if known
+   .. zeek:field:: flags :zeek:type:`NTLM::NegotiateFlags`
 
-      workstation: :zeek:type:`string` :zeek:attr:`&optional`
-         The machine name of the client, if known
+      The negotiate flags
 
-      version: :zeek:type:`NTLM::Version` :zeek:attr:`&optional`
-         The Windows version information, if supplied
+
+   .. zeek:field:: domain_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The domain name of the client, if known
+
+
+   .. zeek:field:: workstation :zeek:type:`string` :zeek:attr:`&optional`
+
+      The machine name of the client, if known
+
+
+   .. zeek:field:: version :zeek:type:`NTLM::Version` :zeek:attr:`&optional`
+
+      The Windows version information, if supplied
+
 
 
 .. zeek:type:: NTLM::NegotiateFlags
@@ -5838,76 +6634,121 @@ Types
 
    :Type: :zeek:type:`record`
 
-      negotiate_56: :zeek:type:`bool`
-         If set, requires 56-bit encryption
 
-      negotiate_key_exch: :zeek:type:`bool`
-         If set, requests an explicit key exchange
+   .. zeek:field:: negotiate_56 :zeek:type:`bool`
 
-      negotiate_128: :zeek:type:`bool`
-         If set, requests 128-bit session key negotiation
+      If set, requires 56-bit encryption
 
-      negotiate_version: :zeek:type:`bool`
-         If set, requests the protocol version number
 
-      negotiate_target_info: :zeek:type:`bool`
-         If set, indicates that the TargetInfo fields in the
-         CHALLENGE_MESSAGE are populated
+   .. zeek:field:: negotiate_key_exch :zeek:type:`bool`
 
-      request_non_nt_session_key: :zeek:type:`bool`
-         If set, requests the usage of the LMOWF function
+      If set, requests an explicit key exchange
 
-      negotiate_identify: :zeek:type:`bool`
-         If set, requests and identify level token
 
-      negotiate_extended_sessionsecurity: :zeek:type:`bool`
-         If set, requests usage of NTLM v2 session security
-         Note: NTLM v2 session security is actually NTLM v1
+   .. zeek:field:: negotiate_128 :zeek:type:`bool`
 
-      target_type_server: :zeek:type:`bool`
-         If set, TargetName must be a server name
+      If set, requests 128-bit session key negotiation
 
-      target_type_domain: :zeek:type:`bool`
-         If set, TargetName must be a domain name
 
-      negotiate_always_sign: :zeek:type:`bool`
-         If set, requests the presence of a signature block
-         on all messages
+   .. zeek:field:: negotiate_version :zeek:type:`bool`
 
-      negotiate_oem_workstation_supplied: :zeek:type:`bool`
-         If set, the workstation name is provided
+      If set, requests the protocol version number
 
-      negotiate_oem_domain_supplied: :zeek:type:`bool`
-         If set, the domain name is provided
 
-      negotiate_anonymous_connection: :zeek:type:`bool`
-         If set, the connection should be anonymous
+   .. zeek:field:: negotiate_target_info :zeek:type:`bool`
 
-      negotiate_ntlm: :zeek:type:`bool`
-         If set, requests usage of NTLM v1
+      If set, indicates that the TargetInfo fields in the
+      CHALLENGE_MESSAGE are populated
 
-      negotiate_lm_key: :zeek:type:`bool`
-         If set, requests LAN Manager session key computation
 
-      negotiate_datagram: :zeek:type:`bool`
-         If set, requests connectionless authentication
+   .. zeek:field:: request_non_nt_session_key :zeek:type:`bool`
 
-      negotiate_seal: :zeek:type:`bool`
-         If set, requests session key negotiation for message
-         confidentiality
+      If set, requests the usage of the LMOWF function
 
-      negotiate_sign: :zeek:type:`bool`
-         If set, requests session key negotiation for message
-         signatures
 
-      request_target: :zeek:type:`bool`
-         If set, the TargetName field is present
+   .. zeek:field:: negotiate_identify :zeek:type:`bool`
 
-      negotiate_oem: :zeek:type:`bool`
-         If set, requests OEM character set encoding
+      If set, requests and identify level token
 
-      negotiate_unicode: :zeek:type:`bool`
-         If set, requests Unicode character set encoding
+
+   .. zeek:field:: negotiate_extended_sessionsecurity :zeek:type:`bool`
+
+      If set, requests usage of NTLM v2 session security
+      Note: NTLM v2 session security is actually NTLM v1
+
+
+   .. zeek:field:: target_type_server :zeek:type:`bool`
+
+      If set, TargetName must be a server name
+
+
+   .. zeek:field:: target_type_domain :zeek:type:`bool`
+
+      If set, TargetName must be a domain name
+
+
+   .. zeek:field:: negotiate_always_sign :zeek:type:`bool`
+
+      If set, requests the presence of a signature block
+      on all messages
+
+
+   .. zeek:field:: negotiate_oem_workstation_supplied :zeek:type:`bool`
+
+      If set, the workstation name is provided
+
+
+   .. zeek:field:: negotiate_oem_domain_supplied :zeek:type:`bool`
+
+      If set, the domain name is provided
+
+
+   .. zeek:field:: negotiate_anonymous_connection :zeek:type:`bool`
+
+      If set, the connection should be anonymous
+
+
+   .. zeek:field:: negotiate_ntlm :zeek:type:`bool`
+
+      If set, requests usage of NTLM v1
+
+
+   .. zeek:field:: negotiate_lm_key :zeek:type:`bool`
+
+      If set, requests LAN Manager session key computation
+
+
+   .. zeek:field:: negotiate_datagram :zeek:type:`bool`
+
+      If set, requests connectionless authentication
+
+
+   .. zeek:field:: negotiate_seal :zeek:type:`bool`
+
+      If set, requests session key negotiation for message
+      confidentiality
+
+
+   .. zeek:field:: negotiate_sign :zeek:type:`bool`
+
+      If set, requests session key negotiation for message
+      signatures
+
+
+   .. zeek:field:: request_target :zeek:type:`bool`
+
+      If set, the TargetName field is present
+
+
+   .. zeek:field:: negotiate_oem :zeek:type:`bool`
+
+      If set, requests OEM character set encoding
+
+
+   .. zeek:field:: negotiate_unicode :zeek:type:`bool`
+
+      If set, requests Unicode character set encoding
+
 
 
 .. zeek:type:: NTLM::Version
@@ -5915,17 +6756,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      major: :zeek:type:`count`
-         The major version of the Windows operating system in use
 
-      minor: :zeek:type:`count`
-         The minor version of the Windows operating system in use
+   .. zeek:field:: major :zeek:type:`count`
 
-      build: :zeek:type:`count`
-         The build number of the Windows operating system in use
+      The major version of the Windows operating system in use
 
-      ntlmssp: :zeek:type:`count`
-         The current revision of NTLMSSP in use
+
+   .. zeek:field:: minor :zeek:type:`count`
+
+      The minor version of the Windows operating system in use
+
+
+   .. zeek:field:: build :zeek:type:`count`
+
+      The build number of the Windows operating system in use
+
+
+   .. zeek:field:: ntlmssp :zeek:type:`count`
+
+      The current revision of NTLMSSP in use
+
 
 
 .. zeek:type:: NTP::ControlMessage
@@ -5933,47 +6783,68 @@ Types
 
    :Type: :zeek:type:`record`
 
-      op_code: :zeek:type:`count`
-         An integer specifying the command function. Values currently defined:
-         
-         * 1 read status command/response
-         * 2 read variables command/response
-         * 3 write variables command/response
-         * 4 read clock variables command/response
-         * 5 write clock variables command/response
-         * 6 set trap address/port command/response
-         * 7 trap response
-         
-         Other values are reserved.
 
-      resp_bit: :zeek:type:`bool`
-         The response bit. Set to zero for commands, one for responses.
+   .. zeek:field:: op_code :zeek:type:`count`
 
-      err_bit: :zeek:type:`bool`
-         The error bit. Set to zero for normal response, one for error
-         response.
+      An integer specifying the command function. Values currently defined:
+      
+      * 1 read status command/response
+      * 2 read variables command/response
+      * 3 write variables command/response
+      * 4 read clock variables command/response
+      * 5 write clock variables command/response
+      * 6 set trap address/port command/response
+      * 7 trap response
+      
+      Other values are reserved.
 
-      more_bit: :zeek:type:`bool`
-         The more bit. Set to zero for last fragment, one for all others.
 
-      sequence: :zeek:type:`count`
-         The sequence number of the command or response.
+   .. zeek:field:: resp_bit :zeek:type:`bool`
 
-      status: :zeek:type:`count`
-         The current status of the system, peer or clock.
+      The response bit. Set to zero for commands, one for responses.
 
-      association_id: :zeek:type:`count`
-         A 16-bit integer identifying a valid association.
 
-      data: :zeek:type:`string` :zeek:attr:`&optional`
-         Message data for the command or response + Authenticator (optional).
+   .. zeek:field:: err_bit :zeek:type:`bool`
 
-      key_id: :zeek:type:`count` :zeek:attr:`&optional`
-         This is an integer identifying the cryptographic
-         key used to generate the message-authentication code.
+      The error bit. Set to zero for normal response, one for error
+      response.
 
-      crypto_checksum: :zeek:type:`string` :zeek:attr:`&optional`
-         This is a crypto-checksum computed by the encryption procedure.
+
+   .. zeek:field:: more_bit :zeek:type:`bool`
+
+      The more bit. Set to zero for last fragment, one for all others.
+
+
+   .. zeek:field:: sequence :zeek:type:`count`
+
+      The sequence number of the command or response.
+
+
+   .. zeek:field:: status :zeek:type:`count`
+
+      The current status of the system, peer or clock.
+
+
+   .. zeek:field:: association_id :zeek:type:`count`
+
+      A 16-bit integer identifying a valid association.
+
+
+   .. zeek:field:: data :zeek:type:`string` :zeek:attr:`&optional`
+
+      Message data for the command or response + Authenticator (optional).
+
+
+   .. zeek:field:: key_id :zeek:type:`count` :zeek:attr:`&optional`
+
+      This is an integer identifying the cryptographic
+      key used to generate the message-authentication code.
+
+
+   .. zeek:field:: crypto_checksum :zeek:type:`string` :zeek:attr:`&optional`
+
+      This is a crypto-checksum computed by the encryption procedure.
+
 
    NTP control message as defined in :rfc:`1119` for mode=6
    This record contains the fields used by the NTP protocol
@@ -5984,36 +6855,47 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`count`
-         The NTP version number (1, 2, 3, 4).
 
-      mode: :zeek:type:`count`
-         The NTP mode being used. Possible values are:
-         
-           * 1 - symmetric active
-           * 2 - symmetric passive
-           * 3 - client
-           * 4 - server
-           * 5 - broadcast
-           * 6 - NTP control message
-           * 7 - reserved for private use
+   .. zeek:field:: version :zeek:type:`count`
 
-      std_msg: :zeek:type:`NTP::StandardMessage` :zeek:attr:`&optional`
-         If mode 1-5, the standard fields for synchronization operations are
-         here.  See :rfc:`5905`
+      The NTP version number (1, 2, 3, 4).
 
-      control_msg: :zeek:type:`NTP::ControlMessage` :zeek:attr:`&optional`
-         If mode 6, the fields for control operations are here.
-         See :rfc:`1119`
 
-      mode7_msg: :zeek:type:`NTP::Mode7Message` :zeek:attr:`&optional`
-         If mode 7, the fields for extra operations are here.
-         Note that this is not defined in any RFC
-         and is implementation dependent. We used the official implementation
-         from the `NTP official project <https://www.ntp.org>`_.
-         A mode 7 packet is used exchanging data between an NTP server
-         and a client for purposes other than time synchronization, e.g.
-         monitoring, statistics gathering and configuration.
+   .. zeek:field:: mode :zeek:type:`count`
+
+      The NTP mode being used. Possible values are:
+      
+        * 1 - symmetric active
+        * 2 - symmetric passive
+        * 3 - client
+        * 4 - server
+        * 5 - broadcast
+        * 6 - NTP control message
+        * 7 - reserved for private use
+
+
+   .. zeek:field:: std_msg :zeek:type:`NTP::StandardMessage` :zeek:attr:`&optional`
+
+      If mode 1-5, the standard fields for synchronization operations are
+      here.  See :rfc:`5905`
+
+
+   .. zeek:field:: control_msg :zeek:type:`NTP::ControlMessage` :zeek:attr:`&optional`
+
+      If mode 6, the fields for control operations are here.
+      See :rfc:`1119`
+
+
+   .. zeek:field:: mode7_msg :zeek:type:`NTP::Mode7Message` :zeek:attr:`&optional`
+
+      If mode 7, the fields for extra operations are here.
+      Note that this is not defined in any RFC
+      and is implementation dependent. We used the official implementation
+      from the `NTP official project <https://www.ntp.org>`_.
+      A mode 7 packet is used exchanging data between an NTP server
+      and a client for purposes other than time synchronization, e.g.
+      monitoring, statistics gathering and configuration.
+
 
    NTP message as defined in :rfc:`5905`.  Does include fields for mode 7,
    reserved for private use in :rfc:`5905`, but used in some implementation
@@ -6024,43 +6906,56 @@ Types
 
    :Type: :zeek:type:`record`
 
-      req_code: :zeek:type:`count`
-         An implementation-specific code which specifies the
-         operation to be (which has been) performed and/or the
-         format and semantics of the data included in the packet.
 
-      auth_bit: :zeek:type:`bool`
-         The authenticated bit. If set, this packet is authenticated.
+   .. zeek:field:: req_code :zeek:type:`count`
 
-      sequence: :zeek:type:`count`
-         For a multipacket response, contains the sequence
-         number of this packet.  0 is the first in the sequence,
-         127 (or less) is the last.  The More Bit must be set in
-         all packets but the last.
+      An implementation-specific code which specifies the
+      operation to be (which has been) performed and/or the
+      format and semantics of the data included in the packet.
 
-      implementation: :zeek:type:`count`
-         The number of the implementation this request code
-         is defined by.  An implementation number of zero is used
-         for request codes/data formats which all implementations
-         agree on.  Implementation number 255 is reserved (for
-         extensions, in case we run out).
 
-      err: :zeek:type:`count`
-         Must be 0 for a request.  For a response, holds an error
-         code relating to the request.  If nonzero, the operation
-         requested wasn't performed.
-         
-           * 0 - no error
-           * 1 - incompatible implementation number
-           * 2 - unimplemented request code
-           * 3 - format error (wrong data items, data size, packet size etc.)
-           * 4 - no data available (e.g. request for details on unknown peer)
-           * 5 - unknown
-           * 6 - unknown
-           * 7 - authentication failure (i.e. permission denied)
+   .. zeek:field:: auth_bit :zeek:type:`bool`
 
-      data: :zeek:type:`string` :zeek:attr:`&optional`
-         Rest of data
+      The authenticated bit. If set, this packet is authenticated.
+
+
+   .. zeek:field:: sequence :zeek:type:`count`
+
+      For a multipacket response, contains the sequence
+      number of this packet.  0 is the first in the sequence,
+      127 (or less) is the last.  The More Bit must be set in
+      all packets but the last.
+
+
+   .. zeek:field:: implementation :zeek:type:`count`
+
+      The number of the implementation this request code
+      is defined by.  An implementation number of zero is used
+      for request codes/data formats which all implementations
+      agree on.  Implementation number 255 is reserved (for
+      extensions, in case we run out).
+
+
+   .. zeek:field:: err :zeek:type:`count`
+
+      Must be 0 for a request.  For a response, holds an error
+      code relating to the request.  If nonzero, the operation
+      requested wasn't performed.
+      
+        * 0 - no error
+        * 1 - incompatible implementation number
+        * 2 - unimplemented request code
+        * 3 - format error (wrong data items, data size, packet size etc.)
+        * 4 - no data available (e.g. request for details on unknown peer)
+        * 5 - unknown
+        * 6 - unknown
+        * 7 - authentication failure (i.e. permission denied)
+
+
+   .. zeek:field:: data :zeek:type:`string` :zeek:attr:`&optional`
+
+      Rest of data
+
 
    NTP mode 7 message. Note that this is not defined in any RFC and is
    implementation dependent. We used the official implementation from the
@@ -6075,71 +6970,102 @@ Types
 
    :Type: :zeek:type:`record`
 
-      stratum: :zeek:type:`count`
-         This value mainly identifies the type of server (primary server,
-         secondary server, etc.). Possible values, as in :rfc:`5905`, are:
-         
-           * 0 -> unspecified or invalid
-           * 1 -> primary server (e.g., equipped with a GPS receiver)
-           * 2-15 -> secondary server (via NTP)
-           * 16 -> unsynchronized
-           * 17-255 -> reserved
-         
-         For stratum 0, a *kiss_code* can be given for debugging and
-         monitoring.
 
-      poll: :zeek:type:`interval`
-         The maximum interval between successive messages.
+   .. zeek:field:: stratum :zeek:type:`count`
 
-      precision: :zeek:type:`interval`
-         The precision of the system clock.
+      This value mainly identifies the type of server (primary server,
+      secondary server, etc.). Possible values, as in :rfc:`5905`, are:
+      
+        * 0 -> unspecified or invalid
+        * 1 -> primary server (e.g., equipped with a GPS receiver)
+        * 2-15 -> secondary server (via NTP)
+        * 16 -> unsynchronized
+        * 17-255 -> reserved
+      
+      For stratum 0, a *kiss_code* can be given for debugging and
+      monitoring.
 
-      root_delay: :zeek:type:`interval`
-         Root delay. The total round-trip delay to the reference clock.
 
-      root_disp: :zeek:type:`interval`
-         Root Dispersion. The total dispersion to the reference clock.
+   .. zeek:field:: poll :zeek:type:`interval`
 
-      kiss_code: :zeek:type:`string` :zeek:attr:`&optional`
-         For stratum 0, four-character ASCII string used for debugging and
-         monitoring. Values are defined in :rfc:`1345`.
+      The maximum interval between successive messages.
 
-      ref_id: :zeek:type:`string` :zeek:attr:`&optional`
-         Reference ID. For stratum 1, this is the ID assigned to the
-         reference clock by IANA.
-         For example: GOES, GPS, GAL, etc. (see :rfc:`5905`)
 
-      ref_addr: :zeek:type:`addr` :zeek:attr:`&optional`
-         Above stratum 1, when using IPv4, the IP address of the reference
-         clock.  Note that the NTP protocol did not originally specify a
-         large enough field to represent IPv6 addresses, so they use
-         the first four bytes of the MD5 hash of the reference clock's
-         IPv6 address (i.e. an IPv4 address here is not necessarily IPv4).
+   .. zeek:field:: precision :zeek:type:`interval`
 
-      ref_time: :zeek:type:`time`
-         Reference timestamp. Time when the system clock was last set or
-         correct.
+      The precision of the system clock.
 
-      org_time: :zeek:type:`time`
-         Origin timestamp. Time at the client when the request departed for
-         the NTP server.
 
-      rec_time: :zeek:type:`time`
-         Receive timestamp. Time at the server when the request arrived from
-         the NTP client.
+   .. zeek:field:: root_delay :zeek:type:`interval`
 
-      xmt_time: :zeek:type:`time`
-         Transmit timestamp. Time at the server when the response departed
+      Root delay. The total round-trip delay to the reference clock.
 
-      key_id: :zeek:type:`count` :zeek:attr:`&optional`
-         Key used to designate a secret MD5 key.
 
-      digest: :zeek:type:`string` :zeek:attr:`&optional`
-         MD5 hash computed over the key followed by the NTP packet header and
-         extension fields.
+   .. zeek:field:: root_disp :zeek:type:`interval`
 
-      num_exts: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Number of extension fields (which are not currently parsed).
+      Root Dispersion. The total dispersion to the reference clock.
+
+
+   .. zeek:field:: kiss_code :zeek:type:`string` :zeek:attr:`&optional`
+
+      For stratum 0, four-character ASCII string used for debugging and
+      monitoring. Values are defined in :rfc:`1345`.
+
+
+   .. zeek:field:: ref_id :zeek:type:`string` :zeek:attr:`&optional`
+
+      Reference ID. For stratum 1, this is the ID assigned to the
+      reference clock by IANA.
+      For example: GOES, GPS, GAL, etc. (see :rfc:`5905`)
+
+
+   .. zeek:field:: ref_addr :zeek:type:`addr` :zeek:attr:`&optional`
+
+      Above stratum 1, when using IPv4, the IP address of the reference
+      clock.  Note that the NTP protocol did not originally specify a
+      large enough field to represent IPv6 addresses, so they use
+      the first four bytes of the MD5 hash of the reference clock's
+      IPv6 address (i.e. an IPv4 address here is not necessarily IPv4).
+
+
+   .. zeek:field:: ref_time :zeek:type:`time`
+
+      Reference timestamp. Time when the system clock was last set or
+      correct.
+
+
+   .. zeek:field:: org_time :zeek:type:`time`
+
+      Origin timestamp. Time at the client when the request departed for
+      the NTP server.
+
+
+   .. zeek:field:: rec_time :zeek:type:`time`
+
+      Receive timestamp. Time at the server when the request arrived from
+      the NTP client.
+
+
+   .. zeek:field:: xmt_time :zeek:type:`time`
+
+      Transmit timestamp. Time at the server when the response departed
+
+
+   .. zeek:field:: key_id :zeek:type:`count` :zeek:attr:`&optional`
+
+      Key used to designate a secret MD5 key.
+
+
+   .. zeek:field:: digest :zeek:type:`string` :zeek:attr:`&optional`
+
+      MD5 hash computed over the key followed by the NTP packet header and
+      extension fields.
+
+
+   .. zeek:field:: num_exts :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Number of extension fields (which are not currently parsed).
+
 
    NTP standard message as defined in :rfc:`5905` for modes 1-5
    This record contains the standard fields used by the NTP protocol
@@ -6150,24 +7076,35 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pkts_recvd: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Packets received by Zeek.
 
-      pkts_dropped: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Packets reported dropped by the system.
+   .. zeek:field:: pkts_recvd :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      pkts_link: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Packets seen on the link. Note that this may differ
-         from *pkts_recvd* because of a potential capture_filter. See
-         :doc:`/scripts/base/frameworks/packet-filter/main.zeek`. Depending on the
-         packet capture system, this value may not be available and will then
-         be always set to zero.
+      Packets received by Zeek.
 
-      bytes_recvd: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Bytes received by Zeek.
 
-      pkts_filtered: :zeek:type:`count` :zeek:attr:`&optional`
-         Packets filtered by the packet source.
+   .. zeek:field:: pkts_dropped :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Packets reported dropped by the system.
+
+
+   .. zeek:field:: pkts_link :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Packets seen on the link. Note that this may differ
+      from *pkts_recvd* because of a potential capture_filter. See
+      :doc:`/scripts/base/frameworks/packet-filter/main.zeek`. Depending on the
+      packet capture system, this value may not be available and will then
+      be always set to zero.
+
+
+   .. zeek:field:: bytes_recvd :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Bytes received by Zeek.
+
+
+   .. zeek:field:: pkts_filtered :zeek:type:`count` :zeek:attr:`&optional`
+
+      Packets filtered by the packet source.
+
 
    Packet capture statistics.  All counts are cumulative.
    
@@ -6178,57 +7115,92 @@ Types
 
    :Type: :zeek:type:`record`
 
-      signature: :zeek:type:`string`
-         The magic number of a portable executable file ("MZ").
 
-      used_bytes_in_last_page: :zeek:type:`count`
-         The number of bytes in the last page that are used.
+   .. zeek:field:: signature :zeek:type:`string`
 
-      file_in_pages: :zeek:type:`count`
-         The number of pages in the file that are part of the PE file itself.
+      The magic number of a portable executable file ("MZ").
 
-      num_reloc_items: :zeek:type:`count`
-         Number of relocation entries stored after the header.
 
-      header_in_paragraphs: :zeek:type:`count`
-         Number of paragraphs in the header.
+   .. zeek:field:: used_bytes_in_last_page :zeek:type:`count`
 
-      min_extra_paragraphs: :zeek:type:`count`
-         Number of paragraphs of additional memory that the program will need.
+      The number of bytes in the last page that are used.
 
-      max_extra_paragraphs: :zeek:type:`count`
-         Maximum number of paragraphs of additional memory.
 
-      init_relative_ss: :zeek:type:`count`
-         Relative value of the stack segment.
+   .. zeek:field:: file_in_pages :zeek:type:`count`
 
-      init_sp: :zeek:type:`count`
-         Initial value of the SP register.
+      The number of pages in the file that are part of the PE file itself.
 
-      checksum: :zeek:type:`count`
-         Checksum. The 16-bit sum of all words in the file should be 0. Normally not set.
 
-      init_ip: :zeek:type:`count`
-         Initial value of the IP register.
+   .. zeek:field:: num_reloc_items :zeek:type:`count`
 
-      init_relative_cs: :zeek:type:`count`
-         Initial value of the CS register (relative to the initial segment).
+      Number of relocation entries stored after the header.
 
-      addr_of_reloc_table: :zeek:type:`count`
-         Offset of the first relocation table.
 
-      overlay_num: :zeek:type:`count`
-         Overlays allow you to append data to the end of the file. If this is the main program,
-         this will be 0.
+   .. zeek:field:: header_in_paragraphs :zeek:type:`count`
 
-      oem_id: :zeek:type:`count`
-         OEM identifier.
+      Number of paragraphs in the header.
 
-      oem_info: :zeek:type:`count`
-         Additional OEM info, specific to oem_id.
 
-      addr_of_new_exe_header: :zeek:type:`count`
-         Address of the new EXE header.
+   .. zeek:field:: min_extra_paragraphs :zeek:type:`count`
+
+      Number of paragraphs of additional memory that the program will need.
+
+
+   .. zeek:field:: max_extra_paragraphs :zeek:type:`count`
+
+      Maximum number of paragraphs of additional memory.
+
+
+   .. zeek:field:: init_relative_ss :zeek:type:`count`
+
+      Relative value of the stack segment.
+
+
+   .. zeek:field:: init_sp :zeek:type:`count`
+
+      Initial value of the SP register.
+
+
+   .. zeek:field:: checksum :zeek:type:`count`
+
+      Checksum. The 16-bit sum of all words in the file should be 0. Normally not set.
+
+
+   .. zeek:field:: init_ip :zeek:type:`count`
+
+      Initial value of the IP register.
+
+
+   .. zeek:field:: init_relative_cs :zeek:type:`count`
+
+      Initial value of the CS register (relative to the initial segment).
+
+
+   .. zeek:field:: addr_of_reloc_table :zeek:type:`count`
+
+      Offset of the first relocation table.
+
+
+   .. zeek:field:: overlay_num :zeek:type:`count`
+
+      Overlays allow you to append data to the end of the file. If this is the main program,
+      this will be 0.
+
+
+   .. zeek:field:: oem_id :zeek:type:`count`
+
+      OEM identifier.
+
+
+   .. zeek:field:: oem_info :zeek:type:`count`
+
+      Additional OEM info, specific to oem_id.
+
+
+   .. zeek:field:: addr_of_new_exe_header :zeek:type:`count`
+
+      Address of the new EXE header.
+
 
 
 .. zeek:type:: PE::FileHeader
@@ -6236,23 +7208,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      machine: :zeek:type:`count`
-         The target machine that the file was compiled for.
 
-      ts: :zeek:type:`time`
-         The time that the file was created at.
+   .. zeek:field:: machine :zeek:type:`count`
 
-      sym_table_ptr: :zeek:type:`count`
-         Pointer to the symbol table.
+      The target machine that the file was compiled for.
 
-      num_syms: :zeek:type:`count`
-         Number of symbols.
 
-      optional_header_size: :zeek:type:`count`
-         The size of the optional header.
+   .. zeek:field:: ts :zeek:type:`time`
 
-      characteristics: :zeek:type:`set` [:zeek:type:`count`]
-         Bit flags that determine if this file is executable, non-relocatable, and/or a DLL.
+      The time that the file was created at.
+
+
+   .. zeek:field:: sym_table_ptr :zeek:type:`count`
+
+      Pointer to the symbol table.
+
+
+   .. zeek:field:: num_syms :zeek:type:`count`
+
+      Number of symbols.
+
+
+   .. zeek:field:: optional_header_size :zeek:type:`count`
+
+      The size of the optional header.
+
+
+   .. zeek:field:: characteristics :zeek:type:`set` [:zeek:type:`count`]
+
+      Bit flags that determine if this file is executable, non-relocatable, and/or a DLL.
+
 
 
 .. zeek:type:: PE::OptionalHeader
@@ -6260,79 +7245,128 @@ Types
 
    :Type: :zeek:type:`record`
 
-      magic: :zeek:type:`count`
-         PE32 or PE32+ indicator.
 
-      major_linker_version: :zeek:type:`count`
-         The major version of the linker used to create the PE.
+   .. zeek:field:: magic :zeek:type:`count`
 
-      minor_linker_version: :zeek:type:`count`
-         The minor version of the linker used to create the PE.
+      PE32 or PE32+ indicator.
 
-      size_of_code: :zeek:type:`count`
-         Size of the .text section.
 
-      size_of_init_data: :zeek:type:`count`
-         Size of the .data section.
+   .. zeek:field:: major_linker_version :zeek:type:`count`
 
-      size_of_uninit_data: :zeek:type:`count`
-         Size of the .bss section.
+      The major version of the linker used to create the PE.
 
-      addr_of_entry_point: :zeek:type:`count`
-         The relative virtual address (RVA) of the entry point.
 
-      base_of_code: :zeek:type:`count`
-         The relative virtual address (RVA) of the .text section.
+   .. zeek:field:: minor_linker_version :zeek:type:`count`
 
-      base_of_data: :zeek:type:`count` :zeek:attr:`&optional`
-         The relative virtual address (RVA) of the .data section.
+      The minor version of the linker used to create the PE.
 
-      image_base: :zeek:type:`count`
-         Preferred memory location for the image to be based at.
 
-      section_alignment: :zeek:type:`count`
-         The alignment (in bytes) of sections when they're loaded in memory.
+   .. zeek:field:: size_of_code :zeek:type:`count`
 
-      file_alignment: :zeek:type:`count`
-         The alignment (in bytes) of the raw data of sections.
+      Size of the .text section.
 
-      os_version_major: :zeek:type:`count`
-         The major version of the required OS.
 
-      os_version_minor: :zeek:type:`count`
-         The minor version of the required OS.
+   .. zeek:field:: size_of_init_data :zeek:type:`count`
 
-      major_image_version: :zeek:type:`count`
-         The major version of this image.
+      Size of the .data section.
 
-      minor_image_version: :zeek:type:`count`
-         The minor version of this image.
 
-      major_subsys_version: :zeek:type:`count`
-         The major version of the subsystem required to run this file.
+   .. zeek:field:: size_of_uninit_data :zeek:type:`count`
 
-      minor_subsys_version: :zeek:type:`count`
-         The minor version of the subsystem required to run this file.
+      Size of the .bss section.
 
-      size_of_image: :zeek:type:`count`
-         The size (in bytes) of the image as the image is loaded in memory.
 
-      size_of_headers: :zeek:type:`count`
-         The size (in bytes) of the headers, rounded up to file_alignment.
+   .. zeek:field:: addr_of_entry_point :zeek:type:`count`
 
-      checksum: :zeek:type:`count`
-         The image file checksum.
+      The relative virtual address (RVA) of the entry point.
 
-      subsystem: :zeek:type:`count`
-         The subsystem that's required to run this image.
 
-      dll_characteristics: :zeek:type:`set` [:zeek:type:`count`]
-         Bit flags that determine how to execute or load this file.
+   .. zeek:field:: base_of_code :zeek:type:`count`
 
-      table_sizes: :zeek:type:`vector` of :zeek:type:`count`
-         A vector with the sizes of various tables and strings that are
-         defined in the optional header data directories. Examples include
-         the import table, the resource table, and debug information.
+      The relative virtual address (RVA) of the .text section.
+
+
+   .. zeek:field:: base_of_data :zeek:type:`count` :zeek:attr:`&optional`
+
+      The relative virtual address (RVA) of the .data section.
+
+
+   .. zeek:field:: image_base :zeek:type:`count`
+
+      Preferred memory location for the image to be based at.
+
+
+   .. zeek:field:: section_alignment :zeek:type:`count`
+
+      The alignment (in bytes) of sections when they're loaded in memory.
+
+
+   .. zeek:field:: file_alignment :zeek:type:`count`
+
+      The alignment (in bytes) of the raw data of sections.
+
+
+   .. zeek:field:: os_version_major :zeek:type:`count`
+
+      The major version of the required OS.
+
+
+   .. zeek:field:: os_version_minor :zeek:type:`count`
+
+      The minor version of the required OS.
+
+
+   .. zeek:field:: major_image_version :zeek:type:`count`
+
+      The major version of this image.
+
+
+   .. zeek:field:: minor_image_version :zeek:type:`count`
+
+      The minor version of this image.
+
+
+   .. zeek:field:: major_subsys_version :zeek:type:`count`
+
+      The major version of the subsystem required to run this file.
+
+
+   .. zeek:field:: minor_subsys_version :zeek:type:`count`
+
+      The minor version of the subsystem required to run this file.
+
+
+   .. zeek:field:: size_of_image :zeek:type:`count`
+
+      The size (in bytes) of the image as the image is loaded in memory.
+
+
+   .. zeek:field:: size_of_headers :zeek:type:`count`
+
+      The size (in bytes) of the headers, rounded up to file_alignment.
+
+
+   .. zeek:field:: checksum :zeek:type:`count`
+
+      The image file checksum.
+
+
+   .. zeek:field:: subsystem :zeek:type:`count`
+
+      The subsystem that's required to run this image.
+
+
+   .. zeek:field:: dll_characteristics :zeek:type:`set` [:zeek:type:`count`]
+
+      Bit flags that determine how to execute or load this file.
+
+
+   .. zeek:field:: table_sizes :zeek:type:`vector` of :zeek:type:`count`
+
+      A vector with the sizes of various tables and strings that are
+      defined in the optional header data directories. Examples include
+      the import table, the resource table, and debug information.
+
 
 
 .. zeek:type:: PE::SectionHeader
@@ -6340,39 +7374,60 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         The name of the section
 
-      virtual_size: :zeek:type:`count`
-         The total size of the section when loaded into memory.
+   .. zeek:field:: name :zeek:type:`string`
 
-      virtual_addr: :zeek:type:`count`
-         The relative virtual address (RVA) of the section.
+      The name of the section
 
-      size_of_raw_data: :zeek:type:`count`
-         The size of the initialized data for the section, as it is
-         in the file on disk.
 
-      ptr_to_raw_data: :zeek:type:`count`
-         The virtual address of the initialized dat for the section,
-         as it is in the file on disk.
+   .. zeek:field:: virtual_size :zeek:type:`count`
 
-      ptr_to_relocs: :zeek:type:`count`
-         The file pointer to the beginning of relocation entries for
-         the section.
+      The total size of the section when loaded into memory.
 
-      ptr_to_line_nums: :zeek:type:`count`
-         The file pointer to the beginning of line-number entries for
-         the section.
 
-      num_of_relocs: :zeek:type:`count`
-         The number of relocation entries for the section.
+   .. zeek:field:: virtual_addr :zeek:type:`count`
 
-      num_of_line_nums: :zeek:type:`count`
-         The number of line-number entries for the section.
+      The relative virtual address (RVA) of the section.
 
-      characteristics: :zeek:type:`set` [:zeek:type:`count`]
-         Bit-flags that describe the characteristics of the section.
+
+   .. zeek:field:: size_of_raw_data :zeek:type:`count`
+
+      The size of the initialized data for the section, as it is
+      in the file on disk.
+
+
+   .. zeek:field:: ptr_to_raw_data :zeek:type:`count`
+
+      The virtual address of the initialized dat for the section,
+      as it is in the file on disk.
+
+
+   .. zeek:field:: ptr_to_relocs :zeek:type:`count`
+
+      The file pointer to the beginning of relocation entries for
+      the section.
+
+
+   .. zeek:field:: ptr_to_line_nums :zeek:type:`count`
+
+      The file pointer to the beginning of line-number entries for
+      the section.
+
+
+   .. zeek:field:: num_of_relocs :zeek:type:`count`
+
+      The number of relocation entries for the section.
+
+
+   .. zeek:field:: num_of_line_nums :zeek:type:`count`
+
+      The number of line-number entries for the section.
+
+
+   .. zeek:field:: characteristics :zeek:type:`set` [:zeek:type:`count`]
+
+      Bit-flags that describe the characteristics of the section.
+
 
    Record for Portable Executable (PE) section headers.
 
@@ -6381,18 +7436,27 @@ Types
 
    :Type: :zeek:type:`record`
 
-      live: :zeek:type:`bool`
-         Whether the packet source is a live interface or offline pcap file.
 
-      path: :zeek:type:`string`
-         The interface name for a live interface or filesystem path of
-         an offline pcap file.
+   .. zeek:field:: live :zeek:type:`bool`
 
-      link_type: :zeek:type:`int`
-         The data link-layer type of the packet source.
+      Whether the packet source is a live interface or offline pcap file.
 
-      netmask: :zeek:type:`count`
-         The netmask associated with the source or ``NETMASK_UNKNOWN``.
+
+   .. zeek:field:: path :zeek:type:`string`
+
+      The interface name for a live interface or filesystem path of
+      an offline pcap file.
+
+
+   .. zeek:field:: link_type :zeek:type:`int`
+
+      The data link-layer type of the packet source.
+
+
+   .. zeek:field:: netmask :zeek:type:`count`
+
+      The netmask associated with the source or ``NETMASK_UNKNOWN``.
+
 
    Properties of an I/O packet source being read by Zeek.
 
@@ -6401,24 +7465,37 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         The interface/device name.
 
-      description: :zeek:type:`string` :zeek:attr:`&optional`
-         A human-readable description of the device.
+   .. zeek:field:: name :zeek:type:`string`
 
-      addrs: :zeek:type:`set` [:zeek:type:`addr`]
-         The network addresses associated with the device.
+      The interface/device name.
 
-      is_loopback: :zeek:type:`bool`
-         Whether the device is a loopback interface.  E.g. addresses
-         of ``127.0.0.1`` or ``[::1]`` are used by loopback interfaces.
 
-      is_up: :zeek:type:`bool` :zeek:attr:`&optional`
-         Whether the device is up.  Not set when that info is unavailable.
+   .. zeek:field:: description :zeek:type:`string` :zeek:attr:`&optional`
 
-      is_running: :zeek:type:`bool` :zeek:attr:`&optional`
-         Whether the device is running.  Not set when that info is unavailable.
+      A human-readable description of the device.
+
+
+   .. zeek:field:: addrs :zeek:type:`set` [:zeek:type:`addr`]
+
+      The network addresses associated with the device.
+
+
+   .. zeek:field:: is_loopback :zeek:type:`bool`
+
+      Whether the device is a loopback interface.  E.g. addresses
+      of ``127.0.0.1`` or ``[::1]`` are used by loopback interfaces.
+
+
+   .. zeek:field:: is_up :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Whether the device is up.  Not set when that info is unavailable.
+
+
+   .. zeek:field:: is_running :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Whether the device is running.  Not set when that info is unavailable.
+
 
    The definition of a "pcap interface".
 
@@ -6466,41 +7543,66 @@ Types
 
    :Type: :zeek:type:`record`
 
-      debug: :zeek:type:`bool`
-         True if compiled with --enable-debug.
 
-      start_time: :zeek:type:`time`
-         Start time of process.
+   .. zeek:field:: debug :zeek:type:`bool`
 
-      real_time: :zeek:type:`interval`
-         Elapsed real time since Zeek started running.
+      True if compiled with --enable-debug.
 
-      user_time: :zeek:type:`interval`
-         User CPU seconds.
 
-      system_time: :zeek:type:`interval`
-         System CPU seconds.
+   .. zeek:field:: start_time :zeek:type:`time`
 
-      mem: :zeek:type:`count`
-         Maximum memory consumed, in bytes.
+      Start time of process.
 
-      minor_faults: :zeek:type:`count`
-         Page faults not requiring actual I/O.
 
-      major_faults: :zeek:type:`count`
-         Page faults requiring actual I/O.
+   .. zeek:field:: real_time :zeek:type:`interval`
 
-      num_swap: :zeek:type:`count`
-         Times swapped out.
+      Elapsed real time since Zeek started running.
 
-      blocking_input: :zeek:type:`count`
-         Blocking input operations.
 
-      blocking_output: :zeek:type:`count`
-         Blocking output operations.
+   .. zeek:field:: user_time :zeek:type:`interval`
 
-      num_context: :zeek:type:`count`
-         Number of involuntary context switches.
+      User CPU seconds.
+
+
+   .. zeek:field:: system_time :zeek:type:`interval`
+
+      System CPU seconds.
+
+
+   .. zeek:field:: mem :zeek:type:`count`
+
+      Maximum memory consumed, in bytes.
+
+
+   .. zeek:field:: minor_faults :zeek:type:`count`
+
+      Page faults not requiring actual I/O.
+
+
+   .. zeek:field:: major_faults :zeek:type:`count`
+
+      Page faults requiring actual I/O.
+
+
+   .. zeek:field:: num_swap :zeek:type:`count`
+
+      Times swapped out.
+
+
+   .. zeek:field:: blocking_input :zeek:type:`count`
+
+      Blocking input operations.
+
+
+   .. zeek:field:: blocking_output :zeek:type:`count`
+
+      Blocking output operations.
+
+
+   .. zeek:field:: num_context :zeek:type:`count`
+
+      Number of involuntary context switches.
+
 
    Statistics about Zeek's process.
    
@@ -6526,17 +7628,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      code: :zeek:type:`count`
-         The type of message (Access-Request, Access-Accept, etc.).
 
-      trans_id: :zeek:type:`count`
-         The transaction ID.
+   .. zeek:field:: code :zeek:type:`count`
 
-      authenticator: :zeek:type:`string`
-         The "authenticator" string.
+      The type of message (Access-Request, Access-Accept, etc.).
 
-      attributes: :zeek:type:`RADIUS::Attributes` :zeek:attr:`&optional`
-         Any attributes.
+
+   .. zeek:field:: trans_id :zeek:type:`count`
+
+      The transaction ID.
+
+
+   .. zeek:field:: authenticator :zeek:type:`string`
+
+      The "authenticator" string.
+
+
+   .. zeek:field:: attributes :zeek:type:`RADIUS::Attributes` :zeek:attr:`&optional`
+
+      Any attributes.
+
 
 
 .. zeek:type:: RDP::ClientChannelDef
@@ -6544,45 +7655,72 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         A unique name for the channel
 
-      options: :zeek:type:`count`
-         Channel Def raw options as count
+   .. zeek:field:: name :zeek:type:`string`
 
-      initialized: :zeek:type:`bool`
-         Absence of this flag indicates that this channel is
-         a placeholder and that the server MUST NOT set it up.
+      A unique name for the channel
 
-      encrypt_rdp: :zeek:type:`bool`
-         Unused, must be ignored by the server.
 
-      encrypt_sc: :zeek:type:`bool`
-         Unused, must be ignored by the server.
+   .. zeek:field:: options :zeek:type:`count`
 
-      encrypt_cs: :zeek:type:`bool`
-         Unused, must be ignored by the server.
+      Channel Def raw options as count
 
-      pri_high: :zeek:type:`bool`
-         Channel data must be sent with high MCS priority.
 
-      pri_med: :zeek:type:`bool`
-         Channel data must be sent with medium MCS priority.
+   .. zeek:field:: initialized :zeek:type:`bool`
 
-      pri_low: :zeek:type:`bool`
-         Channel data must be sent with low MCS priority.
+      Absence of this flag indicates that this channel is
+      a placeholder and that the server MUST NOT set it up.
 
-      compress_rdp: :zeek:type:`bool`
-         Virtual channel data must be compressed if RDP data is being compressed.
 
-      compress: :zeek:type:`bool`
-         Virtual channel data must be compressed.
+   .. zeek:field:: encrypt_rdp :zeek:type:`bool`
 
-      show_protocol: :zeek:type:`bool`
-         Ignored by the server.
+      Unused, must be ignored by the server.
 
-      persistent: :zeek:type:`bool`
-         Channel must be persistent across remote control transactions.
+
+   .. zeek:field:: encrypt_sc :zeek:type:`bool`
+
+      Unused, must be ignored by the server.
+
+
+   .. zeek:field:: encrypt_cs :zeek:type:`bool`
+
+      Unused, must be ignored by the server.
+
+
+   .. zeek:field:: pri_high :zeek:type:`bool`
+
+      Channel data must be sent with high MCS priority.
+
+
+   .. zeek:field:: pri_med :zeek:type:`bool`
+
+      Channel data must be sent with medium MCS priority.
+
+
+   .. zeek:field:: pri_low :zeek:type:`bool`
+
+      Channel data must be sent with low MCS priority.
+
+
+   .. zeek:field:: compress_rdp :zeek:type:`bool`
+
+      Virtual channel data must be compressed if RDP data is being compressed.
+
+
+   .. zeek:field:: compress :zeek:type:`bool`
+
+      Virtual channel data must be compressed.
+
+
+   .. zeek:field:: show_protocol :zeek:type:`bool`
+
+      Ignored by the server.
+
+
+   .. zeek:field:: persistent :zeek:type:`bool`
+
+      Channel must be persistent across remote control transactions.
+
 
    Name and flags for a single channel requested by the client.
 
@@ -6598,29 +7736,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      flags: :zeek:type:`count`
-         Cluster information flags.
 
-      redir_session_id: :zeek:type:`count`
-         If the *redir_sessionid_field_valid* flag is set, this field
-         contains a valid session identifier to which the client requests
-         to connect.
+   .. zeek:field:: flags :zeek:type:`count`
 
-      redir_supported: :zeek:type:`bool`
-         The client can receive server session redirection packets.
-         If this flag is set, the *svr_session_redir_version_mask*
-         field MUST contain the server session redirection version that
-         the client supports.
+      Cluster information flags.
 
-      svr_session_redir_version_mask: :zeek:type:`count`
-         The server session redirection version that the client supports.
 
-      redir_sessionid_field_valid: :zeek:type:`bool`
-         Whether the *redir_session_id* field identifies a session on
-         the server to associate with the connection.
+   .. zeek:field:: redir_session_id :zeek:type:`count`
 
-      redir_smartcard: :zeek:type:`bool`
-         The client logged on with a smart card.
+      If the *redir_sessionid_field_valid* flag is set, this field
+      contains a valid session identifier to which the client requests
+      to connect.
+
+
+   .. zeek:field:: redir_supported :zeek:type:`bool`
+
+      The client can receive server session redirection packets.
+      If this flag is set, the *svr_session_redir_version_mask*
+      field MUST contain the server session redirection version that
+      the client supports.
+
+
+   .. zeek:field:: svr_session_redir_version_mask :zeek:type:`count`
+
+      The server session redirection version that the client supports.
+
+
+   .. zeek:field:: redir_sessionid_field_valid :zeek:type:`bool`
+
+      Whether the *redir_session_id* field identifies a session on
+      the server to associate with the connection.
+
+
+   .. zeek:field:: redir_smartcard :zeek:type:`bool`
+
+      The client logged on with a smart card.
+
 
    The TS_UD_CS_CLUSTER data block is sent by the client to the server
    either to advertise that it can support the Server Redirection PDUs
@@ -6631,45 +7782,66 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version_major: :zeek:type:`count`
 
-      version_minor: :zeek:type:`count`
+   .. zeek:field:: version_major :zeek:type:`count`
 
-      desktop_width: :zeek:type:`count`
 
-      desktop_height: :zeek:type:`count`
+   .. zeek:field:: version_minor :zeek:type:`count`
 
-      color_depth: :zeek:type:`count`
 
-      sas_sequence: :zeek:type:`count`
+   .. zeek:field:: desktop_width :zeek:type:`count`
 
-      keyboard_layout: :zeek:type:`count`
 
-      client_build: :zeek:type:`count`
+   .. zeek:field:: desktop_height :zeek:type:`count`
 
-      client_name: :zeek:type:`string`
 
-      keyboard_type: :zeek:type:`count`
+   .. zeek:field:: color_depth :zeek:type:`count`
 
-      keyboard_sub: :zeek:type:`count`
 
-      keyboard_function_key: :zeek:type:`count`
+   .. zeek:field:: sas_sequence :zeek:type:`count`
 
-      ime_file_name: :zeek:type:`string`
 
-      post_beta2_color_depth: :zeek:type:`count` :zeek:attr:`&optional`
+   .. zeek:field:: keyboard_layout :zeek:type:`count`
 
-      client_product_id: :zeek:type:`count` :zeek:attr:`&optional`
 
-      serial_number: :zeek:type:`count` :zeek:attr:`&optional`
+   .. zeek:field:: client_build :zeek:type:`count`
 
-      high_color_depth: :zeek:type:`count` :zeek:attr:`&optional`
 
-      supported_color_depths: :zeek:type:`count` :zeek:attr:`&optional`
+   .. zeek:field:: client_name :zeek:type:`string`
 
-      ec_flags: :zeek:type:`RDP::EarlyCapabilityFlags` :zeek:attr:`&optional`
 
-      dig_product_id: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: keyboard_type :zeek:type:`count`
+
+
+   .. zeek:field:: keyboard_sub :zeek:type:`count`
+
+
+   .. zeek:field:: keyboard_function_key :zeek:type:`count`
+
+
+   .. zeek:field:: ime_file_name :zeek:type:`string`
+
+
+   .. zeek:field:: post_beta2_color_depth :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: client_product_id :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: serial_number :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: high_color_depth :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: supported_color_depths :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: ec_flags :zeek:type:`RDP::EarlyCapabilityFlags` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: dig_product_id :zeek:type:`string` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: RDP::ClientSecurityData
@@ -6677,18 +7849,23 @@ Types
 
    :Type: :zeek:type:`record`
 
-      encryption_methods: :zeek:type:`count`
-         Cryptographic encryption methods supported by the client and used in
-         conjunction with Standard RDP Security.  Known flags:
-         
-         - 0x00000001: support for 40-bit session encryption keys
-         - 0x00000002: support for 128-bit session encryption keys
-         - 0x00000008: support for 56-bit session encryption keys
-         - 0x00000010: support for FIPS compliant encryption and MAC methods
 
-      ext_encryption_methods: :zeek:type:`count`
-         Only used in French locale and designates the encryption method.  If
-         non-zero, then encryption_methods should be set to 0.
+   .. zeek:field:: encryption_methods :zeek:type:`count`
+
+      Cryptographic encryption methods supported by the client and used in
+      conjunction with Standard RDP Security.  Known flags:
+      
+      - 0x00000001: support for 40-bit session encryption keys
+      - 0x00000002: support for 128-bit session encryption keys
+      - 0x00000008: support for 56-bit session encryption keys
+      - 0x00000010: support for FIPS compliant encryption and MAC methods
+
+
+   .. zeek:field:: ext_encryption_methods :zeek:type:`count`
+
+      Only used in French locale and designates the encryption method.  If
+      non-zero, then encryption_methods should be set to 0.
+
 
    The TS_UD_CS_SEC data block contains security-related information used
    to advertise client cryptographic support.
@@ -6698,23 +7875,33 @@ Types
 
    :Type: :zeek:type:`record`
 
-      support_err_info_pdu: :zeek:type:`bool`
 
-      want_32bpp_session: :zeek:type:`bool`
+   .. zeek:field:: support_err_info_pdu :zeek:type:`bool`
 
-      support_statusinfo_pdu: :zeek:type:`bool`
 
-      strong_asymmetric_keys: :zeek:type:`bool`
+   .. zeek:field:: want_32bpp_session :zeek:type:`bool`
 
-      support_monitor_layout_pdu: :zeek:type:`bool`
 
-      support_netchar_autodetect: :zeek:type:`bool`
+   .. zeek:field:: support_statusinfo_pdu :zeek:type:`bool`
 
-      support_dynvc_gfx_protocol: :zeek:type:`bool`
 
-      support_dynamic_time_zone: :zeek:type:`bool`
+   .. zeek:field:: strong_asymmetric_keys :zeek:type:`bool`
 
-      support_heartbeat_pdu: :zeek:type:`bool`
+
+   .. zeek:field:: support_monitor_layout_pdu :zeek:type:`bool`
+
+
+   .. zeek:field:: support_netchar_autodetect :zeek:type:`bool`
+
+
+   .. zeek:field:: support_dynvc_gfx_protocol :zeek:type:`bool`
+
+
+   .. zeek:field:: support_dynamic_time_zone :zeek:type:`bool`
+
+
+   .. zeek:field:: support_heartbeat_pdu :zeek:type:`bool`
+
 
 
 .. zeek:type:: ReassemblerStats
@@ -6722,17 +7909,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      file_size: :zeek:type:`count`
-         Byte size of File reassembly tracking.
 
-      frag_size: :zeek:type:`count`
-         Byte size of Fragment reassembly tracking.
+   .. zeek:field:: file_size :zeek:type:`count`
 
-      tcp_size: :zeek:type:`count`
-         Byte size of TCP reassembly tracking.
+      Byte size of File reassembly tracking.
 
-      unknown_size: :zeek:type:`count`
-         Byte size of reassembly tracking for unknown purposes.
+
+   .. zeek:field:: frag_size :zeek:type:`count`
+
+      Byte size of Fragment reassembly tracking.
+
+
+   .. zeek:field:: tcp_size :zeek:type:`count`
+
+      Byte size of TCP reassembly tracking.
+
+
+   .. zeek:field:: unknown_size :zeek:type:`count`
+
+      Byte size of reassembly tracking for unknown purposes.
+
 
    Holds statistics for all types of reassembly.
    
@@ -6743,12 +7939,17 @@ Types
 
    :Type: :zeek:type:`record`
 
-      weirds: :zeek:type:`count`
-         Number of total weirds encountered, before any rate-limiting.
 
-      weirds_by_type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`count`
-         Number of times each individual weird is encountered, before any
-         rate-limiting is applied.
+   .. zeek:field:: weirds :zeek:type:`count`
+
+      Number of total weirds encountered, before any rate-limiting.
+
+
+   .. zeek:field:: weirds_by_type :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`count`
+
+      Number of times each individual weird is encountered, before any
+      rate-limiting is applied.
+
 
    Statistics about reporter messages and weirds.
    
@@ -6759,24 +7960,37 @@ Types
 
    :Type: :zeek:type:`record`
 
-      search_attrs: :zeek:type:`count`
-         File attributes to apply as a constraint to the search
 
-      search_count: :zeek:type:`count`
-         Max search results
+   .. zeek:field:: search_attrs :zeek:type:`count`
 
-      flags: :zeek:type:`count`
-         Misc. flags for how the server should manage the transaction
-         once results are returned
+      File attributes to apply as a constraint to the search
 
-      info_level: :zeek:type:`count`
-         How detailed the information returned in the results should be
 
-      search_storage_type: :zeek:type:`count`
-         Specify whether to search for directories or files
+   .. zeek:field:: search_count :zeek:type:`count`
 
-      file_name: :zeek:type:`string`
-         The string to search for (note: may contain wildcards)
+      Max search results
+
+
+   .. zeek:field:: flags :zeek:type:`count`
+
+      Misc. flags for how the server should manage the transaction
+      once results are returned
+
+
+   .. zeek:field:: info_level :zeek:type:`count`
+
+      How detailed the information returned in the results should be
+
+
+   .. zeek:field:: search_storage_type :zeek:type:`count`
+
+      Specify whether to search for directories or files
+
+
+   .. zeek:field:: file_name :zeek:type:`string`
+
+      The string to search for (note: may contain wildcards)
+
 
 
 .. zeek:type:: SMB1::Find_First2_Response_Args
@@ -6784,18 +7998,27 @@ Types
 
    :Type: :zeek:type:`record`
 
-      sid: :zeek:type:`count`
-         The server generated search identifier
 
-      search_count: :zeek:type:`count`
-         Number of results returned by the search
+   .. zeek:field:: sid :zeek:type:`count`
 
-      end_of_search: :zeek:type:`bool`
-         Whether or not the search can be continued using
-         the TRANS2_FIND_NEXT2 transaction
+      The server generated search identifier
 
-      ext_attr_error: :zeek:type:`string` :zeek:attr:`&optional`
-         An extended attribute name that couldn't be retrieved
+
+   .. zeek:field:: search_count :zeek:type:`count`
+
+      Number of results returned by the search
+
+
+   .. zeek:field:: end_of_search :zeek:type:`bool`
+
+      Whether or not the search can be continued using
+      the TRANS2_FIND_NEXT2 transaction
+
+
+   .. zeek:field:: ext_attr_error :zeek:type:`string` :zeek:attr:`&optional`
+
+      An extended attribute name that couldn't be retrieved
+
 
 
 .. zeek:type:: SMB1::Header
@@ -6803,29 +8026,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      command: :zeek:type:`count`
-         The command number
 
-      status: :zeek:type:`count`
-         The status code
+   .. zeek:field:: command :zeek:type:`count`
 
-      flags: :zeek:type:`count`
-         Flag set 1
+      The command number
 
-      flags2: :zeek:type:`count`
-         Flag set 2
 
-      tid: :zeek:type:`count`
-         Tree ID
+   .. zeek:field:: status :zeek:type:`count`
 
-      pid: :zeek:type:`count`
-         Process ID
+      The status code
 
-      uid: :zeek:type:`count`
-         User ID
 
-      mid: :zeek:type:`count`
-         Multiplex ID
+   .. zeek:field:: flags :zeek:type:`count`
+
+      Flag set 1
+
+
+   .. zeek:field:: flags2 :zeek:type:`count`
+
+      Flag set 2
+
+
+   .. zeek:field:: tid :zeek:type:`count`
+
+      Tree ID
+
+
+   .. zeek:field:: pid :zeek:type:`count`
+
+      Process ID
+
+
+   .. zeek:field:: uid :zeek:type:`count`
+
+      User ID
+
+
+   .. zeek:field:: mid :zeek:type:`count`
+
+      Multiplex ID
+
 
    An SMB1 header.
    
@@ -6851,61 +8091,98 @@ Types
 
    :Type: :zeek:type:`record`
 
-      raw_mode: :zeek:type:`bool`
-         The server supports SMB_COM_READ_RAW and SMB_COM_WRITE_RAW
 
-      mpx_mode: :zeek:type:`bool`
-         The server supports SMB_COM_READ_MPX and SMB_COM_WRITE_MPX
+   .. zeek:field:: raw_mode :zeek:type:`bool`
 
-      unicode: :zeek:type:`bool`
-         The server supports unicode strings
+      The server supports SMB_COM_READ_RAW and SMB_COM_WRITE_RAW
 
-      large_files: :zeek:type:`bool`
-         The server supports large files with 64 bit offsets
 
-      nt_smbs: :zeek:type:`bool`
-         The server supports the SMBs particular to the NT LM 0.12 dialect. Implies nt_find.
+   .. zeek:field:: mpx_mode :zeek:type:`bool`
 
-      rpc_remote_apis: :zeek:type:`bool`
-         The server supports remote admin API requests via DCE-RPC
+      The server supports SMB_COM_READ_MPX and SMB_COM_WRITE_MPX
 
-      status32: :zeek:type:`bool`
-         The server can respond with 32 bit status codes in Status.Status
 
-      level_2_oplocks: :zeek:type:`bool`
-         The server supports level 2 oplocks
+   .. zeek:field:: unicode :zeek:type:`bool`
 
-      lock_and_read: :zeek:type:`bool`
-         The server supports SMB_COM_LOCK_AND_READ
+      The server supports unicode strings
 
-      nt_find: :zeek:type:`bool`
-         Reserved
 
-      dfs: :zeek:type:`bool`
-         The server is DFS aware
+   .. zeek:field:: large_files :zeek:type:`bool`
 
-      infolevel_passthru: :zeek:type:`bool`
-         The server supports NT information level requests passing through
+      The server supports large files with 64 bit offsets
 
-      large_readx: :zeek:type:`bool`
-         The server supports large SMB_COM_READ_ANDX (up to 64k)
 
-      large_writex: :zeek:type:`bool`
-         The server supports large SMB_COM_WRITE_ANDX (up to 64k)
+   .. zeek:field:: nt_smbs :zeek:type:`bool`
 
-      unix: :zeek:type:`bool`
-         The server supports CIFS Extensions for UNIX
+      The server supports the SMBs particular to the NT LM 0.12 dialect. Implies nt_find.
 
-      bulk_transfer: :zeek:type:`bool`
-         The server supports SMB_BULK_READ, SMB_BULK_WRITE
-         Note: No known implementations support this
 
-      compressed_data: :zeek:type:`bool`
-         The server supports compressed data transfer. Requires bulk_transfer.
-         Note: No known implementations support this
+   .. zeek:field:: rpc_remote_apis :zeek:type:`bool`
 
-      extended_security: :zeek:type:`bool`
-         The server supports extended security exchanges
+      The server supports remote admin API requests via DCE-RPC
+
+
+   .. zeek:field:: status32 :zeek:type:`bool`
+
+      The server can respond with 32 bit status codes in Status.Status
+
+
+   .. zeek:field:: level_2_oplocks :zeek:type:`bool`
+
+      The server supports level 2 oplocks
+
+
+   .. zeek:field:: lock_and_read :zeek:type:`bool`
+
+      The server supports SMB_COM_LOCK_AND_READ
+
+
+   .. zeek:field:: nt_find :zeek:type:`bool`
+
+      Reserved
+
+
+   .. zeek:field:: dfs :zeek:type:`bool`
+
+      The server is DFS aware
+
+
+   .. zeek:field:: infolevel_passthru :zeek:type:`bool`
+
+      The server supports NT information level requests passing through
+
+
+   .. zeek:field:: large_readx :zeek:type:`bool`
+
+      The server supports large SMB_COM_READ_ANDX (up to 64k)
+
+
+   .. zeek:field:: large_writex :zeek:type:`bool`
+
+      The server supports large SMB_COM_WRITE_ANDX (up to 64k)
+
+
+   .. zeek:field:: unix :zeek:type:`bool`
+
+      The server supports CIFS Extensions for UNIX
+
+
+   .. zeek:field:: bulk_transfer :zeek:type:`bool`
+
+      The server supports SMB_BULK_READ, SMB_BULK_WRITE
+      Note: No known implementations support this
+
+
+   .. zeek:field:: compressed_data :zeek:type:`bool`
+
+      The server supports compressed data transfer. Requires bulk_transfer.
+      Note: No known implementations support this
+
+
+   .. zeek:field:: extended_security :zeek:type:`bool`
+
+      The server supports extended security exchanges
+
 
 
 .. zeek:type:: SMB1::NegotiateRawMode
@@ -6913,11 +8190,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      read_raw: :zeek:type:`bool`
-         Read raw supported
 
-      write_raw: :zeek:type:`bool`
-         Write raw supported
+   .. zeek:field:: read_raw :zeek:type:`bool`
+
+      Read raw supported
+
+
+   .. zeek:field:: write_raw :zeek:type:`bool`
+
+      Write raw supported
+
 
 
 .. zeek:type:: SMB1::NegotiateResponse
@@ -6925,16 +8207,23 @@ Types
 
    :Type: :zeek:type:`record`
 
-      core: :zeek:type:`SMB1::NegotiateResponseCore` :zeek:attr:`&optional`
-         If the server does not understand any of the dialect strings, or if
-         PC NETWORK PROGRAM 1.0 is the chosen dialect.
 
-      lanman: :zeek:type:`SMB1::NegotiateResponseLANMAN` :zeek:attr:`&optional`
-         If the chosen dialect is greater than core up to and including
-         LANMAN 2.1.
+   .. zeek:field:: core :zeek:type:`SMB1::NegotiateResponseCore` :zeek:attr:`&optional`
 
-      ntlm: :zeek:type:`SMB1::NegotiateResponseNTLM` :zeek:attr:`&optional`
-         If the chosen dialect is NT LM 0.12.
+      If the server does not understand any of the dialect strings, or if
+      PC NETWORK PROGRAM 1.0 is the chosen dialect.
+
+
+   .. zeek:field:: lanman :zeek:type:`SMB1::NegotiateResponseLANMAN` :zeek:attr:`&optional`
+
+      If the chosen dialect is greater than core up to and including
+      LANMAN 2.1.
+
+
+   .. zeek:field:: ntlm :zeek:type:`SMB1::NegotiateResponseNTLM` :zeek:attr:`&optional`
+
+      If the chosen dialect is NT LM 0.12.
+
 
 
 .. zeek:type:: SMB1::NegotiateResponseCore
@@ -6942,8 +8231,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dialect_index: :zeek:type:`count`
-         Index of selected dialect
+
+   .. zeek:field:: dialect_index :zeek:type:`count`
+
+      Index of selected dialect
+
 
 
 .. zeek:type:: SMB1::NegotiateResponseLANMAN
@@ -6951,39 +8243,62 @@ Types
 
    :Type: :zeek:type:`record`
 
-      word_count: :zeek:type:`count`
-         Count of parameter words (should be 13)
 
-      dialect_index: :zeek:type:`count`
-         Index of selected dialect
+   .. zeek:field:: word_count :zeek:type:`count`
 
-      security_mode: :zeek:type:`SMB1::NegotiateResponseSecurity`
-         Security mode
+      Count of parameter words (should be 13)
 
-      max_buffer_size: :zeek:type:`count`
-         Max transmit buffer size (>= 1024)
 
-      max_mpx_count: :zeek:type:`count`
-         Max pending multiplexed requests
+   .. zeek:field:: dialect_index :zeek:type:`count`
 
-      max_number_vcs: :zeek:type:`count`
-         Max number of virtual circuits (VCs - transport-layer connections)
-         between client and server
+      Index of selected dialect
 
-      raw_mode: :zeek:type:`SMB1::NegotiateRawMode`
-         Raw mode
 
-      session_key: :zeek:type:`count`
-         Unique token identifying this session
+   .. zeek:field:: security_mode :zeek:type:`SMB1::NegotiateResponseSecurity`
 
-      server_time: :zeek:type:`time`
-         Current date and time at server
+      Security mode
 
-      encryption_key: :zeek:type:`string`
-         The challenge encryption key
 
-      primary_domain: :zeek:type:`string`
-         The server's primary domain
+   .. zeek:field:: max_buffer_size :zeek:type:`count`
+
+      Max transmit buffer size (>= 1024)
+
+
+   .. zeek:field:: max_mpx_count :zeek:type:`count`
+
+      Max pending multiplexed requests
+
+
+   .. zeek:field:: max_number_vcs :zeek:type:`count`
+
+      Max number of virtual circuits (VCs - transport-layer connections)
+      between client and server
+
+
+   .. zeek:field:: raw_mode :zeek:type:`SMB1::NegotiateRawMode`
+
+      Raw mode
+
+
+   .. zeek:field:: session_key :zeek:type:`count`
+
+      Unique token identifying this session
+
+
+   .. zeek:field:: server_time :zeek:type:`time`
+
+      Current date and time at server
+
+
+   .. zeek:field:: encryption_key :zeek:type:`string`
+
+      The challenge encryption key
+
+
+   .. zeek:field:: primary_domain :zeek:type:`string`
+
+      The server's primary domain
+
 
 
 .. zeek:type:: SMB1::NegotiateResponseNTLM
@@ -6991,52 +8306,81 @@ Types
 
    :Type: :zeek:type:`record`
 
-      word_count: :zeek:type:`count`
-         Count of parameter words (should be 17)
 
-      dialect_index: :zeek:type:`count`
-         Index of selected dialect
+   .. zeek:field:: word_count :zeek:type:`count`
 
-      security_mode: :zeek:type:`SMB1::NegotiateResponseSecurity`
-         Security mode
+      Count of parameter words (should be 17)
 
-      max_buffer_size: :zeek:type:`count`
-         Max transmit buffer size
 
-      max_mpx_count: :zeek:type:`count`
-         Max pending multiplexed requests
+   .. zeek:field:: dialect_index :zeek:type:`count`
 
-      max_number_vcs: :zeek:type:`count`
-         Max number of virtual circuits (VCs - transport-layer connections)
-         between client and server
+      Index of selected dialect
 
-      max_raw_size: :zeek:type:`count`
-         Max raw buffer size
 
-      session_key: :zeek:type:`count`
-         Unique token identifying this session
+   .. zeek:field:: security_mode :zeek:type:`SMB1::NegotiateResponseSecurity`
 
-      capabilities: :zeek:type:`SMB1::NegotiateCapabilities`
-         Server capabilities
+      Security mode
 
-      server_time: :zeek:type:`time`
-         Current date and time at server
 
-      encryption_key: :zeek:type:`string` :zeek:attr:`&optional`
-         The challenge encryption key.
-         Present only for non-extended security (i.e. capabilities$extended_security = F)
+   .. zeek:field:: max_buffer_size :zeek:type:`count`
 
-      domain_name: :zeek:type:`string` :zeek:attr:`&optional`
-         The name of the domain.
-         Present only for non-extended security (i.e. capabilities$extended_security = F)
+      Max transmit buffer size
 
-      guid: :zeek:type:`string` :zeek:attr:`&optional`
-         A globally unique identifier assigned to the server.
-         Present only for extended security (i.e. capabilities$extended_security = T)
 
-      security_blob: :zeek:type:`string`
-         Opaque security blob associated with the security package if capabilities$extended_security = T
-         Otherwise, the challenge for challenge/response authentication.
+   .. zeek:field:: max_mpx_count :zeek:type:`count`
+
+      Max pending multiplexed requests
+
+
+   .. zeek:field:: max_number_vcs :zeek:type:`count`
+
+      Max number of virtual circuits (VCs - transport-layer connections)
+      between client and server
+
+
+   .. zeek:field:: max_raw_size :zeek:type:`count`
+
+      Max raw buffer size
+
+
+   .. zeek:field:: session_key :zeek:type:`count`
+
+      Unique token identifying this session
+
+
+   .. zeek:field:: capabilities :zeek:type:`SMB1::NegotiateCapabilities`
+
+      Server capabilities
+
+
+   .. zeek:field:: server_time :zeek:type:`time`
+
+      Current date and time at server
+
+
+   .. zeek:field:: encryption_key :zeek:type:`string` :zeek:attr:`&optional`
+
+      The challenge encryption key.
+      Present only for non-extended security (i.e. capabilities$extended_security = F)
+
+
+   .. zeek:field:: domain_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      The name of the domain.
+      Present only for non-extended security (i.e. capabilities$extended_security = F)
+
+
+   .. zeek:field:: guid :zeek:type:`string` :zeek:attr:`&optional`
+
+      A globally unique identifier assigned to the server.
+      Present only for extended security (i.e. capabilities$extended_security = T)
+
+
+   .. zeek:field:: security_blob :zeek:type:`string`
+
+      Opaque security blob associated with the security package if capabilities$extended_security = T
+      Otherwise, the challenge for challenge/response authentication.
+
 
 
 .. zeek:type:: SMB1::NegotiateResponseSecurity
@@ -7044,23 +8388,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      user_level: :zeek:type:`bool`
-         This indicates whether the server, as a whole, is operating under
-         Share Level or User Level security.
 
-      challenge_response: :zeek:type:`bool`
-         This indicates whether or not the server supports Challenge/Response
-         authentication. If the bit is false, then plaintext passwords must
-         be used.
+   .. zeek:field:: user_level :zeek:type:`bool`
 
-      signatures_enabled: :zeek:type:`bool` :zeek:attr:`&optional`
-         This indicates if the server is capable of performing MAC message
-         signing. Note: Requires NT LM 0.12 or later.
+      This indicates whether the server, as a whole, is operating under
+      Share Level or User Level security.
 
-      signatures_required: :zeek:type:`bool` :zeek:attr:`&optional`
-         This indicates if the server is requiring the use of a MAC in each
-         packet. If false, message signing is optional. Note: Requires NT LM 0.12
-         or later.
+
+   .. zeek:field:: challenge_response :zeek:type:`bool`
+
+      This indicates whether or not the server supports Challenge/Response
+      authentication. If the bit is false, then plaintext passwords must
+      be used.
+
+
+   .. zeek:field:: signatures_enabled :zeek:type:`bool` :zeek:attr:`&optional`
+
+      This indicates if the server is capable of performing MAC message
+      signing. Note: Requires NT LM 0.12 or later.
+
+
+   .. zeek:field:: signatures_required :zeek:type:`bool` :zeek:attr:`&optional`
+
+      This indicates if the server is requiring the use of a MAC in each
+      packet. If false, message signing is optional. Note: Requires NT LM 0.12
+      or later.
+
 
 
 .. zeek:type:: SMB1::SessionSetupAndXCapabilities
@@ -7068,24 +8421,37 @@ Types
 
    :Type: :zeek:type:`record`
 
-      unicode: :zeek:type:`bool`
-         The client can use unicode strings
 
-      large_files: :zeek:type:`bool`
-         The client can deal with files having 64 bit offsets
+   .. zeek:field:: unicode :zeek:type:`bool`
 
-      nt_smbs: :zeek:type:`bool`
-         The client understands the SMBs introduced with NT LM 0.12
-         Implies nt_find
+      The client can use unicode strings
 
-      status32: :zeek:type:`bool`
-         The client can receive 32 bit errors encoded in Status.Status
 
-      level_2_oplocks: :zeek:type:`bool`
-         The client understands Level II oplocks
+   .. zeek:field:: large_files :zeek:type:`bool`
 
-      nt_find: :zeek:type:`bool`
-         Reserved. Implied by nt_smbs.
+      The client can deal with files having 64 bit offsets
+
+
+   .. zeek:field:: nt_smbs :zeek:type:`bool`
+
+      The client understands the SMBs introduced with NT LM 0.12
+      Implies nt_find
+
+
+   .. zeek:field:: status32 :zeek:type:`bool`
+
+      The client can receive 32 bit errors encoded in Status.Status
+
+
+   .. zeek:field:: level_2_oplocks :zeek:type:`bool`
+
+      The client understands Level II oplocks
+
+
+   .. zeek:field:: nt_find :zeek:type:`bool`
+
+      Reserved. Implied by nt_smbs.
+
 
 
 .. zeek:type:: SMB1::SessionSetupAndXRequest
@@ -7093,58 +8459,87 @@ Types
 
    :Type: :zeek:type:`record`
 
-      word_count: :zeek:type:`count`
-         Count of parameter words
-            - 10 for pre NT LM 0.12
-            - 12 for NT LM 0.12 with extended security
-            - 13 for NT LM 0.12 without extended security
 
-      max_buffer_size: :zeek:type:`count`
-         Client maximum buffer size
+   .. zeek:field:: word_count :zeek:type:`count`
 
-      max_mpx_count: :zeek:type:`count`
-         Actual maximum multiplexed pending request
+      Count of parameter words
+         - 10 for pre NT LM 0.12
+         - 12 for NT LM 0.12 with extended security
+         - 13 for NT LM 0.12 without extended security
 
-      vc_number: :zeek:type:`count`
-         Virtual circuit number. First VC == 0
 
-      session_key: :zeek:type:`count`
-         Session key (valid iff vc_number > 0)
+   .. zeek:field:: max_buffer_size :zeek:type:`count`
 
-      native_os: :zeek:type:`string`
-         Client's native operating system
+      Client maximum buffer size
 
-      native_lanman: :zeek:type:`string`
-         Client's native LAN Manager type
 
-      account_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Account name
-         Note: not set for NT LM 0.12 with extended security
+   .. zeek:field:: max_mpx_count :zeek:type:`count`
 
-      account_password: :zeek:type:`string` :zeek:attr:`&optional`
-         If challenge/response auth is not being used, this is the password.
-         Otherwise, it's the response to the server's challenge.
-         Note: Only set for pre NT LM 0.12
+      Actual maximum multiplexed pending request
 
-      primary_domain: :zeek:type:`string` :zeek:attr:`&optional`
-         Client's primary domain, if known
-         Note: not set for NT LM 0.12 with extended security
 
-      case_insensitive_password: :zeek:type:`string` :zeek:attr:`&optional`
-         Case insensitive password
-         Note: only set for NT LM 0.12 without extended security
+   .. zeek:field:: vc_number :zeek:type:`count`
 
-      case_sensitive_password: :zeek:type:`string` :zeek:attr:`&optional`
-         Case sensitive password
-         Note: only set for NT LM 0.12 without extended security
+      Virtual circuit number. First VC == 0
 
-      security_blob: :zeek:type:`string` :zeek:attr:`&optional`
-         Security blob
-         Note: only set for NT LM 0.12 with extended security
 
-      capabilities: :zeek:type:`SMB1::SessionSetupAndXCapabilities` :zeek:attr:`&optional`
-         Client capabilities
-         Note: only set for NT LM 0.12
+   .. zeek:field:: session_key :zeek:type:`count`
+
+      Session key (valid iff vc_number > 0)
+
+
+   .. zeek:field:: native_os :zeek:type:`string`
+
+      Client's native operating system
+
+
+   .. zeek:field:: native_lanman :zeek:type:`string`
+
+      Client's native LAN Manager type
+
+
+   .. zeek:field:: account_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Account name
+      Note: not set for NT LM 0.12 with extended security
+
+
+   .. zeek:field:: account_password :zeek:type:`string` :zeek:attr:`&optional`
+
+      If challenge/response auth is not being used, this is the password.
+      Otherwise, it's the response to the server's challenge.
+      Note: Only set for pre NT LM 0.12
+
+
+   .. zeek:field:: primary_domain :zeek:type:`string` :zeek:attr:`&optional`
+
+      Client's primary domain, if known
+      Note: not set for NT LM 0.12 with extended security
+
+
+   .. zeek:field:: case_insensitive_password :zeek:type:`string` :zeek:attr:`&optional`
+
+      Case insensitive password
+      Note: only set for NT LM 0.12 without extended security
+
+
+   .. zeek:field:: case_sensitive_password :zeek:type:`string` :zeek:attr:`&optional`
+
+      Case sensitive password
+      Note: only set for NT LM 0.12 without extended security
+
+
+   .. zeek:field:: security_blob :zeek:type:`string` :zeek:attr:`&optional`
+
+      Security blob
+      Note: only set for NT LM 0.12 with extended security
+
+
+   .. zeek:field:: capabilities :zeek:type:`SMB1::SessionSetupAndXCapabilities` :zeek:attr:`&optional`
+
+      Client capabilities
+      Note: only set for NT LM 0.12
+
 
 
 .. zeek:type:: SMB1::SessionSetupAndXResponse
@@ -7152,23 +8547,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      word_count: :zeek:type:`count`
-         Count of parameter words (should be 3 for pre NT LM 0.12 and 4 for NT LM 0.12)
 
-      is_guest: :zeek:type:`bool` :zeek:attr:`&optional`
-         Were we logged in as a guest user?
+   .. zeek:field:: word_count :zeek:type:`count`
 
-      native_os: :zeek:type:`string` :zeek:attr:`&optional`
-         Server's native operating system
+      Count of parameter words (should be 3 for pre NT LM 0.12 and 4 for NT LM 0.12)
 
-      native_lanman: :zeek:type:`string` :zeek:attr:`&optional`
-         Server's native LAN Manager type
 
-      primary_domain: :zeek:type:`string` :zeek:attr:`&optional`
-         Server's primary domain
+   .. zeek:field:: is_guest :zeek:type:`bool` :zeek:attr:`&optional`
 
-      security_blob: :zeek:type:`string` :zeek:attr:`&optional`
-         Security blob if NTLM
+      Were we logged in as a guest user?
+
+
+   .. zeek:field:: native_os :zeek:type:`string` :zeek:attr:`&optional`
+
+      Server's native operating system
+
+
+   .. zeek:field:: native_lanman :zeek:type:`string` :zeek:attr:`&optional`
+
+      Server's native LAN Manager type
+
+
+   .. zeek:field:: primary_domain :zeek:type:`string` :zeek:attr:`&optional`
+
+      Server's primary domain
+
+
+   .. zeek:field:: security_blob :zeek:type:`string` :zeek:attr:`&optional`
+
+      Security blob if NTLM
+
 
 
 .. zeek:type:: SMB1::Trans2_Args
@@ -7176,41 +8584,66 @@ Types
 
    :Type: :zeek:type:`record`
 
-      total_param_count: :zeek:type:`count`
-         Total parameter count
 
-      total_data_count: :zeek:type:`count`
-         Total data count
+   .. zeek:field:: total_param_count :zeek:type:`count`
 
-      max_param_count: :zeek:type:`count`
-         Max parameter count
+      Total parameter count
 
-      max_data_count: :zeek:type:`count`
-         Max data count
 
-      max_setup_count: :zeek:type:`count`
-         Max setup count
+   .. zeek:field:: total_data_count :zeek:type:`count`
 
-      flags: :zeek:type:`count`
-         Flags
+      Total data count
 
-      trans_timeout: :zeek:type:`count`
-         Timeout
 
-      param_count: :zeek:type:`count`
-         Parameter count
+   .. zeek:field:: max_param_count :zeek:type:`count`
 
-      param_offset: :zeek:type:`count`
-         Parameter offset
+      Max parameter count
 
-      data_count: :zeek:type:`count`
-         Data count
 
-      data_offset: :zeek:type:`count`
-         Data offset
+   .. zeek:field:: max_data_count :zeek:type:`count`
 
-      setup_count: :zeek:type:`count`
-         Setup count
+      Max data count
+
+
+   .. zeek:field:: max_setup_count :zeek:type:`count`
+
+      Max setup count
+
+
+   .. zeek:field:: flags :zeek:type:`count`
+
+      Flags
+
+
+   .. zeek:field:: trans_timeout :zeek:type:`count`
+
+      Timeout
+
+
+   .. zeek:field:: param_count :zeek:type:`count`
+
+      Parameter count
+
+
+   .. zeek:field:: param_offset :zeek:type:`count`
+
+      Parameter offset
+
+
+   .. zeek:field:: data_count :zeek:type:`count`
+
+      Data count
+
+
+   .. zeek:field:: data_offset :zeek:type:`count`
+
+      Data offset
+
+
+   .. zeek:field:: setup_count :zeek:type:`count`
+
+      Setup count
+
 
 
 .. zeek:type:: SMB1::Trans2_Sec_Args
@@ -7218,32 +8651,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      total_param_count: :zeek:type:`count`
-         Total parameter count
 
-      total_data_count: :zeek:type:`count`
-         Total data count
+   .. zeek:field:: total_param_count :zeek:type:`count`
 
-      param_count: :zeek:type:`count`
-         Parameter count
+      Total parameter count
 
-      param_offset: :zeek:type:`count`
-         Parameter offset
 
-      param_displacement: :zeek:type:`count`
-         Parameter displacement
+   .. zeek:field:: total_data_count :zeek:type:`count`
 
-      data_count: :zeek:type:`count`
-         Data count
+      Total data count
 
-      data_offset: :zeek:type:`count`
-         Data offset
 
-      data_displacement: :zeek:type:`count`
-         Data displacement
+   .. zeek:field:: param_count :zeek:type:`count`
 
-      FID: :zeek:type:`count`
-         File ID
+      Parameter count
+
+
+   .. zeek:field:: param_offset :zeek:type:`count`
+
+      Parameter offset
+
+
+   .. zeek:field:: param_displacement :zeek:type:`count`
+
+      Parameter displacement
+
+
+   .. zeek:field:: data_count :zeek:type:`count`
+
+      Data count
+
+
+   .. zeek:field:: data_offset :zeek:type:`count`
+
+      Data offset
+
+
+   .. zeek:field:: data_displacement :zeek:type:`count`
+
+      Data displacement
+
+
+   .. zeek:field:: FID :zeek:type:`count`
+
+      File ID
+
 
 
 .. zeek:type:: SMB1::Trans_Sec_Args
@@ -7251,29 +8703,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      total_param_count: :zeek:type:`count`
-         Total parameter count
 
-      total_data_count: :zeek:type:`count`
-         Total data count
+   .. zeek:field:: total_param_count :zeek:type:`count`
 
-      param_count: :zeek:type:`count`
-         Parameter count
+      Total parameter count
 
-      param_offset: :zeek:type:`count`
-         Parameter offset
 
-      param_displacement: :zeek:type:`count`
-         Parameter displacement
+   .. zeek:field:: total_data_count :zeek:type:`count`
 
-      data_count: :zeek:type:`count`
-         Data count
+      Total data count
 
-      data_offset: :zeek:type:`count`
-         Data offset
 
-      data_displacement: :zeek:type:`count`
-         Data displacement
+   .. zeek:field:: param_count :zeek:type:`count`
+
+      Parameter count
+
+
+   .. zeek:field:: param_offset :zeek:type:`count`
+
+      Parameter offset
+
+
+   .. zeek:field:: param_displacement :zeek:type:`count`
+
+      Parameter displacement
+
+
+   .. zeek:field:: data_count :zeek:type:`count`
+
+      Data count
+
+
+   .. zeek:field:: data_offset :zeek:type:`count`
+
+      Data offset
+
+
+   .. zeek:field:: data_displacement :zeek:type:`count`
+
+      Data displacement
+
 
 
 .. zeek:type:: SMB2::CloseResponse
@@ -7281,17 +8750,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      alloc_size: :zeek:type:`count`
-         The size, in bytes of the data that is allocated to the file.
 
-      eof: :zeek:type:`count`
-         The size, in bytes, of the file.
+   .. zeek:field:: alloc_size :zeek:type:`count`
 
-      times: :zeek:type:`SMB::MACTimes`
-         The creation, last access, last write, and change times.
+      The size, in bytes of the data that is allocated to the file.
 
-      attrs: :zeek:type:`SMB2::FileAttrs`
-         The attributes of the file.
+
+   .. zeek:field:: eof :zeek:type:`count`
+
+      The size, in bytes, of the file.
+
+
+   .. zeek:field:: times :zeek:type:`SMB::MACTimes`
+
+      The creation, last access, last write, and change times.
+
+
+   .. zeek:field:: attrs :zeek:type:`SMB2::FileAttrs`
+
+      The attributes of the file.
+
 
    The response to an SMB2 *close* request, which is used by the client to close an instance
    of a file that was opened previously.
@@ -7305,11 +8783,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      alg_count: :zeek:type:`count`
-         The number of algorithms.
 
-      algs: :zeek:type:`vector` of :zeek:type:`count`
-         An array of compression algorithms.
+   .. zeek:field:: alg_count :zeek:type:`count`
+
+      The number of algorithms.
+
+
+   .. zeek:field:: algs :zeek:type:`vector` of :zeek:type:`count`
+
+      An array of compression algorithms.
+
 
    Compression information as defined in SMB v. 3.1.1
    
@@ -7321,14 +8804,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      filename: :zeek:type:`string`
-         Name of the file
 
-      disposition: :zeek:type:`count`
-         Defines the action the server MUST take if the file that is specified already exists.
+   .. zeek:field:: filename :zeek:type:`string`
 
-      create_options: :zeek:type:`count`
-         Specifies the options to be applied when creating or opening the file.
+      Name of the file
+
+
+   .. zeek:field:: disposition :zeek:type:`count`
+
+      Defines the action the server MUST take if the file that is specified already exists.
+
+
+   .. zeek:field:: create_options :zeek:type:`count`
+
+      Specifies the options to be applied when creating or opening the file.
+
 
    The request sent by the client to request either creation of or access to a file.
    
@@ -7341,20 +8831,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      file_id: :zeek:type:`SMB2::GUID`
-         The SMB2 GUID for the file.
 
-      size: :zeek:type:`count`
-         Size of the file.
+   .. zeek:field:: file_id :zeek:type:`SMB2::GUID`
 
-      times: :zeek:type:`SMB::MACTimes`
-         Timestamps associated with the file in question.
+      The SMB2 GUID for the file.
 
-      attrs: :zeek:type:`SMB2::FileAttrs`
-         File attributes.
 
-      create_action: :zeek:type:`count`
-         The action taken in establishing the open.
+   .. zeek:field:: size :zeek:type:`count`
+
+      Size of the file.
+
+
+   .. zeek:field:: times :zeek:type:`SMB::MACTimes`
+
+      Timestamps associated with the file in question.
+
+
+   .. zeek:field:: attrs :zeek:type:`SMB2::FileAttrs`
+
+      File attributes.
+
+
+   .. zeek:field:: create_action :zeek:type:`count`
+
+      The action taken in establishing the open.
+
 
    The response to an SMB2 *create_request* request, which is sent by the client to request
    either creation of or access to a file.
@@ -7368,11 +8869,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cipher_count: :zeek:type:`count`
-         The number of ciphers.
 
-      ciphers: :zeek:type:`vector` of :zeek:type:`count`
-         An array of ciphers.
+   .. zeek:field:: cipher_count :zeek:type:`count`
+
+      The number of ciphers.
+
+
+   .. zeek:field:: ciphers :zeek:type:`vector` of :zeek:type:`count`
+
+      An array of ciphers.
+
 
    Encryption information as defined in SMB v. 3.1.1
    
@@ -7384,62 +8890,93 @@ Types
 
    :Type: :zeek:type:`record`
 
-      read_only: :zeek:type:`bool`
-         The file is read only. Applications can read the file but cannot
-         write to it or delete it.
 
-      hidden: :zeek:type:`bool`
-         The file is hidden. It is not to be included in an ordinary directory listing.
+   .. zeek:field:: read_only :zeek:type:`bool`
 
-      system: :zeek:type:`bool`
-         The file is part of or is used exclusively by the operating system.
+      The file is read only. Applications can read the file but cannot
+      write to it or delete it.
 
-      directory: :zeek:type:`bool`
-         The file is a directory.
 
-      archive: :zeek:type:`bool`
-         The file has not been archived since it was last modified. Applications use
-         this attribute to mark files for backup or removal.
+   .. zeek:field:: hidden :zeek:type:`bool`
 
-      normal: :zeek:type:`bool`
-         The file has no other attributes set. This attribute is valid only if used alone.
+      The file is hidden. It is not to be included in an ordinary directory listing.
 
-      temporary: :zeek:type:`bool`
-         The file is temporary. This is a hint to the cache manager that it does not need
-         to flush the file to backing storage.
 
-      sparse_file: :zeek:type:`bool`
-         A file that is a sparse file.
+   .. zeek:field:: system :zeek:type:`bool`
 
-      reparse_point: :zeek:type:`bool`
-         A file or directory that has an associated reparse point.
+      The file is part of or is used exclusively by the operating system.
 
-      compressed: :zeek:type:`bool`
-         The file or directory is compressed. For a file, this means that all of the data
-         in the file is compressed. For a directory, this means that compression is the
-         default for newly created files and subdirectories.
 
-      offline: :zeek:type:`bool`
-         The data in this file is not available immediately. This attribute indicates that
-         the file data is physically moved to offline storage. This attribute is used by
-         Remote Storage, which is hierarchical storage management software.
+   .. zeek:field:: directory :zeek:type:`bool`
 
-      not_content_indexed: :zeek:type:`bool`
-         A file or directory that is not indexed by the content indexing service.
+      The file is a directory.
 
-      encrypted: :zeek:type:`bool`
-         A file or directory that is encrypted. For a file, all data streams in the file
-         are encrypted. For a directory, encryption is the default for newly created files
-         and subdirectories.
 
-      integrity_stream: :zeek:type:`bool`
-         A file or directory that is configured with integrity support. For a file, all
-         data streams in the file have integrity support. For a directory, integrity support
-         is the default for newly created files and subdirectories, unless the caller
-         specifies otherwise.
+   .. zeek:field:: archive :zeek:type:`bool`
 
-      no_scrub_data: :zeek:type:`bool`
-         A file or directory that is configured to be excluded from the data integrity scan.
+      The file has not been archived since it was last modified. Applications use
+      this attribute to mark files for backup or removal.
+
+
+   .. zeek:field:: normal :zeek:type:`bool`
+
+      The file has no other attributes set. This attribute is valid only if used alone.
+
+
+   .. zeek:field:: temporary :zeek:type:`bool`
+
+      The file is temporary. This is a hint to the cache manager that it does not need
+      to flush the file to backing storage.
+
+
+   .. zeek:field:: sparse_file :zeek:type:`bool`
+
+      A file that is a sparse file.
+
+
+   .. zeek:field:: reparse_point :zeek:type:`bool`
+
+      A file or directory that has an associated reparse point.
+
+
+   .. zeek:field:: compressed :zeek:type:`bool`
+
+      The file or directory is compressed. For a file, this means that all of the data
+      in the file is compressed. For a directory, this means that compression is the
+      default for newly created files and subdirectories.
+
+
+   .. zeek:field:: offline :zeek:type:`bool`
+
+      The data in this file is not available immediately. This attribute indicates that
+      the file data is physically moved to offline storage. This attribute is used by
+      Remote Storage, which is hierarchical storage management software.
+
+
+   .. zeek:field:: not_content_indexed :zeek:type:`bool`
+
+      A file or directory that is not indexed by the content indexing service.
+
+
+   .. zeek:field:: encrypted :zeek:type:`bool`
+
+      A file or directory that is encrypted. For a file, all data streams in the file
+      are encrypted. For a directory, encryption is the default for newly created files
+      and subdirectories.
+
+
+   .. zeek:field:: integrity_stream :zeek:type:`bool`
+
+      A file or directory that is configured with integrity support. For a file, all
+      data streams in the file have integrity support. For a directory, integrity support
+      is the default for newly created files and subdirectories, unless the caller
+      specifies otherwise.
+
+
+   .. zeek:field:: no_scrub_data :zeek:type:`bool`
+
+      A file or directory that is configured to be excluded from the data integrity scan.
+
 
    A series of boolean flags describing basic and extended file attributes for SMB2.
    
@@ -7452,11 +8989,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ea_name: :zeek:type:`string`
-         Specifies the extended attribute name
 
-      ea_value: :zeek:type:`string`
-         Contains the extended attribute value
+   .. zeek:field:: ea_name :zeek:type:`string`
+
+      Specifies the extended attribute name
+
+
+   .. zeek:field:: ea_value :zeek:type:`string`
+
+      Contains the extended attribute value
+
 
    This information class is used to query or set extended attribute (EA) information for a file.
    
@@ -7478,23 +9020,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      free_space_start_filtering: :zeek:type:`int`
-         minimum amount of free disk space required to begin document filtering
 
-      free_space_threshold: :zeek:type:`int`
-         minimum amount of free disk space required to continue filtering documents and merging word lists
+   .. zeek:field:: free_space_start_filtering :zeek:type:`int`
 
-      free_space_stop_filtering: :zeek:type:`int`
-         minimum amount of free disk space required to continue content filtering
+      minimum amount of free disk space required to begin document filtering
 
-      delete_quota_threshold: :zeek:type:`count`
-         default per-user disk quota
 
-      default_quota_limit: :zeek:type:`count`
-         default per-user disk limit
+   .. zeek:field:: free_space_threshold :zeek:type:`int`
 
-      fs_control_flags: :zeek:type:`count`
-         file systems control flags passed as unsigned int
+      minimum amount of free disk space required to continue filtering documents and merging word lists
+
+
+   .. zeek:field:: free_space_stop_filtering :zeek:type:`int`
+
+      minimum amount of free disk space required to continue content filtering
+
+
+   .. zeek:field:: delete_quota_threshold :zeek:type:`count`
+
+      default per-user disk quota
+
+
+   .. zeek:field:: default_quota_limit :zeek:type:`count`
+
+      default per-user disk limit
+
+
+   .. zeek:field:: fs_control_flags :zeek:type:`count`
+
+      file systems control flags passed as unsigned int
+
 
    A series of integers flags used to set quota and content indexing control information for a file system volume in SMB2.
    
@@ -7506,11 +9061,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      persistent: :zeek:type:`count`
-         A file handle that remains persistent when reconnected after a disconnect
 
-      volatile: :zeek:type:`count`
-         A file handle that can be changed when reconnected after a disconnect
+   .. zeek:field:: persistent :zeek:type:`count`
+
+      A file handle that remains persistent when reconnected after a disconnect
+
+
+   .. zeek:field:: volatile :zeek:type:`count`
+
+      A file handle that can be changed when reconnected after a disconnect
+
 
    An SMB2 globally unique identifier which identifies a file.
    
@@ -7524,39 +9084,60 @@ Types
 
    :Type: :zeek:type:`record`
 
-      credit_charge: :zeek:type:`count`
-         The number of credits that this request consumes
 
-      status: :zeek:type:`count`
-         In a request, this is an indication to the server about the client's channel
-         change. In a response, this is the status field
+   .. zeek:field:: credit_charge :zeek:type:`count`
 
-      command: :zeek:type:`count`
-         The command code of the packet
+      The number of credits that this request consumes
 
-      credits: :zeek:type:`count`
-         The number of credits the client is requesting, or the number of credits
-         granted to the client in a response.
 
-      flags: :zeek:type:`count`
-         A flags field, which indicates how to process the operation (e.g. asynchronously)
+   .. zeek:field:: status :zeek:type:`count`
 
-      message_id: :zeek:type:`count`
-         A value that uniquely identifies the message request/response pair across all
-         messages that are sent on the same transport protocol connection
+      In a request, this is an indication to the server about the client's channel
+      change. In a response, this is the status field
 
-      process_id: :zeek:type:`count`
-         A value that uniquely identifies the process that generated the event.
 
-      tree_id: :zeek:type:`count`
-         A value that uniquely identifies the tree connect for the command.
+   .. zeek:field:: command :zeek:type:`count`
 
-      session_id: :zeek:type:`count`
-         A value that uniquely identifies the established session for the command.
+      The command code of the packet
 
-      signature: :zeek:type:`string`
-         The 16-byte signature of the message, if SMB2_FLAGS_SIGNED is set in the ``flags``
-         field.
+
+   .. zeek:field:: credits :zeek:type:`count`
+
+      The number of credits the client is requesting, or the number of credits
+      granted to the client in a response.
+
+
+   .. zeek:field:: flags :zeek:type:`count`
+
+      A flags field, which indicates how to process the operation (e.g. asynchronously)
+
+
+   .. zeek:field:: message_id :zeek:type:`count`
+
+      A value that uniquely identifies the message request/response pair across all
+      messages that are sent on the same transport protocol connection
+
+
+   .. zeek:field:: process_id :zeek:type:`count`
+
+      A value that uniquely identifies the process that generated the event.
+
+
+   .. zeek:field:: tree_id :zeek:type:`count`
+
+      A value that uniquely identifies the tree connect for the command.
+
+
+   .. zeek:field:: session_id :zeek:type:`count`
+
+      A value that uniquely identifies the established session for the command.
+
+
+   .. zeek:field:: signature :zeek:type:`string`
+
+      The 16-byte signature of the message, if SMB2_FLAGS_SIGNED is set in the ``flags``
+      field.
+
 
    An SMB2 header.
    
@@ -7575,23 +9156,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      context_type: :zeek:type:`count`
-         Specifies the type of context (preauth or encryption).
 
-      data_length: :zeek:type:`count`
-         The length in byte of the data field.
+   .. zeek:field:: context_type :zeek:type:`count`
 
-      preauth_info: :zeek:type:`SMB2::PreAuthIntegrityCapabilities` :zeek:attr:`&optional`
-         The preauthentication information.
+      Specifies the type of context (preauth or encryption).
 
-      encryption_info: :zeek:type:`SMB2::EncryptionCapabilities` :zeek:attr:`&optional`
-         The encryption information.
 
-      compression_info: :zeek:type:`SMB2::CompressionCapabilities` :zeek:attr:`&optional`
-         The compression information.
+   .. zeek:field:: data_length :zeek:type:`count`
 
-      netname: :zeek:type:`string` :zeek:attr:`&optional`
-         Indicates the server name the client must connect to.
+      The length in byte of the data field.
+
+
+   .. zeek:field:: preauth_info :zeek:type:`SMB2::PreAuthIntegrityCapabilities` :zeek:attr:`&optional`
+
+      The preauthentication information.
+
+
+   .. zeek:field:: encryption_info :zeek:type:`SMB2::EncryptionCapabilities` :zeek:attr:`&optional`
+
+      The encryption information.
+
+
+   .. zeek:field:: compression_info :zeek:type:`SMB2::CompressionCapabilities` :zeek:attr:`&optional`
+
+      The compression information.
+
+
+   .. zeek:field:: netname :zeek:type:`string` :zeek:attr:`&optional`
+
+      Indicates the server name the client must connect to.
+
 
    The context type information as defined in SMB v. 3.1.1
    
@@ -7609,27 +9203,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dialect_revision: :zeek:type:`count`
-         The preferred common SMB2 Protocol dialect number from the array that was sent in the SMB2
-         NEGOTIATE Request.
 
-      security_mode: :zeek:type:`count`
-         The security mode field specifies whether SMB signing is enabled, required at the server, or both.
+   .. zeek:field:: dialect_revision :zeek:type:`count`
 
-      server_guid: :zeek:type:`SMB2::GUID`
-         A globally unique identifier that is generate by the server to uniquely identify the server.
+      The preferred common SMB2 Protocol dialect number from the array that was sent in the SMB2
+      NEGOTIATE Request.
 
-      system_time: :zeek:type:`time`
-         The system time of the SMB2 server when the SMB2 NEGOTIATE Request was processed.
 
-      server_start_time: :zeek:type:`time`
-         The SMB2 server start time.
+   .. zeek:field:: security_mode :zeek:type:`count`
 
-      negotiate_context_count: :zeek:type:`count`
-         The number of negotiate context values in SMB v. 3.1.1, otherwise reserved to 0.
+      The security mode field specifies whether SMB signing is enabled, required at the server, or both.
 
-      negotiate_context_values: :zeek:type:`SMB2::NegotiateContextValues`
-         An array of context values in SMB v. 3.1.1.
+
+   .. zeek:field:: server_guid :zeek:type:`SMB2::GUID`
+
+      A globally unique identifier that is generate by the server to uniquely identify the server.
+
+
+   .. zeek:field:: system_time :zeek:type:`time`
+
+      The system time of the SMB2 server when the SMB2 NEGOTIATE Request was processed.
+
+
+   .. zeek:field:: server_start_time :zeek:type:`time`
+
+      The SMB2 server start time.
+
+
+   .. zeek:field:: negotiate_context_count :zeek:type:`count`
+
+      The number of negotiate context values in SMB v. 3.1.1, otherwise reserved to 0.
+
+
+   .. zeek:field:: negotiate_context_values :zeek:type:`SMB2::NegotiateContextValues`
+
+      An array of context values in SMB v. 3.1.1.
+
 
    The response to an SMB2 *negotiate* request, which is used by the client to notify the server
    what dialects of the SMB2 protocol the client understands.
@@ -7643,17 +9252,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      hash_alg_count: :zeek:type:`count`
-         The number of hash algorithms.
 
-      salt_length: :zeek:type:`count`
-         The salt length.
+   .. zeek:field:: hash_alg_count :zeek:type:`count`
 
-      hash_alg: :zeek:type:`vector` of :zeek:type:`count`
-         An array of hash algorithms (counts).
+      The number of hash algorithms.
 
-      salt: :zeek:type:`string`
-         The salt.
+
+   .. zeek:field:: salt_length :zeek:type:`count`
+
+      The salt length.
+
+
+   .. zeek:field:: hash_alg :zeek:type:`vector` of :zeek:type:`count`
+
+      An array of hash algorithms (counts).
+
+
+   .. zeek:field:: salt :zeek:type:`string`
+
+      The salt.
+
 
    Preauthentication information as defined in SMB v. 3.1.1
    
@@ -7665,14 +9283,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      guest: :zeek:type:`bool`
-         If set, the client has been authenticated as a guest user.
 
-      anonymous: :zeek:type:`bool`
-         If set, the client has been authenticated as an anonymous user.
+   .. zeek:field:: guest :zeek:type:`bool`
 
-      encrypt: :zeek:type:`bool`
-         If set, the server requires encryption of messages on this session.
+      If set, the client has been authenticated as a guest user.
+
+
+   .. zeek:field:: anonymous :zeek:type:`bool`
+
+      If set, the client has been authenticated as an anonymous user.
+
+
+   .. zeek:field:: encrypt :zeek:type:`bool`
+
+      If set, the server requires encryption of messages on this session.
+
 
    A flags field that indicates additional information about the session that's sent in the
    *session_setup* response.
@@ -7686,8 +9311,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      security_mode: :zeek:type:`count`
-         The security mode field specifies whether SMB signing is enabled or required at the client.
+
+   .. zeek:field:: security_mode :zeek:type:`count`
+
+      The security mode field specifies whether SMB signing is enabled or required at the client.
+
 
    The request sent by the client to request a new authenticated session
    within a new or existing SMB 2 Protocol transport connection to the server.
@@ -7701,8 +9329,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      flags: :zeek:type:`SMB2::SessionSetupFlags`
-         Additional information about the session
+
+   .. zeek:field:: flags :zeek:type:`SMB2::SessionSetupFlags`
+
+      Additional information about the session
+
 
    The response to an SMB2 *session_setup* request, which is sent by the client to request a
    new authenticated session within a new or existing SMB 2 Protocol transport connection
@@ -7717,20 +9348,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      signature: :zeek:type:`string`
-         The 16-byte signature of the encrypted message, generated by using Session.EncryptionKey.
 
-      nonce: :zeek:type:`string`
-         An implementation specific value assigned for every encrypted message.
+   .. zeek:field:: signature :zeek:type:`string`
 
-      orig_msg_size: :zeek:type:`count`
-         The size, in bytes, of the SMB2 message.
+      The 16-byte signature of the encrypted message, generated by using Session.EncryptionKey.
 
-      flags: :zeek:type:`count`
-         A flags field, interpreted in different ways depending of the SMB2 dialect.
 
-      session_id: :zeek:type:`count`
-         A value that uniquely identifies the established session for the command.
+   .. zeek:field:: nonce :zeek:type:`string`
+
+      An implementation specific value assigned for every encrypted message.
+
+
+   .. zeek:field:: orig_msg_size :zeek:type:`count`
+
+      The size, in bytes, of the SMB2 message.
+
+
+   .. zeek:field:: flags :zeek:type:`count`
+
+      A flags field, interpreted in different ways depending of the SMB2 dialect.
+
+
+   .. zeek:field:: session_id :zeek:type:`count`
+
+      A value that uniquely identifies the established session for the command.
+
 
    An SMB2 transform header (for SMB 3.x dialects with encryption enabled).
    
@@ -7749,8 +9391,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      share_type: :zeek:type:`count`
-         The type of share being accessed. Physical disk, named pipe, or printer.
+
+   .. zeek:field:: share_type :zeek:type:`count`
+
+      The type of share being accessed. Physical disk, named pipe, or printer.
+
 
    The response to an SMB2 *tree_connect* request, which is sent by the client to request
    access to a particular share on the server.
@@ -7764,29 +9409,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      modified: :zeek:type:`time` :zeek:attr:`&log`
-         The time when data was last written to the file.
 
-      modified_raw: :zeek:type:`count`
-         Same as `modified` but in SMB's original `FILETIME` integer format.
+   .. zeek:field:: modified :zeek:type:`time` :zeek:attr:`&log`
 
-      accessed: :zeek:type:`time` :zeek:attr:`&log`
-         The time when the file was last accessed.
+      The time when data was last written to the file.
 
-      accessed_raw: :zeek:type:`count`
-         Same as `accessed` but in SMB's original `FILETIME` integer format.
 
-      created: :zeek:type:`time` :zeek:attr:`&log`
-         The time the file was created.
+   .. zeek:field:: modified_raw :zeek:type:`count`
 
-      created_raw: :zeek:type:`count`
-         Same as `created` but in SMB's original `FILETIME` integer format.
+      Same as `modified` but in SMB's original `FILETIME` integer format.
 
-      changed: :zeek:type:`time` :zeek:attr:`&log`
-         The time when the file was last modified.
 
-      changed_raw: :zeek:type:`count`
-         Same as `changed` but in SMB's original `FILETIME` integer format.
+   .. zeek:field:: accessed :zeek:type:`time` :zeek:attr:`&log`
+
+      The time when the file was last accessed.
+
+
+   .. zeek:field:: accessed_raw :zeek:type:`count`
+
+      Same as `accessed` but in SMB's original `FILETIME` integer format.
+
+
+   .. zeek:field:: created :zeek:type:`time` :zeek:attr:`&log`
+
+      The time the file was created.
+
+
+   .. zeek:field:: created_raw :zeek:type:`count`
+
+      Same as `created` but in SMB's original `FILETIME` integer format.
+
+
+   .. zeek:field:: changed :zeek:type:`time` :zeek:attr:`&log`
+
+      The time when the file was last modified.
+
+
+   .. zeek:field:: changed_raw :zeek:type:`count`
+
+      Same as `changed` but in SMB's original `FILETIME` integer format.
+
 
    MAC times for a file.
    
@@ -7799,9 +9461,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      oid: :zeek:type:`string`
 
-      value: :zeek:type:`SNMP::ObjectValue`
+   .. zeek:field:: oid :zeek:type:`string`
+
+
+   .. zeek:field:: value :zeek:type:`SNMP::ObjectValue`
+
 
    The ``VarBind`` data structure from either :rfc:`1157` or
    :rfc:`3416`, which maps an Object Identifier to a value.
@@ -7819,13 +9484,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      request_id: :zeek:type:`int`
 
-      non_repeaters: :zeek:type:`count`
+   .. zeek:field:: request_id :zeek:type:`int`
 
-      max_repetitions: :zeek:type:`count`
 
-      bindings: :zeek:type:`SNMP::Bindings`
+   .. zeek:field:: non_repeaters :zeek:type:`count`
+
+
+   .. zeek:field:: max_repetitions :zeek:type:`count`
+
+
+   .. zeek:field:: bindings :zeek:type:`SNMP::Bindings`
+
 
    A ``BulkPDU`` data structure from :rfc:`3416`.
 
@@ -7834,16 +9504,24 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`count`
 
-      v1: :zeek:type:`SNMP::HeaderV1` :zeek:attr:`&optional`
-         Set when ``version`` is 0.
+   .. zeek:field:: version :zeek:type:`count`
 
-      v2: :zeek:type:`SNMP::HeaderV2` :zeek:attr:`&optional`
-         Set when ``version`` is 1.
 
-      v3: :zeek:type:`SNMP::HeaderV3` :zeek:attr:`&optional`
-         Set when ``version`` is 3.
+   .. zeek:field:: v1 :zeek:type:`SNMP::HeaderV1` :zeek:attr:`&optional`
+
+      Set when ``version`` is 0.
+
+
+   .. zeek:field:: v2 :zeek:type:`SNMP::HeaderV2` :zeek:attr:`&optional`
+
+      Set when ``version`` is 1.
+
+
+   .. zeek:field:: v3 :zeek:type:`SNMP::HeaderV3` :zeek:attr:`&optional`
+
+      Set when ``version`` is 3.
+
 
    A generic SNMP header data structure that may include data from
    any version of SNMP.  The value of the ``version`` field
@@ -7854,7 +9532,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      community: :zeek:type:`string`
+
+   .. zeek:field:: community :zeek:type:`string`
+
 
    The top-level message data structure of an SNMPv1 datagram, not
    including the PDU data.  See :rfc:`1157`.
@@ -7864,7 +9544,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      community: :zeek:type:`string`
+
+   .. zeek:field:: community :zeek:type:`string`
+
 
    The top-level message data structure of an SNMPv2 datagram, not
    including the PDU data.  See :rfc:`1901`.
@@ -7874,23 +9556,33 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`count`
 
-      max_size: :zeek:type:`count`
+   .. zeek:field:: id :zeek:type:`count`
 
-      flags: :zeek:type:`count`
 
-      auth_flag: :zeek:type:`bool`
+   .. zeek:field:: max_size :zeek:type:`count`
 
-      priv_flag: :zeek:type:`bool`
 
-      reportable_flag: :zeek:type:`bool`
+   .. zeek:field:: flags :zeek:type:`count`
 
-      security_model: :zeek:type:`count`
 
-      security_params: :zeek:type:`string`
+   .. zeek:field:: auth_flag :zeek:type:`bool`
 
-      pdu_context: :zeek:type:`SNMP::ScopedPDU_Context` :zeek:attr:`&optional`
+
+   .. zeek:field:: priv_flag :zeek:type:`bool`
+
+
+   .. zeek:field:: reportable_flag :zeek:type:`bool`
+
+
+   .. zeek:field:: security_model :zeek:type:`count`
+
+
+   .. zeek:field:: security_params :zeek:type:`string`
+
+
+   .. zeek:field:: pdu_context :zeek:type:`SNMP::ScopedPDU_Context` :zeek:attr:`&optional`
+
 
    The top-level message data structure of an SNMPv3 datagram, not
    including the PDU data.  See :rfc:`3412`.
@@ -7900,17 +9592,24 @@ Types
 
    :Type: :zeek:type:`record`
 
-      tag: :zeek:type:`count`
 
-      oid: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: tag :zeek:type:`count`
 
-      signed: :zeek:type:`int` :zeek:attr:`&optional`
 
-      unsigned: :zeek:type:`count` :zeek:attr:`&optional`
+   .. zeek:field:: oid :zeek:type:`string` :zeek:attr:`&optional`
 
-      address: :zeek:type:`addr` :zeek:attr:`&optional`
 
-      octets: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: signed :zeek:type:`int` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: unsigned :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: address :zeek:type:`addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: octets :zeek:type:`string` :zeek:attr:`&optional`
+
 
    A generic SNMP object value, that may include any of the
    valid ``ObjectSyntax`` values from :rfc:`1155` or :rfc:`3416`.
@@ -7927,13 +9626,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      request_id: :zeek:type:`int`
 
-      error_status: :zeek:type:`int`
+   .. zeek:field:: request_id :zeek:type:`int`
 
-      error_index: :zeek:type:`int`
 
-      bindings: :zeek:type:`SNMP::Bindings`
+   .. zeek:field:: error_status :zeek:type:`int`
+
+
+   .. zeek:field:: error_index :zeek:type:`int`
+
+
+   .. zeek:field:: bindings :zeek:type:`SNMP::Bindings`
+
 
    A ``PDU`` data structure from either :rfc:`1157` or :rfc:`3416`.
 
@@ -7942,9 +9646,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      engine_id: :zeek:type:`string`
 
-      name: :zeek:type:`string`
+   .. zeek:field:: engine_id :zeek:type:`string`
+
+
+   .. zeek:field:: name :zeek:type:`string`
+
 
    The ``ScopedPduData`` data structure of an SNMPv3 datagram, not
    including the PDU data (i.e. just the "context" fields).
@@ -7955,17 +9662,24 @@ Types
 
    :Type: :zeek:type:`record`
 
-      enterprise: :zeek:type:`string`
 
-      agent: :zeek:type:`addr`
+   .. zeek:field:: enterprise :zeek:type:`string`
 
-      generic_trap: :zeek:type:`int`
 
-      specific_trap: :zeek:type:`int`
+   .. zeek:field:: agent :zeek:type:`addr`
 
-      time_stamp: :zeek:type:`count`
 
-      bindings: :zeek:type:`SNMP::Bindings`
+   .. zeek:field:: generic_trap :zeek:type:`int`
+
+
+   .. zeek:field:: specific_trap :zeek:type:`int`
+
+
+   .. zeek:field:: time_stamp :zeek:type:`count`
+
+
+   .. zeek:field:: bindings :zeek:type:`SNMP::Bindings`
+
 
    A ``Trap-PDU`` data structure from :rfc:`1157`.
 
@@ -7974,9 +9688,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      host: :zeek:type:`addr` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      name: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
    :Attributes: :zeek:attr:`&log`
 
    This record is for a SOCKS client or server to provide either a
@@ -7987,11 +9704,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      client_to_server: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         The algorithm preferences for client to server communication
 
-      server_to_client: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         The algorithm preferences for server to client communication
+   .. zeek:field:: client_to_server :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      The algorithm preferences for client to server communication
+
+
+   .. zeek:field:: server_to_client :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      The algorithm preferences for server to client communication
+
 
    The client and server each have some preferences for the algorithms used
    in each direction.
@@ -8001,26 +9723,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      kex_algorithms: :zeek:type:`string_vec`
-         Key exchange algorithms
 
-      server_host_key_algorithms: :zeek:type:`string_vec`
-         The algorithms supported for the server host key
+   .. zeek:field:: kex_algorithms :zeek:type:`string_vec`
 
-      encryption_algorithms: :zeek:type:`SSH::Algorithm_Prefs`
-         Symmetric encryption algorithm preferences
+      Key exchange algorithms
 
-      mac_algorithms: :zeek:type:`SSH::Algorithm_Prefs`
-         Symmetric MAC algorithm preferences
 
-      compression_algorithms: :zeek:type:`SSH::Algorithm_Prefs`
-         Compression algorithm preferences
+   .. zeek:field:: server_host_key_algorithms :zeek:type:`string_vec`
 
-      languages: :zeek:type:`SSH::Algorithm_Prefs` :zeek:attr:`&optional`
-         Language preferences
+      The algorithms supported for the server host key
 
-      is_server: :zeek:type:`bool`
-         Are these the capabilities of the server?
+
+   .. zeek:field:: encryption_algorithms :zeek:type:`SSH::Algorithm_Prefs`
+
+      Symmetric encryption algorithm preferences
+
+
+   .. zeek:field:: mac_algorithms :zeek:type:`SSH::Algorithm_Prefs`
+
+      Symmetric MAC algorithm preferences
+
+
+   .. zeek:field:: compression_algorithms :zeek:type:`SSH::Algorithm_Prefs`
+
+      Compression algorithm preferences
+
+
+   .. zeek:field:: languages :zeek:type:`SSH::Algorithm_Prefs` :zeek:attr:`&optional`
+
+      Language preferences
+
+
+   .. zeek:field:: is_server :zeek:type:`bool`
+
+      Are these the capabilities of the server?
+
 
    This record lists the preferences of an SSH endpoint for
    algorithm selection. During the initial :abbr:`SSH (Secure Shell)`
@@ -8033,10 +9770,14 @@ Types
 
    :Type: :zeek:type:`record`
 
-      identity: :zeek:type:`string`
-         PSK identity
 
-      obfuscated_ticket_age: :zeek:type:`count`
+   .. zeek:field:: identity :zeek:type:`string`
+
+      PSK identity
+
+
+   .. zeek:field:: obfuscated_ticket_age :zeek:type:`count`
+
 
 
 .. zeek:type:: SSL::SignatureAndHashAlgorithm
@@ -8044,11 +9785,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      HashAlgorithm: :zeek:type:`count`
-         Hash algorithm number
 
-      SignatureAlgorithm: :zeek:type:`count`
-         Signature algorithm number
+   .. zeek:field:: HashAlgorithm :zeek:type:`count`
+
+      Hash algorithm number
+
+
+   .. zeek:field:: SignatureAlgorithm :zeek:type:`count`
+
+      Signature algorithm number
+
 
 
 .. zeek:type:: SYN_packet
@@ -8056,35 +9802,56 @@ Types
 
    :Type: :zeek:type:`record`
 
-      is_orig: :zeek:type:`bool`
-         True if the packet was sent the connection's originator.
 
-      DF: :zeek:type:`bool`
-         True if the *don't fragment* is set in the IP header.
+   .. zeek:field:: is_orig :zeek:type:`bool`
 
-      ttl: :zeek:type:`count`
-         The IP header's time-to-live.
+      True if the packet was sent the connection's originator.
 
-      size: :zeek:type:`count`
-         The size of the packet's payload as specified in the IP header.
 
-      win_size: :zeek:type:`count`
-         The window size from the TCP header.
+   .. zeek:field:: DF :zeek:type:`bool`
 
-      win_scale: :zeek:type:`int`
-         The window scale option if present, or -1 if not.
+      True if the *don't fragment* is set in the IP header.
 
-      MSS: :zeek:type:`count`
-         The maximum segment size if present, or 0 if not.
 
-      SACK_OK: :zeek:type:`bool`
-         True if the *SACK* option is present.
+   .. zeek:field:: ttl :zeek:type:`count`
 
-      TSval: :zeek:type:`count` :zeek:attr:`&optional`
-         The TCP TS value if present.
+      The IP header's time-to-live.
 
-      TSecr: :zeek:type:`count` :zeek:attr:`&optional`
-         The TCP TS echo reply if present.
+
+   .. zeek:field:: size :zeek:type:`count`
+
+      The size of the packet's payload as specified in the IP header.
+
+
+   .. zeek:field:: win_size :zeek:type:`count`
+
+      The window size from the TCP header.
+
+
+   .. zeek:field:: win_scale :zeek:type:`int`
+
+      The window scale option if present, or -1 if not.
+
+
+   .. zeek:field:: MSS :zeek:type:`count`
+
+      The maximum segment size if present, or 0 if not.
+
+
+   .. zeek:field:: SACK_OK :zeek:type:`bool`
+
+      True if the *SACK* option is present.
+
+
+   .. zeek:field:: TSval :zeek:type:`count` :zeek:attr:`&optional`
+
+      The TCP TS value if present.
+
+
+   .. zeek:field:: TSecr :zeek:type:`count` :zeek:attr:`&optional`
+
+      The TCP TS echo reply if present.
+
 
    Fields of a SYN packet.
    
@@ -8095,18 +9862,25 @@ Types
 
    :Type: :zeek:type:`record`
 
-      code: :zeek:type:`Storage::ReturnCode`
-         One of a set of backend-redefinable return codes.
 
-      error_str: :zeek:type:`string` :zeek:attr:`&optional`
-         An optional error string. This should be set when the
-         ``code`` field is not set to ``SUCCESS``.
+   .. zeek:field:: code :zeek:type:`Storage::ReturnCode`
 
-      value: :zeek:type:`any` :zeek:attr:`&optional`
-         An optional value for operations that can return data. ``get``
-         operations uses this to return the value when a match was found
-         for the key requested. ``open_backend`` uses this to return the
-         backend handle on successful connections.
+      One of a set of backend-redefinable return codes.
+
+
+   .. zeek:field:: error_str :zeek:type:`string` :zeek:attr:`&optional`
+
+      An optional error string. This should be set when the
+      ``code`` field is not set to ``SUCCESS``.
+
+
+   .. zeek:field:: value :zeek:type:`any` :zeek:attr:`&optional`
+
+      An optional value for operations that can return data. ``get``
+      operations uses this to return the value when a match was found
+      for the key requested. ``open_backend`` uses this to return the
+      backend handle on successful connections.
+
 
    Returned as the result of the various storage operations.
 
@@ -8180,42 +9954,63 @@ Types
 
    :Type: :zeek:type:`record`
 
-      kind: :zeek:type:`count`
-         The kind number associated with the option.  Other optional fields
-         of this record may be set depending on this value.
 
-      length: :zeek:type:`count`
-         The total length of the option in bytes, including the kind byte and
-         length byte (if present).
+   .. zeek:field:: kind :zeek:type:`count`
 
-      data: :zeek:type:`string` :zeek:attr:`&optional`
-         This field is set to the raw option bytes if the kind is not
-         otherwise known/parsed.  It's also set for known kinds whose length
-         was invalid.
+      The kind number associated with the option.  Other optional fields
+      of this record may be set depending on this value.
 
-      mss: :zeek:type:`count` :zeek:attr:`&optional`
-         Kind 2: Maximum Segment Size.
 
-      window_scale: :zeek:type:`count` :zeek:attr:`&optional`
-         Kind 3: Window scale.
+   .. zeek:field:: length :zeek:type:`count`
 
-      sack: :zeek:type:`index_vec` :zeek:attr:`&optional`
-         Kind 5: Selective ACKnowledgement (SACK).  This is a list of 2, 4,
-         6, or 8 numbers with each consecutive pair being a 32-bit
-         begin-pointer and 32-bit end pointer.
+      The total length of the option in bytes, including the kind byte and
+      length byte (if present).
 
-      send_timestamp: :zeek:type:`count` :zeek:attr:`&optional`
-         Kind 8: 4-byte sender timestamp value.
 
-      echo_timestamp: :zeek:type:`count` :zeek:attr:`&optional`
-         Kind 8: 4-byte echo reply timestamp value.
+   .. zeek:field:: data :zeek:type:`string` :zeek:attr:`&optional`
 
-      rate: :zeek:type:`count` :zeek:attr:`&optional`
-         Kind 27: TCP Quick Start Response value.
+      This field is set to the raw option bytes if the kind is not
+      otherwise known/parsed.  It's also set for known kinds whose length
+      was invalid.
 
-      ttl_diff: :zeek:type:`count` :zeek:attr:`&optional`
 
-      qs_nonce: :zeek:type:`count` :zeek:attr:`&optional`
+   .. zeek:field:: mss :zeek:type:`count` :zeek:attr:`&optional`
+
+      Kind 2: Maximum Segment Size.
+
+
+   .. zeek:field:: window_scale :zeek:type:`count` :zeek:attr:`&optional`
+
+      Kind 3: Window scale.
+
+
+   .. zeek:field:: sack :zeek:type:`index_vec` :zeek:attr:`&optional`
+
+      Kind 5: Selective ACKnowledgement (SACK).  This is a list of 2, 4,
+      6, or 8 numbers with each consecutive pair being a 32-bit
+      begin-pointer and 32-bit end pointer.
+
+
+   .. zeek:field:: send_timestamp :zeek:type:`count` :zeek:attr:`&optional`
+
+      Kind 8: 4-byte sender timestamp value.
+
+
+   .. zeek:field:: echo_timestamp :zeek:type:`count` :zeek:attr:`&optional`
+
+      Kind 8: 4-byte echo reply timestamp value.
+
+
+   .. zeek:field:: rate :zeek:type:`count` :zeek:attr:`&optional`
+
+      Kind 27: TCP Quick Start Response value.
+
+
+   .. zeek:field:: ttl_diff :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: qs_nonce :zeek:type:`count` :zeek:attr:`&optional`
+
 
    A TCP Option field parsed from a TCP header.
 
@@ -8231,29 +10026,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      opts: :zeek:type:`Telemetry::MetricOpts`
-         A :zeek:see:`Telemetry::MetricOpts` record describing this histogram.
 
-      label_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         The label names (also called dimensions) of the metric. When
-         instantiating or working with concrete metrics, corresponding
-         label values have to be provided. Examples of a label might
-         be the protocol a general observation applies to, the
-         directionality in a traffic flow, or protocol-specific
-         context like a particular message type.
+   .. zeek:field:: opts :zeek:type:`Telemetry::MetricOpts`
 
-      label_values: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         The label values associated with this metric, if any.
+      A :zeek:see:`Telemetry::MetricOpts` record describing this histogram.
 
-      values: :zeek:type:`vector` of :zeek:type:`double`
-         Individual counters for each of the buckets as
-         described by the *bounds* field in *opts*;
 
-      observations: :zeek:type:`double`
-         The number of observations made for this histogram.
+   .. zeek:field:: label_names :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
 
-      sum: :zeek:type:`double`
-         The sum of all observations for this histogram.
+      The label names (also called dimensions) of the metric. When
+      instantiating or working with concrete metrics, corresponding
+      label values have to be provided. Examples of a label might
+      be the protocol a general observation applies to, the
+      directionality in a traffic flow, or protocol-specific
+      context like a particular message type.
+
+
+   .. zeek:field:: label_values :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      The label values associated with this metric, if any.
+
+
+   .. zeek:field:: values :zeek:type:`vector` of :zeek:type:`double`
+
+      Individual counters for each of the buckets as
+      described by the *bounds* field in *opts*;
+
+
+   .. zeek:field:: observations :zeek:type:`double`
+
+      The number of observations made for this histogram.
+
+
+   .. zeek:field:: sum :zeek:type:`double`
+
+      The sum of all observations for this histogram.
+
 
    Histograms returned by the :zeek:see:`Telemetry::collect_histogram_metrics` function.
 
@@ -8268,25 +10076,34 @@ Types
 
    :Type: :zeek:type:`record`
 
-      opts: :zeek:type:`Telemetry::MetricOpts`
-         A :zeek:see:`Telemetry::MetricOpts` record describing this metric.
 
-      label_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         The label names (also called dimensions) of the metric. When
-         instantiating or working with concrete metrics, corresponding
-         label values have to be provided. Examples of a label might
-         be the protocol a general observation applies to, the
-         directionality in a traffic flow, or protocol-specific
-         context like a particular message type.
+   .. zeek:field:: opts :zeek:type:`Telemetry::MetricOpts`
 
-      label_values: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         The label values associated with this metric, if any.
+      A :zeek:see:`Telemetry::MetricOpts` record describing this metric.
 
-      value: :zeek:type:`double` :zeek:attr:`&optional`
-         The value of gauge or counter cast to a double
-         independent of the underlying data type.
-         This value is set for all counter and gauge metrics,
-         it is unset for histograms.
+
+   .. zeek:field:: label_names :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      The label names (also called dimensions) of the metric. When
+      instantiating or working with concrete metrics, corresponding
+      label values have to be provided. Examples of a label might
+      be the protocol a general observation applies to, the
+      directionality in a traffic flow, or protocol-specific
+      context like a particular message type.
+
+
+   .. zeek:field:: label_values :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      The label values associated with this metric, if any.
+
+
+   .. zeek:field:: value :zeek:type:`double` :zeek:attr:`&optional`
+
+      The value of gauge or counter cast to a double
+      independent of the underlying data type.
+      This value is set for all counter and gauge metrics,
+      it is unset for histograms.
+
 
    Metrics returned by the :zeek:see:`Telemetry::collect_metrics` function.
 
@@ -8295,53 +10112,70 @@ Types
 
    :Type: :zeek:type:`record`
 
-      prefix: :zeek:type:`string`
-         The prefix (namespace) of the metric. Zeek uses the ``zeek``
-         prefix for any internal metrics and the ``process`` prefix
-         for any metrics involving process state (CPU, memory, etc).
 
-      name: :zeek:type:`string`
-         The human-readable name of the metric. This is set to the
-         full prefixed name including the unit when returned from
-         :zeek:see:`Telemetry::collect_metrics` or
-         :zeek:see:`Telemetry::collect_histogram_metrics`.
+   .. zeek:field:: prefix :zeek:type:`string`
 
-      unit: :zeek:type:`string` :zeek:attr:`&optional`
-         The unit of the metric. Leave this unset for a unit-less
-         metric. Will be unset when returned from
-         :zeek:see:`Telemetry::collect_metrics` or
-         :zeek:see:`Telemetry::collect_histogram_metrics`.
+      The prefix (namespace) of the metric. Zeek uses the ``zeek``
+      prefix for any internal metrics and the ``process`` prefix
+      for any metrics involving process state (CPU, memory, etc).
 
-      help_text: :zeek:type:`string` :zeek:attr:`&optional`
-         Documentation for this metric.
 
-      label_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         The label names (also called dimensions) of the metric. When
-         instantiating or working with concrete metrics, corresponding
-         label values have to be provided. Examples of a label might
-         be the protocol a general observation applies to, the
-         directionality in a traffic flow, or protocol-specific
-         context like a particular message type. This field is only
-         used in the construction of new metrics and will not be
-         filled in when returned from
-         :zeek:see:`Telemetry::collect_metrics` or
-         :zeek:see:`Telemetry::collect_histogram_metrics`,
+   .. zeek:field:: name :zeek:type:`string`
 
-      is_total: :zeek:type:`bool` :zeek:attr:`&optional`
-         Whether the metric represents something that is accumulating.
-         Defaults to ``T`` for counters and ``F`` for gauges and
-         histograms.
+      The human-readable name of the metric. This is set to the
+      full prefixed name including the unit when returned from
+      :zeek:see:`Telemetry::collect_metrics` or
+      :zeek:see:`Telemetry::collect_histogram_metrics`.
 
-      bounds: :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&optional`
-         When creating a :zeek:see:`Telemetry::HistogramFamily`,
-         describes the number and bounds of the individual buckets.
 
-      metric_type: :zeek:type:`Telemetry::MetricType` :zeek:attr:`&optional`
-         Describes the underlying metric type.
-         Only set in the return value of
-         :zeek:see:`Telemetry::collect_metrics` or
-         :zeek:see:`Telemetry::collect_histogram_metrics`,
-         otherwise ignored.
+   .. zeek:field:: unit :zeek:type:`string` :zeek:attr:`&optional`
+
+      The unit of the metric. Leave this unset for a unit-less
+      metric. Will be unset when returned from
+      :zeek:see:`Telemetry::collect_metrics` or
+      :zeek:see:`Telemetry::collect_histogram_metrics`.
+
+
+   .. zeek:field:: help_text :zeek:type:`string` :zeek:attr:`&optional`
+
+      Documentation for this metric.
+
+
+   .. zeek:field:: label_names :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      The label names (also called dimensions) of the metric. When
+      instantiating or working with concrete metrics, corresponding
+      label values have to be provided. Examples of a label might
+      be the protocol a general observation applies to, the
+      directionality in a traffic flow, or protocol-specific
+      context like a particular message type. This field is only
+      used in the construction of new metrics and will not be
+      filled in when returned from
+      :zeek:see:`Telemetry::collect_metrics` or
+      :zeek:see:`Telemetry::collect_histogram_metrics`,
+
+
+   .. zeek:field:: is_total :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Whether the metric represents something that is accumulating.
+      Defaults to ``T`` for counters and ``F`` for gauges and
+      histograms.
+
+
+   .. zeek:field:: bounds :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&optional`
+
+      When creating a :zeek:see:`Telemetry::HistogramFamily`,
+      describes the number and bounds of the individual buckets.
+
+
+   .. zeek:field:: metric_type :zeek:type:`Telemetry::MetricType` :zeek:attr:`&optional`
+
+      Describes the underlying metric type.
+      Only set in the return value of
+      :zeek:see:`Telemetry::collect_metrics` or
+      :zeek:see:`Telemetry::collect_histogram_metrics`,
+      otherwise ignored.
+
 
    Type that captures options used to create metrics.
 
@@ -8356,7 +10190,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      num_threads: :zeek:type:`count`
+
+   .. zeek:field:: num_threads :zeek:type:`count`
+
 
    Statistics about threads.
    
@@ -8367,14 +10203,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      current: :zeek:type:`count`
-         Current number of pending timers.
 
-      max: :zeek:type:`count`
-         Maximum number of concurrent timers pending so far.
+   .. zeek:field:: current :zeek:type:`count`
 
-      cumulative: :zeek:type:`count`
-         Cumulative number of timers scheduled.
+      Current number of pending timers.
+
+
+   .. zeek:field:: max :zeek:type:`count`
+
+      Maximum number of concurrent timers pending so far.
+
+
+   .. zeek:field:: cumulative :zeek:type:`count`
+
+      Cumulative number of timers scheduled.
+
 
    Statistics of timers.
    
@@ -8385,19 +10228,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cid: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The 4-tuple of the encapsulating "connection". In case of an
-         IP-in-IP tunnel the ports will be set to 0. The direction
-         (i.e., orig and resp) are set according to the first tunneled
-         packet seen and not according to the side that established
-         the tunnel.
 
-      tunnel_type: :zeek:type:`Tunnel::Type` :zeek:attr:`&log`
-         The type of tunnel.
+   .. zeek:field:: cid :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      uid: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         A globally unique identifier that, for non-IP-in-IP tunnels,
-         cross-references the *uid* field of :zeek:type:`connection`.
+      The 4-tuple of the encapsulating "connection". In case of an
+      IP-in-IP tunnel the ports will be set to 0. The direction
+      (i.e., orig and resp) are set according to the first tunneled
+      packet seen and not according to the side that established
+      the tunnel.
+
+
+   .. zeek:field:: tunnel_type :zeek:type:`Tunnel::Type` :zeek:attr:`&log`
+
+      The type of tunnel.
+
+
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      A globally unique identifier that, for non-IP-in-IP tunnels,
+      cross-references the *uid* field of :zeek:type:`connection`.
+
    :Attributes: :zeek:attr:`&log`
 
    Records the identity of an encapsulating parent of a tunneled connection.
@@ -8407,21 +10257,30 @@ Types
 
    :Type: :zeek:type:`record`
 
-      analyzer: :zeek:type:`Analyzer::Tag` :zeek:attr:`&optional`
-         The analyzer to attach for analysis of the WebSocket
-         frame payload. See *use_dpd* below for the behavior
-         when unset.
 
-      use_dpd: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`WebSocket::use_dpd_default` :zeek:attr:`&optional`
-         If *analyzer* is unset, determines whether to attach a
-         PIA_TCP analyzer for dynamic protocol detection with
-         WebSocket payload.
+   .. zeek:field:: analyzer :zeek:type:`Analyzer::Tag` :zeek:attr:`&optional`
 
-      subprotocol: :zeek:type:`string` :zeek:attr:`&optional`
-         The subprotocol as selected by the server, if any.
+      The analyzer to attach for analysis of the WebSocket
+      frame payload. See *use_dpd* below for the behavior
+      when unset.
 
-      server_extensions: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         The WebSocket extensions as selected by the server, if any.
+
+   .. zeek:field:: use_dpd :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`WebSocket::use_dpd_default` :zeek:attr:`&optional`
+
+      If *analyzer* is unset, determines whether to attach a
+      PIA_TCP analyzer for dynamic protocol detection with
+      WebSocket payload.
+
+
+   .. zeek:field:: subprotocol :zeek:type:`string` :zeek:attr:`&optional`
+
+      The subprotocol as selected by the server, if any.
+
+
+   .. zeek:field:: server_extensions :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      The WebSocket extensions as selected by the server, if any.
+
 
    Record type that is passed to :zeek:see:`WebSocket::configure_analyzer`.
    
@@ -8433,11 +10292,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ca: :zeek:type:`bool` :zeek:attr:`&log`
-         CA flag set?
 
-      path_len: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Maximum path length
+   .. zeek:field:: ca :zeek:type:`bool` :zeek:attr:`&log`
+
+      CA flag set?
+
+
+   .. zeek:field:: path_len :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Maximum path length
+
    :Attributes: :zeek:attr:`&log`
 
 
@@ -8446,47 +10310,76 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`count` :zeek:attr:`&log`
-         Version number.
 
-      serial: :zeek:type:`string` :zeek:attr:`&log`
-         Serial number.
+   .. zeek:field:: version :zeek:type:`count` :zeek:attr:`&log`
 
-      subject: :zeek:type:`string` :zeek:attr:`&log`
-         Subject.
+      Version number.
 
-      issuer: :zeek:type:`string` :zeek:attr:`&log`
-         Issuer.
 
-      cn: :zeek:type:`string` :zeek:attr:`&optional`
-         Last (most specific) common name.
+   .. zeek:field:: serial :zeek:type:`string` :zeek:attr:`&log`
 
-      not_valid_before: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp before when certificate is not valid.
+      Serial number.
 
-      not_valid_after: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp after when certificate is not valid.
 
-      key_alg: :zeek:type:`string` :zeek:attr:`&log`
-         Name of the key algorithm
+   .. zeek:field:: subject :zeek:type:`string` :zeek:attr:`&log`
 
-      sig_alg: :zeek:type:`string` :zeek:attr:`&log`
-         Name of the signature algorithm
+      Subject.
 
-      key_type: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Key type, if key parseable by openssl (either rsa, dsa or ec)
 
-      key_length: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Key length in bits
+   .. zeek:field:: issuer :zeek:type:`string` :zeek:attr:`&log`
 
-      exponent: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Exponent, if RSA-certificate
+      Issuer.
 
-      curve: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Curve, if EC-certificate
 
-      tbs_sig_alg: :zeek:type:`string`
-         Name of the signature algorithm given inside the tbsCertificate. Should be equivalent to `sig_alg`.
+   .. zeek:field:: cn :zeek:type:`string` :zeek:attr:`&optional`
+
+      Last (most specific) common name.
+
+
+   .. zeek:field:: not_valid_before :zeek:type:`time` :zeek:attr:`&log`
+
+      Timestamp before when certificate is not valid.
+
+
+   .. zeek:field:: not_valid_after :zeek:type:`time` :zeek:attr:`&log`
+
+      Timestamp after when certificate is not valid.
+
+
+   .. zeek:field:: key_alg :zeek:type:`string` :zeek:attr:`&log`
+
+      Name of the key algorithm
+
+
+   .. zeek:field:: sig_alg :zeek:type:`string` :zeek:attr:`&log`
+
+      Name of the signature algorithm
+
+
+   .. zeek:field:: key_type :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Key type, if key parseable by openssl (either rsa, dsa or ec)
+
+
+   .. zeek:field:: key_length :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Key length in bits
+
+
+   .. zeek:field:: exponent :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Exponent, if RSA-certificate
+
+
+   .. zeek:field:: curve :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Curve, if EC-certificate
+
+
+   .. zeek:field:: tbs_sig_alg :zeek:type:`string`
+
+      Name of the signature algorithm given inside the tbsCertificate. Should be equivalent to `sig_alg`.
+
 
 
 .. zeek:type:: X509::Extension
@@ -8494,20 +10387,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         Long name of extension. oid if name not known
 
-      short_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Short name of extension if known
+   .. zeek:field:: name :zeek:type:`string`
 
-      oid: :zeek:type:`string`
-         Oid of extension
+      Long name of extension. oid if name not known
 
-      critical: :zeek:type:`bool`
-         True if extension is critical
 
-      value: :zeek:type:`string`
-         Extension content parsed to string for known extensions. Raw data otherwise.
+   .. zeek:field:: short_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Short name of extension if known
+
+
+   .. zeek:field:: oid :zeek:type:`string`
+
+      Oid of extension
+
+
+   .. zeek:field:: critical :zeek:type:`bool`
+
+      True if extension is critical
+
+
+   .. zeek:field:: value :zeek:type:`string`
+
+      Extension content parsed to string for known extensions. Raw data otherwise.
+
 
 
 .. zeek:type:: X509::Result
@@ -8515,14 +10419,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      result: :zeek:type:`int`
-         OpenSSL result code
 
-      result_string: :zeek:type:`string`
-         Result as string
+   .. zeek:field:: result :zeek:type:`int`
 
-      chain_certs: :zeek:type:`vector` of :zeek:type:`opaque` of x509 :zeek:attr:`&optional`
-         References to the final certificate chain, if verification successful. End-host certificate is first.
+      OpenSSL result code
+
+
+   .. zeek:field:: result_string :zeek:type:`string`
+
+      Result as string
+
+
+   .. zeek:field:: chain_certs :zeek:type:`vector` of :zeek:type:`opaque` of x509 :zeek:attr:`&optional`
+
+      References to the final certificate chain, if verification successful. End-host certificate is first.
+
 
    Result of an X509 certificate chain verification
 
@@ -8531,20 +10442,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      dns: :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of DNS entries in SAN
 
-      uri: :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of URI entries in SAN
+   .. zeek:field:: dns :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      email: :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of email entries in SAN
+      List of DNS entries in SAN
 
-      ip: :zeek:type:`addr_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
-         List of IP entries in SAN
 
-      other_fields: :zeek:type:`bool`
-         True if the certificate contained other, not recognized or parsed name fields
+   .. zeek:field:: uri :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      List of URI entries in SAN
+
+
+   .. zeek:field:: email :zeek:type:`string_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      List of email entries in SAN
+
+
+   .. zeek:field:: ip :zeek:type:`addr_vec` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      List of IP entries in SAN
+
+
+   .. zeek:field:: other_fields :zeek:type:`bool`
+
+      True if the certificate contained other, not recognized or parsed name fields
+
 
 
 .. zeek:type:: addr_set
@@ -8649,17 +10571,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      i: :zeek:type:`int` :zeek:attr:`&optional`
-         TODO.
 
-      s: :zeek:type:`string` :zeek:attr:`&optional`
-         TODO.
+   .. zeek:field:: i :zeek:type:`int` :zeek:attr:`&optional`
 
-      d: :zeek:type:`string` :zeek:attr:`&optional`
-         TODO.
+      TODO.
 
-      l: :zeek:type:`string` :zeek:attr:`&optional`
-         TODO.
+
+   .. zeek:field:: s :zeek:type:`string` :zeek:attr:`&optional`
+
+      TODO.
+
+
+   .. zeek:field:: d :zeek:type:`string` :zeek:attr:`&optional`
+
+      TODO.
+
+
+   .. zeek:field:: l :zeek:type:`string` :zeek:attr:`&optional`
+
+      TODO.
+
 
    BitTorrent "benc" value. Note that "benc" = Bencode ("Bee-Encode"), per
    http://en.wikipedia.org/wiki/Bencode.
@@ -8671,11 +10602,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      h: :zeek:type:`addr`
-         The peer's address.
 
-      p: :zeek:type:`port`
-         The peer's port.
+   .. zeek:field:: h :zeek:type:`addr`
+
+      The peer's address.
+
+
+   .. zeek:field:: p :zeek:type:`port`
+
+      The peer's port.
+
 
    A BitTorrent peer.
    
@@ -8705,19 +10641,28 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         The name of the parameter.
 
-      type_name: :zeek:type:`string`
-         The name of the parameters's type.
+   .. zeek:field:: name :zeek:type:`string`
 
-      default_val: :zeek:type:`any` :zeek:attr:`&optional`
-         The value of the :zeek:attr:`&default` attribute if defined.
+      The name of the parameter.
 
-      value: :zeek:type:`any` :zeek:attr:`&optional`
-         The value of the parameter as passed into a given call instance.
-         Might be unset in the case a :zeek:attr:`&default` attribute is
-         defined.
+
+   .. zeek:field:: type_name :zeek:type:`string`
+
+      The name of the parameters's type.
+
+
+   .. zeek:field:: default_val :zeek:type:`any` :zeek:attr:`&optional`
+
+      The value of the :zeek:attr:`&default` attribute if defined.
+
+
+   .. zeek:field:: value :zeek:type:`any` :zeek:attr:`&optional`
+
+      The value of the parameter as passed into a given call instance.
+      Might be unset in the case a :zeek:attr:`&default` attribute is
+      defined.
+
 
    Meta-information about a parameter to a function/event.
    
@@ -8737,20 +10682,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      orig_h: :zeek:type:`addr` :zeek:attr:`&log`
-         The originator's IP address.
 
-      orig_p: :zeek:type:`port` :zeek:attr:`&log`
-         The originator's port number.
+   .. zeek:field:: orig_h :zeek:type:`addr` :zeek:attr:`&log`
 
-      resp_h: :zeek:type:`addr` :zeek:attr:`&log`
-         The responder's IP address.
+      The originator's IP address.
 
-      resp_p: :zeek:type:`port` :zeek:attr:`&log`
-         The responder's port number.
 
-      proto: :zeek:type:`count` :zeek:attr:`&default` = ``65535`` :zeek:attr:`&optional`
-         The transport protocol ID. Defaults to 65535 as an "unknown" value.
+   .. zeek:field:: orig_p :zeek:type:`port` :zeek:attr:`&log`
+
+      The originator's port number.
+
+
+   .. zeek:field:: resp_h :zeek:type:`addr` :zeek:attr:`&log`
+
+      The responder's IP address.
+
+
+   .. zeek:field:: resp_p :zeek:type:`port` :zeek:attr:`&log`
+
+      The responder's port number.
+
+
+   .. zeek:field:: proto :zeek:type:`count` :zeek:attr:`&default` = ``65535`` :zeek:attr:`&optional`
+
+      The transport protocol ID. Defaults to 65535 as an "unknown" value.
+
 
    A connection's identifying 4-tuple of endpoints and ports.
    
@@ -8767,247 +10723,320 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`conn_id`
-         The connection's identifying 4-tuple.
 
-      orig: :zeek:type:`endpoint`
-         Statistics about originator side.
+   .. zeek:field:: id :zeek:type:`conn_id`
 
-      resp: :zeek:type:`endpoint`
-         Statistics about responder side.
+      The connection's identifying 4-tuple.
 
-      start_time: :zeek:type:`time`
-         The timestamp of the connection's first packet.
 
-      duration: :zeek:type:`interval`
-         The duration of the conversation. Roughly speaking, this is the
-         interval between first and last data packet (low-level TCP details
-         may adjust it somewhat in ambiguous cases).
+   .. zeek:field:: orig :zeek:type:`endpoint`
 
-      service: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&ordered`
-         The set of services the connection is using as determined by Zeek's
-         dynamic protocol detection. Each entry is the label of an analyzer
-         that confirmed that it could parse the connection payload.  While
-         typically, there will be at most one entry for each connection, in
-         principle it is possible that more than one protocol analyzer is able
-         to parse the same data. If so, all will be recorded. Also note that
-         the recorded services are independent of any transport-level protocols.
+      Statistics about originator side.
 
-      history: :zeek:type:`string`
-         State history of connections. See *history* in :zeek:see:`Conn::Info`.
 
-      uid: :zeek:type:`string`
-         A globally unique connection identifier. For each connection, Zeek
-         creates an ID that is very likely unique across independent Zeek runs.
-         These IDs can thus be used to tag and locate information associated
-         with that connection.
+   .. zeek:field:: resp :zeek:type:`endpoint`
 
-      tunnel: :zeek:type:`EncapsulatingConnVector` :zeek:attr:`&optional`
-         If the connection is tunneled, this field contains information about
-         the encapsulating "connection(s)" with the outermost one starting
-         at index zero.  It's also always the first such encapsulation seen
-         for the connection unless the :zeek:id:`tunnel_changed` event is
-         handled and reassigns this field to the new encapsulation.
+      Statistics about responder side.
 
-      vlan: :zeek:type:`int` :zeek:attr:`&optional`
-         The outer VLAN, if applicable for this connection.
 
-      inner_vlan: :zeek:type:`int` :zeek:attr:`&optional`
-         The inner VLAN, if applicable for this connection.
+   .. zeek:field:: start_time :zeek:type:`time`
 
-      removal_hooks: :zeek:type:`set` [:zeek:type:`Conn::RemovalHook`] :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
+      The timestamp of the connection's first packet.
 
 
-      dpd: :zeek:type:`DPD::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
+   .. zeek:field:: duration :zeek:type:`interval`
 
+      The duration of the conversation. Roughly speaking, this is the
+      interval between first and last data packet (low-level TCP details
+      may adjust it somewhat in ambiguous cases).
 
-      service_violation: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
-         The set of services (analyzers) for which Zeek has observed a
-         violation after the same service had previously been confirmed.
+   .. zeek:field:: service :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&ordered`
 
-      conn: :zeek:type:`Conn::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/conn/main.zeek` is loaded)
+      The set of services the connection is using as determined by Zeek's
+      dynamic protocol detection. Each entry is the label of an analyzer
+      that confirmed that it could parse the connection payload.  While
+      typically, there will be at most one entry for each connection, in
+      principle it is possible that more than one protocol analyzer is able
+      to parse the same data. If so, all will be recorded. Also note that
+      the recorded services are independent of any transport-level protocols.
 
 
-      extract_orig: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Conn::default_extract` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/conn/contents.zeek` is loaded)
+   .. zeek:field:: history :zeek:type:`string`
 
+      State history of connections. See *history* in :zeek:see:`Conn::Info`.
 
-      extract_resp: :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Conn::default_extract` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/conn/contents.zeek` is loaded)
 
+   .. zeek:field:: uid :zeek:type:`string`
 
-      thresholds: :zeek:type:`ConnThreshold::Thresholds` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/conn/thresholds.zeek` is loaded)
+      A globally unique connection identifier. For each connection, Zeek
+      creates an ID that is very likely unique across independent Zeek runs.
+      These IDs can thus be used to tag and locate information associated
+      with that connection.
 
 
-      dce_rpc: :zeek:type:`DCE_RPC::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/dce-rpc/main.zeek` is loaded)
+   .. zeek:field:: tunnel :zeek:type:`EncapsulatingConnVector` :zeek:attr:`&optional`
 
+      If the connection is tunneled, this field contains information about
+      the encapsulating "connection(s)" with the outermost one starting
+      at index zero.  It's also always the first such encapsulation seen
+      for the connection unless the :zeek:id:`tunnel_changed` event is
+      handled and reassigns this field to the new encapsulation.
 
-      dce_rpc_state: :zeek:type:`DCE_RPC::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/dce-rpc/main.zeek` is loaded)
 
+   .. zeek:field:: vlan :zeek:type:`int` :zeek:attr:`&optional`
 
-      dce_rpc_backing: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`DCE_RPC::BackingState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/dce-rpc/main.zeek` is loaded)
+      The outer VLAN, if applicable for this connection.
 
 
-      dhcp: :zeek:type:`DHCP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/dhcp/main.zeek` is loaded)
+   .. zeek:field:: inner_vlan :zeek:type:`int` :zeek:attr:`&optional`
 
+      The inner VLAN, if applicable for this connection.
 
-      dnp3: :zeek:type:`DNP3::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/dnp3/main.zeek` is loaded)
 
+   .. zeek:field:: removal_hooks :zeek:type:`set` [:zeek:type:`Conn::RemovalHook`] :zeek:attr:`&optional`
 
-      dns: :zeek:type:`DNS::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/dns/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
 
 
-      dns_state: :zeek:type:`DNS::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/dns/main.zeek` is loaded)
+   .. zeek:field:: dpd :zeek:type:`DPD::Info` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
-      ftp: :zeek:type:`FTP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ftp/main.zeek` is loaded)
 
+   .. zeek:field:: service_violation :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
 
-      ftp_data_reuse: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ftp/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
+      The set of services (analyzers) for which Zeek has observed a
+      violation after the same service had previously been confirmed.
 
-      ssl: :zeek:type:`SSL::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ssl/main.zeek` is loaded)
 
+   .. zeek:field:: conn :zeek:type:`Conn::Info` :zeek:attr:`&optional`
 
-      http: :zeek:type:`HTTP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/conn/main.zeek` is loaded)
 
 
-      http_state: :zeek:type:`HTTP::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/main.zeek` is loaded)
+   .. zeek:field:: extract_orig :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Conn::default_extract` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/conn/contents.zeek` is loaded)
 
-      irc: :zeek:type:`IRC::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/irc/main.zeek` is loaded)
 
-         IRC session information.
+   .. zeek:field:: extract_resp :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Conn::default_extract` :zeek:attr:`&optional`
 
-      krb: :zeek:type:`KRB::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/krb/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/conn/contents.zeek` is loaded)
 
 
-      ldap: :zeek:type:`LDAP::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ldap/main.zeek` is loaded)
+   .. zeek:field:: thresholds :zeek:type:`ConnThreshold::Thresholds` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/conn/thresholds.zeek` is loaded)
 
-      modbus: :zeek:type:`Modbus::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/modbus/main.zeek` is loaded)
 
+   .. zeek:field:: dce_rpc :zeek:type:`DCE_RPC::Info` :zeek:attr:`&optional`
 
-      mqtt: :zeek:type:`MQTT::ConnectInfo` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/dce-rpc/main.zeek` is loaded)
 
 
-      mqtt_state: :zeek:type:`MQTT::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+   .. zeek:field:: dce_rpc_state :zeek:type:`DCE_RPC::State` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/dce-rpc/main.zeek` is loaded)
 
-      mysql: :zeek:type:`MySQL::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/mysql/main.zeek` is loaded)
 
+   .. zeek:field:: dce_rpc_backing :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`DCE_RPC::BackingState` :zeek:attr:`&optional`
 
-      ntlm: :zeek:type:`NTLM::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ntlm/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/dce-rpc/main.zeek` is loaded)
 
 
-      ntp: :zeek:type:`NTP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ntp/main.zeek` is loaded)
+   .. zeek:field:: dhcp :zeek:type:`DHCP::Info` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/dhcp/main.zeek` is loaded)
 
-      postgresql: :zeek:type:`PostgreSQL::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/postgresql/main.zeek` is loaded)
 
+   .. zeek:field:: dnp3 :zeek:type:`DNP3::Info` :zeek:attr:`&optional`
 
-      postgresql_state: :zeek:type:`PostgreSQL::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/postgresql/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/dnp3/main.zeek` is loaded)
 
 
-      quic: :zeek:type:`QUIC::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/quic/main.zeek` is loaded)
+   .. zeek:field:: dns :zeek:type:`DNS::Info` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/dns/main.zeek` is loaded)
 
-      radius: :zeek:type:`RADIUS::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/radius/main.zeek` is loaded)
 
+   .. zeek:field:: dns_state :zeek:type:`DNS::State` :zeek:attr:`&optional`
 
-      rdp: :zeek:type:`RDP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/rdp/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/dns/main.zeek` is loaded)
 
 
-      redis: :zeek:type:`Redis::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/redis/main.zeek` is loaded)
+   .. zeek:field:: ftp :zeek:type:`FTP::Info` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/ftp/main.zeek` is loaded)
 
-      redis_state: :zeek:type:`Redis::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/redis/main.zeek` is loaded)
 
+   .. zeek:field:: ftp_data_reuse :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
-      rfb: :zeek:type:`RFB::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/rfb/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/ftp/main.zeek` is loaded)
 
 
-      sip: :zeek:type:`SIP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/sip/main.zeek` is loaded)
+   .. zeek:field:: ssl :zeek:type:`SSL::Info` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/ssl/main.zeek` is loaded)
 
-      sip_state: :zeek:type:`SIP::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/sip/main.zeek` is loaded)
 
+   .. zeek:field:: http :zeek:type:`HTTP::Info` :zeek:attr:`&optional`
 
-      snmp: :zeek:type:`SNMP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/snmp/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/http/main.zeek` is loaded)
 
 
-      smb_state: :zeek:type:`SMB::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smb/main.zeek` is loaded)
+   .. zeek:field:: http_state :zeek:type:`HTTP::State` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/http/main.zeek` is loaded)
 
-      smtp: :zeek:type:`SMTP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smtp/main.zeek` is loaded)
 
+   .. zeek:field:: irc :zeek:type:`IRC::Info` :zeek:attr:`&optional`
 
-      smtp_state: :zeek:type:`SMTP::State` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smtp/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/irc/main.zeek` is loaded)
 
+      IRC session information.
 
-      socks: :zeek:type:`SOCKS::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/socks/main.zeek` is loaded)
 
+   .. zeek:field:: krb :zeek:type:`KRB::Info` :zeek:attr:`&optional`
 
-      ssh: :zeek:type:`SSH::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ssh/main.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/krb/main.zeek` is loaded)
 
 
-      syslog: :zeek:type:`Syslog::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/syslog/main.zeek` is loaded)
+   .. zeek:field:: ldap :zeek:type:`LDAP::State` :zeek:attr:`&optional`
 
+      (present if :doc:`/scripts/base/protocols/ldap/main.zeek` is loaded)
 
-      websocket: :zeek:type:`WebSocket::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/websocket/main.zeek` is loaded)
 
+   .. zeek:field:: modbus :zeek:type:`Modbus::Info` :zeek:attr:`&optional`
 
-      known_services_done: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/conn/known-services.zeek` is loaded)
+      (present if :doc:`/scripts/base/protocols/modbus/main.zeek` is loaded)
 
 
-      speculative_service: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/conn/speculative-service.zeek` is loaded)
+   .. zeek:field:: mqtt :zeek:type:`MQTT::ConnectInfo` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+
+
+   .. zeek:field:: mqtt_state :zeek:type:`MQTT::State` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/mqtt/main.zeek` is loaded)
+
+
+   .. zeek:field:: mysql :zeek:type:`MySQL::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/mysql/main.zeek` is loaded)
+
+
+   .. zeek:field:: ntlm :zeek:type:`NTLM::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/ntlm/main.zeek` is loaded)
+
+
+   .. zeek:field:: ntp :zeek:type:`NTP::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/ntp/main.zeek` is loaded)
+
+
+   .. zeek:field:: postgresql :zeek:type:`PostgreSQL::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/postgresql/main.zeek` is loaded)
+
+
+   .. zeek:field:: postgresql_state :zeek:type:`PostgreSQL::State` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/postgresql/main.zeek` is loaded)
+
+
+   .. zeek:field:: quic :zeek:type:`QUIC::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/quic/main.zeek` is loaded)
+
+
+   .. zeek:field:: radius :zeek:type:`RADIUS::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/radius/main.zeek` is loaded)
+
+
+   .. zeek:field:: rdp :zeek:type:`RDP::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/rdp/main.zeek` is loaded)
+
+
+   .. zeek:field:: redis :zeek:type:`Redis::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/redis/main.zeek` is loaded)
+
+
+   .. zeek:field:: redis_state :zeek:type:`Redis::State` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/redis/main.zeek` is loaded)
+
+
+   .. zeek:field:: rfb :zeek:type:`RFB::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/rfb/main.zeek` is loaded)
+
+
+   .. zeek:field:: sip :zeek:type:`SIP::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/sip/main.zeek` is loaded)
+
+
+   .. zeek:field:: sip_state :zeek:type:`SIP::State` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/sip/main.zeek` is loaded)
+
+
+   .. zeek:field:: snmp :zeek:type:`SNMP::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/snmp/main.zeek` is loaded)
+
+
+   .. zeek:field:: smb_state :zeek:type:`SMB::State` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smb/main.zeek` is loaded)
+
+
+   .. zeek:field:: smtp :zeek:type:`SMTP::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smtp/main.zeek` is loaded)
+
+
+   .. zeek:field:: smtp_state :zeek:type:`SMTP::State` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smtp/main.zeek` is loaded)
+
+
+   .. zeek:field:: socks :zeek:type:`SOCKS::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/socks/main.zeek` is loaded)
+
+
+   .. zeek:field:: ssh :zeek:type:`SSH::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/ssh/main.zeek` is loaded)
+
+
+   .. zeek:field:: syslog :zeek:type:`Syslog::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/syslog/main.zeek` is loaded)
+
+
+   .. zeek:field:: websocket :zeek:type:`WebSocket::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/websocket/main.zeek` is loaded)
+
+
+   .. zeek:field:: known_services_done :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/conn/known-services.zeek` is loaded)
+
+
+   .. zeek:field:: speculative_service :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/conn/speculative-service.zeek` is loaded)
 
 
    A connection. This is Zeek's basic connection type describing IP- and
@@ -9031,21 +11060,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      answer_type: :zeek:type:`count`
-         Answer type. One of :zeek:see:`DNS_QUERY`, :zeek:see:`DNS_ANS`,
-         :zeek:see:`DNS_AUTH` and :zeek:see:`DNS_ADDL`.
 
-      query: :zeek:type:`string`
-         Query.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      qtype: :zeek:type:`count`
-         Query type.
+      Answer type. One of :zeek:see:`DNS_QUERY`, :zeek:see:`DNS_ANS`,
+      :zeek:see:`DNS_AUTH` and :zeek:see:`DNS_ADDL`.
 
-      qclass: :zeek:type:`count`
-         Query class.
 
-      TTL: :zeek:type:`interval`
-         Time-to-live.
+   .. zeek:field:: query :zeek:type:`string`
+
+      Query.
+
+
+   .. zeek:field:: qtype :zeek:type:`count`
+
+      Query type.
+
+
+   .. zeek:field:: qclass :zeek:type:`count`
+
+      Query class.
+
+
+   .. zeek:field:: TTL :zeek:type:`interval`
+
+      Time-to-live.
+
 
    The general part of a DNS reply.
    
@@ -9058,29 +11098,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      answer_type: :zeek:type:`count`
-         Ans type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      algorithm: :zeek:type:`count`
-         Algorithm for Public Key.
+      Query.
 
-      key_id: :zeek:type:`count`
-         key tag.
 
-      removal_flag: :zeek:type:`count`
-         rm flag.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      complte_flag: :zeek:type:`string` :zeek:attr:`&deprecated` = *"Remove in v8.1: Use complete_flag instead."*
-         complete flag.
+      Ans type.
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
 
-      complete_flag: :zeek:type:`count`
-         complete flag.
+   .. zeek:field:: algorithm :zeek:type:`count`
+
+      Algorithm for Public Key.
+
+
+   .. zeek:field:: key_id :zeek:type:`count`
+
+      key tag.
+
+
+   .. zeek:field:: removal_flag :zeek:type:`count`
+
+      rm flag.
+
+
+   .. zeek:field:: complte_flag :zeek:type:`string` :zeek:attr:`&deprecated` = *...*
+
+      complete flag.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
+
+   .. zeek:field:: complete_flag :zeek:type:`count`
+
+      complete flag.
+
 
    A Private RR type BINDS record.
    
@@ -9091,26 +11148,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      answer_type: :zeek:type:`count`
-         Ans type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      flags: :zeek:type:`count`
-         flags filed.
+      Query.
 
-      protocol: :zeek:type:`count`
-         Protocol, should be always 3 for DNSSEC.
 
-      algorithm: :zeek:type:`count`
-         Algorithm for Public Key.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      public_key: :zeek:type:`string`
-         Public Key
+      Ans type.
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
+
+   .. zeek:field:: flags :zeek:type:`count`
+
+      flags filed.
+
+
+   .. zeek:field:: protocol :zeek:type:`count`
+
+      Protocol, should be always 3 for DNSSEC.
+
+
+   .. zeek:field:: algorithm :zeek:type:`count`
+
+      Algorithm for Public Key.
+
+
+   .. zeek:field:: public_key :zeek:type:`string`
+
+      Public Key
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
 
    A DNSSEC DNSKEY record.
    
@@ -9121,26 +11193,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      answer_type: :zeek:type:`count`
-         Ans type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      key_tag: :zeek:type:`count`
-         flags filed.
+      Query.
 
-      algorithm: :zeek:type:`count`
-         Algorithm for Public Key.
 
-      digest_type: :zeek:type:`count`
-         Digest Type.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      digest_val: :zeek:type:`string`
-         Digest Value.
+      Ans type.
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
+
+   .. zeek:field:: key_tag :zeek:type:`count`
+
+      flags filed.
+
+
+   .. zeek:field:: algorithm :zeek:type:`count`
+
+      Algorithm for Public Key.
+
+
+   .. zeek:field:: digest_type :zeek:type:`count`
+
+      Digest Type.
+
+
+   .. zeek:field:: digest_val :zeek:type:`string`
+
+      Digest Value.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
 
    A DNSSEC DS record.
    
@@ -9151,32 +11238,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      qtype: :zeek:type:`count`
-         Query type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      t: :zeek:type:`count`
-         TODO.
+      Query.
 
-      payload_size: :zeek:type:`count`
-         TODO.
 
-      extended_rcode: :zeek:type:`count`
-         Extended return code.
+   .. zeek:field:: qtype :zeek:type:`count`
 
-      version: :zeek:type:`count`
-         Version.
+      Query type.
 
-      z_field: :zeek:type:`count`
-         TODO.
 
-      TTL: :zeek:type:`interval`
-         Time-to-live.
+   .. zeek:field:: t :zeek:type:`count`
 
-      is_query: :zeek:type:`count`
-         TODO.
+      TODO.
+
+
+   .. zeek:field:: payload_size :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: extended_rcode :zeek:type:`count`
+
+      Extended return code.
+
+
+   .. zeek:field:: version :zeek:type:`count`
+
+      Version.
+
+
+   .. zeek:field:: z_field :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: TTL :zeek:type:`interval`
+
+      Time-to-live.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      TODO.
+
 
    An additional DNS EDNS record.
    
@@ -9187,11 +11293,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      client_cookie: :zeek:type:`string`
-         Cookie from the client (fixed 8 bytes).
 
-      server_cookie: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Cookie from the server (0 bytes if missing, or 8 to 32 bytes).
+   .. zeek:field:: client_cookie :zeek:type:`string`
+
+      Cookie from the client (fixed 8 bytes).
+
+
+   .. zeek:field:: server_cookie :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      Cookie from the server (0 bytes if missing, or 8 to 32 bytes).
+
 
    An DNS EDNS COOKIE (COOKIE) record.
    
@@ -9202,17 +11313,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      family: :zeek:type:`string`
-         IP Family
 
-      source_prefix_len: :zeek:type:`count`
-         Source Prefix Length.
+   .. zeek:field:: family :zeek:type:`string`
 
-      scope_prefix_len: :zeek:type:`count`
-         Scope Prefix Length.
+      IP Family
 
-      address: :zeek:type:`addr`
-         Client Subnet Address.
+
+   .. zeek:field:: source_prefix_len :zeek:type:`count`
+
+      Source Prefix Length.
+
+
+   .. zeek:field:: scope_prefix_len :zeek:type:`count`
+
+      Scope Prefix Length.
+
+
+   .. zeek:field:: address :zeek:type:`addr`
+
+      Client Subnet Address.
+
 
    An DNS EDNS Client Subnet (ECS) record.
    
@@ -9223,11 +11343,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      keepalive_timeout_omitted: :zeek:type:`bool`
-         Whether timeout value is omitted.
 
-      keepalive_timeout: :zeek:type:`count`
-         Timeout value, in 100ms.
+   .. zeek:field:: keepalive_timeout_omitted :zeek:type:`bool`
+
+      Whether timeout value is omitted.
+
+
+   .. zeek:field:: keepalive_timeout :zeek:type:`count`
+
+      Timeout value, in 100ms.
+
 
    An DNS EDNS TCP KEEPALIVE (TCP KEEPALIVE) record.
    
@@ -9238,35 +11363,56 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      answer_type: :zeek:type:`count`
-         Ans type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      version: :zeek:type:`count`
-         version number of the representation.
+      Query.
 
-      size: :zeek:type:`count`
-         Diameter of a sphere enclosing the entity.
 
-      horiz_pre: :zeek:type:`count`
-         The horizontal precision of the data, in centimeters.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      vert_pre: :zeek:type:`count`
-         The vertical precision of the data, in centimeters.
+      Ans type.
 
-      latitude: :zeek:type:`count`
-         The latitude of the center of the sphere.
 
-      longitude: :zeek:type:`count`
-         The longitude of the center of the sphere.
+   .. zeek:field:: version :zeek:type:`count`
 
-      altitude: :zeek:type:`count`
-         The altitude of the center of the sphere.
+      version number of the representation.
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
+
+   .. zeek:field:: size :zeek:type:`count`
+
+      Diameter of a sphere enclosing the entity.
+
+
+   .. zeek:field:: horiz_pre :zeek:type:`count`
+
+      The horizontal precision of the data, in centimeters.
+
+
+   .. zeek:field:: vert_pre :zeek:type:`count`
+
+      The vertical precision of the data, in centimeters.
+
+
+   .. zeek:field:: latitude :zeek:type:`count`
+
+      The latitude of the center of the sphere.
+
+
+   .. zeek:field:: longitude :zeek:type:`count`
+
+      The longitude of the center of the sphere.
+
+
+   .. zeek:field:: altitude :zeek:type:`count`
+
+      The altitude of the center of the sphere.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
 
    A Private RR type LOC record.
    
@@ -9277,29 +11423,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      creation_time: :zeek:type:`time`
-         The time when the mapping was created, which corresponds to when
-         the DNS query was sent out.
 
-      req_host: :zeek:type:`string`
-         If the mapping is the result of a name lookup, the queried host name;
-         otherwise empty.
+   .. zeek:field:: creation_time :zeek:type:`time`
 
-      req_addr: :zeek:type:`addr`
-         If the mapping is the result of a pointer lookup, the queried
-         address; otherwise null.
+      The time when the mapping was created, which corresponds to when
+      the DNS query was sent out.
 
-      valid: :zeek:type:`bool`
-         True if the lookup returned success. Only then are the result fields
-         valid.
 
-      hostname: :zeek:type:`string`
-         If the mapping is the result of a pointer lookup, the resolved
-         hostname; otherwise empty.
+   .. zeek:field:: req_host :zeek:type:`string`
 
-      addrs: :zeek:type:`addr_set`
-         If the mapping is the result of an address lookup, the resolved
-         address(es); otherwise empty.
+      If the mapping is the result of a name lookup, the queried host name;
+      otherwise empty.
+
+
+   .. zeek:field:: req_addr :zeek:type:`addr`
+
+      If the mapping is the result of a pointer lookup, the queried
+      address; otherwise null.
+
+
+   .. zeek:field:: valid :zeek:type:`bool`
+
+      True if the lookup returned success. Only then are the result fields
+      valid.
+
+
+   .. zeek:field:: hostname :zeek:type:`string`
+
+      If the mapping is the result of a pointer lookup, the resolved
+      hostname; otherwise empty.
+
+
+   .. zeek:field:: addrs :zeek:type:`addr_set`
+
+      If the mapping is the result of an address lookup, the resolved
+      address(es); otherwise empty.
+
 
 
 .. zeek:type:: dns_msg
@@ -9307,50 +11466,81 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`count`
-         Transaction ID.
 
-      opcode: :zeek:type:`count`
-         Operation code.
+   .. zeek:field:: id :zeek:type:`count`
 
-      rcode: :zeek:type:`count`
-         Return code.
+      Transaction ID.
 
-      QR: :zeek:type:`bool`
-         Query response flag.
 
-      AA: :zeek:type:`bool`
-         Authoritative answer flag.
+   .. zeek:field:: opcode :zeek:type:`count`
 
-      TC: :zeek:type:`bool`
-         Truncated packet flag.
+      Operation code.
 
-      RD: :zeek:type:`bool`
-         Recursion desired flag.
 
-      RA: :zeek:type:`bool`
-         Recursion available flag.
+   .. zeek:field:: rcode :zeek:type:`count`
 
-      Z: :zeek:type:`count`
-         3 bit field (includes AD and CD)
+      Return code.
 
-      AD: :zeek:type:`bool`
-         authentic data
 
-      CD: :zeek:type:`bool`
-         checking disabled
+   .. zeek:field:: QR :zeek:type:`bool`
 
-      num_queries: :zeek:type:`count`
-         Number of query records.
+      Query response flag.
 
-      num_answers: :zeek:type:`count`
-         Number of answer records.
 
-      num_auth: :zeek:type:`count`
-         Number of authoritative records.
+   .. zeek:field:: AA :zeek:type:`bool`
 
-      num_addl: :zeek:type:`count`
-         Number of additional records.
+      Authoritative answer flag.
+
+
+   .. zeek:field:: TC :zeek:type:`bool`
+
+      Truncated packet flag.
+
+
+   .. zeek:field:: RD :zeek:type:`bool`
+
+      Recursion desired flag.
+
+
+   .. zeek:field:: RA :zeek:type:`bool`
+
+      Recursion available flag.
+
+
+   .. zeek:field:: Z :zeek:type:`count`
+
+      3 bit field (includes AD and CD)
+
+
+   .. zeek:field:: AD :zeek:type:`bool`
+
+      authentic data
+
+
+   .. zeek:field:: CD :zeek:type:`bool`
+
+      checking disabled
+
+
+   .. zeek:field:: num_queries :zeek:type:`count`
+
+      Number of query records.
+
+
+   .. zeek:field:: num_answers :zeek:type:`count`
+
+      Number of answer records.
+
+
+   .. zeek:field:: num_auth :zeek:type:`count`
+
+      Number of authoritative records.
+
+
+   .. zeek:field:: num_addl :zeek:type:`count`
+
+      Number of additional records.
+
 
    A DNS message.
    
@@ -9364,38 +11554,61 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      answer_type: :zeek:type:`count`
-         Ans type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      nsec_flags: :zeek:type:`count`
-         flags field.
+      Query.
 
-      nsec_hash_algo: :zeek:type:`count`
-         Hash algorithm.
 
-      nsec_iter: :zeek:type:`count`
-         Iterations.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      nsec_salt_len: :zeek:type:`count`
-         Salt length.
+      Ans type.
 
-      nsec_salt: :zeek:type:`string`
-         Salt value
 
-      nsec_hlen: :zeek:type:`count`
-         Hash length.
+   .. zeek:field:: nsec_flags :zeek:type:`count`
 
-      nsec_hash: :zeek:type:`string`
-         Hash value.
+      flags field.
 
-      bitmaps: :zeek:type:`string_vec`
-         Type Bit Maps.
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
+   .. zeek:field:: nsec_hash_algo :zeek:type:`count`
+
+      Hash algorithm.
+
+
+   .. zeek:field:: nsec_iter :zeek:type:`count`
+
+      Iterations.
+
+
+   .. zeek:field:: nsec_salt_len :zeek:type:`count`
+
+      Salt length.
+
+
+   .. zeek:field:: nsec_salt :zeek:type:`string`
+
+      Salt value
+
+
+   .. zeek:field:: nsec_hlen :zeek:type:`count`
+
+      Hash length.
+
+
+   .. zeek:field:: nsec_hash :zeek:type:`string`
+
+      Hash value.
+
+
+   .. zeek:field:: bitmaps :zeek:type:`string_vec`
+
+      Type Bit Maps.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
 
    A DNSSEC NSEC3 record.
    
@@ -9406,29 +11619,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      answer_type: :zeek:type:`count`
-         Ans type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      nsec_flags: :zeek:type:`count`
-         flags field.
+      Query.
 
-      nsec_hash_algo: :zeek:type:`count`
-         Hash algorithm.
 
-      nsec_iter: :zeek:type:`count`
-         Iterations.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      nsec_salt_len: :zeek:type:`count`
-         Salt length.
+      Ans type.
 
-      nsec_salt: :zeek:type:`string`
-         Salt value
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
+   .. zeek:field:: nsec_flags :zeek:type:`count`
+
+      flags field.
+
+
+   .. zeek:field:: nsec_hash_algo :zeek:type:`count`
+
+      Hash algorithm.
+
+
+   .. zeek:field:: nsec_iter :zeek:type:`count`
+
+      Iterations.
+
+
+   .. zeek:field:: nsec_salt_len :zeek:type:`count`
+
+      Salt length.
+
+
+   .. zeek:field:: nsec_salt :zeek:type:`string`
+
+      Salt value
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
 
    A DNSSEC NSEC3PARAM record.
    
@@ -9439,41 +11669,66 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      answer_type: :zeek:type:`count`
-         Ans type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      type_covered: :zeek:type:`count`
-         qtype covered by RRSIG RR.
+      Query.
 
-      algorithm: :zeek:type:`count`
-         Algorithm.
 
-      labels: :zeek:type:`count`
-         Labels in the owner's name.
+   .. zeek:field:: answer_type :zeek:type:`count`
 
-      orig_ttl: :zeek:type:`interval`
-         Original TTL.
+      Ans type.
 
-      sig_exp: :zeek:type:`time`
-         Time when signed RR expires.
 
-      sig_incep: :zeek:type:`time`
-         Time when signed.
+   .. zeek:field:: type_covered :zeek:type:`count`
 
-      key_tag: :zeek:type:`count`
-         Key tag value.
+      qtype covered by RRSIG RR.
 
-      signer_name: :zeek:type:`string`
-         Signature.
 
-      signature: :zeek:type:`string`
-         Hash of the RRDATA.
+   .. zeek:field:: algorithm :zeek:type:`count`
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
+      Algorithm.
+
+
+   .. zeek:field:: labels :zeek:type:`count`
+
+      Labels in the owner's name.
+
+
+   .. zeek:field:: orig_ttl :zeek:type:`interval`
+
+      Original TTL.
+
+
+   .. zeek:field:: sig_exp :zeek:type:`time`
+
+      Time when signed RR expires.
+
+
+   .. zeek:field:: sig_incep :zeek:type:`time`
+
+      Time when signed.
+
+
+   .. zeek:field:: key_tag :zeek:type:`count`
+
+      Key tag value.
+
+
+   .. zeek:field:: signer_name :zeek:type:`string`
+
+      Signature.
+
+
+   .. zeek:field:: signature :zeek:type:`string`
+
+      Hash of the RRDATA.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
 
    A DNSSEC RRSIG record.
    
@@ -9484,26 +11739,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      mname: :zeek:type:`string`
-         Primary source of data for zone.
 
-      rname: :zeek:type:`string`
-         Mailbox for responsible person.
+   .. zeek:field:: mname :zeek:type:`string`
 
-      serial: :zeek:type:`count`
-         Version number of zone.
+      Primary source of data for zone.
 
-      refresh: :zeek:type:`interval`
-         Seconds before refreshing.
 
-      retry: :zeek:type:`interval`
-         How long before retrying failed refresh.
+   .. zeek:field:: rname :zeek:type:`string`
 
-      expire: :zeek:type:`interval`
-         When zone no longer authoritative.
+      Mailbox for responsible person.
 
-      minimum: :zeek:type:`interval`
-         Minimum TTL to use when exporting.
+
+   .. zeek:field:: serial :zeek:type:`count`
+
+      Version number of zone.
+
+
+   .. zeek:field:: refresh :zeek:type:`interval`
+
+      Seconds before refreshing.
+
+
+   .. zeek:field:: retry :zeek:type:`interval`
+
+      How long before retrying failed refresh.
+
+
+   .. zeek:field:: expire :zeek:type:`interval`
+
+      When zone no longer authoritative.
+
+
+   .. zeek:field:: minimum :zeek:type:`interval`
+
+      Minimum TTL to use when exporting.
+
 
    A DNS SOA record.
    
@@ -9514,11 +11784,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      svc_priority: :zeek:type:`count`
-         Service priority for the current record, 0 indicates that this record is in AliasMode and cannot carry svc_params; otherwise this is in ServiceMode, and may include svc_params
 
-      target_name: :zeek:type:`string`
-         Target name, the hostname of the service endpoint.
+   .. zeek:field:: svc_priority :zeek:type:`count`
+
+      Service priority for the current record, 0 indicates that this record is in AliasMode and cannot carry svc_params; otherwise this is in ServiceMode, and may include svc_params
+
+
+   .. zeek:field:: target_name :zeek:type:`string`
+
+      Target name, the hostname of the service endpoint.
+
 
    DNS SVCB and HTTPS RRs
    
@@ -9529,32 +11804,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      qtype: :zeek:type:`count`
-         Query type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      alg_name: :zeek:type:`string`
-         Algorithm name.
+      Query.
 
-      inception: :zeek:type:`time`
-         Requested or provided start of validity interval for keying material.
 
-      expiration: :zeek:type:`time`
-         Requested or provided end of validity interval for keying material.
+   .. zeek:field:: qtype :zeek:type:`count`
 
-      mode: :zeek:type:`count`
-         Key agreement or purpose of the message.
+      Query type.
 
-      rr_error: :zeek:type:`count`
-         Error code.
 
-      key_data: :zeek:type:`string`
-         Key exchange data field.
+   .. zeek:field:: alg_name :zeek:type:`string`
 
-      is_query: :zeek:type:`count`
-         The RR is a query/Response.
+      Algorithm name.
+
+
+   .. zeek:field:: inception :zeek:type:`time`
+
+      Requested or provided start of validity interval for keying material.
+
+
+   .. zeek:field:: expiration :zeek:type:`time`
+
+      Requested or provided end of validity interval for keying material.
+
+
+   .. zeek:field:: mode :zeek:type:`count`
+
+      Key agreement or purpose of the message.
+
+
+   .. zeek:field:: rr_error :zeek:type:`count`
+
+      Error code.
+
+
+   .. zeek:field:: key_data :zeek:type:`string`
+
+      Key exchange data field.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      The RR is a query/Response.
+
 
    A DNS TKEY record.
    
@@ -9565,32 +11859,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      query: :zeek:type:`string`
-         Query.
 
-      qtype: :zeek:type:`count`
-         Query type.
+   .. zeek:field:: query :zeek:type:`string`
 
-      alg_name: :zeek:type:`string`
-         Algorithm name.
+      Query.
 
-      sig: :zeek:type:`string`
-         Signature.
 
-      time_signed: :zeek:type:`time`
-         Time when signed.
+   .. zeek:field:: qtype :zeek:type:`count`
 
-      fudge: :zeek:type:`time`
-         TODO.
+      Query type.
 
-      orig_id: :zeek:type:`count`
-         TODO.
 
-      rr_error: :zeek:type:`count`
-         TODO.
+   .. zeek:field:: alg_name :zeek:type:`string`
 
-      is_query: :zeek:type:`count`
-         TODO.
+      Algorithm name.
+
+
+   .. zeek:field:: sig :zeek:type:`string`
+
+      Signature.
+
+
+   .. zeek:field:: time_signed :zeek:type:`time`
+
+      Time when signed.
+
+
+   .. zeek:field:: fudge :zeek:type:`time`
+
+      TODO.
+
+
+   .. zeek:field:: orig_id :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: rr_error :zeek:type:`count`
+
+      TODO.
+
+
+   .. zeek:field:: is_query :zeek:type:`count`
+
+      TODO.
+
 
    An additional DNS TSIG record.
    
@@ -9612,30 +11925,43 @@ Types
 
    :Type: :zeek:type:`record`
 
-      size: :zeek:type:`count`
-         Logical size of data sent (for TCP: derived from sequence numbers).
 
-      state: :zeek:type:`count`
-         Endpoint state. For a TCP connection, one of the constants:
-         :zeek:see:`TCP_INACTIVE` :zeek:see:`TCP_SYN_SENT`
-         :zeek:see:`TCP_SYN_ACK_SENT` :zeek:see:`TCP_PARTIAL`
-         :zeek:see:`TCP_ESTABLISHED` :zeek:see:`TCP_CLOSED` :zeek:see:`TCP_RESET`.
-         For UDP, one of :zeek:see:`UDP_ACTIVE` and :zeek:see:`UDP_INACTIVE`.
+   .. zeek:field:: size :zeek:type:`count`
 
-      num_pkts: :zeek:type:`count` :zeek:attr:`&optional`
-         Number of packets sent. Only set if :zeek:id:`use_conn_size_analyzer`
-         is true.
+      Logical size of data sent (for TCP: derived from sequence numbers).
 
-      num_bytes_ip: :zeek:type:`count` :zeek:attr:`&optional`
-         Number of IP-level bytes sent. Only set if
-         :zeek:id:`use_conn_size_analyzer` is true.
 
-      flow_label: :zeek:type:`count`
-         The current IPv6 flow label that the connection endpoint is using.
-         Always 0 if the connection is over IPv4.
+   .. zeek:field:: state :zeek:type:`count`
 
-      l2_addr: :zeek:type:`string` :zeek:attr:`&optional`
-         The link-layer address seen in the first packet (if available).
+      Endpoint state. For a TCP connection, one of the constants:
+      :zeek:see:`TCP_INACTIVE` :zeek:see:`TCP_SYN_SENT`
+      :zeek:see:`TCP_SYN_ACK_SENT` :zeek:see:`TCP_PARTIAL`
+      :zeek:see:`TCP_ESTABLISHED` :zeek:see:`TCP_CLOSED` :zeek:see:`TCP_RESET`.
+      For UDP, one of :zeek:see:`UDP_ACTIVE` and :zeek:see:`UDP_INACTIVE`.
+
+
+   .. zeek:field:: num_pkts :zeek:type:`count` :zeek:attr:`&optional`
+
+      Number of packets sent. Only set if :zeek:id:`use_conn_size_analyzer`
+      is true.
+
+
+   .. zeek:field:: num_bytes_ip :zeek:type:`count` :zeek:attr:`&optional`
+
+      Number of IP-level bytes sent. Only set if
+      :zeek:id:`use_conn_size_analyzer` is true.
+
+
+   .. zeek:field:: flow_label :zeek:type:`count`
+
+      The current IPv6 flow label that the connection endpoint is using.
+      Always 0 if the connection is over IPv4.
+
+
+   .. zeek:field:: l2_addr :zeek:type:`string` :zeek:attr:`&optional`
+
+      The link-layer address seen in the first packet (if available).
+
 
    Statistics about a :zeek:type:`connection` endpoint.
    
@@ -9646,29 +11972,44 @@ Types
 
    :Type: :zeek:type:`record`
 
-      num_pkts: :zeek:type:`count`
-         Number of packets.
 
-      num_rxmit: :zeek:type:`count`
-         Number of retransmissions.
+   .. zeek:field:: num_pkts :zeek:type:`count`
 
-      num_rxmit_bytes: :zeek:type:`count`
-         Number of retransmitted bytes.
+      Number of packets.
 
-      num_in_order: :zeek:type:`count`
-         Number of in-order packets.
 
-      num_OO: :zeek:type:`count`
-         Number of out-of-order packets.
+   .. zeek:field:: num_rxmit :zeek:type:`count`
 
-      num_repl: :zeek:type:`count`
-         Number of replicated packets (last packet was sent again).
+      Number of retransmissions.
 
-      endian_type: :zeek:type:`count`
-         Endian type used by the endpoint, if it could be determined from
-         the sequence numbers used. This is one of :zeek:see:`ENDIAN_UNKNOWN`,
-         :zeek:see:`ENDIAN_BIG`, :zeek:see:`ENDIAN_LITTLE`, and
-         :zeek:see:`ENDIAN_CONFUSED`.
+
+   .. zeek:field:: num_rxmit_bytes :zeek:type:`count`
+
+      Number of retransmitted bytes.
+
+
+   .. zeek:field:: num_in_order :zeek:type:`count`
+
+      Number of in-order packets.
+
+
+   .. zeek:field:: num_OO :zeek:type:`count`
+
+      Number of out-of-order packets.
+
+
+   .. zeek:field:: num_repl :zeek:type:`count`
+
+      Number of replicated packets (last packet was sent again).
+
+
+   .. zeek:field:: endian_type :zeek:type:`count`
+
+      Endian type used by the endpoint, if it could be determined from
+      the sequence numbers used. This is one of :zeek:see:`ENDIAN_UNKNOWN`,
+      :zeek:see:`ENDIAN_BIG`, :zeek:see:`ENDIAN_LITTLE`, and
+      :zeek:see:`ENDIAN_CONFUSED`.
+
 
    Statistics about what a TCP endpoint sent.
    
@@ -9679,20 +12020,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      entropy: :zeek:type:`double`
-         Information density.
 
-      chi_square: :zeek:type:`double`
-         Chi-Square value.
+   .. zeek:field:: entropy :zeek:type:`double`
 
-      mean: :zeek:type:`double`
-         Arithmetic Mean.
+      Information density.
 
-      monte_carlo_pi: :zeek:type:`double`
-         Monte-carlo value for pi.
 
-      serial_correlation: :zeek:type:`double`
-         Serial correlation coefficient.
+   .. zeek:field:: chi_square :zeek:type:`double`
+
+      Chi-Square value.
+
+
+   .. zeek:field:: mean :zeek:type:`double`
+
+      Arithmetic Mean.
+
+
+   .. zeek:field:: monte_carlo_pi :zeek:type:`double`
+
+      Monte-carlo value for pi.
+
+
+   .. zeek:field:: serial_correlation :zeek:type:`double`
+
+      Serial correlation coefficient.
+
 
    Computed entropy values. The record captures a number of measures that are
    computed in parallel. See `A Pseudorandom Number Sequence Test Program
@@ -9713,76 +12065,108 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string`
-         A hash serving as the identifier associated with a single file.
 
-      parent_id: :zeek:type:`string` :zeek:attr:`&optional`
-         Identifier associated with a container file from which this one was
-         extracted as part of the file analysis.
+   .. zeek:field:: id :zeek:type:`string`
 
-      source: :zeek:type:`string`
-         An identification of the source of the file data. E.g. it may be
-         a network protocol over which it was transferred, or a local file
-         path including filename which was read, or some other input source.
-         Examples are: "HTTP", "SMTP", "IRC_DATA", or the filename, or even
-         the full path and filename.
-
-      is_orig: :zeek:type:`bool` :zeek:attr:`&optional`
-         If the source of this file is a network connection, this field
-         may be set to indicate the directionality.
-
-      conns: :zeek:type:`table` [:zeek:type:`conn_id`] of :zeek:type:`connection` :zeek:attr:`&optional`
-         The set of connections over which the file was transferred.
-
-      last_active: :zeek:type:`time`
-         The time at which the last activity for the file was seen.
-
-      seen_bytes: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Number of bytes provided to the file analysis engine for the file.
-
-      total_bytes: :zeek:type:`count` :zeek:attr:`&optional`
-         Total number of bytes that are supposed to comprise the full file.
-
-      missing_bytes: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of bytes in the file stream that were completely missed
-         during the process of analysis e.g. due to dropped packets.
-
-      overflow_bytes: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of bytes in the file stream that were not delivered to
-         stream file analyzers.  Generally, this consists of bytes that
-         couldn't be reassembled, either because reassembly simply isn't
-         enabled, or due to size limitations of the reassembly buffer.
-
-      timeout_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`default_file_timeout_interval` :zeek:attr:`&optional`
-         The amount of time between receiving new data for this file that
-         the analysis engine will wait before giving up on it.
-
-      bof_buffer_size: :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`default_file_bof_buffer_size` :zeek:attr:`&optional`
-         The number of bytes at the beginning of a file to save for later
-         inspection in the *bof_buffer* field.
-
-      bof_buffer: :zeek:type:`string` :zeek:attr:`&optional`
-         The content of the beginning of a file up to *bof_buffer_size* bytes.
-         This is also the buffer that's used for file/mime type detection.
-
-      info: :zeek:type:`Files::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/files/main.zeek` is loaded)
+      A hash serving as the identifier associated with a single file.
 
 
-      ftp: :zeek:type:`FTP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/ftp/files.zeek` is loaded)
+   .. zeek:field:: parent_id :zeek:type:`string` :zeek:attr:`&optional`
+
+      Identifier associated with a container file from which this one was
+      extracted as part of the file analysis.
 
 
-      http: :zeek:type:`HTTP::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+   .. zeek:field:: source :zeek:type:`string`
+
+      An identification of the source of the file data. E.g. it may be
+      a network protocol over which it was transferred, or a local file
+      path including filename which was read, or some other input source.
+      Examples are: "HTTP", "SMTP", "IRC_DATA", or the filename, or even
+      the full path and filename.
 
 
-      irc: :zeek:type:`IRC::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/irc/files.zeek` is loaded)
+   .. zeek:field:: is_orig :zeek:type:`bool` :zeek:attr:`&optional`
+
+      If the source of this file is a network connection, this field
+      may be set to indicate the directionality.
 
 
-      pe: :zeek:type:`PE::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/files/pe/main.zeek` is loaded)
+   .. zeek:field:: conns :zeek:type:`table` [:zeek:type:`conn_id`] of :zeek:type:`connection` :zeek:attr:`&optional`
+
+      The set of connections over which the file was transferred.
+
+
+   .. zeek:field:: last_active :zeek:type:`time`
+
+      The time at which the last activity for the file was seen.
+
+
+   .. zeek:field:: seen_bytes :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Number of bytes provided to the file analysis engine for the file.
+
+
+   .. zeek:field:: total_bytes :zeek:type:`count` :zeek:attr:`&optional`
+
+      Total number of bytes that are supposed to comprise the full file.
+
+
+   .. zeek:field:: missing_bytes :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of bytes in the file stream that were completely missed
+      during the process of analysis e.g. due to dropped packets.
+
+
+   .. zeek:field:: overflow_bytes :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of bytes in the file stream that were not delivered to
+      stream file analyzers.  Generally, this consists of bytes that
+      couldn't be reassembled, either because reassembly simply isn't
+      enabled, or due to size limitations of the reassembly buffer.
+
+
+   .. zeek:field:: timeout_interval :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`default_file_timeout_interval` :zeek:attr:`&optional`
+
+      The amount of time between receiving new data for this file that
+      the analysis engine will wait before giving up on it.
+
+
+   .. zeek:field:: bof_buffer_size :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`default_file_bof_buffer_size` :zeek:attr:`&optional`
+
+      The number of bytes at the beginning of a file to save for later
+      inspection in the *bof_buffer* field.
+
+
+   .. zeek:field:: bof_buffer :zeek:type:`string` :zeek:attr:`&optional`
+
+      The content of the beginning of a file up to *bof_buffer_size* bytes.
+      This is also the buffer that's used for file/mime type detection.
+
+
+   .. zeek:field:: info :zeek:type:`Files::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/files/main.zeek` is loaded)
+
+
+   .. zeek:field:: ftp :zeek:type:`FTP::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/ftp/files.zeek` is loaded)
+
+
+   .. zeek:field:: http :zeek:type:`HTTP::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/http/entities.zeek` is loaded)
+
+
+   .. zeek:field:: irc :zeek:type:`IRC::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/irc/files.zeek` is loaded)
+
+
+   .. zeek:field:: pe :zeek:type:`PE::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/files/pe/main.zeek` is loaded)
 
    :Attributes: :zeek:attr:`&redef`
 
@@ -9797,15 +12181,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      mime_type: :zeek:type:`string` :zeek:attr:`&optional`
-         The strongest matching MIME type if one was discovered.
 
-      mime_types: :zeek:type:`mime_matches` :zeek:attr:`&optional`
-         All matching MIME types if any were discovered.
+   .. zeek:field:: mime_type :zeek:type:`string` :zeek:attr:`&optional`
 
-      inferred: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Specifies whether the MIME type was inferred using signatures,
-         or provided directly by the protocol the file appeared in.
+      The strongest matching MIME type if one was discovered.
+
+
+   .. zeek:field:: mime_types :zeek:type:`mime_matches` :zeek:attr:`&optional`
+
+      All matching MIME types if any were discovered.
+
+
+   .. zeek:field:: inferred :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Specifies whether the MIME type was inferred using signatures,
+      or provided directly by the protocol the file appeared in.
+
 
    File Analysis metadata that's been inferred about a particular file.
 
@@ -9825,17 +12216,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      src_h: :zeek:type:`addr` :zeek:attr:`&log`
-         The source IP address.
 
-      src_p: :zeek:type:`port` :zeek:attr:`&log`
-         The source port number.
+   .. zeek:field:: src_h :zeek:type:`addr` :zeek:attr:`&log`
 
-      dst_h: :zeek:type:`addr` :zeek:attr:`&log`
-         The destination IP address.
+      The source IP address.
 
-      dst_p: :zeek:type:`port` :zeek:attr:`&log`
-         The destination port number.
+
+   .. zeek:field:: src_p :zeek:type:`port` :zeek:attr:`&log`
+
+      The source port number.
+
+
+   .. zeek:field:: dst_h :zeek:type:`addr` :zeek:attr:`&log`
+
+      The destination IP address.
+
+
+   .. zeek:field:: dst_p :zeek:type:`port` :zeek:attr:`&log`
+
+      The destination port number.
+
    :Attributes: :zeek:attr:`&log`
 
    The identifying 4-tuple of a uni-directional flow.
@@ -9849,13 +12249,19 @@ Types
 
    :Type: :zeek:type:`record`
 
-      v: :zeek:type:`any` :zeek:attr:`&optional`
-         Parsed value.
 
-      valid: :zeek:type:`bool`
-         True if parsing was successful.
+   .. zeek:field:: v :zeek:type:`any` :zeek:attr:`&optional`
 
-      err: :zeek:type:`string` :zeek:attr:`&optional`
+      Parsed value.
+
+
+   .. zeek:field:: valid :zeek:type:`bool`
+
+      True if parsing was successful.
+
+
+   .. zeek:field:: err :zeek:type:`string` :zeek:attr:`&optional`
+
 
    Return type for from_json BIF.
    
@@ -9866,14 +12272,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      h: :zeek:type:`addr`
-         The host's address.
 
-      p: :zeek:type:`port`
-         The host's port.
+   .. zeek:field:: h :zeek:type:`addr`
 
-      valid: :zeek:type:`bool`
-         True if format was right. Only then are *h* and *p* valid.
+      The host's address.
+
+
+   .. zeek:field:: p :zeek:type:`port`
+
+      The host's port.
+
+
+   .. zeek:field:: valid :zeek:type:`bool`
+
+      True if format was right. Only then are *h* and *p* valid.
+
 
    A parsed host/port combination describing server endpoint for an upcoming
    data transfer.
@@ -9886,11 +12299,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      number: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The autonomous system number.
 
-      organization: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Associated organization.
+   .. zeek:field:: number :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      The autonomous system number.
+
+
+   .. zeek:field:: organization :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Associated organization.
+
    :Attributes: :zeek:attr:`&log`
 
    GeoIP autonomous system information.
@@ -9902,20 +12320,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      country_code: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The country code.
 
-      region: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The region.
+   .. zeek:field:: country_code :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      city: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         The city.
+      The country code.
 
-      latitude: :zeek:type:`double` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Latitude.
 
-      longitude: :zeek:type:`double` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Longitude.
+   .. zeek:field:: region :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      The region.
+
+
+   .. zeek:field:: city :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      The city.
+
+
+   .. zeek:field:: latitude :zeek:type:`double` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Latitude.
+
+
+   .. zeek:field:: longitude :zeek:type:`double` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Longitude.
+
    :Attributes: :zeek:attr:`&log`
 
    GeoIP location information.
@@ -9957,49 +12386,72 @@ Types
 
    :Type: :zeek:type:`record`
 
-      imsi: :zeek:type:`gtp_imsi` :zeek:attr:`&optional`
 
-      rai: :zeek:type:`gtp_rai` :zeek:attr:`&optional`
+   .. zeek:field:: imsi :zeek:type:`gtp_imsi` :zeek:attr:`&optional`
 
-      recovery: :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
 
-      select_mode: :zeek:type:`gtp_selection_mode` :zeek:attr:`&optional`
+   .. zeek:field:: rai :zeek:type:`gtp_rai` :zeek:attr:`&optional`
 
-      data1: :zeek:type:`gtp_teid1`
 
-      cp: :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
+   .. zeek:field:: recovery :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
 
-      nsapi: :zeek:type:`gtp_nsapi`
 
-      linked_nsapi: :zeek:type:`gtp_nsapi` :zeek:attr:`&optional`
+   .. zeek:field:: select_mode :zeek:type:`gtp_selection_mode` :zeek:attr:`&optional`
 
-      charge_character: :zeek:type:`gtp_charging_characteristics` :zeek:attr:`&optional`
 
-      trace_ref: :zeek:type:`gtp_trace_reference` :zeek:attr:`&optional`
+   .. zeek:field:: data1 :zeek:type:`gtp_teid1`
 
-      trace_type: :zeek:type:`gtp_trace_type` :zeek:attr:`&optional`
 
-      end_user_addr: :zeek:type:`gtp_end_user_addr` :zeek:attr:`&optional`
+   .. zeek:field:: cp :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
 
-      ap_name: :zeek:type:`gtp_access_point_name` :zeek:attr:`&optional`
 
-      opts: :zeek:type:`gtp_proto_config_options` :zeek:attr:`&optional`
+   .. zeek:field:: nsapi :zeek:type:`gtp_nsapi`
 
-      signal_addr: :zeek:type:`gtp_gsn_addr`
 
-      user_addr: :zeek:type:`gtp_gsn_addr`
+   .. zeek:field:: linked_nsapi :zeek:type:`gtp_nsapi` :zeek:attr:`&optional`
 
-      msisdn: :zeek:type:`gtp_msisdn` :zeek:attr:`&optional`
 
-      qos_prof: :zeek:type:`gtp_qos_profile`
+   .. zeek:field:: charge_character :zeek:type:`gtp_charging_characteristics` :zeek:attr:`&optional`
 
-      tft: :zeek:type:`gtp_tft` :zeek:attr:`&optional`
 
-      trigger_id: :zeek:type:`gtp_trigger_id` :zeek:attr:`&optional`
+   .. zeek:field:: trace_ref :zeek:type:`gtp_trace_reference` :zeek:attr:`&optional`
 
-      omc_id: :zeek:type:`gtp_omc_id` :zeek:attr:`&optional`
 
-      ext: :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+   .. zeek:field:: trace_type :zeek:type:`gtp_trace_type` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: end_user_addr :zeek:type:`gtp_end_user_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: ap_name :zeek:type:`gtp_access_point_name` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: opts :zeek:type:`gtp_proto_config_options` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: signal_addr :zeek:type:`gtp_gsn_addr`
+
+
+   .. zeek:field:: user_addr :zeek:type:`gtp_gsn_addr`
+
+
+   .. zeek:field:: msisdn :zeek:type:`gtp_msisdn` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: qos_prof :zeek:type:`gtp_qos_profile`
+
+
+   .. zeek:field:: tft :zeek:type:`gtp_tft` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: trigger_id :zeek:type:`gtp_trigger_id` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: omc_id :zeek:type:`gtp_omc_id` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: ext :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: gtp_create_pdp_ctx_response_elements
@@ -10007,31 +12459,45 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cause: :zeek:type:`gtp_cause`
 
-      reorder_req: :zeek:type:`gtp_reordering_required` :zeek:attr:`&optional`
+   .. zeek:field:: cause :zeek:type:`gtp_cause`
 
-      recovery: :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
 
-      data1: :zeek:type:`gtp_teid1` :zeek:attr:`&optional`
+   .. zeek:field:: reorder_req :zeek:type:`gtp_reordering_required` :zeek:attr:`&optional`
 
-      cp: :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
 
-      charging_id: :zeek:type:`gtp_charging_id` :zeek:attr:`&optional`
+   .. zeek:field:: recovery :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
 
-      end_user_addr: :zeek:type:`gtp_end_user_addr` :zeek:attr:`&optional`
 
-      opts: :zeek:type:`gtp_proto_config_options` :zeek:attr:`&optional`
+   .. zeek:field:: data1 :zeek:type:`gtp_teid1` :zeek:attr:`&optional`
 
-      cp_addr: :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
 
-      user_addr: :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
+   .. zeek:field:: cp :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
 
-      qos_prof: :zeek:type:`gtp_qos_profile` :zeek:attr:`&optional`
 
-      charge_gateway: :zeek:type:`gtp_charging_gateway_addr` :zeek:attr:`&optional`
+   .. zeek:field:: charging_id :zeek:type:`gtp_charging_id` :zeek:attr:`&optional`
 
-      ext: :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
+   .. zeek:field:: end_user_addr :zeek:type:`gtp_end_user_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: opts :zeek:type:`gtp_proto_config_options` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: cp_addr :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: user_addr :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: qos_prof :zeek:type:`gtp_qos_profile` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: charge_gateway :zeek:type:`gtp_charging_gateway_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: ext :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: gtp_delete_pdp_ctx_request_elements
@@ -10039,11 +12505,15 @@ Types
 
    :Type: :zeek:type:`record`
 
-      teardown_ind: :zeek:type:`gtp_teardown_ind` :zeek:attr:`&optional`
 
-      nsapi: :zeek:type:`gtp_nsapi`
+   .. zeek:field:: teardown_ind :zeek:type:`gtp_teardown_ind` :zeek:attr:`&optional`
 
-      ext: :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
+   .. zeek:field:: nsapi :zeek:type:`gtp_nsapi`
+
+
+   .. zeek:field:: ext :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: gtp_delete_pdp_ctx_response_elements
@@ -10051,9 +12521,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cause: :zeek:type:`gtp_cause`
 
-      ext: :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+   .. zeek:field:: cause :zeek:type:`gtp_cause`
+
+
+   .. zeek:field:: ext :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: gtp_end_user_addr
@@ -10061,15 +12534,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pdp_type_org: :zeek:type:`count`
 
-      pdp_type_num: :zeek:type:`count`
+   .. zeek:field:: pdp_type_org :zeek:type:`count`
 
-      pdp_ip: :zeek:type:`addr` :zeek:attr:`&optional`
-         Set if the End User Address information element is IPv4/IPv6.
 
-      pdp_other_addr: :zeek:type:`string` :zeek:attr:`&optional`
-         Set if the End User Address information element isn't IPv4/IPv6.
+   .. zeek:field:: pdp_type_num :zeek:type:`count`
+
+
+   .. zeek:field:: pdp_ip :zeek:type:`addr` :zeek:attr:`&optional`
+
+      Set if the End User Address information element is IPv4/IPv6.
+
+
+   .. zeek:field:: pdp_other_addr :zeek:type:`string` :zeek:attr:`&optional`
+
+      Set if the End User Address information element isn't IPv4/IPv6.
+
 
 
 .. zeek:type:: gtp_gsn_addr
@@ -10077,13 +12557,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ip: :zeek:type:`addr` :zeek:attr:`&optional`
-         If the GSN Address information element has length 4 or 16, then this
-         field is set to be the informational element's value interpreted as
-         an IPv4 or IPv6 address, respectively.
 
-      other: :zeek:type:`string` :zeek:attr:`&optional`
-         This field is set if it's not an IPv4 or IPv6 address.
+   .. zeek:field:: ip :zeek:type:`addr` :zeek:attr:`&optional`
+
+      If the GSN Address information element has length 4 or 16, then this
+      field is set to be the informational element's value interpreted as
+      an IPv4 or IPv6 address, respectively.
+
+
+   .. zeek:field:: other :zeek:type:`string` :zeek:attr:`&optional`
+
+      This field is set if it's not an IPv4 or IPv6 address.
+
 
 
 .. zeek:type:: gtp_imsi
@@ -10115,9 +12600,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`count`
 
-      value: :zeek:type:`string`
+   .. zeek:field:: id :zeek:type:`count`
+
+
+   .. zeek:field:: value :zeek:type:`string`
+
 
 
 .. zeek:type:: gtp_proto_config_options
@@ -10131,9 +12619,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      priority: :zeek:type:`count`
 
-      data: :zeek:type:`string`
+   .. zeek:field:: priority :zeek:type:`count`
+
+
+   .. zeek:field:: data :zeek:type:`string`
+
 
 
 .. zeek:type:: gtp_rai
@@ -10141,13 +12632,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      mcc: :zeek:type:`count`
 
-      mnc: :zeek:type:`count`
+   .. zeek:field:: mcc :zeek:type:`count`
 
-      lac: :zeek:type:`count`
 
-      rac: :zeek:type:`count`
+   .. zeek:field:: mnc :zeek:type:`count`
+
+
+   .. zeek:field:: lac :zeek:type:`count`
+
+
+   .. zeek:field:: rac :zeek:type:`count`
+
 
 
 .. zeek:type:: gtp_recovery
@@ -10215,37 +12711,54 @@ Types
 
    :Type: :zeek:type:`record`
 
-      imsi: :zeek:type:`gtp_imsi` :zeek:attr:`&optional`
 
-      rai: :zeek:type:`gtp_rai` :zeek:attr:`&optional`
+   .. zeek:field:: imsi :zeek:type:`gtp_imsi` :zeek:attr:`&optional`
 
-      recovery: :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
 
-      data1: :zeek:type:`gtp_teid1`
+   .. zeek:field:: rai :zeek:type:`gtp_rai` :zeek:attr:`&optional`
 
-      cp: :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
 
-      nsapi: :zeek:type:`gtp_nsapi`
+   .. zeek:field:: recovery :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
 
-      trace_ref: :zeek:type:`gtp_trace_reference` :zeek:attr:`&optional`
 
-      trace_type: :zeek:type:`gtp_trace_type` :zeek:attr:`&optional`
+   .. zeek:field:: data1 :zeek:type:`gtp_teid1`
 
-      cp_addr: :zeek:type:`gtp_gsn_addr`
 
-      user_addr: :zeek:type:`gtp_gsn_addr`
+   .. zeek:field:: cp :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
 
-      qos_prof: :zeek:type:`gtp_qos_profile`
 
-      tft: :zeek:type:`gtp_tft` :zeek:attr:`&optional`
+   .. zeek:field:: nsapi :zeek:type:`gtp_nsapi`
 
-      trigger_id: :zeek:type:`gtp_trigger_id` :zeek:attr:`&optional`
 
-      omc_id: :zeek:type:`gtp_omc_id` :zeek:attr:`&optional`
+   .. zeek:field:: trace_ref :zeek:type:`gtp_trace_reference` :zeek:attr:`&optional`
 
-      ext: :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
 
-      end_user_addr: :zeek:type:`gtp_end_user_addr` :zeek:attr:`&optional`
+   .. zeek:field:: trace_type :zeek:type:`gtp_trace_type` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: cp_addr :zeek:type:`gtp_gsn_addr`
+
+
+   .. zeek:field:: user_addr :zeek:type:`gtp_gsn_addr`
+
+
+   .. zeek:field:: qos_prof :zeek:type:`gtp_qos_profile`
+
+
+   .. zeek:field:: tft :zeek:type:`gtp_tft` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: trigger_id :zeek:type:`gtp_trigger_id` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: omc_id :zeek:type:`gtp_omc_id` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: ext :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: end_user_addr :zeek:type:`gtp_end_user_addr` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: gtp_update_pdp_ctx_response_elements
@@ -10253,25 +12766,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cause: :zeek:type:`gtp_cause`
 
-      recovery: :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
+   .. zeek:field:: cause :zeek:type:`gtp_cause`
 
-      data1: :zeek:type:`gtp_teid1` :zeek:attr:`&optional`
 
-      cp: :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
+   .. zeek:field:: recovery :zeek:type:`gtp_recovery` :zeek:attr:`&optional`
 
-      charging_id: :zeek:type:`gtp_charging_id` :zeek:attr:`&optional`
 
-      cp_addr: :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
+   .. zeek:field:: data1 :zeek:type:`gtp_teid1` :zeek:attr:`&optional`
 
-      user_addr: :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
 
-      qos_prof: :zeek:type:`gtp_qos_profile` :zeek:attr:`&optional`
+   .. zeek:field:: cp :zeek:type:`gtp_teid_control_plane` :zeek:attr:`&optional`
 
-      charge_gateway: :zeek:type:`gtp_charging_gateway_addr` :zeek:attr:`&optional`
 
-      ext: :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+   .. zeek:field:: charging_id :zeek:type:`gtp_charging_id` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: cp_addr :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: user_addr :zeek:type:`gtp_gsn_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: qos_prof :zeek:type:`gtp_qos_profile` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: charge_gateway :zeek:type:`gtp_charging_gateway_addr` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: ext :zeek:type:`gtp_private_extension` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: gtpv1_hdr
@@ -10279,51 +12803,76 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`count`
-         The 3-bit version field, which for GTPv1 should be 1.
 
-      pt_flag: :zeek:type:`bool`
-         Protocol Type value differentiates GTP (value 1) from GTP' (value 0).
+   .. zeek:field:: version :zeek:type:`count`
 
-      rsv: :zeek:type:`bool`
-         Reserved field, should be 0.
+      The 3-bit version field, which for GTPv1 should be 1.
 
-      e_flag: :zeek:type:`bool`
-         Extension Header flag.  When 0, the *next_type* field may or may not
-         be present, but shouldn't be meaningful.  When 1, *next_type* is
-         present and meaningful.
 
-      s_flag: :zeek:type:`bool`
-         Sequence Number flag.  When 0, the *seq* field may or may not
-         be present, but shouldn't be meaningful.  When 1, *seq* is
-         present and meaningful.
+   .. zeek:field:: pt_flag :zeek:type:`bool`
 
-      pn_flag: :zeek:type:`bool`
-         N-PDU flag.  When 0, the *n_pdu* field may or may not
-         be present, but shouldn't be meaningful.  When 1, *n_pdu* is
-         present and meaningful.
+      Protocol Type value differentiates GTP (value 1) from GTP' (value 0).
 
-      msg_type: :zeek:type:`count`
-         Message Type.  A value of 255 indicates user-plane data is encapsulated.
 
-      length: :zeek:type:`count`
-         Length of the GTP packet payload (the rest of the packet following
-         the mandatory 8-byte GTP header).
+   .. zeek:field:: rsv :zeek:type:`bool`
 
-      teid: :zeek:type:`count`
-         Tunnel Endpoint Identifier.  Unambiguously identifies a tunnel
-         endpoint in receiving GTP-U or GTP-C protocol entity.
+      Reserved field, should be 0.
 
-      seq: :zeek:type:`count` :zeek:attr:`&optional`
-         Sequence Number.  Set if any *e_flag*, *s_flag*, or *pn_flag* field
-         is set.
 
-      n_pdu: :zeek:type:`count` :zeek:attr:`&optional`
-         N-PDU Number.  Set if any *e_flag*, *s_flag*, or *pn_flag* field is set.
+   .. zeek:field:: e_flag :zeek:type:`bool`
 
-      next_type: :zeek:type:`count` :zeek:attr:`&optional`
-         Next Extension Header Type.  Set if any *e_flag*, *s_flag*, or
-         *pn_flag* field is set.
+      Extension Header flag.  When 0, the *next_type* field may or may not
+      be present, but shouldn't be meaningful.  When 1, *next_type* is
+      present and meaningful.
+
+
+   .. zeek:field:: s_flag :zeek:type:`bool`
+
+      Sequence Number flag.  When 0, the *seq* field may or may not
+      be present, but shouldn't be meaningful.  When 1, *seq* is
+      present and meaningful.
+
+
+   .. zeek:field:: pn_flag :zeek:type:`bool`
+
+      N-PDU flag.  When 0, the *n_pdu* field may or may not
+      be present, but shouldn't be meaningful.  When 1, *n_pdu* is
+      present and meaningful.
+
+
+   .. zeek:field:: msg_type :zeek:type:`count`
+
+      Message Type.  A value of 255 indicates user-plane data is encapsulated.
+
+
+   .. zeek:field:: length :zeek:type:`count`
+
+      Length of the GTP packet payload (the rest of the packet following
+      the mandatory 8-byte GTP header).
+
+
+   .. zeek:field:: teid :zeek:type:`count`
+
+      Tunnel Endpoint Identifier.  Unambiguously identifies a tunnel
+      endpoint in receiving GTP-U or GTP-C protocol entity.
+
+
+   .. zeek:field:: seq :zeek:type:`count` :zeek:attr:`&optional`
+
+      Sequence Number.  Set if any *e_flag*, *s_flag*, or *pn_flag* field
+      is set.
+
+
+   .. zeek:field:: n_pdu :zeek:type:`count` :zeek:attr:`&optional`
+
+      N-PDU Number.  Set if any *e_flag*, *s_flag*, or *pn_flag* field is set.
+
+
+   .. zeek:field:: next_type :zeek:type:`count` :zeek:attr:`&optional`
+
+      Next Extension Header Type.  Set if any *e_flag*, *s_flag*, or
+      *pn_flag* field is set.
+
 
    A GTPv1 (GPRS Tunneling Protocol) header.
 
@@ -10332,23 +12881,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      start: :zeek:type:`time`
-         When the request/reply line was complete.
 
-      interrupted: :zeek:type:`bool`
-         Whether the message was interrupted.
+   .. zeek:field:: start :zeek:type:`time`
 
-      finish_msg: :zeek:type:`string`
-         Reason phrase if interrupted.
+      When the request/reply line was complete.
 
-      body_length: :zeek:type:`count`
-         Length of body processed (before finished/interrupted).
 
-      content_gap_length: :zeek:type:`count`
-         Total length of gaps within *body_length*.
+   .. zeek:field:: interrupted :zeek:type:`bool`
 
-      header_length: :zeek:type:`count`
-         Length of headers (including the req/reply line, but not CR/LF's).
+      Whether the message was interrupted.
+
+
+   .. zeek:field:: finish_msg :zeek:type:`string`
+
+      Reason phrase if interrupted.
+
+
+   .. zeek:field:: body_length :zeek:type:`count`
+
+      Length of body processed (before finished/interrupted).
+
+
+   .. zeek:field:: content_gap_length :zeek:type:`count`
+
+      Total length of gaps within *body_length*.
+
+
+   .. zeek:field:: header_length :zeek:type:`count`
+
+      Length of headers (including the req/reply line, but not CR/LF's).
+
 
    HTTP message statistics.
    
@@ -10359,17 +12921,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      num_requests: :zeek:type:`count`
-         Number of requests.
 
-      num_replies: :zeek:type:`count`
-         Number of replies.
+   .. zeek:field:: num_requests :zeek:type:`count`
 
-      request_version: :zeek:type:`double`
-         HTTP version of the requests.
+      Number of requests.
 
-      reply_version: :zeek:type:`double`
-         HTTP Version of the replies.
+
+   .. zeek:field:: num_replies :zeek:type:`count`
+
+      Number of replies.
+
+
+   .. zeek:field:: request_version :zeek:type:`double`
+
+      HTTP version of the requests.
+
+
+   .. zeek:field:: reply_version :zeek:type:`double`
+
+      HTTP Version of the replies.
+
 
    HTTP session statistics.
    
@@ -10380,32 +12951,47 @@ Types
 
    :Type: :zeek:type:`record`
 
-      otype: :zeek:type:`count`
-         8-bit identifier of the type of option.
 
-      len: :zeek:type:`count`
-         8-bit integer representing the length of the option (including the
-         type and length fields) in units of 8 octets.
+   .. zeek:field:: otype :zeek:type:`count`
 
-      link_address: :zeek:type:`string` :zeek:attr:`&optional`
-         Source Link-Layer Address (Type 1) or Target Link-Layer Address (Type 2).
-         Byte ordering of this is dependent on the actual link-layer.
+      8-bit identifier of the type of option.
 
-      prefix: :zeek:type:`icmp6_nd_prefix_info` :zeek:attr:`&optional`
-         Prefix Information (Type 3).
 
-      redirect: :zeek:type:`icmp_context` :zeek:attr:`&optional`
-         Redirected header (Type 4).  This field contains the context of the
-         original, redirected packet.
+   .. zeek:field:: len :zeek:type:`count`
 
-      mtu: :zeek:type:`count` :zeek:attr:`&optional`
-         Recommended MTU for the link (Type 5).
+      8-bit integer representing the length of the option (including the
+      type and length fields) in units of 8 octets.
 
-      payload: :zeek:type:`string` :zeek:attr:`&optional`
-         The raw data of the option (everything after type & length fields),
-         useful for unknown option types or when the full option payload is
-         truncated in the captured packet.  In those cases, option fields
-         won't be pre-extracted into the fields above.
+
+   .. zeek:field:: link_address :zeek:type:`string` :zeek:attr:`&optional`
+
+      Source Link-Layer Address (Type 1) or Target Link-Layer Address (Type 2).
+      Byte ordering of this is dependent on the actual link-layer.
+
+
+   .. zeek:field:: prefix :zeek:type:`icmp6_nd_prefix_info` :zeek:attr:`&optional`
+
+      Prefix Information (Type 3).
+
+
+   .. zeek:field:: redirect :zeek:type:`icmp_context` :zeek:attr:`&optional`
+
+      Redirected header (Type 4).  This field contains the context of the
+      original, redirected packet.
+
+
+   .. zeek:field:: mtu :zeek:type:`count` :zeek:attr:`&optional`
+
+      Recommended MTU for the link (Type 5).
+
+
+   .. zeek:field:: payload :zeek:type:`string` :zeek:attr:`&optional`
+
+      The raw data of the option (everything after type & length fields),
+      useful for unknown option types or when the full option payload is
+      truncated in the captured packet.  In those cases, option fields
+      won't be pre-extracted into the fields above.
+
 
    Options extracted from ICMPv6 neighbor discovery messages as specified
    by :rfc:`4861`.
@@ -10426,27 +13012,40 @@ Types
 
    :Type: :zeek:type:`record`
 
-      prefix_len: :zeek:type:`count`
-         Number of leading bits of the *prefix* that are valid.
 
-      L_flag: :zeek:type:`bool`
-         Flag indicating the prefix can be used for on-link determination.
+   .. zeek:field:: prefix_len :zeek:type:`count`
 
-      A_flag: :zeek:type:`bool`
-         Autonomous address-configuration flag.
+      Number of leading bits of the *prefix* that are valid.
 
-      valid_lifetime: :zeek:type:`interval`
-         Length of time in seconds that the prefix is valid for purpose of
-         on-link determination (0xffffffff represents infinity).
 
-      preferred_lifetime: :zeek:type:`interval`
-         Length of time in seconds that the addresses generated from the
-         prefix via stateless address autoconfiguration remain preferred
-         (0xffffffff represents infinity).
+   .. zeek:field:: L_flag :zeek:type:`bool`
 
-      prefix: :zeek:type:`addr`
-         An IP address or prefix of an IP address.  Use the *prefix_len* field
-         to convert this into a :zeek:type:`subnet`.
+      Flag indicating the prefix can be used for on-link determination.
+
+
+   .. zeek:field:: A_flag :zeek:type:`bool`
+
+      Autonomous address-configuration flag.
+
+
+   .. zeek:field:: valid_lifetime :zeek:type:`interval`
+
+      Length of time in seconds that the prefix is valid for purpose of
+      on-link determination (0xffffffff represents infinity).
+
+
+   .. zeek:field:: preferred_lifetime :zeek:type:`interval`
+
+      Length of time in seconds that the addresses generated from the
+      prefix via stateless address autoconfiguration remain preferred
+      (0xffffffff represents infinity).
+
+
+   .. zeek:field:: prefix :zeek:type:`addr`
+
+      An IP address or prefix of an IP address.  Use the *prefix_len* field
+      to convert this into a :zeek:type:`subnet`.
+
 
    Values extracted from a Prefix Information option in an ICMPv6 neighbor
    discovery message as specified by :rfc:`4861`.
@@ -10458,32 +13057,49 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`conn_id`
-         The packet's 4-tuple.
 
-      len: :zeek:type:`count`
-         The length of the IP packet (headers + payload).
+   .. zeek:field:: id :zeek:type:`conn_id`
 
-      proto: :zeek:type:`count`
-         The packet's transport-layer protocol.
+      The packet's 4-tuple.
 
-      frag_offset: :zeek:type:`count`
-         The packet's fragmentation offset.
 
-      bad_hdr_len: :zeek:type:`bool`
-         True if the packet's IP header is not fully included in the context
-         or if there is not enough of the transport header to determine source
-         and destination ports. If that is the case, the appropriate fields
-         of this record will be set to null values.
+   .. zeek:field:: len :zeek:type:`count`
 
-      bad_checksum: :zeek:type:`bool`
-         True if the packet's IP checksum is not correct.
+      The length of the IP packet (headers + payload).
 
-      MF: :zeek:type:`bool`
-         True if the packet's *more fragments* flag is set.
 
-      DF: :zeek:type:`bool`
-         True if the packet's *don't fragment* flag is set.
+   .. zeek:field:: proto :zeek:type:`count`
+
+      The packet's transport-layer protocol.
+
+
+   .. zeek:field:: frag_offset :zeek:type:`count`
+
+      The packet's fragmentation offset.
+
+
+   .. zeek:field:: bad_hdr_len :zeek:type:`bool`
+
+      True if the packet's IP header is not fully included in the context
+      or if there is not enough of the transport header to determine source
+      and destination ports. If that is the case, the appropriate fields
+      of this record will be set to null values.
+
+
+   .. zeek:field:: bad_checksum :zeek:type:`bool`
+
+      True if the packet's IP checksum is not correct.
+
+
+   .. zeek:field:: MF :zeek:type:`bool`
+
+      True if the packet's *more fragments* flag is set.
+
+
+   .. zeek:field:: DF :zeek:type:`bool`
+
+      True if the packet's *don't fragment* flag is set.
+
 
    Packet context part of an ICMP message. The fields of this record reflect the
    packet that is described by the context.
@@ -10495,8 +13111,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      icmp_type: :zeek:type:`count`
-         type of message
+
+   .. zeek:field:: icmp_type :zeek:type:`count`
+
+      type of message
+
 
    Values extracted from an ICMP header.
    
@@ -10507,20 +13126,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      v6: :zeek:type:`bool`
-         True if it's an ICMPv6 packet.
 
-      itype: :zeek:type:`count`
-         The ICMP type of the current packet.
+   .. zeek:field:: v6 :zeek:type:`bool`
 
-      icode: :zeek:type:`count`
-         The ICMP code of the current packet.
+      True if it's an ICMPv6 packet.
 
-      len: :zeek:type:`count`
-         The length of the ICMP payload.
 
-      ttl: :zeek:type:`count`
-         The encapsulating IP header's TTL (IPv4) or Hop Limit (IPv6).
+   .. zeek:field:: itype :zeek:type:`count`
+
+      The ICMP type of the current packet.
+
+
+   .. zeek:field:: icode :zeek:type:`count`
+
+      The ICMP code of the current packet.
+
+
+   .. zeek:field:: len :zeek:type:`count`
+
+      The length of the ICMP payload.
+
+
+   .. zeek:field:: ttl :zeek:type:`count`
+
+      The encapsulating IP header's TTL (IPv4) or Hop Limit (IPv6).
+
 
    Specifics about an ICMP conversation/packet.
    ICMP events typically pass this in addition to :zeek:type:`conn_id`.
@@ -10580,41 +13210,66 @@ Types
 
    :Type: :zeek:type:`record`
 
-      hl: :zeek:type:`count`
-         Header length in bytes.
 
-      tos: :zeek:type:`count`
-         Type of service.
+   .. zeek:field:: hl :zeek:type:`count`
 
-      len: :zeek:type:`count`
-         Total length.
+      Header length in bytes.
 
-      id: :zeek:type:`count`
-         Identification.
 
-      DF: :zeek:type:`bool`
-         True if the packet's *don't fragment* flag is set.
+   .. zeek:field:: tos :zeek:type:`count`
 
-      MF: :zeek:type:`bool`
-         True if the packet's *more fragments* flag is set.
+      Type of service.
 
-      offset: :zeek:type:`count`
-         Fragment offset.
 
-      ttl: :zeek:type:`count`
-         Time to live.
+   .. zeek:field:: len :zeek:type:`count`
 
-      p: :zeek:type:`count`
-         Protocol.
+      Total length.
 
-      sum: :zeek:type:`count`
-         Checksum.
 
-      src: :zeek:type:`addr`
-         Source address.
+   .. zeek:field:: id :zeek:type:`count`
 
-      dst: :zeek:type:`addr`
-         Destination address.
+      Identification.
+
+
+   .. zeek:field:: DF :zeek:type:`bool`
+
+      True if the packet's *don't fragment* flag is set.
+
+
+   .. zeek:field:: MF :zeek:type:`bool`
+
+      True if the packet's *more fragments* flag is set.
+
+
+   .. zeek:field:: offset :zeek:type:`count`
+
+      Fragment offset.
+
+
+   .. zeek:field:: ttl :zeek:type:`count`
+
+      Time to live.
+
+
+   .. zeek:field:: p :zeek:type:`count`
+
+      Protocol.
+
+
+   .. zeek:field:: sum :zeek:type:`count`
+
+      Checksum.
+
+
+   .. zeek:field:: src :zeek:type:`addr`
+
+      Source address.
+
+
+   .. zeek:field:: dst :zeek:type:`addr`
+
+      Destination address.
+
 
    Values extracted from an IPv4 header.
    
@@ -10625,24 +13280,37 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nxt: :zeek:type:`count`
-         Protocol number of the next header (RFC 1700 et seq., IANA assigned
-         number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      len: :zeek:type:`count`
-         Length of header in 4-octet units, excluding first two units.
+   .. zeek:field:: nxt :zeek:type:`count`
 
-      rsv: :zeek:type:`count`
-         Reserved field.
+      Protocol number of the next header (RFC 1700 et seq., IANA assigned
+      number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      spi: :zeek:type:`count`
-         Security Parameter Index.
 
-      seq: :zeek:type:`count` :zeek:attr:`&optional`
-         Sequence number, unset in the case that *len* field is zero.
+   .. zeek:field:: len :zeek:type:`count`
 
-      data: :zeek:type:`string` :zeek:attr:`&optional`
-         Authentication data, unset in the case that *len* field is zero.
+      Length of header in 4-octet units, excluding first two units.
+
+
+   .. zeek:field:: rsv :zeek:type:`count`
+
+      Reserved field.
+
+
+   .. zeek:field:: spi :zeek:type:`count`
+
+      Security Parameter Index.
+
+
+   .. zeek:field:: seq :zeek:type:`count` :zeek:attr:`&optional`
+
+      Sequence number, unset in the case that *len* field is zero.
+
+
+   .. zeek:field:: data :zeek:type:`string` :zeek:attr:`&optional`
+
+      Authentication data, unset in the case that *len* field is zero.
+
 
    Values extracted from an IPv6 Authentication extension header.
    
@@ -10653,15 +13321,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nxt: :zeek:type:`count`
-         Protocol number of the next header (RFC 1700 et seq., IANA assigned
-         number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      len: :zeek:type:`count`
-         Length of header in 8-octet units, excluding first unit.
+   .. zeek:field:: nxt :zeek:type:`count`
 
-      options: :zeek:type:`ip6_options`
-         The TLV encoded options;
+      Protocol number of the next header (RFC 1700 et seq., IANA assigned
+      number), e.g. :zeek:id:`IPPROTO_ICMP`.
+
+
+   .. zeek:field:: len :zeek:type:`count`
+
+      Length of header in 8-octet units, excluding first unit.
+
+
+   .. zeek:field:: options :zeek:type:`ip6_options`
+
+      The TLV encoded options;
+
 
    Values extracted from an IPv6 Destination options extension header.
    
@@ -10672,11 +13347,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      spi: :zeek:type:`count`
-         Security Parameters Index.
 
-      seq: :zeek:type:`count`
-         Sequence number.
+   .. zeek:field:: spi :zeek:type:`count`
+
+      Security Parameters Index.
+
+
+   .. zeek:field:: seq :zeek:type:`count`
+
+      Sequence number.
+
 
    Values extracted from an IPv6 ESP extension header.
    
@@ -10687,30 +13367,47 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`count`
-         The RFC 1700 et seq. IANA assigned number identifying the type of
-         the extension header.
 
-      hopopts: :zeek:type:`ip6_hopopts` :zeek:attr:`&optional`
-         Hop-by-hop option extension header.
+   .. zeek:field:: id :zeek:type:`count`
 
-      dstopts: :zeek:type:`ip6_dstopts` :zeek:attr:`&optional`
-         Destination option extension header.
+      The RFC 1700 et seq. IANA assigned number identifying the type of
+      the extension header.
 
-      routing: :zeek:type:`ip6_routing` :zeek:attr:`&optional`
-         Routing extension header.
 
-      fragment: :zeek:type:`ip6_fragment` :zeek:attr:`&optional`
-         Fragment header.
+   .. zeek:field:: hopopts :zeek:type:`ip6_hopopts` :zeek:attr:`&optional`
 
-      ah: :zeek:type:`ip6_ah` :zeek:attr:`&optional`
-         Authentication extension header.
+      Hop-by-hop option extension header.
 
-      esp: :zeek:type:`ip6_esp` :zeek:attr:`&optional`
-         Encapsulating security payload header.
 
-      mobility: :zeek:type:`ip6_mobility_hdr` :zeek:attr:`&optional`
-         Mobility header.
+   .. zeek:field:: dstopts :zeek:type:`ip6_dstopts` :zeek:attr:`&optional`
+
+      Destination option extension header.
+
+
+   .. zeek:field:: routing :zeek:type:`ip6_routing` :zeek:attr:`&optional`
+
+      Routing extension header.
+
+
+   .. zeek:field:: fragment :zeek:type:`ip6_fragment` :zeek:attr:`&optional`
+
+      Fragment header.
+
+
+   .. zeek:field:: ah :zeek:type:`ip6_ah` :zeek:attr:`&optional`
+
+      Authentication extension header.
+
+
+   .. zeek:field:: esp :zeek:type:`ip6_esp` :zeek:attr:`&optional`
+
+      Encapsulating security payload header.
+
+
+   .. zeek:field:: mobility :zeek:type:`ip6_mobility_hdr` :zeek:attr:`&optional`
+
+      Mobility header.
+
 
    A general container for a more specific IPv6 extension header.
    
@@ -10729,24 +13426,37 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nxt: :zeek:type:`count`
-         Protocol number of the next header (RFC 1700 et seq., IANA assigned
-         number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      rsv1: :zeek:type:`count`
-         8-bit reserved field.
+   .. zeek:field:: nxt :zeek:type:`count`
 
-      offset: :zeek:type:`count`
-         Fragmentation offset.
+      Protocol number of the next header (RFC 1700 et seq., IANA assigned
+      number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      rsv2: :zeek:type:`count`
-         2-bit reserved field.
 
-      more: :zeek:type:`bool`
-         More fragments.
+   .. zeek:field:: rsv1 :zeek:type:`count`
 
-      id: :zeek:type:`count`
-         Fragment identification.
+      8-bit reserved field.
+
+
+   .. zeek:field:: offset :zeek:type:`count`
+
+      Fragmentation offset.
+
+
+   .. zeek:field:: rsv2 :zeek:type:`count`
+
+      2-bit reserved field.
+
+
+   .. zeek:field:: more :zeek:type:`bool`
+
+      More fragments.
+
+
+   .. zeek:field:: id :zeek:type:`count`
+
+      Fragment identification.
+
 
    Values extracted from an IPv6 Fragment extension header.
    
@@ -10757,31 +13467,48 @@ Types
 
    :Type: :zeek:type:`record`
 
-      class: :zeek:type:`count`
-         Traffic class.
 
-      flow: :zeek:type:`count`
-         Flow label.
+   .. zeek:field:: class :zeek:type:`count`
 
-      len: :zeek:type:`count`
-         Payload length.
+      Traffic class.
 
-      nxt: :zeek:type:`count`
-         Protocol number of the next header
-         (RFC 1700 et seq., IANA assigned number)
-         e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      hlim: :zeek:type:`count`
-         Hop limit.
+   .. zeek:field:: flow :zeek:type:`count`
 
-      src: :zeek:type:`addr`
-         Source address.
+      Flow label.
 
-      dst: :zeek:type:`addr`
-         Destination address.
 
-      exts: :zeek:type:`ip6_ext_hdr_chain`
-         Extension header chain.
+   .. zeek:field:: len :zeek:type:`count`
+
+      Payload length.
+
+
+   .. zeek:field:: nxt :zeek:type:`count`
+
+      Protocol number of the next header
+      (RFC 1700 et seq., IANA assigned number)
+      e.g. :zeek:id:`IPPROTO_ICMP`.
+
+
+   .. zeek:field:: hlim :zeek:type:`count`
+
+      Hop limit.
+
+
+   .. zeek:field:: src :zeek:type:`addr`
+
+      Source address.
+
+
+   .. zeek:field:: dst :zeek:type:`addr`
+
+      Destination address.
+
+
+   .. zeek:field:: exts :zeek:type:`ip6_ext_hdr_chain`
+
+      Extension header chain.
+
 
    Values extracted from an IPv6 header.
    
@@ -10793,15 +13520,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nxt: :zeek:type:`count`
-         Protocol number of the next header (RFC 1700 et seq., IANA assigned
-         number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      len: :zeek:type:`count`
-         Length of header in 8-octet units, excluding first unit.
+   .. zeek:field:: nxt :zeek:type:`count`
 
-      options: :zeek:type:`ip6_options`
-         The TLV encoded options;
+      Protocol number of the next header (RFC 1700 et seq., IANA assigned
+      number), e.g. :zeek:id:`IPPROTO_ICMP`.
+
+
+   .. zeek:field:: len :zeek:type:`count`
+
+      Length of header in 8-octet units, excluding first unit.
+
+
+   .. zeek:field:: options :zeek:type:`ip6_options`
+
+      The TLV encoded options;
+
 
    Values extracted from an IPv6 Hop-by-Hop options extension header.
    
@@ -10812,20 +13546,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      status: :zeek:type:`count`
-         Status.
 
-      k: :zeek:type:`bool`
-         Key Management Mobility Capability.
+   .. zeek:field:: status :zeek:type:`count`
 
-      seq: :zeek:type:`count`
-         Sequence number.
+      Status.
 
-      life: :zeek:type:`count`
-         Lifetime.
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+   .. zeek:field:: k :zeek:type:`bool`
+
+      Key Management Mobility Capability.
+
+
+   .. zeek:field:: seq :zeek:type:`count`
+
+      Sequence number.
+
+
+   .. zeek:field:: life :zeek:type:`count`
+
+      Lifetime.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Binding Acknowledgement message.
    
@@ -10836,14 +13581,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      status: :zeek:type:`count`
-         Status.
 
-      hoa: :zeek:type:`addr`
-         Home Address.
+   .. zeek:field:: status :zeek:type:`count`
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+      Status.
+
+
+   .. zeek:field:: hoa :zeek:type:`addr`
+
+      Home Address.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Binding Error message.
    
@@ -10854,11 +13606,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      rsv: :zeek:type:`count`
-         Reserved.
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+   .. zeek:field:: rsv :zeek:type:`count`
+
+      Reserved.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Binding Refresh Request message.
    
@@ -10869,26 +13626,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      seq: :zeek:type:`count`
-         Sequence number.
 
-      a: :zeek:type:`bool`
-         Acknowledge bit.
+   .. zeek:field:: seq :zeek:type:`count`
 
-      h: :zeek:type:`bool`
-         Home Registration bit.
+      Sequence number.
 
-      l: :zeek:type:`bool`
-         Link-Local Address Compatibility bit.
 
-      k: :zeek:type:`bool`
-         Key Management Mobility Capability bit.
+   .. zeek:field:: a :zeek:type:`bool`
 
-      life: :zeek:type:`count`
-         Lifetime.
+      Acknowledge bit.
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+
+   .. zeek:field:: h :zeek:type:`bool`
+
+      Home Registration bit.
+
+
+   .. zeek:field:: l :zeek:type:`bool`
+
+      Link-Local Address Compatibility bit.
+
+
+   .. zeek:field:: k :zeek:type:`bool`
+
+      Key Management Mobility Capability bit.
+
+
+   .. zeek:field:: life :zeek:type:`count`
+
+      Lifetime.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Binding Update message.
    
@@ -10899,17 +13671,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nonce_idx: :zeek:type:`count`
-         Care-of Nonce Index.
 
-      cookie: :zeek:type:`count`
-         Care-of Init Cookie.
+   .. zeek:field:: nonce_idx :zeek:type:`count`
 
-      token: :zeek:type:`count`
-         Care-of Keygen Token.
+      Care-of Nonce Index.
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+
+   .. zeek:field:: cookie :zeek:type:`count`
+
+      Care-of Init Cookie.
+
+
+   .. zeek:field:: token :zeek:type:`count`
+
+      Care-of Keygen Token.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Care-of Test message.
    
@@ -10920,14 +13701,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      rsv: :zeek:type:`count`
-         Reserved.
 
-      cookie: :zeek:type:`count`
-         Care-of Init Cookie.
+   .. zeek:field:: rsv :zeek:type:`count`
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+      Reserved.
+
+
+   .. zeek:field:: cookie :zeek:type:`count`
+
+      Care-of Init Cookie.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Care-of Test Init message.
    
@@ -10938,24 +13726,37 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nxt: :zeek:type:`count`
-         Protocol number of the next header (RFC 1700 et seq., IANA assigned
-         number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      len: :zeek:type:`count`
-         Length of header in 8-octet units, excluding first unit.
+   .. zeek:field:: nxt :zeek:type:`count`
 
-      mh_type: :zeek:type:`count`
-         Mobility header type used to identify header's the message.
+      Protocol number of the next header (RFC 1700 et seq., IANA assigned
+      number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      rsv: :zeek:type:`count`
-         Reserved field.
 
-      chksum: :zeek:type:`count`
-         Mobility header checksum.
+   .. zeek:field:: len :zeek:type:`count`
 
-      msg: :zeek:type:`ip6_mobility_msg`
-         Mobility header message
+      Length of header in 8-octet units, excluding first unit.
+
+
+   .. zeek:field:: mh_type :zeek:type:`count`
+
+      Mobility header type used to identify header's the message.
+
+
+   .. zeek:field:: rsv :zeek:type:`count`
+
+      Reserved field.
+
+
+   .. zeek:field:: chksum :zeek:type:`count`
+
+      Mobility header checksum.
+
+
+   .. zeek:field:: msg :zeek:type:`ip6_mobility_msg`
+
+      Mobility header message
+
 
    Values extracted from an IPv6 Mobility header.
    
@@ -10966,17 +13767,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nonce_idx: :zeek:type:`count`
-         Home Nonce Index.
 
-      cookie: :zeek:type:`count`
-         Home Init Cookie.
+   .. zeek:field:: nonce_idx :zeek:type:`count`
 
-      token: :zeek:type:`count`
-         Home Keygen Token.
+      Home Nonce Index.
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+
+   .. zeek:field:: cookie :zeek:type:`count`
+
+      Home Init Cookie.
+
+
+   .. zeek:field:: token :zeek:type:`count`
+
+      Home Keygen Token.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Home Test message.
    
@@ -10987,14 +13797,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      rsv: :zeek:type:`count`
-         Reserved.
 
-      cookie: :zeek:type:`count`
-         Home Init Cookie.
+   .. zeek:field:: rsv :zeek:type:`count`
 
-      options: :zeek:type:`vector` of :zeek:type:`ip6_option`
-         Mobility Options.
+      Reserved.
+
+
+   .. zeek:field:: cookie :zeek:type:`count`
+
+      Home Init Cookie.
+
+
+   .. zeek:field:: options :zeek:type:`vector` of :zeek:type:`ip6_option`
+
+      Mobility Options.
+
 
    Values extracted from an IPv6 Mobility Home Test Init message.
    
@@ -11005,32 +13822,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`count`
-         The type of message from the header's MH Type field.
 
-      brr: :zeek:type:`ip6_mobility_brr` :zeek:attr:`&optional`
-         Binding Refresh Request.
+   .. zeek:field:: id :zeek:type:`count`
 
-      hoti: :zeek:type:`ip6_mobility_hoti` :zeek:attr:`&optional`
-         Home Test Init.
+      The type of message from the header's MH Type field.
 
-      coti: :zeek:type:`ip6_mobility_coti` :zeek:attr:`&optional`
-         Care-of Test Init.
 
-      hot: :zeek:type:`ip6_mobility_hot` :zeek:attr:`&optional`
-         Home Test.
+   .. zeek:field:: brr :zeek:type:`ip6_mobility_brr` :zeek:attr:`&optional`
 
-      cot: :zeek:type:`ip6_mobility_cot` :zeek:attr:`&optional`
-         Care-of Test.
+      Binding Refresh Request.
 
-      bu: :zeek:type:`ip6_mobility_bu` :zeek:attr:`&optional`
-         Binding Update.
 
-      back: :zeek:type:`ip6_mobility_back` :zeek:attr:`&optional`
-         Binding Acknowledgement.
+   .. zeek:field:: hoti :zeek:type:`ip6_mobility_hoti` :zeek:attr:`&optional`
 
-      be: :zeek:type:`ip6_mobility_be` :zeek:attr:`&optional`
-         Binding Error.
+      Home Test Init.
+
+
+   .. zeek:field:: coti :zeek:type:`ip6_mobility_coti` :zeek:attr:`&optional`
+
+      Care-of Test Init.
+
+
+   .. zeek:field:: hot :zeek:type:`ip6_mobility_hot` :zeek:attr:`&optional`
+
+      Home Test.
+
+
+   .. zeek:field:: cot :zeek:type:`ip6_mobility_cot` :zeek:attr:`&optional`
+
+      Care-of Test.
+
+
+   .. zeek:field:: bu :zeek:type:`ip6_mobility_bu` :zeek:attr:`&optional`
+
+      Binding Update.
+
+
+   .. zeek:field:: back :zeek:type:`ip6_mobility_back` :zeek:attr:`&optional`
+
+      Binding Acknowledgement.
+
+
+   .. zeek:field:: be :zeek:type:`ip6_mobility_be` :zeek:attr:`&optional`
+
+      Binding Error.
+
 
    Values extracted from an IPv6 Mobility header's message data.
    
@@ -11041,14 +13877,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      otype: :zeek:type:`count`
-         Option type.
 
-      len: :zeek:type:`count`
-         Option data length.
+   .. zeek:field:: otype :zeek:type:`count`
 
-      data: :zeek:type:`string`
-         Option data.
+      Option type.
+
+
+   .. zeek:field:: len :zeek:type:`count`
+
+      Option data length.
+
+
+   .. zeek:field:: data :zeek:type:`string`
+
+      Option data.
+
 
    Values extracted from an IPv6 extension header's (e.g. hop-by-hop or
    destination option headers) option field.
@@ -11067,21 +13910,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nxt: :zeek:type:`count`
-         Protocol number of the next header (RFC 1700 et seq., IANA assigned
-         number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      len: :zeek:type:`count`
-         Length of header in 8-octet units, excluding first unit.
+   .. zeek:field:: nxt :zeek:type:`count`
 
-      rtype: :zeek:type:`count`
-         Routing type.
+      Protocol number of the next header (RFC 1700 et seq., IANA assigned
+      number), e.g. :zeek:id:`IPPROTO_ICMP`.
 
-      segleft: :zeek:type:`count`
-         Segments left.
 
-      data: :zeek:type:`string`
-         Type-specific data.
+   .. zeek:field:: len :zeek:type:`count`
+
+      Length of header in 8-octet units, excluding first unit.
+
+
+   .. zeek:field:: rtype :zeek:type:`count`
+
+      Routing type.
+
+
+   .. zeek:field:: segleft :zeek:type:`count`
+
+      Segments left.
+
+
+   .. zeek:field:: data :zeek:type:`string`
+
+      Type-specific data.
+
 
    Values extracted from an IPv6 Routing extension header.
    
@@ -11092,13 +13946,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nick: :zeek:type:`string`
 
-      channel: :zeek:type:`string`
+   .. zeek:field:: nick :zeek:type:`string`
 
-      password: :zeek:type:`string`
 
-      usermode: :zeek:type:`string`
+   .. zeek:field:: channel :zeek:type:`string`
+
+
+   .. zeek:field:: password :zeek:type:`string`
+
+
+   .. zeek:field:: usermode :zeek:type:`string`
+
 
    IRC join information.
    
@@ -11118,32 +13977,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      encap: :zeek:type:`link_encap`
-         L2 link encapsulation.
 
-      len: :zeek:type:`count`
-         Total frame length on wire.
+   .. zeek:field:: encap :zeek:type:`link_encap`
 
-      cap_len: :zeek:type:`count`
-         Captured length.
+      L2 link encapsulation.
 
-      src: :zeek:type:`string` :zeek:attr:`&optional`
-         L2 source (if Ethernet).
 
-      dst: :zeek:type:`string` :zeek:attr:`&optional`
-         L2 destination (if Ethernet).
+   .. zeek:field:: len :zeek:type:`count`
 
-      vlan: :zeek:type:`count` :zeek:attr:`&optional`
-         Outermost VLAN tag if any (and Ethernet).
+      Total frame length on wire.
 
-      inner_vlan: :zeek:type:`count` :zeek:attr:`&optional`
-         Innermost VLAN tag if any (and Ethernet).
 
-      eth_type: :zeek:type:`count` :zeek:attr:`&optional`
-         Innermost Ethertype (if Ethernet).
+   .. zeek:field:: cap_len :zeek:type:`count`
 
-      proto: :zeek:type:`layer3_proto`
-         L3 protocol.
+      Captured length.
+
+
+   .. zeek:field:: src :zeek:type:`string` :zeek:attr:`&optional`
+
+      L2 source (if Ethernet).
+
+
+   .. zeek:field:: dst :zeek:type:`string` :zeek:attr:`&optional`
+
+      L2 destination (if Ethernet).
+
+
+   .. zeek:field:: vlan :zeek:type:`count` :zeek:attr:`&optional`
+
+      Outermost VLAN tag if any (and Ethernet).
+
+
+   .. zeek:field:: inner_vlan :zeek:type:`count` :zeek:attr:`&optional`
+
+      Innermost VLAN tag if any (and Ethernet).
+
+
+   .. zeek:field:: eth_type :zeek:type:`count` :zeek:attr:`&optional`
+
+      Innermost Ethertype (if Ethernet).
+
+
+   .. zeek:field:: proto :zeek:type:`layer3_proto`
+
+      L3 protocol.
+
 
    Values extracted from the layer 2 header.
    
@@ -11163,14 +14041,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      original_name: :zeek:type:`string`
-         The header name (unaltered).
 
-      name: :zeek:type:`string`
-         The header name (converted to all upper-case).
+   .. zeek:field:: original_name :zeek:type:`string`
 
-      value: :zeek:type:`string`
-         The header value.
+      The header name (unaltered).
+
+
+   .. zeek:field:: name :zeek:type:`string`
+
+      The header name (converted to all upper-case).
+
+
+   .. zeek:field:: value :zeek:type:`string`
+
+      The header value.
+
 
    A MIME header key/value pair.
    
@@ -11181,13 +14066,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      strength: :zeek:type:`int`
-         How strongly the signature matched.  Used for
-         prioritization when multiple file magic signatures
-         match.
 
-      mime: :zeek:type:`string`
-         The MIME type of the file magic signature match.
+   .. zeek:field:: strength :zeek:type:`int`
+
+      How strongly the signature matched.  Used for
+      prioritization when multiple file magic signatures
+      match.
+
+
+   .. zeek:field:: mime :zeek:type:`string`
+
+      The MIME type of the file magic signature match.
+
 
    A structure indicating a MIME type and strength of a match against
    file magic signatures.
@@ -11209,23 +14099,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts_sec: :zeek:type:`count`
-         The non-fractional part of the packet's timestamp (i.e., full seconds since the epoch).
 
-      ts_usec: :zeek:type:`count`
-         The fractional part of the packet's timestamp.
+   .. zeek:field:: ts_sec :zeek:type:`count`
 
-      caplen: :zeek:type:`count`
-         The number of bytes captured (<= *len*).
+      The non-fractional part of the packet's timestamp (i.e., full seconds since the epoch).
 
-      len: :zeek:type:`count`
-         The length of the packet in bytes, including link-level header.
 
-      data: :zeek:type:`string`
-         The payload of the packet, including link-level header.
+   .. zeek:field:: ts_usec :zeek:type:`count`
 
-      link_type: :zeek:type:`link_encap`
-         Layer 2 link encapsulation type.
+      The fractional part of the packet's timestamp.
+
+
+   .. zeek:field:: caplen :zeek:type:`count`
+
+      The number of bytes captured (<= *len*).
+
+
+   .. zeek:field:: len :zeek:type:`count`
+
+      The length of the packet in bytes, including link-level header.
+
+
+   .. zeek:field:: data :zeek:type:`string`
+
+      The payload of the packet, including link-level header.
+
+
+   .. zeek:field:: link_type :zeek:type:`link_encap`
+
+      Layer 2 link encapsulation type.
+
 
    Policy-level representation of a packet passed on by libpcap. The data
    includes the complete packet as returned by libpcap, including the link-layer
@@ -11238,20 +14141,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ip: :zeek:type:`ip4_hdr` :zeek:attr:`&optional`
-         The IPv4 header if an IPv4 packet.
 
-      ip6: :zeek:type:`ip6_hdr` :zeek:attr:`&optional`
-         The IPv6 header if an IPv6 packet.
+   .. zeek:field:: ip :zeek:type:`ip4_hdr` :zeek:attr:`&optional`
 
-      tcp: :zeek:type:`tcp_hdr` :zeek:attr:`&optional`
-         The TCP header if a TCP packet.
+      The IPv4 header if an IPv4 packet.
 
-      udp: :zeek:type:`udp_hdr` :zeek:attr:`&optional`
-         The UDP header if a UDP packet.
 
-      icmp: :zeek:type:`icmp_hdr` :zeek:attr:`&optional`
-         The ICMP header if an ICMP packet.
+   .. zeek:field:: ip6 :zeek:type:`ip6_hdr` :zeek:attr:`&optional`
+
+      The IPv6 header if an IPv6 packet.
+
+
+   .. zeek:field:: tcp :zeek:type:`tcp_hdr` :zeek:attr:`&optional`
+
+      The TCP header if a TCP packet.
+
+
+   .. zeek:field:: udp :zeek:type:`udp_hdr` :zeek:attr:`&optional`
+
+      The UDP header if a UDP packet.
+
+
+   .. zeek:field:: icmp :zeek:type:`icmp_hdr` :zeek:attr:`&optional`
+
+      The ICMP header if an ICMP packet.
+
 
    A packet header, consisting of an IP header and transport-layer header.
    
@@ -11287,17 +14201,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      program: :zeek:type:`count`
-         The RPC program.
 
-      version: :zeek:type:`count`
-         The program version.
+   .. zeek:field:: program :zeek:type:`count`
 
-      proc: :zeek:type:`count`
-         The procedure being called.
+      The RPC program.
 
-      arg_size: :zeek:type:`count`
-         The size of the argument.
+
+   .. zeek:field:: version :zeek:type:`count`
+
+      The program version.
+
+
+   .. zeek:field:: proc :zeek:type:`count`
+
+      The procedure being called.
+
+
+   .. zeek:field:: arg_size :zeek:type:`count`
+
+      The size of the argument.
+
 
    An RPC portmapper *callit* request.
    
@@ -11308,14 +14231,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      program: :zeek:type:`count`
-         The RPC program.
 
-      version: :zeek:type:`count`
-         The program version.
+   .. zeek:field:: program :zeek:type:`count`
 
-      p: :zeek:type:`port`
-         The port.
+      The RPC program.
+
+
+   .. zeek:field:: version :zeek:type:`count`
+
+      The program version.
+
+
+   .. zeek:field:: p :zeek:type:`port`
+
+      The port.
+
 
    An RPC portmapper mapping.
    
@@ -11335,14 +14265,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      program: :zeek:type:`count`
-         The RPC program.
 
-      version: :zeek:type:`count`
-         The program version.
+   .. zeek:field:: program :zeek:type:`count`
 
-      is_tcp: :zeek:type:`bool`
-         True if using TCP.
+      The RPC program.
+
+
+   .. zeek:field:: version :zeek:type:`count`
+
+      The program version.
+
+
+   .. zeek:field:: is_tcp :zeek:type:`bool`
+
+      True if using TCP.
+
 
    An RPC portmapper request.
    
@@ -11359,23 +14296,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      l2: :zeek:type:`l2_hdr`
-         The layer 2 header.
 
-      ip: :zeek:type:`ip4_hdr` :zeek:attr:`&optional`
-         The IPv4 header if an IPv4 packet.
+   .. zeek:field:: l2 :zeek:type:`l2_hdr`
 
-      ip6: :zeek:type:`ip6_hdr` :zeek:attr:`&optional`
-         The IPv6 header if an IPv6 packet.
+      The layer 2 header.
 
-      tcp: :zeek:type:`tcp_hdr` :zeek:attr:`&optional`
-         The TCP header if a TCP packet.
 
-      udp: :zeek:type:`udp_hdr` :zeek:attr:`&optional`
-         The UDP header if a UDP packet.
+   .. zeek:field:: ip :zeek:type:`ip4_hdr` :zeek:attr:`&optional`
 
-      icmp: :zeek:type:`icmp_hdr` :zeek:attr:`&optional`
-         The ICMP header if an ICMP packet.
+      The IPv4 header if an IPv4 packet.
+
+
+   .. zeek:field:: ip6 :zeek:type:`ip6_hdr` :zeek:attr:`&optional`
+
+      The IPv6 header if an IPv6 packet.
+
+
+   .. zeek:field:: tcp :zeek:type:`tcp_hdr` :zeek:attr:`&optional`
+
+      The TCP header if a TCP packet.
+
+
+   .. zeek:field:: udp :zeek:type:`udp_hdr` :zeek:attr:`&optional`
+
+      The UDP header if a UDP packet.
+
+
+   .. zeek:field:: icmp :zeek:type:`icmp_hdr` :zeek:attr:`&optional`
+
+      The ICMP header if an ICMP packet.
+
 
    A raw packet header, consisting of L2 header and everything in
    :zeek:see:`pkt_hdr`. .
@@ -11387,21 +14337,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      type_name: :zeek:type:`string`
-         The name of the field's type.
 
-      log: :zeek:type:`bool`
-         True if the field is declared with :zeek:attr:`&log` attribute.
+   .. zeek:field:: type_name :zeek:type:`string`
 
-      value: :zeek:type:`any` :zeek:attr:`&optional`
-         The current value of the field in the record instance passed into
-         :zeek:see:`record_fields` (if it has one).
+      The name of the field's type.
 
-      default_val: :zeek:type:`any` :zeek:attr:`&optional`
-         The value of the :zeek:attr:`&default` attribute if defined.
 
-      optional: :zeek:type:`bool`
-         True if the field is :zeek:attr:`&optional`, else false.
+   .. zeek:field:: log :zeek:type:`bool`
+
+      True if the field is declared with :zeek:attr:`&log` attribute.
+
+
+   .. zeek:field:: value :zeek:type:`any` :zeek:attr:`&optional`
+
+      The current value of the field in the record instance passed into
+      :zeek:see:`record_fields` (if it has one).
+
+
+   .. zeek:field:: default_val :zeek:type:`any` :zeek:attr:`&optional`
+
+      The value of the :zeek:attr:`&default` attribute if defined.
+
+
+   .. zeek:field:: optional :zeek:type:`bool`
+
+      True if the field is :zeek:attr:`&optional`, else false.
+
 
    Meta-information about a record field.
    
@@ -11426,17 +14387,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      old_name: :zeek:type:`string`
-         Original filename.
 
-      new_name: :zeek:type:`string`
-         File name after rotation.
+   .. zeek:field:: old_name :zeek:type:`string`
 
-      open: :zeek:type:`time`
-         Time when opened.
+      Original filename.
 
-      close: :zeek:type:`time`
-         Time when closed.
+
+   .. zeek:field:: new_name :zeek:type:`string`
+
+      File name after rotation.
+
+
+   .. zeek:field:: open :zeek:type:`time`
+
+      Time when opened.
+
+
+   .. zeek:field:: close :zeek:type:`time`
+
+      Time when closed.
+
 
    .. zeek:see:: rotate_file rotate_file_by_name
 
@@ -11445,29 +14415,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      type_name: :zeek:type:`string`
-         The name of the identifier's type.
 
-      exported: :zeek:type:`bool`
-         True if the identifier is exported.
+   .. zeek:field:: type_name :zeek:type:`string`
 
-      constant: :zeek:type:`bool`
-         True if the identifier is a constant.
+      The name of the identifier's type.
 
-      enum_constant: :zeek:type:`bool`
-         True if the identifier is an enum value.
 
-      option_value: :zeek:type:`bool`
-         True if the identifier is an option.
+   .. zeek:field:: exported :zeek:type:`bool`
 
-      redefinable: :zeek:type:`bool`
-         True if the identifier is declared with the :zeek:attr:`&redef` attribute.
+      True if the identifier is exported.
 
-      broker_backend: :zeek:type:`bool`
-         True if the identifier has a Broker backend defined using the :zeek:attr:`&backend` attribute.
 
-      value: :zeek:type:`any` :zeek:attr:`&optional`
-         The current value of the identifier.
+   .. zeek:field:: constant :zeek:type:`bool`
+
+      True if the identifier is a constant.
+
+
+   .. zeek:field:: enum_constant :zeek:type:`bool`
+
+      True if the identifier is an enum value.
+
+
+   .. zeek:field:: option_value :zeek:type:`bool`
+
+      True if the identifier is an option.
+
+
+   .. zeek:field:: redefinable :zeek:type:`bool`
+
+      True if the identifier is declared with the :zeek:attr:`&redef` attribute.
+
+
+   .. zeek:field:: broker_backend :zeek:type:`bool`
+
+      True if the identifier has a Broker backend defined using the :zeek:attr:`&backend` attribute.
+
+
+   .. zeek:field:: value :zeek:type:`any` :zeek:attr:`&optional`
+
+      The current value of the identifier.
+
 
    Meta-information about a script-level identifier.
    
@@ -11489,17 +14476,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      sig_id: :zeek:type:`string`
-         ID of the matching signature.
 
-      conn: :zeek:type:`connection`
-         Matching connection.
+   .. zeek:field:: sig_id :zeek:type:`string`
 
-      is_orig: :zeek:type:`bool`
-         True if matching endpoint is originator.
+      ID of the matching signature.
 
-      payload_size: :zeek:type:`count`
-         Payload size of the first matching packet of current endpoint.
+
+   .. zeek:field:: conn :zeek:type:`connection`
+
+      Matching connection.
+
+
+   .. zeek:field:: is_orig :zeek:type:`bool`
+
+      True if matching endpoint is originator.
+
+
+   .. zeek:field:: payload_size :zeek:type:`count`
+
+      Payload size of the first matching packet of current endpoint.
+
 
    Description of a signature match.
    
@@ -11599,11 +14595,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      str: :zeek:type:`string`
-         String a substring is part of.
 
-      index: :zeek:type:`count`
-         Offset substring is located.
+   .. zeek:field:: str :zeek:type:`string`
+
+      String a substring is part of.
+
+
+   .. zeek:field:: index :zeek:type:`count`
+
+      Offset substring is located.
+
 
    Helper type for return value of Smith-Waterman algorithm.
    
@@ -11623,11 +14624,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      min_strlen: :zeek:type:`count` :zeek:attr:`&default` = ``3`` :zeek:attr:`&optional`
-         Minimum size of a substring, minimum "granularity".
 
-      sw_variant: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Smith-Waterman flavor to use.
+   .. zeek:field:: min_strlen :zeek:type:`count` :zeek:attr:`&default` = ``3`` :zeek:attr:`&optional`
+
+      Minimum size of a substring, minimum "granularity".
+
+
+   .. zeek:field:: sw_variant :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Smith-Waterman flavor to use.
+
 
    Parameters for the Smith-Waterman algorithm.
    
@@ -11638,14 +14644,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      str: :zeek:type:`string`
-         A substring.
 
-      aligns: :zeek:type:`sw_align_vec`
-         All strings of which it's a substring.
+   .. zeek:field:: str :zeek:type:`string`
 
-      new: :zeek:type:`bool`
-         True if start of new alignment.
+      A substring.
+
+
+   .. zeek:field:: aligns :zeek:type:`sw_align_vec`
+
+      All strings of which it's a substring.
+
+
+   .. zeek:field:: new :zeek:type:`bool`
+
+      True if start of new alignment.
+
 
    Helper type for return value of Smith-Waterman algorithm.
    
@@ -11692,32 +14705,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      sport: :zeek:type:`port`
-         source port.
 
-      dport: :zeek:type:`port`
-         destination port
+   .. zeek:field:: sport :zeek:type:`port`
 
-      seq: :zeek:type:`count`
-         sequence number
+      source port.
 
-      ack: :zeek:type:`count`
-         acknowledgement number
 
-      hl: :zeek:type:`count`
-         header length (in bytes)
+   .. zeek:field:: dport :zeek:type:`port`
 
-      dl: :zeek:type:`count`
-         data length (xxx: not in original tcphdr!)
+      destination port
 
-      reserved: :zeek:type:`count`
-         The "reserved" 4 bits after the "data offset" field.
 
-      flags: :zeek:type:`count`
-         The 8 bits of flags after the "reserved" field.
+   .. zeek:field:: seq :zeek:type:`count`
 
-      win: :zeek:type:`count`
-         window
+      sequence number
+
+
+   .. zeek:field:: ack :zeek:type:`count`
+
+      acknowledgement number
+
+
+   .. zeek:field:: hl :zeek:type:`count`
+
+      header length (in bytes)
+
+
+   .. zeek:field:: dl :zeek:type:`count`
+
+      data length (xxx: not in original tcphdr!)
+
+
+   .. zeek:field:: reserved :zeek:type:`count`
+
+      The "reserved" 4 bits after the "data offset" field.
+
+
+   .. zeek:field:: flags :zeek:type:`count`
+
+      The 8 bits of flags after the "reserved" field.
+
+
+   .. zeek:field:: win :zeek:type:`count`
+
+      window
+
 
    Values extracted from a TCP header.
    
@@ -11728,21 +14760,30 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string`
-         Teredo client identifier.
 
-      value: :zeek:type:`string`
-         HMAC-SHA1 over shared secret key between client and
-         server, nonce, confirmation byte, origin indication
-         (if present), and the IPv6 packet.
+   .. zeek:field:: id :zeek:type:`string`
 
-      nonce: :zeek:type:`count`
-         Nonce chosen by Teredo client to be repeated by
-         Teredo server.
+      Teredo client identifier.
 
-      confirm: :zeek:type:`count`
-         Confirmation byte to be set to 0 by Teredo client
-         and non-zero by server if client needs new key.
+
+   .. zeek:field:: value :zeek:type:`string`
+
+      HMAC-SHA1 over shared secret key between client and
+      server, nonce, confirmation byte, origin indication
+      (if present), and the IPv6 packet.
+
+
+   .. zeek:field:: nonce :zeek:type:`count`
+
+      Nonce chosen by Teredo client to be repeated by
+      Teredo server.
+
+
+   .. zeek:field:: confirm :zeek:type:`count`
+
+      Confirmation byte to be set to 0 by Teredo client
+      and non-zero by server if client needs new key.
+
 
    A Teredo origin indication header.  See :rfc:`4380` for more information
    about the Teredo protocol.
@@ -11755,14 +14796,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      auth: :zeek:type:`teredo_auth` :zeek:attr:`&optional`
-         Teredo authentication header.
 
-      origin: :zeek:type:`teredo_origin` :zeek:attr:`&optional`
-         Teredo origin indication header.
+   .. zeek:field:: auth :zeek:type:`teredo_auth` :zeek:attr:`&optional`
 
-      hdr: :zeek:type:`pkt_hdr`
-         IPv6 and transport protocol headers.
+      Teredo authentication header.
+
+
+   .. zeek:field:: origin :zeek:type:`teredo_origin` :zeek:attr:`&optional`
+
+      Teredo origin indication header.
+
+
+   .. zeek:field:: hdr :zeek:type:`pkt_hdr`
+
+      IPv6 and transport protocol headers.
+
 
    A Teredo packet header.  See :rfc:`4380` for more information about the
    Teredo protocol.
@@ -11774,11 +14822,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      p: :zeek:type:`port`
-         Unobfuscated UDP port of Teredo client.
 
-      a: :zeek:type:`addr`
-         Unobfuscated IPv4 address of Teredo client.
+   .. zeek:field:: p :zeek:type:`port`
+
+      Unobfuscated UDP port of Teredo client.
+
+
+   .. zeek:field:: a :zeek:type:`addr`
+
+      Unobfuscated IPv4 address of Teredo client.
+
 
    A Teredo authentication header.  See :rfc:`4380` for more information
    about the Teredo protocol.
@@ -11815,14 +14868,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      sport: :zeek:type:`port`
-         source port
 
-      dport: :zeek:type:`port`
-         destination port
+   .. zeek:field:: sport :zeek:type:`port`
 
-      ulen: :zeek:type:`count`
-         udp length
+      source port
+
+
+   .. zeek:field:: dport :zeek:type:`port`
+
+      destination port
+
+
+   .. zeek:field:: ulen :zeek:type:`count`
+
+      udp length
+
 
    Values extracted from a UDP header.
    

@@ -55,23 +55,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time of the request.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique identifier for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         Identifier for the connection.
+      Time of the request.
 
-      fc_request: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The name of the function message in the request.
 
-      fc_reply: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The name of the function message in the reply.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      iin: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The response's "internal indication number".
+      Unique identifier for the connection.
+
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      Identifier for the connection.
+
+
+   .. zeek:field:: fc_request :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The name of the function message in the request.
+
+
+   .. zeek:field:: fc_reply :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The name of the function message in the reply.
+
+
+   .. zeek:field:: iin :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The response's "internal indication number".
+
 
 
 Events

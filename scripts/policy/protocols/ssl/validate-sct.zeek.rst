@@ -57,32 +57,49 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`count`
-         The version of the encountered SCT (should always be 0 for v1).
 
-      logid: :zeek:type:`string`
-         The ID of the log issuing this SCT.
+   .. zeek:field:: version :zeek:type:`count`
 
-      timestamp: :zeek:type:`count`
-         The timestamp at which this SCT was issued measured since the
-         epoch (January 1, 1970, 00:00), ignoring leap seconds, in
-         milliseconds. Not converted to a Zeek timestamp because we need
-         the exact value for validation.
+      The version of the encountered SCT (should always be 0 for v1).
 
-      sig_alg: :zeek:type:`count`
-         The signature algorithm used for this sct.
 
-      hash_alg: :zeek:type:`count`
-         The hash algorithm used for this sct.
+   .. zeek:field:: logid :zeek:type:`string`
 
-      signature: :zeek:type:`string`
-         The signature of this SCT.
+      The ID of the log issuing this SCT.
 
-      source: :zeek:type:`SSL::SctSource`
-         Source of this SCT.
 
-      valid: :zeek:type:`bool` :zeek:attr:`&optional`
-         Validation result of this SCT.
+   .. zeek:field:: timestamp :zeek:type:`count`
+
+      The timestamp at which this SCT was issued measured since the
+      epoch (January 1, 1970, 00:00), ignoring leap seconds, in
+      milliseconds. Not converted to a Zeek timestamp because we need
+      the exact value for validation.
+
+
+   .. zeek:field:: sig_alg :zeek:type:`count`
+
+      The signature algorithm used for this sct.
+
+
+   .. zeek:field:: hash_alg :zeek:type:`count`
+
+      The hash algorithm used for this sct.
+
+
+   .. zeek:field:: signature :zeek:type:`string`
+
+      The signature of this SCT.
+
+
+   .. zeek:field:: source :zeek:type:`SSL::SctSource`
+
+      Source of this SCT.
+
+
+   .. zeek:field:: valid :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Validation result of this SCT.
+
 
    This record is used to store information about the SCTs that are
    encountered in a SSL connection.

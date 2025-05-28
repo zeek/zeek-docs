@@ -106,110 +106,167 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The earliest time at which a DNS protocol message over the
-         associated connection is observed.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         A unique identifier of the connection over which DNS messages
-         are being transferred.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      The earliest time at which a DNS protocol message over the
+      associated connection is observed.
 
-      proto: :zeek:type:`transport_proto` :zeek:attr:`&log`
-         The transport layer protocol of the connection.
 
-      trans_id: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A 16-bit identifier assigned by the program that generated
-         the DNS query.  Also used in responses to match up replies to
-         outstanding queries.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      rtt: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Round trip time for the query and response. This indicates
-         the delay between when the request was seen until the
-         answer started.
+      A unique identifier of the connection over which DNS messages
+      are being transferred.
 
-      query: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The domain name that is the subject of the DNS query.
 
-      qclass: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The QCLASS value specifying the class of the query.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      qclass_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A descriptive name for the class of the query.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      qtype: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A QTYPE value specifying the type of the query.
 
-      qtype_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A descriptive name for the type of the query.
+   .. zeek:field:: proto :zeek:type:`transport_proto` :zeek:attr:`&log`
 
-      rcode: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The response code value in DNS response messages.
+      The transport layer protocol of the connection.
 
-      rcode_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A descriptive name for the response code value.
 
-      AA: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         The Authoritative Answer bit for response messages specifies
-         that the responding name server is an authority for the
-         domain name in the question section.
+   .. zeek:field:: trans_id :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      TC: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         The Truncation bit specifies that the message was truncated.
+      A 16-bit identifier assigned by the program that generated
+      the DNS query.  Also used in responses to match up replies to
+      outstanding queries.
 
-      RD: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         The Recursion Desired bit in a request message indicates that
-         the client wants recursive service for this query.
 
-      RA: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         The Recursion Available bit in a response message indicates
-         that the name server supports recursive queries.
+   .. zeek:field:: rtt :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      Z: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         A reserved field that is zero in queries and responses unless
-         using DNSSEC. This field represents the 3-bit Z field using
-         the specification from RFC 1035.
+      Round trip time for the query and response. This indicates
+      the delay between when the request was seen until the
+      answer started.
 
-      answers: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The set of resource descriptions in the query answer.
 
-      TTLs: :zeek:type:`vector` of :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The caching intervals of the associated RRs described by the
-         *answers* field.
+   .. zeek:field:: query :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      rejected: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         The DNS query was rejected by the server.
+      The domain name that is the subject of the DNS query.
 
-      total_answers: :zeek:type:`count` :zeek:attr:`&optional`
-         The total number of resource records in a reply message's
-         answer section.
 
-      total_replies: :zeek:type:`count` :zeek:attr:`&optional`
-         The total number of resource records in a reply message's
-         answer, authority, and additional sections.
+   .. zeek:field:: qclass :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      saw_query: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether the full DNS query has been seen.
+      The QCLASS value specifying the class of the query.
 
-      saw_reply: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether the full DNS reply has been seen.
 
-      auth: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dns/auth-addl.zeek` is loaded)
+   .. zeek:field:: qclass_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         Authoritative responses for the query.
+      A descriptive name for the class of the query.
 
-      addl: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dns/auth-addl.zeek` is loaded)
 
-         Additional responses for the query.
+   .. zeek:field:: qtype :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      original_query: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dns/log-original-query-case.zeek` is loaded)
+      A QTYPE value specifying the type of the query.
 
-         Query with original letter casing
+
+   .. zeek:field:: qtype_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      A descriptive name for the type of the query.
+
+
+   .. zeek:field:: rcode :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The response code value in DNS response messages.
+
+
+   .. zeek:field:: rcode_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      A descriptive name for the response code value.
+
+
+   .. zeek:field:: AA :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      The Authoritative Answer bit for response messages specifies
+      that the responding name server is an authority for the
+      domain name in the question section.
+
+
+   .. zeek:field:: TC :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      The Truncation bit specifies that the message was truncated.
+
+
+   .. zeek:field:: RD :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      The Recursion Desired bit in a request message indicates that
+      the client wants recursive service for this query.
+
+
+   .. zeek:field:: RA :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      The Recursion Available bit in a response message indicates
+      that the name server supports recursive queries.
+
+
+   .. zeek:field:: Z :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      A reserved field that is zero in queries and responses unless
+      using DNSSEC. This field represents the 3-bit Z field using
+      the specification from RFC 1035.
+
+
+   .. zeek:field:: answers :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The set of resource descriptions in the query answer.
+
+
+   .. zeek:field:: TTLs :zeek:type:`vector` of :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The caching intervals of the associated RRs described by the
+      *answers* field.
+
+
+   .. zeek:field:: rejected :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      The DNS query was rejected by the server.
+
+
+   .. zeek:field:: total_answers :zeek:type:`count` :zeek:attr:`&optional`
+
+      The total number of resource records in a reply message's
+      answer section.
+
+
+   .. zeek:field:: total_replies :zeek:type:`count` :zeek:attr:`&optional`
+
+      The total number of resource records in a reply message's
+      answer, authority, and additional sections.
+
+
+   .. zeek:field:: saw_query :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether the full DNS query has been seen.
+
+
+   .. zeek:field:: saw_reply :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether the full DNS reply has been seen.
+
+
+   .. zeek:field:: auth :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dns/auth-addl.zeek` is loaded)
+
+      Authoritative responses for the query.
+
+
+   .. zeek:field:: addl :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dns/auth-addl.zeek` is loaded)
+
+      Additional responses for the query.
+
+
+   .. zeek:field:: original_query :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dns/log-original-query-case.zeek` is loaded)
+
+      Query with original letter casing
+
 
    The record type which contains the column fields of the DNS log.
 
@@ -226,20 +283,27 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pending_query: :zeek:type:`DNS::Info` :zeek:attr:`&optional`
-         A single query that hasn't been matched with a response yet.
-         Note this is maintained separate from the *pending_queries*
-         field solely for performance reasons -- it's possible that
-         *pending_queries* contains further queries for which a response
-         has not yet been seen, even for the same transaction ID.
 
-      pending_queries: :zeek:type:`DNS::PendingMessages` :zeek:attr:`&optional`
-         Indexed by query id, returns Info record corresponding to
-         queries that haven't been matched with a response yet.
+   .. zeek:field:: pending_query :zeek:type:`DNS::Info` :zeek:attr:`&optional`
 
-      pending_replies: :zeek:type:`DNS::PendingMessages` :zeek:attr:`&optional`
-         Indexed by query id, returns Info record corresponding to
-         replies that haven't been matched with a query yet.
+      A single query that hasn't been matched with a response yet.
+      Note this is maintained separate from the *pending_queries*
+      field solely for performance reasons -- it's possible that
+      *pending_queries* contains further queries for which a response
+      has not yet been seen, even for the same transaction ID.
+
+
+   .. zeek:field:: pending_queries :zeek:type:`DNS::PendingMessages` :zeek:attr:`&optional`
+
+      Indexed by query id, returns Info record corresponding to
+      queries that haven't been matched with a response yet.
+
+
+   .. zeek:field:: pending_replies :zeek:type:`DNS::PendingMessages` :zeek:attr:`&optional`
+
+      Indexed by query id, returns Info record corresponding to
+      replies that haven't been matched with a query yet.
+
 
    A record type which tracks the status of DNS queries for a given
    :zeek:type:`connection`.

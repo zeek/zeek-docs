@@ -177,9 +177,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      host: :zeek:type:`addr`
 
-      hash: :zeek:type:`string`
+   .. zeek:field:: host :zeek:type:`addr`
+
+
+   .. zeek:field:: hash :zeek:type:`string`
+
 
 
 .. zeek:type:: Known::CertsInfo
@@ -187,24 +190,37 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The timestamp when the certificate was detected.
 
-      host: :zeek:type:`addr` :zeek:attr:`&log`
-         The address that offered the certificate.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      port_num: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the certificate was handed out by a server, this is the
-         port that the server was listening on.
+      The timestamp when the certificate was detected.
 
-      subject: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Certificate subject.
 
-      issuer_subject: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Certificate issuer subject.
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&log`
 
-      serial: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Serial number for the certificate.
+      The address that offered the certificate.
+
+
+   .. zeek:field:: port_num :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      If the certificate was handed out by a server, this is the
+      port that the server was listening on.
+
+
+   .. zeek:field:: subject :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Certificate subject.
+
+
+   .. zeek:field:: issuer_subject :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Certificate issuer subject.
+
+
+   .. zeek:field:: serial :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Serial number for the certificate.
+
 
 
 Events

@@ -137,51 +137,78 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Current timestamp.
 
-      fingerprint: :zeek:type:`string` :zeek:attr:`&log`
-         Fingerprint of the certificate - uses chosen algorithm.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      certificate: :zeek:type:`X509::Certificate` :zeek:attr:`&log`
-         Basic information about the certificate.
+      Current timestamp.
 
-      handle: :zeek:type:`opaque` of x509
-         The opaque wrapping the certificate. Mainly used
-         for the verify operations.
 
-      extensions: :zeek:type:`vector` of :zeek:type:`X509::Extension` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         All extensions that were encountered in the certificate.
+   .. zeek:field:: fingerprint :zeek:type:`string` :zeek:attr:`&log`
 
-      san: :zeek:type:`X509::SubjectAlternativeName` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Subject alternative name extension of the certificate.
+      Fingerprint of the certificate - uses chosen algorithm.
 
-      basic_constraints: :zeek:type:`X509::BasicConstraints` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Basic constraints extension of the certificate.
 
-      extensions_cache: :zeek:type:`vector` of :zeek:type:`any` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         All extensions in the order they were raised.
-         This is used for caching certificates that are commonly
-         encountered and should not be relied on in user scripts.
+   .. zeek:field:: certificate :zeek:type:`X509::Certificate` :zeek:attr:`&log`
 
-      host_cert: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if this certificate was a end-host certificate, or sent as part of a chain
+      Basic information about the certificate.
 
-      client_cert: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if this certificate was sent from the client
 
-      deduplication_index: :zeek:type:`X509::LogCertHash` :zeek:attr:`&optional`
-         Record that is used to deduplicate log entries.
+   .. zeek:field:: handle :zeek:type:`opaque` of x509
 
-      always_raise_x509_events: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/files/x509/disable-certificate-events-known-certs.zeek` is loaded)
+      The opaque wrapping the certificate. Mainly used
+      for the verify operations.
 
-         Set to true to force certificate events to always be raised for this certificate.
 
-      cert: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/ssl/log-certs-base64.zeek` is loaded)
+   .. zeek:field:: extensions :zeek:type:`vector` of :zeek:type:`X509::Extension` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
 
-         Base64 encoded X.509 certificate.
+      All extensions that were encountered in the certificate.
+
+
+   .. zeek:field:: san :zeek:type:`X509::SubjectAlternativeName` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Subject alternative name extension of the certificate.
+
+
+   .. zeek:field:: basic_constraints :zeek:type:`X509::BasicConstraints` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Basic constraints extension of the certificate.
+
+
+   .. zeek:field:: extensions_cache :zeek:type:`vector` of :zeek:type:`any` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      All extensions in the order they were raised.
+      This is used for caching certificates that are commonly
+      encountered and should not be relied on in user scripts.
+
+
+   .. zeek:field:: host_cert :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if this certificate was a end-host certificate, or sent as part of a chain
+
+
+   .. zeek:field:: client_cert :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if this certificate was sent from the client
+
+
+   .. zeek:field:: deduplication_index :zeek:type:`X509::LogCertHash` :zeek:attr:`&optional`
+
+      Record that is used to deduplicate log entries.
+
+
+   .. zeek:field:: always_raise_x509_events :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/files/x509/disable-certificate-events-known-certs.zeek` is loaded)
+
+      Set to true to force certificate events to always be raised for this certificate.
+
+
+   .. zeek:field:: cert :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/ssl/log-certs-base64.zeek` is loaded)
+
+      Base64 encoded X.509 certificate.
+
 
    The record type which contains the fields of the X.509 log.
 
@@ -190,14 +217,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      fingerprint: :zeek:type:`string`
-         Certificate fingerprint
 
-      host_cert: :zeek:type:`bool`
-         Indicates if this certificate was a end-host certificate, or sent as part of a chain
+   .. zeek:field:: fingerprint :zeek:type:`string`
 
-      client_cert: :zeek:type:`bool`
-         Indicates if this certificate was sent from the client
+      Certificate fingerprint
+
+
+   .. zeek:field:: host_cert :zeek:type:`bool`
+
+      Indicates if this certificate was a end-host certificate, or sent as part of a chain
+
+
+   .. zeek:field:: client_cert :zeek:type:`bool`
+
+      Indicates if this certificate was sent from the client
+
 
    Type that is used to decide which certificates are duplicates for logging purposes.
    When adding entries to this, also change the create_deduplication_index to update them.
@@ -207,26 +241,39 @@ Types
 
    :Type: :zeek:type:`record`
 
-      version: :zeek:type:`count`
-         The version of the encountered SCT (should always be 0 for v1).
 
-      logid: :zeek:type:`string`
-         The ID of the log issuing this SCT.
+   .. zeek:field:: version :zeek:type:`count`
 
-      timestamp: :zeek:type:`count`
-         The timestamp at which this SCT was issued measured since the
-         epoch (January 1, 1970, 00:00), ignoring leap seconds, in
-         milliseconds. Not converted to a Zeek timestamp because we need
-         the exact value for validation.
+      The version of the encountered SCT (should always be 0 for v1).
 
-      hash_alg: :zeek:type:`count`
-         The hash algorithm used for this sct.
 
-      sig_alg: :zeek:type:`count`
-         The signature algorithm used for this sct.
+   .. zeek:field:: logid :zeek:type:`string`
 
-      signature: :zeek:type:`string`
-         The signature of this SCT.
+      The ID of the log issuing this SCT.
+
+
+   .. zeek:field:: timestamp :zeek:type:`count`
+
+      The timestamp at which this SCT was issued measured since the
+      epoch (January 1, 1970, 00:00), ignoring leap seconds, in
+      milliseconds. Not converted to a Zeek timestamp because we need
+      the exact value for validation.
+
+
+   .. zeek:field:: hash_alg :zeek:type:`count`
+
+      The hash algorithm used for this sct.
+
+
+   .. zeek:field:: sig_alg :zeek:type:`count`
+
+      The signature algorithm used for this sct.
+
+
+   .. zeek:field:: signature :zeek:type:`string`
+
+      The signature of this SCT.
+
 
    This record is used to store information about the SCTs that are
    encountered in Certificates.

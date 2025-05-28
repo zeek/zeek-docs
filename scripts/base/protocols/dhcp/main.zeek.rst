@@ -160,122 +160,172 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The earliest time at which a DHCP message over the
-         associated connection is observed.
 
-      uids: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log`
-         A series of unique identifiers of the connections over which
-         DHCP is occurring.  This behavior with multiple connections is
-         unique to DHCP because of the way it uses broadcast packets
-         on local networks.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      client_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         IP address of the client.  If a transaction
-         is only a client sending INFORM messages then
-         there is no lease information exchanged so this
-         is helpful to know who sent the messages.
-         Getting an address in this field does require
-         that the client sources at least one DHCP message
-         using a non-broadcast address.
+      The earliest time at which a DHCP message over the
+      associated connection is observed.
 
-      server_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         IP address of the server involved in actually
-         handing out the lease.  There could be other
-         servers replying with OFFER messages which won't
-         be represented here.  Getting an address in this
-         field also requires that the server handing out
-         the lease also sources packets from a non-broadcast
-         IP address.
 
-      client_port: :zeek:type:`port` :zeek:attr:`&optional`
-         Client port number seen at time of server handing out IP (expected
-         as 68/udp).
+   .. zeek:field:: uids :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log`
 
-      server_port: :zeek:type:`port` :zeek:attr:`&optional`
-         Server port number seen at time of server handing out IP (expected
-         as 67/udp).
+      A series of unique identifiers of the connections over which
+      DHCP is occurring.  This behavior with multiple connections is
+      unique to DHCP because of the way it uses broadcast packets
+      on local networks.
 
-      mac: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Client's hardware address.
 
-      host_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Name given by client in Hostname option 12.
+   .. zeek:field:: client_addr :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      client_fqdn: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         FQDN given by client in Client FQDN option 81.
+      IP address of the client.  If a transaction
+      is only a client sending INFORM messages then
+      there is no lease information exchanged so this
+      is helpful to know who sent the messages.
+      Getting an address in this field does require
+      that the client sources at least one DHCP message
+      using a non-broadcast address.
 
-      domain: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Domain given by the server in option 15.
 
-      requested_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         IP address requested by the client.
+   .. zeek:field:: server_addr :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      assigned_addr: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         IP address assigned by the server.
+      IP address of the server involved in actually
+      handing out the lease.  There could be other
+      servers replying with OFFER messages which won't
+      be represented here.  Getting an address in this
+      field also requires that the server handing out
+      the lease also sources packets from a non-broadcast
+      IP address.
 
-      lease_time: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         IP address lease interval.
 
-      client_message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Message typically accompanied with a DHCP_DECLINE
-         so the client can tell the server why it rejected
-         an address.
+   .. zeek:field:: client_port :zeek:type:`port` :zeek:attr:`&optional`
 
-      server_message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Message typically accompanied with a DHCP_NAK to let
-         the client know why it rejected the request.
+      Client port number seen at time of server handing out IP (expected
+      as 68/udp).
 
-      msg_types: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         The DHCP message types seen by this DHCP transaction
 
-      duration: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
-         Duration of the DHCP "session" representing the
-         time from the first message to the last.
+   .. zeek:field:: server_port :zeek:type:`port` :zeek:attr:`&optional`
 
-      client_chaddr: :zeek:type:`string` :zeek:attr:`&optional`
-         The CHADDR field sent by the client.
+      Server port number seen at time of server handing out IP (expected
+      as 67/udp).
 
-      last_message_ts: :zeek:type:`time` :zeek:attr:`&optional`
 
-      msg_orig: :zeek:type:`vector` of :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dhcp/msg-orig.zeek` is loaded)
+   .. zeek:field:: mac :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         The address that originated each message from the
-         `msg_types` field.
+      Client's hardware address.
 
-      client_software: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dhcp/software.zeek` is loaded)
 
-         Software reported by the client in the `vendor_class` option.
+   .. zeek:field:: host_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      server_software: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dhcp/software.zeek` is loaded)
+      Name given by client in Hostname option 12.
 
-         Software reported by the server in the `vendor_class` option.
 
-      circuit_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dhcp/sub-opts.zeek` is loaded)
+   .. zeek:field:: client_fqdn :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         Added by DHCP relay agents which terminate switched or
-         permanent circuits.  It encodes an agent-local identifier
-         of the circuit from which a DHCP client-to-server packet was
-         received.  Typically it should represent a router or switch
-         interface number.
+      FQDN given by client in Client FQDN option 81.
 
-      agent_remote_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dhcp/sub-opts.zeek` is loaded)
 
-         A globally unique identifier added by relay agents to identify
-         the remote host end of the circuit.
+   .. zeek:field:: domain :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      subscriber_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/dhcp/sub-opts.zeek` is loaded)
+      Domain given by the server in option 15.
 
-         The subscriber ID is a value independent of the physical
-         network configuration so that a customer's DHCP configuration
-         can be given to them correctly no matter where they are
-         physically connected.
+
+   .. zeek:field:: requested_addr :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      IP address requested by the client.
+
+
+   .. zeek:field:: assigned_addr :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      IP address assigned by the server.
+
+
+   .. zeek:field:: lease_time :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      IP address lease interval.
+
+
+   .. zeek:field:: client_message :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Message typically accompanied with a DHCP_DECLINE
+      so the client can tell the server why it rejected
+      an address.
+
+
+   .. zeek:field:: server_message :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Message typically accompanied with a DHCP_NAK to let
+      the client know why it rejected the request.
+
+
+   .. zeek:field:: msg_types :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      The DHCP message types seen by this DHCP transaction
+
+
+   .. zeek:field:: duration :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
+
+      Duration of the DHCP "session" representing the
+      time from the first message to the last.
+
+
+   .. zeek:field:: client_chaddr :zeek:type:`string` :zeek:attr:`&optional`
+
+      The CHADDR field sent by the client.
+
+
+   .. zeek:field:: last_message_ts :zeek:type:`time` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: msg_orig :zeek:type:`vector` of :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dhcp/msg-orig.zeek` is loaded)
+
+      The address that originated each message from the
+      `msg_types` field.
+
+
+   .. zeek:field:: client_software :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dhcp/software.zeek` is loaded)
+
+      Software reported by the client in the `vendor_class` option.
+
+
+   .. zeek:field:: server_software :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dhcp/software.zeek` is loaded)
+
+      Software reported by the server in the `vendor_class` option.
+
+
+   .. zeek:field:: circuit_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dhcp/sub-opts.zeek` is loaded)
+
+      Added by DHCP relay agents which terminate switched or
+      permanent circuits.  It encodes an agent-local identifier
+      of the circuit from which a DHCP client-to-server packet was
+      received.  Typically it should represent a router or switch
+      interface number.
+
+
+   .. zeek:field:: agent_remote_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dhcp/sub-opts.zeek` is loaded)
+
+      A globally unique identifier added by relay agents to identify
+      the remote host end of the circuit.
+
+
+   .. zeek:field:: subscriber_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/dhcp/sub-opts.zeek` is loaded)
+
+      The subscriber ID is a value independent of the physical
+      network configuration so that a customer's DHCP configuration
+      can be given to them correctly no matter where they are
+      physically connected.
+
 
    The record type which contains the column fields of the DHCP log.
 

@@ -76,32 +76,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports
+      Timestamp for when the event happened
 
-      proto_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Indicates the protocol name
 
-      proto_version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The version of the protocol in use
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      client_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Unique identifier for the client
+      Unique ID for the connection
 
-      connect_status: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Status message from the server in response to the connect request
 
-      will_topic: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Topic to publish a "last will and testament" message to
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      will_payload: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Payload to publish as a "last will and testament"
+      The connection's 4-tuple of endpoint addresses/ports
+
+
+   .. zeek:field:: proto_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Indicates the protocol name
+
+
+   .. zeek:field:: proto_version :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The version of the protocol in use
+
+
+   .. zeek:field:: client_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Unique identifier for the client
+
+
+   .. zeek:field:: connect_status :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Status message from the server in response to the connect request
+
+
+   .. zeek:field:: will_topic :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Topic to publish a "last will and testament" message to
+
+
+   .. zeek:field:: will_payload :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Payload to publish as a "last will and testament"
+
 
 
 .. zeek:type:: MQTT::PublishInfo
@@ -109,55 +128,86 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the publish message started
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         UID for the connection
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         ID fields for the connection
+      Timestamp for when the publish message started
 
-      from_client: :zeek:type:`bool` :zeek:attr:`&log`
-         Indicates if the message was published by the client of
-         this connection or published to the client.
 
-      retain: :zeek:type:`bool` :zeek:attr:`&log`
-         Indicates if the message was to be retained by the server
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      qos: :zeek:type:`string` :zeek:attr:`&log`
-         QoS level set for the message
+      UID for the connection
 
-      status: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``"incomplete_qos"`` :zeek:attr:`&optional`
-         Status of the published message. This will be set to "incomplete_qos"
-         if the full back and forth for the requested level of QoS was not seen.
-         Otherwise if it's successful the field will be "ok".
 
-      topic: :zeek:type:`string` :zeek:attr:`&log`
-         Topic the message was published to
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      payload: :zeek:type:`string` :zeek:attr:`&log`
-         Payload of the message
+      ID fields for the connection
 
-      payload_len: :zeek:type:`count` :zeek:attr:`&log`
-         The actual length of the payload in the case the *payload*
-         field's contents were truncated according to
-         :zeek:see:`MQTT::max_payload_size`.
 
-      ack: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Track if the message was acked
+   .. zeek:field:: from_client :zeek:type:`bool` :zeek:attr:`&log`
 
-      rec: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if the server sent the RECEIVED qos message
+      Indicates if the message was published by the client of
+      this connection or published to the client.
 
-      rel: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if the client sent the RELEASE qos message
 
-      comp: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if the server sent the COMPLETE qos message
+   .. zeek:field:: retain :zeek:type:`bool` :zeek:attr:`&log`
 
-      qos_level: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Internally used for comparing numeric qos level
+      Indicates if the message was to be retained by the server
+
+
+   .. zeek:field:: qos :zeek:type:`string` :zeek:attr:`&log`
+
+      QoS level set for the message
+
+
+   .. zeek:field:: status :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``"incomplete_qos"`` :zeek:attr:`&optional`
+
+      Status of the published message. This will be set to "incomplete_qos"
+      if the full back and forth for the requested level of QoS was not seen.
+      Otherwise if it's successful the field will be "ok".
+
+
+   .. zeek:field:: topic :zeek:type:`string` :zeek:attr:`&log`
+
+      Topic the message was published to
+
+
+   .. zeek:field:: payload :zeek:type:`string` :zeek:attr:`&log`
+
+      Payload of the message
+
+
+   .. zeek:field:: payload_len :zeek:type:`count` :zeek:attr:`&log`
+
+      The actual length of the payload in the case the *payload*
+      field's contents were truncated according to
+      :zeek:see:`MQTT::max_payload_size`.
+
+
+   .. zeek:field:: ack :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Track if the message was acked
+
+
+   .. zeek:field:: rec :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if the server sent the RECEIVED qos message
+
+
+   .. zeek:field:: rel :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if the client sent the RELEASE qos message
+
+
+   .. zeek:field:: comp :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if the server sent the COMPLETE qos message
+
+
+   .. zeek:field:: qos_level :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Internally used for comparing numeric qos level
+
 
 
 .. zeek:type:: MQTT::State
@@ -165,12 +215,17 @@ Types
 
    :Type: :zeek:type:`record`
 
-      publish: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`MQTT::PublishInfo` :zeek:attr:`&optional` :zeek:attr:`&write_expire` = ``5.0 secs`` :zeek:attr:`&expire_func` = :zeek:see:`MQTT::publish_expire`
-         Published messages that haven't been logged yet.
 
-      subscribe: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`MQTT::SubscribeInfo` :zeek:attr:`&optional` :zeek:attr:`&write_expire` = ``5.0 secs`` :zeek:attr:`&expire_func` = :zeek:see:`MQTT::subscribe_expire`
-         Subscription/unsubscription messages that haven't been ACK'd or
-         logged yet.
+   .. zeek:field:: publish :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`MQTT::PublishInfo` :zeek:attr:`&optional` :zeek:attr:`&write_expire` = ``5.0 secs`` :zeek:attr:`&expire_func` = :zeek:see:`MQTT::publish_expire`
+
+      Published messages that haven't been logged yet.
+
+
+   .. zeek:field:: subscribe :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`MQTT::SubscribeInfo` :zeek:attr:`&optional` :zeek:attr:`&write_expire` = ``5.0 secs`` :zeek:attr:`&expire_func` = :zeek:see:`MQTT::subscribe_expire`
+
+      Subscription/unsubscription messages that haven't been ACK'd or
+      logged yet.
+
 
    Data structure to track pub/sub messaging state of a given connection.
 
@@ -190,29 +245,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the subscribe or unsubscribe request started
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         UID for the connection
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         ID fields for the connection
+      Timestamp for when the subscribe or unsubscribe request started
 
-      action: :zeek:type:`MQTT::SubUnsub` :zeek:attr:`&log`
-         Indicates if a subscribe or unsubscribe action is taking place
 
-      topics: :zeek:type:`string_vec` :zeek:attr:`&log`
-         The topics (or topic patterns) being subscribed to
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      qos_levels: :zeek:type:`index_vec` :zeek:attr:`&log` :zeek:attr:`&optional`
-         QoS levels requested for messages from subscribed topics
+      UID for the connection
 
-      granted_qos_level: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         QoS level the server granted
 
-      ack: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if the request was acked by the server
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      ID fields for the connection
+
+
+   .. zeek:field:: action :zeek:type:`MQTT::SubUnsub` :zeek:attr:`&log`
+
+      Indicates if a subscribe or unsubscribe action is taking place
+
+
+   .. zeek:field:: topics :zeek:type:`string_vec` :zeek:attr:`&log`
+
+      The topics (or topic patterns) being subscribed to
+
+
+   .. zeek:field:: qos_levels :zeek:type:`index_vec` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      QoS levels requested for messages from subscribed topics
+
+
+   .. zeek:field:: granted_qos_level :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      QoS level the server granted
+
+
+   .. zeek:field:: ack :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if the request was acked by the server
+
 
 
 Events
