@@ -394,7 +394,7 @@ class ZeekField(ZeekGeneric):
 
         fields = self.env.domaindata["zeek"].setdefault("fields", {})
         rfields = fields.setdefault(record_type, collections.OrderedDict())
-        rfields[signode[0]["fullname"]] =
+        rfields[signode[0]["fullname"]] = {
             "idx": idx,
             "signode": signode,
         }
