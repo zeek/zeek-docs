@@ -52,14 +52,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string` :zeek:attr:`&default` = ``fD0qxAnfwOe`` :zeek:attr:`&optional`
-         Unique identifier for a particular configuration
 
-      instances: :zeek:type:`set` [:zeek:type:`Management::Instance`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         The instances in the cluster.
+   .. zeek:field:: id :zeek:type:`string` :zeek:attr:`&default` = ``fD0qxAnfwOe`` :zeek:attr:`&optional`
 
-      nodes: :zeek:type:`set` [:zeek:type:`Management::Node`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         The set of nodes in the cluster, as distributed over the instances.
+      Unique identifier for a particular configuration
+
+
+   .. zeek:field:: instances :zeek:type:`set` [:zeek:type:`Management::Instance`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      The instances in the cluster.
+
+
+   .. zeek:field:: nodes :zeek:type:`set` [:zeek:type:`Management::Node`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      The set of nodes in the cluster, as distributed over the instances.
+
 
    Data structure capturing a cluster's complete configuration.
 
@@ -68,14 +75,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         Unique, human-readable instance name
 
-      host: :zeek:type:`addr`
-         IP address of system
+   .. zeek:field:: name :zeek:type:`string`
 
-      listen_port: :zeek:type:`port` :zeek:attr:`&optional`
-         Agent listening port. Not needed if agents connect to controller.
+      Unique, human-readable instance name
+
+
+   .. zeek:field:: host :zeek:type:`addr`
+
+      IP address of system
+
+
+   .. zeek:field:: listen_port :zeek:type:`port` :zeek:attr:`&optional`
+
+      Agent listening port. Not needed if agents connect to controller.
+
 
    Configuration describing a Zeek instance running a Cluster
    Agent. Normally, there'll be one instance per cluster
@@ -92,38 +106,61 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         Cluster-unique, human-readable node name
 
-      instance: :zeek:type:`string`
-         Name of instance where node is to run
+   .. zeek:field:: name :zeek:type:`string`
 
-      role: :zeek:type:`Supervisor::ClusterRole`
-         Role of the node.
+      Cluster-unique, human-readable node name
 
-      state: :zeek:type:`Management::State`
-         Desired, or current, run state.
 
-      p: :zeek:type:`port` :zeek:attr:`&optional`
-         Port on which this node will listen
+   .. zeek:field:: instance :zeek:type:`string`
 
-      scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         Additional Zeek scripts for node
+      Name of instance where node is to run
 
-      options: :zeek:type:`set` [:zeek:type:`Management::Option`] :zeek:attr:`&optional`
-         Zeek options for node
 
-      interface: :zeek:type:`string` :zeek:attr:`&optional`
-         Interface to sniff
+   .. zeek:field:: role :zeek:type:`Supervisor::ClusterRole`
 
-      cpu_affinity: :zeek:type:`int` :zeek:attr:`&optional`
-         CPU/core number to pin to
+      Role of the node.
 
-      env: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Custom environment vars
 
-      metrics_port: :zeek:type:`port` :zeek:attr:`&optional`
-         Metrics exposure port, for Prometheus
+   .. zeek:field:: state :zeek:type:`Management::State`
+
+      Desired, or current, run state.
+
+
+   .. zeek:field:: p :zeek:type:`port` :zeek:attr:`&optional`
+
+      Port on which this node will listen
+
+
+   .. zeek:field:: scripts :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      Additional Zeek scripts for node
+
+
+   .. zeek:field:: options :zeek:type:`set` [:zeek:type:`Management::Option`] :zeek:attr:`&optional`
+
+      Zeek options for node
+
+
+   .. zeek:field:: interface :zeek:type:`string` :zeek:attr:`&optional`
+
+      Interface to sniff
+
+
+   .. zeek:field:: cpu_affinity :zeek:type:`int` :zeek:attr:`&optional`
+
+      CPU/core number to pin to
+
+
+   .. zeek:field:: env :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Custom environment vars
+
+
+   .. zeek:field:: metrics_port :zeek:type:`port` :zeek:attr:`&optional`
+
+      Metrics exposure port, for Prometheus
+
 
    Configuration describing a Cluster Node process.
 
@@ -132,11 +169,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      stdout: :zeek:type:`string`
-         The stdout stream of a Zeek process
 
-      stderr: :zeek:type:`string`
-         The stderr stream of a Zeek process
+   .. zeek:field:: stdout :zeek:type:`string`
+
+      The stdout stream of a Zeek process
+
+
+   .. zeek:field:: stderr :zeek:type:`string`
+
+      The stderr stream of a Zeek process
+
 
    In :zeek:see:`Management::Controller::API::deploy_response` events,
    each :zeek:see:`Management::Result` indicates the outcome of a
@@ -151,27 +193,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      node: :zeek:type:`string`
-         Cluster-unique, human-readable node name
 
-      state: :zeek:type:`Management::State`
-         Current run state of the node.
+   .. zeek:field:: node :zeek:type:`string`
 
-      mgmt_role: :zeek:type:`Management::Role` :zeek:attr:`&default` = ``Management::NONE`` :zeek:attr:`&optional`
-         Role the node plays in cluster management.
+      Cluster-unique, human-readable node name
 
-      cluster_role: :zeek:type:`Supervisor::ClusterRole` :zeek:attr:`&default` = ``Supervisor::NONE`` :zeek:attr:`&optional`
-         Role the node plays in the Zeek cluster.
 
-      pid: :zeek:type:`int` :zeek:attr:`&optional`
-         Process ID of the node. This is optional because the Supervisor may not have
-         a PID when a node is still bootstrapping.
+   .. zeek:field:: state :zeek:type:`Management::State`
 
-      p: :zeek:type:`port` :zeek:attr:`&optional`
-         The node's Broker peering listening port, if any.
+      Current run state of the node.
 
-      metrics_port: :zeek:type:`port` :zeek:attr:`&optional`
-         The node's metrics port for Prometheus, if any.
+
+   .. zeek:field:: mgmt_role :zeek:type:`Management::Role` :zeek:attr:`&default` = ``Management::NONE`` :zeek:attr:`&optional`
+
+      Role the node plays in cluster management.
+
+
+   .. zeek:field:: cluster_role :zeek:type:`Supervisor::ClusterRole` :zeek:attr:`&default` = ``Supervisor::NONE`` :zeek:attr:`&optional`
+
+      Role the node plays in the Zeek cluster.
+
+
+   .. zeek:field:: pid :zeek:type:`int` :zeek:attr:`&optional`
+
+      Process ID of the node. This is optional because the Supervisor may not have
+      a PID when a node is still bootstrapping.
+
+
+   .. zeek:field:: p :zeek:type:`port` :zeek:attr:`&optional`
+
+      The node's Broker peering listening port, if any.
+
+
+   .. zeek:field:: metrics_port :zeek:type:`port` :zeek:attr:`&optional`
+
+      The node's metrics port for Prometheus, if any.
+
 
    The status of a Supervisor-managed node, as reported to the client in
    a get_nodes_request/get_nodes_response transaction.
@@ -187,11 +244,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         Name of option
 
-      value: :zeek:type:`string`
-         Value of option
+   .. zeek:field:: name :zeek:type:`string`
+
+      Name of option
+
+
+   .. zeek:field:: value :zeek:type:`string`
+
+      Value of option
+
 
    A Zeek-side option with value.
 
@@ -200,23 +262,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      reqid: :zeek:type:`string`
-         Request ID of operation this result refers to
 
-      success: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         True if successful
+   .. zeek:field:: reqid :zeek:type:`string`
 
-      instance: :zeek:type:`string` :zeek:attr:`&optional`
-         Name of associated instance (for context)
+      Request ID of operation this result refers to
 
-      data: :zeek:type:`any` :zeek:attr:`&optional`
-         Addl data returned for successful operation
 
-      error: :zeek:type:`string` :zeek:attr:`&optional`
-         Descriptive error on failure
+   .. zeek:field:: success :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
 
-      node: :zeek:type:`string` :zeek:attr:`&optional`
-         Name of associated node (for context)
+      True if successful
+
+
+   .. zeek:field:: instance :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name of associated instance (for context)
+
+
+   .. zeek:field:: data :zeek:type:`any` :zeek:attr:`&optional`
+
+      Addl data returned for successful operation
+
+
+   .. zeek:field:: error :zeek:type:`string` :zeek:attr:`&optional`
+
+      Descriptive error on failure
+
+
+   .. zeek:field:: node :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name of associated node (for context)
+
 
    Return value for request-response API event pairs. Some responses
    contain one, others multiple of these. The request ID allows clients

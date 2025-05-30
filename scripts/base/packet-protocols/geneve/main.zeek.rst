@@ -61,17 +61,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      class: :zeek:type:`count`
-         The class of the option.
 
-      critical: :zeek:type:`bool`
-         The critical bit of the type.
+   .. zeek:field:: class :zeek:type:`count`
 
-      typ: :zeek:type:`count`
-         The type field of the option with the critical bit masked.
+      The class of the option.
 
-      data: :zeek:type:`string`
-         The data field of the option.
+
+   .. zeek:field:: critical :zeek:type:`bool`
+
+      The critical bit of the type.
+
+
+   .. zeek:field:: typ :zeek:type:`count`
+
+      The type field of the option with the critical bit masked.
+
+
+   .. zeek:field:: data :zeek:type:`string`
+
+      The data field of the option.
+
 
    A Geneve option.
 

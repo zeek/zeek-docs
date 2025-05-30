@@ -185,11 +185,15 @@ Types
 
    :Type: :zeek:type:`record`
 
-      x: :zeek:type:`count`
 
-      y: :zeek:type:`count`
+   .. zeek:field:: x :zeek:type:`count`
 
-      z: :zeek:type:`count`
+
+   .. zeek:field:: y :zeek:type:`count`
+
+
+   .. zeek:field:: z :zeek:type:`count`
+
 
    This record is to hold a parsed FTP reply code.  For example, for the
    201 status code, the digits would be parsed as: x->2, y->0, z->1.

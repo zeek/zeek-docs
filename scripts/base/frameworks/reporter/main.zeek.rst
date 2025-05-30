@@ -51,22 +51,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The network time at which the reporter event was generated.
 
-      level: :zeek:type:`Reporter::Level` :zeek:attr:`&log`
-         The severity of the reporter message. Levels are INFO for informational
-         messages, not needing specific attention; WARNING for warning of a potential
-         problem, and ERROR for a non-fatal error that should be addressed, but doesn't
-         terminate program execution.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      message: :zeek:type:`string` :zeek:attr:`&log`
-         An info/warning/error message that could have either been
-         generated from the internal Zeek core or at the scripting-layer.
+      The network time at which the reporter event was generated.
 
-      location: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         This is the location in a Zeek script where the message originated.
-         Not all reporter messages will have locations in them though.
+
+   .. zeek:field:: level :zeek:type:`Reporter::Level` :zeek:attr:`&log`
+
+      The severity of the reporter message. Levels are INFO for informational
+      messages, not needing specific attention; WARNING for warning of a potential
+      problem, and ERROR for a non-fatal error that should be addressed, but doesn't
+      terminate program execution.
+
+
+   .. zeek:field:: message :zeek:type:`string` :zeek:attr:`&log`
+
+      An info/warning/error message that could have either been
+      generated from the internal Zeek core or at the scripting-layer.
+
+
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      This is the location in a Zeek script where the message originated.
+      Not all reporter messages will have locations in them though.
+
 
    The record type which contains the column fields of the reporter log.
 

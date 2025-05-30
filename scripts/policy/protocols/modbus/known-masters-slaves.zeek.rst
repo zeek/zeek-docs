@@ -80,14 +80,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The time the device was discovered.
 
-      host: :zeek:type:`addr` :zeek:attr:`&log`
-         The IP address of the host.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      device_type: :zeek:type:`Known::ModbusDeviceType` :zeek:attr:`&log`
-         The type of device being tracked.
+      The time the device was discovered.
+
+
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&log`
+
+      The IP address of the host.
+
+
+   .. zeek:field:: device_type :zeek:type:`Known::ModbusDeviceType` :zeek:attr:`&log`
+
+      The type of device being tracked.
+
 
 
 Events

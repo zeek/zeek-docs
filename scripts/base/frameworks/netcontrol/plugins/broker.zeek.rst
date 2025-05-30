@@ -61,32 +61,45 @@ Types
 
    :Type: :zeek:type:`record`
 
-      topic: :zeek:type:`string` :zeek:attr:`&optional`
-         The broker topic to send events to.
 
-      host: :zeek:type:`addr` :zeek:attr:`&optional`
-         Broker host to connect to.
+   .. zeek:field:: topic :zeek:type:`string` :zeek:attr:`&optional`
 
-      bport: :zeek:type:`port` :zeek:attr:`&optional`
-         Broker port to connect to.
+      The broker topic to send events to.
 
-      monitor: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Do we accept rules for the monitor path? Default true.
 
-      forward: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Do we accept rules for the forward path? Default true.
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&optional`
 
-      check_pred: :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         Predicate that is called on rule insertion or removal.
-         
+      Broker host to connect to.
 
-         :param p: Current plugin state.
-         
 
-         :param r: The rule to be inserted or removed.
-         
+   .. zeek:field:: bport :zeek:type:`port` :zeek:attr:`&optional`
 
-         :returns: T if the rule can be handled by the current backend, F otherwise.
+      Broker port to connect to.
+
+
+   .. zeek:field:: monitor :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Do we accept rules for the monitor path? Default true.
+
+
+   .. zeek:field:: forward :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Do we accept rules for the forward path? Default true.
+
+
+   .. zeek:field:: check_pred :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Predicate that is called on rule insertion or removal.
+      
+
+      :param p: Current plugin state.
+      
+
+      :param r: The rule to be inserted or removed.
+      
+
+      :returns: T if the rule can be handled by the current backend, F otherwise.
+
 
    This record specifies the configuration that is passed to :zeek:see:`NetControl::create_broker`.
 

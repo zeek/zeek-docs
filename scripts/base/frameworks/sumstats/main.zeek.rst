@@ -151,19 +151,24 @@ Types
 
    :Type: :zeek:type:`record`
 
-      str: :zeek:type:`string` :zeek:attr:`&optional`
-         A non-address related summarization or a sub-key for
-         an address based summarization. An example might be
-         successful SSH connections by client IP address
-         where the client string would be the key value.
-         Another example might be number of HTTP requests to
-         a particular value in a Host header.  This is an
-         example of a non-host based metric since multiple
-         IP addresses could respond for the same Host
-         header value.
 
-      host: :zeek:type:`addr` :zeek:attr:`&optional`
-         Host is the value to which this metric applies.
+   .. zeek:field:: str :zeek:type:`string` :zeek:attr:`&optional`
+
+      A non-address related summarization or a sub-key for
+      an address based summarization. An example might be
+      successful SSH connections by client IP address
+      where the client string would be the key value.
+      Another example might be number of HTTP requests to
+      a particular value in a Host header.  This is an
+      example of a non-host based metric since multiple
+      IP addresses could respond for the same Host
+      header value.
+
+
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&optional`
+
+      Host is the value to which this metric applies.
+
 
    Represents a thing which is having summarization
    results collected for it.
@@ -173,17 +178,25 @@ Types
 
    :Type: :zeek:type:`record`
 
-      num: :zeek:type:`count` :zeek:attr:`&optional`
-         Count value.
 
-      dbl: :zeek:type:`double` :zeek:attr:`&optional`
-         Double value.
+   .. zeek:field:: num :zeek:type:`count` :zeek:attr:`&optional`
 
-      str: :zeek:type:`string` :zeek:attr:`&optional`
-         String value.
+      Count value.
 
-      uid: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/http/detect-sql-injection.zeek` is loaded)
+
+   .. zeek:field:: dbl :zeek:type:`double` :zeek:attr:`&optional`
+
+      Double value.
+
+
+   .. zeek:field:: str :zeek:type:`string` :zeek:attr:`&optional`
+
+      String value.
+
+
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/http/detect-sql-injection.zeek` is loaded)
 
 
    Represents data being added for a single observation.
@@ -194,54 +207,77 @@ Types
 
    :Type: :zeek:type:`record`
 
-      stream: :zeek:type:`string`
-         Observation stream identifier for the reducer
-         to attach to.
 
-      apply: :zeek:type:`set` [:zeek:type:`SumStats::Calculation`]
-         The calculations to perform on the data points.
+   .. zeek:field:: stream :zeek:type:`string`
 
-      pred: :zeek:type:`function` (key: :zeek:type:`SumStats::Key`, obs: :zeek:type:`SumStats::Observation`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         A predicate so that you can decide per key if you
-         would like to accept the data being inserted.
+      Observation stream identifier for the reducer
+      to attach to.
 
-      normalize_key: :zeek:type:`function` (key: :zeek:type:`SumStats::Key`) : :zeek:type:`SumStats::Key` :zeek:attr:`&optional`
-         A function to normalize the key.  This can be used to
-         aggregate or normalize the entire key.
 
-      ssname: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: apply :zeek:type:`set` [:zeek:type:`SumStats::Calculation`]
 
-      calc_funcs: :zeek:type:`vector` of :zeek:type:`SumStats::Calculation` :zeek:attr:`&optional`
+      The calculations to perform on the data points.
 
-      hll_error_margin: :zeek:type:`double` :zeek:attr:`&default` = ``0.01`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
 
-         The error margin for HLL.
+   .. zeek:field:: pred :zeek:type:`function` (key: :zeek:type:`SumStats::Key`, obs: :zeek:type:`SumStats::Observation`) : :zeek:type:`bool` :zeek:attr:`&optional`
 
-      hll_confidence: :zeek:type:`double` :zeek:attr:`&default` = ``0.95`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+      A predicate so that you can decide per key if you
+      would like to accept the data being inserted.
 
-         The confidence for HLL.
 
-      num_last_elements: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/last.zeek` is loaded)
+   .. zeek:field:: normalize_key :zeek:type:`function` (key: :zeek:type:`SumStats::Key`) : :zeek:type:`SumStats::Key` :zeek:attr:`&optional`
 
-         Number of elements to keep.
+      A function to normalize the key.  This can be used to
+      aggregate or normalize the entire key.
 
-      num_samples: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
 
-         The number of sample Observations to collect.
+   .. zeek:field:: ssname :zeek:type:`string` :zeek:attr:`&optional`
 
-      topk_size: :zeek:type:`count` :zeek:attr:`&default` = ``500`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/topk.zeek` is loaded)
 
-         Number of elements to keep in the top-k list.
+   .. zeek:field:: calc_funcs :zeek:type:`vector` of :zeek:type:`SumStats::Calculation` :zeek:attr:`&optional`
 
-      unique_max: :zeek:type:`count` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
 
-         Maximum number of unique values to store.
+   .. zeek:field:: hll_error_margin :zeek:type:`double` :zeek:attr:`&default` = ``0.01`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+
+      The error margin for HLL.
+
+
+   .. zeek:field:: hll_confidence :zeek:type:`double` :zeek:attr:`&default` = ``0.95`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+
+      The confidence for HLL.
+
+
+   .. zeek:field:: num_last_elements :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/last.zeek` is loaded)
+
+      Number of elements to keep.
+
+
+   .. zeek:field:: num_samples :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
+
+      The number of sample Observations to collect.
+
+
+   .. zeek:field:: topk_size :zeek:type:`count` :zeek:attr:`&default` = ``500`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/topk.zeek` is loaded)
+
+      Number of elements to keep in the top-k list.
+
+
+   .. zeek:field:: unique_max :zeek:type:`count` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
+
+      Maximum number of unique values to store.
+
 
    Represents a reducer.
 
@@ -265,113 +301,152 @@ Types
 
    :Type: :zeek:type:`record`
 
-      begin: :zeek:type:`time`
-         The time when the first observation was added to
-         this result value.
 
-      end: :zeek:type:`time`
-         The time when the last observation was added to
-         this result value.
+   .. zeek:field:: begin :zeek:type:`time`
 
-      num: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of observations received.
-
-      average: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/average.zeek` is loaded)
-
-         For numeric data, this is the average of all values.
-
-      hll_unique: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
-
-         If cardinality is being tracked, the number of unique
-         items is tracked here.
-
-      card: :zeek:type:`opaque` of cardinality :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+      The time when the first observation was added to
+      this result value.
 
 
-      hll_error_margin: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+   .. zeek:field:: end :zeek:type:`time`
+
+      The time when the last observation was added to
+      this result value.
 
 
-      hll_confidence: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+   .. zeek:field:: num :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of observations received.
 
 
-      last_elements: :zeek:type:`Queue::Queue` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/last.zeek` is loaded)
+   .. zeek:field:: average :zeek:type:`double` :zeek:attr:`&optional`
 
-         This is the queue where elements are maintained.
-         Don't access this value directly, instead use the
-         :zeek:see:`SumStats::get_last` function to get a vector of
-         the current element values.
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/average.zeek` is loaded)
 
-      max: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/max.zeek` is loaded)
-
-         For numeric data, this tracks the maximum value.
-
-      min: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/min.zeek` is loaded)
-
-         For numeric data, this tracks the minimum value.
-
-      samples: :zeek:type:`vector` of :zeek:type:`SumStats::Observation` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
-
-         This is the vector in which the samples are maintained.
-
-      sample_elements: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
-
-         Number of total observed elements.
-
-      num_samples: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
+      For numeric data, this is the average of all values.
 
 
-      variance: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/variance.zeek` is loaded)
+   .. zeek:field:: hll_unique :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-         For numeric data, this is the variance.
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
 
-      prev_avg: :zeek:type:`double` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/variance.zeek` is loaded)
-
-
-      var_s: :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/variance.zeek` is loaded)
+      If cardinality is being tracked, the number of unique
+      items is tracked here.
 
 
-      std_dev: :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/std-dev.zeek` is loaded)
+   .. zeek:field:: card :zeek:type:`opaque` of cardinality :zeek:attr:`&optional`
 
-         For numeric data, this calculates the standard deviation.
-
-      sum: :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sum.zeek` is loaded)
-
-         For numeric data, this tracks the sum of all values.
-
-      topk: :zeek:type:`opaque` of topk :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/topk.zeek` is loaded)
-
-         A handle which can be passed to some built-in functions to get
-         the top-k results.
-
-      unique: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
-
-         If cardinality is being tracked, the number of unique
-         values is tracked here.
-
-      unique_max: :zeek:type:`count` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
 
 
-      unique_vals: :zeek:type:`set` [:zeek:type:`SumStats::Observation`] :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
+   .. zeek:field:: hll_error_margin :zeek:type:`double` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+
+
+   .. zeek:field:: hll_confidence :zeek:type:`double` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/hll_unique.zeek` is loaded)
+
+
+   .. zeek:field:: last_elements :zeek:type:`Queue::Queue` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/last.zeek` is loaded)
+
+      This is the queue where elements are maintained.
+      Don't access this value directly, instead use the
+      :zeek:see:`SumStats::get_last` function to get a vector of
+      the current element values.
+
+
+   .. zeek:field:: max :zeek:type:`double` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/max.zeek` is loaded)
+
+      For numeric data, this tracks the maximum value.
+
+
+   .. zeek:field:: min :zeek:type:`double` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/min.zeek` is loaded)
+
+      For numeric data, this tracks the minimum value.
+
+
+   .. zeek:field:: samples :zeek:type:`vector` of :zeek:type:`SumStats::Observation` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
+
+      This is the vector in which the samples are maintained.
+
+
+   .. zeek:field:: sample_elements :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
+
+      Number of total observed elements.
+
+
+   .. zeek:field:: num_samples :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sample.zeek` is loaded)
+
+
+   .. zeek:field:: variance :zeek:type:`double` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/variance.zeek` is loaded)
+
+      For numeric data, this is the variance.
+
+
+   .. zeek:field:: prev_avg :zeek:type:`double` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/variance.zeek` is loaded)
+
+
+   .. zeek:field:: var_s :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/variance.zeek` is loaded)
+
+
+   .. zeek:field:: std_dev :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/std-dev.zeek` is loaded)
+
+      For numeric data, this calculates the standard deviation.
+
+
+   .. zeek:field:: sum :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/sum.zeek` is loaded)
+
+      For numeric data, this tracks the sum of all values.
+
+
+   .. zeek:field:: topk :zeek:type:`opaque` of topk :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/topk.zeek` is loaded)
+
+      A handle which can be passed to some built-in functions to get
+      the top-k results.
+
+
+   .. zeek:field:: unique :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
+
+      If cardinality is being tracked, the number of unique
+      values is tracked here.
+
+
+   .. zeek:field:: unique_max :zeek:type:`count` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
+
+
+   .. zeek:field:: unique_vals :zeek:type:`set` [:zeek:type:`SumStats::Observation`] :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/sumstats/plugins/unique.zeek` is loaded)
 
 
    Result calculated for an observation stream fed into a reducer.
@@ -382,58 +457,77 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         An arbitrary name for the sumstat so that it can
-         be referred to later.
 
-      epoch: :zeek:type:`interval`
-         The interval at which this sumstat should be "broken"
-         and the *epoch_result* callback called. The
-         results are also reset at this time so any threshold
-         based detection needs to be set to a
-         value that should be expected to happen within
-         this epoch.
-         
-         Passing an epoch of zero (e.g. ``0 secs``) causes this
-         sumstat to be set to manual epochs. You will have to manually
-         end the epoch by calling :zeek:see:`SumStats::next_epoch`.
+   .. zeek:field:: name :zeek:type:`string`
 
-      reducers: :zeek:type:`set` [:zeek:type:`SumStats::Reducer`]
-         The reducers for the SumStat.
+      An arbitrary name for the sumstat so that it can
+      be referred to later.
 
-      threshold_val: :zeek:type:`function` (key: :zeek:type:`SumStats::Key`, result: :zeek:type:`SumStats::Result`) : :zeek:type:`double` :zeek:attr:`&optional`
-         A function that will be called once for each observation in order
-         to calculate a value from the :zeek:see:`SumStats::Result` structure
-         which will be used for thresholding.
-         This function is required if a *threshold* value or
-         a *threshold_series* is given.
 
-      threshold: :zeek:type:`double` :zeek:attr:`&optional`
-         The threshold value for calling the *threshold_crossed* callback.
-         If you need more than one threshold value, then use
-         *threshold_series* instead.
+   .. zeek:field:: epoch :zeek:type:`interval`
 
-      threshold_series: :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&optional`
-         A series of thresholds for calling the *threshold_crossed*
-         callback.  These thresholds must be listed in ascending order,
-         because a threshold is not checked until the preceding one has
-         been crossed.
+      The interval at which this sumstat should be "broken"
+      and the *epoch_result* callback called. The
+      results are also reset at this time so any threshold
+      based detection needs to be set to a
+      value that should be expected to happen within
+      this epoch.
+      
+      Passing an epoch of zero (e.g. ``0 secs``) causes this
+      sumstat to be set to manual epochs. You will have to manually
+      end the epoch by calling :zeek:see:`SumStats::next_epoch`.
 
-      threshold_crossed: :zeek:type:`function` (key: :zeek:type:`SumStats::Key`, result: :zeek:type:`SumStats::Result`) : :zeek:type:`void` :zeek:attr:`&optional`
-         A callback that is called when a threshold is crossed.
-         A threshold is crossed when the value returned from *threshold_val*
-         is greater than or equal to the threshold value, but only the first
-         time this happens within an epoch.
 
-      epoch_result: :zeek:type:`function` (ts: :zeek:type:`time`, key: :zeek:type:`SumStats::Key`, result: :zeek:type:`SumStats::Result`) : :zeek:type:`void` :zeek:attr:`&optional`
-         A callback that receives each of the results at the
-         end of the analysis epoch.  The function will be
-         called once for each key.
+   .. zeek:field:: reducers :zeek:type:`set` [:zeek:type:`SumStats::Reducer`]
 
-      epoch_finished: :zeek:type:`function` (ts: :zeek:type:`time`) : :zeek:type:`void` :zeek:attr:`&optional`
-         A callback that will be called when a single collection
-         interval is completed.  The *ts* value will be the time of
-         when the collection started.
+      The reducers for the SumStat.
+
+
+   .. zeek:field:: threshold_val :zeek:type:`function` (key: :zeek:type:`SumStats::Key`, result: :zeek:type:`SumStats::Result`) : :zeek:type:`double` :zeek:attr:`&optional`
+
+      A function that will be called once for each observation in order
+      to calculate a value from the :zeek:see:`SumStats::Result` structure
+      which will be used for thresholding.
+      This function is required if a *threshold* value or
+      a *threshold_series* is given.
+
+
+   .. zeek:field:: threshold :zeek:type:`double` :zeek:attr:`&optional`
+
+      The threshold value for calling the *threshold_crossed* callback.
+      If you need more than one threshold value, then use
+      *threshold_series* instead.
+
+
+   .. zeek:field:: threshold_series :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&optional`
+
+      A series of thresholds for calling the *threshold_crossed*
+      callback.  These thresholds must be listed in ascending order,
+      because a threshold is not checked until the preceding one has
+      been crossed.
+
+
+   .. zeek:field:: threshold_crossed :zeek:type:`function` (key: :zeek:type:`SumStats::Key`, result: :zeek:type:`SumStats::Result`) : :zeek:type:`void` :zeek:attr:`&optional`
+
+      A callback that is called when a threshold is crossed.
+      A threshold is crossed when the value returned from *threshold_val*
+      is greater than or equal to the threshold value, but only the first
+      time this happens within an epoch.
+
+
+   .. zeek:field:: epoch_result :zeek:type:`function` (ts: :zeek:type:`time`, key: :zeek:type:`SumStats::Key`, result: :zeek:type:`SumStats::Result`) : :zeek:type:`void` :zeek:attr:`&optional`
+
+      A callback that receives each of the results at the
+      end of the analysis epoch.  The function will be
+      called once for each key.
+
+
+   .. zeek:field:: epoch_finished :zeek:type:`function` (ts: :zeek:type:`time`) : :zeek:type:`void` :zeek:attr:`&optional`
+
+      A callback that will be called when a single collection
+      interval is completed.  The *ts* value will be the time of
+      when the collection started.
+
 
    Represents a SumStat, which consists of an aggregation of reducers along
    with mechanisms to handle various situations like the epoch ending

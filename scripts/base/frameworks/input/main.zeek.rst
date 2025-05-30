@@ -147,29 +147,40 @@ Types
 
    :Type: :zeek:type:`record`
 
-      source: :zeek:type:`string`
-         String that allows the reader to find the source.
-         For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
-      reader: :zeek:type:`Input::Reader` :zeek:attr:`&default` = ``Input::READER_BINARY`` :zeek:attr:`&optional`
-         Reader to use for this stream.  Compatible readers must be
-         able to accept a filter of a single string type (i.e.
-         they read a byte stream).
+   .. zeek:field:: source :zeek:type:`string`
 
-      mode: :zeek:type:`Input::Mode` :zeek:attr:`&default` = :zeek:see:`Input::default_mode` :zeek:attr:`&optional`
-         Read mode to use for this stream.
+      String that allows the reader to find the source.
+      For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
-      name: :zeek:type:`string`
-         Descriptive name that uniquely identifies the input source.
-         Can be used to remove a stream at a later time.
-         This will also be used for the unique *source* field of
-         :zeek:see:`fa_file`.  Most of the time, the best choice for this
-         field will be the same value as the *source* field.
 
-      config: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         A key/value table that will be passed to the reader.
-         Interpretation of the values is left to the reader, but
-         usually they will be used for configuration purposes.
+   .. zeek:field:: reader :zeek:type:`Input::Reader` :zeek:attr:`&default` = ``Input::READER_BINARY`` :zeek:attr:`&optional`
+
+      Reader to use for this stream.  Compatible readers must be
+      able to accept a filter of a single string type (i.e.
+      they read a byte stream).
+
+
+   .. zeek:field:: mode :zeek:type:`Input::Mode` :zeek:attr:`&default` = :zeek:see:`Input::default_mode` :zeek:attr:`&optional`
+
+      Read mode to use for this stream.
+
+
+   .. zeek:field:: name :zeek:type:`string`
+
+      Descriptive name that uniquely identifies the input source.
+      Can be used to remove a stream at a later time.
+      This will also be used for the unique *source* field of
+      :zeek:see:`fa_file`.  Most of the time, the best choice for this
+      field will be the same value as the *source* field.
+
+
+   .. zeek:field:: config :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      A key/value table that will be passed to the reader.
+      Interpretation of the values is left to the reader, but
+      usually they will be used for configuration purposes.
+
 
    A file analysis input stream type used to forward input data to the
    file analysis framework.
@@ -198,52 +209,71 @@ Types
 
    :Type: :zeek:type:`record`
 
-      source: :zeek:type:`string`
-         String that allows the reader to find the source.
-         For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
-      reader: :zeek:type:`Input::Reader` :zeek:attr:`&default` = :zeek:see:`Input::default_reader` :zeek:attr:`&optional`
-         Reader to use for this stream.
+   .. zeek:field:: source :zeek:type:`string`
 
-      mode: :zeek:type:`Input::Mode` :zeek:attr:`&default` = :zeek:see:`Input::default_mode` :zeek:attr:`&optional`
-         Read mode to use for this stream.
+      String that allows the reader to find the source.
+      For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
-      name: :zeek:type:`string`
-         Descriptive name. Used to remove a stream at a later time.
 
-      fields: :zeek:type:`any`
-         Record type describing the fields to be retrieved from the input
-         source.
+   .. zeek:field:: reader :zeek:type:`Input::Reader` :zeek:attr:`&default` = :zeek:see:`Input::default_reader` :zeek:attr:`&optional`
 
-      want_record: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         If this is false, the event receives each value in *fields* as a
-         separate argument.
-         If this is set to true (default), the event receives all fields in
-         a single record value.
+      Reader to use for this stream.
 
-      ev: :zeek:type:`any`
-         The event that is raised each time a new line is received from the
-         reader. The event will receive an :zeek:see:`Input::EventDescription` record
-         as the first argument, an :zeek:see:`Input::Event` enum as the second
-         argument, and the fields (as specified in *fields*) as the following
-         arguments (this will either be a single record value containing
-         all fields, or each field value as a separate argument).
 
-      error_ev: :zeek:type:`any` :zeek:attr:`&optional`
-         Error event that is raised when an information, warning or error
-         is raised by the input stream. If the level is error, the stream will automatically
-         be closed.
-         The event receives the :zeek:see:`Input::EventDescription` as the first argument, the
-         message as the second argument and the :zeek:see:`Reporter::Level` as the third argument.
-         
-         The event is raised like it had been declared as follows:
-         error_ev: function(desc: EventDescription, message: string, level: Reporter::Level) &optional;
-         The actual declaration uses the :zeek:type:`any` type because of deficiencies of the Zeek type system.
+   .. zeek:field:: mode :zeek:type:`Input::Mode` :zeek:attr:`&default` = :zeek:see:`Input::default_mode` :zeek:attr:`&optional`
 
-      config: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         A key/value table that will be passed to the reader.
-         Interpretation of the values is left to the reader, but
-         usually they will be used for configuration purposes.
+      Read mode to use for this stream.
+
+
+   .. zeek:field:: name :zeek:type:`string`
+
+      Descriptive name. Used to remove a stream at a later time.
+
+
+   .. zeek:field:: fields :zeek:type:`any`
+
+      Record type describing the fields to be retrieved from the input
+      source.
+
+
+   .. zeek:field:: want_record :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      If this is false, the event receives each value in *fields* as a
+      separate argument.
+      If this is set to true (default), the event receives all fields in
+      a single record value.
+
+
+   .. zeek:field:: ev :zeek:type:`any`
+
+      The event that is raised each time a new line is received from the
+      reader. The event will receive an :zeek:see:`Input::EventDescription` record
+      as the first argument, an :zeek:see:`Input::Event` enum as the second
+      argument, and the fields (as specified in *fields*) as the following
+      arguments (this will either be a single record value containing
+      all fields, or each field value as a separate argument).
+
+
+   .. zeek:field:: error_ev :zeek:type:`any` :zeek:attr:`&optional`
+
+      Error event that is raised when an information, warning or error
+      is raised by the input stream. If the level is error, the stream will automatically
+      be closed.
+      The event receives the :zeek:see:`Input::EventDescription` as the first argument, the
+      message as the second argument and the :zeek:see:`Reporter::Level` as the third argument.
+      
+      The event is raised like it had been declared as follows:
+      error_ev: function(desc: EventDescription, message: string, level: Reporter::Level) &optional;
+      The actual declaration uses the :zeek:type:`any` type because of deficiencies of the Zeek type system.
+
+
+   .. zeek:field:: config :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      A key/value table that will be passed to the reader.
+      Interpretation of the values is left to the reader, but
+      usually they will be used for configuration purposes.
+
 
    An event input stream type used to send input data to a Zeek event.
 
@@ -271,64 +301,89 @@ Types
 
    :Type: :zeek:type:`record`
 
-      source: :zeek:type:`string`
-         String that allows the reader to find the source of the data.
-         For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
-      reader: :zeek:type:`Input::Reader` :zeek:attr:`&default` = :zeek:see:`Input::default_reader` :zeek:attr:`&optional`
-         Reader to use for this stream.
+   .. zeek:field:: source :zeek:type:`string`
 
-      mode: :zeek:type:`Input::Mode` :zeek:attr:`&default` = :zeek:see:`Input::default_mode` :zeek:attr:`&optional`
-         Read mode to use for this stream.
+      String that allows the reader to find the source of the data.
+      For :zeek:see:`Input::READER_ASCII`, this is the filename.
 
-      name: :zeek:type:`string`
-         Name of the input stream.  This is used by some functions to
-         manipulate the stream.
 
-      destination: :zeek:type:`any`
-         Table which will receive the data read by the input framework.
+   .. zeek:field:: reader :zeek:type:`Input::Reader` :zeek:attr:`&default` = :zeek:see:`Input::default_reader` :zeek:attr:`&optional`
 
-      idx: :zeek:type:`any`
-         Record that defines the values used as the index of the table.
+      Reader to use for this stream.
 
-      val: :zeek:type:`any` :zeek:attr:`&optional`
-         Record that defines the values used as the elements of the table.
-         If this is undefined, then *destination* must be a set.
 
-      want_record: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Defines if the value of the table is a record (default), or a single
-         value. When this is set to false, then *val* can only contain one
-         element.
+   .. zeek:field:: mode :zeek:type:`Input::Mode` :zeek:attr:`&default` = :zeek:see:`Input::default_mode` :zeek:attr:`&optional`
 
-      ev: :zeek:type:`any` :zeek:attr:`&optional`
-         The event that is raised each time a value is added to, changed in,
-         or removed from the table. The event will receive an
-         Input::TableDescription as the first argument, an Input::Event
-         enum as the second argument, the *idx* record as the third argument
-         and the value (record) as the fourth argument.
+      Read mode to use for this stream.
 
-      pred: :zeek:type:`function` (typ: :zeek:type:`Input::Event`, left: :zeek:type:`any`, right: :zeek:type:`any`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         Predicate function that can decide if an insertion, update or removal
-         should really be executed. Parameters have same meaning as for the
-         event.
-         If true is returned, the update is performed. If false is returned,
-         it is skipped.
 
-      error_ev: :zeek:type:`any` :zeek:attr:`&optional`
-         Error event that is raised when an information, warning or error
-         is raised by the input stream. If the level is error, the stream will automatically
-         be closed.
-         The event receives the Input::TableDescription as the first argument, the
-         message as the second argument and the Reporter::Level as the third argument.
-         
-         The event is raised like if it had been declared as follows:
-         error_ev: function(desc: TableDescription, message: string, level: Reporter::Level) &optional;
-         The actual declaration uses the :zeek:type:`any` type because of deficiencies of the Zeek type system.
+   .. zeek:field:: name :zeek:type:`string`
 
-      config: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         A key/value table that will be passed to the reader.
-         Interpretation of the values is left to the reader, but
-         usually they will be used for configuration purposes.
+      Name of the input stream.  This is used by some functions to
+      manipulate the stream.
+
+
+   .. zeek:field:: destination :zeek:type:`any`
+
+      Table which will receive the data read by the input framework.
+
+
+   .. zeek:field:: idx :zeek:type:`any`
+
+      Record that defines the values used as the index of the table.
+
+
+   .. zeek:field:: val :zeek:type:`any` :zeek:attr:`&optional`
+
+      Record that defines the values used as the elements of the table.
+      If this is undefined, then *destination* must be a set.
+
+
+   .. zeek:field:: want_record :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Defines if the value of the table is a record (default), or a single
+      value. When this is set to false, then *val* can only contain one
+      element.
+
+
+   .. zeek:field:: ev :zeek:type:`any` :zeek:attr:`&optional`
+
+      The event that is raised each time a value is added to, changed in,
+      or removed from the table. The event will receive an
+      Input::TableDescription as the first argument, an Input::Event
+      enum as the second argument, the *idx* record as the third argument
+      and the value (record) as the fourth argument.
+
+
+   .. zeek:field:: pred :zeek:type:`function` (typ: :zeek:type:`Input::Event`, left: :zeek:type:`any`, right: :zeek:type:`any`) : :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Predicate function that can decide if an insertion, update or removal
+      should really be executed. Parameters have same meaning as for the
+      event.
+      If true is returned, the update is performed. If false is returned,
+      it is skipped.
+
+
+   .. zeek:field:: error_ev :zeek:type:`any` :zeek:attr:`&optional`
+
+      Error event that is raised when an information, warning or error
+      is raised by the input stream. If the level is error, the stream will automatically
+      be closed.
+      The event receives the Input::TableDescription as the first argument, the
+      message as the second argument and the Reporter::Level as the third argument.
+      
+      The event is raised like if it had been declared as follows:
+      error_ev: function(desc: TableDescription, message: string, level: Reporter::Level) &optional;
+      The actual declaration uses the :zeek:type:`any` type because of deficiencies of the Zeek type system.
+
+
+   .. zeek:field:: config :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      A key/value table that will be passed to the reader.
+      Interpretation of the values is left to the reader, but
+      usually they will be used for configuration purposes.
+
 
    A table input stream type used to send data to a Zeek table.
 

@@ -90,17 +90,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      min: :zeek:type:`Software::Version` :zeek:attr:`&optional`
-         The minimal version of a vulnerable version range.  This
-         field can be undefined if all previous versions of a piece
-         of software are vulnerable.
 
-      max: :zeek:type:`Software::Version`
-         The maximum vulnerable version.  This field is deliberately
-         not optional because a maximum vulnerable version must
-         always be defined.  This assumption may become incorrect
-         if all future versions of some software are to be considered
-         vulnerable. :)
+   .. zeek:field:: min :zeek:type:`Software::Version` :zeek:attr:`&optional`
+
+      The minimal version of a vulnerable version range.  This
+      field can be undefined if all previous versions of a piece
+      of software are vulnerable.
+
+
+   .. zeek:field:: max :zeek:type:`Software::Version`
+
+      The maximum vulnerable version.  This field is deliberately
+      not optional because a maximum vulnerable version must
+      always be defined.  This assumption may become incorrect
+      if all future versions of some software are to be considered
+      vulnerable. :)
+
 
 
 

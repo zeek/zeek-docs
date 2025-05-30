@@ -91,23 +91,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the activity happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the activity happened.
 
-      cmd: :zeek:type:`Redis::Command` :zeek:attr:`&log`
-         The Redis command.
 
-      success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the command was successful. Only set if the server responded.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      reply: :zeek:type:`Redis::ReplyData` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The reply for the command.
+      Unique ID for the connection.
+
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      The connection's 4-tuple of endpoint addresses/ports.
+
+
+   .. zeek:field:: cmd :zeek:type:`Redis::Command` :zeek:attr:`&log`
+
+      The Redis command.
+
+
+   .. zeek:field:: success :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      If the command was successful. Only set if the server responded.
+
+
+   .. zeek:field:: reply :zeek:type:`Redis::ReplyData` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The reply for the command.
+
 
    Record type containing the column fields of the Redis log.
 
@@ -116,9 +129,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      begin: :zeek:type:`count`
 
-      end: :zeek:type:`count` :zeek:attr:`&optional`
+   .. zeek:field:: begin :zeek:type:`count`
+
+
+   .. zeek:field:: end :zeek:type:`count` :zeek:attr:`&optional`
+
 
    Which numbered commands should not expect a reply due to CLIENT REPLY commands.
    These commands may simply skip one, or they may turn off replies then later
@@ -129,23 +145,34 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pending: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`Redis::Info`
-         Pending commands.
 
-      current_command: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Current command in the pending queue.
+   .. zeek:field:: pending :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`Redis::Info`
 
-      current_reply: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Current reply in the pending queue.
+      Pending commands.
 
-      no_reply_ranges: :zeek:type:`vector` of :zeek:type:`Redis::NoReplyRange`
-         Ranges where we do not expect a reply due to CLIENT REPLY commands.
-         Each range is one or two elements, one meaning it's unbounded, two meaning
-         it begins at one and ends at the second.
 
-      violation: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         We store if this analyzer had a violation to avoid logging if so.
-         This should not be super necessary, but worth a shot.
+   .. zeek:field:: current_command :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Current command in the pending queue.
+
+
+   .. zeek:field:: current_reply :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Current reply in the pending queue.
+
+
+   .. zeek:field:: no_reply_ranges :zeek:type:`vector` of :zeek:type:`Redis::NoReplyRange`
+
+      Ranges where we do not expect a reply due to CLIENT REPLY commands.
+      Each range is one or two elements, one meaning it's unbounded, two meaning
+      it begins at one and ends at the second.
+
+
+   .. zeek:field:: violation :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      We store if this analyzer had a violation to avoid logging if so.
+      This should not be super necessary, but worth a shot.
+
 
 
 Hooks

@@ -54,20 +54,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The time at which a cluster message was generated.
 
-      node: :zeek:type:`string` :zeek:attr:`&log`
-         The name of the node that is creating the log record.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      level: :zeek:type:`string` :zeek:attr:`&log`
-         Log level of this message, converted from the above Level enum
+      The time at which a cluster message was generated.
 
-      role: :zeek:type:`string` :zeek:attr:`&log`
-         The role of the node, translated from Management::Role.
 
-      message: :zeek:type:`string` :zeek:attr:`&log`
-         A message indicating information about cluster controller operation.
+   .. zeek:field:: node :zeek:type:`string` :zeek:attr:`&log`
+
+      The name of the node that is creating the log record.
+
+
+   .. zeek:field:: level :zeek:type:`string` :zeek:attr:`&log`
+
+      Log level of this message, converted from the above Level enum
+
+
+   .. zeek:field:: role :zeek:type:`string` :zeek:attr:`&log`
+
+      The role of the node, translated from Management::Role.
+
+
+   .. zeek:field:: message :zeek:type:`string` :zeek:attr:`&log`
+
+      A message indicating information about cluster controller operation.
+
    :Attributes: :zeek:attr:`&log`
 
    The record type containing the column fields of the agent/controller log.

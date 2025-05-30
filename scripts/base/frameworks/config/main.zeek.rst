@@ -57,20 +57,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp at which the configuration change occurred.
 
-      id: :zeek:type:`string` :zeek:attr:`&log`
-         ID of the value that was changed.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      old_value: :zeek:type:`string` :zeek:attr:`&log`
-         Value before the change.
+      Timestamp at which the configuration change occurred.
 
-      new_value: :zeek:type:`string` :zeek:attr:`&log`
-         Value after the change.
 
-      location: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Optional location that triggered the change.
+   .. zeek:field:: id :zeek:type:`string` :zeek:attr:`&log`
+
+      ID of the value that was changed.
+
+
+   .. zeek:field:: old_value :zeek:type:`string` :zeek:attr:`&log`
+
+      Value before the change.
+
+
+   .. zeek:field:: new_value :zeek:type:`string` :zeek:attr:`&log`
+
+      Value after the change.
+
+
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Optional location that triggered the change.
+
 
    Represents the data in config.log.
 

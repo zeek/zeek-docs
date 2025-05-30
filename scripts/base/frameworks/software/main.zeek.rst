@@ -135,43 +135,62 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The time at which the software was detected.
 
-      host: :zeek:type:`addr` :zeek:attr:`&log`
-         The IP address detected running the software.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      host_p: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The port on which the software is running. Only sensible for
-         server software.
+      The time at which the software was detected.
 
-      software_type: :zeek:type:`Software::Type` :zeek:attr:`&log` :zeek:attr:`&default` = ``Software::UNKNOWN`` :zeek:attr:`&optional`
-         The type of software detected (e.g. :zeek:enum:`HTTP::SERVER`).
 
-      name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Name of the software (e.g. Apache).
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&log`
 
-      version: :zeek:type:`Software::Version` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Version of the software.
+      The IP address detected running the software.
 
-      unparsed_version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The full unparsed version string found because the version
-         parsing doesn't always work reliably in all cases and this
-         acts as a fallback in the logs.
 
-      force_log: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         This can indicate that this software being detected should
-         definitely be sent onward to the logging framework.  By
-         default, only software that is "interesting" due to a change
-         in version or it being currently unknown is sent to the
-         logging framework.  This can be set to T to force the record
-         to be sent to the logging framework if some amount of this
-         tracking needs to happen in a specific way to the software.
+   .. zeek:field:: host_p :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      url: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         (present if :doc:`/scripts/policy/protocols/http/detect-webapps.zeek` is loaded)
+      The port on which the software is running. Only sensible for
+      server software.
 
-         Most root URL where the software was discovered.
+
+   .. zeek:field:: software_type :zeek:type:`Software::Type` :zeek:attr:`&log` :zeek:attr:`&default` = ``Software::UNKNOWN`` :zeek:attr:`&optional`
+
+      The type of software detected (e.g. :zeek:enum:`HTTP::SERVER`).
+
+
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Name of the software (e.g. Apache).
+
+
+   .. zeek:field:: version :zeek:type:`Software::Version` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Version of the software.
+
+
+   .. zeek:field:: unparsed_version :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The full unparsed version string found because the version
+      parsing doesn't always work reliably in all cases and this
+      acts as a fallback in the logs.
+
+
+   .. zeek:field:: force_log :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      This can indicate that this software being detected should
+      definitely be sent onward to the logging framework.  By
+      default, only software that is "interesting" due to a change
+      in version or it being currently unknown is sent to the
+      logging framework.  This can be set to T to force the record
+      to be sent to the logging framework if some amount of this
+      tracking needs to happen in a specific way to the software.
+
+
+   .. zeek:field:: url :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/policy/protocols/http/detect-webapps.zeek` is loaded)
+
+      Most root URL where the software was discovered.
+
 
    The record type that is used for representing and logging software.
 
@@ -309,20 +328,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      major: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Major version number.
 
-      minor: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Minor version number.
+   .. zeek:field:: major :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      minor2: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Minor subversion number.
+      Major version number.
 
-      minor3: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Minor updates number.
 
-      addl: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Additional version string (e.g. "beta42").
+   .. zeek:field:: minor :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Minor version number.
+
+
+   .. zeek:field:: minor2 :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Minor subversion number.
+
+
+   .. zeek:field:: minor3 :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Minor updates number.
+
+
+   .. zeek:field:: addl :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Additional version string (e.g. "beta42").
+
    :Attributes: :zeek:attr:`&log`
 
    A structure to represent the numeric version of software.

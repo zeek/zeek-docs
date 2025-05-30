@@ -126,23 +126,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      block_until: :zeek:type:`time` :zeek:attr:`&optional`
-         Absolute time indicating until when a block is inserted using NetControl.
 
-      watch_until: :zeek:type:`time`
-         Absolute time indicating until when an IP address is watched to reblock it.
+   .. zeek:field:: block_until :zeek:type:`time` :zeek:attr:`&optional`
 
-      num_reblocked: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Number of times an IP address was reblocked.
+      Absolute time indicating until when a block is inserted using NetControl.
 
-      current_interval: :zeek:type:`count`
-         Number indicating at which catch and release interval we currently are.
 
-      current_block_id: :zeek:type:`string`
-         ID of the inserted block, if any.
+   .. zeek:field:: watch_until :zeek:type:`time`
 
-      location: :zeek:type:`string` :zeek:attr:`&optional`
-         User specified string.
+      Absolute time indicating until when an IP address is watched to reblock it.
+
+
+   .. zeek:field:: num_reblocked :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Number of times an IP address was reblocked.
+
+
+   .. zeek:field:: current_interval :zeek:type:`count`
+
+      Number indicating at which catch and release interval we currently are.
+
+
+   .. zeek:field:: current_block_id :zeek:type:`string`
+
+      ID of the inserted block, if any.
+
+
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&optional`
+
+      User specified string.
+
 
    This record is used for storing information about current blocks that are
    part of catch and release.
@@ -190,41 +203,66 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The absolute time indicating when the action for this log-line occurred.
 
-      rule_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The rule id that this log line refers to.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      ip: :zeek:type:`addr` :zeek:attr:`&log`
-         The IP address that this line refers to.
+      The absolute time indicating when the action for this log-line occurred.
 
-      action: :zeek:type:`NetControl::CatchReleaseActions` :zeek:attr:`&log`
-         The action that was taken in this log-line.
 
-      block_interval: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The current block_interval (for how long the address is blocked).
+   .. zeek:field:: rule_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      watch_interval: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The current watch_interval (for how long the address will be watched and re-block if it reappears).
+      The rule id that this log line refers to.
 
-      blocked_until: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The absolute time until which the address is blocked.
 
-      watched_until: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The absolute time until which the address will be monitored.
+   .. zeek:field:: ip :zeek:type:`addr` :zeek:attr:`&log`
 
-      num_blocked: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Number of times that this address was blocked in the current cycle.
+      The IP address that this line refers to.
 
-      location: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The user specified location string.
 
-      message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Additional informational string by the catch and release framework about this log-line.
+   .. zeek:field:: action :zeek:type:`NetControl::CatchReleaseActions` :zeek:attr:`&log`
 
-      plugin: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Plugin triggering the log entry.
+      The action that was taken in this log-line.
+
+
+   .. zeek:field:: block_interval :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The current block_interval (for how long the address is blocked).
+
+
+   .. zeek:field:: watch_interval :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The current watch_interval (for how long the address will be watched and re-block if it reappears).
+
+
+   .. zeek:field:: blocked_until :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The absolute time until which the address is blocked.
+
+
+   .. zeek:field:: watched_until :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The absolute time until which the address will be monitored.
+
+
+   .. zeek:field:: num_blocked :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Number of times that this address was blocked in the current cycle.
+
+
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The user specified location string.
+
+
+   .. zeek:field:: message :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Additional informational string by the catch and release framework about this log-line.
+
+
+   .. zeek:field:: plugin :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Plugin triggering the log entry.
+
 
    The record type that is used for representing and logging
 

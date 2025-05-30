@@ -37,35 +37,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      database_path: :zeek:type:`string`
-         Path to the database file on disk. Setting this to ":memory:" will tell
-         SQLite to use an in-memory database. Relative paths will be opened
-         relative to the directory where Zeek was started from. Zeek will not
-         create intermediate directories if they do not already exist. See
-         https://www.sqlite.org/c3ref/open.html for more rules on paths that can
-         be passed here.
 
-      table_name: :zeek:type:`string`
-         Name of the table used for storing data. It is possible to use the same
-         database file for two separate tables, as long as the this value is
-         different between the two.
+   .. zeek:field:: database_path :zeek:type:`string`
 
-      pragma_commands: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&ordered` :zeek:attr:`&default` = *{ 	[integrity_check] = , 	[busy_timeout] = 5000, 	[journal_mode] = WAL, 	[synchronous] = normal, 	[temp_store] = memory }* :zeek:attr:`&optional`
-         Key/value table for passing pragma commands when opening the database.
-         These must be pairs that can be passed to the ``pragma`` command in
-         sqlite. The ``integrity_check`` pragma is run automatically and does
-         not need to be included here. For pragmas without a second argument,
-         set the value to an empty string.
+      Path to the database file on disk. Setting this to ":memory:" will tell
+      SQLite to use an in-memory database. Relative paths will be opened
+      relative to the directory where Zeek was started from. Zeek will not
+      create intermediate directories if they do not already exist. See
+      https://www.sqlite.org/c3ref/open.html for more rules on paths that can
+      be passed here.
 
-      pragma_timeout: :zeek:type:`interval` :zeek:attr:`&default` = ``500.0 msecs`` :zeek:attr:`&optional`
-         The total amount of time that an SQLite backend will spend attempting
-         to run an individual pragma command before giving up and returning an
-         initialization error. Setting this to zero will result in the backend
-         attempting forever until success.
 
-      pragma_wait_on_busy: :zeek:type:`interval` :zeek:attr:`&default` = ``5.0 msecs`` :zeek:attr:`&optional`
-         The amount of time that at SQLite backend will wait between failures
-         to run an individual pragma command.
+   .. zeek:field:: table_name :zeek:type:`string`
+
+      Name of the table used for storing data. It is possible to use the same
+      database file for two separate tables, as long as the this value is
+      different between the two.
+
+
+   .. zeek:field:: pragma_commands :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&ordered` :zeek:attr:`&default` = *...* :zeek:attr:`&optional`
+
+      Key/value table for passing pragma commands when opening the database.
+      These must be pairs that can be passed to the ``pragma`` command in
+      sqlite. The ``integrity_check`` pragma is run automatically and does
+      not need to be included here. For pragmas without a second argument,
+      set the value to an empty string.
+
+
+   .. zeek:field:: pragma_timeout :zeek:type:`interval` :zeek:attr:`&default` = ``500.0 msecs`` :zeek:attr:`&optional`
+
+      The total amount of time that an SQLite backend will spend attempting
+      to run an individual pragma command before giving up and returning an
+      initialization error. Setting this to zero will result in the backend
+      attempting forever until success.
+
+
+   .. zeek:field:: pragma_wait_on_busy :zeek:type:`interval` :zeek:attr:`&default` = ``5.0 msecs`` :zeek:attr:`&optional`
+
+      The amount of time that at SQLite backend will wait between failures
+      to run an individual pragma command.
+
 
    Options record for the built-in SQLite backend.
 

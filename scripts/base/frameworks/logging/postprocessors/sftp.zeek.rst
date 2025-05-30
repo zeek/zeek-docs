@@ -88,18 +88,27 @@ Types
 
    :Type: :zeek:type:`record`
 
-      user: :zeek:type:`string`
-         The remote user to log in as.  A trust mechanism should be
-         pre-established.
 
-      host: :zeek:type:`string`
-         The remote host to which to transfer logs.
+   .. zeek:field:: user :zeek:type:`string`
 
-      host_port: :zeek:type:`count` :zeek:attr:`&default` = ``22`` :zeek:attr:`&optional`
-         The port to connect to. Defaults to 22
+      The remote user to log in as.  A trust mechanism should be
+      pre-established.
 
-      path: :zeek:type:`string`
-         The path/directory on the remote host to send logs.
+
+   .. zeek:field:: host :zeek:type:`string`
+
+      The remote host to which to transfer logs.
+
+
+   .. zeek:field:: host_port :zeek:type:`count` :zeek:attr:`&default` = ``22`` :zeek:attr:`&optional`
+
+      The port to connect to. Defaults to 22
+
+
+   .. zeek:field:: path :zeek:type:`string`
+
+      The path/directory on the remote host to send logs.
+
 
    A container that describes the remote destination for the SFTP command,
    comprised of the username, host, and path at which to upload the file.

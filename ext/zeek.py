@@ -2,11 +2,14 @@
 The Zeek domain for Sphinx.
 """
 
+import collections
+
 
 def setup(Sphinx):
     Sphinx.add_domain(ZeekDomain)
     Sphinx.add_node(see)
     Sphinx.add_directive_to_domain("zeek", "see", SeeDirective)
+    Sphinx.connect("object-description-transform", object_description_transform)
     Sphinx.connect("doctree-resolved", process_see_nodes)
     return {
         "parallel_read_safe": True,
@@ -47,6 +50,31 @@ def make_index_tuple(indextype, indexentry, targetname, targetname2):
         return (indextype, indexentry, targetname, targetname2, None)
     else:
         return (indextype, indexentry, targetname, targetname2)
+
+
+def object_description_transform(app, domain, objtype, contentnode):
+    """
+    Add all collected record fields as a "Field" field to a ZeekType.
+    """
+    if domain != "zeek" or objtype != "type":
+        return
+
+    type_name = app.env.ref_context["zeek:type"]
+    record_fields = app.env.domaindata["zeek"].get("fields", {}).get(type_name)
+
+    if not record_fields:
+        return
+
+    field_list = contentnode[0]
+
+    name = nodes.field_name("", _("Fields"))
+    body = nodes.field_body("")
+
+    for field_name, record_field in record_fields.items():
+        body += record_field["idx"]
+        body += record_field["signode"]
+
+    field_list.append(nodes.field("", name, body))
 
 
 def process_see_nodes(app, doctree, fromdocname):
@@ -131,9 +159,10 @@ class ZeekGeneric(ObjectDescription):
                 key in objects
                 and self.get_obj_name() != "id"
                 and self.get_obj_name() != "type"
+                and self.get_obj_name() != "field"
             ):
                 logger.warning(
-                    "%s: duplicate description of %s %s, other instance in %s",
+                    "%s: duplicate description of %s %s, other instance in %s %s",
                     self.env.docname,
                     self.get_obj_name(),
                     name,
@@ -313,10 +342,84 @@ class ZeekAttribute(ZeekNative):
         return _("%s (attribute)") % (name)
 
 
+class ZeekType(ZeekGeneric):
+    """
+    Put the type that's currently documented into env.ref_context
+    for usage with the ZeekField directive.
+    """
+
+    def before_content(self):
+        self.env.ref_context["zeek:type"] = self.arguments[0]
+
+    def after_content(self):
+        self.env.ref_context.pop("zeek:type", None)
+
+
+class ZeekField(ZeekGeneric):
+    def handle_signature(self, sig, signode):
+        """
+        The signature for .. zeek:field: currently looks like the following:
+
+          .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+        """
+        parts = sig.split(" ", 2)
+        name, type_str = parts[0:2]
+        record_type = self.env.ref_context["zeek:type"]
+        fullname = "$".join([record_type, name])
+        attrs_str = ""
+        if len(parts) == 3:
+            attrs_str = parts[2]
+
+        type_nodes, _ = self.state.inline_text(type_str, -1)
+
+        signode += addnodes.desc_name(name, name)
+        signode += addnodes.desc_sig_punctuation("", ":")
+        signode += addnodes.desc_sig_space()
+        signode += type_nodes
+
+        if attrs_str:
+            attr_nodes, _ = self.state.inline_text(attrs_str, -1)
+            signode += addnodes.desc_sig_space()
+            signode += attr_nodes
+
+        signode["class"] = record_type
+        signode["fullname"] = fullname
+
+        return fullname
+
+    def run(self):
+        idx, signode = super().run()
+
+        record_type = self.env.ref_context["zeek:type"]
+
+        fields = self.env.domaindata["zeek"].setdefault("fields", {})
+        rfields = fields.setdefault(record_type, collections.OrderedDict())
+        rfields[signode[0]["fullname"]] =
+            "idx": idx,
+            "signode": signode,
+        }
+
+        return []
+
+
 class ZeekNativeType(ZeekNative):
     def get_obj_name(self):
         # As opposed to using 'native-type', just imitate 'type'.
         return "type"
+
+
+class ZeekFieldXRefRole(XRefRole):
+    def process_link(self, env, refnode, has_explicit_title, title, target):
+        title, target = super().process_link(
+            env, refnode, has_explicit_title, title, target
+        )
+
+        parts = title.split("$")
+        if len(parts) == 2 and parts[0] and parts[1]:
+            # If a field is in Type$field, form, strip Type.
+            title = parts[1]
+
+        return title, target
 
 
 class ZeekNotices(Index):
@@ -358,16 +461,18 @@ class ZeekDomain(Domain):
         "keyword": ObjType(_("keyword"), "keyword"),
         "enum": ObjType(_("enum"), "enum"),
         "attr": ObjType(_("attr"), "attr"),
+        "field": ObjType(_("field"), "field"),
     }
 
     directives = {
-        "type": ZeekGeneric,
+        "type": ZeekType,
         "native-type": ZeekNativeType,
         "namespace": ZeekNamespace,
         "id": ZeekIdentifier,
         "keyword": ZeekKeyword,
         "enum": ZeekEnum,
         "attr": ZeekAttribute,
+        "field": ZeekField,
     }
 
     roles = {
@@ -378,6 +483,7 @@ class ZeekDomain(Domain):
         "enum": XRefRole(),
         "attr": XRefRole(),
         "see": XRefRole(),
+        "field": ZeekFieldXRefRole(),
     }
 
     indices = [
@@ -407,6 +513,7 @@ class ZeekDomain(Domain):
                     '%s: unknown target for ":zeek:see:`%s`"', fromdocname, target
                 )
                 return []
+
             objtype = self.data["idtypes"][target]
             return make_refnode(
                 builder,
@@ -416,6 +523,9 @@ class ZeekDomain(Domain):
                 contnode,
                 target + " " + objtype,
             )
+        elif typ == "field" and "$" not in target:
+            # :zeek:field:`x` without a record type ends up just x, no ref.
+            return []
         else:
             objtypes = self.objtypes_for_role(typ)
 
@@ -466,10 +576,19 @@ class ZeekDomain(Domain):
 
                 # Iterate manually over the elements for debugging
                 for k, v in data.items():
-                    # The > comparison below updates the objects domaindata
-                    # to filenames that sort higher. See comment above.
-                    if k not in target_data or v > target_data[k]:
+                    if k not in target_data:
                         target_data[k] = v
+                    else:
+                        # The > comparison below updates the objects domaindata
+                        # to filenames that sort higher. See comment above.
+                        if isinstance(v, str):
+                            if v > target_data[k]:
+                                target_data[k] = v
+                        else:
+                            # Otherwise assume it's a dict and we can merge
+                            # using update()
+                            target_data[k].update(v)
+
             elif hasattr(data, "extend"):
                 # notices are a list
                 target_data = self.env.domaindata["zeek"].setdefault(target, [])

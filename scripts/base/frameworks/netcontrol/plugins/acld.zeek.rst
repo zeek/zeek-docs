@@ -64,13 +64,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      command: :zeek:type:`string`
 
-      cookie: :zeek:type:`count`
+   .. zeek:field:: command :zeek:type:`string`
 
-      arg: :zeek:type:`string`
 
-      comment: :zeek:type:`string` :zeek:attr:`&optional`
+   .. zeek:field:: cookie :zeek:type:`count`
+
+
+   .. zeek:field:: arg :zeek:type:`string`
+
+
+   .. zeek:field:: comment :zeek:type:`string` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: NetControl::AcldConfig
@@ -78,32 +83,45 @@ Types
 
    :Type: :zeek:type:`record`
 
-      acld_topic: :zeek:type:`string`
-         The acld topic to send events to.
 
-      acld_host: :zeek:type:`addr`
-         Broker host to connect to.
+   .. zeek:field:: acld_topic :zeek:type:`string`
 
-      acld_port: :zeek:type:`port`
-         Broker port to connect to.
+      The acld topic to send events to.
 
-      monitor: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Do we accept rules for the monitor path? Default false.
 
-      forward: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Do we accept rules for the forward path? Default true.
+   .. zeek:field:: acld_host :zeek:type:`addr`
 
-      check_pred: :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         Predicate that is called on rule insertion or removal.
-         
+      Broker host to connect to.
 
-         :param p: Current plugin state.
-         
 
-         :param r: The rule to be inserted or removed.
-         
+   .. zeek:field:: acld_port :zeek:type:`port`
 
-         :returns: T if the rule can be handled by the current backend, F otherwise.
+      Broker port to connect to.
+
+
+   .. zeek:field:: monitor :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Do we accept rules for the monitor path? Default false.
+
+
+   .. zeek:field:: forward :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Do we accept rules for the forward path? Default true.
+
+
+   .. zeek:field:: check_pred :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Predicate that is called on rule insertion or removal.
+      
+
+      :param p: Current plugin state.
+      
+
+      :param r: The rule to be inserted or removed.
+      
+
+      :returns: T if the rule can be handled by the current backend, F otherwise.
+
 
 
 Events

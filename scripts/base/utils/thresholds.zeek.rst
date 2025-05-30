@@ -66,13 +66,18 @@ Types
 
    :Type: :zeek:type:`record`
 
-      n: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The counter for the number of times something has happened.
 
-      index: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The index of the vector where the counter currently is.  This
-         is used to track which threshold is currently being watched
-         for.
+   .. zeek:field:: n :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The counter for the number of times something has happened.
+
+
+   .. zeek:field:: index :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The index of the vector where the counter currently is.  This
+      is used to track which threshold is currently being watched
+      for.
+
 
 
 Functions

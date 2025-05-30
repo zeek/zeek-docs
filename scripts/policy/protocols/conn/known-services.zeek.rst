@@ -200,11 +200,15 @@ Types
 
    :Type: :zeek:type:`record`
 
-      host: :zeek:type:`addr`
 
-      p: :zeek:type:`port`
+   .. zeek:field:: host :zeek:type:`addr`
 
-      serv: :zeek:type:`string`
+
+   .. zeek:field:: p :zeek:type:`port`
+
+
+   .. zeek:field:: serv :zeek:type:`string`
+
 
 
 .. zeek:type:: Known::ServicesInfo
@@ -212,20 +216,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The time at which the service was detected.
 
-      host: :zeek:type:`addr` :zeek:attr:`&log`
-         The host address on which the service is running.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      port_num: :zeek:type:`port` :zeek:attr:`&log`
-         The port number on which the service is running.
+      The time at which the service was detected.
 
-      port_proto: :zeek:type:`transport_proto` :zeek:attr:`&log`
-         The transport-layer protocol which the service uses.
 
-      service: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log`
-         A set of protocols that match the service's connection payloads.
+   .. zeek:field:: host :zeek:type:`addr` :zeek:attr:`&log`
+
+      The host address on which the service is running.
+
+
+   .. zeek:field:: port_num :zeek:type:`port` :zeek:attr:`&log`
+
+      The port number on which the service is running.
+
+
+   .. zeek:field:: port_proto :zeek:type:`transport_proto` :zeek:attr:`&log`
+
+      The transport-layer protocol which the service uses.
+
+
+   .. zeek:field:: service :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log`
+
+      A set of protocols that match the service's connection payloads.
+
 
    The record type which contains the column fields of the known-services
    log.

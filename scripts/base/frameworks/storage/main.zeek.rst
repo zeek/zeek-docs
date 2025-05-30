@@ -32,15 +32,20 @@ Types
 
    :Type: :zeek:type:`record`
 
-      serializer: :zeek:type:`Storage::Serializer` :zeek:attr:`&default` = ``Storage::STORAGE_SERIALIZER_JSON`` :zeek:attr:`&optional`
-         The serializer used for converting Zeek data.
 
-      redis: :zeek:type:`Storage::Backend::Redis::Options` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/storage/backend/redis/main.zeek` is loaded)
+   .. zeek:field:: serializer :zeek:type:`Storage::Serializer` :zeek:attr:`&default` = ``Storage::STORAGE_SERIALIZER_JSON`` :zeek:attr:`&optional`
+
+      The serializer used for converting Zeek data.
 
 
-      sqlite: :zeek:type:`Storage::Backend::SQLite::Options` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/storage/backend/sqlite/main.zeek` is loaded)
+   .. zeek:field:: redis :zeek:type:`Storage::Backend::Redis::Options` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/storage/backend/redis/main.zeek` is loaded)
+
+
+   .. zeek:field:: sqlite :zeek:type:`Storage::Backend::SQLite::Options` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/storage/backend/sqlite/main.zeek` is loaded)
 
 
    Base record for backend options that can be passed to
@@ -53,19 +58,28 @@ Types
 
    :Type: :zeek:type:`record`
 
-      key: :zeek:type:`any`
-         The key to store the value under.
 
-      value: :zeek:type:`any`
-         The value to store associated with the key.
+   .. zeek:field:: key :zeek:type:`any`
 
-      overwrite: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Indicates whether this value should overwrite an existing entry for the
-         key.
+      The key to store the value under.
 
-      expire_time: :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
-         An interval of time until the entry is automatically removed from the
-         backend.
+
+   .. zeek:field:: value :zeek:type:`any`
+
+      The value to store associated with the key.
+
+
+   .. zeek:field:: overwrite :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Indicates whether this value should overwrite an existing entry for the
+      key.
+
+
+   .. zeek:field:: expire_time :zeek:type:`interval` :zeek:attr:`&default` = ``0 secs`` :zeek:attr:`&optional`
+
+      An interval of time until the entry is automatically removed from the
+      backend.
+
 
    Record for passing arguments to :zeek:see:`Storage::Async::put` and
    :zeek:see:`Storage::Sync::put`.

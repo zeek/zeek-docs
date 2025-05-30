@@ -57,23 +57,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      tags: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         CIF tags observations, examples for tags are ``botnet`` or ``exploit``.
 
-      confidence: :zeek:type:`double` :zeek:attr:`&optional` :zeek:attr:`&log`
-         In CIF Confidence details the degree of certainty of a given observation.
+   .. zeek:field:: tags :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      source: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Source given in CIF.
+      CIF tags observations, examples for tags are ``botnet`` or ``exploit``.
 
-      description: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         description given in CIF.
 
-      firstseen: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         First time the source observed the behavior.
+   .. zeek:field:: confidence :zeek:type:`double` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      lastseen: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Last time the source observed the behavior.
+      In CIF Confidence details the degree of certainty of a given observation.
+
+
+   .. zeek:field:: source :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Source given in CIF.
+
+
+   .. zeek:field:: description :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      description given in CIF.
+
+
+   .. zeek:field:: firstseen :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      First time the source observed the behavior.
+
+
+   .. zeek:field:: lastseen :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Last time the source observed the behavior.
+
 
    CIF record used for consistent formatting of CIF values.
 

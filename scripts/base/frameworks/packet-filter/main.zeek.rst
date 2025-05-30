@@ -164,8 +164,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      func: :zeek:type:`function` () : :zeek:type:`void`
-         A function that is directly called when generating the complete filter.
+
+   .. zeek:field:: func :zeek:type:`function` () : :zeek:type:`void`
+
+      A function that is directly called when generating the complete filter.
+
 
    A data structure to represent filter generating plugins.
 
@@ -174,25 +177,38 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The time at which the packet filter installation attempt was made.
 
-      node: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         This is a string representation of the node that applied this
-         packet filter.  It's mostly useful in the context of
-         dynamically changing filters on clusters.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      filter: :zeek:type:`string` :zeek:attr:`&log`
-         The packet filter that is being set.
+      The time at which the packet filter installation attempt was made.
 
-      init: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicate if this is the filter set during initialization.
 
-      success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Indicate if the filter was applied successfully.
+   .. zeek:field:: node :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      failure_reason: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         A string reason why the filter failed to be created/installed.
+      This is a string representation of the node that applied this
+      packet filter.  It's mostly useful in the context of
+      dynamically changing filters on clusters.
+
+
+   .. zeek:field:: filter :zeek:type:`string` :zeek:attr:`&log`
+
+      The packet filter that is being set.
+
+
+   .. zeek:field:: init :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicate if this is the filter set during initialization.
+
+
+   .. zeek:field:: success :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Indicate if the filter was applied successfully.
+
+
+   .. zeek:field:: failure_reason :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      A string reason why the filter failed to be created/installed.
+
 
    The record type defining columns to be logged in the packet filter
    logging stream.

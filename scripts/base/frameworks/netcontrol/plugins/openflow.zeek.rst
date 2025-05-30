@@ -79,65 +79,82 @@ Types
 
    :Type: :zeek:type:`record`
 
-      monitor: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Accept rules that target the monitor path.
 
-      forward: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Accept rules that target the forward path.
+   .. zeek:field:: monitor :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
 
-      idle_timeout: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Default OpenFlow idle timeout.
+      Accept rules that target the monitor path.
 
-      table_id: :zeek:type:`count` :zeek:attr:`&optional`
-         Default OpenFlow table ID.
 
-      priority_offset: :zeek:type:`int` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Add this to all rule priorities. Can be useful if you want the openflow priorities be offset from the netcontrol priorities without having to write a filter function.
+   .. zeek:field:: forward :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
 
-      check_pred: :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         Predicate that is called on rule insertion or removal.
-         
+      Accept rules that target the forward path.
 
-         :param p: Current plugin state.
-         
 
-         :param r: The rule to be inserted or removed.
-         
+   .. zeek:field:: idle_timeout :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-         :returns: T if the rule can be handled by the current backend, F otherwise.
+      Default OpenFlow idle timeout.
 
-      match_pred: :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, e: :zeek:type:`NetControl::Entity`, m: :zeek:type:`vector` of :zeek:type:`OpenFlow::ofp_match`) : :zeek:type:`vector` of :zeek:type:`OpenFlow::ofp_match` :zeek:attr:`&optional`
-         This predicate is called each time an OpenFlow match record is created.
-         The predicate can modify the match structure before it is sent on to the
-         device.
-         
 
-         :param p: Current plugin state.
-         
+   .. zeek:field:: table_id :zeek:type:`count` :zeek:attr:`&optional`
 
-         :param r: The rule to be inserted or removed.
-         
+      Default OpenFlow table ID.
 
-         :param m: The openflow match structures that were generated for this rules.
-         
 
-         :returns: The modified OpenFlow match structures that will be used in place of the structures passed in m.
+   .. zeek:field:: priority_offset :zeek:type:`int` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      flow_mod_pred: :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`, m: :zeek:type:`OpenFlow::ofp_flow_mod`) : :zeek:type:`OpenFlow::ofp_flow_mod` :zeek:attr:`&optional`
-         This predicate is called before a FlowMod message is sent to the OpenFlow
-         device. It can modify the FlowMod message before it is passed on.
-         
+      Add this to all rule priorities. Can be useful if you want the openflow priorities be offset from the netcontrol priorities without having to write a filter function.
 
-         :param p: Current plugin state.
-         
 
-         :param r: The rule to be inserted or removed.
-         
+   .. zeek:field:: check_pred :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`) : :zeek:type:`bool` :zeek:attr:`&optional`
 
-         :param m: The OpenFlow FlowMod message.
-         
+      Predicate that is called on rule insertion or removal.
+      
 
-         :returns: The modified FlowMod message that is used in lieu of m.
+      :param p: Current plugin state.
+      
+
+      :param r: The rule to be inserted or removed.
+      
+
+      :returns: T if the rule can be handled by the current backend, F otherwise.
+
+
+   .. zeek:field:: match_pred :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, e: :zeek:type:`NetControl::Entity`, m: :zeek:type:`vector` of :zeek:type:`OpenFlow::ofp_match`) : :zeek:type:`vector` of :zeek:type:`OpenFlow::ofp_match` :zeek:attr:`&optional`
+
+      This predicate is called each time an OpenFlow match record is created.
+      The predicate can modify the match structure before it is sent on to the
+      device.
+      
+
+      :param p: Current plugin state.
+      
+
+      :param r: The rule to be inserted or removed.
+      
+
+      :param m: The openflow match structures that were generated for this rules.
+      
+
+      :returns: The modified OpenFlow match structures that will be used in place of the structures passed in m.
+
+
+   .. zeek:field:: flow_mod_pred :zeek:type:`function` (p: :zeek:type:`NetControl::PluginState`, r: :zeek:type:`NetControl::Rule`, m: :zeek:type:`OpenFlow::ofp_flow_mod`) : :zeek:type:`OpenFlow::ofp_flow_mod` :zeek:attr:`&optional`
+
+      This predicate is called before a FlowMod message is sent to the OpenFlow
+      device. It can modify the FlowMod message before it is passed on.
+      
+
+      :param p: Current plugin state.
+      
+
+      :param r: The rule to be inserted or removed.
+      
+
+      :param m: The OpenFlow FlowMod message.
+      
+
+      :returns: The modified FlowMod message that is used in lieu of m.
+
 
    This record specifies the configuration that is passed to :zeek:see:`NetControl::create_openflow`.
 
@@ -146,17 +163,24 @@ Types
 
    :Type: :zeek:type:`record`
 
-      p: :zeek:type:`NetControl::PluginState`
 
-      r: :zeek:type:`NetControl::Rule`
+   .. zeek:field:: p :zeek:type:`NetControl::PluginState`
 
-      c: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      packet_count: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+   .. zeek:field:: r :zeek:type:`NetControl::Rule`
 
-      byte_count: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      duration_sec: :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
+   .. zeek:field:: c :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: packet_count :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: byte_count :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: duration_sec :zeek:type:`double` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
+
 
 
 Functions

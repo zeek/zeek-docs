@@ -55,15 +55,15 @@ notice. Currently, the following actions are defined:
   * - :zeek:see:`Notice::ACTION_ALARM`
     - Log into the :zeek:see:`Notice::ALARM_LOG` stream which will rotate
       hourly and email the contents to the email address or addresses in the
-      `email_dest` field of that notice's :zeek:see:`Notice::Info` record.
+      :zeek:field:`Notice::Info$email_dest` field of that notice's :zeek:see:`Notice::Info` record.
 
   * - :zeek:see:`Notice::ACTION_EMAIL`
     - Send the notice in an email to the email address or addresses in the
-      `email_dest` field of that notice's :zeek:see:`Notice::Info` record.
+      :zeek:field:`Notice::Info$email_dest` field of that notice's :zeek:see:`Notice::Info` record.
 
   * - :zeek:see:`Notice::ACTION_PAGE`
     - Send an email to the email address or addresses in the
-      `email_dest` field of that notice's :zeek:see:`Notice::Info` record.
+      :zeek:field:`Notice::Info$email_dest` field of that notice's :zeek:see:`Notice::Info` record.
 
 How these notice actions are applied to notices is discussed in the
 :ref:`Notice Policy <notice-policy>` and :ref:`Notice Policy Shortcuts
@@ -223,47 +223,47 @@ notices are described in the following table:
   * - Field name
     - Description
 
-  * - ``$note``
+  * - :zeek:field:`note`
     - This field is required and is an enum value which represents the notice
       type.
 
-  * - ``$msg``
+  * - :zeek:field:`msg`
     - This is a human readable message which is meant to provide more
       information about this particular instance of the notice type.
 
-  * - ``$sub``
+  * - :zeek:field:`sub`
     - This is a sub-message meant for human readability but will frequently
       also be used to contain data meant to be matched with the
       :zeek:see:`Notice::policy`.
 
-  * - ``$conn``
+  * - :zeek:field:`conn`
     - If a connection record is available when the notice is being raised and
       the notice represents some attribute of the connection, then the
-      connection record can be given here. Other fields such as $id and $src
+      connection record can be given here. Other fields such as :zeek:field:`id` and :zeek:field:`src`
       will automatically be populated from this value.
 
-  * - ``$id``
+  * - :zeek:field:`id`
     - If a :zeek:see:`conn_id` record is available when the notice is being
       raised and the notice represents some attribute of the connection, then
-      the connection can be given here. Other fields such as ``$src`` will
+      the connection can be given here. Other fields such as :zeek:field:`src` will
       automatically be populated from this value.
 
-  * - ``$src``
+  * - :zeek:field:`src`
     - If the notice represents an attribute of a single host then it’s possible
       that only this field should be filled out to represent the host that is
       being “noticed”.
 
-  * - ``$n``
+  * - :zeek:field:`n`
     - This normally represents a number if the notice has to do with some
       number. It’s most frequently used for numeric tests in the
       :zeek:see:`Notice::policy` for making policy decisions.
 
-  * - ``$identifier``
+  * - :zeek:field:`identifier`
     - This represents a unique identifier for this notice. This field is
       described in more detail in the :ref:`Automated Suppression
       <automated-notice-suppression>` section.
 
-  * - ``$suppress_for``
+  * - :zeek:field:`suppress_for`
     - This field can be set if there is a natural suppression interval for the
       notice that may be different than the default value. The value set to
       this field can also be modified by a user’s :zeek:see:`Notice::policy` so
@@ -273,11 +273,11 @@ When writing Zeek scripts that raise notices, some thought should be given to
 what the notice represents and what data should be provided to give a consumer
 of the notice the best information about the notice. If the notice is
 representative of many connections and is an attribute of a host (e.g., a
-scanning host) it probably makes most sense to fill out the ``$src`` field and
+scanning host) it probably makes most sense to fill out the :zeek:field:`src` field and
 not give a connection or :zeek:see:`conn_id`. If a notice is representative of
 a connection attribute (e.g. an apparent SSH login) then it makes sense to fill
-out either ``$conn`` or ``$id`` based on the data that is available when the
-notice is raised.
+out either :zeek:field:`Notice::Info$conn` or :zeek:field:`Notice::Info$id`
+based on the data that is available when the notice is raised.
 
 Using care when inserting data into a notice will make later analysis easier
 when only the data to fully represent the occurrence that raised the notice is
@@ -299,20 +299,21 @@ The notice framework supports suppression for notices if the author of the
 script that is generating the notice has indicated to the notice framework how
 to identify notices that are intrinsically the same. Identification of these
 “intrinsically duplicate” notices is implemented with an optional field in
-:zeek:see:`Notice::Info` records named ``$identifier`` which is a simple
-string. If the ``$identifier`` and ``$note`` fields are the same for two
-notices, the notice framework actually considers them to be the same thing and
+:zeek:see:`Notice::Info` records named :zeek:field:`Notice::Info$identifier`
+which is a simple string. If the :zeek:field:`Notice::Info$identifier` and
+:zeek:field:`Notice::Info$note` fields are the same for two notices, the notice
+framework actually considers them to be the same thing and
 can use that information to suppress duplicates for a configurable period of
 time.
 
 .. note::
 
-   If the ``$identifier`` is left out of a notice, no notice suppression takes
+   If the :zeek:field:`identifier` is left out of a notice, no notice suppression takes
    place due to the framework’s inability to identify duplicates. This could be
    completely legitimate usage if no notices could ever be considered to be
    duplicates.
 
-The ``$identifier`` field typically comprises several pieces of data related to
+The :zeek:field:`Notice::Info$identifier` field typically comprises several pieces of data related to
 the notice that when combined represent a unique instance of that notice. Here
 is an example of the script
 :doc:`/scripts/policy/protocols/ssl/validate-certs.zeek` raising a notice for
@@ -327,7 +328,7 @@ validate successfully against the available certificate authority certificates.
           $conn=c,
           $identifier=cat(c$id$resp_h,c$id$resp_p,c$ssl$validation_status,c$ssl$cert_hash)]);
 
-In the above example you can see that the ``$identifier`` field contains a
+In the above example you can see that the :zeek:field:`identifier` field contains a
 string that is built from the responder IP address and port, the validation
 status message, and the MD5 sum of the server certificate. Those fields in
 particular are chosen because different SSL certificates could be seen on any
@@ -339,19 +340,19 @@ and all four pieces of data match (IP address, port, validation status, and
 certificate hash) that particular notice won’t be raised again for the default
 suppression period.
 
-Setting the ``$identifier`` field is left to those raising notices because it’s
+Setting the :zeek:field:`Notice::Info$identifier` field is left to those raising notices because it’s
 assumed that the script author who is raising the notice understands the full
 problem set and edge cases of the notice which may not be readily apparent to
 users. If users don’t want the suppression to take place or simply want a
 different interval, they can set a notice’s suppression interval to ``0secs``
-or delete the value from the ``$identifier`` field in a
+or delete the value from the :zeek:field:`identifier` field in a
 :zeek:see:`Notice::policy` hook.
 
 Extending Notice Framework
 ==========================
 
 There are a couple of mechanisms for extending the notice framework and adding
-new capability.
+new capabilities.
 
 Configuring Notice Emails
 -------------------------
@@ -359,7 +360,7 @@ Configuring Notice Emails
 If :zeek:see:`Notice::mail_dest` is set, notices with an associated
 e-mail action will be sent to that address. For additional
 customization, users can use the :zeek:see:`Notice::policy` hook to
-modify the ``email_dest`` field. The following example would result in three
+modify the :zeek:field:`Notice::Info$email_dest` field. The following example would result in three
 separate e-mails:
 
 .. code-block:: zeek
@@ -375,7 +376,7 @@ separate e-mails:
 
 You can also use :zeek:see:`Notice::policy` hooks to add extra information to
 emails. The :zeek:see:`Notice::Info` record contains a vector of strings named
-``email_body_sections`` which Zeek will include verbatim when sending email.
+:zeek:field:`Notice::Info$email_body_sections` which Zeek will include verbatim when sending email.
 An example of including some information from an HTTP request is included below.
 
 .. code-block:: zeek

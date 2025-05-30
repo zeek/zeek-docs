@@ -108,8 +108,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      filename: :zeek:type:`string` :zeek:attr:`&optional`
-         Filename for the entity if discovered from a header.
+
+   .. zeek:field:: filename :zeek:type:`string` :zeek:attr:`&optional`
+
+      Filename for the entity if discovered from a header.
+
 
 
 Hooks

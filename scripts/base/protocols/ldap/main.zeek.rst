@@ -128,25 +128,36 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      message_id: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      version: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      opcode: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      diagnostic_message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: message_id :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      object: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      argument: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: version :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: opcode :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: result :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: diagnostic_message :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: object :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: argument :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: LDAP::SearchInfo
@@ -154,29 +165,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      message_id: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      scope: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      deref_aliases: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      base_object: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      result_count: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: message_id :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      diagnostic_message: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: scope :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      filter: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      attributes: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: deref_aliases :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: base_object :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: result_count :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: result :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: diagnostic_message :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: filter :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: attributes :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
 
 
 .. zeek:type:: LDAP::State
@@ -184,9 +208,12 @@ Types
 
    :Type: :zeek:type:`record`
 
-      messages: :zeek:type:`table` [:zeek:type:`int`] of :zeek:type:`LDAP::MessageInfo` :zeek:attr:`&optional`
 
-      searches: :zeek:type:`table` [:zeek:type:`int`] of :zeek:type:`LDAP::SearchInfo` :zeek:attr:`&optional`
+   .. zeek:field:: messages :zeek:type:`table` [:zeek:type:`int`] of :zeek:type:`LDAP::MessageInfo` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: searches :zeek:type:`table` [:zeek:type:`int`] of :zeek:type:`LDAP::SearchInfo` :zeek:attr:`&optional`
+
 
 
 Events

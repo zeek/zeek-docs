@@ -56,20 +56,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      orig_byte: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         current originator byte thresholds we watch for
 
-      resp_byte: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         current responder byte thresholds we watch for
+   .. zeek:field:: orig_byte :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
 
-      orig_packet: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         current originator packet thresholds we watch for
+      current originator byte thresholds we watch for
 
-      resp_packet: :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         current responder packet thresholds we watch for
 
-      duration: :zeek:type:`set` [:zeek:type:`interval`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         current duration thresholds we watch for
+   .. zeek:field:: resp_byte :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      current responder byte thresholds we watch for
+
+
+   .. zeek:field:: orig_packet :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      current originator packet thresholds we watch for
+
+
+   .. zeek:field:: resp_packet :zeek:type:`set` [:zeek:type:`count`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      current responder packet thresholds we watch for
+
+
+   .. zeek:field:: duration :zeek:type:`set` [:zeek:type:`interval`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      current duration thresholds we watch for
+
 
 
 Events

@@ -67,17 +67,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Network time.
 
-      dpid: :zeek:type:`count` :zeek:attr:`&log`
-         OpenFlow switch datapath id.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      match: :zeek:type:`OpenFlow::ofp_match` :zeek:attr:`&log`
-         OpenFlow match fields.
+      Network time.
 
-      flow_mod: :zeek:type:`OpenFlow::ofp_flow_mod` :zeek:attr:`&log`
-         OpenFlow modify flow entry message.
+
+   .. zeek:field:: dpid :zeek:type:`count` :zeek:attr:`&log`
+
+      OpenFlow switch datapath id.
+
+
+   .. zeek:field:: match :zeek:type:`OpenFlow::ofp_match` :zeek:attr:`&log`
+
+      OpenFlow match fields.
+
+
+   .. zeek:field:: flow_mod :zeek:type:`OpenFlow::ofp_flow_mod` :zeek:attr:`&log`
+
+      OpenFlow modify flow entry message.
+
 
    The record type which contains column fields of the OpenFlow log.
 

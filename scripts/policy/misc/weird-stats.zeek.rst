@@ -65,14 +65,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for the measurement.
 
-      name: :zeek:type:`string` :zeek:attr:`&log`
-         Name of the weird.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      num_seen: :zeek:type:`count` :zeek:attr:`&log`
-         Number of times weird was seen since the last stats interval.
+      Timestamp for the measurement.
+
+
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log`
+
+      Name of the weird.
+
+
+   .. zeek:field:: num_seen :zeek:type:`count` :zeek:attr:`&log`
+
+      Number of times weird was seen since the last stats interval.
+
 
 
 Events

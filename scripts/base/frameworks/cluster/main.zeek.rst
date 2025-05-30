@@ -407,13 +407,16 @@ State Variables
 Types
 #####
 .. zeek:type:: Cluster::EndpointInfo
-   :source-code: base/frameworks/cluster/main.zeek 396 399
+   :source-code: base/frameworks/cluster/main.zeek 398 401
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string`
 
-      network: :zeek:type:`Cluster::NetworkInfo`
+   .. zeek:field:: id :zeek:type:`string`
+
+
+   .. zeek:field:: network :zeek:type:`Cluster::NetworkInfo`
+
 
    Information about a WebSocket endpoint.
 
@@ -422,11 +425,16 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ev: :zeek:type:`any`
-         The event handler to be invoked on the remote node.
 
-      args: :zeek:type:`vector` of :zeek:type:`any`
-         The arguments for the event.
+   .. zeek:field:: ev :zeek:type:`any`
+
+      The event handler to be invoked on the remote node.
+
+
+   .. zeek:field:: args :zeek:type:`vector` of :zeek:type:`any`
+
+      The arguments for the event.
+
 
    An event instance for cluster pub/sub.
    
@@ -437,14 +445,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         The time at which a cluster message was generated.
 
-      node: :zeek:type:`string` :zeek:attr:`&log`
-         The name of the node that is creating the log record.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      message: :zeek:type:`string` :zeek:attr:`&log`
-         A message indicating information about the cluster's operation.
+      The time at which a cluster message was generated.
+
+
+   .. zeek:field:: node :zeek:type:`string` :zeek:attr:`&log`
+
+      The name of the node that is creating the log record.
+
+
+   .. zeek:field:: message :zeek:type:`string` :zeek:attr:`&log`
+
+      A message indicating information about the cluster's operation.
+
    :Attributes: :zeek:attr:`&log`
 
    The record type which contains the column fields of the cluster log.
@@ -454,22 +469,30 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
 
-      node: :zeek:type:`Cluster::Node`
+   .. zeek:field:: name :zeek:type:`string`
+
+
+   .. zeek:field:: node :zeek:type:`Cluster::Node`
+
 
    Record to represent a cluster node including its name.
 
 .. zeek:type:: Cluster::NetworkInfo
-   :source-code: base/frameworks/cluster/main.zeek 388 393
+   :source-code: base/frameworks/cluster/main.zeek 390 395
 
    :Type: :zeek:type:`record`
 
-      address: :zeek:type:`string`
-         The IP address or hostname where the endpoint listens.
 
-      bound_port: :zeek:type:`port`
-         The port where the endpoint is bound to.
+   .. zeek:field:: address :zeek:type:`string`
+
+      The IP address or hostname where the endpoint listens.
+
+
+   .. zeek:field:: bound_port :zeek:type:`port`
+
+      The port where the endpoint is bound to.
+
 
    Network information of an endpoint.
 
@@ -478,31 +501,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      node_type: :zeek:type:`Cluster::NodeType`
-         Identifies the type of cluster node in this node's configuration.
 
-      ip: :zeek:type:`addr`
-         The IP address of the cluster node.
+   .. zeek:field:: node_type :zeek:type:`Cluster::NodeType`
 
-      zone_id: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         If the *ip* field is a non-global IPv6 address, this field
-         can specify a particular :rfc:`4007` ``zone_id``.
+      Identifies the type of cluster node in this node's configuration.
 
-      p: :zeek:type:`port` :zeek:attr:`&default` = ``0/unknown`` :zeek:attr:`&optional`
-         The port that this node will listen on for peer connections.
-         A value of ``0/unknown`` means the node is not pre-configured to listen.
 
-      manager: :zeek:type:`string` :zeek:attr:`&optional`
-         Name of the manager node this node uses.  For workers and proxies.
+   .. zeek:field:: ip :zeek:type:`addr`
 
-      id: :zeek:type:`string` :zeek:attr:`&optional`
-         A unique identifier assigned to the node by the broker framework.
-         This field is only set while a node is connected.
+      The IP address of the cluster node.
 
-      metrics_port: :zeek:type:`port` :zeek:attr:`&optional`
-         The port used to expose metrics to Prometheus. Setting this in a cluster
-         configuration will override the setting for Telemetry::metrics_port for
-         the node.
+
+   .. zeek:field:: zone_id :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      If the *ip* field is a non-global IPv6 address, this field
+      can specify a particular :rfc:`4007` ``zone_id``.
+
+
+   .. zeek:field:: p :zeek:type:`port` :zeek:attr:`&default` = ``0/unknown`` :zeek:attr:`&optional`
+
+      The port that this node will listen on for peer connections.
+      A value of ``0/unknown`` means the node is not pre-configured to listen.
+
+
+   .. zeek:field:: manager :zeek:type:`string` :zeek:attr:`&optional`
+
+      Name of the manager node this node uses.  For workers and proxies.
+
+
+   .. zeek:field:: id :zeek:type:`string` :zeek:attr:`&optional`
+
+      A unique identifier assigned to the node by the broker framework.
+      This field is only set while a node is connected.
+
+
+   .. zeek:field:: metrics_port :zeek:type:`port` :zeek:attr:`&optional`
+
+      The port used to expose metrics to Prometheus. Setting this in a cluster
+      configuration will override the setting for Telemetry::metrics_port for
+      the node.
+
 
    Record type to indicate a node in a cluster.
 
@@ -546,61 +584,96 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string` :zeek:attr:`&optional`
-         The name of the data store.
 
-      store: :zeek:type:`opaque` of Broker::Store :zeek:attr:`&optional`
-         The store handle.
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&optional`
 
-      master_node: :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Cluster::default_master_node` :zeek:attr:`&optional`
-         The name of the cluster node on which the master version of the data
-         store resides.
+      The name of the data store.
 
-      master: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether the data store is the master version or a clone.
 
-      backend: :zeek:type:`Broker::BackendType` :zeek:attr:`&default` = :zeek:see:`Cluster::default_backend` :zeek:attr:`&optional`
-         The type of backend used for storing data.
+   .. zeek:field:: store :zeek:type:`opaque` of Broker::Store :zeek:attr:`&optional`
 
-      options: :zeek:type:`Broker::BackendOptions` :zeek:attr:`&default` = *[sqlite=[path=, synchronous=<uninitialized>, journal_mode=<uninitialized>, failure_mode=Broker::SQLITE_FAILURE_MODE_FAIL, integrity_check=F]]* :zeek:attr:`&optional`
-         Parameters used for configuring the backend.
+      The store handle.
 
-      clone_resync_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_resync_interval` :zeek:attr:`&optional`
-         A resync/reconnect interval to pass through to
-         :zeek:see:`Broker::create_clone`.
 
-      clone_stale_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_stale_interval` :zeek:attr:`&optional`
-         A staleness duration to pass through to
-         :zeek:see:`Broker::create_clone`.
+   .. zeek:field:: master_node :zeek:type:`string` :zeek:attr:`&default` = :zeek:see:`Cluster::default_master_node` :zeek:attr:`&optional`
 
-      clone_mutation_buffer_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_mutation_buffer_interval` :zeek:attr:`&optional`
-         A mutation buffer interval to pass through to
-         :zeek:see:`Broker::create_clone`.
+      The name of the cluster node on which the master version of the data
+      store resides.
+
+
+   .. zeek:field:: master :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether the data store is the master version or a clone.
+
+
+   .. zeek:field:: backend :zeek:type:`Broker::BackendType` :zeek:attr:`&default` = :zeek:see:`Cluster::default_backend` :zeek:attr:`&optional`
+
+      The type of backend used for storing data.
+
+
+   .. zeek:field:: options :zeek:type:`Broker::BackendOptions` :zeek:attr:`&default` = *...* :zeek:attr:`&optional`
+
+      Parameters used for configuring the backend.
+
+
+   .. zeek:field:: clone_resync_interval :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_resync_interval` :zeek:attr:`&optional`
+
+      A resync/reconnect interval to pass through to
+      :zeek:see:`Broker::create_clone`.
+
+
+   .. zeek:field:: clone_stale_interval :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_stale_interval` :zeek:attr:`&optional`
+
+      A staleness duration to pass through to
+      :zeek:see:`Broker::create_clone`.
+
+
+   .. zeek:field:: clone_mutation_buffer_interval :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Broker::default_clone_mutation_buffer_interval` :zeek:attr:`&optional`
+
+      A mutation buffer interval to pass through to
+      :zeek:see:`Broker::create_clone`.
+
 
    Information regarding a cluster-enabled data store.
 
 .. zeek:type:: Cluster::WebSocketServerOptions
-   :source-code: base/frameworks/cluster/main.zeek 364 378
+   :source-code: base/frameworks/cluster/main.zeek 364 380
 
    :Type: :zeek:type:`record`
 
-      listen_host: :zeek:type:`string`
-         The host address to listen on.
 
-      listen_port: :zeek:type:`port`
-         The port the WebSocket server is supposed to listen on.
+   .. zeek:field:: listen_host :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&deprecated` = *...*
 
-      max_event_queue_size: :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Cluster::default_websocket_max_event_queue_size` :zeek:attr:`&optional`
-         The maximum event queue size for this server.
+      The host address to listen on.
 
-      ping_interval: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Cluster::default_websocket_ping_interval` :zeek:attr:`&optional`
-         Ping interval to use. A WebSocket client not responding to
-         the pings will be disconnected. Set to a negative value to
-         disable pings. Subsecond intervals are currently not supported.
 
-      tls_options: :zeek:type:`Cluster::WebSocketTLSOptions` :zeek:attr:`&default` = *[cert_file=<uninitialized>, key_file=<uninitialized>, enable_peer_verification=F, ca_file=, ciphers=]* :zeek:attr:`&optional`
-         The TLS options used for this WebSocket server. By default,
-         TLS is disabled. See also :zeek:see:`Cluster::WebSocketTLSOptions`.
+   .. zeek:field:: listen_addr :zeek:type:`addr` :zeek:attr:`&optional`
+
+      The address to listen on, cannot be used together with ``listen_host``.
+
+
+   .. zeek:field:: listen_port :zeek:type:`port`
+
+      The port the WebSocket server is supposed to listen on.
+
+
+   .. zeek:field:: max_event_queue_size :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Cluster::default_websocket_max_event_queue_size` :zeek:attr:`&optional`
+
+      The maximum event queue size for this server.
+
+
+   .. zeek:field:: ping_interval :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Cluster::default_websocket_ping_interval` :zeek:attr:`&optional`
+
+      Ping interval to use. A WebSocket client not responding to
+      the pings will be disconnected. Set to a negative value to
+      disable pings. Subsecond intervals are currently not supported.
+
+
+   .. zeek:field:: tls_options :zeek:type:`Cluster::WebSocketTLSOptions` :zeek:attr:`&default` = *...* :zeek:attr:`&optional`
+
+      The TLS options used for this WebSocket server. By default,
+      TLS is disabled. See also :zeek:see:`Cluster::WebSocketTLSOptions`.
+
 
    WebSocket server options to pass to :zeek:see:`Cluster::listen_websocket`.
 
@@ -609,22 +682,33 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cert_file: :zeek:type:`string` :zeek:attr:`&optional`
-         The cert file to use.
 
-      key_file: :zeek:type:`string` :zeek:attr:`&optional`
-         The key file to use.
+   .. zeek:field:: cert_file :zeek:type:`string` :zeek:attr:`&optional`
 
-      enable_peer_verification: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Expect peers to send client certificates.
+      The cert file to use.
 
-      ca_file: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         The CA certificate or CA bundle used for peer verification.
-         Empty will use the implementations's default when
-         ``enable_peer_verification`` is T.
 
-      ciphers: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         The ciphers to use. Empty will use the implementation's defaults.
+   .. zeek:field:: key_file :zeek:type:`string` :zeek:attr:`&optional`
+
+      The key file to use.
+
+
+   .. zeek:field:: enable_peer_verification :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Expect peers to send client certificates.
+
+
+   .. zeek:field:: ca_file :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      The CA certificate or CA bundle used for peer verification.
+      Empty will use the implementations's default when
+      ``enable_peer_verification`` is T.
+
+
+   .. zeek:field:: ciphers :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      The ciphers to use. Empty will use the implementation's defaults.
+
 
    The TLS options for a WebSocket server.
    
@@ -661,7 +745,7 @@ Types
 Events
 ######
 .. zeek:id:: Cluster::hello
-   :source-code: base/frameworks/cluster/main.zeek 494 519
+   :source-code: base/frameworks/cluster/main.zeek 496 521
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -698,7 +782,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Cluster::create_store
-   :source-code: base/frameworks/cluster/main.zeek 574 649
+   :source-code: base/frameworks/cluster/main.zeek 576 651
 
    :Type: :zeek:type:`function` (name: :zeek:type:`string`, persistent: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`Cluster::StoreInfo`
 
@@ -717,7 +801,7 @@ Functions
             be set until the node containing the master store has connected.
 
 .. zeek:id:: Cluster::get_active_node_count
-   :source-code: base/frameworks/cluster/main.zeek 438 441
+   :source-code: base/frameworks/cluster/main.zeek 440 443
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
@@ -726,7 +810,7 @@ Functions
    out how many nodes should be responding to requests.
 
 .. zeek:id:: Cluster::get_node_count
-   :source-code: base/frameworks/cluster/main.zeek 425 436
+   :source-code: base/frameworks/cluster/main.zeek 427 438
 
    :Type: :zeek:type:`function` (node_type: :zeek:type:`Cluster::NodeType`) : :zeek:type:`count`
 
@@ -734,7 +818,7 @@ Functions
    node type.
 
 .. zeek:id:: Cluster::init
-   :source-code: base/frameworks/cluster/main.zeek 656 659
+   :source-code: base/frameworks/cluster/main.zeek 658 661
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -746,7 +830,7 @@ Functions
    :returns: T on success, else F.
 
 .. zeek:id:: Cluster::is_enabled
-   :source-code: base/frameworks/cluster/main.zeek 443 446
+   :source-code: base/frameworks/cluster/main.zeek 445 448
 
    :Type: :zeek:type:`function` () : :zeek:type:`bool`
 
@@ -757,7 +841,7 @@ Functions
    :returns: True if :zeek:id:`Cluster::node` has been set.
 
 .. zeek:id:: Cluster::listen_websocket
-   :source-code: base/frameworks/cluster/main.zeek 671 674
+   :source-code: base/frameworks/cluster/main.zeek 673 676
 
    :Type: :zeek:type:`function` (options: :zeek:type:`Cluster::WebSocketServerOptions`) : :zeek:type:`bool`
 
@@ -770,7 +854,7 @@ Functions
    :returns: T on success, else F.
 
 .. zeek:id:: Cluster::local_node_metrics_port
-   :source-code: base/frameworks/cluster/main.zeek 459 471
+   :source-code: base/frameworks/cluster/main.zeek 461 473
 
    :Type: :zeek:type:`function` () : :zeek:type:`port`
 
@@ -783,7 +867,7 @@ Functions
    :returns: The metrics port used by the calling node.
 
 .. zeek:id:: Cluster::local_node_type
-   :source-code: base/frameworks/cluster/main.zeek 448 457
+   :source-code: base/frameworks/cluster/main.zeek 450 459
 
    :Type: :zeek:type:`function` () : :zeek:type:`Cluster::NodeType`
 
@@ -796,7 +880,7 @@ Functions
    :returns: The :zeek:type:`Cluster::NodeType` the calling node acts as.
 
 .. zeek:id:: Cluster::log
-   :source-code: base/frameworks/cluster/main.zeek 651 654
+   :source-code: base/frameworks/cluster/main.zeek 653 656
 
    :Type: :zeek:type:`function` (msg: :zeek:type:`string`) : :zeek:type:`void`
 
@@ -830,7 +914,7 @@ Functions
             a given cluster node.
 
 .. zeek:id:: Cluster::nodeid_to_node
-   :source-code: base/frameworks/cluster/main.zeek 483 492
+   :source-code: base/frameworks/cluster/main.zeek 485 494
 
    :Type: :zeek:type:`function` (id: :zeek:type:`string`) : :zeek:type:`Cluster::NamedNode`
 
@@ -861,7 +945,7 @@ Functions
             a given cluster node.
 
 .. zeek:id:: Cluster::subscribe
-   :source-code: base/frameworks/cluster/main.zeek 661 664
+   :source-code: base/frameworks/cluster/main.zeek 663 666
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -874,7 +958,7 @@ Functions
    :returns: T on success, else F.
 
 .. zeek:id:: Cluster::unsubscribe
-   :source-code: base/frameworks/cluster/main.zeek 666 669
+   :source-code: base/frameworks/cluster/main.zeek 668 671
 
    :Type: :zeek:type:`function` (topic: :zeek:type:`string`) : :zeek:type:`bool`
 

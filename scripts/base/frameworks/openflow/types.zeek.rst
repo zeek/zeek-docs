@@ -32,26 +32,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      state: :zeek:type:`OpenFlow::ControllerState`
-         Controller related state.
 
-      supports_flow_removed: :zeek:type:`bool`
-         Does the controller support the flow_removed event?
+   .. zeek:field:: state :zeek:type:`OpenFlow::ControllerState`
 
-      describe: :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`string`
-         Function that describes the controller. Has to be implemented.
+      Controller related state.
 
-      init: :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`void` :zeek:attr:`&optional`
-         One-time initialization function. If defined, controller_init_done has to be called once initialization finishes.
 
-      destroy: :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`void` :zeek:attr:`&optional`
-         One-time destruction function.
+   .. zeek:field:: supports_flow_removed :zeek:type:`bool`
 
-      flow_mod: :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`, match: :zeek:type:`OpenFlow::ofp_match`, flow_mod: :zeek:type:`OpenFlow::ofp_flow_mod`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         flow_mod function.
+      Does the controller support the flow_removed event?
 
-      flow_clear: :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`bool` :zeek:attr:`&optional`
-         flow_clear function.
+
+   .. zeek:field:: describe :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`string`
+
+      Function that describes the controller. Has to be implemented.
+
+
+   .. zeek:field:: init :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`void` :zeek:attr:`&optional`
+
+      One-time initialization function. If defined, controller_init_done has to be called once initialization finishes.
+
+
+   .. zeek:field:: destroy :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`void` :zeek:attr:`&optional`
+
+      One-time destruction function.
+
+
+   .. zeek:field:: flow_mod :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`, match: :zeek:type:`OpenFlow::ofp_match`, flow_mod: :zeek:type:`OpenFlow::ofp_flow_mod`) : :zeek:type:`bool` :zeek:attr:`&optional`
+
+      flow_mod function.
+
+
+   .. zeek:field:: flow_clear :zeek:type:`function` (state: :zeek:type:`OpenFlow::ControllerState`) : :zeek:type:`bool` :zeek:attr:`&optional`
+
+      flow_clear function.
+
 
    Controller record representing an openflow controller.
 
@@ -60,64 +75,91 @@ Types
 
    :Type: :zeek:type:`record`
 
-      _plugin: :zeek:type:`OpenFlow::Plugin` :zeek:attr:`&optional`
-         Internally set to the type of plugin used.
 
-      _name: :zeek:type:`string` :zeek:attr:`&optional`
-         Internally set to the unique name of the controller.
+   .. zeek:field:: _plugin :zeek:type:`OpenFlow::Plugin` :zeek:attr:`&optional`
 
-      _activated: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Internally set to true once the controller is activated.
+      Internally set to the type of plugin used.
 
-      ryu_host: :zeek:type:`addr` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
 
-         Controller ip.
+   .. zeek:field:: _name :zeek:type:`string` :zeek:attr:`&optional`
 
-      ryu_port: :zeek:type:`count` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
+      Internally set to the unique name of the controller.
 
-         Controller listen port.
 
-      ryu_dpid: :zeek:type:`count` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
+   .. zeek:field:: _activated :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
-         OpenFlow switch datapath id.
+      Internally set to true once the controller is activated.
 
-      ryu_debug: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
 
-         Enable debug mode - output JSON to stdout; do not perform actions.
+   .. zeek:field:: ryu_host :zeek:type:`addr` :zeek:attr:`&optional`
 
-      log_dpid: :zeek:type:`count` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/log.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
 
-         OpenFlow switch datapath id.
+      Controller ip.
 
-      log_success_event: :zeek:type:`bool` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/log.zeek` is loaded)
 
-         Raise or do not raise success event.
+   .. zeek:field:: ryu_port :zeek:type:`count` :zeek:attr:`&optional`
 
-      broker_host: :zeek:type:`addr` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
 
-         Controller ip.
+      Controller listen port.
 
-      broker_port: :zeek:type:`port` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
 
-         Controller listen port.
+   .. zeek:field:: ryu_dpid :zeek:type:`count` :zeek:attr:`&optional`
 
-      broker_dpid: :zeek:type:`count` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
 
-         OpenFlow switch datapath id.
+      OpenFlow switch datapath id.
 
-      broker_topic: :zeek:type:`string` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
 
-         Topic to send events for this controller to.
+   .. zeek:field:: ryu_debug :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/ryu.zeek` is loaded)
+
+      Enable debug mode - output JSON to stdout; do not perform actions.
+
+
+   .. zeek:field:: log_dpid :zeek:type:`count` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/log.zeek` is loaded)
+
+      OpenFlow switch datapath id.
+
+
+   .. zeek:field:: log_success_event :zeek:type:`bool` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/log.zeek` is loaded)
+
+      Raise or do not raise success event.
+
+
+   .. zeek:field:: broker_host :zeek:type:`addr` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
+
+      Controller ip.
+
+
+   .. zeek:field:: broker_port :zeek:type:`port` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
+
+      Controller listen port.
+
+
+   .. zeek:field:: broker_dpid :zeek:type:`count` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
+
+      OpenFlow switch datapath id.
+
+
+   .. zeek:field:: broker_topic :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/openflow/plugins/broker.zeek` is loaded)
+
+      Topic to send events for this controller to.
+
    :Attributes: :zeek:attr:`&redef`
 
    Controller related state.
@@ -155,38 +197,61 @@ Types
 
    :Type: :zeek:type:`record`
 
-      out_ports: :zeek:type:`vector` of :zeek:type:`count` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Output ports to send data to.
 
-      vlan_vid: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set vlan vid to this value.
+   .. zeek:field:: out_ports :zeek:type:`vector` of :zeek:type:`count` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      vlan_pcp: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set vlan priority to this value.
+      Output ports to send data to.
 
-      vlan_strip: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Strip vlan tag.
 
-      dl_src: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set ethernet source address.
+   .. zeek:field:: vlan_vid :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      dl_dst: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set ethernet destination address.
+      Set vlan vid to this value.
 
-      nw_tos: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set ip tos to this value.
 
-      nw_src: :zeek:type:`addr` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set source to this ip.
+   .. zeek:field:: vlan_pcp :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      nw_dst: :zeek:type:`addr` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set destination to this ip.
+      Set vlan priority to this value.
 
-      tp_src: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set tcp/udp source port.
 
-      tp_dst: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Set tcp/udp destination port.
+   .. zeek:field:: vlan_strip :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Strip vlan tag.
+
+
+   .. zeek:field:: dl_src :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Set ethernet source address.
+
+
+   .. zeek:field:: dl_dst :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Set ethernet destination address.
+
+
+   .. zeek:field:: nw_tos :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Set ip tos to this value.
+
+
+   .. zeek:field:: nw_src :zeek:type:`addr` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Set source to this ip.
+
+
+   .. zeek:field:: nw_dst :zeek:type:`addr` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Set destination to this ip.
+
+
+   .. zeek:field:: tp_src :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Set tcp/udp source port.
+
+
+   .. zeek:field:: tp_dst :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Set tcp/udp destination port.
+
    :Attributes: :zeek:attr:`&log`
 
    The actions that can be taken in a flow.
@@ -197,36 +262,56 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cookie: :zeek:type:`count` :zeek:attr:`&log`
-         Opaque controller-issued identifier.
 
-      table_id: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Table to put the flow in. OFPTT_ALL can be used for delete,
-         to delete flows from all matching tables.
+   .. zeek:field:: cookie :zeek:type:`count` :zeek:attr:`&log`
 
-      command: :zeek:type:`OpenFlow::ofp_flow_mod_command` :zeek:attr:`&log`
-         One of OFPFC_*.
+      Opaque controller-issued identifier.
 
-      idle_timeout: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Idle time before discarding (seconds).
 
-      hard_timeout: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Max time before discarding (seconds).
+   .. zeek:field:: table_id :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      priority: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Priority level of flow entry.
+      Table to put the flow in. OFPTT_ALL can be used for delete,
+      to delete flows from all matching tables.
 
-      out_port: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
-         For OFPFC_DELETE* commands, require matching entry to include
-         this as an output port/group. OFPP_ANY/OFPG_ANY means no restrictions.
 
-      out_group: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: command :zeek:type:`OpenFlow::ofp_flow_mod_command` :zeek:attr:`&log`
 
-      flags: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
-         Bitmap of the OFPFF_* flags
+      One of OFPFC_*.
 
-      actions: :zeek:type:`OpenFlow::ofp_flow_action` :zeek:attr:`&default` = *[out_ports=[], vlan_vid=<uninitialized>, vlan_pcp=<uninitialized>, vlan_strip=F, dl_src=<uninitialized>, dl_dst=<uninitialized>, nw_tos=<uninitialized>, nw_src=<uninitialized>, nw_dst=<uninitialized>, tp_src=<uninitialized>, tp_dst=<uninitialized>]* :zeek:attr:`&optional` :zeek:attr:`&log`
-         Actions to take on match
+
+   .. zeek:field:: idle_timeout :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Idle time before discarding (seconds).
+
+
+   .. zeek:field:: hard_timeout :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Max time before discarding (seconds).
+
+
+   .. zeek:field:: priority :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Priority level of flow entry.
+
+
+   .. zeek:field:: out_port :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      For OFPFC_DELETE* commands, require matching entry to include
+      this as an output port/group. OFPP_ANY/OFPG_ANY means no restrictions.
+
+
+   .. zeek:field:: out_group :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: flags :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Bitmap of the OFPFF_* flags
+
+
+   .. zeek:field:: actions :zeek:type:`OpenFlow::ofp_flow_action` :zeek:attr:`&default` = *...* :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      Actions to take on match
+
    :Attributes: :zeek:attr:`&log`
 
    Openflow flow_mod definition, describing the action to perform.
@@ -236,29 +321,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      in_port: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      dl_src: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: in_port :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      dl_dst: :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      dl_vlan: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: dl_src :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      dl_vlan_pcp: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      dl_type: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: dl_dst :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      nw_tos: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      nw_proto: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: dl_vlan :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      nw_src: :zeek:type:`subnet` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      nw_dst: :zeek:type:`subnet` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: dl_vlan_pcp :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      tp_src: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
 
-      tp_dst: :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+   .. zeek:field:: dl_type :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: nw_tos :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: nw_proto :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: nw_src :zeek:type:`subnet` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: nw_dst :zeek:type:`subnet` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: tp_src :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+
+   .. zeek:field:: tp_dst :zeek:type:`count` :zeek:attr:`&optional` :zeek:attr:`&log`
+
    :Attributes: :zeek:attr:`&log`
 
    Openflow match definition.

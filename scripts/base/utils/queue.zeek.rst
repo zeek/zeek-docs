@@ -59,17 +59,24 @@ Types
 
    :Type: :zeek:type:`record`
 
-      initialized: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
-      vals: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`any` :zeek:attr:`&optional`
+   .. zeek:field:: initialized :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
-      settings: :zeek:type:`Queue::Settings` :zeek:attr:`&optional`
 
-      top: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+   .. zeek:field:: vals :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`any` :zeek:attr:`&optional`
 
-      bottom: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      size: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+   .. zeek:field:: settings :zeek:type:`Queue::Settings` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: top :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: bottom :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: size :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
 
    The internal data structure for the queue.
 
@@ -78,10 +85,13 @@ Types
 
    :Type: :zeek:type:`record`
 
-      max_len: :zeek:type:`count` :zeek:attr:`&optional`
-         If a maximum length is set for the queue
-         it will maintain itself at that
-         maximum length automatically.
+
+   .. zeek:field:: max_len :zeek:type:`count` :zeek:attr:`&optional`
+
+      If a maximum length is set for the queue
+      it will maintain itself at that
+      maximum length automatically.
+
 
    Settings for initializing the queue.
 
