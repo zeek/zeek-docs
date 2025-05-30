@@ -97,26 +97,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      user_time: :zeek:type:`interval`
-         user CPU time of the Zeek process
 
-      system_time: :zeek:type:`interval`
-         system CPU time of the Zeek process
+   .. zeek:field:: user_time :zeek:type:`interval`
 
-      memory_heap: :zeek:type:`count`
-         memory allocated on the heap by the Zeek process
+      user CPU time of the Zeek process
 
-      num_fibers: :zeek:type:`count`
-         number of fibers currently in use
 
-      max_fibers: :zeek:type:`count`
-         maximum number of fibers ever in use
+   .. zeek:field:: system_time :zeek:type:`interval`
 
-      max_fiber_stack_size: :zeek:type:`count`
-         maximum fiber stack size ever in use
+      system CPU time of the Zeek process
 
-      cached_fibers: :zeek:type:`count`
-         number of fibers currently cached
+
+   .. zeek:field:: memory_heap :zeek:type:`count`
+
+      memory allocated on the heap by the Zeek process
+
+
+   .. zeek:field:: num_fibers :zeek:type:`count`
+
+      number of fibers currently in use
+
+
+   .. zeek:field:: max_fibers :zeek:type:`count`
+
+      maximum number of fibers ever in use
+
+
+   .. zeek:field:: max_fiber_stack_size :zeek:type:`count`
+
+      maximum fiber stack size ever in use
+
+
+   .. zeek:field:: cached_fibers :zeek:type:`count`
+
+      number of fibers currently cached
+
 
    Result type for :zeek:see:`Spicy::resource_usage`. The values reflect resource
    usage as reported by the Spicy runtime system.

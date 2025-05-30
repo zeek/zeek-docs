@@ -98,32 +98,51 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp of reporting.
 
-      peer: :zeek:type:`string` :zeek:attr:`&log`
-         Peer that generated this log.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      name: :zeek:type:`string` :zeek:attr:`&log`
-         The name of the metric.
+      Timestamp of reporting.
 
-      labels: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
-         The names of the individual labels.
 
-      label_values: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
-         The values of the labels as listed in ``labels``.
+   .. zeek:field:: peer :zeek:type:`string` :zeek:attr:`&log`
 
-      bounds: :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&log`
-         The bounds of the individual buckets
+      Peer that generated this log.
 
-      values: :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&log`
-         The number of observations within each individual bucket.
 
-      sum: :zeek:type:`double` :zeek:attr:`&log`
-         The sum over all observations
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log`
 
-      observations: :zeek:type:`double` :zeek:attr:`&log`
-         The total number of observations.
+      The name of the metric.
+
+
+   .. zeek:field:: labels :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
+
+      The names of the individual labels.
+
+
+   .. zeek:field:: label_values :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
+
+      The values of the labels as listed in ``labels``.
+
+
+   .. zeek:field:: bounds :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&log`
+
+      The bounds of the individual buckets
+
+
+   .. zeek:field:: values :zeek:type:`vector` of :zeek:type:`double` :zeek:attr:`&log`
+
+      The number of observations within each individual bucket.
+
+
+   .. zeek:field:: sum :zeek:type:`double` :zeek:attr:`&log`
+
+      The sum over all observations
+
+
+   .. zeek:field:: observations :zeek:type:`double` :zeek:attr:`&log`
+
+      The total number of observations.
+
 
    Record type used for logging histogram metrics.
 
@@ -132,27 +151,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp of reporting.
 
-      peer: :zeek:type:`string` :zeek:attr:`&log`
-         Peer that generated this log.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      metric_type: :zeek:type:`string` :zeek:attr:`&log`
-         Contains the value "counter" or "gauge" depending on
-         the underlying metric type.
+      Timestamp of reporting.
 
-      name: :zeek:type:`string` :zeek:attr:`&log`
-         The name of the metric.
 
-      labels: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
-         The names of the individual labels.
+   .. zeek:field:: peer :zeek:type:`string` :zeek:attr:`&log`
 
-      label_values: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
-         The values of the labels as listed in ``labels``.
+      Peer that generated this log.
 
-      value: :zeek:type:`double` :zeek:attr:`&log`
-         The value of this metric.
+
+   .. zeek:field:: metric_type :zeek:type:`string` :zeek:attr:`&log`
+
+      Contains the value "counter" or "gauge" depending on
+      the underlying metric type.
+
+
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log`
+
+      The name of the metric.
+
+
+   .. zeek:field:: labels :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
+
+      The names of the individual labels.
+
+
+   .. zeek:field:: label_values :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log`
+
+      The values of the labels as listed in ``labels``.
+
+
+   .. zeek:field:: value :zeek:type:`double` :zeek:attr:`&log`
+
+      The value of this metric.
+
 
    Record type used for logging counter and gauge metrics.
 

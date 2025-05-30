@@ -83,15 +83,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      config: :zeek:type:`Management::Configuration`
-         The cluster configuration the controller is deploying.
 
-      is_internal: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Whether this is a controller-internal deployment, or
-         triggered via a request by a remote peer/client.
+   .. zeek:field:: config :zeek:type:`Management::Configuration`
 
-      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Request state for every controller/agent transaction.
+      The cluster configuration the controller is deploying.
+
+
+   .. zeek:field:: is_internal :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Whether this is a controller-internal deployment, or
+      triggered via a request by a remote peer/client.
+
+
+   .. zeek:field:: requests :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Request state for every controller/agent transaction.
+
 
    Request state specific to
    :zeek:see:`Management::Controller::API::deploy_request` and
@@ -102,8 +109,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Request state for every controller/agent transaction.
+
+   .. zeek:field:: requests :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Request state for every controller/agent transaction.
+
 
    Request state specific to
    :zeek:see:`Management::Controller::API::get_nodes_request` and
@@ -114,15 +124,20 @@ Types
 
    :Type: :zeek:type:`record`
 
-      action: :zeek:type:`vector` of :zeek:type:`string`
-         The dispatched action. The first string is a command,
-         any remaining strings its arguments.
 
-      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Request state for every controller/agent transaction.
-         The set of strings tracks the node names from which
-         we still expect responses, before we can respond back
-         to the client.
+   .. zeek:field:: action :zeek:type:`vector` of :zeek:type:`string`
+
+      The dispatched action. The first string is a command,
+      any remaining strings its arguments.
+
+
+   .. zeek:field:: requests :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Request state for every controller/agent transaction.
+      The set of strings tracks the node names from which
+      we still expect responses, before we can respond back
+      to the client.
+
 
    Request state for node dispatch requests, to track the requested
    action and received responses. Node dispatches are requests to
@@ -141,8 +156,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      requests: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Request state for every controller/agent transaction.
+
+   .. zeek:field:: requests :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Request state for every controller/agent transaction.
+
 
    Request state specific to
    :zeek:see:`Management::Controller::API::restart_request` and

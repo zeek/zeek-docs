@@ -62,25 +62,38 @@ Types
 
    :Type: :zeek:type:`record`
 
-      role: :zeek:type:`Supervisor::ClusterRole`
-         The role a supervised-node will play in Zeek's Cluster Framework.
 
-      host: :zeek:type:`addr`
-         The host/IP at which the cluster node runs.
+   .. zeek:field:: role :zeek:type:`Supervisor::ClusterRole`
 
-      p: :zeek:type:`port`
-         The TCP port at which the cluster node listens for connections.
+      The role a supervised-node will play in Zeek's Cluster Framework.
 
-      interface: :zeek:type:`string` :zeek:attr:`&optional`
-         The interface name from which the node will read/analyze packets.
-         Typically used by worker nodes.
 
-      pcap_file: :zeek:type:`string` :zeek:attr:`&optional`
-         The PCAP file name from which the node will read/analyze packets.
-         Typically used by worker nodes.
+   .. zeek:field:: host :zeek:type:`addr`
 
-      metrics_port: :zeek:type:`port` :zeek:attr:`&optional`
-         The TCP port at which the cluster node exposes metrics for Prometheus.
+      The host/IP at which the cluster node runs.
+
+
+   .. zeek:field:: p :zeek:type:`port`
+
+      The TCP port at which the cluster node listens for connections.
+
+
+   .. zeek:field:: interface :zeek:type:`string` :zeek:attr:`&optional`
+
+      The interface name from which the node will read/analyze packets.
+      Typically used by worker nodes.
+
+
+   .. zeek:field:: pcap_file :zeek:type:`string` :zeek:attr:`&optional`
+
+      The PCAP file name from which the node will read/analyze packets.
+      Typically used by worker nodes.
+
+
+   .. zeek:field:: metrics_port :zeek:type:`port` :zeek:attr:`&optional`
+
+      The TCP port at which the cluster node exposes metrics for Prometheus.
+
 
    Describes configuration of a supervised-node within Zeek's Cluster
    Framework.
@@ -107,51 +120,76 @@ Types
 
    :Type: :zeek:type:`record`
 
-      name: :zeek:type:`string`
-         The name of the supervised node.  These are unique within a given
-         supervised process tree and typically human-readable.
 
-      interface: :zeek:type:`string` :zeek:attr:`&optional`
-         The interface name from which the node will read/analyze packets.
+   .. zeek:field:: name :zeek:type:`string`
 
-      pcap_file: :zeek:type:`string` :zeek:attr:`&optional`
-         The PCAP file name from which the node will read/analyze packets.
+      The name of the supervised node.  These are unique within a given
+      supervised process tree and typically human-readable.
 
-      directory: :zeek:type:`string` :zeek:attr:`&optional`
-         The working directory that the node should use.
 
-      stdout_file: :zeek:type:`string` :zeek:attr:`&optional`
-         The filename/path to which the node's stdout will be redirected.
+   .. zeek:field:: interface :zeek:type:`string` :zeek:attr:`&optional`
 
-      stderr_file: :zeek:type:`string` :zeek:attr:`&optional`
-         The filename/path to which the node's stderr will be redirected.
+      The interface name from which the node will read/analyze packets.
 
-      bare_mode: :zeek:type:`bool` :zeek:attr:`&optional`
-         Whether to start the node in bare mode. When left out, the node
-         inherits the bare-mode status the supervisor itself runs with.
 
-      addl_base_scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         Additional script filenames/paths that the node should load
-         after the base scripts, and prior to any user-specified ones.
+   .. zeek:field:: pcap_file :zeek:type:`string` :zeek:attr:`&optional`
 
-      addl_user_scripts: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         Additional script filenames/paths that the node should load
-         after any user-specified scripts.
+      The PCAP file name from which the node will read/analyze packets.
 
-      env: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         Environment variables to define in the supervised node.
 
-      cpu_affinity: :zeek:type:`int` :zeek:attr:`&optional`
-         A cpu/core number to which the node will try to pin itself.
+   .. zeek:field:: directory :zeek:type:`string` :zeek:attr:`&optional`
 
-      cluster: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Supervisor::ClusterEndpoint` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         The Cluster Layout definition.  Each node in the Cluster Framework
-         knows about the full, static cluster topology to which it belongs.
-         Entries use node names for keys.  The Supervisor framework will
-         automatically translate this table into the right Cluster Framework
-         configuration when spawning supervised-nodes.  E.g. it will
-         populate the both the CLUSTER_NODE environment variable and
-         :zeek:see:`Cluster::nodes` table.
+      The working directory that the node should use.
+
+
+   .. zeek:field:: stdout_file :zeek:type:`string` :zeek:attr:`&optional`
+
+      The filename/path to which the node's stdout will be redirected.
+
+
+   .. zeek:field:: stderr_file :zeek:type:`string` :zeek:attr:`&optional`
+
+      The filename/path to which the node's stderr will be redirected.
+
+
+   .. zeek:field:: bare_mode :zeek:type:`bool` :zeek:attr:`&optional`
+
+      Whether to start the node in bare mode. When left out, the node
+      inherits the bare-mode status the supervisor itself runs with.
+
+
+   .. zeek:field:: addl_base_scripts :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      Additional script filenames/paths that the node should load
+      after the base scripts, and prior to any user-specified ones.
+
+
+   .. zeek:field:: addl_user_scripts :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      Additional script filenames/paths that the node should load
+      after any user-specified scripts.
+
+
+   .. zeek:field:: env :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      Environment variables to define in the supervised node.
+
+
+   .. zeek:field:: cpu_affinity :zeek:type:`int` :zeek:attr:`&optional`
+
+      A cpu/core number to which the node will try to pin itself.
+
+
+   .. zeek:field:: cluster :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Supervisor::ClusterEndpoint` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      The Cluster Layout definition.  Each node in the Cluster Framework
+      knows about the full, static cluster topology to which it belongs.
+      Entries use node names for keys.  The Supervisor framework will
+      automatically translate this table into the right Cluster Framework
+      configuration when spawning supervised-nodes.  E.g. it will
+      populate the both the CLUSTER_NODE environment variable and
+      :zeek:see:`Cluster::nodes` table.
+
 
    Configuration options that influence behavior of a supervised Zeek node.
 
@@ -160,12 +198,17 @@ Types
 
    :Type: :zeek:type:`record`
 
-      node: :zeek:type:`Supervisor::NodeConfig`
-         The desired node configuration.
 
-      pid: :zeek:type:`int` :zeek:attr:`&optional`
-         The current or last known process ID of the node.  This may not
-         be initialized if the process has not yet started.
+   .. zeek:field:: node :zeek:type:`Supervisor::NodeConfig`
+
+      The desired node configuration.
+
+
+   .. zeek:field:: pid :zeek:type:`int` :zeek:attr:`&optional`
+
+      The current or last known process ID of the node.  This may not
+      be initialized if the process has not yet started.
+
 
    The current status of a supervised node.
 
@@ -174,8 +217,11 @@ Types
 
    :Type: :zeek:type:`record`
 
-      nodes: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Supervisor::NodeStatus`
-         The status of supervised nodes, keyed by node names.
+
+   .. zeek:field:: nodes :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`Supervisor::NodeStatus`
+
+      The status of supervised nodes, keyed by node names.
+
 
    The current status of a set of supervised nodes.
 

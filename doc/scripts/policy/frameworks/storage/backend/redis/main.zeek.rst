@@ -66,22 +66,31 @@ Types
 
    :Type: :zeek:type:`record`
 
-      server_host: :zeek:type:`string` :zeek:attr:`&optional`
 
-      server_port: :zeek:type:`port` :zeek:attr:`&default` = ``6379/tcp`` :zeek:attr:`&optional`
+   .. zeek:field:: server_host :zeek:type:`string` :zeek:attr:`&optional`
 
-      server_unix_socket: :zeek:type:`string` :zeek:attr:`&optional`
 
-      key_prefix: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+   .. zeek:field:: server_port :zeek:type:`port` :zeek:attr:`&default` = ``6379/tcp`` :zeek:attr:`&optional`
 
-      connect_timeout: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Storage::Backend::Redis::default_connect_timeout` :zeek:attr:`&optional`
-         Timeout for connection attempts to the backend. Connection attempts
-         that exceed this time will return
-         :zeek:see:`Storage::CONNECTION_FAILED`.
 
-      operation_timeout: :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Storage::Backend::Redis::default_operation_timeout` :zeek:attr:`&optional`
-         Timeout for operation requests sent to the backend. Operations that
-         exceed this time will return :zeek:see:`Storage::TIMEOUT`.
+   .. zeek:field:: server_unix_socket :zeek:type:`string` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: key_prefix :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: connect_timeout :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Storage::Backend::Redis::default_connect_timeout` :zeek:attr:`&optional`
+
+      Timeout for connection attempts to the backend. Connection attempts
+      that exceed this time will return
+      :zeek:see:`Storage::CONNECTION_FAILED`.
+
+
+   .. zeek:field:: operation_timeout :zeek:type:`interval` :zeek:attr:`&default` = :zeek:see:`Storage::Backend::Redis::default_operation_timeout` :zeek:attr:`&optional`
+
+      Timeout for operation requests sent to the backend. Operations that
+      exceed this time will return :zeek:see:`Storage::TIMEOUT`.
+
 
    Options record for the built-in Redis backend.
 

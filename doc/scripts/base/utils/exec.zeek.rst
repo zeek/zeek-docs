@@ -35,20 +35,29 @@ Types
 
    :Type: :zeek:type:`record`
 
-      cmd: :zeek:type:`string`
-         The command line to execute. Use care to avoid injection
-         attacks (i.e., if the command uses untrusted/variable data,
-         sanitize it with :zeek:see:`safe_shell_quote`).
 
-      stdin: :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
-         Provide standard input to the program as a string.
+   .. zeek:field:: cmd :zeek:type:`string`
 
-      read_files: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
-         If additional files are required to be read in as part of the
-         output of the command they can be defined here.
+      The command line to execute. Use care to avoid injection
+      attacks (i.e., if the command uses untrusted/variable data,
+      sanitize it with :zeek:see:`safe_shell_quote`).
 
-      uid: :zeek:type:`string` :zeek:attr:`&default` = ``Chd8EgFWk2j`` :zeek:attr:`&optional`
-         The unique id for tracking executors.
+
+   .. zeek:field:: stdin :zeek:type:`string` :zeek:attr:`&default` = ``""`` :zeek:attr:`&optional`
+
+      Provide standard input to the program as a string.
+
+
+   .. zeek:field:: read_files :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&optional`
+
+      If additional files are required to be read in as part of the
+      output of the command they can be defined here.
+
+
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&default` = ``Chd8EgFWk2j`` :zeek:attr:`&optional`
+
+      The unique id for tracking executors.
+
 
 
 .. zeek:type:: Exec::Result
@@ -56,21 +65,32 @@ Types
 
    :Type: :zeek:type:`record`
 
-      exit_code: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Exit code from the program.
 
-      signal_exit: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         True if the command was terminated with a signal.
+   .. zeek:field:: exit_code :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      stdout: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         Each line of standard output.
+      Exit code from the program.
 
-      stderr: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
-         Each line of standard error.
 
-      files: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string_vec` :zeek:attr:`&optional`
-         If additional files were requested to be read in
-         the content of the files will be available here.
+   .. zeek:field:: signal_exit :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      True if the command was terminated with a signal.
+
+
+   .. zeek:field:: stdout :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      Each line of standard output.
+
+
+   .. zeek:field:: stderr :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&optional`
+
+      Each line of standard error.
+
+
+   .. zeek:field:: files :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string_vec` :zeek:attr:`&optional`
+
+      If additional files were requested to be read in
+      the content of the files will be available here.
+
 
 
 Functions

@@ -150,64 +150,99 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
-         Timestamp of the command request.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID of the connection the request was sent over.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         ID of the connection the request was sent over.
+      Timestamp of the command request.
 
-      command: :zeek:type:`string` :zeek:attr:`&log`
-         The command sent by the client.
 
-      sub_command: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The subcommand sent by the client, if present.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      argument: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Command argument sent by the client, if any.
+      Unique ID of the connection the request was sent over.
 
-      status: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Server reply to the client's command.
 
-      rtt: :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Round trip time from the request to the response.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      version: :zeek:type:`string` :zeek:attr:`&log`
-         Version of SMB for the command.
+      ID of the connection the request was sent over.
 
-      username: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Authenticated username, if available.
 
-      tree: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If this is related to a tree, this is the tree
-         that was used for the current command.
+   .. zeek:field:: command :zeek:type:`string` :zeek:attr:`&log`
 
-      tree_service: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The type of tree (disk share, printer share, named pipe, etc.).
+      The command sent by the client.
 
-      referenced_file: :zeek:type:`SMB::FileInfo` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the command referenced a file, store it here.
 
-      referenced_tree: :zeek:type:`SMB::TreeInfo` :zeek:attr:`&optional`
-         If the command referenced a tree, store it here.
+   .. zeek:field:: sub_command :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      smb1_offered_dialects: :zeek:type:`string_vec` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smb/smb1-main.zeek` is loaded)
+      The subcommand sent by the client, if present.
 
-         Dialects offered by the client.
 
-      smb2_offered_dialects: :zeek:type:`index_vec` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smb/smb2-main.zeek` is loaded)
+   .. zeek:field:: argument :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         Dialects offered by the client.
+      Command argument sent by the client, if any.
 
-      smb2_create_options: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smb/smb2-main.zeek` is loaded)
 
-         Keep the create_options in the command for
-         referencing later.
+   .. zeek:field:: status :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Server reply to the client's command.
+
+
+   .. zeek:field:: rtt :zeek:type:`interval` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Round trip time from the request to the response.
+
+
+   .. zeek:field:: version :zeek:type:`string` :zeek:attr:`&log`
+
+      Version of SMB for the command.
+
+
+   .. zeek:field:: username :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Authenticated username, if available.
+
+
+   .. zeek:field:: tree :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      If this is related to a tree, this is the tree
+      that was used for the current command.
+
+
+   .. zeek:field:: tree_service :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The type of tree (disk share, printer share, named pipe, etc.).
+
+
+   .. zeek:field:: referenced_file :zeek:type:`SMB::FileInfo` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      If the command referenced a file, store it here.
+
+
+   .. zeek:field:: referenced_tree :zeek:type:`SMB::TreeInfo` :zeek:attr:`&optional`
+
+      If the command referenced a tree, store it here.
+
+
+   .. zeek:field:: smb1_offered_dialects :zeek:type:`string_vec` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smb/smb1-main.zeek` is loaded)
+
+      Dialects offered by the client.
+
+
+   .. zeek:field:: smb2_offered_dialects :zeek:type:`index_vec` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smb/smb2-main.zeek` is loaded)
+
+      Dialects offered by the client.
+
+
+   .. zeek:field:: smb2_create_options :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smb/smb2-main.zeek` is loaded)
+
+      Keep the create_options in the command for
+      referencing later.
+
 
    This record is for the smb_cmd.log
 
@@ -216,42 +251,67 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
-         Time when the file was first discovered.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID of the connection the file was sent over.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         ID of the connection the file was sent over.
+      Time when the file was first discovered.
 
-      fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Unique ID of the file.
 
-      action: :zeek:type:`SMB::Action` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Action this log record represents.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      path: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Path pulled from the tree this file was transferred to or from.
+      Unique ID of the connection the file was sent over.
 
-      name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Filename if one was seen.
 
-      size: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Total size of the file.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      prev_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the rename action was seen, this will be
-         the file's previous name.
+      ID of the connection the file was sent over.
 
-      times: :zeek:type:`SMB::MACTimes` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Last time this file was modified.
 
-      fid: :zeek:type:`count` :zeek:attr:`&optional`
-         ID referencing this file.
+   .. zeek:field:: fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      uuid: :zeek:type:`string` :zeek:attr:`&optional`
-         UUID referencing this file if DCE/RPC.
+      Unique ID of the file.
+
+
+   .. zeek:field:: action :zeek:type:`SMB::Action` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Action this log record represents.
+
+
+   .. zeek:field:: path :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Path pulled from the tree this file was transferred to or from.
+
+
+   .. zeek:field:: name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Filename if one was seen.
+
+
+   .. zeek:field:: size :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Total size of the file.
+
+
+   .. zeek:field:: prev_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      If the rename action was seen, this will be
+      the file's previous name.
+
+
+   .. zeek:field:: times :zeek:type:`SMB::MACTimes` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Last time this file was modified.
+
+
+   .. zeek:field:: fid :zeek:type:`count` :zeek:attr:`&optional`
+
+      ID referencing this file.
+
+
+   .. zeek:field:: uuid :zeek:type:`string` :zeek:attr:`&optional`
+
+      UUID referencing this file if DCE/RPC.
+
 
    This record is for the smb_files.log
 
@@ -260,31 +320,48 @@ Types
 
    :Type: :zeek:type:`record`
 
-      current_cmd: :zeek:type:`SMB::CmdInfo` :zeek:attr:`&optional`
-         A reference to the current command.
 
-      current_file: :zeek:type:`SMB::FileInfo` :zeek:attr:`&optional`
-         A reference to the current file.
+   .. zeek:field:: current_cmd :zeek:type:`SMB::CmdInfo` :zeek:attr:`&optional`
 
-      current_tree: :zeek:type:`SMB::TreeInfo` :zeek:attr:`&optional`
-         A reference to the current tree.
+      A reference to the current command.
 
-      pending_cmds: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::CmdInfo` :zeek:attr:`&optional`
-         Indexed on MID to map responses to requests.
 
-      fid_map: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::FileInfo` :zeek:attr:`&optional`
-         File map to retrieve file information based on the file ID.
+   .. zeek:field:: current_file :zeek:type:`SMB::FileInfo` :zeek:attr:`&optional`
 
-      tid_map: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::TreeInfo` :zeek:attr:`&optional`
-         Tree map to retrieve tree information based on the tree ID.
+      A reference to the current file.
 
-      pipe_map: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
-         Pipe map to retrieve UUID based on the file ID of a pipe.
 
-      recent_files: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-         A set of recent files to avoid logging the same
-         files over and over in the smb files log.
-         This only applies to files seen in a single connection.
+   .. zeek:field:: current_tree :zeek:type:`SMB::TreeInfo` :zeek:attr:`&optional`
+
+      A reference to the current tree.
+
+
+   .. zeek:field:: pending_cmds :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::CmdInfo` :zeek:attr:`&optional`
+
+      Indexed on MID to map responses to requests.
+
+
+   .. zeek:field:: fid_map :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::FileInfo` :zeek:attr:`&optional`
+
+      File map to retrieve file information based on the file ID.
+
+
+   .. zeek:field:: tid_map :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SMB::TreeInfo` :zeek:attr:`&optional`
+
+      Tree map to retrieve tree information based on the tree ID.
+
+
+   .. zeek:field:: pipe_map :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`string` :zeek:attr:`&optional`
+
+      Pipe map to retrieve UUID based on the file ID of a pipe.
+
+
+   .. zeek:field:: recent_files :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      A set of recent files to avoid logging the same
+      files over and over in the smb files log.
+      This only applies to files seen in a single connection.
+
 
    This record stores the SMB state of in-flight commands,
    the file and tree map of the connection.
@@ -294,27 +371,42 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
-         Time when the tree was mapped.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID of the connection the tree was mapped over.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&default` = ``0.0`` :zeek:attr:`&optional`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         ID of the connection the tree was mapped over.
+      Time when the tree was mapped.
 
-      path: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Name of the tree path.
 
-      service: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The type of resource of the tree (disk share, printer share, named pipe, etc.).
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      native_file_system: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         File system of the tree.
+      Unique ID of the connection the tree was mapped over.
 
-      share_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``"DISK"`` :zeek:attr:`&optional`
-         If this is SMB2, a share type will be included.  For SMB1,
-         the type of share will be deduced and included as well.
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      ID of the connection the tree was mapped over.
+
+
+   .. zeek:field:: path :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Name of the tree path.
+
+
+   .. zeek:field:: service :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The type of resource of the tree (disk share, printer share, named pipe, etc.).
+
+
+   .. zeek:field:: native_file_system :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      File system of the tree.
+
+
+   .. zeek:field:: share_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``"DISK"`` :zeek:attr:`&optional`
+
+      If this is SMB2, a share type will be included.  For SMB1,
+      the type of share will be deduced and included as well.
+
 
    This record is for the smb_mapping.log
 

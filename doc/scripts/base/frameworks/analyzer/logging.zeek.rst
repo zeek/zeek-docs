@@ -109,36 +109,55 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp of confirmation or violation.
 
-      cause: :zeek:type:`string` :zeek:attr:`&log`
-         What caused this log entry to be produced. This can
-         currently be "violation" or "confirmation".
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      analyzer_kind: :zeek:type:`string` :zeek:attr:`&log`
-         The kind of analyzer involved. Currently "packet", "file"
-         or "protocol".
+      Timestamp of confirmation or violation.
 
-      analyzer_name: :zeek:type:`string` :zeek:attr:`&log`
-         The name of the analyzer as produced by :zeek:see:`Analyzer::name`
-         for the analyzer's tag.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Connection UID if available.
+   .. zeek:field:: cause :zeek:type:`string` :zeek:attr:`&log`
 
-      fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         File UID if available.
+      What caused this log entry to be produced. This can
+      currently be "violation" or "confirmation".
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Connection identifier if available
 
-      failure_reason: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Failure or violation reason, if available.
+   .. zeek:field:: analyzer_kind :zeek:type:`string` :zeek:attr:`&log`
 
-      failure_data: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Data causing failure or violation if available. Truncated
-         to :zeek:see:`Analyzer::Logging::failure_data_max_size`.
+      The kind of analyzer involved. Currently "packet", "file"
+      or "protocol".
+
+
+   .. zeek:field:: analyzer_name :zeek:type:`string` :zeek:attr:`&log`
+
+      The name of the analyzer as produced by :zeek:see:`Analyzer::name`
+      for the analyzer's tag.
+
+
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Connection UID if available.
+
+
+   .. zeek:field:: fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      File UID if available.
+
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Connection identifier if available
+
+
+   .. zeek:field:: failure_reason :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Failure or violation reason, if available.
+
+
+   .. zeek:field:: failure_data :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Data causing failure or violation if available. Truncated
+      to :zeek:see:`Analyzer::Logging::failure_data_max_size`.
+
 
    The record type defining the columns to log in the analyzer logging stream.
 

@@ -81,91 +81,138 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      request_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Request type - Authentication Service ("AS") or
-         Ticket Granting Service ("TGS")
 
-      client: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Client
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      service: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Service
+      Unique ID for the connection.
 
-      success: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Request result
 
-      error_code: :zeek:type:`count` :zeek:attr:`&optional`
-         Error code
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      error_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Error message
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      from: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Ticket valid from
 
-      till: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Ticket valid till
+   .. zeek:field:: request_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      cipher: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Ticket encryption type
+      Request type - Authentication Service ("AS") or
+      Ticket Granting Service ("TGS")
 
-      forwardable: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Forwardable ticket requested
 
-      renewable: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Renewable ticket requested
+   .. zeek:field:: client :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      logged: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         We've already logged this
+      Client
 
-      client_cert: :zeek:type:`Files::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
 
-         Client certificate
+   .. zeek:field:: service :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      client_cert_subject: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+      Service
 
-         Subject of client certificate, if any
 
-      client_cert_fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+   .. zeek:field:: success :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         File unique ID of client cert, if any
+      Request result
 
-      server_cert: :zeek:type:`Files::Info` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
 
-         Server certificate
+   .. zeek:field:: error_code :zeek:type:`count` :zeek:attr:`&optional`
 
-      server_cert_subject: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+      Error code
 
-         Subject of server certificate, if any
 
-      server_cert_fuid: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+   .. zeek:field:: error_msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         File unique ID of server cert, if any
+      Error message
 
-      auth_ticket: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/krb/ticket-logging.zeek` is loaded)
 
-         Hash of ticket used to authorize request/transaction
+   .. zeek:field:: from :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      new_ticket: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/krb/ticket-logging.zeek` is loaded)
+      Ticket valid from
 
-         Hash of ticket returned by the KDC
+
+   .. zeek:field:: till :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Ticket valid till
+
+
+   .. zeek:field:: cipher :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Ticket encryption type
+
+
+   .. zeek:field:: forwardable :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Forwardable ticket requested
+
+
+   .. zeek:field:: renewable :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Renewable ticket requested
+
+
+   .. zeek:field:: logged :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      We've already logged this
+
+
+   .. zeek:field:: client_cert :zeek:type:`Files::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+
+      Client certificate
+
+
+   .. zeek:field:: client_cert_subject :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+
+      Subject of client certificate, if any
+
+
+   .. zeek:field:: client_cert_fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+
+      File unique ID of client cert, if any
+
+
+   .. zeek:field:: server_cert :zeek:type:`Files::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+
+      Server certificate
+
+
+   .. zeek:field:: server_cert_subject :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+
+      Subject of server certificate, if any
+
+
+   .. zeek:field:: server_cert_fuid :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/krb/files.zeek` is loaded)
+
+      File unique ID of server cert, if any
+
+
+   .. zeek:field:: auth_ticket :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/krb/ticket-logging.zeek` is loaded)
+
+      Hash of ticket used to authorize request/transaction
+
+
+   .. zeek:field:: new_ticket :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/krb/ticket-logging.zeek` is loaded)
+
+      Hash of ticket returned by the KDC
+
 
 
 Events

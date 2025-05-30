@@ -111,101 +111,159 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time when the message was first seen.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Time when the message was first seen.
 
-      trans_depth: :zeek:type:`count` :zeek:attr:`&log`
-         A count to represent the depth of this message transaction in
-         a single connection where multiple messages were transferred.
 
-      helo: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Helo header.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      mailfrom: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Email addresses found in the From header.
+      Unique ID for the connection.
 
-      rcptto: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
-         Email addresses found in the Rcpt header.
 
-      date: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Date header.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      from: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the From header.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      to: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the To header.
 
-      cc: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the CC header.
+   .. zeek:field:: trans_depth :zeek:type:`count` :zeek:attr:`&log`
 
-      reply_to: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the ReplyTo header.
+      A count to represent the depth of this message transaction in
+      a single connection where multiple messages were transferred.
 
-      msg_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the MsgID header.
 
-      in_reply_to: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the In-Reply-To header.
+   .. zeek:field:: helo :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      subject: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Subject header.
+      Contents of the Helo header.
 
-      x_originating_ip: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the X-Originating-IP header.
 
-      first_received: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the first Received header.
+   .. zeek:field:: mailfrom :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      second_received: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the second Received header.
+      Email addresses found in the From header.
 
-      last_reply: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The last message that the server sent to the client.
 
-      path: :zeek:type:`vector` of :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The message transmission path, as extracted from the headers.
+   .. zeek:field:: rcptto :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      user_agent: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Value of the User-Agent header from the client.
+      Email addresses found in the Rcpt header.
 
-      tls: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates that the connection has switched to using TLS.
 
-      process_received_from: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Indicates if the "Received: from" headers should still be
-         processed.
+   .. zeek:field:: date :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      has_client_activity: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Indicates if client activity has been seen, but not yet logged.
+      Contents of the Date header.
 
-      process_smtp_headers: :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Indicates if the SMTP headers should still be processed.
 
-      entity_count: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+   .. zeek:field:: from :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      entity: :zeek:type:`SMTP::Entity` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smtp/entities.zeek` is loaded)
+      Contents of the From header.
 
-         The current entity being seen.
 
-      fuids: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smtp/files.zeek` is loaded)
+   .. zeek:field:: to :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
 
-         An ordered vector of file unique IDs seen attached to
-         the message.
+      Contents of the To header.
 
-      is_webmail: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/smtp/software.zeek` is loaded)
 
-         Boolean indicator of if the message was sent through a
-         webmail interface.
+   .. zeek:field:: cc :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the CC header.
+
+
+   .. zeek:field:: reply_to :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the ReplyTo header.
+
+
+   .. zeek:field:: msg_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the MsgID header.
+
+
+   .. zeek:field:: in_reply_to :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the In-Reply-To header.
+
+
+   .. zeek:field:: subject :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Subject header.
+
+
+   .. zeek:field:: x_originating_ip :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the X-Originating-IP header.
+
+
+   .. zeek:field:: first_received :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the first Received header.
+
+
+   .. zeek:field:: second_received :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the second Received header.
+
+
+   .. zeek:field:: last_reply :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The last message that the server sent to the client.
+
+
+   .. zeek:field:: path :zeek:type:`vector` of :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The message transmission path, as extracted from the headers.
+
+
+   .. zeek:field:: user_agent :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Value of the User-Agent header from the client.
+
+
+   .. zeek:field:: tls :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates that the connection has switched to using TLS.
+
+
+   .. zeek:field:: process_received_from :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Indicates if the "Received: from" headers should still be
+      processed.
+
+
+   .. zeek:field:: has_client_activity :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Indicates if client activity has been seen, but not yet logged.
+
+
+   .. zeek:field:: process_smtp_headers :zeek:type:`bool` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Indicates if the SMTP headers should still be processed.
+
+
+   .. zeek:field:: entity_count :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: entity :zeek:type:`SMTP::Entity` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smtp/entities.zeek` is loaded)
+
+      The current entity being seen.
+
+
+   .. zeek:field:: fuids :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smtp/files.zeek` is loaded)
+
+      An ordered vector of file unique IDs seen attached to
+      the message.
+
+
+   .. zeek:field:: is_webmail :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/smtp/software.zeek` is loaded)
+
+      Boolean indicator of if the message was sent through a
+      webmail interface.
+
 
 
 .. zeek:type:: SMTP::State
@@ -213,28 +271,39 @@ Types
 
    :Type: :zeek:type:`record`
 
-      helo: :zeek:type:`string` :zeek:attr:`&optional`
 
-      messages_transferred: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Count the number of individual messages transmitted during
-         this SMTP session.  Note, this is not the number of
-         recipients, but the number of message bodies transferred.
+   .. zeek:field:: helo :zeek:type:`string` :zeek:attr:`&optional`
 
-      pending_messages: :zeek:type:`set` [:zeek:type:`SMTP::Info`] :zeek:attr:`&optional`
 
-      trans_mail_from_seen: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+   .. zeek:field:: messages_transferred :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      trans_rcpt_to_seen: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+      Count the number of individual messages transmitted during
+      this SMTP session.  Note, this is not the number of
+      recipients, but the number of message bodies transferred.
 
-      invalid_transactions: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
-      analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
+   .. zeek:field:: pending_messages :zeek:type:`set` [:zeek:type:`SMTP::Info`] :zeek:attr:`&optional`
 
-      mime_depth: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/base/protocols/smtp/entities.zeek` is loaded)
 
-         Track the number of MIME encoded files transferred
-         during a session.
+   .. zeek:field:: trans_mail_from_seen :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: trans_rcpt_to_seen :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: invalid_transactions :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: analyzer_id :zeek:type:`count` :zeek:attr:`&optional`
+
+
+   .. zeek:field:: mime_depth :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smtp/entities.zeek` is loaded)
+
+      Track the number of MIME encoded files transferred
+      during a session.
+
 
 
 Events

@@ -58,31 +58,48 @@ Types
 
    :Type: :zeek:type:`record`
 
-      scheme: :zeek:type:`string` :zeek:attr:`&optional`
-         The URL's scheme..
 
-      netlocation: :zeek:type:`string`
-         The location, which could be a domain name or an IP address. Left empty if not
-         specified.
+   .. zeek:field:: scheme :zeek:type:`string` :zeek:attr:`&optional`
 
-      portnum: :zeek:type:`count` :zeek:attr:`&optional`
-         Port number, if included in URI.
+      The URL's scheme..
 
-      path: :zeek:type:`string`
-         Full including the file name. Will be '/' if there's not path given.
 
-      file_name: :zeek:type:`string` :zeek:attr:`&optional`
-         Full file name, including extension, if there is a file name.
+   .. zeek:field:: netlocation :zeek:type:`string`
 
-      file_base: :zeek:type:`string` :zeek:attr:`&optional`
-         The base filename, without extension, if there is a file name.
+      The location, which could be a domain name or an IP address. Left empty if not
+      specified.
 
-      file_ext: :zeek:type:`string` :zeek:attr:`&optional`
-         The filename's extension, if there is a file name.
 
-      params: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&optional`
-         A table of all query parameters, mapping their keys to values, if there's a
-         query.
+   .. zeek:field:: portnum :zeek:type:`count` :zeek:attr:`&optional`
+
+      Port number, if included in URI.
+
+
+   .. zeek:field:: path :zeek:type:`string`
+
+      Full including the file name. Will be '/' if there's not path given.
+
+
+   .. zeek:field:: file_name :zeek:type:`string` :zeek:attr:`&optional`
+
+      Full file name, including extension, if there is a file name.
+
+
+   .. zeek:field:: file_base :zeek:type:`string` :zeek:attr:`&optional`
+
+      The base filename, without extension, if there is a file name.
+
+
+   .. zeek:field:: file_ext :zeek:type:`string` :zeek:attr:`&optional`
+
+      The filename's extension, if there is a file name.
+
+
+   .. zeek:field:: params :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&optional`
+
+      A table of all query parameters, mapping their keys to values, if there's a
+      query.
+
 
    A URI, as parsed by :zeek:id:`decompose_uri`.
 

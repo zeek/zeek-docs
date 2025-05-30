@@ -88,15 +88,22 @@ Types
 
    :Type: :zeek:type:`record`
 
-      user: :zeek:type:`string`
-         The remote user to log in as.  A trust mechanism should be
-         pre-established.
 
-      host: :zeek:type:`string`
-         The remote host to which to transfer logs.
+   .. zeek:field:: user :zeek:type:`string`
 
-      path: :zeek:type:`string`
-         The path/directory on the remote host to send logs.
+      The remote user to log in as.  A trust mechanism should be
+      pre-established.
+
+
+   .. zeek:field:: host :zeek:type:`string`
+
+      The remote host to which to transfer logs.
+
+
+   .. zeek:field:: path :zeek:type:`string`
+
+      The path/directory on the remote host to send logs.
+
 
    A container that describes the remote destination for the SCP command
    argument as ``user@host:path``.

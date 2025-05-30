@@ -96,83 +96,128 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      cookie: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Cookie value used by the client machine.
-         This is typically a username.
 
-      result: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Status result for the connection.  It's a mix between
-         RDP negotiation failure messages and GCC server create
-         response messages.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      security_protocol: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Security protocol chosen by the server.
+      Unique ID for the connection.
 
-      client_channels: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The channels requested by the client
 
-      keyboard_layout: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Keyboard layout (language) of the client machine.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      client_build: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         RDP client version used by the client machine.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      client_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Name of the client machine.
 
-      client_dig_product_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Product ID of the client machine.
+   .. zeek:field:: cookie :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      desktop_width: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Desktop width of the client machine.
+      Cookie value used by the client machine.
+      This is typically a username.
 
-      desktop_height: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Desktop height of the client machine.
 
-      requested_color_depth: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The color depth requested by the client in
-         the high_color_depth field.
+   .. zeek:field:: result :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      cert_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         If the connection is being encrypted with native
-         RDP encryption, this is the type of cert
-         being used.
+      Status result for the connection.  It's a mix between
+      RDP negotiation failure messages and GCC server create
+      response messages.
 
-      cert_count: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         The number of certs seen.  X.509 can transfer an
-         entire certificate chain.
 
-      cert_permanent: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Indicates if the provided certificate or certificate
-         chain is permanent or temporary.
+   .. zeek:field:: security_protocol :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      encryption_level: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Encryption level of the connection.
+      Security protocol chosen by the server.
 
-      encryption_method: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Encryption method of the connection.
 
-      analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
-         The analyzer ID used for the analyzer instance attached
-         to each connection.  It is not used for logging since it's a
-         meaningless arbitrary number.
+   .. zeek:field:: client_channels :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      done: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Track status of logging RDP connections.
+      The channels requested by the client
 
-      ssl: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/rdp/indicate_ssl.zeek` is loaded)
 
-         Flag the connection if it was seen over SSL.
+   .. zeek:field:: keyboard_layout :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Keyboard layout (language) of the client machine.
+
+
+   .. zeek:field:: client_build :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      RDP client version used by the client machine.
+
+
+   .. zeek:field:: client_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Name of the client machine.
+
+
+   .. zeek:field:: client_dig_product_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Product ID of the client machine.
+
+
+   .. zeek:field:: desktop_width :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Desktop width of the client machine.
+
+
+   .. zeek:field:: desktop_height :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Desktop height of the client machine.
+
+
+   .. zeek:field:: requested_color_depth :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The color depth requested by the client in
+      the high_color_depth field.
+
+
+   .. zeek:field:: cert_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      If the connection is being encrypted with native
+      RDP encryption, this is the type of cert
+      being used.
+
+
+   .. zeek:field:: cert_count :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      The number of certs seen.  X.509 can transfer an
+      entire certificate chain.
+
+
+   .. zeek:field:: cert_permanent :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Indicates if the provided certificate or certificate
+      chain is permanent or temporary.
+
+
+   .. zeek:field:: encryption_level :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Encryption level of the connection.
+
+
+   .. zeek:field:: encryption_method :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Encryption method of the connection.
+
+
+   .. zeek:field:: analyzer_id :zeek:type:`count` :zeek:attr:`&optional`
+
+      The analyzer ID used for the analyzer instance attached
+      to each connection.  It is not used for logging since it's a
+      meaningless arbitrary number.
+
+
+   .. zeek:field:: done :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Track status of logging RDP connections.
+
+
+   .. zeek:field:: ssl :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/rdp/indicate_ssl.zeek` is loaded)
+
+      Flag the connection if it was seen over SSL.
+
 
 
 Events

@@ -48,26 +48,41 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp when the syslog message was seen.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp when the syslog message was seen.
 
-      proto: :zeek:type:`transport_proto` :zeek:attr:`&log`
-         Protocol over which the message was seen.
 
-      facility: :zeek:type:`string` :zeek:attr:`&log`
-         Syslog facility for the message.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      severity: :zeek:type:`string` :zeek:attr:`&log`
-         Syslog severity for the message.
+      Unique ID for the connection.
 
-      message: :zeek:type:`string` :zeek:attr:`&log`
-         The plain text message.
+
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
+
+      The connection's 4-tuple of endpoint addresses/ports.
+
+
+   .. zeek:field:: proto :zeek:type:`transport_proto` :zeek:attr:`&log`
+
+      Protocol over which the message was seen.
+
+
+   .. zeek:field:: facility :zeek:type:`string` :zeek:attr:`&log`
+
+      Syslog facility for the message.
+
+
+   .. zeek:field:: severity :zeek:type:`string` :zeek:attr:`&log`
+
+      Syslog severity for the message.
+
+
+   .. zeek:field:: message :zeek:type:`string` :zeek:attr:`&log`
+
+      The plain text message.
+
 
    The record type which contains the fields of the syslog log.
 

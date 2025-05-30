@@ -39,7 +39,9 @@ Types
 
    :Type: :zeek:type:`record`
 
-      sites: :zeek:type:`HashHRW::SiteTable` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+   .. zeek:field:: sites :zeek:type:`HashHRW::SiteTable` :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
 
    A collection of sites to distribute keys across.
 
@@ -48,12 +50,17 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`count`
-         A unique identifier for the site, should not exceed what
-         can be contained in a 32-bit integer.
 
-      user_data: :zeek:type:`any` :zeek:attr:`&optional`
-         Other data to associate with the site.
+   .. zeek:field:: id :zeek:type:`count`
+
+      A unique identifier for the site, should not exceed what
+      can be contained in a 32-bit integer.
+
+
+   .. zeek:field:: user_data :zeek:type:`any` :zeek:attr:`&optional`
+
+      Other data to associate with the site.
+
 
    A site/node is a unique location to which you want a subset of keys
    to be distributed.

@@ -130,60 +130,80 @@ Types
 
    :Type: :zeek:type:`record`
 
-      id: :zeek:type:`string`
-         Each request has a hopefully unique ID provided by the requester.
 
-      parent_id: :zeek:type:`string` :zeek:attr:`&optional`
-         For requests that result based upon another request (such as when
-         the controller sends requests to agents based on a request it
-         received by the client), this specifies that original, "parent"
-         request.
+   .. zeek:field:: id :zeek:type:`string`
 
-      results: :zeek:type:`Management::ResultVec` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
-         The results vector builds up the list of results we eventually
-         send to the requestor when we have processed the request.
-
-      finished: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         An internal flag to track whether a request is complete.
-
-      finish: :zeek:type:`function` (<recursion>) : :zeek:type:`void` :zeek:attr:`&optional`
-         A callback to invoke when this request is finished via
-         :zeek:see:`Management::Request::finish`.
-
-      supervisor_state_agent: :zeek:type:`Management::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
+      Each request has a hopefully unique ID provided by the requester.
 
 
-      deploy_state_agent: :zeek:type:`Management::Agent::Runtime::DeployState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
+   .. zeek:field:: parent_id :zeek:type:`string` :zeek:attr:`&optional`
+
+      For requests that result based upon another request (such as when
+      the controller sends requests to agents based on a request it
+      received by the client), this specifies that original, "parent"
+      request.
 
 
-      node_dispatch_state_agent: :zeek:type:`Management::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
+   .. zeek:field:: results :zeek:type:`Management::ResultVec` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
+
+      The results vector builds up the list of results we eventually
+      send to the requestor when we have processed the request.
 
 
-      restart_state_agent: :zeek:type:`Management::Agent::Runtime::RestartState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
+   .. zeek:field:: finished :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      An internal flag to track whether a request is complete.
 
 
-      deploy_state: :zeek:type:`Management::Controller::Runtime::DeployState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+   .. zeek:field:: finish :zeek:type:`function` (<recursion>) : :zeek:type:`void` :zeek:attr:`&optional`
+
+      A callback to invoke when this request is finished via
+      :zeek:see:`Management::Request::finish`.
 
 
-      get_nodes_state: :zeek:type:`Management::Controller::Runtime::GetNodesState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+   .. zeek:field:: supervisor_state_agent :zeek:type:`Management::Agent::Runtime::SupervisorState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      node_dispatch_state: :zeek:type:`Management::Controller::Runtime::NodeDispatchState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+   .. zeek:field:: deploy_state_agent :zeek:type:`Management::Agent::Runtime::DeployState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      restart_state: :zeek:type:`Management::Controller::Runtime::RestartState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+   .. zeek:field:: node_dispatch_state_agent :zeek:type:`Management::Agent::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
 
 
-      test_state: :zeek:type:`Management::Controller::Runtime::TestState` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+   .. zeek:field:: restart_state_agent :zeek:type:`Management::Agent::Runtime::RestartState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/agent/main.zeek` is loaded)
+
+
+   .. zeek:field:: deploy_state :zeek:type:`Management::Controller::Runtime::DeployState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+
+
+   .. zeek:field:: get_nodes_state :zeek:type:`Management::Controller::Runtime::GetNodesState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+
+
+   .. zeek:field:: node_dispatch_state :zeek:type:`Management::Controller::Runtime::NodeDispatchState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+
+
+   .. zeek:field:: restart_state :zeek:type:`Management::Controller::Runtime::RestartState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
+
+
+   .. zeek:field:: test_state :zeek:type:`Management::Controller::Runtime::TestState` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/management/controller/main.zeek` is loaded)
 
 
    Request records track state associated with a request/response event

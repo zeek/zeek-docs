@@ -54,32 +54,50 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time of the request.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique identifier for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         Identifier for the connection.
+      Time of the request.
 
-      tid: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Modbus transaction ID
 
-      unit: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The terminal unit identifier for the message
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      func: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The name of the function message that was sent.
+      Unique identifier for the connection.
 
-      pdu_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Whether this PDU was a response ("RESP") or request ("REQ")
 
-      exception: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The exception if the response was a failure.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      track_address: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         (present if :doc:`/scripts/policy/protocols/modbus/track-memmap.zeek` is loaded)
+      Identifier for the connection.
+
+
+   .. zeek:field:: tid :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Modbus transaction ID
+
+
+   .. zeek:field:: unit :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The terminal unit identifier for the message
+
+
+   .. zeek:field:: func :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The name of the function message that was sent.
+
+
+   .. zeek:field:: pdu_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Whether this PDU was a response ("RESP") or request ("REQ")
+
+
+   .. zeek:field:: exception :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The exception if the response was a failure.
+
+
+   .. zeek:field:: track_address :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/modbus/track-memmap.zeek` is loaded)
 
 
 

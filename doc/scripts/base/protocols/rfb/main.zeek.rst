@@ -52,48 +52,77 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the event happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the event happened.
 
-      client_major_version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Major version of the client.
 
-      client_minor_version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Minor version of the client.
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      server_major_version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Major version of the server.
+      Unique ID for the connection.
 
-      server_minor_version: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Minor version of the server.
 
-      authentication_method: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Identifier of authentication method used.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      auth: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Whether or not authentication was successful.
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      share_flag: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Whether the client has an exclusive or a shared session.
 
-      desktop_name: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Name of the screen that is being shared.
+   .. zeek:field:: client_major_version :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      width: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Width of the screen that is being shared.
+      Major version of the client.
 
-      height: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Height of the screen that is being shared.
 
-      done: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Internally used value to determine if this connection
-         has already been logged.
+   .. zeek:field:: client_minor_version :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Minor version of the client.
+
+
+   .. zeek:field:: server_major_version :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Major version of the server.
+
+
+   .. zeek:field:: server_minor_version :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Minor version of the server.
+
+
+   .. zeek:field:: authentication_method :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Identifier of authentication method used.
+
+
+   .. zeek:field:: auth :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Whether or not authentication was successful.
+
+
+   .. zeek:field:: share_flag :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Whether the client has an exclusive or a shared session.
+
+
+   .. zeek:field:: desktop_name :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Name of the screen that is being shared.
+
+
+   .. zeek:field:: width :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Width of the screen that is being shared.
+
+
+   .. zeek:field:: height :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Height of the screen that is being shared.
+
+
+   .. zeek:field:: done :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Internally used value to determine if this connection
+      has already been logged.
+
 
    The record type which contains the fields of the RFB log.
 

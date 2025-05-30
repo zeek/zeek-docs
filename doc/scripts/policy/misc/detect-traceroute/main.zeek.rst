@@ -105,17 +105,26 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp
 
-      src: :zeek:type:`addr` :zeek:attr:`&log`
-         Address initiating the traceroute.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      dst: :zeek:type:`addr` :zeek:attr:`&log`
-         Destination address of the traceroute.
+      Timestamp
 
-      proto: :zeek:type:`string` :zeek:attr:`&log`
-         Protocol used for the traceroute.
+
+   .. zeek:field:: src :zeek:type:`addr` :zeek:attr:`&log`
+
+      Address initiating the traceroute.
+
+
+   .. zeek:field:: dst :zeek:type:`addr` :zeek:attr:`&log`
+
+      Destination address of the traceroute.
+
+
+   .. zeek:field:: proto :zeek:type:`string` :zeek:attr:`&log`
+
+      Protocol used for the traceroute.
+
 
    The log record for the traceroute log.
 

@@ -47,38 +47,61 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time when the OCSP reply was encountered.
 
-      id: :zeek:type:`string` :zeek:attr:`&log`
-         File id of the OCSP reply.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      hashAlgorithm: :zeek:type:`string` :zeek:attr:`&log`
-         Hash algorithm used to generate issuerNameHash and issuerKeyHash.
+      Time when the OCSP reply was encountered.
 
-      issuerNameHash: :zeek:type:`string` :zeek:attr:`&log`
-         Hash of the issuer's distinguished name.
 
-      issuerKeyHash: :zeek:type:`string` :zeek:attr:`&log`
-         Hash of the issuer's public key.
+   .. zeek:field:: id :zeek:type:`string` :zeek:attr:`&log`
 
-      serialNumber: :zeek:type:`string` :zeek:attr:`&log`
-         Serial number of the affected certificate.
+      File id of the OCSP reply.
 
-      certStatus: :zeek:type:`string` :zeek:attr:`&log`
-         Status of the affected certificate.
 
-      revoketime: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Time at which the certificate was revoked.
+   .. zeek:field:: hashAlgorithm :zeek:type:`string` :zeek:attr:`&log`
 
-      revokereason: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Reason for which the certificate was revoked.
+      Hash algorithm used to generate issuerNameHash and issuerKeyHash.
 
-      thisUpdate: :zeek:type:`time` :zeek:attr:`&log`
-         The time at which the status being shows is known to have been correct.
 
-      nextUpdate: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The latest time at which new information about the status of the certificate will be available.
+   .. zeek:field:: issuerNameHash :zeek:type:`string` :zeek:attr:`&log`
+
+      Hash of the issuer's distinguished name.
+
+
+   .. zeek:field:: issuerKeyHash :zeek:type:`string` :zeek:attr:`&log`
+
+      Hash of the issuer's public key.
+
+
+   .. zeek:field:: serialNumber :zeek:type:`string` :zeek:attr:`&log`
+
+      Serial number of the affected certificate.
+
+
+   .. zeek:field:: certStatus :zeek:type:`string` :zeek:attr:`&log`
+
+      Status of the affected certificate.
+
+
+   .. zeek:field:: revoketime :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Time at which the certificate was revoked.
+
+
+   .. zeek:field:: revokereason :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Reason for which the certificate was revoked.
+
+
+   .. zeek:field:: thisUpdate :zeek:type:`time` :zeek:attr:`&log`
+
+      The time at which the status being shows is known to have been correct.
+
+
+   .. zeek:field:: nextUpdate :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The latest time at which new information about the status of the certificate will be available.
+
 
    The record type which contains the fields of the OCSP log.
 

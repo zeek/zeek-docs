@@ -52,56 +52,91 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Current timestamp.
 
-      id: :zeek:type:`string` :zeek:attr:`&log`
-         File id of this portable executable file.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      machine: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The target machine that the file was compiled for.
+      Current timestamp.
 
-      compile_ts: :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The time that the file was created at.
 
-      os: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The required operating system.
+   .. zeek:field:: id :zeek:type:`string` :zeek:attr:`&log`
 
-      subsystem: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The subsystem that is required to run this file.
+      File id of this portable executable file.
 
-      is_exe: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Is the file an executable, or just an object file?
 
-      is_64bit: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Is the file a 64-bit executable?
+   .. zeek:field:: machine :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      uses_aslr: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Does the file support Address Space Layout Randomization?
+      The target machine that the file was compiled for.
 
-      uses_dep: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Does the file support Data Execution Prevention?
 
-      uses_code_integrity: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
-         Does the file enforce code integrity checks?
+   .. zeek:field:: compile_ts :zeek:type:`time` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      uses_seh: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
-         Does the file use structured exception handing?
+      The time that the file was created at.
 
-      has_import_table: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Does the file have an import table?
 
-      has_export_table: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Does the file have an export table?
+   .. zeek:field:: os :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      has_cert_table: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Does the file have an attribute certificate table?
+      The required operating system.
 
-      has_debug_data: :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Does the file have a debug table?
 
-      section_names: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The names of the sections, in order.
+   .. zeek:field:: subsystem :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The subsystem that is required to run this file.
+
+
+   .. zeek:field:: is_exe :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Is the file an executable, or just an object file?
+
+
+   .. zeek:field:: is_64bit :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Is the file a 64-bit executable?
+
+
+   .. zeek:field:: uses_aslr :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Does the file support Address Space Layout Randomization?
+
+
+   .. zeek:field:: uses_dep :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Does the file support Data Execution Prevention?
+
+
+   .. zeek:field:: uses_code_integrity :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      Does the file enforce code integrity checks?
+
+
+   .. zeek:field:: uses_seh :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``T`` :zeek:attr:`&optional`
+
+      Does the file use structured exception handing?
+
+
+   .. zeek:field:: has_import_table :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Does the file have an import table?
+
+
+   .. zeek:field:: has_export_table :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Does the file have an export table?
+
+
+   .. zeek:field:: has_cert_table :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Does the file have an attribute certificate table?
+
+
+   .. zeek:field:: has_debug_data :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Does the file have a debug table?
+
+
+   .. zeek:field:: section_names :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The names of the sections, in order.
+
 
 
 Events

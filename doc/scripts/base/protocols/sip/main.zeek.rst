@@ -93,82 +93,131 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Timestamp for when the request happened.
 
-      uid: :zeek:type:`string` :zeek:attr:`&log`
-         Unique ID for the connection.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      id: :zeek:type:`conn_id` :zeek:attr:`&log`
-         The connection's 4-tuple of endpoint addresses/ports.
+      Timestamp for when the request happened.
 
-      trans_depth: :zeek:type:`count` :zeek:attr:`&log`
-         Represents the pipelined depth into the connection of this
-         request/response transaction.
 
-      method: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Verb used in the SIP request (INVITE, REGISTER etc.).
+   .. zeek:field:: uid :zeek:type:`string` :zeek:attr:`&log`
 
-      uri: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         URI used in the request.
+      Unique ID for the connection.
 
-      date: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Date: header from the client
 
-      request_from: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the request From: header
-         Note: The tag= value that's usually appended to the sender
-         is stripped off and not logged.
+   .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log`
 
-      request_to: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the To: header
+      The connection's 4-tuple of endpoint addresses/ports.
 
-      response_from: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the response From: header
-         Note: The ``tag=`` value that's usually appended to the sender
-         is stripped off and not logged.
 
-      response_to: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the response To: header
+   .. zeek:field:: trans_depth :zeek:type:`count` :zeek:attr:`&log`
 
-      reply_to: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Reply-To: header
+      Represents the pipelined depth into the connection of this
+      request/response transaction.
 
-      call_id: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Call-ID: header from the client
 
-      seq: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the CSeq: header from the client
+   .. zeek:field:: method :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      subject: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Subject: header from the client
+      Verb used in the SIP request (INVITE, REGISTER etc.).
 
-      request_path: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The client message transmission path, as extracted from the headers.
 
-      response_path: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The server message transmission path, as extracted from the headers.
+   .. zeek:field:: uri :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      user_agent: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the User-Agent: header from the client
+      URI used in the request.
 
-      status_code: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Status code returned by the server.
 
-      status_msg: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Status message returned by the server.
+   .. zeek:field:: date :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      warning: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Warning: header
+      Contents of the Date: header from the client
 
-      request_body_len: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Content-Length: header from the client
 
-      response_body_len: :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Content-Length: header from the server
+   .. zeek:field:: request_from :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      content_type: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Contents of the Content-Type: header from the server
+      Contents of the request From: header
+      Note: The tag= value that's usually appended to the sender
+      is stripped off and not logged.
+
+
+   .. zeek:field:: request_to :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the To: header
+
+
+   .. zeek:field:: response_from :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the response From: header
+      Note: The ``tag=`` value that's usually appended to the sender
+      is stripped off and not logged.
+
+
+   .. zeek:field:: response_to :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the response To: header
+
+
+   .. zeek:field:: reply_to :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Reply-To: header
+
+
+   .. zeek:field:: call_id :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Call-ID: header from the client
+
+
+   .. zeek:field:: seq :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the CSeq: header from the client
+
+
+   .. zeek:field:: subject :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Subject: header from the client
+
+
+   .. zeek:field:: request_path :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The client message transmission path, as extracted from the headers.
+
+
+   .. zeek:field:: response_path :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The server message transmission path, as extracted from the headers.
+
+
+   .. zeek:field:: user_agent :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the User-Agent: header from the client
+
+
+   .. zeek:field:: status_code :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Status code returned by the server.
+
+
+   .. zeek:field:: status_msg :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Status message returned by the server.
+
+
+   .. zeek:field:: warning :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Warning: header
+
+
+   .. zeek:field:: request_body_len :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Content-Length: header from the client
+
+
+   .. zeek:field:: response_body_len :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Content-Length: header from the server
+
+
+   .. zeek:field:: content_type :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Contents of the Content-Type: header from the server
+
 
    The record type which contains the fields of the SIP log.
 
@@ -177,14 +226,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      pending: :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SIP::Info`
-         Pending requests.
 
-      current_request: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Current request in the pending queue.
+   .. zeek:field:: pending :zeek:type:`table` [:zeek:type:`count`] of :zeek:type:`SIP::Info`
 
-      current_response: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
-         Current response in the pending queue.
+      Pending requests.
+
+
+   .. zeek:field:: current_request :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Current request in the pending queue.
+
+
+   .. zeek:field:: current_response :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+
+      Current response in the pending queue.
+
 
 
 Events

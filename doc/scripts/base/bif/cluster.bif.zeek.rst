@@ -39,7 +39,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: Cluster::Backend::error
-   :source-code: base/frameworks/cluster/main.zeek 692 696
+   :source-code: base/frameworks/cluster/main.zeek 694 698
 
    :Type: :zeek:type:`event` (tag: :zeek:type:`string`, message: :zeek:type:`string`)
 

@@ -8,7 +8,7 @@ extend-ignore-re = [
     # On purpose
     "\"THE NETBIOS NAM\"",
     # NFS stuff.
-    "commited: :zeek:type:`NFS3::stable_how_t`",
+    "commited :zeek:type:`NFS3::stable_how_t`",
     "\\/fo\\(o",
     "  nd\\.<br",
     "\"BaR\"",

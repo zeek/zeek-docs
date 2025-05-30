@@ -57,29 +57,46 @@ Types
 
    :Type: :zeek:type:`record`
 
-      ts: :zeek:type:`time` :zeek:attr:`&log`
-         Time at which the recorded activity occurred.
 
-      rule_id: :zeek:type:`string` :zeek:attr:`&log`
-         ID of the rule; unique during each Zeek run.
+   .. zeek:field:: ts :zeek:type:`time` :zeek:attr:`&log`
 
-      orig_h: :zeek:type:`addr` :zeek:attr:`&log`
-         The originator's IP address.
+      Time at which the recorded activity occurred.
 
-      orig_p: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The originator's port number.
 
-      resp_h: :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The responder's IP address.
+   .. zeek:field:: rule_id :zeek:type:`string` :zeek:attr:`&log`
 
-      resp_p: :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
-         The responder's port number.
+      ID of the rule; unique during each Zeek run.
 
-      expire: :zeek:type:`interval` :zeek:attr:`&log`
-         Expiry time of the shunt.
 
-      location: :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
-         Location where the underlying action was triggered.
+   .. zeek:field:: orig_h :zeek:type:`addr` :zeek:attr:`&log`
+
+      The originator's IP address.
+
+
+   .. zeek:field:: orig_p :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The originator's port number.
+
+
+   .. zeek:field:: resp_h :zeek:type:`addr` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The responder's IP address.
+
+
+   .. zeek:field:: resp_p :zeek:type:`port` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      The responder's port number.
+
+
+   .. zeek:field:: expire :zeek:type:`interval` :zeek:attr:`&log`
+
+      Expiry time of the shunt.
+
+
+   .. zeek:field:: location :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Location where the underlying action was triggered.
+
 
 
 Events

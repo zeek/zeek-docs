@@ -36,14 +36,21 @@ Types
 
    :Type: :zeek:type:`record`
 
-      matched: :zeek:type:`bool`
-         T if a match was found, F otherwise.
 
-      str: :zeek:type:`string`
-         Portion of string that first matched.
+   .. zeek:field:: matched :zeek:type:`bool`
 
-      off: :zeek:type:`count`
-         1-based offset where match starts.
+      T if a match was found, F otherwise.
+
+
+   .. zeek:field:: str :zeek:type:`string`
+
+      Portion of string that first matched.
+
+
+   .. zeek:field:: off :zeek:type:`count`
+
+      1-based offset where match starts.
+
 
 
 Functions
