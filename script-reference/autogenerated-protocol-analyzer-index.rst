@@ -975,7 +975,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
-   :source-code: base/init-bare.zeek 5602 5602
+   :source-code: base/init-bare.zeek 5608 5608
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -986,7 +986,7 @@ Options/Constants
    a weird and skip further input.
 
 .. zeek:id:: DCE_RPC::max_frag_data
-   :source-code: base/init-bare.zeek 5607 5607
+   :source-code: base/init-bare.zeek 5613 5613
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -8249,7 +8249,7 @@ Types
 +++++
 
 .. zeek:type:: MQTT::ConnectMsg
-   :source-code: base/init-bare.zeek 5795 5825
+   :source-code: base/init-bare.zeek 5801 5831
 
    :Type: :zeek:type:`record`
 
@@ -8314,7 +8314,7 @@ Types
 
 
 .. zeek:type:: MQTT::ConnectAckMsg
-   :source-code: base/init-bare.zeek 5827 5836
+   :source-code: base/init-bare.zeek 5833 5842
 
    :Type: :zeek:type:`record`
 
@@ -8334,7 +8334,7 @@ Types
 
 
 .. zeek:type:: MQTT::PublishMsg
-   :source-code: base/init-bare.zeek 5838 5860
+   :source-code: base/init-bare.zeek 5844 5866
 
    :Type: :zeek:type:`record`
 
@@ -8842,7 +8842,7 @@ Options/Constants
 +++++++++++++++++
 
 .. zeek:id:: NCP::max_frame_size
-   :source-code: base/init-bare.zeek 5614 5614
+   :source-code: base/init-bare.zeek 5620 5620
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -9612,7 +9612,7 @@ Types
 +++++
 
 .. zeek:type:: NTP::StandardMessage
-   :source-code: base/init-bare.zeek 5623 5676
+   :source-code: base/init-bare.zeek 5629 5682
 
    :Type: :zeek:type:`record`
 
@@ -9718,7 +9718,7 @@ Types
    for standard synchronization operations.
 
 .. zeek:type:: NTP::ControlMessage
-   :source-code: base/init-bare.zeek 5681 5715
+   :source-code: base/init-bare.zeek 5687 5721
 
    :Type: :zeek:type:`record`
 
@@ -9790,7 +9790,7 @@ Types
    for control operations.
 
 .. zeek:type:: NTP::Mode7Message
-   :source-code: base/init-bare.zeek 5724 5757
+   :source-code: base/init-bare.zeek 5730 5763
 
    :Type: :zeek:type:`record`
 
@@ -9854,7 +9854,7 @@ Types
    project <https://www.ntp.org>`_, code v. ntp-4.2.8p13, in include/ntp_request.h.
 
 .. zeek:type:: NTP::Message
-   :source-code: base/init-bare.zeek 5762 5789
+   :source-code: base/init-bare.zeek 5768 5795
 
    :Type: :zeek:type:`record`
 
