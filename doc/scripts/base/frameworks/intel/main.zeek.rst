@@ -56,6 +56,10 @@ Hooks
                                                            (e.g.
 :zeek:id:`Intel::filter_item`: :zeek:type:`hook`           This hook can be used to filter intelligence items that are about to be
                                                            inserted into the internal data store.
+:zeek:id:`Intel::indicator_inserted`: :zeek:type:`hook`    This hook is invoked when a new indicator has been inserted into
+                                                           the min data store for the first time.
+:zeek:id:`Intel::indicator_removed`: :zeek:type:`hook`     This hook is invoked when an indicator has been removed from
+                                                           the min data store.
 :zeek:id:`Intel::item_expired`: :zeek:type:`hook`          This hook can be used to handle expiration of intelligence items.
 :zeek:id:`Intel::log_policy`: :zeek:type:`Log::PolicyHook` 
 :zeek:id:`Intel::seen_policy`: :zeek:type:`hook`           Hook to modify and intercept :zeek:see:`Intel::seen` behavior.
@@ -569,7 +573,7 @@ Types
 Events
 ######
 .. zeek:id:: Intel::log_intel
-   :source-code: base/frameworks/intel/main.zeek 210 210
+   :source-code: base/frameworks/intel/main.zeek 239 239
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Intel::Info`)
 
@@ -624,6 +628,47 @@ Hooks
    
 
    :param item: The intel item that should be inserted.
+
+.. zeek:id:: Intel::indicator_inserted
+   :source-code: policy/frameworks/intel/seen/manage-event-groups.zeek 42 57
+
+   :Type: :zeek:type:`hook` (indicator: :zeek:type:`string`, indiator_type: :zeek:type:`Intel::Type`) : :zeek:type:`bool`
+
+   This hook is invoked when a new indicator has been inserted into
+   the min data store for the first time.
+   
+   Calls to :zeek:see:`Intel::seen` with a matching indicator value
+   and type will result in matches.
+   
+   Subsequent inserts of the same indicator type and value do not
+   invoke this hook. Breaking from this hook has no effect.
+   
+
+   :param indicator: The indicator value.
+   
+
+   :param indicator_type: The indicator type.
+   
+   .. zeek::see:: Intel::indicator_removed
+
+.. zeek:id:: Intel::indicator_removed
+   :source-code: policy/frameworks/intel/seen/manage-event-groups.zeek 59 74
+
+   :Type: :zeek:type:`hook` (indicator: :zeek:type:`string`, indiator_type: :zeek:type:`Intel::Type`) : :zeek:type:`bool`
+
+   This hook is invoked when an indicator has been removed from
+   the min data store.
+   
+   After this hooks runs, :zeek:see:`Intel::seen` for the indicator
+   will not return any matches. Breaking from this hook has no effect.
+   
+
+   :param indicator: The indicator value.
+   
+
+   :param indicator_type: The indicator type.
+   
+   .. zeek::see:: Intel::indicator_inserted
 
 .. zeek:id:: Intel::item_expired
    :source-code: policy/frameworks/intel/do_expire.zeek 10 14
@@ -681,7 +726,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Intel::insert
-   :source-code: base/frameworks/intel/main.zeek 538 545
+   :source-code: base/frameworks/intel/main.zeek 596 603
 
    :Type: :zeek:type:`function` (item: :zeek:type:`Intel::Item`) : :zeek:type:`void`
 
@@ -691,7 +736,7 @@ Functions
    the existing metadata record will be updated.
 
 .. zeek:id:: Intel::remove
-   :source-code: base/frameworks/intel/main.zeek 591 630
+   :source-code: base/frameworks/intel/main.zeek 649 688
 
    :Type: :zeek:type:`function` (item: :zeek:type:`Intel::Item`, purge_indicator: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`) : :zeek:type:`void`
 
@@ -699,7 +744,7 @@ Functions
    given metadata is ignored and the indicator is removed completely.
 
 .. zeek:id:: Intel::seen
-   :source-code: base/frameworks/intel/main.zeek 376 404
+   :source-code: base/frameworks/intel/main.zeek 405 433
 
    :Type: :zeek:type:`function` (s: :zeek:type:`Intel::Seen`) : :zeek:type:`void`
 
