@@ -47,3 +47,6 @@ Scripts that send data to the intelligence framework.
 :doc:`/scripts/policy/frameworks/intel/seen/x509.zeek`
 
 
+:doc:`/scripts/policy/frameworks/intel/seen/manage-event-groups.zeek`
+
+
