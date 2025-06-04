@@ -62,7 +62,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Storage::Backend::Redis::Options
-   :source-code: policy/frameworks/storage/backend/redis/main.zeek 17 42
+   :source-code: policy/frameworks/storage/backend/redis/main.zeek 17 49
 
    :Type: :zeek:type:`record`
 
@@ -90,6 +90,17 @@ Types
 
       Timeout for operation requests sent to the backend. Operations that
       exceed this time will return :zeek:see:`Storage::TIMEOUT`.
+
+
+   .. zeek:field:: username :zeek:type:`string` :zeek:attr:`&optional`
+
+      A username to use for authentication the server is protected by an ACL.
+
+
+   .. zeek:field:: password :zeek:type:`string` :zeek:attr:`&optional`
+
+      A username to use for authentication the server is protected by an ACL
+      or by a simple password.
 
 
    Options record for the built-in Redis backend.
