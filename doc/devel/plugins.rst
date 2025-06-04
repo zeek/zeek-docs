@@ -490,3 +490,4 @@ Plugin Tutorials
    :maxdepth: 1
 
    plugins/connkey-plugin
+   plugins/event-metadata-plugin
