@@ -650,11 +650,6 @@ Types
          (present if :doc:`/scripts/base/frameworks/config/main.zeek` is loaded)
 
 
-      .. zeek:enum:: DPD::LOG Log::ID
-
-         (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
-
-
       .. zeek:enum:: Analyzer::Logging::LOG Log::ID
 
          (present if :doc:`/scripts/base/frameworks/analyzer/logging.zeek` is loaded)
@@ -921,6 +916,11 @@ Types
          (present if :doc:`/scripts/base/files/pe/main.zeek` is loaded)
 
 
+      .. zeek:enum:: Analyzer::DebugLogging::LOG Log::ID
+
+         (present if :doc:`/scripts/policy/frameworks/analyzer/debug-logging.zeek` is loaded)
+
+
       .. zeek:enum:: Management::Log::LOG Log::ID
 
          (present if :doc:`/scripts/policy/frameworks/management/log.zeek` is loaded)
@@ -999,6 +999,11 @@ Types
       .. zeek:enum:: Known::CERTS_LOG Log::ID
 
          (present if :doc:`/scripts/policy/protocols/ssl/known-certs.zeek` is loaded)
+
+
+      .. zeek:enum:: DPD::LOG Log::ID
+
+         (present if :doc:`/scripts/policy/frameworks/analyzer/deprecated-dpd-log.zeek` is loaded)
 
 
       .. zeek:enum:: ZeekygenExample::LOG Log::ID

@@ -3919,7 +3919,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Analyzer::disabling_analyzer
-   :source-code: base/init-bare.zeek 3272 3272
+   :source-code: policy/frameworks/analyzer/debug-logging.zeek 192 207
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`connection`, atype: :zeek:type:`AllAnalyzers::Tag`, aid: :zeek:type:`count`) : :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -10826,17 +10826,20 @@ Types
       (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
 
 
-   .. zeek:field:: dpd :zeek:type:`DPD::Info` :zeek:attr:`&optional`
-
-      (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
-
-
    .. zeek:field:: service_violation :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
 
       (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
 
       The set of services (analyzers) for which Zeek has observed a
       violation after the same service had previously been confirmed.
+
+
+   .. zeek:field:: failed_analyzers :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
+
+      The set of prototol analyzers that were removed due to a protocol
+      violation after the same analyzer had previously been confirmed.
 
 
    .. zeek:field:: conn :zeek:type:`Conn::Info` :zeek:attr:`&optional`
@@ -11056,9 +11059,22 @@ Types
       (present if :doc:`/scripts/base/protocols/websocket/main.zeek` is loaded)
 
 
+   .. zeek:field:: packet_segment :zeek:type:`string` :zeek:attr:`&optional` :zeek:attr:`&log`
+
+      (present if :doc:`/scripts/policy/frameworks/analyzer/packet-segment-logging.zeek` is loaded)
+
+      A chunk of the payload that most likely resulted in a
+      analyzer violation.
+
+
    .. zeek:field:: known_services_done :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
       (present if :doc:`/scripts/policy/protocols/conn/known-services.zeek` is loaded)
+
+
+   .. zeek:field:: dpd :zeek:type:`DPD::Info` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/analyzer/deprecated-dpd-log.zeek` is loaded)
 
 
    .. zeek:field:: speculative_service :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
