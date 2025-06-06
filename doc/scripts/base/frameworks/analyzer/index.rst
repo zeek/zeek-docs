@@ -33,10 +33,10 @@ automatically activate a particular analyzer for new connections.
 
 :doc:`/scripts/base/frameworks/analyzer/dpd.zeek`
 
-   Activates port-independent protocol detection and selectively disables
-   analyzers if protocol violations occur.
+   Disables analyzers if protocol violations occur, and add service information
+   to connection log.
 
 :doc:`/scripts/base/frameworks/analyzer/logging.zeek`
 
-   Logging analyzer confirmations and violations into analyzer.log
+   Logging analyzer  violations into analyzer.log
 

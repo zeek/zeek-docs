@@ -33,7 +33,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Storage::Backend::SQLite::Options
-   :source-code: policy/frameworks/storage/backend/sqlite/main.zeek 9 45
+   :source-code: policy/frameworks/storage/backend/sqlite/main.zeek 9 50
 
    :Type: :zeek:type:`record`
 
@@ -55,13 +55,21 @@ Types
       different between the two.
 
 
+   .. zeek:field:: busy_timeout :zeek:type:`interval` :zeek:attr:`&default` = ``5.0 secs`` :zeek:attr:`&optional`
+
+      The timeout for the connection to the database. This is set
+      per-connection. It is equivalent to setting a ``busy_timeout`` pragma
+      value, but that value will be ignored in favor of this field.
+
+
    .. zeek:field:: pragma_commands :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`string` :zeek:attr:`&ordered` :zeek:attr:`&default` = *...* :zeek:attr:`&optional`
 
       Key/value table for passing pragma commands when opening the database.
       These must be pairs that can be passed to the ``pragma`` command in
       sqlite. The ``integrity_check`` pragma is run automatically and does
       not need to be included here. For pragmas without a second argument,
-      set the value to an empty string.
+      set the value to an empty string. Setting the ``busy_timeout`` pragma
+      here will be ignored.
 
 
    .. zeek:field:: pragma_timeout :zeek:type:`interval` :zeek:attr:`&default` = ``500.0 msecs`` :zeek:attr:`&optional`
