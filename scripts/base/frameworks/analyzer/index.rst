@@ -33,7 +33,7 @@ automatically activate a particular analyzer for new connections.
 
 :doc:`/scripts/base/frameworks/analyzer/dpd.zeek`
 
-   Disables analyzers if protocol violations occur, and add service information
+   Disables analyzers if protocol violations occur, and adds service information
    to connection log.
 
 :doc:`/scripts/base/frameworks/analyzer/logging.zeek`
