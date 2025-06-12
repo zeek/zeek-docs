@@ -15653,7 +15653,7 @@ Events
 ++++++
 
 .. zeek:id:: smtp_request
-   :source-code: base/protocols/smtp/main.zeek 204 272
+   :source-code: base/protocols/smtp/main.zeek 205 274
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`, command: :zeek:type:`string`, arg: :zeek:type:`string`)
 
@@ -15787,7 +15787,7 @@ Events
    .. zeek:see:: smtp_data  smtp_request smtp_reply
 
 .. zeek:id:: smtp_starttls
-   :source-code: base/protocols/smtp/main.zeek 404 411
+   :source-code: base/protocols/smtp/main.zeek 407 414
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
