@@ -431,7 +431,7 @@ input framework.
 The Binary Reader
 -----------------
 
-This  reader, selected via :zeek:see:`Input::READER_BINARY`, is intended for
+This reader, selected via :zeek:see:`Input::READER_BINARY`, is intended for
 use with file analysis input streams to ingest file content (and is the default
 type of reader for those streams).
 

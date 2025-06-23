@@ -104,7 +104,7 @@ in the form of files), and judge traffic, respectively.
 It’s critical to collect and analyze the four types of network security
 monitoring data. The question becomes one of determining the best way to
 accomplish this goal. Thankfully, Zeek as a NSM platform enables collection of
-at least two, and in some ways three, of these data forms, namely  transaction
+at least two, and in some ways three, of these data forms, namely transaction
 data, extracted content, and alert data.
 
 Zeek is best known for its transaction data. By default, when run and told to
