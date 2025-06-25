@@ -16,13 +16,16 @@ Summary
 ~~~~~~~
 Redefinable Options
 ###################
-==================================================================================== =====================================================================
-:zeek:id:`Telemetry::metrics_address`: :zeek:type:`string` :zeek:attr:`&redef`       Address used to make metric data available to Prometheus scrapers via
-                                                                                     HTTP.
-:zeek:id:`Telemetry::metrics_endpoint_name`: :zeek:type:`string` :zeek:attr:`&redef` ID for the metrics exporter.
-:zeek:id:`Telemetry::metrics_port`: :zeek:type:`port` :zeek:attr:`&redef`            Port used to make metric data available to Prometheus scrapers via
-                                                                                     HTTP.
-==================================================================================== =====================================================================
+===================================================================================== =====================================================================
+:zeek:id:`Telemetry::metrics_address`: :zeek:type:`string` :zeek:attr:`&redef`        Address used to make metric data available to Prometheus scrapers via
+                                                                                      HTTP.
+:zeek:id:`Telemetry::metrics_endpoint_label`: :zeek:type:`string` :zeek:attr:`&redef` Every metric automatically receives a label with the following name
+                                                                                      and the metrics_endpoint_name as value to identify the originating
+                                                                                      cluster node.
+:zeek:id:`Telemetry::metrics_endpoint_name`: :zeek:type:`string` :zeek:attr:`&redef`  ID for the metrics exporter.
+:zeek:id:`Telemetry::metrics_port`: :zeek:type:`port` :zeek:attr:`&redef`             Port used to make metric data available to Prometheus scrapers via
+                                                                                      HTTP.
+===================================================================================== =====================================================================
 
 
 Detailed Interface
@@ -39,8 +42,21 @@ Redefinable Options
    Address used to make metric data available to Prometheus scrapers via
    HTTP.
 
+.. zeek:id:: Telemetry::metrics_endpoint_label
+   :source-code: base/frameworks/telemetry/options.zeek 23 23
+
+   :Type: :zeek:type:`string`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``"node"``
+
+   Every metric automatically receives a label with the following name
+   and the metrics_endpoint_name as value to identify the originating
+   cluster node.
+   The label was previously hard-code as "endpoint", and that's why
+   the variable is called the way it is, but "node" is the better label.
+
 .. zeek:id:: Telemetry::metrics_endpoint_name
-   :source-code: base/frameworks/telemetry/options.zeek 21 21
+   :source-code: base/frameworks/telemetry/options.zeek 28 28
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
