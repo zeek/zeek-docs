@@ -112,8 +112,8 @@ Functions
 :zeek:id:`get_current_packet_ts`: :zeek:type:`function`         Returns the currently processed PCAP packet's timestamp or a 0 timestamp if
                                                                 there is no packet being processed at the moment.
 :zeek:id:`get_file_name`: :zeek:type:`function`                 Gets the filename associated with a file handle.
+:zeek:id:`get_plugin_components`: :zeek:type:`function`         Get a list of tags available for a plugin category.
 :zeek:id:`get_port_transport_proto`: :zeek:type:`function`      Extracts the transport protocol from a :zeek:type:`port`.
-:zeek:id:`get_tags_by_category`: :zeek:type:`function`          Get a list of tags available for a plugin category.
 :zeek:id:`getenv`: :zeek:type:`function`                        Returns a system environment variable.
 :zeek:id:`gethostname`: :zeek:type:`function`                   Returns the hostname of the machine Zeek runs on.
 :zeek:id:`getpid`: :zeek:type:`function`                        Returns Zeek's process ID.
@@ -1639,6 +1639,20 @@ Functions
    
    .. zeek:see:: open
 
+.. zeek:id:: get_plugin_components
+   :source-code: base/bif/zeek.bif.zeek 2830 2830
+
+   :Type: :zeek:type:`function` (category: :zeek:type:`string`) : :zeek:type:`plugin_component_vec`
+
+   Get a list of tags available for a plugin category.
+   
+
+   :param category: The plugin category to request tags for.
+   
+
+   :returns: A vector of records containing the tags of all plugin components
+            that belong to the specified category.
+
 .. zeek:id:: get_port_transport_proto
    :source-code: base/bif/zeek.bif.zeek 1823 1823
 
@@ -1654,20 +1668,6 @@ Functions
    
    .. zeek:see:: get_conn_transport_proto
                 get_orig_seq get_resp_seq
-
-.. zeek:id:: get_tags_by_category
-   :source-code: base/bif/zeek.bif.zeek 2830 2830
-
-   :Type: :zeek:type:`function` (category: :zeek:type:`string`) : :zeek:type:`tag_component_vec`
-
-   Get a list of tags available for a plugin category.
-   
-
-   :param category: The plugin category to request tags for.
-   
-
-   :returns: A vector of records containing the tags of all plugin components
-            that belong to the specified category.
 
 .. zeek:id:: getenv
    :source-code: base/bif/zeek.bif.zeek 110 110
