@@ -324,7 +324,7 @@ or user-defined).
   * - Type cast
     - ``v as t``
     - Cast value ``v`` into type ``t``. Evaluates to the value as cast to the
-      specified type.  If this is not a  supported cast, then a runtime error
+      specified type.  If this is not a supported cast, then a runtime error
       is triggered.
 
   * - Check if a cast is supported

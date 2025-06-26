@@ -132,7 +132,7 @@ Generic analyzer registration
 The framework provides mechanisms for automatically attaching analyzers to
 files. For example, the :zeek:see:`Files::register_for_mime_types` function
 ensures that Zeek automatically attaches a given analyzer to all files of a
-given MIME type. For fully customized  auto-attachment logic take a look at
+given MIME type. For fully customized auto-attachment logic take a look at
 :zeek:see:`Files::register_analyzer_add_callback`, and refer to
 :doc:`base/frameworks/files/main.zeek </scripts/base/frameworks/files/main.zeek>`
 for additional APIs and data structures.
