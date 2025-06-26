@@ -482,3 +482,11 @@ each plugin. Scripts are installed into a subdirectory of
 ``<zeek-install-prefix>/share/zeek/builtin-plugins`` specific to
 each plugin. The scripts directory is also automatically added to
 the default ``ZEEKPATH``.
+
+Plugin Tutorials
+================
+
+.. toctree::
+   :maxdepth: 1
+
+   plugins/connkey-plugin
