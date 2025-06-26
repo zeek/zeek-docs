@@ -221,7 +221,7 @@ functions, data centrality complexities can be addressed efficiently. One must
 rely on clusterization techniques provided by Zeek scripting, the Broker API,
 and clusterization components.
 
-When clustering your scripts, the fundamental work  to move data or events in
+When clustering your scripts, the fundamental work to move data or events in
 the context of a cluster falls primarily on few high level abstractions of
 communication patterns:
 
@@ -409,7 +409,7 @@ hashing key.
 The following example illustrates this issue. Assume that we are counting the
 number of scanner IPs from each ``/24`` subnet. If the key were the source IP,
 then depending on the hashing, different IP addresses from the same ``/24``
-might end up on  different proxies for the aggregation function. In this case
+might end up on different proxies for the aggregation function. In this case
 one might instead want to use a more inclusive hashing key, such as the subnet
 (``/24``) itself.  To illustrate the issue, in the notice log below, you see
 that 3 scanners each from ``52.100.165.0/24`` went to ``proxy-1`` and

@@ -74,7 +74,7 @@ An example of a :file:`quic.log`.
       from the server of the new connection
 
     + A TLS ServerHello response from the server (s) - the
-      selection  of a cipher suite from the options provided by the
+      selection of a cipher suite from the options provided by the
       client
 
     + A handshake packet from the client (H)

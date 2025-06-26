@@ -42,7 +42,7 @@ The Zeek scripting language supports the following built-in types:
     - File type (only for writing)
 
   * - :zeek:type:`opaque`
-    - Opaque type (for  some built-in  functions)
+    - Opaque type (for some built-in functions)
 
   * - :zeek:type:`any`
     - Any type (for functions or containers)
@@ -853,7 +853,7 @@ will infer ``int``.
 
 For signed-integer arithmetic involving ``int`` types that cause overflows
 (results that exceed the numeric limits of representable values in either
-direction), Zeek's behavior is generally undefined  and one should not rely on
+direction), Zeek's behavior is generally undefined and one should not rely on
 any observed behavior being consistent across compilers, platforms, time, etc.
 The reason for this is that the C++ standard also deems this as undefined
 behavior and Zeek does not currently attempt to detect such overflows within
@@ -1149,7 +1149,7 @@ Zeek supports the following pre-defined character classes:
 
   * - ``[:print:]``
     - ``[^[:cntrl:]]``
-    - Printable characters: those with  graphic representation, plus the space character.
+    - Printable characters: those with graphic representation, plus the space character.
 
   * - ``[:punct:]``
     -
