@@ -58,11 +58,15 @@ Proxy
 -----
 
 A proxy is a Zeek process that may be used to offload data storage or any
-arbitrary workload. A cluster may contain multiple proxy nodes. The default
-scripts that come with Zeek make only minimal use of proxies, so a single one
-will usually  be sufficient. But custom scripts may make more  use of it to
-partition data or workloads, providing greater cluster scalability potential
-than just doing similar tasks on a single, centralized manager node.
+arbitrary workload. A cluster may contain multiple proxy nodes.
+Zeek's default scripts make only minimal use of proxies.
+Custom scripts or third-party packages may exercise proxies more heavily
+to partition data or workloads, providing greater cluster scalability potential.
+The number of required proxy nodes in a cluster depends on the deployed scripts,
+cluster size and traffic characteristics. For small clusters with four or less workers,
+a single proxy node is usually sufficient. For larger clusters, you may want to
+closely monitor :ref:`CPU and memory usage <framework-telemetry>` of proxy
+nodes and increase their number as needed.
 
 Zeek processes acting as proxies don’t tend to be extremely hard on CPU or
 memory, and users frequently run proxy processes on the same physical host as
