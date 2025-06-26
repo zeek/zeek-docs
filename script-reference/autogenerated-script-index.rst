@@ -641,6 +641,7 @@
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
    policy/frameworks/analyzer/deprecated-dpd-log.zeek </scripts/policy/frameworks/analyzer/deprecated-dpd-log.zeek>
+   policy/frameworks/conn_key/vlan_fivetuple.zeek </scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek>
    policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>
    policy/frameworks/cluster/backend/zeromq/connect.zeek </scripts/policy/frameworks/cluster/backend/zeromq/connect.zeek>
    policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>
