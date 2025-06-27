@@ -33,3 +33,6 @@ of Zeek instances.
    Defines an interface for managing pools of cluster nodes.  Pools are
    a useful way to distribute work or data among nodes within a cluster.
 
+:doc:`/scripts/base/frameworks/cluster/telemetry.zeek`
+
+
