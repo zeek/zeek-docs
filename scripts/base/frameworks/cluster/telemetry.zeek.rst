@@ -46,7 +46,7 @@ Redefinable Options
    The telemetry types to enable for the core backend.
 
 .. zeek:id:: Cluster::Telemetry::message_size_bounds
-   :source-code: base/frameworks/cluster/telemetry.zeek 37 37
+   :source-code: base/frameworks/cluster/telemetry.zeek 36 36
 
    :Type: :zeek:type:`vector` of :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -69,9 +69,14 @@ Redefinable Options
       ::
 
          {
-            [/^?(^zeek\.cluster\.nodeid\..*)$?/] = "zeek.cluster.nodeid.__normalized__",
             [/^?(^zeek\/cluster\/nodeid\/.*)$?/] = "zeek/cluster/nodeid/__normalized__"
          }
+
+   :Redefinition: from :doc:`/scripts/policy/frameworks/cluster/backend/zeromq/main.zeek`
+
+      ``+=``::
+
+         /^?(^zeek\.cluster\.nodeid\..*)$?/ = zeek.cluster.nodeid.__normalized__
 
 
    Table used for normalizing topic names that contain random parts.

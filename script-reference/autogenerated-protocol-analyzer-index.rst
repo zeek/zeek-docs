@@ -726,7 +726,7 @@ Events
 ++++++
 
 .. zeek:id:: Cluster::websocket_client_added
-   :source-code: base/frameworks/cluster/main.zeek 678 683
+   :source-code: base/frameworks/cluster/main.zeek 688 693
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Cluster::EndpointInfo`, subscriptions: :zeek:type:`string_vec`)
 
@@ -739,7 +739,7 @@ Events
    :param subscriptions: The WebSocket client's subscriptions as provided in the handshake.
 
 .. zeek:id:: Cluster::websocket_client_lost
-   :source-code: base/frameworks/cluster/main.zeek 685 691
+   :source-code: base/frameworks/cluster/main.zeek 695 701
 
    :Type: :zeek:type:`event` (endpoint: :zeek:type:`Cluster::EndpointInfo`, code: :zeek:type:`count`, reason: :zeek:type:`string`)
 
