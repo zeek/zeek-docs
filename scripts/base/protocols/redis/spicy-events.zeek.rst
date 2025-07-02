@@ -12,25 +12,29 @@ Summary
 ~~~~~~~
 Types
 #####
-==================================================== ========================================
-:zeek:type:`Redis::AuthCommand`: :zeek:type:`record` The Redis AUTH command.
-:zeek:type:`Redis::Command`: :zeek:type:`record`     A generic Redis command from the client.
-:zeek:type:`Redis::ReplyData`: :zeek:type:`record`   A generic Redis reply from the client.
-:zeek:type:`Redis::SetCommand`: :zeek:type:`record`  The Redis SET command.
-==================================================== ========================================
+===================================================== ========================================
+:zeek:type:`Redis::AuthCommand`: :zeek:type:`record`  The Redis AUTH command.
+:zeek:type:`Redis::Command`: :zeek:type:`record`      A generic Redis command from the client.
+:zeek:type:`Redis::HelloCommand`: :zeek:type:`record` The Redis HELLO command (handshake).
+:zeek:type:`Redis::ReplyData`: :zeek:type:`record`    A generic Redis reply from the client.
+:zeek:type:`Redis::SetCommand`: :zeek:type:`record`   The Redis SET command.
+===================================================== ========================================
 
 Events
 ######
-================================================== =======================================================================
-:zeek:id:`Redis::auth_command`: :zeek:type:`event` Generated for Redis AUTH commands sent to the Redis server.
-:zeek:id:`Redis::command`: :zeek:type:`event`      Generated for every command sent by the client to the Redis server.
-:zeek:id:`Redis::error`: :zeek:type:`event`        Generated for every error response sent by the Redis server to the
-                                                   client.
-:zeek:id:`Redis::get_command`: :zeek:type:`event`  Generated for Redis GET commands sent to the Redis server.
-:zeek:id:`Redis::reply`: :zeek:type:`event`        Generated for every successful response sent by the Redis server to the
-                                                   client.
-:zeek:id:`Redis::set_command`: :zeek:type:`event`  Generated for Redis SET commands sent to the Redis server.
-================================================== =======================================================================
+=================================================== =======================================================================
+:zeek:id:`Redis::auth_command`: :zeek:type:`event`  Generated for Redis AUTH commands sent to the Redis server.
+:zeek:id:`Redis::command`: :zeek:type:`event`       Generated for every command sent by the client to the Redis server.
+:zeek:id:`Redis::error`: :zeek:type:`event`         Generated for every error response sent by the Redis server to the
+                                                    client.
+:zeek:id:`Redis::get_command`: :zeek:type:`event`   Generated for Redis GET commands sent to the Redis server.
+:zeek:id:`Redis::hello_command`: :zeek:type:`event` Generated for Redis HELLO commands sent to the Redis server.
+:zeek:id:`Redis::reply`: :zeek:type:`event`         Generated for every successful response sent by the Redis server to the
+                                                    client.
+:zeek:id:`Redis::server_push`: :zeek:type:`event`   Generated for out-of-band data, outside of the request-response
+                                                    model.
+:zeek:id:`Redis::set_command`: :zeek:type:`event`   Generated for Redis SET commands sent to the Redis server.
+=================================================== =======================================================================
 
 
 Detailed Interface
@@ -56,7 +60,7 @@ Types
    The Redis AUTH command.
 
 .. zeek:type:: Redis::Command
-   :source-code: base/protocols/redis/spicy-events.zeek 41 53
+   :source-code: base/protocols/redis/spicy-events.zeek 47 59
 
    :Type: :zeek:type:`record`
 
@@ -82,20 +86,45 @@ Types
       The value, if this command is known to have a value
 
 
-   .. zeek:field:: known :zeek:type:`Redis::KnownCommand` :zeek:attr:`&optional`
+   .. zeek:field:: known :zeek:type:`Redis::RedisCommand` :zeek:attr:`&optional`
 
       The command in an enum if it was known
 
 
    A generic Redis command from the client.
 
-.. zeek:type:: Redis::ReplyData
-   :source-code: base/protocols/redis/spicy-events.zeek 56 58
+.. zeek:type:: Redis::HelloCommand
+   :source-code: base/protocols/redis/spicy-events.zeek 41 44
 
    :Type: :zeek:type:`record`
 
 
-   .. zeek:field:: value :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
+   .. zeek:field:: requested_resp_version :zeek:type:`string` :zeek:attr:`&optional`
+
+      The sent requested RESP version, such as "2" or "3"
+
+
+   The Redis HELLO command (handshake).
+
+.. zeek:type:: Redis::ReplyData
+   :source-code: base/protocols/redis/spicy-events.zeek 62 69
+
+   :Type: :zeek:type:`record`
+
+
+   .. zeek:field:: attributes :zeek:type:`string` :zeek:attr:`&optional`
+
+      The RESP3 attributes applied to this, if any
+
+
+   .. zeek:field:: value :zeek:type:`string` :zeek:attr:`&log`
+
+      The string version of the reply data
+
+
+   .. zeek:field:: min_protocol_version :zeek:type:`count`
+
+      The minimum RESP version that supports this reply type
 
 
    A generic Redis reply from the client.
@@ -163,7 +192,7 @@ Types
 Events
 ######
 .. zeek:id:: Redis::auth_command
-   :source-code: base/protocols/redis/spicy-events.zeek 80 80
+   :source-code: base/protocols/redis/spicy-events.zeek 91 91
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, command: :zeek:type:`Redis::AuthCommand`)
 
@@ -176,7 +205,7 @@ Events
    :param command: The AUTH command sent to the server and its data.
 
 .. zeek:id:: Redis::command
-   :source-code: base/protocols/redis/main.zeek 125 183
+   :source-code: base/protocols/redis/main.zeek 159 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, cmd: :zeek:type:`Redis::Command`)
 
@@ -189,7 +218,7 @@ Events
    :param cmd: The command sent to the server.
 
 .. zeek:id:: Redis::error
-   :source-code: base/protocols/redis/main.zeek 246 258
+   :source-code: base/protocols/redis/main.zeek 325 337
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`Redis::ReplyData`)
 
@@ -203,7 +232,7 @@ Events
    :param data: The server data sent to the client.
 
 .. zeek:id:: Redis::get_command
-   :source-code: base/protocols/redis/spicy-events.zeek 73 73
+   :source-code: base/protocols/redis/spicy-events.zeek 84 84
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, key: :zeek:type:`string`)
 
@@ -215,13 +244,44 @@ Events
 
    :param command: The GET command sent to the server and its data.
 
+.. zeek:id:: Redis::hello_command
+   :source-code: base/protocols/redis/main.zeek 150 157
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, command: :zeek:type:`Redis::HelloCommand`)
+
+   Generated for Redis HELLO commands sent to the Redis server.
+   
+
+   :param c: The connection.
+   
+
+   :param command: The HELLO command sent to the server and its data.
+
 .. zeek:id:: Redis::reply
-   :source-code: base/protocols/redis/main.zeek 232 244
+   :source-code: base/protocols/redis/main.zeek 294 323
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`Redis::ReplyData`)
 
    Generated for every successful response sent by the Redis server to the
-   client.
+   client. For RESP2, this includes "push" messages, which are out of band.
+   These will also raise a server_push event. RESP3 push messages will only
+   raise a server_push event.
+   
+
+   :param c: The connection.
+   
+
+   :param data: The server data sent to the client.
+   
+   .. zeek:see:: Redis::server_push
+
+.. zeek:id:: Redis::server_push
+   :source-code: base/protocols/redis/spicy-events.zeek 133 133
+
+   :Type: :zeek:type:`event` (c: :zeek:type:`connection`, data: :zeek:type:`Redis::ReplyData`)
+
+   Generated for out-of-band data, outside of the request-response
+   model.
    
 
    :param c: The connection.
@@ -230,7 +290,7 @@ Events
    :param data: The server data sent to the client.
 
 .. zeek:id:: Redis::set_command
-   :source-code: base/protocols/redis/spicy-events.zeek 66 66
+   :source-code: base/protocols/redis/spicy-events.zeek 77 77
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, command: :zeek:type:`Redis::SetCommand`)
 

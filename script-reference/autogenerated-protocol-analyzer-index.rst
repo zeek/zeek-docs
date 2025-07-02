@@ -16442,93 +16442,124 @@ Support for Spicy parsers (.hlto)
 Types
 +++++
 
-.. zeek:type:: Redis::KnownCommand
+.. zeek:type:: Redis::RedisCommand
 
    :Type: :zeek:type:`enum`
 
-      .. zeek:enum:: Redis::KnownCommand_APPEND Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_APPEND Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_AUTH Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_AUTH Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BITCOUNT Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BITCOUNT Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BITFIELD Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BITFIELD Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BITFIELD_RO Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BITFIELD_RO Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BITOP Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BITOP Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BITPOS Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BITPOS Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BLMPOP Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BLMPOP Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BLPOP Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BLPOP Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_BRPOP Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_BRPOP Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_CLIENT Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_CLIENT Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_COPY Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_COPY Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_DECR Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_DECR Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_DECRBY Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_DECRBY Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_DEL Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_DEL Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_DUMP Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_DUMP Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_EXISTS Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_EXISTS Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_EXPIRE Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_EXPIRE Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_EXPIREAT Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_EXPIREAT Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_EXPIRETIME Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_EXPIRETIME Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_GET Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_GET Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_GETBIT Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_GETBIT Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_GETDEL Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_GETDEL Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_GETEX Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_GETEX Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_GETRANGE Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_GETRANGE Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_GETSET Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_GETSET Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_HDEL Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_HDEL Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_HGET Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_HELLO Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_HSET Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_HGET Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_INCR Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_HSET Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_INCRBY Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_INCR Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_KEYS Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_INCRBY Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_MGET Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_KEYS Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_MOVE Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_MGET Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_MSET Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_MOVE Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_PERSIST Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_MSET Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_RENAME Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_PERSIST Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_SET Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_PSUBSCRIBE Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_STRLEN Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_PUNSUBSCRIBE Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_TTL Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_QUIT Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_TYPE Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_RENAME Redis::RedisCommand
 
-      .. zeek:enum:: Redis::KnownCommand_Undef Redis::KnownCommand
+      .. zeek:enum:: Redis::RedisCommand_RESET Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_SET Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_STRLEN Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_SUBSCRIBE Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_SSUBSCRIBE Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_SUNSUBSCRIBE Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_TTL Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_TYPE Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_UNSUBSCRIBE Redis::RedisCommand
+
+      .. zeek:enum:: Redis::RedisCommand_Undef Redis::RedisCommand
+
+
+.. zeek:type:: Redis::ReplyType
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: Redis::ReplyType_Reply Redis::ReplyType
+
+      .. zeek:enum:: Redis::ReplyType_Error Redis::ReplyType
+
+      .. zeek:enum:: Redis::ReplyType_Push Redis::ReplyType
+
+      .. zeek:enum:: Redis::ReplyType_Undef Redis::ReplyType
 
 
 .. _plugin-zeek-ssh:
