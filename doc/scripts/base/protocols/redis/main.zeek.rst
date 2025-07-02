@@ -22,11 +22,20 @@ Redefinable Options
 :zeek:id:`Redis::ports`: :zeek:type:`set` :zeek:attr:`&redef` The ports to register Redis for.
 ============================================================= ================================
 
+State Variables
+###############
+========================================================= =
+:zeek:id:`Redis::enter_subscribed_mode`: :zeek:type:`set` 
+:zeek:id:`Redis::exit_subscribed_mode`: :zeek:type:`set`  
+:zeek:id:`Redis::no_response_commands`: :zeek:type:`set`  
+========================================================= =
+
 Types
 #####
 ===================================================== ===============================================================================
 :zeek:type:`Redis::Info`: :zeek:type:`record`         Record type containing the column fields of the Redis log.
 :zeek:type:`Redis::NoReplyRange`: :zeek:type:`record` Which numbered commands should not expect a reply due to CLIENT REPLY commands.
+:zeek:type:`Redis::RESPVersion`: :zeek:type:`enum`    
 :zeek:type:`Redis::State`: :zeek:type:`record`        
 ===================================================== ===============================================================================
 
@@ -59,7 +68,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Redis::max_pending_commands
-   :source-code: base/protocols/redis/main.zeek 62 62
+   :source-code: base/protocols/redis/main.zeek 74 74
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -83,6 +92,58 @@ Redefinable Options
 
 
    The ports to register Redis for.
+
+State Variables
+###############
+.. zeek:id:: Redis::enter_subscribed_mode
+   :source-code: base/protocols/redis/main.zeek 77 77
+
+   :Type: :zeek:type:`set` [:zeek:type:`Redis::RedisCommand`]
+   :Default:
+
+      ::
+
+         {
+            Redis::RedisCommand_PSUBSCRIBE,
+            Redis::RedisCommand_SSUBSCRIBE,
+            Redis::RedisCommand_SUBSCRIBE
+         }
+
+
+
+.. zeek:id:: Redis::exit_subscribed_mode
+   :source-code: base/protocols/redis/main.zeek 81 81
+
+   :Type: :zeek:type:`set` [:zeek:type:`Redis::RedisCommand`]
+   :Default:
+
+      ::
+
+         {
+            Redis::RedisCommand_RESET,
+            Redis::RedisCommand_QUIT
+         }
+
+
+
+.. zeek:id:: Redis::no_response_commands
+   :source-code: base/protocols/redis/main.zeek 84 84
+
+   :Type: :zeek:type:`set` [:zeek:type:`Redis::RedisCommand`]
+   :Default:
+
+      ::
+
+         {
+            Redis::RedisCommand_SSUBSCRIBE,
+            Redis::RedisCommand_SUBSCRIBE,
+            Redis::RedisCommand_PUNSUBSCRIBE,
+            Redis::RedisCommand_SUNSUBSCRIBE,
+            Redis::RedisCommand_UNSUBSCRIBE,
+            Redis::RedisCommand_PSUBSCRIBE
+         }
+
+
 
 Types
 #####
@@ -140,8 +201,18 @@ Types
    These commands may simply skip one, or they may turn off replies then later
    reenable them. Thus, the end of the interval is optional.
 
+.. zeek:type:: Redis::RESPVersion
+   :source-code: base/protocols/redis/main.zeek 44 48
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: Redis::RESP2 Redis::RESPVersion
+
+      .. zeek:enum:: Redis::RESP3 Redis::RESPVersion
+
+
 .. zeek:type:: Redis::State
-   :source-code: base/protocols/redis/main.zeek 44 58
+   :source-code: base/protocols/redis/main.zeek 49 70
 
    :Type: :zeek:type:`record`
 
@@ -168,17 +239,33 @@ Types
       it begins at one and ends at the second.
 
 
+   .. zeek:field:: skip_commands :zeek:type:`set` [:zeek:type:`count`]
+
+      The command indexes (from current_command and current_reply) that will
+      not get responses no matter what.
+
+
    .. zeek:field:: violation :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
       We store if this analyzer had a violation to avoid logging if so.
       This should not be super necessary, but worth a shot.
 
 
+   .. zeek:field:: subscribed_mode :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
+      If we are in "subscribed" mode
+
+
+   .. zeek:field:: resp_version :zeek:type:`Redis::RESPVersion` :zeek:attr:`&default` = ``Redis::RESP2`` :zeek:attr:`&optional`
+
+      The RESP version
+
+
 
 Hooks
 #####
 .. zeek:id:: Redis::finalize_redis
-   :source-code: base/protocols/redis/main.zeek 260 278
+   :source-code: base/protocols/redis/main.zeek 339 357
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

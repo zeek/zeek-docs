@@ -250,13 +250,13 @@ Functions
 .. zeek:id:: OpenFlow::register_controller
    :source-code: base/frameworks/openflow/non-cluster.zeek 28 34
 
-   :Type: :zeek:type:`function` (tpe: :zeek:type:`OpenFlow::Plugin`, name: :zeek:type:`string`, controller: :zeek:type:`OpenFlow::Controller`) : :zeek:type:`void`
+   :Type: :zeek:type:`function` (type_: :zeek:type:`OpenFlow::Plugin`, name: :zeek:type:`string`, controller: :zeek:type:`OpenFlow::Controller`) : :zeek:type:`void`
 
    Function to register a controller instance. This function
    is called automatically by the plugin _new functions.
    
 
-   :param tpe: Type of this plugin.
+   :param type_: Type of this plugin.
    
 
    :param name: Unique name of this controller instance.
