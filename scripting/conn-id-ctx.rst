@@ -20,19 +20,25 @@ share the same IP address, but represent different systems.
 The terminology used within Zeek is that IP addresses or connections
 are observed in different "contexts".
 
+In some deployments, Zeek may receive network traffic from different network
+segments sharing overlapping IP ranges.
+In such cases, there is then usually some additional means of separating out
+the two ranges, such as VLAN numbers.
+For example, host 10.0.0.37 in VLAN 1 and host 10.0.0.37 in VLAN 2 may share
+the same IP address, but represent different systems.
+In Zeek's terminology, such IP addresses (or connections) occur in different
+*contexts*. In the example, the context is the VLAN ID; in other settings,
+the context could be, say, Virtual Network Identifiers (VNIs) as used with
+UDP-based tunnels like VXLAN or Geneve.
+Generally, from Zeek's perspective, the context can be any kind of value that
+Zeek can derive from the packet data.
 
-Commonly, ethernet layers may contain information that makes it possible to discriminate
-between different network segments. Concretely, VLAN tagging is one such approach.
-Segments can also be distinguished by Virtual Network Identifiers (VNIs)
-in case of UDP-based tunnels like VXLAN or Geneve.
 
-
-Since Zeek 8.0, this information can be extracted by
+Since version 8.0, Zeek can extract these contexts through
 :ref:`plugin-provided connection key implementations <connkey-plugin>`
-and included into Zeek's core connection tracking. Further, plugins
+and include them into its core connection tracking. Such plugins then also
 :zeek:keyword:`redefine <redef>` :zeek:see:`conn_id_ctx` with additional
-fields to expose the extracted information used for connection tracking to
-the Zeek scripting layer.
+fields to expose the context values to the Zeek scripting layer.
 For example, loading the doc:`/scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek`
 adds :zeek:field:`vlan` and :zeek:field:`inner_vlan` fields to :zeeK:see:`conn_id_ctx`.
 
@@ -52,13 +58,13 @@ of the index into a table:
 	}
 
 
-If :zeek:field:`ctx` is populated with fields for VLAN tags, the table indexing
-will take them into account and create individual entries per ``(ctx, addr)``
-pair.
-
+If, for example, :zeek:field:`ctx` is populated with fields for VLAN tags,
+that table will create individual entries per ``(VLAN, addr)`` pair.
+This will also work correctly if no context has been defined: `c$id$ctx` will
+then just be an empty records with no fields.
 
 Alternatively, users can define their own record type that includes both :zeek:see:`conn_id_ctx` and :zeek:type:`addr`,
-and use instances of such records to index into tables.
+and use instances of such records to index into tables:
 
 .. literalinclude:: conn_id_ctx_my_endpoint.zeek
    :caption: conn_id_ctx_my_endpoint.zeek
@@ -82,7 +88,7 @@ Note that this script snippet isn't VLAN-specific, yet it is VLAN-aware. When
 using a different connection key plugin, like the one discussed in the
 :ref:`connection key tutorial <connkey-plugin>`, the result is as follows instead,
 discriminating entries in the ``talks_with_service`` table by the value of
-``c$id$ctx$vxlan_vni``.
+``c$id$ctx$vxlan_vni``:
 
 .. code-block:: shell
 
@@ -93,8 +99,9 @@ discriminating entries in the ``talks_with_service`` table by the value of
     [ctx=[vxlan_vni=4242], a=141.142.228.5], HTTP
 
 
-When using Zeek's default five-tuple hashing instead, the :zeek:see:`conn_id_ctx`
-record is empty and address 141.142,228.5 maps to a single entry in the table:
+When using Zeek's default five-tuple connection key, the :zeek:see:`conn_id_ctx`
+record is empty and originator address 141.142.228.5 appears as a single entry
+in the table instead:
 
 .. code-block:: shell
 
