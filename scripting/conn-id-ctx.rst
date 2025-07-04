@@ -60,7 +60,7 @@ of the index into a table:
 
 If, for example, :zeek:field:`ctx` is populated with fields for VLAN tags,
 that table will create individual entries per ``(VLAN, addr)`` pair.
-This will also work correctly if no context has been defined: `c$id$ctx` will
+This will also work correctly if no context has been defined: ``c$id$ctx`` will
 then just be an empty records with no fields.
 
 Alternatively, users can define their own record type that includes both :zeek:see:`conn_id_ctx` and :zeek:type:`addr`,
