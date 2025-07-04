@@ -60,25 +60,26 @@ and caused by Zeek not discriminating between the different HTTP connections.
 The plugin we'll be developing adds the VXLAN VNI to the connection key.
 The result is that instead of a single HTTP connection, there'll be three HTTP
 connections tracked and logged separately by Zeek. The VNI is also added as
-:zeek:field:`vxlan_vni` to the :zeek:see:`conn_id` record and therefore available
-in the ``http.log`` and ``conn.log`` as part of the ``id.*`` fields.
+:zeek:field:`vxlan_vni` to the :zeek:see:`conn_id_ctx` record and therefore available
+in the ``http.log`` and ``conn.log`` available as ``id.ctx.vxlan_vni`` column.
 
-The logs after activating the plugin will change and look as follows:
+After activating the plugin Zeek tracks each HTTP connection individually and
+the logs will look as follows:
 
 .. code-block:: shell
 
-    $ zeek-cut -m uid method host uri id.vxlan_vni < http.log
-    uid     method  host    uri     id.vxlan_vni
-    CyZiAc2lEt5DAZseQl      GET     bro.org /download/CHANGES.bro-aux.txt   4711
-    CIwCdr1G7sTtHRZ8y4      GET     bro.org /download/CHANGES.bro-aux.txt   4242
-    CWBNgn3JYHzXJZjXKc      GET     bro.org /download/CHANGES.bro-aux.txt   -
+    $ zeek-cut -m uid method host uri id.ctx.vxlan_vni < http.log
+    uid     method  host    uri     id.ctx.vxlan_vni
+    CBifsS2vqGEg8Fa5ac      GET     bro.org /download/CHANGES.bro-aux.txt   4711
+    CEllEz13txeSrbGqBe      GET     bro.org /download/CHANGES.bro-aux.txt   4242
+    CRfbJw1kBBvHDQQBta      GET     bro.org /download/CHANGES.bro-aux.txt   -
 
-    $ zeek-cut -m uid service history orig_pkts resp_pkts id.vxlan_vni < conn.log
-    uid     service history orig_pkts       resp_pkts       id.vxlan_vni
-    CWBNgn3JYHzXJZjXKc      http    ShADadFf        7       7       -
-    CIwCdr1G7sTtHRZ8y4      http    ShADadFf        7       7       4242
-    CyZiAc2lEt5DAZseQl      http    ShADadFf        7       7       4711
-    C24p8iCAjprR6LFn8       vxlan   D       28      0       -
+    $ zeek-cut -m uid service history orig_pkts resp_pkts id.ctx.vxlan_vni < conn.log
+    uid     service history orig_pkts       resp_pkts       id.ctx.vxlan_vni
+    CRfbJw1kBBvHDQQBta      http    ShADadFf        7       7       -
+    CEllEz13txeSrbGqBe      http    ShADadFf        7       7       4242
+    CBifsS2vqGEg8Fa5ac      http    ShADadFf        7       7       4711
+    CC6Ald2LejCS1qcDy4      vxlan   D       28      0       -
 
 
 Implementation
@@ -92,7 +93,7 @@ Instances of this class are created by the factory. This is a typical
 abstract factory pattern.
 
 Our plugin's ``Configure()`` method follows the standard pattern of setting up
-basic information about the plugin and then registering the ``ConnKey`` component.
+basic information about the plugin and registering our own ``ConnKey`` component.
 
 .. literalinclude:: connkey-vxlan-fivetuple-plugin-src/src/Plugin.cc
    :caption: Plugin.cc
@@ -114,21 +115,21 @@ instances.
    :caption: VxlanVniConnKey class in Factory.cc
    :language: cpp
    :linenos:
-   :lines: 18-71
+   :lines: 18-78
    :tab-width: 4
 
 The current pattern for custom connection keys is to embed the bytes used for
 the ``zeek::session::detail::Key`` as a packed struct within a ``ConnKey`` instance.
 We override ``DoPopulateConnIdVal()`` to set the :zeek:field:`vxlan_vni` field
-of a :zeek:see:`conn_id` record value to the extracted VXLAN VNI. A small trick
-employed is that we default the most significant byte of ``vxlan_vni`` to 0xFF.
+of the :zeek:see:`conn_id_ctx` record value to the extracted VXLAN VNI. A small trick
+employed is that we default the most significant byte of ``key.vxlan_vni`` to 0xFF.
 As a VNI is only 24bit, this allows us to determine if a VNI was actually
 extracted, or whether it is unset.
 
 The ``DoInit()`` implementation is the actual place for connection key customization.
-This is where we extract the VXLAN VNI. To do so, we're using the relatively
+This is where we extract the VXLAN VNI from packet data. To do so, we're using the relatively
 new ``GetAnalyzerData()`` API of the packet analysis manager.
-This API allows generic access to the layers analyzed for  give packet analyzer.
+This API allows generic access to the raw data layers analyzed by a give packet analyzer.
 For our use-case, we take the most outer VXLAN layer, if any, and extract the VNI
 into ``key.vxlan_vni``.
 
@@ -136,10 +137,10 @@ There's no requirement to use the ``GetAnalyzerData()`` API. If the ``zeek::Pack
 instance passed to ``DoInit()`` contains the needed information, e.g. VLAN identifiers
 or information from the packet's raw bytes, they can be used directly.
 Specifically, ``GetAnalyzerData()`` may introduce additional overhead into the
-packet path that can be avoided if the needed information is available
-already elsewhere.
-Using other Zeek APIs ways to determine connection key information is of
-course also possible.
+packet path that can be avoided if the information is readily available
+elsewhere.
+Using other Zeek APIs to determine connection key information is of course
+also possible.
 
 The next part shown concerns the ``Factory`` class itself. The
 ``DoConnKeyFromVal()`` method contains logic to produce a ``VxlanVniConnKey``
@@ -153,12 +154,16 @@ classic five tuple information.
    :caption: Factory class in Factory.cc
    :language: cpp
    :linenos:
-   :lines: 73-95
+   :lines: 80-103
    :tab-width: 4
 
+Calling the ``fivetuple::Factory::DoConnKeyFromVal()`` in turn calls our
+own factory's ``DoNewConnKey()`` method through virtual dispatch.  Since our
+factory overrides this method to always return a ``VxlanVniConnKey`` instance,
+the static cast later is safe.
 
 Last, the plugin's ``__load__.zeek`` file is shown. It includes the extension
-of the :zeek:see:`conn_id` identifier by the :zeek:field:`vxlan_vni` field.
+of the :zeek:see:`conn_id_ctx` identifier by the :zeek:field:`vxlan_vni` field.
 
 .. literalinclude:: connkey-vxlan-fivetuple-plugin-src/scripts/__load__.zeek
    :caption: The conn_id redefinition in __load__.zeek
@@ -188,11 +193,11 @@ two of which have a ``vxlan_vni`` value set in their logs.
 
 .. code-block:: shell
 
-    $ zeek-cut -m uid service history orig_pkts resp_pkts id.vxlan_vni < conn.log
-    uid     service history orig_pkts       resp_pkts       id.vxlan_vni
-    CWBNgn3JYHzXJZjXKc      http    ShADadFf        7       7       -
-    CIwCdr1G7sTtHRZ8y4      http    ShADadFf        7       7       4242
-    CyZiAc2lEt5DAZseQl      http    ShADadFf        7       7       4711
-    C24p8iCAjprR6LFn8       vxlan   D       28      0       -
+    $ zeek-cut -m uid service history orig_pkts resp_pkts id.ctx.vxlan_vni < conn.log
+    uid     service history orig_pkts       resp_pkts       id.ctx.vxlan_vni
+    CRfbJw1kBBvHDQQBta      http    ShADadFf        7       7       -
+    CEllEz13txeSrbGqBe      http    ShADadFf        7       7       4242
+    CBifsS2vqGEg8Fa5ac      http    ShADadFf        7       7       4711
+    CC6Ald2LejCS1qcDy4      vxlan   D       28      0       -
 
 Pretty cool, isn't it?

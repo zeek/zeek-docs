@@ -31,16 +31,17 @@ protected:
         return {reinterpret_cast<const void*>(&key), sizeof(key), session::detail::Key::CONNECTION_KEY_TYPE};
     }
 
-    void DoPopulateConnIdVal(zeek::RecordVal& conn_id) override {
-        static int vxlan_vni_off = id::conn_id->FieldOffset("vxlan_vni");
+    void DoPopulateConnIdVal(zeek::RecordVal& conn_id, zeek::RecordVal& ctx) override {
+        // Base class populates conn_id fields (orig_h, orig_p, resp_h, resp_p)
+        zeek::IPBasedConnKey::DoPopulateConnIdVal(conn_id, ctx);
 
         if ( conn_id.GetType() != id::conn_id )
             return;
 
         if ( (key.vxlan_vni & 0xFF000000) == 0 ) // High-bits unset: Have VNI
-            conn_id.Assign(vxlan_vni_off, static_cast<int>(key.vxlan_vni));
+            ctx.Assign(GetVxlanVniOffset(), static_cast<zeek_uint_t>(key.vxlan_vni));
         else
-            conn_id.Remove(vxlan_vni_off);
+            ctx.Remove(GetVxlanVniOffset());
     }
 
     // Extract VNI from most outer VXLAN layer.
@@ -59,6 +60,12 @@ protected:
             return;
 
         key.vxlan_vni = spans[0][4] << 16 | spans[0][5] << 8 | spans[0][6];
+    }
+
+    static int GetVxlanVniOffset() {
+        static const auto& conn_id_ctx = zeek::id::find_type<zeek::RecordType>("conn_id_ctx");
+        static int vxlan_vni_offset = conn_id_ctx->FieldOffset("vxlan_vni");
+        return vxlan_vni_offset;
     }
 
 private:
@@ -80,16 +87,17 @@ zeek::expected<zeek::ConnKeyPtr, std::string> Factory::DoConnKeyFromVal(const ze
     if ( ! ck.has_value() )
         return ck;
 
-    auto* k = static_cast<VxlanVniConnKey*>(ck.value().get());
-    auto rt = v.GetType()->AsRecordType();
-    auto* rv = v.AsRecordVal();
+    int vxlan_vni_offset = VxlanVniConnKey::GetVxlanVniOffset();
+    static int ctx_offset = id::conn_id->FieldOffset("ctx");
 
-    static int vxlan_vni_off = rt->FieldOffset("vxlan_vni");
-    if ( vxlan_vni_off < 0 )
+    auto* k = static_cast<VxlanVniConnKey*>(ck.value().get());
+    auto* ctx = v.AsRecordVal()->GetFieldAs<zeek::RecordVal>(ctx_offset);
+
+    if ( vxlan_vni_offset < 0 )
         return zeek::unexpected<std::string>{"missing vlxan_vni field"};
 
-    if ( rv->HasField(vxlan_vni_off) )
-        k->key.vxlan_vni = rv->GetFieldAs<zeek::CountVal>(vxlan_vni_off);
+    if ( ctx->HasField(vxlan_vni_offset) )
+        k->key.vxlan_vni = ctx->GetFieldAs<zeek::CountVal>(vxlan_vni_offset);
 
     return ck;
 }

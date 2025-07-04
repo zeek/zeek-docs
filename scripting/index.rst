@@ -9,6 +9,7 @@ Introduction to Scripting
    basics
    usage
    event-groups
+   conn-id-ctx
    tracing-events
    optimization
    javascript
