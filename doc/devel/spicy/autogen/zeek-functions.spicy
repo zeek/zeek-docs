@@ -59,6 +59,28 @@ Instructs Zeek to flip the directionality of the current connection.
 
 Returns the number of packets seen so far on the current side of the current connection.
 
+.. _spicy_has_analyzer:
+
+.. rubric:: ``function zeek::has_analyzer(analyzer: string, if_enabled: bool = True) : bool``
+
+Checks if there is a Zeek analyzer of a given name.
+
+analyzer: the Zeek-side name of the analyzer to check for
+if_enabled: if true, only checks for analyzers that are enabled
+
+Returns the type of the analyzer if it exists, or ``Undef`` if it does not.
+
+.. _spicy_analyzer_type:
+
+.. rubric:: ``function zeek::analyzer_type(analyzer: string, if_enabled: bool = True) : AnalyzerType``
+
+Returns the type of a Zeek analyzer of a given name.
+
+analyzer: the Zeek-side name of the analyzer to check
+if_enabled: if true, only checks for analyzers that are enabled
+
+Returns the type of the analyzer if it exists, or ``Undef`` if it does not.
+
 .. _spicy_protocol_begin:
 
 .. rubric:: ``function zeek::protocol_begin(analyzer: optional<string>, protocol: spicy::Protocol = spicy::Protocol::TCP)``
