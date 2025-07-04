@@ -15,9 +15,9 @@ Redefinitions
 #############
 ========================================================================== =======================================================================
 :zeek:id:`ConnKey::factory`: :zeek:type:`ConnKey::Tag` :zeek:attr:`&redef` 
-:zeek:type:`conn_id`: :zeek:type:`record`                                  
+:zeek:type:`conn_id_ctx`: :zeek:type:`record`                              
                                                                            
-                                                                           :New Fields: :zeek:type:`conn_id`
+                                                                           :New Fields: :zeek:type:`conn_id_ctx`
                                                                            
                                                                              vlan: :zeek:type:`int` :zeek:attr:`&log` :zeek:attr:`&optional`
                                                                                The outer VLAN for this connection, if applicable.

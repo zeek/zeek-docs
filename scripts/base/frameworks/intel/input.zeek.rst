@@ -65,7 +65,7 @@ Events
 .. zeek:id:: Intel::read_entry
    :source-code: base/frameworks/intel/input.zeek 49 52
 
-   :Type: :zeek:type:`event` (desc: :zeek:type:`Input::EventDescription`, type_: :zeek:type:`Input::Event`, item: :zeek:type:`Intel::Item`)
+   :Type: :zeek:type:`event` (desc: :zeek:type:`Input::EventDescription`, tpe: :zeek:type:`Input::Event`, item: :zeek:type:`Intel::Item`)
 
    This event is raised each time the intel framework reads a new line
    from an intel file. It is used in the intel framework but can
@@ -75,7 +75,7 @@ Events
    :param desc: The :zeek:type:`Input::EventDescription` record which generated the event.
    
 
-   :param type_: The type of input event.
+   :param tpe: The type of input event.
    
 
    :param item: The intel item being read (of type :zeek:type:`Intel::Item`).
