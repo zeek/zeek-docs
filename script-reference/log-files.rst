@@ -52,6 +52,14 @@ Network Protocols
     - Kerberos
     - :zeek:type:`KRB::Info`
 
+  * - :file:`ldap.log`
+    - LDAP Messages
+    - :zeek:type:`LDAP::MessageInfo`
+
+  * - :file:`ldap_search.log`
+    - LDAP Searches
+    - :zeek:type:`LDAP::SearchInfo`
+
   * - :file:`modbus.log`
     - Modbus commands and responses
     - :zeek:type:`Modbus::Info`
@@ -71,6 +79,10 @@ Network Protocols
   * - :file:`ntp.log`
     - Network Time Protocol
     - :zeek:type:`NTP::Info`
+
+  * - :file:`quic.log`
+    - QUIC connections
+    - :zeek:type:`QUIC::Info`
 
   * - :file:`radius.log`
     - RADIUS authentication attempts
@@ -127,6 +139,10 @@ Network Protocols
   * - :file:`tunnel.log`
     - Tunneling protocol events
     - :zeek:type:`Tunnel::Info`
+
+  * - :file:`websocket.log`
+    - WebSocket handshakes
+    - :zeek:type:`WebSocket::Info`
 
 
 Files
@@ -259,9 +275,17 @@ Miscellaneous
     - Description
     - Field Descriptions
 
+  * - :file:`analyzer.log`
+    - Protocol, packet or file analyzer debug information
+    - :zeek:type:`Analyzer::Logging::Info`
+
   * - :file:`dpd.log`
     - Dynamic protocol detection failures
     - :zeek:type:`DPD::Info`
+
+  * - :file:`telemetry.log`
+    - Zeek operational telemetry
+    - :zeek:type:`Telemetry::Info`
 
   * - :file:`unknown_protocols.log`
     - Information about packet protocols that Zeek doesn't know how to process
