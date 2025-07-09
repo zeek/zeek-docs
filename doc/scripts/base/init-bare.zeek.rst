@@ -6,6 +6,7 @@ base/init-bare.zeek
 .. zeek:namespace:: BinPAC
 .. zeek:namespace:: Cluster
 .. zeek:namespace:: ConnKey
+.. zeek:namespace:: ConnThreshold
 .. zeek:namespace:: DCE_RPC
 .. zeek:namespace:: DHCP
 .. zeek:namespace:: EventMetadata
@@ -48,7 +49,7 @@ base/init-bare.zeek
 .. zeek:namespace:: X509
 
 
-:Namespaces: Analyzer, BinPAC, Cluster, ConnKey, DCE_RPC, DHCP, EventMetadata, FTP, GLOBAL, HTTP, IP, JSON, KRB, Log, MIME, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, POP3, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SMTP, SNMP, SOCKS, SSH, SSL, Storage, TCP, Telemetry, Threading, Tunnel, UnknownProtocol, WebSocket, Weird, X509
+:Namespaces: Analyzer, BinPAC, Cluster, ConnKey, ConnThreshold, DCE_RPC, DHCP, EventMetadata, FTP, GLOBAL, HTTP, IP, JSON, KRB, Log, MIME, MOUNT3, MQTT, NCP, NFS3, NTLM, NTP, PE, POP3, Pcap, RADIUS, RDP, Reporter, SMB, SMB1, SMB2, SMTP, SNMP, SOCKS, SSH, SSL, Storage, TCP, Telemetry, Threading, Tunnel, UnknownProtocol, WebSocket, Weird, X509
 :Imports: :doc:`base/bif/CPP-load.bif.zeek </scripts/base/bif/CPP-load.bif.zeek>`, :doc:`base/bif/communityid.bif.zeek </scripts/base/bif/communityid.bif.zeek>`, :doc:`base/bif/const.bif.zeek </scripts/base/bif/const.bif.zeek>`, :doc:`base/bif/event.bif.zeek </scripts/base/bif/event.bif.zeek>`, :doc:`base/bif/mmdb.bif.zeek </scripts/base/bif/mmdb.bif.zeek>`, :doc:`base/bif/option.bif.zeek </scripts/base/bif/option.bif.zeek>`, :doc:`base/bif/packet_analysis.bif.zeek </scripts/base/bif/packet_analysis.bif.zeek>`, :doc:`base/bif/plugins/Zeek_KRB.types.bif.zeek </scripts/base/bif/plugins/Zeek_KRB.types.bif.zeek>`, :doc:`base/bif/plugins/Zeek_SNMP.types.bif.zeek </scripts/base/bif/plugins/Zeek_SNMP.types.bif.zeek>`, :doc:`base/bif/reporter.bif.zeek </scripts/base/bif/reporter.bif.zeek>`, :doc:`base/bif/stats.bif.zeek </scripts/base/bif/stats.bif.zeek>`, :doc:`base/bif/strings.bif.zeek </scripts/base/bif/strings.bif.zeek>`, :doc:`base/bif/supervisor.bif.zeek </scripts/base/bif/supervisor.bif.zeek>`, :doc:`base/bif/telemetry_functions.bif.zeek </scripts/base/bif/telemetry_functions.bif.zeek>`, :doc:`base/bif/telemetry_types.bif.zeek </scripts/base/bif/telemetry_types.bif.zeek>`, :doc:`base/bif/types.bif.zeek </scripts/base/bif/types.bif.zeek>`, :doc:`base/bif/zeek.bif.zeek </scripts/base/bif/zeek.bif.zeek>`, :doc:`base/frameworks/spicy/init-bare.zeek </scripts/base/frameworks/spicy/init-bare.zeek>`, :doc:`base/frameworks/supervisor/api.zeek </scripts/base/frameworks/supervisor/api.zeek>`, :doc:`base/packet-protocols </scripts/base/packet-protocols/index>`
 
 Summary
@@ -95,6 +96,8 @@ Redefinable Options
 :zeek:id:`Cluster::log_serializer`: :zeek:type:`Cluster::LogSerializerTag` :zeek:attr:`&redef`                      The log serializer to use by the backend.
 :zeek:id:`ConnKey::factory`: :zeek:type:`ConnKey::Tag` :zeek:attr:`&redef`                                          The connection key factory to use for Zeek's internal connection
                                                                                                                     tracking.
+:zeek:id:`ConnThreshold::generic_packet_thresholds`: :zeek:type:`set` :zeek:attr:`&redef`                           Number of packets required to be observed on any IP-based session to
+                                                                                                                    trigger :zeek:id:`conn_generic_packet_threshold_crossed`.
 :zeek:id:`DCE_RPC::max_cmd_reassembly`: :zeek:type:`count` :zeek:attr:`&redef`                                      The maximum number of simultaneous fragmented commands that
                                                                                                                     the DCE_RPC analyzer will tolerate before the it will generate
                                                                                                                     a weird and skip further input.
@@ -1077,6 +1080,20 @@ Redefinable Options
    their own implementation. You'll usually not adjust this value in
    isolation, but with a corresponding redef of the :zeek:type:`conn_id`
    record to represent additional connection tuple members.
+
+.. zeek:id:: ConnThreshold::generic_packet_thresholds
+   :source-code: base/init-bare.zeek 6391 6391
+
+   :Type: :zeek:type:`set` [:zeek:type:`count`]
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``{}``
+
+   Number of packets required to be observed on any IP-based session to
+   trigger :zeek:id:`conn_generic_packet_threshold_crossed`. Note that the
+   thresholds refers to the total number of packets transferred in both
+   directions.
+   
+   .. zeek:see:: conn_generic_packet_threshold_crossed
 
 .. zeek:id:: DCE_RPC::max_cmd_reassembly
    :source-code: base/init-bare.zeek 5671 5671
@@ -3785,7 +3802,7 @@ State Variables
    .. zeek:see:: dns_skip_all_auth dns_skip_addl
 
 .. zeek:id:: done_with_network
-   :source-code: base/init-bare.zeek 6386 6386
+   :source-code: base/init-bare.zeek 6398 6398
 
    :Type: :zeek:type:`bool`
    :Default: ``F``
