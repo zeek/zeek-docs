@@ -13,6 +13,7 @@ transient, etc. compared to other documentation).
    :maxdepth: 2
 
    plugins
+   event-metadata-plugin
    spicy/index
    Documentation Guide </README.rst>
    contributors
