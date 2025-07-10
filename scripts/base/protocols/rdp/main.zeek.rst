@@ -70,7 +70,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: RDP::disable_analyzer_after_detection
-   :source-code: base/protocols/rdp/main.zeek 66 66
+   :source-code: base/protocols/rdp/main.zeek 67 67
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -80,7 +80,7 @@ Runtime Options
    continuing to process encrypted traffic.
 
 .. zeek:id:: RDP::rdp_check_interval
-   :source-code: base/protocols/rdp/main.zeek 70 70
+   :source-code: base/protocols/rdp/main.zeek 71 71
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -92,7 +92,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: RDP::Info
-   :source-code: base/protocols/rdp/main.zeek 13 62
+   :source-code: base/protocols/rdp/main.zeek 13 63
 
    :Type: :zeek:type:`record`
 
@@ -115,7 +115,8 @@ Types
    .. zeek:field:: cookie :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
       Cookie value used by the client machine.
-      This is typically a username.
+      This is typically a username, but note that it will often
+      be truncated on the wire, to a maximum of 9 characters.
 
 
    .. zeek:field:: result :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
@@ -223,7 +224,7 @@ Types
 Events
 ######
 .. zeek:id:: RDP::log_rdp
-   :source-code: base/protocols/rdp/main.zeek 74 74
+   :source-code: base/protocols/rdp/main.zeek 75 75
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`RDP::Info`)
 
@@ -233,7 +234,7 @@ Events
 Hooks
 #####
 .. zeek:id:: RDP::finalize_rdp
-   :source-code: base/protocols/rdp/main.zeek 295 302
+   :source-code: base/protocols/rdp/main.zeek 296 303
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
