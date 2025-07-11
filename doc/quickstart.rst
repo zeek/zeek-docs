@@ -16,7 +16,8 @@ install from pre-built binary packages, or :doc:`building-from-source` in order
 to build Zeek from source.
 
 We will first analyze previously captured network traffic from a ``pcap`` file -
-:download:`quickstart.pcap <traces/quickstart.pcap>`. Later, we will use Zeek to monitor live traffic.
+:download:`quickstart.pcap <traces/quickstart.pcap>`. Later, we will use Zeek to
+monitor live traffic. Each section builds on the previous section.
 
 Running Zeek
 ============
@@ -191,7 +192,8 @@ In another terminal, run the two ``curl`` commands from before:
 The terminal running Zeek will print each command as it gets processed.
 
 More information on how to use Zeek’s scripting language can be found in the
-:doc:`scripting/index` section.
+:doc:`scripting/index` section. Experiment with Zeek scripting at
+`try.zeek.org <https://try.zeek.org>`_.
 
 Managing Zeek
 =============
@@ -301,7 +303,7 @@ contains one "standalone" node:
 A standalone node is not in a cluster. Instead, this will change to multiple
 nodes which work together. The following configuration is commented out in the
 ``node.cfg`` file by default. Remove the ``[zeek]`` node from above and paste
-this into the file (or uncomment the code):
+this into the file:
 
 .. code-block:: console
 
@@ -317,12 +319,7 @@ this into the file (or uncomment the code):
      type=proxy
      host=localhost
 
-     [worker-1]
-     type=worker
-     host=localhost
-     interface=en0
-
-     [worker-2]
+     [worker]
      type=worker
      host=localhost
      interface=en0
@@ -348,11 +345,10 @@ Now check the status of the cluster with the ``top`` command:
      [ZeekControl] > top
 
      Name         Type    Host             Pid     VSize  Rss  Cpu   Cmd
-     logger-1     logger  localhost        XXXX     83M    83M   0%  zeek
+     logger       logger  localhost        XXXX     83M    83M   0%  zeek
      manager      manager localhost        XXXX     82M    82M   0%  zeek
-     proxy-1      proxy   localhost        XXXX     82M    82M   0%  zeek
-     worker-1     worker  localhost        XXXX     84M    84M   0%  zeek
-     worker-2     worker  localhost        XXXX     84M    84M   0%  zeek
+     proxy        proxy   localhost        XXXX     82M    82M   0%  zeek
+     worker       worker  localhost        XXXX     84M    84M   0%  zeek
 
 This is how you can easily check the status of the running cluster. As before,
 run the two ``curl`` commands in another terminal:
@@ -380,7 +376,7 @@ weird the same way as before:
 
      $ zcat < $PREFIX/logs/2025-05-14/weird.08:58:26-08:58:31.log.gz
      <...>
-     1747227503.828889       C3aXMM2AC3jzZbKl6i      192.168.1.8     60818   192.0.78.150    80 unknown_HTTP_method      WEIRD   F       worker-2        -
+     1747227503.828889       C3aXMM2AC3jzZbKl6i      192.168.1.8     60818   192.0.78.150    80 unknown_HTTP_method      WEIRD   F       worker  -
 
 Users can distribute work across multiple processes or machines with clusters.
 See the `ZeekControl documentation`_ for more information on managing clusters
@@ -393,12 +389,16 @@ By this point, we’ve built up from Zeek's simplest use case to clusters.
 Each section has links to guide further discovery. Here are some extra
 considerations:
 
+* Follow the interactive Zeek tutorial at
+  `try.zeek.org <https://try.zeek.org>`_.
 * Read more of the documentation: the documentation can be read sequentially.
+  Documentation for Zeek's out-of-the-box logs can be found in the
+  :doc:`logs/index` section.
 * Browse scripts from :samp:`{$PREFIX}/share/zeek/policy` that may be useful to
   load. Their documentation is found in the 
   :ref:`overview of script packages <script-packages>`.
 * Review the FAQ_.
-* Join the Zeek community :slacklink:`Slack channel <>` or
+* Join the Zeek community :slacklink:`Slack workspace <>` or
   :discourselink:`forum <>` to interact with fellow Zeekers and Zeek core
   developers.
 * Track Zeek code releases on the `Get Zeek`_ page. Find the release notes
