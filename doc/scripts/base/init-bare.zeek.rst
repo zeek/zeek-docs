@@ -9947,7 +9947,7 @@ Types
 
    .. zeek:field:: SACK_OK :zeek:type:`bool`
 
-      True if the *SACK* option is present.
+      True if the *SACK* option (Selective ACKnowledgement) is present.
 
 
    .. zeek:field:: TSval :zeek:type:`count` :zeek:attr:`&optional`
