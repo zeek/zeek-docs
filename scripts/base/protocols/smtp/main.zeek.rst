@@ -257,6 +257,14 @@ Types
       the message.
 
 
+   .. zeek:field:: rfc822_msg_fuid :zeek:type:`string` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/base/protocols/smtp/files.zeek` is loaded)
+
+      Tracks the fuid of the top-level RFC822 mail message if
+      :zeek:see:`SMTP::enable_rfc822_msg_file_analysis` is set.
+
+
    .. zeek:field:: is_webmail :zeek:type:`bool` :zeek:attr:`&log` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
 
       (present if :doc:`/scripts/policy/protocols/smtp/software.zeek` is loaded)
