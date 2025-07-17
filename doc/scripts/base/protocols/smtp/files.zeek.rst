@@ -20,6 +20,10 @@ Redefinitions
                                                fuids: :zeek:type:`vector` of :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = ``[]`` :zeek:attr:`&optional`
                                                  An ordered vector of file unique IDs seen attached to
                                                  the message.
+                                             
+                                               rfc822_msg_fuid: :zeek:type:`string` :zeek:attr:`&optional`
+                                                 Tracks the fuid of the top-level RFC822 mail message if
+                                                 :zeek:see:`SMTP::enable_rfc822_msg_file_analysis` is set.
 ============================================ ===========================================================================================================================
 
 Functions
@@ -35,14 +39,14 @@ Detailed Interface
 Functions
 #########
 .. zeek:id:: SMTP::describe_file
-   :source-code: base/protocols/smtp/files.zeek 28 39
+   :source-code: base/protocols/smtp/files.zeek 36 47
 
    :Type: :zeek:type:`function` (f: :zeek:type:`fa_file`) : :zeek:type:`string`
 
    Default file describer for SMTP.
 
 .. zeek:id:: SMTP::get_file_handle
-   :source-code: base/protocols/smtp/files.zeek 22 26
+   :source-code: base/protocols/smtp/files.zeek 26 34
 
    :Type: :zeek:type:`function` (c: :zeek:type:`connection`, is_orig: :zeek:type:`bool`) : :zeek:type:`string`
 
