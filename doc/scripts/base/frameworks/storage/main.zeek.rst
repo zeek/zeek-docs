@@ -10,6 +10,12 @@ The storage framework provides a way to store long-term data to disk.
 
 Summary
 ~~~~~~~
+Redefinable Options
+###################
+================================================================================== =
+:zeek:id:`Storage::latency_metric_bounds`: :zeek:type:`vector` :zeek:attr:`&redef` 
+================================================================================== =
+
 Types
 #####
 ========================================================= ===================================================================
@@ -25,6 +31,21 @@ Types
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
+Redefinable Options
+###################
+.. zeek:id:: Storage::latency_metric_bounds
+   :source-code: base/frameworks/storage/main.zeek 34 34
+
+   :Type: :zeek:type:`vector` of :zeek:type:`double`
+   :Attributes: :zeek:attr:`&redef`
+   :Default:
+
+      ::
+
+         [0.001, 0.01, 0.1, 1.0]
+
+
+
 Types
 #####
 .. zeek:type:: Storage::BackendOptions
