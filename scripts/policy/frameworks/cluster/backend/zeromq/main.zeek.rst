@@ -30,6 +30,7 @@ open a ZeroMQ PULL socket and interpret the format used by Zeek nodes
 to send their log writes.
 
 :Namespace: Cluster::Backend::ZeroMQ
+:Imports: :doc:`base/utils/addrs.zeek </scripts/base/utils/addrs.zeek>`
 
 Summary
 ~~~~~~~
@@ -43,6 +44,7 @@ Redefinable Options
 :zeek:id:`Cluster::Backend::ZeroMQ::debug_flags`: :zeek:type:`count` :zeek:attr:`&redef`            Bitmask to enable low-level stderr based debug printing.
 :zeek:id:`Cluster::Backend::ZeroMQ::hello_expiration`: :zeek:type:`interval` :zeek:attr:`&redef`    Expiration for hello state.
 :zeek:id:`Cluster::Backend::ZeroMQ::internal_topic_prefix`: :zeek:type:`string` :zeek:attr:`&redef` The topic prefix used for internal ZeroMQ specific communication.
+:zeek:id:`Cluster::Backend::ZeroMQ::ipv6`: :zeek:type:`bool` :zeek:attr:`&redef`                    Set ZMQ_IPV6 option.
 :zeek:id:`Cluster::Backend::ZeroMQ::linger_ms`: :zeek:type:`int` :zeek:attr:`&redef`                Configure the ZeroMQ's sockets linger value.
 :zeek:id:`Cluster::Backend::ZeroMQ::listen_log_endpoint`: :zeek:type:`string` :zeek:attr:`&redef`   PULL socket address to listen on for log messages.
 :zeek:id:`Cluster::Backend::ZeroMQ::listen_xpub_endpoint`: :zeek:type:`string` :zeek:attr:`&redef`  XPUB listen endpoint for the central broker.
@@ -97,7 +99,7 @@ Detailed Interface
 Redefinable Options
 ###################
 .. zeek:id:: Cluster::Backend::ZeroMQ::connect_log_endpoints
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 45 45
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 48 48
 
    :Type: :zeek:type:`vector` of :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -114,7 +116,7 @@ Redefinable Options
    of the ZeroMQ endpoints listed in this vector.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::connect_xpub_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 32 32
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 35 35
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -126,7 +128,7 @@ Redefinable Options
    of the central broker.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::connect_xpub_nodrop
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 150 150
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 162 162
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -142,7 +144,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::connect_xsub_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 39 39
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 42 42
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -154,7 +156,7 @@ Redefinable Options
    of the central broker.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::debug_flags
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 180 180
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 192 192
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -171,7 +173,7 @@ Redefinable Options
    will produce output on stderr.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::hello_expiration
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 220 220
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 232 232
 
    :Type: :zeek:type:`interval`
    :Attributes: :zeek:attr:`&redef`
@@ -184,7 +186,7 @@ Redefinable Options
    nodes. These expirations trigger reporter warnings.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::internal_topic_prefix
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 232 232
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 244 244
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -201,8 +203,23 @@ Redefinable Options
    cluster from the central XPUB/XSUB proxy and therefore can be
    deemed ready for publish operations.
 
+.. zeek:id:: Cluster::Backend::ZeroMQ::ipv6
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 152 152
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``T``
+
+   Set ZMQ_IPV6 option.
+   
+   The ZeroMQ library has IPv6 support in ZeroMQ. For Zeek we enable it
+   unconditionally such that listening or connecting  with IPv6 just works.
+   
+   See ZeroMQ's `ZMQ_IPV6 documentation <http://api.zeromq.org/4-2:zmq-setsockopt#toc23>`_
+   for more details.
+
 .. zeek:id:: Cluster::Backend::ZeroMQ::linger_ms
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 95 95
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 98 98
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -221,7 +238,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_log_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 82 82
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 85 85
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -233,7 +250,7 @@ Redefinable Options
    a ZeroMQ address to bind to. E.g., ``tcp://127.0.0.1:5555``.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_xpub_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 76 76
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 79 79
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -245,7 +262,7 @@ Redefinable Options
    when :zeek:see:`Cluster::Backend::ZeroMQ::run_proxy_thread` is ``T``.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_xpub_nodrop
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 163 163
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 175 175
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -264,7 +281,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::listen_xsub_endpoint
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 70 70
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 73 73
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -276,7 +293,7 @@ Redefinable Options
    when :zeek:see:`Cluster::Backend::ZeroMQ::run_proxy_thread` is ``T``.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_immediate
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 105 105
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 108 108
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -292,7 +309,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_rcvbuf
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 140 140
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 143 143
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -306,7 +323,7 @@ Redefinable Options
    for more details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_rcvhwm
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 125 125
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 128 128
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -322,7 +339,7 @@ Redefinable Options
    TODO: Make action configurable (block vs drop)
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_sndbuf
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 132 132
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 135 135
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -335,7 +352,7 @@ Redefinable Options
    See ZeroMQ's `ZMQ_SNDBUF documentation <http://api.zeromq.org/4-2:zmq-setsockopt#toc45>`_.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::log_sndhwm
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 115 115
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 118 118
 
    :Type: :zeek:type:`int`
    :Attributes: :zeek:attr:`&redef`
@@ -351,7 +368,7 @@ Redefinable Options
    TODO: Make action configurable (block vs drop)
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::poll_max_messages
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 169 169
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 181 181
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -363,7 +380,7 @@ Redefinable Options
    received from one of the used sockets.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::proxy_io_threads
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 64 64
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 67 67
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -376,7 +393,7 @@ Redefinable Options
    section in the ZeroMQ guide for details.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::run_proxy_thread
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 56 56
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 59 59
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -401,7 +418,7 @@ Redefinable Options
 State Variables
 ###############
 .. zeek:id:: Cluster::Backend::ZeroMQ::node_topic_prefix
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 183 183
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 195 195
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -410,7 +427,7 @@ State Variables
    The node topic prefix to use.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::nodeid_topic_prefix
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 186 186
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 198 198
 
    :Type: :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -421,7 +438,7 @@ State Variables
 Events
 ######
 .. zeek:id:: Cluster::Backend::ZeroMQ::hello
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 384 421
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 396 433
 
    :Type: :zeek:type:`event` (name: :zeek:type:`string`, id: :zeek:type:`string`)
 
@@ -434,7 +451,7 @@ Events
    :param id: The sending node's identifier, as generated by :zeek:see:`Cluster::node_id`.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::subscription
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 353 379
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 365 391
 
    :Type: :zeek:type:`event` (topic: :zeek:type:`string`)
 
@@ -449,7 +466,7 @@ Events
    :param topic: The topic.
 
 .. zeek:id:: Cluster::Backend::ZeroMQ::unsubscription
-   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 426 445
+   :source-code: policy/frameworks/cluster/backend/zeromq/main.zeek 438 457
 
    :Type: :zeek:type:`event` (topic: :zeek:type:`string`)
 

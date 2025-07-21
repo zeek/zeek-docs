@@ -70,7 +70,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: SMTP::mail_path_capture
-   :source-code: base/protocols/smtp/main.zeek 91 91
+   :source-code: base/protocols/smtp/main.zeek 92 92
 
    :Type: :zeek:type:`Host`
    :Attributes: :zeek:attr:`&redef`
@@ -83,7 +83,7 @@ Runtime Options
       NO_HOSTS - never capture the path.
 
 .. zeek:id:: SMTP::mail_transaction_validation
-   :source-code: base/protocols/smtp/main.zeek 105 105
+   :source-code: base/protocols/smtp/main.zeek 106 106
 
    :Type: :zeek:type:`bool`
    :Attributes: :zeek:attr:`&redef`
@@ -95,7 +95,7 @@ Runtime Options
    many invalid transactions.
 
 .. zeek:id:: SMTP::max_invalid_mail_transactions
-   :source-code: base/protocols/smtp/main.zeek 109 109
+   :source-code: base/protocols/smtp/main.zeek 110 110
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -209,7 +209,7 @@ Types
 
 
 .. zeek:type:: SMTP::State
-   :source-code: base/protocols/smtp/main.zeek 71 84
+   :source-code: base/protocols/smtp/main.zeek 71 85
 
    :Type: :zeek:type:`record`
 
@@ -228,6 +228,8 @@ Types
 
       invalid_transactions: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
 
+      bdat_last_observed: :zeek:type:`bool` :zeek:attr:`&default` = ``F`` :zeek:attr:`&optional`
+
       analyzer_id: :zeek:type:`count` :zeek:attr:`&optional`
 
       mime_depth: :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
@@ -240,7 +242,7 @@ Types
 Events
 ######
 .. zeek:id:: SMTP::log_smtp
-   :source-code: base/protocols/smtp/main.zeek 96 96
+   :source-code: base/protocols/smtp/main.zeek 97 97
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`SMTP::Info`)
 
@@ -248,7 +250,7 @@ Events
 Hooks
 #####
 .. zeek:id:: SMTP::finalize_smtp
-   :source-code: base/protocols/smtp/main.zeek 398 402
+   :source-code: base/protocols/smtp/main.zeek 401 405
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
@@ -263,7 +265,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: SMTP::describe
-   :source-code: base/protocols/smtp/main.zeek 413 438
+   :source-code: base/protocols/smtp/main.zeek 416 441
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`SMTP::Info`) : :zeek:type:`string`
 
