@@ -49,7 +49,28 @@ depends heavily on several factors:
    this in mind when comparing Zeek runtimes, to ensure you're comparing only
    actual script execution time.
 
-To factor out the code-generation phase, you can for example measure the time
+To isolate ZAM's code generation overhead when running Zeek on a pcap, simply
+leave out the traffic. That is, turn this ...
+
+.. code-block:: sh
+
+   $ zcat 2009-M57-day11-18.trace.gz | zeek -O ZAM -r - <args>
+
+into
+
+.. code-block:: sh
+
+   $ time zeek -O ZAM <args>
+
+and, since Zeek drops into interactive mode when run without arguments,
+
+.. code-block:: sh
+
+   $ time zeek -O ZAM /dev/null
+
+when there are none.
+
+To determine the runtime after ZAM's code generation, you can measure the time
 between :zeek:id:`zeek_init` and :zeek:id:`zeek_done` event handlers:
 
 .. code-block:: zeek
