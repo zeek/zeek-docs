@@ -143,6 +143,7 @@ Redefinable Options
 
          {
             serializer=Storage::STORAGE_SERIALIZER_JSON
+            forced_sync=F
             redis=<uninitialized>
             sqlite=[database_path=":memory:", table_name="zeek/known/services", busy_timeout=5.0 secs, pragma_commands={
                ["integrity_check"] = "",
