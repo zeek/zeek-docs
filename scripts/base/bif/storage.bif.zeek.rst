@@ -13,15 +13,30 @@ Summary
 ~~~~~~~
 Functions
 #########
-================================================== =========================================
-:zeek:id:`Storage::is_open`: :zeek:type:`function` Checks whether a storage backend is open.
-================================================== =========================================
+========================================================= =======================================================================
+:zeek:id:`Storage::is_forced_sync`: :zeek:type:`function` Checks whether a storage backend was opened in forced-synchronous mode.
+:zeek:id:`Storage::is_open`: :zeek:type:`function`        Checks whether a storage backend is open.
+========================================================= =======================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Functions
 #########
+.. zeek:id:: Storage::is_forced_sync
+   :source-code: base/bif/storage.bif.zeek 26 26
+
+   :Type: :zeek:type:`function` (backend: :zeek:type:`opaque` of Storage::BackendHandle) : :zeek:type:`bool`
+
+   Checks whether a storage backend was opened in forced-synchronous mode.
+   
+
+   :param backend: A handle to the backend to check.
+   
+
+   :returns: T if the forced_synchronous option was set to T, F otherwise or if the
+            handle is invalid.
+
 .. zeek:id:: Storage::is_open
    :source-code: base/bif/storage.bif.zeek 17 17
 

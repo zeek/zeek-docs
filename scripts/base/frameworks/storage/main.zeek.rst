@@ -13,6 +13,7 @@ Summary
 Redefinable Options
 ###################
 ================================================================================== =
+:zeek:id:`Storage::default_forced_sync`: :zeek:type:`bool` :zeek:attr:`&redef`     
 :zeek:id:`Storage::latency_metric_bounds`: :zeek:type:`vector` :zeek:attr:`&redef` 
 ================================================================================== =
 
@@ -33,8 +34,16 @@ Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Redefinable Options
 ###################
+.. zeek:id:: Storage::default_forced_sync
+   :source-code: base/frameworks/storage/main.zeek 7 7
+
+   :Type: :zeek:type:`bool`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``F``
+
+
 .. zeek:id:: Storage::latency_metric_bounds
-   :source-code: base/frameworks/storage/main.zeek 34 34
+   :source-code: base/frameworks/storage/main.zeek 42 42
 
    :Type: :zeek:type:`vector` of :zeek:type:`double`
    :Attributes: :zeek:attr:`&redef`
@@ -49,7 +58,7 @@ Redefinable Options
 Types
 #####
 .. zeek:type:: Storage::BackendOptions
-   :source-code: base/frameworks/storage/main.zeek 10 13
+   :source-code: base/frameworks/storage/main.zeek 13 21
 
    :Type: :zeek:type:`record`
 
@@ -57,6 +66,13 @@ Types
    .. zeek:field:: serializer :zeek:type:`Storage::Serializer` :zeek:attr:`&default` = ``Storage::STORAGE_SERIALIZER_JSON`` :zeek:attr:`&optional`
 
       The serializer used for converting Zeek data.
+
+
+   .. zeek:field:: forced_sync :zeek:type:`bool` :zeek:attr:`&default` = :zeek:see:`Storage::default_forced_sync` :zeek:attr:`&optional`
+
+      Sets the backend into forced-synchronous mode. All operations will run
+      in synchronous mode, even if the async functions are called.  This
+      should generally only be set to ``T`` during testing.
 
 
    .. zeek:field:: redis :zeek:type:`Storage::Backend::Redis::Options` :zeek:attr:`&optional`
@@ -75,7 +91,7 @@ Types
    to add relevant fields to it.
 
 .. zeek:type:: Storage::PutArgs
-   :source-code: base/frameworks/storage/main.zeek 17 31
+   :source-code: base/frameworks/storage/main.zeek 25 39
 
    :Type: :zeek:type:`record`
 
