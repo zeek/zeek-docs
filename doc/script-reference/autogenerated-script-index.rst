@@ -260,6 +260,7 @@
    base/bif/plugins/Zeek_WebSocket.types.bif.zeek </scripts/base/bif/plugins/Zeek_WebSocket.types.bif.zeek>
    base/bif/plugins/Zeek_XMPP.events.bif.zeek </scripts/base/bif/plugins/Zeek_XMPP.events.bif.zeek>
    base/bif/plugins/Zeek_Cluster_Backend_ZeroMQ.cluster_backend_zeromq.bif.zeek </scripts/base/bif/plugins/Zeek_Cluster_Backend_ZeroMQ.cluster_backend_zeromq.bif.zeek>
+   base/bif/plugins/Zeek_PPPoE.functions.bif.zeek </scripts/base/bif/plugins/Zeek_PPPoE.functions.bif.zeek>
    base/bif/plugins/Zeek_ARP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek>
    base/bif/plugins/Zeek_UDP.events.bif.zeek </scripts/base/bif/plugins/Zeek_UDP.events.bif.zeek>
    base/bif/plugins/Zeek_ICMP.events.bif.zeek </scripts/base/bif/plugins/Zeek_ICMP.events.bif.zeek>
@@ -596,6 +597,7 @@
    policy/protocols/conn/known-services.zeek </scripts/policy/protocols/conn/known-services.zeek>
    policy/protocols/conn/mac-logging.zeek </scripts/policy/protocols/conn/mac-logging.zeek>
    policy/protocols/conn/vlan-logging.zeek </scripts/policy/protocols/conn/vlan-logging.zeek>
+   policy/protocols/conn/pppoe-session-id-logging.zeek </scripts/policy/protocols/conn/pppoe-session-id-logging.zeek>
    policy/protocols/conn/weirds.zeek </scripts/policy/protocols/conn/weirds.zeek>
    policy/protocols/dhcp/msg-orig.zeek </scripts/policy/protocols/dhcp/msg-orig.zeek>
    policy/protocols/dhcp/software.zeek </scripts/policy/protocols/dhcp/software.zeek>

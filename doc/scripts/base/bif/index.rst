@@ -483,6 +483,9 @@ Package: base/bif
 :doc:`/scripts/base/bif/plugins/Zeek_Cluster_Backend_ZeroMQ.cluster_backend_zeromq.bif.zeek`
 
 
+:doc:`/scripts/base/bif/plugins/Zeek_PPPoE.functions.bif.zeek`
+
+
 :doc:`/scripts/base/bif/plugins/Zeek_ARP.events.bif.zeek`
 
 

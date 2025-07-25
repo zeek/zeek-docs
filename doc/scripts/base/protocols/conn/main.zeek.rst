@@ -306,6 +306,13 @@ Types
       The inner VLAN for this connection, if applicable.
 
 
+   .. zeek:field:: pppoe_session_id :zeek:type:`count` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/protocols/conn/pppoe-session-id-logging.zeek` is loaded)
+
+      The PPPoE session id, if applicable for this connection.
+
+
    .. zeek:field:: speculative_service :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
       (present if :doc:`/scripts/policy/protocols/conn/speculative-service.zeek` is loaded)
