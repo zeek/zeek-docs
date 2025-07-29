@@ -57,7 +57,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: DCE_RPC::ignored_operations
-   :source-code: base/protocols/dce-rpc/main.zeek 33 33
+   :source-code: base/protocols/dce-rpc/main.zeek 45 45
 
    :Type: :zeek:type:`table` [:zeek:type:`string`] of :zeek:type:`set` [:zeek:type:`string`]
    :Attributes: :zeek:attr:`&redef`
@@ -92,7 +92,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: DCE_RPC::BackingState
-   :source-code: base/protocols/dce-rpc/main.zeek 47 50
+   :source-code: base/protocols/dce-rpc/main.zeek 59 62
 
    :Type: :zeek:type:`record`
 
@@ -105,7 +105,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::Info
-   :source-code: base/protocols/dce-rpc/main.zeek 11 29
+   :source-code: base/protocols/dce-rpc/main.zeek 11 41
 
    :Type: :zeek:type:`record`
 
@@ -135,6 +135,18 @@ Types
    .. zeek:field:: named_pipe :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
 
       Remote pipe name.
+      
+      Note that this value is from the "sec_addr" field in the
+      protocol. Zeek uses the "named_pipe" name for historical reasons,
+      but it may also contain local port numbers rather than named pipes.
+      
+      If you prefer to use the "secondary address" name, consider
+      using :zeek:see:`Log::default_field_name_map`, a ``Log::Filter``'s
+      :zeek:field:`Log::Filter$field_name_map` field, or removing
+      the :zeek:attr:`&log` attribute from this field, adding a
+      new :zeek:field:`sec_addr` field and populating it in a custom
+      :zeek:see:`dce_rpc_bind_ack` event handler based on the
+      :zeek:field:`named_pipe` value.
 
 
    .. zeek:field:: endpoint :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional`
@@ -149,7 +161,7 @@ Types
 
 
 .. zeek:type:: DCE_RPC::State
-   :source-code: base/protocols/dce-rpc/main.zeek 39 43
+   :source-code: base/protocols/dce-rpc/main.zeek 51 55
 
    :Type: :zeek:type:`record`
 
@@ -167,7 +179,7 @@ Types
 Hooks
 #####
 .. zeek:id:: DCE_RPC::finalize_dce_rpc
-   :source-code: base/protocols/dce-rpc/main.zeek 236 268
+   :source-code: base/protocols/dce-rpc/main.zeek 248 280
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

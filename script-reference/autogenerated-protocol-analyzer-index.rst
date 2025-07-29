@@ -1126,7 +1126,7 @@ Events
    .. zeek:see:: dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_bind
-   :source-code: base/protocols/dce-rpc/main.zeek 111 123
+   :source-code: base/protocols/dce-rpc/main.zeek 123 135
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, uuid: :zeek:type:`string`, ver_major: :zeek:type:`count`, ver_minor: :zeek:type:`count`)
 
@@ -1157,7 +1157,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind_ack dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_alter_context
-   :source-code: base/protocols/dce-rpc/main.zeek 125 137
+   :source-code: base/protocols/dce-rpc/main.zeek 137 149
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, uuid: :zeek:type:`string`, ver_major: :zeek:type:`count`, ver_minor: :zeek:type:`count`)
 
@@ -1188,7 +1188,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context_resp
 
 .. zeek:id:: dce_rpc_bind_ack
-   :source-code: base/protocols/dce-rpc/main.zeek 139 148
+   :source-code: base/protocols/dce-rpc/main.zeek 151 160
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, sec_addr: :zeek:type:`string`)
 
@@ -1208,7 +1208,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_request dce_rpc_response
 
 .. zeek:id:: dce_rpc_alter_context_resp
-   :source-code: base/protocols/dce-rpc/main.zeek 150 153
+   :source-code: base/protocols/dce-rpc/main.zeek 162 165
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`)
 
@@ -1225,7 +1225,7 @@ Events
    .. zeek:see:: dce_rpc_message dce_rpc_bind dce_rpc_bind_ack dce_rpc_request dce_rpc_response dce_rpc_alter_context
 
 .. zeek:id:: dce_rpc_request
-   :source-code: base/protocols/dce-rpc/main.zeek 155 163
+   :source-code: base/protocols/dce-rpc/main.zeek 167 175
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, fid: :zeek:type:`count`, ctx_id: :zeek:type:`count`, opnum: :zeek:type:`count`, stub_len: :zeek:type:`count`)
 
@@ -15647,7 +15647,7 @@ Events
    :param c: The connection.
 
 .. zeek:id:: smb_discarded_dce_rpc_analyzers
-   :source-code: base/protocols/dce-rpc/main.zeek 219 226
+   :source-code: base/protocols/dce-rpc/main.zeek 231 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
