@@ -25,7 +25,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: smb_discarded_dce_rpc_analyzers
-   :source-code: base/protocols/dce-rpc/main.zeek 219 226
+   :source-code: base/protocols/dce-rpc/main.zeek 231 238
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
