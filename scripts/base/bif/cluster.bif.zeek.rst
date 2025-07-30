@@ -54,7 +54,7 @@ Events
 Functions
 #########
 .. zeek:id:: Cluster::Backend::__init
-   :source-code: base/bif/cluster.bif.zeek 45 45
+   :source-code: base/bif/cluster.bif.zeek 48 48
 
    :Type: :zeek:type:`function` (nid: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -64,25 +64,25 @@ Functions
    :returns: true on success.
 
 .. zeek:id:: Cluster::__listen_websocket
-   :source-code: base/bif/cluster.bif.zeek 84 84
+   :source-code: base/bif/cluster.bif.zeek 87 87
 
    :Type: :zeek:type:`function` (options: :zeek:type:`Cluster::WebSocketServerOptions`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Cluster::__subscribe
-   :source-code: base/bif/cluster.bif.zeek 36 36
-
-   :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
-
-
-.. zeek:id:: Cluster::__unsubscribe
    :source-code: base/bif/cluster.bif.zeek 39 39
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
 
+.. zeek:id:: Cluster::__unsubscribe
+   :source-code: base/bif/cluster.bif.zeek 42 42
+
+   :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
+
+
 .. zeek:id:: Cluster::make_event
-   :source-code: base/bif/cluster.bif.zeek 33 33
+   :source-code: base/bif/cluster.bif.zeek 36 36
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`Cluster::Event`
 
@@ -99,7 +99,7 @@ Functions
             or :zeek:see:`Cluster::publish_hrw`.
 
 .. zeek:id:: Cluster::publish
-   :source-code: base/bif/cluster.bif.zeek 21 21
+   :source-code: base/bif/cluster.bif.zeek 24 24
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 
@@ -114,10 +114,13 @@ Functions
          to it.
    
 
-   :returns: true if the message is sent.
+   :returns: T if the event was accepted for sending. Depending on
+            the selected cluster backend, an event may be dropped
+            when a Zeek cluster is overloadede. This can happen on
+            the sending or receiving node.
 
 .. zeek:id:: Cluster::publish_hrw
-   :source-code: base/bif/cluster.bif.zeek 81 81
+   :source-code: base/bif/cluster.bif.zeek 84 84
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 
@@ -140,7 +143,7 @@ Functions
    :returns: true if the message is sent.
 
 .. zeek:id:: Cluster::publish_rr
-   :source-code: base/bif/cluster.bif.zeek 64 64
+   :source-code: base/bif/cluster.bif.zeek 67 67
 
    :Type: :zeek:type:`function` (...) : :zeek:type:`bool`
 
