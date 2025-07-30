@@ -220,7 +220,7 @@ Events
       endpoint's implementation interprets an RFC quite liberally.
 
 .. zeek:id:: connection_flipped
-   :source-code: base/bif/event.bif.zeek 221 221
+   :source-code: base/protocols/conn/main.zeek 319 327
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -827,7 +827,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 6415 6418
+   :source-code: base/init-bare.zeek 6416 6419
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
