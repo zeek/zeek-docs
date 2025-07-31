@@ -425,7 +425,7 @@ Types
       Indicate if this weird was also turned into a notice.
 
 
-   .. zeek:field:: peer :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&optional` :zeek:attr:`&default` = :zeek:see:`peer_description`
+   .. zeek:field:: peer :zeek:type:`string` :zeek:attr:`&log` :zeek:attr:`&default` = :zeek:see:`peer_description` :zeek:attr:`&optional`
 
       The peer that originated this weird.  This is helpful in
       cluster deployments if a particular cluster node is having
