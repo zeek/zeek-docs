@@ -466,15 +466,27 @@ replaced with a simple dash. Example: If the plugin is called
 output will be recorded to :file:`debug.log` if Zeek's compiled in debug
 mode.
 
-Building Plugins Statically
-===========================
+.. _building-plugins-statically:
+
+Building Plugins Statically into Zeek
+=====================================
 
 Plugins can be built statically into a Zeek binary using the
-``--include-plugins`` option passed to ``configure``. This argument
-takes a colon-separated list of paths to plugin source. Building
+``--include-plugins`` option passed to Zeek's ``configure``. This argument
+takes a semicolon-separated list of absolute paths to plugin sources. Each
+path needs to contain a ``CMakeLists.txt`` file, as is commonly the case at the
+toplevel of plugin source trees, and usually also in Zeek packages. Building
 plugins in this manner includes them directly into the Zeek binary
 and installation. They are loaded automatically by Zeek at startup
 without needing to install them separately.
+
+Building plugins into Zeek is a handy way to build them consistently with
+sanitizers, as you can use Zeek's existing ``./configure --sanitizers=...``
+infrastructure to apply transparently to built-in plugins.
+
+The configure run lists built-in plugins at the end, so you can verify
+successful inclusion of your plugin there. Your plugin should also
+show up in the resulting build's ``zeek -NN`` output.
 
 Headers for built-in plugins are installed into a subdirectory of
 ``<zeek-install-prefix>/include/zeek/builtin-plugins`` specific to
