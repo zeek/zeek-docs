@@ -10977,14 +10977,6 @@ Types
       (present if :doc:`/scripts/base/protocols/conn/removal-hooks.zeek` is loaded)
 
 
-   .. zeek:field:: service_violation :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-
-      (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
-
-      The set of services (analyzers) for which Zeek has observed a
-      violation after the same service had previously been confirmed.
-
-
    .. zeek:field:: failed_analyzers :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
 
       (present if :doc:`/scripts/base/frameworks/analyzer/dpd.zeek` is loaded)
@@ -11226,6 +11218,14 @@ Types
    .. zeek:field:: dpd :zeek:type:`DPD::Info` :zeek:attr:`&optional`
 
       (present if :doc:`/scripts/policy/frameworks/analyzer/deprecated-dpd-log.zeek` is loaded)
+
+
+   .. zeek:field:: service_violation :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
+
+      (present if :doc:`/scripts/policy/frameworks/analyzer/deprecated-dpd-log.zeek` is loaded)
+
+      The set of services (analyzers) for which Zeek has observed a
+      violation after the same service had previously been confirmed.
 
 
    .. zeek:field:: speculative_service :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`

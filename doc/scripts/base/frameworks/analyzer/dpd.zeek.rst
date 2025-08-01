@@ -24,19 +24,15 @@ Runtime Options
 
 Redefinitions
 #############
-============================================ ===================================================================================================================
+============================================ ==================================================================================================================
 :zeek:type:`connection`: :zeek:type:`record` 
                                              
                                              :New Fields: :zeek:type:`connection`
                                              
-                                               service_violation: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
-                                                 The set of services (analyzers) for which Zeek has observed a
-                                                 violation after the same service had previously been confirmed.
-                                             
                                                failed_analyzers: :zeek:type:`set` [:zeek:type:`string`] :zeek:attr:`&default` = ``{  }`` :zeek:attr:`&optional`
                                                  The set of prototol analyzers that were removed due to a protocol
                                                  violation after the same analyzer had previously been confirmed.
-============================================ ===================================================================================================================
+============================================ ==================================================================================================================
 
 
 Detailed Interface
