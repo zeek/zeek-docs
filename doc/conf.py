@@ -168,7 +168,6 @@ html_last_updated_fmt = "%B %d, %Y"
 html_theme_options = {
     "analytics_id": "UA-144186885-1",
     "collapse_navigation": False,
-    "display_version": True,
     "style_external_links": True,
 }
 
