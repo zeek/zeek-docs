@@ -459,7 +459,7 @@ following entries, assuming running four worker processes listening on ``eth0`` 
 
 The specific options are ``lb_method=af_packet`` and ``lb_procs=4``.
 If listening on two or more interfaces on the same host is a requirement,
-remember to set a unique ``fanout_id`` using the node option ``af_packet_found_id``::
+remember to set a unique ``fanout_id`` using the node option ``af_packet_fanout_id``::
 
     [worker-1-eth0]
     type=worker
