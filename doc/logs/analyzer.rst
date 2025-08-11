@@ -1,6 +1,6 @@
-=======
-dpd.log
-=======
+============
+analyzer.log
+============
 
 Dynamic protocol detection (DPD) is a method by which Zeek identifies protocols
 on ports beyond those used as standard services. Rather than selecting which
@@ -16,16 +16,16 @@ off analyzers when it becomes obvious that they are parsing the wrong protocol.
 This allows Zeek to use “loose” protocol signatures, and, if in doubt, try
 multiple analyzers in parallel.
 
-Zeek’s :file:`dpd.log` reports problems with the DPD mechanism. This document
+Zeek’s :file:`analyzer.log` reports problems with the DPD mechanism. This document
 will provide examples of this reporting in action.
 
-For full details on each field in the :file:`dpd.log` file, please refer to
-:zeek:see:`DPD::Info`.
+For full details on each field in the :file:`analyzer.log` file, please refer to
+:zeek:see:`Analyzer::Logging::Info`.
 
 One Specific Example
 ====================
 
-The following is an example of traffic that generated a :file:`dpd.log` entry.
+The following is an example of traffic that generated a :file:`analyzer.log` entry.
 
 :program:`tcpdump` and :program:`tshark`
 ----------------------------------------
@@ -275,22 +275,23 @@ Here is the :file:`ssl.log` that Zeek generated for this activity:
 
 The :file:`ssl.log` shows that a TLS encrypted session was not established.
 
-:file:`dpd.log`
----------------
+:file:`analyzer.log`
+--------------------
 
-Here is the :file:`dpd.log` that Zeek generated for this activity:
+Here is the :file:`analyzer.log` that Zeek generated for this activity:
 
 .. literal-emph::
 
   {
     "ts": 1607568264.410681,
+    "analyzer_kind": "protocol",
+    **"analyzer_name": "SSL",**
     "uid": "C8blOJ21azairPrWf8",
     "id.orig_h": "192.168.4.142",
     "id.orig_p": 50540,
     "id.resp_h": "184.168.176.1",
     "id.resp_p": 443,
     "proto": "tcp",
-    **"analyzer": "SSL",**
     **"failure_reason": "Invalid version late in TLS connection. Packet reported version: 21588"**
   }
 
@@ -352,18 +353,18 @@ is ``0x48``, which is ASCII letter H. Next we see ``0x5454``, which is ASCII
 letters ``T T``. In decimal, the value for ``0x5454`` is 21588. In other words,
 where Zeek was looking to find a TLS version, it found decimal 21588. In the
 previous frame, the corresponding value was ``0x0301`` for TLSv1.0. That is why
-Zeek generated an error in its :file:`dpd.log` with the message "Invalid
+Zeek generated an error in its :file:`analyzer.log` with the message "Invalid
 version late in TLS connection. Packet reported version: 21588".
 
 Assorted Examples
 =================
 
-The following represents a summary of some :file:`dpd.log` entries, sorted by count,
+The following represents a summary of some :file:`analyzer.log` entries, sorted by count,
 observed in my reference network.
 
 .. code-block:: console
 
-  $ find ./corelightswslogs/ -name "dpd*20**.gz" | while read -r file; do zcat -f "$file"; done | jq -c '[."proto", ."analyzer", ."failure_reason"]' | sort | uniq -c | sort -nr
+  $ find ./logs/ -name "analyzer*20**.gz" | while read -r file; do zcat -f "$file"; done | jq -c '[."proto", ."analyzer_kind", ."failure_reason"]' | sort | uniq -c | sort -nr
 
 ::
 
@@ -390,7 +391,7 @@ Protocol (SIP), Datagram Transport Layer Security (DTLS), and IRC.
 Conclusion
 ==========
 
-Zeek’s :file:`dpd.log` may help analysts identify suspicious activity,
+Zeek’s :file:`analyzer.log` may help analysts identify suspicious activity,
 depending on how it violates Zeek’s protocol parsers. In that sense, it is sort
 of a specialized version of Zeek’s :file:`weird.log`. Periodic analysis of the
 entries may identify traffic worthy of additional investigation.

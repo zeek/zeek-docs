@@ -5,6 +5,7 @@ Zeek Logs
 .. toctree::
    :maxdepth: 1
 
+   analyzer
    conn
    dns
    http
@@ -25,7 +26,6 @@ Zeek Logs
    rdp
    traceroute
    tunnel
-   dpd
    known-and-software
    weird-and-notice
    capture-loss-and-reporter
