@@ -134,6 +134,24 @@ To send events, WebSocket clients similarly encode their event representation
 to Broker's JSON format and send them as `text data frames <https://datatracker.ietf.org/doc/html/rfc6455#section-5.6>`_.
 
 
+X-Application-Name Header
+-------------------------
+
+When a WebSocket client includes an ``X-Application-Name`` HTTP header in
+the initial WebSocket Handshake's GET request, that header's value is available
+in the :zeek:see:`Cluster::websocket_client_added` event's ``endpoint`` argument (see :zeek:see:`Cluster::EndpointInfo`).
+
+The header's value will also be included in ``cluster.log`` messages.
+
+Additionally, if the cluster telemetry for WebSocket clients is set to
+:zeek:see:`Cluster::Telemetry::VERBOSE` or :zeek:see:`Cluster::Telemetry::DEBUG`
+via :zeek:see:`Cluster::Telemetry::websocket_metrics`, the header's value is
+included as ``app`` label in metrics exposed by the :ref:`framework-telemetry`.
+
+As of Zeek 8.0, a WebSocket client will be rejected if the header is set, but
+its value doesn't match ``[-/_.=:*@a-zA-Z0-9]+``.
+
+
 Language Bindings
 -----------------
 
