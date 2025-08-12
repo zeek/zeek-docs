@@ -1001,11 +1001,6 @@ Types
          (present if :doc:`/scripts/policy/protocols/ssl/known-certs.zeek` is loaded)
 
 
-      .. zeek:enum:: DPD::LOG Log::ID
-
-         (present if :doc:`/scripts/policy/frameworks/analyzer/deprecated-dpd-log.zeek` is loaded)
-
-
       .. zeek:enum:: ZeekygenExample::LOG Log::ID
 
          (present if :doc:`/scripts/zeekygen/example.zeek` is loaded)
