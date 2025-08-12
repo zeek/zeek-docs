@@ -293,19 +293,16 @@ to the ``zeek/events`` topic prefix you would receive events that are published
 to topic names ``zeek/events/foo`` and ``zeek/events/bar`` but not
 ``zeek/misc``.
 
-
 .. note::
 
-   In prior Zeek versions, :zeek:see:`Broker::auto_publish` was available to
-   automatically send events to peers whenever the events were called locally via
-   the normal event invocation syntax. When auto-publishing events, local
-   event handlers for the event were called in addition to sending the
-   event to any subscribed peers.
+   In prior Zeek versions, ``Broker::auto_publish`` was available to automatically
+   send events to peers whenever the events were called locally via the normal
+   event invocation syntax. When auto-publishing events, local event handlers for
+   the event were called in addition to sending the event to any subscribed peers.
 
-   :zeek:see:`Broker::auto_publish` has been deprecated due to its
+   ``Broker::auto_publish`` was removed due to its
    `implicit nature <https://github.com/zeek/zeek/discussions/3637>`_.
 
-   .. deprecated:: 7.1
 
 Remote Logging
 --------------
@@ -443,8 +440,7 @@ For example, this will likely not work as expected:
         }
 
 This code runs without errors, however, the local ``my_event`` handler
-will never be called and also not any remote handlers either, even if
-:zeek:see:`Broker::auto_publish` was used elsewhere for it.  Instead, at
+will never be called and also not any remote handlers either. Instead, at
 minimum you would need change the ``zeek_init()`` handler:
 
 .. code-block:: zeek

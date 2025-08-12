@@ -13,36 +13,22 @@ Summary
 ~~~~~~~
 Functions
 #########
-========================================================== ===================================================================
-:zeek:id:`Broker::__auto_publish`: :zeek:type:`function`   
-:zeek:id:`Broker::__auto_unpublish`: :zeek:type:`function` 
-:zeek:id:`Broker::__flush_logs`: :zeek:type:`function`     
-:zeek:id:`Broker::__forward`: :zeek:type:`function`        
-:zeek:id:`Broker::__publish_id`: :zeek:type:`function`     
-:zeek:id:`Broker::__subscribe`: :zeek:type:`function`      
-:zeek:id:`Broker::__unsubscribe`: :zeek:type:`function`    
-:zeek:id:`Broker::make_event`: :zeek:type:`function`       Create a data structure that may be used to send a remote event via
-                                                           :zeek:see:`Broker::publish`.
-:zeek:id:`Broker::publish`: :zeek:type:`function`          Publishes an event at a given topic.
-========================================================== ===================================================================
+======================================================= ===================================================================
+:zeek:id:`Broker::__flush_logs`: :zeek:type:`function`  
+:zeek:id:`Broker::__forward`: :zeek:type:`function`     
+:zeek:id:`Broker::__publish_id`: :zeek:type:`function`  
+:zeek:id:`Broker::__subscribe`: :zeek:type:`function`   
+:zeek:id:`Broker::__unsubscribe`: :zeek:type:`function` 
+:zeek:id:`Broker::make_event`: :zeek:type:`function`    Create a data structure that may be used to send a remote event via
+                                                        :zeek:see:`Broker::publish`.
+:zeek:id:`Broker::publish`: :zeek:type:`function`       Publishes an event at a given topic.
+======================================================= ===================================================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Functions
 #########
-.. zeek:id:: Broker::__auto_publish
-   :source-code: base/bif/messaging.bif.zeek 43 43
-
-   :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
-
-
-.. zeek:id:: Broker::__auto_unpublish
-   :source-code: base/bif/messaging.bif.zeek 46 46
-
-   :Type: :zeek:type:`function` (topic: :zeek:type:`string`, ev: :zeek:type:`any`) : :zeek:type:`bool`
-
-
 .. zeek:id:: Broker::__flush_logs
    :source-code: base/bif/messaging.bif.zeek 37 37
 
@@ -50,7 +36,7 @@ Functions
 
 
 .. zeek:id:: Broker::__forward
-   :source-code: base/bif/messaging.bif.zeek 52 52
+   :source-code: base/bif/messaging.bif.zeek 46 46
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -62,13 +48,13 @@ Functions
 
 
 .. zeek:id:: Broker::__subscribe
-   :source-code: base/bif/messaging.bif.zeek 49 49
+   :source-code: base/bif/messaging.bif.zeek 43 43
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 
 
 .. zeek:id:: Broker::__unsubscribe
-   :source-code: base/bif/messaging.bif.zeek 55 55
+   :source-code: base/bif/messaging.bif.zeek 49 49
 
    :Type: :zeek:type:`function` (topic_prefix: :zeek:type:`string`) : :zeek:type:`bool`
 

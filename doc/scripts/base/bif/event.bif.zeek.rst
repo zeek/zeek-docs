@@ -827,7 +827,7 @@ Events
    .. zeek:see:: new_packet tcp_packet ipv6_ext_headers
 
 .. zeek:id:: net_done
-   :source-code: base/init-bare.zeek 6416 6419
+   :source-code: base/init-bare.zeek 6403 6406
 
    :Type: :zeek:type:`event` (t: :zeek:type:`time`)
 
@@ -979,7 +979,7 @@ Events
    .. zeek:see:: new_packet tcp_packet
 
 .. zeek:id:: packet_not_processed
-   :source-code: base/bif/event.bif.zeek 976 976
+   :source-code: base/bif/event.bif.zeek 974 974
 
    :Type: :zeek:type:`event` (pkt: :zeek:type:`pcap_packet`)
 
@@ -1255,7 +1255,6 @@ Events
    :source-code: policy/misc/unknown-protocols.zeek 42 53
 
    :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`, analyzer_history: :zeek:type:`string_vec`)
-   :Type: :zeek:type:`event` (analyzer_name: :zeek:type:`string`, protocol: :zeek:type:`count`, first_bytes: :zeek:type:`string`)
 
    Generated when a packet analyzer attempts to forward a protocol that it doesn't
    know how to handle.
