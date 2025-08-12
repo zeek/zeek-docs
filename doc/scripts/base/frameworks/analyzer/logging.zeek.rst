@@ -51,7 +51,7 @@ Detailed Interface
 Runtime Options
 ###############
 .. zeek:id:: Analyzer::Logging::failure_data_max_size
-   :source-code: base/frameworks/analyzer/logging.zeek 37 37
+   :source-code: base/frameworks/analyzer/logging.zeek 39 39
 
    :Type: :zeek:type:`count`
    :Attributes: :zeek:attr:`&redef`
@@ -63,7 +63,7 @@ Runtime Options
 Types
 #####
 .. zeek:type:: Analyzer::Logging::Info
-   :source-code: base/frameworks/analyzer/logging.zeek 13 33
+   :source-code: base/frameworks/analyzer/logging.zeek 13 35
 
    :Type: :zeek:type:`record`
 
@@ -97,7 +97,12 @@ Types
 
    .. zeek:field:: id :zeek:type:`conn_id` :zeek:attr:`&log` :zeek:attr:`&optional`
 
-      Connection identifier if available
+      Connection identifier if available.
+
+
+   .. zeek:field:: proto :zeek:type:`transport_proto` :zeek:attr:`&log` :zeek:attr:`&optional`
+
+      Transport protocol for the violation, if available.
 
 
    .. zeek:field:: failure_reason :zeek:type:`string` :zeek:attr:`&log`
@@ -124,7 +129,7 @@ Types
 Events
 ######
 .. zeek:id:: Analyzer::Logging::log_analyzer
-   :source-code: base/frameworks/analyzer/logging.zeek 41 41
+   :source-code: base/frameworks/analyzer/logging.zeek 43 43
 
    :Type: :zeek:type:`event` (rec: :zeek:type:`Analyzer::Logging::Info`)
 
