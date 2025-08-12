@@ -14,6 +14,7 @@ transient, etc. compared to other documentation).
 
    plugins
    spicy/index
+   websocket-api
    Documentation Guide </README.rst>
    contributors
    maintainers
