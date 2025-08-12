@@ -10,7 +10,7 @@ does not load this directly; rather, the controller's bootstrapping module
 by the supervisor.
 
 :Namespace: Management::Controller::Runtime
-:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>`, :doc:`policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>`, :doc:`policy/frameworks/management/controller/api.zeek </scripts/policy/frameworks/management/controller/api.zeek>`, :doc:`policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>`
+:Imports: :doc:`base/frameworks/broker </scripts/base/frameworks/broker/index>`, :doc:`base/frameworks/cluster </scripts/base/frameworks/cluster/index>`, :doc:`policy/frameworks/management </scripts/policy/frameworks/management/index>`, :doc:`policy/frameworks/management/agent/api.zeek </scripts/policy/frameworks/management/agent/api.zeek>`, :doc:`policy/frameworks/management/agent/config.zeek </scripts/policy/frameworks/management/agent/config.zeek>`, :doc:`policy/frameworks/management/controller/api.zeek </scripts/policy/frameworks/management/controller/api.zeek>`, :doc:`policy/frameworks/management/controller/config.zeek </scripts/policy/frameworks/management/controller/config.zeek>`
 
 Summary
 ~~~~~~~
@@ -59,7 +59,7 @@ Detailed Interface
 Types
 #####
 .. zeek:type:: Management::Controller::Runtime::ConfigState
-   :source-code: policy/frameworks/management/controller/main.zeek 23 28
+   :source-code: policy/frameworks/management/controller/main.zeek 24 29
 
    :Type: :zeek:type:`enum`
 
@@ -79,7 +79,7 @@ Types
    states on its way to deployment.
 
 .. zeek:type:: Management::Controller::Runtime::DeployState
-   :source-code: policy/frameworks/management/controller/main.zeek 32 40
+   :source-code: policy/frameworks/management/controller/main.zeek 33 41
 
    :Type: :zeek:type:`record`
 
@@ -105,7 +105,7 @@ Types
    :zeek:see:`Management::Controller::API::deploy_response`.
 
 .. zeek:type:: Management::Controller::Runtime::GetNodesState
-   :source-code: policy/frameworks/management/controller/main.zeek 45 48
+   :source-code: policy/frameworks/management/controller/main.zeek 46 49
 
    :Type: :zeek:type:`record`
 
@@ -120,7 +120,7 @@ Types
    :zeek:see:`Management::Controller::API::get_nodes_response`.
 
 .. zeek:type:: Management::Controller::Runtime::NodeDispatchState
-   :source-code: policy/frameworks/management/controller/main.zeek 61 71
+   :source-code: policy/frameworks/management/controller/main.zeek 62 72
 
    :Type: :zeek:type:`record`
 
@@ -152,7 +152,7 @@ Types
    a dispatch.
 
 .. zeek:type:: Management::Controller::Runtime::RestartState
-   :source-code: policy/frameworks/management/controller/main.zeek 76 79
+   :source-code: policy/frameworks/management/controller/main.zeek 77 80
 
    :Type: :zeek:type:`record`
 
@@ -167,7 +167,7 @@ Types
    :zeek:see:`Management::Controller::API::restart_response`.
 
 .. zeek:type:: Management::Controller::Runtime::TestState
-   :source-code: policy/frameworks/management/controller/main.zeek 82 83
+   :source-code: policy/frameworks/management/controller/main.zeek 83 84
 
    :Type: :zeek:type:`record`
 
