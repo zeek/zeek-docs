@@ -291,10 +291,6 @@ Miscellaneous
     - Protocol, packet or file analyzer debug information
     - :zeek:type:`Analyzer::DebugLogging::Info`
 
-  * - :file:`dpd.log`
-    - Dynamic protocol detection failures
-    - :zeek:type:`DPD::Info`
-
   * - :file:`telemetry.log`
     - Zeek operational telemetry
     - :zeek:type:`Telemetry::Info`

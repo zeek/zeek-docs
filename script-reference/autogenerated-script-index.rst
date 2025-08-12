@@ -643,14 +643,11 @@
    policy/protocols/ssl/weak-keys.zeek </scripts/policy/protocols/ssl/weak-keys.zeek>
    policy/tuning/json-logs.zeek </scripts/policy/tuning/json-logs.zeek>
    policy/tuning/track-all-assets.zeek </scripts/policy/tuning/track-all-assets.zeek>
-   policy/frameworks/analyzer/deprecated-dpd-log.zeek </scripts/policy/frameworks/analyzer/deprecated-dpd-log.zeek>
    policy/frameworks/conn_key/vlan_fivetuple.zeek </scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek>
-   policy/frameworks/dpd/detect-protocols.zeek </scripts/policy/frameworks/dpd/detect-protocols.zeek>
    policy/frameworks/cluster/backend/zeromq/connect.zeek </scripts/policy/frameworks/cluster/backend/zeromq/connect.zeek>
    policy/frameworks/cluster/nodes-experimental/manager.zeek </scripts/policy/frameworks/cluster/nodes-experimental/manager.zeek>
    policy/frameworks/control/controllee.zeek </scripts/policy/frameworks/control/controllee.zeek>
    policy/frameworks/control/controller.zeek </scripts/policy/frameworks/control/controller.zeek>
-   policy/frameworks/dpd/packet-segment-logging.zeek </scripts/policy/frameworks/dpd/packet-segment-logging.zeek>
    policy/frameworks/management/agent/main.zeek </scripts/policy/frameworks/management/agent/main.zeek>
    policy/frameworks/management/controller/main.zeek </scripts/policy/frameworks/management/controller/main.zeek>
    policy/frameworks/management/node/__load__.zeek </scripts/policy/frameworks/management/node/__load__.zeek>
