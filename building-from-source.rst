@@ -45,6 +45,7 @@ development headers for libraries:
     * OpenSSL (https://www.openssl.org)
     * Python 3.9 or greater (https://www.python.org/)
     * SWIG (https://www.swig.org)
+    * ZeroMQ (https://zeromq.org)
     * Zlib (https://zlib.net/)
 
 To install these, you can use:
@@ -53,7 +54,7 @@ To install these, you can use:
 
   .. code-block:: console
 
-     sudo dnf install cmake make gcc gcc-c++ flex bison libpcap-devel openssl-devel python3 python3-devel swig zlib-devel
+     sudo dnf install bison cmake cppzmq-devel gcc gcc-c++ flex libpcap-devel make openssl-devel python3 python3-devel swig zlib-devel
 
   On pre-``dnf`` systems, use ``yum`` instead.  Additionally, on RHEL/CentOS 7,
   you can install and activate a devtoolset_ to get access to recent GCC
@@ -68,7 +69,11 @@ To install these, you can use:
 
   .. code-block:: console
 
-     sudo apt-get install cmake make gcc g++ flex libfl-dev bison libpcap-dev libssl-dev python3 python3-dev swig zlib1g-dev
+     sudo apt-get install bison cmake cppzmq-dev gcc g++ flex libfl-dev libpcap-dev libssl-dev make python3 python3-dev swig zlib1g-dev
+
+  If your platform doesn't offer ``cppzmq-dev``, try ``libzmq3-dev``
+  instead. Zeek's build will fall back to an in-tree version of C++
+  bindings to ZeroMQ in that case.
 
 * FreeBSD:
 
@@ -77,7 +82,7 @@ To install these, you can use:
 
   .. code-block:: console
 
-      sudo pkg install -y bash git cmake swig bison python3 base64
+      sudo pkg install -y base64 bash bison cmake cppzmq git python3 swig
       pyver=`python3 -c 'import sys; print(f"py{sys.version_info[0]}{sys.version_info[1]}")'`
       sudo pkg install -y $pyver-sqlite3
 
@@ -98,11 +103,10 @@ To install these, you can use:
 
   Distributions of these dependencies can likely be obtained from your
   preferred macOS package management system (e.g. Homebrew_,
-  MacPorts_, or Fink_). Specifically for Homebrew, the ``cmake``,
-  ``swig``, ``openssl``, ``bison``, and ``flex`` packages
-  provide the required dependencies.  For MacPorts, the ``cmake``,
-  ``swig``, ``swig-python``, ``openssl``, ``bison``, and ``flex`` packages
-  provide the required dependencies.
+  MacPorts_, or Fink_). Specifically for Homebrew, the ``bison``, ``cmake``,
+  ``cppzmq``, ``flex``, ``swig``, and ``openssl`` packages
+  provide the required dependencies.  For MacPorts, use the ``bison``, ``cmake``,
+  ``cppzmq``, ``flex``, ``swig``, ``swig-python``, and ``openssl`` packages.
 
 * Windows
 
@@ -152,7 +156,7 @@ To install these, you can use:
 
      mkdir build
      cd build
-     cmake.exe .. -DCMAKE_BUILD_TYPE=release -DENABLE_ZEEK_UNIT_TESTS=yes -DVCPKG_TARGET_TRIPLET="x64-windows-static" -G Ninja
+     cmake.exe .. -DCMAKE_BUILD_TYPE=release -DENABLE_ZEEK_UNIT_TESTS=yes -DENABLE_CLUSTER_BACKEND_ZEROMQ=no -DVCPKG_TARGET_TRIPLET="x64-windows-static" -G Ninja
      cmake.exe --build .
 
   All of this is duplicated in the CI configuration for Windows which lives in
@@ -168,6 +172,7 @@ To install these, you can use:
   unzip it, and then pass ``-DPCAP_ROOT_DIR="<path to npcap sdk>"`` to the
   initial CMake invocation for Zeek.
 
+  Note also that the ZeroMQ cluster backend is not yet supported on Windows.
 
 Optional Dependencies
 ---------------------
@@ -175,7 +180,6 @@ Optional Dependencies
 Zeek can make use of some optional libraries and tools if they are found at
 build time:
 
-    * ZeroMQ (for the ZeroMQ cluster backend)
     * libmaxminddb (for geolocating IP addresses)
     * sendmail (enables Zeek and ZeekControl to send mail)
     * curl (used by a Zeek script that implements active HTTP)
@@ -185,11 +189,6 @@ build time:
     * krb5 libraries and headers
     * ipsumdump (for trace-summary; https://github.com/kohler/ipsumdump)
     * hiredis (for the Redis storage backend)
-
-ZeroMQ (e.g., libzmq3-dev on Debian/Ubuntu or cppzmq-devel on Fedora) is a
-requirement for developers working on core Zeek as some of Zeek's central
-tests require it to be available. Otherwise, for operating Zeek, ZeroMQ
-is optional unless you want to test with the :ref:`cluster_backend_zeromq`.
 
 Geolocation is probably the most interesting and can be installed on most
 platforms by following the instructions for :ref:`address geolocation and AS
