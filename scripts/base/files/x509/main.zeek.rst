@@ -18,6 +18,16 @@ Runtime Options
 :zeek:id:`X509::relog_known_certificates_after`: :zeek:type:`interval` :zeek:attr:`&redef` By default, x509 certificates are deduplicated.
 ========================================================================================== ===================================================================
 
+Redefinable Options
+###################
+============================================================================================= ========================================================================
+:zeek:id:`X509::default_max_field_container_elements`: :zeek:type:`count` :zeek:attr:`&redef` The maximum number of elements a single container field can contain when
+                                                                                              logging.
+:zeek:id:`X509::default_max_field_string_bytes`: :zeek:type:`count` :zeek:attr:`&redef`       The maximum number of bytes that a single string field can contain when
+                                                                                              logging.
+:zeek:id:`X509::default_max_total_container_elements`: :zeek:type:`count` :zeek:attr:`&redef` The maximum total number of container elements a record may log.
+============================================================================================= ========================================================================
+
 State Variables
 ###############
 ================================================================================================================================= ===========================================================================================
@@ -106,6 +116,55 @@ Runtime Options
    logged several times.
    
    To disable deduplication completely, set this to 0secs.
+
+Redefinable Options
+###################
+.. zeek:id:: X509::default_max_field_container_elements
+   :source-code: base/files/x509/main.zeek 121 121
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``500``
+
+   The maximum number of elements a single container field can contain when
+   logging. If a container reaches this limit, the log output for the field will
+   be truncated. Setting this to zero disables the limiting.
+   
+   .. zeek:see:: Log::default_max_field_container_elements
+
+.. zeek:id:: X509::default_max_field_string_bytes
+   :source-code: base/files/x509/main.zeek 114 114
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``4096``
+   :Redefinition: from :doc:`/scripts/policy/protocols/ssl/log-certs-base64.zeek`
+
+      ``=``::
+
+         0
+
+
+   The maximum number of bytes that a single string field can contain when
+   logging. If a string reaches this limit, the log output for the field will be
+   truncated. Setting this to zero disables the limiting.
+   
+   .. zeek:see:: Log::default_max_field_string_bytes
+
+.. zeek:id:: X509::default_max_total_container_elements
+   :source-code: base/files/x509/main.zeek 130 130
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``1500``
+
+   The maximum total number of container elements a record may log. This is the
+   sum of all container elements logged for the record. If this limit is reached,
+   all further containers will be logged as empty containers. If the limit is
+   reached while processing a container, the container will be truncated in the
+   output. Setting this to zero disables the limiting.
+   
+   .. zeek:see:: Log::default_max_total_container_elements
 
 State Variables
 ###############
@@ -290,7 +349,7 @@ Events
 Hooks
 #####
 .. zeek:id:: X509::create_deduplication_index
-   :source-code: base/files/x509/main.zeek 158 164
+   :source-code: base/files/x509/main.zeek 186 192
 
    :Type: :zeek:type:`hook` (c: :zeek:type:`X509::Info`) : :zeek:type:`bool`
 

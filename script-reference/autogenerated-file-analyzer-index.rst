@@ -280,7 +280,7 @@ Types
 +++++
 
 .. zeek:type:: X509::Certificate
-   :source-code: base/init-bare.zeek 5044 5059
+   :source-code: base/init-bare.zeek 5069 5084
 
    :Type: :zeek:type:`record`
 
@@ -357,7 +357,7 @@ Types
 
 
 .. zeek:type:: X509::Extension
-   :source-code: base/init-bare.zeek 5061 5067
+   :source-code: base/init-bare.zeek 5086 5092
 
    :Type: :zeek:type:`record`
 
@@ -389,7 +389,7 @@ Types
 
 
 .. zeek:type:: X509::BasicConstraints
-   :source-code: base/init-bare.zeek 5069 5072
+   :source-code: base/init-bare.zeek 5094 5097
 
    :Type: :zeek:type:`record`
 
@@ -407,7 +407,7 @@ Types
 
 
 .. zeek:type:: X509::SubjectAlternativeName
-   :source-code: base/init-bare.zeek 5074 5080
+   :source-code: base/init-bare.zeek 5099 5105
 
    :Type: :zeek:type:`record`
 
@@ -439,7 +439,7 @@ Types
 
 
 .. zeek:type:: X509::Result
-   :source-code: base/init-bare.zeek 5083 5090
+   :source-code: base/init-bare.zeek 5108 5115
 
    :Type: :zeek:type:`record`
 
@@ -490,7 +490,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_extension
-   :source-code: base/files/x509/main.zeek 177 184
+   :source-code: base/files/x509/main.zeek 205 212
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::Extension`)
 
@@ -510,7 +510,7 @@ Events
                 x509_get_certificate_string x509_ocsp_ext_signed_certificate_timestamp
 
 .. zeek:id:: x509_ext_basic_constraints
-   :source-code: base/files/x509/main.zeek 186 193
+   :source-code: base/files/x509/main.zeek 214 221
 
    :Type: :zeek:type:`event` (f: :zeek:type:`fa_file`, ext: :zeek:type:`X509::BasicConstraints`)
 

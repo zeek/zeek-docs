@@ -420,7 +420,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Files::log_policy
-   :source-code: base/files/x509/main.zeek 152 156
+   :source-code: base/files/x509/main.zeek 180 184
 
    :Type: :zeek:type:`Log::PolicyHook`
 
