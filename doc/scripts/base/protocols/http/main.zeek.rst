@@ -23,6 +23,13 @@ Runtime Options
 :zeek:id:`HTTP::proxy_headers`: :zeek:type:`set` :zeek:attr:`&redef`             A list of HTTP headers typically used to indicate proxied requests.
 ================================================================================ ====================================================================
 
+Redefinable Options
+###################
+======================================================================================= =======================================================================
+:zeek:id:`HTTP::default_max_field_string_bytes`: :zeek:type:`count` :zeek:attr:`&redef` The maximum number of bytes that a single string field can contain when
+                                                                                        logging.
+======================================================================================= =======================================================================
+
 Types
 #####
 ============================================= ===================================================================
@@ -147,6 +154,22 @@ Runtime Options
 
 
    A list of HTTP headers typically used to indicate proxied requests.
+
+Redefinable Options
+###################
+.. zeek:id:: HTTP::default_max_field_string_bytes
+   :source-code: base/protocols/http/main.zeek 149 149
+
+   :Type: :zeek:type:`count`
+   :Attributes: :zeek:attr:`&redef`
+   :Default: ``0``
+
+   The maximum number of bytes that a single string field can contain when
+   logging. If a string reaches this limit, the log output for the field will be
+   truncated. Setting this to zero disables the limiting. HTTP has no maximum
+   length for various fields such as the URI, so this is set to zero by default.
+   
+   .. zeek:see:: Log::default_max_field_string_bytes
 
 Types
 #####
@@ -460,7 +483,7 @@ Events
 Hooks
 #####
 .. zeek:id:: HTTP::finalize_http
-   :source-code: base/protocols/http/main.zeek 384 396
+   :source-code: base/protocols/http/main.zeek 393 405
 
    :Type: :zeek:type:`Conn::RemovalHook`
 

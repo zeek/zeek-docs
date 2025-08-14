@@ -419,7 +419,7 @@ Redefinable Options
 Constants
 #########
 .. zeek:id:: Log::no_filter
-   :source-code: base/frameworks/logging/main.zeek 428 428
+   :source-code: base/frameworks/logging/main.zeek 448 448
 
    :Type: :zeek:type:`Log::Filter`
    :Default:
@@ -456,7 +456,7 @@ Constants
 State Variables
 ###############
 .. zeek:id:: Log::active_streams
-   :source-code: base/frameworks/logging/main.zeek 626 626
+   :source-code: base/frameworks/logging/main.zeek 646 646
 
    :Type: :zeek:type:`table` [:zeek:type:`Log::ID`] of :zeek:type:`Log::Stream`
    :Default: ``{}``
@@ -468,7 +468,7 @@ State Variables
 Types
 #####
 .. zeek:type:: Log::DelayToken
-   :source-code: base/frameworks/logging/main.zeek 647 647
+   :source-code: base/frameworks/logging/main.zeek 667 667
 
    :Type: :zeek:type:`opaque` of LogDelayToken
 
@@ -1037,7 +1037,7 @@ Types
            the output of the given log record.
 
 .. zeek:type:: Log::PostDelayCallback
-   :source-code: base/frameworks/logging/main.zeek 642 642
+   :source-code: base/frameworks/logging/main.zeek 662 662
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`any`, id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1204,7 +1204,7 @@ Types
    The function type for log rotation post processors.
 
 .. zeek:type:: Log::Stream
-   :source-code: base/frameworks/logging/main.zeek 370 425
+   :source-code: base/frameworks/logging/main.zeek 370 445
 
    :Type: :zeek:type:`record`
 
@@ -1278,6 +1278,34 @@ Types
       .. :zeek:see:`Log::set_max_delay_queue_size`
 
 
+   .. zeek:field:: max_field_string_bytes :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Log::default_max_field_string_bytes` :zeek:attr:`&optional`
+
+      Maximum string size for field in a log record from this stream.
+      
+      .. :zeek:see:`Log::default_max_field_string_bytes`
+
+
+   .. zeek:field:: max_total_string_bytes :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Log::default_max_total_string_bytes` :zeek:attr:`&optional`
+
+      Maximum total string size in a log record from this stream.
+      
+      .. :zeek:see:`Log::default_max_total_string_bytes`
+
+
+   .. zeek:field:: max_field_container_elements :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Log::default_max_field_container_elements` :zeek:attr:`&optional`
+
+      Maximum container elements for field in a log record from this stream.
+      
+      .. :zeek:see:`Log::default_max_field_container_elements`
+
+
+   .. zeek:field:: max_total_container_elements :zeek:type:`count` :zeek:attr:`&default` = :zeek:see:`Log::default_max_total_container_elements` :zeek:attr:`&optional`
+
+      Maximum total container elements in a log record from this stream.
+      
+      .. :zeek:see:`Log::default_max_total_container_elements`
+
+
    Type defining the content of a logging stream.
 
 .. zeek:type:: Log::StreamPolicyHook
@@ -1321,7 +1349,7 @@ Events
 Hooks
 #####
 .. zeek:id:: Log::log_stream_policy
-   :source-code: base/frameworks/logging/main.zeek 633 633
+   :source-code: base/frameworks/logging/main.zeek 653 653
 
    :Type: :zeek:type:`Log::StreamPolicyHook`
 
@@ -1334,7 +1362,7 @@ Hooks
 Functions
 #########
 .. zeek:id:: Log::add_default_filter
-   :source-code: base/frameworks/logging/main.zeek 998 1001
+   :source-code: base/frameworks/logging/main.zeek 1018 1021
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1354,7 +1382,7 @@ Functions
       Log::remove_default_filter
 
 .. zeek:id:: Log::add_filter
-   :source-code: base/frameworks/logging/main.zeek 938 955
+   :source-code: base/frameworks/logging/main.zeek 958 975
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, filter: :zeek:type:`Log::Filter`) : :zeek:type:`bool`
 
@@ -1377,7 +1405,7 @@ Functions
       Log::remove_default_filter Log::get_filter Log::get_filter_names
 
 .. zeek:id:: Log::create_stream
-   :source-code: base/frameworks/logging/main.zeek 863 872
+   :source-code: base/frameworks/logging/main.zeek 883 892
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, stream: :zeek:type:`Log::Stream`) : :zeek:type:`bool`
 
@@ -1408,7 +1436,7 @@ Functions
    that no extensions are added.
 
 .. zeek:id:: Log::default_path_func
-   :source-code: base/frameworks/logging/main.zeek 760 796
+   :source-code: base/frameworks/logging/main.zeek 780 816
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, path: :zeek:type:`string`, rec: :zeek:type:`any`) : :zeek:type:`string`
    :Attributes: :zeek:attr:`&redef`
@@ -1436,7 +1464,7 @@ Functions
    :returns: The path to be used for the filter.
 
 .. zeek:id:: Log::delay
-   :source-code: base/frameworks/logging/main.zeek 1018 1021
+   :source-code: base/frameworks/logging/main.zeek 1038 1041
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, rec: :zeek:type:`any`, post_delay_cb: :zeek:type:`Log::PostDelayCallback` :zeek:attr:`&default` = :zeek:see:`Log::empty_post_delay_cb` :zeek:attr:`&optional`) : :zeek:type:`Log::DelayToken`
 
@@ -1476,7 +1504,7 @@ Functions
             to be passed to :zeek:see:`Log::delay_finish`.
 
 .. zeek:id:: Log::delay_finish
-   :source-code: base/frameworks/logging/main.zeek 1023 1026
+   :source-code: base/frameworks/logging/main.zeek 1043 1046
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, rec: :zeek:type:`any`, token: :zeek:type:`Log::DelayToken`) : :zeek:type:`bool`
 
@@ -1499,7 +1527,7 @@ Functions
             *id*, *rec* and *token* was provided.
 
 .. zeek:id:: Log::disable_stream
-   :source-code: base/frameworks/logging/main.zeek 889 906
+   :source-code: base/frameworks/logging/main.zeek 909 926
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1516,7 +1544,7 @@ Functions
    .. zeek:see:: Log::enable_stream
 
 .. zeek:id:: Log::empty_post_delay_cb
-   :source-code: base/frameworks/logging/main.zeek 1014 1016
+   :source-code: base/frameworks/logging/main.zeek 1034 1036
 
    :Type: :zeek:type:`function` (rec: :zeek:type:`any`, id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1524,7 +1552,7 @@ Functions
    as a default value for :zeek:see:`Log::delay` and ignored internally.
 
 .. zeek:id:: Log::enable_stream
-   :source-code: base/frameworks/logging/main.zeek 908 927
+   :source-code: base/frameworks/logging/main.zeek 928 947
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1541,7 +1569,7 @@ Functions
    .. zeek:see:: Log::disable_stream
 
 .. zeek:id:: Log::flush
-   :source-code: base/frameworks/logging/main.zeek 993 996
+   :source-code: base/frameworks/logging/main.zeek 1013 1016
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1560,7 +1588,7 @@ Functions
    .. zeek:see:: Log::set_buf Log::enable_stream Log::disable_stream
 
 .. zeek:id:: Log::get_delay_queue_size
-   :source-code: base/frameworks/logging/main.zeek 1059 1062
+   :source-code: base/frameworks/logging/main.zeek 1079 1082
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`int`
 
@@ -1573,7 +1601,7 @@ Functions
    :returns: The current size of the delay queue, or -1 on error.
 
 .. zeek:id:: Log::get_filter
-   :source-code: base/frameworks/logging/main.zeek 967 973
+   :source-code: base/frameworks/logging/main.zeek 987 993
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, name: :zeek:type:`string`) : :zeek:type:`Log::Filter`
 
@@ -1596,7 +1624,7 @@ Functions
                 Log::remove_default_filter Log::get_filter_names
 
 .. zeek:id:: Log::get_filter_names
-   :source-code: base/frameworks/logging/main.zeek 975 981
+   :source-code: base/frameworks/logging/main.zeek 995 1001
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`set` [:zeek:type:`string`]
 
@@ -1614,7 +1642,7 @@ Functions
                  Log::remove_default_filter Log::get_filter
 
 .. zeek:id:: Log::remove_default_filter
-   :source-code: base/frameworks/logging/main.zeek 1003 1006
+   :source-code: base/frameworks/logging/main.zeek 1023 1026
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1632,7 +1660,7 @@ Functions
    .. zeek:see:: Log::add_filter Log::remove_filter Log::add_default_filter
 
 .. zeek:id:: Log::remove_filter
-   :source-code: base/frameworks/logging/main.zeek 957 965
+   :source-code: base/frameworks/logging/main.zeek 977 985
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, name: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1654,7 +1682,7 @@ Functions
       Log::remove_default_filter Log::get_filter Log::get_filter_names
 
 .. zeek:id:: Log::remove_stream
-   :source-code: base/frameworks/logging/main.zeek 874 887
+   :source-code: base/frameworks/logging/main.zeek 894 907
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`) : :zeek:type:`bool`
 
@@ -1669,7 +1697,7 @@ Functions
    .. zeek:see:: Log::create_stream
 
 .. zeek:id:: Log::rotation_format_func
-   :source-code: base/frameworks/logging/main.zeek 836 861
+   :source-code: base/frameworks/logging/main.zeek 856 881
 
    :Type: :zeek:type:`function` (ri: :zeek:type:`Log::RotationFmtInfo`) : :zeek:type:`Log::RotationPath`
    :Attributes: :zeek:attr:`&redef`
@@ -1677,7 +1705,7 @@ Functions
    A function that one may use to customize log file rotation paths.
 
 .. zeek:id:: Log::run_rotation_postprocessor_cmd
-   :source-code: base/frameworks/logging/main.zeek 799 822
+   :source-code: base/frameworks/logging/main.zeek 819 842
 
    :Type: :zeek:type:`function` (info: :zeek:type:`Log::RotationInfo`, npath: :zeek:type:`string`) : :zeek:type:`bool`
 
@@ -1704,7 +1732,7 @@ Functions
       Log::default_rotation_postprocessors
 
 .. zeek:id:: Log::set_buf
-   :source-code: base/frameworks/logging/main.zeek 988 991
+   :source-code: base/frameworks/logging/main.zeek 1008 1011
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, buffered: :zeek:type:`bool`) : :zeek:type:`bool`
 
@@ -1726,7 +1754,7 @@ Functions
    .. zeek:see:: Log::flush
 
 .. zeek:id:: Log::set_max_delay_interval
-   :source-code: base/frameworks/logging/main.zeek 1028 1044
+   :source-code: base/frameworks/logging/main.zeek 1048 1064
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, max_delay: :zeek:type:`interval`) : :zeek:type:`bool`
 
@@ -1749,7 +1777,7 @@ Functions
    :returns: ``T`` on success, else ``F``.
 
 .. zeek:id:: Log::set_max_delay_queue_size
-   :source-code: base/frameworks/logging/main.zeek 1046 1057
+   :source-code: base/frameworks/logging/main.zeek 1066 1077
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, max_size: :zeek:type:`count`) : :zeek:type:`bool`
 
@@ -1771,7 +1799,7 @@ Functions
    :returns: ``T`` on success, else ``F``.
 
 .. zeek:id:: Log::write
-   :source-code: base/frameworks/logging/main.zeek 983 986
+   :source-code: base/frameworks/logging/main.zeek 1003 1006
 
    :Type: :zeek:type:`function` (id: :zeek:type:`Log::ID`, columns: :zeek:type:`any`) : :zeek:type:`bool`
 
