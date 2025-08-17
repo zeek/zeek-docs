@@ -22,6 +22,12 @@ provides examples of this reporting in action.
 For full details on each field in the :file:`analyzer.log` file, please refer to
 :zeek:see:`Analyzer::Logging::Info`.
 
+.. note::
+
+   This log underwent a revamp in Zeek 8.0 and resembles what dpd.log provided
+   in older versions of Zeek. Please review Zeek 8.0's release notes for more
+   details on the changes in this log.
+
 One Specific Example
 ====================
 
