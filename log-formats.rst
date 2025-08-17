@@ -1,3 +1,5 @@
+.. _logschema: https://github.com/zeek/logschema
+
 ===============================
 Zeek Log Formats and Inspection
 ===============================
@@ -5,9 +7,10 @@ Zeek Log Formats and Inspection
 Zeek creates a variety of logs when run in its default configuration. This
 data can be intimidating for a first-time user. In this section, we will
 process a sample packet trace with Zeek, and take a brief look at the sorts
-of logs Zeek creates. We will look at logs created in the traditional format,
-as well as logs in JSON format. We will also introduce a few command-line
-tools to examine Zeek logs.
+of logs Zeek creates. We will look at logs created in Zeek's traditional TSV
+format, how to switch to logging in JSON format, and assorted tooling to
+help you work with the logs. Finally, we'll cover Zeek's support for log
+schemas that describe what Zeek's logs look like in detail.
 
 Working with a Sample Trace
 ===========================
@@ -592,10 +595,63 @@ see the `jq manual <https://stedolan.github.io/jq/manual/>`_.
 With this basic understanding of how to interact with Zeek logs, we can now
 turn to specific logs and interpret their values.
 
-Conclusion
-==========
+Log Schemas
+===========
 
-This section showed a sample of the sorts of logs that Zeek generates when
-processing a simple network trace. It explained the differences between logs in
-the traditional TSV format and the newer JSON format. It also demonstrated the
-use of a few simple command line tools to inspect Zeek logs in both formats.
+It's important to note that the exact set and shape of Zeek's logs is highly
+site-dependent.  While every Zeek version ships with a set of logs enabled by
+default, it also includes optional ones that you're welcome to enable.  (Feel
+free to peruse the :ref:`full set<log-files>`.)  In addition, many of Zeek's
+`add-on packages <https://packages.zeek.org/>`_ introduce logs of their own, or
+enrich existing ones with additional metadata.  And finally, Zeek's
+:ref:`logging framework <framework-logging>` lets you apply your own log
+customizations with a bit of scripting.
+
+Zeek's `logschema <https://github.com/zeek/logschema>`_ package helps you
+understand your Zeek logs. It produces log schemas that detail your
+installation's set of logs and their fields.  For each field, the schemas
+provide rich metadata including name, type, and docstrings. They can also
+explain the source of a field, such as the specific script or the name of the
+Zeek package that added it. Log schemas are also a great way to understand how
+and whether your logs change when you upgrade to a newer version of Zeek.
+
+To produce schemas, you need to tell Zeek which schema exporters to load.
+An easy way to do this is to simply start Zeek with your installed packages
+and an exporter of your choice. To get started, try the following:
+
+  .. code-block:: console
+
+    $ zkg install logschema
+    $ zeek logschema/export/jsonschema packages
+
+Your local directory will now contain a JSON Schema description for each of your
+installation's logs.
+
+  .. code-block:: console
+
+    $ cat zeek-conn-log.schema.json | jq
+    {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "Schema for Zeek conn.log",
+      "description": "JSON Schema for Zeek conn.log",
+      "type": "object",
+      "properties": {
+        "ts": {
+          "description": "This is the time of the first packet.",
+          "type": "number",
+          "examples": [
+            "1737691432.132607"
+          ],
+          "x-zeek": {
+            "type": "time",
+            "record_type": "Conn::Info",
+            "is_optional": false,
+            "script": "base/protocols/conn/main.zeek"
+          }
+        },
+    ...
+    }
+
+The logschema package supports a range of schema formats including JSON Schema
+and CSV, and works with Zeek 5.2 and newer. Take a look at the package's
+`documentation <https://github.com/zeek/logschema>`_ for details.
