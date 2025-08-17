@@ -14,7 +14,7 @@ NetControl Framework
   NetControl framework provides a flexible, unified interface for active
   response and hides the complexity of heterogeneous network equipment
   behind a simple task-oriented API, which is easily usable via Zeek
-  scripts. This document gives an overview of how to use the NetControl
+  scripts. This section gives an overview of how to use the NetControl
   framework in different scenarios; to get a better understanding of how
   it can be used in practice, it might be worthwhile to take a look at
   the integration tests.
@@ -44,9 +44,8 @@ tracks rules throughout their entire lifecycle and reports the status (like
 success, failure and timeouts) back to the user scripts.
 
 The backends are implemented as Zeek scripts using a plugin based API; an example
-for this is :doc:`/scripts/base/frameworks/netcontrol/plugins/broker.zeek`. This
-document will show how to write plugins in
-:ref:`framework-netcontrol-plugins`.
+for this is :doc:`/scripts/base/frameworks/netcontrol/plugins/broker.zeek`. We'll
+show how to write plugins in :ref:`framework-netcontrol-plugins`.
 
 NetControl API
 ==============
@@ -511,7 +510,7 @@ addresses that only are seen once for a short time are only blocked for a few
 minutes, monitored for a while and then forgotten. IP addresses that keep
 appearing will get re-blocked for longer amounts of time.
 
-In contrast to the other high-level functions that we documented so far, the
+In contrast to the other high-level functions that we have documented so far, the
 catch and release functionality is much more complex and adds a number of
 different specialized functions to NetControl. The documentation for catch and
 release is contained in the file
@@ -625,8 +624,8 @@ The plugins that currently ship with NetControl are:
 Activating plugins
 ******************
 
-In the API reference part of this document, we already used the debug plugin. To
-use the plugin, we first had to instantiate it by calling
+In the API reference we already used the debug plugin.
+We first had to instantiate it by calling
 :zeek:see:`NetControl::create_debug` and then add it to NetControl by
 calling :zeek:see:`NetControl::activate`.
 

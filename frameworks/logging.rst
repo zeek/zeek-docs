@@ -5,9 +5,9 @@
 Logging Framework
 =================
 
-Zeek comes with a flexible key-value based logging interface that allows
-fine-grained control of what gets logged and how it is logged. This document
-describes how logging can be customized and extended.
+Zeek comes with a flexible logging interface that allows fine-grained control of
+what gets logged and how it is logged. This section explains how you can use
+this framework to customize and extended your logs.
 
 Terminology
 ===========
@@ -37,8 +37,7 @@ Zeek’s logging interface is built around three main abstractions:
 There are several different ways to customize Zeek’s logging: you can create a
 new log stream, you can extend an existing log with new fields, you can apply
 filters to an existing log stream, or you can customize the output format by
-setting log writer options. All of these approaches are described in this
-document.
+setting log writer options. All of these approaches are described below.
 
 Streams
 =======

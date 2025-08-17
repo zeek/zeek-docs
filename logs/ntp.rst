@@ -9,8 +9,8 @@ configured to contact public NTP servers. Administrators can use Zeek logs to
 identify NTP clients and servers, and determine if they are operating as
 expected.
 
-As with all entries in this document, for full explanation of each field in the
-log, see :zeek:see:`NTP::Info`.
+As with all entries in this chapter, see :zeek:see:`NTP::Info` for full
+explanation of each field in the log.
 
 NTP via :program:`tcpdump`
 ==========================

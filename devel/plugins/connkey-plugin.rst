@@ -17,7 +17,7 @@ Concretely, a connection between 10.0.0.1 and 10.0.0.2 in one VLAN is
 distinct from a connection between the same IPs in another VLAN.
 Here, Zeek should include the VLAN identifier into the connection key.
 
-This document describes how to provide custom connection keys to Zeek in
+This section describes how to provide custom connection keys to Zeek in
 form of a tutorial.
 If you're not familiar with plugin development, head over to the
 :ref:`Writing Plugins <writing-plugins>` section.

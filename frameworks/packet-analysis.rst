@@ -12,7 +12,7 @@ Packet Analysis
   The Packet Analysis plugin architecture handles parsing of packet headers at
   layers below Zeek's existing Session analysis. In particular, this allows to
   add new link and network layer protocols to Zeek.
-  This document provides an overview of the underlying architecture as well as
+  This section provides an overview of the underlying architecture as well as
   an example-based walk-through. For further details, consider to take a look
   at the built-in packet analyzers as well as the packet analyzer tests.
 

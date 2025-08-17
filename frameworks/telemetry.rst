@@ -29,7 +29,7 @@ various regular logs. Zeek's telemetry data model closely resembles that of
 `Prometheus`_, and supports its text-based exposition format for scraping by
 third-party collectors.
 
-This document outlines usage examples, and gives brief API examples for
+This section outlines usage examples, and gives brief API examples for
 composing your own metrics. Head to the :zeek:see:`Telemetry` API documentation
 for more details.
 

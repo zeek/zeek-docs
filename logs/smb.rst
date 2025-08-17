@@ -14,7 +14,7 @@ environments.
 Introduction
 ============
 
-For the most part, the log analysis sections of this document address a single
+For the most part, the log analyses in this section address a single
 Zeek log, such as :file:`conn.log` or :file:`dns.log`. When Zeek encounters SMB
 protocol usage, it usually creates multiple logs of varying types. In addition
 to the ubiquitous :file:`conn.log`, Zeek may generate :file:`dce_rpc.log`,
