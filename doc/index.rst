@@ -11,10 +11,10 @@ Zeek Documentation
   Make sure to read the :ref:`appropriate documentation version
   <documentation-versioning>`.
 
-The purpose of this document is to assist the Zeek community with implementing
-Zeek in their environments. The document includes material on Zeek's unique
+The purpose of this manual is to assist the Zeek community with implementing
+Zeek in their environments. It includes material on Zeek's unique
 capabilities, how to install it, how to interpret the default logs that Zeek
-generates, and how to modify Zeek to fit your needs. The document is the
+generates, and how to modify Zeek to fit your needs. This documentation is the
 result of a volunteer community effort. If you would like to contribute, or
 want more information, please visit the `Zeek web page
 <https://zeek.org/getting-started-in-the-zeek-community/>`_ for details on how

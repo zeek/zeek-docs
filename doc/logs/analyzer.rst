@@ -16,8 +16,8 @@ off analyzers when it becomes obvious that they are parsing the wrong protocol.
 This allows Zeek to use “loose” protocol signatures, and, if in doubt, try
 multiple analyzers in parallel.
 
-Zeek’s :file:`analyzer.log` reports problems with the DPD mechanism. This document
-will provide examples of this reporting in action.
+Zeek’s :file:`analyzer.log` reports problems with the DPD mechanism. This section
+provides examples of this reporting in action.
 
 For full details on each field in the :file:`analyzer.log` file, please refer to
 :zeek:see:`Analyzer::Logging::Info`.

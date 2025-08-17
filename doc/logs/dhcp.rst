@@ -8,8 +8,8 @@ IP addresses and other key information needed to make use of the network. This
 entry will describe some aspects of Zeek’s :file:`dhcp.log` that may be of use to
 network and security personnel.
 
-As with all entries in this document, for full explanation of each field in the
-log, see :zeek:see:`DHCP::Info`.
+As with all entries in this chapter, see :zeek:see:`DHCP::Info` for full
+explanation of each field in the log.
 
 DORA via Tcpdump
 ================
