@@ -21,7 +21,7 @@ cores, or even many physical computers. The cluster deployment scenario for
 Zeek is the current solution to build these larger systems. The tools and
 scripts that accompany Zeek provide the structure to easily manage many Zeek
 processes examining packets and doing correlation activities but acting as
-a singular, cohesive entity.  This document describes the Zeek cluster
+a singular, cohesive entity.  This section describes the Zeek cluster
 architecture.  For information on how to configure a Zeek cluster,
 see the documentation for `ZeekControl <https://github.com/zeek/zeekctl>`_.
 
@@ -116,14 +116,6 @@ host where each worker has a BPF filter to limit its visibility to only that
 stream of flows, or onward to a commodity switch to split the traffic out to
 multiple 1G interfaces for the workers.  This greatly reduces
 costs since workers can use relatively inexpensive 1G interfaces.
-
-OpenFlow Switches
-^^^^^^^^^^^^^^^^^
-
-We are currently exploring the use of OpenFlow based switches to do flow-based
-load balancing directly on the switch, which greatly reduces frontend
-costs for many users.  This document will be updated when we have more
-information.
 
 On host flow balancing
 **********************
@@ -353,7 +345,7 @@ using ZeekControl.  For a full reference on ZeekControl, see the
 Preparing to Setup a Cluster
 ----------------------------
 
-In this document we refer to the user account used to set up the cluster
+We refer to the user account used to set up the cluster
 as the "Zeek user".  When setting up a cluster the Zeek user must be set up
 on all hosts, and this user must have ssh access from the manager to all
 machines in the cluster, and it must work without being prompted for a
