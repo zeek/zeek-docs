@@ -13,48 +13,46 @@ Use of :zeek:see:`conn_id_ctx`
    connection keys and :zeek:see:`conn_id_ctx` instances.
    If you have feedback or run into limitations for your use-cases, please reach out!
 
-In some deployments, Zeek may receive network traffic from different network
-segments sharing overlapping IP ranges.
-In such cases, there is then usually some additional means of separating out
-the two ranges, such as VLAN numbers.
+In some deployments, Zeek receives traffic from different network
+segments that share overlapping IP ranges.
+Such settings usually provide some additional means of separating
+the ranges, such as VLAN numbers.
 For example, host 10.0.0.37 in VLAN 1 and host 10.0.0.37 in VLAN 2 may share
 the same IP address, but represent different systems.
-In Zeek's terminology, such IP addresses (or connections) occur in different
-*contexts*. In the example, the context is the VLAN ID; in other settings,
+In Zeek's terminology, such IP addresses (or their connections) occur in different
+*contexts*. In this case the context is the VLAN ID; in other settings,
 the context could be, say, Virtual Network Identifiers (VNIs) as used with
 UDP-based tunnels like VXLAN or Geneve.
-Generally, from Zeek's perspective, the context can be any kind of value that
-Zeek can derive from the packet data.
-
+From Zeek's perspective, the context can be any kind of value that
+it can derive from packet data.
 
 Since version 8.0, Zeek can extract these contexts through
 :ref:`plugin-provided connection key implementations <connkey-plugin>`
-and include them into its core connection tracking. Such plugins then also
+and include them into its core connection tracking. Such plugins will normally also
 :zeek:keyword:`redefine <redef>` :zeek:see:`conn_id_ctx` with additional
-fields to expose the context values to the Zeek scripting layer.
-For example, loading the doc:`/scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek`
-adds :zeek:field:`vlan` and :zeek:field:`inner_vlan` fields to :zeeK:see:`conn_id_ctx`.
+fields to expose this context to the Zeek scripting layer.
+For example, loading :doc:`/scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek`
+adds :zeek:field:`vlan` and :zeek:field:`inner_vlan` fields to :zeek:see:`conn_id_ctx`.
 
 Script writers can use the :zeek:field:`conn_id$ctx <conn_id$ctx>` field to
-discriminate the same :zeek:type:`addr` values observed in different contexts.
-
+distinguish :zeek:type:`addr` values observed in different contexts.
 For example, to count the number of connections per originator address in
-a context-aware manner, add the :zeek:see:`conn_id_ctx` instance as part
-of the index into a table:
+a context-aware manner, add the :zeek:see:`conn_id_ctx` to the table index:
 
 .. code-block:: zeek
 
 	global connection_counts: table[conn_id_ctx, addr] of count &default=0;
 
-	event new_connection(c: connection) {
-		++connection_counts[c$id$ctx, c$id$orig_h];
-	}
+	event new_connection(c: connection)
+	    {
+	    ++connection_counts[c$id$ctx, c$id$orig_h];
+	    }
 
 
 If, for example, :zeek:field:`ctx` is populated with fields for VLAN tags,
 that table will create individual entries per ``(VLAN, addr)`` pair.
 This will also work correctly if no context has been defined: ``c$id$ctx`` will
-then just be an empty records with no fields.
+be an empty record with no fields.
 
 Alternatively, users can define their own record type that includes both :zeek:see:`conn_id_ctx` and :zeek:type:`addr`,
 and use instances of such records to index into tables:
@@ -66,7 +64,7 @@ and use instances of such records to index into tables:
    :tab-width: 4
 
 This example tracks services that an originator IP address has been observed to interact with.
-When loading the doc:`/scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek`
+When loading the :doc:`/scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek`
 script, IP addresses in different VLANs are tracked separately:
 
 .. code-block:: shell
@@ -77,9 +75,9 @@ script, IP addresses in different VLANs are tracked separately:
     [ctx=[vlan=<uninitialized>, inner_vlan=<uninitialized>], a=141.142.228.5], HTTP
 
 
-Note that this script snippet isn't VLAN-specific, yet it is VLAN-aware. When
-using a different connection key plugin, like the one discussed in the
-:ref:`connection key tutorial <connkey-plugin>`, the result is as follows instead,
+Note that while this script isn't VLAN-specific, it is VLAN-aware. When
+using a different connection key plugin like the one discussed in the
+:ref:`connection key tutorial <connkey-plugin>`, the result becomes the following,
 discriminating entries in the ``talks_with_service`` table by the value of
 ``c$id$ctx$vxlan_vni``:
 

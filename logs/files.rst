@@ -367,5 +367,5 @@ Zeek’s file extraction capabilities offer many advantages to analysts.
 Administrators can configure Zeek to compute MD5 hashes of files that Zeek sees
 in network traffic. Rather than computing a hash on a file written to disk,
 Zeek could simply compute the hash as part of its inspection process. The
-purpose of this document was to show some of the data in the :file:`files.log`,
+purpose of this section was to show some of the data in the :file:`files.log`,
 how it relates to other Zeek logs, and how analysts might make use of it.
