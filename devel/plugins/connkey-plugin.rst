@@ -6,36 +6,38 @@ Writing a Connection Key Plugin
 
 .. versionadded:: 8.0
 
-Zeek's plugin API allows adding support for custom connection keys. By default,
-Zeek uses connection keys based on the classic five tuple consisting of IP addresses,
-port pairs and the protocol identifier.
-In certain environments, the classic five tuple alone is not sufficient to discriminate
-between different connections.
-One such example is Zeek receiving mirrored traffic from different VLANs that
-have overlapping IP ranges.
-Concretely, a connection between 10.0.0.1 and 10.0.0.2 in one VLAN is
-distinct from a connection between the same IPs in another VLAN.
-Here, Zeek should include the VLAN identifier into the connection key.
+By default, Zeek looks up internal connection state using the classic five-tuple
+of originator and responder IP addresses, ports, and the numeric protocol
+identifier (for TCP, UDP, etc). Zeek's data structure driving this is called a
+connection key, or ``ConnKey``.
 
-This section describes how to provide custom connection keys to Zeek in
-form of a tutorial.
-If you're not familiar with plugin development, head over to the
+In certain environments the classic five-tuple does not sufficiently distinguish
+connections. Consider traffic mirrored from multiple VLANs with overlapping IP
+address ranges. Concretely, a connection between 10.0.0.1 and 10.0.0.2 in one
+VLAN is distinct from a connection between the same IPs in another VLAN.  Here,
+Zeek should include the VLAN identifier into the connection key, and you can
+instruct Zeek to do so by loading the
+:doc:`/scripts/policy/frameworks/conn_key/vlan_fivetuple.zeek` policy script.
+
+Zeek's plugin API allows adding support for additional custom connection keys.
+This section provides a tutorial on how to do so, using the example of VXLAN-enabled
+flow tuples. If you're not familiar with plugin development, head over to the
 :ref:`Writing Plugins <writing-plugins>` section.
 
 Our goal is to implement a custom connection key to scope connections
 transported within a `VXLAN <https://datatracker.ietf.org/doc/html/rfc7348/index.html>`_
 tunnel by the VXLAN Network Identifier (VNI).
 
-As a test case, the `HTTP GET trace <https://github.com/zeek/zeek/raw/refs/heads/master/testing/btest/Traces/http/get.trace>`_ from the Zeek
-repository is encapsulated twice with VXLAN using VNIs 4711 and 4242, respectively.
-We merge the resulting two PCAP files with the original PCAP.
-The :download:`resulting PCAP <connkey-vxlan-fivetuple-plugin-src/Traces/vxlan-overlapping-http-get.pcap>` technically contains three individual HTTP connections, two of which
-are VXLAN encapsulated.
+As a test case, we have encapsulated the `HTTP GET trace <https://github.com/zeek/zeek/raw/refs/heads/master/testing/btest/Traces/http/get.trace>`_
+from the Zeek repository twice with VXLAN using VNIs 4711 and 4242, respectively,
+and merged the resulting two PCAP files with the original PCAP.
+The :download:`resulting PCAP <connkey-vxlan-fivetuple-plugin-src/Traces/vxlan-overlapping-http-get.pcap>`
+contains three HTTP connections, two of which are VXLAN-encapsulated.
 
 By default, Zeek will create the same connection key for the original and
-encapsulated HTTP connections as they have identical inner five tuples.
-Therefore, only a single ``http.log`` entry and two ``conn.log`` entries
-are created.
+encapsulated HTTP connections, since they have identical inner five-tuples.
+Therefore, Zeek creates only a single ``http.log`` entry, and two entries
+in ``conn.log``.
 
 .. code-block:: shell
 
@@ -51,17 +53,17 @@ are created.
 
 Note that just two of the HTTP connections are encapsulated.
 That is why the VXLAN connection shows only 28 packets.
-Each HTTP connection has 14 packets total, 7 in each direction. All are
-aggregated into the single HTTP connection, but only 28 of these packets were
+Each HTTP connection has 14 packets total, 7 in each direction. Zeek aggregates
+all packets into the single HTTP connection, but only 28 of them were
 transported within the VXLAN tunnel connection. Note also the ``t`` and ``T``
-flags in the :zeek:field:`Conn::Info$history` field. These stand for retransmissions
-and caused by Zeek not discriminating between the different HTTP connections.
+flags in the :zeek:field:`Conn::Info$history` field. These stand for retransmissions,
+caused by Zeek not discriminating between the different HTTP connections.
 
-The plugin we'll be developing adds the VXLAN VNI to the connection key.
-The result is that instead of a single HTTP connection, there'll be three HTTP
-connections tracked and logged separately by Zeek. The VNI is also added as
-:zeek:field:`vxlan_vni` to the :zeek:see:`conn_id_ctx` record and therefore available
-in the ``http.log`` and ``conn.log`` available as ``id.ctx.vxlan_vni`` column.
+The plugin we'll develop below adds the VXLAN VNI to the connection key.
+As a result, Zeek will correctly report three HTTP connections, tracked
+and logged separately. We'll add the VNI as
+:zeek:field:`vxlan_vni` to the :zeek:see:`conn_id_ctx` record, making it available
+in ``http.log`` and ``conn.log`` via the ``id.ctx.vxlan_vni`` column.
 
 After activating the plugin Zeek tracks each HTTP connection individually and
 the logs will look as follows:
@@ -123,8 +125,8 @@ the ``zeek::session::detail::Key`` as a packed struct within a ``ConnKey`` insta
 We override ``DoPopulateConnIdVal()`` to set the :zeek:field:`vxlan_vni` field
 of the :zeek:see:`conn_id_ctx` record value to the extracted VXLAN VNI. A small trick
 employed is that we default the most significant byte of ``key.vxlan_vni`` to 0xFF.
-As a VNI is only 24bit, this allows us to determine if a VNI was actually
-extracted, or whether it is unset.
+As a VNI has only 24 bits, this allows us to determine if a VNI was actually
+extracted, or whether it remained unset.
 
 The ``DoInit()`` implementation is the actual place for connection key customization.
 This is where we extract the VXLAN VNI from packet data. To do so, we're using the relatively
@@ -135,9 +137,9 @@ into ``key.vxlan_vni``.
 
 There's no requirement to use the ``GetAnalyzerData()`` API. If the ``zeek::Packet``
 instance passed to ``DoInit()`` contains the needed information, e.g. VLAN identifiers
-or information from the packet's raw bytes, they can be used directly.
+or information from the packet's raw bytes, you can use them directly.
 Specifically, ``GetAnalyzerData()`` may introduce additional overhead into the
-packet path that can be avoided if the information is readily available
+packet path that you can avoid if the information is readily available
 elsewhere.
 Using other Zeek APIs to determine connection key information is of course
 also possible.
@@ -148,7 +150,7 @@ instance from an existing :zeek:see:`conn_id` record.
 This is needed in order for the :zeek:see:`lookup_connection` builtin function to work properly.
 The implementation re-uses the ``DoConnKeyFromVal()`` implementation of the
 default ``fivetuple::Factory`` that our factory inherits from to extract the
-classic five tuple information.
+classic five-tuple information.
 
 .. literalinclude:: connkey-vxlan-fivetuple-plugin-src/src/Factory.cc
    :caption: Factory class in Factory.cc
