@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.8.1
+  rev: v0.12.9
   hooks:
     - id: ruff-format
     - id: ruff
@@ -18,6 +18,6 @@ repos:
     exclude: 'scripts/builtin-plugins/Zeek_JavaScript/__load__.zeek.rst'
 
 - repo: https://github.com/crate-ci/typos
-  rev: v1.30.1
+  rev: v1.35.4
   hooks:
     - id: typos
