@@ -99,13 +99,19 @@ or ``!in``:
 You can check if a given ``addr`` is IPv4 or IPv6 using
 the :zeek:id:`is_v4_addr` and :zeek:id:`is_v6_addr` built-in functions.
 
-Note that hostname constants can also be used, but since a hostname can
+Hostname constants can also be used, but since a hostname can
 correspond to multiple IP addresses, the type of such a variable is
 ``set[addr]``. For example:
 
 .. code-block:: zeek
 
     local a = www.google.com;
+
+.. note::
+
+   This syntax is deprecated and slated for removal in Zeek 8.1.
+   Consider the :zeek:see:`lookup_hostname` and
+   :zeek:see:`blocking_lookup_hostname` functions instead.
 
 Type Conversions
 ^^^^^^^^^^^^^^^^
