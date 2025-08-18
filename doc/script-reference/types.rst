@@ -99,13 +99,19 @@ or ``!in``:
 You can check if a given ``addr`` is IPv4 or IPv6 using
 the :zeek:id:`is_v4_addr` and :zeek:id:`is_v6_addr` built-in functions.
 
-Note that hostname constants can also be used, but since a hostname can
+Hostname constants can also be used, but since a hostname can
 correspond to multiple IP addresses, the type of such a variable is
 ``set[addr]``. For example:
 
 .. code-block:: zeek
 
     local a = www.google.com;
+
+.. note::
+
+   This syntax is deprecated and slated for removal in Zeek 8.1.
+   Consider the :zeek:see:`lookup_hostname` and
+   :zeek:see:`blocking_lookup_hostname` functions instead.
 
 Type Conversions
 ^^^^^^^^^^^^^^^^
@@ -1342,20 +1348,21 @@ definition:
 Records can be initialized or assigned as a whole in three different ways.
 When assigning a whole record value, all fields that are not
 :zeek:attr:`&optional` or have a :zeek:attr:`&default` attribute must
-be specified.  First, there's a constructor syntax:
-
-.. code-block:: zeek
-
-    local r: MyRecordType = record($c = 7);
-
-And the constructor can be explicitly named by type, too, which
-is arguably more readable:
+be specified.  First, the constructor can be explicitly named by type,
+which is arguably most readable:
 
 .. code-block:: zeek
 
     local r = MyRecordType($c = 42);
 
-And the third way is like this:
+There's also a plain constructor syntax:
+
+.. code-block:: zeek
+
+    local r: MyRecordType = record($c = 7);
+
+And lastly, a shorthand best reserved for situations such as large, repetitive
+initializer blocks where typing is fairly obvious:
 
 .. code-block:: zeek
 

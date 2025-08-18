@@ -131,7 +131,7 @@ address translation (NAT), or for the more strictly minded, network port
 address translation (NPAT), so that client devices share a single IP address
 provided by the ISP. (Note that in some situations, multiple residences even
 share the same public IP address, and differentiate between each other via
-the port range. That is not considered in this document as it is extraneous
+the port range. We'll not consider this further for now, as it is extraneous
 to the discussion.)
 
 Where does one monitor, given this architecture?
@@ -237,7 +237,7 @@ rely upon the ISP router if so desired.
 
 In summary, one could deploy a Zeek sensor at location D, or C, if the
 simplified architecture is in place, as C and D are logically similar. Going
-forward, this document will discuss monitoring at location D.
+forward, we'll discuss monitoring at location D.
 
 Gaining access to traffic at point D requires either a span port to be
 enabled on the customer switch, or a network tap to be deployed at location

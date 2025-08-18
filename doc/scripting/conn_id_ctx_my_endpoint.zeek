@@ -13,8 +13,9 @@ event connection_state_remove(c: connection)
 		add talks_with_service[endp][s];
 	}
 
-event zeek_done() {
+event zeek_done()
+	{
 	for ( e, es in talks_with_service )
 		print e, join_string_set(es, ", ");
-}
+	}
 
