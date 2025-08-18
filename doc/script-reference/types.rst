@@ -1342,20 +1342,21 @@ definition:
 Records can be initialized or assigned as a whole in three different ways.
 When assigning a whole record value, all fields that are not
 :zeek:attr:`&optional` or have a :zeek:attr:`&default` attribute must
-be specified.  First, there's a constructor syntax:
-
-.. code-block:: zeek
-
-    local r: MyRecordType = record($c = 7);
-
-And the constructor can be explicitly named by type, too, which
-is arguably more readable:
+be specified.  First, the constructor can be explicitly named by type,
+which is arguably most readable:
 
 .. code-block:: zeek
 
     local r = MyRecordType($c = 42);
 
-And the third way is like this:
+There's also a plain constructor syntax:
+
+.. code-block:: zeek
+
+    local r: MyRecordType = record($c = 7);
+
+And lastly, a shorthand best reserved for situations such as large, repetitive
+initializer blocks where typing is fairly obvious:
 
 .. code-block:: zeek
 
