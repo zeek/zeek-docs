@@ -38,7 +38,7 @@ Detailed Interface
 Events
 ######
 .. zeek:id:: PostgreSQL::authentication_ok
-   :source-code: base/protocols/postgresql/main.zeek 195 202
+   :source-code: base/protocols/postgresql/main.zeek 195 200
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
@@ -103,7 +103,7 @@ Events
    :param secret_key: The secret key of the backend.
 
 .. zeek:id:: PostgreSQL::data_row
-   :source-code: base/protocols/postgresql/main.zeek 224 228
+   :source-code: base/protocols/postgresql/main.zeek 222 229
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, column_values: :zeek:type:`count`)
 
@@ -200,7 +200,7 @@ Events
    
 
 .. zeek:id:: PostgreSQL::ready_for_query
-   :source-code: base/protocols/postgresql/main.zeek 230 241
+   :source-code: base/protocols/postgresql/main.zeek 231 246
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, transaction_status: :zeek:type:`string`)
 
@@ -213,7 +213,7 @@ Events
    :param transaction_status: I (idle), T (in transaction block), E (error).
 
 .. zeek:id:: PostgreSQL::simple_query
-   :source-code: base/protocols/postgresql/main.zeek 213 222
+   :source-code: base/protocols/postgresql/main.zeek 211 220
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`, query: :zeek:type:`string`)
 
@@ -281,7 +281,7 @@ Events
    :param value: The value of the parameter.
 
 .. zeek:id:: PostgreSQL::terminate
-   :source-code: base/protocols/postgresql/main.zeek 204 211
+   :source-code: base/protocols/postgresql/main.zeek 202 209
 
    :Type: :zeek:type:`event` (c: :zeek:type:`connection`)
 
