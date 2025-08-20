@@ -1,5 +1,7 @@
 .. _websocket-api:
 
+.. _websocat: https://github.com/vi/websocat
+
 
 ======================================
 Interacting with Zeek using WebSockets
@@ -75,7 +77,7 @@ on the Zeek manager:
 
 
 To verify that the WebSocket API is functional in your deployment use, for example,
-`websocat <https://github.com/vi/websocat>`_ as a quick check.
+`websocat`_ as a quick check.
 
 .. code-block:: shell
 
@@ -206,3 +208,110 @@ or the `small helper library <https://raw.githubusercontent.com/zeek/zeek/refs/h
 WebSocket API.
 Zeekctl similarly ships a `light implementation <https://github.com/zeek/zeekctl/blob/93459b37c3deab4bec9e886211672024fa3e4759/ZeekControl/events.py#L159>`_
 using the ``websockets`` library to implement its ``netstats`` and ``print`` commands.
+
+
+Outgoing Connections
+====================
+
+For some deployment scenarios, Zeek only offering a WebSocket server can be cumbersome.
+Concretely, when multiple independent Zeek clusters interact with
+a single instance of a remote API. For instance, this could be needed for
+configuring a central firewall.
+In such scenarios, it is more natural for Zeek to connect out to the
+remote API, rather than the remote API connecting to the Zeek cluster.
+
+For these use-cases, the current suggestion is to run a WebSocket bridge between
+a Zeek cluster and the remote API. One concrete tool that can be used
+for this purpose is `websocat`_.
+
+.. note::
+
+   This topic has previously been discussed elsewhere. The following
+   `GitHub issue <https://github.com/zeek/zeek/issues/3597>`_ and
+   `discussion <https://github.com/zeek/zeek/discussions/4768>`_
+   provide more background and details.
+
+
+Example Architecture
+--------------------
+
+.. figure:: ../images/websocket-api/one-api-many-zeek.svg
+   :width: 300
+
+   Multiple Zeek instances and a single remote API
+
+The following proposal decouples the components using a WebSocket
+bridge for every Zeek cluster. This ensures that the depicted remote API
+does not need knowledge about an arbitrary number of Zeek clusters.
+
+
+.. figure:: ../images/websocket-api/one-api-many-zeek-ws-bridge.svg
+   :width: 300
+
+   Multiple Zeek instances and a single remote API with WebSocket bridges.
+
+Example Implementation
+----------------------
+
+Assuming the depicted remote API provides a WebSocket server as well,
+it is possible to use ``websocat`` as the bridge directly.
+The crux for the remote API is that upon a new WebSocket client connection,
+the first message is the topic array that the remote API wishes to subscribe
+to on a Zeek cluster.
+
+
+Putting these pieces together, the following JavaScript script presents the
+remote API, implemented using the `ws library <https://github.com/websockets/ws?tab=readme-ov-file>`_.
+It accepts WebSocket clients on port 8080 and sends the topic array as the first message
+containing just ``zeek.bridge.test``. Thereafter, it simply echos all incoming
+WebSocket messages.
+
+.. literalinclude:: websocket-api/server.js
+   :caption: server.js
+   :language: javascript
+
+The Zeek side starts a WebSocket server on port 8000 and regularly publishes
+a ``hello`` event to the ``zeek.bridge.test`` topic.
+
+.. literalinclude:: websocket-api/server.zeek
+   :caption: server.zeek
+   :language: zeek
+
+These two servers can now be connected by running ``websocat`` as follows:
+
+.. code-block:: shell
+
+    # In terminal 1 (use node if your Zeek has no JavaScript support)
+    $ zeek server.js
+
+    # In terminal 2
+    $ zeek server.zeek
+
+    # In terminal 3
+    $ while true; do websocat --text -H='X-Application-Name: client1' ws://localhost:8000/v1/messages/json ws://localhost:8080 || sleep 0.1 ; done
+
+
+The first few lines of output in terminal 1 should then look as follows:
+
+.. code-block:: shell
+
+   # zeek server.js
+   client1: connected, sending topics array ["zeek.bridge.test"]
+   client1: received: {"type":"ack","endpoint":"9089e06b-8d33-5585-ad79-4f7f6348754e-websocket-135","version":"8.1.0-dev.91"}
+   client1: received: {"type":"data-message","topic":"zeek.bridge.test","@data-type":"vector","data":[{"@data-type":"count","data":1},{"@data-type":"count","data":1},{"@data-type":"vector","data":[{"@data-type":"string","data":"hello"},{"@data-type":"vector","data":[{"@data-type":"count","data":1792}]},{"@data-type":"vector","data":[]}]}]}
+   ...
+
+If you require synchronization between the Zeek instance and the remote API, this
+is best achieved with events once the connection between the remote API and the
+Zeek cluster is established.
+
+Alternative Approaches
+----------------------
+
+Since v21, Node.js contains a built-in `WebSocket client <https://nodejs.org/en/learn/getting-started/websocket>`_,
+making it possible to use vanilla :ref:`javascript` within
+Zeek to establish outgoing WebSocket connections, too.
+
+The ``websocat`` tool provides more flexibility, potentially allowing
+to forward WebSocket messages to external commands which in turn could
+use HTTP POST requests to an external API.
