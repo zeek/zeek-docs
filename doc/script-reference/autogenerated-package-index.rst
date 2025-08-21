@@ -393,9 +393,6 @@
 :doc:`builtin-plugins </scripts/builtin-plugins/index>`
 
 
-:doc:`builtin-plugins/Zeek_AF_Packet </scripts/builtin-plugins/Zeek_AF_Packet/index>`
-
-
 :doc:`builtin-plugins/Zeek_JavaScript </scripts/builtin-plugins/Zeek_JavaScript/index>`
 
 

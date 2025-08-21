@@ -2,6 +2,7 @@
 
 base/bif/types.bif.zeek
 =======================
+.. zeek:namespace:: AF_Packet
 .. zeek:namespace:: GLOBAL
 .. zeek:namespace:: MOUNT3
 .. zeek:namespace:: NFS3
@@ -10,35 +11,74 @@ base/bif/types.bif.zeek
 
 Declaration of various types that the Zeek core uses internally.
 
-:Namespaces: GLOBAL, MOUNT3, NFS3, Reporter, Tunnel
+:Namespaces: AF_Packet, GLOBAL, MOUNT3, NFS3, Reporter, Tunnel
 
 Summary
 ~~~~~~~
 Types
 #####
-===================================================== =
-:zeek:type:`MOUNT3::auth_flavor_t`: :zeek:type:`enum` 
-:zeek:type:`MOUNT3::proc_t`: :zeek:type:`enum`        
-:zeek:type:`MOUNT3::status_t`: :zeek:type:`enum`      
-:zeek:type:`NFS3::createmode_t`: :zeek:type:`enum`    
-:zeek:type:`NFS3::file_type_t`: :zeek:type:`enum`     
-:zeek:type:`NFS3::proc_t`: :zeek:type:`enum`          
-:zeek:type:`NFS3::stable_how_t`: :zeek:type:`enum`    
-:zeek:type:`NFS3::status_t`: :zeek:type:`enum`        
-:zeek:type:`NFS3::time_how_t`: :zeek:type:`enum`      
-:zeek:type:`Reporter::Level`: :zeek:type:`enum`       
-:zeek:type:`TableChange`: :zeek:type:`enum`           
-:zeek:type:`Tunnel::Type`: :zeek:type:`enum`          
-:zeek:type:`layer3_proto`: :zeek:type:`enum`          
-:zeek:type:`link_encap`: :zeek:type:`enum`            
-:zeek:type:`rpc_status`: :zeek:type:`enum`            
-===================================================== =
+======================================================= ====================================
+:zeek:type:`AF_Packet::ChecksumMode`: :zeek:type:`enum` Available checksum validation modes.
+:zeek:type:`AF_Packet::FanoutMode`: :zeek:type:`enum`   Available fanout modes.
+:zeek:type:`MOUNT3::auth_flavor_t`: :zeek:type:`enum`   
+:zeek:type:`MOUNT3::proc_t`: :zeek:type:`enum`          
+:zeek:type:`MOUNT3::status_t`: :zeek:type:`enum`        
+:zeek:type:`NFS3::createmode_t`: :zeek:type:`enum`      
+:zeek:type:`NFS3::file_type_t`: :zeek:type:`enum`       
+:zeek:type:`NFS3::proc_t`: :zeek:type:`enum`            
+:zeek:type:`NFS3::stable_how_t`: :zeek:type:`enum`      
+:zeek:type:`NFS3::status_t`: :zeek:type:`enum`          
+:zeek:type:`NFS3::time_how_t`: :zeek:type:`enum`        
+:zeek:type:`Reporter::Level`: :zeek:type:`enum`         
+:zeek:type:`TableChange`: :zeek:type:`enum`             
+:zeek:type:`Tunnel::Type`: :zeek:type:`enum`            
+:zeek:type:`layer3_proto`: :zeek:type:`enum`            
+:zeek:type:`link_encap`: :zeek:type:`enum`              
+:zeek:type:`rpc_status`: :zeek:type:`enum`              
+======================================================= ====================================
 
 
 Detailed Interface
 ~~~~~~~~~~~~~~~~~~
 Types
 #####
+.. zeek:type:: AF_Packet::ChecksumMode
+   :source-code: base/bif/types.bif.zeek 288 288
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: AF_Packet::CHECKSUM_OFF AF_Packet::ChecksumMode
+
+         Ignore checksums, i.e. always assume they are correct.
+
+      .. zeek:enum:: AF_Packet::CHECKSUM_ON AF_Packet::ChecksumMode
+
+         Let Zeek compute and verify checksums.
+
+      .. zeek:enum:: AF_Packet::CHECKSUM_KERNEL AF_Packet::ChecksumMode
+
+         Let the kernel handle checksum offloading.
+         Note: Semantics may depend on the kernel and driver version.
+
+   Available checksum validation modes.
+
+.. zeek:type:: AF_Packet::FanoutMode
+   :source-code: base/bif/types.bif.zeek 278 278
+
+   :Type: :zeek:type:`enum`
+
+      .. zeek:enum:: AF_Packet::FANOUT_HASH AF_Packet::FanoutMode
+
+      .. zeek:enum:: AF_Packet::FANOUT_CPU AF_Packet::FanoutMode
+
+      .. zeek:enum:: AF_Packet::FANOUT_QM AF_Packet::FanoutMode
+
+      .. zeek:enum:: AF_Packet::FANOUT_CBPF AF_Packet::FanoutMode
+
+      .. zeek:enum:: AF_Packet::FANOUT_EBPF AF_Packet::FanoutMode
+
+   Available fanout modes.
+
 .. zeek:type:: MOUNT3::auth_flavor_t
    :source-code: base/bif/types.bif.zeek 49 49
 
