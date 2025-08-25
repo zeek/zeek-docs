@@ -149,7 +149,7 @@ Types
    .. zeek:field:: application_name :zeek:type:`string` :zeek:attr:`&optional`
 
 
-   .. zeek:field:: rows :zeek:type:`count` :zeek:attr:`&default` = ``0`` :zeek:attr:`&optional`
+   .. zeek:field:: rows :zeek:type:`count` :zeek:attr:`&optional`
 
 
    .. zeek:field:: errors :zeek:type:`vector` of :zeek:type:`string`
@@ -181,7 +181,7 @@ Events
 Hooks
 #####
 .. zeek:id:: PostgreSQL::finalize_postgresql
-   :source-code: base/protocols/postgresql/main.zeek 243 245
+   :source-code: base/protocols/postgresql/main.zeek 248 250
 
    :Type: :zeek:type:`Conn::RemovalHook`
 
