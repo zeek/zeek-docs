@@ -55,7 +55,7 @@ probably the most immediately actionable elements. They indicate that a client
 The rest of the data generally profiles the nature of the client and server and
 the encryption they used for the session. For example, the various ``hassh``
 fields come from the `HASSH Zeek package
-<https://github.com/salesforce/hassh>`_ and are similar to the JA3 and JA3S
+<https://github.com/corelight/hassh>`_ and are similar to the JA3 and JA3S
 packages mentioned in the :file:`ssl.log` chapter.
 
 The ``hassh`` field provides a hash characterizing the encryption offered by
