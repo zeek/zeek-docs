@@ -134,7 +134,7 @@ To install:
 
   .. code-block:: console
 
-     sudo pkg_add zeek
+     doas pkg_add zeek
 
 These packages are not maintained by the Zeek project.
 
