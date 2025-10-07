@@ -106,7 +106,7 @@ Types
 Functions
 #########
 .. zeek:id:: decompose_uri
-   :source-code: base/utils/urls.zeek 52 136
+   :source-code: base/utils/urls.zeek 52 135
 
    :Type: :zeek:type:`function` (uri: :zeek:type:`string`) : :zeek:type:`URI`
 
